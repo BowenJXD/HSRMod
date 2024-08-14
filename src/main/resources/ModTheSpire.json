@@ -1,0 +1,10 @@
+﻿{
+  "modid": "HSRMod", 
+  "name": "崩坏：星穹铁道Mod", 
+  "author_list": ["喏"], 
+  "description": "以崩坏：星穹铁道为主题的mod。", 
+  "version": "0.0.1", 
+  "sts_version": "12-22-2020", 
+  "mts_version": "3.23.2", 
+  "dependencies": ["basemod"] 
+}

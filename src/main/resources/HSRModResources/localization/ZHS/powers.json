@@ -1,0 +1,14 @@
+﻿{
+  "HSRMod:BreakEffect": {
+    "NAME": "击破特攻",
+    "DESCRIPTIONS": [ 
+      "你造成攻击伤害时，若其 #y有格挡 ，伤害提升 #b%d 点。" 
+    ]
+  },
+  "HSRMod:EnergyCounter": {
+    "NAME": "充能",
+    "DESCRIPTIONS": [ 
+      "上限为 #b%d 。一些牌需要消耗 #y充能 以使用。" 
+    ]
+  }
+}

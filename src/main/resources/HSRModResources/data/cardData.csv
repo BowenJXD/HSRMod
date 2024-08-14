@@ -1,9 +1,9 @@
 ID,牌名,稀有度,类型,目标,费用,描述,伤害值,格挡值,特殊值,费用+,强化版描述,伤害值+,格挡值+,特殊值+,象限
-Trailblazer1,再见安打,BASIC,ATTACK,ENEMY,1,造成 !D! 点伤害。,6,,,,,9,,,攻击
-Trailblazer2,安息全垒打,BASIC,ATTACK,ALL_ENEMY,1,对所有敌人造成 !D! 点伤害。,4,,,,,6,,,攻击
+Trailblazer1,再见安打,BASIC,ATTACK,ENEMY,1,造成 !D! 点物理属性伤害（2）。,6,,,,,9,,,攻击
+Trailblazer2,安息全垒打,BASIC,ATTACK,ALL_ENEMY,0,消耗120充能，对所有敌人造成 !D! 点物理属性伤害（2）。,4,,,,,6,,,攻击
 Trailblazer3,炽燃不灭的琥珀,BASIC,SKILL,SELF,1,获得 !B! 点格挡。,,5,,,,,8,,防御
 ,,,,,,,,,,,,,,,
-Sushang1,太虚形蕴 · 烛夜,COMMON,ATTACK,ENEMY,1,获得1层【击破特攻】，造成 !D! 点伤害，若击破了其的格挡，则摸 !M! 张牌。,5,,2,,,,,3,运转
+Sushang1,太虚形蕴 · 烛夜,COMMON,ATTACK,ENEMY,1,获得 !M! 层【击破特攻】，造成 !D! 点物理属性伤害（2），若触发了击破，则摸 !M! 张牌。,5,,2,,,,,3,运转
 Sushang2,游刃有余,COMMON,SKILL,ENEMY,1,获得 !M! 层【击破特攻】，每有一名敌方角色有格挡，则你回复1点 [E] 。,,,1,,,,,2,运转
 Tingyun1,庆云光覆仪祷,COMMON,SKILL,SELF,0,保留。消耗10点充能，获得 !M! 点充能。,,,50,,,,,80,运转
 Qingque1,海底捞月,COMMON,SKILL,SELF,1,摸1张牌，将此牌返还手卡，然后有 !M! %概率回复1点 [E] 。,,,50,,,,,70,运转

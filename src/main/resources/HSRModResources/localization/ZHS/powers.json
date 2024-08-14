@@ -1,14 +1,26 @@
 ﻿{
-  "HSRMod:BreakEffect": {
-    "NAME": "击破特攻",
-    "DESCRIPTIONS": [ 
-      "你造成攻击伤害时，若其 #y有格挡 ，伤害提升 #b%d 点。" 
-    ]
-  },
   "HSRMod:EnergyCounter": {
     "NAME": "充能",
     "DESCRIPTIONS": [ 
       "上限为 #b%d 。一些牌需要消耗 #y充能 以使用。" 
     ]
+  },
+  "HSRMod:BreakEffect": {
+    "NAME": "击破特攻",
+    "DESCRIPTIONS": [
+      "对有【击破状态】的敌人造成的击破伤害增加 #b%d 。"
+    ]
+  },
+  "HSRMod:Toughness": {
+      "NAME": "韧性",
+      "DESCRIPTIONS": [ 
+      "受到的伤害减少 #b%d %%。" 
+      ]
+  },
+  "HSRMod:Broken": {
+      "NAME": "击破状态",
+      "DESCRIPTIONS": [ 
+      "受到的伤害增加 #b%d %%，持续 #b%d 回合。" 
+      ]
   }
 }

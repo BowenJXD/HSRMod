@@ -23,6 +23,7 @@ import hsrmod.cards.Trailblazer1;
 import hsrmod.cards.Trailblazer2;
 import hsrmod.cards.Trailblazer3;
 import hsrmod.modcore.HSRMod;
+import hsrmod.relics.GalacticBat;
 import hsrmod.relics.GoldenTrash;
 
 import java.util.ArrayList;
@@ -108,6 +109,7 @@ public class MyCharacter extends CustomPlayer {
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
         retVal.add(GoldenTrash.ID);
+        retVal.add(GalacticBat.ID);
         return retVal;
     }
 

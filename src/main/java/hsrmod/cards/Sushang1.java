@@ -12,13 +12,14 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import hsrmod.actions.BreakAction;
+import hsrmod.actions.ElementalDamageAction;
+import hsrmod.modcore.ElementType;
 import hsrmod.powers.BreakEffect;
+import hsrmod.powers.Broken;
 import hsrmod.powers.EnergyCounter;
 
 public class Sushang1 extends BaseCard {
     public static final String ID = Sushang1.class.getSimpleName();
-    
-    public static final int BREAK_EFFECT_GAIN = 1;
     
     public Sushang1() {
         super(ID);
@@ -26,22 +27,52 @@ public class Sushang1 extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new BreakEffect(p, BREAK_EFFECT_GAIN), BREAK_EFFECT_GAIN));
-        for (AbstractCreature mon : AbstractDungeon.getMonsters().monsters) {
-            if (mon == m) {
-                int x= 1;
-            }
-        }
+        
         AbstractDungeon.actionManager.addToBottom(
-                new BreakAction(
+                new ApplyPowerAction(
+                        p,
+                        p,
+                        new BreakEffect(p, magicNumber),
+                        magicNumber
+                )
+        );
+        AbstractDungeon.actionManager.addToBottom(
+                new ElementalDamageAction(
                         m,
                         new DamageInfo(
                                 p,
                                 damage,
                                 damageTypeForTurn
                         ),
-                        () -> AbstractDungeon.actionManager.addToBottom( new DrawCardAction(p, magicNumber) )
+                        ElementType.Physical,
+                        2,
+                        AbstractGameAction.AttackEffect.BLUNT_HEAVY,
+                        (target) -> {
+                            AbstractDungeon.actionManager.addToBottom(
+                                    new DrawIfBrokenAction(target, magicNumber)
+                            );
+                        }
                 )
         );
+    }
+    
+    private static class DrawIfBrokenAction extends AbstractGameAction {
+        private AbstractCreature c;
+        private int amount;
+        
+        public DrawIfBrokenAction(AbstractCreature c, int amount) {
+            this.c = c;
+            this.amount = amount;
+        }
+        
+        @Override
+        public void update() {
+            if (c.hasPower(Broken.POWER_ID)) {
+                AbstractDungeon.actionManager.addToBottom(
+                        new DrawCardAction(c, amount)
+                );
+            }
+            isDone = true;
+        }
     }
 }

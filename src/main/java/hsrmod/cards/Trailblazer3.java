@@ -16,9 +16,9 @@ public class Trailblazer3 extends BaseCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(
                 new com.megacrit.cardcrawl.actions.common.GainBlockAction(
-                        m,
                         p,
-                        1
+                        p,
+                        block
                 )
         );
     }

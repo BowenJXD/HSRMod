@@ -7,23 +7,21 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.relics.Vajra;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.EnergyCounter;
+import hsrmod.powers.Toughness;
 
-public class GoldenTrash extends CustomRelic {
+public class GalacticBat extends CustomRelic {
     // 遗物ID（此处的ModHelper在“04 - 本地化”中提到）
-    public static final String ID = HSRMod.makePath(GoldenTrash.class.getSimpleName());
+    public static final String ID = HSRMod.makePath(GalacticBat.class.getSimpleName());
     // 图片路径
     private static final String IMG_PATH = "HSRModResources/img/relics/Trashcan.png";
     // 遗物类型
     private static final RelicTier RELIC_TIER = RelicTier.STARTER;
     // 点击音效
     private static final LandingSound LANDING_SOUND = LandingSound.FLAT;
-    
-    private static int ENERGY_GAIN_PER_CARD = 20;
 
-    public GoldenTrash() {
+    public GalacticBat() {
         super(ID, ImageMaster.loadImage(IMG_PATH), RELIC_TIER, LANDING_SOUND);
     }
 
@@ -33,12 +31,27 @@ public class GoldenTrash extends CustomRelic {
     }
 
     public AbstractRelic makeCopy() {
-        return new GoldenTrash();
+        return new GalacticBat();
     }
 
     @Override
-    public void onPlayCard(AbstractCard c, AbstractMonster m) {
-        super.onPlayCard(c, m);
-        addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new EnergyCounter(AbstractDungeon.player, ENERGY_GAIN_PER_CARD), ENERGY_GAIN_PER_CARD));
+    public void atTurnStart() {
+        for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
+            if (!m.hasPower(Toughness.POWER_ID)) {
+                int toughness = 0;
+                switch (m.type) {
+                    case NORMAL:
+                        toughness = 8;
+                        break;
+                    case ELITE:
+                        toughness = 12;
+                        break;
+                    case BOSS:
+                        toughness = 16;
+                        break;
+                }
+                AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(m, AbstractDungeon.player, new Toughness(m, toughness), toughness));
+            }
+        }
     }
 }

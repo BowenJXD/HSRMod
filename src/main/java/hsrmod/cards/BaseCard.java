@@ -1,6 +1,9 @@
 package hsrmod.cards;
 
 import basemod.abstracts.CustomCard;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.powers.AbstractPower;
+import hsrmod.powers.EnergyCounter;
 import hsrmod.utils.CardDataCol;
 import hsrmod.utils.DataManager;
 import java.util.Objects;
@@ -14,6 +17,7 @@ public abstract class BaseCard extends CustomCard {
     protected int upBlock;
     protected int upMagicNumber;
     
+    protected int energyCost = 0;
     
     public BaseCard(String id) {
         super("HSRMod:" + id,
@@ -59,5 +63,10 @@ public abstract class BaseCard extends CustomCard {
                 upgradeMagicNumber(upMagicNumber - baseMagicNumber);
             }
         }
+    }
+    
+    protected boolean checkEnergy() {
+        AbstractPower power = AbstractDungeon.player.getPower(EnergyCounter.POWER_ID);
+        return power != null && power.amount >= energyCost;
     }
 }

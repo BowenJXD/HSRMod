@@ -17,6 +17,7 @@ import com.megacrit.cardcrawl.localization.RelicStrings;
 import hsrmod.cards.*;
 import com.badlogic.gdx.graphics.Color;
 import hsrmod.characters.MyCharacter;
+import hsrmod.relics.GalacticBat;
 import hsrmod.relics.GoldenTrash;
 
 import static hsrmod.characters.MyCharacter.PlayerColorEnum.*;
@@ -78,6 +79,7 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
     @Override
     public void receiveEditRelics() {
         BaseMod.addRelic(new GoldenTrash(), RelicType.SHARED);
+        BaseMod.addRelic(new GalacticBat(), RelicType.SHARED);
     }
 
     public void receiveEditStrings() {

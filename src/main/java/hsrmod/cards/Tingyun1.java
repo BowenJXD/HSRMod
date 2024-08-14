@@ -13,17 +13,14 @@ import hsrmod.powers.EnergyCounter;
 public class Tingyun1 extends BaseCard {
     public static final String ID = Tingyun1.class.getSimpleName();
 
-    private static final int ENERGY_COST = 10;
-    
     public Tingyun1() {
         super(ID);
+        energyCost = 10;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractPower power = p.getPower(EnergyCounter.POWER_ID);
-        if (power == null || power.amount < ENERGY_COST) return;
-        power.amount -= ENERGY_COST;
+        if (!checkEnergy()) return;
         AbstractDungeon.actionManager.addToBottom(
                 new ApplyPowerAction(
                         p,

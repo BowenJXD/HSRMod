@@ -1,8 +1,8 @@
 ﻿{
-  "HSRMod:EnergyCounter": {
+  "HSRMod:Energy": {
     "NAME": "充能",
-    "DESCRIPTIONS": [ 
-      "上限为 #b%d 。一些牌需要消耗 #y充能 以使用。" 
+    "DESCRIPTIONS": [
+      "上限为 #b%d 。一些牌需要消耗 #y充能 以使用。"
     ]
   },
   "HSRMod:BreakEffect": {
@@ -12,15 +12,39 @@
     ]
   },
   "HSRMod:Toughness": {
-      "NAME": "韧性",
-      "DESCRIPTIONS": [ 
-      "受到的伤害减少 #b%d %%。" 
-      ]
+    "NAME": "韧性",
+    "DESCRIPTIONS": [
+      "受到的伤害减少 #b%d %%。"
+    ]
   },
   "HSRMod:Broken": {
-      "NAME": "击破状态",
-      "DESCRIPTIONS": [ 
-      "受到的伤害增加 #b%d %%，持续 #b%d 回合。" 
-      ]
+    "NAME": "击破状态",
+    "DESCRIPTIONS": [
+      "受到的伤害增加 #b%d %%，回合结束时移除1层。"
+    ]
+  },
+  "HSRMod:Bleed": {
+    "NAME": "裂伤",
+    "DESCRIPTIONS": [
+      "持续伤害。回合开始时，受到 #b%d %%生命值上限的伤害（ #b%d ），移除1层。"
+    ]
+  },
+  "HSRMod:Burn": {
+    "NAME": "灼烧",
+    "DESCRIPTIONS": [
+      "持续伤害。回合开始时，受到 #b%d %%点伤害，移除1层。"
+    ]
+  },
+  "HSRMod:Shock": {
+    "NAME": "触电",
+    "DESCRIPTIONS": [
+      "持续伤害。回合开始时，受到 #b%d %%点伤害，移除1层。"
+    ]
+  },
+  "HSRMod:WindShear": {
+    "NAME": "风化",
+    "DESCRIPTIONS": [
+      "持续伤害。回合开始时移除至多 %d 层，受到移除层数数量 #b%d 倍的伤害（ #b%d ）。"
+    ]
   }
 }

@@ -1,15 +1,12 @@
 package hsrmod.cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.modcore.ElementType;
-import hsrmod.powers.EnergyCounter;
 
 public class Trailblazer1 extends BaseCard {
     public static final String ID = Trailblazer1.class.getSimpleName();
@@ -21,7 +18,7 @@ public class Trailblazer1 extends BaseCard {
     }
     
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {    
+    public void onUse(AbstractPlayer p, AbstractMonster m) {    
         AbstractDungeon.actionManager.addToBottom(
                 new ElementalDamageAction(
                         m,

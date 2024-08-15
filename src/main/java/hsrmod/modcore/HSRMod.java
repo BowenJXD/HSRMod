@@ -69,6 +69,7 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         BaseMod.addCard(new Trailblazer3());
         BaseMod.addCard(new Sushang1());
         BaseMod.addCard(new Tingyun1());
+        BaseMod.addCard(new BlackSwan2());
     }
 
     @Override
@@ -99,6 +100,9 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
     }
 
     public static String makePath(String name){
+        if (name.contains("Power")) {
+            name = name.replace("Power", "");
+        }
         return MOD_NAME + ":" + name;
     }
 }

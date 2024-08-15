@@ -17,21 +17,28 @@ function main() {
         return;
     }
 
+    var visibleLayerSets = getInitiallyVisibleLayerSets(doc);
+
+    if (visibleLayerSets.length === 0) {
+        alert("没有可见的图层组。");
+        return;
+    }
+    
     // 隐藏所有图层组
     hideAllGroups(doc);
 
     var previousVisibleLayerSet = null;
 
     // 第一次导出，使用原画板大小并添加"_p"后缀
-    for (var i = 0; i < doc.layerSets.length; i++) {
-        var layerSet = doc.layerSets[i];
-        
-        // 显示当前组
-        layerSet.visible = true;
+    for (var i = 0; i < visibleLayerSets.length; i++) {
+        var layerSet = visibleLayerSets[i];
+
         // 隐藏上一个组（如果存在）
         if (previousVisibleLayerSet !== null) {
             previousVisibleLayerSet.visible = false;
         }
+        // 显示当前组
+        layerSet.visible = true;
 
         // 导出当前可见内容，添加"_p"后缀
         saveAsPng(outputPath, layerSet.name + "_p");
@@ -40,22 +47,19 @@ function main() {
         previousVisibleLayerSet = layerSet;
     }
 
-    // 恢复所有组的可见性
-    previousVisibleLayerSet.visible = false;
-
     // 将图像缩小
     doc.resizeImage(UnitValue(250, "px"), UnitValue(190, "px"), null, ResampleMethod.BICUBICSHARPER);
 
     // 第二次导出，使用缩小后的图像大小，不添加后缀
-    for (var i = 0; i < doc.layerSets.length; i++) {
-        var layerSet = doc.layerSets[i];
+    for (var i = 0; i < visibleLayerSets.length; i++) {
+        var layerSet = visibleLayerSets[i];
 
-        // 显示当前组
-        layerSet.visible = true;
         // 隐藏上一个组（如果存在）
         if (previousVisibleLayerSet !== null) {
             previousVisibleLayerSet.visible = false;
         }
+        // 显示当前组
+        layerSet.visible = true;
         // 导出当前可见内容，不添加后缀
         saveAsPng(outputPath, layerSet.name);
 
@@ -65,10 +69,20 @@ function main() {
 
     // 恢复原始图像大小
     doc.resizeImage(UnitValue(originalWidth, "px"), UnitValue(originalHeight, "px"), null, ResampleMethod.BICUBIC);
-
-    showAllGroups(doc);
     
     alert("导出完成！");
+}
+
+function getInitiallyVisibleLayerSets(doc) {
+    var visibleLayerSets = [];
+    var layers = doc.layerSets;
+
+    for (var i = 0; i < layers.length; i++) {
+        if (layers[i].visible) {
+            visibleLayerSets.push(layers[i]);
+        }
+    }
+    return visibleLayerSets;
 }
 
 // 隐藏所有图层组

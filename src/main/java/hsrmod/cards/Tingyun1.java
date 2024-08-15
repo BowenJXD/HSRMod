@@ -1,14 +1,10 @@
 package hsrmod.cards;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import hsrmod.powers.EnergyCounter;
+import hsrmod.powers.EnergyPower;
 
 public class Tingyun1 extends BaseCard {
     public static final String ID = Tingyun1.class.getSimpleName();
@@ -19,15 +15,15 @@ public class Tingyun1 extends BaseCard {
     }
 
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {
-        if (!checkEnergy()) return;
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(
                 new ApplyPowerAction(
                         p,
                         p,
-                        new EnergyCounter(p, magicNumber),
+                        new EnergyPower(p, magicNumber),
                         magicNumber
                 )
         );
+        
     }
 }

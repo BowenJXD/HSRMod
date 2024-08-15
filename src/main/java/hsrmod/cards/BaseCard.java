@@ -1,9 +1,13 @@
 package hsrmod.cards;
 
 import basemod.abstracts.CustomCard;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import hsrmod.powers.EnergyCounter;
+import hsrmod.actions.ReduceECByHandCardNumAction;
+import hsrmod.powers.EnergyPower;
 import hsrmod.utils.CardDataCol;
 import hsrmod.utils.DataManager;
 import java.util.Objects;
@@ -66,7 +70,16 @@ public abstract class BaseCard extends CustomCard {
     }
     
     protected boolean checkEnergy() {
-        AbstractPower power = AbstractDungeon.player.getPower(EnergyCounter.POWER_ID);
+        AbstractPower power = AbstractDungeon.player.getPower(EnergyPower.POWER_ID);
         return power != null && power.amount >= energyCost;
     }
+
+    @Override
+    public void use(AbstractPlayer p, AbstractMonster m) {
+        if (!checkEnergy()) return;
+        if (energyCost != 0) AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new EnergyPower(p, -energyCost), -energyCost));
+        onUse(p, m);
+    }
+    
+    public abstract void onUse(AbstractPlayer p, AbstractMonster m);
 }

@@ -22,6 +22,7 @@ public abstract class BaseCard extends CustomCard {
     protected int upMagicNumber;
     
     protected int energyCost = 0;
+    protected boolean isFollowUp = false;
     
     public BaseCard(String id) {
         super("HSRMod:" + id,

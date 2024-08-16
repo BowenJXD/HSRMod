@@ -23,7 +23,7 @@
       "受到的伤害增加 #b%d %%，回合结束时移除1层。"
     ]
   },
-  "HSRMod:Bleed": {
+  "HSRMod:Bleeding": {
     "NAME": "裂伤",
     "DESCRIPTIONS": [
       "持续伤害。回合开始时，受到 #b%d %%生命值上限的伤害（ #b%d ），移除1层。"

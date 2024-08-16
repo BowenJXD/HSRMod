@@ -48,7 +48,7 @@ public class ReduceToughnessAction extends AbstractGameAction {
         int stackNum = 1;
         switch (elementType){
             case Physical:
-                power = new BleedPower(target, AbstractDungeon.player, stackNum);
+                power = new BleedingPower(target, AbstractDungeon.player, stackNum);
                 break;
             case Fire:
                 power = new BurnPower(target, AbstractDungeon.player, stackNum);

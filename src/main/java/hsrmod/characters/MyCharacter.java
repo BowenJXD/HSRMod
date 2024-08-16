@@ -1,7 +1,6 @@
 package hsrmod.characters;
 
 import basemod.abstracts.CustomPlayer;
-import basemod.helpers.RelicType;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
@@ -17,14 +16,13 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
-import com.megacrit.cardcrawl.relics.Vajra;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import hsrmod.cards.Trailblazer1;
 import hsrmod.cards.Trailblazer2;
 import hsrmod.cards.Trailblazer3;
 import hsrmod.modcore.HSRMod;
 import hsrmod.relics.GalacticBat;
-import hsrmod.relics.GoldenTrash;
+import hsrmod.relics.MarchBlessing;
 
 import java.util.ArrayList;
 
@@ -108,7 +106,7 @@ public class MyCharacter extends CustomPlayer {
     // 初始遗物的ID，可以先写个原版遗物凑数
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
-        retVal.add(GoldenTrash.ID);
+        retVal.add(MarchBlessing.ID);
         retVal.add(GalacticBat.ID);
         return retVal;
     }

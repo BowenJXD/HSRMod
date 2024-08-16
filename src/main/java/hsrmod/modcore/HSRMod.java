@@ -1,29 +1,30 @@
 package hsrmod.modcore;
 
+import basemod.AutoAdd;
 import basemod.BaseMod;
 import basemod.helpers.RelicType;
-import basemod.interfaces.EditCardsSubscriber;
-import basemod.interfaces.EditCharactersSubscriber;
-import basemod.interfaces.EditRelicsSubscriber;
-import basemod.interfaces.EditStringsSubscriber;
+import basemod.interfaces.*;
+import com.badlogic.gdx.Gdx;
+import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
+import com.google.gson.Gson;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.localization.CardStrings;
-import com.megacrit.cardcrawl.localization.CharacterStrings;
-import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.localization.RelicStrings;
+import com.megacrit.cardcrawl.localization.*;
 import hsrmod.cards.*;
 import com.badlogic.gdx.graphics.Color;
 import hsrmod.characters.MyCharacter;
 import hsrmod.relics.GalacticBat;
-import hsrmod.relics.GoldenTrash;
+import hsrmod.relics.MarchBlessing;
 
+import java.nio.charset.StandardCharsets;
+
+import static com.megacrit.cardcrawl.core.Settings.language;
 import static hsrmod.characters.MyCharacter.PlayerColorEnum.*;
 
 @SpireInitializer // 加载mod的注解
-public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditCharactersSubscriber, EditRelicsSubscriber {
+public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditCharactersSubscriber, EditRelicsSubscriber, EditKeywordsSubscriber {
     public static final String MOD_NAME = "HSRMod";
     
     public static final Color MY_COLOR = new Color(255.0F / 255.0F, 141.0F / 255.0F, 227.0F / 255.0F, 1.0F);
@@ -64,12 +65,12 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
 
     @Override
     public void receiveEditCards() {
-        BaseMod.addCard(new Trailblazer1());
-        BaseMod.addCard(new Trailblazer2());
-        BaseMod.addCard(new Trailblazer3());
-        BaseMod.addCard(new Sushang1());
-        BaseMod.addCard(new Tingyun1());
-        BaseMod.addCard(new BlackSwan2());
+        // This finds and adds all cards in the same package (or sub-package) as MyAbstractCard
+        // along with marking all added cards as seen
+        new AutoAdd(MOD_NAME)
+                .packageFilter("hsrmod.cards")
+                .setDefaultSeen(true)
+                .cards();
     }
 
     @Override
@@ -79,13 +80,13 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
     
     @Override
     public void receiveEditRelics() {
-        BaseMod.addRelic(new GoldenTrash(), RelicType.SHARED);
+        BaseMod.addRelic(new MarchBlessing(), RelicType.SHARED);
         BaseMod.addRelic(new GalacticBat(), RelicType.SHARED);
     }
 
     public void receiveEditStrings() {
         String lang;
-        if (Settings.language == Settings.GameLanguage.ZHS) {
+        if (language == Settings.GameLanguage.ZHS) {
             lang = "ZHS";
         } else {
             lang = "ENG";
@@ -97,6 +98,24 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         BaseMod.loadCustomStringsFile(RelicStrings.class, "HSRModResources/localization/" + lang + "/relics.json");
 
         BaseMod.loadCustomStringsFile(PowerStrings.class, "HSRModResources/localization/" + lang + "/powers.json");
+    }
+
+    @Override
+    public void receiveEditKeywords() {
+        Gson gson = new Gson();
+        String lang = "ENG";
+        if (language == Settings.GameLanguage.ZHS) {
+            lang = "ZHS";
+        }
+
+        String json = Gdx.files.internal("HSRModResources/localization/" + lang + "/keywords.json").readString(String.valueOf(StandardCharsets.UTF_8));
+        Keyword[] keywords = gson.fromJson(json, Keyword[].class);
+        if (keywords != null) {
+            for (Keyword keyword : keywords) {
+                // 这个id要全小写
+                BaseMod.addKeyword(MOD_NAME.toLowerCase(), keyword.NAMES[0], keyword.NAMES, keyword.DESCRIPTION);
+            }
+        }
     }
 
     public static String makePath(String name){

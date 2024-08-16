@@ -9,7 +9,7 @@ import hsrmod.modcore.ElementType;
 
 import java.util.function.Consumer;
 
-public class ElementalDamageAction extends AbstractGameAction {
+public class ElementalDamageAction extends AbstractGameAction{
     private DamageInfo info;
     private ElementType elementType;
     private int toughnessReduction;
@@ -52,5 +52,9 @@ public class ElementalDamageAction extends AbstractGameAction {
         }
 
         this.tickDuration();
+    }
+    
+    public ElementalDamageAction makeCopy() {
+        return new ElementalDamageAction(this.target, this.info, this.elementType, this.toughnessReduction, this.attackEffect, this.afterEffect);
     }
 }

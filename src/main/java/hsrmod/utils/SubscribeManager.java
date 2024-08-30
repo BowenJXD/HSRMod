@@ -1,0 +1,74 @@
+package hsrmod.utils;
+
+import basemod.BaseMod;
+import basemod.interfaces.ISubscriber;
+import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.powers.AbstractPower;
+import hsrmod.cards.BaseCard;
+
+import java.util.*;
+
+/**
+ * Singleton class for managing all the subscribers.
+ */
+public class SubscribeManager {
+    private static SubscribeManager instance = null;
+    
+    List<PreBreakDamageSubscriber> preBreakDamageSubscribers;
+
+    SubscribeManager() {
+        preBreakDamageSubscribers = new ArrayList<>();
+    }
+    
+    public static SubscribeManager getInstance() {
+        if (instance == null) {
+            instance = new SubscribeManager();
+        }
+        return instance;
+    }
+
+    public void subscribe(ISubscriber sub) {
+        if (sub instanceof PreBreakDamageSubscriber
+            && !preBreakDamageSubscribers.contains(sub)) {
+            preBreakDamageSubscribers.add((PreBreakDamageSubscriber) sub);
+        }
+    }
+    
+    public void unsubscribe(ISubscriber subscriber) {
+        if (subscriber instanceof PreBreakDamageSubscriber) {
+            preBreakDamageSubscribers.remove(subscriber);
+        }
+    }
+    
+    public float triggerPreBreakDamage(int amount, AbstractCreature target) {
+        float result = amount;
+        Iterator<PreBreakDamageSubscriber> var3 = preBreakDamageSubscribers.iterator();
+        
+        while (var3.hasNext()) {
+            PreBreakDamageSubscriber sub = var3.next();
+            result = sub.preBreakDamage(amount, target);
+        }
+        return result;
+    }
+    
+    public static boolean checkSubscriber(BaseCard card) {
+        boolean result = AbstractDungeon.player.hand.contains(card)
+                || AbstractDungeon.player.drawPile.contains(card)
+                || AbstractDungeon.player.discardPile.contains(card)
+                || AbstractDungeon.player.exhaustPile.contains(card);
+        if (!result && card instanceof ISubscriber) {
+            BaseMod.unsubscribeLater((ISubscriber) card);
+        }
+        return result;
+    }
+    
+    public static boolean checkSubscriber(AbstractPower power){
+        boolean result = AbstractDungeon.player.powers.contains(power);
+        if (!result && power instanceof ISubscriber) {
+            BaseMod.unsubscribeLater((ISubscriber) power);
+        }
+        return result;
+    }
+}

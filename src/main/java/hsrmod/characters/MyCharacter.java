@@ -17,12 +17,10 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
-import hsrmod.cards.Trailblazer1;
-import hsrmod.cards.Trailblazer2;
-import hsrmod.cards.Trailblazer3;
+import hsrmod.cards.base.*;
 import hsrmod.modcore.HSRMod;
 import hsrmod.relics.GalacticBat;
-import hsrmod.relics.MarchBlessing;
+import hsrmod.relics.PomPomBlessing;
 
 import java.util.ArrayList;
 
@@ -90,10 +88,10 @@ public class MyCharacter extends CustomPlayer {
         ArrayList<String> retVal = new ArrayList<>();
         
         retVal.add(HSRMod.MOD_NAME + ":" + Trailblazer1.ID);
-        retVal.add(HSRMod.MOD_NAME + ":" + Trailblazer1.ID);
-        retVal.add(HSRMod.MOD_NAME + ":" + Trailblazer1.ID);
-        retVal.add(HSRMod.MOD_NAME + ":" + Trailblazer1.ID);
-        retVal.add(HSRMod.MOD_NAME + ":" + Trailblazer1.ID);
+        retVal.add(HSRMod.MOD_NAME + ":" + March7th0.ID);
+        retVal.add(HSRMod.MOD_NAME + ":" + Danheng0.ID);
+        retVal.add(HSRMod.MOD_NAME + ":" + Himeko0.ID);
+        retVal.add(HSRMod.MOD_NAME + ":" + Welt0.ID);
         retVal.add(HSRMod.MOD_NAME + ":" + Trailblazer2.ID);
         retVal.add(HSRMod.MOD_NAME + ":" + Trailblazer3.ID);
         retVal.add(HSRMod.MOD_NAME + ":" + Trailblazer3.ID);
@@ -106,8 +104,8 @@ public class MyCharacter extends CustomPlayer {
     // 初始遗物的ID，可以先写个原版遗物凑数
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
-        retVal.add(MarchBlessing.ID);
         retVal.add(GalacticBat.ID);
+        retVal.add(PomPomBlessing.ID);
         return retVal;
     }
 
@@ -115,10 +113,10 @@ public class MyCharacter extends CustomPlayer {
         return new CharSelectInfo(
                 characterStrings.NAMES[0], // 人物名字
                 characterStrings.TEXT[0], // 人物介绍
-                75, // 当前血量
-                75, // 最大血量
+                73, // 当前血量
+                73, // 最大血量
                 0, // 初始充能球栏位
-                99, // 初始携带金币
+                73, // 初始携带金币
                 5, // 每回合抽牌数量
                 this, // 别动
                 this.getStartingRelics(), // 初始遗物

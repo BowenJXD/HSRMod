@@ -1,12 +1,15 @@
 package hsrmod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
-import hsrmod.powers.BreakEffectPower;
+import hsrmod.powers.misc.BreakEffectPower;
+import hsrmod.utils.SubscribeManager;
 
 public class BreakDamageAction extends AbstractGameAction {
     private DamageInfo info;
@@ -22,7 +25,7 @@ public class BreakDamageAction extends AbstractGameAction {
     }
 
     public BreakDamageAction(AbstractCreature target, DamageInfo info) {
-        this(target, info, AttackEffect.NONE);
+        this(target, info, AttackEffect.BLUNT_HEAVY);
     }
 
 
@@ -37,9 +40,14 @@ public class BreakDamageAction extends AbstractGameAction {
                 breakEffect.flash();
                 this.info.output += breakEffect.amount;
             }
+            AbstractPower strengthPower = info.owner.getPower(StrengthPower.POWER_ID);
+            if (strengthPower != null && strengthPower.amount > 0) {
+                this.info.output -= strengthPower.amount;
+            }
+            this.info.output = (int) SubscribeManager.getInstance().triggerPreBreakDamage(this.info.output, this.target);
             //
             
-            this.target.damage(this.info);
+            addToTop(new DamageAction(this.target, this.info));
 
             if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
                 AbstractDungeon.actionManager.clearPostCombatActions();

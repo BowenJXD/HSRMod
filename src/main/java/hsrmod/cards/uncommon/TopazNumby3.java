@@ -1,0 +1,42 @@
+package hsrmod.cards.uncommon;
+
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.actions.ElementalDamageAction;
+import hsrmod.cards.BaseCard;
+import hsrmod.modcore.ElementType;
+import hsrmod.powers.only.ProofOfDebtPower;
+
+import static hsrmod.utils.CustomEnums.FOLLOW_UP;
+
+public class TopazNumby3 extends BaseCard {
+    public static final String ID = TopazNumby3.class.getSimpleName();
+    
+    public TopazNumby3() {
+        super(ID);
+        tags.add(FOLLOW_UP);
+    }
+    
+    @Override
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new ApplyPowerAction(m, p, new ProofOfDebtPower(m, 1, magicNumber)));
+        
+        addToBot(
+                new ElementalDamageAction(
+                        m,
+                        new DamageInfo(
+                                p,
+                                damage,
+                                damageTypeForTurn
+                        ),
+                        ElementType.Fire,
+                        2,
+                        // 伤害类型
+                        AbstractGameAction.AttackEffect.SLASH_VERTICAL
+                )
+        );
+    }
+}

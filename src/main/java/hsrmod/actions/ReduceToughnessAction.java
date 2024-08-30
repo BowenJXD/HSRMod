@@ -8,11 +8,15 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.modcore.ElementType;
-import hsrmod.powers.*;
+import hsrmod.powers.breaks.*;
+import hsrmod.powers.misc.BreakEfficiencyPower;
+import hsrmod.powers.misc.BrokenPower;
+import hsrmod.powers.misc.ToughnessPower;
+import hsrmod.powers.only.Trailblazer5Power;
 
 public class ReduceToughnessAction extends AbstractGameAction {
     private static final float DURATION = 0.1F;
-    private int toughnessReduction;
+    public  int toughnessReduction;
     private ElementType elementType;
     private DamageInfo info;
 
@@ -28,14 +32,26 @@ public class ReduceToughnessAction extends AbstractGameAction {
         if (this.duration == 0.1F) {
             //
             AbstractPower toughnessPower = this.target.getPower(ToughnessPower.POWER_ID);
-            if (toughnessPower != null && toughnessPower.amount <= toughnessReduction) {
+            
+            if (AbstractDungeon.player.hasPower(BreakEfficiencyPower.POWER_ID))
+                toughnessReduction += (int)((float)toughnessReduction 
+                        * (float)AbstractDungeon.player.getPower(BreakEfficiencyPower.POWER_ID).amount 
+                        * BreakEfficiencyPower.MULTIPLIER);
+
+            if (toughnessPower != null 
+                    && toughnessPower.amount > 0 
+                    && toughnessPower.amount <= toughnessReduction) {
                 int breakDamage = elementType.getBreakDamage();
-                applyBreakingPower();
-                AbstractDungeon.actionManager.addToTop(new BreakDamageAction(target, new DamageInfo(info.owner, breakDamage), attackEffect));
-                AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(target, AbstractDungeon.player, new BrokenPower(target, 1), 1));
+                addToBot(new BreakDamageAction(target, new DamageInfo(info.owner, breakDamage)));
+                addToBot(applyBreakingPower());
+                addToTop(new ApplyPowerAction(target, AbstractDungeon.player, new BrokenPower(target, 1), 1));
             }
             if (toughnessPower != null) {
-                AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(target, AbstractDungeon.player, new ToughnessPower(target, -toughnessReduction), -toughnessReduction));
+                addToTop(new ApplyPowerAction(target, AbstractDungeon.player, new ToughnessPower(target, -toughnessReduction), -toughnessReduction));
+            }
+
+            if (info.owner.hasPower(Trailblazer5Power.POWER_ID)){
+                ((Trailblazer5Power) info.owner.getPower(Trailblazer5Power.POWER_ID)).trigger(this);
             }
             //
         }
@@ -43,10 +59,13 @@ public class ReduceToughnessAction extends AbstractGameAction {
         this.tickDuration();
     }
     
-    void applyBreakingPower(){
+    ApplyPowerAction applyBreakingPower(){
         AbstractPower power = null;
         int stackNum = 1;
         switch (elementType){
+            case Ice:
+                power = new FrozenPower(target, stackNum);
+                break;
             case Physical:
                 power = new BleedingPower(target, AbstractDungeon.player, stackNum);
                 break;
@@ -74,11 +93,18 @@ public class ReduceToughnessAction extends AbstractGameAction {
                 }
                 power = new WindShearPower(target, AbstractDungeon.player, stackNum);
                 break;
+            case Quantum:
+                power = new EntanglePower(target, stackNum);
+                break;
+            case Imaginary:
+                power = new ImprisonPower(target, stackNum);
+                break;
             default:
                 break;
         }
         if (power != null){
-            AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(target, AbstractDungeon.player, power, stackNum));
+            return new ApplyPowerAction(target, AbstractDungeon.player, power, stackNum);
         }
+        return null;
     }
 }

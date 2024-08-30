@@ -2,21 +2,17 @@ package hsrmod.modcore;
 
 import basemod.AutoAdd;
 import basemod.BaseMod;
-import basemod.helpers.RelicType;
+import basemod.abstracts.CustomRelic;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
-import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.localization.*;
-import hsrmod.cards.*;
+import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import com.badlogic.gdx.graphics.Color;
 import hsrmod.characters.MyCharacter;
-import hsrmod.relics.GalacticBat;
-import hsrmod.relics.MarchBlessing;
 
 import java.nio.charset.StandardCharsets;
 
@@ -80,8 +76,14 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
     
     @Override
     public void receiveEditRelics() {
-        BaseMod.addRelic(new MarchBlessing(), RelicType.SHARED);
-        BaseMod.addRelic(new GalacticBat(), RelicType.SHARED);
+        new AutoAdd(MOD_NAME)
+                .packageFilter("hsrmod.relics")
+                .any(CustomRelic.class, (info, relic) -> {
+                    BaseMod.addRelicToCustomPool(relic, HSR_PINK);
+                    if (info.seen) {
+                        UnlockTracker.markRelicAsSeen(relic.relicId);
+                    }
+                });
     }
 
     public void receiveEditStrings() {

@@ -2,10 +2,11 @@ package hsrmod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import hsrmod.powers.EnergyPower;
+import hsrmod.powers.misc.EnergyPower;
 
 public class ReduceECByHandCardNumAction extends AbstractGameAction {
     private static final float DURATION = 0.1F;
@@ -22,8 +23,15 @@ public class ReduceECByHandCardNumAction extends AbstractGameAction {
         if (this.duration == DURATION) {
             AbstractPlayer p = (AbstractPlayer)target;
             AbstractPower power = p.getPower(EnergyPower.POWER_ID);
-            if (power != null && !p.hand.isEmpty()) {
-                addToBot(new ApplyPowerAction(p, p, new EnergyPower(p, -p.hand.size() * multiplier), -p.hand.size() * multiplier));
+            
+            int reduceAmount = 0;
+            for (AbstractCard card : p.hand.group) {
+                if (card.retain)
+                    reduceAmount += multiplier;
+            }
+            
+            if (power != null && !p.hand.isEmpty() && reduceAmount > 0) {
+                addToBot(new ApplyPowerAction(p, p, new EnergyPower(p, -reduceAmount), -reduceAmount));
             }
             this.isDone = true;
         }

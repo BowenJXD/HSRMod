@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import hsrmod.modcore.HSRMod;
-import hsrmod.powers.ToughnessPower;
+import hsrmod.powers.misc.ToughnessPower;
 
 public class GalacticBat extends CustomRelic {
     // 遗物ID（此处的ModHelper在“04 - 本地化”中提到）
@@ -36,19 +36,10 @@ public class GalacticBat extends CustomRelic {
     public void atTurnStart() {
         for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
             if (!m.hasPower(ToughnessPower.POWER_ID)) {
-                int toughness = 0;
-                switch (m.type) {
-                    case NORMAL:
-                        toughness = 8;
-                        break;
-                    case ELITE:
-                        toughness = 12;
-                        break;
-                    case BOSS:
-                        toughness = 16;
-                        break;
-                }
-                AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(m, AbstractDungeon.player, new ToughnessPower(m, toughness), toughness));
+                addToTop(new ApplyPowerAction(m, AbstractDungeon.player, new ToughnessPower(m), ToughnessPower.getStackLimit(m)));
+            }
+            else if (m.getPower(ToughnessPower.POWER_ID).amount <= 0) {
+                addToTop(new ApplyPowerAction(m, AbstractDungeon.player, new ToughnessPower(m), ToughnessPower.getStackLimit(m) * 2));
             }
         }
     }

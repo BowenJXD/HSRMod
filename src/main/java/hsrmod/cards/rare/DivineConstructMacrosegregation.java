@@ -1,0 +1,30 @@
+package hsrmod.cards.rare;
+
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.DexterityPower;
+import hsrmod.cards.BaseCard;
+import hsrmod.powers.only.DivinityPower;
+
+public class DivineConstructMacrosegregation extends BaseCard {
+    public static final String ID = DivineConstructMacrosegregation.class.getSimpleName();
+    
+    public DivineConstructMacrosegregation() {
+        super(ID);
+    }
+
+    @Override
+    public void upgrade() {
+        super.upgrade();
+    }
+
+    @Override
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
+        if (!upgraded) 
+            addToBot(new RemoveSpecificPowerAction(p, p, DexterityPower.POWER_ID));
+        
+        addToBot(new ApplyPowerAction(p, p, new DivinityPower(p, 1, 1f, magicNumber / 100f)));
+    }
+}

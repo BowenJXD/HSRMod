@@ -1,7 +1,5 @@
 package hsrmod.utils;
 
-import jdk.jfr.Description;
-
 public enum CardDataCol {
     Name,
     Rarity,

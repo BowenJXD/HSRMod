@@ -8,8 +8,6 @@ function main() {
     }
 
     var doc = app.activeDocument;
-    var originalWidth = doc.width;
-    var originalHeight = doc.height;
     var outputPath = Folder.selectDialog("选择导出文件夹");
 
     if (outputPath == null) {
@@ -17,19 +15,38 @@ function main() {
         return;
     }
 
-    var visibleLayerSets = getInitiallyVisibleLayerSets(doc);
+    // 复制文档
+    var copiedDoc = doc.duplicate();
+    
+    app.activeDocument = doc;
 
+    process(doc, outputPath, "_p");
+    
+    // 在复制文档中，调整图像大小
+    app.activeDocument = copiedDoc;
+    
+    copiedDoc.resizeImage(UnitValue(250, "px"), UnitValue(190, "px"), null, ResampleMethod.BICUBICSHARPER);
+
+    process(copiedDoc, outputPath, "");
+
+    // 关闭复制文档，不保存更改
+    copiedDoc.close(SaveOptions.DONOTSAVECHANGES);
+
+    alert("导出完成！");
+}
+
+function process(doc, outputPath, postfix){
+    var visibleLayerSets = getInitiallyVisibleLayerSets(doc);
     if (visibleLayerSets.length === 0) {
         alert("没有可见的图层组。");
         return;
     }
-    
-    // 隐藏所有图层组
+
     hideAllGroups(doc);
 
     var previousVisibleLayerSet = null;
 
-    // 第一次导出，使用原画板大小并添加"_p"后缀
+    // 第二次导出，使用复制文档并不添加后缀
     for (var i = 0; i < visibleLayerSets.length; i++) {
         var layerSet = visibleLayerSets[i];
 
@@ -40,37 +57,12 @@ function main() {
         // 显示当前组
         layerSet.visible = true;
 
-        // 导出当前可见内容，添加"_p"后缀
-        saveAsPng(outputPath, layerSet.name + "_p");
-
-        // 记录当前组为上一个可见组
-        previousVisibleLayerSet = layerSet;
-    }
-
-    // 将图像缩小
-    doc.resizeImage(UnitValue(250, "px"), UnitValue(190, "px"), null, ResampleMethod.BICUBICSHARPER);
-
-    // 第二次导出，使用缩小后的图像大小，不添加后缀
-    for (var i = 0; i < visibleLayerSets.length; i++) {
-        var layerSet = visibleLayerSets[i];
-
-        // 隐藏上一个组（如果存在）
-        if (previousVisibleLayerSet !== null) {
-            previousVisibleLayerSet.visible = false;
-        }
-        // 显示当前组
-        layerSet.visible = true;
         // 导出当前可见内容，不添加后缀
-        saveAsPng(outputPath, layerSet.name);
+        saveAsPng(outputPath, layerSet.name + postfix, doc);
 
         // 记录当前组为上一个可见组
         previousVisibleLayerSet = layerSet;
     }
-
-    // 恢复原始图像大小
-    doc.resizeImage(UnitValue(originalWidth, "px"), UnitValue(originalHeight, "px"), null, ResampleMethod.BICUBIC);
-    
-    alert("导出完成！");
 }
 
 function getInitiallyVisibleLayerSets(doc) {
@@ -92,19 +84,13 @@ function hideAllGroups(doc) {
     }
 }
 
-function showAllGroups(doc) {
-    for (var i = 0; i < doc.layerSets.length; i++) {
-        doc.layerSets[i].visible = true;
-    }
-}
-
 // 将当前文档保存为PNG格式
-function saveAsPng(outputPath, fileName) {
+function saveAsPng(outputPath, fileName, currentDoc) {
     var file = new File(outputPath + "/" + fileName + ".png");
     var options = new PNGSaveOptions();
     options.compression = 9; // 压缩等级，0（最大速度）到9（最小文件大小）
 
-    app.activeDocument.saveAs(file, options, true, Extension.LOWERCASE);
+    currentDoc.saveAs(file, options, true, Extension.LOWERCASE);
 }
 
 // 运行脚本

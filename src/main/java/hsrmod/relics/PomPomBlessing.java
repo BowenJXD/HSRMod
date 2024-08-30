@@ -1,19 +1,25 @@
 package hsrmod.relics;
 
 import basemod.abstracts.CustomRelic;
+import basemod.devcommands.relic.RelicAdd;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsAction;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
+import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.IntangiblePlayerPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import hsrmod.actions.ReduceECByHandCardNumAction;
+import hsrmod.cards.base.*;
+import hsrmod.cards.common.March7th1;
+import hsrmod.cards.uncommon.Himeko1;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.utils.ModHelper;
@@ -106,12 +112,28 @@ public class PomPomBlessing extends CustomRelic {
             damageAmount = AbstractDungeon.player.currentHealth - 1;
             ModHelper.addToTopAbstract(() -> {
                 addToTop(new SelectCardsAction(AbstractDungeon.player.masterDeck.group, 1, "选择牺牲一位列车组成员", 
-                        false, card -> card.hasTag(AbstractCard.CardTags.STARTER_STRIKE), cards -> {
+                        false, card -> card.hasTag(AbstractCard.CardTags.STARTER_STRIKE) 
+                        && !(card instanceof Trailblazer1), cards -> {
                     AbstractCard card = cards.get(0);
                     ModHelper.findCards(card1 -> card1.getClass().equals(card.getClass())).forEach(findResult -> {
                         findResult.group.removeCard(findResult.card);
                     });
                     AbstractDungeon.player.masterDeck.removeCard(card);
+                    
+                    String relicName = "";
+                    if (card instanceof Trailblazer1)
+                        relicName = TrailblazerRelic.ID;
+                    else if (card instanceof March7th0)
+                        relicName = March7thRelic.ID;
+                    else if (card instanceof Danheng0)
+                        relicName = DanhengRelic.ID;
+                    else if (card instanceof Himeko0)
+                        relicName = HimekoRelic.ID;
+                    else if (card instanceof Welt0)
+                        relicName = WeltRelic.ID;
+                    
+                    AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float)(Settings.WIDTH / 2), (float)(Settings.HEIGHT / 2), 
+                            RelicLibrary.getRelic(relicName).makeCopy());
                 }));
             });
         }

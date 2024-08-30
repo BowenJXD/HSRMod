@@ -4,7 +4,7 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cards.BaseCard;
-import hsrmod.powers.only.AventurinePower;
+import hsrmod.powers.onlyBuffs.AventurinePower;
 
 public class Aventurine1 extends BaseCard {
     public static final String ID = Aventurine1.class.getSimpleName();

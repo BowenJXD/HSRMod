@@ -82,7 +82,7 @@ public class DataManager {
 
         public static void main(String[] args) {
             // 文件路径
-            String filePath = CSV_FILE;
+            String filePath = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\SlayTheSpire\\HSRModResources\\data\\cardData.csv";
 
             // 替换规则
             Map<String, String> replacements = new HashMap<>();

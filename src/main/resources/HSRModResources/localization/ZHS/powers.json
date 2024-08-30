@@ -212,5 +212,17 @@
         "DESCRIPTIONS": [
           "你获得的格挡值增加 #b%d %%，且回合开始时仅损失当前格挡的 #b%d %%。"
         ]
+    },
+    "HSRMod:Burden": {
+        "NAME": "承负",
+        "DESCRIPTIONS": [
+          "成为牌的目标后移除1层，你回复 [E] 。"
+        ]
+    },
+    "HSRMod:Huohuo": {
+        "NAME": "凭附气通天真",
+        "DESCRIPTIONS": [
+          "打出牌后，回复1点生命，10点充能，并移除1层随机负面效果。"
+        ]
     }
 }

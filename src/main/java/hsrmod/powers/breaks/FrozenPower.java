@@ -46,6 +46,8 @@ public class FrozenPower extends AbstractPower {
         this.region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage(path48), 0, 0, 48, 48);
 
         this.updateDescription();
+        
+        priority = 6;
     }
 
     @Override

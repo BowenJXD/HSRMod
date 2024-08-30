@@ -1,0 +1,42 @@
+package hsrmod.actions;
+
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.powers.AbstractPower;
+import hsrmod.utils.ModHelper;
+
+public class CleanAction extends AbstractGameAction {
+    boolean removeAll;
+
+    public CleanAction(AbstractCreature target, int amount, boolean removeAll) {
+        this.target = target;
+        this.amount = amount;
+        this.removeAll = removeAll;
+    }
+
+    @Override
+    public void update() {
+        isDone = true;
+        for (AbstractPower power : target.powers) {
+            if (power.type == AbstractPower.PowerType.DEBUFF) {
+                int removeAmount = removeAll ? 1 : Math.min(amount, power.amount);
+
+                if (removeAll) {
+                    addToBot(new RemoveSpecificPowerAction(target, target, power));
+                } else {
+                    addToBot(new ApplyPowerAction(target, target, power, -removeAmount));
+                    ModHelper.addToBotAbstract(() -> {
+                        if (power.amount <= 0) {
+                            addToBot(new RemoveSpecificPowerAction(target, target, power));
+                        }
+                    });
+                }
+
+                amount -= removeAmount;
+                if (amount <= 0) break;
+            }
+        }
+    }
+}

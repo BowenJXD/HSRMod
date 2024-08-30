@@ -10,7 +10,7 @@ import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
 import hsrmod.powers.misc.BreakEffectPower;
-import hsrmod.powers.only.BefogPower;
+import hsrmod.powers.onlyDebuffs.BefogPower;
 
 public class Lingsha1 extends BaseCard {
     public static final String ID = Lingsha1.class.getSimpleName();

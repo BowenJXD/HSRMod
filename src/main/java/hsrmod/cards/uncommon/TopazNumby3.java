@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
-import hsrmod.powers.only.ProofOfDebtPower;
+import hsrmod.powers.onlyDebuffs.ProofOfDebtPower;
 
 import static hsrmod.utils.CustomEnums.FOLLOW_UP;
 

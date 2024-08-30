@@ -19,5 +19,40 @@
     "DESCRIPTIONS": [
       "你的初始攻击牌视为追击牌，且于击破时追击。"
     ]
+  },
+  "HSRMod:TrailblazerRelic": {
+    "NAME": "开拓者的遗物",
+    "FLAVOR": "世界，拒绝了我……",
+    "DESCRIPTIONS": [
+      ""
+    ]
+  },
+  "HSRMod:March7thRelic": {
+    "NAME": "三月七的遗物",
+    "FLAVOR": "我不想…一个人……",
+    "DESCRIPTIONS": [
+      ""
+    ]
+  },
+  "HSRMod:DanhengRelic": {
+    "NAME": "丹恒的遗物",
+    "FLAVOR": "一切仍如昨日所见……",
+    "DESCRIPTIONS": [
+      ""
+    ]
+  },
+  "HSRMod:HimekoRelic": {
+    "NAME": "姬子的遗物",
+    "FLAVOR": "她自火中新生，她自火中微笑。",
+    "DESCRIPTIONS": [
+      ""
+    ]
+  },
+  "HSRMod:WeltRelic": {
+    "NAME": "瓦尔特的遗物",
+    "FLAVOR": "杨卧起坐中……",
+    "DESCRIPTIONS": [
+      ""
+    ]
   }
 }

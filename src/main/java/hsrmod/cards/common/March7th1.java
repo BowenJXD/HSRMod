@@ -6,12 +6,10 @@ import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import hsrmod.actions.CleanAction;
 import hsrmod.cards.BaseCard;
-import hsrmod.powers.only.ReinforcePower;
+import hsrmod.powers.onlyBuffs.ReinforcePower;
 import hsrmod.utils.ModHelper;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class March7th1 extends BaseCard {
     public static final String ID = March7th1.class.getSimpleName();
@@ -31,17 +29,6 @@ public class March7th1 extends BaseCard {
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, p, block));
         addToBot(new ApplyPowerAction(p, p, new ReinforcePower(p, 1, upgraded ? block : 0), 1));
-        
-        for (AbstractPower power : p.powers) {
-            if (power.type == AbstractPower.PowerType.DEBUFF) {
-                addToBot(new ApplyPowerAction(p, p, power, -1));
-                ModHelper.addToBotAbstract(() -> {
-                    if (power.amount <= 0) {
-                        addToBot(new RemoveSpecificPowerAction(p, p, power));
-                    }
-                });
-                break;
-            }
-        }
+        addToBot(new CleanAction(p, 1, false));
     }
 }

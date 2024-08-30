@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cards.BaseCard;
 import hsrmod.powers.misc.BreakEffectPower;
 import hsrmod.powers.misc.BreakEfficiencyPower;
-import hsrmod.powers.only.ThanatoplumRebloomPower;
+import hsrmod.powers.onlyDebuffs.ThanatoplumRebloomPower;
 
 public class RuanMei1 extends BaseCard {
     public static final String ID = RuanMei1.class.getSimpleName();

@@ -4,8 +4,7 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cards.BaseCard;
-import hsrmod.powers.misc.BreakEffectPower;
-import hsrmod.powers.only.Trailblazer5Power;
+import hsrmod.powers.onlyBuffs.Trailblazer5Power;
 
 public class Trailblazer5 extends BaseCard {
     public static final String ID = Trailblazer5.class.getSimpleName();

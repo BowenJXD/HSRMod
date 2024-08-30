@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.modcore.HSRMod;
-import hsrmod.powers.only.ThanatoplumRebloomPower;
+import hsrmod.powers.onlyDebuffs.ThanatoplumRebloomPower;
 
 public class ToughnessPower extends AbstractPower {
     public static final String POWER_ID = HSRMod.makePath(ToughnessPower.class.getSimpleName());

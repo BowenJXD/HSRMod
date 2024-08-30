@@ -2,6 +2,7 @@ package hsrmod.cards.uncommon;
 
 import basemod.interfaces.OnPlayerDamagedSubscriber;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -10,6 +11,7 @@ import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
+import hsrmod.powers.breaks.FrozenPower;
 
 import static hsrmod.utils.CustomEnums.FOLLOW_UP;
 
@@ -31,7 +33,7 @@ public class Yanqing2 extends BaseCard implements OnPlayerDamagedSubscriber {
     }
 
     @Override
-    public void onUse(AbstractPlayer p, AbstractMonster m) {        
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         addToBot(
                 new ElementalDamageAction(
                         m,
@@ -43,7 +45,11 @@ public class Yanqing2 extends BaseCard implements OnPlayerDamagedSubscriber {
                         ElementType.Ice,
                         1,
                         // 伤害类型
-                        AbstractGameAction.AttackEffect.SLASH_HEAVY
+                        AbstractGameAction.AttackEffect.SLASH_HEAVY,
+                        (c) -> {
+                            if (AbstractDungeon.cardRandomRng.random(100) <= magicNumber)
+                                addToBot(new ApplyPowerAction(c, p, new FrozenPower(c, 1), 1));
+                        }
                 )
         );
     }

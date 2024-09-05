@@ -19,8 +19,8 @@ import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import hsrmod.cards.base.*;
 import hsrmod.modcore.HSRMod;
-import hsrmod.relics.GalacticBat;
-import hsrmod.relics.PomPomBlessing;
+import hsrmod.patches.SkinSelectScreen;
+import hsrmod.relics.starter.*;
 
 import java.util.ArrayList;
 
@@ -54,7 +54,7 @@ public class MyCharacter extends CustomPlayer {
     private static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString("HSRMod:MyCharacter");
 
     public MyCharacter(String name) {
-        super(name, MY_CHARACTER,ORB_TEXTURES,"HSRModResources/img/UI/orb/vfx.png", LAYER_SPEED, null, null);
+        super(name, MY_CHARACTER, ORB_TEXTURES,"HSRModResources/img/UI/orb/vfx.png", LAYER_SPEED, null, null);
 
 
         // 人物对话气泡的大小，如果游戏中尺寸不对在这里修改（libgdx的坐标轴左下为原点）
@@ -106,6 +106,17 @@ public class MyCharacter extends CustomPlayer {
         ArrayList<String> retVal = new ArrayList<>();
         retVal.add(GalacticBat.ID);
         retVal.add(PomPomBlessing.ID);
+        switch (SkinSelectScreen.getSkin().word) {
+            case "Elation":
+                retVal.add(WaxOfElation.ID);
+                break;
+            case "Destruction":
+                retVal.add(WaxOfDestruction.ID);
+                break;
+            case "Nihility":
+                retVal.add(WaxOfNihility.ID);
+                break;
+        }
         return retVal;
     }
 

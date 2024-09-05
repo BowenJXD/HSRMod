@@ -5,12 +5,10 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.LoseStrengthPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
-import hsrmod.powers.onlyDebuffs.BurdenPower;
+import hsrmod.powers.uniqueDebuffs.BurdenPower;
 
 public class Hanya1 extends BaseCard {
     public static final String ID = Hanya1.class.getSimpleName();

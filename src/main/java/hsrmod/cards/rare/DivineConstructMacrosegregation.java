@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import hsrmod.cards.BaseCard;
-import hsrmod.powers.onlyBuffs.DivinityPower;
+import hsrmod.powers.uniqueBuffs.DivinityPower;
 
 public class DivineConstructMacrosegregation extends BaseCard {
     public static final String ID = DivineConstructMacrosegregation.class.getSimpleName();

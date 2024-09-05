@@ -5,6 +5,7 @@ import basemod.interfaces.ISubscriber;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.StunMonsterAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -25,6 +26,8 @@ public class FrozenPower extends AbstractPower {
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     
     private int amountRequired = 99;
+    
+    private boolean detecting = false;
     
     AbstractMonster monsterOwner;
 
@@ -52,11 +55,7 @@ public class FrozenPower extends AbstractPower {
 
     @Override
     public void updateDescription() {
-        if (amount < amountRequired){
-            this.description = String.format(DESCRIPTIONS[0], amountRequired) + DESCRIPTIONS[1];
-        } else {
-            this.description = DESCRIPTIONS[1];
-        }
+        this.description = String.format(DESCRIPTIONS[0], amountRequired) + DESCRIPTIONS[1];
     }
 
     @Override
@@ -76,7 +75,13 @@ public class FrozenPower extends AbstractPower {
     }
 
     @Override
+    public void onPlayCard(AbstractCard card, AbstractMonster m) {
+        detecting = true;
+    }
+
+    @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
+        if (!detecting) return damageAmount;
         reducePower(1);
         if (amount <= 0){
             addToBot(new RemoveSpecificPowerAction(owner, owner, this));

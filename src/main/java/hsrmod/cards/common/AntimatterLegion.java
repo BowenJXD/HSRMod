@@ -14,6 +14,8 @@ import hsrmod.modcore.ElementType;
 import hsrmod.powers.misc.BreakEffectPower;
 import hsrmod.powers.misc.BrokenPower;
 import hsrmod.powers.misc.EnergyPower;
+import hsrmod.powers.misc.ToughnessPower;
+import hsrmod.utils.ModHelper;
 
 public class AntimatterLegion extends BaseCard {
     public static final String ID = AntimatterLegion.class.getSimpleName();
@@ -32,7 +34,7 @@ public class AntimatterLegion extends BaseCard {
                 ElementType.Fire, magicNumber,
                 AbstractGameAction.AttackEffect.FIRE,
                 (c) -> {
-                    if (!c.hasPower(BrokenPower.POWER_ID)) {
+                    if (ModHelper.getPowerCount(m, ToughnessPower.POWER_ID) > 0) {
                         returnToHand = true;
                         setCostForTurn(costCache);
                     }

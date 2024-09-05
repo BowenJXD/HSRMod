@@ -1,8 +1,10 @@
 package hsrmod.utils;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
+
 import java.io.*;
 import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
@@ -17,10 +19,13 @@ public class DataManager {
     public static final String charset = "GBK";
     
     public Map<String, String[]> cardData;
-    public static final String CSV_FILE = Paths.get("HSRModResources", "data", "cardData.csv").toAbsolutePath().toString();
+    public static final String CARD_CSV = "HSRModResources/data/cardData.csv";
+    public Map<String, String[]> relicData;
+    public static final String RELIC_CSV = "HSRModResources/data/relicData.csv";
     
     private DataManager() {
-        cardData = parseCSV(CSV_FILE);
+        cardData = parseCSV(CARD_CSV);
+        relicData = parseCSV(RELIC_CSV);
     }
 
     public static DataManager getInstance() {
@@ -32,7 +37,8 @@ public class DataManager {
 
     public static Map<String, String[]> parseCSV(String filePath) {
         Map<String, String[]> resultMap = new HashMap<>();
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(Files.newInputStream(Paths.get(filePath)), charset))) {
+        FileHandle fileHandle = Gdx.files.internal(filePath);
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(fileHandle.read(), charset))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] columns = line.split(",");
@@ -76,13 +82,27 @@ public class DataManager {
         return Integer.parseInt(getCardData(key, col));
     }
     
+    public String getRelicData(String key, RelicDataCol col) {
+        String result = relicData.get(key)[col.ordinal()];
+        switch (col) {
+            case MagicNumber:
+                if (Objects.equals(result, "")) {
+                    return 0 + "";
+                }
+                break;
+        }
+        return result;
+    }
+    
+    public int getRelicDataInt(String key, RelicDataCol col) {
+        return Integer.parseInt(getRelicData(key, col));
+    }
+    
     public static final int NULL_INT = -9;
 
     public static class FileTextReplacer {
 
         public static void main(String[] args) {
-            // 文件路径
-            String filePath = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\SlayTheSpire\\HSRModResources\\data\\cardData.csv";
 
             // 替换规则
             Map<String, String> replacements = new HashMap<>();
@@ -98,10 +118,10 @@ public class DataManager {
             replacements.put("〖", " ");
             replacements.put("〗", " ");
             
-            replacements.put("乘胜 hsrmod:追击  ", "乘胜追击");
+            replacements.put("乘胜 hsrmod:追击 ", "乘胜追击");
 
             // 读取文件并替换文本
-            replaceTextInFile(filePath, replacements);
+            replaceTextInFile(CARD_CSV, replacements);
         }
 
         private static void replaceTextInFile(String filePath, Map<String, String> replacements) {

@@ -1,20 +1,21 @@
-package hsrmod.powers.onlyBuffs;
+package hsrmod.powers.uniqueBuffs;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import hsrmod.cards.BaseCard;
 import hsrmod.modcore.HSRMod;
-import hsrmod.powers.misc.BrokenPower;
-import hsrmod.utils.PreBreakDamageSubscriber;
-import hsrmod.utils.SubscribeManager;
 
-public class SymbiotePower extends AbstractPower implements PreBreakDamageSubscriber {
-    public static final String POWER_ID = HSRMod.makePath(SymbiotePower.class.getSimpleName());
+import static hsrmod.utils.CustomEnums.FOLLOW_UP;
+
+public class BattlefieldMagicianPower extends AbstractPower {
+    public static final String POWER_ID = HSRMod.makePath(BattlefieldMagicianPower.class.getSimpleName());
 
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
 
@@ -22,13 +23,19 @@ public class SymbiotePower extends AbstractPower implements PreBreakDamageSubscr
 
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    public SymbiotePower(AbstractCreature owner, int Amount) {
+    boolean upgraded = false;
+    
+    int followUpStack;
+
+    public BattlefieldMagicianPower(AbstractCreature owner, int Amount, boolean upgraded, int followUpStack) {
         this.name = NAME;
         this.ID = POWER_ID;
         this.owner = owner;
         this.type = PowerType.BUFF;
 
         this.amount = Amount;
+        this.upgraded = upgraded;
+        this.followUpStack = followUpStack;
 
         String path128 = String.format("HSRModResources/img/powers/%s128.png", this.getClass().getSimpleName());
         String path48 = String.format("HSRModResources/img/powers/%s48.png", this.getClass().getSimpleName());
@@ -40,32 +47,22 @@ public class SymbiotePower extends AbstractPower implements PreBreakDamageSubscr
 
     @Override
     public void updateDescription() {
-        this.description = DESCRIPTIONS[0];
+        this.description = String.format(DESCRIPTIONS[0], followUpStack);
     }
 
     @Override
-    public void onInitialApplication() {
-        SubscribeManager.getInstance().subscribe(this);
-    }
-
-    @Override
-    public void onRemove() {
-        SubscribeManager.getInstance().unsubscribe(this);
-    }
-
-    @Override
-    public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        if (power instanceof BrokenPower) {
-            this.flash();
-            addToBot(new GainEnergyAction(2));
+    public void onPlayCard(AbstractCard card, AbstractMonster m) {
+        if (card.hasTag(FOLLOW_UP)) {
+            if (upgraded) trigger();
+            else if (card instanceof BaseCard) {
+                BaseCard c = (BaseCard) card;
+                if (c.followedUp) trigger();
+            }
         }
     }
-
-    @Override
-    public float preBreakDamage(float amount, AbstractCreature target) {
-        if (SubscribeManager.checkSubscriber(this)) {
-            addToBot(new DrawCardAction(1));
-        }
-        return amount;
+    
+    void trigger(){
+        flash();
+        addToBot(new GainBlockAction(owner, owner, followUpStack));
     }
 }

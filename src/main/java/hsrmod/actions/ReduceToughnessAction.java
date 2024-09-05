@@ -12,7 +12,7 @@ import hsrmod.powers.breaks.*;
 import hsrmod.powers.misc.BreakEfficiencyPower;
 import hsrmod.powers.misc.BrokenPower;
 import hsrmod.powers.misc.ToughnessPower;
-import hsrmod.powers.onlyBuffs.Trailblazer5Power;
+import hsrmod.powers.uniqueBuffs.Trailblazer5Power;
 
 public class ReduceToughnessAction extends AbstractGameAction {
     private static final float DURATION = 0.1F;

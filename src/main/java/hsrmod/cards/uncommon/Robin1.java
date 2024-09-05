@@ -4,7 +4,7 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cards.BaseCard;
-import hsrmod.powers.onlyBuffs.RobinPower;
+import hsrmod.powers.uniqueBuffs.RobinPower;
 
 public class Robin1 extends BaseCard {
     public static final String ID = Robin1.class.getSimpleName();

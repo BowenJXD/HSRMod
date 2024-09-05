@@ -1,4 +1,4 @@
-package hsrmod.powers.onlyBuffs;
+package hsrmod.powers.uniqueBuffs;
 
 import basemod.BaseMod;
 import basemod.interfaces.PostPowerApplySubscriber;

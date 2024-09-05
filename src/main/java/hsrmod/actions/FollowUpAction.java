@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.cards.BaseCard;
-import hsrmod.powers.onlyDebuffs.ProofOfDebtPower;
+import hsrmod.powers.uniqueDebuffs.ProofOfDebtPower;
 
 public class FollowUpAction extends AbstractGameAction {
     private AbstractCard card;

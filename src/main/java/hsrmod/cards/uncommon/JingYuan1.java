@@ -17,9 +17,12 @@ import static hsrmod.utils.CustomEnums.FOLLOW_UP;
 public class JingYuan1 extends BaseCard {
     public static final String ID = JingYuan1.class.getSimpleName();
     
+    int costCache = -1;
+    
     public JingYuan1() {
         super(ID);
         tags.add(FOLLOW_UP);
+        costCache = cost;
     }
 
     @Override
@@ -40,12 +43,14 @@ public class JingYuan1 extends BaseCard {
                     )
             );
         }
+        
+        modifyCostForCombat(costCache);
     }
 
     @Override
     public void triggerOnOtherCardPlayed(AbstractCard c) {
         if (!AbstractDungeon.player.hand.contains(this) || followedUp) return;
-        updateCost(-1);
+        modifyCostForCombat(-1);
         if (cost == 0) {
             followedUp = true;
             addToBot(new FollowUpAction(this));

@@ -11,7 +11,7 @@ import hsrmod.powers.misc.EnergyPower;
 public class ReduceECByHandCardNumAction extends AbstractGameAction {
     private static final float DURATION = 0.1F;
     
-    private int multiplier = 10;
+    private int multiplier = 20;
 
     public ReduceECByHandCardNumAction(AbstractCreature target, AbstractCreature source) {
         this.setValues(target, source, amount);

@@ -1,4 +1,4 @@
-package hsrmod.powers.onlyBuffs;
+package hsrmod.powers.uniqueBuffs;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;

@@ -1,4 +1,4 @@
-package hsrmod.powers.onlyDebuffs;
+package hsrmod.powers.uniqueDebuffs;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;

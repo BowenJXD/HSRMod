@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
-import hsrmod.powers.onlyDebuffs.WisemansFollyPower;
+import hsrmod.powers.uniqueDebuffs.WisemansFollyPower;
 
 public class DrRatio2 extends BaseCard {
     public static final String ID = DrRatio2.class.getSimpleName();

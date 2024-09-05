@@ -1,5 +1,6 @@
 package hsrmod.cards.common;
 
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.HealAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -18,5 +19,6 @@ public class Natasha1 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         addToBot(new HealAction(p, p, magicNumber));
+        addToBot(new DrawCardAction(p, 1));
     }
 }

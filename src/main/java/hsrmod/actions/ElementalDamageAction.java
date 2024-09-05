@@ -1,5 +1,7 @@
 package hsrmod.actions;
 
+import com.badlogic.gdx.graphics.Color;
+import com.evacipated.cardcrawl.mod.stslib.patches.ColoredDamagePatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -47,7 +49,10 @@ public class ElementalDamageAction extends AbstractGameAction{
                     }
             );
 
-            addToTop(new DamageAction(this.target, this.info));
+            AbstractGameAction action = new DamageAction(this.target, this.info);
+            ColoredDamagePatch.DamageActionColorField.damageColor.set(action, elementType.getColor());
+            ColoredDamagePatch.DamageActionColorField.fadeSpeed.set(action, ColoredDamagePatch.FadeSpeed.SLOW);
+            addToTop(action);
             addToTop(new ReduceToughnessAction(target, this.toughnessReduction, this.elementType, this.info));
 
             if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {

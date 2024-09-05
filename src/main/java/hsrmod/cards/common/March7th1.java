@@ -2,14 +2,11 @@ package hsrmod.cards.common;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.actions.CleanAction;
 import hsrmod.cards.BaseCard;
-import hsrmod.powers.onlyBuffs.ReinforcePower;
-import hsrmod.utils.ModHelper;
+import hsrmod.powers.uniqueBuffs.ReinforcePower;
 
 public class March7th1 extends BaseCard {
     public static final String ID = March7th1.class.getSimpleName();

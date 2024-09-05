@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
-import hsrmod.powers.onlyDebuffs.WisemansFollyPower;
+import hsrmod.powers.uniqueDebuffs.WisemansFollyPower;
 
 import static hsrmod.utils.CustomEnums.FOLLOW_UP;
 

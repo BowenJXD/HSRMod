@@ -69,8 +69,8 @@ public class Xueyi1 extends BaseCard {
                 // 伤害类型
                 AbstractGameAction.AttackEffect.SLASH_DIAGONAL
         ));
-        
-        setCostForTurn(costCache);
+
+        modifyCostForCombat(costCache);
     }
 
     @Override
@@ -129,7 +129,7 @@ public class Xueyi1 extends BaseCard {
             
             int toughnessReduction = xueyi1.updateEnemyToughness();
             if (toughnessReduction > 0) {
-                xueyi1.updateCost(-toughnessReduction);
+                xueyi1.modifyCostForCombat(-toughnessReduction);
                 if (!xueyi1.followedUp && xueyi1.cost <= 0){
                     xueyi1.followedUp = true;
                     addToBot(new FollowUpAction(xueyi1));

@@ -1,9 +1,7 @@
-package hsrmod.powers.onlyBuffs;
+package hsrmod.powers.uniqueBuffs;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -11,12 +9,11 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
+import hsrmod.cards.BaseCard;
 import hsrmod.modcore.HSRMod;
-import hsrmod.powers.misc.EnergyPower;
 
-public class KolchisPower extends AbstractPower implements OnReceivePowerPower {
-    public static final String POWER_ID = HSRMod.makePath(KolchisPower.class.getSimpleName());
+public class IntersegmentalMembranePower extends AbstractPower {
+    public static final String POWER_ID = HSRMod.makePath(IntersegmentalMembranePower.class.getSimpleName());
 
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
 
@@ -24,16 +21,16 @@ public class KolchisPower extends AbstractPower implements OnReceivePowerPower {
 
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    int recharge;
+    int block;
     
-    public KolchisPower(AbstractCreature owner, int Amount, int recharge) {
+    public IntersegmentalMembranePower(AbstractCreature owner, int Amount, int block) {
         this.name = NAME;
         this.ID = POWER_ID;
         this.owner = owner;
         this.type = PowerType.BUFF;
 
         this.amount = Amount;
-        this.recharge = recharge;
+        this.block = block;
 
         String path128 = String.format("HSRModResources/img/powers/%s128.png", this.getClass().getSimpleName());
         String path48 = String.format("HSRModResources/img/powers/%s48.png", this.getClass().getSimpleName());
@@ -45,30 +42,20 @@ public class KolchisPower extends AbstractPower implements OnReceivePowerPower {
 
     @Override
     public void updateDescription() {
-        this.description = String.format(DESCRIPTIONS[0], this.recharge);
+        this.description = String.format(DESCRIPTIONS[0], this.block);
     }
 
     @Override
     public void onAfterUseCard(AbstractCard card, UseCardAction action) {
-        int energyChange = card.energyOnUse - EnergyPanel.getCurrentEnergy();
+        if (card instanceof BaseCard && ((BaseCard) card).followedUp) 
+            return;
+        int energyChange = card.costForTurn;
+        if (card.costForTurn == -1) {
+            energyChange = card.energyOnUse;
+        }
         if (energyChange > 0) {
             flash();
-            addToBot(new ApplyPowerAction(owner, owner, new EnergyPower(owner, recharge)));
+            addToBot(new GainBlockAction(owner, owner, energyChange * block));
         }
-    }
-
-    @Override
-    public boolean onReceivePower(AbstractPower abstractPower, AbstractCreature abstractCreature, AbstractCreature abstractCreature1) {
-        return true;
-    }
-
-    @Override
-    public int onReceivePowerStacks(AbstractPower power, AbstractCreature target, AbstractCreature source, int stackAmount) {
-        if (power instanceof EnergyPower 
-                && stackAmount < 0) {
-            flash();
-            addToBot(new GainEnergyAction(1));
-        }
-        return stackAmount;
     }
 }

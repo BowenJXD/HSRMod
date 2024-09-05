@@ -124,6 +124,9 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         if (name.contains("Power")) {
             name = name.replace("Power", "");
         }
+        else if (name.contains("Relic")) {
+            name = name.replace("Relic", "");
+        }
         return MOD_NAME + ":" + name;
     }
 }

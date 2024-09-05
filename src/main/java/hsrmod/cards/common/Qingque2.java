@@ -36,15 +36,17 @@ public class Qingque2 extends BaseCard {
                             AbstractGameAction.AttackEffect.SLASH_HORIZONTAL))
             );
         }
-        setCostForTurn(costCache);
+        modifyCostForCombat(costCache);
     }
 
     @Override
     public void triggerOnCardPlayed(AbstractCard cardPlayed) {
         if (!AbstractDungeon.player.hand.contains(this)) return;
-        for (int i = 0; i < cardPlayed.costForTurn; i++) {
+        int loop = cardPlayed.costForTurn;
+        if (cardPlayed.cost == -1) loop = cardPlayed.energyOnUse;
+        for (int i = 0; i < loop; i++) {
             if (AbstractDungeon.cardRandomRng.random(100) <= reduceCostProbability) {
-                updateCost(-1);
+                modifyCostForCombat(-1);
                 if (cost <= 0) {
                     addToBot(new FollowUpAction(this));
                     break;

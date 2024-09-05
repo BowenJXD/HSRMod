@@ -4,7 +4,7 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cards.BaseCard;
-import hsrmod.powers.onlyBuffs.KolchisPower;
+import hsrmod.powers.uniqueBuffs.KolchisPower;
 
 public class Kolchis extends BaseCard {
     public static final String ID = Kolchis.class.getSimpleName();

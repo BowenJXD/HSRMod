@@ -1,15 +1,19 @@
-package hsrmod.powers.onlyDebuffs;
+package hsrmod.powers.uniqueDebuffs;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.modcore.HSRMod;
 
-public class ProofOfDebtPower extends AbstractPower {
-    public static final String POWER_ID = HSRMod.makePath(ProofOfDebtPower.class.getSimpleName());
+public class BurdenPower extends AbstractPower {
+    public static final String POWER_ID = HSRMod.makePath(BurdenPower.class.getSimpleName());
 
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
 
@@ -17,16 +21,13 @@ public class ProofOfDebtPower extends AbstractPower {
 
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    public int damageIncrement;
-    
-    public ProofOfDebtPower(AbstractCreature owner, int Amount, int damageIncrement) {
+    public BurdenPower(AbstractCreature owner, int Amount) {
         this.name = NAME;
         this.ID = POWER_ID;
         this.owner = owner;
         this.type = PowerType.DEBUFF;
 
         this.amount = Amount;
-        this.damageIncrement = damageIncrement;
 
         String path128 = String.format("HSRModResources/img/powers/%s128.png", this.getClass().getSimpleName());
         String path48 = String.format("HSRModResources/img/powers/%s48.png", this.getClass().getSimpleName());
@@ -38,6 +39,22 @@ public class ProofOfDebtPower extends AbstractPower {
 
     @Override
     public void updateDescription() {
-        this.description = String.format(DESCRIPTIONS[0], this.damageIncrement);
+        this.description = String.format(DESCRIPTIONS[0]);
+    }
+
+    @Override
+    public void reducePower(int reduceAmount) {
+        super.reducePower(reduceAmount);
+        if (amount <= 0) {
+            addToBot(new RemoveSpecificPowerAction(owner, owner, this));
+        }
+    }
+
+    @Override
+    public void onPlayCard(AbstractCard card, AbstractMonster m) {
+        if (m == owner) {
+            reducePower(1);
+            addToBot(new GainEnergyAction(1));
+        }
     }
 }

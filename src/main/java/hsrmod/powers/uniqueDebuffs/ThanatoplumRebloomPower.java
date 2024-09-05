@@ -1,19 +1,16 @@
-package hsrmod.powers.onlyDebuffs;
+package hsrmod.powers.uniqueDebuffs;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.modcore.HSRMod;
 
-public class BurdenPower extends AbstractPower {
-    public static final String POWER_ID = HSRMod.makePath(BurdenPower.class.getSimpleName());
+public class ThanatoplumRebloomPower extends AbstractPower {
+    public static final String POWER_ID = HSRMod.makePath(ThanatoplumRebloomPower.class.getSimpleName());
 
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
 
@@ -21,7 +18,7 @@ public class BurdenPower extends AbstractPower {
 
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    public BurdenPower(AbstractCreature owner, int Amount) {
+    public ThanatoplumRebloomPower(AbstractCreature owner, int Amount) {
         this.name = NAME;
         this.ID = POWER_ID;
         this.owner = owner;
@@ -38,23 +35,15 @@ public class BurdenPower extends AbstractPower {
     }
 
     @Override
+    public void stackPower(int stackAmount) {
+        super.stackPower(stackAmount);
+        if (this.amount <= 0) {
+            addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+        }
+    }
+    
+    // 能力在更新时如何修改描述
     public void updateDescription() {
         this.description = String.format(DESCRIPTIONS[0]);
-    }
-
-    @Override
-    public void reducePower(int reduceAmount) {
-        super.reducePower(reduceAmount);
-        if (amount <= 0) {
-            addToBot(new RemoveSpecificPowerAction(owner, owner, this));
-        }
-    }
-
-    @Override
-    public void onPlayCard(AbstractCard card, AbstractMonster m) {
-        if (m == owner) {
-            reducePower(1);
-            addToBot(new GainEnergyAction(1));
-        }
     }
 }

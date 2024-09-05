@@ -1,6 +1,5 @@
 package hsrmod.cards.uncommon;
 
-import basemod.interfaces.OnPlayerDamagedSubscriber;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -9,13 +8,10 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.AOEAction;
-import hsrmod.actions.CleanAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
-import hsrmod.powers.onlyBuffs.ReinforcePower;
-import hsrmod.utils.SubscribeManager;
 
 import static hsrmod.utils.CustomEnums.FOLLOW_UP;
 

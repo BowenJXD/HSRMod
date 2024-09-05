@@ -17,3 +17,4 @@ public enum CardDataCol {
     UpgradeBlock,
     UpgradeMagicNumber
 }
+

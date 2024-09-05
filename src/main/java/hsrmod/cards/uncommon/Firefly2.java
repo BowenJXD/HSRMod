@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cards.BaseCard;
 import hsrmod.powers.misc.EnergyPower;
-import hsrmod.powers.onlyBuffs.FireflyPower;
+import hsrmod.powers.uniqueBuffs.FireflyPower;
 
 public class Firefly2 extends BaseCard {
     public static final String ID = Firefly2.class.getSimpleName();

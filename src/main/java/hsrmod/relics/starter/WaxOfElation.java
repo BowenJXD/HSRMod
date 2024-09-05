@@ -25,18 +25,32 @@ public class WaxOfElation extends BaseRelic {
     
     static AbstractCard.CardTags tag = FOLLOW_UP;
     
+    AbstractRoom currRoom;
+    
     public WaxOfElation(){
         super(ID);
     }
-
+/*
     @Override
     public void onEnterRoom(AbstractRoom room) {
-        AbstractDungeon.getCurrRoom().rewards.stream().filter(r -> r.type == RewardItem.RewardType.CARD).forEach(
-                rewardItem -> {
-                    rewardItem.cards.clear();
-                    rewardItem.cards.addAll(getRewardCards());
+        RewardItem cardReward = new RewardItem();
+        cardReward.cards = getRewardCards();
+        room.addCardReward(cardReward);
+    }*/
+
+    @Override
+    public void update() {
+        if (!AbstractDungeon.combatRewardScreen.rewards.isEmpty()
+                && AbstractDungeon.getCurrRoom() != currRoom) {
+            List<RewardItem> rewards = AbstractDungeon.combatRewardScreen.rewards;
+            for (RewardItem reward : rewards) {
+                if (reward.type == RewardItem.RewardType.CARD) {
+                    reward.cards = getRewardCards();
+                    currRoom = AbstractDungeon.getCurrRoom();
+                    break;
                 }
-        );
+            }
+        }
     }
 
     public static ArrayList<AbstractCard> getRewardCards() {
@@ -113,7 +127,7 @@ public class WaxOfElation extends BaseRelic {
         while(true) {
             while(var11.hasNext()) {
                 card = (AbstractCard)var11.next();
-                if (card.rarity != AbstractCard.CardRarity.RARE && AbstractDungeon.cardRng.randomBoolean(10) && card.canUpgrade()) {
+                if (card.rarity != AbstractCard.CardRarity.RARE && AbstractDungeon.cardRng.randomBoolean(0.1f) && card.canUpgrade()) {
                     card.upgrade();
                 } else {
                     Iterator var12 = AbstractDungeon.player.relics.iterator();
@@ -130,7 +144,7 @@ public class WaxOfElation extends BaseRelic {
     }
     
     public static AbstractCard getCard(AbstractCard.CardRarity rarity, AbstractCard.CardTags tag) {
-        CardGroup group = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+        CardGroup group = null;
         switch (rarity) {
             case COMMON:
                 group = AbstractDungeon.commonCardPool;
@@ -160,8 +174,7 @@ public class WaxOfElation extends BaseRelic {
         }
         
         if (cards.isEmpty()) {
-            logger.info("No cards with tag " + tag.toString() + " in " + rarity + " pool");
-            return null;
+            return group.getRandomCard(AbstractDungeon.cardRng);
         }
         
         return cards.get(AbstractDungeon.cardRng.random(cards.size() - 1));

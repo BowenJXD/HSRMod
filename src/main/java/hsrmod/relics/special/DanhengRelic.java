@@ -1,21 +1,21 @@
-package hsrmod.relics;
+package hsrmod.relics.special;
 
 import basemod.abstracts.CustomRelic;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import hsrmod.modcore.HSRMod;
 
-public class WeltRelic extends CustomRelic {
+public class DanhengRelic extends CustomRelic {
     // 遗物ID（此处的ModHelper在“04 - 本地化”中提到）
-    public static final String ID = HSRMod.makePath(WeltRelic.class.getSimpleName());
+    public static final String ID = HSRMod.makePath(DanhengRelic.class.getSimpleName());
     // 图片路径
-    private static final String IMG_PATH = "HSRModResources/img/relics/WeltRelic.png";
+    private static final String IMG_PATH = "HSRModResources/img/relics/DanhengRelic.png";
     // 遗物类型
     private static final RelicTier RELIC_TIER = RelicTier.SPECIAL;
     // 点击音效
     private static final LandingSound LANDING_SOUND = LandingSound.FLAT;
 
-    public WeltRelic() {
+    public DanhengRelic() {
         super(ID, ImageMaster.loadImage(IMG_PATH), RELIC_TIER, LANDING_SOUND);
     }
 
@@ -25,6 +25,6 @@ public class WeltRelic extends CustomRelic {
     }
 
     public AbstractRelic makeCopy() {
-        return new WeltRelic();
+        return new DanhengRelic();
     }
 }

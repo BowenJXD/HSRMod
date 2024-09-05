@@ -1,7 +1,6 @@
-package hsrmod.relics;
+package hsrmod.relics.starter;
 
 import basemod.abstracts.CustomRelic;
-import basemod.devcommands.relic.RelicAdd;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsAction;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
 import com.megacrit.cardcrawl.actions.common.*;
@@ -18,10 +17,9 @@ import com.megacrit.cardcrawl.powers.IntangiblePlayerPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import hsrmod.actions.ReduceECByHandCardNumAction;
 import hsrmod.cards.base.*;
-import hsrmod.cards.common.March7th1;
-import hsrmod.cards.uncommon.Himeko1;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.misc.EnergyPower;
+import hsrmod.relics.special.*;
 import hsrmod.utils.ModHelper;
 
 import java.util.List;
@@ -59,9 +57,11 @@ public class PomPomBlessing extends CustomRelic {
 
     @Override
     public void atBattleStart() {
+        flash();
         addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new EnergyPower(AbstractDungeon.player, BASE_ENERGY), BASE_ENERGY));
         addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new IntangiblePlayerPower(AbstractDungeon.player, 1), 1));
         addToTop(new GainEnergyAction(AbstractDungeon.actNum));
+        addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
     }
 
     @Override
@@ -84,7 +84,7 @@ public class PomPomBlessing extends CustomRelic {
         
         if (maxRetainNum == 0) return;
         
-        Predicate<AbstractCard> cardFilter = c -> !c.selfRetain;
+        Predicate<AbstractCard> cardFilter = c -> !c.selfRetain && !c.retain;
         Consumer<List<AbstractCard>> callback = cards -> {
             for (AbstractCard card : cards) {
                 card.retain = true;
@@ -109,11 +109,13 @@ public class PomPomBlessing extends CustomRelic {
     public int onAttackedToChangeDamage(DamageInfo info, int damageAmount) {
         if (AbstractDungeon.player.currentHealth - damageAmount <= 0
         && !ModHelper.findCards(card -> card.hasTag(AbstractCard.CardTags.STARTER_STRIKE)).isEmpty()) {
+            flash();
             damageAmount = AbstractDungeon.player.currentHealth - 1;
             ModHelper.addToTopAbstract(() -> {
                 addToTop(new SelectCardsAction(AbstractDungeon.player.masterDeck.group, 1, "选择牺牲一位列车组成员", 
                         false, card -> card.hasTag(AbstractCard.CardTags.STARTER_STRIKE) 
-                        && !(card instanceof Trailblazer1), cards -> {
+                        && !(card instanceof Trailblazer1)
+                        && !(card instanceof Trailblazer2), cards -> {
                     AbstractCard card = cards.get(0);
                     ModHelper.findCards(card1 -> card1.getClass().equals(card.getClass())).forEach(findResult -> {
                         findResult.group.removeCard(findResult.card);

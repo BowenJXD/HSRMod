@@ -1,4 +1,4 @@
-package hsrmod.relics;
+package hsrmod.relics.rare;
 
 import basemod.abstracts.CustomRelic;
 import com.evacipated.cardcrawl.mod.stslib.relics.OnApplyPowerRelic;
@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.misc.BrokenPower;
+import hsrmod.utils.ModHelper;
 
 import java.util.Iterator;
 
@@ -22,7 +23,7 @@ public class TheAshblazingGrandDuke extends CustomRelic implements OnApplyPowerR
     // 图片路径
     private static final String IMG_PATH = "HSRModResources/img/relics/TheAshblazingGrandDuke.png";
     // 遗物类型
-    private static final RelicTier RELIC_TIER = RelicTier.SPECIAL;
+    private static final RelicTier RELIC_TIER = RelicTier.COMMON;
     // 点击音效
     private static final LandingSound LANDING_SOUND = LandingSound.FLAT;
 
@@ -41,38 +42,7 @@ public class TheAshblazingGrandDuke extends CustomRelic implements OnApplyPowerR
 
     @Override
     public void atBattleStart() {
-        Iterator var1 = AbstractDungeon.player.hand.group.iterator();
-
-        AbstractCard c;
-        while(var1.hasNext()) {
-            c = (AbstractCard)var1.next();
-            if (c.hasTag(AbstractCard.CardTags.STARTER_STRIKE) || c.hasTag(AbstractCard.CardTags.STARTER_DEFEND))
-                c.tags.add(FOLLOW_UP);
-        }
-
-        var1 = AbstractDungeon.player.drawPile.group.iterator();
-
-        while(var1.hasNext()) {
-            c = (AbstractCard)var1.next();
-            if (c.hasTag(AbstractCard.CardTags.STARTER_STRIKE) || c.hasTag(AbstractCard.CardTags.STARTER_DEFEND))
-                c.tags.add(FOLLOW_UP);
-        }
-
-        var1 = AbstractDungeon.player.discardPile.group.iterator();
-
-        while(var1.hasNext()) {
-            c = (AbstractCard)var1.next();
-            if (c.hasTag(AbstractCard.CardTags.STARTER_STRIKE) || c.hasTag(AbstractCard.CardTags.STARTER_DEFEND))
-                c.tags.add(FOLLOW_UP);
-        }
-
-        var1 = AbstractDungeon.player.exhaustPile.group.iterator();
-
-        while(var1.hasNext()) {
-            c = (AbstractCard)var1.next();
-            if (c.hasTag(AbstractCard.CardTags.STARTER_STRIKE) || c.hasTag(AbstractCard.CardTags.STARTER_DEFEND))
-                c.tags.add(FOLLOW_UP);
-        }
+        ModHelper.findCards((c) -> c.hasTag(AbstractCard.CardTags.STARTER_STRIKE)).forEach((c) -> c.card.tags.add(FOLLOW_UP));
     }
 
     @Override
@@ -83,7 +53,7 @@ public class TheAshblazingGrandDuke extends CustomRelic implements OnApplyPowerR
             AbstractCard c;
             while(var4.hasNext()) {
                 c = (AbstractCard) var4.next();
-                if (c.hasTag(AbstractCard.CardTags.STARTER_STRIKE) || c.hasTag(AbstractCard.CardTags.STARTER_DEFEND)) {
+                if (c.hasTag(AbstractCard.CardTags.STARTER_STRIKE)) {
                     addToBot(new FollowUpAction(c));
                 }
             }

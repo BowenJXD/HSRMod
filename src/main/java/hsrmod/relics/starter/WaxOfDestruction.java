@@ -1,21 +1,21 @@
-package hsrmod.relics;
+package hsrmod.relics.starter;
 
 import basemod.abstracts.CustomRelic;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import hsrmod.modcore.HSRMod;
 
-public class March7thRelic extends CustomRelic {
+public class WaxOfDestruction extends CustomRelic {
     // 遗物ID（此处的ModHelper在“04 - 本地化”中提到）
-    public static final String ID = HSRMod.makePath(March7thRelic.class.getSimpleName());
+    public static final String ID = HSRMod.makePath(WaxOfDestruction.class.getSimpleName());
     // 图片路径
-    private static final String IMG_PATH = "HSRModResources/img/relics/March7thRelic.png";
+    private static final String IMG_PATH = "HSRModResources/img/relics/WaxOfDestruction.png";
     // 遗物类型
     private static final RelicTier RELIC_TIER = RelicTier.SPECIAL;
     // 点击音效
     private static final LandingSound LANDING_SOUND = LandingSound.FLAT;
 
-    public March7thRelic() {
+    public WaxOfDestruction() {
         super(ID, ImageMaster.loadImage(IMG_PATH), RELIC_TIER, LANDING_SOUND);
     }
 
@@ -25,6 +25,6 @@ public class March7thRelic extends CustomRelic {
     }
 
     public AbstractRelic makeCopy() {
-        return new March7thRelic();
+        return new WaxOfDestruction();
     }
 }

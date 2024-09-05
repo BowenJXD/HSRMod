@@ -3,7 +3,7 @@
     "NAME": "帕姆的祝福", 
     "FLAVOR": "「锵！未来的旅途，我们也要一起开拓下去帕！」", 
     "DESCRIPTIONS": [
-      "战斗开始时，回复 #b100 点充能，同等与当前层数的 [E] ，然后获得1层无实体。 NL 你使用牌后，回复 #b20 点充能。充能上限为 #b240 。 NL 回合结束时，你可以选择任意张手牌保留，每保留1张消耗 #b20 点充能。 NL 在危机关头，还有奇效。。。"
+      "战斗开始时，回复 #b100 点充能，同等与当前层数的 [E] ，然后获得1层无实体。 NL 你使用牌后，回复 #b20 点充能。充能上限为 #b240 。 NL 回合结束时，你可以选择任意张手牌保留，每保留1张消耗 #b20 点充能。 NL #r在危机关头，还有奇效。。。 "
     ]
   },
   "HSRMod:GalacticBat": {
@@ -20,39 +20,310 @@
       "你的初始攻击牌视为追击牌，且于击破时追击。"
     ]
   },
-  "HSRMod:TrailblazerRelic": {
+  "HSRMod:Trailblazer": {
     "NAME": "开拓者的遗物",
     "FLAVOR": "世界，拒绝了我……",
     "DESCRIPTIONS": [
       ""
     ]
   },
-  "HSRMod:March7thRelic": {
+  "HSRMod:March7th": {
     "NAME": "三月七的遗物",
     "FLAVOR": "我不想…一个人……",
     "DESCRIPTIONS": [
       ""
     ]
   },
-  "HSRMod:DanhengRelic": {
+  "HSRMod:Danheng": {
     "NAME": "丹恒的遗物",
     "FLAVOR": "一切仍如昨日所见……",
     "DESCRIPTIONS": [
       ""
     ]
   },
-  "HSRMod:HimekoRelic": {
+  "HSRMod:Himeko": {
     "NAME": "姬子的遗物",
     "FLAVOR": "她自火中新生，她自火中微笑。",
     "DESCRIPTIONS": [
       ""
     ]
   },
-  "HSRMod:WeltRelic": {
+  "HSRMod:Welt": {
     "NAME": "瓦尔特的遗物",
     "FLAVOR": "杨卧起坐中……",
     "DESCRIPTIONS": [
       ""
     ]
+  },
+  "HSRMod:WarpingCompoundEye": {
+    "NAME": "跃迁复眼",
+    "FLAVOR": "它的光线能率先跃迁至前方的星系，带回新世界的信息。",
+    "DESCRIPTIONS": [
+      "在选择奖励牌时，强化其中所有普通品质的卡牌。"
+    ]
+  },
+  "HSRMod:CasketOfInaccuracy": {
+    "NAME": "测不准匣",
+    "FLAVOR": "这只匣子的每一面都能够打开，本应重合的空间并不重合，由于这种独特的性质，你无法确定打开匣子后会发生什么，因此也并不建议在里面存放任何东西。",
+    "DESCRIPTIONS": [
+      "拾起时，可以增加一张牌到你的卡组。",
+      "测不准匣！"
+    ]
+  },
+  "HSRMod:AmbergrisCheese": {
+    "NAME": "香涎干酪",
+    "FLAVOR": "直到现在，银河中仍然有一个星系被美味的干酪塞得严严实实，一丁点空隙也没留下。",
+    "DESCRIPTIONS": [
+      "战斗结束后，回复2点生命。"
+    ]
+  },
+  "HSRMod:TheParchmentThatAlwaysEats": {
+    "NAME": "永不停嘴的羊皮卷",
+    "FLAVOR": "在黑塔的奇物清单里，这张羊皮卷的危害等级被标注为极高。",
+    "DESCRIPTIONS": [
+      "战斗开始时，对所有敌方角色造成其生命值上限10%的伤害。"
+    ]
+  },
+  "HSRMod:TheDoctorsRobe": {
+    "NAME": "博士之袍",
+    "FLAVOR": "这件长袍据称曾属于天才俱乐部4「原始博士」，拥有不可思议的力量。",
+    "DESCRIPTIONS": [
+      "战斗开始时，回复120点充能。"
+    ]
+  },
+  "HSRMod:SocietyTicket": {
+    "NAME": "俱乐部券",
+    "FLAVOR": "事实是，6以后的每位会员都确实使用过「俱乐部券」，可时间从来没有重合过哪怕一次。",
+    "DESCRIPTIONS": [
+      "战斗结束后，获得的金币数提高33%。"
+    ]
+  },
+  "HSRMod:FaithBond": {
+    "NAME": "信仰债券",
+    "FLAVOR": "但一代又一代的「你」汇聚起来，终将拥有守护整个宇宙的力量。",
+    "DESCRIPTIONS": [
+      "商店区域的药水和奇物商品价格减少33%。"
+    ]
+  },
+  "HSRMod:RecordFromBeyondTheSky": {
+    "NAME": "天外重声大碟",
+    "FLAVOR": "最后一台秩序唱机在帝皇战争中损坏，唱片上厚厚的积灰似在抗议那无声的时光。",
+    "DESCRIPTIONS": [
+      "战斗开始时，获得1层【无实体】和1层【人工制品】。"
+    ]
+  },
+  "HSRMod:EntropicDie": {
+    "NAME": "万象无常骰",
+    "FLAVOR": "万象无常骰曾在宇宙中极为常见，造成无数微小但邪恶的混乱。",
+    "DESCRIPTIONS": [
+      "拾起时，随机升级2张牌。"
+    ]
+  },
+  "HSRMod:AngelTypeIOUDispenser": {
+    "NAME": "天使型谢债发行机",
+    "FLAVOR": "星际和平公司业务巩固部推出的谢债发行机，本质上是个投资产品。",
+    "DESCRIPTIONS": [
+      "战斗结束后，无法获得金币。效果触发5次后该奇物失效，使当前的金币数量翻倍，且该遗物损毁。"
+    ]
+  },
+  "HSRMod:BlackHoleTrap": {
+    "NAME": "黑洞之阱",
+    "FLAVOR": "星系中时空曲率最大的地方曾出现疑似「虚无」星神的巨影。",
+    "DESCRIPTIONS": [
+      "战斗结束后，根据你生命值大于80%的数量，获得等量金币。"
+    ]
+  },
+  "HSRMod:RubertEmpireMechanicalCogwheel": {
+    "NAME": "鲁珀特帝国机械齿轮",
+    "FLAVOR": "鲁珀特二世自称继承了天才俱乐部500.07帝皇鲁珀特的记忆。",
+    "DESCRIPTIONS": [
+      "进入战斗时，获得50金币，然后若你的金币数大于500，则失去所有金币，该遗物损毁。",
+      "若同时携带全部鲁珀特帝国机械系列遗物，将引发反有机方程的局域共鸣。"
+    ]
+  },
+  "HSRMod:RubertEmpireMechanicalLever": {
+    "NAME": "鲁珀特帝国机械杠杆",
+    "FLAVOR": "鲁珀特二世自称继承了天才俱乐部1.07帝皇鲁珀特的记忆。",
+    "DESCRIPTIONS": [
+      "进入？时，随机选择一张牌，若其未升级，则升级之，否则该遗物损毁。",
+      "若同时携带全部鲁珀特帝国机械系列遗物，将引发反有机方程的局域共鸣。"
+    ]
+  },
+  "HSRMod:RubertEmpireMechanicalPiston": {
+    "NAME": "鲁珀特帝国机械活塞",
+    "FLAVOR": "鲁珀特二世自称继承了天才俱乐部2.07帝皇鲁珀特的记忆。",
+    "DESCRIPTIONS": [
+      "进入休息处时，获得2个遗物，随机失去1个不为初始遗物的遗物，若以此法失去自身，则失去所有遗物。",
+      "若同时携带全部鲁珀特帝国机械系列遗物，将引发反有机方程的局域共鸣。"
+    ]
+  },
+  "HSRMod:VileMechanicalSatellite900": {
+    "NAME": "邪恶机械卫星#900",
+    "FLAVOR": "它们是典型的反有机文明，对待有机生命手腕狠辣，而其中尤以卫星#900最为邪恶。",
+    "DESCRIPTIONS": [
+      "商店区域的所有商品价格降低20%。"
+    ]
+  },
+  "HSRMod:PriceOfPeace": {
+    "NAME": "和平的代价",
+    "FLAVOR": "人们相信这场繁荣永远不会结束——直到日后更为惨烈的星际能源战争悄然揭幕。",
+    "DESCRIPTIONS": [
+      "进入商店时，获得100金币。"
+    ]
+  },
+  "HSRMod:MysteriousMagnetism": {
+    "NAME": "「神秘」磁力",
+    "FLAVOR": "为对抗「智识」的确定性，谜语人曾在不确定领域做出诸多努力。",
+    "DESCRIPTIONS": [
+      "进入新楼层时，获得50金币。战斗胜利后，失去50金币。"
+    ]
+  },
+  "HSRMod:ShatterboneBlade": {
+    "NAME": "断骨剑",
+    "FLAVOR": "多年以后，每每在私下讲起森林里的遭遇时，少年都会痛哭流涕，并对那人面兽心的卡耶尔大骂不止。",
+    "DESCRIPTIONS": [
+      "第二章及之前，受到伤害提高20%；第三章及之后，受到伤害降低20%。"
+    ]
+  },
+  "HSRMod:BeaconColoringPaste": {
+    "NAME": "信标着色剂",
+    "FLAVOR": "它的发明者乃是一位画技卓绝的无名客。",
+    "DESCRIPTIONS": [
+      "战斗胜利选择卡牌时，升级其中1张。"
+    ]
+  },
+  "HSRMod:SuperOverlordSpinningTop": {
+    "NAME": "超霸王陀螺",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "战斗开始时，获得1层【击破特攻】。首个回合开始时，移除敌方50%的【韧性】。"
+    ]
+  },
+  "HSRMod:FortuneGlue": {
+    "NAME": "福灵胶",
+    "FLAVOR": "运气是一种能力吗？也许；运气能够被改变吗？黑塔认为能。",
+    "DESCRIPTIONS": [
+      "战斗结束后，出现的牌是稀有品质的概率提高100%，触发1次后该遗物损毁。"
+    ]
+  },
+  "HSRMod:ShiningTrapezohedronDie": {
+    "NAME": "闪耀的偏方三八面骰",
+    "FLAVOR": "由此产生了著名的「闪耀偏方三八面骰悖论」：你没法证明没法证明的事情。",
+    "DESCRIPTIONS": [
+      "拾起时，重新获得所有非初始遗物。"
+    ]
+  },
+  "HSRMod:GoldCoinOfDiscord": {
+    "NAME": "分裂金币",
+    "FLAVOR": "面对如上情况时，公司的代表会耸耸肩，然后轻描淡写地摧毁该星球的金融体系根基——通常是黄金。",
+    "DESCRIPTIONS": [
+      "进入新楼层时，获得当前持有的金币1%数量的金币。"
+    ]
+  },
+  "HSRMod:SilverCoinOfDiscord": {
+    "NAME": "分裂银币",
+    "FLAVOR": "于是某位研究员研造出分裂银币，令银币不停分裂数量剧增，又被公司熔铸成天线出口各个星系，极大地推动了星系间的交流。",
+    "DESCRIPTIONS": [
+      "拾起时，获得当前持有的金币 50% 数量的金币。"
+    ]
+  },
+  "HSRMod:ShatteredStarBait": {
+    "NAME": "碎星芳饵",
+    "FLAVOR": "在黄昏战争前，混沌星云膨胀所产生的爆炸碎屑可以作为饵料，其特有的宇宙尘埃芳香能够吸引到古兽前来觅食。",
+    "DESCRIPTIONS": [
+      "战斗开始时，获得1层〖敏捷〗。你在选择下一层的房间时有1次机会可以无视当前的路线。"
+    ]
+  },
+  "HSRMod:CosmicBigLotto": {
+    "NAME": "银河大乐透",
+    "FLAVOR": "星际和平公司市场开拓部发售的银河大乐透，其营销方针正如奥斯瓦尔多·施耐德本人一样充满激情与热血。",
+    "DESCRIPTIONS": [
+      "进入新楼层时：",
+      "20%的概率，获得一个随机遗物；",
+      "10%的概率，失去当前血量的一半，且该遗物损毁。"
+    ]
+  },
+  "HSRMod:InterastralBigLotto": {
+    "NAME": "星际大乐透",
+    "FLAVOR": "如何令一个商业模式持续运作下去？在银河大乐透广获好评之后，星际和平公司出售了星际大乐透。",
+    "DESCRIPTIONS": [
+      "进入新楼层时：",
+      "20%的概率，此楼层可以额外获得一次卡牌奖励；",
+      "10%的概率，随机失去1张牌，且该遗物损毁。"
+    ]
+  },
+  "HSRMod:IllusoryAutomaton": {
+    "NAME": "虚构机兵",
+    "FLAVOR": "虚构史学家本身是否也是被虚构的？",
+    "DESCRIPTIONS": [
+      "回合开始时，获得4点格挡。"
+    ]
+  },
+  "HSRMod:ManMadeMeteorite": {
+    "NAME": "人造陨石球",
+    "FLAVOR": "陨石球表面坐落着由其复刻的「博识之眼」。",
+    "DESCRIPTIONS": [
+      "拾起时，重新获得你的所有火漆。"
+    ]
+  },
+  "HSRMod:RottingFruitOfTheAlienTree": {
+    "NAME": "腐化异木果实",
+    "FLAVOR": "他们一人拥抱蜕变，一人当场毙命。",
+    "DESCRIPTIONS": [
+      "初始有3次触发次数。回合开始时，若你没有【人工制品】，你获得1层，然后若不为首回合，你受到5点伤害。"
+    ]
+  },
+  "HSRMod:RobeOfTheBeauty": {
+    "NAME": "纯美之袍",
+    "FLAVOR": "纯美骑士纵横星海的时代，全宇宙都为他们的风采所倾倒。",
+    "DESCRIPTIONS": [
+      "战斗开始时，每拥有100金币，获得1层〖力量〗，至多获得5层。"
+    ]
+  },
+  "HSRMod:CavitySystemModel": {
+    "NAME": "龋齿星系模型",
+    "FLAVOR": "「宇宙是不规则的，就像个牙齿！」",
+    "DESCRIPTIONS": [
+      "拾起时，失去50%金币。",
+      "战斗结束后，失去50金币，然后如果金币不足100，该遗物损毁。",
+      "进入战斗时，对生命值最多的敌方造成10点伤害，每因为该奇物的效果损失100金币，额外造成1次伤害。"
+    ]
+  },
+  "HSRMod:DignityAndPassion": {
+    "NAME": "尊严与热忱",
+    "FLAVOR": "星际和平公司拥有属地星区采矿作业的最终解释权，任何非法采矿的行为都将被视作干扰琥珀王筑墙的亵渎之举。",
+    "DESCRIPTIONS": [
+      "回合结束时，获得已损失生命值50%的格挡。"
+    ]
+  },
+  "HSRMod:RubertEmpireDifferenceMachine": {
+    "NAME": "鲁珀特帝国差分机",
+    "FLAVOR": "「如果这就是天才，那世上还是多些蠢人为好。」",
+    "DESCRIPTIONS": [
+      "进入新楼层时，复制该房间的所有奖励。"
+    ]
+  },
+  "HSRMod:WaxOfElation": {
+    "NAME": "欢愉火漆",
+    "FLAVOR": "据说盖下这枚火漆，就会遥遥吸引对应星神跨越时空的瞥视。",
+    "DESCRIPTIONS": [
+      "拾起时，从所有「欢愉」牌里选择获得1张。提高「欢愉」牌出现的概率。"
+    ]
+  },
+  "HSRMod:WaxOfDestruction": {
+    "NAME": "毁灭火漆",
+    "FLAVOR": "据说盖下这枚火漆，就会遥遥吸引对应星神跨越时空的瞥视。",
+    "DESCRIPTIONS": [
+      "拾起时，从所有「毁灭」牌里选择获得1张。提高「毁灭」牌出现的概率。"
+    ]
+  },
+  "HSRMod:WaxOfNihility": {
+    "NAME": "虚无火漆",
+    "FLAVOR": "据说盖下这枚火漆，就会遥遥吸引对应星神跨越时空的瞥视。",
+    "DESCRIPTIONS": [
+      "拾起时，从所有「虚无」牌里选择获得1张。提高「虚无」牌出现的概率。"
+    ]
   }
+
+
 }

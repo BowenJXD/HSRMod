@@ -1,4 +1,4 @@
-package hsrmod.relics;
+package hsrmod.relics.starter;
 
 import basemod.abstracts.CustomRelic;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;

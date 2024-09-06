@@ -1,8 +1,10 @@
 package hsrmod.modcore;
 
 import com.badlogic.gdx.graphics.Color;
+import com.megacrit.cardcrawl.orbs.Lightning;
 
 public enum ElementType {
+    None,
     Ice,
     Physical,
     Fire,
@@ -28,6 +30,8 @@ public enum ElementType {
             case Physical:
             case Fire:
                 result = 4;
+                break;
+            default:
                 break;
         }
         return result;
@@ -56,6 +60,8 @@ public enum ElementType {
                 break;
             case Imaginary:
                 result = Color.YELLOW;
+                break;
+            default:
                 break;
         }
         return result;

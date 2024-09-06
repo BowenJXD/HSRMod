@@ -15,6 +15,9 @@ public enum CardDataCol {
     UpgradeDescription,
     UpgradeDamage,
     UpgradeBlock,
-    UpgradeMagicNumber
+    UpgradeMagicNumber,
+    Path,
+    Element,
+    Functionality,
 }
 

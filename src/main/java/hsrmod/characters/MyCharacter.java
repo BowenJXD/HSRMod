@@ -108,13 +108,13 @@ public class MyCharacter extends CustomPlayer {
         retVal.add(PomPomBlessing.ID);
         switch (SkinSelectScreen.getSkin().word) {
             case "Elation":
-                retVal.add(WaxOfElation.ID);
+                retVal.add(HSRMod.makePath(WaxOfElation.ID));
                 break;
             case "Destruction":
-                retVal.add(WaxOfDestruction.ID);
+                retVal.add(HSRMod.makePath(WaxOfDestruction.ID));
                 break;
             case "Nihility":
-                retVal.add(WaxOfNihility.ID);
+                retVal.add(HSRMod.makePath(WaxOfNihility.ID));
                 break;
         }
         return retVal;

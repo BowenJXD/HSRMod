@@ -7,8 +7,10 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import hsrmod.modcore.ElementType;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.utils.CardDataCol;
+import hsrmod.utils.CustomEnums;
 import hsrmod.utils.DataManager;
 import hsrmod.utils.ModHelper;
 
@@ -23,6 +25,7 @@ public abstract class BaseCard extends CustomCard {
     protected int upBlock;
     protected int upMagicNumber;
     
+    public ElementType elementType = ElementType.None;
     public int energyCost = 0;
     public boolean followedUp = false;
     
@@ -48,6 +51,10 @@ public abstract class BaseCard extends CustomCard {
         this.upBlock = DataManager.getInstance().getCardDataInt(id, CardDataCol.UpgradeBlock);
         this.upMagicNumber = DataManager.getInstance().getCardDataInt(id, CardDataCol.UpgradeMagicNumber);
 
+        CardTags pathTag = getPathTag(DataManager.getInstance().getCardData(id, CardDataCol.Path));
+        if (pathTag != null) tags.add(pathTag);
+        elementType = getElementType(DataManager.getInstance().getCardData(id, CardDataCol.Element));
+        
 /*        this.exhaust = rawDescription.contains("消耗。");
         this.selfRetain = rawDescription.contains("保留。");
         this.isInnate = rawDescription.contains("固有。");
@@ -107,4 +114,28 @@ public abstract class BaseCard extends CustomCard {
     }
     
     public abstract void onUse(AbstractPlayer p, AbstractMonster m);
+    
+    public CardTags getPathTag(String path){
+        CardTags result = null;
+        if (path.contains("欢愉")) result = CustomEnums.ELATION;
+        else if (path.contains("毁灭")) result = CustomEnums.DESTRUCTION;
+        else if (path.contains("虚无")) result = CustomEnums.NIHILITY;
+        else if (path.contains("繁育")) result = CustomEnums.PROPAGATION;
+        else if (path.contains("智识")) result = CustomEnums.ERUDITION;
+        else if (path.contains("丰饶")) result = CustomEnums.ABUNDANCE;
+        return result;
+    }
+    
+    public ElementType getElementType(String element){
+        ElementType result = ElementType.None;
+        if (element.isEmpty()) return result;
+        else if (element.contains("冰")) result = ElementType.Ice;
+        else if (element.contains("物理")) result = ElementType.Physical;
+        else if (element.contains("火")) result = ElementType.Fire;
+        else if (element.contains("雷")) result = ElementType.Lightning;
+        else if (element.contains("风")) result = ElementType.Wind;
+        else if (element.contains("量子")) result = ElementType.Quantum;
+        else if (element.contains("虚数")) result = ElementType.Imaginary;
+        return result;
+    }
 }

@@ -84,7 +84,7 @@ public class PomPomBlessing extends CustomRelic {
         
         if (maxRetainNum == 0) return;
         
-        Predicate<AbstractCard> cardFilter = c -> !c.selfRetain && !c.retain;
+        Predicate<AbstractCard> cardFilter = c -> !c.selfRetain && !c.retain && !c.isEthereal;
         Consumer<List<AbstractCard>> callback = cards -> {
             for (AbstractCard card : cards) {
                 card.retain = true;

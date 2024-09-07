@@ -119,6 +119,7 @@ public class DataManager {
             replacements.put("〗", " ");
             
             replacements.put("乘胜 hsrmod:追击 ", "乘胜追击");
+            replacements.put("  ", " ");
 
             // 读取文件并替换文本
             replaceTextInFile(CARD_CSV, replacements);

@@ -20,7 +20,7 @@ import java.util.Objects;
 
 import static hsrmod.characters.MyCharacter.PlayerColorEnum.HSR_PINK;
 
-public abstract class BaseCard extends CustomCard implements OnStartBattleSubscriber {
+public abstract class BaseCard extends CustomCard {
     protected int upCost;
     protected String upDescription;
     protected int upDamage;
@@ -30,6 +30,7 @@ public abstract class BaseCard extends CustomCard implements OnStartBattleSubscr
     public ElementType elementType = ElementType.None;
     public int energyCost = 0;
     public boolean followedUp = false;
+    public boolean inBattle = false;
     public boolean inHand = false;
     
     public BaseCard(String id) {
@@ -97,6 +98,11 @@ public abstract class BaseCard extends CustomCard implements OnStartBattleSubscr
     @Override
     public void update() {
         super.update();
+        if (!AbstractDungeon.isPlayerInDungeon()) {
+            inHand = false;
+            inBattle = false;
+            return;
+        }
         if (!inHand && AbstractDungeon.player.hand.contains(this)) {
             inHand = true;
             onEnterHand();
@@ -133,12 +139,6 @@ public abstract class BaseCard extends CustomCard implements OnStartBattleSubscr
     }
     
     public abstract void onUse(AbstractPlayer p, AbstractMonster m);
-
-    @Override
-    public void receiveOnBattleStart(AbstractRoom abstractRoom) {
-        followedUp = false;
-        inHand = false;
-    }
 
     public static CardTags getPathTag(String path){
         CardTags result = null;

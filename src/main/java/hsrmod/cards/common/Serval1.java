@@ -1,15 +1,18 @@
 package hsrmod.cards.common;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.actions.AOEAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
+import hsrmod.powers.breaks.ShockPower;
 import hsrmod.powers.misc.DoTPower;
 
 public class Serval1 extends BaseCard {
@@ -17,8 +20,6 @@ public class Serval1 extends BaseCard {
 
     public Serval1() {
         super(ID);
-        energyCost = 100;
-        selfRetain = true;
     }
 
     @Override
@@ -32,11 +33,6 @@ public class Serval1 extends BaseCard {
     }
     
     void onElementalDamageDealt(AbstractCreature m) {
-        for (AbstractPower power : m.powers) {
-            if (power instanceof DoTPower) {
-                DoTPower dotPower = (DoTPower) power;
-                dotPower.stackPower(1);
-            }
-        }
+        addToBot(new ApplyPowerAction(m, AbstractDungeon.player, new ShockPower(m, AbstractDungeon.player, 1), 1));
     }
 }

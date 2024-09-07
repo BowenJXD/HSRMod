@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 import java.util.function.Predicate;
@@ -22,7 +23,7 @@ public class ModHelper {
         });
     }
 
-    public static void addToTopAbstract(Lambda  func) {
+    public static void addToTopAbstract(Lambda func) {
         AbstractDungeon.actionManager.addToTop(new AbstractGameAction() {
             @Override
             public void update() {
@@ -33,6 +34,26 @@ public class ModHelper {
     }
 
     public interface Lambda extends Runnable {}
+    
+    public static List<AbstractGameAction> mostBotList = new ArrayList<>();
+    
+    public static void addToMostBot(Lambda func){
+        AbstractGameAction action = new AbstractGameAction() {
+            @Override
+            public void update() {
+                isDone = !isDone;
+                if (!isDone) return;
+                if (new HashSet<>(mostBotList).containsAll(AbstractDungeon.actionManager.actions)) {
+                    func.run();
+                }
+                else {
+                    AbstractDungeon.actionManager.addToBottom(this);
+                }
+            }
+        };
+        mostBotList.add(action);
+        AbstractDungeon.actionManager.addToBottom(action);
+    }
 
     public static <T extends Enum<T>> T getRandomEnumValue(Class<T> enumClass) {
         T[] values = enumClass.getEnumConstants();

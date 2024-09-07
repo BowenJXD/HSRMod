@@ -50,7 +50,7 @@ public abstract class DoTPower extends AbstractPower {
                 dmg = p.atDamageReceive(dmg, DamageInfo.DamageType.NORMAL);
             }            
             
-            this.addToBot(new ElementalDamageAction(this.owner, new DamageInfo(this.source, (int) dmg), this.getElementType(), 1));
+            this.addToTop(new ElementalDamageAction(this.owner, new DamageInfo(this.source, (int) dmg), this.getElementType(), 1));
             if (removeOnTrigger) remove();
         }
     }
@@ -60,9 +60,9 @@ public abstract class DoTPower extends AbstractPower {
     
     public void remove() {
         if (this.amount <= 1) {
-            this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+            this.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this));
         } else {
-            this.addToBot(new ReducePowerAction(this.owner, this.owner, this, 1));
+            this.addToTop(new ReducePowerAction(this.owner, this.owner, this, 1));
         }
     }
 }

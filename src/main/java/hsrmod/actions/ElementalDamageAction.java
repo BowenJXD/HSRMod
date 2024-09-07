@@ -12,14 +12,17 @@ import hsrmod.modcore.ElementType;
 import hsrmod.utils.ModHelper;
 
 import java.util.function.Consumer;
+import java.util.function.Function;
 
 public class ElementalDamageAction extends AbstractGameAction{
     private DamageInfo info;
     private ElementType elementType;
     public int toughnessReduction;
     private Consumer<AbstractCreature> afterEffect;
+    private Function<AbstractCreature, Integer> modifier;
 
-    public ElementalDamageAction(AbstractCreature target, DamageInfo info, ElementType elementType, int toughnessReduction, AbstractGameAction.AttackEffect effect, Consumer<AbstractCreature> afterEffect) {
+    public ElementalDamageAction(AbstractCreature target, DamageInfo info, ElementType elementType, int toughnessReduction, 
+                                 AbstractGameAction.AttackEffect effect, Consumer<AbstractCreature> afterEffect, Function<AbstractCreature, Integer> modifier) {
         this.elementType = elementType;
         this.toughnessReduction = toughnessReduction;
         this.info = info;
@@ -28,6 +31,12 @@ public class ElementalDamageAction extends AbstractGameAction{
         this.attackEffect = effect;
         this.duration = 0.1F;
         this.afterEffect = afterEffect;
+        this.modifier = modifier;
+    }
+    
+    public ElementalDamageAction(AbstractCreature target, DamageInfo info, ElementType elementType, int toughnessReduction, 
+                                 AbstractGameAction.AttackEffect effect, Consumer<AbstractCreature> afterEffect) {
+        this(target, info, elementType, toughnessReduction, effect, afterEffect, null);
     }
 
     public ElementalDamageAction(AbstractCreature target, DamageInfo info, ElementType elementType, int toughnessReduction, AbstractGameAction.AttackEffect effect) {
@@ -41,7 +50,7 @@ public class ElementalDamageAction extends AbstractGameAction{
     public void update() {
         if (this.duration == 0.1F && this.target != null) {
             AbstractDungeon.effectList.add(new FlashAtkImgEffect(this.target.hb.cX, this.target.hb.cY, AttackEffect.NONE));
-            
+
             ModHelper.addToTopAbstract(() -> {
                         if (this.afterEffect != null) {
                             this.afterEffect.accept(this.target);
@@ -49,6 +58,9 @@ public class ElementalDamageAction extends AbstractGameAction{
                     }
             );
 
+            if (this.modifier != null) {
+                this.info.output += this.modifier.apply(this.target);
+            }
             AbstractGameAction action = new DamageAction(this.target, this.info);
             ColoredDamagePatch.DamageActionColorField.damageColor.set(action, elementType.getColor());
             ColoredDamagePatch.DamageActionColorField.fadeSpeed.set(action, ColoredDamagePatch.FadeSpeed.SLOW);
@@ -64,6 +76,7 @@ public class ElementalDamageAction extends AbstractGameAction{
     }
     
     public ElementalDamageAction makeCopy() {
-        return new ElementalDamageAction(this.target, this.info, this.elementType, this.toughnessReduction, this.attackEffect, this.afterEffect);
+        return new ElementalDamageAction(this.target, new DamageInfo(info.owner, info.base, info.type), this.elementType, 
+                this.toughnessReduction, this.attackEffect, this.afterEffect, this.modifier);
     }
 }

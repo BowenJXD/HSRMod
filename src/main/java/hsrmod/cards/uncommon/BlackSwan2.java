@@ -19,7 +19,14 @@ public class BlackSwan2 extends BaseCard {
     
     public BlackSwan2() {
         super(ID);
+        selfRetain = true;
         energyCost = 120;
+    }
+
+    @Override
+    public void update() {
+        super.update();
+        isInnate = true;
     }
 
     @Override

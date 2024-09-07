@@ -38,7 +38,7 @@ public class Blade1 extends BaseCard {
             addToBot(new LoseHPAction(p, p, 3));
         else
             addToBot(new HealAction(p, p, 3));
-        addToBot(new AOEAction((q) -> new ElementalDamageAction(q, new DamageInfo(p, damage), ElementType.Wind, 1, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)));
+        addToBot(new AOEAction((q) -> new ElementalDamageAction(q, new DamageInfo(p, damage), ElementType.Wind, 2, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)));
     }
 
     @Override

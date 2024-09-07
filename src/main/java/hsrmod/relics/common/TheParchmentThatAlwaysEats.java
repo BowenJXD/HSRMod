@@ -12,7 +12,6 @@ public class TheParchmentThatAlwaysEats extends BaseRelic {
     
     public TheParchmentThatAlwaysEats() {
         super(ID);
-        magicNumber = 10;
     }
 
     @Override

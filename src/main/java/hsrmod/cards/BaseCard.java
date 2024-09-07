@@ -1,12 +1,14 @@
 package hsrmod.cards;
 
 import basemod.abstracts.CustomCard;
+import basemod.interfaces.OnStartBattleSubscriber;
 import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.CommonKeywordIconsField;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import hsrmod.modcore.ElementType;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.utils.CardDataCol;
@@ -18,7 +20,7 @@ import java.util.Objects;
 
 import static hsrmod.characters.MyCharacter.PlayerColorEnum.HSR_PINK;
 
-public abstract class BaseCard extends CustomCard {
+public abstract class BaseCard extends CustomCard implements OnStartBattleSubscriber {
     protected int upCost;
     protected String upDescription;
     protected int upDamage;
@@ -28,6 +30,7 @@ public abstract class BaseCard extends CustomCard {
     public ElementType elementType = ElementType.None;
     public int energyCost = 0;
     public boolean followedUp = false;
+    public boolean inHand = false;
     
     public BaseCard(String id) {
         super("HSRMod:" + id,
@@ -92,6 +95,22 @@ public abstract class BaseCard extends CustomCard {
     }
 
     @Override
+    public void update() {
+        super.update();
+        if (!inHand && AbstractDungeon.player.hand.contains(this)) {
+            inHand = true;
+            onEnterHand();
+        }
+        else if (inHand && !AbstractDungeon.player.hand.contains(this)) {
+            inHand = false;
+            onLeaveHand();
+        }
+    }
+    
+    public void onEnterHand() { }
+    public void onLeaveHand() { }
+
+    @Override
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
         return super.canUse(p, m) && checkEnergy();
     }
@@ -114,8 +133,14 @@ public abstract class BaseCard extends CustomCard {
     }
     
     public abstract void onUse(AbstractPlayer p, AbstractMonster m);
-    
-    public CardTags getPathTag(String path){
+
+    @Override
+    public void receiveOnBattleStart(AbstractRoom abstractRoom) {
+        followedUp = false;
+        inHand = false;
+    }
+
+    public static CardTags getPathTag(String path){
         CardTags result = null;
         if (path.contains("欢愉")) result = CustomEnums.ELATION;
         else if (path.contains("毁灭")) result = CustomEnums.DESTRUCTION;
@@ -126,7 +151,7 @@ public abstract class BaseCard extends CustomCard {
         return result;
     }
     
-    public ElementType getElementType(String element){
+    public static ElementType getElementType(String element){
         ElementType result = ElementType.None;
         if (element.isEmpty()) return result;
         else if (element.contains("冰")) result = ElementType.Ice;

@@ -31,11 +31,10 @@ public class Luocha1 extends BaseCard {
         addToBot(new GainEnergyAction(1));
         addToBot(new HealAction(p, p, p.maxHealth / 2 < p.currentHealth ? magicNumber : magicNumber * 2));
         addToBot(new CleanAction(p, 1, true));
-        if (upgraded)
-            addToBot(new SelectCardsInHandAction(10, "选择要消耗的牌", true, true, card -> true, (cards) -> {
-                for (AbstractCard card : cards) {
-                    addToBot(new ExhaustSpecificCardAction(card, p.hand));
-                }
-            }));
+        addToBot(new SelectCardsInHandAction(upgraded ? 10 : 1, "选择要消耗的牌", upgraded, upgraded, card -> true, (cards) -> {
+            for (AbstractCard card : cards) {
+                addToBot(new ExhaustSpecificCardAction(card, p.hand));
+            }
+        }));
     }
 }

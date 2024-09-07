@@ -1,8 +1,6 @@
 package hsrmod.powers.breaks;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
@@ -20,9 +18,9 @@ public class WindShearPower extends DoTPower {
 
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    private int damage = 3;
+    private int damage = 2;
     
-    private int removeLimit = 5;
+    private int damagCountLimit = 5;
 
     public WindShearPower(AbstractCreature owner, AbstractCreature source, int Amount) {
         super(owner, source, Amount);
@@ -39,21 +37,12 @@ public class WindShearPower extends DoTPower {
 
     @Override
     public void updateDescription() {
-        this.description = String.format(DESCRIPTIONS[0], removeLimit, damage, getDamage());
+        this.description = String.format(DESCRIPTIONS[0], getDamage(), amount, damagCountLimit);
     }
 
     @Override
     public int getDamage() {
-        return damage * Math.min(amount, removeLimit);
-    }
-
-    @Override
-    public void remove() {
-        if (this.amount <= removeLimit) {
-            this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
-        } else {
-            this.addToBot(new ReducePowerAction(this.owner, this.owner, this, removeLimit));
-        }
+        return damage * Math.min(amount, damagCountLimit);
     }
     
     @Override

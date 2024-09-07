@@ -19,7 +19,9 @@ public class BleedingPower extends DoTPower {
 
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     
-    private int damagePercentage = 1;
+    private int damagePercentage = 5;
+    
+    private int damageLimit = 10;
     
     public BleedingPower(AbstractCreature owner, AbstractCreature source, int Amount) {
         super(owner, source, Amount);
@@ -28,8 +30,6 @@ public class BleedingPower extends DoTPower {
 
         String path128 = String.format("HSRModResources/img/powers/%s128.png", this.getClass().getSimpleName());
         String path48 = String.format("HSRModResources/img/powers/%s48.png", this.getClass().getSimpleName());
-        Texture tex128 = ImageMaster.loadImage(path128);
-        Texture tex48 = ImageMaster.loadImage(path48);
         this.region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage(path128), 0, 0, 128, 128);
         this.region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage(path48), 0, 0, 48, 48);
         this.updateDescription();
@@ -37,12 +37,12 @@ public class BleedingPower extends DoTPower {
 
     @Override
     public void updateDescription() {
-        this.description = String.format(DESCRIPTIONS[0], damagePercentage, getDamage());
+        this.description = String.format(DESCRIPTIONS[0], getDamage(), damagePercentage, damageLimit);
     }
 
     @Override
     public int getDamage() {
-        return Math.round(owner.maxHealth * damagePercentage / 100f);
+        return Math.min(Math.round(owner.maxHealth * damagePercentage / 100f), damageLimit);
     }
     
     @Override

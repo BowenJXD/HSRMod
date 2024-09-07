@@ -12,6 +12,7 @@ import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
+import hsrmod.utils.ModHelper;
 
 import static hsrmod.utils.CustomEnums.FOLLOW_UP;
 
@@ -41,7 +42,7 @@ public class Blade1 extends BaseCard {
     }
 
     @Override
-    public void triggerWhenDrawn() {
+    public void onEnterHand() {
         healthCache = AbstractDungeon.player.currentHealth;
     }
 
@@ -56,12 +57,16 @@ public class Blade1 extends BaseCard {
             healthCache = AbstractDungeon.player.currentHealth;
             return;
         }
-        if (healthCache != AbstractDungeon.player.currentHealth 
-                && !followedUp
-                && AbstractDungeon.player.hand.contains(this)
-                && c != this) {
-            followedUp = true;
-            addToBot(new FollowUpAction(this));
-        }
+        ModHelper.addToBotAbstract(() -> {
+            ModHelper.addToBotAbstract(() -> {
+                if (healthCache != AbstractDungeon.player.currentHealth
+                        && !followedUp
+                        && AbstractDungeon.player.hand.contains(this)
+                        && c != this) {
+                    followedUp = true;
+                    addToBot(new FollowUpAction(this));
+                }
+            });
+        });
     }
 }

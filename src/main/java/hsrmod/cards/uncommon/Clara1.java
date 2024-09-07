@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
-import hsrmod.utils.SubscribeManager;
+import hsrmod.subscribers.SubscribeManager;
 
 import static hsrmod.utils.CustomEnums.FOLLOW_UP;
 

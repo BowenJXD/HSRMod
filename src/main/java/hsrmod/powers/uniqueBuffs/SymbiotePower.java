@@ -10,8 +10,8 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.misc.BrokenPower;
-import hsrmod.utils.PreBreakDamageSubscriber;
-import hsrmod.utils.SubscribeManager;
+import hsrmod.subscribers.PreBreakDamageSubscriber;
+import hsrmod.subscribers.SubscribeManager;
 
 public class SymbiotePower extends AbstractPower implements PreBreakDamageSubscriber {
     public static final String POWER_ID = HSRMod.makePath(SymbiotePower.class.getSimpleName());

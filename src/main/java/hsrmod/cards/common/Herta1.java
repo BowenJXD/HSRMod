@@ -40,7 +40,7 @@ public class Herta1 extends BaseCard {
     }
 
     @Override
-    public void triggerWhenDrawn() {
+    public void onEnterHand() {
         updateEnemyHealthIsHalf();
     }
 

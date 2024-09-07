@@ -20,7 +20,7 @@ import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.HSRMod;
-import hsrmod.utils.SubscribeManager;
+import hsrmod.subscribers.SubscribeManager;
 
 import static hsrmod.utils.CustomEnums.FOLLOW_UP;
 

@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.IntangiblePlayerPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import hsrmod.cards.BaseCard;
-import hsrmod.utils.SubscribeManager;
+import hsrmod.subscribers.SubscribeManager;
 
 public class TerminalNirvana extends BaseCard implements PostBattleSubscriber {
     public static final String ID = TerminalNirvana.class.getSimpleName();

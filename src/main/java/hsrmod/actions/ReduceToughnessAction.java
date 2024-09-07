@@ -13,6 +13,7 @@ import hsrmod.powers.misc.BreakEfficiencyPower;
 import hsrmod.powers.misc.BrokenPower;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.powers.uniqueBuffs.Trailblazer5Power;
+import hsrmod.subscribers.SubscribeManager;
 
 public class ReduceToughnessAction extends AbstractGameAction {
     private static final float DURATION = 0.1F;
@@ -38,6 +39,8 @@ public class ReduceToughnessAction extends AbstractGameAction {
                         * (float)AbstractDungeon.player.getPower(BreakEfficiencyPower.POWER_ID).amount 
                         * BreakEfficiencyPower.MULTIPLIER);
 
+            toughnessReduction = (int) SubscribeManager.getInstance().triggerPreToughnessReduce(toughnessReduction, this.target, this.elementType);
+            
             if (toughnessPower != null 
                     && toughnessPower.amount > 0 
                     && toughnessPower.amount <= toughnessReduction) {

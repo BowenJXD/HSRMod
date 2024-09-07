@@ -11,7 +11,6 @@ public abstract class WaxRelic extends BaseRelic {
     public static int defaultWeight = 1;
     protected int weight;
     protected AbstractCard.CardTags tag;
-    protected boolean equipped = false;
     
     public WaxRelic(String id, AbstractCard.CardTags tag, int weight){
         super(id);
@@ -25,21 +24,21 @@ public abstract class WaxRelic extends BaseRelic {
 
     @Override
     public void onEquip() {
+        super.onEquip();
         CardRewardPoolEditor.getInstance().RegisterWeight(weight, this::hasTag);
-        equipped = true;
     }
 
     @Override
     public void update() {
         super.update();
-        if (!equipped) return;
+        if (!available) return;
         CardRewardPoolEditor.getInstance().update(AbstractDungeon.getCurrRoom());
     }
 
     @Override
     public void onUnequip() {
+        super.onUnequip();
         CardRewardPoolEditor.getInstance().UnregisterWeight(weight, this::hasTag);
-        equipped = false;
     }
     
     boolean hasTag(AbstractCard card){

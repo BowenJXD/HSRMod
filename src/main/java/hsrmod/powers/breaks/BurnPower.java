@@ -18,7 +18,7 @@ public class BurnPower extends DoTPower {
 
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    private int damage = 5;
+    private int damage = 6;
 
     public BurnPower(AbstractCreature owner, AbstractCreature source, int Amount) {
         super(owner, source, Amount);

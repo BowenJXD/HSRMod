@@ -11,8 +11,12 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.modcore.ElementType;
 
+import java.util.Iterator;
+
 public abstract class DoTPower extends AbstractPower {
     private AbstractCreature source;
+    
+    public boolean removeOnTrigger = true;
 
     public DoTPower(AbstractCreature owner, AbstractCreature source, int amount) {
         this.owner = owner;
@@ -37,8 +41,17 @@ public abstract class DoTPower extends AbstractPower {
     public void trigger(){
         if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT && !AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
             this.flash();
-            this.addToBot(new ElementalDamageAction(this.owner, new DamageInfo(this.source, this.getDamage()), this.getElementType(), 1));
-            remove();
+            
+            float dmg = this.getDamage();
+            Iterator var1 = owner.powers.iterator();
+            
+            while(var1.hasNext()) {
+                AbstractPower p = (AbstractPower)var1.next();
+                dmg = p.atDamageReceive(dmg, DamageInfo.DamageType.NORMAL);
+            }            
+            
+            this.addToBot(new ElementalDamageAction(this.owner, new DamageInfo(this.source, (int) dmg), this.getElementType(), 1));
+            if (removeOnTrigger) remove();
         }
     }
     

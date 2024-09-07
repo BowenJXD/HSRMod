@@ -15,6 +15,7 @@ public class Hanya1 extends BaseCard {
     
     public Hanya1() {
         super(ID);
+        exhaust = true;
     }
 
     @Override

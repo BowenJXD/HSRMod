@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 import hsrmod.powers.misc.BreakEffectPower;
-import hsrmod.utils.SubscribeManager;
+import hsrmod.subscribers.SubscribeManager;
 
 public class BreakDamageAction extends AbstractGameAction {
     private DamageInfo info;

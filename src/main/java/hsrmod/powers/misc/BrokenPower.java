@@ -27,7 +27,7 @@ public class BrokenPower extends AbstractPower {
         this.name = NAME;
         this.ID = POWER_ID;
         this.owner = owner;
-        this.type = PowerType.DEBUFF;
+        this.type = PowerType.BUFF;
 
         this.amount = Amount;
 
@@ -39,6 +39,11 @@ public class BrokenPower extends AbstractPower {
         this.updateDescription();
         
         priority = 6;
+    }
+
+    @Override
+    public void onInitialApplication() {
+        this.type = PowerType.DEBUFF;
     }
 
     @Override

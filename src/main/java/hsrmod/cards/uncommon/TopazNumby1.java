@@ -17,7 +17,6 @@ public class TopazNumby1 extends BaseCard {
     @Override
     public void upgrade() {
         cardsToPreview.upgrade();
-        isInnate = true;
         super.upgrade();
     }
 

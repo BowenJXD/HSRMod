@@ -83,6 +83,8 @@ public class ToughnessPower extends AbstractPower {
         else if (this.amount > stackLimit) {
             this.amount = stackLimit;
         }
+        
+        type = this.amount > 0 ? PowerType.BUFF : PowerType.DEBUFF;
     }
     
     public static int getStackLimit(AbstractCreature c){

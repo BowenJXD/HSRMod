@@ -4,15 +4,19 @@ import basemod.BaseMod;
 import basemod.interfaces.PostDrawSubscriber;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.actions.AOEAction;
+import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
-import hsrmod.utils.SubscribeManager;
+import hsrmod.subscribers.SubscribeManager;
 
 import static hsrmod.utils.CustomEnums.FOLLOW_UP;
 
@@ -35,16 +39,13 @@ public class Jade1 extends BaseCard implements PostDrawSubscriber {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {        
+        addToBot(new LoseHPAction(p, p, 1));
         addToBot(new DrawCardAction(p, magicNumber));
-        
+
         addToBot(
-                new ElementalDamageAllAction(
-                        damage,
-                        ElementType.Quantum,
-                        2,
-                        // 伤害类型
-                        AbstractGameAction.AttackEffect.SLASH_HORIZONTAL
-                )
+                new AOEAction((q) -> new ElementalDamageAction(q, new DamageInfo(p, damage),
+                        ElementType.Quantum, 2,
+                        AbstractGameAction.AttackEffect.SLASH_HORIZONTAL))
         );
     }
 

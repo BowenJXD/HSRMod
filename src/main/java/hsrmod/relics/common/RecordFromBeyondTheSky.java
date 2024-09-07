@@ -12,7 +12,6 @@ public class RecordFromBeyondTheSky extends BaseRelic {
     
     public RecordFromBeyondTheSky() {
         super(ID);
-        magicNumber = 1;
     }
 
     @Override

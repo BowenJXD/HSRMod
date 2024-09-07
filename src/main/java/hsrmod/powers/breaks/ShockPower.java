@@ -18,7 +18,7 @@ public class ShockPower extends DoTPower {
 
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    private int damage = 6;
+    private int damage = 7;
 
     public ShockPower(AbstractCreature owner, AbstractCreature source, int Amount) {
         super(owner, source, Amount);

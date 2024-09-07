@@ -125,6 +125,8 @@ public class DataManager {
         }
 
         private static void replaceTextInFile(String filePath, Map<String, String> replacements) {
+            filePath = "src/main/resources/" + filePath;
+            
             // 读取文件内容，使用 UTF-8 编码
             StringBuilder content = new StringBuilder();
             try (BufferedReader reader = Files.newBufferedReader(Paths.get(filePath), Charset.forName(charset))) {

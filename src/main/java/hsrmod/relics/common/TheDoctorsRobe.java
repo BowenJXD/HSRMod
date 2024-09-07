@@ -12,7 +12,6 @@ public class TheDoctorsRobe extends BaseRelic {
     
     public TheDoctorsRobe() {
         super(ID);
-        magicNumber = 120;
     }
 
     @Override

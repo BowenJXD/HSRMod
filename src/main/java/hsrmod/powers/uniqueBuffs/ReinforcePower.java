@@ -16,7 +16,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.cards.common.March7th2;
 import hsrmod.modcore.HSRMod;
-import hsrmod.utils.SubscribeManager;
+import hsrmod.subscribers.SubscribeManager;
 
 public class ReinforcePower extends AbstractPower implements OnPlayerDamagedSubscriber {
     public static final String POWER_ID = HSRMod.makePath(ReinforcePower.class.getSimpleName());

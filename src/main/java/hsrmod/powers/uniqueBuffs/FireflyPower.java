@@ -20,7 +20,7 @@ import hsrmod.powers.misc.BreakEfficiencyPower;
 import hsrmod.powers.misc.BrokenPower;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.utils.ModHelper;
-import hsrmod.utils.SubscribeManager;
+import hsrmod.subscribers.SubscribeManager;
 
 import java.util.List;
 

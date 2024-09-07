@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.modcore.HSRMod;
-import hsrmod.utils.SubscribeManager;
+import hsrmod.subscribers.SubscribeManager;
 
 public class DivinityPower extends AbstractPower implements OnPlayerLoseBlockSubscriber {
     public static final String POWER_ID = HSRMod.makePath(DivinityPower.class.getSimpleName());

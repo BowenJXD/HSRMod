@@ -42,14 +42,14 @@ public class BrokenPower extends AbstractPower {
     }
 
     @Override
+    public void updateDescription() {
+        this.description = String.format(DESCRIPTIONS[0], Math.round(damageIncrementPercentage * 100),
+                Math.round(damageDecrementPercentage * 100));
+    }
+    
+    @Override
     public void onInitialApplication() {
         this.type = PowerType.DEBUFF;
-    }
-
-    @Override
-    public void updateDescription() {
-        this.description = String.format(DESCRIPTIONS[0], Math.round(damageIncrementPercentage * 100), 
-                Math.round(damageDecrementPercentage * 100));
     }
 
     @Override

@@ -25,16 +25,10 @@ public class Jiaoqiu1 extends BaseCard {
     }
 
     @Override
-    public void upgrade() {
-        super.upgrade();
-        cardsToPreview.upgrade();
-    }
-
-    @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         for (int i = 0; i < magicNumber; i++) {
             AbstractCard card = new Jiaoqiu2();
-            if (upgraded) card.upgrade();
+            // if (upgraded) card.upgrade();
             addToBot(new MakeTempCardInHandAction(card));
         }
         addToBot(new AOEAction((q) -> new ElementalDamageAction(q, new DamageInfo(p, damage, damageTypeForTurn), 

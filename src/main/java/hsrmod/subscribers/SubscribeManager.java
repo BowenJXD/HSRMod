@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
+import hsrmod.powers.misc.DoTPower;
 
 import java.util.*;
 
@@ -18,10 +19,12 @@ public class SubscribeManager {
     
     List<PreBreakDamageSubscriber> preBreakDamageSubscribers;
     List<PreToughnessReduceSubscriber> preToughnessReduceSubscribers;
+    List<PreDoTDamageSubscriber> preDoTDamageSubscribers;
 
     SubscribeManager() {
         preBreakDamageSubscribers = new ArrayList<>();
         preToughnessReduceSubscribers = new ArrayList<>();
+        preDoTDamageSubscribers = new ArrayList<>();
     }
     
     public static SubscribeManager getInstance() {
@@ -40,6 +43,10 @@ public class SubscribeManager {
                 && !preToughnessReduceSubscribers.contains(sub)) {
             preToughnessReduceSubscribers.add((PreToughnessReduceSubscriber) sub);
         }
+        else if (sub instanceof PreDoTDamageSubscriber
+                && !preDoTDamageSubscribers.contains(sub)) {
+            preDoTDamageSubscribers.add((PreDoTDamageSubscriber) sub);
+        }
     }
     
     public void unsubscribe(ISubscriber subscriber) {
@@ -48,6 +55,9 @@ public class SubscribeManager {
         }
         else if (subscriber instanceof PreToughnessReduceSubscriber) {
             preToughnessReduceSubscribers.remove(subscriber);
+        }
+        else if (subscriber instanceof PreDoTDamageSubscriber) {
+            preDoTDamageSubscribers.remove(subscriber);
         }
     }
     
@@ -69,6 +79,17 @@ public class SubscribeManager {
         while (var3.hasNext()) {
             PreToughnessReduceSubscriber sub = var3.next();
             sub.preToughnessReduce(amount, target, elementType);
+        }
+        return result;
+    }
+    
+    public float triggerPreDoTDamage(float amount, AbstractCreature target, DoTPower power) {
+        float result = amount;
+        Iterator<PreDoTDamageSubscriber> var3 = preDoTDamageSubscribers.iterator();
+        
+        while (var3.hasNext()) {
+            PreDoTDamageSubscriber sub = var3.next();
+            result = sub.preDoTDamage(amount, target, power);
         }
         return result;
     }

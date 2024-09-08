@@ -16,6 +16,12 @@ public class NightBeyondPyre extends BaseCard {
     }
 
     @Override
+    public void upgrade() {
+        super.upgrade();
+        isInnate = true;
+    }
+
+    @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         if (!p.hasPower(BreakEfficiencyPower.POWER_ID))
             addToBot(new ApplyPowerAction(p, p, new BreakEfficiencyPower(p, magicNumber), magicNumber));

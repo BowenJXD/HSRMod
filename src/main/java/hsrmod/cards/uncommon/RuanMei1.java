@@ -20,7 +20,6 @@ public class RuanMei1 extends BaseCard {
     public void upgrade() {
         super.upgrade();
         target = CardTarget.ENEMY;
-        isInnate = true;
     }
 
     @Override

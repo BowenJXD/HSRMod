@@ -20,6 +20,7 @@ public class ElementalDamageAction extends AbstractGameAction{
     public int toughnessReduction;
     private Consumer<AbstractCreature> afterEffect;
     private Function<AbstractCreature, Integer> modifier;
+    public boolean doApplyPower = false;
 
     public ElementalDamageAction(AbstractCreature target, DamageInfo info, ElementType elementType, int toughnessReduction, 
                                  AbstractGameAction.AttackEffect effect, Consumer<AbstractCreature> afterEffect, Function<AbstractCreature, Integer> modifier) {
@@ -58,6 +59,9 @@ public class ElementalDamageAction extends AbstractGameAction{
                     }
             );
 
+            if (this.doApplyPower) {
+                this.applyPowers();
+            }
             if (this.modifier != null) {
                 this.info.output += this.modifier.apply(this.target);
             }
@@ -75,8 +79,15 @@ public class ElementalDamageAction extends AbstractGameAction{
         this.tickDuration();
     }
     
+    public ElementalDamageAction applyPowers() {
+        this.info.applyPowers(this.info.owner, this.target);
+        return this;
+    }
+    
     public ElementalDamageAction makeCopy() {
-        return new ElementalDamageAction(this.target, new DamageInfo(info.owner, info.base, info.type), this.elementType, 
+        ElementalDamageAction result = new ElementalDamageAction(this.target, new DamageInfo(info.owner, info.base, info.type), this.elementType, 
                 this.toughnessReduction, this.attackEffect, this.afterEffect, this.modifier);
+        result.doApplyPower = this.doApplyPower;
+        return result;
     }
 }

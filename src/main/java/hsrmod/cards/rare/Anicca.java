@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
 import hsrmod.cards.BaseCard;
 
+/*
 public class Anicca extends BaseCard {
     public static final String ID = Anicca.class.getSimpleName();
 
@@ -21,3 +22,4 @@ public class Anicca extends BaseCard {
         if (upgraded) addToBot(new MoveCardsAction(p.exhaustPile, p.hand, card -> card.type == CardType.CURSE));
     }
 }
+*/

@@ -7,9 +7,15 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.PoisonPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.modcore.ElementType;
+import hsrmod.powers.breaks.BleedingPower;
+import hsrmod.powers.breaks.BurnPower;
+import hsrmod.powers.breaks.ShockPower;
+import hsrmod.powers.breaks.WindShearPower;
+import hsrmod.subscribers.SubscribeManager;
 
 import java.util.Iterator;
 
@@ -17,6 +23,8 @@ public abstract class DoTPower extends AbstractPower {
     private AbstractCreature source;
     
     public boolean removeOnTrigger = true;
+    
+    public int toughnessReduction = 1;
 
     public DoTPower(AbstractCreature owner, AbstractCreature source, int amount) {
         this.owner = owner;
@@ -39,6 +47,10 @@ public abstract class DoTPower extends AbstractPower {
     }
     
     public void trigger(){
+        trigger(removeOnTrigger);
+    }
+    
+    public void trigger(boolean removeOnTrigger){
         if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT && !AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
             this.flash();
             
@@ -46,11 +58,15 @@ public abstract class DoTPower extends AbstractPower {
             Iterator var1 = owner.powers.iterator();
             
             while(var1.hasNext()) {
-                AbstractPower p = (AbstractPower)var1.next();
+                AbstractPower p = (AbstractPower) var1.next();
                 dmg = p.atDamageReceive(dmg, DamageInfo.DamageType.NORMAL);
-            }            
+                if (p instanceof SuspicionPower) {
+                    dmg = ((SuspicionPower) p).incrementDamage(dmg);
+                }
+            }
+            dmg = SubscribeManager.getInstance().triggerPreDoTDamage(dmg, this.owner, this);
             
-            this.addToTop(new ElementalDamageAction(this.owner, new DamageInfo(this.source, (int) dmg), this.getElementType(), 1));
+            this.addToTop(new ElementalDamageAction(this.owner, new DamageInfo(this.source, (int) dmg), this.getElementType(), toughnessReduction));
             if (removeOnTrigger) remove();
         }
     }
@@ -63,6 +79,20 @@ public abstract class DoTPower extends AbstractPower {
             this.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this));
         } else {
             this.addToTop(new ReducePowerAction(this.owner, this.owner, this, 1));
+        }
+    }
+    
+    public static DoTPower getRandomDoTPower(AbstractCreature owner, AbstractCreature source, int amount){
+        switch(AbstractDungeon.cardRandomRng.random(0, 3)){
+            case 1:
+                return new BurnPower(owner, source, amount);
+            case 2:
+                return new ShockPower(owner, source, amount);
+            case 3:
+                return new WindShearPower(owner, source, amount);
+            case 0:
+            default:
+                return new BleedingPower(owner, source, amount);
         }
     }
 }

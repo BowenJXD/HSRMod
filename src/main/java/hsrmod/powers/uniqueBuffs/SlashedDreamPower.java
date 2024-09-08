@@ -18,9 +18,11 @@ import hsrmod.actions.BouncingAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.HSRMod;
+import hsrmod.powers.misc.SuspicionPower;
 import hsrmod.utils.ModHelper;
 
 import javax.swing.*;
+import java.util.Iterator;
 import java.util.List;
 
 public class SlashedDreamPower extends AbstractPower {
@@ -31,15 +33,15 @@ public class SlashedDreamPower extends AbstractPower {
     public static final String NAME = powerStrings.NAME;
 
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    
+
     boolean canTrigger = false;
-    
+
     int stackLimit = 12;
-    
+
     int triggerAmount = 9;
-    
+
     int baseDamage = 3;
-    
+
     boolean upgraded = false;
 
     public SlashedDreamPower(AbstractCreature owner, int Amount, boolean upgraded) {
@@ -67,16 +69,11 @@ public class SlashedDreamPower extends AbstractPower {
     @Override
     public void onPlayCard(AbstractCard card, AbstractMonster m) {
         canTrigger = true;
-        if (upgraded && card.isEthereal){
+        if (upgraded && card.isEthereal) {
             canTrigger = false;
             flash();
             stackPower(1);
         }
-    }
-
-    @Override
-    public void onAfterUseCard(AbstractCard card, UseCardAction action) {
-        List<AbstractGameAction> tmp = AbstractDungeon.actionManager.actions;
     }
 
     @Override
@@ -98,24 +95,23 @@ public class SlashedDreamPower extends AbstractPower {
 
     @Override
     public void atEndOfTurn(boolean isPlayer) {
+        canTrigger = false;
         if (amount >= triggerAmount) {
             flash();
             trigger();
             reducePower(triggerAmount);
         }
     }
-    
-    void trigger(){
-        AbstractCreature target = AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster)null, true, AbstractDungeon.cardRandomRng);
-        ElementalDamageAction action = new ElementalDamageAction(target, new DamageInfo(owner, baseDamage), 
-                ElementType.Lightning, 1, AbstractGameAction.AttackEffect.LIGHTNING, null, 
-                c -> c.powers.stream().filter(p -> p.type == PowerType.DEBUFF).mapToInt(p -> 1).sum());
+
+    void trigger() {
+        AbstractCreature target = AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster) null, true, AbstractDungeon.cardRandomRng);
+        ElementalDamageAction action = new ElementalDamageAction(target, new DamageInfo(owner, baseDamage),
+                ElementType.Lightning, 1, AbstractGameAction.AttackEffect.LIGHTNING, null);
+        action.doApplyPower = true;
         addToBot(new BouncingAction(target, 3, action.makeCopy()));
-        
-        addToBot(new AOEAction(q -> {
-            action.makeCopy();
-            action.target = q;
-            return action;
-        }));
+
+        addToBot(new AOEAction(q -> new ElementalDamageAction(q, new DamageInfo(owner, baseDamage),
+                ElementType.Lightning, 1, AbstractGameAction.AttackEffect.LIGHTNING, null,
+                c -> c.powers.stream().filter(p -> p.type == PowerType.DEBUFF).mapToInt(p -> 1).sum())));
     }
 }

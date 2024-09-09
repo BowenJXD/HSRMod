@@ -15,6 +15,6 @@ public class PhantomThief extends BaseCard {
     
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new PhantomThiefPower(p, 1, upgraded, magicNumber), 1));
+        addToBot(new ApplyPowerAction(p, p, new PhantomThiefPower(upgraded, magicNumber), 1));
     }
 }

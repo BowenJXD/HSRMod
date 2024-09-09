@@ -25,6 +25,6 @@ public class DivineConstructMacrosegregation extends BaseCard {
         if (!upgraded) 
             addToBot(new RemoveSpecificPowerAction(p, p, DexterityPower.POWER_ID));
         
-        addToBot(new ApplyPowerAction(p, p, new DivinityPower(p, 1, 1f, magicNumber / 100f)));
+        addToBot(new ApplyPowerAction(p, p, new DivinityPower(1f, magicNumber / 100f)));
     }
 }

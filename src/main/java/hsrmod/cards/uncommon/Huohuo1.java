@@ -12,7 +12,7 @@ public class Huohuo1 extends BaseCard {
     
     public Huohuo1() {
         super(ID);
-        selfRetain = true;
+        
         exhaust = true;
         energyCost = 140;
     }
@@ -20,6 +20,6 @@ public class Huohuo1 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainEnergyAction(1));
-        addToBot(new ApplyPowerAction(p, p, new HuohuoPower(p, 1, upgraded), 1));
+        addToBot(new ApplyPowerAction(p, p, new HuohuoPower(p, upgraded), 1));
     }
 }

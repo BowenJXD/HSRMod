@@ -23,9 +23,8 @@ public class Luka1 extends BaseCard {
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         for (int i = 0; i < magicNumber; i++) {
             addToBot(new ElementalDamageAction(m, new DamageInfo(p, this.damage,
-                    DamageInfo.DamageType.NORMAL), ElementType.Fire, 1, AbstractGameAction.AttackEffect.FIRE));
-            addToBot(new TriggerDoTAction(m, 1, BleedingPower.POWER_ID));
+                    DamageInfo.DamageType.NORMAL), elementType, 1, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+            addToBot(new ApplyPowerAction(m, p, new BleedingPower(m, p, 1), 1));
         }
-        addToBot(new ApplyPowerAction(m, p, new BleedingPower(m, p, 1), 1));
     }
 }

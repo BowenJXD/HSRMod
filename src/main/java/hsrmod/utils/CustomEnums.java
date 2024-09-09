@@ -19,7 +19,7 @@ public class CustomEnums
     @SpireEnum public static AbstractCard.CardTags ULTIMATE;
     @SpireEnum public static AbstractCard.CardTags DEBUFF;
     
-    @SpireEnum public static DamageInfo.DamageType PHYSICAL;
+    @SpireEnum public static AbstractCard.CardTags REVIVE;
     
     @SpireEnum public static RelicType HSR;
 }

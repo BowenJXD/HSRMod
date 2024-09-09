@@ -30,7 +30,7 @@ public class Seele1 extends BaseCard {
         this.misc = damage;
         increaseAmount = magicNumber;
         energyCost = 120;
-        selfRetain = true;
+        
         DamageModifierManager.addModifier(this, new SeeleDamage(this));
     }
 

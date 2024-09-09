@@ -30,6 +30,6 @@ public class Acheron1 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new SlashedDreamPower(p, magicNumber, upgraded), magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new SlashedDreamPower(magicNumber, upgraded), magicNumber));
     }
 }

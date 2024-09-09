@@ -20,6 +20,7 @@ import hsrmod.cards.base.*;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.relics.special.*;
+import hsrmod.utils.CustomEnums;
 import hsrmod.utils.ModHelper;
 
 import java.util.List;
@@ -35,11 +36,11 @@ public class PomPomBlessing extends CustomRelic {
     private static final RelicTier RELIC_TIER = RelicTier.STARTER;
     // 点击音效
     private static final LandingSound LANDING_SOUND = LandingSound.FLAT;
-    
+
     private static int BASE_ENERGY = 100;
-    
+
     private static int ENERGY_GAIN_PER_CARD = 20;
-    
+
     private int multiplier = 20;
 
     public PomPomBlessing() {
@@ -75,15 +76,15 @@ public class PomPomBlessing extends CustomRelic {
         if (AbstractDungeon.player.hand.isEmpty()) {
             return;
         }
-        
+
         AbstractPower power = AbstractDungeon.player.getPower(EnergyPower.POWER_ID);
         int maxRetainNum = 0;
-        if (power != null){
+        if (power != null) {
             maxRetainNum = power.amount / multiplier;
         }
-        
+
         if (maxRetainNum == 0) return;
-        
+
         Predicate<AbstractCard> cardFilter = c -> !c.selfRetain && !c.retain && !c.isEthereal;
         Consumer<List<AbstractCard>> callback = cards -> {
             for (AbstractCard card : cards) {
@@ -91,7 +92,7 @@ public class PomPomBlessing extends CustomRelic {
             }
             addToBot(new ReduceECByHandCardNumAction(AbstractDungeon.player, AbstractDungeon.player));
         };
-        
+
         addToBot(new SelectCardsInHandAction(maxRetainNum, String.format("保留（每张消耗%d充能）", multiplier), true, true, cardFilter, callback));
     }
 
@@ -108,20 +109,18 @@ public class PomPomBlessing extends CustomRelic {
     @Override
     public int onAttackedToChangeDamage(DamageInfo info, int damageAmount) {
         if (AbstractDungeon.player.currentHealth - damageAmount <= 0
-        && !ModHelper.findCards(card -> card.hasTag(AbstractCard.CardTags.STARTER_STRIKE)).isEmpty()) {
+                && AbstractDungeon.player.masterDeck.group.stream().anyMatch(card -> card.hasTag(CustomEnums.REVIVE))) {
             flash();
             damageAmount = AbstractDungeon.player.currentHealth - 1;
             ModHelper.addToTopAbstract(() -> {
-                addToTop(new SelectCardsAction(AbstractDungeon.player.masterDeck.group, 1, "选择牺牲一位列车组成员", 
-                        false, card -> card.hasTag(AbstractCard.CardTags.STARTER_STRIKE) 
-                        && !(card instanceof Trailblazer1)
-                        && !(card instanceof Trailblazer2), cards -> {
+                addToTop(new SelectCardsAction(AbstractDungeon.player.masterDeck.group, 1, "选择牺牲一位列车组成员",
+                        false, card -> card.hasTag(CustomEnums.REVIVE), cards -> {
                     AbstractCard card = cards.get(0);
                     ModHelper.findCards(card1 -> card1.getClass().equals(card.getClass())).forEach(findResult -> {
                         findResult.group.removeCard(findResult.card);
                     });
                     AbstractDungeon.player.masterDeck.removeCard(card);
-                    
+
                     String relicName = "";
                     if (card instanceof Trailblazer1)
                         relicName = TrailblazerRelic.ID;
@@ -133,8 +132,8 @@ public class PomPomBlessing extends CustomRelic {
                         relicName = HimekoRelic.ID;
                     else if (card instanceof Welt0)
                         relicName = WeltRelic.ID;
-                    
-                    AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float)(Settings.WIDTH / 2), (float)(Settings.HEIGHT / 2), 
+
+                    AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float) (Settings.WIDTH / 2), (float) (Settings.HEIGHT / 2),
                             RelicLibrary.getRelic(relicName).makeCopy());
                 }));
             });

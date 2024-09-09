@@ -19,14 +19,13 @@ public class Trailblazer2 extends BaseCard {
         // this.tags.add(CardTags.STRIKE);
         this.tags.add(CardTags.STARTER_STRIKE);
         energyCost = 120;
-        selfRetain = true;
     }
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         if (!checkEnergy()) return;
         addToBot(
-                new AOEAction((q) -> new ElementalDamageAction(q, new DamageInfo(p, damage), ElementType.Physical, 2, 
+                new AOEAction((q) -> new ElementalDamageAction(q, new DamageInfo(p, damage), ElementType.Physical, toughnessReduction, 
                         AbstractGameAction.AttackEffect.SLASH_HORIZONTAL))
         );
     }

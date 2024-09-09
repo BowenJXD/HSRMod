@@ -12,7 +12,6 @@ public class Gepard1 extends BaseCard {
     public Gepard1() {
         super(ID);
         energyCost = 100;
-        selfRetain = true;
     }
     
     @Override

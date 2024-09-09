@@ -27,7 +27,6 @@ public class Trailblazer6 extends BaseCard {
             addToBot(new ApplyPowerAction(p, p, new BreakEffectPower(p, magicNumber * 2), magicNumber * 2));
         else {
             addToBot(new MakeTempCardInHandAction(new Trailblazer5()));
-            addToBot(new ApplyPowerAction(p, p, new Trailblazer5Power(p, 1), 1));
         }
     }
 }

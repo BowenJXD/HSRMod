@@ -11,6 +11,8 @@ import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 import hsrmod.powers.misc.BreakEffectPower;
 import hsrmod.subscribers.SubscribeManager;
 
+import java.util.Iterator;
+
 public class BreakDamageAction extends AbstractGameAction {
     private DamageInfo info;
     private static final float DURATION = 0.1F;
@@ -40,11 +42,15 @@ public class BreakDamageAction extends AbstractGameAction {
                 breakEffect.flash();
                 this.info.output += breakEffect.amount;
             }
-            AbstractPower strengthPower = info.owner.getPower(StrengthPower.POWER_ID);
-            if (strengthPower != null && strengthPower.amount > 0) {
-                this.info.output -= strengthPower.amount;
+            
+            float tmp = this.info.output;
+            Iterator var1 = this.target.powers.iterator();
+            while (var1.hasNext()) {
+                AbstractPower p = (AbstractPower) var1.next();
+                tmp = p.atDamageReceive(this.info.output, this.info.type);
             }
-            this.info.output = (int) SubscribeManager.getInstance().triggerPreBreakDamage(this.info.output, this.target);
+            
+            this.info.output = (int) SubscribeManager.getInstance().triggerPreBreakDamage(tmp, this.target);
             //
             
             addToTop(new DamageAction(this.target, this.info));

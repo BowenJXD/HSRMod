@@ -12,36 +12,20 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.modcore.HSRMod;
+import hsrmod.powers.BuffPower;
 import hsrmod.powers.uniqueDebuffs.ThanatoplumRebloomPower;
 
-public class ToughnessPower extends AbstractPower {
+public class ToughnessPower extends BuffPower {
     public static final String POWER_ID = HSRMod.makePath(ToughnessPower.class.getSimpleName());
-
-    public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
-
-    public static final String NAME = powerStrings.NAME;
-
-    public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     
     int stackLimit = 0;
     
     public ToughnessPower(AbstractCreature owner, int Amount, int stackLimit) {
-        this.name = NAME;
-        this.ID = POWER_ID;
-        this.owner = owner;
-        this.type = PowerType.BUFF;
-
-        this.amount = Amount;
+        super(POWER_ID, owner, Amount);
         this.stackLimit = stackLimit;
-
-        String path128 = String.format("HSRModResources/img/powers/%s128.png", this.getClass().getSimpleName());
-        String path48 = String.format("HSRModResources/img/powers/%s48.png", this.getClass().getSimpleName());
-        this.region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage(path128), 0, 0, 128, 128);
-        this.region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage(path48), 0, 0, 48, 48);
-
-        this.updateDescription();
-        
         canGoNegative = true;
+        
+        this.updateDescription();
     }
     
     public ToughnessPower(AbstractCreature owner, int Amount) {

@@ -19,7 +19,7 @@ public class DrRatio1 extends BaseCard {
         super(ID);
         energyCost = 140;
         cardsToPreview = new DrRatio3();
-        selfRetain = true;
+        
     }
 
     @Override

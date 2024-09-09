@@ -27,6 +27,7 @@ public abstract class BaseCard extends CustomCard {
     protected int upBlock;
     protected int upMagicNumber;
     
+    public int toughnessReduction = 2;
     public ElementType elementType = ElementType.None;
     public int energyCost = 0;
     public boolean followedUp = false;

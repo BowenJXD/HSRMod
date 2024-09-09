@@ -17,13 +17,13 @@ public class Firefly2 extends BaseCard {
     public Firefly2() {
         super(ID);
         energyCost = 240;
-        selfRetain = true;
+        
     }
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         addToBot(new LoseHPAction(p, p, magicNumber));
-        addToBot(new ApplyPowerAction(p, p, new FireflyPower(p, 1), 1));
+        addToBot(new ApplyPowerAction(p, p, new FireflyPower(), 1));
     }
 
     @Override

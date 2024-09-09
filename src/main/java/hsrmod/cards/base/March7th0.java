@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
+import hsrmod.utils.CustomEnums;
 
 public class March7th0 extends BaseCard {
     public static final String ID = March7th0.class.getSimpleName();
@@ -15,6 +16,7 @@ public class March7th0 extends BaseCard {
         super(ID);
         this.tags.add(CardTags.STRIKE);
         this.tags.add(CardTags.STARTER_STRIKE);
+        this.tags.add(CustomEnums.REVIVE);
     }
     
     @Override
@@ -28,7 +30,7 @@ public class March7th0 extends BaseCard {
                                 damageTypeForTurn
                         ),
                         ElementType.Ice,
-                        2,
+                        magicNumber,
                         // 伤害类型
                         AbstractGameAction.AttackEffect.SLASH_DIAGONAL
                 )

@@ -15,6 +15,6 @@ public class Symbiote extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new SymbiotePower(p, 1)));
+        addToBot(new ApplyPowerAction(p, p, new SymbiotePower()));
     }
 }

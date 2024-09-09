@@ -24,7 +24,7 @@ public class DisruptivePulse extends BaseCard {
         super(ID);
         energyCost = 40;
         exhaust = true;
-        selfRetain = true;
+        
     }
 
     @Override

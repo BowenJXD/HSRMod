@@ -45,12 +45,12 @@ public class Yunli1 extends BaseCard implements OnPlayerDamagedSubscriber {
     
     void execute(){
         if (AbstractDungeon.player.getPower(EnergyPower.POWER_ID).amount < energyExhaust) return;
+        ModHelper.addToTopAbstract(this::execute);
         for (int i = 0; i < 2; i++) {
             AbstractMonster randomMonster = AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster)null, true, AbstractDungeon.cardRandomRng);
-            new ElementalDamageAction(randomMonster, new DamageInfo(AbstractDungeon.player, damage), ElementType.Physical, 1, AbstractGameAction.AttackEffect.SLASH_VERTICAL);
+            addToTop(new ElementalDamageAction(randomMonster, new DamageInfo(AbstractDungeon.player, damage), ElementType.Physical, 1, AbstractGameAction.AttackEffect.SLASH_VERTICAL));
         }
-        addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new EnergyPower(AbstractDungeon.player, -energyExhaust), -energyExhaust));
-        ModHelper.addToBotAbstract(this::execute);
+        addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new EnergyPower(AbstractDungeon.player, -energyExhaust), -energyExhaust));
     }
 
     @Override

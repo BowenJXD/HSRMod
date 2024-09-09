@@ -21,6 +21,6 @@ public class Kolchis extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new KolchisPower(p, 1, magicNumber)));
+        addToBot(new ApplyPowerAction(p, p, new KolchisPower(magicNumber)));
     }
 }

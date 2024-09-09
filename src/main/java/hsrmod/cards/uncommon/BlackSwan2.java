@@ -19,13 +19,12 @@ public class BlackSwan2 extends BaseCard {
     
     public BlackSwan2() {
         super(ID);
-        selfRetain = true;
         energyCost = 120;
     }
 
     @Override
-    public void update() {
-        super.update();
+    public void upgrade() {
+        super.upgrade();
         isInnate = true;
     }
 
@@ -34,7 +33,7 @@ public class BlackSwan2 extends BaseCard {
         addToBot(new ApplyPowerAction(m, p, new BleedingPower(m, p, bleedStackNum), bleedStackNum));
         addToBot(new ApplyPowerAction(m, p, new BurnPower(m, p, burnStackNum), burnStackNum));
         addToBot(new ApplyPowerAction(m, p, new ShockPower(m, p, shockStackNum), shockStackNum));
-        addToBot(new ApplyPowerAction(m, p, new WindShearPower(m, p, windShearStackNum), windShearStackNum));
+        addToBot(new ApplyPowerAction(m, p, new WindShearPower(m, p, magicNumber), magicNumber));
     }
     
     

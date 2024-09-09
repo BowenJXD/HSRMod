@@ -18,7 +18,7 @@ public class Lingsha1 extends BaseCard {
     public Lingsha1() {
         super(ID);
         energyCost = 110;
-        selfRetain = true;
+        
         exhaust = true;
     }
 

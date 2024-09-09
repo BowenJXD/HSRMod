@@ -33,9 +33,9 @@ public abstract class BasePower extends AbstractPower {
     public BasePower(String id, AbstractCreature owner, int Amount, PowerType type){
         this(id, owner, Amount, type,false);
     }
-    
+
     @Override
     public void updateDescription() {
-        this.description = DESCRIPTIONS[0];
+        description = DESCRIPTIONS[upgraded && DESCRIPTIONS.length > 1 ? 1 : 0];
     }
 }

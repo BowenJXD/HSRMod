@@ -22,6 +22,6 @@ public class TopazNumby1 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new TopazNumbyPower(p, 1, upgraded)));
+        addToBot(new ApplyPowerAction(p, p, new TopazNumbyPower(1, upgraded)));
     }
 }

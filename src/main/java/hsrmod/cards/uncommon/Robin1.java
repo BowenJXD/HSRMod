@@ -15,6 +15,6 @@ public class Robin1 extends BaseCard {
     
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new RobinPower(p, 1, upgraded)));
+        addToBot(new ApplyPowerAction(p, p, new RobinPower(p, upgraded)));
     }
 }

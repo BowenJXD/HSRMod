@@ -22,7 +22,7 @@ public class TopazNumby3 extends BaseCard {
     
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(m, p, new ProofOfDebtPower(m, 1, magicNumber)));
+        addToBot(new ApplyPowerAction(m, p, new ProofOfDebtPower(m, magicNumber)));
         
         addToBot(
                 new ElementalDamageAction(

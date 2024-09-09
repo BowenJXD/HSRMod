@@ -51,6 +51,6 @@ public class Kafka1 extends BaseCard {
         addToBot(new ElementalDamageAction(m, new DamageInfo(p, this.damage, damageTypeForTurn), 
                 ElementType.Lightning, 2, AbstractGameAction.AttackEffect.LIGHTNING));
         addToBot(new TriggerDoTAction(m, magicNumber));
-        addToBot(new ApplyPowerAction(m, p, new ShockPower(m, p, 1), 1));
+        addToBot(new ApplyPowerAction(m, p, new ShockPower(m, p, magicNumber), magicNumber));
     }
 }

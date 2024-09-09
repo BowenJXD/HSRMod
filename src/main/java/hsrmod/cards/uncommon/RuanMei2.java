@@ -16,7 +16,7 @@ public class RuanMei2 extends BaseCard {
     public RuanMei2() {
         super(ID);
         energyCost = 130;
-        selfRetain = true;
+        
     }
 
     @Override

@@ -19,7 +19,6 @@ public class Gallagher1 extends BaseCard {
 
     public Gallagher1() {
         super(ID);
-        selfRetain = true;
         energyCost = 110;
     }
 

@@ -16,8 +16,16 @@ import hsrmod.cards.BaseCard;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BasePower;
 import hsrmod.powers.PowerPower;
+import hsrmod.powers.breaks.BleedingPower;
+import hsrmod.powers.breaks.BurnPower;
+import hsrmod.powers.breaks.ShockPower;
+import hsrmod.powers.breaks.WindShearPower;
 import hsrmod.powers.misc.BrokenPower;
+import hsrmod.powers.misc.DoTPower;
 import hsrmod.powers.misc.SuspicionPower;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AllThingsArePossiblePower extends PowerPower {
     public static final String POWER_ID = HSRMod.makePath(AllThingsArePossiblePower.class.getSimpleName());
@@ -32,19 +40,32 @@ public class AllThingsArePossiblePower extends PowerPower {
                 || card.target == AbstractCard.CardTarget.ALL) {
             flash();
             for (AbstractMonster monster : AbstractDungeon.getCurrRoom().monsters.monsters) {
-                if (!monster.isDeadOrEscaped() && monster.hasPower(BrokenPower.POWER_ID)) {
-                    if (upgraded)
-                        addToBot(new ApplyPowerAction(monster, owner, new SuspicionPower(monster, 1), 1));
-                    addToBot(new TriggerDoTAction(monster));
-                }
+                applyDot(monster);
             }
         }
         else if (card.target == AbstractCard.CardTarget.ENEMY) {
-            AbstractMonster monster = (AbstractMonster) action.target;
-            if (!monster.isDeadOrEscaped() && monster.hasPower(BrokenPower.POWER_ID)) {
-                flash();
-                addToBot(new TriggerDoTAction(monster));
-            }
+            applyDot(action.target);
+        }
+    }
+    
+    void applyDot(AbstractCreature c){
+        if (c.isDeadOrEscaped()) return;
+        List<DoTPower> dots = new ArrayList<>();
+        if (!c.hasPower(BleedingPower.POWER_ID))
+            dots.add(new BleedingPower(c, owner, 1));
+        if (!c.hasPower(BurnPower.POWER_ID))
+            dots.add(new BurnPower(c, owner, 1));
+        if (!c.hasPower(ShockPower.POWER_ID))
+            dots.add(new ShockPower(c, owner, 1));
+        if (!c.hasPower(WindShearPower.POWER_ID))
+            dots.add(new WindShearPower(c, owner, 1));
+        if (!dots.isEmpty()) {
+            flash();
+            addToBot(new ApplyPowerAction(c, owner, dots.get(AbstractDungeon.cardRandomRng.random(dots.size() - 1)), 1));
+        }
+        else if (upgraded) {
+            flash();
+            addToBot(new TriggerDoTAction(c));
         }
     }
 }

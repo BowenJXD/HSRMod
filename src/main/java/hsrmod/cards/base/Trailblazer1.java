@@ -28,7 +28,7 @@ public class Trailblazer1 extends BaseCard {
                                 damageTypeForTurn
                         ),
                         ElementType.Physical,
-                        2,
+                        magicNumber,
                         // 伤害类型
                         AbstractGameAction.AttackEffect.SLASH_HEAVY
                 )

@@ -20,7 +20,7 @@ public class Yanqing1 extends BaseCard {
         super(ID);
         energyCost = 140;
         cardsToPreview = new Yanqing2();
-        selfRetain = true;
+        
     }
 
     @Override

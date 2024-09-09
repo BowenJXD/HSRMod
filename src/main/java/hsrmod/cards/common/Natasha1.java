@@ -13,7 +13,6 @@ public class Natasha1 extends BaseCard {
         super(ID);
         energyCost = 90;
         exhaust = true;
-        selfRetain = true;
     }
     
     @Override

@@ -15,7 +15,7 @@ public class Robin2 extends BaseCard {
     public Robin2() {
         super(ID);
         energyCost = 140;
-        selfRetain = true;
+        
     }
 
     @Override

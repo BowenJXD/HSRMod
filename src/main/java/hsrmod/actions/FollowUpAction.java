@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.cards.BaseCard;
 import hsrmod.powers.uniqueDebuffs.ProofOfDebtPower;
+import hsrmod.utils.ModHelper;
 
 public class FollowUpAction extends AbstractGameAction {
     private AbstractCard card;
@@ -46,7 +47,7 @@ public class FollowUpAction extends AbstractGameAction {
                 for (AbstractCreature m : AbstractDungeon.getCurrRoom().monsters.monsters) {
                     if (!m.isDeadOrEscaped() && m.hasPower(ProofOfDebtPower.POWER_ID)) {
                         target = m;
-                        card.damage += ((ProofOfDebtPower) m.getPower(ProofOfDebtPower.POWER_ID)).damageIncrement;
+                        card.damage += ModHelper.getPowerCount(m, ProofOfDebtPower.POWER_ID);
                         break;
                     }
                 }

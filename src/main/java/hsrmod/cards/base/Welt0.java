@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
+import hsrmod.utils.CustomEnums;
 
 public class Welt0 extends BaseCard {
     public static final String ID = Welt0.class.getSimpleName();
@@ -15,6 +16,7 @@ public class Welt0 extends BaseCard {
         super(ID);
         this.tags.add(CardTags.STRIKE);
         this.tags.add(CardTags.STARTER_STRIKE);
+        this.tags.add(CustomEnums.REVIVE);
     }
     
     @Override
@@ -28,7 +30,7 @@ public class Welt0 extends BaseCard {
                                 damageTypeForTurn
                         ),
                         ElementType.Imaginary,
-                        2,
+                        magicNumber,
                         // 伤害类型
                         AbstractGameAction.AttackEffect.SLASH_HEAVY
                 )

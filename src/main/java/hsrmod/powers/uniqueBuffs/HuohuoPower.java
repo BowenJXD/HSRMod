@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.HealAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -13,39 +14,25 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.actions.CleanAction;
 import hsrmod.modcore.HSRMod;
+import hsrmod.powers.BuffPower;
 import hsrmod.powers.misc.EnergyPower;
 
-public class HuohuoPower extends AbstractPower implements OnReceivePowerPower {
+public class HuohuoPower extends BuffPower implements OnReceivePowerPower {
     public static final String POWER_ID = HSRMod.makePath(HuohuoPower.class.getSimpleName());
 
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
-
-    public static final String NAME = powerStrings.NAME;
-
-    public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-
-    boolean upgraded = false;
     
-    public HuohuoPower(AbstractCreature owner, int Amount, boolean upgraded) {
-        this.name = NAME;
-        this.ID = POWER_ID;
-        this.owner = owner;
-        this.type = PowerType.BUFF;
-
-        this.amount = Amount;
-        this.upgraded = upgraded;
-
-        String path128 = String.format("HSRModResources/img/powers/%s128.png", this.getClass().getSimpleName());
-        String path48 = String.format("HSRModResources/img/powers/%s48.png", this.getClass().getSimpleName());
-        this.region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage(path128), 0, 0, 128, 128);
-        this.region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage(path48), 0, 0, 48, 48);
-
-        this.updateDescription();
+    public HuohuoPower(AbstractCreature owner, boolean upgraded) {
+        super(POWER_ID, owner, upgraded);
     }
 
     @Override
-    public void updateDescription() {
-        this.description = DESCRIPTIONS[0];
+    public void atEndOfTurn(boolean isPlayer) {
+        super.atEndOfTurn(isPlayer);
+        reducePower(1);
+        if (amount == 0) {
+            addToBot(new RemoveSpecificPowerAction(owner, owner, this));
+        }
     }
 
     @Override

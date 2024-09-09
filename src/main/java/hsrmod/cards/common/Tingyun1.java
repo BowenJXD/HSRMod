@@ -1,6 +1,7 @@
 package hsrmod.cards.common;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
@@ -13,7 +14,6 @@ public class Tingyun1 extends BaseCard {
     public Tingyun1() {
         super(ID);
         energyCost = 10;
-        selfRetain = true;
     }
 
     @Override
@@ -34,6 +34,7 @@ public class Tingyun1 extends BaseCard {
                         1
                 )
         );
-        
+        if (upgraded)
+            addToBot(new DrawCardAction(1));
     }
 }

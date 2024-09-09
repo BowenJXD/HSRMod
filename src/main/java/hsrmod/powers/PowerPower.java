@@ -19,9 +19,4 @@ public abstract class PowerPower extends BasePower {
     public PowerPower(String id){
         super(id, AbstractDungeon.player, 0, PowerType.BUFF, false);
     }
-
-    @Override
-    public void updateDescription() {
-        description = DESCRIPTIONS[upgraded ? 1 : 0];
-    }
 }

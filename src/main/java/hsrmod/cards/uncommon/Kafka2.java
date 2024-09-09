@@ -16,7 +16,7 @@ public class Kafka2 extends BaseCard {
     
     public Kafka2() {
         super(ID);
-        selfRetain = true;
+        
         energyCost = 120;
     }
 
@@ -24,8 +24,8 @@ public class Kafka2 extends BaseCard {
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         addToBot(new AOEAction((q) -> new ElementalDamageAction(q, new DamageInfo(p, damage, damageTypeForTurn), 
                 elementType, 2, AbstractGameAction.AttackEffect.LIGHTNING, c ->{
-            addToBot(new ApplyPowerAction(c, p, new ShockPower(c, p, 1), 1));
-            addToBot(new TriggerDoTAction(c, magicNumber, true));
+            addToBot(new TriggerDoTAction(c, 1, true));
+            addToBot(new ApplyPowerAction(c, p, new ShockPower(c, p, magicNumber), magicNumber));
         })));
     }
 }

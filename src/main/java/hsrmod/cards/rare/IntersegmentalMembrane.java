@@ -15,6 +15,6 @@ public class IntersegmentalMembrane extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new IntersegmentalMembranePower(p,1, magicNumber)));
+        addToBot(new ApplyPowerAction(p, p, new IntersegmentalMembranePower(magicNumber)));
     }
 }

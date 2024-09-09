@@ -19,7 +19,7 @@ public class Sparkle2 extends BaseCard {
         super(ID);
         energyCost = 110;
         exhaust = true;
-        selfRetain = true;
+        
     }
 
     @Override

@@ -29,6 +29,6 @@ public class SinThirster extends BaseCard {
             }
         }
         
-        addToBot(new DrawCardAction(p, max * magicNumber));
+        addToBot(new DrawCardAction(p, max));
     }
 }

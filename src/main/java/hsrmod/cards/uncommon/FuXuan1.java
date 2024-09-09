@@ -13,7 +13,7 @@ public class FuXuan1 extends BaseCard {
     public FuXuan1() {
         super(ID);
         exhaust = true;
-        selfRetain = true;
+        
         energyCost = 130;
     }
 

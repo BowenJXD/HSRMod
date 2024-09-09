@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.powers.PoisonPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.modcore.ElementType;
+import hsrmod.powers.DebuffPower;
 import hsrmod.powers.breaks.BleedingPower;
 import hsrmod.powers.breaks.BurnPower;
 import hsrmod.powers.breaks.ShockPower;
@@ -19,23 +20,19 @@ import hsrmod.subscribers.SubscribeManager;
 
 import java.util.Iterator;
 
-public abstract class DoTPower extends AbstractPower {
+public abstract class DoTPower extends DebuffPower {
     private AbstractCreature source;
     
     public boolean removeOnTrigger = true;
     
     public int toughnessReduction = 1;
 
-    public DoTPower(AbstractCreature owner, AbstractCreature source, int amount) {
-        this.owner = owner;
+    public DoTPower(String id, AbstractCreature owner, AbstractCreature source, int amount) {
+        super(id, owner, amount);
         this.source = source;
-        this.amount = amount;
-        if (this.amount >= 9999) {
-            this.amount = 9999;
-        }
-        
-        this.type = PowerType.DEBUFF;
         this.isTurnBased = true;
+        
+        this.updateDescription();
     }
 
     public void playApplyPowerSfx() {
@@ -60,9 +57,6 @@ public abstract class DoTPower extends AbstractPower {
             while(var1.hasNext()) {
                 AbstractPower p = (AbstractPower) var1.next();
                 dmg = p.atDamageReceive(dmg, DamageInfo.DamageType.NORMAL);
-                if (p instanceof SuspicionPower) {
-                    dmg = ((SuspicionPower) p).incrementDamage(dmg);
-                }
             }
             dmg = SubscribeManager.getInstance().triggerPreDoTDamage(dmg, this.owner, this);
             
@@ -94,5 +88,24 @@ public abstract class DoTPower extends AbstractPower {
             default:
                 return new BleedingPower(owner, source, amount);
         }
+    }
+
+    /**
+     * Check if the owner has all the DoT powers (Bleeding, Burn, Shock, WindShear)
+     * @param owner
+     * @return
+     */
+    public static boolean hasAllDoTPower(AbstractCreature owner){
+        return owner.hasPower(BleedingPower.POWER_ID) 
+                && owner.hasPower(BurnPower.POWER_ID) 
+                && owner.hasPower(ShockPower.POWER_ID) 
+                && owner.hasPower(WindShearPower.POWER_ID);
+    }
+    
+    public static boolean hasAnyDoTPower(AbstractCreature owner){
+        return owner.hasPower(BleedingPower.POWER_ID) 
+                || owner.hasPower(BurnPower.POWER_ID) 
+                || owner.hasPower(ShockPower.POWER_ID) 
+                || owner.hasPower(WindShearPower.POWER_ID);
     }
 }

@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.AOEAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.powers.breaks.WindShearPower;
 import hsrmod.powers.uniqueDebuffs.EpiphanyPower;
 
 public class BlackSwan1 extends BaseCard {
@@ -28,12 +29,14 @@ public class BlackSwan1 extends BaseCard {
         if (upgraded) {
             addToBot(new AOEAction((q) -> new ElementalDamageAction(q, new DamageInfo(p, damage, damageTypeForTurn),
                     elementType, 2, AbstractGameAction.AttackEffect.POISON, c -> {
+                addToBot(new ApplyPowerAction(c, p, new WindShearPower(c, p, 1), 1));
                 addToBot(new ApplyPowerAction(c, p, new EpiphanyPower(c, 1), 1));
             })));
         }
         else {
             addToBot(new ElementalDamageAction(m, new DamageInfo(p, damage, damageTypeForTurn),
                     elementType, 2, AbstractGameAction.AttackEffect.POISON, c -> {
+                addToBot(new ApplyPowerAction(c, p, new WindShearPower(c, p, 1), 1));
                 addToBot(new ApplyPowerAction(c, p, new EpiphanyPower(c, 1), 1));
             }));
         }

@@ -2,12 +2,21 @@ package hsrmod.utils;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.ModHelper;
+import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import hsrmod.modcore.HSRMod;
+import hsrmod.relics.rare.IronCavalryAgainstTheScourge;
+import hsrmod.relics.rare.PrisonerInDeepConfinement;
+import hsrmod.relics.rare.TheAshblazingGrandDuke;
+import hsrmod.relics.starter.WaxOfDestruction;
+import hsrmod.relics.starter.WaxOfElation;
+import hsrmod.relics.starter.WaxOfNihility;
 import javassist.compiler.ast.Variable;
 
 import java.util.*;
@@ -20,9 +29,9 @@ import static basemod.BaseMod.logger;
  */
 public class CardRewardPoolEditor {
     private static CardRewardPoolEditor instance;
-    
+
     AbstractRoom currRoom;
-    
+
     Map<Integer, List<Predicate<AbstractCard>>> weightMap;
 
     private CardRewardPoolEditor() {
@@ -35,30 +44,48 @@ public class CardRewardPoolEditor {
         }
         return instance;
     }
-    
+
     public void RegisterWeight(int weight, Predicate<AbstractCard> predicate) {
         if (!weightMap.containsKey(weight)) {
             weightMap.put(weight, new ArrayList<>());
         }
         weightMap.get(weight).add(predicate);
     }
-    
+
     public void UnregisterWeight(int weight, Predicate<AbstractCard> predicate) {
         if (weightMap.containsKey(weight)) {
             weightMap.get(weight).remove(predicate);
         }
     }
 
-    public void update(AbstractRoom room){
-        if (!AbstractDungeon.combatRewardScreen.rewards.isEmpty()
+    public void update(AbstractRoom room) {
+        if (AbstractDungeon.combatRewardScreen.rewards.stream().anyMatch(r -> r.type == RewardItem.RewardType.CARD)
                 && room != currRoom) {
             List<RewardItem> rewards = AbstractDungeon.combatRewardScreen.rewards;
             for (RewardItem reward : rewards) {
                 if (reward.type == RewardItem.RewardType.CARD) {
                     reward.cards = getRewardCards(reward);
                     currRoom = room;
+                    if (reward.cards.contains(null)) {
+                        logger.info("CardRewardPoolEditor: Null card detected in reward pool.");
+                    }
                     break;
                 }
+            }
+            if (AbstractDungeon.actNum == 1 && AbstractDungeon.bossCount > 0) {
+                String relicName = "";
+                if (AbstractDungeon.player.hasRelic(HSRMod.makePath(WaxOfElation.ID))) {
+                    relicName = TheAshblazingGrandDuke.ID;
+                }
+                if (AbstractDungeon.player.hasRelic(HSRMod.makePath(WaxOfDestruction.ID))) {
+                    relicName = IronCavalryAgainstTheScourge.ID;
+                }
+                if (AbstractDungeon.player.hasRelic(HSRMod.makePath(WaxOfNihility.ID))) {
+                    relicName = PrisonerInDeepConfinement.ID;
+                }
+
+                if (!relicName.isEmpty())
+                    rewards.add(new RewardItem(RelicLibrary.getRelic(HSRMod.makePath(relicName)).makeCopy()));
             }
         }
     }
@@ -67,13 +94,20 @@ public class CardRewardPoolEditor {
         ArrayList<AbstractCard> cards = new ArrayList<>();
         for (int i = 0; i < reward.cards.size(); i++) {
             AbstractCard card = reward.cards.get(i);
+            
+            if (card.color == AbstractCard.CardColor.COLORLESS) {
+                cards.add(card);
+                continue;
+            }
+            
             AbstractCard newCard = getCard(card.rarity);
+            
             if (newCard == null) {
                 newCard = card;
-            }
-            else if (card.upgraded) {
+            } else if (card.upgraded) {
                 newCard.upgrade();
             }
+            
             cards.add(newCard);
         }
         return cards;
@@ -109,7 +143,7 @@ public class CardRewardPoolEditor {
             }
             weights.add(weight);
         }
-        
+
         return getWeightedRandomElement(group.group, weights);
     }
 
@@ -125,8 +159,7 @@ public class CardRewardPoolEditor {
         }
 
         // Generate a random number between 0 and totalWeight
-        Random random = new Random();
-        int randomValue = random.nextInt(totalWeight);
+        int randomValue = AbstractDungeon.cardRandomRng.random(totalWeight);
 
         // Iterate over the weights to find the corresponding item
         for (int i = 0; i < items.size(); i++) {

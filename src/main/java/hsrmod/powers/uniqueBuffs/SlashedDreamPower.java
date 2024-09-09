@@ -18,6 +18,7 @@ import hsrmod.actions.BouncingAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.HSRMod;
+import hsrmod.powers.PowerPower;
 import hsrmod.powers.misc.SuspicionPower;
 import hsrmod.utils.ModHelper;
 
@@ -25,14 +26,8 @@ import javax.swing.*;
 import java.util.Iterator;
 import java.util.List;
 
-public class SlashedDreamPower extends AbstractPower {
+public class SlashedDreamPower extends PowerPower {
     public static final String POWER_ID = HSRMod.makePath(SlashedDreamPower.class.getSimpleName());
-
-    public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
-
-    public static final String NAME = powerStrings.NAME;
-
-    public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
     boolean canTrigger = false;
 
@@ -44,20 +39,9 @@ public class SlashedDreamPower extends AbstractPower {
 
     boolean upgraded = false;
 
-    public SlashedDreamPower(AbstractCreature owner, int Amount, boolean upgraded) {
-        this.name = NAME;
-        this.ID = POWER_ID;
-        this.owner = owner;
-        this.type = PowerType.BUFF;
-
-        this.amount = Amount;
-        this.upgraded = upgraded;
-
-        String path128 = String.format("HSRModResources/img/powers/%s128.png", this.getClass().getSimpleName());
-        String path48 = String.format("HSRModResources/img/powers/%s48.png", this.getClass().getSimpleName());
-        this.region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage(path128), 0, 0, 128, 128);
-        this.region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage(path48), 0, 0, 48, 48);
-
+    public SlashedDreamPower(int Amount, boolean upgraded) {
+        super(POWER_ID, Amount, upgraded);
+        
         this.updateDescription();
     }
 
@@ -110,8 +94,14 @@ public class SlashedDreamPower extends AbstractPower {
         action.doApplyPower = true;
         addToBot(new BouncingAction(target, 3, action.makeCopy()));
 
-        addToBot(new AOEAction(q -> new ElementalDamageAction(q, new DamageInfo(owner, baseDamage),
+        ElementalDamageAction action2 = new ElementalDamageAction(target, new DamageInfo(owner, baseDamage),
                 ElementType.Lightning, 1, AbstractGameAction.AttackEffect.LIGHTNING, null,
-                c -> c.powers.stream().filter(p -> p.type == PowerType.DEBUFF).mapToInt(p -> 1).sum())));
+                c -> c.powers.stream().filter(p -> p.type == PowerType.DEBUFF).mapToInt(p -> 1).sum());
+        action2.doApplyPower = true;
+        addToBot(new AOEAction(q -> {
+            AbstractGameAction a = action2.makeCopy();
+            a.target = q;
+            return a;
+        }));
     }
 }

@@ -61,7 +61,7 @@ public class SubscribeManager {
         }
     }
     
-    public float triggerPreBreakDamage(int amount, AbstractCreature target) {
+    public float triggerPreBreakDamage(float amount, AbstractCreature target) {
         float result = amount;
         Iterator<PreBreakDamageSubscriber> var3 = preBreakDamageSubscribers.iterator();
         

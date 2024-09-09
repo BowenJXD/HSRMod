@@ -25,7 +25,7 @@ public class March7th1 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, p, block));
-        addToBot(new ApplyPowerAction(p, p, new ReinforcePower(p, 1, upgraded ? block : 0), 1));
+        addToBot(new ApplyPowerAction(p, p, new ReinforcePower(p, upgraded ? block : 0), 1));
         addToBot(new CleanAction(p, 1, false));
     }
 }

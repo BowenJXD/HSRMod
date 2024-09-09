@@ -23,7 +23,7 @@ public class Qingque1 extends BaseCard {
     @Override
     public void upgrade() {
         super.upgrade();
-        selfRetain = true;
+        
     }
     
     @Override

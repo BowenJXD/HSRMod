@@ -11,7 +11,6 @@ public class BCI34GrayMatter extends BaseCard {
     
     public BCI34GrayMatter() {
         super(ID);
-        exhaust = true;
     }
 
     @Override

@@ -19,7 +19,7 @@ public class Jiaoqiu1 extends BaseCard {
     
     public Jiaoqiu1() {
         super(ID);
-        selfRetain = true;
+        
         energyCost = 100;
         cardsToPreview = new Jiaoqiu2();
     }

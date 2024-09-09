@@ -32,7 +32,7 @@ public class TheDoubtfulFourfoldRoot extends BaseCard {
                 AbstractPower power = var.next();
                 if ((upgraded && power.type == AbstractPower.PowerType.DEBUFF)
                         || (!upgraded && power instanceof DoTPower))
-                    power.stackPower(power.amount);
+                    power.stackPower(1);
             }
         }
     }

@@ -11,37 +11,21 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.modcore.HSRMod;
+import hsrmod.powers.DebuffPower;
 
-public class EntanglePower extends AbstractPower {
+public class EntanglePower extends DebuffPower {
     public static final String POWER_ID = HSRMod.makePath(EntanglePower.class.getSimpleName());
 
-    public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
-
-    public static final String NAME = powerStrings.NAME;
-
-    public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-
-    private int stackLimit = 5;
+    int damage = 2;
+    private final int stackLimit = 5;
 
     public EntanglePower(AbstractCreature owner, int Amount) {
-        this.name = NAME;
-        this.ID = POWER_ID;
-        this.owner = owner;
-        this.type = PowerType.DEBUFF;
-
-        this.amount = Amount;
-
-        String path128 = String.format("HSRModResources/img/powers/%s128.png", this.getClass().getSimpleName());
-        String path48 = String.format("HSRModResources/img/powers/%s48.png", this.getClass().getSimpleName());
-        this.region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage(path128), 0, 0, 128, 128);
-        this.region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage(path48), 0, 0, 48, 48);
-
-        this.updateDescription();
+        super(POWER_ID, owner, Amount);
     }
 
     @Override
     public void updateDescription() {
-        this.description = String.format(DESCRIPTIONS[0], getDamage());
+        this.description = String.format(DESCRIPTIONS[0], stackLimit, damage, getDamage());
     }
 
     @Override
@@ -53,7 +37,7 @@ public class EntanglePower extends AbstractPower {
     }
 
     int getDamage(){
-        return amount * 2;
+        return amount * damage;
     }
 
     @Override

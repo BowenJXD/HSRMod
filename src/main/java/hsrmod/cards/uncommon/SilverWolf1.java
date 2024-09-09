@@ -17,7 +17,7 @@ public class SilverWolf1 extends BaseCard {
     public SilverWolf1() {
         super(ID);
         energyCost = 110;
-        selfRetain = true;
+        
     }
 
     @Override

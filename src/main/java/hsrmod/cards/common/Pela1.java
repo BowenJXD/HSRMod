@@ -19,7 +19,6 @@ public class Pela1 extends BaseCard {
     public Pela1() {
         super(ID);
         energyCost = 100;
-        selfRetain = true;
     }
 
     @Override

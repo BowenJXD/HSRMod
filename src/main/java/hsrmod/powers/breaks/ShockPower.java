@@ -16,6 +16,7 @@ public class ShockPower extends DoTPower {
 
     public ShockPower(AbstractCreature owner, AbstractCreature source, int Amount) {
         super(POWER_ID, owner, source, Amount);
+        this.updateDescription();
     }
 
     @Override

@@ -23,25 +23,9 @@ public abstract class WaxRelic extends BaseRelic {
     }
 
     @Override
-    public void onEquip() {
-        super.onEquip();
-        CardRewardPoolEditor.getInstance().RegisterWeight(weight, this::hasTag);
-    }
-
-    @Override
     public void update() {
         super.update();
         if (!available) return;
-        CardRewardPoolEditor.getInstance().update(AbstractDungeon.getCurrRoom());
-    }
-
-    @Override
-    public void onUnequip() {
-        super.onUnequip();
-        CardRewardPoolEditor.getInstance().UnregisterWeight(weight, this::hasTag);
-    }
-    
-    boolean hasTag(AbstractCard card){
-        return card.hasTag(tag);
+        CardRewardPoolEditor.getInstance().update(AbstractDungeon.getCurrRoom(), tag);
     }
 }

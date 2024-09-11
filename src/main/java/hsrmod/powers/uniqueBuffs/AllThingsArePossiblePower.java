@@ -32,6 +32,7 @@ public class AllThingsArePossiblePower extends PowerPower {
     
     public AllThingsArePossiblePower(boolean upgraded) {
         super(POWER_ID, upgraded);
+        this.updateDescription();
     }
 
     @Override

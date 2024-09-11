@@ -13,7 +13,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
-import hsrmod.powers.uniqueDebuffs.ThanatoplumRebloomPower;
 
 public class ToughnessPower extends BuffPower {
     public static final String POWER_ID = HSRMod.makePath(ToughnessPower.class.getSimpleName());
@@ -52,12 +51,7 @@ public class ToughnessPower extends BuffPower {
     }
 
     @Override
-    public void stackPower(int stackAmount) {
-        if (owner.hasPower(ThanatoplumRebloomPower.POWER_ID) && stackAmount > 0) {
-            addToTop(new ApplyPowerAction(owner, owner, new ThanatoplumRebloomPower(owner, -1), -1));
-            return;
-        }
-        
+    public void stackPower(int stackAmount) {        
         this.fontScale = 8.0F;
         this.amount += stackAmount;
         

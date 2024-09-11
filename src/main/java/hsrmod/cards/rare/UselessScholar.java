@@ -4,17 +4,17 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cards.BaseCard;
-import hsrmod.powers.uniqueBuffs.PhantomThiefPower;
+import hsrmod.powers.uniqueBuffs.UselessScholarPower;
 
-public class PhantomThief extends BaseCard {
-    public static final String ID = PhantomThief.class.getSimpleName();
+public class UselessScholar extends BaseCard {
+    public static final String ID = UselessScholar.class.getSimpleName();
     
-    public PhantomThief() {
+    public UselessScholar() {
         super(ID);
     }
     
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new PhantomThiefPower(upgraded, magicNumber), 1));
+        addToBot(new ApplyPowerAction(p, p, new UselessScholarPower(upgraded, magicNumber), 1));
     }
 }

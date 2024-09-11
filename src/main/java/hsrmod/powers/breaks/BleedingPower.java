@@ -19,6 +19,7 @@ public class BleedingPower extends DoTPower {
     
     public BleedingPower(AbstractCreature owner, AbstractCreature source, int Amount) {
         super(POWER_ID, owner, source, Amount);
+        this.updateDescription();
     }
 
     @Override

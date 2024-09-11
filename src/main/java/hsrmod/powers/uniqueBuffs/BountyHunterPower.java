@@ -35,7 +35,7 @@ public class BountyHunterPower extends PowerPower {
 
     @Override
     public void updateDescription() {
-        this.description = String.format(DESCRIPTIONS[0], percentage);
+        this.description = String.format(DESCRIPTIONS[upgraded ? 1 : 0], percentage);
     }
 
     @Override

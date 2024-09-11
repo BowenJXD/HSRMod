@@ -24,6 +24,7 @@ public class HuohuoPower extends BuffPower implements OnReceivePowerPower {
     
     public HuohuoPower(AbstractCreature owner, boolean upgraded) {
         super(POWER_ID, owner, upgraded);
+        this.updateDescription();
     }
 
     @Override

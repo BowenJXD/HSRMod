@@ -17,6 +17,7 @@ public class BreakEfficiencyPower extends BuffPower {
 
     public BreakEfficiencyPower(AbstractCreature owner, int Amount) {
         super(POWER_ID, owner, Amount);
+        this.updateDescription();
     }
 
     public void updateDescription() {

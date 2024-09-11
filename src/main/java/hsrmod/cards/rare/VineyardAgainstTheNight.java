@@ -17,6 +17,7 @@ public class VineyardAgainstTheNight extends BaseCard {
     public void upgrade() {
         super.upgrade();
         isInnate = true;
+        exhaust = true;
     }
 
     @Override

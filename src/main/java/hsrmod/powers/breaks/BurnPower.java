@@ -16,6 +16,7 @@ public class BurnPower extends DoTPower {
 
     public BurnPower(AbstractCreature owner, AbstractCreature source, int Amount) {
         super(POWER_ID, owner, source, Amount);
+        this.updateDescription();
     }
 
     @Override

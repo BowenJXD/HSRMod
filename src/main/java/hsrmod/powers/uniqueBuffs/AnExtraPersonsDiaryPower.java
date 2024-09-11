@@ -26,6 +26,7 @@ public class AnExtraPersonsDiaryPower extends PowerPower {
     public AnExtraPersonsDiaryPower(boolean upgraded) {
         super(POWER_ID, upgraded);
         changedPowers = new ArrayList<>();
+        this.updateDescription();
     }
 
     @Override

@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cards.BaseCard;
 
 public class Sparkle1 extends BaseCard {
-    public static final String ID = Sparkle2.class.getSimpleName();
+    public static final String ID = Sparkle1.class.getSimpleName();
 
     public Sparkle1() {
         super(ID);

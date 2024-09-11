@@ -19,6 +19,7 @@ public class ImprisonPower extends DebuffPower {
     public ImprisonPower(AbstractCreature owner, int Amount) {
         super(POWER_ID, owner, Amount);
         this.isTurnBased = true;
+        this.updateDescription();
     }
 
     @Override

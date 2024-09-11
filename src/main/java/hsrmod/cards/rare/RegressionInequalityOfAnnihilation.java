@@ -23,7 +23,7 @@ public class RegressionInequalityOfAnnihilation extends BaseCard {
                 .sum();
         int avgToughness = totalToughness / (AbstractDungeon.getMonsters().monsters.size() + magicNumber);
         
-        int stackNumber = (avgToughness - playerToughness) * magicNumber;
+        int stackNumber = avgToughness * magicNumber - playerToughness;
         addToBot(new ApplyPowerAction(p, p, new ToughnessPower(p, stackNumber), stackNumber));
         
         AbstractDungeon.getMonsters().monsters.forEach(monster -> {

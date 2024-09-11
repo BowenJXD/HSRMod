@@ -99,7 +99,10 @@ public abstract class BaseCard extends CustomCard {
     @Override
     public void update() {
         super.update();
-        if (!AbstractDungeon.isPlayerInDungeon()) {
+        if (!AbstractDungeon.isPlayerInDungeon()
+                || AbstractDungeon.player == null 
+                || AbstractDungeon.player.hand == null 
+                || AbstractDungeon.player.hand.isEmpty()){
             inHand = false;
             inBattle = false;
             return;

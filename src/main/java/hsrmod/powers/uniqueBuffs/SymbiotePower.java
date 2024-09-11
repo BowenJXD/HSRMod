@@ -19,6 +19,7 @@ public class SymbiotePower extends PowerPower implements PreBreakDamageSubscribe
 
     public SymbiotePower() {
         super(POWER_ID);
+        this.updateDescription();
     }
     
     @Override

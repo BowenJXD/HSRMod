@@ -3,6 +3,7 @@ package hsrmod.relics.starter;
 import basemod.abstracts.CustomRelic;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsAction;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
+import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -122,19 +123,26 @@ public class PomPomBlessing extends CustomRelic {
                     AbstractDungeon.player.masterDeck.removeCard(card);
 
                     String relicName = "";
-                    if (card instanceof Trailblazer1)
-                        relicName = TrailblazerRelic.ID;
-                    else if (card instanceof March7th0)
+                    String text = "";
+                    if (card instanceof March7th0) {
                         relicName = March7thRelic.ID;
-                    else if (card instanceof Danheng0)
+                        text = "我不想…一个人……";
+                    } else if (card instanceof Danheng0) {
                         relicName = DanhengRelic.ID;
-                    else if (card instanceof Himeko0)
+                        text = "不该是…现在……";
+                    } else if (card instanceof Himeko0) {
                         relicName = HimekoRelic.ID;
-                    else if (card instanceof Welt0)
+                        text = "这就是…最后一课……";
+                    } else if (card instanceof Welt0) {
                         relicName = WeltRelic.ID;
+                        text = "活下去……";
+                    }
 
-                    AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float) (Settings.WIDTH / 2), (float) (Settings.HEIGHT / 2),
-                            RelicLibrary.getRelic(relicName).makeCopy());
+                    if (!relicName.isEmpty())
+                        AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float) (Settings.WIDTH / 2), (float) (Settings.HEIGHT / 2),
+                                RelicLibrary.getRelic(relicName).makeCopy());
+                    if (!text.isEmpty())
+                        addToBot(new TalkAction(true, text, 1.0F, 2.0F));
                 }));
             });
         }

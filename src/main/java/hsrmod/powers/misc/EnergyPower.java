@@ -16,6 +16,7 @@ public class EnergyPower extends BuffPower {
 
     public EnergyPower(AbstractCreature owner, int Amount) {
         super(POWER_ID, owner, Amount);
+        this.updateDescription();
     }
 
     @Override

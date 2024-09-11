@@ -36,14 +36,14 @@ public class Qingque2 extends BaseCard {
                             AbstractGameAction.AttackEffect.SLASH_HORIZONTAL))
             );
         }
-        modifyCostForCombat(costCache);
+        modifyCostForCombat(costCache - costForTurn);
     }
 
     @Override
-    public void triggerOnCardPlayed(AbstractCard cardPlayed) {
+    public void triggerOnOtherCardPlayed(AbstractCard c) {
         if (!AbstractDungeon.player.hand.contains(this)) return;
-        int loop = cardPlayed.costForTurn;
-        if (cardPlayed.cost == -1) loop = cardPlayed.energyOnUse;
+        int loop = c.costForTurn;
+        if (c.cost == -1) loop = c.energyOnUse;
         for (int i = 0; i < loop; i++) {
             if (AbstractDungeon.cardRandomRng.random(100) <= reduceCostProbability) {
                 modifyCostForCombat(-1);

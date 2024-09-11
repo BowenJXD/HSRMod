@@ -28,7 +28,6 @@ public class Jade1 extends BaseCard implements PostDrawSubscriber {
     public Jade1() {
         super(ID);
         tags.add(FOLLOW_UP);
-        BaseMod.subscribe(this);
     }
 
     @Override
@@ -50,9 +49,17 @@ public class Jade1 extends BaseCard implements PostDrawSubscriber {
     }
 
     @Override
-    public void triggerWhenDrawn() {
-        super.triggerWhenDrawn();
+    public void onEnterHand() {
+        super.onEnterHand();
         isDetecting = false;
+        BaseMod.subscribe(this);
+    }
+
+    @Override
+    public void onLeaveHand() {
+        super.onLeaveHand();
+        isDetecting = false;
+        BaseMod.unsubscribe(this);
     }
 
     @Override

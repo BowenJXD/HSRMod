@@ -26,8 +26,6 @@ public abstract class BasePower extends AbstractPower {
         String path48 = String.format("HSRModResources/img/powers/%s48.png", this.getClass().getSimpleName());
         this.region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage(path128), 0, 0, 128, 128);
         this.region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage(path48), 0, 0, 48, 48);
-
-        this.updateDescription();
     }
     
     public BasePower(String id, AbstractCreature owner, int Amount, PowerType type){

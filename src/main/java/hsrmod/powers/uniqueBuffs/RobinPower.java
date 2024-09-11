@@ -23,6 +23,7 @@ public class RobinPower extends BuffPower {
 
     public RobinPower(AbstractCreature owner, boolean upgraded) {
         super(POWER_ID, owner, upgraded);
+        this.updateDescription();
     }
 
     @Override

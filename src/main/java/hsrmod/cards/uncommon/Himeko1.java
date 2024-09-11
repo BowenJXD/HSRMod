@@ -25,7 +25,6 @@ public class Himeko1 extends BaseCard implements PostPowerApplySubscriber {
     public Himeko1() {
         super(ID);
         tags.add(FOLLOW_UP);
-        BaseMod.subscribe(this);
     }
 
     @Override
@@ -38,7 +37,19 @@ public class Himeko1 extends BaseCard implements PostPowerApplySubscriber {
             );
         }
     }
+    
+    @Override
+    public void onEnterHand() {
+        super.onEnterHand();
+        BaseMod.subscribe(this);
+    }
 
+    @Override
+    public void onLeaveHand() {
+        super.onLeaveHand();
+        BaseMod.unsubscribe(this);
+    }
+    
     @Override
     public void receivePostPowerApplySubscriber(AbstractPower abstractPower, AbstractCreature abstractCreature, AbstractCreature abstractCreature1) {
         if (SubscribeManager.checkSubscriber(this)

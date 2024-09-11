@@ -28,8 +28,8 @@ public class CommonMortalPower extends PowerPower implements OnReceivePowerPower
     public CommonMortalPower(int Amount, boolean upgraded) {
         super(POWER_ID, upgraded);
         energyAmount = Amount;
-        
-        updateDescription();
+
+        this.updateDescription();
     }
 
     @Override

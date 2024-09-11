@@ -14,6 +14,7 @@ public class WindShearPower extends DoTPower {
 
     public WindShearPower(AbstractCreature owner, AbstractCreature source, int Amount) {
         super(POWER_ID, owner, source, Amount);
+        this.updateDescription();
     }
 
     @Override

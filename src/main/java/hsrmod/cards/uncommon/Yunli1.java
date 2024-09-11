@@ -29,8 +29,6 @@ public class Yunli1 extends BaseCard implements OnPlayerDamagedSubscriber {
         super(ID);
         tags.add(FOLLOW_UP);
         selfRetain = true;
-        
-        BaseMod.subscribe(this);
     }
 
     @Override
@@ -41,6 +39,19 @@ public class Yunli1 extends BaseCard implements OnPlayerDamagedSubscriber {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {        
         ModHelper.addToBotAbstract(this::execute);
+        canBeUsed = false;
+    }
+
+    @Override
+    public void onEnterHand() {
+        super.onEnterHand();
+        BaseMod.subscribe(this);
+    }
+
+    @Override
+    public void onLeaveHand() {
+        super.onLeaveHand();
+        BaseMod.unsubscribe(this);
     }
     
     void execute(){
@@ -63,7 +74,9 @@ public class Yunli1 extends BaseCard implements OnPlayerDamagedSubscriber {
     @Override
     public int receiveOnPlayerDamaged(int i, DamageInfo damageInfo) {
         if (!SubscribeManager.checkSubscriber(this)
-                || !AbstractDungeon.player.hand.contains(this)) 
+                || !AbstractDungeon.player.hand.contains(this)
+                || damageInfo.type != DamageInfo.DamageType.NORMAL
+                || damageInfo.owner == AbstractDungeon.player) 
             return i;
         canBeUsed = true;
         addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new EnergyPower(AbstractDungeon.player, 10), 10));

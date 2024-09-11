@@ -26,8 +26,11 @@ import static hsrmod.utils.CustomEnums.FOLLOW_UP;
 public class AftertastePower extends BuffPower implements DamageModApplyingPower {
     public static final String POWER_ID = HSRMod.makePath(AftertastePower.class.getSimpleName());
 
+    public static final int ENERGY_REQUIRED = 10;
+    
     public AftertastePower(AbstractCreature owner, int Amount) {
         super(POWER_ID, owner, Amount);
+        this.updateDescription();
     }
 
     @Override
@@ -60,7 +63,9 @@ public class AftertastePower extends BuffPower implements DamageModApplyingPower
 
         @Override
         public void onLastDamageTakenUpdate(DamageInfo info, int lastDamageTaken, int overkillAmount, AbstractCreature target) {
-            if (info.owner.hasPower(AftertastePower.POWER_ID)) {
+            if (info.owner.hasPower(AftertastePower.POWER_ID) 
+                    && ModHelper.getPowerCount(info.owner, AftertastePower.POWER_ID) >= AftertastePower.ENERGY_REQUIRED) {
+                addToTop(new ApplyPowerAction(info.owner, info.owner, new AftertastePower(info.owner, -AftertastePower.ENERGY_REQUIRED), -AftertastePower.ENERGY_REQUIRED));
                 AftertastePower power = (AftertastePower) info.owner.getPower(AftertastePower.POWER_ID);
                 addToBot(new ElementalDamageAction(target, new DamageInfo(info.owner, power.amount, DamageInfo.DamageType.NORMAL), 
                         ModHelper.getRandomEnumValue(ElementType.class), 1, AbstractGameAction.AttackEffect.SLASH_DIAGONAL));

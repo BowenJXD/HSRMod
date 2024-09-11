@@ -29,7 +29,7 @@ public class BattlefieldMagicianPower extends PowerPower {
 
     @Override
     public void updateDescription() {
-        this.description = String.format(DESCRIPTIONS[0], followUpStack);
+        this.description = String.format(DESCRIPTIONS[upgraded ? 1 : 0], followUpStack);
     }
 
     @Override

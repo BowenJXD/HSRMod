@@ -10,17 +10,22 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import hsrmod.actions.ElementalDamageAction;
+import hsrmod.modcore.ElementType;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.DebuffPower;
 
 public class EntanglePower extends DebuffPower {
     public static final String POWER_ID = HSRMod.makePath(EntanglePower.class.getSimpleName());
 
+    AbstractCreature source;
     int damage = 2;
     private final int stackLimit = 5;
 
-    public EntanglePower(AbstractCreature owner, int Amount) {
+    public EntanglePower(AbstractCreature owner, AbstractCreature source, int Amount) {
         super(POWER_ID, owner, Amount);
+        this.source = source;
+        this.updateDescription();
     }
 
     @Override
@@ -49,7 +54,7 @@ public class EntanglePower extends DebuffPower {
 
     @Override
     public void atStartOfTurn() {
-        addToBot(new PoisonLoseHpAction(this.owner, this.owner, getDamage(), AbstractGameAction.AttackEffect.POISON));
+        addToBot(new ElementalDamageAction(owner, new DamageInfo(source, getDamage()), ElementType.Quantum, 1, AbstractGameAction.AttackEffect.SLASH_HEAVY));
         addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
     }
 }

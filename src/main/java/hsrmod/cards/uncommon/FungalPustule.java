@@ -1,4 +1,4 @@
-package hsrmod.cards.common;
+package hsrmod.cards.uncommon;
 
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
@@ -26,7 +26,7 @@ public class FungalPustule extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainEnergyAction(energyNum));
-        addToBot(new DrawCardAction(magicNumber));
+        addToBot(new DrawCardAction(energyNum - 1));
         ModHelper.addToBotAbstract(() -> {
             if (upgraded) {
                 modifyCostForCombat(1);

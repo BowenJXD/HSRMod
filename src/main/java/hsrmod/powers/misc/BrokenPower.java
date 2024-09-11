@@ -19,9 +19,13 @@ public class BrokenPower extends BuffPower {
     
     private float damageDecrementPercentage = 1f / 4f;
     
+    public boolean doReduce = false;
+    
     public BrokenPower(AbstractCreature owner, int Amount) {
         super(POWER_ID, owner, Amount);
         priority = 6;
+        
+        this.updateDescription();
     }
 
     @Override
@@ -50,8 +54,6 @@ public class BrokenPower extends BuffPower {
         }
         return damage;
     }
-
-    boolean doReduce = false;
 
     @Override
     public void atStartOfTurn() {

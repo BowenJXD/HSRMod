@@ -18,6 +18,12 @@ public class SuspicionPower extends DebuffPower implements PreDoTDamageSubscribe
 
     public SuspicionPower(AbstractCreature owner, int Amount) {
         super(POWER_ID, owner, Amount);
+        this.updateDescription();
+    }
+
+    @Override
+    public void updateDescription() {
+        this.description = String.format(DESCRIPTIONS[0], Math.round(damageIncrementPercentage * amount * 100));
     }
 
     @Override
@@ -30,11 +36,6 @@ public class SuspicionPower extends DebuffPower implements PreDoTDamageSubscribe
     public void onRemove() {
         super.onRemove();
         SubscribeManager.getInstance().unsubscribe(this);
-    }
-
-    @Override
-    public void updateDescription() {
-        this.description = String.format(DESCRIPTIONS[0], Math.round(damageIncrementPercentage * amount * 100));
     }
     
     public float incrementDamage(float damage) {

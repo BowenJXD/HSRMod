@@ -32,6 +32,7 @@ public class FireflyPower extends PowerPower implements PostPowerApplySubscriber
     
     public FireflyPower() {
         super(POWER_ID);
+        this.updateDescription();
     }
 
     @Override

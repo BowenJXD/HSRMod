@@ -1,9 +1,11 @@
 package hsrmod.cards.uncommon;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.BreakDamageAction;
 import hsrmod.actions.ElementalDamageAction;
@@ -34,18 +36,18 @@ public class Firefly1 extends BaseCard {
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         returnToHand = false;
 
+        addToBot(new TalkAction(true, AbstractDungeon.cardRandomRng.randomBoolean() ? "点燃星海！" : "为生而战！", 1.0F, 2.0F));
         addToBot(
                 new ElementalDamageAction(
                         m, new DamageInfo(p, damage),
-                        ElementType.Fire, 4,
+                        ElementType.Fire, magicNumber,
                         AbstractGameAction.AttackEffect.SLASH_DIAGONAL
                 )
         );
         ModHelper.addToBotAbstract(() -> {
             if (m.hasPower(BrokenPower.POWER_ID)) {
-                int val = m.hasPower(ToughnessPower.POWER_ID) ? Math.abs(m.getPower(ToughnessPower.POWER_ID).amount) : 0;
-                addToBot(new BreakDamageAction(m, new DamageInfo(p, val)));
-                if (magicNumber > 0) addToBot(new ApplyPowerAction(p, p, new BreakEffectPower(p, magicNumber), magicNumber));
+                // int val = m.hasPower(ToughnessPower.POWER_ID) ? Math.abs(m.getPower(ToughnessPower.POWER_ID).amount) : 0;
+                // addToBot(new BreakDamageAction(m, new DamageInfo(p, val)));
                 returnToHand = true;
                 setCostForTurn(costCache);
             }

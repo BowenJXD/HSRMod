@@ -2,25 +2,16 @@ package hsrmod.utils;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.CardLibrary;
-import com.megacrit.cardcrawl.helpers.ModHelper;
 import com.megacrit.cardcrawl.helpers.RelicLibrary;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import hsrmod.modcore.HSRMod;
 import hsrmod.relics.rare.IronCavalryAgainstTheScourge;
 import hsrmod.relics.rare.PrisonerInDeepConfinement;
 import hsrmod.relics.rare.TheAshblazingGrandDuke;
-import hsrmod.relics.starter.WaxOfDestruction;
-import hsrmod.relics.starter.WaxOfElation;
-import hsrmod.relics.starter.WaxOfNihility;
-import javassist.compiler.ast.Variable;
 
 import java.util.*;
-import java.util.function.Predicate;
 
 import static basemod.BaseMod.logger;
 
@@ -31,11 +22,10 @@ public class CardRewardPoolEditor {
     private static CardRewardPoolEditor instance;
 
     AbstractRoom currRoom;
-
-    Map<Integer, List<Predicate<AbstractCard>>> weightMap;
-
+    
+    AbstractCard.CardTags tag;
+    
     private CardRewardPoolEditor() {
-        weightMap = new HashMap<>();
     }
 
     public static CardRewardPoolEditor getInstance() {
@@ -45,26 +35,14 @@ public class CardRewardPoolEditor {
         return instance;
     }
 
-    public void RegisterWeight(int weight, Predicate<AbstractCard> predicate) {
-        if (!weightMap.containsKey(weight)) {
-            weightMap.put(weight, new ArrayList<>());
-        }
-        weightMap.get(weight).add(predicate);
-    }
-
-    public void UnregisterWeight(int weight, Predicate<AbstractCard> predicate) {
-        if (weightMap.containsKey(weight)) {
-            weightMap.get(weight).remove(predicate);
-        }
-    }
-
-    public void update(AbstractRoom room) {
+    public void update(AbstractRoom room, AbstractCard.CardTags tag) {
         if (AbstractDungeon.combatRewardScreen.rewards.stream().anyMatch(r -> r.type == RewardItem.RewardType.CARD)
                 && room != currRoom) {
+            this.tag = tag;
             List<RewardItem> rewards = AbstractDungeon.combatRewardScreen.rewards;
             for (RewardItem reward : rewards) {
                 if (reward.type == RewardItem.RewardType.CARD) {
-                    reward.cards = getRewardCards(reward);
+                    setRewardCards(reward);
                     currRoom = room;
                     if (reward.cards.contains(null)) {
                         logger.info("CardRewardPoolEditor: Null card detected in reward pool.");
@@ -74,13 +52,13 @@ public class CardRewardPoolEditor {
             }
             if (AbstractDungeon.actNum == 1 && AbstractDungeon.bossCount > 0) {
                 String relicName = "";
-                if (AbstractDungeon.player.hasRelic(HSRMod.makePath(WaxOfElation.ID))) {
+                if (tag == CustomEnums.ELATION) {
                     relicName = TheAshblazingGrandDuke.ID;
                 }
-                if (AbstractDungeon.player.hasRelic(HSRMod.makePath(WaxOfDestruction.ID))) {
+                if (tag == CustomEnums.DESTRUCTION) {
                     relicName = IronCavalryAgainstTheScourge.ID;
                 }
-                if (AbstractDungeon.player.hasRelic(HSRMod.makePath(WaxOfNihility.ID))) {
+                if (tag == CustomEnums.NIHILITY) {
                     relicName = PrisonerInDeepConfinement.ID;
                 }
 
@@ -90,30 +68,30 @@ public class CardRewardPoolEditor {
         }
     }
 
-    public static ArrayList<AbstractCard> getRewardCards(RewardItem reward) {
-        ArrayList<AbstractCard> cards = new ArrayList<>();
+    public void setRewardCards(RewardItem reward) {
         for (int i = 0; i < reward.cards.size(); i++) {
             AbstractCard card = reward.cards.get(i);
             
-            if (card.color == AbstractCard.CardColor.COLORLESS) {
-                cards.add(card);
+            if (card.color == AbstractCard.CardColor.COLORLESS
+                    || !checkChance(card.rarity)) {
                 continue;
             }
             
             AbstractCard newCard = getCard(card.rarity);
             
-            if (newCard == null) {
-                newCard = card;
-            } else if (card.upgraded) {
+            if (reward.cards.stream().anyMatch(c -> Objects.equals(c.cardID, newCard.cardID)) || newCard == null) {
+                continue;
+            }
+            
+            if (card.upgraded) {
                 newCard.upgrade();
             }
             
-            cards.add(newCard);
+            reward.cards.set(i, newCard);
         }
-        return cards;
     }
 
-    public static AbstractCard getCard(AbstractCard.CardRarity rarity) {
+    public AbstractCard getCard(AbstractCard.CardRarity rarity) {
         CardGroup group = null;
         switch (rarity) {
             case COMMON:
@@ -133,18 +111,25 @@ public class CardRewardPoolEditor {
                 return null;
         }
 
-        ArrayList<Integer> weights = new ArrayList<>();
-        for (AbstractCard card : group.group) {
-            int weight = 1;
-            for (Integer kvp : instance.weightMap.keySet()) {
-                if (instance.weightMap.get(kvp).stream().anyMatch(p -> p.test(card))) {
-                    weight += kvp;
-                }
-            }
-            weights.add(weight);
-        }
+        ArrayList<AbstractCard> cards = group.group.stream().filter(c -> c.hasTag(tag)).collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
 
-        return getWeightedRandomElement(group.group, weights);
+        return cards.get(AbstractDungeon.cardRandomRng.random(cards.size() - 1));
+    }
+    
+    public boolean checkChance(AbstractCard.CardRarity rarity){
+        float chance = 0;
+        switch (rarity) {
+            case COMMON:
+                chance = 40 - AbstractDungeon.actNum * 10; 
+                break;
+            case UNCOMMON:
+                chance = 50 - AbstractDungeon.actNum * 10; 
+                break;
+            case RARE:
+                chance = 60 - AbstractDungeon.actNum * 10; 
+                break;
+        }
+        return AbstractDungeon.cardRandomRng.random(99) < chance;
     }
 
     public static <T> T getWeightedRandomElement(List<T> items, List<Integer> weights) {

@@ -15,6 +15,7 @@ public class FuneralOfSensoryPursuivantPower extends PowerPower implements PreDo
     
     public FuneralOfSensoryPursuivantPower(boolean upgraded) {
         super(POWER_ID, upgraded);
+        this.updateDescription();
     }
 
     @Override

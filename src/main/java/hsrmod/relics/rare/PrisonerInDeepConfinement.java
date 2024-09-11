@@ -33,12 +33,12 @@ public class PrisonerInDeepConfinement extends BaseRelic {
         ModHelper.findCards(c -> c.hasTag(AbstractCard.CardTags.STARTER_STRIKE))
                 .forEach(r -> r.card.isEthereal = true);
     }
-
+    
     @Override
-    public void onPlayCard(AbstractCard c, AbstractMonster m) {
-        super.onPlayCard(c, m);
+    public void onExhaust(AbstractCard card) {
+        super.onExhaust(card);
         if (!available) return;
-        if (c.isEthereal) {
+        if (card.isEthereal) {
             flash();
             addToBot(new DrawCardAction(1));
             addToBot(new AOEAction((q) -> new ApplyPowerAction(q, AbstractDungeon.player, DoTPower.getRandomDoTPower(q, AbstractDungeon.player, 1), 1)));

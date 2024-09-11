@@ -27,6 +27,7 @@ public class ReduceToughnessAction extends AbstractGameAction {
         this.duration = DURATION;
         this.elementType = elementType;
         this.info = info;
+        this.source = info.owner;
     }
 
     public void update() {
@@ -97,7 +98,7 @@ public class ReduceToughnessAction extends AbstractGameAction {
                 power = new WindShearPower(target, AbstractDungeon.player, stackNum);
                 break;
             case Quantum:
-                power = new EntanglePower(target, stackNum);
+                power = new EntanglePower(target, source, stackNum);
                 break;
             case Imaginary:
                 power = new ImprisonPower(target, stackNum);

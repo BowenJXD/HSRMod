@@ -21,8 +21,6 @@ public class Clara1 extends BaseCard implements OnPlayerDamagedSubscriber {
     public Clara1() {
         super(ID);
         tags.add(FOLLOW_UP);
-
-        BaseMod.subscribe(this);
     }
 
     @Override
@@ -37,6 +35,18 @@ public class Clara1 extends BaseCard implements OnPlayerDamagedSubscriber {
         blockToGain += (int) (p.hand.group.stream().filter(c -> c.hasTag(FOLLOW_UP)).count() * magicNumber);
         
         addToBot(new GainBlockAction(p, p, blockToGain));
+    }
+
+    @Override
+    public void onEnterHand() {
+        super.onEnterHand();
+        BaseMod.subscribe(this);
+    }
+
+    @Override
+    public void onLeaveHand() {
+        super.onLeaveHand();
+        BaseMod.unsubscribe(this);
     }
 
     @Override

@@ -21,6 +21,7 @@ public class EpiphanyPower extends DebuffPower implements OnPowersModifiedSubscr
     public EpiphanyPower(AbstractCreature owner, int Amount) {
         super(POWER_ID, owner, Amount);
         this.isTurnBased = true;
+        this.updateDescription();
     }
 
     @Override

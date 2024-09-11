@@ -22,6 +22,7 @@ public class Trailblazer5Power extends PowerPower {
     
     public Trailblazer5Power() {
         super(POWER_ID);
+        this.updateDescription();
     }
 
     @Override

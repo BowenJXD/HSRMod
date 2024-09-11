@@ -26,8 +26,8 @@ public class Lingsha1 extends BaseCard {
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         addToBot(new HealAction(p, p, p.hasPower(BreakEffectPower.POWER_ID) ? p.getPower(BreakEffectPower.POWER_ID).amount : 0));
         addToBot(new ElementalDamageAction(m, new DamageInfo(p, damage),
-                        ElementType.Fire, 3,
+                        ElementType.Fire, 2,
                         AbstractGameAction.AttackEffect.FIRE));
-        addToBot(new ApplyPowerAction(m, p, new BefogPower(m, magicNumber), magicNumber));
+        addToBot(new ApplyPowerAction(m, p, new BefogPower(m, 1), 1));
     }
 }

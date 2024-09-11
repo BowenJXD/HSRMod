@@ -12,6 +12,7 @@ public class CleftSingularity extends BaseCard {
     
     public CleftSingularity() {
         super(ID);
+        exhaust = true;
     }
 
     @Override

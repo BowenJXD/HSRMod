@@ -44,7 +44,7 @@ public class JingYuan1 extends BaseCard {
             );
         }
         
-        modifyCostForCombat(costCache);
+        modifyCostForCombat(costCache - costForTurn);
     }
 
     @Override

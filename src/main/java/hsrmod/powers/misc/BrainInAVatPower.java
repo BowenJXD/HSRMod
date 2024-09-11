@@ -18,6 +18,7 @@ public class BrainInAVatPower extends BuffPower implements OnReceivePowerPower {
 
     public BrainInAVatPower(AbstractCreature owner, int Amount) {
         super(POWER_ID, owner, Amount);
+        this.updateDescription();
     }
 
     @Override

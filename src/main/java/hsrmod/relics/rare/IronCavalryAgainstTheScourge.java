@@ -30,7 +30,8 @@ public class IronCavalryAgainstTheScourge extends BaseRelic {
         ModHelper.findCards(c -> c.hasTag(AbstractCard.CardTags.STARTER_STRIKE))
                 .forEach(r -> {
                     r.card.exhaust = true;
-                    r.card.magicNumber += 2;
+                    r.card.magicNumber = r.card.baseMagicNumber += 2;
+                    r.card.initializeDescriptionCN();
                 });
     }
 }

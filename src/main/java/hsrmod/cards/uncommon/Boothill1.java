@@ -51,7 +51,6 @@ public class Boothill1 extends BaseCard {
                     && (toughness > 0 || upgraded)){
                 addToBot(new GainEnergyAction(1));
                 int val = ToughnessPower.getStackLimit(m);
-                addToBot(new GainBlockAction(p, val));
                 addToBot(new BreakDamageAction(m, new DamageInfo(p, val)));
             }
             else if (EnergyPanel.getCurrentEnergy() > 0) {

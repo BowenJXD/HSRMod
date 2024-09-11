@@ -24,6 +24,7 @@ public class TopazNumbyPower extends PowerPower {
     
     public TopazNumbyPower(int Amount, boolean upgraded) {
         super(POWER_ID, Amount, upgraded);
+        this.updateDescription();
     }
 
     @Override

@@ -13,6 +13,7 @@ import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
+import hsrmod.utils.ModHelper;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -53,8 +54,14 @@ public class Herta1 extends BaseCard {
     public void triggerOnOtherCardPlayed(AbstractCard c) {
         if (!AbstractDungeon.player.hand.contains(this)) return;
         if (!followedUp) {
-            followedUp = true;
-            addToBot(new HertaAction(this));
+            ModHelper.addToBotAbstract(() -> {
+                ModHelper.addToBotAbstract(() -> {
+                    if (updateEnemyHealthIsHalf()) {
+                        followedUp = true;
+                        addToBot(new FollowUpAction(this));
+                    }
+                });
+            });
         }
     }
 
@@ -75,23 +82,5 @@ public class Herta1 extends BaseCard {
             enemyHealthIsHalf.put(monster.id, isHalf);
         }
         return result;
-    }
-
-    public static class HertaAction extends AbstractGameAction {
-        Herta1 herta1;
-
-        public HertaAction(Herta1 herta1) {
-            this.actionType = ActionType.SPECIAL;
-            this.herta1 = herta1;
-        }
-
-        @Override
-        public void update() {
-            if (!herta1.followedUp && herta1.updateEnemyHealthIsHalf()) {
-                herta1.followedUp = true;
-                addToBot(new FollowUpAction(herta1));
-            }
-            isDone = true;
-        }
     }
 }

@@ -2,6 +2,7 @@ package hsrmod.powers.uniqueBuffs;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -88,6 +89,7 @@ public class SlashedDreamPower extends PowerPower {
     }
 
     void trigger() {
+        addToBot(new TalkAction(true, "我为逝者哀哭", 1.0F, 2.0F));
         AbstractCreature target = AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster) null, true, AbstractDungeon.cardRandomRng);
         ElementalDamageAction action = new ElementalDamageAction(target, new DamageInfo(owner, baseDamage),
                 ElementType.Lightning, 1, AbstractGameAction.AttackEffect.LIGHTNING, null);
@@ -98,6 +100,7 @@ public class SlashedDreamPower extends PowerPower {
                 ElementType.Lightning, 1, AbstractGameAction.AttackEffect.LIGHTNING, null,
                 c -> c.powers.stream().filter(p -> p.type == PowerType.DEBUFF).mapToInt(p -> 1).sum());
         action2.doApplyPower = true;
+        addToBot(new TalkAction(true, "暮雨，终将落下。", 1.0F, 2.0F));
         addToBot(new AOEAction(q -> {
             AbstractGameAction a = action2.makeCopy();
             a.target = q;

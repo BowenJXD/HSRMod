@@ -27,6 +27,7 @@ public class Trailblazer6Power extends PowerPower implements DamageModApplyingPo
     
     public Trailblazer6Power() {
         super(POWER_ID);
+        this.updateDescription();
     }
 
     @Override

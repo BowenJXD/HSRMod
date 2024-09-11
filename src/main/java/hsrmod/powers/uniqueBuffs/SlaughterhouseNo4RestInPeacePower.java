@@ -25,6 +25,7 @@ import static hsrmod.utils.CustomEnums.FOLLOW_UP;
 public class SlaughterhouseNo4RestInPeacePower extends PowerPower implements DamageModApplyingPower {
     public static final String POWER_ID = HSRMod.makePath(SlaughterhouseNo4RestInPeacePower.class.getSimpleName());
 
+    boolean upgraded;
     int percentage;
 
     public SlaughterhouseNo4RestInPeacePower(boolean upgraded, int percentage) {
@@ -36,7 +37,7 @@ public class SlaughterhouseNo4RestInPeacePower extends PowerPower implements Dam
 
     @Override
     public void updateDescription() {
-        this.description = String.format(DESCRIPTIONS[0], percentage);
+        this.description = String.format(DESCRIPTIONS[upgraded ? 1 : 0], percentage);
     }
 
     @Override
@@ -58,14 +59,16 @@ public class SlaughterhouseNo4RestInPeacePower extends PowerPower implements Dam
 
     @Override
     public List<AbstractDamageModifier> modsToPush(DamageInfo damageInfo, Object o, List<AbstractDamageModifier> list) {
-        return Collections.singletonList(new SlaughterhouseNo4RestInPeaceModifier(percentage));
+        return Collections.singletonList(new SlaughterhouseNo4RestInPeaceModifier(percentage, upgraded));
     }
 
     public static class SlaughterhouseNo4RestInPeaceModifier extends AbstractDamageModifier{
         int percentage;
+        boolean upgraded;
         
-        public SlaughterhouseNo4RestInPeaceModifier(int percentage) {
+        public SlaughterhouseNo4RestInPeaceModifier(int percentage, boolean upgraded) {
             this.percentage = percentage;
+            this.upgraded = upgraded;
         }
         
         @Override
@@ -76,12 +79,17 @@ public class SlaughterhouseNo4RestInPeacePower extends PowerPower implements Dam
                         addToBot(new DrawCardAction(AbstractDungeon.player, 1));
                     }
                 }
+                else if (upgraded) {
+                    if (AbstractDungeon.cardRandomRng.random(100) < (100 - percentage)) {
+                        addToBot(new DrawCardAction(AbstractDungeon.player, 1));
+                    }
+                }
             }
         }
 
         @Override
         public AbstractDamageModifier makeCopy() {
-            return new SlaughterhouseNo4RestInPeaceModifier(percentage);
+            return new SlaughterhouseNo4RestInPeaceModifier(percentage, upgraded);
         }
     } 
 }

@@ -15,6 +15,7 @@ public class ReignOfKeysPower extends PowerPower implements PreDoTDamageSubscrib
     
     public ReignOfKeysPower() {
         super(POWER_ID);
+        this.updateDescription();
     }
 
     @Override

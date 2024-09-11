@@ -19,6 +19,7 @@ public class VoyageMonitorPower extends PowerPower implements PreBreakDamageSubs
 
     public VoyageMonitorPower() {
         super(POWER_ID);
+        this.updateDescription();
     }
 
     @Override

@@ -32,8 +32,8 @@ public class AventurinePower extends PowerPower implements OnPlayerDamagedSubscr
     
     boolean isPlayerTurn = true;
 
-    public AventurinePower(int damageStack, int followUpStack) {
-        super(POWER_ID);
+    public AventurinePower(boolean upgraded, int damageStack, int followUpStack) {
+        super(POWER_ID, upgraded);
         this.damageStack = damageStack;
         this.followUpStack = followUpStack;
         
@@ -42,7 +42,7 @@ public class AventurinePower extends PowerPower implements OnPlayerDamagedSubscr
 
     @Override
     public void updateDescription() {
-        this.description = String.format(DESCRIPTIONS[0], damageStack, followUpStack);
+        this.description = String.format(DESCRIPTIONS[upgraded ? 1 : 0], damageStack, followUpStack);
     }
 
     @Override
@@ -99,7 +99,7 @@ public class AventurinePower extends PowerPower implements OnPlayerDamagedSubscr
                 AbstractGameAction.AttackEffect.BLUNT_HEAVY
         ));
         addToBot(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, b));
-        if (!isPlayerTurn)
+        if (!isPlayerTurn && upgraded)
             addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new BlurPower(AbstractDungeon.player, 0), 0));
     }
 

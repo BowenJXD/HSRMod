@@ -63,7 +63,7 @@ public class Xueyi1 extends BaseCard implements PreToughnessReduceSubscriber {
                 AbstractGameAction.AttackEffect.SLASH_DIAGONAL
         ));
 
-        modifyCostForCombat(costCache);
+        modifyCostForCombat(costCache - costForTurn);
     }
 
     @Override

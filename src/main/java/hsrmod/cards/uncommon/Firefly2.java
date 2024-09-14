@@ -4,11 +4,13 @@ import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cards.BaseCard;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.powers.uniqueBuffs.FireflyPower;
+import hsrmod.utils.ModHelper;
 
 public class Firefly2 extends BaseCard {
     public static final String ID = Firefly2.class.getSimpleName();
@@ -24,6 +26,7 @@ public class Firefly2 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         addToBot(new LoseHPAction(p, p, magicNumber));
+        ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID));
         addToBot(new TalkAction(true, "直至一切，燃烧殆尽！", 1.0F, 2.0F));
         addToBot(new ApplyPowerAction(p, p, new FireflyPower(), 1));
     }

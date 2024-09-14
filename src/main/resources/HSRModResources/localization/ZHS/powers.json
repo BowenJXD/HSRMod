@@ -64,13 +64,14 @@
   "HSRMod:BreakEffect": {
     "NAME": "击破特攻",
     "DESCRIPTIONS": [
-      "对有【击破状态】的敌人造成的击破伤害增加 #b%d 。"
+      "造成的击破伤害增加 #b%d 。"
     ]
   },
   "HSRMod:BreakEfficiency": {
     "NAME": "击破效率",
     "DESCRIPTIONS": [
-      "属性伤害的削韧值增加 #b%d %%。"
+      "属性伤害的削韧值增加 #b%d %%。回合结束时移除1层。",
+      "属性伤害的削韧值增加 #b%d %%。回合结束时，若大于 #b%d 层，则移除1层。"
     ]
   },
   "HSRMod:Aftertaste": {
@@ -82,7 +83,7 @@
   "HSRMod:Suspicion": {
     "NAME": "怀疑",
     "DESCRIPTIONS": [
-      "受到的持续伤害+ #b%d %%。"
+      "受到的持续伤害+ #b%d %%。至多叠加 #b%d 层。"
     ]
   },
   "HSRMod:BrainInAVat": {
@@ -268,8 +269,8 @@
   "HSRMod:FuneralOfSensoryPursuivant": {
     "NAME": "感官追奉者的葬礼",
     "DESCRIPTIONS": [
-      "敌人受到持续伤害后，对其施加1层【怀疑】。",
-      "敌人受到持续伤害后，或被施加持续伤害后，对其施加1层【怀疑】。"
+      "敌人受到持续伤害后，对其施加 #b%d 层【怀疑】。",
+      "敌人受到持续伤害后，对其施加 #b%d 层【怀疑】。敌人被施加持续伤害后，对其施加 #b%d 层【怀疑】。"
     ]
   },
   "HSRMod:CommonMortal": {

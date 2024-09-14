@@ -13,9 +13,20 @@ import hsrmod.subscribers.SubscribeManager;
 public class FuneralOfSensoryPursuivantPower extends PowerPower implements PreDoTDamageSubscriber {
     public static final String POWER_ID = HSRMod.makePath(FuneralOfSensoryPursuivantPower.class.getSimpleName());
     
+    int triggerStack = 3;
+    int applyStack = 1;
+    
     public FuneralOfSensoryPursuivantPower(boolean upgraded) {
         super(POWER_ID, upgraded);
         this.updateDescription();
+    }
+
+    @Override
+    public void updateDescription() {
+        if (upgraded)
+            this.description = String.format(DESCRIPTIONS[0], triggerStack);
+        else
+            this.description = String.format(DESCRIPTIONS[1], triggerStack, applyStack);
     }
 
     @Override
@@ -34,18 +45,18 @@ public class FuneralOfSensoryPursuivantPower extends PowerPower implements PreDo
     public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
         super.onApplyPower(power, target, source);
         if (upgraded && power instanceof DoTPower) {
-            trigger(target);
+            trigger(target, 1);
         }
     }
 
     @Override
     public float preDoTDamage(float amount, AbstractCreature target, DoTPower power) {
         if (SubscribeManager.checkSubscriber(this))
-            trigger(target);
+            trigger(target, 3);
         return amount;
     }
     
-    void trigger(AbstractCreature c){
-        addToBot(new ApplyPowerAction(c, owner, new SuspicionPower(c, 1), 1));
+    void trigger(AbstractCreature c, int amt){
+        addToBot(new ApplyPowerAction(c, owner, new SuspicionPower(c, amt), amt));
     }
 }

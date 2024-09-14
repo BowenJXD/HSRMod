@@ -1,19 +1,30 @@
 package hsrmod.utils;
 
+import basemod.devcommands.relic.Relic;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.RelicLibrary;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import com.megacrit.cardcrawl.screens.CombatRewardScreen;
 import hsrmod.modcore.HSRMod;
-import hsrmod.relics.rare.IronCavalryAgainstTheScourge;
-import hsrmod.relics.rare.PrisonerInDeepConfinement;
-import hsrmod.relics.rare.TheAshblazingGrandDuke;
+import hsrmod.relics.BaseRelic;
+import hsrmod.relics.boss.IronCavalryAgainstTheScourge;
+import hsrmod.relics.boss.PrisonerInDeepConfinement;
+import hsrmod.relics.boss.TheAshblazingGrandDuke;
+import hsrmod.relics.rare.ChanceJailbreak;
+import hsrmod.relics.rare.ParallelUniverseWalkieTalkie;
+import hsrmod.relics.rare.Revitalization310;
+import hsrmod.relics.rare.RoadToComets;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static basemod.BaseMod.logger;
+import static hsrmod.characters.MyCharacter.PlayerColorEnum.HSR_PINK;
 
 /**
  * Singleton class for editing the card reward pool.
@@ -22,9 +33,11 @@ public class CardRewardPoolEditor {
     private static CardRewardPoolEditor instance;
 
     AbstractRoom currRoom;
-    
+
     AbstractCard.CardTags tag;
     
+    public int extraCards = 0;
+
     private CardRewardPoolEditor() {
     }
 
@@ -50,6 +63,7 @@ public class CardRewardPoolEditor {
                     break;
                 }
             }
+            
             if (AbstractDungeon.actNum == 1 && AbstractDungeon.bossCount > 0) {
                 String relicName = "";
                 if (tag == CustomEnums.ELATION) {
@@ -64,29 +78,43 @@ public class CardRewardPoolEditor {
 
                 if (!relicName.isEmpty())
                     rewards.add(new RewardItem(RelicLibrary.getRelic(HSRMod.makePath(relicName)).makeCopy()));
+            } else if (AbstractDungeon.actNum == 2 && AbstractDungeon.getMonsters().monsters.stream().anyMatch(m -> m.type == AbstractMonster.EnemyType.BOSS)) {
+                String relicName = getRelic(AbstractRelic.RelicTier.RARE);
+
+                if (!relicName.isEmpty())
+                    rewards.add(new RewardItem(RelicLibrary.getRelic(relicName).makeCopy()));
             }
+        }
+        
+        if (extraCards > 0 && room == currRoom) {
+            for (int i = 0; i < extraCards; i++) {
+                RewardItem rewardItem = new RewardItem(HSR_PINK);
+                setRewardCards(rewardItem);
+                AbstractDungeon.combatRewardScreen.rewards.add(rewardItem);
+            }
+            extraCards = 0;
         }
     }
 
     public void setRewardCards(RewardItem reward) {
         for (int i = 0; i < reward.cards.size(); i++) {
             AbstractCard card = reward.cards.get(i);
-            
+
             if (card.color == AbstractCard.CardColor.COLORLESS
                     || !checkChance(card.rarity)) {
                 continue;
             }
-            
+
             AbstractCard newCard = getCard(card.rarity);
-            
+
             if (reward.cards.stream().anyMatch(c -> Objects.equals(c.cardID, newCard.cardID)) || newCard == null) {
                 continue;
             }
-            
+
             if (card.upgraded) {
                 newCard.upgrade();
             }
-            
+
             reward.cards.set(i, newCard);
         }
     }
@@ -115,18 +143,45 @@ public class CardRewardPoolEditor {
 
         return cards.get(AbstractDungeon.cardRandomRng.random(cards.size() - 1));
     }
-    
-    public boolean checkChance(AbstractCard.CardRarity rarity){
+
+    public String getRelic(AbstractRelic.RelicTier tier) {
+        ArrayList<String> pool = new ArrayList<>();
+        switch (tier) {
+            case COMMON:
+                pool = AbstractDungeon.commonRelicPool;
+                break;
+            case UNCOMMON:
+                pool = AbstractDungeon.uncommonRelicPool;
+                break;
+            case RARE:
+                pool = AbstractDungeon.rareRelicPool;
+                break;
+            case SHOP:
+                pool = AbstractDungeon.shopRelicPool;
+                break;
+            case BOSS:
+                pool = AbstractDungeon.bossRelicPool;
+                break;
+        }
+
+        if (pool.isEmpty()) {
+            return "";
+        }
+        List<String> relics = pool.stream().filter(r -> RelicLibrary.getRelic(r) instanceof BaseRelic).collect(Collectors.toList());
+        return relics.get(AbstractDungeon.cardRandomRng.random(relics.size() - 1));
+    }
+
+    public boolean checkChance(AbstractCard.CardRarity rarity) {
         float chance = 0;
         switch (rarity) {
             case COMMON:
-                chance = 40 - AbstractDungeon.actNum * 10; 
+                chance = 40 - AbstractDungeon.actNum * 10;
                 break;
             case UNCOMMON:
-                chance = 50 - AbstractDungeon.actNum * 10; 
+                chance = 50 - AbstractDungeon.actNum * 10;
                 break;
             case RARE:
-                chance = 60 - AbstractDungeon.actNum * 10; 
+                chance = 60 - AbstractDungeon.actNum * 10;
                 break;
         }
         return AbstractDungeon.cardRandomRng.random(99) < chance;

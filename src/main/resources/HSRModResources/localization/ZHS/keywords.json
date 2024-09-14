@@ -82,13 +82,13 @@
     "NAMES": [
       "击破特攻"
     ],
-    "DESCRIPTION": "对有【击破状态】的敌人造成的击破伤害增加X层。"
+    "DESCRIPTION": "造成的击破伤害增加X。"
   },
   {
     "NAMES": [
       "击破效率"
     ],
-    "DESCRIPTION": "属性伤害的削韧值增加50X%。"
+    "DESCRIPTION": "属性伤害的削韧值增加50X%。回合结束时移除1层。"
   },
   {
     "NAMES": [
@@ -106,7 +106,7 @@
     "NAMES": [
       "怀疑"
     ],
-    "DESCRIPTION": "受到的持续伤害+10X%。"
+    "DESCRIPTION": "受到的持续伤害+X%。至多叠加99层。"
   },
   {
     "NAMES": [

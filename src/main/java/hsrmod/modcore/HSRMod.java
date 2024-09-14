@@ -20,7 +20,7 @@ import static com.megacrit.cardcrawl.core.Settings.language;
 import static hsrmod.characters.MyCharacter.PlayerColorEnum.*;
 
 @SpireInitializer // 加载mod的注解
-public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditCharactersSubscriber, EditRelicsSubscriber, EditKeywordsSubscriber {
+public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditCharactersSubscriber, EditRelicsSubscriber, EditKeywordsSubscriber, AddAudioSubscriber {
     public static final String MOD_NAME = "HSRMod";
     
     public static final Color MY_COLOR = new Color(255.0F / 255.0F, 141.0F / 255.0F, 227.0F / 255.0F, 1.0F);
@@ -118,6 +118,24 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
                 BaseMod.addKeyword(MOD_NAME.toLowerCase(), keyword.NAMES[0], keyword.NAMES, keyword.DESCRIPTION);
             }
         }
+    }
+
+    @Override
+    public void receiveAddAudio() {
+        addAudio("Aventurine1");
+        addAudio("Firefly1-1");
+        addAudio("Firefly1-2");
+        addAudio("Firefly2");
+        addAudio("JingYuan1");
+        addAudio("Kafka2");
+        addAudio("Robin2");
+        addAudio("Acheron1");
+        addAudio("SlashedDream1");
+        addAudio("SlashedDream2");
+    }
+    
+    void addAudio(String id){
+        BaseMod.addAudio(id, "HSRModResources/audio/" + id + ".wav");
     }
 
     public static String makePath(String name){

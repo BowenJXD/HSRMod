@@ -27,8 +27,6 @@ import java.util.List;
 
 public class FireflyPower extends PowerPower implements PostPowerApplySubscriber {
     public static final String POWER_ID = HSRMod.makePath(FireflyPower.class.getSimpleName());
-
-    boolean canTrigger = true;
     
     public FireflyPower() {
         super(POWER_ID);
@@ -46,17 +44,10 @@ public class FireflyPower extends PowerPower implements PostPowerApplySubscriber
     }
 
     @Override
-    public void atEndOfTurn(boolean isPlayer) {
-        canTrigger = true;
-    }
-
-    @Override
     public void receivePostPowerApplySubscriber(AbstractPower abstractPower, AbstractCreature target, AbstractCreature source) {
         if (SubscribeManager.checkSubscriber(this) 
-                && abstractPower.ID.equals(BrokenPower.POWER_ID)
-                && canTrigger) {
+                && abstractPower.ID.equals(BrokenPower.POWER_ID)) {
             this.flash();
-            canTrigger = false;
             addToBot(new BreakDamageAction(target, new DamageInfo(this.owner, ToughnessPower.getStackLimit(target))));
             this.addToBot(new ApplyPowerAction(this.owner, this.owner, new BreakEfficiencyPower(this.owner, 1), 1));
 

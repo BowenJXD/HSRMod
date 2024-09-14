@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.BreakDamageAction;
@@ -36,7 +37,13 @@ public class Firefly1 extends BaseCard {
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         returnToHand = false;
 
-        addToBot(new TalkAction(true, AbstractDungeon.cardRandomRng.randomBoolean() ? "点燃星海！" : "为生而战！", 1.0F, 2.0F));
+        if (AbstractDungeon.cardRandomRng.randomBoolean()) {
+            ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID + "-1"));
+            addToBot(new TalkAction(true, "点燃星海！", 1.0F, 2.0F));
+        } else {
+            ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID + "-2"));
+            addToBot(new TalkAction(true, "为生而战！", 1.0F, 2.0F));
+        }
         addToBot(
                 new ElementalDamageAction(
                         m, new DamageInfo(p, damage),

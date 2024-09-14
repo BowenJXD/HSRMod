@@ -3,6 +3,7 @@ package hsrmod.cards.uncommon;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import hsrmod.cards.BaseCard;
 
 public class Sparkle1 extends BaseCard {
@@ -22,6 +23,6 @@ public class Sparkle1 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DrawCardAction(p.energy.energy));
+        addToBot(new DrawCardAction(EnergyPanel.getCurrentEnergy()));
     }
 }

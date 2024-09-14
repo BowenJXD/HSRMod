@@ -19,6 +19,7 @@ public class NightBeyondPyre extends BaseCard {
     public void upgrade() {
         super.upgrade();
         isInnate = true;
+        exhaust = false;
     }
 
     @Override

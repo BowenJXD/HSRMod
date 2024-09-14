@@ -14,7 +14,7 @@ import hsrmod.powers.DebuffPower;
 import hsrmod.powers.misc.BrokenPower;
 import hsrmod.powers.misc.ToughnessPower;
 
-public class ThanatoplumRebloomPower extends DebuffPower implements OnReceivePowerPower {
+public class ThanatoplumRebloomPower extends DebuffPower {
     public static final String POWER_ID = HSRMod.makePath(ThanatoplumRebloomPower.class.getSimpleName());
 
     public ThanatoplumRebloomPower(AbstractCreature owner, int Amount) {
@@ -46,28 +46,7 @@ public class ThanatoplumRebloomPower extends DebuffPower implements OnReceivePow
         AbstractPower power = owner.getPower(BrokenPower.POWER_ID);
         if (power != null) {
             ((BrokenPower)power).doReduce = false;
-        }
-    }
-
-    @Override
-    public boolean onReceivePower(AbstractPower abstractPower, AbstractCreature abstractCreature, AbstractCreature abstractCreature1) {
-        if (abstractPower instanceof ToughnessPower 
-                && !abstractCreature.hasPower(ToughnessPower.POWER_ID) 
-                && abstractPower.amount > 0) {
-            flash();
             reducePower(1);
-            return false;
         }
-        return true;
-    }
-
-    @Override
-    public int onReceivePowerStacks(AbstractPower power, AbstractCreature target, AbstractCreature source, int stackAmount) {
-        if (power instanceof ToughnessPower && stackAmount > 0) {
-            flash();
-            reducePower(1);
-            return 0;
-        }
-        return stackAmount;
     }
 }

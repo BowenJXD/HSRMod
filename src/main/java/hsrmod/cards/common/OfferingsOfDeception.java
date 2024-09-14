@@ -24,7 +24,7 @@ public class OfferingsOfDeception extends BaseCard {
         AbstractDungeon.getMonsters().monsters.stream().filter(mo -> !DoTPower.hasAnyDoTPower(mo)).forEach(mo ->
                 addToBot(new ApplyPowerAction(mo, p, DoTPower.getRandomDoTPower(mo, p, 1), 1)));
         if (upgraded)
-            AbstractDungeon.getMonsters().monsters.stream().filter(DoTPower::hasAnyDoTPower).forEach(mo ->
-                    addToBot(new ApplyPowerAction(mo, p, new StrengthPower(m, 1), 1)));
+            AbstractDungeon.getMonsters().monsters.stream().filter(DoTPower::hasAllDoTPower).forEach(mo ->
+                    addToBot(new ApplyPowerAction(mo, p, new StrengthPower(mo, -1), -1)));
     }
 }

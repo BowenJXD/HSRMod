@@ -89,7 +89,8 @@ public class SlashedDreamPower extends PowerPower {
     }
 
     void trigger() {
-        addToBot(new TalkAction(true, "我为逝者哀哭", 1.0F, 2.0F));
+        CardCrawlGame.sound.play("Acheron1");
+        addToBot(new TalkAction(true, " #r我为逝者哀哭…… ", 1.0F, 2.0F));
         AbstractCreature target = AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster) null, true, AbstractDungeon.cardRandomRng);
         ElementalDamageAction action = new ElementalDamageAction(target, new DamageInfo(owner, baseDamage),
                 ElementType.Lightning, 1, AbstractGameAction.AttackEffect.LIGHTNING, null);
@@ -100,7 +101,8 @@ public class SlashedDreamPower extends PowerPower {
                 ElementType.Lightning, 1, AbstractGameAction.AttackEffect.LIGHTNING, null,
                 c -> c.powers.stream().filter(p -> p.type == PowerType.DEBUFF).mapToInt(p -> 1).sum());
         action2.doApplyPower = true;
-        addToBot(new TalkAction(true, "暮雨，终将落下。", 1.0F, 2.0F));
+        ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play("SlashedDream2"));
+        addToBot(new TalkAction(true, " #r暮雨，终将落下。 ", 1.0F, 2.0F));
         addToBot(new AOEAction(q -> {
             AbstractGameAction a = action2.makeCopy();
             a.target = q;

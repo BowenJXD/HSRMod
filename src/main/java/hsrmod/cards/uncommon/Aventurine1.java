@@ -3,9 +3,11 @@ package hsrmod.cards.uncommon;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cards.BaseCard;
 import hsrmod.powers.uniqueBuffs.AventurinePower;
+import hsrmod.utils.ModHelper;
 
 public class Aventurine1 extends BaseCard {
     public static final String ID = Aventurine1.class.getSimpleName();
@@ -22,7 +24,8 @@ public class Aventurine1 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new TalkAction(true, "所有，或者，一无所有！", 1.0F, 2.0F));
+        ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID));
+        addToBot(new TalkAction(true, "一无所有，或者，赢下所有！", 1.0F, 2.0F));
         addToBot(new ApplyPowerAction(p, p, new AventurinePower(upgraded, upgraded ? 4 : 3, upgraded ? 3 : 2)));
     }
 }

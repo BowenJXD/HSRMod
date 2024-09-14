@@ -1,6 +1,7 @@
 package hsrmod.cards.uncommon;
 
 import com.evacipated.cardcrawl.mod.stslib.patches.relicInterfaces.OnRemoveCardFromMasterDeckPatch;
+import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -37,9 +38,11 @@ public class Sparkle2 extends BaseCard {
 
         ModHelper.addToBotAbstract(() -> {
             List<ModHelper.FindResult> sparkles = ModHelper.findCards(c -> c instanceof Sparkle2);
+            if (!sparkles.isEmpty())
+                addToBot(new TalkAction(true, "假货的命~", 1.0F, 2.0F));
             for (ModHelper.FindResult result : sparkles) {
                 result.group.removeCard(result.card);
-                p.masterDeck.removeCard(result.card);
+                p.masterDeck.group.stream().filter(c -> c.uuid == result.card.uuid).findFirst().ifPresent(c -> p.masterDeck.removeCard(c));
             }
         });
     }

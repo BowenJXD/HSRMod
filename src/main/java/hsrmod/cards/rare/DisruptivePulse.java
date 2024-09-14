@@ -36,7 +36,7 @@ public class DisruptivePulse extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         int toughness = ModHelper.getPowerCount(m, ToughnessPower.POWER_ID);
-        addToBot(new ElementalDamageAction(m, new DamageInfo(p, damage), ElementType.Physical, magicNumber, AbstractGameAction.AttackEffect.SLASH_HEAVY,
+        addToBot(new ElementalDamageAction(m, new DamageInfo(p, damage), ElementType.Fire, magicNumber, AbstractGameAction.AttackEffect.SLASH_HEAVY,
                 (c) -> {
                     if (ModHelper.getPowerCount(m, ToughnessPower.POWER_ID) <= 0
                             && (toughness > 0)) {

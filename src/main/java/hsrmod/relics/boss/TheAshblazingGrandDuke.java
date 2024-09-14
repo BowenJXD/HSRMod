@@ -1,15 +1,12 @@
-package hsrmod.relics.rare;
+package hsrmod.relics.boss;
 
-import basemod.abstracts.CustomRelic;
 import com.evacipated.cardcrawl.mod.stslib.relics.OnApplyPowerRelic;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import hsrmod.actions.FollowUpAction;
-import hsrmod.modcore.HSRMod;
 import hsrmod.powers.misc.BrokenPower;
 import hsrmod.relics.BaseRelic;
 import hsrmod.utils.ModHelper;

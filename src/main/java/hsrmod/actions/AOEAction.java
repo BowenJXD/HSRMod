@@ -37,6 +37,7 @@ public class AOEAction extends AbstractGameAction {
 
             while(var1.hasNext()) {
                 AbstractGameAction action = (AbstractGameAction)var1.next();
+                if (action == null) continue;
                 if (!action.isDone) {
                     action.update();
                     this.isDone = false;

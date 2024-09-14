@@ -4,6 +4,7 @@ import basemod.BaseMod;
 import basemod.interfaces.ISubscriber;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.StunMonsterAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -43,14 +44,6 @@ public class FrozenPower extends DebuffPower {
     }
 
     @Override
-    public void stackPower(int stackAmount) {
-        super.stackPower(stackAmount);
-        if (amount <= 0){
-            addToBot(new RemoveSpecificPowerAction(owner, owner, this));
-        }
-    }
-
-    @Override
     public void atStartOfTurn() {
         if (amount >= amountRequired){
             addToBot(new StunMonsterAction((AbstractMonster) owner, AbstractDungeon.player));
@@ -66,9 +59,10 @@ public class FrozenPower extends DebuffPower {
     @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
         if (!detecting) return damageAmount;
-        reducePower(1);
-        if (amount <= 0){
-            addToBot(new RemoveSpecificPowerAction(owner, owner, this));
+        if (this.amount == 0) {
+            this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+        } else {
+            this.addToBot(new ReducePowerAction(this.owner, this.owner, this, 1));
         }
         return damageAmount;
     }

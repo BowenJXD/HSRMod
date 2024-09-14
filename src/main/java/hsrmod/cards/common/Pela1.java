@@ -29,7 +29,7 @@ public class Pela1 extends BaseCard {
                         AbstractGameAction.AttackEffect.SLASH_HORIZONTAL,
                         c -> {
                             addToBot(
-                                    new ApplyPowerAction(c, p, new VulnerablePower(p, this.magicNumber, false), this.magicNumber)
+                                    new ApplyPowerAction(c, p, new VulnerablePower(c, this.magicNumber, false), this.magicNumber)
                             );
                         }
                 ))

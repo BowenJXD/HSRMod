@@ -1,6 +1,7 @@
 package hsrmod.powers.misc;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -64,9 +65,10 @@ public class BrokenPower extends BuffPower {
     public void atEndOfTurn(boolean isPlayer) {
         if (doReduce) {
             doReduce = false;
-            reducePower(1);
             if (this.amount == 0) {
                 this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
+            } else {
+                this.addToBot(new ReducePowerAction(this.owner, this.owner, POWER_ID, 1));
             }
         }
     }

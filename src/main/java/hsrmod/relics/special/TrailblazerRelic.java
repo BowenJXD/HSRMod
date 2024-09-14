@@ -1,3 +1,4 @@
+/*
 package hsrmod.relics.special;
 
 import basemod.abstracts.CustomRelic;
@@ -28,3 +29,4 @@ public class TrailblazerRelic extends CustomRelic {
         return new TrailblazerRelic();
     }
 }
+*/

@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -27,20 +28,16 @@ public class BrainInAVatPower extends BuffPower implements OnReceivePowerPower {
     }
 
     @Override
-    public void reducePower(int reduceAmount) {
-        super.reducePower(reduceAmount);
-        if (amount <= 0) {
-            addToBot(new RemoveSpecificPowerAction(owner, owner, this));
-        }
-    }
-
-    @Override
     public int onReceivePowerStacks(AbstractPower power, AbstractCreature target, AbstractCreature source, int stackAmount) {
         if (power instanceof EnergyPower
                 && stackAmount < 0) {
             flash();
             addToBot(new ApplyPowerAction(owner, owner, new EnergyPower(owner, -stackAmount)));
-            reducePower(1);
+            if (this.amount == 0) {
+                this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+            } else {
+                this.addToBot(new ReducePowerAction(this.owner, this.owner, this, 1));
+            }
         }
         return stackAmount;
     }

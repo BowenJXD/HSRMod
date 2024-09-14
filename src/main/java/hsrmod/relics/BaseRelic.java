@@ -22,6 +22,7 @@ public abstract class BaseRelic extends CustomRelic implements CustomSavable<Boo
     public BaseRelic(String id){
         super(HSRMod.makePath(id),
                 ImageMaster.loadImage("HSRModResources/img/relics/" + id + ".png"),
+                ImageMaster.loadImage("HSRModResources/img/relics/outline/" + id + ".png"),
                 AbstractRelic.RelicTier.valueOf(DataManager.getInstance().getRelicData(id, RelicDataCol.Tier)),
                 AbstractRelic.LandingSound.valueOf(DataManager.getInstance().getRelicData(id, RelicDataCol.Sound))
                 );

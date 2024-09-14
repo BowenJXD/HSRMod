@@ -69,7 +69,7 @@ public abstract class DoTPower extends DebuffPower {
     public abstract ElementType getElementType();
     
     public void remove() {
-        if (this.amount <= 1) {
+        if (this.amount == 0) {
             this.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this));
         } else {
             this.addToTop(new ReducePowerAction(this.owner, this.owner, this, 1));

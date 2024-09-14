@@ -2,6 +2,7 @@ package hsrmod.powers.uniqueBuffs;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -28,9 +29,11 @@ public class RobinPower extends BuffPower {
 
     @Override
     public void atEndOfTurn(boolean isPlayer) {
-        if (isPlayer) reducePower(1);
-        if (amount == 0) {
-            addToBot(new RemoveSpecificPowerAction(owner, owner, this));
+        if (!isPlayer) return; 
+        if (this.amount == 0) {
+            this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+        } else {
+            this.addToBot(new ReducePowerAction(this.owner, this.owner, this, 1));
         }
     }
 

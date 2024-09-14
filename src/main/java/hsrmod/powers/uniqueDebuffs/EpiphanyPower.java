@@ -4,6 +4,7 @@ import basemod.BaseMod;
 import basemod.interfaces.OnPowersModifiedSubscriber;
 import basemod.interfaces.PostPowerApplySubscriber;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -38,14 +39,10 @@ public class EpiphanyPower extends DebuffPower implements OnPowersModifiedSubscr
 
     @Override
     public void atEndOfTurn(boolean isPlayer) {
-        reducePower(1);
-    }
-
-    @Override
-    public void reducePower(int reduceAmount) {
-        super.reducePower(reduceAmount);
-        if (amount <= 0) {
-            addToBot(new RemoveSpecificPowerAction(owner, owner, this));
+        if (this.amount == 0) {
+            this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+        } else {
+            this.addToBot(new ReducePowerAction(this.owner, this.owner, this, 1));
         }
     }
 

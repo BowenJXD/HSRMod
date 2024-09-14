@@ -16,6 +16,7 @@ import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.powers.misc.BreakEffectPower;
 import hsrmod.powers.misc.BrokenPower;
+import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.subscribers.SubscribeManager;
 import hsrmod.utils.ModHelper;
 
@@ -38,15 +39,17 @@ public class Rappa1 extends BaseCard {
     
     void execute(){
         canRepeat = true;
-        Map<AbstractCreature, Boolean> brokenMap = new HashMap<>();
+        Map<AbstractCreature, Integer> toughnessMap = new HashMap<>();
         for (AbstractMonster q : AbstractDungeon.getCurrRoom().monsters.monsters) {
-            brokenMap.put(q, q.hasPower(BrokenPower.POWER_ID));
+            toughnessMap.put(q, ModHelper.getPowerCount(q, BrokenPower.POWER_ID));
         }
         
         addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new BreakEffectPower(AbstractDungeon.player, 1), 1));
         addToBot(new AOEAction((q) -> new ElementalDamageAction(q, new DamageInfo(AbstractDungeon.player, damage, damageTypeForTurn),
                 elementType, magicNumber, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, (c) -> {
-            if ((!brokenMap.containsKey(c) || !brokenMap.get(c)) && c.hasPower(BrokenPower.POWER_ID) && canRepeat) {
+            if ((!toughnessMap.containsKey(c) || toughnessMap.get(c) > 0 ) 
+                    && ModHelper.getPowerCount(c, ToughnessPower.POWER_ID) <= 0 
+                    && canRepeat) {
                 canRepeat = false;
                 ModHelper.addToBotAbstract(this::execute);
             }

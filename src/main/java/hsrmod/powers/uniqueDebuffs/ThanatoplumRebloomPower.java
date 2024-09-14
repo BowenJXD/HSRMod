@@ -3,6 +3,7 @@ package hsrmod.powers.uniqueDebuffs;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.BetterOnApplyPowerPower;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -24,14 +25,6 @@ public class ThanatoplumRebloomPower extends DebuffPower {
     }
 
     @Override
-    public void reducePower(int reduceAmount) {
-        super.reducePower(reduceAmount);
-        if (this.amount <= 0) {
-            addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this));
-        }
-    }
-
-    @Override
     public void atStartOfTurn() {
         super.atStartOfTurn();
         AbstractPower power = owner.getPower(BrokenPower.POWER_ID);
@@ -46,7 +39,11 @@ public class ThanatoplumRebloomPower extends DebuffPower {
         AbstractPower power = owner.getPower(BrokenPower.POWER_ID);
         if (power != null) {
             ((BrokenPower)power).doReduce = false;
-            reducePower(1);
+            if (this.amount == 0) {
+                this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+            } else {
+                this.addToBot(new ReducePowerAction(this.owner, this.owner, this, 1));
+            }
         }
     }
 }

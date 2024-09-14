@@ -23,6 +23,8 @@ public class DataManager {
     public Map<String, String[]> relicData;
     public static final String RELIC_CSV = "HSRModResources/data/relicData.csv";
     
+    public static final String RELIC_JSON = "HSRModResources/localization/ZHS/relics.json";
+    
     private DataManager() {
         cardData = parseCSV(CARD_CSV);
         relicData = parseCSV(RELIC_CSV);
@@ -117,11 +119,14 @@ public class DataManager {
             replacements.put("持续伤害", " hsrmod:持续伤害 ");
             replacements.put("〖", " ");
             replacements.put("〗", " ");
-            
-            replacements.put("乘胜 hsrmod:追击 ", "乘胜追击");
-            replacements.put("  ", " ");
 
             // 读取文件并替换文本
+            replaceTextInFile(CARD_CSV, replacements);
+            
+            replacements.clear();
+            replacements.put("乘胜 hsrmod:追击 ", "乘胜追击");
+            replacements.put("  ", " ");
+            
             replaceTextInFile(CARD_CSV, replacements);
         }
 

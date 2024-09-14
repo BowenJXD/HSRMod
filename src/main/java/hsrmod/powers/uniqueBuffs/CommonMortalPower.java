@@ -70,7 +70,8 @@ public class CommonMortalPower extends PowerPower implements OnReceivePowerPower
     @Override
     public int onReceivePowerStacks(AbstractPower power, AbstractCreature target, AbstractCreature source, int stackAmount) {
         if (power instanceof EnergyPower 
-                && stackAmount < 0) {
+                && stackAmount < 0
+                && upgraded) {
             flash();
             AbstractMonster m = AbstractDungeon.getRandomMonster();
             addToBot(new ApplyPowerAction(m, owner, DoTPower.getRandomDoTPower(m, owner, 1), 1));

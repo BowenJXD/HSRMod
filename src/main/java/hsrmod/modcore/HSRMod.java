@@ -13,6 +13,8 @@ import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import com.badlogic.gdx.graphics.Color;
 import hsrmod.characters.MyCharacter;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.nio.charset.StandardCharsets;
 
@@ -47,6 +49,8 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
     private static final String BIG_ORB = "HSRModResources/img/char/card_orb.png";
     // 小尺寸的能量图标（战斗中，牌堆预览）
     private static final String ENERGY_ORB = "HSRModResources/img/char/cost_orb.png";
+    
+    public static final Logger logger = LogManager.getLogger(MOD_NAME);
 
     // 构造方法
     public HSRMod() {

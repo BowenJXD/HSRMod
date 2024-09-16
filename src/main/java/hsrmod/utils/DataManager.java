@@ -119,6 +119,7 @@ public class DataManager {
             replacements.put("持续伤害", " hsrmod:持续伤害 ");
             replacements.put("〖", " ");
             replacements.put("〗", " ");
+            replacements.put("弹射", " 弹射 ");
             replacements.put("消耗。", " 消耗 。");
             replacements.put("虚无。", " 虚无 。");
             replacements.put("固有。", " 固有 。");

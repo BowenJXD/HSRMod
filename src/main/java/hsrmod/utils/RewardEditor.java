@@ -1,6 +1,5 @@
 package hsrmod.utils;
 
-import basemod.devcommands.relic.Relic;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -9,16 +8,11 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import com.megacrit.cardcrawl.screens.CombatRewardScreen;
 import hsrmod.modcore.HSRMod;
 import hsrmod.relics.BaseRelic;
 import hsrmod.relics.boss.IronCavalryAgainstTheScourge;
 import hsrmod.relics.boss.PrisonerInDeepConfinement;
 import hsrmod.relics.boss.TheAshblazingGrandDuke;
-import hsrmod.relics.rare.ChanceJailbreak;
-import hsrmod.relics.rare.ParallelUniverseWalkieTalkie;
-import hsrmod.relics.rare.Revitalization310;
-import hsrmod.relics.rare.RoadToComets;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -29,23 +23,19 @@ import static hsrmod.characters.MyCharacter.PlayerColorEnum.HSR_PINK;
 /**
  * Singleton class for editing the card reward pool.
  */
-public class CardRewardPoolEditor {
-    private static CardRewardPoolEditor instance;
+public class RewardEditor {
+    private static RewardEditor instance;
 
     AbstractRoom currRoom;
 
     AbstractCard.CardTags tag;
-    
-    public int extraCards = 0;
-    
-    public int extraRelics = 0;
 
-    private CardRewardPoolEditor() {
+    private RewardEditor() {
     }
 
-    public static CardRewardPoolEditor getInstance() {
+    public static RewardEditor getInstance() {
         if (instance == null) {
-            instance = new CardRewardPoolEditor();
+            instance = new RewardEditor();
         }
         return instance;
     }
@@ -88,23 +78,6 @@ public class CardRewardPoolEditor {
                 if (!relicName.isEmpty())
                     rewards.add(new RewardItem(RelicLibrary.getRelic(relicName).makeCopy()));
             }
-        }
-        
-        if (extraCards > 0 && room == currRoom) {
-            for (int i = 0; i < extraCards; i++) {
-                RewardItem rewardItem = new RewardItem(HSR_PINK);
-                setRewardCards(rewardItem);
-                AbstractDungeon.combatRewardScreen.rewards.add(rewardItem);
-            }
-            extraCards = 0;
-        }
-        
-        if (extraRelics > 0 && room == currRoom) {
-            for (int i = 0; i < extraRelics; i++) {
-                RewardItem rewardItem = new RewardItem(RelicLibrary.getRelic(AbstractDungeon.returnRandomRelicKey(AbstractRelic.RelicTier.COMMON)).makeCopy());
-                AbstractDungeon.combatRewardScreen.rewards.add(rewardItem);
-            }
-            extraRelics = 0;
         }
     }
 

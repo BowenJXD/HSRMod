@@ -28,7 +28,7 @@ public class ShiningTrapezohedronDie extends BaseRelic {
         
         List<AbstractRelic> relics = AbstractDungeon.player.relics.stream().filter(r -> r.tier != RelicTier.STARTER && !Objects.equals(r.relicId, relicId)).collect(Collectors.toList());
         toAdd = new ArrayList<>(relics);
-        for (AbstractRelic relic : relics) {
+        for (AbstractRelic relic : toAdd) {
             AbstractDungeon.player.loseRelic(relic.relicId);
         }
     }
@@ -37,7 +37,7 @@ public class ShiningTrapezohedronDie extends BaseRelic {
     public void update() {
         if (toAdd != null && !toAdd.isEmpty()) {
             AbstractRelic relic = toAdd.get(0);
-            if (relic == null) return;
+            if (relic == null || RelicLibrary.getRelic(relic.relicId) == null) return;
             AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float) (Settings.WIDTH / 2), (float) (Settings.HEIGHT / 2),
                     RelicLibrary.getRelic(relic.relicId).makeCopy());
             toAdd.remove(0);

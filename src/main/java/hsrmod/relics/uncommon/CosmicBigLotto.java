@@ -1,22 +1,21 @@
 package hsrmod.relics.uncommon;
 
-import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.RelicLibrary;
-import com.megacrit.cardcrawl.relics.NeowsLament;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import hsrmod.relics.BaseRelic;
-import hsrmod.utils.CardRewardPoolEditor;
+import hsrmod.utils.RewardEditor;
 
 public class CosmicBigLotto extends BaseRelic {
     public static final String ID = CosmicBigLotto.class.getSimpleName();
 
+    AbstractRoom currRoom;
+
     int winChance = 20;
     int loseChance = 10;
-    
+
     public CosmicBigLotto() {
         super(ID);
     }
@@ -26,18 +25,31 @@ public class CosmicBigLotto extends BaseRelic {
         super.onEquip();
         counter = 1;
     }
-    
+
+    @Override
+    public void update() {
+        super.update();
+        if (!usedUp && isObtained 
+                && AbstractDungeon.getCurrRoom().isBattleOver
+                && AbstractDungeon.getCurrRoom() != currRoom
+                && !AbstractDungeon.combatRewardScreen.rewards.isEmpty()) {
+            currRoom = AbstractDungeon.getCurrRoom();
+            if (AbstractDungeon.relicRng.random(100) < winChance) {
+                flash();
+                RewardItem rewardItem = new RewardItem(RelicLibrary.getRelic(AbstractDungeon.returnRandomRelicKey(AbstractDungeon.returnRandomRelicTier())).makeCopy());
+                AbstractDungeon.combatRewardScreen.rewards.add(rewardItem);
+            } else if (AbstractDungeon.relicRng.random(100) < loseChance) {
+                flash();
+                AbstractDungeon.player.currentHealth = Math.max(AbstractDungeon.player.currentHealth / 2, 1);
+                AbstractDungeon.player.healthBarUpdatedEvent();
+                destroy();
+            }
+        }
+    }
+
     @Override
     public void atBattleStart() {
         super.atBattleStart();
         if (counter <= 0) return;
-        if (AbstractDungeon.relicRng.random(100) < winChance) {
-            flash();
-            CardRewardPoolEditor.getInstance().extraRelics++;
-        } else if (AbstractDungeon.relicRng.random(100) < loseChance) {
-            flash();
-            AbstractDungeon.player.damage(new DamageInfo(AbstractDungeon.player, AbstractDungeon.player.currentHealth / 2, DamageInfo.DamageType.HP_LOSS));
-            destroy();
-        }
     }
 }

@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.relics.NeowsLament;
 import hsrmod.modcore.HSRMod;
 import hsrmod.utils.CardDataCol;
 import hsrmod.utils.DataManager;
@@ -32,12 +33,20 @@ public abstract class BaseRelic extends CustomRelic {
     public String getUpdatedDescription() {
         return this.DESCRIPTIONS[0];
     }
-    
+
+    @Override
+    public void setCounter(int counter) {
+        super.setCounter(counter);
+        if (counter <= -2) {
+            this.usedUp();
+        }
+    }
+
     protected void destroy(){
         this.setCounter(-2);
-        this.description = "该遗物已损毁。";
+/*        this.description = "该遗物已损毁。";
         this.tips.clear();
         this.tips.add(new PowerTip(this.name, this.description));
-        this.initializeTips();
+        this.initializeTips();*/
     }
 }

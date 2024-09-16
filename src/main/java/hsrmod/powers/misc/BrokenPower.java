@@ -16,7 +16,7 @@ import hsrmod.powers.DebuffPower;
 public class BrokenPower extends BuffPower {
     public static final String POWER_ID = HSRMod.makePath(BrokenPower.class.getSimpleName());
 
-    private float damageIncrementPercentage = 1f / 2f; 
+    private float damageIncrementPercentage = 1f; 
     
     private float damageDecrementPercentage = 1f / 4f;
     

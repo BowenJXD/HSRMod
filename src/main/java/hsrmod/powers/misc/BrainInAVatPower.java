@@ -32,11 +32,11 @@ public class BrainInAVatPower extends BuffPower implements OnReceivePowerPower {
         if (power instanceof EnergyPower
                 && stackAmount < 0) {
             flash();
-            addToBot(new ApplyPowerAction(owner, owner, new EnergyPower(owner, -stackAmount)));
+            addToTop(new ApplyPowerAction(owner, owner, new EnergyPower(owner, -stackAmount)));
             if (this.amount == 0) {
-                this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+                this.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this));
             } else {
-                this.addToBot(new ReducePowerAction(this.owner, this.owner, this, 1));
+                this.addToTop(new ReducePowerAction(this.owner, this.owner, this, 1));
             }
         }
         return stackAmount;

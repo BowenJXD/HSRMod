@@ -119,6 +119,10 @@ public class DataManager {
             replacements.put("持续伤害", " hsrmod:持续伤害 ");
             replacements.put("〖", " ");
             replacements.put("〗", " ");
+            replacements.put("消耗。", " 消耗 。");
+            replacements.put("虚无。", " 虚无 。");
+            replacements.put("固有。", " 固有 。");
+            replacements.put("保留。", " 保留 。");
 
             // 读取文件并替换文本
             replaceTextInFile(CARD_CSV, replacements);

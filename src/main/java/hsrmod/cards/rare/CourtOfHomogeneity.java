@@ -27,15 +27,10 @@ public class CourtOfHomogeneity extends BaseCard {
     }
 
     @Override
-    public void calculateCardDamage(AbstractMonster mo) {
-        baseDamage = ModHelper.getPowerCount(AbstractDungeon.player, ToughnessPower.POWER_ID) - ModHelper.getPowerCount(mo, ToughnessPower.POWER_ID);
-        super.calculateCardDamage(mo);
-    }
-
-    @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
+        int dmg = ModHelper.getPowerCount(AbstractDungeon.player, ToughnessPower.POWER_ID) - ModHelper.getPowerCount(m, ToughnessPower.POWER_ID);
         if (ModHelper.getPowerCount(p, ToughnessPower.POWER_ID) > ModHelper.getPowerCount(m, ToughnessPower.POWER_ID)) {
-            addToBot(new BreakDamageAction(m, new DamageInfo(p, damage)));
+            addToBot(new BreakDamageAction(m, new DamageInfo(p, dmg)));
         }
     }
 }

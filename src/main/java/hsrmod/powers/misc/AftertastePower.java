@@ -56,6 +56,14 @@ public class AftertastePower extends BuffPower implements DamageModApplyingPower
         return Collections.singletonList(new AftertasteModifier());
     }
     
+    void trigger(DamageInfo info, AbstractCreature target){
+        flash();
+        addToTop(new ApplyPowerAction(info.owner, info.owner, new EnergyPower(info.owner, -ENERGY_REQUIRED), -ENERGY_REQUIRED));
+        addToBot(new ElementalDamageAction(target, new DamageInfo(info.owner, amount, DamageInfo.DamageType.NORMAL),
+                ModHelper.getRandomEnumValue(ElementType.class), 1, AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+        addToBot(new ApplyPowerAction(info.owner, info.owner, this, 1));
+    }
+    
     public static class AftertasteModifier extends AbstractDamageModifier {
 
         public AftertasteModifier() {
@@ -63,13 +71,11 @@ public class AftertastePower extends BuffPower implements DamageModApplyingPower
 
         @Override
         public void onLastDamageTakenUpdate(DamageInfo info, int lastDamageTaken, int overkillAmount, AbstractCreature target) {
-            if (info.owner.hasPower(AftertastePower.POWER_ID) 
-                    && ModHelper.getPowerCount(info.owner, AftertastePower.POWER_ID) >= AftertastePower.ENERGY_REQUIRED) {
-                addToTop(new ApplyPowerAction(info.owner, info.owner, new AftertastePower(info.owner, -AftertastePower.ENERGY_REQUIRED), -AftertastePower.ENERGY_REQUIRED));
-                AftertastePower power = (AftertastePower) info.owner.getPower(AftertastePower.POWER_ID);
-                addToBot(new ElementalDamageAction(target, new DamageInfo(info.owner, power.amount, DamageInfo.DamageType.NORMAL), 
-                        ModHelper.getRandomEnumValue(ElementType.class), 1, AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-                addToBot(new ApplyPowerAction(info.owner, info.owner, power, 1));
+            if (!target.isDeadOrEscaped()
+                    && target.currentHealth > 0  
+                    && info.owner.hasPower(AftertastePower.POWER_ID) 
+                    && ModHelper.getPowerCount(info.owner, EnergyPower.POWER_ID) >= AftertastePower.ENERGY_REQUIRED) {
+                ((AftertastePower) info.owner.getPower(AftertastePower.POWER_ID)).trigger(info, target);
             }
         }
 

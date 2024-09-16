@@ -5,8 +5,11 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.RelicLibrary;
+import com.megacrit.cardcrawl.relics.NeowsLament;
+import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import hsrmod.relics.BaseRelic;
+import hsrmod.utils.CardRewardPoolEditor;
 
 public class CosmicBigLotto extends BaseRelic {
     public static final String ID = CosmicBigLotto.class.getSimpleName();
@@ -19,18 +22,22 @@ public class CosmicBigLotto extends BaseRelic {
     }
 
     @Override
-    public void onEnterRoom(AbstractRoom room) {
-        super.onEnterRoom(room);
-        if (!available) return;
+    public void onEquip() {
+        super.onEquip();
+        counter = 1;
+    }
+    
+    @Override
+    public void atBattleStart() {
+        super.atBattleStart();
+        if (counter <= 0) return;
         if (AbstractDungeon.relicRng.random(100) < winChance) {
             flash();
-            AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float) (Settings.WIDTH / 2), (float) (Settings.HEIGHT / 2), 
-                    RelicLibrary.getRelic(AbstractDungeon.returnRandomRelicKey(AbstractDungeon.returnRandomRelicTier())).makeCopy());
+            CardRewardPoolEditor.getInstance().extraRelics++;
         } else if (AbstractDungeon.relicRng.random(100) < loseChance) {
             flash();
             AbstractDungeon.player.damage(new DamageInfo(AbstractDungeon.player, AbstractDungeon.player.currentHealth / 2, DamageInfo.DamageType.HP_LOSS));
-            available = false;
-            counter = 0;
+            destroy();
         }
     }
 }

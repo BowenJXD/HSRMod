@@ -74,7 +74,8 @@ public class CommonMortalPower extends PowerPower implements OnReceivePowerPower
                 && upgraded) {
             flash();
             AbstractMonster m = AbstractDungeon.getRandomMonster();
-            addToBot(new ApplyPowerAction(m, owner, DoTPower.getRandomDoTPower(m, owner, 1), 1));
+            if (m != null)
+                addToBot(new ApplyPowerAction(m, owner, DoTPower.getRandomDoTPower(m, owner, 1), 1));
         }
         return stackAmount;
     }

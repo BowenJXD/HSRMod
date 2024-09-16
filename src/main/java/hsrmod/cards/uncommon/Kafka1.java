@@ -28,7 +28,10 @@ public class Kafka1 extends BaseCard {
     @Override
     public void onPlayCard(AbstractCard c, AbstractMonster m) {
         if (inHand && !followedUp) {
-            if (m != null && m.powers.stream().anyMatch(power -> power instanceof DoTPower)) {
+            if (m != null 
+                    && !m.isDeadOrEscaped()
+                    && m.currentHealth > 0
+                    && m.powers.stream().anyMatch(power -> power instanceof DoTPower)) {
                 followedUp = true;
                 addToBot(new FollowUpAction(this, m));
             } else if ((c.target == CardTarget.ALL || c.target == CardTarget.ALL_ENEMY)) {
@@ -36,7 +39,9 @@ public class Kafka1 extends BaseCard {
                 
                 while (mons.hasNext()) {
                     AbstractMonster mon = mons.next();
-                    if (mon.powers.stream().anyMatch(power -> power instanceof DoTPower)) {
+                    if (!mon.isDeadOrEscaped() 
+                            && mon.currentHealth > 0 
+                            && mon.powers.stream().anyMatch(power -> power instanceof DoTPower)) {
                         followedUp = true;
                         addToBot(new FollowUpAction(this, mon));
                         break;

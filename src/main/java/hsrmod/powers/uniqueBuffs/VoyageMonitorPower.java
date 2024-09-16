@@ -45,6 +45,7 @@ public class VoyageMonitorPower extends PowerPower implements PreBreakDamageSubs
 
     @Override
     public float preBreakDamage(float amount, AbstractCreature target) {
+        if (!SubscribeManager.checkSubscriber(this)) return amount;
         addToBot(new ApplyPowerAction(owner, owner, new ToughnessPower(owner, 1), 1));
         return amount;
     }

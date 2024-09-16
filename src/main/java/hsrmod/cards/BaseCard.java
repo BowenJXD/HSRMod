@@ -126,12 +126,11 @@ public abstract class BaseCard extends CustomCard {
     }
 
     protected boolean checkEnergy() {
-        AbstractPower power = AbstractDungeon.player.getPower(EnergyPower.POWER_ID);
-        boolean result = power != null && power.amount >= energyCost;
-        if (!result){
+        if (ModHelper.getPowerCount(EnergyPower.POWER_ID) < energyCost) {
             cantUseMessage = "我没有足够的充能。";
+            return false;
         }
-        return result;
+        return true;
     }
 
     @Override

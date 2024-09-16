@@ -42,6 +42,8 @@ public class TriggerDoTAction extends AbstractGameAction {
     public void update() {
         this.isDone = true;
         
+        if(target.isDeadOrEscaped() || target.currentHealth <= 0) return;
+        
         List<DoTPower> dots = target.powers.stream()
                 .filter(p -> p instanceof DoTPower 
                         && (p.ID.equals(powerID) || powerID == null))

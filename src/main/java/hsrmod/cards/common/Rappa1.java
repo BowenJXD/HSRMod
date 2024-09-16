@@ -41,7 +41,7 @@ public class Rappa1 extends BaseCard {
         canRepeat = true;
         Map<AbstractCreature, Integer> toughnessMap = new HashMap<>();
         for (AbstractMonster q : AbstractDungeon.getCurrRoom().monsters.monsters) {
-            toughnessMap.put(q, ModHelper.getPowerCount(q, BrokenPower.POWER_ID));
+            toughnessMap.put(q, ModHelper.getPowerCount(q, ToughnessPower.POWER_ID));
         }
         
         addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new BreakEffectPower(AbstractDungeon.player, 1), 1));

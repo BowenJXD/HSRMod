@@ -26,15 +26,25 @@ public class EnergyPower extends BuffPower {
 
     @Override
     public void stackPower(int stackAmount) {
-        int newValue = amount + stackAmount;
+        super.stackPower(stackAmount);
 
         // Ensure the new value does not exceed bounds
-        if (newValue > AMOUNT_LIMIT) {
+        if (amount > AMOUNT_LIMIT) {
             amount = AMOUNT_LIMIT;
-        } else if (newValue < 0) {
+        } else if (amount < 0) {
             amount = 0;
-        } else {
-            amount = newValue;
+        }
+    }
+
+    @Override
+    public void reducePower(int reduceAmount) {
+        super.reducePower(reduceAmount);
+        
+        // Ensure the new value does not exceed bounds
+        if (amount > AMOUNT_LIMIT) {
+            amount = AMOUNT_LIMIT;
+        } else if (amount < 0) {
+            amount = 0;
         }
     }
 }

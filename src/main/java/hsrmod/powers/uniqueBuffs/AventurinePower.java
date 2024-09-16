@@ -87,8 +87,11 @@ public class AventurinePower extends PowerPower implements OnPlayerDamagedSubscr
         int d = AbstractDungeon.cardRandomRng.random(1,triggerAmount);
         int b = AbstractDungeon.cardRandomRng.random(1,triggerAmount);
         
+        AbstractMonster m = AbstractDungeon.getRandomMonster();
+        
+        if (m == null) return;
         addToBot(new ElementalDamageAction(
-                AbstractDungeon.getRandomMonster(),
+                m,
                 new DamageInfo(
                         AbstractDungeon.player,
                         d,

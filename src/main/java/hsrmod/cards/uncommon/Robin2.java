@@ -27,28 +27,25 @@ public class Robin2 extends BaseCard {
         ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID));
         addToBot(new TalkAction(true, "今夜，群星因我回响!", 1.0F, 2.0F));
         
-        int amount = energyOnUse + magicNumber;
+        int amt = energyOnUse + magicNumber;
         
-        addToBot(new DrawCardAction(p, amount));
+        addToBot(new DrawCardAction(p, amt));
 
-        for (AbstractCard card : p.hand.group) {
-            if (card.hasTag(FOLLOW_UP)) {
-                card.setCostForTurn(0);
-            }
-            amount--;
-            if (amount == 0) break;
-        }
+        ModHelper.addToBotAbstract(() ->
+        {
+            int amount = amt;
 
-        amount = energyOnUse + magicNumber;
-        
-        for (AbstractCard card : p.hand.group) {
-            if (card.hasTag(FOLLOW_UP)) {
-                addToBot(new FollowUpAction(card));
+            for (AbstractCard card : p.hand.group) {
+                if (card.hasTag(FOLLOW_UP) 
+                        && card instanceof BaseCard 
+                        && !((BaseCard)card).followedUp) {
+                    addToBot(new FollowUpAction(card));
+                    amount--;
+                }
+                if (amount == 0) break;
             }
-            amount--;
-            if (amount == 0) break;
-        }
-        
-        p.energy.use(EnergyPanel.totalCount);
+
+            p.energy.use(EnergyPanel.totalCount);
+        });
     }
 }

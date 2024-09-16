@@ -1,0 +1,118 @@
+[
+  {
+    "NAMES": [
+      "Charge"
+    ],
+    "DESCRIPTION": "Some cards require a certain amount of Charge to activate."
+  },
+  {
+    "NAMES": [
+      "Follow Up"
+    ],
+    "DESCRIPTION": "Cards with the 'Follow Up' effect will be played automatically with no cost when certain conditions are met (random target)."
+  },
+  {
+    "NAMES": [
+      "DoT",
+      "DoTs"
+    ],
+    "DESCRIPTION": "Includes Bleeding, Burn, Shock, and Wind Shear."
+  },
+  {
+    "NAMES": [
+      "Break",
+      "Breaks"
+    ],
+    "DESCRIPTION": "Actions that reduce toughness from >0 to <=0 are considered a 'Break'."
+  },
+  {
+    "NAMES": [
+      "Toughness"
+    ],
+    "DESCRIPTION": "After dealing elemental damage to a target with toughness, the amount of toughness removed is equal to the toughness shred value of the elemental damage."
+  },
+  {
+    "NAMES": [
+      "Broken"
+    ],
+    "DESCRIPTION": "A state applied when toughness is reduced to 0 or below."
+  },
+  {
+    "NAMES": [
+      "Freeze"
+    ],
+    "DESCRIPTION": "At the start of the turn, if the enemy is a normal/elite/BOSS and has at least 1/2/3 layers of Freeze, all layers are removed and the turn is skipped. After receiving damage, 1 layer is removed."
+  },
+  {
+    "NAMES": [
+      "Bleeding"
+    ],
+    "DESCRIPTION": "DoT. Trigger at the start of the turn: take physical damage equal to 5% of max HP (up to 10), 1 layer is removed."
+  },
+  {
+    "NAMES": [
+      "Burn"
+    ],
+    "DESCRIPTION": "DoT. Trigger at the start of the turn: take 4 fire damage, 1 layer is removed."
+  },
+  {
+    "NAMES": [
+      "Shock"
+    ],
+    "DESCRIPTION": "DoT. Trigger at the start of the turn: take 5 lightning damage, 1 layer is removed."
+  },
+  {
+    "NAMES": [
+      "Wind Shear"
+    ],
+    "DESCRIPTION": "DoT. Trigger at the start of the turn: take wind damage equal to 2X (up to 5 layers), 1 layer is removed."
+  },
+  {
+    "NAMES": [
+      "Imprison"
+    ],
+    "DESCRIPTION": "Damage dealt is reduced by 33%, and 1 layer is removed at the end of the turn."
+  },
+  {
+    "NAMES": [
+      "Entangle"
+    ],
+    "DESCRIPTION": "Adds 1 layer when taking damage, up to 5 layers. At the start of the turn, remove all layers and take 2 damage for each removed layer."
+  },
+  {
+    "NAMES": [
+      "Break Effect"
+    ],
+    "DESCRIPTION": "Break damage is increased by X."
+  },
+  {
+    "NAMES": [
+      "Break Efficiency"
+    ],
+    "DESCRIPTION": "Toughness shred value of elemental damage is increased by 50X%. 1 layer is removed at the end of the turn."
+  },
+  {
+    "NAMES": [
+      "Break Damage"
+    ],
+    "DESCRIPTION": "Enhanced by 'Break Effect,' unaffected by 'Strength'."
+  },
+  {
+    "NAMES": [
+      "Aftertaste"
+    ],
+    "DESCRIPTION": "After dealing damage via Follow Up card, deal X damage to the target and apply 1 layer."
+  },
+  {
+    "NAMES": [
+      "Suspicion"
+    ],
+    "DESCRIPTION": "Increases DoT taken by X%. Stacks up to 99 layers."
+  },
+  {
+    "NAMES": [
+      "Brain in a Vat"
+    ],
+    "DESCRIPTION": "After consuming Charge, remove 1 layer and recover an equal amount of Charge."
+  }
+]

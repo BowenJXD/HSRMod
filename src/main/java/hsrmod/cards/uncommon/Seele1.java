@@ -23,68 +23,39 @@ import java.util.Iterator;
 public class Seele1 extends BaseCard {
     public static final String ID = Seele1.class.getSimpleName();
     
-    public static int increaseAmount = 1;
-    
     public Seele1() {
         super(ID);
         this.misc = damage;
-        increaseAmount = magicNumber;
         energyCost = 120;
-        
-        DamageModifierManager.addModifier(this, new SeeleDamage(this));
     }
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        AbstractGameAction action  = new ElementalDamageAction(m, new DamageInfo(p, damage), ElementType.Quantum, magicNumber);
-        BindingHelper.bindAction(this, action);
-        addToBot(action);
-    }
-    
-    public static class SeeleDamage extends AbstractDamageModifier {
-        AbstractCard card;
-        
-        public SeeleDamage(AbstractCard card){
-            this.card = card;
-        }
-        
-        @Override
-        public void onLastDamageTakenUpdate(DamageInfo info, int lastDamageTaken, int overkillAmount, AbstractCreature target) {
-            ModHelper.addToBotAbstract(() -> {
-                if ((target.isDying || target.currentHealth <= 0) && !target.halfDead && !target.hasPower("Minion")) {
-                    Iterator var1 = AbstractDungeon.player.masterDeck.group.iterator();
+        AbstractGameAction action  = new ElementalDamageAction(m, new DamageInfo(p, damage), ElementType.Quantum, magicNumber, AbstractGameAction.AttackEffect.SLASH_HEAVY, (q) -> {
+            if (q.isDying || q.currentHealth <= 0) {
+                Iterator var1 = AbstractDungeon.player.masterDeck.group.iterator();
 
-                    AbstractCard c;
-                    while (var1.hasNext()) {
-                        c = (AbstractCard) var1.next();
-                        if (c.uuid == card.uuid) {
-                            c.misc += Seele1.increaseAmount;
-                            c.applyPowers();
-                            c.baseDamage = c.misc;
-                            c.isDamageModified = false;
-                        }
-                    }
-
-                    for (var1 = GetAllInBattleInstances.get(card.uuid).iterator(); var1.hasNext(); c.baseDamage = c.misc) {
-                        c = (AbstractCard) var1.next();
-                        c.misc += Seele1.increaseAmount;
+                AbstractCard c;
+                while (var1.hasNext()) {
+                    c = (AbstractCard) var1.next();
+                    if (c.uuid == this.uuid) {
+                        c.misc += magicNumber;
                         c.applyPowers();
+                        c.baseDamage = c.misc;
+                        c.isDamageModified = false;
                     }
-                    
-                    addToBot(new GainEnergyAction(1));
-                    addToBot(new MoveCardsAction(AbstractDungeon.player.hand, AbstractDungeon.player.discardPile, (q) -> q.uuid == card.uuid));
                 }
-            });
-        }
 
-        @Override
-        public AbstractDamageModifier makeCopy() {
-            return new SeeleDamage(card);
-        }
-
-        @Override
-        public boolean isInherent() {
-            return true;
-        }
+                for (var1 = GetAllInBattleInstances.get(this.uuid).iterator(); var1.hasNext(); c.baseDamage = c.misc) {
+                    c = (AbstractCard) var1.next();
+                    c.misc += magicNumber;
+                    c.applyPowers();
+                }
+                
+                addToBot(new GainEnergyAction(1));
+                addToBot(new MoveCardsAction(AbstractDungeon.player.hand, AbstractDungeon.player.discardPile, card -> card.uuid == this.uuid));
+            }
+        });
+        addToBot(action);
     }
 }

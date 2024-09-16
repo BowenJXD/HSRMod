@@ -25,7 +25,7 @@ public abstract class WaxRelic extends BaseRelic {
     @Override
     public void update() {
         super.update();
-        if (!available) return;
+        if (!isObtained) return;
         CardRewardPoolEditor.getInstance().update(AbstractDungeon.getCurrRoom(), tag);
     }
 }

@@ -30,8 +30,10 @@ public class Kafka2 extends BaseCard {
         
         addToBot(new AOEAction((q) -> new ElementalDamageAction(q, new DamageInfo(p, damage, damageTypeForTurn), 
                 elementType, 2, AbstractGameAction.AttackEffect.LIGHTNING, c ->{
-            addToBot(new TriggerDoTAction(c, 1, true));
-            addToBot(new ApplyPowerAction(c, p, new ShockPower(c, p, magicNumber), magicNumber));
+            if(!c.isDeadOrEscaped() && c.currentHealth > 0) {
+                addToBot(new TriggerDoTAction(c, 1, true));
+                addToBot(new ApplyPowerAction(c, p, new ShockPower(c, p, magicNumber), magicNumber));
+            }
         })));
     }
 }

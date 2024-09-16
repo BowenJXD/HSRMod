@@ -37,8 +37,10 @@ public class BouncingAction extends AbstractGameAction {
             if (this.numTimes > 1 && !AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
                 --this.numTimes;
                 AbstractMonster randomMonster = AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster)null, true, AbstractDungeon.cardRandomRng);
-                this.addToTop(new BouncingAction(randomMonster, this.numTimes, this.damageAction.makeCopy()));
-                this.addToTop(new VFXAction(new PotionBounceEffect(this.target.hb.cX, this.target.hb.cY, randomMonster.hb.cX, randomMonster.hb.cY), 0.4F));
+                if (randomMonster != null) {
+                    this.addToTop(new BouncingAction(randomMonster, this.numTimes, this.damageAction.makeCopy()));
+                    // this.addToTop(new VFXAction(new PotionBounceEffect(this.target.hb.cX, this.target.hb.cY, randomMonster.hb.cX, randomMonster.hb.cY), 0.4F));
+                }
             }
 
             if (this.target.currentHealth > 0) {

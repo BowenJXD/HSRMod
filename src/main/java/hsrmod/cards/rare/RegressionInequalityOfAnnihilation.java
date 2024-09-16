@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cards.BaseCard;
 import hsrmod.powers.misc.ToughnessPower;
+import hsrmod.utils.ModHelper;
 
 public class RegressionInequalityOfAnnihilation extends BaseCard {
     public static final String ID = RegressionInequalityOfAnnihilation.class.getSimpleName();
@@ -19,15 +20,14 @@ public class RegressionInequalityOfAnnihilation extends BaseCard {
         int playerToughness = p.hasPower(ToughnessPower.POWER_ID) ? p.getPower(ToughnessPower.POWER_ID).amount : 0;
         int totalToughness = playerToughness;
         totalToughness += AbstractDungeon.getMonsters().monsters.stream().
-                mapToInt(monster -> monster.hasPower(ToughnessPower.POWER_ID) ? monster.getPower(ToughnessPower.POWER_ID).amount : 0)
-                .sum();
+                mapToInt(mo -> ModHelper.getPowerCount(mo, ToughnessPower.POWER_ID)).sum();
         int avgToughness = totalToughness / (AbstractDungeon.getMonsters().monsters.size() + magicNumber);
         
         int stackNumber = avgToughness * magicNumber - playerToughness;
         addToBot(new ApplyPowerAction(p, p, new ToughnessPower(p, stackNumber), stackNumber));
         
         AbstractDungeon.getMonsters().monsters.forEach(monster -> {
-            int monsterToughness = monster.hasPower(ToughnessPower.POWER_ID) ? monster.getPower(ToughnessPower.POWER_ID).amount : 0;
+            int monsterToughness = ModHelper.getPowerCount(monster, ToughnessPower.POWER_ID);
             int stackNum = avgToughness - monsterToughness;
             addToBot(new ApplyPowerAction(monster, p, new ToughnessPower(monster, stackNum), stackNum));
         });

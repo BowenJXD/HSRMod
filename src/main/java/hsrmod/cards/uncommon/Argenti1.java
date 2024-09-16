@@ -36,10 +36,10 @@ public class Argenti1 extends BaseCard {
 
     void execute(){
         if (AbstractDungeon.player.getPower(EnergyPower.POWER_ID).amount < energyExhaust) return;
-        addToBot(new AOEAction((q) -> new ElementalDamageAction(q, new DamageInfo(AbstractDungeon.player, damage), 
-                ElementType.Physical, 2, 
+        addToBot(new AOEAction((q) -> new ElementalDamageAction(q, new DamageInfo(AbstractDungeon.player, damage),
+                ElementType.Physical, 2,
                 AbstractGameAction.AttackEffect.SLASH_VERTICAL, (c) -> {
-            addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, 
+            addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player,
                     new EnergyPower(AbstractDungeon.player, energyGain), energyGain));
         })));
         addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, 

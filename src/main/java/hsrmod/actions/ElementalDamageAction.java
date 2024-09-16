@@ -1,6 +1,7 @@
 package hsrmod.actions;
 
 import com.badlogic.gdx.graphics.Color;
+import com.evacipated.cardcrawl.mod.stslib.actions.common.DamageCallbackAction;
 import com.evacipated.cardcrawl.mod.stslib.patches.ColoredDamagePatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -51,21 +52,18 @@ public class ElementalDamageAction extends AbstractGameAction{
     public void update() {
         if (this.duration == 0.1F && this.target != null) {
             AbstractDungeon.effectList.add(new FlashAtkImgEffect(this.target.hb.cX, this.target.hb.cY, AttackEffect.NONE));
-
-            ModHelper.addToTopAbstract(() -> {
-                        if (this.afterEffect != null) {
-                            this.afterEffect.accept(this.target);
-                        }
-                    }
-            );
-
+            
             if (this.doApplyPower) {
                 this.applyPowers();
             }
             if (this.modifier != null) {
                 this.info.output += this.modifier.apply(this.target);
             }
-            AbstractGameAction action = new DamageAction(this.target, this.info);
+            AbstractGameAction action = new DamageCallbackAction(target, info, this.attackEffect, (dmg) -> {
+                if (this.afterEffect != null) {
+                    this.afterEffect.accept(this.target);
+                }
+            });
             ColoredDamagePatch.DamageActionColorField.damageColor.set(action, elementType.getColor());
             ColoredDamagePatch.DamageActionColorField.fadeSpeed.set(action, ColoredDamagePatch.FadeSpeed.SLOW);
             addToTop(action);

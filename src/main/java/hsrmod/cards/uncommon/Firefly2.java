@@ -20,7 +20,7 @@ public class Firefly2 extends BaseCard {
     public Firefly2() {
         super(ID);
         energyCost = 240;
-        
+        cardsToPreview = new Firefly1();
     }
 
     @Override

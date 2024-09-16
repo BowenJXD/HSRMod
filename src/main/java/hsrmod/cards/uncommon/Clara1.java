@@ -30,6 +30,7 @@ public class Clara1 extends BaseCard implements OnPlayerDamagedSubscriber {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
+        canBeUsed = false;
         int blockToGain = block;
         
         blockToGain += (int) (p.hand.group.stream().filter(c -> c.hasTag(FOLLOW_UP)).count() * magicNumber);
@@ -59,7 +60,8 @@ public class Clara1 extends BaseCard implements OnPlayerDamagedSubscriber {
     @Override
     public int receiveOnPlayerDamaged(int i, DamageInfo damageInfo) {
         if (!SubscribeManager.checkSubscriber(this)
-                || !AbstractDungeon.player.hand.contains(this)) return i;
+                || !AbstractDungeon.player.hand.contains(this)
+                || !AbstractDungeon.actionManager.turnHasEnded) return i;
         canBeUsed = true;
         return i;
     }

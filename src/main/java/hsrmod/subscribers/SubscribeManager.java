@@ -17,11 +17,13 @@ import java.util.*;
 public class SubscribeManager {
     private static SubscribeManager instance = null;
     
+    List<ISubscriber> toRemove;
     List<PreBreakDamageSubscriber> preBreakDamageSubscribers;
     List<PreToughnessReduceSubscriber> preToughnessReduceSubscribers;
     List<PreDoTDamageSubscriber> preDoTDamageSubscribers;
 
     SubscribeManager() {
+        toRemove = new ArrayList<>();
         preBreakDamageSubscribers = new ArrayList<>();
         preToughnessReduceSubscribers = new ArrayList<>();
         preDoTDamageSubscribers = new ArrayList<>();
@@ -61,6 +63,22 @@ public class SubscribeManager {
         }
     }
     
+    public void unsubscribeLater(ISubscriber subscriber) {
+        toRemove.add(subscriber);
+    }
+
+    private void unsubscribeLaterHelper(Class<? extends ISubscriber> removalClass) {
+        Iterator var1 = toRemove.iterator();
+
+        while(var1.hasNext()) {
+            ISubscriber sub = (ISubscriber)var1.next();
+            if (removalClass.isInstance(sub)) {
+                unsubscribe(sub);
+            }
+        }
+
+    }
+    
     public float triggerPreBreakDamage(float amount, AbstractCreature target) {
         float result = amount;
         Iterator<PreBreakDamageSubscriber> var3 = preBreakDamageSubscribers.iterator();
@@ -69,6 +87,9 @@ public class SubscribeManager {
             PreBreakDamageSubscriber sub = var3.next();
             result = sub.preBreakDamage(amount, target);
         }
+        
+        unsubscribeLaterHelper(PreBreakDamageSubscriber.class);
+        
         return result;
     }
     
@@ -80,6 +101,9 @@ public class SubscribeManager {
             PreToughnessReduceSubscriber sub = var3.next();
             sub.preToughnessReduce(amount, target, elementType);
         }
+        
+        unsubscribeLaterHelper(PreToughnessReduceSubscriber.class);
+        
         return result;
     }
     
@@ -91,6 +115,9 @@ public class SubscribeManager {
             PreDoTDamageSubscriber sub = var3.next();
             result = sub.preDoTDamage(amount, target, power);
         }
+        
+        unsubscribeLaterHelper(PreDoTDamageSubscriber.class);
+        
         return result;
     }
     
@@ -101,6 +128,7 @@ public class SubscribeManager {
                 || AbstractDungeon.player.exhaustPile.contains(card);
         if (!result && card instanceof ISubscriber) {
             BaseMod.unsubscribeLater((ISubscriber) card);
+            instance.unsubscribeLater((ISubscriber) card);
         }
         return result;
     }
@@ -109,6 +137,7 @@ public class SubscribeManager {
         boolean result = AbstractDungeon.player.powers.contains(power);
         if (!result && power instanceof ISubscriber) {
             BaseMod.unsubscribeLater((ISubscriber) power);
+            instance.unsubscribeLater((ISubscriber) power);
         }
         return result;
     }

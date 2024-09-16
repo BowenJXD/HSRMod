@@ -17,7 +17,7 @@ public class Trailblazer2 extends BaseCard {
         super(ID);
         this.isMultiDamage = true;
         // this.tags.add(CardTags.STRIKE);
-        this.tags.add(CardTags.STARTER_STRIKE);
+        // this.tags.add(CardTags.STARTER_STRIKE);
         energyCost = 120;
     }
 

@@ -55,7 +55,9 @@ public class UselessScholarPower extends PowerPower {
             addToTop(new ApplyPowerAction(owner, owner, new EnergyPower(owner, -ENERGY_REQUIRED), -ENERGY_REQUIRED));
             
             List<AbstractCard> cards = AbstractDungeon.player.hand.group.stream()
-                    .filter(card -> card.hasTag(FOLLOW_UP)).collect(Collectors.toList());
+                    .filter(card -> card.hasTag(FOLLOW_UP) 
+                    && card instanceof BaseCard
+                    && !((BaseCard)card).followedUp).collect(Collectors.toList());
             AbstractCard card = cards.get(AbstractDungeon.cardRandomRng.random(cards.size() - 1));
             if (card.hasTag(FOLLOW_UP)){
                 addToBot(new FollowUpAction(card));

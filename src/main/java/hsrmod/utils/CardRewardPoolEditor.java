@@ -37,6 +37,8 @@ public class CardRewardPoolEditor {
     AbstractCard.CardTags tag;
     
     public int extraCards = 0;
+    
+    public int extraRelics = 0;
 
     private CardRewardPoolEditor() {
     }
@@ -78,7 +80,9 @@ public class CardRewardPoolEditor {
 
                 if (!relicName.isEmpty())
                     rewards.add(new RewardItem(RelicLibrary.getRelic(HSRMod.makePath(relicName)).makeCopy()));
-            } else if (AbstractDungeon.actNum == 2 && AbstractDungeon.getMonsters().monsters.stream().anyMatch(m -> m.type == AbstractMonster.EnemyType.BOSS)) {
+            } else if (AbstractDungeon.actNum == 2 
+                    && AbstractDungeon.getMonsters() != null
+                    && AbstractDungeon.getMonsters().monsters.stream().anyMatch(m -> m.type == AbstractMonster.EnemyType.BOSS)) {
                 String relicName = getRelic(AbstractRelic.RelicTier.RARE);
 
                 if (!relicName.isEmpty())
@@ -93,6 +97,14 @@ public class CardRewardPoolEditor {
                 AbstractDungeon.combatRewardScreen.rewards.add(rewardItem);
             }
             extraCards = 0;
+        }
+        
+        if (extraRelics > 0 && room == currRoom) {
+            for (int i = 0; i < extraRelics; i++) {
+                RewardItem rewardItem = new RewardItem(RelicLibrary.getRelic(AbstractDungeon.returnRandomRelicKey(AbstractRelic.RelicTier.COMMON)).makeCopy());
+                AbstractDungeon.combatRewardScreen.rewards.add(rewardItem);
+            }
+            extraRelics = 0;
         }
     }
 

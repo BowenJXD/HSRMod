@@ -49,7 +49,7 @@ public class Boothill1 extends BaseCard {
         ModHelper.addToBotAbstract(() -> {
             if (ModHelper.getPowerCount(m, ToughnessPower.POWER_ID) <= 0
                     && (toughness > 0 || upgraded)){
-                addToBot(new GainEnergyAction(1));
+                // addToBot(new GainEnergyAction(1));
                 int val = ToughnessPower.getStackLimit(m);
                 addToBot(new BreakDamageAction(m, new DamageInfo(p, val)));
             }
@@ -57,7 +57,7 @@ public class Boothill1 extends BaseCard {
                 returnToHand = true;
                 retain = true;
                 setCostForTurn(costCache);
-                addToBot(new LoseEnergyAction(1));
+                // addToBot(new LoseEnergyAction(1));
             }
         });
     }

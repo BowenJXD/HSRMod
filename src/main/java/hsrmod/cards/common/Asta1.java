@@ -33,7 +33,7 @@ public class Asta1 extends BaseCard {
         ElementalDamageAction elementalDamageAction = new ElementalDamageAction(m, new DamageInfo(p, this.damage, 
                 DamageInfo.DamageType.NORMAL), ElementType.Fire, 1, AbstractGameAction.AttackEffect.FIRE,
                 c -> {
-                    if (!c.isDeadOrEscaped() && !monsters.contains(c)) {
+                    if (!monsters.contains(c)) {
                         monsters.add(c);
                         addToBot(
                                 new ApplyPowerAction(

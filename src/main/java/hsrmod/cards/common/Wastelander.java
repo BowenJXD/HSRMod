@@ -29,7 +29,7 @@ public class Wastelander extends BaseCard {
                 (c) -> {
                     if (ModHelper.getPowerCount(m, ToughnessPower.POWER_ID) <= 0
                             && (toughness > 0 || upgraded)) {
-                        int drawNum = c.powers.stream().filter(power -> power.type == AbstractPower.PowerType.DEBUFF).mapToInt(power -> power.amount).sum();
+                        int drawNum = c.powers.stream().filter(power -> power.type == AbstractPower.PowerType.DEBUFF).mapToInt(power -> 1).sum();
                         addToBot(new DrawCardAction(drawNum));
                     }
                 }));

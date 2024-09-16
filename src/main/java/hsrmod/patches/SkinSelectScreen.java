@@ -36,10 +36,10 @@ public class SkinSelectScreen implements ISubscriber, CustomSavable<Integer> {
         SKINS.add(new Skin("img/char/XiaoQiao.png", ", "", ""));
                 SKINS.add(new Skin("img/char/SunShangXiang.png", ", ", "LiangZhu"));
         SKINS.add(new Skin("img/char/BaoSanNiang.png", ", "", "ShuYong"));*/
-        SKINS.add(new Skin("HSRModResources/img/char/TrailblazeLogo.png", "开拓命途", "", "Trailblaze"));
         SKINS.add(new Skin("HSRModResources/img/char/ElationLogo.png", "欢愉命途", "通过追击进行输出", "Elation"));
         SKINS.add(new Skin("HSRModResources/img/char/DestructionLogo.png", "毁灭命途", "通过击破进行输出", "Destruction"));
         SKINS.add(new Skin("HSRModResources/img/char/NihilityLogo.png", "虚无命途", "通过持续伤害进行输出", "Nihility"));
+        // SKINS.add(new Skin("HSRModResources/img/char/TrailblazeLogo.png", "开拓命途", "无特殊效果", "Trailblaze"));
     }
 
     public static SkinSelectScreen Inst = new SkinSelectScreen();

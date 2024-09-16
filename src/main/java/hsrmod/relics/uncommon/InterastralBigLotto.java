@@ -23,9 +23,15 @@ public class InterastralBigLotto extends BaseRelic {
     }
 
     @Override
-    public void onEnterRoom(AbstractRoom room) {
-        super.onEnterRoom(room);
-        if (!available) return;
+    public void onEquip() {
+        super.onEquip();
+        counter = 1;
+    }
+
+    @Override
+    public void atBattleStart() {
+        super.atBattleStart();
+        if (counter <= 0) return;
         if (AbstractDungeon.relicRng.random(100) < winChance) {
             flash();
             CardRewardPoolEditor.getInstance().extraCards++;
@@ -35,8 +41,7 @@ public class InterastralBigLotto extends BaseRelic {
             if (card != null) {
                 AbstractDungeon.player.masterDeck.removeCard(card);
             }
-            available = false;
-            counter = 0;
+            destroy();
         }
     }
 }

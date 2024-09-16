@@ -33,12 +33,6 @@ public class Xueyi1 extends BaseCard implements PreToughnessReduceSubscriber {
     }
 
     @Override
-    public void calculateCardDamage(AbstractMonster mo) {
-        baseDamage = ModHelper.getPowerCount(mo, ToughnessPower.POWER_ID);
-        super.calculateCardDamage(mo);
-    }
-
-    @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         // find the monster with greatest toughness
         AbstractMonster mo = AbstractDungeon.getMonsters().monsters.stream()
@@ -55,11 +49,12 @@ public class Xueyi1 extends BaseCard implements PreToughnessReduceSubscriber {
         AbstractPower power = mo.getPower(ToughnessPower.POWER_ID);
         if (power == null) return;
         
-        int toughnessReduction = upgraded ? power.amount : 3;
+        baseDamage = ModHelper.getPowerCount(mo, ToughnessPower.POWER_ID);
+        this.calculateCardDamage(mo);
         
         addToBot(new ElementalDamageAction(
                 mo, new DamageInfo(p, damage, damageTypeForTurn),
-                ElementType.Quantum, toughnessReduction,
+                ElementType.Quantum, magicNumber,
                 AbstractGameAction.AttackEffect.SLASH_DIAGONAL
         ));
 
@@ -78,6 +73,8 @@ public class Xueyi1 extends BaseCard implements PreToughnessReduceSubscriber {
 
     @Override
     public float preToughnessReduce(float amount, AbstractCreature target, ElementType elementType) {
+        if (!SubscribeManager.checkSubscriber(this)
+                || !AbstractDungeon.player.hand.contains(this)) return amount;
         modifyCostForCombat((int) -amount);
         if (!followedUp && cost <= 0){
             followedUp = true;

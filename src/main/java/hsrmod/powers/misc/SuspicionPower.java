@@ -51,7 +51,8 @@ public class SuspicionPower extends DebuffPower implements PreDoTDamageSubscribe
 
     @Override
     public float preDoTDamage(float amount, AbstractCreature target, DoTPower power) {
-        if (target == owner) {
+        if (SubscribeManager.checkSubscriber(this) 
+                && target == owner) {
             return incrementDamage(amount);
         }
         return amount;

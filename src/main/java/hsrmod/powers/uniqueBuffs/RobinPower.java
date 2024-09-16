@@ -47,8 +47,8 @@ public class RobinPower extends BuffPower {
         }
         else if (owner.hasPower(LoseStrengthPower.POWER_ID)) {
             flash();
-            addToBot(new ApplyPowerAction(owner, owner, new StrengthPower(owner, -1), -1));
-            addToBot(new ApplyPowerAction(owner, owner, new LoseStrengthPower(owner, -1), -1));
+            addToBot(new ReducePowerAction(owner, owner, StrengthPower.POWER_ID, 1));
+            addToBot(new ReducePowerAction(owner, owner, LoseStrengthPower.POWER_ID, 1));
         }
     }
 }

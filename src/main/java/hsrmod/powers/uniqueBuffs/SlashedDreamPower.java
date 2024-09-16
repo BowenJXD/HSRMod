@@ -54,11 +54,6 @@ public class SlashedDreamPower extends PowerPower {
     @Override
     public void onPlayCard(AbstractCard card, AbstractMonster m) {
         canTrigger = true;
-        if (upgraded && card.isEthereal) {
-            canTrigger = false;
-            flash();
-            stackPower(1);
-        }
     }
 
     @Override
@@ -92,6 +87,7 @@ public class SlashedDreamPower extends PowerPower {
         CardCrawlGame.sound.play("Acheron1");
         addToBot(new TalkAction(true, " #r我为逝者哀哭…… ", 1.0F, 2.0F));
         AbstractCreature target = AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster) null, true, AbstractDungeon.cardRandomRng);
+        if (target == null) return;
         ElementalDamageAction action = new ElementalDamageAction(target, new DamageInfo(owner, baseDamage),
                 ElementType.Lightning, 1, AbstractGameAction.AttackEffect.LIGHTNING, null);
         action.doApplyPower = true;

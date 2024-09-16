@@ -41,11 +41,11 @@ public class Revitalization310 extends BaseRelic {
     @Override
     public void onPlayCard(AbstractCard c, AbstractMonster m) {
         super.onPlayCard(c, m);
-        if (!available
-                || !c.isEthereal)
+        if (isObtained && !c.isEthereal)
             return;
         flash();
         if (m == null) m = AbstractDungeon.getRandomMonster();
+        if (m == null) return;
         addToBot(new ApplyPowerAction(m, AbstractDungeon.player, new StrengthPower(m, -1), -1));
     }
 }

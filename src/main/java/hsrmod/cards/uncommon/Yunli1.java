@@ -2,12 +2,14 @@ package hsrmod.cards.uncommon;
 
 import basemod.BaseMod;
 import basemod.interfaces.OnPlayerDamagedSubscriber;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.BindingHelper;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.actions.BouncingAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
@@ -57,10 +59,13 @@ public class Yunli1 extends BaseCard implements OnPlayerDamagedSubscriber {
     void execute(){
         if (AbstractDungeon.player.getPower(EnergyPower.POWER_ID).amount < energyExhaust) return;
         ModHelper.addToTopAbstract(this::execute);
-        for (int i = 0; i < 2; i++) {
-            AbstractMonster randomMonster = AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster)null, true, AbstractDungeon.cardRandomRng);
-            addToTop(new ElementalDamageAction(randomMonster, new DamageInfo(AbstractDungeon.player, damage), ElementType.Physical, 1, AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-        }
+        AbstractMonster randomMonster = AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster)null, true, AbstractDungeon.cardRandomRng);
+        if (randomMonster == null) return;
+        ElementalDamageAction action = new ElementalDamageAction(randomMonster, BindingHelper.makeInfo(this, AbstractDungeon.player, damage, damageTypeForTurn), ElementType.Physical,
+                1, AbstractGameAction.AttackEffect.SLASH_VERTICAL);
+        
+        addToTop(new BouncingAction(randomMonster, 2, action));
+
         addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new EnergyPower(AbstractDungeon.player, -energyExhaust), -energyExhaust));
     }
 

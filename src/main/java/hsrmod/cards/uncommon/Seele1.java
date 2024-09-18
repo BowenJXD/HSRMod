@@ -16,6 +16,8 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
+import hsrmod.utils.CardDataCol;
+import hsrmod.utils.DataManager;
 import hsrmod.utils.ModHelper;
 
 import java.util.Iterator;
@@ -25,8 +27,21 @@ public class Seele1 extends BaseCard {
     
     public Seele1() {
         super(ID);
-        this.misc = damage;
         energyCost = 120;
+    }
+
+    public boolean canUpgrade() {
+        return true;
+    }
+
+    @Override
+    public void upgrade() {
+        upgradeDamage(magicNumber);
+        this.timesUpgraded++;
+        this.upgraded = true;
+        this.name = DataManager.getInstance().getCardData(ID, CardDataCol.Name) + "+" + this.timesUpgraded;
+        initializeTitle();
+        this.initializeDescription();
     }
 
     @Override
@@ -39,17 +54,14 @@ public class Seele1 extends BaseCard {
                 while (var1.hasNext()) {
                     c = (AbstractCard) var1.next();
                     if (c.uuid == this.uuid) {
-                        c.misc += magicNumber;
-                        c.applyPowers();
-                        c.baseDamage = c.misc;
+                        c.upgrade();
                         c.isDamageModified = false;
                     }
                 }
 
-                for (var1 = GetAllInBattleInstances.get(this.uuid).iterator(); var1.hasNext(); c.baseDamage = c.misc) {
+                for (var1 = GetAllInBattleInstances.get(this.uuid).iterator(); var1.hasNext();) {
                     c = (AbstractCard) var1.next();
-                    c.misc += magicNumber;
-                    c.applyPowers();
+                    c.upgrade();
                 }
                 
                 addToBot(new GainEnergyAction(1));

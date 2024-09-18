@@ -5,7 +5,9 @@ import basemod.interfaces.OnStartBattleSubscriber;
 import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.CommonKeywordIconsField;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
@@ -34,6 +36,8 @@ public abstract class BaseCard extends CustomCard {
     public boolean inBattle = false;
     public boolean inHand = false;
     
+    public CardStrings cardStrings;
+    
     public BaseCard(String id) {
         super("HSRMod:" + id,
                 DataManager.getInstance().getCardData(id, CardDataCol.Name),
@@ -45,6 +49,7 @@ public abstract class BaseCard extends CustomCard {
                 CardRarity.valueOf(DataManager.getInstance().getCardData(id, CardDataCol.Rarity)),
                 CardTarget.valueOf(DataManager.getInstance().getCardData(id, CardDataCol.Target))
         );
+        this.cardStrings = CardCrawlGame.languagePack.getCardStrings(cardID);
         
         this.damage = this.baseDamage = DataManager.getInstance().getCardDataInt(id, CardDataCol.Damage);
         this.block = this.baseBlock = DataManager.getInstance().getCardDataInt(id, CardDataCol.Block);

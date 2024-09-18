@@ -1,0 +1,53 @@
+{
+  "HSRMod:Bronya1": {
+    "EXTENDED_DESCRIPTION": [
+      "从抽牌堆加入手牌"
+    ]
+  },
+  "HSRMod:Luocha1": {
+    "EXTENDED_DESCRIPTION": [
+      "消耗"
+    ]
+  },
+  "HSRMod:PhantomWorker": {
+    "EXTENDED_DESCRIPTION": [
+      "升级"
+    ]
+  },
+  "HSRMod:Aventurine1": {
+    "EXTENDED_DESCRIPTION": [
+      "一无所有，或者，赢下所有！"
+    ]
+  },
+  "HSRMod:Firefly1": {
+    "EXTENDED_DESCRIPTION": [
+      "点燃星海！",
+      "为生而战！"
+    ]
+  },
+  "HSRMod:Firefly2": {
+    "EXTENDED_DESCRIPTION": [
+      "直至一切，燃烧殆尽！"
+    ]
+  },
+  "HSRMod:JingYuan1": {
+    "EXTENDED_DESCRIPTION": [
+      "斩无赦！"
+    ]
+  },
+  "HSRMod:Kafka2": {
+    "EXTENDED_DESCRIPTION": [
+      "该说再见了……"
+    ]
+  },
+  "HSRMod:Robin2": {
+    "EXTENDED_DESCRIPTION": [
+      "今夜，群星因我回响!"
+    ]
+  },
+  "HSRMod:Sparkle2": {
+    "EXTENDED_DESCRIPTION": [
+      "假货的命~"
+    ]
+  }
+}

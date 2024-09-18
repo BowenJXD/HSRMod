@@ -8,57 +8,57 @@
   "HSRMod:Toughness": {
     "NAME": "Toughness",
     "DESCRIPTIONS": [
-      "Damage received is reduced by #b%d %%, stacking up to #b%d layers.",
-      "Damage received is increased by #b%d %%, stacking up to #b%d layers."
+      "Damage received is reduced by #b%d %%, stacking up to #b%d.",
+      "Damage received is increased by #b%d %%, stacking up to #b%d."
     ]
   },
   "HSRMod:Broken": {
     "NAME": "Broken",
     "DESCRIPTIONS": [
-      "Increases damage taken by #b%d %% and reduces damage dealt by #b%d %%. At the start of the turn, 1 layer is removed."
+      "Increases damage taken by #b%d %% and reduces damage dealt by #b%d %%. At the start of the turn, 1 stack is removed."
     ]
   },
   "HSRMod:Frozen": {
     "NAME": "Frozen",
     "DESCRIPTIONS": [
-      "When there are #b%d layers (1/2/3 for normal/elite/BOSS enemies):",
-      "All layers are removed at the start of the turn and the turn is skipped. NL After taking damage, 1 layer is removed."
+      "When there are #b%d stacks (1/2/3 for normal/elite/BOSS enemies):",
+      "All stacks are removed at the start of the turn and the turn is skipped. NL After taking damage, 1 stack is removed."
     ]
   },
   "HSRMod:Bleeding": {
     "NAME": "Bleeding",
     "DESCRIPTIONS": [
-      "DoT. At the start of the turn: take #b%d ( #b%d %% max HP, up to #b%d) physical damage (1), 1 layer is removed."
+      "DoT. At the start of the turn: take #b%d ( #b%d %% max HP, up to #b%d) physical damage (1), 1 stack is removed."
     ]
   },
   "HSRMod:Burn": {
     "NAME": "Burn",
     "DESCRIPTIONS": [
-      "DoT. Trigger at the start of the turn: take #b%d fire damage (1), 1 layer is removed."
+      "DoT. Trigger at the start of the turn: take #b%d fire damage (1), 1 stack is removed."
     ]
   },
   "HSRMod:Shock": {
     "NAME": "Shock",
     "DESCRIPTIONS": [
-      "DoT. Trigger at the start of the turn: take #b%d lightning damage (1), 1 layer is removed."
+      "DoT. Trigger at the start of the turn: take #b%d lightning damage (1), 1 stack is removed."
     ]
   },
   "HSRMod:WindShear": {
     "NAME": "Wind Shear",
     "DESCRIPTIONS": [
-      "DoT. Trigger at the start of the turn: take #b%d ( #b%dX , X equals to the amount, up to 5) wind damage (1), 1 layer is removed."
+      "DoT. Trigger at the start of the turn: take #b%d ( #b%dX , X equals to the amount, up to 5) wind damage (1), 1 stack is removed."
     ]
   },
   "HSRMod:Imprison": {
     "NAME": "Imprison",
     "DESCRIPTIONS": [
-      "Damage dealt is reduced by #b%d %%. At the end of the turn, 1 layer is removed."
+      "Damage dealt is reduced by #b%d %%. At the end of the turn, 1 stack is removed."
     ]
   },
   "HSRMod:Entangle": {
     "NAME": "Entangle",
     "DESCRIPTIONS": [
-      "Adds 1 layer when taking damage, up to #b%d layers. At the start of the turn, remove all layers and take damage equal to the number of layers * #b%d."
+      "Adds 1 stack when taking damage, up to #b%d stacks. At the start of the turn, remove all stacks and take damage equal to the number of stacks * #b%d."
     ]
   },
   "HSRMod:BreakEffect": {
@@ -70,26 +70,26 @@
   "HSRMod:BreakEfficiency": {
     "NAME": "BreakEfficiency",
     "DESCRIPTIONS": [
-      "Toughness shred value of elemental damage is increased by #b%d %%. At the end of the turn, 1 layer is removed.",
-      "Toughness shred value of elemental damage is increased by #b%d %%. At the end of the turn, if above #b%d layers, 1 layer is removed."
+      "Toughness shred value of elemental damage is increased by #b%d %%. At the end of the turn, 1 stack is removed.",
+      "Toughness shred value of elemental damage is increased by #b%d %%. At the end of the turn, if above #b%d stacks, 1 stack is removed."
     ]
   },
   "HSRMod:Aftertaste": {
     "NAME": "Aftertaste",
     "DESCRIPTIONS": [
-      "After dealing Follow Up card damage, consumes 10 Charge, deal #b%d damage to the target, and stack 1 layer."
+      "After dealing Follow Up card damage, consumes 10 Charge, deal #b%d damage to the target, and stack 1."
     ]
   },
   "HSRMod:Suspicion": {
     "NAME": "Suspicion",
     "DESCRIPTIONS": [
-      "Increases damage over time taken by #b%d %%. Stacks up to #b%d layers."
+      "Increases damage over time taken by #b%d %%. Stacks up to #b%d."
     ]
   },
   "HSRMod:BrainInAVat": {
     "NAME": "BrainInAVat",
     "DESCRIPTIONS": [
-      "After consuming Charge, remove 1 layer and recover an equal amount of Charge."
+      "After consuming Charge, remove 1 stack and recover an equal amount of Charge."
     ]
   },
   "HSRMod:Reinforce": {
@@ -102,22 +102,22 @@
   "HSRMod:TopazNumby": {
     "NAME": "TopazNumby",
     "DESCRIPTIONS": [
-      "After chasing, apply 1 layer (up to 2 layers). If 2 layers are present and no 'Trotter Market!?' is available, remove 2 layers and gain 1 card.",
-      "After chasing, apply 1 layer (up to 2 layers). If 2 layers are present and no 'Trotter Market!?+' is available, remove 2 layers and gain 1 card."
+      "After chasing, apply 1 stack (up to 2 stacks). If 2 stacks are present and no 'Trotter Market!?' is available, remove 2 stacks and gain 1 card.",
+      "After chasing, apply 1 stack (up to 2 stacks). If 2 stacks are present and no 'Trotter Market!?+' is available, remove 2 stacks and gain 1 card."
     ]
   },
   "HSRMod:Aventurine": {
     "NAME": "Aventurine",
     "DESCRIPTIONS": [
-      "When taking damage, if you have Block, gain #b%d layers of 'BlindBet'. After chasing, gain #b%d layers of 'BlindBet', up to 10 layers. When you have 7 or more layers, consume 7 layers to deal 1-7 Imaginary damage to a random enemy and gain 1-7 Block.",
-      "When taking damage, if you have Block, gain #b%d layers of 'BlindBet'. After chasing, gain #b%d layers of 'BlindBet', up to 10 layers. When you have 7 or more layers, consume 7 layers to deal 1-7 Imaginary damage to a random enemy, gain 1-7 Block, and in the next turn, Block will not disappear."
+      "When taking damage, if you have Block, stack #b%d. After Follow Up, stack #b%d, up to 10 stacks. When amount >=7, lose 7 amount to deal 1-7 Imaginary damage to a random enemy and gain 1-7 Block.",
+      "When taking damage, if you have Block, stack #b%d. After Follow Up, stack #b%d, up to 10 stacks. When amount >=7, lose 7 amount to deal 1-7 Imaginary damage to a random enemy, gain 1-7 Block, and if outside your turn, keep your block for next round."
     ]
   },
   "HSRMod:Robin": {
     "NAME": "Robin",
     "DESCRIPTIONS": [
-      "After playing a card, if it's a Follow Up card, gain 1 layer of 'TemporaryStrength'; otherwise, lose 1 layer of 'TemporaryStrength'.",
-      "After playing a card, if it's a Follow Up card, gain 1 layer of 'TemporaryStrength' and recover 20 Charge; otherwise, lose 1 layer of 'TemporaryStrength'."
+      "After playing a card, if it's a Follow Up card, gain 1 stack of 'TemporaryStrength'; otherwise, lose 1 stack of 'TemporaryStrength'.",
+      "After playing a card, if it's a Follow Up card, gain 1 stack of 'TemporaryStrength' and recover 20 Charge; otherwise, lose 1 stack of 'TemporaryStrength'."
     ]
   },
   "HSRMod:ProofOfDebt": {
@@ -163,7 +163,7 @@
   "HSRMod:ThanatoplumRebloom": {
     "NAME": "ThanatoplumRebloom",
     "DESCRIPTIONS": [
-      "When losing 'Broken', prevent it. When gaining Toughness, remove 1 layer and prevent it."
+      "When losing 'Broken', prevent it. When gaining Toughness, remove 1 stack and prevent it."
     ]
   },
   "HSRMod:Trailblazer5": {
@@ -181,7 +181,7 @@
   "HSRMod:Firefly": {
     "NAME": "Firefly",
     "DESCRIPTIONS": [
-      "After breaking the target, deal break damage equal to its toughness max and gain 1 layer of 'BreakEfficiency'. Add the card 'FallingFromAShatteredSky' to your hand."
+      "After breaking the target, deal break damage equal to its toughness max and gain 1 stack of 'BreakEfficiency'. Add the card 'FallingFromAShatteredSky' to your hand."
     ]
   },
   "HSRMod:Befog": {
@@ -200,7 +200,7 @@
     "NAME": "VoyageMonitor",
     "DESCRIPTIONS": [
       "After breaking the target, gain Toughness equal to its toughness max.",
-      "After breaking the target, gain Toughness equal to its toughness max. After dealing break damage, gain 1 layer of Toughness."
+      "After breaking the target, gain Toughness equal to its toughness max. After dealing break damage, gain 1 stack of Toughness."
     ]
   },
   "HSRMod:IntersegmentalMembrane": {
@@ -224,25 +224,27 @@
   "HSRMod:Burden": {
     "NAME": "Burden",
     "DESCRIPTIONS": [
-      "After becoming the target of a card, remove 1 layer and recover [E]."
+      "After becoming the target of a card, remove 1 stack and recover [E]."
     ]
   },
   "HSRMod:Huohuo": {
     "NAME": "Huohuo",
     "DESCRIPTIONS": [
-      "After playing a card, recover 1 HP, 10 Charge, and remove 1 layer of a random negative effect."
+      "After playing a card, recover 1 HP, 10 Charge, and remove 1 stack of a random negative effect."
     ]
   },
   "HSRMod:Epiphany": {
     "NAME": "Epiphany",
     "DESCRIPTIONS": [
-      "When triggering DoT effects, the layer is not removed, but 1 layer is removed at the end of the turn."
+      "When triggering DoT effects, the stack is not removed, but 1 stack is removed at the end of the turn."
     ]
   },
   "HSRMod:SlashedDream": {
     "NAME": "SlashedDream",
     "DESCRIPTIONS": [
-      "At the end of the turn, if your 'SlashedDream' layers are 9 or more, consume 9 layers and trigger 'DreamShredder': Perform 3 times: deal #b%d lightning damage (1) to random enemies; finally, deal #b%d + X lightning damage (1) to all enemies (X equals the number of their negative effects)."
+      "After using a card, if it applied a debuff, stack 1 , stacking up to 12. NL At the end of the turn, if amount >=9, lose 9 amount and bounce 3 times: deal #b%d lightning damage (1) to random enemies; finally, deal #b%d + X lightning damage (1) to all enemies (X equals the number of its debuffs).",
+      "I  #rweep  #rfor  #rthe  #rdeparted. ",
+      "Dusks  #rrain,  #rit  #rtoo  #rshall  #rfall. "
     ]
   },
   "HSRMod:AllThingsArePossible": {
@@ -256,21 +258,21 @@
     "NAME": "AnExtraPersonsDiary",
     "DESCRIPTIONS": [
       "Toughness shred value of DoT effects +1. After breaking the target (X is the first digit of its toughness max), apply 1 random negative effect X times and draw X cards.",
-      "Toughness shred value of DoT effects +1. After breaking the target (X is the first digit of its toughness max), apply 1 random negative effect X times, draw X cards, and it loses X layers of Strength."
+      "Toughness shred value of DoT effects +1. After breaking the target (X is the first digit of its toughness max), apply 1 random negative effect X times, draw X cards, and it loses X stacks of Strength."
     ]
   },
   "HSRMod:ReignOfKeys": {
     "NAME": "ReignOfKeys",
     "DESCRIPTIONS": [
-      "When enemies trigger DoT effects during their turn, draw 1 card. If it triggers outside of their turn, layers are not reduced.",
-      "When enemies trigger DoT effects, draw 1 card. If it triggers outside of their turn, layers are not reduced."
+      "When enemies trigger DoT effects during their turn, draw 1 card. If it triggers outside of their turn, stacks are not reduced.",
+      "When enemies trigger DoT effects, draw 1 card. If it triggers outside of their turn, stacks are not reduced."
     ]
   },
   "HSRMod:FuneralOfSensoryPursuivant": {
     "NAME": "FuneralOfSensoryPursuivant",
     "DESCRIPTIONS": [
-      "After the enemy takes DoT, apply #b%d layers of 'Suspicion'.",
-      "After the enemy takes DoT, apply #b%d layers of 'Suspicion'. When enemies are inflicted with DoT, apply #b%d layers of 'Suspicion'."
+      "After the enemy takes DoT, apply #b%d stacks of 'Suspicion'.",
+      "After the enemy takes DoT, apply #b%d stacks of 'Suspicion'. When enemies are inflicted with DoT, apply #b%d stacks of 'Suspicion'."
     ]
   },
   "HSRMod:CommonMortal": {

@@ -1,3 +1,4 @@
+/*
 package hsrmod.relics.common;
 
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -24,3 +25,4 @@ public class CasketOfInaccuracy extends BaseRelic {
         AbstractDungeon.getCurrRoom().rewardPopOutTimer = 0.0F;
     }
 }
+*/

@@ -25,7 +25,7 @@ public class RuanMei2 extends BaseCard {
         
         while (var3.hasNext()) {
             AbstractMonster mo = var3.next();
-            addToBot(new ApplyPowerAction(mo, p, new VulnerablePower(mo, magicNumber, false), magicNumber));
+            // addToBot(new ApplyPowerAction(mo, p, new VulnerablePower(mo, magicNumber, false), magicNumber));
             addToBot(new ApplyPowerAction(mo, p, new ThanatoplumRebloomPower(mo, 1), 1));
         }
     }

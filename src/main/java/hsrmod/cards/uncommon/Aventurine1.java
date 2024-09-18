@@ -25,7 +25,7 @@ public class Aventurine1 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID));
-        addToBot(new TalkAction(true, "一无所有，或者，赢下所有！", 1.0F, 2.0F));
+        addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
         addToBot(new ApplyPowerAction(p, p, new AventurinePower(upgraded, upgraded ? 4 : 3, upgraded ? 3 : 2)));
     }
 }

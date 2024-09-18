@@ -38,7 +38,7 @@ public class Sparkle2 extends BaseCard {
         ModHelper.addToBotAbstract(() -> {
             List<ModHelper.FindResult> sparkles = ModHelper.findCards(c -> c instanceof Sparkle2);
             if (!sparkles.isEmpty())
-                addToBot(new TalkAction(true, "假货的命~", 1.0F, 2.0F));
+                addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
             for (ModHelper.FindResult result : sparkles) {
                 result.group.removeCard(result.card);
                 p.masterDeck.group.stream().filter(c -> c.uuid == result.card.uuid).findFirst().ifPresent(c -> p.masterDeck.removeCard(c));

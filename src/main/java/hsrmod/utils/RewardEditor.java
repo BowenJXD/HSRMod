@@ -153,7 +153,9 @@ public class RewardEditor {
             return "";
         }
         List<String> relics = pool.stream().filter(r -> RelicLibrary.getRelic(r) instanceof BaseRelic).collect(Collectors.toList());
-        return relics.get(AbstractDungeon.cardRandomRng.random(relics.size() - 1));
+        String relic = relics.get(AbstractDungeon.cardRandomRng.random(relics.size() - 1));
+        pool.remove(relic);
+        return relic;
     }
 
     public boolean checkChance(AbstractCard.CardRarity rarity) {

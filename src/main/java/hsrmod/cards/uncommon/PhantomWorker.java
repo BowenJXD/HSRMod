@@ -26,7 +26,7 @@ public class PhantomWorker extends BaseCard {
         addToBot(new GainBlockAction(p, energyOnUse));
 
         if (upgraded)
-            addToBot(new SelectCardsInHandAction(energyOnUse, "选择要升级的手牌", true, true,
+            addToBot(new SelectCardsInHandAction(energyOnUse, cardStrings.EXTENDED_DESCRIPTION[0], true, true,
                     AbstractCard::canUpgrade, cards -> {
                 for (AbstractCard card : cards)
                     addToBot(new UpgradeSpecificCardAction(card));

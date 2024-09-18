@@ -27,7 +27,7 @@ public class Firefly2 extends BaseCard {
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         addToBot(new LoseHPAction(p, p, magicNumber));
         ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID));
-        addToBot(new TalkAction(true, "直至一切，燃烧殆尽！", 1.0F, 2.0F));
+        addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
         addToBot(new ApplyPowerAction(p, p, new FireflyPower(), 1));
     }
 

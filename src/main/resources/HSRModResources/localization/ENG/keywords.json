@@ -1,118 +1,94 @@
 [
   {
-    "NAMES": [
-      "Charge"
-    ],
+    "NAMES": ["Bounce X", "bounce"],
+    "DESCRIPTION": "Execute the action to random enemies X times."
+  },
+  {
+    "NAMES": ["Charge", "charge"],
     "DESCRIPTION": "Some cards require a certain amount of Charge to activate."
   },
   {
-    "NAMES": [
-      "Follow Up"
-    ],
+    "NAMES": ["Follow Up", "follow-up"],
     "DESCRIPTION": "Cards with the 'Follow Up' effect will be played automatically with no cost when certain conditions are met (random target)."
   },
   {
-    "NAMES": [
-      "DoT",
-      "DoTs"
-    ],
-    "DESCRIPTION": "Includes Bleeding, Burn, Shock, and Wind Shear."
+    "NAMES": ["Dot", "dot", "dots"],
+    "DESCRIPTION": "Includes Bleeding, Burn, Shock, and Wind Shear. Benefits from pstack effects."
   },
   {
-    "NAMES": [
-      "Break",
-      "Breaks"
-    ],
-    "DESCRIPTION": "Actions that reduce toughness from >0 to <=0 are considered a 'Break'."
+    "NAMES": ["Break", "break", "breaks"],
+    "DESCRIPTION": "Actions that reduce toughness from >0 to <=0 are considered Break."
   },
   {
-    "NAMES": [
-      "Toughness"
-    ],
-    "DESCRIPTION": "After dealing elemental damage to a target with toughness, the amount of toughness removed is equal to the toughness shred value of the elemental damage."
+    "NAMES": ["Toughness", "toughness"],
+    "DESCRIPTION": "After dealing elemental damage to a target with toughness, the amount of toughness reduced would be the number in the parenthesis."
   },
   {
-    "NAMES": [
-      "Broken"
-    ],
+    "NAMES": ["Broken", "broken"],
     "DESCRIPTION": "A state applied when toughness is reduced to 0 or below."
   },
   {
-    "NAMES": [
-      "Freeze"
-    ],
-    "DESCRIPTION": "At the start of the turn, if the enemy is a normal/elite/BOSS and has at least 1/2/3 layers of Freeze, all layers are removed and the turn is skipped. After receiving damage, 1 layer is removed."
+    "NAMES": ["Frozen", "frozen"],
+    "DESCRIPTION": "At the start of the turn, if the enemy is a normal/elite/BOSS and has at least 1/2/3 stacks of Freeze, all stacks are removed and the turn is skipped. After receiving damage, 1 stack is removed."
   },
   {
-    "NAMES": [
-      "Bleeding"
-    ],
-    "DESCRIPTION": "DoT. Trigger at the start of the turn: take physical damage equal to 5% of max HP (up to 10), 1 layer is removed."
+    "NAMES": ["Bleed", "bleeding", "bleed"],
+    "DESCRIPTION": "DoT. Trigger at the start of the turn: take physical damage equal to 5% of max HP (up to 10), 1 stack is removed."
   },
   {
-    "NAMES": [
-      "Burn"
-    ],
-    "DESCRIPTION": "DoT. Trigger at the start of the turn: take 4 fire damage, 1 layer is removed."
+    "NAMES": ["Burn", "burn"],
+    "DESCRIPTION": "DoT. Trigger at the start of the turn: take 4 fire damage, 1 stack is removed."
   },
   {
-    "NAMES": [
-      "Shock"
-    ],
-    "DESCRIPTION": "DoT. Trigger at the start of the turn: take 5 lightning damage, 1 layer is removed."
+    "NAMES": ["Shock", "shock"],
+    "DESCRIPTION": "DoT. Trigger at the start of the turn: take 5 lightning damage, 1 stack is removed."
   },
   {
-    "NAMES": [
-      "Wind Shear"
-    ],
-    "DESCRIPTION": "DoT. Trigger at the start of the turn: take wind damage equal to 2X (up to 5 layers), 1 layer is removed."
+    "NAMES": ["Wind Shear", "wind-shear"],
+    "DESCRIPTION": "DoT. Trigger at the start of the turn: take wind damage equal to 2X (up to 5 stacks), 1 stack is removed."
   },
   {
-    "NAMES": [
-      "Imprison"
-    ],
-    "DESCRIPTION": "Damage dealt is reduced by 33%, and 1 layer is removed at the end of the turn."
+    "NAMES": ["Imprison", "imprison"],
+    "DESCRIPTION": "Damage dealt is reduced by 33%, and 1 stack is removed at the end of the turn."
   },
   {
-    "NAMES": [
-      "Entangle"
-    ],
-    "DESCRIPTION": "Adds 1 layer when taking damage, up to 5 layers. At the start of the turn, remove all layers and take 2 damage for each removed layer."
+    "NAMES": ["Entangle", "entangle"],
+    "DESCRIPTION": "Adds 1 stack when taking damage, up to 5 stacks. At the start of the turn, remove all stacks and take 2 damage for each removed stack."
   },
   {
-    "NAMES": [
-      "Break Effect"
-    ],
+    "NAMES": ["Break Effect", "break-effect"],
     "DESCRIPTION": "Break damage is increased by X."
   },
   {
-    "NAMES": [
-      "Break Efficiency"
-    ],
-    "DESCRIPTION": "Toughness shred value of elemental damage is increased by 50X%. 1 layer is removed at the end of the turn."
+    "NAMES": ["Break Efficiency", "break-efficiency"],
+    "DESCRIPTION": "Toughness shred value of elemental damage is increased by 50X%. 1 stack is removed at the end of the turn."
   },
   {
-    "NAMES": [
-      "Break Damage"
-    ],
+    "NAMES": ["Break Damage", "break-damage"],
     "DESCRIPTION": "Enhanced by 'Break Effect,' unaffected by 'Strength'."
   },
   {
-    "NAMES": [
-      "Aftertaste"
-    ],
-    "DESCRIPTION": "After dealing damage via Follow Up card, deal X damage to the target and apply 1 layer."
+    "NAMES": ["Aftertaste", "aftertaste"],
+    "DESCRIPTION": "After dealing damage via Follow Up card, deal X damage to the target and apply 1 stack."
   },
   {
-    "NAMES": [
-      "Suspicion"
-    ],
-    "DESCRIPTION": "Increases DoT taken by X%. Stacks up to 99 layers."
+    "NAMES": ["Suspicion", "suspicion"],
+    "DESCRIPTION": "Increases DoT taken by X%. Stacks up to 99."
   },
   {
-    "NAMES": [
-      "Brain in a Vat"
-    ],
-    "DESCRIPTION": "After consuming Charge, remove 1 layer and recover an equal amount of Charge."
+    "NAMES": ["Brain In AVat", "brain-in-a-vat"],
+    "DESCRIPTION": "After using Charge, remove 1 stack and recover an equal amount of Charge."
+  },
+  {
+    "NAMES": ["Block Return", "block-return"],
+    "DESCRIPTION": "After dealing damage to the target, gain X blocks."
+  },
+  {
+    "NAMES": ["Slashed Dream", "slashed-dream"],
+    "DESCRIPTION": "At the end of the turn, if amount >=9, lose 9 amount and bounce 3 times: deal #b%d lightning damage (1) to random enemies; finally, deal #b%d + X lightning damage (1) to all enemies (X equals the number of its debuffs)."
+  },
+  {
+    "NAMES": ["Blind Bet", "blind-bet"],
+    "DESCRIPTION": "When amount >=7, lose 7 amount to deal 1-7 Imaginary damage to a random enemy and gain 1-7 Block."
   }
 ]

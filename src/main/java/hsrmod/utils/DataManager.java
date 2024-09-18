@@ -2,6 +2,7 @@ package hsrmod.utils;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
+import com.megacrit.cardcrawl.core.Settings;
 
 import java.io.*;
 import java.nio.charset.Charset;
@@ -19,14 +20,19 @@ public class DataManager {
     public static final String charset = "GBK";
     
     public Map<String, String[]> cardData;
-    public static final String CARD_CSV = "HSRModResources/data/cardData.csv";
+    public static final String CARD_CSV_ZHS = "HSRModResources/localization/ZHS/cardData.csv";
+    public static final String CARD_CSV_ENG = "HSRModResources/localization/ENG/cardData.csv";
     public Map<String, String[]> relicData;
-    public static final String RELIC_CSV = "HSRModResources/data/relicData.csv";
+    public static final String RELIC_CSV = "HSRModResources/localization/ZHS/relicData.csv";
     
     public static final String RELIC_JSON = "HSRModResources/localization/ZHS/relics.json";
     
     private DataManager() {
-        cardData = parseCSV(CARD_CSV);
+        if (Settings.language == Settings.GameLanguage.ZHS) {
+            cardData = parseCSV(CARD_CSV_ZHS);
+        } else {
+            cardData = parseCSV(CARD_CSV_ENG);
+        }
         relicData = parseCSV(RELIC_CSV);
     }
 
@@ -43,7 +49,8 @@ public class DataManager {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(fileHandle.read(), charset))) {
             String line;
             while ((line = br.readLine()) != null) {
-                String[] columns = line.split(",");
+                // 使用自定义的解析方法
+                String[] columns = parseCSVLine(line);
                 if (columns.length > 1) { // 确保至少有两列数据
                     String primaryKey = columns[0];
                     if (primaryKey.isEmpty()) continue;
@@ -56,6 +63,28 @@ public class DataManager {
             e.printStackTrace();
         }
         return resultMap;
+    }
+
+    private static String[] parseCSVLine(String line) {
+        // 使用 StringBuilder 来构建当前字段
+        StringBuilder field = new StringBuilder();
+        boolean inQuotes = false;
+        List<String> fields = new ArrayList<>();
+
+        for (char c : line.toCharArray()) {
+            if (c == '"') {
+                inQuotes = !inQuotes; // 切换引号状态
+            } else if (c == ',' && !inQuotes) {
+                fields.add(field.toString()); // 字段结束
+                field.setLength(0); // 清空字段构建器
+            } else {
+                field.append(c); // 继续构建当前字段
+            }
+        }
+        // 添加最后一个字段
+        fields.add(field.toString());
+
+        return fields.toArray(new String[0]);
     }
     
     public String getCardData(String key, CardDataCol col) {
@@ -105,36 +134,69 @@ public class DataManager {
     public static class FileTextReplacer {
 
         public static void main(String[] args) {
-
+            replaceZHS();
+            // replaceENG();
+        }
+        
+        private static void replaceZHS() {
             // 替换规则
             Map<String, String> replacements = new HashMap<>();
             replacements.put("【", " hsrmod:");
             replacements.put("】", " ");
-            replacements.put("能量", " [E] ");
+            replacements.put("〖", " ");
+            replacements.put("〗", " ");
+            replacements.put("『", " #y");
+            replacements.put("』", " ");
+            replacements.put("「", "「 #y");
+            replacements.put("」", " 」");
+            //replacements.put("能量", " [E] ");
             replacements.put("追击", " hsrmod:追击 ");
             replacements.put("充能", " hsrmod:充能 ");
             replacements.put("若击破", "若 hsrmod:击破 ");
             replacements.put("击破后", " hsrmod:击破 后");
             replacements.put("击破伤害", " hsrmod:击破伤害 ");
             replacements.put("持续伤害", " hsrmod:持续伤害 ");
-            replacements.put("〖", " ");
-            replacements.put("〗", " ");
-            replacements.put("弹射", " 弹射 ");
+            replacements.put("弹射", " hsrmod:弹射 ");
+            replacements.put("耗能", " hsrmod:耗能 ");
             replacements.put("消耗。", " 消耗 。");
             replacements.put("虚无。", " 虚无 。");
             replacements.put("固有。", " 固有 。");
             replacements.put("保留。", " 保留 。");
 
             // 读取文件并替换文本
-            replaceTextInFile(CARD_CSV, replacements);
-            
+            replaceTextInFile(CARD_CSV_ZHS, replacements);
+
             replacements.clear();
             replacements.put("乘胜 hsrmod:追击 ", "乘胜追击");
             replacements.put("  ", " ");
-            
-            replaceTextInFile(CARD_CSV, replacements);
+
+            replaceTextInFile(CARD_CSV_ZHS, replacements);
         }
 
+        private static void replaceENG() {
+            // 替换规则
+            Map<String, String> replacements = new HashMap<>();
+            replacements.put("`", "hsrmod:");
+            //replacements.put("能量", " [E] ");
+            replacements.put("Follow Up", " hsrmod:Follow-Up ");
+            replacements.put("Charge", " hsrmod:Charge ");
+            replacements.put("break damage", " hsrmod:Break-Damage ");
+            replacements.put("break effect", "Break-Effect ");
+            replacements.put("break efficiency", "Break-Efficiency ");
+            replacements.put("DoT", " hsrmod:DoT ");
+            replacements.put("Wind Shear", "Wind-Shear");
+            replacements.put("Bounce", " hsrmod:Bounce ");
+
+            // 读取文件并替换文本
+            replaceTextInFile(CARD_CSV_ENG, replacements);
+
+            replacements.clear();
+            replacements.put(" break ", " hsrmod:break ");
+            replacements.put("  ", " ");
+
+            replaceTextInFile(CARD_CSV_ENG, replacements);
+        }
+        
         private static void replaceTextInFile(String filePath, Map<String, String> replacements) {
             filePath = "src/main/resources/" + filePath;
             

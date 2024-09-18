@@ -1,0 +1,53 @@
+{
+  "hsrmod:Bronya1": {
+    "EXTENDED_DESCRIPTION": [
+      "get from draw pile."
+    ]
+  },
+  "hsrmod:Luocha1": {
+    "EXTENDED_DESCRIPTION": [
+      "exhaust."
+    ]
+  },
+  "hsrmod:PhantomWorker": {
+    "EXTENDED_DESCRIPTION": [
+      "upgrade."
+    ]
+  },
+  "HSRMod:Aventurine1": {
+    "EXTENDED_DESCRIPTION": [
+      "Bust, or, maybe I'll take it all!"
+    ]
+  },
+  "HSRMod:Firefly1": {
+    "EXTENDED_DESCRIPTION": [
+      "Set the seas ablaze!",
+      "Life begets death!"
+    ]
+  },
+  "HSRMod:Firefly2": {
+    "EXTENDED_DESCRIPTION": [
+      "Until everything, burns to ashes！"
+    ]
+  },
+  "HSRMod:JingYuan1": {
+    "EXTENDED_DESCRIPTION": [
+      "Show no mercy!"
+    ]
+  },
+  "HSRMod:Kafka2": {
+    "EXTENDED_DESCRIPTION": [
+      "Time to say bye. BOOM~"
+    ]
+  },
+  "HSRMod:Robin2": {
+    "EXTENDED_DESCRIPTION": [
+      "Tonight, the stars echo because of me."
+    ]
+  },
+  "HSRMod:Sparkle2": {
+    "EXTENDED_DESCRIPTION": [
+      "The life of a faker~"
+    ]
+  }
+}

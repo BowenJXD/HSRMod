@@ -25,7 +25,7 @@ public class Robin2 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID));
-        addToBot(new TalkAction(true, "今夜，群星因我回响!", 1.0F, 2.0F));
+        addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
         
         int amt = energyOnUse + magicNumber;
         

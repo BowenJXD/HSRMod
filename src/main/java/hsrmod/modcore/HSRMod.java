@@ -51,11 +51,14 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
     private static final String ENERGY_ORB = "HSRModResources/img/char/cost_orb.png";
     
     public static final Logger logger = LogManager.getLogger(MOD_NAME);
+    
+    String lang = "ENG";
 
     // 构造方法
     public HSRMod() {
         BaseMod.subscribe(this);
         BaseMod.addColor(HSR_PINK, MY_COLOR, MY_COLOR, MY_COLOR, MY_COLOR, MY_COLOR, MY_COLOR, MY_COLOR,BG_ATTACK_512,BG_SKILL_512,BG_POWER_512,ENERGY_ORB,BG_ATTACK_1024,BG_SKILL_1024,BG_POWER_1024,BIG_ORB,SMALL_ORB);
+        updateLanguage();
     }
 
     // 注解需要调用的方法，必须写
@@ -91,28 +94,18 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
     }
 
     public void receiveEditStrings() {
-        String lang;
-        if (language == Settings.GameLanguage.ZHS) {
-            lang = "ZHS";
-        } else {
-            lang = "ENG";
-        }
-        
+        updateLanguage();
         // 这里添加注册本地化文本
+        BaseMod.loadCustomStringsFile(CardStrings.class, "HSRModResources/localization/" + lang + "/cards.json");
         BaseMod.loadCustomStringsFile(CharacterStrings.class, "HSRModResources/localization/" + lang + "/characters.json");
-
         BaseMod.loadCustomStringsFile(RelicStrings.class, "HSRModResources/localization/" + lang + "/relics.json");
-
         BaseMod.loadCustomStringsFile(PowerStrings.class, "HSRModResources/localization/" + lang + "/powers.json");
     }
 
     @Override
     public void receiveEditKeywords() {
         Gson gson = new Gson();
-        String lang = "ENG";
-        if (language == Settings.GameLanguage.ZHS) {
-            lang = "ZHS";
-        }
+        updateLanguage();
 
         String json = Gdx.files.internal("HSRModResources/localization/" + lang + "/keywords.json").readString(String.valueOf(StandardCharsets.UTF_8));
         Keyword[] keywords = gson.fromJson(json, Keyword[].class);
@@ -139,9 +132,18 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
     }
     
     void addAudio(String id){
-        BaseMod.addAudio(id, "HSRModResources/audio/" + id + ".wav");
+        BaseMod.addAudio(id, "HSRModResources/localization/" + lang + "/audio/" + id + ".wav");
     }
-
+    
+    public void updateLanguage()
+    {
+        if (language == Settings.GameLanguage.ZHS) {
+            lang = "ZHS";
+        }
+        else {
+            lang = "ENG";
+        }
+    }
     public static String makePath(String name){
         if (name.contains("Power")) {
             name = name.replace("Power", "");

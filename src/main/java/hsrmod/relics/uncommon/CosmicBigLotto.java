@@ -38,7 +38,8 @@ public class CosmicBigLotto extends BaseRelic {
                 flash();
                 RewardItem rewardItem = new RewardItem(RelicLibrary.getRelic(AbstractDungeon.returnRandomRelicKey(AbstractDungeon.returnRandomRelicTier())).makeCopy());
                 AbstractDungeon.combatRewardScreen.rewards.add(rewardItem);
-            } else if (AbstractDungeon.relicRng.random(100) < loseChance) {
+            }
+            if (AbstractDungeon.relicRng.random(100) < loseChance) {
                 flash();
                 AbstractDungeon.player.currentHealth = Math.max(AbstractDungeon.player.currentHealth / 2, 1);
                 AbstractDungeon.player.healthBarUpdatedEvent();

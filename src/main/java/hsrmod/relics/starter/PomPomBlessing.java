@@ -126,16 +126,16 @@ public class PomPomBlessing extends CustomRelic {
                     String text = "";
                     if (card instanceof March7th0) {
                         relicName = March7thRelic.ID;
-                        text = "我不想…一个人……";
+                        text = DESCRIPTIONS[1]; // 
                     } else if (card instanceof Danheng0) {
                         relicName = DanhengRelic.ID;
-                        text = "不该是…现在……";
+                        text = DESCRIPTIONS[2]; // 
                     } else if (card instanceof Himeko0) {
                         relicName = HimekoRelic.ID;
-                        text = "这就是…最后一课……";
+                        text = DESCRIPTIONS[3]; // 
                     } else if (card instanceof Welt0) {
                         relicName = WeltRelic.ID;
-                        text = "活下去……";
+                        text = DESCRIPTIONS[4]; // 
                     }
 
                     if (!relicName.isEmpty())

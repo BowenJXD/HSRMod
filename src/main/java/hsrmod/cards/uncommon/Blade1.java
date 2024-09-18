@@ -34,10 +34,7 @@ public class Blade1 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        if (p.maxHealth / 2 < p.currentHealth)
-            addToBot(new LoseHPAction(p, p, 3));
-        else
-            addToBot(new HealAction(p, p, 3));
+        addToBot(new LoseHPAction(p, p, (int) (p.currentHealth * 0.05f)));
         addToBot(new AOEAction((q) -> new ElementalDamageAction(q, new DamageInfo(p, damage), ElementType.Wind, 2, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)));
     }
 

@@ -39,10 +39,10 @@ public class Firefly1 extends BaseCard {
 
         if (AbstractDungeon.cardRandomRng.randomBoolean()) {
             ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID + "-1"));
-            addToBot(new TalkAction(true, "点燃星海！", 1.0F, 2.0F));
+            addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
         } else {
             ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID + "-2"));
-            addToBot(new TalkAction(true, "为生而战！", 1.0F, 2.0F));
+            addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[1], 1.0F, 2.0F));
         }
         addToBot(
                 new ElementalDamageAction(

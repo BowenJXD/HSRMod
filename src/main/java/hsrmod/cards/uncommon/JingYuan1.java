@@ -34,7 +34,7 @@ public class JingYuan1 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID));
-        addToBot(new TalkAction(true, "斩无赦！", 1.0F, 2.0F));
+        addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
 
         ElementalDamageAction elementalDamageAction = new ElementalDamageAction(m, new DamageInfo(p, this.damage,
                 damageTypeForTurn), elementType, 1, AbstractGameAction.AttackEffect.LIGHTNING

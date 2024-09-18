@@ -26,7 +26,7 @@ public class Kafka2 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID));
-        addToBot(new TalkAction(true, "该说再见了……", 1.0F, 2.0F));
+        addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
         
         addToBot(new AOEAction((q) -> new ElementalDamageAction(q, new DamageInfo(p, damage, damageTypeForTurn), 
                 elementType, 2, AbstractGameAction.AttackEffect.LIGHTNING, c ->{

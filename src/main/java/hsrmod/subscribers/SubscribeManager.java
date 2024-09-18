@@ -9,7 +9,9 @@ import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
 import hsrmod.powers.misc.DoTPower;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * Singleton class for managing all the subscribers.

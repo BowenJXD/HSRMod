@@ -1,7 +1,5 @@
 package hsrmod.powers.uniqueBuffs;
 
-import basemod.BaseMod;
-import basemod.interfaces.OnPowersModifiedSubscriber;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -12,7 +10,6 @@ import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
 import hsrmod.powers.misc.BrokenPower;
 import hsrmod.powers.misc.DoTPower;
-import hsrmod.powers.misc.SuspicionPower;
 import hsrmod.powers.misc.ToughnessPower;
 
 import java.util.ArrayList;

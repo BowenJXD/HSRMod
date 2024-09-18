@@ -1,20 +1,11 @@
 package hsrmod.relics;
 
 import basemod.abstracts.CustomRelic;
-import basemod.abstracts.CustomSavable;
-import com.google.gson.reflect.TypeToken;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
-import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.relics.NeowsLament;
 import hsrmod.modcore.HSRMod;
-import hsrmod.utils.CardDataCol;
 import hsrmod.utils.DataManager;
-import hsrmod.utils.ModHelper;
 import hsrmod.utils.RelicDataCol;
-
-import java.lang.reflect.Type;
 
 public abstract class BaseRelic extends CustomRelic {
     public int magicNumber;

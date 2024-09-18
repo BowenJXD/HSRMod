@@ -1,10 +1,7 @@
 package hsrmod.powers.uniqueBuffs;
 
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -14,9 +11,6 @@ import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
 import hsrmod.powers.misc.DoTPower;
 import hsrmod.powers.misc.EnergyPower;
-import hsrmod.utils.ModHelper;
-
-import java.util.List;
 
 public class CommonMortalPower extends PowerPower implements OnReceivePowerPower {
     public static final String POWER_ID = HSRMod.makePath(CommonMortalPower.class.getSimpleName());

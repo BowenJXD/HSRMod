@@ -10,11 +10,11 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementType;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.subscribers.PreToughnessReduceSubscriber;
 import hsrmod.subscribers.SubscribeManager;
-import hsrmod.modcore.CustomEnums;
 import hsrmod.utils.ModHelper;
 
 public class Xueyi1 extends BaseCard implements PreToughnessReduceSubscriber {

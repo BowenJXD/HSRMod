@@ -1,7 +1,6 @@
 package hsrmod.relics.uncommon;
 
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import hsrmod.relics.BaseRelic;
 
 public class SilverCoinOfDiscord extends BaseRelic {

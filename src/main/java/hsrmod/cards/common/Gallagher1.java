@@ -10,7 +10,6 @@ import com.megacrit.cardcrawl.powers.watcher.BlockReturnPower;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
-import hsrmod.powers.misc.BrokenPower;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.utils.ModHelper;
 

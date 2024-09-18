@@ -6,7 +6,6 @@ import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.relics.BaseRelic;
-import hsrmod.utils.ModHelper;
 
 public class ChanceJailbreak extends BaseRelic {
     public static final String ID = ChanceJailbreak.class.getSimpleName();

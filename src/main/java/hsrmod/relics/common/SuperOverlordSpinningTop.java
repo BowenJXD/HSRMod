@@ -1,9 +1,7 @@
 package hsrmod.relics.common;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.relics.BronzeScales;
 import hsrmod.powers.misc.BreakEffectPower;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.relics.BaseRelic;

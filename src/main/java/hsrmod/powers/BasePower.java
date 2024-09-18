@@ -5,9 +5,6 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import hsrmod.modcore.HSRMod;
-
-import java.lang.reflect.Type;
 
 public abstract class BasePower extends AbstractPower {
     public String[] DESCRIPTIONS;

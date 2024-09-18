@@ -1,28 +1,19 @@
 package hsrmod.powers.uniqueBuffs;
 
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
-import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.actions.TriggerDoTAction;
-import hsrmod.cards.BaseCard;
 import hsrmod.modcore.HSRMod;
-import hsrmod.powers.BasePower;
 import hsrmod.powers.PowerPower;
 import hsrmod.powers.breaks.BleedingPower;
 import hsrmod.powers.breaks.BurnPower;
 import hsrmod.powers.breaks.ShockPower;
 import hsrmod.powers.breaks.WindShearPower;
-import hsrmod.powers.misc.BrokenPower;
 import hsrmod.powers.misc.DoTPower;
-import hsrmod.powers.misc.SuspicionPower;
 
 import java.util.ArrayList;
 import java.util.List;

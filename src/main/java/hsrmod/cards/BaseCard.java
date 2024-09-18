@@ -11,11 +11,11 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementType;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.relics.starter.WaxOfElation;
 import hsrmod.utils.CardDataCol;
-import hsrmod.modcore.CustomEnums;
 import hsrmod.utils.DataManager;
 import hsrmod.utils.ModHelper;
 

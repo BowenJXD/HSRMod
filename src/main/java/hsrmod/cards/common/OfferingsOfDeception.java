@@ -5,9 +5,7 @@ import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.ConfusionPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
-import hsrmod.actions.AOEAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.powers.misc.DoTPower;
 

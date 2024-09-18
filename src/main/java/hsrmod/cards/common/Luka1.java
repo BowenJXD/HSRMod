@@ -6,11 +6,8 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAction;
-import hsrmod.actions.TriggerDoTAction;
 import hsrmod.cards.BaseCard;
-import hsrmod.modcore.ElementType;
 import hsrmod.powers.breaks.BleedingPower;
-import hsrmod.powers.uniqueBuffs.TopazNumbyPower;
 
 public class Luka1 extends BaseCard {
     public static final String ID = Luka1.class.getSimpleName();

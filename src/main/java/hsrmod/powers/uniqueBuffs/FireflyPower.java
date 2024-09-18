@@ -2,16 +2,12 @@ package hsrmod.powers.uniqueBuffs;
 
 import basemod.BaseMod;
 import basemod.interfaces.PostPowerApplySubscriber;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.MoveCardsAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
-import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.actions.BreakDamageAction;
 import hsrmod.cards.uncommon.Firefly1;
@@ -20,8 +16,8 @@ import hsrmod.powers.PowerPower;
 import hsrmod.powers.misc.BreakEfficiencyPower;
 import hsrmod.powers.misc.BrokenPower;
 import hsrmod.powers.misc.ToughnessPower;
-import hsrmod.utils.ModHelper;
 import hsrmod.subscribers.SubscribeManager;
+import hsrmod.utils.ModHelper;
 
 import java.util.List;
 

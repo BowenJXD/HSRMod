@@ -15,7 +15,9 @@ import hsrmod.relics.boss.IronCavalryAgainstTheScourge;
 import hsrmod.relics.boss.PrisonerInDeepConfinement;
 import hsrmod.relics.boss.TheAshblazingGrandDuke;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import static basemod.BaseMod.logger;

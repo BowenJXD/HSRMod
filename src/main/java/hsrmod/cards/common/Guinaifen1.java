@@ -8,10 +8,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import hsrmod.actions.ElementalDamageAction;
-import hsrmod.actions.TriggerDoTAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
-import hsrmod.powers.breaks.BleedingPower;
 import hsrmod.powers.breaks.BurnPower;
 import hsrmod.utils.ModHelper;
 

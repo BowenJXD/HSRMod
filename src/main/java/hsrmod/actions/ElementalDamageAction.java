@@ -1,16 +1,13 @@
 package hsrmod.actions;
 
-import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.DamageCallbackAction;
 import com.evacipated.cardcrawl.mod.stslib.patches.ColoredDamagePatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 import hsrmod.modcore.ElementType;
-import hsrmod.utils.ModHelper;
 
 import java.util.function.Consumer;
 import java.util.function.Function;

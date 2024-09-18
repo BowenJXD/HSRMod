@@ -1,15 +1,11 @@
 package hsrmod.cards.uncommon;
 
 import com.evacipated.cardcrawl.mod.stslib.actions.common.MoveCardsAction;
-import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
-import com.evacipated.cardcrawl.mod.stslib.damagemods.BindingHelper;
-import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.GetAllInBattleInstances;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -18,7 +14,6 @@ import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
 import hsrmod.utils.CardDataCol;
 import hsrmod.utils.DataManager;
-import hsrmod.utils.ModHelper;
 
 import java.util.Iterator;
 

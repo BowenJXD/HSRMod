@@ -2,19 +2,16 @@ package hsrmod.cards.uncommon;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import hsrmod.actions.BreakDamageAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
 import hsrmod.powers.misc.BreakEffectPower;
 import hsrmod.powers.misc.BrokenPower;
-import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.utils.ModHelper;
 
 public class Firefly1 extends BaseCard {

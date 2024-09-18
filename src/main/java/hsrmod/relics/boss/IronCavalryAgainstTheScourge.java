@@ -2,7 +2,6 @@ package hsrmod.relics.boss;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
-import hsrmod.modcore.HSRMod;
 import hsrmod.relics.BaseRelic;
 import hsrmod.utils.ModHelper;
 

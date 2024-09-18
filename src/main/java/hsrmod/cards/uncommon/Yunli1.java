@@ -15,8 +15,8 @@ import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
 import hsrmod.powers.misc.EnergyPower;
-import hsrmod.utils.ModHelper;
 import hsrmod.subscribers.SubscribeManager;
+import hsrmod.utils.ModHelper;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 

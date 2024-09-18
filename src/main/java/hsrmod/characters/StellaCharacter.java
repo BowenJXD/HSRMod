@@ -19,13 +19,13 @@ import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import hsrmod.cards.base.*;
 import hsrmod.modcore.HSRMod;
-import hsrmod.modcore.Path;
 import hsrmod.patches.SkinSelectScreen;
 import hsrmod.relics.starter.*;
 
 import java.util.ArrayList;
 
-import static hsrmod.characters.StellaCharacter.PlayerColorEnum.*;
+import static hsrmod.characters.StellaCharacter.PlayerColorEnum.HSR_PINK;
+import static hsrmod.characters.StellaCharacter.PlayerColorEnum.MY_CHARACTER;
 
 // 继承CustomPlayer类
 public class StellaCharacter extends CustomPlayer {

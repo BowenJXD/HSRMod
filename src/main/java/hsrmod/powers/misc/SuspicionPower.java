@@ -1,6 +1,5 @@
 package hsrmod.powers.misc;
 
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.DebuffPower;

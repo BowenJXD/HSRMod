@@ -6,10 +6,8 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
-import com.megacrit.cardcrawl.powers.WeakPower;
 import hsrmod.actions.AOEAction;
 import hsrmod.actions.ElementalDamageAction;
-import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
 

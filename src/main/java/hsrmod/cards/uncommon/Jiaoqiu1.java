@@ -2,7 +2,6 @@ package hsrmod.cards.uncommon;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -12,7 +11,6 @@ import com.megacrit.cardcrawl.powers.VulnerablePower;
 import hsrmod.actions.AOEAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
-import hsrmod.powers.breaks.BurnPower;
 
 public class Jiaoqiu1 extends BaseCard {
     public static final String ID = Jiaoqiu1.class.getSimpleName();

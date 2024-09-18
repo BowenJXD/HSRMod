@@ -12,7 +12,6 @@ import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
 import hsrmod.powers.misc.BreakEffectPower;
-import hsrmod.powers.misc.BrokenPower;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.utils.ModHelper;

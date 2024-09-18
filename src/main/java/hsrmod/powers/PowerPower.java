@@ -1,6 +1,5 @@
 package hsrmod.powers;
 
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 public abstract class PowerPower extends BasePower {

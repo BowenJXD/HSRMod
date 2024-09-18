@@ -1,17 +1,12 @@
 package hsrmod.powers.uniqueBuffs;
 
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.DamageModApplyingPower;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
-import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
@@ -20,7 +15,7 @@ import hsrmod.powers.misc.BrokenPower;
 import java.util.Collections;
 import java.util.List;
 
-import static hsrmod.utils.CustomEnums.FOLLOW_UP;
+import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
 public class SlaughterhouseNo4RestInPeacePower extends PowerPower implements DamageModApplyingPower {
     public static final String POWER_ID = HSRMod.makePath(SlaughterhouseNo4RestInPeacePower.class.getSimpleName());

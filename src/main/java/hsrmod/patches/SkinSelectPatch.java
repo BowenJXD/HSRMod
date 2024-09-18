@@ -5,14 +5,14 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.screens.charSelect.CharacterSelectScreen;
-import hsrmod.characters.MyCharacter;
+import hsrmod.characters.StellaCharacter;
 
 public class SkinSelectPatch {
     public SkinSelectPatch() {
     }
 
     public static boolean isSelected() {
-        return CardCrawlGame.chosenCharacter == MyCharacter.PlayerColorEnum.MY_CHARACTER && (Boolean)ReflectionHacks.getPrivate(CardCrawlGame.mainMenuScreen.charSelectScreen, CharacterSelectScreen.class, "anySelected");
+        return CardCrawlGame.chosenCharacter == StellaCharacter.PlayerColorEnum.MY_CHARACTER && (Boolean)ReflectionHacks.getPrivate(CardCrawlGame.mainMenuScreen.charSelectScreen, CharacterSelectScreen.class, "anySelected");
     }
 
     @SpirePatch(

@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
-import hsrmod.utils.CustomEnums;
+import hsrmod.modcore.CustomEnums;
 
 public class Danheng0 extends BaseCard {
     public static final String ID = Danheng0.class.getSimpleName();

@@ -10,7 +10,7 @@ import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
 
-import static hsrmod.utils.CustomEnums.FOLLOW_UP;
+import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
 public class March7th2 extends BaseCard {
     public static final String ID = March7th2.class.getSimpleName();

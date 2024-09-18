@@ -1,28 +1,30 @@
 package hsrmod.cards;
 
 import basemod.abstracts.CustomCard;
-import basemod.interfaces.OnStartBattleSubscriber;
+import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.SpawnModificationCard;
 import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.CommonKeywordIconsField;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import hsrmod.modcore.ElementType;
 import hsrmod.powers.misc.EnergyPower;
+import hsrmod.relics.starter.WaxOfElation;
 import hsrmod.utils.CardDataCol;
-import hsrmod.utils.CustomEnums;
+import hsrmod.modcore.CustomEnums;
 import hsrmod.utils.DataManager;
 import hsrmod.utils.ModHelper;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
-import static hsrmod.characters.MyCharacter.PlayerColorEnum.HSR_PINK;
+import static hsrmod.characters.StellaCharacter.PlayerColorEnum.HSR_PINK;
 
-public abstract class BaseCard extends CustomCard {
+public abstract class BaseCard extends CustomCard implements SpawnModificationCard {
     protected int upCost;
     protected String upDescription;
     protected int upDamage;
@@ -132,10 +134,39 @@ public abstract class BaseCard extends CustomCard {
 
     protected boolean checkEnergy() {
         if (ModHelper.getPowerCount(EnergyPower.POWER_ID) < energyCost) {
-            cantUseMessage = "我没有足够的充能。";
+            cantUseMessage = Settings.language == Settings.GameLanguage.ZHS ? "我没有足够的充能。" : "I don't have enough energy.";
             return false;
         }
         return true;
+    }
+
+    @Override
+    public boolean canSpawn(ArrayList<AbstractCard> currentRewardCards) {
+        int count = AbstractDungeon.player.masterDeck.group.stream().mapToInt(c -> c.cardID.equals(this.cardID) ? 1 : 0).sum();
+        
+        if (AbstractDungeon.cardRng.random(99) < (100 / (count + 1))) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean canSpawnShop(ArrayList<AbstractCard> currentShopCards) {
+        int chance = 50;
+        if (AbstractDungeon.player.hasRelic(WaxOfElation.ID) && tags.contains(CustomEnums.ELATION)) {
+            chance = 100;
+        }
+        if (AbstractDungeon.player.hasRelic(WaxOfElation.ID) && tags.contains(CustomEnums.DESTRUCTION)) {
+            chance = 100;
+        }
+        if (AbstractDungeon.player.hasRelic(WaxOfElation.ID) && tags.contains(CustomEnums.NIHILITY)) {
+            chance = 100;
+        }
+        if (AbstractDungeon.cardRng.random(99) < chance) {
+            return true;
+        }
+        
+        return false;
     }
 
     @Override

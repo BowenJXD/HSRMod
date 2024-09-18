@@ -11,7 +11,7 @@ import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.subscribers.SubscribeManager;
 
-import static hsrmod.utils.CustomEnums.FOLLOW_UP;
+import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
 public class Clara1 extends BaseCard implements OnPlayerDamagedSubscriber {
     public static final String ID = Clara1.class.getSimpleName();

@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
 import hsrmod.relics.BaseRelic;
 import hsrmod.relics.boss.IronCavalryAgainstTheScourge;
@@ -18,7 +19,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import static basemod.BaseMod.logger;
-import static hsrmod.characters.MyCharacter.PlayerColorEnum.HSR_PINK;
 
 /**
  * Singleton class for editing the card reward pool.
@@ -56,7 +56,9 @@ public class RewardEditor {
                 }
             }
             
-            if (AbstractDungeon.actNum == 1 && AbstractDungeon.bossCount > 0) {
+            if (AbstractDungeon.actNum == 1
+                    && AbstractDungeon.getMonsters() != null
+                    && AbstractDungeon.getMonsters().monsters.stream().anyMatch(m -> m.type == AbstractMonster.EnemyType.BOSS)) {
                 String relicName = "";
                 if (tag == CustomEnums.ELATION) {
                     relicName = TheAshblazingGrandDuke.ID;

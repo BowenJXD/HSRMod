@@ -1,7 +1,6 @@
 package hsrmod.cards.common;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -15,11 +14,8 @@ import hsrmod.modcore.ElementType;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.subscribers.PreToughnessReduceSubscriber;
 import hsrmod.subscribers.SubscribeManager;
-import hsrmod.utils.CustomEnums;
+import hsrmod.modcore.CustomEnums;
 import hsrmod.utils.ModHelper;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class Xueyi1 extends BaseCard implements PreToughnessReduceSubscriber {
     public static final String ID = Xueyi1.class.getSimpleName();

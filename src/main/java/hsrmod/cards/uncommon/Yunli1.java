@@ -18,7 +18,7 @@ import hsrmod.powers.misc.EnergyPower;
 import hsrmod.utils.ModHelper;
 import hsrmod.subscribers.SubscribeManager;
 
-import static hsrmod.utils.CustomEnums.FOLLOW_UP;
+import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
 public class Yunli1 extends BaseCard implements OnPlayerDamagedSubscriber {
     public static final String ID = Yunli1.class.getSimpleName();

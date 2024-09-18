@@ -80,7 +80,7 @@ public class ToughnessPower extends BuffPower {
                     result = 10;
                     break;
             }
-            result += AbstractDungeon.actNum * result;
+            result += Math.min(AbstractDungeon.actNum, 4) * result;
         }
         else if (c instanceof AbstractPlayer) {
             result = 50;

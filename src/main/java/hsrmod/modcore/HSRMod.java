@@ -5,6 +5,7 @@ import basemod.BaseMod;
 import basemod.abstracts.CustomRelic;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
+import com.evacipated.cardcrawl.mod.stslib.icons.CustomIconHelper;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -12,14 +13,15 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import com.badlogic.gdx.graphics.Color;
-import hsrmod.characters.MyCharacter;
+import hsrmod.characters.StellaCharacter;
+import hsrmod.misc.ChargeIcon;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.nio.charset.StandardCharsets;
 
 import static com.megacrit.cardcrawl.core.Settings.language;
-import static hsrmod.characters.MyCharacter.PlayerColorEnum.*;
+import static hsrmod.characters.StellaCharacter.PlayerColorEnum.*;
 
 @SpireInitializer // 加载mod的注解
 public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditCharactersSubscriber, EditRelicsSubscriber, EditKeywordsSubscriber, AddAudioSubscriber {
@@ -68,6 +70,7 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
 
     @Override
     public void receiveEditCards() {
+        CustomIconHelper.addCustomIcon(ChargeIcon.get());
         // This finds and adds all cards in the same package (or sub-package) as MyAbstractCard
         // along with marking all added cards as seen
         new AutoAdd(MOD_NAME)
@@ -78,7 +81,7 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
 
     @Override
     public void receiveEditCharacters() {
-        BaseMod.addCharacter(new MyCharacter(CardCrawlGame.playerName), MY_CHARACTER_BUTTON, MY_CHARACTER_PORTRAIT, MY_CHARACTER);
+        BaseMod.addCharacter(new StellaCharacter(CardCrawlGame.playerName), MY_CHARACTER_BUTTON, MY_CHARACTER_PORTRAIT, MY_CHARACTER);
     }
     
     @Override

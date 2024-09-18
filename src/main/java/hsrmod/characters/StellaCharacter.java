@@ -19,15 +19,16 @@ import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import hsrmod.cards.base.*;
 import hsrmod.modcore.HSRMod;
+import hsrmod.modcore.Path;
 import hsrmod.patches.SkinSelectScreen;
 import hsrmod.relics.starter.*;
 
 import java.util.ArrayList;
 
-import static hsrmod.characters.MyCharacter.PlayerColorEnum.*;
+import static hsrmod.characters.StellaCharacter.PlayerColorEnum.*;
 
 // 继承CustomPlayer类
-public class MyCharacter extends CustomPlayer {
+public class StellaCharacter extends CustomPlayer {
     // 火堆的人物立绘（行动前）
     private static final String MY_CHARACTER_SHOULDER_1 = "HSRModResources/img/char/shoulder1.png";
     // 火堆的人物立绘（行动后）
@@ -51,9 +52,9 @@ public class MyCharacter extends CustomPlayer {
     // 每个图层的旋转速度
     private static final float[] LAYER_SPEED = new float[]{-40.0F, -32.0F, 20.0F, -20.0F, 0.0F, -10.0F, -8.0F, 5.0F, -5.0F, 0.0F};
     // 人物的本地化文本，如卡牌的本地化文本一样，如何书写见下
-    private static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString("HSRMod:MyCharacter");
+    private static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString("HSRMod:StellaCharacter");
 
-    public MyCharacter(String name) {
+    public StellaCharacter(String name) {
         super(name, MY_CHARACTER, ORB_TEXTURES,"HSRModResources/img/UI/orb/vfx.png", LAYER_SPEED, null, null);
 
 
@@ -106,15 +107,19 @@ public class MyCharacter extends CustomPlayer {
         ArrayList<String> retVal = new ArrayList<>();
         retVal.add(GalacticBat.ID);
         retVal.add(PomPomBlessing.ID);
-        switch (SkinSelectScreen.getSkin().word) {
-            case "Elation":
+        switch (SkinSelectScreen.getSkin().path) {
+            case ELATION:
                 retVal.add(HSRMod.makePath(WaxOfElation.ID));
                 break;
-            case "Destruction":
+            case DESTRUCTION:
                 retVal.add(HSRMod.makePath(WaxOfDestruction.ID));
                 break;
-            case "Nihility":
+            case NIHILITY:
                 retVal.add(HSRMod.makePath(WaxOfNihility.ID));
+                break;
+            case TRAILBLAZE:
+            default:
+                retVal.add(HSRMod.makePath(TrailblazeTimer.ID));
                 break;
         }
         return retVal;
@@ -204,7 +209,7 @@ public class MyCharacter extends CustomPlayer {
     // 创建人物实例，照抄
     @Override
     public AbstractPlayer newInstance() {
-        return new MyCharacter(this.name);
+        return new StellaCharacter(this.name);
     }
 
     // 第三章面对心脏说的话（例如战士是“你握紧了你的长刀……”之类的）

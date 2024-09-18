@@ -40,7 +40,7 @@ public class Boothill1 extends BaseCard {
         for (int i = 0; i < magicNumber; i++) {
             addToBot(
                     new ElementalDamageAction(m, new DamageInfo(p, damage),
-                            ElementType.Physical, 3,
+                            ElementType.Physical, magicNumber,
                             AbstractGameAction.AttackEffect.SLASH_DIAGONAL
                     )
             );

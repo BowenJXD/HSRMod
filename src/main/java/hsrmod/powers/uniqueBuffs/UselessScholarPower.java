@@ -15,7 +15,7 @@ import hsrmod.utils.ModHelper;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static hsrmod.utils.CustomEnums.FOLLOW_UP;
+import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
 public class UselessScholarPower extends PowerPower {
     public static final String POWER_ID = HSRMod.makePath(UselessScholarPower.class.getSimpleName());
@@ -58,6 +58,7 @@ public class UselessScholarPower extends PowerPower {
                     .filter(card -> card.hasTag(FOLLOW_UP) 
                     && card instanceof BaseCard
                     && !((BaseCard)card).followedUp).collect(Collectors.toList());
+            if (cards.isEmpty()) return;
             AbstractCard card = cards.get(AbstractDungeon.cardRandomRng.random(cards.size() - 1));
             if (card.hasTag(FOLLOW_UP)){
                 addToBot(new FollowUpAction(card));

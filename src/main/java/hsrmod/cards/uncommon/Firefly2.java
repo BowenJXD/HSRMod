@@ -28,7 +28,7 @@ public class Firefly2 extends BaseCard {
         addToBot(new LoseHPAction(p, p, magicNumber));
         ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID));
         addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
-        addToBot(new ApplyPowerAction(p, p, new FireflyPower(), 1));
+        addToBot(new ApplyPowerAction(p, p, new FireflyPower()));
     }
 
     @Override

@@ -181,19 +181,19 @@
   "HSRMod:Firefly": {
     "NAME": "Firefly",
     "DESCRIPTIONS": [
-      "After breaking the target, deal break damage equal to its toughness max and gain 1 stack of 'BreakEfficiency'. Add the card 'FallingFromAShatteredSky' to your hand."
+      "After breaking the target, deal break damage equal to its toughness max and gain 1 stack of 'Break Efficiency'. Add the card 'Falling From A Shattered Sky' to your hand."
     ]
   },
   "HSRMod:Befog": {
     "NAME": "Befog",
     "DESCRIPTIONS": [
-      "After being broken, recover #b%d [E], draw #b%d cards, and upgrade all current hand cards for this battle."
+      "After being broken, recover #b%d [E] , draw #b%d cards, and upgrade all current hand cards for this battle."
     ]
   },
   "HSRMod:Symbiote": {
     "NAME": "Symbiote",
     "DESCRIPTIONS": [
-      "After breaking the target, recover [E][E]. After dealing break damage, draw 1 card."
+      "After breaking the target, recover [E] [E] . After dealing break damage, draw 1 card."
     ]
   },
   "HSRMod:VoyageMonitor": {
@@ -212,7 +212,7 @@
   "HSRMod:Kolchis": {
     "NAME": "Kolchis",
     "DESCRIPTIONS": [
-      "After consuming Charge, recover [E]. After consuming [E], recover #b%d Charge."
+      "After consuming Charge, recover [E] . After consuming [E] , recover #b%d Charge."
     ]
   },
   "HSRMod:Divinity": {
@@ -224,7 +224,7 @@
   "HSRMod:Burden": {
     "NAME": "Burden",
     "DESCRIPTIONS": [
-      "After becoming the target of a card, remove 1 stack and recover [E]."
+      "After becoming the target of a card, remove 1 stack and recover [E] ."
     ]
   },
   "HSRMod:Huohuo": {

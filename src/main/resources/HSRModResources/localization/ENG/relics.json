@@ -4,6 +4,8 @@
     "FLAVOR": "\"Ta-da! Here's to the future expeditions we'll be experiencing together!\"",
     "DESCRIPTIONS": [
       "At battle start，gain #b100 #yhsrmod:Charge, gain [E] equals to the act number, gain #yIntangible . NL After you use a card, gain #b20 #yCharge . Stacks up to #b240 . NL At the end of turn, you can choose to use 20 #yCharge per card to retain cards. NL #rWould #rsomehow #rsave #ryou #rfrom #rdanger... ",
+      "Retain (each costs 20 Charge)",
+      "Choose one crew member to sacrifice",
       "I don't want to… be alone…",
       "This… can't be…",
       "That's… my final lesson… for you…",
@@ -36,6 +38,13 @@
     "FLAVOR": "It is said that stamping with this Sealing Wax will attract a glimpse from the corresponding Aeon from across space and time - IX is watching you! ",
     "DESCRIPTIONS": [
       "Increase the chance of appearing of \"Nihility\" cards."
+    ]
+  },
+  "HSRMod:TrailblazeTimer": {
+    "NAME": "Trailblaze Timer",
+    "FLAVOR": "It broke countless times and underwent endless repairs. Its former shape was no longer discernible, and only the stilled sharp hands were pointing ever forward.",
+    "DESCRIPTIONS": [
+      "Future card rewards have 2 more cards to choose from."
     ]
   },
   "HSRMod:TheAshblazingGrandDuke": {
@@ -141,7 +150,7 @@
     "NAME": "Record From Beyond The Sky",
     "FLAVOR": "The last Phonograph of Order was destroyed in the Emperor's War, and now the thick layer of dust on the records protests against that soundless era.",
     "DESCRIPTIONS": [
-      "At battle starts, gain #b1 layer of #yIntangible and #b1 layer of #yArtifact."
+      "At battle starts, gain #b1 stack of #yIntangible and #b1 stack of #yArtifact."
     ]
   },
   "HSRMod:EntropicDie": {
@@ -225,7 +234,7 @@
     "NAME": "Super Overlord Spinning Top",
     "FLAVOR": "There is a reason behind the creation of every rule in the Intelligentsia Guild.",
     "DESCRIPTIONS": [
-      "At battle starts, gain #b1 layer of #yhsrmod:Break-Effect. At start of the first turn, removes #b50% of enemy's #yhsrmod:Toughness."
+      "At battle starts, gain #b1 stack of #yhsrmod:Break-Effect. At start of the first turn, removes #b50% of enemy's #yhsrmod:Toughness."
     ]
   },
   "HSRMod:FortuneGlue": {
@@ -337,7 +346,7 @@
     "NAME": "Revitalization-310",
     "FLAVOR": "These bizarre ointments start from the patient's cognition and erase the root of the emotion that may give birth to Nihility.",
     "DESCRIPTIONS": [
-      "At the start of the first turn, add #yEthereal. When you use a Ethereal card, a random enemy loses #b1 #yStrength."
+      "At the start of the first turn, add #yEthereal to all cards in hand. When you use a Ethereal card, a random enemy loses #b1 #yStrength."
     ]
   },
   "HSRMod:ChanceJailbreak": {
@@ -358,14 +367,14 @@
     "NAME": "Dreamdive Can",
     "FLAVOR": "The survivors fall shiveringly asleep and head into dreams to find the freedom they could not find in reality, just like how it was in yesteryear in the Land of Dreams.",
     "DESCRIPTIONS": [
-      "At battle starts, gain #b2 layers of #yhsrmod:Brain-in-a-Vat . After #yBrain-in-a-Vat is triggered, gain [E]."
+      "At battle starts, gain #b2 stacks of #yhsrmod:Brain-in-a-Vat . After #yBrain-in-a-Vat is triggered, gain [E]."
     ]
   },
   "HSRMod:SilentSong": {
     "NAME": "Silent Song",
     "FLAVOR": "They connect to form a crystal plain, as the resonance between their particles sings silent Odes of Harmony, like... ice-cold stones.",
     "DESCRIPTIONS": [
-      "At turn starts, apply #b2 layers of #yhsrmod:Frozen to a random enemy."
+      "At turn starts, apply #b2 stacks of #yhsrmod:Frozen to a random enemy."
     ]
   },
   "HSRMod:DignityAndPassion": {

@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.powers.ArtifactPower;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 
-import static hsrmod.utils.CustomEnums.FOLLOW_UP;
+import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
 public class Aventurine2 extends BaseCard {
     public static final String ID = Aventurine2.class.getSimpleName();

@@ -1,9 +1,8 @@
-package hsrmod.utils;
+package hsrmod.modcore;
 
 import basemod.helpers.RelicType;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 
 public class CustomEnums
 {

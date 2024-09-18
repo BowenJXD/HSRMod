@@ -18,7 +18,8 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
-import hsrmod.characters.MyCharacter;
+import hsrmod.characters.StellaCharacter;
+import hsrmod.modcore.Path;
 
 import java.util.ArrayList;
 
@@ -36,9 +37,18 @@ public class SkinSelectScreen implements ISubscriber, CustomSavable<Integer> {
         SKINS.add(new Skin("img/char/XiaoQiao.png", ", "", ""));
                 SKINS.add(new Skin("img/char/SunShangXiang.png", ", ", "LiangZhu"));
         SKINS.add(new Skin("img/char/BaoSanNiang.png", ", "", "ShuYong"));*/
-        SKINS.add(new Skin("HSRModResources/img/char/ElationLogo.png", "欢愉命途", "通过追击进行输出", "Elation"));
-        SKINS.add(new Skin("HSRModResources/img/char/DestructionLogo.png", "毁灭命途", "通过击破进行输出", "Destruction"));
-        SKINS.add(new Skin("HSRModResources/img/char/NihilityLogo.png", "虚无命途", "通过持续伤害进行输出", "Nihility"));
+        if (Settings.language == Settings.GameLanguage.ZHS) {
+            SKINS.add(new Skin("HSRModResources/img/char/ElationLogo.png", "欢愉命途", "通过追击进行输出", Path.ELATION));
+            SKINS.add(new Skin("HSRModResources/img/char/DestructionLogo.png", "毁灭命途", "通过击破进行输出", Path.DESTRUCTION));
+            SKINS.add(new Skin("HSRModResources/img/char/NihilityLogo.png", "虚无命途", "通过持续伤害进行输出", Path.NIHILITY));
+            SKINS.add(new Skin("HSRModResources/img/char/TrailblazeLogo.png", "开拓命途", "开拓属于你的道路", Path.TRAILBLAZE));
+        }
+        else {
+            SKINS.add(new Skin("HSRModResources/img/char/ElationLogo.png", "Elation", "Damage through Follow-Up", Path.ELATION));
+            SKINS.add(new Skin("HSRModResources/img/char/DestructionLogo.png", "Destruction", "Damage through break", Path.DESTRUCTION));
+            SKINS.add(new Skin("HSRModResources/img/char/NihilityLogo.png", "Nihility", "Damage through DoT", Path.NIHILITY));
+            SKINS.add(new Skin("HSRModResources/img/char/TrailblazeLogo.png", "Trailblaze", "Trailblaze your own way", Path.TRAILBLAZE));
+        }
         // SKINS.add(new Skin("HSRModResources/img/char/TrailblazeLogo.png", "开拓命途", "无特殊效果", "Trailblaze"));
     }
 
@@ -93,21 +103,21 @@ public class SkinSelectScreen implements ISubscriber, CustomSavable<Integer> {
     }
 
     private void updateInput() {
-        if (CardCrawlGame.chosenCharacter == MyCharacter.PlayerColorEnum.MY_CHARACTER) {
+        if (CardCrawlGame.chosenCharacter == StellaCharacter.PlayerColorEnum.MY_CHARACTER) {
             this.leftHb.update();
             this.rightHb.update();
             if (this.leftHb.clicked) {
                 this.leftHb.clicked = false;
                 CardCrawlGame.sound.play("UI_CLICK_1");
                 this.index = prevIndex();
-                CardCrawlGame.sound.play((getSkin()).word);
+                // CardCrawlGame.sound.play((getSkin()).word);
                 refresh();
             }
             if (this.rightHb.clicked) {
                 this.rightHb.clicked = false;
                 CardCrawlGame.sound.play("UI_CLICK_1");
                 this.index = nextIndex();
-                CardCrawlGame.sound.play((getSkin()).word);
+                // CardCrawlGame.sound.play((getSkin()).word);
                 refresh();
             }
             if (InputHelper.justClickedLeft) {
@@ -169,14 +179,14 @@ public class SkinSelectScreen implements ISubscriber, CustomSavable<Integer> {
 
         public String effect;
 
-        public String word;
+        public Path path;
 
-        public Skin(String img, String name, String effect, String word) {
+        public Skin(String img, String name, String effect, Path path) {
             this.img = img;
             this.t = ImageMaster.loadImage(img);
             this.name = name;
             this.effect = effect;
-            this.word = word;
+            this.path = path;
         }
     }
 

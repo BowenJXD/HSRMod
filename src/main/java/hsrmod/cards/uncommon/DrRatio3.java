@@ -11,7 +11,7 @@ import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
 import hsrmod.powers.uniqueDebuffs.WisemansFollyPower;
 
-import static hsrmod.utils.CustomEnums.FOLLOW_UP;
+import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
 public class DrRatio3 extends BaseCard {
     public static final String ID = DrRatio3.class.getSimpleName();

@@ -13,7 +13,7 @@ import hsrmod.utils.ModHelper;
 
 import java.util.Iterator;
 
-import static hsrmod.utils.CustomEnums.FOLLOW_UP;
+import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
 public class TheAshblazingGrandDuke extends BaseRelic implements OnApplyPowerRelic {
     // 遗物ID（此处的ModHelper在“04 - 本地化”中提到）

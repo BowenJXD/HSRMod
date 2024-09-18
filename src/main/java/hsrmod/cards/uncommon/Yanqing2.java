@@ -13,7 +13,7 @@ import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
 import hsrmod.powers.breaks.FrozenPower;
 
-import static hsrmod.utils.CustomEnums.FOLLOW_UP;
+import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
 public class Yanqing2 extends BaseCard implements OnPlayerDamagedSubscriber {
     public static final String ID = Yanqing2.class.getSimpleName();

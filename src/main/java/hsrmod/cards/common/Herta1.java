@@ -1,6 +1,5 @@
 package hsrmod.cards.common;
 
-import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -9,7 +8,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.AOEAction;
 import hsrmod.actions.ElementalDamageAction;
-import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
@@ -18,7 +16,7 @@ import hsrmod.utils.ModHelper;
 import java.util.HashMap;
 import java.util.Map;
 
-import static hsrmod.utils.CustomEnums.FOLLOW_UP;
+import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
 public class Herta1 extends BaseCard {
     public static final String ID = Herta1.class.getSimpleName();

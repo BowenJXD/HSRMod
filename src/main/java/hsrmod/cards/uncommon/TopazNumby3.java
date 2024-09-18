@@ -10,7 +10,7 @@ import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
 import hsrmod.powers.uniqueDebuffs.ProofOfDebtPower;
 
-import static hsrmod.utils.CustomEnums.FOLLOW_UP;
+import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
 public class TopazNumby3 extends BaseCard {
     public static final String ID = TopazNumby3.class.getSimpleName();

@@ -1,6 +1,6 @@
 package hsrmod.relics.starter;
 
-import hsrmod.utils.CustomEnums;
+import hsrmod.modcore.CustomEnums;
 
 public class WaxOfElation extends WaxRelic {
     public static final String ID = WaxOfElation.class.getSimpleName();

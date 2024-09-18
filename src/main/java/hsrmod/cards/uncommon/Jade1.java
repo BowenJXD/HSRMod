@@ -12,13 +12,12 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.AOEAction;
 import hsrmod.actions.ElementalDamageAction;
-import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
 import hsrmod.subscribers.SubscribeManager;
 
-import static hsrmod.utils.CustomEnums.FOLLOW_UP;
+import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
 public class Jade1 extends BaseCard implements PostDrawSubscriber {
     public static final String ID = Jade1.class.getSimpleName();

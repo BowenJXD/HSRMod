@@ -21,7 +21,7 @@ import hsrmod.cards.base.*;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.relics.special.*;
-import hsrmod.utils.CustomEnums;
+import hsrmod.modcore.CustomEnums;
 import hsrmod.utils.ModHelper;
 
 import java.util.List;
@@ -94,7 +94,7 @@ public class PomPomBlessing extends CustomRelic {
             addToBot(new ReduceECByHandCardNumAction(AbstractDungeon.player, AbstractDungeon.player));
         };
 
-        addToBot(new SelectCardsInHandAction(maxRetainNum, String.format("保留（每张消耗%d充能）", multiplier), true, true, cardFilter, callback));
+        addToBot(new SelectCardsInHandAction(maxRetainNum, String.format(DESCRIPTIONS[1], multiplier), true, true, cardFilter, callback));
     }
 
     @Override
@@ -114,7 +114,7 @@ public class PomPomBlessing extends CustomRelic {
             flash();
             damageAmount = AbstractDungeon.player.currentHealth - 1;
             ModHelper.addToTopAbstract(() -> {
-                addToTop(new SelectCardsAction(AbstractDungeon.player.masterDeck.group, 1, "选择牺牲一位列车组成员",
+                addToTop(new SelectCardsAction(AbstractDungeon.player.masterDeck.group, 1, DESCRIPTIONS[2],
                         false, card -> card.hasTag(CustomEnums.REVIVE), cards -> {
                     AbstractCard card = cards.get(0);
                     ModHelper.findCards(card1 -> card1.getClass().equals(card.getClass())).forEach(findResult -> {
@@ -126,16 +126,16 @@ public class PomPomBlessing extends CustomRelic {
                     String text = "";
                     if (card instanceof March7th0) {
                         relicName = March7thRelic.ID;
-                        text = DESCRIPTIONS[1]; // 
+                        text = DESCRIPTIONS[3]; // 
                     } else if (card instanceof Danheng0) {
                         relicName = DanhengRelic.ID;
-                        text = DESCRIPTIONS[2]; // 
+                        text = DESCRIPTIONS[4]; // 
                     } else if (card instanceof Himeko0) {
                         relicName = HimekoRelic.ID;
-                        text = DESCRIPTIONS[3]; // 
+                        text = DESCRIPTIONS[5]; // 
                     } else if (card instanceof Welt0) {
                         relicName = WeltRelic.ID;
-                        text = DESCRIPTIONS[4]; // 
+                        text = DESCRIPTIONS[6]; // 
                     }
 
                     if (!relicName.isEmpty())

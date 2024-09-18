@@ -85,7 +85,7 @@
   },
   {
     "NAMES": ["Slashed Dream", "slashed-dream"],
-    "DESCRIPTION": "At the end of the turn, if amount >=9, lose 9 amount and bounce 3 times: deal #b%d lightning damage (1) to random enemies; finally, deal #b%d + X lightning damage (1) to all enemies (X equals the number of its debuffs)."
+    "DESCRIPTION": "At the end of the turn, if amount >=9, lose 9 amount and bounce 3 times: deal #b5 lightning damage (1) to random enemies; finally, deal #b5 + X lightning damage (1) to all enemies (X equals the number of its debuffs)."
   },
   {
     "NAMES": ["Blind Bet", "blind-bet"],

@@ -32,6 +32,7 @@ public class Trailblazer6 extends BaseCard {
         if (p.hasPower(Trailblazer5Power.POWER_ID))
             addToBot(new ApplyPowerAction(p, p, new BreakEffectPower(p, magicNumber * 2), magicNumber * 2));
         else {
+            addToBot(new ApplyPowerAction(p, p, new BreakEffectPower(p, magicNumber), magicNumber));
             List<ModHelper.FindResult> fireFiles = ModHelper.findCards(c -> c instanceof Trailblazer5);
             for (ModHelper.FindResult result : fireFiles) {
                 if (result.group == AbstractDungeon.player.hand) continue;

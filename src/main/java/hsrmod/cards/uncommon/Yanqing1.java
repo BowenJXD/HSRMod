@@ -11,8 +11,6 @@ import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
 
-import static hsrmod.utils.CustomEnums.FOLLOW_UP;
-
 public class Yanqing1 extends BaseCard {
     public static final String ID = Yanqing1.class.getSimpleName();
     

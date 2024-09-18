@@ -17,7 +17,7 @@ import hsrmod.modcore.ElementType;
 import hsrmod.powers.misc.BrokenPower;
 import hsrmod.subscribers.SubscribeManager;
 
-import static hsrmod.utils.CustomEnums.FOLLOW_UP;
+import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
 public class Himeko1 extends BaseCard implements PostPowerApplySubscriber {
     public static final String ID = Himeko1.class.getSimpleName();

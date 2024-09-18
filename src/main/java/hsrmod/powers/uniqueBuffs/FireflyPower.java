@@ -39,22 +39,26 @@ public class FireflyPower extends PowerPower implements PostPowerApplySubscriber
     }
 
     @Override
-    public void onRemove() {
+    public void 
+    onRemove() {
         BaseMod.unsubscribe(this);
     }
 
     @Override
     public void receivePostPowerApplySubscriber(AbstractPower abstractPower, AbstractCreature target, AbstractCreature source) {
         if (SubscribeManager.checkSubscriber(this) 
-                && abstractPower.ID.equals(BrokenPower.POWER_ID)) {
+                && abstractPower.ID
+                .equals(BrokenPower.POWER_ID)) {
             this.flash();
             addToBot(new BreakDamageAction(target, new DamageInfo(this.owner, ToughnessPower.getStackLimit(target))));
             this.addToBot(new ApplyPowerAction(this.owner, this.owner, new BreakEfficiencyPower(this.owner, 1), 1));
 
             List<ModHelper.FindResult> fireFiles = ModHelper.findCards(c -> c instanceof Firefly1);
-            for (ModHelper.FindResult result : fireFiles) {
+            for (ModHelper.FindResult
+                    result : fireFiles) {
                 if (result.group == AbstractDungeon.player.hand) continue;
-                addToBot(new MoveCardsAction(result.group, AbstractDungeon.player.hand, card -> card == result.card));
+                addToBot(new MoveCardsAction(
+                        AbstractDungeon.player.hand, result.group, card -> card == result.card));
             }
             
             if (fireFiles.isEmpty()) {

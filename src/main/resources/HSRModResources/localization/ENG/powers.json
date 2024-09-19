@@ -163,7 +163,7 @@
   "HSRMod:ThanatoplumRebloom": {
     "NAME": "ThanatoplumRebloom",
     "DESCRIPTIONS": [
-      "When losing 'Broken', prevent it. When gaining Toughness, remove 1 stack and prevent it."
+      "When losing 'Broken', remove 1 stack and prevent it."
     ]
   },
   "HSRMod:Trailblazer5": {

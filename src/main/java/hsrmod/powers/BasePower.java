@@ -4,11 +4,13 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
+import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 public abstract class BasePower extends AbstractPower {
     public String[] DESCRIPTIONS;
     public boolean upgraded;
+    public PowerStrings powerStrings;
     
     public BasePower(String id, AbstractCreature owner, int Amount, PowerType type, boolean upgraded){
         this.ID = id;
@@ -18,6 +20,7 @@ public abstract class BasePower extends AbstractPower {
         this.amount = Amount;
         this.type = type;
         this.upgraded = upgraded;
+        powerStrings = CardCrawlGame.languagePack.getPowerStrings(id);
 
         String path128 = String.format("HSRModResources/img/powers/%s128.png", this.getClass().getSimpleName());
         String path48 = String.format("HSRModResources/img/powers/%s48.png", this.getClass().getSimpleName());

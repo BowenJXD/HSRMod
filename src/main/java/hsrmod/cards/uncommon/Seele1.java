@@ -42,7 +42,7 @@ public class Seele1 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         AbstractGameAction action  = new ElementalDamageAction(m, new DamageInfo(p, damage), ElementType.Quantum, magicNumber, AbstractGameAction.AttackEffect.SLASH_HEAVY, (q) -> {
-            if (q.isDying || q.currentHealth <= 0) {
+            if ((q.isDying || q.currentHealth <= 0) && !q.halfDead && !q.hasPower("Minion")) {
                 Iterator var1 = AbstractDungeon.player.masterDeck.group.iterator();
 
                 AbstractCard c;

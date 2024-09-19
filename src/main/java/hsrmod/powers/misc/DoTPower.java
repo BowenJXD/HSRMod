@@ -51,12 +51,9 @@ public abstract class DoTPower extends DebuffPower {
             this.flash();
             
             float dmg = this.getDamage();
-            Iterator var1 = owner.powers.iterator();
+            DamageInfo info = new DamageInfo(this.source, (int) dmg);
+            info.applyPowers(this.source, this.owner);
             
-            while(var1.hasNext()) {
-                AbstractPower p = (AbstractPower) var1.next();
-                dmg = p.atDamageReceive(dmg, DamageInfo.DamageType.NORMAL);
-            }
             dmg = SubscribeManager.getInstance().triggerPreDoTDamage(dmg, this.owner, this);
             
             this.addToTop(new ElementalDamageAction(this.owner, new DamageInfo(this.source, (int) dmg), this.getElementType(), toughnessReduction));

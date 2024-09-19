@@ -18,8 +18,6 @@ import hsrmod.powers.misc.EnergyPower;
 
 public class HuohuoPower extends BuffPower implements OnReceivePowerPower {
     public static final String POWER_ID = HSRMod.makePath(HuohuoPower.class.getSimpleName());
-
-    public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     
     public HuohuoPower(AbstractCreature owner, boolean upgraded) {
         super(POWER_ID, owner, upgraded);

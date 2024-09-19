@@ -2,6 +2,7 @@ package hsrmod.cards.uncommon;
 
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -40,6 +41,10 @@ public class Robin2 extends BaseCard {
                         && card instanceof BaseCard 
                         && !((BaseCard)card).followedUp) {
                     addToBot(new FollowUpAction(card));
+                    if (!upgraded) amount--;
+                }
+                else {
+                    addToBot(new UseCardAction(card));
                     amount--;
                 }
                 if (amount == 0) break;

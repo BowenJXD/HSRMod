@@ -1,3 +1,4 @@
+/*
 package hsrmod.cards.common;
 
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
@@ -21,3 +22,4 @@ public class Natasha1 extends BaseCard {
         addToBot(new DrawCardAction(p, 1));
     }
 }
+*/

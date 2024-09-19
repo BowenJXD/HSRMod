@@ -11,6 +11,6 @@ public class TrailblazeTimer extends BaseRelic {
 
     @Override
     public int changeNumberOfCardsInReward(int numberOfCards) {
-        return numberOfCards + 2;
+        return numberOfCards + 1;
     }
 }

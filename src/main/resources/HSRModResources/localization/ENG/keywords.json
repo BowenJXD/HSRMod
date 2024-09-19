@@ -17,7 +17,7 @@
   },
   {
     "NAMES": ["Break", "break", "breaks"],
-    "DESCRIPTION": "Actions that reduce toughness from >0 to <=0 are considered Break."
+    "DESCRIPTION": "Damage actions that reduce toughness from >0 to <=0 are considered Break."
   },
   {
     "NAMES": ["Toughness", "toughness"],

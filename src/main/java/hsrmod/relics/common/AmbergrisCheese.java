@@ -14,6 +14,6 @@ public class AmbergrisCheese extends BaseRelic {
     @Override
     public void onVictory() {
         flash();
-        addToTop(new HealAction(AbstractDungeon.player, AbstractDungeon.player, magicNumber));
+        AbstractDungeon.player.heal(magicNumber);
     }
 }

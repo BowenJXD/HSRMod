@@ -53,8 +53,9 @@ public class Xueyi1 extends BaseCard implements PreToughnessReduceSubscriber {
                 ElementType.Quantum, magicNumber,
                 AbstractGameAction.AttackEffect.SLASH_DIAGONAL
         ));
-
-        modifyCostForCombat(costCache - costForTurn);
+        
+        // modifyCostForCombat(costCache - costForTurn);
+        updateCost(costCache - costForTurn);
     }
 
     @Override
@@ -68,14 +69,35 @@ public class Xueyi1 extends BaseCard implements PreToughnessReduceSubscriber {
     }
 
     @Override
-    public float preToughnessReduce(float amount, AbstractCreature target, ElementType elementType) {
-        if (!SubscribeManager.checkSubscriber(this)
-                || !AbstractDungeon.player.hand.contains(this)) return amount;
-        modifyCostForCombat((int) -amount);
-        if (!followedUp && cost <= 0){
+    public void updateCost(int amt) {
+        super.updateCost(amt);
+        followUp();
+    }
+
+    @Override
+    public void modifyCostForCombat(int amt) {
+        super.modifyCostForCombat(amt);
+        followUp();
+    }
+
+    @Override
+    public void setCostForTurn(int amt) {
+        super.setCostForTurn(amt);
+        followUp();
+    }
+    
+    void followUp(){
+        if (!followedUp && costForTurn == 0) {
             followedUp = true;
             addToBot(new FollowUpAction(this));
         }
+    }
+
+    @Override
+    public float preToughnessReduce(float amount, AbstractCreature target, ElementType elementType) {
+        if (!SubscribeManager.checkSubscriber(this)
+                || !AbstractDungeon.player.hand.contains(this)) return amount;
+        updateCost((int) -amount);
         return amount;
     }
 }

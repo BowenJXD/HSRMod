@@ -44,7 +44,7 @@ public class Robin2 extends BaseCard {
                     if (!upgraded) amount--;
                 }
                 else {
-                    addToBot(new UseCardAction(card));
+                    addToBot(new FollowUpAction(card));
                     amount--;
                 }
                 if (amount == 0) break;

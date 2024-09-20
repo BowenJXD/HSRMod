@@ -33,11 +33,19 @@ public class BountyHunterPower extends PowerPower {
     }
 
     @Override
+    public void onRemove() {
+        super.onRemove();
+        cardsCache.forEach(card -> card.returnToHand = false);
+    }
+
+    @Override
     public void onPlayCard(AbstractCard card, AbstractMonster m) {
         if (card.returnToHand && cardsCache.contains(card)) {
             cardsCache.remove(card);
             card.returnToHand = false;
         }
+        
+        if (card.returnToHand) return;
         
         if (card.hasTag(FOLLOW_UP)) {
             if (upgraded) trigger(card);

@@ -30,7 +30,7 @@ public class Aventurine2 extends BaseCard {
             int blockThisTurn = AbstractDungeon.cardRandomRng.random(1, block);
             addToBot(new GainBlockAction(p, p, blockThisTurn));
         }
-        addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new BlurPower(AbstractDungeon.player, 0), 0));
+        addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new BlurPower(AbstractDungeon.player, 1), 1));
     }
 
     @Override

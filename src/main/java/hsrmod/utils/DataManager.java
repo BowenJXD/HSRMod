@@ -144,6 +144,10 @@ public class DataManager {
         private static void replaceZHS() {
             // 替换规则
             Map<String, String> replacements = new HashMap<>();
+            // replacements.put(" D ", " !D! ");
+            // replacements.put(" B ", " !B! ");
+            // replacements.put(" M ", " !M! ");
+            // replacements.put(" E ", " [E] ");
             replacements.put("【", " hsrmod:");
             replacements.put("】", " ");
             replacements.put("〖", " ");

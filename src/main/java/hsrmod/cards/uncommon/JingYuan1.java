@@ -37,16 +37,37 @@ public class JingYuan1 extends BaseCard {
         );
         this.addToBot(new BouncingAction(m, magicNumber, elementalDamageAction));
         
-        modifyCostForCombat(costCache - costForTurn);
+        updateCost(costCache - costForTurn);
+    }
+
+    @Override
+    public void updateCost(int amt) {
+        super.updateCost(amt);
+        followUp();
+    }
+
+    @Override
+    public void modifyCostForCombat(int amt) {
+        super.modifyCostForCombat(amt);
+        followUp();
+    }
+
+    @Override
+    public void setCostForTurn(int amt) {
+        super.setCostForTurn(amt);
+        followUp();
+    }
+
+    void followUp(){
+        if (!followedUp && costForTurn == 0) {
+            followedUp = true;
+            addToBot(new FollowUpAction(this));
+        }
     }
 
     @Override
     public void triggerOnOtherCardPlayed(AbstractCard c) {
         if (!AbstractDungeon.player.hand.contains(this) || followedUp) return;
-        modifyCostForCombat(-1);
-        if (cost == 0) {
-            followedUp = true;
-            addToBot(new FollowUpAction(this));
-        }
+        updateCost(-1);
     }
 }

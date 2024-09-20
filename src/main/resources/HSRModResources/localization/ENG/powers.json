@@ -281,5 +281,11 @@
       "After consuming charge, apply 1 DoT effect to a random enemy. When you apply a DoT effect, gain #b%d charge.",
       "After consuming charge, apply 1 DoT effect to a random enemy. When you apply a negative effect, gain #b%d charge."
     ]
+  },
+  "HSRMod:MatrixOfPrescience": {
+    "NAME": "Matrix Of Prescience",
+    "DESCRIPTIONS": [
+      "Damage received - #b%d %%。"
+    ]
   }
 }

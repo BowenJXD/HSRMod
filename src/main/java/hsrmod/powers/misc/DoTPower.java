@@ -54,9 +54,9 @@ public abstract class DoTPower extends DebuffPower {
             DamageInfo info = new DamageInfo(this.source, (int) dmg);
             info.applyPowers(this.source, this.owner);
             
-            dmg = SubscribeManager.getInstance().triggerPreDoTDamage(dmg, this.owner, this);
+            info.output = (int) SubscribeManager.getInstance().triggerPreDoTDamage(info.output, this.owner, this);
             
-            this.addToTop(new ElementalDamageAction(this.owner, new DamageInfo(this.source, (int) dmg), this.getElementType(), toughnessReduction));
+            this.addToTop(new ElementalDamageAction(this.owner, info, this.getElementType(), toughnessReduction));
             if (removeOnTrigger) remove();
         }
     }

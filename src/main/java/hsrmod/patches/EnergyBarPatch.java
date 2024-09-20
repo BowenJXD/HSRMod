@@ -1,4 +1,3 @@
-/*
 package hsrmod.patches;
 
 import com.badlogic.gdx.graphics.Color;
@@ -61,4 +60,4 @@ public class EnergyBarPatch {
             HSRMod.logger.error(exception.getMessage());
         }
     }
-}*/
+}

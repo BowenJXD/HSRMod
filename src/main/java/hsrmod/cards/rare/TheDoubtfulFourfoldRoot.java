@@ -14,7 +14,7 @@ public class TheDoubtfulFourfoldRoot extends BaseCard {
     
     public TheDoubtfulFourfoldRoot() {
         super(ID);
-        exhaust = true;
+        // exhaust = true;
     }
     
     @Override
@@ -28,7 +28,8 @@ public class TheDoubtfulFourfoldRoot extends BaseCard {
                 AbstractPower power = var.next();
                 if ((upgraded && power.type == AbstractPower.PowerType.DEBUFF)
                         || (!upgraded && power instanceof DoTPower))
-                    power.stackPower(1);
+                    if (power.amount > 0) power.stackPower(1);
+                    else power.reducePower(1);
             }
         }
     }

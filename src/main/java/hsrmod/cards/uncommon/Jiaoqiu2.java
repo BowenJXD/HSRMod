@@ -19,7 +19,7 @@ public class Jiaoqiu2 extends BaseCard {
     
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ElementalDamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), elementType, 2, 
+        addToBot(new ElementalDamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), elementType, 1, 
                 AbstractGameAction.AttackEffect.FIRE));
         addToBot(new ApplyPowerAction(m, p, new BurnPower(m, p, 1), 1));
     }

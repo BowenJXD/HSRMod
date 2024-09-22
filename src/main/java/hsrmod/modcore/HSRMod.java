@@ -81,7 +81,7 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
 
     @Override
     public void receiveEditCharacters() {
-        BaseMod.addCharacter(new StellaCharacter(CardCrawlGame.playerName), MY_CHARACTER_BUTTON, MY_CHARACTER_PORTRAIT, MY_CHARACTER);
+        BaseMod.addCharacter(new StellaCharacter(CardCrawlGame.playerName), MY_CHARACTER_BUTTON, MY_CHARACTER_PORTRAIT, STELLA_CHARACTER);
     }
     
     @Override

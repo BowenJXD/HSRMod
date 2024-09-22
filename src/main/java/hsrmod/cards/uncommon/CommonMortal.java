@@ -15,6 +15,6 @@ public class CommonMortal extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new CommonMortalPower(magicNumber, upgraded), 0));
+        addToBot(new ApplyPowerAction(p, p, new CommonMortalPower(magicNumber, upgraded)));
     }
 }

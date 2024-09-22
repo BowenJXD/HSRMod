@@ -16,7 +16,7 @@ public class Kolchis extends BaseCard {
     @Override
     public void upgrade() {
         super.upgrade();
-        isInnate = true;
+        // isInnate = true;
     }
 
     @Override

@@ -15,6 +15,6 @@ public class AnExtraPersonsDiary extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new AnExtraPersonsDiaryPower(upgraded), 1));
+        addToBot(new ApplyPowerAction(p, p, new AnExtraPersonsDiaryPower(upgraded)));
     }
 }

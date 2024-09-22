@@ -24,6 +24,6 @@ public class Trailblazer5 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         // addToBot(new ApplyPowerAction(p, p, new BreakEffectPower(p, magicNumber), magicNumber));
-        addToBot(new ApplyPowerAction(p, p, new Trailblazer5Power(), 1));
+        addToBot(new ApplyPowerAction(p, p, new Trailblazer5Power()));
     }
 }

@@ -134,13 +134,19 @@ public class DataManager {
     
     public static final int NULL_INT = -9;
 
-    public static class FileTextReplacer {
-
-        public static void main(String[] args) {
-            replaceZHS();
-            // replaceENG();
+    public static class EnglishReplacer {
+        public static void main (String[] args) {
+            FileTextReplacer.replaceENG();
         }
-        
+    }
+    
+    public static class ChineseReplacer {
+        public static void main (String[] args) {
+            FileTextReplacer.replaceZHS();
+        }
+    }
+    
+    public static class FileTextReplacer {
         private static void replaceZHS() {
             // 替换规则
             Map<String, String> replacements = new HashMap<>();

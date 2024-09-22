@@ -1,5 +1,6 @@
 package hsrmod.cards.uncommon;
 
+import basemod.BaseMod;
 import basemod.interfaces.OnPlayerDamagedSubscriber;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -25,6 +26,18 @@ public class Yanqing2 extends BaseCard implements OnPlayerDamagedSubscriber {
         super(ID);
         tags.add(FOLLOW_UP);
         exhaust = true;
+    }
+
+    @Override
+    public void onEnterHand() {
+        super.onEnterHand();
+        BaseMod.subscribe(this);
+    }
+
+    @Override
+    public void onLeaveHand() {
+        super.onLeaveHand();
+        BaseMod.unsubscribe(this);
     }
 
     @Override

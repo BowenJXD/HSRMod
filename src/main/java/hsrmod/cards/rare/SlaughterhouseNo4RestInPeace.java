@@ -15,6 +15,6 @@ public class SlaughterhouseNo4RestInPeace extends BaseCard {
     
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new SlaughterhouseNo4RestInPeacePower(upgraded, magicNumber), 1));
+        addToBot(new ApplyPowerAction(p, p, new SlaughterhouseNo4RestInPeacePower(upgraded, magicNumber)));
     }
 }

@@ -11,8 +11,10 @@ import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
 import hsrmod.powers.misc.EnergyPower;
+import hsrmod.subscribers.PostEnergyChangeSubscriber;
+import hsrmod.subscribers.SubscribeManager;
 
-public class KolchisPower extends PowerPower implements OnReceivePowerPower {
+public class KolchisPower extends PowerPower implements OnReceivePowerPower, PostEnergyChangeSubscriber {
     public static final String POWER_ID = HSRMod.makePath(KolchisPower.class.getSimpleName());
 
     int recharge;
@@ -30,12 +32,15 @@ public class KolchisPower extends PowerPower implements OnReceivePowerPower {
     }
 
     @Override
-    public void onAfterUseCard(AbstractCard card, UseCardAction action) {
-        int energyChange = card.energyOnUse - EnergyPanel.getCurrentEnergy();
-        if (energyChange > 0) {
-            flash();
-            addToBot(new ApplyPowerAction(owner, owner, new EnergyPower(owner, recharge)));
-        }
+    public void onInitialApplication() {
+        super.onInitialApplication();
+        SubscribeManager.getInstance().subscribe(this);
+    }
+
+    @Override
+    public void onRemove() {
+        super.onRemove();
+        SubscribeManager.getInstance().unsubscribe(this);
     }
 
     @Override
@@ -51,5 +56,14 @@ public class KolchisPower extends PowerPower implements OnReceivePowerPower {
             addToBot(new GainEnergyAction(1));
         }
         return stackAmount;
+    }
+
+    @Override
+    public int receivePostEnergyChange(int changeAmount) {
+        if (changeAmount < 0) {
+            flash();
+            addToBot(new ApplyPowerAction(owner, owner, new EnergyPower(owner, recharge)));
+        }
+        return changeAmount;
     }
 }

@@ -29,7 +29,7 @@ public class TheDoubtfulFourfoldRoot extends BaseCard {
                 if ((upgraded && power.type == AbstractPower.PowerType.DEBUFF)
                         || (!upgraded && power instanceof DoTPower))
                     if (power.amount > 0) power.stackPower(1);
-                    else power.reducePower(1);
+                    else power.stackPower(-1);
             }
         }
     }

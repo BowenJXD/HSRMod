@@ -10,7 +10,7 @@ import hsrmod.powers.BuffPower;
 public class MatrixOfPresciencePower extends BuffPower {
     public static final String POWER_ID = HSRMod.makePath(MatrixOfPresciencePower.class.getSimpleName());
     
-    float damageReduction = 1 / 3f;
+    float damageReduction = 1 / 2f;
     
     public MatrixOfPresciencePower(AbstractCreature owner, int Amount) {
         super(POWER_ID, owner, Amount);

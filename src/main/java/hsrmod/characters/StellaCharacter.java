@@ -25,7 +25,7 @@ import hsrmod.relics.starter.*;
 import java.util.ArrayList;
 
 import static hsrmod.characters.StellaCharacter.PlayerColorEnum.HSR_PINK;
-import static hsrmod.characters.StellaCharacter.PlayerColorEnum.MY_CHARACTER;
+import static hsrmod.characters.StellaCharacter.PlayerColorEnum.STELLA_CHARACTER;
 
 // 继承CustomPlayer类
 public class StellaCharacter extends CustomPlayer {
@@ -55,7 +55,7 @@ public class StellaCharacter extends CustomPlayer {
     private static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString("HSRMod:StellaCharacter");
 
     public StellaCharacter(String name) {
-        super(name, MY_CHARACTER, ORB_TEXTURES,"HSRModResources/img/UI/orb/vfx.png", LAYER_SPEED, null, null);
+        super(name, STELLA_CHARACTER, ORB_TEXTURES,"HSRModResources/img/UI/orb/vfx.png", LAYER_SPEED, null, null);
 
 
         // 人物对话气泡的大小，如果游戏中尺寸不对在这里修改（libgdx的坐标轴左下为原点）
@@ -248,7 +248,7 @@ public class StellaCharacter extends CustomPlayer {
     // 不可将该定义放在外部的 MyCharacter 类中，具体原因见《高级技巧 / 01 - Patch / SpireEnum》
     public static class PlayerColorEnum {
         @SpireEnum
-        public static PlayerClass MY_CHARACTER;
+        public static PlayerClass STELLA_CHARACTER;
 
         // ***将CardColor和LibraryType的变量名改为你的角色的颜色名称，确保不会与其他mod冲突***
         // ***并且名称需要一致！***

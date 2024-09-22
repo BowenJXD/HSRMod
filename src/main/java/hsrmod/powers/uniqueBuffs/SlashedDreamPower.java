@@ -74,6 +74,9 @@ public class SlashedDreamPower extends PowerPower {
     }
 
     void trigger() {
+        CardCrawlGame.music.silenceBGMInstantly();
+        AbstractDungeon.scene.fadeOutAmbiance();
+        
         CardCrawlGame.sound.play("SlashedDream1");
         addToBot(new TalkAction(true, String.format(" #r%s ", DESCRIPTIONS[1]), 1.0F, 2.0F));
         AbstractCreature target = AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster) null, true, AbstractDungeon.cardRandomRng);
@@ -94,5 +97,9 @@ public class SlashedDreamPower extends PowerPower {
             a.target = q;
             return a;
         }));
+        ModHelper.addToBotAbstract(() -> {
+            CardCrawlGame.music.unsilenceBGM();
+            AbstractDungeon.scene.fadeInAmbiance();
+        });
     }
 }

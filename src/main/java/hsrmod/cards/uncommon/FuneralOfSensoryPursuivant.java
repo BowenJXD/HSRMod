@@ -16,6 +16,6 @@ public class FuneralOfSensoryPursuivant extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new FuneralOfSensoryPursuivantPower(upgraded), 1));
+        addToBot(new ApplyPowerAction(p, p, new FuneralOfSensoryPursuivantPower(upgraded)));
     }
 }

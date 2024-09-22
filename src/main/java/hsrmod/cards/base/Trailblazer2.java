@@ -24,7 +24,7 @@ public class Trailblazer2 extends BaseCard {
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         if (!checkEnergy()) return;
         addToBot(
-                new AOEAction((q) -> new ElementalDamageAction(q, new DamageInfo(p, damage), ElementType.Physical, toughnessReduction, 
+                new AOEAction((q) -> new ElementalDamageAction(q, new DamageInfo(p, damage), ElementType.Physical, tr, 
                         AbstractGameAction.AttackEffect.SLASH_HORIZONTAL))
         );
     }

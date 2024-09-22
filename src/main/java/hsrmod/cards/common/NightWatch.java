@@ -29,6 +29,6 @@ public class NightWatch extends BaseCard {
             }
         }
         
-        addToBot(new GainBlockAction(p, max * block));
+        addToBot(new GainBlockAction(p, max * 3 + block));
     }
 }

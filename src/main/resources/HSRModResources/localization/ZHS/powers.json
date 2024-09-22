@@ -2,7 +2,7 @@
   "HSRMod:Energy": {
     "NAME": "充能",
     "DESCRIPTIONS": [
-      "上限为 #b%d 。一些牌需要消耗 #y充能 以使用。"
+      "上限为 #b%d 。一些牌需要消耗充能以使用。"
     ]
   },
   "HSRMod:Toughness": {
@@ -77,7 +77,7 @@
   "HSRMod:Aftertaste": {
     "NAME": "回味",
     "DESCRIPTIONS": [
-      "打出造成伤害的追击牌后，若有10充能，则消耗之，并对目标造成 #b%d 点伤害，然后叠加1层。"
+      "打出造成伤害的追击牌后，若有10 [hsrmod:ChargeIcon] ，则消耗之，并对目标造成 #b%d 点伤害，然后叠加1层。"
     ]
   },
   "HSRMod:Suspicion": {
@@ -89,7 +89,7 @@
   "HSRMod:BrainInAVat": {
     "NAME": "罐中脑",
     "DESCRIPTIONS": [
-      "你消耗充能后，移除1层，回复等量的充能。"
+      "你消耗 [hsrmod:ChargeIcon] 后，移除1层，回复等量的 [hsrmod:ChargeIcon] 。"
     ]
   },
   "HSRMod:Reinforce": {
@@ -116,8 +116,7 @@
   "HSRMod:Robin": {
     "NAME": "千音迭奏，群星赋格",
     "DESCRIPTIONS": [
-      "当你打出牌后，若为追击牌，则获得1层〖临时力量〗；否则失去1层〖临时力量〗。",
-      "当你打出牌后，若为追击牌，则获得1层〖临时力量〗，回复20点充能；否则失去1层〖临时力量〗。"
+      "当你打出牌后，获得1层 力量 ，若为追击牌，则回复20点 [hsrmod:ChargeIcon] 。下回合开始时，移除此效果，和以此法获得的 力量 。"
     ]
   },
   "HSRMod:ProofOfDebt": {
@@ -149,8 +148,8 @@
   "HSRMod:UselessScholar": {
     "NAME": "无用学者",
     "DESCRIPTIONS": [
-      "你追击后，若你有，则有 #b%d %%的概率消耗 #b%d 充能，追击一张追击牌。",
-      "你打出你追击牌后，若你有，则有 #b%d %%的概率消耗 #b%d 充能，追击一张追击牌。"
+      "你追击后，若你有，则有 #b%d %%的概率消耗 #b%d [hsrmod:ChargeIcon] ，追击一张追击牌。",
+      "你打出你追击牌后，若你有，则有 #b%d %%的概率消耗 #b%d [hsrmod:ChargeIcon] ，追击一张追击牌。"
     ]
   },
   "HSRMod:BountyHunter": {
@@ -210,9 +209,9 @@
     ]
   },
   "HSRMod:Kolchis": {
-    "NAME": "远航监护员",
+    "NAME": "科尔奇人",
     "DESCRIPTIONS": [
-      "你消耗充能后，回复 [E] 。你消耗 [E] 后，回复 #b%d 充能。"
+      "你消耗 [hsrmod:ChargeIcon] 后，回复 [E] 。你消耗 [E] 后，回复 #b%d  [hsrmod:ChargeIcon] 。"
     ]
   },
   "HSRMod:Divinity": {
@@ -230,7 +229,8 @@
   "HSRMod:Huohuo": {
     "NAME": "凭附气通天真",
     "DESCRIPTIONS": [
-      "打出牌后，回复1点生命，10点充能，并移除1层随机负面效果。"
+      "打出牌后，回复1点生命，10点 [hsrmod:ChargeIcon] ，并移除1层随机负面效果。",
+      "打出牌后，或消耗 [hsrmod:ChargeIcon] 后，回复1点生命，10点 [hsrmod:ChargeIcon] ，并移除1层随机负面效果。"
     ]
   },
   "HSRMod:Epiphany": {
@@ -278,8 +278,8 @@
   "HSRMod:CommonMortal": {
     "NAME": "庸众凡夫",
     "DESCRIPTIONS": [
-      "你消耗充能后，对随机敌人施加1个持续伤害。你施加持续伤害时，获得 #b%d 点充能。",
-      "你消耗充能后，对随机敌人施加1个持续伤害。你施加负面效果时，获得 #b%d 点充能。"
+      "你消耗 [hsrmod:ChargeIcon] 后，对随机敌人施加1个持续伤害。你施加持续伤害时，获得 #b%d 点 [hsrmod:ChargeIcon] 。",
+      "你消耗 [hsrmod:ChargeIcon] 后，对随机敌人施加1个持续伤害。你施加负面效果时，获得 #b%d 点 [hsrmod:ChargeIcon] 。"
     ]
   },
   "HSRMod:MatrixOfPrescience": {

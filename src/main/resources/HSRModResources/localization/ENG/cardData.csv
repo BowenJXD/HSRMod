@@ -1,200 +1,200 @@
-ID,Card Name,Rarity,Type,Target,Cost,Description,ÉËº¦Öµ,¸ñµ²Öµ,ÌØÊâÖµ,·ÑÓÃ+,Description+,ÉËº¦Öµ+,¸ñµ²Öµ+,ÌØÊâÖµ+,Path,Element,Usage,
-Trailblazer1,RIP Home Run,BASIC,ATTACK,ENEMY,1,Deal !D! physical damage (!M!).,6,,2,,,9,,,,ÎïÀí,¹¥»÷,
-March7th0,Frigid Cold Arrow,BASIC,ATTACK,ENEMY,1,Deal !D! ice damage (!M!).,6,,2,,,9,,,,±ù,¹¥»÷,
-Danheng0,Cloudlancer Art: North Wind,BASIC,ATTACK,ENEMY,1,Deal !D! wind damage (!M!).,6,,2,,,9,,,,·ç,¹¥»÷,
-Himeko0,Sawblade Tuning,BASIC,ATTACK,ENEMY,1,Deal !D! fire damage (!M!).,6,,2,,,9,,,,»ð,¹¥»÷,
-Welt0,Gravity Suppression,BASIC,ATTACK,ENEMY,1,Deal !D! imaginary damage (!M!).,6,,2,,,9,,,,ÐéÊý,¹¥»÷,
-Trailblazer2,Stardust Ace,BASIC,ATTACK,ALL_ENEMY,0,"Use 120 [hsrmod:ChargeIcon] , deal !D! physical damage to all enemies (!M!).",4,,2,,,6,,,,ÎïÀí,¹¥»÷,
-Trailblazer3,Ever-Burning Amber,BASIC,SKILL,SELF,1,Gain !B! Block.,,5,,,,,8,,,,·ÀÓù,
-Sushang1,Shape of Taixu: Dawn Herald,COMMON,ATTACK,ENEMY,1,"Gain !M! hsrmod:Break-Effect , deal !D! physical damage (3), if break, draw !M! cards.",4,,2,,"Gain !M! hsrmod:Break-Effect , deal !D! physical damage (3), if it has hsrmod:Broken, draw !M! cards.",,,3,»ÙÃð,ÎïÀí,ÔË×ª,
-Sushang2,Cut With Ease,COMMON,SKILL,SELF,1,"Gain !M! hsrmod:Break-Effect , for every hsrmod:broken enemy, gain [E] .",,,2,,,,,3,»ÙÃð,,ÔË×ª,
-Tingyun1,Amidst the Rejoicing Clouds,COMMON,SKILL,SELF,0,"Use 10 [hsrmod:ChargeIcon] , Gain !M! [hsrmod:ChargeIcon] and 1 Strength.",,,50,,"Use 10 [hsrmod:ChargeIcon] , Gain !M! [hsrmod:ChargeIcon] and 1 Strength, draw 1 card.",,,60,ÖÇÊ¶,,ÔË×ª,
-Qingque1,A Scoop of Moon,COMMON,SKILL,SELF,1,"Draw 1 card. NL !M!% chance: gain [E] , !M!% chance: return to hand.",,,66,,,,,75,·±Óý,,ÔË×ª,
-Qingque2,Right on the Tiles,COMMON,ATTACK,ALL_ENEMY,4,"For every [E] you *exhaust, 50% chance: reduce cost by 1. hsrmod:Follow-Up when cost reaches 0. NL Deal !D! Quantum damage (1) to all enemies !M! times.",5,,2,,,,,3,»¶Óä,Á¿×Ó,¹¥»÷,¹¥»÷
-Sampo1,Ricochet Love,COMMON,ATTACK,ENEMY,1," hsrmod:Bounce !M!: deal !D! wind damage (1), and apply 1 hsrmod:Wind-Shear.",1,,3,,,,,4,ÐéÎÞ,·ç,¹¥»÷,
-Pela1,Zone Suppression,COMMON,ATTACK,ALL_ENEMY,1,"Use 100 [hsrmod:ChargeIcon] , deal !D! ice damage (2) to all enemies, and apply !M! stacks of Vulnerable.",6,,1,0,,,,,ÐéÎÞ,,¹¥»÷,
-Serval1,Lightning Flash,COMMON,ATTACK,ALL_ENEMY,1,"Deal !D! *lightning damage (2) to all enemies, and apply !M! stacks of hsrmod:Shock.",1,,2,,,2,,3,ÐéÎÞ,À×,¹¥»÷,
-Herta1,"Fine, I'll Do It Myself",COMMON,ATTACK,ALL_ENEMY,1, hsrmod:Follow-Up when an enemy's HP drops below 50% during your turn. NL Deal !D! ice damage (1) to all enemies.,8,,,,,12,,,»¶Óä,±ù,¹¥»÷,
-Asta1,Meteor Storm,COMMON,ATTACK,ENEMY,1," hsrmod:Bounce !M!: deal !D! fire damage (1) to a random enemy. Each time a different enemy takes damage, gain 1 stack of Strength.",2,,2,,,,,3,,»ð,¹¥»÷,
-March7th1,The Power of Cuteness,COMMON,SKILL,SELF,1,"Gain !B! Block, remove 1 stack of debuff, gain ""*Reinforce"" (when taking damage, if you have Block, gain a *Girl *Power card).",,3,,,"Gain !B! Block, remove 1 stack of debuff, gain ""*Reinforce"" (when taking damage, if you have Block, gain !B! Block, and gain a *Girl *Power card).",,,,»¶Óä,,·ÀÓù,
-March7th2,Girl Power,SPECIAL,ATTACK,SELF,-2,"Exhaust. hsrmod:Follow-Up at the start of your turn. NL Gain !B! Block, deal !D! ice damage (1) to a random enemy.",3,2,,,,,,,»¶Óä,±ù,·ÀÓù,
-March7th3,Glacial Cascade,COMMON,ATTACK,ALL_ENEMY,2,"Use 120 [hsrmod:ChargeIcon] , deal !D! ice damage (2) to all enemies, and apply !M! stack of hsrmod:Frozen.",2,,1,,,,,,,,,
-Yukong1,Emboldening Salvo,COMMON,SKILL,SELF,0,Gain the current number of [E] stacks of Strength. Removes after turn ends.,,,1,,Gain the current number of [E] + !M! stacks of Strength. Removes after turn ends.,,,,·±Óý,,¹¥»÷,
-Luka1,Sky-Shatter Fist,COMMON,ATTACK,ENEMY,1,"Repeat !M! times: deal !D! physical damage (1), apply 1 stack of hsrmod:Bleed.",1,,3,,,,,4,ÐéÎÞ,ÎïÀí,¹¥»÷,
-Guinaifen1,Blazing Welcome,COMMON,ATTACK,ENEMY,1,"Deal !D! fire damage (2), apply !M! stacks of hsrmod:Burn and 1 stack of Vulnerable.",1,,2,,"Deal !D! fire damage (2), apply !M! stacks of hsrmod:Burn, then apply 1 stack of Vulnerable to all enemies with hsrmod:Burn.",,,3,ÐéÎÞ,»ð,¹¥»÷,
-Hanya1,"Samsara, Locked",COMMON,ATTACK,ENEMY,1,"Exhaust. Deal !D! physical damage (2), apply !M! stacks of Burden (after becoming the target of a card, remove 1 stack, gain [E] , remove all stacks at turn start).",4,,2,,,7,,,·±Óý,ÎïÀí,ÔË×ª,
-Xueyi1,Karmic Perpetuation,COMMON,ATTACK,ENEMY,8,"After reducing toughness, cost reduces an equivalent value. hsrmod:Follow-Up when [E] reaches 0. NL Deal Quantum damage (!M!) equal to the target's toughness value.",,,3,,,,,5,»ÙÃð,Á¿×Ó,¹¥»÷,
-Gallagher1,Champagne Etiquette,COMMON,ATTACK,ENEMY,1,"Use 110 [hsrmod:ChargeIcon] , draw !M! cards, deal !D! fire damage (!M!). If hsrmod:break occurs, apply hsrmod:Block-Return.",2,,2,,"Use 110 [hsrmod:ChargeIcon] , draw !M! cards, deal !D! fire damage (!M!). If it has hsrmod:Broken, apply hsrmod:Block-Return.",,,3,»ÙÃð,»ð,·ÀÓù,
-Yanqing1,Amidst the Raining Bliss,UNCOMMON,ATTACK,ENEMY,2,"Use 140 [hsrmod:ChargeIcon] , Deal !D! ice damage (2), if you have Block, damage is doubled; 60% chance to gain *One *With *the *Sword.",12,,,,"Use 140 [hsrmod:ChargeIcon] , Deal !D! ice damage (2), if you have Block, damage is doubled; 60% chance to gain *One *With *the *Sword+.",16,,,»¶Óä,±ù,¹¥»÷,
-Yanqing2,One With the Sword,SPECIAL,ATTACK,ENEMY,-2,"Exhaust. At the start of the turn, hsrmod:Follow-Up if you haven¡¯t taken any unblocked damage since the end of last turn. NL Deal !D! ice damage (1), !M!% chance to apply 1 stack of hsrmod:Frozen.",8,,65,,,10,,100,»¶Óä,±ù,¹¥»÷,
-Clara1,Because We're Family,UNCOMMON,SKILL,SELF,-2,"At the start of the turn, hsrmod:Follow-Up if you took damage after the last turn ended. NL Gain !B! Block, and for each hsrmod:Follow-Up card in hand, gain an additional !M! Block.",,4,2,,,,5,3,»¶Óä,ÎïÀí,¹¥»÷,
-Gepard1,Enduring Bulwark,UNCOMMON,SKILL,SELF,0,"Use 100 [hsrmod:ChargeIcon] , Gain !B! Block.",,12,,,,,20,,·áÈÄ,,·ÀÓù,
-Bronya1,Combat Redeployment,UNCOMMON,SKILL,SELF,1,"Gain !M! stacks of Strength, select 1 card from the draw pile and add it to your hand.",,,1,,"Innate. Gain !M! stacks of Strength, select 1 card from the draw pile and add it to your hand.",,,,»¶Óä,,ÔË×ª,
-Welt1,Edge of the Void,UNCOMMON,ATTACK,ENEMY,1," hsrmod:Bounce !M!: deal !D! imaginary damage, and apply 1 stack of hsrmod:Imprison.",3,,2,,,,,3,ÐéÎÞ,ÐéÊý,·ÀÓù,
-Himeko1,Victory Rush,UNCOMMON,ATTACK,ALL_ENEMY,3,"After breaking an enemy, hsrmod:Follow-Up . Deal !D! fire damage (1) to all enemies !M! times.",6,,2,,,,,3,»¶Óä,»ð,¹¥»÷,
-Seele1,Butterfly Flurry,UNCOMMON,ATTACK,ENEMY,2,"This card can be upgraded multiple times. When upgraded, damage +!M!. NL Use 120 [hsrmod:ChargeIcon] , deal !D! quantum damage (3), if it kills, gain [E] , return the card to hand, and permanently upgrade it.",12,,3,,,,,,,Á¿×Ó,¹¥»÷,
-JingYuan1,Prana Extirpated,UNCOMMON,ATTACK,ENEMY,10,"After playing a card, this card's [E] cost is reduced by 1. hsrmod:Follow-Up when [E] reaches 0. NL hsrmod:Bounce !M!: deal !D! *lightning damage (1) to random enemies.",4,,3,,,,,4,»¶Óä,À×,¹¥»÷,
-Luocha1,User Banned,UNCOMMON,SKILL,SELF,0,"Use 110 [hsrmod:ChargeIcon] . Deal !D! quantum damage (4), apply 1 stack of Vulnerable and 1 stack of Weak.",,,2,,"Use 110 [hsrmod:ChargeIcon] . Deal !D! quantum damage (4), apply 1 stack of Vulnerable and 1 stack of Weak, and the target loses 1 stack of Strength.",,,,ÐéÎÞ,Á¿×Ó,¹¥»÷,
-SilverWolf1,Prayer of Abyss Flower,UNCOMMON,ATTACK,ENEMY,1,"Retain. Exhaust. Gain [E] and heal !M! HP (healing is doubled if HP is below 50%), dispel 1 random debuff, and Exhaust 1 card.",6,,,,"Retain. Exhaust. Gain [E] and heal !M! HP (healing is doubled if HP is below 50%), dispel 1 random debuff, and Exhaust any number of cards.",8,,,·áÈÄ,,·ÀÓù,
-Blade1,Shuhu's Gift,UNCOMMON,ATTACK,ALL_ENEMY,1,"After your HP changes during a turn, hsrmod:Follow-Up . Lose 5% current HP, and deal wind damage (2) to all enemies equal to !M!% of your HP max.",,,20,,,,,30,»¶Óä,·ç,¹¥»÷,
-Kafka1,Gentle but Cruel,UNCOMMON,ATTACK,ENEMY,1,"After using a card on an enemy with hsrmod:DoT , hsrmod:Follow-Up . Deal !D! *lightning damage (2), trigger a random hsrmod:DoT !M! times, then apply !M! stacks of hsrmod:Shock.",1,,2,,,,,3,ÐéÎÞ,À×,¹¥»÷,
-Kafka2,Twilight Trill,UNCOMMON,ATTACK,ALL_ENEMY,1,"Use 120 [hsrmod:ChargeIcon] , deal !D! *lightning damage (2) to all enemies, trigger all their hsrmod:DoT s once, then apply !M! stacks of hsrmod:Shock.",3,,1,,,,,2,ÐéÎÞ,À×,¹¥»÷,
-ImbibitorLunae1,Dracore Libre,UNCOMMON,ATTACK,ENEMY,-1,"If X equals 0/1/2/3+, deal !D! imaginary damage (1) 2/3/5/7 times. Gain 20 [hsrmod:ChargeIcon] for each [E] you *exhaust.",3,,,,,5,,,·±Óý,ÐéÊý,¹¥»÷,
-FuXuan1,Woes of Many Morphed to One,UNCOMMON,ATTACK,ALL_ENEMY,1,"Exhaust. Use 130 [hsrmod:ChargeIcon] , heal 10% of lost HP, gain !M! stacks of Dexterity.",,,2,,,,,3,·áÈÄ,,·ÀÓù,
-TopazNumby1,Difficulty Paying?,UNCOMMON,POWER,SELF,1,"After hsrmod:Follow-Up , stack 1 stack (up to 2 stacks), then if there are 2 stacks and no *Trotter *Market!?, remove 2 stacks and gain 1 card.",,,,,"After hsrmod:Follow-Up , stack 1 stack (up to 2 stacks), then if there are 2 stacks and no *Trotter *Market!?+, remove 2 stacks and gain 1 card.",,,,»¶Óä,,¹¥»÷,
-TopazNumby2,Trotter Market!?,SPECIAL,ATTACK,ENEMY,-2,Exhaust. hsrmod:Follow-Up when hsrmod:Follow-Up . Deal !D! fire damage (1).,6,,,,,8,,,»¶Óä,»ð,¹¥»÷,
-TopazNumby3,Future Market,UNCOMMON,ATTACK,ENEMY,1,"Deal !D! fire damage (1), remove ""*Proof of Debt"" from the field, and apply ""*Proof of Debt"" (damage from hsrmod:Follow-Up attack cards is increased by !M!; hsrmod:Follow-Up prioritizes this target).",4,,2,,"Deal !D! fire damage (1), remove ""*Proof of Debt"" from the field, and apply ""*Proof of Debt""* (damage from hsrmod:Follow-Up attack cards is increased by !M!; hsrmod:Follow-Up prioritizes this target).",6,,3,»¶Óä,»ð,¹¥»÷,
-Huohuo1,Tail: Spiritual Domination,UNCOMMON,SKILL,SELF,0,"Exhaust. Use 140 [hsrmod:ChargeIcon] , gain [E] , and until the end of the turn, whenever you use a card, heal 1 HP, gain 10 [hsrmod:ChargeIcon] , and remove 1 stack of debuff.",,,,,"Exhaust. Use 140 [hsrmod:ChargeIcon] , gain [E] , and until the end of the turn, whenever you use a card or exhaust [hsrmod:ChargeIcon] , heal 1 HP, gain 10 [hsrmod:ChargeIcon] , and remove 1 stack of debuff.",,,,ÖÇÊ¶,,·ÀÓù,
-Argenti1,"For In This Garden, Supreme Beauty Bestows",UNCOMMON,SKILL,ALL_ENEMY,1,"Retain. Repeat until [hsrmod:ChargeIcon] is insufficient: NL Use 90 [hsrmod:ChargeIcon] , deal !D! physical damage (2) to all enemies, and gain 10 [hsrmod:ChargeIcon] for each enemy hit.",10,,,,,15,,,ÖÇÊ¶,ÎïÀí,¹¥»÷,
-RuanMei1,String Sings Slow Swirls,UNCOMMON,SKILL,SELF,1,Gain !M! stacks of hsrmod:Break-Efficiency and hsrmod:Break-Effect .,,,2,,"Gain !M! stacks of hsrmod:Break-Efficiency and hsrmod:Break-Effect , ensuring at least 1 stack of hsrmod:Break-Efficiency .",,,,»ÙÃð,,¹¥»÷,
-RuanMei2,"Petals to Stream, Repose in Dream",UNCOMMON,SKILL,SELF,1,"Use 130 [hsrmod:ChargeIcon] , apply 1 stack of ""*ThanatoplumRebloom"" to all enemies (upon losing hsrmod:Broken, remove 1 stack and prevent it).",,,1,0,,,,,»ÙÃð,,¹¥»÷,
-DrRatio1,Syllogistic Paradox,UNCOMMON,ATTACK,ENEMY,1,"Use 140 [hsrmod:ChargeIcon] , deal !D! imaginary damage (3), apply ""*Wiseman's *Folly"", and gain !M! *Cogito, *Ergo *Sum.",5,,2,,,,,3,»¶Óä,ÐéÊý,¹¥»÷,
-DrRatio2,Intellectual Midwifery,UNCOMMON,ATTACK,ENEMY,1,"Deal !D! + X imaginary damage (2) (X equals the number of debuffs on the target); apply ""*Wiseman's *Folly"", and gain 1 *Cogito, *Ergo *Sum.",5,,1,,"Deal !D! + X imaginary damage (2) (X equals the number of debuffs on the target); apply ""*Wiseman's *Folly"", and gain 1 *Cogito, *Ergo *Sum+.",7,,,»¶Óä,ÐéÊý,¹¥»÷,
-DrRatio3,"Cogito, Ergo Sum",SPECIAL,ATTACK,ENEMY,-2,"Exhaust. After dealing damage to a target with ""*Wiseman's *Folly"", there is a 40% + X*20% chance to hsrmod:Follow-Up (X equals the number of debuffs). NL Deal !D! imaginary damage (1).",5,,1,,"Exhaust. After dealing damage to a target with ""*Wiseman's *Folly"", there is a 40% + X*20% chance to hsrmod:Follow-Up (X equals the number of debuffs). NL Deal !D! + X imaginary damage (1).",,,,»¶Óä,ÐéÊý,¹¥»÷,
-BlackSwan1,Loom of Fate's Caprice,UNCOMMON,ATTACK,ENEMY,1,"Deal !D! wind damage (2), apply !M! stacks of hsrmod:Wind-Shear and 1 stack of ""*Epiphany"" (When hsrmod:DoT is triggered, hsrmod:DoT stacks are not removed; remove 1 stack at the end of the turn).",2,,1,,"Deal !D! wind damage (2) to all enemies, apply !M! stacks of hsrmod:Wind-Shear and 1 stack of ""*Epiphany"" (When hsrmod:DoT is triggered, hsrmod:DoT stacks are not removed; remove 1 stack at the end of the turn).",,,2,ÐéÎÞ,·ç,¹¥»÷,
-BlackSwan2,Bliss of Otherworld's Embrace,UNCOMMON,SKILL,ENEMY,2,"Use 120 [hsrmod:ChargeIcon] , apply 1 stack of hsrmod:Shock, 1 stack of hsrmod:Burn, 1 stack of hsrmod:Bleed, and !M! stacks of hsrmod:Wind-Shear.",,,3,,,,,5,ÐéÎÞ,,¹¥»÷,
-Sparkle1,Dreamdiver,UNCOMMON,SKILL,SELF,0,Exhaust. Draw cards equal to [E] .,,,,,Innate. Draw cards equal to [E] .,,,,·±Óý,,ÔË×ª,
-Sparkle2,The Hero with a Thousand Faces,UNCOMMON,SKILL,SELF,-1,"Exhaust. Use 110 [hsrmod:ChargeIcon] , gain 2X [E] , then kill your other copies of *The *Hero *with *a *Thousand *Faces.",,,,,"Innate. Use 110 [hsrmod:ChargeIcon] , gain 2X [E] , then kill your other copies of *The *Hero *with *a *Thousand *Faces.",,,,·±Óý,,ÔË×ª,
-Acheron1,Slashed Dream Cries in Red,UNCOMMON,POWER,SELF,3,"Ethereal. After using a card, if it applied a debuff, gain 1 stack of ""hsrmod:Slashed-Dream"", stacking up to 12 stacks. ",5,,5,,"Innate. Ethereal. After using a card, if it applied a debuff, gain 1 stack of ""hsrmod:Slashed-Dream"", stacking up to 12 stacks. ",,,,ÐéÎÞ,À×,¹¥»÷,
-Aventurine1,Roulette Shark,UNCOMMON,POWER,SELF,2,"When you take damage, if you have Block, gain 3 stacks of ""hsrmod:Blind-Bet"" ; after hsrmod:Follow-Up , gain 2 stacks of ""hsrmod:Blind-Bet"", up to 10 stacks. ",7,7,,,"Innate. When you take damage, if you have Block, gain 4 stacks of ""hsrmod:BlindBet"" ; after hsrmod:Follow-Up , gain 3 stacks of ""hsrmod:Blind-Bet"", up to 10 stacks. When gaining block via ""Blind-Bet"", outside your turn, keep your block for next round.",,,,»¶Óä,ÐéÊý,·ÀÓù,
-Aventurine2,Cornerstone Deluxe,UNCOMMON,SKILL,SELF,1, hsrmod:Follow-Up when gain block via cards. Repeat !M! times: gain 1-!B! Block. Keep your block for this turn.,,7,1,,,,,2,»¶Óä,,·ÀÓù,
-Robin1,Impromptu Flourish,UNCOMMON,SKILL,SELF,1,"Draw !M! cards, gain the following effect: after using a card, gain 1 stack of Strength for this turn, if it hsrmod:Follow-Up ed, gain 20 [hsrmod:ChargeIcon] .",,,2,,,,,3,»¶Óä,,ÔË×ª,
-Robin2,"Vox Harmonique, Opus Cosmique",UNCOMMON,SKILL,SELF,-1,"Use 140 [hsrmod:ChargeIcon] , draw X cards, use X random cards in hand, if it is hsrmod:Follow-Up card, trigger its hsrmod:Follow-Up .",,,,,"Use 140 [hsrmod:ChargeIcon] , draw X cards, use X random cards in hand, if it is hsrmod:Follow-Up card, trigger its hsrmod:Follow-Up , and the card will not reduce X.",,,,»¶Óä,,¹¥»÷,
-Trailblazer5,All-Out Footlight Parade,UNCOMMON,POWER,SELF,2,"Use 140 [hsrmod:ChargeIcon] . After the first damage dealt by a card you use, if the target has hsrmod:Broken, deal hsrmod:Break-Damage equal to the toughness reduction value.",,,2,,"Innate. Use 140 [hsrmod:ChargeIcon] . After the first damage dealt by a card you use, if the target has hsrmod:Broken, deal hsrmod:Break-Damage equal to the toughness reduction value.",,,3,»ÙÃð,,¹¥»÷,
-Trailblazer6,Dance With the One,UNCOMMON,SKILL,SELF,1,"Gain !M! stacks of hsrmod:Break-Effect . If you haven¡¯t used ""*All-Out *Footlight *Parade"", gain it, otherwise gain another !M! stacks of hsrmod:Break-Effect .",,,2,,"Innate. Gain !M! stacks of hsrmod:Break-Effect . If you haven¡¯t used ""*All-Out *Footlight *Parade"", gain it, otherwise gain another !M! stacks of hsrmod:Break-Effect .",,,3,»ÙÃð,,¹¥»÷,
-Boothill1,Sizzlin' Tango,UNCOMMON,ATTACK,ENEMY,2,"Deal physical damage (!M!) based on hsrmod:Break-Effect value !M! times. If hsrmod:break occurs, deal hsrmod:Break-Damage equal to its hsrmod:Toughness limit, otherwise return card to hand.",,,2,,"Deal physical damage (!M!) based on hsrmod:Break-Effect value !M! times. If it has hsrmod:broken, deal hsrmod:Break-Damage equal to its hsrmod:Toughness limit, otherwise return card to hand.",,,,»ÙÃð,ÎïÀí,¹¥»÷,
-Boothill2,Fanning the Hammer,UNCOMMON,ATTACK,ENEMY,1,"Deal !D! physical damage (!M!). If no hsrmod:break occurs, return the card to hand.",4,,5,,,,,8,»ÙÃð,ÎïÀí,¹¥»÷,
-Firefly1,"From Shattered Sky, I Free Fall",UNCOMMON,ATTACK,ENEMY,1,"Deal fire damage based on hsrmod:Break-Effect value (!M!). If it has hsrmod:broken, return the card to hand.",,,3,,,,,4,»ÙÃð,»ð,¹¥»÷,
-Firefly2,"In Finalized Morrow, I Full Bloom",UNCOMMON,POWER,SELF,0,"Use 240 [hsrmod:ChargeIcon] , Lose !M! HP. After break, deal hsrmod:Break-Damage equal to its hsrmod:Toughness limit, gain 1 stack of hsrmod:Break-Efficiency , and add ""*Falling *From *A *Shattered *Sky"" to your hand.",,,3,,"Gain 120 [hsrmod:ChargeIcon] when this card apprears in your hand. Use 240 [hsrmod:ChargeIcon] , Lose !M! HP. After break, deal hsrmod:Break-Damage equal to its hsrmod:Toughness limit, gain 1 stack of hsrmod:Break-Efficiency , and add ""*Falling *From *A *Shattered *Sky"" to your hand.",,,,»ÙÃð,,¹¥»÷,
-Jade1,Fang of Flare Flaying,UNCOMMON,ATTACK,ALL_ENEMY,1,"After drawing cards, hsrmod:Follow-Up . Lose 1 HP, draw !M! cards, deal quantum damage based on hand size (!D!) to all enemies.",0,,3,,,,,4,»¶Óä,Á¿×Ó,¹¥»÷,
-Yunli1,"Earthbind, Etherbreak",UNCOMMON,ATTACK,ALL_ENEMY,-2,"Retain. When attacked, damage received -!M!, gain 10 [hsrmod:ChargeIcon] . NL At the start of turn, if you took damage after the last turn ended, hsrmod:Follow-Up . NL Repeat until [hsrmod:ChargeIcon] is insufficient: use 120 [hsrmod:ChargeIcon] , hsrmod:Bounce 2 deal !D! physical damage (1).",6,,2,,,,,4,»¶Óä,ÎïÀí,¹¥»÷,
-Jiaoqiu1,Pyrograph Arcanum,UNCOMMON,ATTACK,ALL_ENEMY,2,"Use 100 [hsrmod:ChargeIcon] , gain !M! *Ashen *Roast cards, deal !D! fire damage (2) to all enemies, and apply 1 stack of Vulnerable.",2,,3,,,,,4,ÐéÎÞ,»ð,ÔË×ª,
-Jiaoqiu2,Ashen Roast,SPECIAL,ATTACK,ENEMY,0,"Exhaust. Deal !D! fire damage (!M!), and apply 1 stack of hsrmod:Burn.",2,,1,,,,,,ÐéÎÞ,»ð,¹¥»÷,
-Lingsha1,Dripping Mistscape,UNCOMMON,ATTACK,ENEMY,1,"Exhaust. Use 110 [hsrmod:ChargeIcon] , deal !D! fire damage (2), heal HP based on hsrmod:Break-Effect value, apply 1 stack of ""*Befog"" (After break, remove 1 stack, gain [E] [E] , draw !M! cards, and upgrade hand cards).",4,,2,,"Exhaust. Use 110 [hsrmod:ChargeIcon] , deal !D! fire damage (2), heal HP based on hsrmod:Break-Effect value, apply 1 stack of ""*Befog"" (After break, remove 1 stack, gain [E] [E] [E] , draw !M! cards, and upgrade hand cards).",,,3,»ÙÃð,»ð,¹¥»÷,
-Rappa1,Ninja Tech: Endurance Gauge,UNCOMMON,ATTACK,ALL_ENEMY,1,"Gain 1 stack of hsrmod:Break-Effect , deal !D! imaginary damage (!M!) to all enemies. If hsrmod:break occurs, repeat the process.",3,,2,,,4,,3,»ÙÃð,ÐéÊý,¹¥»÷,
-BattlefieldMagician,BattlefieldMagician,RARE,POWER,SELF,2,"After you hsrmod:Follow-Up , gain !M! Block.",,,3,,"After using a hsrmod:Follow-Up card, gain !M! Block.",,,4,»¶Óä,,·ÀÓù,
-SlaughterhouseNo4RestInPeace,Slaughterhouse No.4 RestInPeace,RARE,POWER,SELF,2,"After you hsrmod:Follow-Up and deal damage, if the target has hsrmod:Broken, there is a !M!% chance to draw 1 card.",,,80,,"After using a hsrmod:Follow-Up card and dealing damage, if the target has/doesn't have hsrmod:Broken, there is a !M!%/20% chance to draw 1 card.",,,,»¶Óä,,ÔË×ª,
-UselessScholar,Useless Scholar,RARE,POWER,SELF,3,"After you hsrmod:Follow-Up , if you have 50 [hsrmod:ChargeIcon] , there is a !M!% chance to use it and hsrmod:Follow-Up another hsrmod:Follow-Up card.",,,66,2,"After using a hsrmod:Follow-Up card, if you have 50 [hsrmod:ChargeIcon] , there is a !M!% chance to use it and hsrmod:Follow-Up another hsrmod:Follow-Up card.",,,,»¶Óä,,ÔË×ª,
-BountyHunter,Bounty Hunter,RARE,POWER,SELF,1,"After you hsrmod:Follow-Up , there is a !M!% chance to return the card to your hand.",,,25,,"After using a hsrmod:Follow-Up card, there is a !M!% chance to return the card to your hand.",,,33,»¶Óä,,ÔË×ª,
-VineyardAgainstTheNight,Vineyard Against The Night,RARE,SKILL,SELF,1,Gain 1 stack of hsrmod:Aftertaste.,,,1,,Innate. Exhaust. Gain 1 stack of hsrmod:Aftertaste.,,,,»¶Óä,,¹¥»÷,
-Symbiote,Symbiote,RARE,POWER,SELF,2,"After break, gain [E] [E] . After dealing hsrmod:Break-Damage , draw 1 card.",,,,1,,,,,»ÙÃð,,ÔË×ª,
-RegressionInequalityOfAnnihilation,Regression Inequality Of Annihilation,RARE,SKILL,ALL,0,"All entities (including you) evenly distribute hsrmod:Toughness, with your weight being !M!.",,,2,,,,,3,»ÙÃð,,·ÀÓù,
-CourtOfHomogeneity,Court Of Homogeneity,RARE,ATTACK,ENEMY,1,"Exhaust. If its hsrmod:Toughness is less than yours, deal hsrmod:Break-Damage equal to the difference.",,,,,"If its hsrmod:Toughness is less than yours, deal hsrmod:Break-Damage equal to the difference.",,,,»ÙÃð,,¹¥»÷,
-VoyageMonitor,Voyage Monitor,RARE,POWER,SELF,1,"After break, gain hsrmod:Toughness equal to the target's hsrmod:Toughness limit.",,,,,"After break, gain hsrmod:Toughness equal to the target's hsrmod:Toughness limit. After dealing hsrmod:Break-Damage , gain 1 stack of hsrmod:Toughness.",,,,»ÙÃð,,·ÀÓù,
-DisruptivePulse,Disruptive Pulse,RARE,ATTACK,ENEMY,2,"Exhaust. Use 80 [hsrmod:ChargeIcon] , deal fire damage equal to hsrmod:Break-Effect value (!M!). If hsrmod:break occurs, gain [hsrmod:ChargeIcon] and [E] to limit.",0,,4,1,,,,6,»ÙÃð,»ð,ÔË×ª,
-PreBattleCaregiver,Pre-Battle Caregiver,UNCOMMON,ATTACK,ENEMY,1,"Deal !D! physical damage (!M!). If hsrmod:break occurs, gain Block equal to the target's hsrmod:Toughness limit.",4,,4,,"Deal !D! physical damage (!M!). If the target has hsrmod:Broken, gain Block equal to its hsrmod:Toughness limit.",6,,6,»ÙÃð,ÎïÀí,·ÀÓù,
-Wastelander,Wastelander,COMMON,ATTACK,ENEMY,1,"Deal !D! lightning damage (!M!). If hsrmod:break occurs, draw cards equal to the number of its debuffs.",4,,4,,"Deal !D! lightning damage (!M!). If the target has hsrmod:Broken, draw cards equal to the number of its debuffs.",,,6,»ÙÃð,À×,ÔË×ª,
-NightBeyondPyre,Night Beyond Pyre,COMMON,SKILL,SELF,1,"Exhaust. If you don't have one, gain !M! stacks of hsrmod:Break-Efficiency . If you don't have one, gain !B! Block.",,4,2,,"Innate. If you don't have any, gain !M! stacks of hsrmod:Break-Efficiency . If you don't have any, gain !B! Block.",,8,,»ÙÃð,,·ÀÓù,
-StarcrusherWorker,Starcrusher Worker,COMMON,SKILL,ENEMY,0,"Remove !M! stacks of hsrmod:Toughness (retain at least 1 stack). If your hsrmod:Toughness is less than the target's, gain equal hsrmod:Toughness.",,,5,,,,,8,»ÙÃð,,·ÀÓù,
-CleftSingularity,Cleft Singularity,COMMON,SKILL,SELF,1,Exhaust. Gain !M! stacks of hsrmod:Break-Effect .,,,5,,,,,7,»ÙÃð,,ÔË×ª,
-TheDoubtfulFourfoldRoot,The Doubtful Fourfold Root,RARE,SKILL,ALL_ENEMY,1,Increase all enemies' hsrmod:DoT stacks by 1.,,,,,Increase all enemies' debuff stacks by 1.,,,,ÐéÎÞ,,¹¥»÷,
-AllThingsArePossible,All Things Are Possible,RARE,POWER,SELF,3,"After you use an attack card, apply a hsrmod:DoT that the target doesn't have.",,,,,"After you use an attack card, if the target has all hsrmod:DoT s, randomly trigger 1. Otherwise, apply a hsrmod:DoT the target doesn't have.",,,,ÐéÎÞ,,¹¥»÷,
-AnExtraPersonsDiary,An Extra Persons Diary,RARE,POWER,SELF,2,"Toughness reduction value of hsrmod:DoT +1. After break, (X equals the target's hsrmod:Toughness limit / 10 + 1), apply X random hsrmod:DoT s and draw X cards.",,,,,"Toughness reduction value of hsrmod:DoT +1. After break, (X equals the target's hsrmod:Toughness limit / 10 + 1), apply X random hsrmod:DoT s, draw X cards, and the target loses X stacks of Strength.",,,,ÐéÎÞ,,¹¥»÷,
-ThePathless,The Pathless,RARE,SKILL,ALL_ENEMY,1,Apply 1 stack of Block-Return and !M! stacks of hsrmod:Suspicion to all enemies.,,,10,,Innate. Apply 1 stack of Block Return and !M! stacks of hsrmod:Suspicion to all enemies.,,,15,ÐéÎÞ,,·ÀÓù,
-ReignOfKeys,Reign of Keys,RARE,POWER,SELF,2,"When the enemy's hsrmod:DoT triggers during their turn, draw 1 card. When it triggers outside their turn, stacks will not reduce.",,,,,"When the enemy's hsrmod:DoT triggers, draw 1 card. If triggered outside their turn, stacks will not reduce.",,,,ÐéÎÞ,,¹¥»÷,
-FuneralOfSensoryPursuivant,Funeral Of Sensory Pursuivant,UNCOMMON,POWER,SELF,2,"After the enemy takes hsrmod:DoT damage, apply 3 stacks of hsrmod:Suspicion.",,,,,"Innate. After the enemy takes hsrmod:DoT damage, apply 3 stacks of hsrmod:Suspicion. After hsrmod:DoT is applied, apply 1 stack of hsrmod:Suspicion.",,,,ÐéÎÞ,,¹¥»÷,
-CallOfTheWilderness,Call Of The Wilderness,UNCOMMON,SKILL,ALL_ENEMY,1,Apply !M! stacks of Weak to all enemies.,,,2,,"Apply !M! stacks of Weak to all enemies. If their Strength is not greater than yours, they lose !M! stacks of Strength.",,,3,ÐéÎÞ,,·ÀÓù,
-CommonMortal,Common Mortal,UNCOMMON,POWER,SELF,2,"After you Exhaust [hsrmod:ChargeIcon] , apply 1 random hsrmod:DoT to a random enemy. When you apply a hsrmod:DoT , gain !M! [hsrmod:ChargeIcon] .",,,20,,"After you Exhaust [hsrmod:ChargeIcon] , apply 1 random hsrmod:DoT to a random enemy. When you apply a debuff, gain !M! [hsrmod:ChargeIcon] .",,,30,ÐéÎÞ,,ÔË×ª,
-NightWatch,Night Watch,COMMON,SKILL,SELF,1,"For each type of hsrmod:DoT on the enemy with the most hsrmod:DoT s, gain !B! Block.",,3,,,"For each type of debuff on the enemy with the most debuffs, gain !B! Block.",,,,ÐéÎÞ,,·ÀÓù,
-SinThirster,Sin Thirster,COMMON,SKILL,SELF,1,"For each type of hsrmod:DoT on the enemy with the most hsrmod:DoT s, draw 1 card.",,,,,"For each type of debuff on the enemy with the most debuffs, draw 1 card.",,,,ÐéÎÞ,,ÔË×ª,
-OfferingsOfDeception,Offerings Of Deception,COMMON,SKILL,ALL_ENEMY,1,"Gain !B! Block, apply 1 hsrmod:DoT to all enemies without hsrmod:DoT s.",,3,,,"Gain !B! Block, apply 1 hsrmod:DoT to all enemies without hsrmod:DoT s, reduce 1 stack of Strength from enemies with all hsrmod:DoT s.",,5,,ÐéÎÞ,,·ÀÓù,
-IntersegmentalMembrane,Intersegmental Membrane,RARE,POWER,SELF,2,"For each [E] hsrmod:Exhausted, gain !M! Block.",,,2,,,,,3,·±Óý,,·ÀÓù,
-FungalPustule,Fungal Pustule,UNCOMMON,SKILL,SELF,1,"Exhaust. Gain [E] [E] , draw !M! cards.",,,1,,"Gain [E] [E] , draw !M! cards. For this battle, cost, draw count, and gaining [E] amount increase by 1.",,,,·±Óý,,ÔË×ª,
-PhantomWorker,Phantom Worker,UNCOMMON,SKILL,SELF,0,"Gain Block equal to your [E] , and randomly select an equal number of cards from your hand to upgrade for this battle.",,,,,"Gain Block equal to your [E] , and select an equal number of cards from your hand to upgrade for this battle.",,,,·±Óý,,ÔË×ª,
-Kolchis,Kolchis,RARE,POWER,SELF,2,"After you use [hsrmod:ChargeIcon] , gain [E] . After you use [E] , gain !M! [hsrmod:ChargeIcon] .",,,20,,,,,30,ÖÇÊ¶,,ÔË×ª,
-Aggregator,Aggregator,RARE,SKILL,SELF,1,"Exhaust. For each card in your hand that uses [hsrmod:ChargeIcon] , draw 1 card, gain [E] and !M! [hsrmod:ChargeIcon] .",,,20,,,,,40,ÖÇÊ¶,,ÔË×ª,
-BCI34GrayMatter,BC-I34 Gray-Matter,COMMON,SKILL,SELF,1,Gain !M! stacks of hsrmod:Brain-In-A-Vat.,,,2,,Innate. Gain !M! stacks of hsrmod:Brain-In-A-Vat.,,,3,ÖÇÊ¶,,ÔË×ª,
-TerminalNirvana,Terminal Nirvana,RARE,SKILL,SELF,2,"Exhaust. Retain. Use !M! [hsrmod:ChargeIcon] , gain 1 stack of Intangible.",,,120,,"Retain. Use !M! [hsrmod:ChargeIcon] , gain 1 stack of Intangible, and the [hsrmod:ChargeIcon] required for this card doubles for the rest of the battle.",,,60,·áÈÄ,,·ÀÓù,
-DivineConstructMacrosegregation,Divine Construct Macrosegregation,RARE,POWER,SELF,2,"You lose all Dexterity. Your Block gain is increased by 100%, and at the start of your turn, only !M!% of current Block will be removed.",,,66,,,,,50,·áÈÄ,,·ÀÓù,
-TheArchitects,The Architects,COMMON,SKILL,SELF,1,Gain Block equal to the number of cards in your hand.,,,1,,Gain Block equal to the number of cards in your hand + the number of [E] .,,,,·áÈÄ,,·ÀÓù,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,4,,,,,,,,
-,,,,,,,,,,4,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,
+ID,Card Name,Rarity,Type,Target,Cost,Description,ÉËº¦Öµ,¸ñµ²Öµ,ÌØÊâÖµ,·ÑÓÃ+,Description+,ÉËº¦Öµ+,¸ñµ²Öµ+,ÌØÊâÖµ+,Path,Element,Usage
+Trailblazer1,RIP Home Run,BASIC,ATTACK,ENEMY,1,Deal !D! physical damage (!M!).,6,,2,,,9,,,¿ªÍØ,ÎïÀí,¹¥»÷
+March7th0,Frigid Cold Arrow,BASIC,ATTACK,ENEMY,1,Deal !D! ice damage (!M!).,6,,2,,,9,,,¿ªÍØ,±ù,¹¥»÷
+Danheng0,Cloudlancer Art: North Wind,BASIC,ATTACK,ENEMY,1,Deal !D! wind damage (!M!).,6,,2,,,9,,,¿ªÍØ,·ç,¹¥»÷
+Himeko0,Sawblade Tuning,BASIC,ATTACK,ENEMY,1,Deal !D! fire damage (!M!).,6,,2,,,9,,,¿ªÍØ,»ð,¹¥»÷
+Welt0,Gravity Suppression,BASIC,ATTACK,ENEMY,1,Deal !D! imaginary damage (!M!).,6,,2,,,9,,,¿ªÍØ,ÐéÊý,¹¥»÷
+Trailblazer2,Stardust Ace,BASIC,ATTACK,ALL_ENEMY,0,"Use 120 [hsrmod:ChargeIcon] , deal !D! physical damage to all enemies (!M!).",4,,,,,6,,,¿ªÍØ,ÎïÀí,¹¥»÷
+Trailblazer3,Ever-Burning Amber,BASIC,SKILL,SELF,1,Gain !B! Block.,,5,,,,,8,,¿ªÍØ,,·ÀÓù
+Sushang1,Shape of Taixu: Dawn Herald,COMMON,ATTACK,ENEMY,1,"Gain !M! hsrmod:Break-Effect , deal !D! physical damage (3), if break, draw !M! cards.",4,,2,,"Gain !M! hsrmod:Break-Effect , deal !D! physical damage (3), if it has hsrmod:Broken, draw !M! cards.",,,3,»ÙÃð,ÎïÀí,ÔË×ª
+Sushang2,Cut With Ease,COMMON,SKILL,SELF,1,"Gain !M! hsrmod:Break-Effect , for every hsrmod:broken enemy, gain [E] .",,,2,,,,,3,»ÙÃð,,ÔË×ª
+Tingyun1,Amidst the Rejoicing Clouds,COMMON,SKILL,SELF,0,"Use 10 [hsrmod:ChargeIcon] , Gain !M! [hsrmod:ChargeIcon] and 1 Strength.",,,50,,"Use 10 [hsrmod:ChargeIcon] , Gain !M! [hsrmod:ChargeIcon] and 1 Strength, draw 1 card.",,,60,ÖÇÊ¶,,ÔË×ª
+Qingque1,A Scoop of Moon,COMMON,SKILL,SELF,1,"Draw 1 card. NL !M!% chance: gain [E] , !M!% chance: return to hand.",,,66,,,,,75,·±Óý,,ÔË×ª
+Qingque2,Right on the Tiles,COMMON,ATTACK,ALL_ENEMY,4,"For every [E] you *exhaust, 50% chance: reduce cost by 1. hsrmod:Follow-Up when cost reaches 0. NL Deal !D! Quantum damage (1) to all enemies !M! times.",5,,2,,,,,3,»¶Óä,Á¿×Ó,¹¥»÷
+Sampo1,Ricochet Love,COMMON,ATTACK,ENEMY,1," hsrmod:Bounce !M!: deal !D! wind damage (1), and apply 1 hsrmod:Wind-Shear.",1,,3,,,,,4,ÐéÎÞ,·ç,¹¥»÷
+Pela1,Zone Suppression,COMMON,ATTACK,ALL_ENEMY,1,"Use 100 [hsrmod:ChargeIcon] , deal !D! ice damage (2) to all enemies, and apply !M! stacks of Vulnerable.",6,,1,0,,,,,ÐéÎÞ,,¹¥»÷
+Serval1,Lightning Flash,COMMON,ATTACK,ALL_ENEMY,1,"Deal !D! *lightning damage (2) to all enemies, and apply !M! stacks of hsrmod:Shock.",1,,2,,,2,,3,ÐéÎÞ,À×,¹¥»÷
+Herta1,"Fine, I'll Do It Myself",COMMON,ATTACK,SELF_AND_ENEMY,1, hsrmod:Follow-Up when an enemy's HP drops below 50% during your turn. NL Deal !D! ice damage (1) to all enemies.,8,,,,,12,,,»¶Óä,±ù,¹¥»÷
+Asta1,Meteor Storm,COMMON,ATTACK,ENEMY,1," hsrmod:Bounce !M!: deal !D! fire damage (1) to a random enemy. Each time a different enemy takes damage, gain 1 stack of Strength.",2,,2,,,,,3,Ñ²ÁÔ,»ð,¹¥»÷
+March7th1,The Power of Cuteness,COMMON,SKILL,SELF,1,"Gain !B! Block, remove 1 stack of debuff, gain ""*Reinforce"" (when taking damage, if you have Block, gain a *Girl *Power card).",,3,,,"Gain !B! Block, remove 1 stack of debuff, gain ""*Reinforce"" (when taking damage, if you have Block, gain !B! Block, and gain a *Girl *Power card).",,,,»¶Óä,,·ÀÓù
+March7th2,Girl Power,SPECIAL,ATTACK,SELF,-2,"Exhaust. hsrmod:Follow-Up at the start of your turn. NL Gain !B! Block, deal !D! ice damage (1) to a random enemy.",3,2,,,,,,,»¶Óä,±ù,·ÀÓù
+March7th3,Glacial Cascade,COMMON,ATTACK,ALL_ENEMY,2,"Use 120 [hsrmod:ChargeIcon] , deal !D! ice damage (2) to all enemies, and apply !M! stack of hsrmod:Frozen.",2,,1,,,,,2,¼ÇÒä,±ù,·ÀÓù
+Yukong1,Emboldening Salvo,COMMON,SKILL,SELF,0,Gain the current number of [E] stacks of Strength. Removes after turn ends.,,,1,,Gain the current number of [E] + !M! stacks of Strength. Removes after turn ends.,,,,·±Óý,,¹¥»÷
+Luka1,Sky-Shatter Fist,COMMON,ATTACK,ENEMY,1,"Repeat !M! times: deal !D! physical damage (1), apply 1 stack of hsrmod:Bleed.",1,,3,,,,,4,ÐéÎÞ,ÎïÀí,¹¥»÷
+Guinaifen1,Blazing Welcome,COMMON,ATTACK,ENEMY,1,"Deal !D! fire damage (2), apply !M! stacks of hsrmod:Burn and 1 stack of Vulnerable.",1,,2,,"Deal !D! fire damage (2), apply !M! stacks of hsrmod:Burn, then apply 1 stack of Vulnerable to all enemies with hsrmod:Burn.",,,3,ÐéÎÞ,»ð,¹¥»÷
+Hanya1,"Samsara, Locked",COMMON,ATTACK,ENEMY,1,"Exhaust. Deal !D! physical damage (2), apply !M! stacks of Burden (after becoming the target of a card, remove 1 stack, gain [E] , remove all stacks at turn start).",4,,2,,,7,,,·±Óý,ÎïÀí,ÔË×ª
+Xueyi1,Karmic Perpetuation,COMMON,ATTACK,ENEMY,8,"After reducing toughness, cost reduces an equivalent value. hsrmod:Follow-Up when [E] reaches 0. NL Deal Quantum damage (!M!) equal to the target's toughness value.",,,3,,,,,5,»ÙÃð,Á¿×Ó,¹¥»÷
+Gallagher1,Champagne Etiquette,COMMON,ATTACK,ALL_ENEMY,1,"Use 110 [hsrmod:ChargeIcon] , deal !D! fire damage (!M!) to all enemies. If hsrmod:break occurs, apply hsrmod:Block-Return.",2,,2,,"Use 110 [hsrmod:ChargeIcon] , deal !D! fire damage (!M!) to all enemies. If it has hsrmod:Broken, apply hsrmod:Block-Return.",,,3,»ÙÃð,»ð,·ÀÓù
+Yanqing1,Amidst the Raining Bliss,UNCOMMON,ATTACK,ENEMY,2,"Use 140 [hsrmod:ChargeIcon] , Deal !D! ice damage (2), if you have Block, damage is doubled; 60% chance to gain *One *With *the *Sword.",12,,,,"Use 140 [hsrmod:ChargeIcon] , Deal !D! ice damage (2), if you have Block, damage is doubled; 60% chance to gain *One *With *the *Sword+.",16,,,»¶Óä,±ù,¹¥»÷
+Yanqing2,One With the Sword,SPECIAL,ATTACK,ENEMY,-2,"Exhaust. At the start of the turn, hsrmod:Follow-Up if you haven¡¯t taken any unblocked damage since the end of last turn. NL Deal !D! ice damage (1), !M!% chance to apply 1 stack of hsrmod:Frozen.",8,,65,,,10,,100,»¶Óä,±ù,¹¥»÷
+Clara1,Because We're Family,UNCOMMON,SKILL,SELF,-2,"At the start of the turn, hsrmod:Follow-Up if you took damage after the last turn ended. NL Gain !B! Block, and for each hsrmod:Follow-Up card in hand, gain an additional !M! Block.",,4,2,,,,5,3,»¶Óä,ÎïÀí,¹¥»÷
+Gepard1,Enduring Bulwark,UNCOMMON,SKILL,SELF,0,"Use 100 [hsrmod:ChargeIcon] , Gain !B! Block.",,12,,,,,20,,´æ»¤,,·ÀÓù
+Bronya1,Combat Redeployment,UNCOMMON,SKILL,SELF,1,"Gain !M! stacks of Strength, select 1 card from the draw pile and add it to your hand.",,,1,,"Innate. Gain !M! stacks of Strength, select 1 card from the draw pile and add it to your hand.",,,,Ñ²ÁÔ,,ÔË×ª
+Welt1,Edge of the Void,UNCOMMON,ATTACK,ENEMY,1," hsrmod:Bounce !M!: deal !D! imaginary damage, and apply 1 stack of hsrmod:Imprison.",3,,2,,,,,3,ÐéÎÞ,ÐéÊý,·ÀÓù
+Himeko1,Victory Rush,UNCOMMON,ATTACK,ALL_ENEMY,3,"After breaking an enemy, hsrmod:Follow-Up . Deal !D! fire damage (1) to all enemies !M! times.",6,,2,,,,,3,»¶Óä,»ð,¹¥»÷
+Seele1,Butterfly Flurry,UNCOMMON,ATTACK,ENEMY,2,"This card can be upgraded multiple times. When upgraded, damage +!M!. NL Use 120 [hsrmod:ChargeIcon] , deal !D! quantum damage (3), if it kills, gain [E] , return the card to hand, and permanently upgrade it.",12,,3,,,,,,Ñ²ÁÔ,Á¿×Ó,¹¥»÷
+JingYuan1,Prana Extirpated,UNCOMMON,ATTACK,ENEMY,10,"After playing a card, this card's [E] cost is reduced by 1. hsrmod:Follow-Up when [E] reaches 0. NL hsrmod:Bounce !M!: deal !D! *lightning damage (1) to random enemies.",4,,3,,,,,4,»¶Óä,À×,¹¥»÷
+Luocha1,User Banned,UNCOMMON,SKILL,SELF,0,"Use 110 [hsrmod:ChargeIcon] . Deal !D! quantum damage (4), apply 1 stack of Vulnerable and 1 stack of Weak.",,,2,,"Use 110 [hsrmod:ChargeIcon] . Deal !D! quantum damage (4), apply 1 stack of Vulnerable and 1 stack of Weak, and the target loses 1 stack of Strength.",,,,·áÈÄ,,·ÀÓù
+SilverWolf1,Prayer of Abyss Flower,UNCOMMON,ATTACK,ENEMY,1,"Retain. Exhaust. Gain [E] and heal !M! HP (healing is doubled if HP is below 50%), dispel 1 random debuff, and Exhaust 1 card.",6,,,,"Retain. Exhaust. Gain [E] and heal !M! HP (healing is doubled if HP is below 50%), dispel 1 random debuff, and Exhaust any number of cards.",8,,,ÐéÎÞ,Á¿×Ó,¹¥»÷
+Blade1,Shuhu's Gift,UNCOMMON,ATTACK,ALL_ENEMY,1,"After your HP changes during a turn, hsrmod:Follow-Up . Lose 5% current HP, and deal wind damage (2) to all enemies equal to !M!% of your HP max.",,,20,,,,,30,»¶Óä,·ç,¹¥»÷
+Kafka1,Gentle but Cruel,UNCOMMON,ATTACK,ENEMY,1,"After using a card on an enemy with hsrmod:DoT , hsrmod:Follow-Up . Deal !D! *lightning damage (2), trigger a random hsrmod:DoT !M! times, then apply !M! stacks of hsrmod:Shock.",1,,2,,,,,3,ÐéÎÞ,À×,¹¥»÷
+Kafka2,Twilight Trill,UNCOMMON,ATTACK,ALL_ENEMY,1,"Use 120 [hsrmod:ChargeIcon] , deal !D! *lightning damage (2) to all enemies, trigger all their hsrmod:DoT s once, then apply !M! stacks of hsrmod:Shock.",3,,1,,,,,2,ÐéÎÞ,À×,¹¥»÷
+ImbibitorLunae1,Dracore Libre,UNCOMMON,ATTACK,ENEMY,-1,"If X equals 0/1/2/3+, deal !D! imaginary damage (1) 2/3/5/7 times. Gain 20 [hsrmod:ChargeIcon] for each [E] you *exhaust.",3,,,,,5,,,·±Óý,ÐéÊý,¹¥»÷
+FuXuan1,"Known by Stars, Shown by Hearts",UNCOMMON,SKILL,ALL_ENEMY,1,"Gain Matrix-of-Prescience (damage received -50%, remove 1 stack at start of turn).",,,1,,"Gain Matrix-of-Prescience (damage received -50%, remove 1 stack at start of turn) and keep your block for one turn.",,,,´æ»¤,,·ÀÓù
+TopazNumby1,Difficulty Paying?,UNCOMMON,POWER,SELF,1,"After hsrmod:Follow-Up , stack 1 stack (up to 2 stacks), then if there are 2 stacks and no *Trotter *Market!?, remove 2 stacks and gain 1 card.",,,,,"After hsrmod:Follow-Up , stack 1 stack (up to 2 stacks), then if there are 2 stacks and no *Trotter *Market!?+, remove 2 stacks and gain 1 card.",,,,»¶Óä,,¹¥»÷
+TopazNumby2,Trotter Market!?,SPECIAL,ATTACK,ENEMY,-2,Exhaust. hsrmod:Follow-Up when hsrmod:Follow-Up . Deal !D! fire damage (1).,6,,,,,8,,,»¶Óä,»ð,¹¥»÷
+TopazNumby3,Future Market,UNCOMMON,ATTACK,ENEMY,1,"Deal !D! fire damage (1), remove ""*Proof of Debt"" from the field, and apply ""*Proof of Debt"" (damage from hsrmod:Follow-Up attack cards is increased by !M!; hsrmod:Follow-Up prioritizes this target).",4,,2,,"Deal !D! fire damage (1), remove ""*Proof of Debt"" from the field, and apply ""*Proof of Debt""* (damage from hsrmod:Follow-Up attack cards is increased by !M!; hsrmod:Follow-Up prioritizes this target).",6,,3,»¶Óä,»ð,¹¥»÷
+Huohuo1,Tail: Spiritual Domination,UNCOMMON,SKILL,SELF,0,"Exhaust. Use 140 [hsrmod:ChargeIcon] , gain [E] , and until the end of the turn, whenever you use a card, heal 1 HP, gain 10 [hsrmod:ChargeIcon] , and remove 1 stack of debuff.",,,,,"Exhaust. Use 140 [hsrmod:ChargeIcon] , gain [E] , and until the end of the turn, whenever you use a card or exhaust [hsrmod:ChargeIcon] , heal 1 HP, gain 10 [hsrmod:ChargeIcon] , and remove 1 stack of debuff.",,,,ÖÇÊ¶,,·ÀÓù
+Argenti1,"For In This Garden, Supreme Beauty Bestows",UNCOMMON,SKILL,ALL_ENEMY,1,"Retain. Repeat until [hsrmod:ChargeIcon] is insufficient: NL Use 90 [hsrmod:ChargeIcon] , deal !D! physical damage (2) to all enemies, and gain 10 [hsrmod:ChargeIcon] for each enemy hit.",10,,,,,15,,,ÖÇÊ¶,ÎïÀí,¹¥»÷
+RuanMei1,String Sings Slow Swirls,UNCOMMON,SKILL,SELF,1,Gain !M! stacks of hsrmod:Break-Efficiency and hsrmod:Break-Effect .,,,2,,"Gain !M! stacks of hsrmod:Break-Efficiency and hsrmod:Break-Effect , ensuring at least 1 stack of hsrmod:Break-Efficiency .",,,,»ÙÃð,,¹¥»÷
+RuanMei2,"Petals to Stream, Repose in Dream",UNCOMMON,SKILL,SELF,1,"Use 130 [hsrmod:ChargeIcon] , apply 1 stack of ""*ThanatoplumRebloom"" to all enemies (upon losing hsrmod:Broken, remove 1 stack and prevent it).",,,1,0,,,,,»ÙÃð,,¹¥»÷
+DrRatio1,Syllogistic Paradox,UNCOMMON,ATTACK,ENEMY,1,"Use 140 [hsrmod:ChargeIcon] , deal !D! imaginary damage (3), apply ""*Wiseman's *Folly"", and gain !M! *Cogito, *Ergo *Sum.",5,,2,,,,,3,»¶Óä,ÐéÊý,¹¥»÷
+DrRatio2,Intellectual Midwifery,UNCOMMON,ATTACK,ENEMY,1,"Deal !D! + X imaginary damage (2) (X equals the number of debuffs on the target); apply ""*Wiseman's *Folly"", and gain 1 *Cogito, *Ergo *Sum.",5,,1,,"Deal !D! + X imaginary damage (2) (X equals the number of debuffs on the target); apply ""*Wiseman's *Folly"", and gain 1 *Cogito, *Ergo *Sum+.",7,,,»¶Óä,ÐéÊý,¹¥»÷
+DrRatio3,"Cogito, Ergo Sum",SPECIAL,ATTACK,ENEMY,-2,"Exhaust. After dealing damage to a target with ""*Wiseman's *Folly"", there is a 40% + X*20% chance to hsrmod:Follow-Up (X equals the number of debuffs). NL Deal !D! imaginary damage (1).",5,,1,,"Exhaust. After dealing damage to a target with ""*Wiseman's *Folly"", there is a 40% + X*20% chance to hsrmod:Follow-Up (X equals the number of debuffs). NL Deal !D! + X imaginary damage (1).",,,,»¶Óä,ÐéÊý,¹¥»÷
+BlackSwan1,Loom of Fate's Caprice,UNCOMMON,ATTACK,ENEMY,1,"Deal !D! wind damage (2), apply !M! stacks of hsrmod:Wind-Shear and 1 stack of ""*Epiphany"" (When hsrmod:DoT is triggered, hsrmod:DoT stacks are not removed; remove 1 stack at the end of the turn).",2,,1,,"Deal !D! wind damage (2) to all enemies, apply !M! stacks of hsrmod:Wind-Shear and 1 stack of ""*Epiphany"" (When hsrmod:DoT is triggered, hsrmod:DoT stacks are not removed; remove 1 stack at the end of the turn).",,,2,ÐéÎÞ,·ç,¹¥»÷
+BlackSwan2,Bliss of Otherworld's Embrace,UNCOMMON,SKILL,ENEMY,2,"Use 120 [hsrmod:ChargeIcon] , apply 1 stack of hsrmod:Shock, 1 stack of hsrmod:Burn, 1 stack of hsrmod:Bleed, and !M! stacks of hsrmod:Wind-Shear.",,,3,,,,,5,ÐéÎÞ,,¹¥»÷
+Sparkle1,Dreamdiver,UNCOMMON,SKILL,SELF,0,"Exhaust. Draw cards equal to [E] , then kill your other copies of *Dreamdiver.",,,,,"Innate. Draw cards equal to [E] , then kill your other copies of *Dreamdiver.",,,,·±Óý,,ÔË×ª
+Sparkle2,The Hero with a Thousand Faces,UNCOMMON,SKILL,SELF,-1,"Exhaust. Use 110 [hsrmod:ChargeIcon] , gain 2X [E] , then kill your other copies of *The *Hero *with *a *Thousand *Faces.",,,,,"Innate. Use 110 [hsrmod:ChargeIcon] , gain 2X [E] , then kill your other copies of *The *Hero *with *a *Thousand *Faces.",,,,·±Óý,,ÔË×ª
+Acheron1,Slashed Dream Cries in Red,UNCOMMON,POWER,SELF,3,"Ethereal. After using a card, if it applied a debuff, gain 1 stack of ""hsrmod:Slashed-Dream"", stacking up to 12 stacks. ",5,,5,,"Innate. Ethereal. After using a card, if it applied a debuff, gain 1 stack of ""hsrmod:Slashed-Dream"", stacking up to 12 stacks. ",,,,ÐéÎÞ,À×,¹¥»÷
+Aventurine1,Roulette Shark,UNCOMMON,POWER,SELF,2,"When you take damage, if you have Block, gain 3 stacks of ""hsrmod:Blind-Bet"" ; after hsrmod:Follow-Up , gain 2 stacks of ""hsrmod:Blind-Bet"", up to 10 stacks. ",7,7,,,"Innate. When you take damage, if you have Block, gain 4 stacks of ""hsrmod:BlindBet"" ; after hsrmod:Follow-Up , gain 3 stacks of ""hsrmod:Blind-Bet"", up to 10 stacks. When gaining block via ""Blind-Bet"", outside your turn, keep your block for next round.",,,,»¶Óä,ÐéÊý,·ÀÓù
+Aventurine2,Cornerstone Deluxe,UNCOMMON,SKILL,SELF,1, hsrmod:Follow-Up when gain block via cards. Repeat !M! times: gain 1-!B! Block. Keep your block for this turn.,,7,1,,,,,2,»¶Óä,,·ÀÓù
+Robin1,Impromptu Flourish,UNCOMMON,SKILL,SELF,-1,"Draw X cards, use X random cards in hand, if it is hsrmod:Follow-Up card, trigger its hsrmod:Follow-Up .",,,,,"Draw X cards, use X random cards in hand, if it is hsrmod:Follow-Up card, trigger its hsrmod:Follow-Up , and the card will not reduce X.",,,,»¶Óä,,ÔË×ª
+Robin2,"Vox Harmonique, Opus Cosmique",UNCOMMON,SKILL,SELF,1,"Use 140 [hsrmod:ChargeIcon] , draw !M! cards, gain the following effect: after using a card, gain 1 stack of Strength for this turn.",,,3,,"Use 140 [hsrmod:ChargeIcon] , draw !M! cards, gain the following effect: after using a card, gain 1 stack of Strength for this turn, if it hsrmod:Follow-Up ed, gain 20 [hsrmod:ChargeIcon] .",,,4,»¶Óä,,¹¥»÷
+Trailblazer5,All-Out Footlight Parade,UNCOMMON,POWER,SELF,2,"Use 140 [hsrmod:ChargeIcon] . After the first damage dealt by a card you use, if the target has hsrmod:Broken, deal hsrmod:Break-Damage equal to the toughness reduction value.",,,2,,"Innate. Use 140 [hsrmod:ChargeIcon] . After the first damage dealt by a card you use, if the target has hsrmod:Broken, deal hsrmod:Break-Damage equal to the toughness reduction value.",,,3,»ÙÃð,,¹¥»÷
+Trailblazer6,Dance With the One,UNCOMMON,SKILL,SELF,1,"Gain !M! stacks of hsrmod:Break-Effect . If you haven¡¯t used ""*All-Out *Footlight *Parade"", gain it, otherwise gain another !M! stacks of hsrmod:Break-Effect .",,,2,,"Innate. Gain !M! stacks of hsrmod:Break-Effect . If you haven¡¯t used ""*All-Out *Footlight *Parade"", gain it, otherwise gain another !M! stacks of hsrmod:Break-Effect .",,,3,»ÙÃð,,¹¥»÷
+Boothill1,Sizzlin' Tango,UNCOMMON,ATTACK,ENEMY,2,"Deal physical damage (!M!) based on hsrmod:Break-Effect value !M! times. If hsrmod:break occurs, deal hsrmod:Break-Damage equal to its hsrmod:Toughness limit, otherwise return card to hand.",,,2,,"Deal physical damage (!M!) based on hsrmod:Break-Effect value !M! times. If it has hsrmod:broken, deal hsrmod:Break-Damage equal to its hsrmod:Toughness limit, otherwise return card to hand.",,,,»ÙÃð,ÎïÀí,¹¥»÷
+Boothill2,Fanning the Hammer,UNCOMMON,ATTACK,ENEMY,1,"Deal !D! physical damage (!M!). If no hsrmod:break occurs, return the card to hand.",4,,5,,,,,8,»ÙÃð,ÎïÀí,¹¥»÷
+Firefly1,"From Shattered Sky, I Free Fall",UNCOMMON,ATTACK,ENEMY,1,"Deal fire damage based on hsrmod:Break-Effect value (!M!). If it has hsrmod:broken, return the card to hand.",,,3,,,,,4,»ÙÃð,»ð,¹¥»÷
+Firefly2,"In Finalized Morrow, I Full Bloom",UNCOMMON,POWER,SELF,0,"Use 240 [hsrmod:ChargeIcon] , Lose !M! HP. After break, deal hsrmod:Break-Damage equal to its hsrmod:Toughness limit, gain 1 stack of hsrmod:Break-Efficiency , and add ""*Falling *From *A *Shattered *Sky"" to your hand.",,,3,,"Gain 120 [hsrmod:ChargeIcon] when this card apprears in your hand. Use 240 [hsrmod:ChargeIcon] , Lose !M! HP. After break, deal hsrmod:Break-Damage equal to its hsrmod:Toughness limit, gain 1 stack of hsrmod:Break-Efficiency , and add ""*Falling *From *A *Shattered *Sky"" to your hand.",,,,»ÙÃð,,¹¥»÷
+Jade1,Fang of Flare Flaying,UNCOMMON,ATTACK,ALL_ENEMY,1,"After drawing cards, hsrmod:Follow-Up . Lose 1 HP, draw !M! cards, deal quantum damage based on hand size (!D!) to all enemies.",0,,3,,,,,4,»¶Óä,Á¿×Ó,¹¥»÷
+Yunli1,"Earthbind, Etherbreak",UNCOMMON,ATTACK,ALL_ENEMY,-2,"Retain. When attacked, damage received -!M!, gain 10 [hsrmod:ChargeIcon] . NL At the start of turn, if you took damage after the last turn ended, hsrmod:Follow-Up . NL Repeat until [hsrmod:ChargeIcon] is insufficient: use 120 [hsrmod:ChargeIcon] , hsrmod:Bounce 2 deal !D! physical damage (1).",6,,2,,,,,4,»¶Óä,ÎïÀí,¹¥»÷
+Jiaoqiu1,Pyrograph Arcanum,UNCOMMON,ATTACK,ALL_ENEMY,2,"Use 100 [hsrmod:ChargeIcon] , gain !M! *Ashen *Roast cards, deal !D! fire damage (2) to all enemies, and apply 1 stack of Vulnerable.",2,,3,,,,,4,ÐéÎÞ,»ð,ÔË×ª
+Jiaoqiu2,Ashen Roast,SPECIAL,ATTACK,ENEMY,0,"Exhaust. Deal !D! fire damage (!M!), and apply 1 stack of hsrmod:Burn.",2,,1,,,,,,ÐéÎÞ,»ð,¹¥»÷
+Lingsha1,Dripping Mistscape,UNCOMMON,ATTACK,ENEMY,1,"Exhaust. Use 110 [hsrmod:ChargeIcon] , deal !D! fire damage (2), heal HP based on hsrmod:Break-Effect value, apply 1 stack of ""*Befog"" (After break, remove 1 stack, gain [E] [E] , draw !M! cards, and upgrade hand cards).",4,,2,,"Exhaust. Use 110 [hsrmod:ChargeIcon] , deal !D! fire damage (2), heal HP based on hsrmod:Break-Effect value, apply 1 stack of ""*Befog"" (After break, remove 1 stack, gain [E] [E] [E] , draw !M! cards, and upgrade hand cards).",,,3,»ÙÃð,»ð,¹¥»÷
+Rappa1,Ninja Tech: Endurance Gauge,UNCOMMON,ATTACK,ALL_ENEMY,1,"Gain 1 stack of hsrmod:Break-Effect , deal !D! imaginary damage (!M!) to all enemies. If hsrmod:break occurs, repeat the process.",3,,2,,,4,,3,»ÙÃð,ÐéÊý,¹¥»÷
+BattlefieldMagician,BattlefieldMagician,RARE,POWER,SELF,2,"After you hsrmod:Follow-Up , gain !M! Block.",,,3,,"After using a hsrmod:Follow-Up card, gain !M! Block.",,,4,»¶Óä,,·ÀÓù
+SlaughterhouseNo4RestInPeace,Slaughterhouse No.4 RestInPeace,RARE,POWER,SELF,2,"After you hsrmod:Follow-Up and deal damage, if the target has hsrmod:Broken, there is a !M!% chance to draw 1 card.",,,80,,"After using a hsrmod:Follow-Up card and dealing damage, if the target has/doesn't have hsrmod:Broken, there is a !M!%/20% chance to draw 1 card.",,,,»¶Óä,,ÔË×ª
+UselessScholar,Useless Scholar,RARE,POWER,SELF,3,"After you hsrmod:Follow-Up , if you have 50 [hsrmod:ChargeIcon] , there is a !M!% chance to use it and hsrmod:Follow-Up another hsrmod:Follow-Up card.",,,66,2,"After using a hsrmod:Follow-Up card, if you have 50 [hsrmod:ChargeIcon] , there is a !M!% chance to use it and hsrmod:Follow-Up another hsrmod:Follow-Up card.",,,,»¶Óä,,ÔË×ª
+BountyHunter,Bounty Hunter,RARE,POWER,SELF,1,"After you hsrmod:Follow-Up , there is a !M!% chance to return the card to your hand.",,,25,,"After using a hsrmod:Follow-Up card, there is a !M!% chance to return the card to your hand.",,,33,»¶Óä,,ÔË×ª
+VineyardAgainstTheNight,Vineyard Against The Night,RARE,SKILL,SELF,1,Gain 1 stack of hsrmod:Aftertaste.,,,1,,Innate. Exhaust. Gain 1 stack of hsrmod:Aftertaste.,,,,»¶Óä,,¹¥»÷
+Symbiote,Symbiote,RARE,POWER,SELF,2,"After break, gain [E] [E] . After dealing hsrmod:Break-Damage , draw 1 card.",,,,1,,,,,»ÙÃð,,ÔË×ª
+RegressionInequalityOfAnnihilation,Regression Inequality Of Annihilation,RARE,SKILL,ALL,0,"All entities (including you) evenly distribute hsrmod:Toughness, with your weight being !M!.",,,2,,,,,3,»ÙÃð,,·ÀÓù
+CourtOfHomogeneity,Court Of Homogeneity,RARE,ATTACK,ENEMY,1,"Exhaust. If its hsrmod:Toughness is less than yours, deal hsrmod:Break-Damage equal to the difference.",,,,,"If its hsrmod:Toughness is less than yours, deal hsrmod:Break-Damage equal to the difference.",,,,»ÙÃð,,¹¥»÷
+VoyageMonitor,Voyage Monitor,RARE,POWER,SELF,1,"After break, gain hsrmod:Toughness equal to the target's hsrmod:Toughness limit.",,,,,"After break, gain hsrmod:Toughness equal to the target's hsrmod:Toughness limit. After dealing hsrmod:Break-Damage , gain 1 stack of hsrmod:Toughness.",,,,»ÙÃð,,·ÀÓù
+DisruptivePulse,Disruptive Pulse,RARE,ATTACK,ENEMY,2,"Exhaust. Use 80 [hsrmod:ChargeIcon] , deal fire damage equal to hsrmod:Break-Effect value (!M!). If hsrmod:break occurs, gain [hsrmod:ChargeIcon] and [E] to limit.",0,,4,1,,,,6,»ÙÃð,»ð,ÔË×ª
+PreBattleCaregiver,Pre-Battle Caregiver,UNCOMMON,ATTACK,ENEMY,1,"Deal !D! physical damage (!M!). If hsrmod:break occurs, gain Block equal to the target's hsrmod:Toughness limit.",4,,4,,"Deal !D! physical damage (!M!). If the target has hsrmod:Broken, gain Block equal to its hsrmod:Toughness limit.",6,,6,»ÙÃð,ÎïÀí,·ÀÓù
+Wastelander,Wastelander,COMMON,ATTACK,ENEMY,1,"Deal !D! lightning damage (!M!). If hsrmod:break occurs, draw cards equal to the number of its debuffs.",4,,4,,"Deal !D! lightning damage (!M!). If the target has hsrmod:Broken, draw cards equal to the number of its debuffs.",,,6,»ÙÃð,À×,ÔË×ª
+NightBeyondPyre,Night Beyond Pyre,COMMON,SKILL,SELF,1,"Exhaust. If you don't have one, gain !M! stacks of hsrmod:Break-Efficiency . If you don't have one, gain !B! Block.",,4,2,,"Innate. If you don't have any, gain !M! stacks of hsrmod:Break-Efficiency . If you don't have any, gain !B! Block.",,8,,»ÙÃð,,·ÀÓù
+StarcrusherWorker,Starcrusher Worker,COMMON,SKILL,ENEMY,0,"Remove !M! stacks of hsrmod:Toughness (retain at least 1 stack). If your hsrmod:Toughness is less than the target's, gain equal hsrmod:Toughness.",,,5,,,,,8,»ÙÃð,,·ÀÓù
+CleftSingularity,Cleft Singularity,COMMON,SKILL,SELF,1,Exhaust. Gain !M! stacks of hsrmod:Break-Effect .,,,5,,,,,7,»ÙÃð,,ÔË×ª
+TheDoubtfulFourfoldRoot,The Doubtful Fourfold Root,RARE,SKILL,ALL_ENEMY,1,Increase all enemies' hsrmod:DoT stacks by 1.,,,,,Increase all enemies' debuff stacks by 1.,,,,ÐéÎÞ,,¹¥»÷
+AllThingsArePossible,All Things Are Possible,RARE,POWER,SELF,3,"After you use an attack card, apply a hsrmod:DoT that the target doesn't have.",,,,,"After you use an attack card, if the target has all hsrmod:DoT s, randomly trigger 1. Otherwise, apply a hsrmod:DoT the target doesn't have.",,,,ÐéÎÞ,,¹¥»÷
+AnExtraPersonsDiary,An Extra Persons Diary,RARE,POWER,SELF,2,"Toughness reduction value of hsrmod:DoT +1. After break, (X equals the target's hsrmod:Toughness limit / 10 + 1), apply X random hsrmod:DoT s and draw X cards.",,,,,"Toughness reduction value of hsrmod:DoT +1. After break, (X equals the target's hsrmod:Toughness limit / 10 + 1), apply X random hsrmod:DoT s, draw X cards, and the target loses X stacks of Strength.",,,,ÐéÎÞ,,¹¥»÷
+ThePathless,The Pathless,RARE,SKILL,ALL_ENEMY,1,Apply 1 stack of Block-Return and !M! stacks of hsrmod:Suspicion to all enemies.,,,10,,Innate. Apply 1 stack of Block Return and !M! stacks of hsrmod:Suspicion to all enemies.,,,15,ÐéÎÞ,,·ÀÓù
+ReignOfKeys,Reign of Keys,RARE,POWER,SELF,2,"When the enemy's hsrmod:DoT triggers during their turn, draw 1 card. When it triggers outside their turn, stacks will not reduce.",,,,,"When the enemy's hsrmod:DoT triggers, draw 1 card. If triggered outside their turn, stacks will not reduce.",,,,ÐéÎÞ,,¹¥»÷
+FuneralOfSensoryPursuivant,Funeral Of Sensory Pursuivant,UNCOMMON,POWER,SELF,2,"After the enemy takes hsrmod:DoT damage, apply 3 stacks of hsrmod:Suspicion.",,,,,"Innate. After the enemy takes hsrmod:DoT damage, apply 3 stacks of hsrmod:Suspicion. After hsrmod:DoT is applied, apply 1 stack of hsrmod:Suspicion.",,,,ÐéÎÞ,,¹¥»÷
+CallOfTheWilderness,Call Of The Wilderness,UNCOMMON,SKILL,ALL_ENEMY,1,Apply !M! stacks of Weak to all enemies.,,,2,,"Apply !M! stacks of Weak to all enemies. If their Strength is not greater than yours, they lose !M! stacks of Strength.",,,3,ÐéÎÞ,,·ÀÓù
+CommonMortal,Common Mortal,UNCOMMON,POWER,SELF,2,"After you Exhaust [hsrmod:ChargeIcon] , apply 1 random hsrmod:DoT to a random enemy. When you apply a hsrmod:DoT , gain !M! [hsrmod:ChargeIcon] .",,,20,,"After you Exhaust [hsrmod:ChargeIcon] , apply 1 random hsrmod:DoT to a random enemy. When you apply a debuff, gain !M! [hsrmod:ChargeIcon] .",,,30,ÐéÎÞ,,ÔË×ª
+NightWatch,Night Watch,COMMON,SKILL,SELF,1,"For each type of hsrmod:DoT on the enemy with the most hsrmod:DoT s, gain 3 Block.",,0,,,"For each type of debuff on the enemy with the most debuffs, gain 3 Block.",,,,ÐéÎÞ,,·ÀÓù
+SinThirster,Sin Thirster,COMMON,SKILL,SELF,1,"For each type of hsrmod:DoT on the enemy with the most hsrmod:DoT s, draw 1 card.",,,,,"For each type of debuff on the enemy with the most debuffs, draw 1 card.",,,,ÐéÎÞ,,ÔË×ª
+OfferingsOfDeception,Offerings Of Deception,COMMON,SKILL,ALL_ENEMY,1,"Gain !B! Block, apply 1 hsrmod:DoT to all enemies without hsrmod:DoT s.",,3,,,"Gain !B! Block, apply 1 hsrmod:DoT to all enemies without hsrmod:DoT s, reduce 1 stack of Strength from enemies with all hsrmod:DoT s.",,5,,ÐéÎÞ,,·ÀÓù
+IntersegmentalMembrane,Intersegmental Membrane,RARE,POWER,SELF,2,"For each [E] hsrmod:Exhausted, gain !M! Block.",,,2,,,,,3,·±Óý,,·ÀÓù
+,,RARE,POWER,SELF,2,,,,,,,,,,·±Óý,,¹¥»÷
+,,RARE,POWER,SELF,2,,,,4,1,,,,,·±Óý,,ÔË×ª
+FungalPustule,Fungal Pustule,UNCOMMON,SKILL,SELF,1,"Exhaust. Gain [E] [E] , draw !M! cards.",,,1,,"Gain [E] [E] , draw !M! cards. For this battle, cost, draw count, and gaining [E] amount increase by 1.",,,,·±Óý,,ÔË×ª
+Sparkle3,Sparkle3,UNCOMMON,SKILL,SELF,1,,,,,,,,,,·±Óý,,ÔË×ª
+Macrosegregation,Macrosegregation,RARE,POWER,SELF,2,"You lose all Dexterity. Your Block gain is increased by 100%, and at the start of your turn, only !M!% of current Block will be removed.",,,66,,"innate. Your Block gain is increased by 100%, and at the start of your turn, only !M!% of current Block will be removed.",,,50,´æ»¤,,·ÀÓù
+TheArchitects,The Architects,RARE,POWER,SELF,2,,2,4,1,,,,,2,´æ»¤,,¹¥»÷
+ResonanceTransfer,Resonance Transfer,RARE,ATTACK,ENEMY,2,,,,,,,,,,´æ»¤,ÎïÀí,¹¥»÷
+Trailblazer7,,UNCOMMON,POWER,SELF,1,,,12,,,,,,,´æ»¤,,·ÀÓù
+Trailblazer8,,UNCOMMON,POWER,SELF,2,,,,,,,,,,´æ»¤,,¹¥»÷
+TextureOfMemories,Texture Of Memories,UNCOMMON,SKILL,SELF_AND_ENEMY,1,,,3,3,,,,4,4,´æ»¤,,·ÀÓù
+ReverseQuenching,Reverse Quenching,UNCOMMON,SKILL,ENEMY,1,,,4,1,,,,4,1,´æ»¤,,·ÀÓù
+Sanctuary,Sanctuary,UNCOMMON,SKILL,ENEMY,1,,,3,3,,,,4,4,´æ»¤,,·ÀÓù
+Hypoeutectoid,Hypoeutectoid,UNCOMMON,SKILL,ENEMY,1,,,5,1,,,,8,1,´æ»¤,,·ÀÓù
+QuadrangularPyramid,Quadrangular Pyramid,COMMON,SKILL,ENEMY,1,,,4,1,,,,6,2,´æ»¤,,·ÀÓù
+Sentinel,Sentinel,COMMON,SKILL,ALL_ENEMY,2,,,2,20,,,,3,33,´æ»¤,,·ÀÓù
+Burst,Burst,COMMON,ATTACK,ENEMY,1,,5,,,,,8,,,´æ»¤,ÎïÀí,¹¥»÷
+Concentration,Concentration,COMMON,ATTACK,ENEMY,1,,5,,,,,8,,,´æ»¤,ÎïÀí,¹¥»÷
+March7th4,Master It¡®s Tea Time!,COMMON,ATTACK,ENEMY,2,,2,1,2,,,,,,Ñ²ÁÔ,ÐéÊý,·ÀÓù
+Sushang3,,COMMON,ATTACK,ENEMY,2,,4,,2,,,,,,Ñ²ÁÔ,ÎïÀí,¹¥»÷
+Danheng1,Superiority of Reach,COMMON,ATTACK,ENEMY,1,,6,,1,,,12,,2,Ñ²ÁÔ,·ç,¹¥»÷
+Moze1,,COMMON,SKILL,ENEMY,0,,,,,,,,,,»¶Óä,,¹¥»÷
+Moze2,,SPECIAL,ATTACK,ENEMY,1,,3,,,,,,,,»¶Óä,À×,¹¥»÷
+Feixiao1,Terrasplit,UNCOMMON,ATTACK,ENEMY,6,,6,,,,,,,,Ñ²ÁÔ,·ç,¹¥»÷
+EmpyreanImperium,Empyrean Imperium,RARE,POWER,SELF,2,,,,,,,,,,Ñ²ÁÔ,,¹¥»÷
+RadiantSupreme,Radiant Supreme,RARE,POWER,SELF,2,,,,4,,,,,,Ñ²ÁÔ,,ÔË×ª
+SovereignSkybreaker,Sovereign Skybreaker,RARE,POWER,SELF,2,,,,3,,,,,,Ñ²ÁÔ,,ÔË×ª
+SolemnSnare,Solemn Snare,UNCOMMON,ATTACK,ENEMY,1,,,,,,,,,,Ñ²ÁÔ,·ç,ÔË×ª
+WaitingWithDrawnBow,Waiting With Drawn Bow,UNCOMMON,SKILL,SELF,2,,,4,2,,,,,,Ñ²ÁÔ,,·ÀÓù
+GalaxyRanger,Galaxy Ranger,UNCOMMON,SKILL,SELF,1,,,,,,,,,,Ñ²ÁÔ,,ÔË×ª
+PhantomWorker,Phantom Worker,UNCOMMON,SKILL,SELF,0,"Gain Block equal to your [E] , and randomly select an equal number of cards from your hand to upgrade for this battle.",,,,,"Gain Block equal to your [E] , and select an equal number of cards from your hand to upgrade for this battle.",,,,Ñ²ÁÔ,,ÔË×ª
+DisasterHaltingMechanism,Disaster Halting Mechanism,COMMON,SKILL,SELF,1,Gain Block equal to the number of cards in your hand.,,,1,,Gain Block equal to the number of cards in your hand + the number of [E] .,,,,Ñ²ÁÔ,,·ÀÓù
+,,RARE,POWER,SELF,3,,,,,2,,,,,ÖÇÊ¶,,·ÀÓù
+Kolchis,Kolchis,RARE,POWER,SELF,2,"After you use [hsrmod:ChargeIcon] , gain [E] . After you use [E] , gain !M! [hsrmod:ChargeIcon] .",,,20,,,,,30,ÖÇÊ¶,,ÔË×ª
+Aggregator,Aggregator,RARE,SKILL,SELF,1,"Exhaust. For each card in your hand that uses [hsrmod:ChargeIcon] , draw 1 card, gain [E] and !M! [hsrmod:ChargeIcon] .",,,20,,,,,40,ÖÇÊ¶,,ÔË×ª
+BCI34GrayMatter,BC-I34 Gray Matter,COMMON,SKILL,SELF,1,Gain !M! stacks of hsrmod:Brain-In-A-Vat.,,,2,,Innate. Gain !M! stacks of hsrmod:Brain-In-A-Vat.,,,3,ÖÇÊ¶,,ÔË×ª
+TerminalNirvana,Terminal Nirvana,RARE,SKILL,SELF,2,"Exhaust. Retain. Use !M! [hsrmod:ChargeIcon] , gain 1 stack of Intangible.",,,120,,"Retain. Use !M! [hsrmod:ChargeIcon] , gain 1 stack of Intangible, and the [hsrmod:ChargeIcon] required for this card doubles for the rest of the battle.",,,60,·áÈÄ,,·ÀÓù
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,

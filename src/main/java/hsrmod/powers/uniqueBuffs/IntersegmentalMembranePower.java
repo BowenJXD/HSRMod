@@ -6,8 +6,10 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
+import hsrmod.subscribers.PostEnergyChangeSubscriber;
+import hsrmod.subscribers.SubscribeManager;
 
-public class IntersegmentalMembranePower extends PowerPower {
+public class IntersegmentalMembranePower extends PowerPower implements PostEnergyChangeSubscriber {
     public static final String POWER_ID = HSRMod.makePath(IntersegmentalMembranePower.class.getSimpleName());
 
     int block;
@@ -24,16 +26,23 @@ public class IntersegmentalMembranePower extends PowerPower {
     }
 
     @Override
-    public void onAfterUseCard(AbstractCard card, UseCardAction action) {
-        if (card instanceof BaseCard && ((BaseCard) card).followedUp) 
-            return;
-        int energyChange = card.costForTurn;
-        if (card.costForTurn == -1) {
-            energyChange = card.energyOnUse;
-        }
-        if (energyChange > 0) {
+    public void onInitialApplication() {
+        super.onInitialApplication();
+        SubscribeManager.getInstance().subscribe(this);
+    }
+
+    @Override
+    public void onRemove() {
+        super.onRemove();
+        SubscribeManager.getInstance().unsubscribe(this);
+    }
+
+    @Override
+    public int receivePostEnergyChange(int changeAmount) {
+        if (SubscribeManager.checkSubscriber(this) && changeAmount < 0) {
             flash();
-            addToBot(new GainBlockAction(owner, owner, energyChange * block));
+            addToBot(new GainBlockAction(owner, owner, -changeAmount * block));
         }
+        return changeAmount;
     }
 }

@@ -328,6 +328,13 @@
       "拾起时，失去 #b50 %金币。 NL 战斗结束后，失去 #b50 金币，然后如果金币不足 #b100 ，该遗物损毁。 NL 进入战斗时，对生命值最多的敌方造成 #b10 点伤害，每因为该奇物的效果损失 #b100 金币，额外造成 #b1 次伤害。"
     ]
   },
+  "HSRMod:Plaguenest": {
+    "NAME": "Plaguenest",
+    "FLAVOR": "The Infinite Maze is a labyrinth that is said to be able to lead you to any place in the universe.",
+    "DESCRIPTIONS": [
+      "Gain [E] at the start of your turn, if you have Curse in your hand, draw 1, otherwise, lose 1 [E] ."
+    ]
+  },
   "HSRMod:RubertEmpireDifferenceMachine": {
     "NAME": "鲁珀特帝国差分机",
     "FLAVOR": "「如果这就是天才，那世上还是多些蠢人为好。」",

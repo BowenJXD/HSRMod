@@ -4,8 +4,10 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.cards.BaseCard;
 import hsrmod.powers.uniqueBuffs.HuohuoPower;
+import hsrmod.powers.uniqueBuffs.ReinforcePower;
 
 public class Huohuo1 extends BaseCard {
     public static final String ID = Huohuo1.class.getSimpleName();
@@ -20,6 +22,10 @@ public class Huohuo1 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainEnergyAction(1));
-        addToBot(new ApplyPowerAction(p, p, new HuohuoPower(p, upgraded), 1));
+        AbstractPower power = p.getPower(HuohuoPower.POWER_ID);
+        if (power != null)
+            ((HuohuoPower) power).upgraded = upgraded;
+        else
+            addToBot(new ApplyPowerAction(p, p, new HuohuoPower(p, upgraded)));
     }
 }

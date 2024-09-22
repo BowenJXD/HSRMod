@@ -5,6 +5,8 @@ import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.LoseStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
@@ -25,8 +27,26 @@ public class RobinPower extends BuffPower {
     }
 
     @Override
-    public void atEndOfTurn(boolean isPlayer) {
-        if (!isPlayer) return;
+    public void onInitialApplication() {
+        super.onInitialApplication();
+
+        // 取消静音背景音乐
+        CardCrawlGame.music.unsilenceBGM();
+        AbstractDungeon.scene.fadeOutAmbiance();
+
+        // 立即播放音乐
+        CardCrawlGame.music.playTempBgmInstantly("RobinBGM");
+    }
+
+    @Override
+    public void onRemove() {
+        super.onRemove();
+        AbstractDungeon.scene.fadeInAmbiance();
+        CardCrawlGame.music.fadeOutTempBGM();
+    }
+
+    @Override
+    public void atStartOfTurn() {
         if (this.amount == 0) {
             this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
         } else {
@@ -38,7 +58,10 @@ public class RobinPower extends BuffPower {
     @Override
     public void onPlayCard(AbstractCard card, AbstractMonster m) {
         flash();
-        addToBot(new ApplyPowerAction(owner, owner, new StrengthPower(owner, 1), 1));
-        if (card.hasTag(FOLLOW_UP)) addToBot(new ApplyPowerAction(owner, owner, new EnergyPower(owner, 20), 20));
+        if (card.type == AbstractCard.CardType.ATTACK) {
+            addToBot(new ApplyPowerAction(owner, owner, new StrengthPower(owner, 1), 1));
+            strengthGained++;
+            if (card.hasTag(FOLLOW_UP) && upgraded) addToBot(new ApplyPowerAction(owner, owner, new EnergyPower(owner, 20), 20));
+        }
     }
 }

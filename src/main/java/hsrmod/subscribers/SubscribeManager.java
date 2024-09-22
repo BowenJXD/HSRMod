@@ -23,12 +23,14 @@ public class SubscribeManager {
     List<PreBreakDamageSubscriber> preBreakDamageSubscribers;
     List<PreToughnessReduceSubscriber> preToughnessReduceSubscribers;
     List<PreDoTDamageSubscriber> preDoTDamageSubscribers;
+    List<PostEnergyChangeSubscriber> postEnergyChangeSubscribers;
 
     SubscribeManager() {
         toRemove = new ArrayList<>();
         preBreakDamageSubscribers = new ArrayList<>();
         preToughnessReduceSubscribers = new ArrayList<>();
         preDoTDamageSubscribers = new ArrayList<>();
+        postEnergyChangeSubscribers = new ArrayList<>();
     }
     
     public static SubscribeManager getInstance() {
@@ -51,6 +53,10 @@ public class SubscribeManager {
                 && !preDoTDamageSubscribers.contains(sub)) {
             preDoTDamageSubscribers.add((PreDoTDamageSubscriber) sub);
         }
+        else if (sub instanceof PostEnergyChangeSubscriber
+                && !postEnergyChangeSubscribers.contains(sub)) {
+            postEnergyChangeSubscribers.add((PostEnergyChangeSubscriber) sub);
+        }
     }
     
     public void unsubscribe(ISubscriber subscriber) {
@@ -62,6 +68,9 @@ public class SubscribeManager {
         }
         else if (subscriber instanceof PreDoTDamageSubscriber) {
             preDoTDamageSubscribers.remove(subscriber);
+        }
+        else if (subscriber instanceof PostEnergyChangeSubscriber) {
+            postEnergyChangeSubscribers.remove(subscriber);
         }
     }
     
@@ -78,7 +87,6 @@ public class SubscribeManager {
                 unsubscribe(sub);
             }
         }
-
     }
     
     public float triggerPreBreakDamage(float amount, AbstractCreature target) {
@@ -119,6 +127,20 @@ public class SubscribeManager {
         }
         
         unsubscribeLaterHelper(PreDoTDamageSubscriber.class);
+        
+        return result;
+    }
+    
+    public int triggerPostEnergyChange(int changeAmount) {
+        int result = changeAmount;
+        Iterator<PostEnergyChangeSubscriber> var3 = postEnergyChangeSubscribers.iterator();
+        
+        while (var3.hasNext()) {
+            PostEnergyChangeSubscriber sub = var3.next();
+            result = sub.receivePostEnergyChange(changeAmount);
+        }
+        
+        unsubscribeLaterHelper(PostEnergyChangeSubscriber.class);
         
         return result;
     }

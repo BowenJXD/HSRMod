@@ -1,6 +1,7 @@
 package hsrmod.relics.starter;
 
 import basemod.abstracts.CustomRelic;
+import basemod.abstracts.CustomSavable;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsAction;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
@@ -36,7 +37,7 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
-public class PomPomBlessing extends CustomRelic {
+public class PomPomBlessing extends CustomRelic implements CustomSavable<Integer> {
     // 遗物ID（此处的ModHelper在“04 - 本地化”中提到）
     public static final String ID = HSRMod.makePath(PomPomBlessing.class.getSimpleName());
     // 图片路径
@@ -46,9 +47,9 @@ public class PomPomBlessing extends CustomRelic {
     // 点击音效
     private static final LandingSound LANDING_SOUND = LandingSound.FLAT;
 
-    private static int BASE_ENERGY = 100;
-
     private static int ENERGY_GAIN_PER_CARD = 20;
+    
+    private int energy = 100;
 
     private int multiplier = 20;
 
@@ -68,7 +69,7 @@ public class PomPomBlessing extends CustomRelic {
     @Override
     public void atBattleStart() {
         flash();
-        addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new EnergyPower(AbstractDungeon.player, BASE_ENERGY), BASE_ENERGY));
+        addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new EnergyPower(AbstractDungeon.player, energy), energy));
         addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new IntangiblePlayerPower(AbstractDungeon.player, 1), 1));
         addToTop(new GainEnergyAction(AbstractDungeon.actNum));
         addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
@@ -155,5 +156,22 @@ public class PomPomBlessing extends CustomRelic {
             });
         }
         return damageAmount;
+    }
+
+    @Override
+    public void onVictory() {
+        super.onVictory();
+        energy = ModHelper.getPowerCount(EnergyPower.POWER_ID);
+    }
+
+    @Override
+    public Integer onSave() {
+        return energy;
+    }
+
+    @Override
+    public void onLoad(Integer integer) {
+        if (integer != null)
+            energy = integer;
     }
 }

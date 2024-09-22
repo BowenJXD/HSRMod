@@ -28,6 +28,7 @@ public class AllThingsArePossiblePower extends PowerPower {
 
     @Override
     public void onAfterUseCard(AbstractCard card, UseCardAction action) {
+        if (card.type != AbstractCard.CardType.ATTACK) return;
         if (card.target == AbstractCard.CardTarget.ALL_ENEMY 
                 || card.target == AbstractCard.CardTarget.ALL) {
             flash();

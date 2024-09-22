@@ -12,7 +12,7 @@ public class SkinSelectPatch {
     }
 
     public static boolean isSelected() {
-        return CardCrawlGame.chosenCharacter == StellaCharacter.PlayerColorEnum.MY_CHARACTER && (Boolean)ReflectionHacks.getPrivate(CardCrawlGame.mainMenuScreen.charSelectScreen, CharacterSelectScreen.class, "anySelected");
+        return CardCrawlGame.chosenCharacter == StellaCharacter.PlayerColorEnum.STELLA_CHARACTER && (Boolean)ReflectionHacks.getPrivate(CardCrawlGame.mainMenuScreen.charSelectScreen, CharacterSelectScreen.class, "anySelected");
     }
 
     @SpirePatch(

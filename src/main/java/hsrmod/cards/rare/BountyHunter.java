@@ -15,6 +15,6 @@ public class BountyHunter extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new BountyHunterPower(upgraded, magicNumber), 1));
+        addToBot(new ApplyPowerAction(p, p, new BountyHunterPower(upgraded, magicNumber)));
     }
 }

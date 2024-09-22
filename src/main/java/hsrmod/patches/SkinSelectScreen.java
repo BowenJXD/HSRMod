@@ -103,7 +103,7 @@ public class SkinSelectScreen implements ISubscriber, CustomSavable<Integer> {
     }
 
     private void updateInput() {
-        if (CardCrawlGame.chosenCharacter == StellaCharacter.PlayerColorEnum.MY_CHARACTER) {
+        if (CardCrawlGame.chosenCharacter == StellaCharacter.PlayerColorEnum.STELLA_CHARACTER) {
             this.leftHb.update();
             this.rightHb.update();
             if (this.leftHb.clicked) {

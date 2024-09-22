@@ -1,3 +1,4 @@
+/*
 package hsrmod.cards.uncommon;
 
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -18,3 +19,4 @@ public class TheArchitects extends BaseCard {
         addToBot(new GainBlockAction(p, b));
     }
 }
+*/

@@ -18,7 +18,7 @@ import hsrmod.subscribers.SubscribeManager;
 public class ReinforcePower extends BuffPower implements OnPlayerDamagedSubscriber {
     public static final String POWER_ID = HSRMod.makePath(ReinforcePower.class.getSimpleName());
     
-    private int block = 1;
+    public int block = 1;
 
     public ReinforcePower(AbstractCreature owner, int block) {
         super(POWER_ID, owner);

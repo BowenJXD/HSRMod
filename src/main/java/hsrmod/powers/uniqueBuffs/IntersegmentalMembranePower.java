@@ -1,15 +1,12 @@
 package hsrmod.powers.uniqueBuffs;
 
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import hsrmod.cards.BaseCard;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
-import hsrmod.subscribers.PostEnergyChangeSubscriber;
+import hsrmod.subscribers.PreEnergyChangeSubscriber;
 import hsrmod.subscribers.SubscribeManager;
 
-public class IntersegmentalMembranePower extends PowerPower implements PostEnergyChangeSubscriber {
+public class IntersegmentalMembranePower extends PowerPower implements PreEnergyChangeSubscriber {
     public static final String POWER_ID = HSRMod.makePath(IntersegmentalMembranePower.class.getSimpleName());
 
     int block;
@@ -38,7 +35,7 @@ public class IntersegmentalMembranePower extends PowerPower implements PostEnerg
     }
 
     @Override
-    public int receivePostEnergyChange(int changeAmount) {
+    public int receivePreEnergyChange(int changeAmount) {
         if (SubscribeManager.checkSubscriber(this) && changeAmount < 0) {
             flash();
             addToBot(new GainBlockAction(owner, owner, -changeAmount * block));

@@ -18,22 +18,17 @@ public class RuanMei1 extends BaseCard {
     }
 
     @Override
-    public void upgrade() {
-        super.upgrade();
-        target = CardTarget.ENEMY;
-    }
-
-    @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p,p, new BreakEfficiencyPower(p, magicNumber), magicNumber));
-        ModHelper.addToBotAbstract(() ->{
+        BreakEfficiencyPower be = new BreakEfficiencyPower(p, magicNumber);
+        if (upgraded) be.minAmount = 1;
+        addToBot(new ApplyPowerAction(p, p, be, magicNumber));
+        ModHelper.addToBotAbstract(() -> {
             AbstractPower power = p.getPower(BreakEfficiencyPower.POWER_ID);
-            if (power != null) {
+            if (power != null && upgraded) {
                 ((BreakEfficiencyPower) power).minAmount = 1;
                 power.updateDescription();
             }
         });
-        addToBot(new ApplyPowerAction(p,p, new BreakEffectPower(p, magicNumber), magicNumber));
-        if (upgraded && m != null) addToBot(new ApplyPowerAction(m,p, new ThanatoplumRebloomPower(m, 1), 1));
+        addToBot(new ApplyPowerAction(p, p, new BreakEffectPower(p, magicNumber), magicNumber));
     }
 }

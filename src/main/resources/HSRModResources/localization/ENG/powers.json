@@ -86,6 +86,18 @@
       "Increases damage over time taken by #b%d %%. Stacks up to #b%d."
     ]
   },
+  "HSRMod:Spore": {
+    "NAME": "Spore",
+    "DESCRIPTIONS": [
+      "Up to 6 stacks. At the start of the turn, 1 stack is removed. Explode when targeted by an attack card: remove all stacks, take X*X wind damage (1)."
+    ]
+  },
+  "HSRMod:CriticalBoost": {
+    "NAME": "Critical Boost",
+    "DESCRIPTIONS": [
+      "Crit rate is increased by #b%d %% (Crit DMG is #b%d %%). NL After taking normal damage, all stacks are removed."
+    ]
+  },
   "HSRMod:BrainInAVat": {
     "NAME": "BrainInAVat",
     "DESCRIPTIONS": [
@@ -187,7 +199,8 @@
   "HSRMod:Befog": {
     "NAME": "Befog",
     "DESCRIPTIONS": [
-      "After being broken, recover #b%d [E] , draw #b%d cards, and upgrade all current hand cards for this battle."
+      "After being broken, recover #b%d [E] , draw #b%d cards.",
+      "After being broken, recover #b%d [E] , draw #b%d cards, and upgrade all cards in hand."
     ]
   },
   "HSRMod:Symbiote": {
@@ -286,6 +299,27 @@
     "NAME": "Matrix Of Prescience",
     "DESCRIPTIONS": [
       "Damage received - #b%d %%。"
+    ]
+  },
+  "HSRMod:TheArchitects": {
+    "NAME": "The Architects",
+    "DESCRIPTIONS": [
+      "When you break enemy's Block, deal #b%d damage. For every 10 Block you have, damage + #b%d .",
+      "When you attack an enemy with Block, deal #b%d damage. For every 10 Block you have, damage + #b%d ."
+    ]
+  },
+  "HSRMod:Trailblazer7": {
+    "NAME": "Treasure of the Architects",
+    "DESCRIPTIONS": [
+      "At the start of your turn, a random enemy with attack intent gains #b%d Block. NL When you break Block for the first time of the turn, gain #b%d Block.",
+      "At the start of your turn, a random enemy with attack intent gains #b%d Block. NL When you break Block for the first time of the turn, gain #b%d Block."
+    ]
+  },
+  "HSRMod:Trailblazer8": {
+    "NAME": "Action Beats Overthinking",
+    "DESCRIPTIONS": [
+      "If you have Block, deal #b%d %% more damage to enemies with Block.",
+      "If you have Block, deal #b%d %% more damage to enemies with Block. NL When breaking Block, gain #b%d Block."
     ]
   }
 }

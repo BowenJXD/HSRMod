@@ -117,6 +117,24 @@ public class StellaCharacter extends CustomPlayer {
             case NIHILITY:
                 retVal.add(HSRMod.makePath(WaxOfNihility.ID));
                 break;
+            case PROPAGATION:
+                retVal.add(HSRMod.makePath(WaxOfPropagation.ID));
+                break;
+            case PRESERVATION:
+                retVal.add(HSRMod.makePath(WaxOfPreservation.ID));
+                break;
+            case THE_HUNT:
+                retVal.add(HSRMod.makePath(WaxOfTheHunt.ID));
+                break;
+            case ERUDITION:
+                retVal.add(HSRMod.makePath(WaxOfErudition.ID));
+                break;
+            case ABUNDANCE:
+                retVal.add(HSRMod.makePath(WaxOfAbundance.ID));
+                break;
+            case REMEMBRANCE:
+                retVal.add(HSRMod.makePath(WaxOfRemembrance.ID));
+                break;
             case TRAILBLAZE:
             default:
                 retVal.add(HSRMod.makePath(TrailblazeTimer.ID));

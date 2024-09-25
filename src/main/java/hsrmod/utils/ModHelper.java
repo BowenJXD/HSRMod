@@ -5,11 +5,14 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.monsters.MonsterGroup;
+import com.megacrit.cardcrawl.random.Random;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Random;
 import java.util.function.Predicate;
 
 public class ModHelper {
@@ -57,7 +60,7 @@ public class ModHelper {
 
     public static <T extends Enum<T>> T getRandomEnumValue(Class<T> enumClass) {
         T[] values = enumClass.getEnumConstants();
-        int randomIndex = new Random().nextInt(values.length);
+        int randomIndex = new Random().random(values.length - 1);
         return values[randomIndex];
     }
     
@@ -99,5 +102,86 @@ public class ModHelper {
     public static class FindResult {
         public AbstractCard card;
         public CardGroup group;
+    }
+    
+    public static <T> T getRandomElement(List<T> list, Random rand) {
+        return list.get(rand.random(list.size() - 1));
+    }
+    
+    public static <T> T getRandomElement(List<T> list, Random random, Predicate<T> predicate) {
+        List<T> filtered = new ArrayList<>();
+        for (T element : list) {
+            if (predicate.test(element)) {
+                filtered.add(element);
+            }
+        }
+        return getRandomElement(filtered, random);
+    }
+
+    public static AbstractMonster getRandomMonster(Predicate<AbstractMonster> predicate, boolean aliveOnly) {
+        MonsterGroup group = AbstractDungeon.getCurrRoom().monsters;
+        Random rng = AbstractDungeon.cardRandomRng;
+        if (group.areMonstersBasicallyDead()) {
+            return null;
+        } else {
+            ArrayList tmp;
+            Iterator var5;
+            AbstractMonster m;
+            if (predicate == null) {
+                if (aliveOnly) {
+                    tmp = new ArrayList();
+                    var5 = group.monsters.iterator();
+
+                    while(var5.hasNext()) {
+                        m = (AbstractMonster)var5.next();
+                        if (!m.halfDead && !m.isDying && !m.isEscaping) {
+                            tmp.add(m);
+                        }
+                    }
+
+                    if (tmp.size() <= 0) {
+                        return null;
+                    } else {
+                        return (AbstractMonster)tmp.get(rng.random(0, tmp.size() - 1));
+                    }
+                } else {
+                    return (AbstractMonster)group.monsters.get(rng.random(0, group.monsters.size() - 1));
+                }
+            } else if (group.monsters.size() == 1) {
+                if (predicate.test((AbstractMonster)group.monsters.get(0))) {
+                    return (AbstractMonster)group.monsters.get(0);
+                } else {
+                    return null;
+                }
+            } else if (aliveOnly) {
+                tmp = new ArrayList();
+                var5 = group.monsters.iterator();
+
+                while(var5.hasNext()) {
+                    m = (AbstractMonster)var5.next();
+                    if (!m.halfDead && !m.isDying && !m.isEscaping && predicate.test(m)) {
+                        tmp.add(m);
+                    }
+                }
+
+                if (tmp.size() == 0) {
+                    return null;
+                } else {
+                    return (AbstractMonster)tmp.get(rng.random(0, tmp.size() - 1));
+                }
+            } else {
+                tmp = new ArrayList();
+                var5 = group.monsters.iterator();
+
+                while(var5.hasNext()) {
+                    m = (AbstractMonster)var5.next();
+                    if (predicate.test(m)) {
+                        tmp.add(m);
+                    }
+                }
+
+                return (AbstractMonster)tmp.get(rng.random(0, tmp.size() - 1));
+            }
+        }
     }
 }

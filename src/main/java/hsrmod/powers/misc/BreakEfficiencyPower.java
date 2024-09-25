@@ -36,14 +36,14 @@ public class BreakEfficiencyPower extends BuffPower {
     public void reducePower(int reduceAmount) {
         super.reducePower(reduceAmount);
         this.amount = Math.max(this.amount, minAmount);
+        if (this.amount == 0) {
+            this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+        }
     }
 
     @Override
     public void atEndOfTurn(boolean isPlayer) {
-        super.atStartOfTurn();if (this.amount == 0) {
-            this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
-        } else {
-            this.addToBot(new ReducePowerAction(this.owner, this.owner, this, 1));
-        }
+        super.atStartOfTurn();
+        reducePower(1);
     }
 }

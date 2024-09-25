@@ -40,6 +40,48 @@
       "Increase the chance of appearing of \"Nihility\" cards."
     ]
   },
+  "HSRMod:WaxOfPropagation": {
+    "NAME": "Wax Of Propagation",
+    "FLAVOR": "It is said that stamping with this Sealing Wax will attract a glimpse from the corresponding Aeon from across space and time - IX is watching you! ",
+    "DESCRIPTIONS": [
+      "Increase the chance of appearing of \"Propagation\" cards."
+    ]
+  },
+  "HSRMod:WaxOfPreservation": {
+    "NAME": "Wax Of Preservation",
+    "FLAVOR": "It is said that stamping with this Sealing Wax will attract a glimpse from the corresponding Aeon from across space and time - IX is watching you! ",
+    "DESCRIPTIONS": [
+      "Increase the chance of appearing of \"Preservation\" cards."
+    ]
+  },
+  "HSRMod:WaxOfTheHunt": {
+    "NAME": "Wax Of The Hunt",
+    "FLAVOR": "It is said that stamping with this Sealing Wax will attract a glimpse from the corresponding Aeon from across space and time - IX is watching you! ",
+    "DESCRIPTIONS": [
+      "Increase the chance of appearing of \"The Hunt\" cards."
+    ]
+  },
+  "HSRMod:WaxOfErudition": {
+    "NAME": "Wax Of Erudition",
+    "FLAVOR": "It is said that stamping with this Sealing Wax will attract a glimpse from the corresponding Aeon from across space and time - IX is watching you! ",
+    "DESCRIPTIONS": [
+      "Increase the chance of appearing of \"Erudition\" cards."
+    ]
+  },
+  "HSRMod:WaxOfAbundance": {
+    "NAME": "Wax Of Abundance",
+    "FLAVOR": "It is said that stamping with this Sealing Wax will attract a glimpse from the corresponding Aeon from across space and time - IX is watching you! ",
+    "DESCRIPTIONS": [
+      "Increase the chance of appearing of \"Abundance\" cards."
+    ]
+  },
+  "HSRMod:WaxOfRemembrance": {
+    "NAME": "Wax Of Remembrance",
+    "FLAVOR": "It is said that stamping with this Sealing Wax will attract a glimpse from the corresponding Aeon from across space and time - IX is watching you! ",
+    "DESCRIPTIONS": [
+      "Increase the chance of appearing of \"Remembrance\" cards."
+    ]
+  },
   "HSRMod:TrailblazeTimer": {
     "NAME": "Trailblaze Timer",
     "FLAVOR": "It broke countless times and underwent endless repairs. Its former shape was no longer discernible, and only the stilled sharp hands were pointing ever forward.",
@@ -66,6 +108,13 @@
     "FLAVOR": "\"Borisin Brood Lord, with you come war and a scourge upon all worlds. Your sentence is to be eternally detained and imprisoned, never to be reborn.\"",
     "DESCRIPTIONS": [
       "Your starter strike cards gain #yEthereal , and after being exhausted, apply #b1 stack of #yhsrmod:DoT to all enemies. NL You are immune to #yThorn damage outside of your turn."
+    ]
+  },
+  "HSRMod:KnightOfPurityPalace": {
+    "NAME": "Knight of Purity Palace",
+    "FLAVOR": "\"Henceforth, I will become a witch, and you will return to being a devil.\" Safina could not deny the validity of Vanira's statement.",
+    "DESCRIPTIONS": [
+      "Upon gain, all starter defend card gain #yInnate, and its Block + #b2 . NL When shuffling your deck, gain all innate cards."
     ]
   },
   "HSRMod:March7th": {

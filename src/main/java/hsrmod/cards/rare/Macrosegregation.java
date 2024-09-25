@@ -13,11 +13,6 @@ public class Macrosegregation extends BaseCard {
     
     public Macrosegregation() {
         super(ID);
-    }
-
-    @Override
-    public void upgrade() {
-        super.upgrade();
         isInnate = true;
     }
 

@@ -6,6 +6,9 @@ public enum Path {
     DESTRUCTION,
     NIHILITY,
     PROPAGATION,
+    PRESERVATION,
+    THE_HUNT,
     ERUDITION,
     ABUNDANCE,
+    REMEMBRANCE,
 }

@@ -33,8 +33,10 @@ public class MusicPatch {
                 return MainMusic.newMusic("audio/music/STS_EliteBoss_NewMix_v1.ogg");
             case "CREDITS":
                 return MainMusic.newMusic("audio/music/STS_Credits_v5.ogg");
+            case "RobinBGM":
+                return MainMusic.newMusic("HSRModResources/audio/music/RobinBGM.mp3");
             default:
-                return MainMusic.newMusic("HSRModResources/audio/music/" + key + ".mp3");
+                return MainMusic.newMusic("audio/music/" + key);
         }
     }
 }

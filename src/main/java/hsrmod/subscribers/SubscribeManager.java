@@ -19,19 +19,14 @@ import java.util.List;
 public class SubscribeManager {
     private static SubscribeManager instance = null;
     
-    List<ISubscriber> toRemove;
-    List<PreBreakDamageSubscriber> preBreakDamageSubscribers;
-    List<PreToughnessReduceSubscriber> preToughnessReduceSubscribers;
-    List<PreDoTDamageSubscriber> preDoTDamageSubscribers;
-    List<PostEnergyChangeSubscriber> postEnergyChangeSubscribers;
+    List<ISubscriber> toRemove = new ArrayList<>();
+    List<PreBreakDamageSubscriber> preBreakDamageSubscribers = new ArrayList<>();
+    List<PreToughnessReduceSubscriber> preToughnessReduceSubscribers = new ArrayList<>();
+    List<PreDoTDamageSubscriber> preDoTDamageSubscribers = new ArrayList<>();
+    List<PreEnergyChangeSubscriber> preEnergyChangeSubscribers = new ArrayList<>();
+    List<PostBreakBlockSubscriber> postBreakBlockSubscribers = new ArrayList<>();
 
-    SubscribeManager() {
-        toRemove = new ArrayList<>();
-        preBreakDamageSubscribers = new ArrayList<>();
-        preToughnessReduceSubscribers = new ArrayList<>();
-        preDoTDamageSubscribers = new ArrayList<>();
-        postEnergyChangeSubscribers = new ArrayList<>();
-    }
+    SubscribeManager() {}
     
     public static SubscribeManager getInstance() {
         if (instance == null) {
@@ -53,9 +48,13 @@ public class SubscribeManager {
                 && !preDoTDamageSubscribers.contains(sub)) {
             preDoTDamageSubscribers.add((PreDoTDamageSubscriber) sub);
         }
-        else if (sub instanceof PostEnergyChangeSubscriber
-                && !postEnergyChangeSubscribers.contains(sub)) {
-            postEnergyChangeSubscribers.add((PostEnergyChangeSubscriber) sub);
+        else if (sub instanceof PreEnergyChangeSubscriber
+                && !preEnergyChangeSubscribers.contains(sub)) {
+            preEnergyChangeSubscribers.add((PreEnergyChangeSubscriber) sub);
+        }
+        else if (sub instanceof PostBreakBlockSubscriber
+                && !postBreakBlockSubscribers.contains(sub)) {
+            postBreakBlockSubscribers.add((PostBreakBlockSubscriber) sub);
         }
     }
     
@@ -69,8 +68,11 @@ public class SubscribeManager {
         else if (subscriber instanceof PreDoTDamageSubscriber) {
             preDoTDamageSubscribers.remove(subscriber);
         }
-        else if (subscriber instanceof PostEnergyChangeSubscriber) {
-            postEnergyChangeSubscribers.remove(subscriber);
+        else if (subscriber instanceof PreEnergyChangeSubscriber) {
+            preEnergyChangeSubscribers.remove(subscriber);
+        }
+        else if (subscriber instanceof PostBreakBlockSubscriber) {
+            postBreakBlockSubscribers.remove(subscriber);
         }
     }
     
@@ -131,18 +133,29 @@ public class SubscribeManager {
         return result;
     }
     
-    public int triggerPostEnergyChange(int changeAmount) {
+    public int triggerPreEnergyChange(int changeAmount) {
         int result = changeAmount;
-        Iterator<PostEnergyChangeSubscriber> var3 = postEnergyChangeSubscribers.iterator();
+        Iterator<PreEnergyChangeSubscriber> var3 = preEnergyChangeSubscribers.iterator();
         
         while (var3.hasNext()) {
-            PostEnergyChangeSubscriber sub = var3.next();
-            result = sub.receivePostEnergyChange(changeAmount);
+            PreEnergyChangeSubscriber sub = var3.next();
+            result = sub.receivePreEnergyChange(changeAmount);
         }
         
-        unsubscribeLaterHelper(PostEnergyChangeSubscriber.class);
+        unsubscribeLaterHelper(PreEnergyChangeSubscriber.class);
         
         return result;
+    }
+    
+    public void triggerPostBreakBlock(AbstractCreature target) {
+        Iterator<PostBreakBlockSubscriber> var3 = postBreakBlockSubscribers.iterator();
+        
+        while (var3.hasNext()) {
+            PostBreakBlockSubscriber sub = var3.next();
+            sub.receivePostBreakBlock(target);
+        }
+        
+        unsubscribeLaterHelper(PostBreakBlockSubscriber.class);
     }
     
     public static boolean checkSubscriber(BaseCard card) {

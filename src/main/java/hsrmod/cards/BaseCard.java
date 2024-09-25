@@ -14,7 +14,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementType;
 import hsrmod.powers.misc.EnergyPower;
-import hsrmod.relics.starter.WaxOfElation;
+import hsrmod.relics.starter.*;
 import hsrmod.utils.CardDataCol;
 import hsrmod.utils.DataManager;
 import hsrmod.utils.ModHelper;
@@ -144,7 +144,7 @@ public abstract class BaseCard extends CustomCard implements SpawnModificationCa
     public boolean canSpawn(ArrayList<AbstractCard> currentRewardCards) {
         int count = AbstractDungeon.player.masterDeck.group.stream().mapToInt(c -> c.cardID.equals(this.cardID) ? 1 : 0).sum();
         
-        if (AbstractDungeon.cardRng.random(99) < (100 / (count + 1))) {
+        if (AbstractDungeon.cardRng.random(99) < ((checkPath() ? 99 : 66) / (count + 1))) {
             return true;
         }
         return false;
@@ -152,20 +152,24 @@ public abstract class BaseCard extends CustomCard implements SpawnModificationCa
 
     @Override
     public boolean canSpawnShop(ArrayList<AbstractCard> currentShopCards) {
-        int chance = 50;
-        if (AbstractDungeon.player.hasRelic(WaxOfElation.ID) && tags.contains(CustomEnums.ELATION)) {
-            chance = 100;
-        }
-        if (AbstractDungeon.player.hasRelic(WaxOfElation.ID) && tags.contains(CustomEnums.DESTRUCTION)) {
-            chance = 100;
-        }
-        if (AbstractDungeon.player.hasRelic(WaxOfElation.ID) && tags.contains(CustomEnums.NIHILITY)) {
-            chance = 100;
-        }
-        if (AbstractDungeon.cardRng.random(99) < chance) {
+        if (AbstractDungeon.cardRng.random(99) < (checkPath() ? 99 : 33)) {
             return true;
         }
-        
+        return false;
+    }
+    
+    boolean checkPath() {
+        if (AbstractDungeon.player.hasRelic(WaxOfElation.ID) && tags.contains(CustomEnums.ELATION) 
+                || AbstractDungeon.player.hasRelic(WaxOfDestruction.ID) && tags.contains(CustomEnums.DESTRUCTION)
+                || AbstractDungeon.player.hasRelic(WaxOfNihility.ID) && tags.contains(CustomEnums.NIHILITY) 
+                || AbstractDungeon.player.hasRelic(WaxOfPropagation.ID) && tags.contains(CustomEnums.PROPAGATION)
+                || AbstractDungeon.player.hasRelic(WaxOfPreservation.ID) && tags.contains(CustomEnums.PRESERVATION) 
+                || AbstractDungeon.player.hasRelic(WaxOfTheHunt.ID) && tags.contains(CustomEnums.THE_HUNT) 
+                || AbstractDungeon.player.hasRelic(WaxOfErudition.ID) && tags.contains(CustomEnums.ERUDITION) 
+                || AbstractDungeon.player.hasRelic(WaxOfAbundance.ID) && tags.contains(CustomEnums.ABUNDANCE) 
+                || AbstractDungeon.player.hasRelic(WaxOfRemembrance.ID) && tags.contains(CustomEnums.REMEMBRANCE)) {
+            return true;
+        }
         return false;
     }
 
@@ -181,12 +185,16 @@ public abstract class BaseCard extends CustomCard implements SpawnModificationCa
 
     public static CardTags getPathTag(String path){
         CardTags result = null;
-        if (path.contains("欢愉")) result = CustomEnums.ELATION;
+        if (path.contains("开拓")) result = CustomEnums.TRAILBLAZE;
+        else if (path.contains("欢愉")) result = CustomEnums.ELATION;
         else if (path.contains("毁灭")) result = CustomEnums.DESTRUCTION;
         else if (path.contains("虚无")) result = CustomEnums.NIHILITY;
         else if (path.contains("繁育")) result = CustomEnums.PROPAGATION;
+        else if (path.contains("存护")) result = CustomEnums.PRESERVATION;
+        else if (path.contains("巡猎")) result = CustomEnums.THE_HUNT;
         else if (path.contains("智识")) result = CustomEnums.ERUDITION;
         else if (path.contains("丰饶")) result = CustomEnums.ABUNDANCE;
+        else if (path.contains("记忆")) result = CustomEnums.REMEMBRANCE;
         return result;
     }
     

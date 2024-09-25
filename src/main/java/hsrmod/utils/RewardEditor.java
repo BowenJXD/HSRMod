@@ -12,6 +12,7 @@ import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
 import hsrmod.relics.BaseRelic;
 import hsrmod.relics.boss.IronCavalryAgainstTheScourge;
+import hsrmod.relics.boss.KnightOfPurityPalace;
 import hsrmod.relics.boss.PrisonerInDeepConfinement;
 import hsrmod.relics.boss.TheAshblazingGrandDuke;
 
@@ -61,6 +62,7 @@ public class RewardEditor {
             if (AbstractDungeon.actNum == 1
                     && AbstractDungeon.getMonsters() != null
                     && AbstractDungeon.getMonsters().monsters.stream().anyMatch(m -> m.type == AbstractMonster.EnemyType.BOSS)) {
+                
                 String relicName = "";
                 if (tag == CustomEnums.ELATION) {
                     relicName = TheAshblazingGrandDuke.ID;
@@ -70,6 +72,9 @@ public class RewardEditor {
                 }
                 if (tag == CustomEnums.NIHILITY) {
                     relicName = PrisonerInDeepConfinement.ID;
+                }
+                if (tag == CustomEnums.PRESERVATION) {
+                    relicName = KnightOfPurityPalace.ID;
                 }
 
                 if (!relicName.isEmpty())
@@ -96,7 +101,7 @@ public class RewardEditor {
 
             AbstractCard newCard = getCard(card.rarity);
 
-            if (reward.cards.stream().anyMatch(c -> Objects.equals(c.cardID, newCard.cardID)) || newCard == null) {
+            if (newCard == null || reward.cards.stream().anyMatch(c -> Objects.equals(c.cardID, newCard.cardID))) {
                 continue;
             }
 
@@ -128,8 +133,12 @@ public class RewardEditor {
                 return null;
         }
 
-        ArrayList<AbstractCard> cards = group.group.stream().filter(c -> c.hasTag(tag)).collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
+        ArrayList<AbstractCard> cards = group.group.stream()
+                .filter(c -> c.hasTag(tag))
+                .filter(c -> AbstractDungeon.player.masterDeck.group.stream().noneMatch(card -> c.uuid == card.uuid))
+                .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
 
+        if (cards.isEmpty()) return null;
         return cards.get(AbstractDungeon.cardRandomRng.random(cards.size() - 1));
     }
 
@@ -166,13 +175,13 @@ public class RewardEditor {
         float chance = 0;
         switch (rarity) {
             case COMMON:
-                chance = 40 - AbstractDungeon.actNum * 10;
+                chance = 30 - AbstractDungeon.actNum * 10;
                 break;
             case UNCOMMON:
-                chance = 50 - AbstractDungeon.actNum * 10;
+                chance = 40 - AbstractDungeon.actNum * 10;
                 break;
             case RARE:
-                chance = 60 - AbstractDungeon.actNum * 10;
+                chance = 50 - AbstractDungeon.actNum * 10;
                 break;
         }
         return AbstractDungeon.cardRandomRng.random(99) < chance;

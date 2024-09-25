@@ -97,7 +97,7 @@ public class AventurinePower extends PowerPower implements OnPlayerDamagedSubscr
         ));
         addToBot(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, b));
         if (!isPlayerTurn && upgraded)
-            addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new BlurPower(AbstractDungeon.player, 0), 0));
+            addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new BlurPower(AbstractDungeon.player, 1), 0));
     }
 
     @Override

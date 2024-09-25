@@ -42,12 +42,14 @@ public class SkinSelectScreen implements ISubscriber, CustomSavable<Integer> {
             SKINS.add(new Skin("HSRModResources/img/char/ElationLogo.png", "欢愉命途", "通过追击进行输出", Path.ELATION));
             SKINS.add(new Skin("HSRModResources/img/char/DestructionLogo.png", "毁灭命途", "通过击破进行输出", Path.DESTRUCTION));
             SKINS.add(new Skin("HSRModResources/img/char/NihilityLogo.png", "虚无命途", "通过持续伤害进行输出", Path.NIHILITY));
+            SKINS.add(new Skin("HSRModResources/img/char/PreservationLogo.png", "存护命途", "通过格挡进行输出", Path.PRESERVATION));
         }
         else {
             SKINS.add(new Skin("HSRModResources/img/char/TrailblazeLogo.png", "Trailblaze", "Trailblaze your own way", Path.TRAILBLAZE));
             SKINS.add(new Skin("HSRModResources/img/char/ElationLogo.png", "Elation", "Damage through Follow-Up", Path.ELATION));
             SKINS.add(new Skin("HSRModResources/img/char/DestructionLogo.png", "Destruction", "Damage through break", Path.DESTRUCTION));
             SKINS.add(new Skin("HSRModResources/img/char/NihilityLogo.png", "Nihility", "Damage through DoT", Path.NIHILITY));
+            SKINS.add(new Skin("HSRModResources/img/char/PreservationLogo.png", "Preservation", "Damage through block", Path.PRESERVATION));
         }
         // SKINS.add(new Skin("HSRModResources/img/char/TrailblazeLogo.png", "开拓命途", "无特殊效果", "Trailblaze"));
     }

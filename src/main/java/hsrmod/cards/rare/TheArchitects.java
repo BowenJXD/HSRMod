@@ -1,10 +1,10 @@
-/*
-package hsrmod.cards.uncommon;
+package hsrmod.cards.rare;
 
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cards.BaseCard;
+import hsrmod.powers.uniqueBuffs.TheArchitectsPower;
 
 public class TheArchitects extends BaseCard {
     public static final String ID = TheArchitects.class.getSimpleName();
@@ -14,9 +14,13 @@ public class TheArchitects extends BaseCard {
     }
 
     @Override
+    public void upgrade() {
+        super.upgrade();
+        isInnate = true;
+    }
+
+    @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        int b = p.hand.size() + (upgraded ? energyOnUse : 0);
-        addToBot(new GainBlockAction(p, b));
+        addToBot(new ApplyPowerAction(p, p, new TheArchitectsPower(upgraded)));
     }
 }
-*/

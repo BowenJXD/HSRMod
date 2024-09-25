@@ -40,6 +40,48 @@
       "提高「虚无」牌出现的概率。"
     ]
   },
+  "HSRMod:WaxOfPropagation": {
+    "NAME": "繁育火漆",
+    "FLAVOR": "据说盖下这枚火漆，就会遥遥吸引对应星神跨越时空的瞥视。",
+    "DESCRIPTIONS": [
+      "提高「繁育」牌出现的概率。"
+    ]
+  },
+  "HSRMod:WaxOfPreservation": {
+    "NAME": "存护火漆",
+    "FLAVOR": "据说盖下这枚火漆，就会遥遥吸引对应星神跨越时空的瞥视。",
+    "DESCRIPTIONS": [
+      "提高「存护」牌出现的概率。"
+    ]
+  },
+  "HSRMod:WaxOfTheHunt": {
+    "NAME": "巡猎火漆",
+    "FLAVOR": "据说盖下这枚火漆，就会遥遥吸引对应星神跨越时空的瞥视。",
+    "DESCRIPTIONS": [
+      "提高「巡猎」牌出现的概率。"
+    ]
+  },
+  "HSRMod:WaxOfErudition": {
+    "NAME": "智识火漆",
+    "FLAVOR": "据说盖下这枚火漆，就会遥遥吸引对应星神跨越时空的瞥视。",
+    "DESCRIPTIONS": [
+      "提高「智识」牌出现的概率。"
+    ]
+  },
+  "HSRMod:WaxOfAbundance": {
+    "NAME": "丰饶火漆",
+    "FLAVOR": "据说盖下这枚火漆，就会遥遥吸引对应星神跨越时空的瞥视。",
+    "DESCRIPTIONS": [
+      "提高「丰饶」牌出现的概率。"
+    ]
+  },
+  "HSRMod:WaxOfRemembrance": {
+    "NAME": "记忆火漆",
+    "FLAVOR": "据说盖下这枚火漆，就会遥遥吸引对应星神跨越时空的瞥视。",
+    "DESCRIPTIONS": [
+      "提高「记忆」牌出现的概率。"
+    ]
+  },
   "HSRMod:TrailblazeTimer": {
     "NAME": "开拓进行时",
     "FLAVOR": "一次次折损，一次次修补，它曾经的样子已无从辨认，只有不再转动的尖针，依旧指向不变的前方。",
@@ -66,6 +108,13 @@
     "FLAVOR": "「步离巢父，行则战至，祸遍诸界。判其绝足禁闭，不得受生。」",
     "DESCRIPTIONS": [
       "你的初始攻击牌获得 #y虚无 且消耗后对所有敌人施加 #b1 层随机的 #yhsrmod:持续伤害 。 NL 你于回合外免疫 #y荆棘 伤害。"
+    ]
+  },
+  "HSRMod:KnightOfPurityPalace": {
+    "NAME": "净庭教宗的圣骑士",
+    "FLAVOR": "「从此，我成为了魔女，你变回了恶魔。」面对瓦妮拉的说法，萨菲娜无法否认。",
+    "DESCRIPTIONS": [
+      "拾起时，所有初始防御牌获得固有，且基础格挡值+2。 NL 洗牌时，获得所有固有牌。"
     ]
   },
   "HSRMod:Trailblazer": {

@@ -86,6 +86,18 @@
       "受到的持续伤害+ #b%d %%。至多叠加 #b%d 层。"
     ]
   },
+  "HSRMod:Spore": {
+    "NAME": "孢子",
+    "DESCRIPTIONS": [
+      "至多6层，回合开始时移除1层。成为攻击牌的目标后爆裂：移除所有层，受到X*X的伤害（风1）。"
+    ]
+  },
+  "HSRMod:CriticalBoost": {
+    "NAME": "会心",
+    "DESCRIPTIONS": [
+      "暴击率+10X（爆击伤害为100%）。 NL 受到通常伤害后移除所有层。"
+    ]
+  },
   "HSRMod:BrainInAVat": {
     "NAME": "罐中脑",
     "DESCRIPTIONS": [
@@ -186,7 +198,8 @@
   "HSRMod:Befog": {
     "NAME": "醇醉",
     "DESCRIPTIONS": [
-      "被击破后，你回复 #b%d 的 [E] ，摸 #b%d 张牌，然后在本场战斗中升级当前所有手牌。"
+      "被击破后，你回复 #b%d [E] ，摸 #b%d 张牌。",
+      "被击破后，你回复 #b%d [E] ，摸 #b%d 张牌，然后升级所有手牌。"
     ]
   },
   "HSRMod:Symbiote": {
@@ -286,6 +299,25 @@
     "NAME": "穷观阵",
     "DESCRIPTIONS": [
       "你受到的伤害- #b%d %%。"
+    ]
+  },
+  "HSRMod:TheArchitects": {
+    "NAME": "筑城者",
+    "DESCRIPTIONS": [
+      "突破格挡时，对其造成 #b%d 点伤害，你每有 #b%d 层格挡，造成的伤害+ #b%d 。",
+      "对有格挡的敌人造成伤害时，对其造成 #b%d 点伤害，你每有 #b%d 层格挡，造成的伤害+ #b%d 。"
+    ]
+  },
+  "HSRMod:Trailblazer7": {
+    "NAME": "筑城者遗宝",
+    "DESCRIPTIONS": [
+      "回合开始时，令随机一名有攻击意图的敌人获得 #b%d 层格挡。 NL 你于一回合首次突破格挡时，获得 #b%d 层格挡。"
+    ]
+  },
+  "HSRMod:Trailblazer8": {
+    "NAME": "行胜思",
+    "DESCRIPTIONS": [
+      "回合开始失去格挡时，对随机敌人造成X点伤害（物理2）（X为失去的格挡数，目前为 #b%d ），然后此回合你对有格挡的敌人造成的伤害增加X%%。"
     ]
   }
 }

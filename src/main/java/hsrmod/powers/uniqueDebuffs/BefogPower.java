@@ -15,46 +15,41 @@ import java.util.Iterator;
 
 public class BefogPower extends DebuffPower implements OnReceivePowerPower{
     public static final String POWER_ID = HSRMod.makePath(BefogPower.class.getSimpleName());
-
-    int drawNum = 0;
-    int energyNum = 0;
     
-    public BefogPower(AbstractCreature owner, int Amount) {
-        super(POWER_ID, owner, Amount);
-        this.drawNum = Amount;
-        this.energyNum = Amount;
+    public BefogPower(AbstractCreature owner, int Amount, boolean upgraded) {
+        super(POWER_ID, owner, Amount, upgraded);
         
         this.updateDescription();
     }
 
     @Override
     public void updateDescription() {
-        this.description = String.format(DESCRIPTIONS[0], drawNum, energyNum);
+        if (upgraded)
+            this.description = String.format(DESCRIPTIONS[1], amount, amount);
+        else
+            this.description = String.format(DESCRIPTIONS[0], amount, amount);
     }
 
     @Override
     public boolean onReceivePower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
         if (power instanceof BrokenPower){
             this.flash();
-            addToBot(new GainEnergyAction(energyNum));
-            addToBot(new DrawCardAction(drawNum));
+            addToBot(new GainEnergyAction(amount));
+            addToBot(new DrawCardAction(amount));
 
-            ModHelper.addToBotAbstract(() -> {
-                if (AbstractDungeon.player.hand.isEmpty()) return;
-                Iterator<AbstractCard> hand = AbstractDungeon.player.hand.group.iterator();
-                while (hand.hasNext()) {
-                    AbstractCard c = hand.next();
-                    if (c.canUpgrade()) {
-                        addToBot(new UpgradeSpecificCardAction(c));
+            if (upgraded)
+                ModHelper.addToBotAbstract(() -> {
+                    if (AbstractDungeon.player.hand.isEmpty()) return;
+                    Iterator<AbstractCard> hand = AbstractDungeon.player.hand.group.iterator();
+                    while (hand.hasNext()) {
+                        AbstractCard c = hand.next();
+                        if (c.canUpgrade()) {
+                            addToBot(new UpgradeSpecificCardAction(c));
+                        }
                     }
-                }
-            });
+                });
 
-            if (this.amount == 0) {
-                this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
-            } else {
-                this.addToBot(new ReducePowerAction(this.owner, this.owner, this, 1));
-            }
+            this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
         }
         return true;
     }

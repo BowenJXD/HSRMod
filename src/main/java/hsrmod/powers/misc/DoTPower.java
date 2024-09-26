@@ -6,7 +6,6 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.modcore.ElementType;
@@ -15,9 +14,7 @@ import hsrmod.powers.breaks.BleedingPower;
 import hsrmod.powers.breaks.BurnPower;
 import hsrmod.powers.breaks.ShockPower;
 import hsrmod.powers.breaks.WindShearPower;
-import hsrmod.subscribers.SubscribeManager;
-
-import java.util.Iterator;
+import hsrmod.subscribers.SubscriptionManager;
 
 public abstract class DoTPower extends DebuffPower {
     private AbstractCreature source;
@@ -54,7 +51,7 @@ public abstract class DoTPower extends DebuffPower {
             DamageInfo info = new DamageInfo(this.source, (int) dmg);
             info.applyPowers(this.source, this.owner);
             
-            info.output = (int) SubscribeManager.getInstance().triggerPreDoTDamage(info.output, this.owner, this);
+            info.output = (int) SubscriptionManager.getInstance().triggerPreDoTDamage(info.output, this.owner, this);
             
             this.addToTop(new ElementalDamageAction(this.owner, info, this.getElementType(), toughnessReduction));
             if (removeOnTrigger) remove();

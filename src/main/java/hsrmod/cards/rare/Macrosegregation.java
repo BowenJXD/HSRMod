@@ -18,9 +18,6 @@ public class Macrosegregation extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        if (!upgraded) 
-            addToBot(new RemoveSpecificPowerAction(p, p, DexterityPower.POWER_ID));
-        
-        addToBot(new ApplyPowerAction(p, p, new DivinityPower(1f, magicNumber / 100f)));
+        addToBot(new ApplyPowerAction(p, p, new DivinityPower(2, magicNumber / 100f)));
     }
 }

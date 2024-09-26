@@ -1,31 +1,30 @@
-package hsrmod.cards.uncommon;
+package hsrmod.obsoleteCards;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AfterImagePower;
 import com.megacrit.cardcrawl.powers.BlurPower;
-import com.megacrit.cardcrawl.powers.PlatedArmorPower;
 import hsrmod.cards.BaseCard;
 
-public class ConcertForTwo extends BaseCard {
-    public static final String ID = ConcertForTwo.class.getSimpleName();
+public class DestinysThreadsForewoven extends BaseCard {
+    public static final String ID = DestinysThreadsForewoven.class.getSimpleName();
     
-    public ConcertForTwo() {
+    public DestinysThreadsForewoven() {
         super(ID);
-        exhaust = true;
+        isEthereal = true;
     }
     
     @Override
     public void upgrade() {
         super.upgrade();
+        isEthereal = false;
         isInnate = true;
     }
     
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new AfterImagePower(p, magicNumber), magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new BlurPower(p, magicNumber), magicNumber));
 
         addToBot(new GainBlockAction(p, block));
         addToBot(new GainBlockAction(m, baseBlock));

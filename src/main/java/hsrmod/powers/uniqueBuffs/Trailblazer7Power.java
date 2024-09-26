@@ -1,14 +1,12 @@
 package hsrmod.powers.uniqueBuffs;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.BlurPower;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
 import hsrmod.subscribers.PostBreakBlockSubscriber;
-import hsrmod.subscribers.SubscribeManager;
+import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
 public class Trailblazer7Power extends PowerPower implements PostBreakBlockSubscriber {
@@ -32,13 +30,13 @@ public class Trailblazer7Power extends PowerPower implements PostBreakBlockSubsc
     @Override
     public void onInitialApplication() {
         super.onInitialApplication();
-        SubscribeManager.getInstance().subscribe(this);
+        SubscriptionManager.getInstance().subscribe(this);
     }
 
     @Override
     public void onRemove() {
         super.onRemove();
-        SubscribeManager.getInstance().unsubscribe(this);
+        SubscriptionManager.getInstance().unsubscribe(this);
     }
 
     @Override
@@ -56,8 +54,8 @@ public class Trailblazer7Power extends PowerPower implements PostBreakBlockSubsc
     }
 
     @Override
-    public void receivePostBreakBlock(AbstractCreature c) {
-        if (SubscribeManager.checkSubscriber(this) && c != owner && canTrigger) {
+    public void postBreakBlock(AbstractCreature c) {
+        if (SubscriptionManager.checkSubscriber(this) && c != owner && canTrigger) {
             flash();
             canTrigger = false;
             addToBot(new GainBlockAction(owner, owner, selfBlock));

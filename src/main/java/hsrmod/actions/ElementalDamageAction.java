@@ -19,6 +19,8 @@ public class ElementalDamageAction extends AbstractGameAction{
     private Consumer<AbstractCreature> afterEffect;
     private Function<AbstractCreature, Integer> modifier;
     public boolean doApplyPower = false;
+    public float critRate = 0;
+    public float critDamage = 100;
 
     public ElementalDamageAction(AbstractCreature target, DamageInfo info, ElementType elementType, int toughnessReduction, 
                                  AbstractGameAction.AttackEffect effect, Consumer<AbstractCreature> afterEffect, Function<AbstractCreature, Integer> modifier) {
@@ -55,6 +57,9 @@ public class ElementalDamageAction extends AbstractGameAction{
             }
             if (this.modifier != null) {
                 this.info.output += this.modifier.apply(this.target);
+            }
+            if (critRate > 0 && AbstractDungeon.cardRandomRng.random(99) < critRate) {
+                this.info.output *= (int) (1 + (critDamage / 100));
             }
             AbstractGameAction action = new DamageCallbackAction(target, info, this.attackEffect, (dmg) -> {
                 if (this.afterEffect != null) {

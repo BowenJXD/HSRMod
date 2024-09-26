@@ -1,4 +1,4 @@
-package hsrmod.cards.common;
+package hsrmod.obsoleteCards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -8,23 +8,24 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 
-public class Concentration extends BaseCard {
-    public static final String ID = Concentration.class.getSimpleName();
+public class Burst extends BaseCard {
+    public static final String ID = Burst.class.getSimpleName();
 
-    public Concentration() {
+    public Burst() {
         super(ID);
     }
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        boolean hasBlock = m.currentBlock > 0;
-        if (hasBlock){
-            addToBot(new GainBlockAction(p, p, damage));
+        int dmg = damage;
+        if (m.currentBlock > 0) {
+            dmg *= 2;
         }
-        addToBot(new ElementalDamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), elementType, 2,
+        boolean hasBlock = m.currentBlock > 0;
+        addToBot(new ElementalDamageAction(m, new DamageInfo(p, dmg, damageTypeForTurn), elementType, 2,
                 AbstractGameAction.AttackEffect.SLASH_VERTICAL, c -> {
             if (hasBlock && c.currentBlock <= 0) {
-                addToBot(new ElementalDamageAction(c, new DamageInfo(p, damage, damageTypeForTurn), elementType, 2));
+                addToBot(new GainBlockAction(p, p, damage));
             }
         }));
     }

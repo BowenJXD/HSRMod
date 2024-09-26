@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 import hsrmod.powers.misc.BreakEffectPower;
-import hsrmod.subscribers.SubscribeManager;
+import hsrmod.subscribers.SubscriptionManager;
 
 import java.util.Iterator;
 
@@ -49,7 +49,7 @@ public class BreakDamageAction extends AbstractGameAction {
                 tmp = p.atDamageReceive(this.info.output, this.info.type);
             }
             
-            this.info.output = (int) SubscribeManager.getInstance().triggerPreBreakDamage(tmp, this.target);
+            this.info.output = (int) SubscriptionManager.getInstance().triggerPreBreakDamage(tmp, this.target);
             //
             
             addToTop(new DamageAction(this.target, this.info));

@@ -16,7 +16,7 @@ import hsrmod.powers.PowerPower;
 import hsrmod.powers.misc.BreakEfficiencyPower;
 import hsrmod.powers.misc.BrokenPower;
 import hsrmod.powers.misc.ToughnessPower;
-import hsrmod.subscribers.SubscribeManager;
+import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
 import java.util.List;
@@ -42,7 +42,7 @@ public class FireflyPower extends PowerPower implements PostPowerApplySubscriber
 
     @Override
     public void receivePostPowerApplySubscriber(AbstractPower abstractPower, AbstractCreature target, AbstractCreature source) {
-        if (SubscribeManager.checkSubscriber(this) 
+        if (SubscriptionManager.checkSubscriber(this) 
                 && abstractPower.ID
                 .equals(BrokenPower.POWER_ID)) {
             this.flash();

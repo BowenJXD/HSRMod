@@ -15,7 +15,7 @@ import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
-import hsrmod.subscribers.SubscribeManager;
+import hsrmod.subscribers.SubscriptionManager;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
@@ -112,7 +112,7 @@ public class AventurinePower extends PowerPower implements OnPlayerDamagedSubscr
 
     @Override
     public int receiveOnPlayerDamaged(int i, DamageInfo damageInfo) {
-        if (SubscribeManager.checkSubscriber(this) 
+        if (SubscriptionManager.checkSubscriber(this) 
                 && owner.currentBlock > 0) {
             flash();
             stackPower(damageStack);

@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.HSRMod;
@@ -68,6 +69,7 @@ public class AftertastePower extends BuffPower implements DamageModApplyingPower
         public void onLastDamageTakenUpdate(DamageInfo info, int lastDamageTaken, int overkillAmount, AbstractCreature target) {
             if (!target.isDeadOrEscaped()
                     && target.currentHealth > 0  
+                    && target != AbstractDungeon.player
                     && info.owner.hasPower(AftertastePower.POWER_ID) 
                     && ModHelper.getPowerCount(info.owner, EnergyPower.POWER_ID) >= AftertastePower.ENERGY_REQUIRED) {
                 ((AftertastePower) info.owner.getPower(AftertastePower.POWER_ID)).trigger(info, target);

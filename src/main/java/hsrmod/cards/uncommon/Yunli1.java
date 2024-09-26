@@ -15,7 +15,7 @@ import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
 import hsrmod.powers.misc.EnergyPower;
-import hsrmod.subscribers.SubscribeManager;
+import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
@@ -78,7 +78,7 @@ public class Yunli1 extends BaseCard implements OnPlayerDamagedSubscriber {
 
     @Override
     public int receiveOnPlayerDamaged(int i, DamageInfo damageInfo) {
-        if (!SubscribeManager.checkSubscriber(this)
+        if (!SubscriptionManager.checkSubscriber(this)
                 || !AbstractDungeon.player.hand.contains(this)
                 || damageInfo.type != DamageInfo.DamageType.NORMAL
                 || damageInfo.owner == AbstractDungeon.player) 

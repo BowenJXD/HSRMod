@@ -6,13 +6,13 @@ import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
 import hsrmod.powers.misc.DoTPower;
 import hsrmod.subscribers.PreDoTDamageSubscriber;
-import hsrmod.subscribers.SubscribeManager;
+import hsrmod.subscribers.SubscriptionManager;
 
 public class ReignOfKeysPower extends PowerPower implements PreDoTDamageSubscriber {
     public static final String POWER_ID = HSRMod.makePath(ReignOfKeysPower.class.getSimpleName());
-    
+
     boolean canTrigger = false;
-    
+
     public ReignOfKeysPower() {
         super(POWER_ID);
         this.updateDescription();
@@ -21,13 +21,13 @@ public class ReignOfKeysPower extends PowerPower implements PreDoTDamageSubscrib
     @Override
     public void onInitialApplication() {
         super.onInitialApplication();
-        SubscribeManager.getInstance().subscribe(this);
+        SubscriptionManager.getInstance().subscribe(this);
     }
 
     @Override
     public void onRemove() {
         super.onRemove();
-        SubscribeManager.getInstance().unsubscribe(this);
+        SubscriptionManager.getInstance().unsubscribe(this);
     }
 
     @Override
@@ -44,8 +44,8 @@ public class ReignOfKeysPower extends PowerPower implements PreDoTDamageSubscrib
 
     @Override
     public float preDoTDamage(float amount, AbstractCreature target, DoTPower power) {
-        if (SubscribeManager.checkSubscriber(this)
-        && (canTrigger || upgraded)) {
+        if (SubscriptionManager.checkSubscriber(this)
+                && (canTrigger || upgraded)) {
             flash();
             addToBot(new DrawCardAction(1));
         }

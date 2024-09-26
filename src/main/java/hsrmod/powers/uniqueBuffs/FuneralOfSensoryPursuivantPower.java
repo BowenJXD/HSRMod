@@ -8,7 +8,7 @@ import hsrmod.powers.PowerPower;
 import hsrmod.powers.misc.DoTPower;
 import hsrmod.powers.misc.SuspicionPower;
 import hsrmod.subscribers.PreDoTDamageSubscriber;
-import hsrmod.subscribers.SubscribeManager;
+import hsrmod.subscribers.SubscriptionManager;
 
 public class FuneralOfSensoryPursuivantPower extends PowerPower implements PreDoTDamageSubscriber {
     public static final String POWER_ID = HSRMod.makePath(FuneralOfSensoryPursuivantPower.class.getSimpleName());
@@ -32,13 +32,13 @@ public class FuneralOfSensoryPursuivantPower extends PowerPower implements PreDo
     @Override
     public void onInitialApplication() {
         super.onInitialApplication();
-        SubscribeManager.getInstance().subscribe(this);
+        SubscriptionManager.getInstance().subscribe(this);
     }
 
     @Override
     public void onRemove() {
         super.onRemove();
-        SubscribeManager.getInstance().unsubscribe(this);
+        SubscriptionManager.getInstance().unsubscribe(this);
     }
 
     @Override
@@ -51,7 +51,7 @@ public class FuneralOfSensoryPursuivantPower extends PowerPower implements PreDo
 
     @Override
     public float preDoTDamage(float amount, AbstractCreature target, DoTPower power) {
-        if (SubscribeManager.checkSubscriber(this))
+        if (SubscriptionManager.checkSubscriber(this))
             trigger(target, 3);
         return amount;
     }

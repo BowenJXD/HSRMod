@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
-import hsrmod.subscribers.SubscribeManager;
+import hsrmod.subscribers.SubscriptionManager;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
@@ -59,7 +59,7 @@ public class Clara1 extends BaseCard implements OnPlayerDamagedSubscriber {
 
     @Override
     public int receiveOnPlayerDamaged(int i, DamageInfo damageInfo) {
-        if (!SubscribeManager.checkSubscriber(this)
+        if (!SubscriptionManager.checkSubscriber(this)
                 || !AbstractDungeon.player.hand.contains(this)
                 || !AbstractDungeon.actionManager.turnHasEnded) return i;
         canBeUsed = true;

@@ -15,7 +15,7 @@ import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
-import hsrmod.subscribers.SubscribeManager;
+import hsrmod.subscribers.SubscriptionManager;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
@@ -69,7 +69,7 @@ public class Jade1 extends BaseCard implements PostDrawSubscriber {
 
     @Override
     public void receivePostDraw(AbstractCard abstractCard) {
-        if (SubscribeManager.checkSubscriber(this)
+        if (SubscriptionManager.checkSubscriber(this)
                 && AbstractDungeon.player.hand.contains(this)
                 && isDetecting 
                 && !this.followedUp) {

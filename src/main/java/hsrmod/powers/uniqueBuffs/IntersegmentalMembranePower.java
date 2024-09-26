@@ -4,7 +4,7 @@ import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
 import hsrmod.subscribers.PreEnergyChangeSubscriber;
-import hsrmod.subscribers.SubscribeManager;
+import hsrmod.subscribers.SubscriptionManager;
 
 public class IntersegmentalMembranePower extends PowerPower implements PreEnergyChangeSubscriber {
     public static final String POWER_ID = HSRMod.makePath(IntersegmentalMembranePower.class.getSimpleName());
@@ -25,18 +25,18 @@ public class IntersegmentalMembranePower extends PowerPower implements PreEnergy
     @Override
     public void onInitialApplication() {
         super.onInitialApplication();
-        SubscribeManager.getInstance().subscribe(this);
+        SubscriptionManager.getInstance().subscribe(this);
     }
 
     @Override
     public void onRemove() {
         super.onRemove();
-        SubscribeManager.getInstance().unsubscribe(this);
+        SubscriptionManager.getInstance().unsubscribe(this);
     }
 
     @Override
-    public int receivePreEnergyChange(int changeAmount) {
-        if (SubscribeManager.checkSubscriber(this) && changeAmount < 0) {
+    public int preEnergyChange(int changeAmount) {
+        if (SubscriptionManager.checkSubscriber(this) && changeAmount < 0) {
             flash();
             addToBot(new GainBlockAction(owner, owner, -changeAmount * block));
         }

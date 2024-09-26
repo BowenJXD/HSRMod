@@ -8,7 +8,7 @@ import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
 import hsrmod.powers.misc.BrokenPower;
 import hsrmod.subscribers.PreBreakDamageSubscriber;
-import hsrmod.subscribers.SubscribeManager;
+import hsrmod.subscribers.SubscriptionManager;
 
 public class SymbiotePower extends PowerPower implements PreBreakDamageSubscriber {
     public static final String POWER_ID = HSRMod.makePath(SymbiotePower.class.getSimpleName());
@@ -20,12 +20,12 @@ public class SymbiotePower extends PowerPower implements PreBreakDamageSubscribe
     
     @Override
     public void onInitialApplication() {
-        SubscribeManager.getInstance().subscribe(this);
+        SubscriptionManager.getInstance().subscribe(this);
     }
 
     @Override
     public void onRemove() {
-        SubscribeManager.getInstance().unsubscribe(this);
+        SubscriptionManager.getInstance().unsubscribe(this);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class SymbiotePower extends PowerPower implements PreBreakDamageSubscribe
 
     @Override
     public float preBreakDamage(float amount, AbstractCreature target) {
-        if (SubscribeManager.checkSubscriber(this)) {
+        if (SubscriptionManager.checkSubscriber(this)) {
             addToBot(new DrawCardAction(1));
         }
         return amount;

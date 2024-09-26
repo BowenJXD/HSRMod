@@ -5,7 +5,6 @@ import basemod.interfaces.OnPlayerLoseBlockSubscriber;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.DamageModApplyingPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -14,11 +13,8 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.HSRMod;
-import hsrmod.patches.DamageTargetField;
 import hsrmod.powers.PowerPower;
-import hsrmod.powers.misc.AftertastePower;
-import hsrmod.subscribers.PostBreakBlockSubscriber;
-import hsrmod.subscribers.SubscribeManager;
+import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
 import java.util.Collections;
@@ -66,7 +62,7 @@ public class Trailblazer8Power extends PowerPower implements OnPlayerLoseBlockSu
 
     @Override
     public int receiveOnPlayerLoseBlock(int i) {
-        if (!SubscribeManager.checkSubscriber(this)) return i;
+        if (!SubscriptionManager.checkSubscriber(this)) return i;
         int playerBlock = AbstractDungeon.player.currentBlock;
         ModHelper.addToTopAbstract(() -> {
             int dmg = playerBlock - AbstractDungeon.player.currentBlock;

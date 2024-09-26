@@ -13,7 +13,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.cards.common.March7th2;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
-import hsrmod.subscribers.SubscribeManager;
+import hsrmod.subscribers.SubscriptionManager;
 
 public class ReinforcePower extends BuffPower implements OnPlayerDamagedSubscriber {
     public static final String POWER_ID = HSRMod.makePath(ReinforcePower.class.getSimpleName());
@@ -56,7 +56,7 @@ public class ReinforcePower extends BuffPower implements OnPlayerDamagedSubscrib
 
     @Override
     public int receiveOnPlayerDamaged(int i, DamageInfo damageInfo) {
-        if (SubscribeManager.checkSubscriber(this) 
+        if (SubscriptionManager.checkSubscriber(this) 
                 && AbstractDungeon.player.currentBlock > 0
                 && damageInfo.type != DamageInfo.DamageType.HP_LOSS) {
             AbstractCard card = new March7th2();

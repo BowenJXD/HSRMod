@@ -10,6 +10,8 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
+import hsrmod.utils.CardDataCol;
+import hsrmod.utils.DataManager;
 
 public class Yanqing1 extends BaseCard {
     public static final String ID = Yanqing1.class.getSimpleName();
@@ -22,9 +24,18 @@ public class Yanqing1 extends BaseCard {
     }
 
     @Override
+    public boolean canUpgrade() {
+        return true;
+    }
+
+    @Override
     public void upgrade() {
-        cardsToPreview.upgrade();
-        super.upgrade();
+        upgradeDamage(magicNumber);
+        this.timesUpgraded++;
+        this.upgraded = true;
+        this.name = DataManager.getInstance().getCardData(ID, CardDataCol.Name) + "+" + this.timesUpgraded;
+        initializeTitle();
+        this.initializeDescription();
     }
 
     @Override
@@ -35,25 +46,22 @@ public class Yanqing1 extends BaseCard {
             addToBot(new MakeTempCardInHandAction(card));
         }
         
-        int damageThisTurn = damage;
-        if (p.currentBlock > 0) {
-            damageThisTurn *= 2;
-        }
-
-        addToBot(
-                new ElementalDamageAction(
-                        m,
-                        new DamageInfo(
-                                p,
-                                damageThisTurn,
-                                damageTypeForTurn
-                        ),
-                        ElementType.Ice,
-                        2,
-                        // 伤害类型
-                        AbstractGameAction.AttackEffect.SLASH_HEAVY
-                )
+        ElementalDamageAction action = new ElementalDamageAction(
+                m,
+                new DamageInfo(
+                        p,
+                        damage,
+                        damageTypeForTurn
+                ),
+                ElementType.Ice,
+                2,
+                // 伤害类型
+                AbstractGameAction.AttackEffect.SLASH_HEAVY
         );
+        if (p.currentBlock > 0) {
+            action.critRate = 60;
+        }
+        addToBot(action);
         
     }
 }

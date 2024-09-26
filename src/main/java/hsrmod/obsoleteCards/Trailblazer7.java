@@ -1,4 +1,4 @@
-package hsrmod.cards.uncommon;
+package hsrmod.obsoleteCards;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;

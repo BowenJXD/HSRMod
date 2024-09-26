@@ -12,17 +12,18 @@ public class ThePathless extends BaseCard {
     
     public ThePathless() {
         super(ID);
+        exhaust = true;
     }
 
     @Override
     public void upgrade() {
         super.upgrade();
-        isInnate = true; 
+        isInnate = true;
     }
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new AllEnemyApplyPowerAction(p, 1, (q) -> new BlockReturnPower(q, 1)));
+        addToBot(new AllEnemyApplyPowerAction(p, 2, (q) -> new BlockReturnPower(q, 2)));
         addToBot(new AllEnemyApplyPowerAction(p, magicNumber, (q) -> new SuspicionPower(q, magicNumber)));
     }
 }

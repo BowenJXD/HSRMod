@@ -4,7 +4,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.DebuffPower;
 import hsrmod.subscribers.PreDoTDamageSubscriber;
-import hsrmod.subscribers.SubscribeManager;
+import hsrmod.subscribers.SubscriptionManager;
 
 public class SuspicionPower extends DebuffPower implements PreDoTDamageSubscriber {
     public static final String POWER_ID = HSRMod.makePath(SuspicionPower.class.getSimpleName());
@@ -26,7 +26,7 @@ public class SuspicionPower extends DebuffPower implements PreDoTDamageSubscribe
     @Override
     public void onInitialApplication() {
         super.onInitialApplication();
-        SubscribeManager.getInstance().subscribe(this);
+        SubscriptionManager.getInstance().subscribe(this);
     }
 
     @Override
@@ -40,7 +40,7 @@ public class SuspicionPower extends DebuffPower implements PreDoTDamageSubscribe
     @Override
     public void onRemove() {
         super.onRemove();
-        SubscribeManager.getInstance().unsubscribe(this);
+        SubscriptionManager.getInstance().unsubscribe(this);
     }
     
     public float incrementDamage(float damage) {
@@ -50,7 +50,7 @@ public class SuspicionPower extends DebuffPower implements PreDoTDamageSubscribe
 
     @Override
     public float preDoTDamage(float amount, AbstractCreature target, DoTPower power) {
-        if (SubscribeManager.checkSubscriber(this) 
+        if (SubscriptionManager.checkSubscriber(this) 
                 && target == owner) {
             return incrementDamage(amount);
         }

@@ -1,33 +1,37 @@
-package hsrmod.cards.uncommon;
+package hsrmod.obsoleteCards;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.BlurPower;
 import com.megacrit.cardcrawl.powers.MalleablePower;
 import hsrmod.cards.BaseCard;
 
-public class DestinysThreadsForewoven extends BaseCard {
-    public static final String ID = DestinysThreadsForewoven.class.getSimpleName();
+public class TextureOfMemories extends BaseCard {
+    public static final String ID = TextureOfMemories.class.getSimpleName();
     
-    public DestinysThreadsForewoven() {
+    public TextureOfMemories() {
         super(ID);
-        isEthereal = true;
+        exhaust = true;
     }
-    
+
     @Override
     public void upgrade() {
         super.upgrade();
-        isEthereal = false;
         isInnate = true;
     }
-    
+
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new BlurPower(p, magicNumber), magicNumber));
-
+        addToBot(new ApplyPowerAction(p, p, new MalleablePower(p, magicNumber), magicNumber));
+        addToBot(new ApplyPowerAction(m, p, new MalleablePower(m, magicNumber), magicNumber));
+        
         addToBot(new GainBlockAction(p, block));
         addToBot(new GainBlockAction(m, baseBlock));
+        
+        if (upgraded){
+            addToBot(new ApplyPowerAction(p, p, new MalleablePower(p, magicNumber), magicNumber));
+            addToBot(new GainBlockAction(p, block));
+        }
     }
 }

@@ -22,6 +22,7 @@ public class CosmicBigLotto extends BaseRelic {
     public void onEquip() {
         super.onEquip();
         counter = 1;
+        currRoom = AbstractDungeon.getCurrRoom();
     }
 
     @Override

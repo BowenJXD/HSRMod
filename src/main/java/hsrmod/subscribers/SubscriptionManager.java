@@ -10,14 +10,13 @@ import hsrmod.modcore.ElementType;
 import hsrmod.powers.misc.DoTPower;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
  * Singleton class for managing all the subscribers.
  */
-public class SubscribeManager {
-    private static SubscribeManager instance = null;
+public class SubscriptionManager {
+    private static SubscriptionManager instance = null;
     
     List<ISubscriber> toRemove = new ArrayList<>();
     List<PreBreakDamageSubscriber> preBreakDamageSubscribers = new ArrayList<>();
@@ -25,12 +24,13 @@ public class SubscribeManager {
     List<PreDoTDamageSubscriber> preDoTDamageSubscribers = new ArrayList<>();
     List<PreEnergyChangeSubscriber> preEnergyChangeSubscribers = new ArrayList<>();
     List<PostBreakBlockSubscriber> postBreakBlockSubscribers = new ArrayList<>();
+    List<PreBlockGainSubscriber> preBlockGainSubscribers = new ArrayList<>();
 
-    SubscribeManager() {}
+    SubscriptionManager() {}
     
-    public static SubscribeManager getInstance() {
+    public static SubscriptionManager getInstance() {
         if (instance == null) {
-            instance = new SubscribeManager();
+            instance = new SubscriptionManager();
         }
         return instance;
     }
@@ -56,6 +56,10 @@ public class SubscribeManager {
                 && !postBreakBlockSubscribers.contains(sub)) {
             postBreakBlockSubscribers.add((PostBreakBlockSubscriber) sub);
         }
+        else if (sub instanceof PreBlockGainSubscriber
+                && !preBlockGainSubscribers.contains(sub)) {
+            preBlockGainSubscribers.add((PreBlockGainSubscriber) sub);
+        }
     }
     
     public void unsubscribe(ISubscriber subscriber) {
@@ -74,6 +78,9 @@ public class SubscribeManager {
         else if (subscriber instanceof PostBreakBlockSubscriber) {
             postBreakBlockSubscribers.remove(subscriber);
         }
+        else if (subscriber instanceof PreBlockGainSubscriber) {
+            preBlockGainSubscribers.remove(subscriber);
+        }
     }
     
     public void unsubscribeLater(ISubscriber subscriber) {
@@ -81,10 +88,7 @@ public class SubscribeManager {
     }
 
     private void unsubscribeLaterHelper(Class<? extends ISubscriber> removalClass) {
-        Iterator var1 = toRemove.iterator();
-
-        while(var1.hasNext()) {
-            ISubscriber sub = (ISubscriber)var1.next();
+        for (ISubscriber sub : toRemove) {
             if (removalClass.isInstance(sub)) {
                 unsubscribe(sub);
             }
@@ -93,10 +97,8 @@ public class SubscribeManager {
     
     public float triggerPreBreakDamage(float amount, AbstractCreature target) {
         float result = amount;
-        Iterator<PreBreakDamageSubscriber> var3 = preBreakDamageSubscribers.iterator();
-        
-        while (var3.hasNext()) {
-            PreBreakDamageSubscriber sub = var3.next();
+
+        for (PreBreakDamageSubscriber sub : preBreakDamageSubscribers) {
             result = sub.preBreakDamage(amount, target);
         }
         
@@ -107,11 +109,9 @@ public class SubscribeManager {
     
     public float triggerPreToughnessReduce(int amount, AbstractCreature target, ElementType elementType) {
         float result = amount;
-        Iterator<PreToughnessReduceSubscriber> var3 = preToughnessReduceSubscribers.iterator();
-        
-        while (var3.hasNext()) {
-            PreToughnessReduceSubscriber sub = var3.next();
-            sub.preToughnessReduce(amount, target, elementType);
+
+        for (PreToughnessReduceSubscriber sub : preToughnessReduceSubscribers) {
+            result = sub.preToughnessReduce(amount, target, elementType);
         }
         
         unsubscribeLaterHelper(PreToughnessReduceSubscriber.class);
@@ -121,10 +121,8 @@ public class SubscribeManager {
     
     public float triggerPreDoTDamage(float amount, AbstractCreature target, DoTPower power) {
         float result = amount;
-        Iterator<PreDoTDamageSubscriber> var3 = preDoTDamageSubscribers.iterator();
-        
-        while (var3.hasNext()) {
-            PreDoTDamageSubscriber sub = var3.next();
+
+        for (PreDoTDamageSubscriber sub : preDoTDamageSubscribers) {
             result = sub.preDoTDamage(amount, target, power);
         }
         
@@ -135,11 +133,9 @@ public class SubscribeManager {
     
     public int triggerPreEnergyChange(int changeAmount) {
         int result = changeAmount;
-        Iterator<PreEnergyChangeSubscriber> var3 = preEnergyChangeSubscribers.iterator();
-        
-        while (var3.hasNext()) {
-            PreEnergyChangeSubscriber sub = var3.next();
-            result = sub.receivePreEnergyChange(changeAmount);
+
+        for (PreEnergyChangeSubscriber sub : preEnergyChangeSubscribers) {
+            result = sub.preEnergyChange(changeAmount);
         }
         
         unsubscribeLaterHelper(PreEnergyChangeSubscriber.class);
@@ -148,14 +144,23 @@ public class SubscribeManager {
     }
     
     public void triggerPostBreakBlock(AbstractCreature target) {
-        Iterator<PostBreakBlockSubscriber> var3 = postBreakBlockSubscribers.iterator();
-        
-        while (var3.hasNext()) {
-            PostBreakBlockSubscriber sub = var3.next();
-            sub.receivePostBreakBlock(target);
+        for (PostBreakBlockSubscriber sub : postBreakBlockSubscribers) {
+            sub.postBreakBlock(target);
         }
         
         unsubscribeLaterHelper(PostBreakBlockSubscriber.class);
+    }
+    
+    public int triggerPreBlockGain(AbstractCreature creature, int amount) {
+        int result = amount;
+        
+        for (PreBlockGainSubscriber sub : preBlockGainSubscribers) {
+            result = sub.preBlockGain(creature, amount);
+        }
+        
+        unsubscribeLaterHelper(PreBlockGainSubscriber.class);
+        
+        return result;
     }
     
     public static boolean checkSubscriber(BaseCard card) {

@@ -15,7 +15,7 @@ import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
 import hsrmod.powers.misc.BrokenPower;
-import hsrmod.subscribers.SubscribeManager;
+import hsrmod.subscribers.SubscriptionManager;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
@@ -52,7 +52,7 @@ public class Himeko1 extends BaseCard implements PostPowerApplySubscriber {
     
     @Override
     public void receivePostPowerApplySubscriber(AbstractPower abstractPower, AbstractCreature abstractCreature, AbstractCreature abstractCreature1) {
-        if (SubscribeManager.checkSubscriber(this)
+        if (SubscriptionManager.checkSubscriber(this)
                 && AbstractDungeon.player.hand.contains(this) 
                 && abstractPower instanceof BrokenPower 
                 && !followedUp) {

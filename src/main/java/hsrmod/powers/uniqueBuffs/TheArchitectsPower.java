@@ -2,23 +2,13 @@ package hsrmod.powers.uniqueBuffs;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
 import hsrmod.subscribers.PostBreakBlockSubscriber;
-import hsrmod.subscribers.SubscribeManager;
-import hsrmod.utils.ModHelper;
-
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import hsrmod.subscribers.SubscriptionManager;
 
 public class TheArchitectsPower extends PowerPower implements PostBreakBlockSubscriber {
     public static final String POWER_ID = HSRMod.makePath(TheArchitectsPower.class.getSimpleName());
@@ -43,13 +33,13 @@ public class TheArchitectsPower extends PowerPower implements PostBreakBlockSubs
     @Override
     public void onInitialApplication() {
         super.onInitialApplication();
-        if (!upgraded) SubscribeManager.getInstance().subscribe(this);
+        if (!upgraded) SubscriptionManager.getInstance().subscribe(this);
     }
 
     @Override
     public void onRemove() {
         super.onRemove();
-        SubscribeManager.getInstance().unsubscribe(this);
+        SubscriptionManager.getInstance().unsubscribe(this);
     }
 
     /*@Override
@@ -81,8 +71,8 @@ public class TheArchitectsPower extends PowerPower implements PostBreakBlockSubs
     }
 
     @Override
-    public void receivePostBreakBlock(AbstractCreature c) {
-        if (SubscribeManager.checkSubscriber(this) && c != owner && !upgraded) {
+    public void postBreakBlock(AbstractCreature c) {
+        if (SubscriptionManager.checkSubscriber(this) && c != owner && !upgraded) {
             this.flash();
             attack(c);
         }

@@ -1,4 +1,4 @@
-package hsrmod.cards.rare;
+package hsrmod.obsoleteCards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;

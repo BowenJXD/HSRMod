@@ -225,13 +225,13 @@
   "HSRMod:Kolchis": {
     "NAME": "Kolchis",
     "DESCRIPTIONS": [
-      "After consuming Charge, recover [E] . After consuming [E] , recover #b%d Charge."
+      "Every #b%d #yCharge you use, gain [E] . Every #b%d [E] you use, gain 1 stack of #yBrain-In-A-Vat."
     ]
   },
   "HSRMod:Divinity": {
     "NAME": "Divinity",
     "DESCRIPTIONS": [
-      "Block gain is increased by #b%d %%, and at the start of the turn, only #b%d %% of current Block is lost."
+      "All Block gain + #b%d . At the start of the turn, only #b%d %% of current Block is lost."
     ]
   },
   "HSRMod:Burden": {

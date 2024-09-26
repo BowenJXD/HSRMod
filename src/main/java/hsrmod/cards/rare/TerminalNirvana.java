@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.IntangiblePlayerPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import hsrmod.cards.BaseCard;
-import hsrmod.subscribers.SubscribeManager;
+import hsrmod.subscribers.SubscriptionManager;
 
 public class TerminalNirvana extends BaseCard implements PostBattleSubscriber {
     public static final String ID = TerminalNirvana.class.getSimpleName();
@@ -40,7 +40,7 @@ public class TerminalNirvana extends BaseCard implements PostBattleSubscriber {
 
     @Override
     public void receivePostBattle(AbstractRoom abstractRoom) {
-        if (SubscribeManager.checkSubscriber(this)) {
+        if (SubscriptionManager.checkSubscriber(this)) {
             energyCost = magicNumberCache;
             upgradeMagicNumber(magicNumberCache - magicNumber);
         }

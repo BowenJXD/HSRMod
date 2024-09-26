@@ -1,31 +1,29 @@
 package hsrmod.cards.common;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.DexterityPower;
-import hsrmod.actions.AOEAction;
+import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import hsrmod.cards.BaseCard;
+import hsrmod.cards.uncommon.PhantomWorker;
 
-public class Amber extends BaseCard {
-    public static final String ID = Amber.class.getSimpleName();
-    
-    public Amber() {
+public class DisasterHaltingMechanism extends BaseCard {
+    public static final String ID = DisasterHaltingMechanism.class.getSimpleName();
+
+    public DisasterHaltingMechanism() {
         super(ID);
     }
 
     @Override
     protected void applyPowersToBlock() {
-        baseBlock = AbstractDungeon.player.maxHealth * magicNumber / 100;
+        baseBlock = AbstractDungeon.player.hand.size();
+        if (upgraded) baseBlock += EnergyPanel.getCurrentEnergy();
         super.applyPowersToBlock();
     }
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new GainBlockAction(p, p, block));
-        
-        addToBot(new AOEAction((q) -> new GainBlockAction(q, upgraded ? 3 : 2)));
+        addToBot(new GainBlockAction(p, block));
     }
 }

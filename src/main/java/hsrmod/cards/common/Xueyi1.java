@@ -14,7 +14,7 @@ import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementType;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.subscribers.PreToughnessReduceSubscriber;
-import hsrmod.subscribers.SubscribeManager;
+import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
 public class Xueyi1 extends BaseCard implements PreToughnessReduceSubscriber {
@@ -60,12 +60,12 @@ public class Xueyi1 extends BaseCard implements PreToughnessReduceSubscriber {
 
     @Override
     public void onEnterHand() {
-        SubscribeManager.getInstance().subscribe(this);
+        SubscriptionManager.getInstance().subscribe(this);
     }
 
     @Override
     public void onLeaveHand() {
-        SubscribeManager.getInstance().unsubscribe(this);
+        SubscriptionManager.getInstance().unsubscribe(this);
     }
 
     @Override
@@ -95,7 +95,7 @@ public class Xueyi1 extends BaseCard implements PreToughnessReduceSubscriber {
 
     @Override
     public float preToughnessReduce(float amount, AbstractCreature target, ElementType elementType) {
-        if (!SubscribeManager.checkSubscriber(this)
+        if (!SubscriptionManager.checkSubscriber(this)
                 || !AbstractDungeon.player.hand.contains(this)) return amount;
         updateCost((int) -amount);
         return amount;

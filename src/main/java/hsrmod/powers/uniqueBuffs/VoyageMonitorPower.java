@@ -8,7 +8,7 @@ import hsrmod.powers.PowerPower;
 import hsrmod.powers.misc.BrokenPower;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.subscribers.PreBreakDamageSubscriber;
-import hsrmod.subscribers.SubscribeManager;
+import hsrmod.subscribers.SubscriptionManager;
 
 public class VoyageMonitorPower extends PowerPower implements PreBreakDamageSubscriber {
     public static final String POWER_ID = HSRMod.makePath(VoyageMonitorPower.class.getSimpleName());
@@ -30,18 +30,18 @@ public class VoyageMonitorPower extends PowerPower implements PreBreakDamageSubs
     @Override
     public void onInitialApplication() {
         super.onInitialApplication();
-        SubscribeManager.getInstance().subscribe(this);
+        SubscriptionManager.getInstance().subscribe(this);
     }
 
     @Override
     public void onRemove() {
         super.onRemove();
-        SubscribeManager.getInstance().unsubscribe(this);
+        SubscriptionManager.getInstance().unsubscribe(this);
     }
 
     @Override
     public float preBreakDamage(float amount, AbstractCreature target) {
-        if (!SubscribeManager.checkSubscriber(this)) return amount;
+        if (!SubscriptionManager.checkSubscriber(this)) return amount;
         addToBot(new ApplyPowerAction(owner, owner, new ToughnessPower(owner, 1), 1));
         return amount;
     }

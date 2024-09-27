@@ -4,11 +4,13 @@ import basemod.abstracts.CustomRelic;
 import basemod.abstracts.CustomSavable;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsAction;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
+import com.megacrit.cardcrawl.actions.ClearCardQueueAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
@@ -33,6 +35,7 @@ import hsrmod.relics.special.March7thRelic;
 import hsrmod.relics.special.WeltRelic;
 import hsrmod.utils.ModHelper;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
@@ -81,6 +84,8 @@ public class PomPomBlessing extends CustomRelic implements CustomSavable<Integer
         addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new EnergyPower(AbstractDungeon.player, ENERGY_GAIN_PER_CARD), ENERGY_GAIN_PER_CARD));
     }
 
+    ArrayList<CardQueueItem> tempCardQueue = new ArrayList<>();
+    
     @Override
     public void onPlayerEndTurn() {
         if (AbstractDungeon.player.hand.isEmpty()) {
@@ -97,13 +102,15 @@ public class PomPomBlessing extends CustomRelic implements CustomSavable<Integer
 
         Predicate<AbstractCard> cardFilter = c -> !c.selfRetain && !c.retain && !c.isEthereal;
         Consumer<List<AbstractCard>> callback = cards -> {
+            AbstractDungeon.actionManager.cardQueue.addAll(tempCardQueue);
             for (AbstractCard card : cards) {
                 card.retain = true;
             }
-            addToBot(new ReduceECByHandCardNumAction(AbstractDungeon.player, AbstractDungeon.player));
+            addToTop(new ReduceECByHandCardNumAction(AbstractDungeon.player, AbstractDungeon.player));
         };
 
-        addToBot(new SelectCardsInHandAction(maxRetainNum, String.format(DESCRIPTIONS[1], multiplier), true, true, cardFilter, callback));
+        addToTop(new SelectCardsInHandAction(maxRetainNum, String.format(DESCRIPTIONS[1], multiplier), true, true, cardFilter, callback));
+        ModHelper.addToTopAbstract(() -> tempCardQueue = new ArrayList<>(AbstractDungeon.actionManager.cardQueue));
     }
 
     @Override

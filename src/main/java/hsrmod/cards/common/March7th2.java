@@ -45,7 +45,7 @@ public class March7th2 extends BaseCard {
 
     @Override
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        return super.canUse(p,m) && canBeUsed;
+        return super.canUse(p,m) && (canBeUsed || followedUp);
     }
 
     @Override

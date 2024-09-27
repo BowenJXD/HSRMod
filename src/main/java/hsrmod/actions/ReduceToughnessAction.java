@@ -40,7 +40,7 @@ public class ReduceToughnessAction extends AbstractGameAction {
                         * (float)AbstractDungeon.player.getPower(BreakEfficiencyPower.POWER_ID).amount 
                         * BreakEfficiencyPower.MULTIPLIER);
 
-            toughnessReduction = (int) SubscriptionManager.getInstance().triggerPreToughnessReduce(toughnessReduction, this.target, this.elementType);
+            SubscriptionManager.getInstance().triggerPreToughnessReduce(toughnessReduction, this.target, this.elementType);
             
             if (toughnessPower != null 
                     && toughnessPower.amount > 0 

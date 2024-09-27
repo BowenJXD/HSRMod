@@ -4,12 +4,12 @@ March7th0,极寒的弓矢,BASIC,ATTACK,ENEMY,1,造成 !D! 点伤害（冰 !M! ）。,6,,2,,,9,
 Danheng0,云骑枪术·朔风,BASIC,ATTACK,ENEMY,1,造成 !D! 点伤害（风 !M! ）。,6,,2,,,9,,,开拓,风,攻击
 Himeko0,武装调律,BASIC,ATTACK,ENEMY,1,造成 !D! 点伤害（火 !M! ）。,6,,2,,,9,,,开拓,火,攻击
 Welt0,重力压制,BASIC,ATTACK,ENEMY,1,造成 !D! 点伤害（虚数 !M! ）。,6,,2,,,9,,,开拓,虚数,攻击
-Trailblazer2,全胜·安息全垒打,BASIC,ATTACK,ALL_ENEMY,0, hsrmod:耗能 120，群体：造成 !D! 点伤害（物理 !M! ）。,4,,,,,6,,,开拓,物理,攻击
+Trailblazer2,全胜·安息全垒打,BASIC,ATTACK,ALL_ENEMY,0, hsrmod:耗能 120，群体：造成 !D! 点伤害（物理 !M! ）。,4,,2,,,6,,,开拓,物理,攻击
 Trailblazer3,炽燃不灭的琥珀,BASIC,SKILL,SELF,1,获得 !B! 点格挡。,,5,,,,,8,,开拓,,防御
 Sushang1,太虚形蕴 · 烛夜,COMMON,ATTACK,ENEMY,1,获得 !M! 层 hsrmod:击破特攻 ，造成 !D! 点伤害（物理3），若 hsrmod:击破 ，则摸 !M! 张牌。,4,,2,,获得 !M! 层 hsrmod:击破特攻 ，造成 !D! 点伤害（物理3），然后若其有 hsrmod:击破状态 ，则摸 !M! 张牌。,,,3,毁灭,物理,运转
 Sushang2,游刃有余,COMMON,SKILL,SELF,1,获得 !M! 层 hsrmod:击破特攻 ，每有一名敌人有 hsrmod:击破状态 ，你便回复1点 [E] 。,,,2,,,,,3,毁灭,,运转
 Tingyun1,庆云光覆仪祷,COMMON,SKILL,SELF,0, hsrmod:耗能 10，获得 !M! 点 [hsrmod:ChargeIcon] 和1层 力量 。,,,50,, hsrmod:耗能 10，获得 !M! 点 [hsrmod:ChargeIcon] 和1层 力量 ，摸1张牌。,,,60,智识,,运转
-Qingque1,海底捞月,COMMON,SKILL,SELF,1,摸1张牌， !M! %概率回复1点 [E] ， !M! %概率将此牌返还手卡。,,,66,,,,,75,繁育,,运转
+Qingque1,海底捞月,COMMON,SKILL,SELF,1,摸1张牌， !M! %概率回复消耗的 [E] ， !M! %概率将此牌返还手卡。,,,66,,,,,75,繁育,,运转
 Qingque2,帝垣翔鳞和绝张,COMMON,ATTACK,ALL_ENEMY,4,你每消耗1点 [E] ，此牌便有50%概率减少1点 [E] 消耗 。 [E] 消耗为0时 hsrmod:追击 。 NL 群体：造成 !D! 点伤害（量子1） !M! 次。,5,,2,,,,,3,欢愉,量子,攻击
 Sampo1,反复横跳的爱,COMMON,ATTACK,ENEMY,1, hsrmod:弹射 !M! 次：造成 !D! 点伤害（风1），施加1层 hsrmod:风化 。,1,,3,,,,,4,虚无,风,攻击
 Pela1,领域压制,COMMON,ATTACK,ALL_ENEMY,1, hsrmod:耗能 100，群体：造成 !D! 点伤害（冰2），施加 !M! 层 易伤 。,6,,1,0,,,,,虚无,,攻击

@@ -9,7 +9,7 @@ Trailblazer3,Ever-Burning Amber,BASIC,SKILL,SELF,1,Gain !B! Block.,,5,,,,,8,,¿ªÍ
 Sushang1,Shape of Taixu: Dawn Herald,COMMON,ATTACK,ENEMY,1,"Gain !M! hsrmod:Break-Effect , deal !D! physical damage (3), if break, draw !M! cards.",4,,2,,"Gain !M! hsrmod:Break-Effect , deal !D! physical damage (3), if it has hsrmod:Broken, draw !M! cards.",,,3,»ÙÃð,ÎïÀí,ÔË×ª
 Sushang2,Cut With Ease,COMMON,SKILL,SELF,1,"Gain !M! hsrmod:Break-Effect , for every hsrmod:broken enemy, gain [E] .",,,2,,,,,3,»ÙÃð,,ÔË×ª
 Tingyun1,Amidst the Rejoicing Clouds,COMMON,SKILL,SELF,0,"Use 10 [hsrmod:ChargeIcon] , Gain !M! [hsrmod:ChargeIcon] and 1 Strength.",,,50,,"Use 10 [hsrmod:ChargeIcon] , Gain !M! [hsrmod:ChargeIcon] and 1 Strength, draw 1 card.",,,60,ÖÇÊ¶,,ÔË×ª
-Qingque1,A Scoop of Moon,COMMON,SKILL,SELF,1,"Draw 1 card. NL !M!% chance: gain [E] , !M!% chance: return to hand.",,,66,,,,,75,·±Óý,,ÔË×ª
+Qingque1,A Scoop of Moon,COMMON,SKILL,SELF,1,"Draw 1 card. NL !M!% chance: gain [E] used, !M!% chance: return to hand.",,,66,,,,,75,·±Óý,,ÔË×ª
 Qingque2,Right on the Tiles,COMMON,ATTACK,ALL_ENEMY,4,"For every [E] you *exhaust, 50% chance: reduce cost by 1. hsrmod:Follow-Up when cost reaches 0. NL Deal !D! Quantum damage (1) to all enemies !M! times.",5,,2,,,,,3,»¶Óä,Á¿×Ó,¹¥»÷
 Sampo1,Ricochet Love,COMMON,ATTACK,ENEMY,1," hsrmod:Bounce !M!: deal !D! wind damage (1), and apply 1 hsrmod:Wind-Shear.",1,,3,,,,,4,ÐéÎÞ,·ç,¹¥»÷
 Pela1,Zone Suppression,COMMON,ATTACK,ALL_ENEMY,1,"Use 100 [hsrmod:ChargeIcon] , deal !D! ice damage (2) to all enemies, and apply !M! stacks of Vulnerable.",6,,1,0,,,,,ÐéÎÞ,,¹¥»÷

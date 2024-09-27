@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cards.BaseCard;
+import hsrmod.utils.ModHelper;
 
 public class Qingque1 extends BaseCard {
     public static final String ID = Qingque1.class.getSimpleName();
@@ -38,10 +39,8 @@ public class Qingque1 extends BaseCard {
 
         addToBot(new DrawCardAction(p, drawAmount));
         if (AbstractDungeon.cardRandomRng.random(100) <= magicNumber) {
-            addToBot(new GainEnergyAction(energyAmount));
+            addToBot(new GainEnergyAction(costForTurn));
         }
         returnToHand = AbstractDungeon.cardRandomRng.random(100) <= magicNumber;
-        
-        updateCost(1-cost);
     }
 }

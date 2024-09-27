@@ -11,6 +11,7 @@ import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
+import hsrmod.utils.ModHelper;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
@@ -35,7 +36,7 @@ public class Qingque2 extends BaseCard {
                             AbstractGameAction.AttackEffect.SLASH_HORIZONTAL))
             );
         }
-        updateCost(costCache - costForTurn);
+        ModHelper.addToBotAbstract(() -> updateCost(costCache - costForTurn));
     }
 
     @Override

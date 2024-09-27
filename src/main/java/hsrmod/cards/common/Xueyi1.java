@@ -55,7 +55,7 @@ public class Xueyi1 extends BaseCard implements PreToughnessReduceSubscriber {
         ));
         
         // modifyCostForCombat(costCache - costForTurn);
-        updateCost(costCache - costForTurn);
+        ModHelper.addToBotAbstract(() -> updateCost(costCache - costForTurn));
     }
 
     @Override

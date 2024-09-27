@@ -25,7 +25,7 @@ public class Clara1 extends BaseCard implements OnPlayerDamagedSubscriber {
 
     @Override
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        return super.canUse(p, m) && canBeUsed;
+        return super.canUse(p, m) && (canBeUsed || followedUp);
     }
 
     @Override

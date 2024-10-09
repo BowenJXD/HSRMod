@@ -5,7 +5,9 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.relics.BottledFlame;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.misc.ToughnessPower;
 
@@ -39,7 +41,9 @@ public class GalacticBat extends CustomRelic {
                 addToTop(new ApplyPowerAction(m, AbstractDungeon.player, new ToughnessPower(m), ToughnessPower.getStackLimit(m)));
             }
             else if (m.getPower(ToughnessPower.POWER_ID).amount <= 0) {
-                addToTop(new ApplyPowerAction(m, AbstractDungeon.player, new ToughnessPower(m), ToughnessPower.getStackLimit(m) * 2));
+                AbstractPower power = m.getPower(ToughnessPower.POWER_ID);
+                ((ToughnessPower)power).alterPower(ToughnessPower.getStackLimit(m) * 2);
+                // addToTop(new ApplyPowerAction(m, AbstractDungeon.player, new ToughnessPower(m), ToughnessPower.getStackLimit(m) * 2));
             }
         }
     }

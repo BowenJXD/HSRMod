@@ -4,7 +4,7 @@ March7th0,Frigid Cold Arrow,BASIC,ATTACK,ENEMY,1,Deal !D! ice damage (!M!).,6,,2
 Danheng0,Cloudlancer Art: North Wind,BASIC,ATTACK,ENEMY,1,Deal !D! wind damage (!M!).,6,,2,,,9,,,开拓,风,攻击
 Himeko0,Sawblade Tuning,BASIC,ATTACK,ENEMY,1,Deal !D! fire damage (!M!).,6,,2,,,9,,,开拓,火,攻击
 Welt0,Gravity Suppression,BASIC,ATTACK,ENEMY,1,Deal !D! imaginary damage (!M!).,6,,2,,,9,,,开拓,虚数,攻击
-Trailblazer2,Stardust Ace,BASIC,ATTACK,ALL_ENEMY,0,"Use 120 [hsrmod:ChargeIcon] , deal !D! physical damage to all enemies (!M!).",4,,,,,6,,,开拓,物理,攻击
+Trailblazer2,Stardust Ace,BASIC,ATTACK,ALL_ENEMY,0,"Use 120 [hsrmod:ChargeIcon] , deal !D! physical damage to all enemies (!M!).",4,,2,,,6,,,开拓,物理,攻击
 Trailblazer3,Ever-Burning Amber,BASIC,SKILL,SELF,1,Gain !B! Block.,,5,,,,,8,,开拓,,防御
 Sushang1,Shape of Taixu: Dawn Herald,COMMON,ATTACK,ENEMY,1,"Gain !M! hsrmod:Break-Effect , deal !D! physical damage (3), if break, draw !M! cards.",4,,2,,"Gain !M! hsrmod:Break-Effect , deal !D! physical damage (3), if it has hsrmod:Broken, draw !M! cards.",,,3,毁灭,物理,运转
 Sushang2,Cut With Ease,COMMON,SKILL,SELF,1,"Gain !M! hsrmod:Break-Effect , for every hsrmod:broken enemy, gain [E] .",,,2,,,,,3,毁灭,,运转

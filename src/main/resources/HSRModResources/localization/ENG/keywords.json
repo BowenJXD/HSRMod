@@ -21,7 +21,7 @@
   },
   {
     "NAMES": ["Toughness", "toughness"],
-    "DESCRIPTION": "After dealing elemental damage to a target with toughness, the amount of toughness reduced would be the number in the parenthesis."
+    "DESCRIPTION": "Elemental damage would reduce target's toughness. The reduction amount would be the number in the parenthesis."
   },
   {
     "NAMES": ["Broken", "broken"],

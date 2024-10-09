@@ -15,44 +15,44 @@
   "HSRMod:Broken": {
     "NAME": "Broken",
     "DESCRIPTIONS": [
-      "Increases damage taken by #b%d %% and reduces damage dealt by #b%d %%. At the start of the turn, 1 stack is removed."
+      "Increases damage taken by #b%d %% and reduces damage dealt by #b%d %%. At the start of the turn, remove 1 stack."
     ]
   },
   "HSRMod:Frozen": {
     "NAME": "Frozen",
     "DESCRIPTIONS": [
       "When there are #b%d stacks (1/2/3 for normal/elite/BOSS enemies):",
-      "All stacks are removed at the start of the turn and the turn is skipped. NL After taking damage, 1 stack is removed."
+      "All stacks are removed at the start of the turn and the turn is skipped. NL After taking damage, remove 1 stack."
     ]
   },
   "HSRMod:Bleeding": {
     "NAME": "Bleeding",
     "DESCRIPTIONS": [
-      "DoT. At the start of the turn: take #b%d ( #b%d %% max HP, up to #b%d) physical damage (1), 1 stack is removed."
+      "DoT. At the start of the turn: take #b%d ( #b%d %% max HP, up to #b%d ) physical damage (1), remove 1 stack."
     ]
   },
   "HSRMod:Burn": {
     "NAME": "Burn",
     "DESCRIPTIONS": [
-      "DoT. Trigger at the start of the turn: take #b%d fire damage (1), 1 stack is removed."
+      "DoT. Trigger at the start of the turn: take #b%d fire damage (1), remove 1 stack."
     ]
   },
   "HSRMod:Shock": {
     "NAME": "Shock",
     "DESCRIPTIONS": [
-      "DoT. Trigger at the start of the turn: take #b%d lightning damage (1), 1 stack is removed."
+      "DoT. Trigger at the start of the turn: take #b%d lightning damage (1), remove 1 stack."
     ]
   },
   "HSRMod:WindShear": {
     "NAME": "Wind Shear",
     "DESCRIPTIONS": [
-      "DoT. Trigger at the start of the turn: take #b%d ( #b%dX , X equals to the amount, up to 5) wind damage (1), 1 stack is removed."
+      "DoT. Trigger at the start of the turn: take #b%d ( #b%dX , X equals to the amount, up to #b5 ) wind damage (1), remove 1 stack."
     ]
   },
   "HSRMod:Imprison": {
     "NAME": "Imprison",
     "DESCRIPTIONS": [
-      "Damage dealt is reduced by #b%d %%. At the end of the turn, 1 stack is removed."
+      "Damage dealt is reduced by #b%d %%. At the end of the turn, remove 1 stack."
     ]
   },
   "HSRMod:Entangle": {
@@ -70,14 +70,14 @@
   "HSRMod:BreakEfficiency": {
     "NAME": "BreakEfficiency",
     "DESCRIPTIONS": [
-      "Toughness shred value of elemental damage is increased by #b%d %%. At the end of the turn, 1 stack is removed.",
-      "Toughness shred value of elemental damage is increased by #b%d %%. At the end of the turn, if above #b%d stacks, 1 stack is removed."
+      "Toughness shred value of elemental damage is increased by #b%d %%. At the end of the turn, remove 1 stack.",
+      "Toughness shred value of elemental damage is increased by #b%d %%. At the end of the turn, if above #b%d stacks, remove 1 stack."
     ]
   },
   "HSRMod:Aftertaste": {
     "NAME": "Aftertaste",
     "DESCRIPTIONS": [
-      "After dealing Follow Up card damage, consumes 10 Charge, deal #b%d damage to the target, and stack 1."
+      "After dealing damage via Follow-Up cards, uses 10 [hsrmod:ChargeIcon] , deal #b%d damage to the target, and stack 1."
     ]
   },
   "HSRMod:Suspicion": {
@@ -89,7 +89,7 @@
   "HSRMod:Spore": {
     "NAME": "Spore",
     "DESCRIPTIONS": [
-      "Up to 6 stacks. At the start of the turn, 1 stack is removed. Explode when targeted by an attack card: remove all stacks, take X*X wind damage (1)."
+      "Up to 6 stacks. At the start of the turn, remove 1 stack. Explode when targeted by an attack card: remove all stacks, take X*X wind damage (1)."
     ]
   },
   "HSRMod:CriticalBoost": {
@@ -101,21 +101,21 @@
   "HSRMod:BrainInAVat": {
     "NAME": "BrainInAVat",
     "DESCRIPTIONS": [
-      "After consuming Charge, remove 1 stack and recover an equal amount of Charge."
+      "After consuming [hsrmod:ChargeIcon] , remove 1 stack and recover an equal amount of [hsrmod:ChargeIcon] ."
     ]
   },
   "HSRMod:Reinforce": {
     "NAME": "Reinforce",
     "DESCRIPTIONS": [
-      "When taking damage, if you have Block, gain a 'Girl Power' card.",
-      "When taking damage, if you have Block, gain #b%d Block and a 'Girl Power' card."
+      "When taking damage, if you have Block, gain a #yGirl #yPower card.",
+      "When taking damage, if you have Block, gain #b%d Block and a #yGirl #yPower card."
     ]
   },
   "HSRMod:TopazNumby": {
     "NAME": "TopazNumby",
     "DESCRIPTIONS": [
-      "After chasing, apply 1 stack (up to 2 stacks). If 2 stacks are present and no 'Trotter Market!?' is available, remove 2 stacks and gain 1 card.",
-      "After chasing, apply 1 stack (up to 2 stacks). If 2 stacks are present and no 'Trotter Market!?+' is available, remove 2 stacks and gain 1 card."
+      "After chasing, apply 1 stack (up to 2 stacks). If 2 stacks are present and no #yTrotter #yMarket!? is available, remove 2 stacks and gain 1 card.",
+      "After chasing, apply 1 stack (up to 2 stacks). If 2 stacks are present and no #yTrotter #yMarket!?+ is available, remove 2 stacks and gain 1 card."
     ]
   },
   "HSRMod:Aventurine": {
@@ -128,8 +128,8 @@
   "HSRMod:Robin": {
     "NAME": "Robin",
     "DESCRIPTIONS": [
-      "After playing a card, if it's a Follow Up card, gain 1 stack of 'TemporaryStrength'; otherwise, lose 1 stack of 'TemporaryStrength'.",
-      "After playing a card, if it's a Follow Up card, gain 1 stack of 'TemporaryStrength' and recover 20 Charge; otherwise, lose 1 stack of 'TemporaryStrength'."
+      "After playing an attack card, gain 1 stack of Strength. Remove at start of turn, and remove all Strength gained by this effect.",
+      "After playing an attack card, gain 1 stack of Strength, and gain #b20 [hsrmod:ChargeIcon] if it is a Follow-Up card. Remove at start of turn, and remove all Strength gained by this effect."
     ]
   },
   "HSRMod:ProofOfDebt": {
@@ -141,7 +141,7 @@
   "HSRMod:WisemansFolly": {
     "NAME": "WisemansFolly",
     "DESCRIPTIONS": [
-      "At the end of the turn, if 'CogitoErgoSum' is not in your hand, remove it. Upon removal, consume all 'CogitoErgoSum' cards in your hand."
+      "At the end of the turn, if #yCogito #yErgo #ySum is not in your hand, remove it. Upon removal, consume all #yCogito #yErgo #ySum cards in your hand."
     ]
   },
   "HSRMod:BattlefieldMagician": {
@@ -154,15 +154,15 @@
   "HSRMod:SlaughterhouseNo4RestInPeace": {
     "NAME": "SlaughterhouseNo4RestInPeace",
     "DESCRIPTIONS": [
-      "After dealing Follow Up card damage, if the target has 'Broken', there is a #b%d %% chance to draw 1 card.",
-      "After dealing Follow Up card damage, if the target has/doesn't have 'Broken', there is a #b%d %%/20% chance to draw 1 card."
+      "After dealing Follow Up card damage, if the target has #yBroken, there is a #b%d %% chance to draw 1 card.",
+      "After dealing Follow Up card damage, if the target has/doesn't have #yBroken, there is a #b%d %%/20% chance to draw 1 card."
     ]
   },
   "HSRMod:UselessScholar": {
     "NAME": "UselessScholar",
     "DESCRIPTIONS": [
-      "After chasing, if you have any, there is a #b%d %% chance to consume #b%d Charge and Follow Up another Follow Up card.",
-      "After playing a Follow Up card, if you have any, there is a #b%d %% chance to consume #b%d Charge and Follow Up another Follow Up card."
+      "After chasing, if you have any, there is a #b%d %% chance to consume #b%d [hsrmod:ChargeIcon] and Follow Up another Follow Up card.",
+      "After playing a Follow Up card, if you have any, there is a #b%d %% chance to consume #b%d [hsrmod:ChargeIcon] and Follow Up another Follow Up card."
     ]
   },
   "HSRMod:BountyHunter": {
@@ -175,25 +175,25 @@
   "HSRMod:ThanatoplumRebloom": {
     "NAME": "ThanatoplumRebloom",
     "DESCRIPTIONS": [
-      "When losing 'Broken', remove 1 stack and prevent it."
+      "When losing #yBroken, remove 1 stack and prevent it."
     ]
   },
   "HSRMod:Trailblazer5": {
     "NAME": "Trailblazer5",
     "DESCRIPTIONS": [
-      "After the first damage dealt by a played card, if the target has 'Broken', deal break damage equal to its toughness shred value."
+      "After the first damage dealt by a played card, if the target has #yBroken, deal break damage equal to the toughness reduction amount."
     ]
   },
   "HSRMod:Trailblazer6": {
     "NAME": "Trailblazer6",
     "DESCRIPTIONS": [
-      "When dealing toughness shred damage, if the target has 'Broken', increase the damage by the absolute value of its Toughness."
+      "When dealing toughness reducing damage, if the target has #yBroken , increase the damage by the absolute value of its #yToughness ."
     ]
   },
   "HSRMod:Firefly": {
     "NAME": "Firefly",
     "DESCRIPTIONS": [
-      "After breaking the target, deal break damage equal to its toughness max and gain 1 stack of 'Break Efficiency'. Add the card 'Falling From A Shattered Sky' to your hand."
+      "After breaking the target, deal break damage equal to its max toughness and gain 1 stack of #yBreak #yEfficiency. Add the card #yFalling #yFrom #yA #yShattered Sky to your hand."
     ]
   },
   "HSRMod:Befog": {
@@ -212,8 +212,8 @@
   "HSRMod:VoyageMonitor": {
     "NAME": "VoyageMonitor",
     "DESCRIPTIONS": [
-      "After breaking the target, gain Toughness equal to its toughness max.",
-      "After breaking the target, gain Toughness equal to its toughness max. After dealing break damage, gain 1 stack of Toughness."
+      "After breaking the target, gain #yToughness equal to its max toughness.",
+      "After breaking the target, gain #yToughness equal to its max toughness. After dealing break damage, gain 1 stack of Toughness."
     ]
   },
   "HSRMod:IntersegmentalMembrane": {
@@ -225,7 +225,7 @@
   "HSRMod:Kolchis": {
     "NAME": "Kolchis",
     "DESCRIPTIONS": [
-      "Every #b%d #yCharge you use, gain [E] . Every #b%d [E] you use, gain 1 stack of #yBrain-In-A-Vat."
+      "Every #b%d [hsrmod:ChargeIcon] you use, gain [E] . Every #b%d [E] you use, gain 1 stack of #yBrain-In-A-Vat."
     ]
   },
   "HSRMod:Divinity": {
@@ -243,7 +243,7 @@
   "HSRMod:Huohuo": {
     "NAME": "Huohuo",
     "DESCRIPTIONS": [
-      "After playing a card, recover 1 HP, 10 Charge, and remove 1 stack of a random negative effect."
+      "After playing a card, recover 1 HP, 10 [hsrmod:ChargeIcon] , and remove 1 stack of a random negative effect."
     ]
   },
   "HSRMod:Epiphany": {
@@ -270,8 +270,8 @@
   "HSRMod:AnExtraPersonsDiary": {
     "NAME": "AnExtraPersonsDiary",
     "DESCRIPTIONS": [
-      "Toughness shred value of DoT effects +1. After breaking the target (X is the first digit of its toughness max), apply 1 random negative effect X times and draw X cards.",
-      "Toughness shred value of DoT effects +1. After breaking the target (X is the first digit of its toughness max), apply 1 random negative effect X times, draw X cards, and it loses X stacks of Strength."
+      "Toughness reduction value of DoT +1. After breaking the target, apply 1 random negative effect X times and draw X cards (X is the first digit of its max toughness).",
+      "Toughness reduction value of DoT +1. After breaking the target, apply 1 random negative effect X times, draw X cards, and it loses X stacks of Strength (X is the first digit of its max toughness)."
     ]
   },
   "HSRMod:ReignOfKeys": {
@@ -284,21 +284,21 @@
   "HSRMod:FuneralOfSensoryPursuivant": {
     "NAME": "FuneralOfSensoryPursuivant",
     "DESCRIPTIONS": [
-      "After the enemy takes DoT, apply #b%d stacks of 'Suspicion'.",
-      "After the enemy takes DoT, apply #b%d stacks of 'Suspicion'. When enemies are inflicted with DoT, apply #b%d stacks of 'Suspicion'."
+      "After the enemy takes DoT, apply #b%d stacks of #ySuspicion.",
+      "After the enemy takes DoT, apply #b%d stacks of #ySuspicion. When applying DoT to enemies, apply #b%d stacks of #ySuspicion."
     ]
   },
   "HSRMod:CommonMortal": {
     "NAME": "CommonMortal",
     "DESCRIPTIONS": [
-      "After consuming charge, apply 1 DoT effect to a random enemy. When you apply a DoT effect, gain #b%d charge.",
-      "After consuming charge, apply 1 DoT effect to a random enemy. When you apply a negative effect, gain #b%d charge."
+      "After consuming [hsrmod:ChargeIcon] , apply 1 DoT effect to a random enemy. When you apply a DoT effect, gain #b%d [hsrmod:ChargeIcon] .",
+      "After consuming [hsrmod:ChargeIcon] , apply 1 DoT effect to a random enemy. When you apply a negative effect, gain #b%d [hsrmod:ChargeIcon] ."
     ]
   },
   "HSRMod:MatrixOfPrescience": {
     "NAME": "Matrix Of Prescience",
     "DESCRIPTIONS": [
-      "Damage received - #b%d %%。"
+      "Damage received - #b%d %%."
     ]
   },
   "HSRMod:TheArchitects": {

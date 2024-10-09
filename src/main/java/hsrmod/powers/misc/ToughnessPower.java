@@ -1,5 +1,6 @@
 package hsrmod.powers.misc;
 
+import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -46,8 +47,8 @@ public class ToughnessPower extends BuffPower {
 
     @Override
     public void stackPower(int stackAmount) {        
-        this.fontScale = 8.0F;
-        this.amount += stackAmount;
+        if (stackAmount == stackLimit && owner != AbstractDungeon.player) return;
+        super.stackPower(stackAmount);
         
         if (this.amount < -stackLimit) {
             this.amount = -stackLimit;
@@ -55,10 +56,41 @@ public class ToughnessPower extends BuffPower {
         else if (this.amount > stackLimit) {
             this.amount = stackLimit;
         }
-        
+
+        // addToTop(new TalkAction(owner, String.format("Amount before: %d, Amount: %d, stack limit: %d!", temp, stackAmount, stackLimit), 1.0F, 2.0F));
         type = this.amount > 0 ? PowerType.BUFF : PowerType.DEBUFF;
     }
     
+    public void alterPower(int i) {
+        this.fontScale = 8.0F;
+        this.amount += i;
+        
+        if (this.amount < -stackLimit) {
+            this.amount = -stackLimit;
+        }
+        else if (this.amount > stackLimit) {
+            this.amount = stackLimit;
+        }
+
+        // addToTop(new TalkAction(owner, String.format("Amount before: %d, Amount: %d, stack limit: %d!", temp, stackAmount, stackLimit), 1.0F, 2.0F));
+        type = this.amount > 0 ? PowerType.BUFF : PowerType.DEBUFF;
+    }
+    
+    @Override
+    public void reducePower(int reduceAmount) {
+        super.reducePower(reduceAmount);
+
+        if (this.amount < -stackLimit) {
+            this.amount = -stackLimit;
+        }
+        else if (this.amount > stackLimit) {
+            this.amount = stackLimit;
+        }
+
+        // addToTop(new TalkAction(owner, String.format("Amount before: %d, Amount: %d, stack limit: %d!", temp, stackAmount, stackLimit), 1.0F, 2.0F));
+        type = this.amount > 0 ? PowerType.BUFF : PowerType.DEBUFF;
+    }
+
     public static int getStackLimit(AbstractCreature c){
         int result = 0;
         if (c instanceof AbstractMonster) {

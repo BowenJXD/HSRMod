@@ -19,12 +19,6 @@ public class March7th1 extends BaseCard {
     }
 
     @Override
-    public void upgrade() {
-        cardsToPreview.upgrade();
-        super.upgrade();
-    }
-
-    @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, p, block));
         AbstractPower power = p.getPower(ReinforcePower.POWER_ID);

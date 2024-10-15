@@ -31,7 +31,7 @@ public class FollowUpAction extends AbstractGameAction {
 
     public void update() {
         if (this.duration == Settings.ACTION_DUR_FAST) {
-            AbstractDungeon.player.hand.group.remove(card);
+            ModHelper.findCards((c) -> c.uuid.equals(card.uuid)).forEach((r) -> r.group.removeCard(r.card));
             AbstractDungeon.getCurrRoom().souls.remove(card); // ?
             AbstractDungeon.player.limbo.group.add(card);
             card.current_y = -200.0F * Settings.scale;

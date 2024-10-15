@@ -15,6 +15,7 @@ import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementType;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.relics.starter.*;
+import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.CardDataCol;
 import hsrmod.utils.DataManager;
 import hsrmod.utils.ModHelper;
@@ -133,11 +134,12 @@ public abstract class BaseCard extends CustomCard implements SpawnModificationCa
     }
 
     protected boolean checkEnergy() {
-        if (ModHelper.getPowerCount(EnergyPower.POWER_ID) < energyCost) {
-            cantUseMessage = Settings.language == Settings.GameLanguage.ZHS ? "我没有足够的充能。" : "I don't have enough energy.";
-            return false;
+        if (ModHelper.getPowerCount(EnergyPower.POWER_ID) >= energyCost 
+                || SubscriptionManager.getInstance().triggerCheckUsable(this)) {
+            return true;
         }
-        return true;
+        cantUseMessage = Settings.language == Settings.GameLanguage.ZHS ? "我没有足够的充能。" : "I don't have enough charge.";
+        return false;
     }
 
     @Override
@@ -176,7 +178,7 @@ public abstract class BaseCard extends CustomCard implements SpawnModificationCa
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (!checkEnergy()) return;
-        if (energyCost != 0) addToBot(new ApplyPowerAction(p, p, new EnergyPower(p, -energyCost), -energyCost));
+        if (energyCost != 0) addToTop(new ApplyPowerAction(p, p, new EnergyPower(p, -energyCost), -energyCost));
         onUse(p, m);
         ModHelper.addToBotAbstract( () -> this.followedUp = false);
     }

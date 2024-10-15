@@ -77,7 +77,7 @@
   "HSRMod:Aftertaste": {
     "NAME": "Aftertaste",
     "DESCRIPTIONS": [
-      "After dealing damage via Follow-Up cards, uses 10 [hsrmod:ChargeIcon] , deal #b%d damage to the target, and stack 1."
+      "After dealing damage via Follow-Up cards, deal #b%d damage to the target, and stack 1."
     ]
   },
   "HSRMod:Suspicion": {
@@ -320,6 +320,13 @@
     "DESCRIPTIONS": [
       "If you have Block, deal #b%d %% more damage to enemies with Block.",
       "If you have Block, deal #b%d %% more damage to enemies with Block. NL When breaking Block, gain #b%d Block."
+    ]
+  },
+  "HSRMod:ChampionsDinnerCatsCradle": {
+    "NAME": "Champion's Dinner : Cat's Cradle",
+    "DESCRIPTIONS": [
+      "Charge using cards are regarded as Follow Up cards, when your [hsrmod:ChargeIcon] is full, Follow Up one of them.",
+      "Charge using cards are regarded as Follow Up cards, when your [hsrmod:ChargeIcon] is full, Follow Up one of them. You don't need to have enough [hsrmod:ChargeIcon] to Follow Up."
     ]
   }
 }

@@ -19,7 +19,7 @@ import hsrmod.subscribers.SubscriptionManager;
 public class KolchisPower extends PowerPower implements OnReceivePowerPower, PreEnergyChangeSubscriber {
     public static final String POWER_ID = HSRMod.makePath(KolchisPower.class.getSimpleName());
 
-    int chargeThreshold = 100;
+    int chargeThreshold = 200;
     int energyThreshold = 5;
     
     public int amount2 = 0;
@@ -78,10 +78,11 @@ public class KolchisPower extends PowerPower implements OnReceivePowerPower, Pre
         if (power instanceof EnergyPower 
                 && stackAmount < 0) {
             flash();
+
             amount2 += -stackAmount;
-            if (amount2 >= chargeThreshold) {
-                amount2 -= chargeThreshold;
+            while (amount2 >= chargeThreshold) {
                 addToBot(new GainEnergyAction(1));
+                amount2 -= chargeThreshold;
             }
         }
         return stackAmount;

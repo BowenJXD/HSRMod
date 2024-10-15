@@ -23,7 +23,6 @@ public class Sparkle2 extends BaseCard {
     public void upgrade() {
         super.upgrade();
         isInnate = true;
-        exhaust = false;
     }
 
     @Override
@@ -32,7 +31,7 @@ public class Sparkle2 extends BaseCard {
         addToBot(new GainEnergyAction(energyOnUse * 2));
 
         ModHelper.addToBotAbstract(() -> {
-            List<ModHelper.FindResult> sparkles = ModHelper.findCards(c -> c instanceof Sparkle2);
+            List<ModHelper.FindResult> sparkles = ModHelper.findCards(c -> c instanceof Sparkle2 && c.uuid != uuid);
             if (!sparkles.isEmpty())
                 addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
             for (ModHelper.FindResult result : sparkles) {

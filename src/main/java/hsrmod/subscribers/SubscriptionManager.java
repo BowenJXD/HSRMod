@@ -25,6 +25,7 @@ public class SubscriptionManager {
     List<PreEnergyChangeSubscriber> preEnergyChangeSubscribers = new ArrayList<>();
     List<PostBreakBlockSubscriber> postBreakBlockSubscribers = new ArrayList<>();
     List<PreBlockGainSubscriber> preBlockGainSubscribers = new ArrayList<>();
+    List<ICheckUsableSubscriber> checkUsableSubscribers = new ArrayList<>();
 
     SubscriptionManager() {}
     
@@ -60,6 +61,10 @@ public class SubscriptionManager {
                 && !preBlockGainSubscribers.contains(sub)) {
             preBlockGainSubscribers.add((PreBlockGainSubscriber) sub);
         }
+        else if (sub instanceof ICheckUsableSubscriber
+                && !checkUsableSubscribers.contains(sub)) {
+            checkUsableSubscribers.add((ICheckUsableSubscriber) sub);
+        }
     }
     
     public void unsubscribe(ISubscriber subscriber) {
@@ -80,6 +85,9 @@ public class SubscriptionManager {
         }
         else if (subscriber instanceof PreBlockGainSubscriber) {
             preBlockGainSubscribers.remove(subscriber);
+        }
+        else if (subscriber instanceof ICheckUsableSubscriber) {
+            checkUsableSubscribers.remove(subscriber);
         }
     }
     
@@ -159,6 +167,18 @@ public class SubscriptionManager {
         }
         
         unsubscribeLaterHelper(PreBlockGainSubscriber.class);
+        
+        return result;
+    }
+    
+    public boolean triggerCheckUsable(BaseCard card) {
+        boolean result = false;
+        
+        for (ICheckUsableSubscriber sub : checkUsableSubscribers) {
+            result |= sub.checkUsable(card);
+        }
+        
+        unsubscribeLaterHelper(ICheckUsableSubscriber.class);
         
         return result;
     }

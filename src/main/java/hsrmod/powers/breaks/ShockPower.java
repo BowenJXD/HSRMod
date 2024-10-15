@@ -8,7 +8,7 @@ import hsrmod.powers.misc.DoTPower;
 public class ShockPower extends DoTPower {
     public static final String POWER_ID = HSRMod.makePath(ShockPower.class.getSimpleName());
 
-    private int damage = 5;
+    private int damage = 6;
 
     public ShockPower(AbstractCreature owner, AbstractCreature source, int Amount) {
         super(POWER_ID, owner, source, Amount);

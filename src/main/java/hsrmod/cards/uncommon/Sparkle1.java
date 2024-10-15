@@ -15,22 +15,20 @@ public class Sparkle1 extends BaseCard {
 
     public Sparkle1() {
         super(ID);
-        exhaust = true;
     }
 
     @Override
     public void upgrade() {
         super.upgrade();
         isInnate = true;
-        exhaust = false;
     }
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DrawCardAction(EnergyPanel.getCurrentEnergy()));
+        addToBot(new DrawCardAction(energyOnUse));
 
         ModHelper.addToBotAbstract(() -> {
-            List<ModHelper.FindResult> sparkles = ModHelper.findCards(c -> c instanceof Sparkle1);
+            List<ModHelper.FindResult> sparkles = ModHelper.findCards(c -> c instanceof Sparkle1 && c.uuid != uuid);
             if (!sparkles.isEmpty())
                 addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
             for (ModHelper.FindResult result : sparkles) {

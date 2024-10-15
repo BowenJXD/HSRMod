@@ -54,7 +54,7 @@ public class AftertastePower extends BuffPower implements DamageModApplyingPower
     
     void trigger(DamageInfo info, AbstractCreature target){
         flash();
-        addToTop(new ApplyPowerAction(info.owner, info.owner, new EnergyPower(info.owner, -ENERGY_REQUIRED), -ENERGY_REQUIRED));
+        // addToTop(new ApplyPowerAction(info.owner, info.owner, new EnergyPower(info.owner, -ENERGY_REQUIRED), -ENERGY_REQUIRED));
         addToBot(new ElementalDamageAction(target, new DamageInfo(info.owner, amount, DamageInfo.DamageType.NORMAL),
                 ModHelper.getRandomEnumValue(ElementType.class), 1, AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
         addToBot(new ApplyPowerAction(info.owner, info.owner, this, 1));
@@ -71,7 +71,7 @@ public class AftertastePower extends BuffPower implements DamageModApplyingPower
                     && target.currentHealth > 0  
                     && target != AbstractDungeon.player
                     && info.owner.hasPower(AftertastePower.POWER_ID) 
-                    && ModHelper.getPowerCount(info.owner, EnergyPower.POWER_ID) >= AftertastePower.ENERGY_REQUIRED) {
+                    /*&& ModHelper.getPowerCount(info.owner, EnergyPower.POWER_ID) >= AftertastePower.ENERGY_REQUIRED*/) {
                 ((AftertastePower) info.owner.getPower(AftertastePower.POWER_ID)).trigger(info, target);
             }
         }

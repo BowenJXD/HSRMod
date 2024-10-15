@@ -35,7 +35,7 @@ public class TheAshblazingGrandDuke extends BaseRelic implements OnApplyPowerRel
 
     @Override
     public void atBattleStart() {
-        ModHelper.findCards((c) -> c.hasTag(AbstractCard.CardTags.STARTER_STRIKE)).forEach((c) -> c.card.tags.add(FOLLOW_UP));
+        ModHelper.findCards((c) -> c.hasTag(AbstractCard.CardTags.STARTER_STRIKE)).forEach((r) -> r.card.tags.add(FOLLOW_UP));
     }
 
     @Override

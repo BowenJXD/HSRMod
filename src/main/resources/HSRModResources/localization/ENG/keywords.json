@@ -33,19 +33,19 @@
   },
   {
     "NAMES": ["Bleed", "bleeding", "bleed"],
-    "DESCRIPTION": "DoT. Trigger at the start of the turn: take physical damage equal to 5% of max HP (up to 10), 1 stack is removed."
+    "DESCRIPTION": "DoT. Trigger at the start of the turn: take physical damage (1) equal to 5% of max HP (up to 10), 1 stack is removed."
   },
   {
     "NAMES": ["Burn", "burn"],
-    "DESCRIPTION": "DoT. Trigger at the start of the turn: take 4 fire damage, 1 stack is removed."
+    "DESCRIPTION": "DoT. Trigger at the start of the turn: take 5 fire damage (1), 1 stack is removed."
   },
   {
     "NAMES": ["Shock", "shock"],
-    "DESCRIPTION": "DoT. Trigger at the start of the turn: take 5 lightning damage, 1 stack is removed."
+    "DESCRIPTION": "DoT. Trigger at the start of the turn: take 6 lightning damage (1), 1 stack is removed."
   },
   {
     "NAMES": ["Wind Shear", "wind-shear"],
-    "DESCRIPTION": "DoT. Trigger at the start of the turn: take wind damage equal to 2X (up to 5 stacks), 1 stack is removed."
+    "DESCRIPTION": "DoT. Trigger at the start of the turn: take wind damage (1) equal to 2X (up to 5 stacks), 1 stack is removed."
   },
   {
     "NAMES": ["Imprison", "imprison"],

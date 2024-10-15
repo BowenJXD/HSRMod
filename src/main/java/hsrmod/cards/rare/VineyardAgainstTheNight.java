@@ -1,3 +1,4 @@
+/*
 package hsrmod.cards.rare;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -25,3 +26,4 @@ public class VineyardAgainstTheNight extends BaseCard {
         addToBot(new ApplyPowerAction(p, p, new AftertastePower(p, magicNumber)));
     }
 }
+*/

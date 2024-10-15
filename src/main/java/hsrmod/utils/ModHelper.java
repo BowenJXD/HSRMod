@@ -9,10 +9,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import com.megacrit.cardcrawl.random.Random;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 import java.util.function.Predicate;
 
 public class ModHelper {
@@ -105,6 +102,9 @@ public class ModHelper {
     }
     
     public static <T> T getRandomElement(List<T> list, Random rand) {
+        if (list.isEmpty()) {
+            return null;
+        }
         return list.get(rand.random(list.size() - 1));
     }
     
@@ -115,7 +115,18 @@ public class ModHelper {
                 filtered.add(element);
             }
         }
+        if (filtered.isEmpty()) {
+            return null;
+        }
         return getRandomElement(filtered, random);
+    }
+    
+    public static <T> List<T> getRandomElements(List<T> list,  Random random, int count) {
+        count = Math.min(count, list.size());
+
+        List<T> shuffledList = new ArrayList<>(list);
+        Collections.shuffle(shuffledList, random.random);  // Randomly shuffle the list
+        return shuffledList.subList(0, count);  // Return the first x elements
     }
 
     public static AbstractMonster getRandomMonster(Predicate<AbstractMonster> predicate, boolean aliveOnly) {

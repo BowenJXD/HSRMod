@@ -8,7 +8,7 @@ import hsrmod.powers.misc.DoTPower;
 public class BurnPower extends DoTPower {
     public static final String POWER_ID = HSRMod.makePath(BurnPower.class.getSimpleName());
 
-    private int damage = 4;
+    private int damage = 5;
 
     public BurnPower(AbstractCreature owner, AbstractCreature source, int Amount) {
         super(POWER_ID, owner, source, Amount);

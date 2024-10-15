@@ -26,6 +26,8 @@ public class TerminalNirvana extends BaseCard implements PostBattleSubscriber {
     public void upgrade() {
         super.upgrade();
         exhaust = false;
+        energyCost = magicNumber;
+        magicNumberCache = magicNumber;
     }
 
     @Override

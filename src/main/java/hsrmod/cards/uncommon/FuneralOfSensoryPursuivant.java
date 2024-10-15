@@ -11,6 +11,11 @@ public class FuneralOfSensoryPursuivant extends BaseCard {
     
     public FuneralOfSensoryPursuivant() {
         super(ID);
+    }
+
+    @Override
+    public void upgrade() {
+        super.upgrade();
         isInnate = true;
     }
 

@@ -8,14 +8,16 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
+/*
+ * Note that the block is considered before onAttack or onAttacked.
+ */
 public class DamageTargetPatch {
-
     @SpirePatch(clz = DamageInfo.class, method = SpirePatch.CLASS)
     public static class DamageTargetField {
         public static SpireField<AbstractCreature> target = new SpireField<>(() -> null);
     }
 
-/*    @SpirePatch(clz = AbstractMonster.class, method = "damage")
+    @SpirePatch(clz = AbstractMonster.class, method = "damage")
     public static class DamageTargetPatchMonster {
         @SpirePrefixPatch
         public static void setTarget(AbstractCreature _inst, DamageInfo info) {
@@ -29,5 +31,5 @@ public class DamageTargetPatch {
         public static void setTarget(AbstractCreature _inst, DamageInfo info) {
             DamageTargetField.target.set(info, _inst);
         }
-    }*/
+    }
 }

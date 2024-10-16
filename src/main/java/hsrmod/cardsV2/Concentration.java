@@ -1,4 +1,4 @@
-package hsrmod.obsoleteCards;
+package hsrmod.cardsV2;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;

@@ -2,15 +2,18 @@ package hsrmod.powers.uniqueBuffs;
 
 import basemod.BaseMod;
 import basemod.interfaces.OnPlayerLoseBlockSubscriber;
+import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.DexterityPower;
+import com.megacrit.cardcrawl.powers.FrailPower;
+import com.megacrit.cardcrawl.powers.VulnerablePower;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
-import hsrmod.subscribers.PostBreakBlockSubscriber;
-import hsrmod.subscribers.PreBlockGainSubscriber;
+import hsrmod.subscribers.PreBlockChangeSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
-import hsrmod.utils.ModHelper;
 
-public class DivinityPower extends PowerPower implements OnPlayerLoseBlockSubscriber, PreBlockGainSubscriber {
+public class DivinityPower extends PowerPower implements OnPlayerLoseBlockSubscriber, PreBlockChangeSubscriber, OnReceivePowerPower {
     public static final String POWER_ID = HSRMod.makePath(DivinityPower.class.getSimpleName());
 
     private int blockAdd = 2;
@@ -48,11 +51,21 @@ public class DivinityPower extends PowerPower implements OnPlayerLoseBlockSubscr
     }
 
     @Override
-    public int preBlockGain(AbstractCreature creature, int blockAmount) {
+    public int preBlockChange(AbstractCreature creature, int blockAmount) {
         if (SubscriptionManager.checkSubscriber(this) 
-                && creature == owner) {
+                && creature == owner 
+                && blockAmount > 0) {
             return blockAmount + blockAdd;
         }
         return blockAmount;
+    }
+
+    @Override
+    public boolean onReceivePower(AbstractPower abstractPower, AbstractCreature abstractCreature, AbstractCreature abstractCreature1) {
+        if (abstractPower instanceof DexterityPower || abstractPower instanceof FrailPower) {
+            flash();
+            return false;
+        }
+        return true;
     }
 }

@@ -27,11 +27,7 @@ public class HuohuoPower extends BuffPower implements OnReceivePowerPower {
     @Override
     public void atEndOfTurn(boolean isPlayer) {
         super.atEndOfTurn(isPlayer);
-        if (this.amount == 0) {
-            this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
-        } else {
-            this.addToBot(new ReducePowerAction(this.owner, this.owner, this, 1));
-        }
+        remove(1);
     }
 
     @Override

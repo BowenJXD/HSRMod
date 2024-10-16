@@ -37,11 +37,7 @@ public class ReinforcePower extends BuffPower implements OnPlayerDamagedSubscrib
 
     @Override
     public void atStartOfTurn() {
-        if (this.amount == 0) {
-            this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
-        } else {
-            this.addToBot(new ReducePowerAction(this.owner, this.owner, this, 1));
-        }
+        remove(1);
     }
 
     @Override

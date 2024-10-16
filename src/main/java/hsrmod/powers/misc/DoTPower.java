@@ -54,20 +54,12 @@ public abstract class DoTPower extends DebuffPower {
             info.output = (int) SubscriptionManager.getInstance().triggerPreDoTDamage(info.output, this.owner, this);
             
             this.addToTop(new ElementalDamageAction(this.owner, info, this.getElementType(), toughnessReduction));
-            if (removeOnTrigger) remove();
+            if (removeOnTrigger) remove(1);
         }
     }
     
     public abstract int getDamage();
     public abstract ElementType getElementType();
-    
-    public void remove() {
-        if (this.amount == 0) {
-            this.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this));
-        } else {
-            this.addToTop(new ReducePowerAction(this.owner, this.owner, this, 1));
-        }
-    }
     
     public static DoTPower getRandomDoTPower(AbstractCreature owner, AbstractCreature source, int amount){
         switch(AbstractDungeon.cardRandomRng.random(0, 3)){

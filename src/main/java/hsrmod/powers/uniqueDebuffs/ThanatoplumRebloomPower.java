@@ -32,11 +32,7 @@ public class ThanatoplumRebloomPower extends DebuffPower {
         AbstractPower power = owner.getPower(BrokenPower.POWER_ID);
         if (power != null) {
             ((BrokenPower)power).doReduce = false;
-            if (this.amount == 0) {
-                this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
-            } else {
-                this.addToBot(new ReducePowerAction(this.owner, this.owner, this, 1));
-            }
+            remove(1);
         }
     }
 }

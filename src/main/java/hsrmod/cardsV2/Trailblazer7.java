@@ -1,4 +1,4 @@
-package hsrmod.obsoleteCards;
+package hsrmod.cardsV2;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -15,6 +15,6 @@ public class Trailblazer7 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new Trailblazer7Power(upgraded)));
+        addToBot(new ApplyPowerAction(p, p, new Trailblazer7Power(magicNumber)));
     }
 }

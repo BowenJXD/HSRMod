@@ -1,17 +1,18 @@
-package hsrmod.obsoleteCards;
+package hsrmod.cardsV2;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.DexterityPower;
+import com.megacrit.cardcrawl.powers.PlatedArmorPower;
 import hsrmod.cards.BaseCard;
 
-public class ThisIsMe extends BaseCard {
-    public static final String ID = ThisIsMe.class.getSimpleName();
+public class DayOneOfMyNewLife extends BaseCard {
+    public static final String ID = DayOneOfMyNewLife.class.getSimpleName();
     
-    public ThisIsMe() {
+    public DayOneOfMyNewLife() {
         super(ID);
+        exhaust = true;
     }
     
     @Override
@@ -19,10 +20,11 @@ public class ThisIsMe extends BaseCard {
         super.upgrade();
         isInnate = true;
     }
-
+    
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, magicNumber), magicNumber));
+        if (!p.hasPower(PlatedArmorPower.POWER_ID))
+            addToBot(new ApplyPowerAction(p, p, new PlatedArmorPower(p, magicNumber), 0));
 
         addToBot(new GainBlockAction(p, block));
         addToBot(new GainBlockAction(m, baseBlock));

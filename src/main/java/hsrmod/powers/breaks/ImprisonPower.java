@@ -25,11 +25,7 @@ public class ImprisonPower extends DebuffPower {
 
     @Override
     public void atEndOfTurn(boolean isPlayer) {
-        if (this.amount == 0) {
-            this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
-        } else {
-            this.addToBot(new ReducePowerAction(this.owner, this.owner, this, 1));
-        }
+        remove(1);
     }
 
     public float atDamageGive(float damage, DamageInfo.DamageType type) {

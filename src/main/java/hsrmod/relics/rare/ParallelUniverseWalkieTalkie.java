@@ -1,5 +1,6 @@
 package hsrmod.relics.rare;
 
+import basemod.BaseMod;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.MoveCardsAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -30,7 +31,7 @@ public class ParallelUniverseWalkieTalkie extends BaseRelic {
     @Override
     public void onExhaust(AbstractCard card) {
         super.onExhaust(card);
-        if (AbstractDungeon.cardRandomRng.random(99) < returnChance) {
+        if (AbstractDungeon.cardRandomRng.random(99) < returnChance && AbstractDungeon.player.hand.size() < BaseMod.MAX_HAND_SIZE) {
             flash();
             AbstractPlayer p = AbstractDungeon.player;
             addToBot(new MoveCardsAction(p.hand, p.exhaustPile, c -> c == card));

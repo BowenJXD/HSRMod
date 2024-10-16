@@ -86,6 +86,12 @@
       "受到的持续伤害+ #b%d %%。至多叠加 #b%d 层。"
     ]
   },
+  "HSRMod:Quake": {
+    "NAME": "反震",
+    "DESCRIPTIONS": [
+      "一次性失去一半及以上的格挡时，移除1层，获得1张伤害值为X的「反震」（X为失去的格挡数）。"
+    ]
+  },
   "HSRMod:Spore": {
     "NAME": "孢子",
     "DESCRIPTIONS": [
@@ -301,23 +307,23 @@
       "你受到的伤害- #b%d %%。"
     ]
   },
-  "HSRMod:TheArchitects": {
-    "NAME": "筑城者",
+  "HSRMod:ResonanceTransfer": {
+    "NAME": "谐振传递",
     "DESCRIPTIONS": [
-      "突破格挡时，对其造成 #b%d 点伤害，你每有 #b%d 层格挡，造成的伤害+ #b%d 。",
-      "对有格挡的敌人造成伤害时，对其造成 #b%d 点伤害，你每有 #b%d 层格挡，造成的伤害+ #b%d 。"
+      "突破格挡时，获得1层 #y反震 。",
+      "固有。对有格挡的敌人造成伤害时，获得1层 #y反震 。"
     ]
   },
   "HSRMod:Trailblazer7": {
     "NAME": "筑城者遗宝",
     "DESCRIPTIONS": [
-      "回合开始时，令随机一名有攻击意图的敌人获得 #b%d 层格挡。 NL 你于一回合首次突破格挡时，获得 #b%d 层格挡。"
+      "你对有格挡的敌人造成伤害时，令伤害+ #b%d %%。"
     ]
   },
   "HSRMod:Trailblazer8": {
     "NAME": "行胜思",
     "DESCRIPTIONS": [
-      "回合开始失去格挡时，对随机敌人造成X点伤害（物理2）（X为失去的格挡数，目前为 #b%d ），然后此回合你对有格挡的敌人造成的伤害增加X%%。"
+      "你打出牌后，对随机敌人造成该牌格挡值 #b%d %%的伤害（物理1）。突破格挡时，摸1张牌。"
     ]
   },
   "HSRMod:ChampionsDinnerCatsCradle": {

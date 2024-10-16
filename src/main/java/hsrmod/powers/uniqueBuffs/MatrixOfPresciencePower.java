@@ -26,11 +26,7 @@ public class MatrixOfPresciencePower extends BuffPower {
     @Override
     public void atStartOfTurn() {
         super.atStartOfTurn();
-        if (this.amount == 0) {
-            this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
-        } else {
-            this.addToBot(new ReducePowerAction(this.owner, this.owner, this, 1));
-        }
+        remove(1);
     }
 
     @Override

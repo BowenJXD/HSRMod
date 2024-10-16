@@ -1,10 +1,9 @@
-package hsrmod.obsoleteCards;
+package hsrmod.cardsV2;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AfterImagePower;
 import hsrmod.cards.BaseCard;
 
 public class ConcertForTwo extends BaseCard {
@@ -12,7 +11,6 @@ public class ConcertForTwo extends BaseCard {
     
     public ConcertForTwo() {
         super(ID);
-        exhaust = true;
     }
     
     @Override
@@ -23,9 +21,10 @@ public class ConcertForTwo extends BaseCard {
     
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new AfterImagePower(p, magicNumber), magicNumber));
-
-        addToBot(new GainBlockAction(p, block));
-        addToBot(new GainBlockAction(m, baseBlock));
+        AbstractDungeon.getMonsters().monsters.stream().filter(q -> !q.isDeadOrEscaped() && q.currentHealth > 0).forEach(q -> {
+            addToBot(new GainBlockAction(p, p, block));
+            addToBot(new GainBlockAction(q, baseBlock));
+        });
+        if (upgraded) addToBot(new GainBlockAction(p, p, block));
     }
 }

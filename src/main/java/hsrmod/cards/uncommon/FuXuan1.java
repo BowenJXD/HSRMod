@@ -12,18 +12,12 @@ public class FuXuan1 extends BaseCard {
     
     public FuXuan1() {
         super(ID);
-        // exhaust = true;
-        
-        // energyCost = 130;
+        exhaust = true;
     }
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        /*int heal = (p.maxHealth - p.currentHealth) / 10;
-        addToBot(new HealAction(p, p, heal));
-        addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, magicNumber), magicNumber));*/
         addToBot(new ApplyPowerAction(p, p, new MatrixOfPresciencePower(p, magicNumber), magicNumber));
-        if (upgraded)
-            addToBot(new ApplyPowerAction(p, p, new BlurPower(p, magicNumber), magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new BlurPower(p, 1), 1));
     }
 }

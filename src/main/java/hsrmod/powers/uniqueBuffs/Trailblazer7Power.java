@@ -1,64 +1,68 @@
 package hsrmod.powers.uniqueBuffs;
 
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
+import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.DamageModApplyingPower;
+import com.megacrit.cardcrawl.actions.common.RemoveAllBlockAction;
+import com.megacrit.cardcrawl.actions.utility.LoseBlockAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
-import hsrmod.subscribers.PostBreakBlockSubscriber;
-import hsrmod.subscribers.SubscriptionManager;
-import hsrmod.utils.ModHelper;
 
-public class Trailblazer7Power extends PowerPower implements PostBreakBlockSubscriber {
+import java.util.Collections;
+import java.util.List;
+
+public class Trailblazer7Power extends PowerPower implements DamageModApplyingPower {
     public static final String POWER_ID = HSRMod.makePath(Trailblazer7Power.class.getSimpleName());
     
-    int enemyBlock = 4;
-    int selfBlock = 8;
-    boolean canTrigger = true;
+    public int percentage;
     
-    public Trailblazer7Power(boolean upgraded) {
-        super(POWER_ID, upgraded);
-        if (upgraded) selfBlock = 12;
+    public Trailblazer7Power(int percentage) {
+        super(POWER_ID);
+        this.percentage = percentage;
         this.updateDescription();
     }
 
     @Override
     public void updateDescription() {
-        this.description = String.format(DESCRIPTIONS[0], enemyBlock, selfBlock);
+        description = String.format(DESCRIPTIONS[0], percentage);
     }
 
     @Override
-    public void onInitialApplication() {
-        super.onInitialApplication();
-        SubscriptionManager.getInstance().subscribe(this);
+    public boolean shouldPushMods(DamageInfo damageInfo, Object o, List<AbstractDamageModifier> list) {
+        return o instanceof AbstractCard
+                && list.stream().noneMatch(mod -> mod instanceof Trailblazer7DamageMod);
     }
 
     @Override
-    public void onRemove() {
-        super.onRemove();
-        SubscriptionManager.getInstance().unsubscribe(this);
+    public List<AbstractDamageModifier> modsToPush(DamageInfo damageInfo, Object o, List<AbstractDamageModifier> list) {
+        return Collections.singletonList(new Trailblazer7DamageMod(owner, percentage));
     }
 
-    @Override
-    public void atStartOfTurnPostDraw() {
-        super.atStartOfTurnPostDraw();
-        AbstractMonster m = ModHelper.getRandomMonster((mo) -> mo.intent == AbstractMonster.Intent.ATTACK 
-                || mo.intent == AbstractMonster.Intent.ATTACK_BUFF 
-                || mo.intent == AbstractMonster.Intent.ATTACK_DEBUFF 
-                || mo.intent == AbstractMonster.Intent.ATTACK_DEFEND, true);
-        if (m != null) {
-            flash();
-            addToBot(new GainBlockAction(m, enemyBlock));
+    public static class Trailblazer7DamageMod extends AbstractDamageModifier {
+        AbstractCreature owner;
+        int percentage = 0;
+
+        public Trailblazer7DamageMod(AbstractCreature owner, int percentage) {
+            this.owner = owner;
+            this.percentage = percentage;
         }
-        canTrigger = true;
-    }
 
-    @Override
-    public void postBreakBlock(AbstractCreature c) {
-        if (SubscriptionManager.checkSubscriber(this) && c != owner && canTrigger) {
-            flash();
-            canTrigger = false;
-            addToBot(new GainBlockAction(owner, owner, selfBlock));
+        @Override
+        public float atDamageGive(float damage, DamageInfo.DamageType type, AbstractCreature target, AbstractCard card) {
+            if (target != null 
+                    && target.currentBlock > 0
+                    && damage > 0
+                    && target.currentBlock <= owner.currentBlock) {
+                return damage * (1 + percentage / 100.0f);
+            }
+            return damage;
+        }
+
+        @Override
+        public AbstractDamageModifier makeCopy() {
+            return new Trailblazer7DamageMod(owner, percentage);
         }
     }
 }

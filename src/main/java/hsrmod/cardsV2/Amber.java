@@ -1,8 +1,7 @@
-package hsrmod.obsoleteCards;
+package hsrmod.cardsV2;
 
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.AOEAction;
 import hsrmod.cards.BaseCard;
@@ -15,15 +14,14 @@ public class Amber extends BaseCard {
     }
 
     @Override
-    protected void applyPowersToBlock() {
-        baseBlock = AbstractDungeon.player.maxHealth * magicNumber / 100;
-        super.applyPowersToBlock();
-    }
-
-    @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new GainBlockAction(p, p, block));
+        if (p.currentBlock == 0)
+            addToBot(new GainBlockAction(p, p, block));
         
-        addToBot(new AOEAction((q) -> new GainBlockAction(q, upgraded ? 3 : 2)));
+        addToBot(new AOEAction((q) -> {
+            if (q.currentBlock == 0)
+                return new GainBlockAction(q, magicNumber);
+            return null;
+        }));
     }
 }

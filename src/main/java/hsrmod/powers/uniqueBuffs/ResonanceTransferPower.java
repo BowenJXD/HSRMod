@@ -1,23 +1,25 @@
 package hsrmod.powers.uniqueBuffs;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
+import hsrmod.powers.misc.QuakePower;
 import hsrmod.subscribers.PostBreakBlockSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 
-public class TheArchitectsPower extends PowerPower implements PostBreakBlockSubscriber {
-    public static final String POWER_ID = HSRMod.makePath(TheArchitectsPower.class.getSimpleName());
+public class ResonanceTransferPower extends PowerPower implements PostBreakBlockSubscriber {
+    public static final String POWER_ID = HSRMod.makePath(ResonanceTransferPower.class.getSimpleName());
 
     public int damage = 4;
     public int block = 4;
     public int increment = 2;
     
-    public TheArchitectsPower(boolean upgraded) {
+    public ResonanceTransferPower(boolean upgraded) {
         super(POWER_ID, upgraded);
         this.updateDescription();
     }
@@ -63,10 +65,9 @@ public class TheArchitectsPower extends PowerPower implements PostBreakBlockSubs
     @Override
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
         super.onAttack(info, damageAmount, target);
-        if (upgraded 
-                && target.currentBlock > 0) {
+        if (upgraded && target.currentBlock > 0) {
             this.flash();
-            attack(target);
+            addToTop(new ApplyPowerAction(owner, owner, new QuakePower(owner, 1), 1));
         }
     }
 
@@ -74,13 +75,7 @@ public class TheArchitectsPower extends PowerPower implements PostBreakBlockSubs
     public void postBreakBlock(AbstractCreature c) {
         if (SubscriptionManager.checkSubscriber(this) && c != owner && !upgraded) {
             this.flash();
-            attack(c);
+            addToTop(new ApplyPowerAction(owner, owner, new QuakePower(owner, 1), 1));
         }
-    }
-    
-    void attack(AbstractCreature c) {
-        int dmg = damage;
-        dmg += AbstractDungeon.player.currentBlock / 10 * increment;
-        this.addToTop(new DamageAction(c, new DamageInfo(AbstractDungeon.player, dmg, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SHIELD));
     }
 }

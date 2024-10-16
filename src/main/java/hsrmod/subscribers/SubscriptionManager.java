@@ -24,7 +24,7 @@ public class SubscriptionManager {
     List<PreDoTDamageSubscriber> preDoTDamageSubscribers = new ArrayList<>();
     List<PreEnergyChangeSubscriber> preEnergyChangeSubscribers = new ArrayList<>();
     List<PostBreakBlockSubscriber> postBreakBlockSubscribers = new ArrayList<>();
-    List<PreBlockGainSubscriber> preBlockGainSubscribers = new ArrayList<>();
+    List<PreBlockChangeSubscriber> preBlockGainSubscribers = new ArrayList<>();
     List<ICheckUsableSubscriber> checkUsableSubscribers = new ArrayList<>();
 
     SubscriptionManager() {}
@@ -57,9 +57,9 @@ public class SubscriptionManager {
                 && !postBreakBlockSubscribers.contains(sub)) {
             postBreakBlockSubscribers.add((PostBreakBlockSubscriber) sub);
         }
-        else if (sub instanceof PreBlockGainSubscriber
+        else if (sub instanceof PreBlockChangeSubscriber
                 && !preBlockGainSubscribers.contains(sub)) {
-            preBlockGainSubscribers.add((PreBlockGainSubscriber) sub);
+            preBlockGainSubscribers.add((PreBlockChangeSubscriber) sub);
         }
         else if (sub instanceof ICheckUsableSubscriber
                 && !checkUsableSubscribers.contains(sub)) {
@@ -83,7 +83,7 @@ public class SubscriptionManager {
         else if (subscriber instanceof PostBreakBlockSubscriber) {
             postBreakBlockSubscribers.remove(subscriber);
         }
-        else if (subscriber instanceof PreBlockGainSubscriber) {
+        else if (subscriber instanceof PreBlockChangeSubscriber) {
             preBlockGainSubscribers.remove(subscriber);
         }
         else if (subscriber instanceof ICheckUsableSubscriber) {
@@ -159,14 +159,14 @@ public class SubscriptionManager {
         unsubscribeLaterHelper(PostBreakBlockSubscriber.class);
     }
     
-    public int triggerPreBlockGain(AbstractCreature creature, int amount) {
+    public int triggerPreBlockChange(AbstractCreature creature, int amount) {
         int result = amount;
         
-        for (PreBlockGainSubscriber sub : preBlockGainSubscribers) {
-            result = sub.preBlockGain(creature, amount);
+        for (PreBlockChangeSubscriber sub : preBlockGainSubscribers) {
+            result = sub.preBlockChange(creature, amount);
         }
         
-        unsubscribeLaterHelper(PreBlockGainSubscriber.class);
+        unsubscribeLaterHelper(PreBlockChangeSubscriber.class);
         
         return result;
     }

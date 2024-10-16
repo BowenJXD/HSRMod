@@ -30,7 +30,7 @@ public class Aventurine2 extends BaseCard {
             int blockThisTurn = AbstractDungeon.cardRandomRng.random(1, block);
             addToBot(new GainBlockAction(p, p, blockThisTurn));
         }
-        addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new BlurPower(AbstractDungeon.player, 1), 1));
+        addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new ArtifactPower(AbstractDungeon.player, 1), 1));
     }
 
     @Override
@@ -49,20 +49,9 @@ public class Aventurine2 extends BaseCard {
     public void triggerOnOtherCardPlayed(AbstractCard c) {
         super.triggerOnOtherCardPlayed(c);
         if (!AbstractDungeon.player.hand.contains(this)) return;
-        if (!followedUp) {
-            ModHelper.addToBotAbstract(() -> {
-                if (AbstractDungeon.player.currentBlock > playerBlock) {
-                    followedUp = true;
-                    addToBot(new FollowUpAction(this));
-                }
-                else 
-                    ModHelper.addToBotAbstract(() -> {
-                        if (AbstractDungeon.player.currentBlock > playerBlock) {
-                            followedUp = true;
-                            addToBot(new FollowUpAction(this));
-                        }
-                    });
-            });
+        if (!followedUp && c.baseBlock > 0 && c.block > 0) {
+            followedUp = true;
+            addToBot(new FollowUpAction(this));
         }
     }
 }

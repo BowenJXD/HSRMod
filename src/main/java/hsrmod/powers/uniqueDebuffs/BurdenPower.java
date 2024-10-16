@@ -20,11 +20,7 @@ public class BurdenPower extends DebuffPower {
     @Override
     public void onPlayCard(AbstractCard card, AbstractMonster m) {
         if (m == owner || card.target == AbstractCard.CardTarget.ALL_ENEMY || card.target == AbstractCard.CardTarget.ALL) {
-            if (this.amount == 0) {
-                this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
-            } else {
-                this.addToBot(new ReducePowerAction(this.owner, this.owner, this, 1));
-            }
+            remove(1);
             addToBot(new GainEnergyAction(1));
         }
     }

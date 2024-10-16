@@ -1,4 +1,5 @@
-package hsrmod.obsoleteCards;
+/*
+package hsrmod.cardsV2;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -35,3 +36,4 @@ public class TextureOfMemories extends BaseCard {
         }
     }
 }
+*/

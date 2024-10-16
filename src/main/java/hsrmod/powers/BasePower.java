@@ -1,6 +1,8 @@
 package hsrmod.powers;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
@@ -35,5 +37,13 @@ public abstract class BasePower extends AbstractPower {
     @Override
     public void updateDescription() {
         description = DESCRIPTIONS[upgraded && DESCRIPTIONS.length > 1 ? 1 : 0];
+    }
+
+    public void remove(int val) {
+        if (this.amount == 0) {
+            this.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+        } else {
+            this.addToTop(new ReducePowerAction(this.owner, this.owner, this, val));
+        }
     }
 }

@@ -42,7 +42,7 @@ function process(doc, outputPath, postfix){
         return;
     }
 
-    hideAllGroups(doc);
+    hideAllGroups(visibleLayerSets);
 
     var previousVisibleLayerSet = null;
 
@@ -70,17 +70,21 @@ function getInitiallyVisibleLayerSets(doc) {
     var layers = doc.layerSets;
 
     for (var i = 0; i < layers.length; i++) {
-        if (layers[i].visible) {
-            visibleLayerSets.push(layers[i]);
+        if (layers[i] instanceof LayerSet) {
+            for (var j = 0; j < layers[i].layers.length; j++) {
+                if (layers[i].layers[j].visible) {
+                    visibleLayerSets.push(layers[i].layers[j]);
+                }
+            }
         }
     }
     return visibleLayerSets;
 }
 
 // 隐藏所有图层组
-function hideAllGroups(doc) {
-    for (var i = 0; i < doc.layerSets.length; i++) {
-        doc.layerSets[i].visible = false;
+function hideAllGroups(layerSets) {
+    for (var i = 0; i < layerSets.length; i++) {
+        layerSets[i].visible = false;
     }
 }
 

@@ -64,7 +64,7 @@
   "HSRMod:BreakEffect": {
     "NAME": "BreakEffect",
     "DESCRIPTIONS": [
-      "Break damage is increased by #b%d."
+      "Break damage is increased by #b%d. DoT damage to Broken enemies is increased by #b%d."
     ]
   },
   "HSRMod:BreakEfficiency": {

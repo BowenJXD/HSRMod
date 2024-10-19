@@ -37,11 +37,11 @@
   },
   {
     "NAMES": ["Burn", "burn"],
-    "DESCRIPTION": "DoT. Trigger at the start of the turn: take 5 fire damage (1), 1 stack is removed."
+    "DESCRIPTION": "DoT. Trigger at the start of the turn: take 6 fire damage (1), 1 stack is removed."
   },
   {
     "NAMES": ["Shock", "shock"],
-    "DESCRIPTION": "DoT. Trigger at the start of the turn: take 6 lightning damage (1), 1 stack is removed."
+    "DESCRIPTION": "DoT. Trigger at the start of the turn: take 7 lightning damage (1), 1 stack is removed."
   },
   {
     "NAMES": ["Wind Shear", "wind-shear"],
@@ -57,7 +57,7 @@
   },
   {
     "NAMES": ["Break Effect", "break-effect"],
-    "DESCRIPTION": "Break damage is increased by X."
+    "DESCRIPTION": "Break damage is increased by X. DoT damage to Broken enemies is increased by X."
   },
   {
     "NAMES": ["Break Efficiency", "break-efficiency"],

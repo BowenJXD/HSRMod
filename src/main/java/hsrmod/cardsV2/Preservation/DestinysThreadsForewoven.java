@@ -1,4 +1,4 @@
-package hsrmod.cardsV2;
+package hsrmod.cardsV2.Preservation;
 
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
@@ -13,6 +13,7 @@ public class DestinysThreadsForewoven extends BaseCard {
     
     public DestinysThreadsForewoven() {
         super(ID);
+        energyCost = 80;
     }
     
     @Override

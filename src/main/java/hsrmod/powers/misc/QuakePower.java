@@ -3,19 +3,14 @@ package hsrmod.powers.misc;
 import basemod.BaseMod;
 import basemod.interfaces.OnPlayerLoseBlockSubscriber;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnLoseBlockPower;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import hsrmod.actions.ElementalDamageAction;
-import hsrmod.cardsV2.Quake;
-import hsrmod.modcore.ElementType;
+import hsrmod.cardsV2.Preservation.Quake;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
 import hsrmod.subscribers.SubscriptionManager;
-
-import java.lang.annotation.Target;
 
 public class QuakePower extends BuffPower implements OnPlayerLoseBlockSubscriber, OnLoseBlockPower {
     public static final String POWER_ID = HSRMod.makePath(QuakePower.class.getSimpleName());

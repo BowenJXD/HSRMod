@@ -1,4 +1,4 @@
-package hsrmod.cardsV2;
+package hsrmod.cardsV2.Preservation;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.utility.LoseBlockAction;

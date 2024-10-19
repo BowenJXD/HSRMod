@@ -52,6 +52,7 @@ public class Trailblazer7Power extends PowerPower implements DamageModApplyingPo
         @Override
         public float atDamageGive(float damage, DamageInfo.DamageType type, AbstractCreature target, AbstractCard card) {
             if (target != null 
+                    && target != owner
                     && target.currentBlock > 0
                     && damage > 0
                     && target.currentBlock <= owner.currentBlock) {

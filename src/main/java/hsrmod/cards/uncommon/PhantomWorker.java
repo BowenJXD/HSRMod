@@ -1,3 +1,4 @@
+/*
 package hsrmod.cards.uncommon;
 
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
@@ -40,3 +41,4 @@ public class PhantomWorker extends BaseCard {
                 addToBot(new UpgradeRandomCardAction());
     }
 }
+*/

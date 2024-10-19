@@ -5,6 +5,7 @@ import basemod.interfaces.OnPlayerDamagedSubscriber;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -12,6 +13,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.BlurPower;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.cards.uncommon.Aventurine3;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
@@ -23,20 +25,20 @@ public class AventurinePower extends PowerPower implements OnPlayerDamagedSubscr
     public static final String POWER_ID = HSRMod.makePath(AventurinePower.class.getSimpleName());
 
     int damageStack, followUpStack, stackLimit = 10, triggerAmount = 7;
-    
+
     boolean isPlayerTurn = true;
 
     public AventurinePower(boolean upgraded, int damageStack, int followUpStack) {
         super(POWER_ID, upgraded);
         this.damageStack = damageStack;
         this.followUpStack = followUpStack;
-        
+
         this.updateDescription();
     }
 
     @Override
     public void updateDescription() {
-        this.description = String.format(DESCRIPTIONS[upgraded ? 1 : 0], damageStack, followUpStack);
+        this.description = String.format(DESCRIPTIONS[0], damageStack, followUpStack);
     }
 
     @Override
@@ -64,40 +66,21 @@ public class AventurinePower extends PowerPower implements OnPlayerDamagedSubscr
 
     @Override
     public void onPlayCard(AbstractCard card, AbstractMonster m) {
-        if (card.hasTag(FOLLOW_UP)) {
-            if (card instanceof BaseCard) {
-                BaseCard c = (BaseCard) card;
-                if (c.followedUp) {
-                    flash();
-                    stackPower(followUpStack);
-                }
+        if (card.hasTag(FOLLOW_UP)
+                && card instanceof BaseCard
+                && !(card instanceof Aventurine3)) {
+            BaseCard c = (BaseCard) card;
+            if (c.followedUp) {
+                flash();
+                stackPower(followUpStack);
             }
         }
     }
-    
-    void trigger(){
+
+    void trigger() {
         reducePower(triggerAmount);
-        
-        int d = AbstractDungeon.cardRandomRng.random(1,triggerAmount);
-        int b = AbstractDungeon.cardRandomRng.random(1,triggerAmount);
-        
-        AbstractMonster m = AbstractDungeon.getRandomMonster();
-        
-        if (m == null) return;
-        addToBot(new ElementalDamageAction(
-                m,
-                new DamageInfo(
-                        AbstractDungeon.player,
-                        d,
-                        DamageInfo.DamageType.NORMAL
-                ),
-                ElementType.Imaginary,
-                1,
-                AbstractGameAction.AttackEffect.BLUNT_HEAVY
-        ));
-        addToBot(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, b));
-        if (!isPlayerTurn && upgraded)
-            addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new BlurPower(AbstractDungeon.player, 1), 0));
+
+        addToBot(new MakeTempCardInHandAction(new Aventurine3()));
     }
 
     @Override
@@ -112,8 +95,9 @@ public class AventurinePower extends PowerPower implements OnPlayerDamagedSubscr
 
     @Override
     public int receiveOnPlayerDamaged(int i, DamageInfo damageInfo) {
-        if (SubscriptionManager.checkSubscriber(this) 
-                && owner.currentBlock > 0) {
+        if (SubscriptionManager.checkSubscriber(this)
+                && owner.currentBlock > 0
+                && damageInfo.type == DamageInfo.DamageType.NORMAL) {
             flash();
             stackPower(damageStack);
         }

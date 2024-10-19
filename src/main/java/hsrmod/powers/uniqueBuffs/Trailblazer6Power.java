@@ -5,6 +5,7 @@ import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.DamageModApplyingPo
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.actions.BreakDamageAction;
@@ -36,8 +37,7 @@ public class Trailblazer6Power extends PowerPower implements DamageModApplyingPo
         boolean result = false;
         if (!(o instanceof AbstractCard)) return result;
         if (list.stream().anyMatch(mod -> mod instanceof Trailblazer6Modifier)) return result;
-        if (damageInfo == null
-            || damageInfo.type != DamageInfo.DamageType.NORMAL) return result;
+        if (damageInfo == null || damageInfo.type != DamageInfo.DamageType.NORMAL) return result;
         if (cardCache == null) return result;
         cardCache = null;
         result = true;
@@ -52,7 +52,9 @@ public class Trailblazer6Power extends PowerPower implements DamageModApplyingPo
     public static class Trailblazer6Modifier extends AbstractDamageModifier {
         @Override
         public void onLastDamageTakenUpdate(DamageInfo info, int lastDamageTaken, int overkillAmount, AbstractCreature target) {
-            if (lastDamageTaken > 0) {
+            if (lastDamageTaken > 0 
+                    && info.type == DamageInfo.DamageType.NORMAL 
+                    && target != AbstractDungeon.player) {
                 AbstractPower toughnessPower = target.getPower(ToughnessPower.POWER_ID);
                 AbstractPower brokenPower = target.getPower(BrokenPower.POWER_ID);
                 AbstractPower trailblazer6Power = info.owner.getPower(Trailblazer6Power.POWER_ID);

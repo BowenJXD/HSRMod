@@ -17,6 +17,7 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
+import com.megacrit.cardcrawl.screens.charSelect.CharacterSelectScreen;
 import hsrmod.cards.base.*;
 import hsrmod.modcore.HSRMod;
 import hsrmod.patches.SkinSelectScreen;
@@ -37,17 +38,17 @@ public class StellaCharacter extends CustomPlayer {
     private static final String CORPSE_IMAGE = "HSRModResources/img/char/corpse.png";
     // 战斗界面左下角能量图标的每个图层
     private static final String[] ORB_TEXTURES = new String[]{
-            "HSRModResources/img/UI/orb/layer5.png",
-            "HSRModResources/img/UI/orb/layer4.png",
-            "HSRModResources/img/UI/orb/layer3.png",
-            "HSRModResources/img/UI/orb/layer2.png",
             "HSRModResources/img/UI/orb/layer1.png",
+            "HSRModResources/img/UI/orb/layer2.png",
+            "HSRModResources/img/UI/orb/layer3.png",
+            "HSRModResources/img/UI/orb/layer4.png",
+            "HSRModResources/img/UI/orb/layer5.png",
             "HSRModResources/img/UI/orb/layer6.png",
-            "HSRModResources/img/UI/orb/layer5d.png",
-            "HSRModResources/img/UI/orb/layer4d.png",
-            "HSRModResources/img/UI/orb/layer3d.png",
+            "HSRModResources/img/UI/orb/layer1d.png",
             "HSRModResources/img/UI/orb/layer2d.png",
-            "HSRModResources/img/UI/orb/layer1d.png"
+            "HSRModResources/img/UI/orb/layer3d.png",
+            "HSRModResources/img/UI/orb/layer4d.png",
+            "HSRModResources/img/UI/orb/layer5d.png",
     };
     // 每个图层的旋转速度
     private static final float[] LAYER_SPEED = new float[]{-40.0F, -32.0F, 20.0F, -20.0F, 0.0F, -10.0F, -8.0F, 5.0F, -5.0F, 0.0F};
@@ -198,6 +199,7 @@ public class StellaCharacter extends CustomPlayer {
     // 人物选择界面点击你的人物按钮时触发的方法，这里为屏幕轻微震动
     @Override
     public void doCharSelectScreenSelectEffect() {
+        CardCrawlGame.sound.play("Stelle1");
         CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.MED, ScreenShake.ShakeDur.SHORT, false);
     }
 
@@ -215,7 +217,7 @@ public class StellaCharacter extends CustomPlayer {
     // 自定义模式选择你的人物时播放的音效
     @Override
     public String getCustomModeCharacterButtonSoundKey() {
-        return "ATTACK_HEAVY";
+        return "Stelle1";
     }
 
     // 游戏中左上角显示在你的名字之后的人物名称
@@ -245,7 +247,7 @@ public class StellaCharacter extends CustomPlayer {
     // 吸血鬼事件文本，主要是他（索引为0）和她（索引为1）的区别（机器人另外）
     @Override
     public String getVampireText() {
-        return Vampires.DESCRIPTIONS[0];
+        return Vampires.DESCRIPTIONS[1];
     }
 
     // 卡牌选择界面选择该牌的颜色

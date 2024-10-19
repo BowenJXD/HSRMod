@@ -58,10 +58,9 @@ public class Yanqing1 extends BaseCard {
                 // 伤害类型
                 AbstractGameAction.AttackEffect.SLASH_HEAVY
         );
-        if (p.currentBlock > 0) {
-            action.critRate = 60;
-        }
         addToBot(action);
-        
+        if (p.currentBlock > 0) {
+            addToBot(action.makeCopy());
+        }
     }
 }

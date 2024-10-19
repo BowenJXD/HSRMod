@@ -64,7 +64,7 @@
   "HSRMod:BreakEffect": {
     "NAME": "击破特攻",
     "DESCRIPTIONS": [
-      "造成的击破伤害增加 #b%d 。"
+      "造成的击破伤害增加 #b%d 。对有击破状态的敌人造成的持续伤害+ #b%d 。"
     ]
   },
   "HSRMod:BreakEfficiency": {
@@ -95,13 +95,13 @@
   "HSRMod:Spore": {
     "NAME": "孢子",
     "DESCRIPTIONS": [
-      "至多6层，回合开始时移除1层。成为攻击牌的目标后爆裂：移除所有层，受到X*X的伤害（风1）。"
+      "上限 #b%d 层，回合开始时移除1层。成为攻击牌的目标后爆裂：移除所有层，受到层数平方（ #b%d ）的固定伤害（风1）。"
     ]
   },
-  "HSRMod:CriticalBoost": {
+  "HSRMod:Boost": {
     "NAME": "会心",
     "DESCRIPTIONS": [
-      "暴击率+10X（爆击伤害为100%）。 NL 受到通常伤害后移除所有层。"
+      "上限 #b%d 层。造成的伤害+ #b%d 。被攻击后移除所有层。"
     ]
   },
   "HSRMod:BrainInAVat": {
@@ -127,8 +127,7 @@
   "HSRMod:Aventurine": {
     "NAME": "盲注",
     "DESCRIPTIONS": [
-      "当你受到伤害时，若你有格挡，叠加 #b%d 层；当你追击后，获得 #b%d 层；至多10层。 NL 叠加后，若不小于7层，则消耗7层，对随机敌人造成1~7点伤害（虚数1），然后获得1~7点格挡。",
-      "当你受到伤害时，若你有格挡，叠加 #b%d 层；当你追击后，获得 #b%d 层；至多10层。 NL 叠加后，若不小于7层，则消耗7层，对随机敌人造成1~7点伤害（虚数1），然后获得1~7点格挡，若为回合外，你的下一回合格挡不会消失。"
+      "当你受到伤害时，若你有格挡，叠加 #b%d 层；当你追击其他牌后，获得 #b%d 层；至多10层。 NL 叠加后，若不小于7层，则消耗7层，获得 #y宾果！ 。"
     ]
   },
   "HSRMod:Robin": {
@@ -331,6 +330,65 @@
     "DESCRIPTIONS": [
       "耗能的牌视为追击牌，且于充能满时，追击1张。",
       "耗能的牌视为追击牌，且于充能满时，追击1张。追击需要耗能的牌时，无需足够的充能。"
+    ]
+  },
+  "HSRMod:EmpyreanImperium": {
+    "NAME": "帝星君临制穹桑",
+    "DESCRIPTIONS": [
+      "打出最右侧的牌后，摸1张牌。",
+      "打出最右侧的牌后，摸1张牌并升级之。"
+    ]
+  },
+  "HSRMod:RadiantSupreme": {
+    "NAME": "帝车超光所向捷",
+    "DESCRIPTIONS": [
+      "每打出 #b%d 张单体攻击牌，则摸1张牌，并获得1层 #y会心 。",
+      "每打出 #b%d 张单体攻击牌（升级过的牌算作2张），则摸1张牌，并获得1层 #y会心 。"
+    ]
+  },
+  "HSRMod:SovereignSkybreaker": {
+    "NAME": "帝弓断空彻太清",
+    "DESCRIPTIONS": [
+      "每打出 #b%d 张单体技能牌，则令1张手牌于此回合费用-1，并获得2层 #y会心 。",
+      "每打出 #b%d 张单体技能牌（升级过的牌算作2张），则令1张手牌于此回合费用-1，并获得2层 #y会心 。"
+    ]
+  },
+  "HSRMod:Prey": {
+    "NAME": "猎物",
+    "DESCRIPTIONS": [
+      "每对其打出 #b%d 张攻击牌，则移除1层，将一张 #y伸天卑飞，折翅为芒 置于牌堆顶。"
+    ]
+  },
+  "HSRMod:PhenolCompounds": {
+    "NAME": "酚类物质",
+    "DESCRIPTIONS": [
+      "于此回合打出下 #b%d 张牌后，回复该牌费用数量的 [E] 。",
+      "于此回合打出下 #b%d 张牌后，回复该牌费用数量的 [E] ，并对其的目标施加共计等量层 #y孢子 。"
+    ]
+  },
+  "HSRMod:SerfOfCalamity": {
+    "NAME": "孕灾蠧役",
+    "DESCRIPTIONS": [
+      "通过牌造成伤害后，对目标施加 #b1 层 #y孢子 。每破裂 #b%d 层 #y孢子 ，摸 #b1 张牌。"
+    ]
+  },
+  "HSRMod:ExcitatoryGland": {
+    "NAME": "兴奋腺",
+    "DESCRIPTIONS": [
+      "每消耗 #b%d 点 [E] ，回复 #b1 点 [E] 。"
+    ]
+  },
+  "HSRMod:SporeDischarge": {
+    "NAME": "子囊释放",
+    "DESCRIPTIONS": [
+      "每消耗 #b1 点 [E] ，对随机敌人施加 #b1 层 #y孢子 。",
+      "每消耗或回复 #b1 点 [E] ，对随机敌人施加 #b1 层 #y孢子 。"
+    ]
+  },
+  "HSRMod:CivilizationCorrespondent": {
+    "NAME": "文明函授员",
+    "DESCRIPTIONS": [
+      "消耗充能后，获得 #b%d %%消耗量的格挡。"
     ]
   }
 }

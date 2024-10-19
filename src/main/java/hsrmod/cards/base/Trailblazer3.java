@@ -1,5 +1,7 @@
 package hsrmod.cards.base;
 
+import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cards.BaseCard;
@@ -15,7 +17,7 @@ public class Trailblazer3 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         addToBot(
-                new com.megacrit.cardcrawl.actions.common.GainBlockAction(
+                new GainBlockAction(
                         p,
                         p,
                         block

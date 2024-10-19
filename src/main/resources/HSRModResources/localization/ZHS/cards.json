@@ -57,10 +57,26 @@
   },
   "HSRMod:Sparkle3": {
     "EXTENDED_DESCRIPTION": [
-      "假货的命~"
+      "假货的命~",
+      "从弃牌堆加入手牌"
     ]
   },
   "HSRMod:DestinysThreadsForewoven": {
+    "EXTENDED_DESCRIPTION": [
+      "消耗"
+    ]
+  },
+  "HSRMod:March7th4": {
+    "EXTENDED_DESCRIPTION": [
+      "作为师父"
+    ]
+  },
+  "HSRMod:FinalVictor": {
+    "EXTENDED_DESCRIPTION": [
+      "永久升级"
+    ]
+  },
+  "HSRMod:ImbibitorLunae2": {
     "EXTENDED_DESCRIPTION": [
       "消耗"
     ]

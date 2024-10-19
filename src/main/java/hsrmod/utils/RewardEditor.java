@@ -11,10 +11,7 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
 import hsrmod.relics.BaseRelic;
-import hsrmod.relics.boss.IronCavalryAgainstTheScourge;
-import hsrmod.relics.boss.KnightOfPurityPalace;
-import hsrmod.relics.boss.PrisonerInDeepConfinement;
-import hsrmod.relics.boss.TheAshblazingGrandDuke;
+import hsrmod.relics.boss.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,6 +72,12 @@ public class RewardEditor {
                 }
                 if (tag == CustomEnums.PRESERVATION) {
                     relicName = KnightOfPurityPalace.ID;
+                }
+                if (tag == CustomEnums.THE_HUNT) {
+                    relicName = MusketeerOfWildWheat.ID;
+                }
+                if (tag == CustomEnums.PROPAGATION) {
+                    relicName = PasserbyOfWanderingCloud.ID;
                 }
 
                 if (!relicName.isEmpty())

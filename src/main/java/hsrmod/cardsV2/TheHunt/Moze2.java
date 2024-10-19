@@ -1,0 +1,35 @@
+package hsrmod.cardsV2.TheHunt;
+
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.actions.ElementalDamageAction;
+import hsrmod.actions.FollowUpAction;
+import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
+
+public class Moze2 extends BaseCard {
+    public static final String ID = Moze2.class.getSimpleName();
+    
+    public Moze2(){
+        super(ID);
+        exhaust = true;
+        tags.add(CustomEnums.FOLLOW_UP);
+    }
+
+    @Override
+    public void onEnterHand() {
+        super.onEnterHand();
+        if (!followedUp) {
+            followedUp = true;
+            addToBot(new FollowUpAction(this));
+        }
+    }
+
+    @Override
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new ElementalDamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), elementType, 1));
+        addToBot(new DrawCardAction(magicNumber));
+    }
+}

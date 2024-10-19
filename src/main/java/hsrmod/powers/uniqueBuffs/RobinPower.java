@@ -1,5 +1,6 @@
 package hsrmod.powers.uniqueBuffs;
 
+import com.badlogic.gdx.utils.Timer;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
@@ -14,12 +15,12 @@ import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
 import hsrmod.powers.misc.EnergyPower;
 
+import java.util.concurrent.*;
+
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
 public class RobinPower extends BuffPower {
     public static final String POWER_ID = HSRMod.makePath(RobinPower.class.getSimpleName());
-
-    int strengthGained = 0;
     
     public RobinPower(AbstractCreature owner, boolean upgraded) {
         super(POWER_ID, owner, upgraded);
@@ -34,8 +35,12 @@ public class RobinPower extends BuffPower {
         CardCrawlGame.music.unsilenceBGM();
         AbstractDungeon.scene.fadeOutAmbiance();
 
-        // 立即播放音乐
-        CardCrawlGame.music.playTempBgmInstantly("RobinBGM");
+        Timer.schedule(new Timer.Task() {
+            @Override
+            public void run() {
+                CardCrawlGame.music.playTempBgmInstantly("RobinBGM");
+            }
+        }, 2);
     }
 
     @Override
@@ -48,15 +53,15 @@ public class RobinPower extends BuffPower {
     @Override
     public void atStartOfTurn() {
         remove(1);
-        addToBot(new ReducePowerAction(owner, owner, StrengthPower.POWER_ID, strengthGained));
+        addToBot(new ReducePowerAction(owner, owner, StrengthPower.POWER_ID, amount));
     }
 
     @Override
     public void onPlayCard(AbstractCard card, AbstractMonster m) {
         flash();
-        if (card.type == AbstractCard.CardType.ATTACK) {
+        if (card.type == AbstractCard.CardType.ATTACK && (card.costForTurn > 0 || card.cost == -1)) {
             addToBot(new ApplyPowerAction(owner, owner, new StrengthPower(owner, 1), 1));
-            strengthGained++;
+            amount += card.cost == -1 ? card.energyOnUse : card.costForTurn;
             if (card.hasTag(FOLLOW_UP) && upgraded) addToBot(new ApplyPowerAction(owner, owner, new EnergyPower(owner, 20), 20));
         }
     }

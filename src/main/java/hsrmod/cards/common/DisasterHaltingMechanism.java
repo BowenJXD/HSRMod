@@ -6,19 +6,19 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import hsrmod.cards.BaseCard;
-import hsrmod.cards.uncommon.PhantomWorker;
 
 public class DisasterHaltingMechanism extends BaseCard {
     public static final String ID = DisasterHaltingMechanism.class.getSimpleName();
 
     public DisasterHaltingMechanism() {
         super(ID);
+        energyCost = 40;
     }
 
     @Override
     protected void applyPowersToBlock() {
         baseBlock = AbstractDungeon.player.hand.size();
-        if (upgraded) baseBlock += EnergyPanel.getCurrentEnergy();
+        // if (upgraded) baseBlock += EnergyPanel.getCurrentEnergy();
         super.applyPowersToBlock();
     }
 

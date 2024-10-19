@@ -5,6 +5,7 @@ import basemod.interfaces.ISubscriber;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
 import hsrmod.powers.misc.DoTPower;
@@ -26,6 +27,7 @@ public class SubscriptionManager {
     List<PostBreakBlockSubscriber> postBreakBlockSubscribers = new ArrayList<>();
     List<PreBlockChangeSubscriber> preBlockGainSubscribers = new ArrayList<>();
     List<ICheckUsableSubscriber> checkUsableSubscribers = new ArrayList<>();
+    List<ISetCritRateSubscriber> setCritRateSubscribers = new ArrayList<>();
 
     SubscriptionManager() {}
     
@@ -65,6 +67,10 @@ public class SubscriptionManager {
                 && !checkUsableSubscribers.contains(sub)) {
             checkUsableSubscribers.add((ICheckUsableSubscriber) sub);
         }
+        else if (sub instanceof ISetCritRateSubscriber
+                && !setCritRateSubscribers.contains(sub)) {
+            setCritRateSubscribers.add((ISetCritRateSubscriber) sub);
+        }
     }
     
     public void unsubscribe(ISubscriber subscriber) {
@@ -88,6 +94,9 @@ public class SubscriptionManager {
         }
         else if (subscriber instanceof ICheckUsableSubscriber) {
             checkUsableSubscribers.remove(subscriber);
+        }
+        else if (subscriber instanceof ISetCritRateSubscriber) {
+            setCritRateSubscribers.remove(subscriber);
         }
     }
     
@@ -181,6 +190,14 @@ public class SubscriptionManager {
         unsubscribeLaterHelper(ICheckUsableSubscriber.class);
         
         return result;
+    }
+    
+    public void triggerSetCritRate(ElementalDamageAction action) {
+        for (ISetCritRateSubscriber sub : setCritRateSubscribers) {
+            sub.setCritRate(action);
+        }
+        
+        unsubscribeLaterHelper(ISetCritRateSubscriber.class);
     }
     
     public static boolean checkSubscriber(BaseCard card) {

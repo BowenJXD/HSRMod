@@ -68,7 +68,8 @@ public class SlaughterhouseNo4RestInPeacePower extends PowerPower implements Dam
         
         @Override
         public void onLastDamageTakenUpdate(DamageInfo info, int lastDamageTaken, int overkillAmount, AbstractCreature target) {
-            if (lastDamageTaken > 0) {
+            if (lastDamageTaken > 0
+                    && target != AbstractDungeon.player) {
                 if (target.hasPower(BrokenPower.POWER_ID)) {
                     if (AbstractDungeon.cardRandomRng.random(100) < percentage) {
                         addToBot(new DrawCardAction(AbstractDungeon.player, 1));

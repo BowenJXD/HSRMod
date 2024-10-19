@@ -132,6 +132,7 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         addAudio("Acheron1");
         addAudio("SlashedDream1");
         addAudio("SlashedDream2");
+        addAudio("Stelle1");
     }
     
     void addAudio(String id){

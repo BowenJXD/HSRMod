@@ -1,3 +1,4 @@
+/*
 package hsrmod.cards.common;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -32,3 +33,4 @@ public class Wastelander extends BaseCard {
                 }));
     }
 }
+*/

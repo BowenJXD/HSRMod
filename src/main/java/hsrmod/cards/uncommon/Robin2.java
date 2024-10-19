@@ -39,7 +39,7 @@ public class Robin2 extends BaseCard {
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID));
         addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 3.0F, 4.0F));
-        addToBot(new ForceWaitAction(2.0F));
+        // addToBot(new ForceWaitAction(2.0F));
 
         addToBot(new DrawCardAction(p, magicNumber));
         AbstractPower power = p.getPower(RobinPower.POWER_ID);

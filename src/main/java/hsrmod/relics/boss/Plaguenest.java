@@ -15,10 +15,12 @@ public class Plaguenest extends BaseRelic {
         super(ID);
     }
 
+    @Override
     public void onEquip() {
         ++AbstractDungeon.player.energy.energyMaster;
     }
 
+    @Override
     public void onUnequip() {
         --AbstractDungeon.player.energy.energyMaster;
     }
@@ -27,7 +29,7 @@ public class Plaguenest extends BaseRelic {
     public void atTurnStartPostDraw() {
         super.atTurnStartPostDraw();
         ModHelper.addToBotAbstract(() -> {
-            if (AbstractDungeon.player.hand.group.stream().noneMatch(c -> c.color == AbstractCard.CardColor.CURSE)) {
+            if (AbstractDungeon.player.hand.group.stream().noneMatch(c -> c.color == AbstractCard.CardColor.CURSE || c.type == AbstractCard.CardType.STATUS)) {
                 addToTop(new LoseEnergyAction(1));
             }
             else {

@@ -14,6 +14,7 @@ public class Aventurine1 extends BaseCard {
     
     public Aventurine1() {
         super(ID);
+        cardsToPreview = new Aventurine3();
     }
 
     @Override
@@ -26,6 +27,6 @@ public class Aventurine1 extends BaseCard {
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID));
         addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
-        addToBot(new ApplyPowerAction(p, p, new AventurinePower(upgraded, upgraded ? 5 : 3, upgraded ? 4 : 2)));
+        addToBot(new ApplyPowerAction(p, p, new AventurinePower(upgraded, upgraded ? 5 : 4, 2)));
     }
 }

@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 import hsrmod.modcore.ElementType;
+import hsrmod.subscribers.SubscriptionManager;
 
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -58,6 +59,7 @@ public class ElementalDamageAction extends AbstractGameAction{
             if (this.modifier != null) {
                 this.info.output += this.modifier.apply(this.target);
             }
+            SubscriptionManager.getInstance().triggerSetCritRate(this);
             if (critRate > 0 && AbstractDungeon.cardRandomRng.random(99) < critRate) {
                 this.info.output *= (int) (1 + (critDamage / 100));
             }

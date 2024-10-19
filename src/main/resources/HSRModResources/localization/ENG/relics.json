@@ -381,7 +381,7 @@
     "NAME": "Plaguenest",
     "FLAVOR": "The Infinite Maze is a labyrinth that is said to be able to lead you to any place in the universe.",
     "DESCRIPTIONS": [
-      "Gain [E] at the start of your turn, if you have Curse in your hand, draw 1, otherwise, lose 1 [E] ."
+      "Gain [E] at the start of your turn, if you have Curse or Status card in your hand, draw 1, otherwise, lose 1 [E] ."
     ]
   },
   "HSRMod:RubertEmpireDifferenceMachine": {

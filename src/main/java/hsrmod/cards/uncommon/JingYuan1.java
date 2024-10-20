@@ -35,7 +35,7 @@ public class JingYuan1 extends BaseCard {
         ElementalDamageAction elementalDamageAction = new ElementalDamageAction(m, new DamageInfo(p, this.damage,
                 damageTypeForTurn), elementType, 1, AbstractGameAction.AttackEffect.LIGHTNING
         );
-        this.addToBot(new BouncingAction(m, magicNumber, elementalDamageAction));
+        this.addToBot(new BouncingAction(m, magicNumber, elementalDamageAction, this));
         
         ModHelper.addToBotAbstract(() -> updateCost(costCache - costForTurn));
     }

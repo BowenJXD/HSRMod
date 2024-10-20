@@ -20,6 +20,7 @@ public enum CardDataCol {
     UpgradeMagicNumber,
     Path,
     Element,
+    Versatility,
     Functionality,
 }
 

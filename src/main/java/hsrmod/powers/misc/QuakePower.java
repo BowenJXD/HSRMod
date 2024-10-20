@@ -11,6 +11,7 @@ import hsrmod.cardsV2.Preservation.Quake;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
 import hsrmod.subscribers.SubscriptionManager;
+import hsrmod.utils.ModHelper;
 
 public class QuakePower extends BuffPower implements OnPlayerLoseBlockSubscriber, OnLoseBlockPower {
     public static final String POWER_ID = HSRMod.makePath(QuakePower.class.getSimpleName());
@@ -59,7 +60,7 @@ public class QuakePower extends BuffPower implements OnPlayerLoseBlockSubscriber
     }
 
     public void attack(AbstractCreature target, int damage) {
-        if (target == null) target = AbstractDungeon.getRandomMonster();
+        if (target == null) target = ModHelper.betterGetRandomMonster();
         if (target != null && damage > 0) {
             Quake quake = new Quake();
             quake.baseDamage = damage;

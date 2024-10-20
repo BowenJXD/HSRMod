@@ -1,9 +1,6 @@
 package hsrmod.actions;
 
-import com.badlogic.gdx.graphics.Color;
-import com.evacipated.cardcrawl.mod.stslib.actions.common.AllEnemyApplyPowerAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -12,12 +9,11 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 import hsrmod.modcore.ElementType;
 
-import javax.xml.transform.Source;
 import java.util.Iterator;
 import java.util.function.Consumer;
+import java.util.function.Function;
 
 public class ElementalDamageAllAction extends AbstractGameAction {
     public int[] damage;
@@ -25,27 +21,87 @@ public class ElementalDamageAllAction extends AbstractGameAction {
     private ElementType elementType;
     private int toughnessReduction;
     private Consumer<AbstractCreature> afterEffect;
-
-    public ElementalDamageAllAction(int baseDamage, ElementType elementType, int toughnessReduction, AbstractGameAction.AttackEffect effect, Consumer<AbstractCreature> afterEffect) {
+    private Function<AbstractCreature, Integer> modifier;
+    private int baseDamage;
+    private boolean firstFrame;
+    private boolean utilizeBaseDamage;
+    
+    public ElementalDamageAllAction(AbstractCreature source, int[] amount, DamageInfo.DamageType type, ElementType elementType, int toughnessReduction, 
+                                    AbstractGameAction.AttackEffect effect, boolean isFast) {
+        this.firstFrame = true;
+        this.utilizeBaseDamage = false;
+        this.source = source;
+        this.damage = amount;
+        this.actionType = ActionType.DAMAGE;
+        this.damageType = type;
         this.elementType = elementType;
         this.toughnessReduction = toughnessReduction;
-        this.info = new DamageInfo(AbstractDungeon.player, baseDamage);
-        this.setValues(target, info);
-        this.actionType = ActionType.DAMAGE;
         this.attackEffect = effect;
-        this.duration = 0.1F;
-        this.afterEffect = afterEffect;
+        if (isFast) {
+            this.duration = Settings.ACTION_DUR_XFAST;
+        } else {
+            this.duration = Settings.ACTION_DUR_FAST;
+        }
     }
 
-    public ElementalDamageAllAction(int baseDamage, ElementType elementType, int toughnessReduction, AbstractGameAction.AttackEffect effect) {
-        this(baseDamage, elementType, toughnessReduction, effect, null);
+    public ElementalDamageAllAction(AbstractCreature source, int[] amount, DamageInfo.DamageType type, ElementType elementType, int toughnessReduction, 
+                                    AbstractGameAction.AttackEffect effect) {
+        this(source, amount, type, elementType, toughnessReduction, effect, false);
+    }
+
+    public ElementalDamageAllAction(AbstractPlayer player, int baseDamage, DamageInfo.DamageType type, ElementType elementType, int toughnessReduction, 
+                                    AbstractGameAction.AttackEffect effect) {
+        this(player, (int[])null, type, elementType, toughnessReduction, effect, false);
+        this.baseDamage = baseDamage;
+        this.utilizeBaseDamage = true;
+    }
+    
+    public ElementalDamageAllAction setCallback(Consumer<AbstractCreature> afterEffect) {
+        this.afterEffect = afterEffect;
+        return this;
+    }
+    
+    public ElementalDamageAllAction setModifier(Function<AbstractCreature, Integer> modifier) {
+        this.modifier = modifier;
+        return this;
     }
 
     public void update() {
-        isDone = true;
-        for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
-            if (!m.isDeadOrEscaped()) {
-                addToTop(new ElementalDamageAction(m, info, this.elementType, this.toughnessReduction, this.attackEffect, this.afterEffect));
+        int temp;
+        if (this.firstFrame) {
+            if (this.utilizeBaseDamage) {
+                this.damage = DamageInfo.createDamageMatrix(this.baseDamage);
+            }
+
+            this.firstFrame = false;
+        }
+
+        this.tickDuration();
+        if (this.isDone) {
+            Iterator var4 = AbstractDungeon.player.powers.iterator();
+
+            while(var4.hasNext()) {
+                AbstractPower p = (AbstractPower)var4.next();
+                p.onDamageAllEnemies(this.damage);
+            }
+
+            temp = AbstractDungeon.getCurrRoom().monsters.monsters.size();
+
+            for(int i = 0; i < temp; ++i) {
+                if (!((AbstractMonster)AbstractDungeon.getCurrRoom().monsters.monsters.get(i)).isDeadOrEscaped()) {
+                    AbstractGameAction action = new ElementalDamageAction((AbstractMonster)AbstractDungeon.getCurrRoom().monsters.monsters.get(i), 
+                            new DamageInfo(this.source, this.damage[i], this.damageType), this.elementType, this.toughnessReduction, 
+                            this.attackEffect, this.afterEffect, this.modifier).setIsFast(true);
+                    action.update();
+                }
+            }
+
+            if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
+                AbstractDungeon.actionManager.clearPostCombatActions();
+            }
+
+            if (!Settings.FAST_MODE) {
+                this.addToTop(new WaitAction(0.1F));
             }
         }
     }

@@ -1,3 +1,4 @@
+/*
 package hsrmod.cards.uncommon;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -67,3 +68,4 @@ public class Blade1 extends BaseCard {
         });
     }
 }
+*/

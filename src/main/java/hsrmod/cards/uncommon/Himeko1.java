@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.actions.AOEAction;
 import hsrmod.actions.ElementalDamageAction;
+import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
@@ -25,15 +26,15 @@ public class Himeko1 extends BaseCard implements PostPowerApplySubscriber {
     public Himeko1() {
         super(ID);
         tags.add(FOLLOW_UP);
+        isMultiDamage = true;
     }
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         for (int i = 0; i < magicNumber; i++) {
             addToBot(
-                    new AOEAction((q) -> new ElementalDamageAction(q, new DamageInfo(p, damage),
-                            ElementType.Fire, 1,
-                            AbstractGameAction.AttackEffect.SLASH_HORIZONTAL))
+                    new ElementalDamageAllAction(p, multiDamage, damageTypeForTurn,
+                            ElementType.Fire, 1, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)
             );
         }
     }

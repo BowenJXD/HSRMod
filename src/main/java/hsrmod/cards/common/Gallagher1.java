@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.watcher.BlockReturnPower;
 import hsrmod.actions.AOEAction;
 import hsrmod.actions.ElementalDamageAction;
+import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
 import hsrmod.powers.misc.ToughnessPower;
@@ -25,6 +26,7 @@ public class Gallagher1 extends BaseCard {
     public Gallagher1() {
         super(ID);
         energyCost = 110;
+        isMultiDamage = true;
     }
 
     @Override
@@ -34,18 +36,14 @@ public class Gallagher1 extends BaseCard {
             toughnessMap.put(q, ModHelper.getPowerCount(q, ToughnessPower.POWER_ID));
         }
         addToBot(
-                new AOEAction((q) ->
-                    new ElementalDamageAction(q, new DamageInfo(p, damage),
-                            ElementType.Fire, magicNumber,
-                            AbstractGameAction.AttackEffect.FIRE,
-                            (c) -> {
-                                if (ModHelper.getPowerCount(q, ToughnessPower.POWER_ID) <= 0
-                                        && (!toughnessMap.containsKey(c) || toughnessMap.get(c) > 0 || upgraded)) {
-                                    addToBot(new DrawCardAction(1));
-                                    addToBot(new ApplyPowerAction(c, p, new BlockReturnPower(c, 1), 1));
-                                }
-                            })
-                )
-        );
+                new ElementalDamageAllAction(p, multiDamage, damageTypeForTurn,
+                        ElementType.Fire, magicNumber, AbstractGameAction.AttackEffect.FIRE).setCallback(
+                        (c) -> {
+                            if (ModHelper.getPowerCount(c, ToughnessPower.POWER_ID) <= 0
+                                    && (!toughnessMap.containsKey(c) || toughnessMap.get(c) > 0 || upgraded)) {
+                                addToBot(new DrawCardAction(1));
+                                addToBot(new ApplyPowerAction(c, p, new BlockReturnPower(c, 1), 1));
+                            }
+                        }));
     }
 }

@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.AOEAction;
 import hsrmod.actions.ElementalDamageAction;
+import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
 import hsrmod.powers.misc.EnergyPower;
@@ -22,6 +23,7 @@ public class Argenti1 extends BaseCard {
     public Argenti1() {
         super(ID);
         selfRetain = true;
+        isMultiDamage = true;
     }
 
     @Override
@@ -35,13 +37,13 @@ public class Argenti1 extends BaseCard {
     }
 
     void execute(){
-        if (AbstractDungeon.player.getPower(EnergyPower.POWER_ID).amount < energyExhaust) return;
-        addToBot(new AOEAction((q) -> new ElementalDamageAction(q, new DamageInfo(AbstractDungeon.player, damage),
-                ElementType.Physical, 2,
-                AbstractGameAction.AttackEffect.SLASH_VERTICAL, (c) -> {
+        if (AbstractDungeon.player.getPower(EnergyPower.POWER_ID).amount < energyExhaust
+            || AbstractDungeon.getMonsters().areMonstersBasicallyDead()) return;
+        addToBot(new ElementalDamageAllAction(AbstractDungeon.player, this.multiDamage, this.damageTypeForTurn, 
+                elementType, 2, AbstractGameAction.AttackEffect.SLASH_VERTICAL).setCallback(c -> {
             addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player,
                     new EnergyPower(AbstractDungeon.player, energyGain), energyGain));
-        })));
+        }));
         addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, 
                 new EnergyPower(AbstractDungeon.player, -energyExhaust), -energyExhaust));
         ModHelper.addToBotAbstract(this::execute);

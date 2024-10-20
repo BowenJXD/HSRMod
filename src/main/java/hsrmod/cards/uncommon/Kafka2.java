@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.AOEAction;
 import hsrmod.actions.ElementalDamageAction;
+import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.actions.TriggerDoTAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.powers.breaks.ShockPower;
@@ -19,7 +20,7 @@ public class Kafka2 extends BaseCard {
     
     public Kafka2() {
         super(ID);
-        
+        isMultiDamage = true;
         energyCost = 120;
     }
 
@@ -28,12 +29,11 @@ public class Kafka2 extends BaseCard {
         ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID));
         addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
         
-        addToBot(new AOEAction((q) -> new ElementalDamageAction(q, new DamageInfo(p, damage, damageTypeForTurn), 
-                elementType, 2, AbstractGameAction.AttackEffect.LIGHTNING, c ->{
+        addToBot(new ElementalDamageAllAction(p, multiDamage, damageTypeForTurn, elementType, 2, AbstractGameAction.AttackEffect.LIGHTNING).setCallback(c -> {
             if(!c.isDeadOrEscaped() && c.currentHealth > 0) {
                 addToBot(new TriggerDoTAction(c, 1, true));
                 addToBot(new ApplyPowerAction(c, p, new ShockPower(c, p, magicNumber), magicNumber));
             }
-        })));
+        }));
     }
 }

@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.AOEAction;
 import hsrmod.actions.ElementalDamageAction;
+import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.powers.misc.BreakEffectPower;
 import hsrmod.powers.misc.ToughnessPower;
@@ -19,34 +20,35 @@ import java.util.Map;
 
 public class Rappa1 extends BaseCard {
     public static final String ID = Rappa1.class.getSimpleName();
-    
+
     boolean canRepeat = false;
-    
+
     public Rappa1() {
         super(ID);
+        isMultiDamage = true;
     }
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         execute();
     }
-    
-    void execute(){
+
+    void execute() {
         canRepeat = true;
         Map<AbstractCreature, Integer> toughnessMap = new HashMap<>();
         for (AbstractMonster q : AbstractDungeon.getCurrRoom().monsters.monsters) {
             toughnessMap.put(q, ModHelper.getPowerCount(q, ToughnessPower.POWER_ID));
         }
-        
+
         addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new BreakEffectPower(AbstractDungeon.player, 1), 1));
-        addToBot(new AOEAction((q) -> new ElementalDamageAction(q, new DamageInfo(AbstractDungeon.player, damage, damageTypeForTurn),
-                elementType, magicNumber, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, (c) -> {
-            if ((!toughnessMap.containsKey(c) || toughnessMap.get(c) > 0 ) 
-                    && ModHelper.getPowerCount(c, ToughnessPower.POWER_ID) <= 0 
+        addToBot(new ElementalDamageAllAction(AbstractDungeon.player, multiDamage, damageTypeForTurn,
+                elementType, 2, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL).setCallback((c) -> {
+            if ((!toughnessMap.containsKey(c) || toughnessMap.get(c) > 0)
+                    && ModHelper.getPowerCount(c, ToughnessPower.POWER_ID) <= 0
                     && canRepeat) {
                 canRepeat = false;
                 ModHelper.addToBotAbstract(this::execute);
             }
-        })));
+        }));
     }
 }

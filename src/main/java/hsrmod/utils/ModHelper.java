@@ -129,6 +129,10 @@ public class ModHelper {
         return shuffledList.subList(0, count);  // Return the first x elements
     }
 
+    public static AbstractMonster betterGetRandomMonster() {
+        return getRandomMonster(m -> !(m.isDying || m.isEscaping || m.halfDead || m.currentHealth <= 0), true);
+    }
+    
     public static AbstractMonster getRandomMonster(Predicate<AbstractMonster> predicate, boolean aliveOnly) {
         MonsterGroup group = AbstractDungeon.getCurrRoom().monsters;
         Random rng = AbstractDungeon.cardRandomRng;

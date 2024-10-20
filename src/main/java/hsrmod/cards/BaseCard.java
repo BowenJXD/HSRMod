@@ -34,6 +34,7 @@ public abstract class BaseCard extends CustomCard implements SpawnModificationCa
     
     public int tr = 2;
     public ElementType elementType = ElementType.None;
+    public float versatility = 0;
     public int energyCost = 0;
     public boolean followedUp = false;
     public boolean inBattle = false;
@@ -67,6 +68,7 @@ public abstract class BaseCard extends CustomCard implements SpawnModificationCa
         CardTags pathTag = getPathTag(DataManager.getInstance().getCardData(id, CardDataCol.Path));
         if (pathTag != null) tags.add(pathTag);
         elementType = getElementType(DataManager.getInstance().getCardData(id, CardDataCol.Element));
+        versatility = getVersatility(DataManager.getInstance().getCardData(id, CardDataCol.Versatility));
         
 /*        this.exhaust = rawDescription.contains("消耗。");
         this.selfRetain = rawDescription.contains("保留。");
@@ -144,22 +146,23 @@ public abstract class BaseCard extends CustomCard implements SpawnModificationCa
 
     @Override
     public boolean canSpawn(ArrayList<AbstractCard> currentRewardCards) {
+        return checkSpawnable();
+    }
+
+    @Override
+    public boolean canSpawnShop(ArrayList<AbstractCard> currentShopCards) {
+        return checkSpawnable();
+    }
+
+    private boolean checkSpawnable() {
         int count = AbstractDungeon.player.masterDeck.group.stream().mapToInt(c -> c.cardID.equals(this.cardID) ? 1 : 0).sum();
-        
-        if (AbstractDungeon.cardRng.random(99) < ((checkPath() ? 99 : 66) / (count + 1))) {
+
+        if (AbstractDungeon.cardRng.random(99) < ((checkPath() ? 100 : 50 * versatility) / (count + 1))) {
             return true;
         }
         return false;
     }
 
-    @Override
-    public boolean canSpawnShop(ArrayList<AbstractCard> currentShopCards) {
-        if (AbstractDungeon.cardRng.random(99) < (checkPath() ? 99 : 33)) {
-            return true;
-        }
-        return false;
-    }
-    
     boolean checkPath() {
         if (AbstractDungeon.player.hasRelic(WaxOfElation.ID) && tags.contains(CustomEnums.ELATION) 
                 || AbstractDungeon.player.hasRelic(WaxOfDestruction.ID) && tags.contains(CustomEnums.DESTRUCTION)
@@ -212,4 +215,12 @@ public abstract class BaseCard extends CustomCard implements SpawnModificationCa
         else if (element.contains("虚数")) result = ElementType.Imaginary;
         return result;
     }
+    
+    public static float getVersatility(String versatility){
+        float result = 1;
+        if (versatility.isEmpty()) return result;
+        if (versatility.contains("低")) result = 1 / 2f;
+        else if (versatility.contains("高")) result = 2f;
+        return result;
+    } 
 }

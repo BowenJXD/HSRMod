@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.AOEAction;
 import hsrmod.actions.ElementalDamageAction;
+import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
 
@@ -20,13 +21,14 @@ public class ImbibitorLunae2 extends BaseCard {
     public ImbibitorLunae2() {
         super(ID);
         energyCost = 140;
+        isMultiDamage = true;
     }
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         for (int i = 0; i < magicNumber; i++) {
-            addToBot(new AOEAction((q) -> new ElementalDamageAction(q, new DamageInfo(p, damage, damageTypeForTurn), 
-                    ElementType.Imaginary, 1, AbstractGameAction.AttackEffect.BLUNT_LIGHT)));
+            addToBot(new ElementalDamageAllAction(p, multiDamage, damageTypeForTurn, 
+                    ElementType.Imaginary, 1, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
         }
         addToBot(new SelectCardsInHandAction(1, cardStrings.EXTENDED_DESCRIPTION[0], true, true, c -> true, cards -> {
             if (!cards.isEmpty()) {

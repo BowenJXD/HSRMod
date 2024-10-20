@@ -8,6 +8,7 @@ import hsrmod.powers.PowerPower;
 import hsrmod.powers.misc.SporePower;
 import hsrmod.subscribers.PreEnergyChangeSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
+import hsrmod.utils.ModHelper;
 
 public class SporeDischargePower extends PowerPower implements PreEnergyChangeSubscriber {
     public static final String POWER_ID = HSRMod.makePath(SporeDischargePower.class.getSimpleName());
@@ -34,7 +35,7 @@ public class SporeDischargePower extends PowerPower implements PreEnergyChangeSu
         if (SubscriptionManager.checkSubscriber(this) 
                 && (changeAmount < 0 || (upgraded && changeAmount > 0))) {
             flash();
-            AbstractCreature target = AbstractDungeon.getRandomMonster();
+            AbstractCreature target = ModHelper.betterGetRandomMonster();
             if (target != null)
                 addToBot(new ApplyPowerAction(target, owner, new SporePower(target, Math.abs(changeAmount))));
         }

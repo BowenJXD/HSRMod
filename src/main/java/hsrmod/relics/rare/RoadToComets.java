@@ -13,11 +13,10 @@ public class RoadToComets extends BaseRelic {
 
     public int energyGain = 20;
 
-    public int blockGain = 3;
+    public int blockGain = 2;
 
     public RoadToComets() {
         super(ID);
-        blockGain = magicNumber;
     }
 
     @Override

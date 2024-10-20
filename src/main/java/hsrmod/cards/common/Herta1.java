@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.AOEAction;
 import hsrmod.actions.ElementalDamageAction;
+import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
@@ -26,15 +27,15 @@ public class Herta1 extends BaseCard {
     public Herta1() {
         super(ID);
         this.tags.add(FOLLOW_UP);
+        this.isMultiDamage = true;
         enemyHealthIsHalf = new HashMap<>();
     }
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         addToBot(
-                new AOEAction((q) -> new ElementalDamageAction(q, new DamageInfo(p, damage),
-                        ElementType.Ice, 1,
-                        AbstractGameAction.AttackEffect.SLASH_HORIZONTAL))
+                new ElementalDamageAllAction(p, this.multiDamage, this.damageTypeForTurn, elementType, 
+                        1, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)
         );
     }
 

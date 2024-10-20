@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.AOEAction;
 import hsrmod.actions.ElementalDamageAction;
+import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
@@ -27,6 +28,7 @@ public class Jade1 extends BaseCard implements PostDrawSubscriber {
     public Jade1() {
         super(ID);
         tags.add(FOLLOW_UP);
+        isMultiDamage = true;
     }
 
     @Override
@@ -41,9 +43,8 @@ public class Jade1 extends BaseCard implements PostDrawSubscriber {
         addToBot(new DrawCardAction(p, magicNumber));
 
         addToBot(
-                new AOEAction((q) -> new ElementalDamageAction(q, new DamageInfo(p, damage),
-                        ElementType.Quantum, 2,
-                        AbstractGameAction.AttackEffect.SLASH_HORIZONTAL))
+                new ElementalDamageAllAction(p, multiDamage, damageTypeForTurn,
+                        ElementType.Quantum, 1, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)
         );
     }
 

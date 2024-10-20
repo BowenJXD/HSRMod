@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
 import hsrmod.powers.misc.SporePower;
+import hsrmod.utils.ModHelper;
 
 public class PhenolCompoundsPower extends BuffPower {
     public static final String POWER_ID = HSRMod.makePath(PhenolCompoundsPower.class.getSimpleName());
@@ -36,7 +37,7 @@ public class PhenolCompoundsPower extends BuffPower {
         int e = card.cost == -1 ? card.energyOnUse : card.costForTurn;
         addToBot(new GainEnergyAction(e));
         remove(1);
-        AbstractCreature target = action.target == null ? AbstractDungeon.getRandomMonster() : action.target;
+        AbstractCreature target = action.target == null ? ModHelper.betterGetRandomMonster() : action.target;
         if (target != null)
             addToBot(new ApplyPowerAction(target, target, new SporePower(target, amount), amount));
     }

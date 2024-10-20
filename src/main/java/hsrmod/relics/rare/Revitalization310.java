@@ -41,7 +41,7 @@ public class Revitalization310 extends BaseRelic {
         if (isObtained && !c.isEthereal)
             return;
         flash();
-        if (m == null) m = AbstractDungeon.getRandomMonster();
+        if (m == null) m = ModHelper.betterGetRandomMonster();
         if (m == null) return;
         addToBot(new ApplyPowerAction(m, AbstractDungeon.player, new StrengthPower(m, -1), -1));
     }

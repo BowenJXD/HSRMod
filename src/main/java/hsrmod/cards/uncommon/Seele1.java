@@ -23,6 +23,7 @@ public class Seele1 extends BaseCard {
     public Seele1() {
         super(ID);
         energyCost = 120;
+        exhaust = true;
     }
 
     public boolean canUpgrade() {
@@ -37,6 +38,11 @@ public class Seele1 extends BaseCard {
         this.name = DataManager.getInstance().getCardData(ID, CardDataCol.Name) + "+" + this.timesUpgraded;
         initializeTitle();
         this.initializeDescription();
+    }
+
+    @Override
+    public void onEnterHand() {
+        super.onEnterHand();
     }
 
     @Override
@@ -60,7 +66,7 @@ public class Seele1 extends BaseCard {
                 }
                 
                 addToBot(new GainEnergyAction(1));
-                addToBot(new MoveCardsAction(AbstractDungeon.player.hand, AbstractDungeon.player.discardPile, card -> card.uuid == this.uuid));
+                addToBot(new MoveCardsAction(AbstractDungeon.player.hand, AbstractDungeon.player.exhaustPile, card -> card.uuid == this.uuid));
             }
         });
         addToBot(action);

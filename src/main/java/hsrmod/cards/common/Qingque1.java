@@ -18,15 +18,21 @@ public class Qingque1 extends BaseCard {
     
     public Qingque1() {
         super(ID);
+        exhaust = true;
         returnToHand = true;
     }
 
     @Override
     public void upgrade() {
         super.upgrade();
-        
     }
-    
+
+    @Override
+    public void onEnterHand() {
+        super.onEnterHand();
+        exhaust = true;
+    }
+
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         if (AbstractDungeon.player.drawPile.size() + AbstractDungeon.player.discardPile.size() == 0) {
@@ -42,5 +48,6 @@ public class Qingque1 extends BaseCard {
             addToBot(new GainEnergyAction(costForTurn));
         }
         returnToHand = AbstractDungeon.cardRandomRng.random(100) <= magicNumber;
+        exhaust = !returnToHand;
     }
 }

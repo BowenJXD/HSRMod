@@ -21,11 +21,12 @@ public class SwarmKingProgeny extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
+        if (energyOnUse <= 0) return;
         ElementalDamageAction action = new ElementalDamageAction(m, new DamageInfo(p, damage, damageTypeForTurn),
                 ElementType.Wind, 1, AbstractGameAction.AttackEffect.POISON, q -> {
             addToBot(new ApplyPowerAction(q, p, new SporePower(q, 1), 1));
         });
-        addToBot(new BouncingAction(m, energyOnUse, action));
+        addToBot(new BouncingAction(m, energyOnUse, action, this));
         p.energy.use(EnergyPanel.totalCount);
     }
 }

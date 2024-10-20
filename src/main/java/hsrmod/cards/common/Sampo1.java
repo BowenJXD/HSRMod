@@ -24,8 +24,6 @@ public class Sampo1 extends BaseCard {
     
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new VFXAction(new PotionBounceEffect(p.hb.cX, p.hb.cY, m.hb.cX, this.hb.cY), 0.4F));
-
         ElementalDamageAction elementalDamageAction = new ElementalDamageAction(m, new DamageInfo(p, this.damage, 
                 DamageInfo.DamageType.NORMAL), ElementType.Wind, 1, AbstractGameAction.AttackEffect.POISON,
                 c -> {
@@ -33,6 +31,6 @@ public class Sampo1 extends BaseCard {
                         this.addToBot(new ApplyPowerAction(c, p, new WindShearPower(c, p, this.windShearStackNum), this.windShearStackNum));
                 }
                 );
-        this.addToBot(new BouncingAction(m, magicNumber, elementalDamageAction));
+        this.addToBot(new BouncingAction(m, magicNumber, elementalDamageAction, this));
     }
 }

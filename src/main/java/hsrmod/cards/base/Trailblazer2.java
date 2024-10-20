@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.AOEAction;
 import hsrmod.actions.ElementalDamageAction;
+import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
 
@@ -24,8 +25,8 @@ public class Trailblazer2 extends BaseCard {
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         if (!checkEnergy()) return;
         addToBot(
-                new AOEAction((q) -> new ElementalDamageAction(q, new DamageInfo(p, damage), ElementType.Physical, magicNumber, 
-                        AbstractGameAction.AttackEffect.SLASH_HORIZONTAL))
+                new ElementalDamageAllAction(p, this.multiDamage, this.damageTypeForTurn, elementType,
+                        magicNumber, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)
         );
     }
 

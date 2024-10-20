@@ -64,7 +64,7 @@ public class Yunli1 extends BaseCard implements OnPlayerDamagedSubscriber {
         ElementalDamageAction action = new ElementalDamageAction(randomMonster, BindingHelper.makeInfo(this, AbstractDungeon.player, damage, damageTypeForTurn), ElementType.Physical,
                 1, AbstractGameAction.AttackEffect.SLASH_VERTICAL);
         
-        addToTop(new BouncingAction(randomMonster, 2, action));
+        addToTop(new BouncingAction(randomMonster, 2, action, this));
 
         addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new EnergyPower(AbstractDungeon.player, -energyExhaust), -energyExhaust));
     }

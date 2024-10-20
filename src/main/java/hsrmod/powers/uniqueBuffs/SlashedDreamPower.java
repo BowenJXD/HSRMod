@@ -26,7 +26,7 @@ public class SlashedDreamPower extends PowerPower {
 
     int triggerAmount = 9;
 
-    int baseDamage = 3;
+    int baseDamage = 5;
 
     boolean upgraded = false;
 

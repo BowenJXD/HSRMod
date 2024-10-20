@@ -21,8 +21,7 @@ public class Welt1 extends BaseCard {
     }
 
     @Override
-    public void onUse(AbstractPlayer p, AbstractMonster m) {this.addToBot(new VFXAction(new PotionBounceEffect(p.hb.cX, p.hb.cY, m.hb.cX, this.hb.cY), 0.4F));
-
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
         ElementalDamageAction elementalDamageAction = new ElementalDamageAction(m, new DamageInfo(p, this.damage,
                 DamageInfo.DamageType.NORMAL), ElementType.Imaginary, 1, AbstractGameAction.AttackEffect.POISON,
                 c -> {
@@ -30,6 +29,6 @@ public class Welt1 extends BaseCard {
                         this.addToBot(new ApplyPowerAction(c, p, new ImprisonPower(c, 1), 1));
                 }
         );
-        this.addToBot(new BouncingAction(m, magicNumber, elementalDamageAction));
+        this.addToBot(new BouncingAction(m, magicNumber, elementalDamageAction, this));
     }
 }

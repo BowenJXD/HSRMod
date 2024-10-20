@@ -26,7 +26,6 @@ public class TopazNumby3 extends BaseCard {
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         addToBot(new AOEAction((q) -> new RemoveSpecificPowerAction(q, q, ProofOfDebtPower.POWER_ID)));
         addToBot(new ApplyPowerAction(m, p, new ProofOfDebtPower(m, magicNumber)));
-        
         addToBot(
                 new ElementalDamageAction(
                         m,

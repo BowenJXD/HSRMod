@@ -45,7 +45,7 @@ public class Trailblazer8Power extends PowerPower implements PostBreakBlockSubsc
         if (card.baseBlock > 0 && card.block > 0) {
             AbstractCreature target;
             if (action.target != null) target = action.target;
-            else target = AbstractDungeon.getRandomMonster();
+            else target = ModHelper.betterGetRandomMonster();
             if (target != null) {
                 DamageInfo info = new DamageInfo(owner, Math.round(card.block * percentage / 100f));
                 info.applyPowers(owner, target);

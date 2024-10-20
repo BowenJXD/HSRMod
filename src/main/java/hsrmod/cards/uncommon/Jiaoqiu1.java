@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import hsrmod.actions.AOEAction;
 import hsrmod.actions.ElementalDamageAction;
+import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
 
 public class Jiaoqiu1 extends BaseCard {
@@ -17,8 +18,8 @@ public class Jiaoqiu1 extends BaseCard {
     
     public Jiaoqiu1() {
         super(ID);
-        
         energyCost = 100;
+        isMultiDamage = true;
         cardsToPreview = new Jiaoqiu2();
     }
 
@@ -29,9 +30,8 @@ public class Jiaoqiu1 extends BaseCard {
             // if (upgraded) card.upgrade();
             addToBot(new MakeTempCardInHandAction(card));
         }
-        addToBot(new AOEAction((q) -> new ElementalDamageAction(q, new DamageInfo(p, damage, damageTypeForTurn), 
-                elementType, 2, AbstractGameAction.AttackEffect.FIRE, c ->{
+        addToBot(new ElementalDamageAllAction(p, multiDamage, damageTypeForTurn, elementType, 2, AbstractGameAction.AttackEffect.FIRE).setCallback(c -> {
             addToBot(new ApplyPowerAction(c, p, new VulnerablePower(c, 1, false), 1));
-        })));
+        }));
     }
 }

@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import hsrmod.actions.AOEAction;
 import hsrmod.actions.ElementalDamageAction;
+import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
 
@@ -17,20 +18,16 @@ public class Pela1 extends BaseCard {
     public Pela1() {
         super(ID);
         energyCost = 100;
+        isMultiDamage = true;
     }
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         addToBot(
-                new AOEAction((q) -> new ElementalDamageAction(q, new DamageInfo(p, damage),
-                        ElementType.Ice, 2,
-                        AbstractGameAction.AttackEffect.SLASH_HORIZONTAL,
-                        c -> {
-                            addToBot(
-                                    new ApplyPowerAction(c, p, new VulnerablePower(c, this.magicNumber, false), this.magicNumber)
-                            );
-                        }
-                ))
+                new ElementalDamageAllAction(p, multiDamage, damageTypeForTurn, elementType, 2,
+                        AbstractGameAction.AttackEffect.SLASH_HORIZONTAL).setCallback(c -> {
+                    addToBot(new ApplyPowerAction(c, p, new VulnerablePower(c, this.magicNumber, false), this.magicNumber));
+                })
         );
     }
 }

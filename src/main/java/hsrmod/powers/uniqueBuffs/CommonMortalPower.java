@@ -11,6 +11,7 @@ import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
 import hsrmod.powers.misc.DoTPower;
 import hsrmod.powers.misc.EnergyPower;
+import hsrmod.utils.ModHelper;
 
 public class CommonMortalPower extends PowerPower implements OnReceivePowerPower {
     public static final String POWER_ID = HSRMod.makePath(CommonMortalPower.class.getSimpleName());
@@ -66,7 +67,7 @@ public class CommonMortalPower extends PowerPower implements OnReceivePowerPower
         if (power instanceof EnergyPower 
                 && stackAmount < 0) {
             flash();
-            AbstractMonster m = AbstractDungeon.getRandomMonster();
+            AbstractMonster m = ModHelper.betterGetRandomMonster();
             if (m != null)
                 addToBot(new ApplyPowerAction(m, owner, DoTPower.getRandomDoTPower(m, owner, 1), 1));
         }

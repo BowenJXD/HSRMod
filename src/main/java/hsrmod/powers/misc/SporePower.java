@@ -35,6 +35,14 @@ public class SporePower extends DebuffPower {
     }
 
     @Override
+    public void stackPower(int stackAmount) {
+        super.stackPower(stackAmount);
+        if (amount >= stackLimit) {
+            amount = stackLimit;
+        }
+    }
+
+    @Override
     public void onPlayCard(AbstractCard card, AbstractMonster m) {
         super.onPlayCard(card, m);
         if (card.type == AbstractCard.CardType.ATTACK 
@@ -46,7 +54,7 @@ public class SporePower extends DebuffPower {
     public void trigger(){
         addToBot(new ElementalDamageAction(owner, new DamageInfo(AbstractDungeon.player, amount * amount, 
                 DamageInfo.DamageType.NORMAL), ElementType.Wind, 1, AbstractGameAction.AttackEffect.POISON));
-        addToBot(new ApplyPowerAction(owner, owner, new SporePower(owner, -amount), -amount));
+        addToBot(new ApplyPowerAction(owner, AbstractDungeon.player, new SporePower(owner, -amount), -amount));
         addToBot(new RemoveSpecificPowerAction(owner, owner, this));
     }
 }

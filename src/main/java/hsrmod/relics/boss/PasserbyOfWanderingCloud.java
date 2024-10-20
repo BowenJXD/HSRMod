@@ -31,7 +31,7 @@ public class PasserbyOfWanderingCloud extends BaseRelic {
     public void atTurnStartPostDraw() {
         super.atTurnStartPostDraw();
         ModHelper.addToBotAbstract(() -> {
-            if (AbstractDungeon.player.hand.group.stream().noneMatch(c -> c.hasTag(AbstractCard.CardTags.STARTER_STRIKE))) {
+            if (AbstractDungeon.player.hand.group.stream().mapToInt(c -> c.hasTag(AbstractCard.CardTags.STARTER_STRIKE) ? 1 : 0).sum() < 2) {
                 addToTop(new LoseEnergyAction(1));
             }
         });

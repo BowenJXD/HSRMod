@@ -27,7 +27,7 @@ public class EmpyreanImperiumPower extends PowerPower {
     public void onUseCard(AbstractCard card, UseCardAction action) {
         super.onUseCard(card, action);
         if (!AbstractDungeon.player.hand.isEmpty() 
-                && card == AbstractDungeon.player.hand.getTopCard()) {
+                && card == AbstractDungeon.player.hand.getBottomCard()) {
             flash();
             addToTop(new DrawCardAction(1, upgraded ? new AbstractGameAction() {
                 @Override

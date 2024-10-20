@@ -2,46 +2,64 @@ package hsrmod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.utils.ModHelper;
 
 public class BouncingAction extends AbstractGameAction {
     private int numTimes;
     private ElementalDamageAction damageAction;
-
-    public BouncingAction(AbstractCreature target, int numTimes, ElementalDamageAction damageAction){
+    AbstractCard card;
+    
+    public BouncingAction(AbstractCreature target, int numTimes, ElementalDamageAction damageAction, AbstractCard card){
         this.target = target;
         this.actionType = ActionType.DEBUFF;
         this.duration = 0.01F;
         this.numTimes = numTimes;
         this.damageAction = damageAction;
+        this.card = card;
+    }
+    
+    public BouncingAction(AbstractCreature target, int numTimes, ElementalDamageAction damageAction){
+        this(target, numTimes, damageAction, null);
+    }
+    
+    public BouncingAction(int numTimes, ElementalDamageAction damageAction, AbstractCard card){
+        this(null, numTimes, damageAction, card);
     }
     
     public void update() {
-        if (this.target == null) {
-            this.isDone = true;
-        } else if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
+        if (this.target == null || target.currentHealth <= 0) {
+            this.target = AbstractDungeon.getRandomMonster();
+            if (target == null) {
+                this.isDone = true;
+                return;
+            }
+        }
+        
+        if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
             AbstractDungeon.actionManager.clearPostCombatActions();
             this.isDone = true;
-        } else {
-            if (this.numTimes > 1 && !AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
-                --this.numTimes;
-                AbstractMonster randomMonster = AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster)null, true, AbstractDungeon.cardRandomRng);
-                if (randomMonster != null) {
-                    this.addToTop(new BouncingAction(randomMonster, this.numTimes, this.damageAction.makeCopy()));
-                    // this.addToTop(new VFXAction(new PotionBounceEffect(this.target.hb.cX, this.target.hb.cY, randomMonster.hb.cX, randomMonster.hb.cY), 0.4F));
-                }
-            }
-
-            if (this.target.currentHealth > 0) {
-                ElementalDamageAction damageAction = this.damageAction;
-                damageAction.target = this.target;
-                this.addToTop(new WaitAction(0.1F));
-                this.addToTop(damageAction);
-            }
-
-            this.isDone = true;
+            return;
         }
+        
+        if (this.numTimes > 1 && !AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
+            --this.numTimes;
+            this.addToTop(new BouncingAction(this.numTimes, this.damageAction.makeCopy(), card));
+        }
+
+        if (this.target.currentHealth > 0) {
+            ElementalDamageAction damageAction = this.damageAction;
+            damageAction.target = this.target;
+            if (card != null) {
+                this.card.calculateCardDamage((AbstractMonster) this.target);
+                damageAction.info = new DamageInfo(AbstractDungeon.player, this.card.damage, this.card.damageTypeForTurn);
+            }
+            this.addToTop(damageAction);
+        }
+        this.isDone = true;
     }
 }

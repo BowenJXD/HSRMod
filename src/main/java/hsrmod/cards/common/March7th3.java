@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.AOEAction;
 import hsrmod.actions.ElementalDamageAction;
+import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.powers.breaks.FrozenPower;
 
@@ -17,16 +18,14 @@ public class March7th3 extends BaseCard {
     public March7th3() {
         super(ID);
         energyCost = 120;
+        isMultiDamage = true;
     }
     
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new AOEAction((q) -> 
-            new ElementalDamageAction(q, new DamageInfo(p, damage, damageTypeForTurn), elementType, 2, 
-                    AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, (c) -> {
-                if (AbstractDungeon.cardRng.random(99) < 50)
-                    addToTop(new ApplyPowerAction(c, p, new FrozenPower(c, magicNumber), magicNumber));
-            })
-        ));
+        addToBot(new ElementalDamageAllAction(p, multiDamage, damageTypeForTurn, elementType, 2, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL).setCallback(c -> {
+            if (AbstractDungeon.cardRng.random(99) < 50)
+                addToBot(new ApplyPowerAction(c, p, new FrozenPower(c, magicNumber), magicNumber));
+        }));
     }
 }

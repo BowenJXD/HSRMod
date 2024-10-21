@@ -10,11 +10,12 @@ import hsrmod.actions.BouncingAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.misc.SporePower;
 
 public class SwarmKingProgeny extends BaseCard {
     public static final String ID = SwarmKingProgeny.class.getSimpleName();
-    
+
     public SwarmKingProgeny() {
         super(ID);
     }
@@ -22,10 +23,14 @@ public class SwarmKingProgeny extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         if (energyOnUse <= 0) return;
-        ElementalDamageAction action = new ElementalDamageAction(m, new DamageInfo(p, damage, damageTypeForTurn),
-                ElementType.Wind, 1, AbstractGameAction.AttackEffect.POISON, q -> {
-            addToBot(new ApplyPowerAction(q, p, new SporePower(q, 1), 1));
-        });
+        ElementalDamageAction action = new ElementalDamageAction(
+                m,
+                new ElementalDamageInfo(this),
+                AbstractGameAction.AttackEffect.POISON,
+                q -> {
+                    addToBot(new ApplyPowerAction(q, p, new SporePower(q, 1), 1));
+                }
+        );
         addToBot(new BouncingAction(m, energyOnUse, action, this));
         p.energy.use(EnergyPanel.totalCount);
     }

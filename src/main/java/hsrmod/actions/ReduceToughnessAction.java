@@ -1,3 +1,4 @@
+/*
 package hsrmod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -17,7 +18,7 @@ import hsrmod.subscribers.SubscriptionManager;
 
 public class ReduceToughnessAction extends AbstractGameAction {
     private static final float DURATION = 0.1F;
-    public  int toughnessReduction;
+    public int toughnessReduction;
     private ElementType elementType;
     private DamageInfo info;
 
@@ -34,11 +35,6 @@ public class ReduceToughnessAction extends AbstractGameAction {
         if (this.duration == 0.1F) {
             //
             AbstractPower toughnessPower = this.target.getPower(ToughnessPower.POWER_ID);
-            
-            if (AbstractDungeon.player.hasPower(BreakEfficiencyPower.POWER_ID))
-                toughnessReduction += (int)((float)toughnessReduction 
-                        * (float)AbstractDungeon.player.getPower(BreakEfficiencyPower.POWER_ID).amount 
-                        * BreakEfficiencyPower.MULTIPLIER);
 
             SubscriptionManager.getInstance().triggerPreToughnessReduce(toughnessReduction, this.target, this.elementType);
             
@@ -52,10 +48,6 @@ public class ReduceToughnessAction extends AbstractGameAction {
             }
             if (toughnessPower != null) {
                 addToTop(new ApplyPowerAction(target, AbstractDungeon.player, new ToughnessPower(target, -toughnessReduction), -toughnessReduction));
-            }
-
-            if (info.owner.hasPower(Trailblazer5Power.POWER_ID)){
-                ((Trailblazer5Power) info.owner.getPower(Trailblazer5Power.POWER_ID)).trigger(this);
             }
             //
         }
@@ -112,3 +104,4 @@ public class ReduceToughnessAction extends AbstractGameAction {
         return null;
     }
 }
+*/

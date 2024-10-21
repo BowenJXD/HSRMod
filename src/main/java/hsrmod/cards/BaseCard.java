@@ -32,7 +32,12 @@ public abstract class BaseCard extends CustomCard implements SpawnModificationCa
     protected int upBlock;
     protected int upMagicNumber;
     
+    public int baseTr;
     public int tr = 2;
+    public int upTr;
+    public boolean upgradedTr = false;
+    
+    public boolean isTrModified = false;
     public ElementType elementType = ElementType.None;
     public float versatility = 0;
     public int energyCost = 0;
@@ -58,10 +63,12 @@ public abstract class BaseCard extends CustomCard implements SpawnModificationCa
         this.damage = this.baseDamage = DataManager.getInstance().getCardDataInt(id, CardDataCol.Damage);
         this.block = this.baseBlock = DataManager.getInstance().getCardDataInt(id, CardDataCol.Block);
         this.magicNumber = this.baseMagicNumber = DataManager.getInstance().getCardDataInt(id, CardDataCol.MagicNumber);
+        this.tr = this.baseTr = DataManager.getInstance().getCardDataInt(id, CardDataCol.ToughnessReduction);
         
         this.upCost = DataManager.getInstance().getCardDataInt(id, CardDataCol.UpgradeCost);
         this.upDescription = DataManager.getInstance().getCardData(id, CardDataCol.UpgradeDescription);
         this.upDamage = DataManager.getInstance().getCardDataInt(id, CardDataCol.UpgradeDamage);
+        this.upTr = DataManager.getInstance().getCardDataInt(id, CardDataCol.UpgradeToughnessReduction);
         this.upBlock = DataManager.getInstance().getCardDataInt(id, CardDataCol.UpgradeBlock);
         this.upMagicNumber = DataManager.getInstance().getCardDataInt(id, CardDataCol.UpgradeMagicNumber);
 
@@ -92,6 +99,9 @@ public abstract class BaseCard extends CustomCard implements SpawnModificationCa
             if (upDamage != DataManager.NULL_INT) {
                 upgradeDamage(upDamage - baseDamage);
             }
+            if (upTr != DataManager.NULL_INT) {
+                upgradeTr(upTr - baseTr);
+            }
             if (upBlock != DataManager.NULL_INT) {
                 upgradeBlock(upBlock - baseBlock);
             }
@@ -104,6 +114,35 @@ public abstract class BaseCard extends CustomCard implements SpawnModificationCa
         this.selfRetain = upDescription.contains("保留。");
         this.isInnate = upDescription.contains("固有。");
         this.isEthereal = upDescription.contains("虚无。");*/
+    }
+    
+    public void upgradeTr(int amount) {
+        this.baseTr += amount;
+        this.tr = this.baseTr;
+        this.upgradedTr = true;
+    }
+
+    @Override
+    public void displayUpgrades() {
+        super.displayUpgrades();
+        if (upgradedTr) {
+            tr = baseTr;
+            isTrModified = true;
+        }
+    }
+
+    @Override
+    public void calculateCardDamage(AbstractMonster mo) {
+        tr = SubscriptionManager.getInstance().triggerSetToughnessReduction(mo, baseTr);
+        if (tr != baseTr) isTrModified = true;
+        super.calculateCardDamage(mo);
+    }
+
+    @Override
+    public void applyPowers() {
+        super.applyPowers();
+        tr = SubscriptionManager.getInstance().triggerSetToughnessReduction(null, baseTr);
+        if (tr != baseTr) isTrModified = true;
     }
 
     @Override

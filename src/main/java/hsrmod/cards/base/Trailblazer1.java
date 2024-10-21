@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
+import hsrmod.modcore.ElementalDamageInfo;
 
 public class Trailblazer1 extends BaseCard {
     public static final String ID = Trailblazer1.class.getSimpleName();
@@ -15,6 +16,7 @@ public class Trailblazer1 extends BaseCard {
         super(ID);
         this.tags.add(CardTags.STRIKE);
         this.tags.add(CardTags.STARTER_STRIKE);
+        this.tr = this.baseTr = 2;
     }
     
     @Override
@@ -22,17 +24,11 @@ public class Trailblazer1 extends BaseCard {
         addToBot(
                 new ElementalDamageAction(
                         m,
-                        new DamageInfo(
-                                p,
-                                damage,
-                                damageTypeForTurn
-                        ),
-                        ElementType.Physical,
-                        magicNumber,
-                        // 伤害类型
+                        new ElementalDamageInfo(this),
                         AbstractGameAction.AttackEffect.SLASH_HEAVY
                 )
         );
+        upgradeTr(1);
     }
 
 }

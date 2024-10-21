@@ -11,6 +11,7 @@ import hsrmod.actions.BouncingAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.breaks.ImprisonPower;
 
 public class Welt1 extends BaseCard {
@@ -22,8 +23,10 @@ public class Welt1 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        ElementalDamageAction elementalDamageAction = new ElementalDamageAction(m, new DamageInfo(p, this.damage,
-                DamageInfo.DamageType.NORMAL), ElementType.Imaginary, 1, AbstractGameAction.AttackEffect.POISON,
+        ElementalDamageAction elementalDamageAction = new ElementalDamageAction(
+                m,
+                new ElementalDamageInfo(this), 
+                AbstractGameAction.AttackEffect.BLUNT_LIGHT,
                 c -> {
                     if (!c.isDeadOrEscaped())
                         this.addToBot(new ApplyPowerAction(c, p, new ImprisonPower(c, 1), 1));

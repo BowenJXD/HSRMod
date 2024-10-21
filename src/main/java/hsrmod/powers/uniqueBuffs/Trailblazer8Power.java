@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.modcore.ElementType;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
 import hsrmod.subscribers.PostBreakBlockSubscriber;
@@ -47,10 +48,9 @@ public class Trailblazer8Power extends PowerPower implements PostBreakBlockSubsc
             if (action.target != null) target = action.target;
             else target = ModHelper.betterGetRandomMonster();
             if (target != null) {
-                DamageInfo info = new DamageInfo(owner, Math.round(card.block * percentage / 100f));
+                ElementalDamageInfo info = new ElementalDamageInfo(owner, Math.round(card.block * percentage / 100f), ElementType.Physical, 1);
                 info.applyPowers(owner, target);
-                addToTop(new ElementalDamageAction(target, info, ElementType.Physical, 1, 
-                        AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+                addToTop(new ElementalDamageAction(target, info, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
             }
         }
     }

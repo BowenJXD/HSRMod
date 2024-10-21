@@ -36,8 +36,9 @@ public class Gallagher1 extends BaseCard {
             toughnessMap.put(q, ModHelper.getPowerCount(q, ToughnessPower.POWER_ID));
         }
         addToBot(
-                new ElementalDamageAllAction(p, multiDamage, damageTypeForTurn,
-                        ElementType.Fire, magicNumber, AbstractGameAction.AttackEffect.FIRE).setCallback(
+                new ElementalDamageAllAction(
+                        this,
+                        AbstractGameAction.AttackEffect.FIRE).setCallback(
                         (c) -> {
                             if (ModHelper.getPowerCount(c, ToughnessPower.POWER_ID) <= 0
                                     && (!toughnessMap.containsKey(c) || toughnessMap.get(c) > 0 || upgraded)) {

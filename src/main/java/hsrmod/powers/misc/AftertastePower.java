@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.modcore.ElementType;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
 import hsrmod.utils.ModHelper;
@@ -55,8 +56,8 @@ public class AftertastePower extends BuffPower implements DamageModApplyingPower
     void trigger(DamageInfo info, AbstractCreature target){
         flash();
         // addToTop(new ApplyPowerAction(info.owner, info.owner, new EnergyPower(info.owner, -ENERGY_REQUIRED), -ENERGY_REQUIRED));
-        addToBot(new ElementalDamageAction(target, new DamageInfo(info.owner, amount, DamageInfo.DamageType.NORMAL),
-                ModHelper.getRandomEnumValue(ElementType.class), 1, AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+        addToBot(new ElementalDamageAction(target, new ElementalDamageInfo(info.owner, amount, DamageInfo.DamageType.NORMAL,
+                ModHelper.getRandomEnumValue(ElementType.class), 1), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
         addToBot(new ApplyPowerAction(info.owner, info.owner, this, 1));
     }
     

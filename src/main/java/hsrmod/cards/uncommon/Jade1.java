@@ -43,8 +43,7 @@ public class Jade1 extends BaseCard implements PostDrawSubscriber {
         addToBot(new DrawCardAction(p, magicNumber));
 
         addToBot(
-                new ElementalDamageAllAction(p, multiDamage, damageTypeForTurn,
-                        ElementType.Quantum, 1, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)
+                new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)
         );
     }
 

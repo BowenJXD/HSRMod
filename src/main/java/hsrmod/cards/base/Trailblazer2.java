@@ -23,11 +23,7 @@ public class Trailblazer2 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        if (!checkEnergy()) return;
-        addToBot(
-                new ElementalDamageAllAction(p, this.multiDamage, this.damageTypeForTurn, elementType,
-                        magicNumber, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)
-        );
+        addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
     }
 
 }

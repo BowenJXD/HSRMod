@@ -30,7 +30,7 @@ public class Jiaoqiu1 extends BaseCard {
             // if (upgraded) card.upgrade();
             addToBot(new MakeTempCardInHandAction(card));
         }
-        addToBot(new ElementalDamageAllAction(p, multiDamage, damageTypeForTurn, elementType, 2, AbstractGameAction.AttackEffect.FIRE).setCallback(c -> {
+        addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.FIRE).setCallback(c -> {
             addToBot(new ApplyPowerAction(c, p, new VulnerablePower(c, 1, false), 1));
         }));
     }

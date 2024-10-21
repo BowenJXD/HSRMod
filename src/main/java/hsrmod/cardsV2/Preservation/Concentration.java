@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.ElementalDamageInfo;
 
 public class Concentration extends BaseCard {
     public static final String ID = Concentration.class.getSimpleName();
@@ -18,14 +19,18 @@ public class Concentration extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         boolean hasBlock = m.currentBlock > 0;
-        if (hasBlock){
+        if (hasBlock) {
             addToBot(new GainBlockAction(p, p, damage));
         }
-        addToBot(new ElementalDamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), elementType, 2,
-                AbstractGameAction.AttackEffect.SLASH_VERTICAL, c -> {
-            if (hasBlock && c.currentBlock <= 0) {
-                addToBot(new ElementalDamageAction(c, new DamageInfo(p, damage, damageTypeForTurn), elementType, 2));
-            }
-        }));
+        addToBot(new ElementalDamageAction(
+                m,
+                new ElementalDamageInfo(this),
+                AbstractGameAction.AttackEffect.SLASH_VERTICAL,
+                c -> {
+                    if (hasBlock && c.currentBlock <= 0) {
+                        addToBot(new ElementalDamageAction(c, new ElementalDamageInfo(this), AbstractGameAction.AttackEffect.SLASH_HEAVY));
+                    }
+                })
+        );
     }
 }

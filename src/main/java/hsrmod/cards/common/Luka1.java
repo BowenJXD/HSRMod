@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.breaks.BleedingPower;
 
 public class Luka1 extends BaseCard {
@@ -19,8 +20,11 @@ public class Luka1 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         for (int i = 0; i < magicNumber; i++) {
-            addToBot(new ElementalDamageAction(m, new DamageInfo(p, this.damage,
-                    DamageInfo.DamageType.NORMAL), elementType, 1, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+            addToBot(new ElementalDamageAction(
+                    m,
+                    new ElementalDamageInfo(this), 
+                    AbstractGameAction.AttackEffect.BLUNT_LIGHT
+            ));
             addToBot(new ApplyPowerAction(m, p, new BleedingPower(m, p, 1), 1));
         }
     }

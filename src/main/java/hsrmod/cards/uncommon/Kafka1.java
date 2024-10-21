@@ -12,6 +12,7 @@ import hsrmod.actions.FollowUpAction;
 import hsrmod.actions.TriggerDoTAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.breaks.ShockPower;
 import hsrmod.powers.misc.DoTPower;
 
@@ -52,8 +53,11 @@ public class Kafka1 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ElementalDamageAction(m, new DamageInfo(p, this.damage, damageTypeForTurn), 
-                ElementType.Lightning, 2, AbstractGameAction.AttackEffect.LIGHTNING));
+        addToBot(new ElementalDamageAction(
+                m,
+                new ElementalDamageInfo(this), 
+                AbstractGameAction.AttackEffect.LIGHTNING
+        ));
         addToBot(new TriggerDoTAction(m, magicNumber));
         addToBot(new ApplyPowerAction(m, p, new ShockPower(m, p, magicNumber), magicNumber));
     }

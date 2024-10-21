@@ -10,6 +10,7 @@ import hsrmod.actions.AOEAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.uniqueDebuffs.ProofOfDebtPower;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
@@ -29,14 +30,7 @@ public class TopazNumby3 extends BaseCard {
         addToBot(
                 new ElementalDamageAction(
                         m,
-                        new DamageInfo(
-                                p,
-                                damage,
-                                damageTypeForTurn
-                        ),
-                        ElementType.Fire,
-                        2,
-                        // 伤害类型
+                        new ElementalDamageInfo(this),
                         AbstractGameAction.AttackEffect.SLASH_VERTICAL
                 )
         );

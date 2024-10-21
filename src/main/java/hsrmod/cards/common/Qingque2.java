@@ -32,10 +32,7 @@ public class Qingque2 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         for (int i = 0; i < magicNumber; i++) {
-            addToBot(
-                    new ElementalDamageAllAction(p, multiDamage, damageTypeForTurn,
-                            ElementType.Quantum, 1, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)
-            );
+            addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         }
         ModHelper.addToBotAbstract(() -> updateCost(costCache - costForTurn));
     }

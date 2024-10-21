@@ -7,11 +7,14 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.actions.BreakDamageAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.misc.BreakEffectPower;
 import hsrmod.powers.misc.BrokenPower;
+import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.utils.ModHelper;
 
 public class Firefly1 extends BaseCard {
@@ -25,12 +28,6 @@ public class Firefly1 extends BaseCard {
     }
     
     @Override
-    public void calculateCardDamage(AbstractMonster mo) {
-        baseDamage = ModHelper.getPowerCount(BreakEffectPower.POWER_ID);
-        super.calculateCardDamage(mo);
-    }
-
-    @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         returnToHand = false;
 
@@ -43,15 +40,14 @@ public class Firefly1 extends BaseCard {
         }
         addToBot(
                 new ElementalDamageAction(
-                        m, new DamageInfo(p, damage),
-                        ElementType.Fire, magicNumber,
+                        m,
+                        new ElementalDamageInfo(this),
                         AbstractGameAction.AttackEffect.SLASH_DIAGONAL
                 )
         );
         ModHelper.addToBotAbstract(() -> {
             if (m.hasPower(BrokenPower.POWER_ID)) {
-                // int val = m.hasPower(ToughnessPower.POWER_ID) ? Math.abs(m.getPower(ToughnessPower.POWER_ID).amount) : 0;
-                // addToBot(new BreakDamageAction(m, new DamageInfo(p, val)));
+                addToBot(new BreakDamageAction(m, new DamageInfo(p, tr)));
                 returnToHand = true;
                 setCostForTurn(costCache);
             }

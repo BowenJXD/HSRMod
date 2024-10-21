@@ -94,6 +94,7 @@ public class DataManager {
         String result = cardData.get(key)[col.ordinal()];
         switch (col) {
             case Damage:
+            case ToughnessReduction:
             case Block:
             case MagicNumber:
                 if (Objects.equals(result, "")) {
@@ -101,6 +102,7 @@ public class DataManager {
                 }
                 break;
             case UpgradeDamage:
+            case UpgradeToughnessReduction:
             case UpgradeBlock:
             case UpgradeMagicNumber:
             case UpgradeCost:

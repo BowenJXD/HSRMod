@@ -16,6 +16,7 @@ import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.breaks.FrozenPower;
 import hsrmod.subscribers.PostBreakBlockSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
@@ -57,14 +58,7 @@ public class Yanqing2 extends BaseCard implements OnPlayerDamagedSubscriber {
         addToBot(
                 new ElementalDamageAction(
                         m,
-                        new DamageInfo(
-                                p,
-                                damage,
-                                damageTypeForTurn
-                        ),
-                        ElementType.Ice,
-                        1,
-                        // 伤害类型
+                        new ElementalDamageInfo(this),
                         AbstractGameAction.AttackEffect.SLASH_HEAVY,
                         (c) -> {
                             if (AbstractDungeon.cardRandomRng.random(100) <= magicNumber)

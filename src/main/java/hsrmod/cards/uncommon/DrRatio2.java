@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.uniqueDebuffs.WisemansFollyPower;
 
 public class DrRatio2 extends BaseCard {
@@ -36,14 +37,7 @@ public class DrRatio2 extends BaseCard {
         addToBot(
                 new ElementalDamageAction(
                         m,
-                        new DamageInfo(
-                                p,
-                                damage + debuffNum * magicNumber,
-                                damageTypeForTurn
-                        ),
-                        ElementType.Imaginary,
-                        2,
-                        // 伤害类型
+                        new ElementalDamageInfo(this, damage + debuffNum * magicNumber),
                         AbstractGameAction.AttackEffect.SLASH_HEAVY
                 )
         );

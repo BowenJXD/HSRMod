@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.misc.BreakEffectPower;
 import hsrmod.powers.uniqueDebuffs.BefogPower;
 
@@ -24,9 +25,11 @@ public class Lingsha1 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         // addToBot(new HealAction(p, p, p.hasPower(BreakEffectPower.POWER_ID) ? p.getPower(BreakEffectPower.POWER_ID).amount : 0));
-        addToBot(new ElementalDamageAction(m, new DamageInfo(p, damage),
-                        ElementType.Fire, 2,
-                        AbstractGameAction.AttackEffect.FIRE));
+        addToBot(new ElementalDamageAction(
+                m,
+                new ElementalDamageInfo(this),
+                AbstractGameAction.AttackEffect.FIRE
+        ));
         addToBot(new ApplyPowerAction(m, p, new BefogPower(m, magicNumber, upgraded), magicNumber));
         AbstractPower power = m.getPower(BefogPower.POWER_ID);
         if (power != null) {

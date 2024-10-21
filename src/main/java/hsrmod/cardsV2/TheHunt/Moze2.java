@@ -1,5 +1,6 @@
 package hsrmod.cardsV2.TheHunt;
 
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -8,6 +9,7 @@ import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
+import hsrmod.modcore.ElementalDamageInfo;
 
 public class Moze2 extends BaseCard {
     public static final String ID = Moze2.class.getSimpleName();
@@ -29,7 +31,11 @@ public class Moze2 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ElementalDamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), elementType, 1));
+        addToBot(new ElementalDamageAction(
+                m,
+                new ElementalDamageInfo(this), 
+                AbstractGameAction.AttackEffect.SLASH_DIAGONAL
+        ));
         addToBot(new DrawCardAction(magicNumber));
     }
 }

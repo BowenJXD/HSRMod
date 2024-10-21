@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.misc.QuakePower;
 
 public class TheArchitects extends BaseCard {
@@ -40,6 +41,6 @@ public class TheArchitects extends BaseCard {
             ((QuakePower)quakePower).attack(m, blockToLose);
         }
         if (upgraded) addToBot(new LoseBlockAction(m, p, Math.round(m.currentBlock * magicNumber / 100f)));
-        addToBot(new ElementalDamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), elementType, 4, AbstractGameAction.AttackEffect.SHIELD));
+        addToBot(new ElementalDamageAction(m, new ElementalDamageInfo(this), AbstractGameAction.AttackEffect.SHIELD));
     }
 }

@@ -8,6 +8,7 @@ import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementType;
+import hsrmod.modcore.ElementalDamageInfo;
 
 public class Welt0 extends BaseCard {
     public static final String ID = Welt0.class.getSimpleName();
@@ -24,14 +25,7 @@ public class Welt0 extends BaseCard {
         addToBot(
                 new ElementalDamageAction(
                         m,
-                        new DamageInfo(
-                                p,
-                                damage,
-                                damageTypeForTurn
-                        ),
-                        ElementType.Imaginary,
-                        magicNumber,
-                        // 伤害类型
+                        new ElementalDamageInfo(this),
                         AbstractGameAction.AttackEffect.SLASH_HEAVY
                 )
         );

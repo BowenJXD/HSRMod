@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import hsrmod.actions.BreakDamageAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.utils.CardDataCol;
 import hsrmod.utils.DataManager;
@@ -40,7 +41,11 @@ public class Sushang3 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ElementalDamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), elementType, magicNumber, AbstractGameAction.AttackEffect.SLASH_HEAVY));
+        addToBot(new ElementalDamageAction(
+                m,
+                new ElementalDamageInfo(this),
+                AbstractGameAction.AttackEffect.SLASH_HEAVY
+        ));
         int toughness = ModHelper.getPowerCount(m, ToughnessPower.POWER_ID);
         ModHelper.addToBotAbstract(() -> {
             if (ModHelper.getPowerCount(m, ToughnessPower.POWER_ID) <= 0

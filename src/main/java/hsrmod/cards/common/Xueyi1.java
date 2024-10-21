@@ -12,6 +12,7 @@ import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementType;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.subscribers.PreToughnessReduceSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
@@ -49,8 +50,8 @@ public class Xueyi1 extends BaseCard implements PreToughnessReduceSubscriber {
         this.calculateCardDamage(mo);
         
         addToBot(new ElementalDamageAction(
-                mo, new DamageInfo(p, damage, damageTypeForTurn),
-                ElementType.Quantum, magicNumber,
+                mo,
+                new ElementalDamageInfo(this),
                 AbstractGameAction.AttackEffect.SLASH_DIAGONAL
         ));
         

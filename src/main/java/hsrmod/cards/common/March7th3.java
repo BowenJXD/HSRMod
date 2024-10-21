@@ -23,7 +23,7 @@ public class March7th3 extends BaseCard {
     
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ElementalDamageAllAction(p, multiDamage, damageTypeForTurn, elementType, 2, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL).setCallback(c -> {
+        addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL).setCallback(c -> {
             if (AbstractDungeon.cardRng.random(99) < 50)
                 addToBot(new ApplyPowerAction(c, p, new FrozenPower(c, magicNumber), magicNumber));
         }));

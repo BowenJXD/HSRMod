@@ -11,41 +11,34 @@ import hsrmod.actions.BouncingAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
+import hsrmod.modcore.ElementalDamageInfo;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Asta1 extends BaseCard {
     public static final String ID = Asta1.class.getSimpleName();
-    
+
     List<AbstractCreature> monsters;
-    
+
     public Asta1() {
         super(ID);
     }
-    
+
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         monsters = new ArrayList<>();
-        ElementalDamageAction elementalDamageAction = new ElementalDamageAction(m, new DamageInfo(p, this.damage, 
-                DamageInfo.DamageType.NORMAL), ElementType.Fire, 1, AbstractGameAction.AttackEffect.FIRE,
+        ElementalDamageAction elementalDamageAction = new ElementalDamageAction(
+                m,
+                new ElementalDamageInfo(this),
+                AbstractGameAction.AttackEffect.FIRE,
                 c -> {
                     if (!monsters.contains(c)) {
                         monsters.add(c);
-                        addToBot(
-                                new ApplyPowerAction(
-                                        p,
-                                        p,
-                                        new StrengthPower(
-                                                p,
-                                                1
-                                        ),
-                                        1
-                                )
-                        );
+                        addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, 1), 1));
                     }
                 }
-                );
+        );
         this.addToBot(new BouncingAction(m, magicNumber, elementalDamageAction, this));
     }
 }

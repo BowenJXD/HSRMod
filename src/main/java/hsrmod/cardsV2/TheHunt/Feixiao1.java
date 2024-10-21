@@ -1,5 +1,6 @@
 package hsrmod.cardsV2.TheHunt;
 
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -8,6 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.utils.ModHelper;
 
 import java.util.Objects;
@@ -22,7 +24,13 @@ public class Feixiao1 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ElementalDamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), elementType, 1));
+        addToBot(
+                new ElementalDamageAction(
+                        m,
+                        new ElementalDamageInfo(this),
+                        AbstractGameAction.AttackEffect.SLASH_DIAGONAL
+                )
+        );
     }
 
     @Override

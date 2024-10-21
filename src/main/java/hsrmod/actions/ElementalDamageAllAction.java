@@ -9,7 +9,9 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
+import hsrmod.modcore.ElementalDamageInfo;
 
 import java.util.Iterator;
 import java.util.function.Consumer;
@@ -17,7 +19,7 @@ import java.util.function.Function;
 
 public class ElementalDamageAllAction extends AbstractGameAction {
     public int[] damage;
-    private DamageInfo info;
+    private BaseCard card; 
     private ElementType elementType;
     private int toughnessReduction;
     private Consumer<AbstractCreature> afterEffect;
@@ -48,12 +50,10 @@ public class ElementalDamageAllAction extends AbstractGameAction {
                                     AbstractGameAction.AttackEffect effect) {
         this(source, amount, type, elementType, toughnessReduction, effect, false);
     }
-
-    public ElementalDamageAllAction(AbstractPlayer player, int baseDamage, DamageInfo.DamageType type, ElementType elementType, int toughnessReduction, 
-                                    AbstractGameAction.AttackEffect effect) {
-        this(player, (int[])null, type, elementType, toughnessReduction, effect, false);
-        this.baseDamage = baseDamage;
-        this.utilizeBaseDamage = true;
+    
+    public ElementalDamageAllAction(BaseCard card, AttackEffect effect) {
+        this(AbstractDungeon.player, card.multiDamage, card.damageTypeForTurn, card.elementType, card.tr, effect);
+        this.card = card;
     }
     
     public ElementalDamageAllAction setCallback(Consumer<AbstractCreature> afterEffect) {
@@ -90,7 +90,7 @@ public class ElementalDamageAllAction extends AbstractGameAction {
             for(int i = 0; i < temp; ++i) {
                 if (!((AbstractMonster)AbstractDungeon.getCurrRoom().monsters.monsters.get(i)).isDeadOrEscaped()) {
                     AbstractGameAction action = new ElementalDamageAction((AbstractMonster)AbstractDungeon.getCurrRoom().monsters.monsters.get(i), 
-                            new DamageInfo(this.source, this.damage[i], this.damageType), this.elementType, this.toughnessReduction, 
+                            new ElementalDamageInfo(this.source, this.damage[i], this.damageType, this.elementType, this.toughnessReduction, this.card), 
                             this.attackEffect, this.afterEffect, this.modifier).setIsFast(true);
                     action.update();
                 }

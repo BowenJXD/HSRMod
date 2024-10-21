@@ -15,6 +15,7 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import com.badlogic.gdx.graphics.Color;
 import hsrmod.characters.StellaCharacter;
 import hsrmod.misc.ChargeIcon;
+import hsrmod.misc.ToughnessReductionVariable;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -73,6 +74,7 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         CustomIconHelper.addCustomIcon(ChargeIcon.get());
         // This finds and adds all cards in the same package (or sub-package) as MyAbstractCard
         // along with marking all added cards as seen
+        BaseMod.addDynamicVariable(new ToughnessReductionVariable());
         new AutoAdd(MOD_NAME)
                 .packageFilter("hsrmod.cards")
                 .setDefaultSeen(true)

@@ -16,10 +16,10 @@ import hsrmod.utils.ModHelper;
 
 public class Argenti1 extends BaseCard {
     public static final String ID = Argenti1.class.getSimpleName();
-    
+
     int energyExhaust = 90;
     int energyGain = 10;
-    
+
     public Argenti1() {
         super(ID);
         selfRetain = true;
@@ -36,15 +36,14 @@ public class Argenti1 extends BaseCard {
         ModHelper.addToBotAbstract(this::execute);
     }
 
-    void execute(){
+    void execute() {
         if (AbstractDungeon.player.getPower(EnergyPower.POWER_ID).amount < energyExhaust
-            || AbstractDungeon.getMonsters().areMonstersBasicallyDead()) return;
-        addToBot(new ElementalDamageAllAction(AbstractDungeon.player, this.multiDamage, this.damageTypeForTurn, 
-                elementType, 2, AbstractGameAction.AttackEffect.SLASH_VERTICAL).setCallback(c -> {
+                || AbstractDungeon.getMonsters().areMonstersBasicallyDead()) return;
+        addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_VERTICAL).setCallback(c -> {
             addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player,
                     new EnergyPower(AbstractDungeon.player, energyGain), energyGain));
         }));
-        addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, 
+        addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player,
                 new EnergyPower(AbstractDungeon.player, -energyExhaust), -energyExhaust));
         ModHelper.addToBotAbstract(this::execute);
     }

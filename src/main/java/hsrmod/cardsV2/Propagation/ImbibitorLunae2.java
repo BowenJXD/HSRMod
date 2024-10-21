@@ -27,8 +27,7 @@ public class ImbibitorLunae2 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         for (int i = 0; i < magicNumber; i++) {
-            addToBot(new ElementalDamageAllAction(p, multiDamage, damageTypeForTurn, 
-                    ElementType.Imaginary, 1, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+            addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
         }
         addToBot(new SelectCardsInHandAction(1, cardStrings.EXTENDED_DESCRIPTION[0], true, true, c -> true, cards -> {
             if (!cards.isEmpty()) {

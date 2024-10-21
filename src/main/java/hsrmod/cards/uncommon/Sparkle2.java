@@ -16,19 +16,13 @@ public class Sparkle2 extends BaseCard {
         super(ID);
         energyCost = 110;
         exhaust = true;
-        
     }
-
-    @Override
-    public void upgrade() {
-        super.upgrade();
-        isInnate = true;
-    }
-
+    
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         p.energy.use(energyOnUse);
         int num = Math.min(energyOnUse * 2, p.energy.energyMaster * 2);
+        if (upgraded) num += magicNumber;
         addToBot(new GainEnergyAction(num));
 
         ModHelper.addToBotAbstract(() -> {

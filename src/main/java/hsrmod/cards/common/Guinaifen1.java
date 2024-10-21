@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.powers.VulnerablePower;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.breaks.BurnPower;
 import hsrmod.utils.ModHelper;
 
@@ -22,8 +23,11 @@ public class Guinaifen1 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ElementalDamageAction(m, new DamageInfo(p, this.damage,
-                DamageInfo.DamageType.NORMAL), ElementType.Fire, 1, AbstractGameAction.AttackEffect.FIRE));
+        addToBot(new ElementalDamageAction(
+                m,
+                new ElementalDamageInfo(this), 
+                AbstractGameAction.AttackEffect.FIRE
+        ));
         addToBot(new ApplyPowerAction(m, p, new BurnPower(m, p, 1), 1));
         if (upgraded) {
             ModHelper.addToBotAbstract(() -> {

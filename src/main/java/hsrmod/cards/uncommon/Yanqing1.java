@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.utils.CardDataCol;
 import hsrmod.utils.DataManager;
 
@@ -48,14 +49,7 @@ public class Yanqing1 extends BaseCard {
         
         ElementalDamageAction action = new ElementalDamageAction(
                 m,
-                new DamageInfo(
-                        p,
-                        damage,
-                        damageTypeForTurn
-                ),
-                ElementType.Ice,
-                2,
-                // 伤害类型
+                new ElementalDamageInfo(this),
                 AbstractGameAction.AttackEffect.SLASH_HEAVY
         );
         addToBot(action);

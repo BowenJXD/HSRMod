@@ -33,8 +33,7 @@ public class Himeko1 extends BaseCard implements PostPowerApplySubscriber {
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         for (int i = 0; i < magicNumber; i++) {
             addToBot(
-                    new ElementalDamageAllAction(p, multiDamage, damageTypeForTurn,
-                            ElementType.Fire, 1, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)
+                    new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)
             );
         }
     }

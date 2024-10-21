@@ -1,5 +1,6 @@
 package hsrmod.powers.misc;
 
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -9,6 +10,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.modcore.ElementType;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.DebuffPower;
 import hsrmod.powers.breaks.BleedingPower;
 import hsrmod.powers.breaks.BurnPower;
@@ -48,12 +50,12 @@ public abstract class DoTPower extends DebuffPower {
             this.flash();
             
             float dmg = this.getDamage();
-            DamageInfo info = new DamageInfo(this.source, (int) dmg);
+            ElementalDamageInfo info = new ElementalDamageInfo(this.source, (int) dmg, this.getElementType(), toughnessReduction);
             info.applyPowers(this.source, this.owner);
             
             info.output = (int) SubscriptionManager.getInstance().triggerPreDoTDamage(info.output, this.owner, this);
             
-            this.addToTop(new ElementalDamageAction(this.owner, info, this.getElementType(), toughnessReduction));
+            this.addToTop(new ElementalDamageAction(this.owner, info, AbstractGameAction.AttackEffect.NONE));
             if (removeOnTrigger) remove(1);
         }
     }

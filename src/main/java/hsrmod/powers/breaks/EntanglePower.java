@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.modcore.ElementType;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.DebuffPower;
 
@@ -48,7 +49,7 @@ public class EntanglePower extends DebuffPower {
 
     @Override
     public void atStartOfTurn() {
-        addToBot(new ElementalDamageAction(owner, new DamageInfo(source, getDamage()), ElementType.Quantum, 1, AbstractGameAction.AttackEffect.SLASH_HEAVY));
+        addToBot(new ElementalDamageAction(owner, new ElementalDamageInfo(source, getDamage(), ElementType.Quantum, 1), AbstractGameAction.AttackEffect.SLASH_HEAVY));
         addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
     }
 }

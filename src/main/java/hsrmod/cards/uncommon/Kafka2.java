@@ -29,7 +29,7 @@ public class Kafka2 extends BaseCard {
         ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID));
         addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
         
-        addToBot(new ElementalDamageAllAction(p, multiDamage, damageTypeForTurn, elementType, 2, AbstractGameAction.AttackEffect.LIGHTNING).setCallback(c -> {
+        addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.LIGHTNING).setCallback(c -> {
             if(!c.isDeadOrEscaped() && c.currentHealth > 0) {
                 addToBot(new TriggerDoTAction(c, 1, true));
                 addToBot(new ApplyPowerAction(c, p, new ShockPower(c, p, magicNumber), magicNumber));

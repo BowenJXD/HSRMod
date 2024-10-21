@@ -7,14 +7,16 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.cards.BaseCard;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.utils.ModHelper;
 
 public class BouncingAction extends AbstractGameAction {
     private int numTimes;
     private ElementalDamageAction damageAction;
-    AbstractCard card;
+    BaseCard card;
     
-    public BouncingAction(AbstractCreature target, int numTimes, ElementalDamageAction damageAction, AbstractCard card){
+    public BouncingAction(AbstractCreature target, int numTimes, ElementalDamageAction damageAction, BaseCard card){
         this.target = target;
         this.actionType = ActionType.DEBUFF;
         this.duration = 0.01F;
@@ -27,7 +29,7 @@ public class BouncingAction extends AbstractGameAction {
         this(target, numTimes, damageAction, null);
     }
     
-    public BouncingAction(int numTimes, ElementalDamageAction damageAction, AbstractCard card){
+    public BouncingAction(int numTimes, ElementalDamageAction damageAction, BaseCard card){
         this(null, numTimes, damageAction, card);
     }
     
@@ -56,7 +58,7 @@ public class BouncingAction extends AbstractGameAction {
             damageAction.target = this.target;
             if (card != null) {
                 this.card.calculateCardDamage((AbstractMonster) this.target);
-                damageAction.info = new DamageInfo(AbstractDungeon.player, this.card.damage, this.card.damageTypeForTurn);
+                damageAction.info = new ElementalDamageInfo(this.card);
             }
             this.addToTop(damageAction);
         }

@@ -27,7 +27,7 @@ public class SubscriptionManager {
     List<PostBreakBlockSubscriber> postBreakBlockSubscribers = new ArrayList<>();
     List<PreBlockChangeSubscriber> preBlockGainSubscribers = new ArrayList<>();
     List<ICheckUsableSubscriber> checkUsableSubscribers = new ArrayList<>();
-    List<ISetCritRateSubscriber> setCritRateSubscribers = new ArrayList<>();
+    List<ISetToughnessReductionSubscriber> setToughnessReductionSubscribers = new ArrayList<>();
 
     SubscriptionManager() {}
     
@@ -67,9 +67,9 @@ public class SubscriptionManager {
                 && !checkUsableSubscribers.contains(sub)) {
             checkUsableSubscribers.add((ICheckUsableSubscriber) sub);
         }
-        else if (sub instanceof ISetCritRateSubscriber
-                && !setCritRateSubscribers.contains(sub)) {
-            setCritRateSubscribers.add((ISetCritRateSubscriber) sub);
+        else if (sub instanceof ISetToughnessReductionSubscriber
+                && !setToughnessReductionSubscribers.contains(sub)) {
+            setToughnessReductionSubscribers.add((ISetToughnessReductionSubscriber) sub);
         }
     }
     
@@ -95,8 +95,8 @@ public class SubscriptionManager {
         else if (subscriber instanceof ICheckUsableSubscriber) {
             checkUsableSubscribers.remove(subscriber);
         }
-        else if (subscriber instanceof ISetCritRateSubscriber) {
-            setCritRateSubscribers.remove(subscriber);
+        else if (subscriber instanceof ISetToughnessReductionSubscriber) {
+            setToughnessReductionSubscribers.remove(subscriber);
         }
     }
     
@@ -192,12 +192,16 @@ public class SubscriptionManager {
         return result;
     }
     
-    public void triggerSetCritRate(ElementalDamageAction action) {
-        for (ISetCritRateSubscriber sub : setCritRateSubscribers) {
-            sub.setCritRate(action);
+    public int triggerSetToughnessReduction(AbstractCreature target, int amount) {
+        int result = amount;
+        
+        for (ISetToughnessReductionSubscriber sub : setToughnessReductionSubscribers) {
+            result = sub.setToughnessReduction(target, amount);
         }
         
-        unsubscribeLaterHelper(ISetCritRateSubscriber.class);
+        unsubscribeLaterHelper(ISetToughnessReductionSubscriber.class);
+        
+        return result;
     }
     
     public static boolean checkSubscriber(BaseCard card) {

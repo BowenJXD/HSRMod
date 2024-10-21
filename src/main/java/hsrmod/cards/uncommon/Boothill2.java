@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.utils.ModHelper;
 
@@ -22,8 +23,8 @@ public class Boothill2 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         returnToHand = false;
-        addToBot(new ElementalDamageAction(m, new DamageInfo(p, damage),
-                elementType, magicNumber,
+        addToBot(new ElementalDamageAction(m,
+                new ElementalDamageInfo(this),
                 AbstractGameAction.AttackEffect.SLASH_HEAVY,
                 (c) -> {
                     if (ModHelper.getPowerCount(m, ToughnessPower.POWER_ID) > 0) {

@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.ElementalDamageInfo;
 
 public class Burst extends BaseCard {
     public static final String ID = Burst.class.getSimpleName();
@@ -22,11 +23,14 @@ public class Burst extends BaseCard {
             dmg *= 2;
         }
         boolean hasBlock = m.currentBlock > 0;
-        addToBot(new ElementalDamageAction(m, new DamageInfo(p, dmg, damageTypeForTurn), elementType, 2,
-                AbstractGameAction.AttackEffect.SLASH_VERTICAL, c -> {
-            if (hasBlock && c.currentBlock <= 0) {
-                addToBot(new GainBlockAction(p, p, damage));
-            }
-        }));
+        addToBot(new ElementalDamageAction(
+                m,
+                new ElementalDamageInfo(this, dmg),
+                AbstractGameAction.AttackEffect.SLASH_VERTICAL,
+                c -> {
+                    if (hasBlock && c.currentBlock <= 0) {
+                        addToBot(new GainBlockAction(p, p, damage));
+                    }
+                }));
     }
 }

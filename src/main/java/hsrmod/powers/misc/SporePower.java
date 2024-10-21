@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.modcore.ElementType;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.DebuffPower;
 
@@ -52,8 +53,8 @@ public class SporePower extends DebuffPower {
     }
     
     public void trigger(){
-        addToBot(new ElementalDamageAction(owner, new DamageInfo(AbstractDungeon.player, amount * amount, 
-                DamageInfo.DamageType.NORMAL), ElementType.Wind, 1, AbstractGameAction.AttackEffect.POISON));
+        addToBot(new ElementalDamageAction(owner, new ElementalDamageInfo(AbstractDungeon.player, amount * amount, 
+                DamageInfo.DamageType.NORMAL, ElementType.Wind, 1), AbstractGameAction.AttackEffect.POISON));
         addToBot(new ApplyPowerAction(owner, AbstractDungeon.player, new SporePower(owner, -amount), -amount));
         addToBot(new RemoveSpecificPowerAction(owner, owner, this));
     }

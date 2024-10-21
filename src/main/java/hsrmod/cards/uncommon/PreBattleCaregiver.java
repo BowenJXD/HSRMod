@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.utils.ModHelper;
 
@@ -21,8 +22,9 @@ public class PreBattleCaregiver extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         addToBot(
-                new ElementalDamageAction(m, new DamageInfo(p, damage),
-                        ElementType.Physical, magicNumber,
+                new ElementalDamageAction(
+                        m,
+                        new ElementalDamageInfo(this),
                         AbstractGameAction.AttackEffect.SLASH_DIAGONAL
                 )
         );

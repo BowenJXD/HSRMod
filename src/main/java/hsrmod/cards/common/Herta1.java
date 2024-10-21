@@ -34,8 +34,7 @@ public class Herta1 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         addToBot(
-                new ElementalDamageAllAction(p, this.multiDamage, this.damageTypeForTurn, elementType, 
-                        1, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)
+                new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)
         );
     }
 

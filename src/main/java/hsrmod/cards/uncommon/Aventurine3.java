@@ -11,6 +11,7 @@ import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.utils.ModHelper;
 
 public class Aventurine3 extends BaseCard {
@@ -43,7 +44,11 @@ public class Aventurine3 extends BaseCard {
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         if (damage > 1) {
             int dmg = AbstractDungeon.cardRandomRng.random(1, damage);
-            addToBot(new ElementalDamageAction(m, new DamageInfo(p, dmg, damageTypeForTurn), elementType, 1, AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+            addToBot(new ElementalDamageAction(
+                    m, 
+                    new ElementalDamageInfo(this, dmg), 
+                    AbstractGameAction.AttackEffect.SLASH_DIAGONAL
+            ));
         }
         if (block > 1) {
             int blk = AbstractDungeon.cardRandomRng.random(1, block);

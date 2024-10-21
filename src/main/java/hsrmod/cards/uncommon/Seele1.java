@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.utils.CardDataCol;
 import hsrmod.utils.DataManager;
 
@@ -19,7 +20,7 @@ import java.util.Iterator;
 
 public class Seele1 extends BaseCard {
     public static final String ID = Seele1.class.getSimpleName();
-    
+
     public Seele1() {
         super(ID);
         energyCost = 120;
@@ -47,28 +48,32 @@ public class Seele1 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        AbstractGameAction action  = new ElementalDamageAction(m, new DamageInfo(p, damage), ElementType.Quantum, magicNumber, AbstractGameAction.AttackEffect.SLASH_HEAVY, (q) -> {
-            if ((q.isDying || q.currentHealth <= 0) && !q.halfDead && !q.hasPower("Minion")) {
-                Iterator var1 = AbstractDungeon.player.masterDeck.group.iterator();
+        AbstractGameAction action = new ElementalDamageAction(
+                m,
+                new ElementalDamageInfo(this),
+                AbstractGameAction.AttackEffect.SLASH_HEAVY,
+                (q) -> {
+                    if ((q.isDying || q.currentHealth <= 0) && !q.halfDead && !q.hasPower("Minion")) {
+                        Iterator var1 = AbstractDungeon.player.masterDeck.group.iterator();
 
-                AbstractCard c;
-                while (var1.hasNext()) {
-                    c = (AbstractCard) var1.next();
-                    if (c.uuid == this.uuid) {
-                        c.upgrade();
-                        c.isDamageModified = false;
+                        AbstractCard c;
+                        while (var1.hasNext()) {
+                            c = (AbstractCard) var1.next();
+                            if (c.uuid == this.uuid) {
+                                c.upgrade();
+                                c.isDamageModified = false;
+                            }
+                        }
+
+                        for (var1 = GetAllInBattleInstances.get(this.uuid).iterator(); var1.hasNext(); ) {
+                            c = (AbstractCard) var1.next();
+                            c.upgrade();
+                        }
+
+                        addToBot(new GainEnergyAction(1));
+                        addToBot(new MoveCardsAction(AbstractDungeon.player.hand, AbstractDungeon.player.exhaustPile, card -> card.uuid == this.uuid));
                     }
-                }
-
-                for (var1 = GetAllInBattleInstances.get(this.uuid).iterator(); var1.hasNext();) {
-                    c = (AbstractCard) var1.next();
-                    c.upgrade();
-                }
-                
-                addToBot(new GainEnergyAction(1));
-                addToBot(new MoveCardsAction(AbstractDungeon.player.hand, AbstractDungeon.player.exhaustPile, card -> card.uuid == this.uuid));
-            }
-        });
+                });
         addToBot(action);
     }
 }

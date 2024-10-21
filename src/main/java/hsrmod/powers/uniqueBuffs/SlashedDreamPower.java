@@ -13,6 +13,7 @@ import hsrmod.actions.AOEAction;
 import hsrmod.actions.BouncingAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.modcore.ElementType;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
 import hsrmod.utils.ModHelper;
@@ -81,14 +82,21 @@ public class SlashedDreamPower extends PowerPower {
         addToBot(new TalkAction(true, String.format(" #r%s ", DESCRIPTIONS[1]), 1.0F, 2.0F));
         AbstractCreature target = AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster) null, true, AbstractDungeon.cardRandomRng);
         if (target == null) return;
-        ElementalDamageAction action = new ElementalDamageAction(target, new DamageInfo(owner, baseDamage),
-                ElementType.Lightning, 1, AbstractGameAction.AttackEffect.LIGHTNING, null);
+        
+        ElementalDamageAction action = new ElementalDamageAction(
+                target, 
+                new ElementalDamageInfo(owner, baseDamage, ElementType.Lightning, 1), 
+                AbstractGameAction.AttackEffect.LIGHTNING
+        );
         action.doApplyPower = true;
         addToBot(new BouncingAction(target, 3, action.makeCopy()));
 
-        ElementalDamageAction action2 = new ElementalDamageAction(target, new DamageInfo(owner, baseDamage),
-                ElementType.Lightning, 1, AbstractGameAction.AttackEffect.LIGHTNING, null,
-                c -> c.powers.stream().filter(p -> p.type == PowerType.DEBUFF).mapToInt(p -> 1).sum());
+        ElementalDamageAction action2 = new ElementalDamageAction(
+                target, 
+                new ElementalDamageInfo(owner, baseDamage, ElementType.Lightning, 1), 
+                AbstractGameAction.AttackEffect.LIGHTNING, null,
+                c -> c.powers.stream().filter(p -> p.type == PowerType.DEBUFF).mapToInt(p -> 1).sum()
+        );
         action2.doApplyPower = true;
         ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play("SlashedDream2"));
         addToBot(new TalkAction(true, String.format(" #r%s ", DESCRIPTIONS[2]), 1.0F, 2.0F));

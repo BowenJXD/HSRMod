@@ -9,12 +9,13 @@ import hsrmod.actions.AOEAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.breaks.WindShearPower;
 import hsrmod.powers.uniqueDebuffs.EpiphanyPower;
 
 public class BlackSwan1 extends BaseCard {
     public static final String ID = BlackSwan1.class.getSimpleName();
-    
+
     public BlackSwan1() {
         super(ID);
     }
@@ -29,18 +30,22 @@ public class BlackSwan1 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         if (upgraded) {
-            addToBot(new ElementalDamageAllAction(p, this.multiDamage, this.damageTypeForTurn, elementType, 2, 
-                    AbstractGameAction.AttackEffect.POISON).setCallback(c -> {
-                addToBot(new ApplyPowerAction(c, p, new WindShearPower(c, p, 1), 1));
-                addToBot(new ApplyPowerAction(c, p, new EpiphanyPower(c, 1), 1));
-            }));
-        }
-        else {
-            addToBot(new ElementalDamageAction(m, new DamageInfo(p, damage, damageTypeForTurn),
-                    elementType, 2, AbstractGameAction.AttackEffect.POISON, c -> {
-                addToBot(new ApplyPowerAction(c, p, new WindShearPower(c, p, 1), 1));
-                addToBot(new ApplyPowerAction(c, p, new EpiphanyPower(c, 1), 1));
-            }));
+            addToBot(new ElementalDamageAllAction(
+                    this,
+                    AbstractGameAction.AttackEffect.POISON)
+                    .setCallback(c -> {
+                        addToBot(new ApplyPowerAction(c, p, new WindShearPower(c, p, 1), 1));
+                        addToBot(new ApplyPowerAction(c, p, new EpiphanyPower(c, 1), 1));
+                    }));
+        } else {
+            addToBot(new ElementalDamageAction(
+                    m,
+                    new ElementalDamageInfo(this),
+                    AbstractGameAction.AttackEffect.POISON,
+                    c -> {
+                        addToBot(new ApplyPowerAction(c, p, new WindShearPower(c, p, 1), 1));
+                        addToBot(new ApplyPowerAction(c, p, new EpiphanyPower(c, 1), 1));
+                    }));
         }
     }
 }

@@ -3,6 +3,7 @@ package hsrmod.cards.uncommon;
 import basemod.BaseMod;
 import basemod.interfaces.OnPlayerDamagedSubscriber;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.BindingHelper;
+import com.evacipated.cardcrawl.mod.stslib.patches.BindingPatches;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -14,6 +15,7 @@ import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
@@ -61,8 +63,8 @@ public class Yunli1 extends BaseCard implements OnPlayerDamagedSubscriber {
         ModHelper.addToTopAbstract(this::execute);
         AbstractMonster randomMonster = AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster)null, true, AbstractDungeon.cardRandomRng);
         if (randomMonster == null) return;
-        ElementalDamageAction action = new ElementalDamageAction(randomMonster, BindingHelper.makeInfo(this, AbstractDungeon.player, damage, damageTypeForTurn), ElementType.Physical,
-                1, AbstractGameAction.AttackEffect.SLASH_VERTICAL);
+        BindingPatches.directlyBoundInstigator = this;
+        ElementalDamageAction action = new ElementalDamageAction(randomMonster, ElementalDamageInfo.makeInfo(this), AbstractGameAction.AttackEffect.SLASH_VERTICAL);
         
         addToTop(new BouncingAction(randomMonster, 2, action, this));
 

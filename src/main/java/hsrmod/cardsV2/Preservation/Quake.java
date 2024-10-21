@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.ElementalDamageInfo;
 
 public class Quake extends BaseCard {
     public static final String ID = Quake.class.getSimpleName();
@@ -17,6 +18,10 @@ public class Quake extends BaseCard {
     
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ElementalDamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), elementType, magicNumber, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        addToBot(new ElementalDamageAction(
+                m, 
+                new ElementalDamageInfo(this), 
+                AbstractGameAction.AttackEffect.BLUNT_HEAVY
+        ));
     }
 }

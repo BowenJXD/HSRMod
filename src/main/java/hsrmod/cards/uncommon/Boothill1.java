@@ -9,6 +9,7 @@ import hsrmod.actions.BreakDamageAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.misc.BreakEffectPower;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.utils.ModHelper;
@@ -22,21 +23,14 @@ public class Boothill1 extends BaseCard {
         super(ID);
         costCache = cost;
     }
-
-    @Override
-    public void calculateCardDamage(AbstractMonster mo) {
-        baseDamage = ModHelper.getPowerCount(BreakEffectPower.POWER_ID);
-        super.calculateCardDamage(mo);
-    }
-
+    
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         returnToHand = false;
         
         for (int i = 0; i < magicNumber; i++) {
             addToBot(
-                    new ElementalDamageAction(m, new DamageInfo(p, damage),
-                            ElementType.Physical, magicNumber,
+                    new ElementalDamageAction(m, new ElementalDamageInfo(this),
                             AbstractGameAction.AttackEffect.SLASH_DIAGONAL
                     )
             );
@@ -44,7 +38,7 @@ public class Boothill1 extends BaseCard {
         int toughness = ModHelper.getPowerCount(m, ToughnessPower.POWER_ID);
         ModHelper.addToBotAbstract(() -> {
             if (ModHelper.getPowerCount(m, ToughnessPower.POWER_ID) <= 0
-                    && (toughness > 0 || upgraded)){
+                    && (toughness > 0)){
                 // addToBot(new GainEnergyAction(1));
                 int val = ToughnessPower.getStackLimit(m);
                 addToBot(new BreakDamageAction(m, new DamageInfo(p, val)));

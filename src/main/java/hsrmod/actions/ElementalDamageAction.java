@@ -4,14 +4,20 @@ import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.DamageCallbackAction;
 import com.evacipated.cardcrawl.mod.stslib.patches.ColoredDamagePatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.HealAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 import hsrmod.modcore.ElementType;
+import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.powers.misc.BrokenPower;
+import hsrmod.powers.misc.ToughnessPower;
+import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
 import java.util.Iterator;
@@ -19,18 +25,14 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 
 public class ElementalDamageAction extends AbstractGameAction{
-    public DamageInfo info;
-    private ElementType elementType;
-    public int toughnessReduction;
+    public ElementalDamageInfo info;
     private Consumer<AbstractCreature> callback;
     private Function<AbstractCreature, Integer> modifier;
     public boolean doApplyPower = false;
     public boolean isFast = false;
-
-    public ElementalDamageAction(AbstractCreature target, DamageInfo info, ElementType elementType, int toughnessReduction,
+    
+    public ElementalDamageAction(AbstractCreature target, ElementalDamageInfo info,
                                  AbstractGameAction.AttackEffect effect, Consumer<AbstractCreature> callback, Function<AbstractCreature, Integer> modifier) {
-        this.elementType = elementType;
-        this.toughnessReduction = toughnessReduction;
         this.info = info;
         this.setValues(target, info);
         this.actionType = ActionType.DAMAGE;
@@ -38,25 +40,30 @@ public class ElementalDamageAction extends AbstractGameAction{
         this.duration = 0.1F;
         this.callback = callback;
         this.modifier = modifier;
-        ColoredDamagePatch.DamageActionColorField.damageColor.set(this, elementType.getColor());
+        ColoredDamagePatch.DamageActionColorField.damageColor.set(this, info.elementType.getColor());
         ColoredDamagePatch.DamageActionColorField.fadeSpeed.set(this, ColoredDamagePatch.FadeSpeed.SLOW);
     }
     
-    public ElementalDamageAction(AbstractCreature target, DamageInfo info, ElementType elementType, int toughnessReduction, 
-                                 AbstractGameAction.AttackEffect effect, Consumer<AbstractCreature> callback) {
-        this(target, info, elementType, toughnessReduction, effect, callback, null);
+    public ElementalDamageAction(AbstractCreature target, ElementalDamageInfo info, AbstractGameAction.AttackEffect effect, Consumer<AbstractCreature> callback) {
+        this(target, info, effect, callback, null);
     }
 
-    public ElementalDamageAction(AbstractCreature target, DamageInfo info, ElementType elementType, int toughnessReduction, AbstractGameAction.AttackEffect effect) {
-        this(target, info, elementType, toughnessReduction, effect, null);
+    public ElementalDamageAction(AbstractCreature target, ElementalDamageInfo info, AbstractGameAction.AttackEffect effect) {
+        this(target, info, effect, null);
     }
-    
-    public ElementalDamageAction(AbstractCreature target, DamageInfo info, ElementType elementType, int toughnessReduction) {
-        this(target, info, elementType, toughnessReduction, AttackEffect.NONE, null);
-    }
-    
+
     public ElementalDamageAction setIsFast(boolean isFast) {
         this.isFast = isFast;
+        return this;
+    }
+    
+    public ElementalDamageAction setCallback(Consumer<AbstractCreature> callback) {
+        this.callback = callback;
+        return this;
+    }
+
+    public ElementalDamageAction setModifier(Function<AbstractCreature, Integer> modifier) {
+        this.modifier = modifier;
         return this;
     }
     
@@ -79,7 +86,7 @@ public class ElementalDamageAction extends AbstractGameAction{
         
         if (!this.isDone) return;
         
-        this.target.tint.color.set(elementType.getColor());
+        this.target.tint.color.set(info.elementType.getColor());
         this.target.tint.changeColor(Color.WHITE.cpy());
         
         if (this.doApplyPower) {
@@ -89,10 +96,30 @@ public class ElementalDamageAction extends AbstractGameAction{
             this.info.output += this.modifier.apply(this.target);
         }
         
+        // Apply damage
         this.target.damage(this.info);
         addToTop(new TriggerCallbackAction(this.callback, this.target));
-        addToTop(new ReduceToughnessAction(target, this.toughnessReduction, this.elementType, this.info));
+        //addToTop(new ReduceToughnessAction(target, info.tr, info.elementType, this.info));
+        //
 
+        // Reduce toughness
+        AbstractPower toughnessPower = this.target.getPower(ToughnessPower.POWER_ID);
+        SubscriptionManager.getInstance().triggerPreToughnessReduce(info.tr, this.target, info.elementType);
+
+        if (toughnessPower != null
+                && toughnessPower.amount > 0
+                && toughnessPower.amount <= info.tr) {
+            int breakDamage = info.elementType.getBreakDamage();
+            addToBot(new BreakDamageAction(target, new DamageInfo(info.owner, breakDamage)));
+            addToBot(info.applyBreakingPower(target));
+            addToTop(new ApplyPowerAction(target, AbstractDungeon.player, new BrokenPower(target, 1), 1));
+        }
+        if (toughnessPower != null) {
+            addToTop(new ApplyPowerAction(target, AbstractDungeon.player, new ToughnessPower(target, -info.tr), -info.tr));
+        }
+        //
+        
+        // Check to remove actions except HealAction, GainBlockAction, UseCardAction, TriggerCallbackAction, and DamageAction
         if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
             Iterator<AbstractGameAction> i = AbstractDungeon.actionManager.actions.iterator();
 
@@ -107,6 +134,7 @@ public class ElementalDamageAction extends AbstractGameAction{
                 }
             }
         }
+        //
     }
     
     public static class TriggerCallbackAction extends AbstractGameAction {
@@ -130,8 +158,7 @@ public class ElementalDamageAction extends AbstractGameAction{
     }
     
     public ElementalDamageAction makeCopy() {
-        ElementalDamageAction result = new ElementalDamageAction(this.target, new DamageInfo(info.owner, info.base, info.type), this.elementType, 
-                this.toughnessReduction, this.attackEffect, this.callback, this.modifier).setIsFast(this.isFast);
+        ElementalDamageAction result = new ElementalDamageAction(this.target, this.info, this.attackEffect, this.callback, this.modifier).setIsFast(this.isFast);
         result.doApplyPower = this.doApplyPower;
         return result;
     }

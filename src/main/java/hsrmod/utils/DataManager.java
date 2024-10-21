@@ -183,6 +183,7 @@ public class DataManager {
 
             replacements.clear();
             replacements.put("乘胜 hsrmod:追击 ", "乘胜追击");
+            replacements.put("hsrmod:超 hsrmod:击破伤害 ", "hsrmod:超击破伤害 ");
             replacements.put("  ", " ");
 
             replaceTextInFile(CARD_CSV_ZHS, replacements);

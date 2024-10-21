@@ -49,11 +49,13 @@ public class Xueyi1 extends BaseCard implements PreToughnessReduceSubscriber {
         baseDamage = ModHelper.getPowerCount(mo, ToughnessPower.POWER_ID);
         this.calculateCardDamage(mo);
         
-        addToBot(new ElementalDamageAction(
-                mo,
-                new ElementalDamageInfo(this),
-                AbstractGameAction.AttackEffect.SLASH_DIAGONAL
-        ));
+        if (damage > 0) {
+            addToBot(new ElementalDamageAction(
+                    mo,
+                    new ElementalDamageInfo(this),
+                    AbstractGameAction.AttackEffect.SLASH_DIAGONAL
+            ));
+        }
         
         // modifyCostForCombat(costCache - costForTurn);
         ModHelper.addToBotAbstract(() -> updateCost(costCache - costForTurn));

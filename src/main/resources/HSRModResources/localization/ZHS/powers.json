@@ -70,8 +70,7 @@
   "HSRMod:BreakEfficiency": {
     "NAME": "击破效率",
     "DESCRIPTIONS": [
-      "属性伤害的削韧值增加 #b%d %%。回合结束时移除1层。",
-      "属性伤害的削韧值增加 #b%d %%。回合结束时，若大于 #b%d 层，则移除1层。"
+      "属性伤害的削韧值增加 #b%d %%。回合结束时移除1层。"
     ]
   },
   "HSRMod:Aftertaste": {

@@ -48,17 +48,7 @@ public class ToughnessPower extends BuffPower {
     @Override
     public void stackPower(int stackAmount) {        
         if (stackAmount == stackLimit && owner != AbstractDungeon.player) return;
-        super.stackPower(stackAmount);
-        
-        if (this.amount < -stackLimit) {
-            this.amount = -stackLimit;
-        }
-        else if (this.amount > stackLimit) {
-            this.amount = stackLimit;
-        }
-
-        // addToTop(new TalkAction(owner, String.format("Amount before: %d, Amount: %d, stack limit: %d!", temp, stackAmount, stackLimit), 1.0F, 2.0F));
-        type = this.amount > 0 ? PowerType.BUFF : PowerType.DEBUFF;
+        alterPower(stackAmount);
     }
     
     public void alterPower(int i) {
@@ -78,17 +68,7 @@ public class ToughnessPower extends BuffPower {
     
     @Override
     public void reducePower(int reduceAmount) {
-        super.reducePower(reduceAmount);
-
-        if (this.amount < -stackLimit) {
-            this.amount = -stackLimit;
-        }
-        else if (this.amount > stackLimit) {
-            this.amount = stackLimit;
-        }
-
-        // addToTop(new TalkAction(owner, String.format("Amount before: %d, Amount: %d, stack limit: %d!", temp, stackAmount, stackLimit), 1.0F, 2.0F));
-        type = this.amount > 0 ? PowerType.BUFF : PowerType.DEBUFF;
+        alterPower(-reduceAmount);
     }
 
     public static int getStackLimit(AbstractCreature c){

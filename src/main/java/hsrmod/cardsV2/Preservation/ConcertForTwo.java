@@ -1,6 +1,7 @@
 package hsrmod.cardsV2.Preservation;
 
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.utility.LoseBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -21,10 +22,15 @@ public class ConcertForTwo extends BaseCard {
     
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.getMonsters().monsters.stream().filter(q -> !q.isDeadOrEscaped() && q.currentHealth > 0).forEach(q -> {
-            addToBot(new GainBlockAction(p, p, block));
-            addToBot(new GainBlockAction(q, baseBlock));
-        });
-        if (upgraded) addToBot(new GainBlockAction(p, p, block));
+        if (p.currentBlock > block) {
+            addToBot(new LoseBlockAction(p, p, p.currentBlock - block));
+        } else if (p.currentBlock < block) {
+            addToBot(new GainBlockAction(p, p, block - p.currentBlock));
+        }
+        if (m.currentBlock > magicNumber) {
+            addToBot(new LoseBlockAction(m, p, m.currentBlock - magicNumber));
+        } else if (m.currentBlock < magicNumber) {
+            addToBot(new GainBlockAction(m, p, magicNumber - m.currentBlock));
+        }
     }
 }

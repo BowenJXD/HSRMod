@@ -31,7 +31,7 @@ public class Sushang3 extends BaseCard {
 
     @Override
     public void upgrade() {
-        upgradeMagicNumber(1);
+        upgradeTr(1);
         this.timesUpgraded++;
         this.upgraded = true;
         this.name = DataManager.getInstance().getCardData(ID, CardDataCol.Name) + "+" + this.timesUpgraded;

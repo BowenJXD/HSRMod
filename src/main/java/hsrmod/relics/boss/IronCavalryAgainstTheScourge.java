@@ -2,6 +2,7 @@ package hsrmod.relics.boss;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
+import hsrmod.cards.BaseCard;
 import hsrmod.relics.BaseRelic;
 import hsrmod.utils.ModHelper;
 
@@ -18,12 +19,11 @@ public class IronCavalryAgainstTheScourge extends BaseRelic {
         flash();
         ModHelper.findCards(c -> c.hasTag(AbstractCard.CardTags.STARTER_STRIKE))
                 .forEach(r -> {
-                    r.card.exhaust = true;
-                    r.card.magicNumber = r.card.baseMagicNumber += 3;
-                    if (Settings.language == Settings.GameLanguage.ZHS)
-                        r.card.initializeDescriptionCN();
-                    else
-                        r.card.initializeDescription();
+                    if (r.card instanceof BaseCard) {
+                        BaseCard c = (BaseCard) r.card;
+                        c.exhaust = true;
+                        c.tr = c.baseTr += 2;
+                    }
                 });
     }
 }

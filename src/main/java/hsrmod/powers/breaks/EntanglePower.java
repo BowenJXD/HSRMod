@@ -14,7 +14,7 @@ public class EntanglePower extends DebuffPower {
     public static final String POWER_ID = HSRMod.makePath(EntanglePower.class.getSimpleName());
 
     AbstractCreature source;
-    int damage = 2;
+    int damage = 3;
     private final int stackLimit = 5;
 
     public EntanglePower(AbstractCreature owner, AbstractCreature source, int Amount) {

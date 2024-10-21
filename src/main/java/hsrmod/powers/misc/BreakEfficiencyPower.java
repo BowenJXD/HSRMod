@@ -13,8 +13,6 @@ public class BreakEfficiencyPower extends BuffPower implements ISetToughnessRedu
     public static final String POWER_ID = HSRMod.makePath(BreakEfficiencyPower.class.getSimpleName());
 
     public static final float MULTIPLIER = 1f / 2f;
-    
-    public int minAmount = 0;
 
     public BreakEfficiencyPower(AbstractCreature owner, int Amount) {
         super(POWER_ID, owner, Amount);
@@ -23,10 +21,7 @@ public class BreakEfficiencyPower extends BuffPower implements ISetToughnessRedu
     }
 
     public void updateDescription() {
-        if (minAmount == 0)
-            this.description = String.format(DESCRIPTIONS[0], (int) (this.amount * MULTIPLIER * 100));
-        else 
-            this.description = String.format(DESCRIPTIONS[1], (int) (this.amount * MULTIPLIER * 100), minAmount);
+        this.description = String.format(DESCRIPTIONS[0], (int) (MULTIPLIER * 100));
     }
 
     @Override
@@ -41,30 +36,15 @@ public class BreakEfficiencyPower extends BuffPower implements ISetToughnessRedu
     }
 
     @Override
-    public void stackPower(int stackAmount) {
-        super.stackPower(stackAmount);
-        this.amount = Math.max(this.amount, minAmount);
-    }
-
-    @Override
-    public void reducePower(int reduceAmount) {
-        super.reducePower(reduceAmount);
-        this.amount = Math.max(this.amount, minAmount);
-        if (this.amount == 0) {
-            this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
-        }
-    }
-
-    @Override
     public void atEndOfTurn(boolean isPlayer) {
         super.atStartOfTurn();
-        reducePower(1);
+        remove(1);
     }
 
     @Override
     public int setToughnessReduction(AbstractCreature target, int amt) {
         if (SubscriptionManager.checkSubscriber(this))
-            return amt + (int) ((float)amt * (float)this.amount * MULTIPLIER);
+            return amt + (int) ((float)amt * MULTIPLIER);
         return amt;
     }
 }

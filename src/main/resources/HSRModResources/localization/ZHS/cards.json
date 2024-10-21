@@ -80,5 +80,10 @@
     "EXTENDED_DESCRIPTION": [
       "消耗"
     ]
+  },
+  "HSRMod:Lingsha2": {
+    "EXTENDED_DESCRIPTION": [
+      "打出（若为追击牌则触发追击）"
+    ]
   }
 }

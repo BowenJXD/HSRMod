@@ -16,7 +16,7 @@
     "NAME": "Galactic Bat",
     "FLAVOR": "\"Rules are made to be broken!\"",
     "DESCRIPTIONS": [
-      "At start of turn, apply #yhsrmod:Toughness to enemies that has no more than 0 #yToughness . NL when dealing elemental damage to enemies, reduce its #yToughness by the reduction value of the damage, if it reaches 0 or below, break the enemy, apply #yhsrmod:Broken and a special effect depending on the element type of the damage. NL The reduction value of a damage is the number in its parenthesis."
+      "At start of turn, apply #yhsrmod:Toughness to enemies that has no more than 0 #yToughness . NL when dealing elemental damage to enemies, reduce its #yToughness by the reduction value of the damage, if it reaches 0 or below, break the enemy, apply #yhsrmod:Broken, deal break damage and a special effect depending on the element type of the damage. NL The reduction value of a damage is the number in its parenthesis."
     ]
   },
   "HSRMod:WaxOfElation": {
@@ -100,7 +100,7 @@
     "NAME": "Iron Cavalry Against The Scourge",
     "FLAVOR": "Until the flames are completely extinguished, until the insectoids that blot out the sky turn into ashen black earth, until no one remains alive — such a daily routine would continue...",
     "DESCRIPTIONS": [
-      "Your starter strike cards gain #yExhaust , and their #yhsrmod:Toughness reduction value + #b3 ."
+      "Your starter strike cards gain #yExhaust , and their #yhsrmod:Toughness reduction value + #b2 ."
     ]
   },
   "HSRMod:PrisonerInDeepConfinement": {

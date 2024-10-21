@@ -19,16 +19,7 @@ public class RuanMei1 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        BreakEfficiencyPower be = new BreakEfficiencyPower(p, magicNumber);
-        if (upgraded) be.minAmount = 1;
-        addToBot(new ApplyPowerAction(p, p, be, magicNumber));
-        ModHelper.addToBotAbstract(() -> {
-            AbstractPower power = p.getPower(BreakEfficiencyPower.POWER_ID);
-            if (power != null && upgraded) {
-                ((BreakEfficiencyPower) power).minAmount = 1;
-                power.updateDescription();
-            }
-        });
+        addToBot(new ApplyPowerAction(p, p, new BreakEfficiencyPower(p, magicNumber), magicNumber));
         addToBot(new ApplyPowerAction(p, p, new BreakEffectPower(p, magicNumber), magicNumber));
     }
 }

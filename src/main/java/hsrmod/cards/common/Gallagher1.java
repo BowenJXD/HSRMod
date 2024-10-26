@@ -13,6 +13,7 @@ import hsrmod.actions.AOEAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementType;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.utils.ModHelper;
@@ -26,6 +27,7 @@ public class Gallagher1 extends BaseCard {
     public Gallagher1() {
         super(ID);
         energyCost = 110;
+        tags.add(CustomEnums.ENERGY_COSTING);
         isMultiDamage = true;
     }
 

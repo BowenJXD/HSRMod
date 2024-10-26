@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.uniqueDebuffs.WisemansFollyPower;
@@ -19,8 +20,8 @@ public class DrRatio1 extends BaseCard {
     public DrRatio1() {
         super(ID);
         energyCost = 140;
+        tags.add(CustomEnums.ENERGY_COSTING);
         cardsToPreview = new DrRatio3();
-        
     }
 
     @Override

@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToDrawPileEffect;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.utils.ModHelper;
 
@@ -21,7 +22,7 @@ public class Danheng1 extends BaseCard {
     
     public Danheng1(){
         super(ID);
-        energyCost = 60;
+        tags.add(CustomEnums.ENERGY_COSTING);
     }
 
     @Override

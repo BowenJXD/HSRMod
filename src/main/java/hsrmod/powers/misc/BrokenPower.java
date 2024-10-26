@@ -1,5 +1,6 @@
 package hsrmod.powers.misc;
 
+import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -19,6 +20,7 @@ public class BrokenPower extends BuffPower {
     public BrokenPower(AbstractCreature owner, int Amount) {
         super(POWER_ID, owner, Amount);
         priority = 6;
+        amount = -1;
         
         this.updateDescription();
     }
@@ -59,11 +61,7 @@ public class BrokenPower extends BuffPower {
     public void atEndOfTurn(boolean isPlayer) {
         if (doReduce) {
             doReduce = false;
-            if (this.amount == 0) {
-                this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
-            } else {
-                this.addToBot(new ReducePowerAction(this.owner, this.owner, POWER_ID, 1));
-            }
+            this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
         }
     }
 }

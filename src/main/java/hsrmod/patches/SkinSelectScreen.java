@@ -45,6 +45,7 @@ public class SkinSelectScreen implements ISubscriber, CustomSavable<Integer> {
             SKINS.add(new Skin("HSRModResources/img/char/PreservationLogo.png", "存护命途", "通过格挡进行输出", Path.PRESERVATION));
             SKINS.add(new Skin("HSRModResources/img/char/TheHuntLogo.png", "巡猎命途", "通过摸牌进行输出", Path.THE_HUNT));
             SKINS.add(new Skin("HSRModResources/img/char/PropagationLogo.png", "繁育命途", "通过能量进行输出", Path.PROPAGATION));
+            SKINS.add(new Skin("HSRModResources/img/char/EruditionLogo.png", "智识命途", "通过充能进行输出", Path.ERUDITION));
         }
         else {
             SKINS.add(new Skin("HSRModResources/img/char/TrailblazeLogo.png", "Trailblaze", "Trailblaze your own way", Path.TRAILBLAZE));
@@ -54,6 +55,7 @@ public class SkinSelectScreen implements ISubscriber, CustomSavable<Integer> {
             SKINS.add(new Skin("HSRModResources/img/char/PreservationLogo.png", "Preservation", "Damage through block", Path.PRESERVATION));
             SKINS.add(new Skin("HSRModResources/img/char/TheHuntLogo.png", "The Hunt", "Damage through draw", Path.THE_HUNT));
             SKINS.add(new Skin("HSRModResources/img/char/PropagationLogo.png", "Propagation", "Damage through energy", Path.PROPAGATION));
+            SKINS.add(new Skin("HSRModResources/img/char/EruditionLogo.png", "Erudition", "Damage through charge", Path.ERUDITION));
         }
         // SKINS.add(new Skin("HSRModResources/img/char/TrailblazeLogo.png", "开拓命途", "无特殊效果", "Trailblaze"));
     }

@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
 import hsrmod.powers.misc.EnergyPower;
@@ -33,13 +34,13 @@ public class ChampionsDinnerCatsCradlePower extends PowerPower implements PostPo
         super.onInitialApplication();
         BaseMod.subscribe(this);
         SubscriptionManager.getInstance().subscribe(this);
-        ModHelper.findCards((c) -> c instanceof BaseCard && ((BaseCard) c).energyCost > 0 && !c.hasTag(FOLLOW_UP)).forEach((r) -> r.card.tags.add(FOLLOW_UP));
+        ModHelper.findCards((c) -> c.hasTag(CustomEnums.ENERGY_COSTING) && !c.hasTag(FOLLOW_UP)).forEach((r) -> r.card.tags.add(FOLLOW_UP));
     }
 
     @Override
     public void onCardDraw(AbstractCard card) {
         super.onCardDraw(card);
-        if (card instanceof BaseCard && ((BaseCard) card).energyCost > 0 && !card.hasTag(FOLLOW_UP))
+        if (card.hasTag(CustomEnums.ENERGY_COSTING) && !card.hasTag(FOLLOW_UP))
             card.tags.add(FOLLOW_UP);
     }
 
@@ -55,7 +56,7 @@ public class ChampionsDinnerCatsCradlePower extends PowerPower implements PostPo
         if (SubscriptionManager.checkSubscriber(this)) {
             if (abstractPower instanceof EnergyPower && abstractPower.amount > 0 && ModHelper.getPowerCount(EnergyPower.POWER_ID) >= EnergyPower.AMOUNT_LIMIT) {
                 AbstractCard card = ModHelper.getRandomElement(AbstractDungeon.player.hand.group, AbstractDungeon.cardRandomRng, 
-                        (c) -> c instanceof BaseCard && ((BaseCard) c).energyCost > 0);
+                        (c) -> c.hasTag(CustomEnums.ENERGY_COSTING));
                 if (card != null)  
                     addToBot(new FollowUpAction(card));
             }

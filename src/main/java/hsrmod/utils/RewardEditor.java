@@ -79,6 +79,12 @@ public class RewardEditor {
                 if (tag == CustomEnums.PROPAGATION) {
                     relicName = PasserbyOfWanderingCloud.ID;
                 }
+                if (tag == CustomEnums.ERUDITION) {
+                    relicName = TheWindSoaringValorous.ID;
+                }
+                if (tag == CustomEnums.TRAILBLAZE) {
+                    relicName = MasterOfDreamMachinations.ID;
+                }
 
                 if (!relicName.isEmpty())
                     rewards.add(new RewardItem(RelicLibrary.getRelic(HSRMod.makePath(relicName)).makeCopy()));
@@ -178,13 +184,13 @@ public class RewardEditor {
         float chance = 0;
         switch (rarity) {
             case COMMON:
-                chance = 30 - AbstractDungeon.actNum * 10;
-                break;
-            case UNCOMMON:
                 chance = 40 - AbstractDungeon.actNum * 10;
                 break;
-            case RARE:
+            case UNCOMMON:
                 chance = 50 - AbstractDungeon.actNum * 10;
+                break;
+            case RARE:
+                chance = 60 - AbstractDungeon.actNum * 10;
                 break;
         }
         return AbstractDungeon.cardRandomRng.random(99) < chance;

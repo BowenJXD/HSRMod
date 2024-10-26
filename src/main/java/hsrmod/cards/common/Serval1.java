@@ -28,7 +28,7 @@ public class Serval1 extends BaseCard {
                 new ElementalDamageAllAction(
                         this,
                         AbstractGameAction.AttackEffect.SLASH_HORIZONTAL).setCallback(c -> {
-                    addToBot(new ApplyPowerAction(c, p, new ShockPower(c, p, 1), 1));
+                    addToBot(new ApplyPowerAction(c, p, new ShockPower(c, p, magicNumber), magicNumber));
                 })
         );
     }

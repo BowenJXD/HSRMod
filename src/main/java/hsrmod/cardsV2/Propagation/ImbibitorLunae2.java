@@ -13,6 +13,7 @@ import hsrmod.actions.AOEAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementType;
 
 public class ImbibitorLunae2 extends BaseCard {
@@ -21,6 +22,7 @@ public class ImbibitorLunae2 extends BaseCard {
     public ImbibitorLunae2() {
         super(ID);
         energyCost = 140;
+        tags.add(CustomEnums.ENERGY_COSTING);
         isMultiDamage = true;
     }
 

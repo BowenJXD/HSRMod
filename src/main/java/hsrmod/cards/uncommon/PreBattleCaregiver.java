@@ -21,20 +21,13 @@ public class PreBattleCaregiver extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(
-                new ElementalDamageAction(
-                        m,
-                        new ElementalDamageInfo(this),
-                        AbstractGameAction.AttackEffect.SLASH_DIAGONAL
-                )
-        );
-        int toughness = ModHelper.getPowerCount(m, ToughnessPower.POWER_ID);
-        ModHelper.addToBotAbstract(() -> {
-            if (ModHelper.getPowerCount(m, ToughnessPower.POWER_ID) <= 0
-                    && (toughness > 0 || upgraded)){
-                int val = ToughnessPower.getStackLimit(m);
-                addToBot(new GainBlockAction(p, val));
-            }
-        });
+        int num = ModHelper.getPowerCount(m, ToughnessPower.POWER_ID);
+        if (upgraded) num += ModHelper.getPowerCount(ToughnessPower.POWER_ID);
+        
+        int pBlock = num - p.currentBlock;
+        if (pBlock > 0) addToBot(new GainBlockAction(p, p, pBlock));
+        
+        int mBlock = num - m.currentBlock;
+        if (mBlock > 0) addToBot(new GainBlockAction(m, p, mBlock));
     }
 }

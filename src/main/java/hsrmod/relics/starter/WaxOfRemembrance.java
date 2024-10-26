@@ -1,3 +1,4 @@
+/*
 package hsrmod.relics.starter;
 
 import hsrmod.modcore.CustomEnums;
@@ -9,3 +10,4 @@ public class WaxOfRemembrance extends WaxRelic {
         super(ID, CustomEnums.REMEMBRANCE);
     }
 }
+*/

@@ -10,6 +10,7 @@ import hsrmod.actions.AOEAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementType;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.utils.ModHelper;
@@ -22,6 +23,7 @@ public class Argenti1 extends BaseCard {
 
     public Argenti1() {
         super(ID);
+        tags.add(CustomEnums.ENERGY_COSTING);
         selfRetain = true;
         isMultiDamage = true;
     }

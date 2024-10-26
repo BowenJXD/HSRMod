@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
 import hsrmod.powers.breaks.BleedingPower;
 import hsrmod.powers.breaks.BurnPower;
 import hsrmod.powers.breaks.ShockPower;
@@ -20,6 +21,7 @@ public class BlackSwan2 extends BaseCard {
     public BlackSwan2() {
         super(ID);
         energyCost = 120;
+        tags.add(CustomEnums.ENERGY_COSTING);
     }
 
     @Override

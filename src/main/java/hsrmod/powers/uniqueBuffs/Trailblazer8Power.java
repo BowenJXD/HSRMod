@@ -41,8 +41,8 @@ public class Trailblazer8Power extends PowerPower implements PostBreakBlockSubsc
     }
 
     @Override
-    public void onAfterUseCard(AbstractCard card, UseCardAction action) {
-        super.onAfterUseCard(card, action);
+    public void onUseCard(AbstractCard card, UseCardAction action) {
+        super.onUseCard(card, action);
         if (card.baseBlock > 0 && card.block > 0) {
             AbstractCreature target;
             if (action.target != null) target = action.target;

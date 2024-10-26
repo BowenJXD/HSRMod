@@ -6,7 +6,9 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
 import hsrmod.powers.misc.EnergyPower;
+import hsrmod.utils.ModHelper;
 
 public class Tingyun1 extends BaseCard {
     public static final String ID = Tingyun1.class.getSimpleName();
@@ -14,27 +16,14 @@ public class Tingyun1 extends BaseCard {
     public Tingyun1() {
         super(ID);
         energyCost = 10;
+        tags.add(CustomEnums.ENERGY_COSTING);
     }
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(
-                new ApplyPowerAction(
-                        p,
-                        p,
-                        new EnergyPower(p, magicNumber),
-                        magicNumber
-                )
-        );
-        addToBot(
-                new ApplyPowerAction(
-                        p,
-                        p,
-                        new StrengthPower(p, 1),
-                        1
-                )
-        );
-        if (upgraded)
+        addToBot(new ApplyPowerAction(p, p, new EnergyPower(p, magicNumber), magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, 1), 1));
+        if (upgraded && ModHelper.getPowerCount(EnergyPower.POWER_ID) < EnergyPower.AMOUNT_LIMIT)
             addToBot(new DrawCardAction(1));
     }
 }

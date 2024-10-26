@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import hsrmod.actions.BreakDamageAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.misc.BreakEffectPower;
@@ -24,6 +25,7 @@ public class DisruptivePulse extends BaseCard {
     public DisruptivePulse() {
         super(ID);
         energyCost = 80;
+        tags.add(CustomEnums.ENERGY_COSTING);
         exhaust = true;
     }
 

@@ -16,58 +16,23 @@ import hsrmod.powers.misc.EnergyPower;
 import hsrmod.subscribers.PreEnergyChangeSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 
-public class KolchisPower extends PowerPower implements OnReceivePowerPower, PreEnergyChangeSubscriber {
+public class KolchisPower extends PowerPower implements OnReceivePowerPower {
     public static final String POWER_ID = HSRMod.makePath(KolchisPower.class.getSimpleName());
 
-    int chargeThreshold = 200;
-    int energyThreshold = 5;
+    int chargeThreshold = 100;
     
-    public int amount2 = 0;
-    public boolean canGoNegative2 = false;
-    protected Color redColor2 = Color.RED.cpy();
-    protected Color greenColor2 = Color.GREEN.cpy();
-    
-    public KolchisPower(int energyThreshold) {
+    public KolchisPower(int chargeThreshold) {
         super(POWER_ID);
-        this.energyThreshold = energyThreshold;
+        this.chargeThreshold = chargeThreshold;
         
         this.updateDescription();
     }
 
     @Override
     public void updateDescription() {
-        this.description = String.format(DESCRIPTIONS[0], chargeThreshold, this.energyThreshold);
+        this.description = String.format(DESCRIPTIONS[0], chargeThreshold);
     }
-
-    @Override
-    public void onInitialApplication() {
-        super.onInitialApplication();
-        SubscriptionManager.getInstance().subscribe(this);
-    }
-
-    @Override
-    public void onRemove() {
-        super.onRemove();
-        SubscriptionManager.getInstance().unsubscribe(this);
-    }
-
-    @Override
-    public void renderAmount(SpriteBatch sb, float x, float y, Color c) {
-        super.renderAmount(sb, x, y, c);
-        if (this.amount2 > 0) {
-            if (!this.isTurnBased) {
-                this.greenColor2.a = c.a;
-                c = this.greenColor2;
-            }
-
-            FontHelper.renderFontRightTopAligned(sb, FontHelper.powerAmountFont, Integer.toString(this.amount2), x, y + 15.0F * Settings.scale, this.fontScale, c);
-        } else if (this.amount2 < 0 && this.canGoNegative2) {
-            this.redColor2.a = c.a;
-            c = this.redColor2;
-            FontHelper.renderFontRightTopAligned(sb, FontHelper.powerAmountFont, Integer.toString(this.amount2), x, y + 15.0F * Settings.scale, this.fontScale, c);
-        }
-    }
-
+    
     @Override
     public boolean onReceivePower(AbstractPower abstractPower, AbstractCreature abstractCreature, AbstractCreature abstractCreature1) {
         return true;
@@ -79,26 +44,13 @@ public class KolchisPower extends PowerPower implements OnReceivePowerPower, Pre
                 && stackAmount < 0) {
             flash();
 
-            amount2 += -stackAmount;
-            while (amount2 >= chargeThreshold) {
-                addToBot(new GainEnergyAction(1));
-                amount2 -= chargeThreshold;
+            amount += -stackAmount;
+            if (amount >= chargeThreshold) {
+                int energyGain = amount / chargeThreshold;
+                amount %= chargeThreshold;
+                addToBot(new GainEnergyAction(energyGain));
             }
         }
         return stackAmount;
-    }
-
-    @Override
-    public int preEnergyChange(int changeAmount) {
-        if (SubscriptionManager.checkSubscriber(this) 
-                && changeAmount < 0) {
-            flash();
-            amount += -changeAmount;
-            if (amount >= energyThreshold) {
-                amount -= energyThreshold;
-                addToBot(new ApplyPowerAction(owner, owner, new BrainInAVatPower(owner, 1), 1));
-            }
-        }
-        return changeAmount;
     }
 }

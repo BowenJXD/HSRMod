@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.relics.BaseRelic;
 import hsrmod.utils.ModHelper;
@@ -24,7 +25,7 @@ public class RoadToComets extends BaseRelic {
         super.onPlayerEndTurn();
         flash();
 
-        int sum = AbstractDungeon.player.hand.group.stream().filter(c -> c instanceof BaseCard && ((BaseCard) c).energyCost > 0).
+        int sum = AbstractDungeon.player.hand.group.stream().filter(c -> c.hasTag(CustomEnums.ENERGY_COSTING)).
                 mapToInt(c -> energyGain).sum();
         addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player,
                 new EnergyPower(AbstractDungeon.player, sum), sum));

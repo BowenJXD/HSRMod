@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
 
@@ -19,7 +20,7 @@ public class SilverWolf1 extends BaseCard {
     public SilverWolf1() {
         super(ID);
         energyCost = 110;
-        
+        tags.add(CustomEnums.ENERGY_COSTING);
     }
 
     @Override

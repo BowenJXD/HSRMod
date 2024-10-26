@@ -19,7 +19,7 @@ public class CustomEnums
     @SpireEnum public static AbstractCard.CardTags REMEMBRANCE;
     
     @SpireEnum public static AbstractCard.CardTags FOLLOW_UP;
-    @SpireEnum public static AbstractCard.CardTags ULTIMATE;
+    @SpireEnum public static AbstractCard.CardTags ENERGY_COSTING;
     @SpireEnum public static AbstractCard.CardTags DEBUFF;
     
     @SpireEnum public static AbstractCard.CardTags REVIVE;

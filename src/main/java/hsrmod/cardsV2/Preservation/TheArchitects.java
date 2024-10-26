@@ -1,6 +1,8 @@
 package hsrmod.cardsV2.Preservation;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.RemoveAllBlockAction;
 import com.megacrit.cardcrawl.actions.utility.LoseBlockAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -34,13 +36,17 @@ public class TheArchitects extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        int blockToLose = Math.round(p.currentBlock * magicNumber / 100f);
-        addToBot(new LoseBlockAction(p, p, blockToLose));
+        int blockLose = p.currentBlock + (upgraded ? m.currentBlock : 0);
+        addToBot(new RemoveAllBlockAction(p, p));
         if (p.hasPower(QuakePower.POWER_ID)) {
             AbstractPower quakePower = p.getPower(QuakePower.POWER_ID);
-            ((QuakePower)quakePower).attack(m, blockToLose);
+            ((QuakePower)quakePower).attack(m, p.currentBlock);
         }
-        if (upgraded) addToBot(new LoseBlockAction(m, p, Math.round(m.currentBlock * magicNumber / 100f)));
+        if (upgraded) addToBot(new RemoveAllBlockAction(m, p));
+        
         addToBot(new ElementalDamageAction(m, new ElementalDamageInfo(this), AbstractGameAction.AttackEffect.SHIELD));
+        
+        addToBot(new GainBlockAction(p, p, blockLose / 2));
+        addToBot(new GainBlockAction(m, p, blockLose / 2));
     }
 }

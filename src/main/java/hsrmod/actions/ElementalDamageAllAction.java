@@ -1,6 +1,7 @@
 package hsrmod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -49,6 +50,13 @@ public class ElementalDamageAllAction extends AbstractGameAction {
     public ElementalDamageAllAction(AbstractCreature source, int[] amount, DamageInfo.DamageType type, ElementType elementType, int toughnessReduction, 
                                     AbstractGameAction.AttackEffect effect) {
         this(source, amount, type, elementType, toughnessReduction, effect, false);
+    }
+
+    public ElementalDamageAllAction(BaseCard card, int baseDamage, AttackEffect effect) {
+        this(AbstractDungeon.player, (int[])null, card.damageTypeForTurn, card.elementType, card.tr, effect);
+        this.card = card;
+        this.baseDamage = baseDamage;
+        this.utilizeBaseDamage = true;
     }
     
     public ElementalDamageAllAction(BaseCard card, AttackEffect effect) {

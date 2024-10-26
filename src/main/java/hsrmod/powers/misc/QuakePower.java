@@ -42,8 +42,7 @@ public class QuakePower extends BuffPower implements OnPlayerLoseBlockSubscriber
             if (damageInfo != null && damageInfo.owner != null) {
                 target = damageInfo.owner;
             }
-            i = Math.min(i, owner.currentBlock);
-            attack(target, i);
+            attack(target, Math.min(i, owner.currentBlock));
         }
         return i;
     }

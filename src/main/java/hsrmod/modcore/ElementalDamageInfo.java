@@ -71,13 +71,13 @@ public class ElementalDamageInfo extends DamageInfo {
                 power = new FrozenPower(target, stackNum);
                 break;
             case Physical:
-                power = new BleedingPower(target, AbstractDungeon.player, stackNum);
+                power = new BleedingPower(target, owner, stackNum);
                 break;
             case Fire:
-                power = new BurnPower(target, AbstractDungeon.player, stackNum);
+                power = new BurnPower(target, owner, stackNum);
                 break;
             case Lightning:
-                power = new ShockPower(target, AbstractDungeon.player, stackNum);
+                power = new ShockPower(target, owner, stackNum);
                 break;
             case Wind:
                 AbstractMonster monster = (AbstractMonster)target;
@@ -95,7 +95,7 @@ public class ElementalDamageInfo extends DamageInfo {
                             break;
                     }
                 }
-                power = new WindShearPower(target, AbstractDungeon.player, stackNum);
+                power = new WindShearPower(target, owner, stackNum);
                 break;
             case Quantum:
                 power = new EntanglePower(target, owner, stackNum);

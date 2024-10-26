@@ -15,6 +15,7 @@ import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.actions.ForceWaitAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
 import hsrmod.powers.uniqueBuffs.RobinPower;
 import hsrmod.utils.ModHelper;
 
@@ -26,6 +27,7 @@ public class Robin2 extends BaseCard {
     public Robin2() {
         super(ID);
         energyCost = 140;
+        tags.add(CustomEnums.ENERGY_COSTING);
     }
     
     @Override

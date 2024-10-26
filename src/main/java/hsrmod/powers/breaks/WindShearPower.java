@@ -19,7 +19,7 @@ public class WindShearPower extends DoTPower {
 
     @Override
     public void updateDescription() {
-        this.description = String.format(DESCRIPTIONS[0], getDamage(), amount, damageCountLimit);
+        this.description = String.format(DESCRIPTIONS[0], getDamage(), damage, damageCountLimit);
     }
 
     @Override

@@ -12,6 +12,7 @@ import hsrmod.actions.AOEAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
 
 public class Jiaoqiu1 extends BaseCard {
     public static final String ID = Jiaoqiu1.class.getSimpleName();
@@ -19,6 +20,7 @@ public class Jiaoqiu1 extends BaseCard {
     public Jiaoqiu1() {
         super(ID);
         energyCost = 100;
+        tags.add(CustomEnums.ENERGY_COSTING);
         isMultiDamage = true;
         cardsToPreview = new Jiaoqiu2();
     }

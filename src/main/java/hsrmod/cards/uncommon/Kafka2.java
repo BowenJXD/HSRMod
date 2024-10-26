@@ -12,6 +12,7 @@ import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.actions.TriggerDoTAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
 import hsrmod.powers.breaks.ShockPower;
 import hsrmod.utils.ModHelper;
 
@@ -22,6 +23,7 @@ public class Kafka2 extends BaseCard {
         super(ID);
         isMultiDamage = true;
         energyCost = 120;
+        tags.add(CustomEnums.ENERGY_COSTING);
     }
 
     @Override

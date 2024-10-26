@@ -10,6 +10,7 @@ import hsrmod.actions.AOEAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
 import hsrmod.powers.breaks.FrozenPower;
 
 public class March7th3 extends BaseCard {
@@ -18,6 +19,7 @@ public class March7th3 extends BaseCard {
     public March7th3() {
         super(ID);
         energyCost = 120;
+        tags.add(CustomEnums.ENERGY_COSTING);
         isMultiDamage = true;
     }
     

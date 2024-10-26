@@ -8,6 +8,7 @@ import hsrmod.actions.AOEAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementType;
 
 public class Trailblazer2 extends BaseCard {
@@ -19,6 +20,7 @@ public class Trailblazer2 extends BaseCard {
         // this.tags.add(CardTags.STRIKE);
         // this.tags.add(CardTags.STARTER_STRIKE);
         energyCost = 120;
+        tags.add(CustomEnums.ENERGY_COSTING);
     }
 
     @Override

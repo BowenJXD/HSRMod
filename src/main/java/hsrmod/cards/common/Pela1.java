@@ -10,6 +10,7 @@ import hsrmod.actions.AOEAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementType;
 
 public class Pela1 extends BaseCard {
@@ -18,6 +19,7 @@ public class Pela1 extends BaseCard {
     public Pela1() {
         super(ID);
         energyCost = 100;
+        tags.add(CustomEnums.ENERGY_COSTING);
         isMultiDamage = true;
     }
 

@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.subscribers.SubscriptionManager;
 
@@ -21,6 +22,7 @@ public class Aggregator extends BaseCard implements PostBattleSubscriber {
         exhaust = true;
         energyCost = magicNumber;
         magicNumberCache = magicNumber;
+        tags.add(CustomEnums.ENERGY_COSTING);
     }
 
     @Override
@@ -33,11 +35,11 @@ public class Aggregator extends BaseCard implements PostBattleSubscriber {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {        
-        int count = p.hand.group.stream().filter((c) ->  c instanceof BaseCard && ( (BaseCard)c).energyCost > 0 ).mapToInt((c) -> 1).sum();
+        int count = p.hand.group.stream().filter((c) -> c.hasTag(CustomEnums.ENERGY_COSTING) && c != this).mapToInt((c) -> 1).sum();
         
         addToBot(new DrawCardAction(p, count));
         addToBot(new GainEnergyAction(count));
-        addToBot(new ApplyPowerAction(p, p, new EnergyPower(p, count * magicNumber), count * magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new EnergyPower(p, count * magicNumber), count * 40));
 
         if (upgraded) {
             upgradeMagicNumber(magicNumber);

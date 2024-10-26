@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.DiscardCardsAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
 
 public class BorderstarGunslinger extends BaseCard {
     public static final String ID = BorderstarGunslinger.class.getSimpleName();
@@ -18,6 +19,7 @@ public class BorderstarGunslinger extends BaseCard {
     public BorderstarGunslinger() {
         super(ID);
         energyCost = 80;
+        tags.add(CustomEnums.ENERGY_COSTING);
     }
 
     @Override

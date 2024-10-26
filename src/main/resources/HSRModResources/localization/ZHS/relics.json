@@ -131,6 +131,21 @@
       "在每回合开始时获得 [E] ，然后若你手中的初始攻击牌不足 #b2 张，则消耗 [E] 。"
     ]
   },
+  "HSRMod:TheWindSoaringValorous": {
+    "NAME": "风举云飞的勇烈",
+    "FLAVOR": "她迈开步伐，赤足如飞，女孩一路紧紧追赶她的身影。又或者，是她们在追赶彼此的身影。",
+    "DESCRIPTIONS": [
+      "战斗开始时，初始攻击牌变为群体，且于打出后，获得1层 #y罐中脑 。"
+    ]
+  },
+  "HSRMod:MasterOfDreamMachinations": {
+    "NAME": "机心戏梦的钟表匠",
+    "FLAVOR": "在千篇故事与万般传言中，这位盛会巨星只是留下足迹，不曾留下身影。",
+    "DESCRIPTIONS": [
+      "拾起时，获得 #y星穹列车 。 NL 你可以于商店内右键此牌，消耗金币，变化 #b1 张牌。",
+      "变化1张牌 "
+    ]
+  },
   "HSRMod:Trailblazer": {
     "NAME": "开拓者的遗物",
     "FLAVOR": "世界，拒绝了我……",
@@ -199,7 +214,7 @@
     "NAME": "博士之袍",
     "FLAVOR": "这件长袍据称曾属于天才俱乐部4「原始博士」，拥有不可思议的力量。",
     "DESCRIPTIONS": [
-      "战斗开始时，回复 #b120 点 #yhsrmod:充能 。"
+      "战斗开始时，回复 #b120 点 [hsrmod:ChargeIcon] 。"
     ]
   },
   "HSRMod:SocietyTicket": {
@@ -437,7 +452,7 @@
     "NAME": "通向彗星之路",
     "FLAVOR": "通过在空间结构上的投影架设出的引力桥梁，被博识学会评为宇宙最无用的一万个发明之一。",
     "DESCRIPTIONS": [
-      "回合结束时，你每有一张消耗 #yhsrmod:充能 的牌，则获得 #b20 #y充能 ，每有一张 #y保留 的牌，则获得 #b2 点格挡。"
+      "回合结束时，你每有一张 #yhsrmod:耗能 的牌，则获得 #b20 [hsrmod:ChargeIcon] ，每有一张 #y保留 的牌，则获得 #b2 点格挡。"
     ]
   },
   "HSRMod:DreamdiveCan": {

@@ -215,8 +215,7 @@
   "HSRMod:VoyageMonitor": {
     "NAME": "远航监护员",
     "DESCRIPTIONS": [
-      "击破后，获得其韧性上限的 #y韧性 。",
-      "击破后，获得其韧性上限的 #y韧性 。造成击破伤害后，获得1层 #y韧性 。"
+      "每造成 #b%d 点削韧，获得1点格挡。"
     ]
   },
   "HSRMod:IntersegmentalMembrane": {
@@ -229,7 +228,7 @@
   "HSRMod:Kolchis": {
     "NAME": "科尔奇人",
     "DESCRIPTIONS": [
-      "每消耗 #b%d  [hsrmod:ChargeIcon] ，回复 [E] 。每消耗 #b%d 点 [E] ，获得 #y罐中脑 。"
+      "每消耗 #b%d  [hsrmod:ChargeIcon] ，回复 [E] 。"
     ]
   },
   "HSRMod:Divinity": {
@@ -322,7 +321,7 @@
   "HSRMod:Trailblazer8": {
     "NAME": "行胜思",
     "DESCRIPTIONS": [
-      "打出牌后，对随机敌人造成该牌格挡值 #b%d %%的伤害（物理1）。突破格挡时，摸1张牌。"
+      "打出牌时，对随机敌人造成该牌格挡值 #b%d %%的伤害（物理1）。突破格挡时，摸1张牌。"
     ]
   },
   "HSRMod:ChampionsDinnerCatsCradle": {
@@ -385,10 +384,22 @@
       "每消耗或回复 #b1 点 [E] ，对随机敌人施加 #b1 层 #y孢子 。"
     ]
   },
-  "HSRMod:CivilizationCorrespondent": {
-    "NAME": "文明函授员",
+  "HSRMod:SilverheartGuards": {
+    "NAME": "银河护卫队",
     "DESCRIPTIONS": [
-      "消耗充能后，获得 #b%d %%消耗量的格挡。"
+      "消耗充能后，摸 #b%d 张牌，获得 #b%d 点格挡。"
+    ]
+  },
+  "HSRMod:SMR2Amygdala": {
+    "NAME": "SMR-2型杏仁核",
+    "DESCRIPTIONS": [
+      "每回合开始时，获得 #b1 层 #y罐中脑 。 [hsrmod:ChargeIcon] 至少为 #b%d 。"
+    ]
+  },
+  "HSRMod:LoadStriatedCortex": {
+    "NAME": "装载：纹状皮层",
+    "DESCRIPTIONS": [
+      "打出群体攻击牌时，若只有1名敌人，则伤害+ #b%d 。"
     ]
   }
 }

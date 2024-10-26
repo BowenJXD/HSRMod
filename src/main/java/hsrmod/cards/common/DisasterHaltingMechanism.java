@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
 
 public class DisasterHaltingMechanism extends BaseCard {
     public static final String ID = DisasterHaltingMechanism.class.getSimpleName();
@@ -13,6 +14,7 @@ public class DisasterHaltingMechanism extends BaseCard {
     public DisasterHaltingMechanism() {
         super(ID);
         energyCost = 40;
+        tags.add(CustomEnums.ENERGY_COSTING);
     }
 
     @Override

@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.utils.CardDataCol;
@@ -20,8 +21,8 @@ public class Yanqing1 extends BaseCard {
     public Yanqing1() {
         super(ID);
         energyCost = 140;
+        tags.add(CustomEnums.ENERGY_COSTING);
         cardsToPreview = new Yanqing2();
-        
     }
 
     @Override

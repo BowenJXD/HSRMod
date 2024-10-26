@@ -18,19 +18,12 @@ public class Qingque1 extends BaseCard {
     
     public Qingque1() {
         super(ID);
-        exhaust = true;
         returnToHand = true;
     }
 
     @Override
     public void upgrade() {
         super.upgrade();
-    }
-
-    @Override
-    public void onEnterHand() {
-        super.onEnterHand();
-        exhaust = true;
     }
 
     @Override

@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
 import hsrmod.powers.uniqueDebuffs.ThanatoplumRebloomPower;
 
 import java.util.Iterator;
@@ -15,6 +16,7 @@ public class RuanMei2 extends BaseCard {
     public RuanMei2() {
         super(ID);
         energyCost = 130;
+        tags.add(CustomEnums.ENERGY_COSTING);
         
     }
 

@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
 import hsrmod.powers.uniqueBuffs.PhenolCompoundsPower;
@@ -21,6 +22,7 @@ public class PhenolCompounds extends BaseCard {
     public PhenolCompounds() {
         super(ID);
         energyCost = 80;
+        tags.add(CustomEnums.ENERGY_COSTING);
     }
 
     @Override

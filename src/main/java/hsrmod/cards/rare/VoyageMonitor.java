@@ -14,7 +14,13 @@ public class VoyageMonitor extends BaseCard {
     }
 
     @Override
+    public void upgrade() {
+        super.upgrade();
+        isInnate = true;
+    }
+
+    @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new VoyageMonitorPower()));
+        addToBot(new ApplyPowerAction(p, p, new VoyageMonitorPower(magicNumber)));
     }
 }

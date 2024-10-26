@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
 import hsrmod.powers.uniqueBuffs.HuohuoPower;
 import hsrmod.powers.uniqueBuffs.ReinforcePower;
 
@@ -14,9 +15,9 @@ public class Huohuo1 extends BaseCard {
     
     public Huohuo1() {
         super(ID);
-        
         exhaust = true;
         energyCost = 140;
+        tags.add(CustomEnums.ENERGY_COSTING);
     }
     
     @Override

@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.IntangiblePlayerPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
 import hsrmod.subscribers.SubscriptionManager;
 
 public class TerminalNirvana extends BaseCard implements PostBattleSubscriber {
@@ -20,6 +21,7 @@ public class TerminalNirvana extends BaseCard implements PostBattleSubscriber {
         selfRetain = true;
         energyCost = magicNumber;
         magicNumberCache = magicNumber;
+        tags.add(CustomEnums.ENERGY_COSTING);
     }
 
     @Override

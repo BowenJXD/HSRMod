@@ -209,9 +209,9 @@ public abstract class BaseCard extends CustomCard implements SpawnModificationCa
                 || AbstractDungeon.player.hasRelic(WaxOfPropagation.ID) && tags.contains(CustomEnums.PROPAGATION)
                 || AbstractDungeon.player.hasRelic(WaxOfPreservation.ID) && tags.contains(CustomEnums.PRESERVATION) 
                 || AbstractDungeon.player.hasRelic(WaxOfTheHunt.ID) && tags.contains(CustomEnums.THE_HUNT) 
-                || AbstractDungeon.player.hasRelic(WaxOfErudition.ID) && tags.contains(CustomEnums.ERUDITION) 
-                || AbstractDungeon.player.hasRelic(WaxOfAbundance.ID) && tags.contains(CustomEnums.ABUNDANCE) 
-                || AbstractDungeon.player.hasRelic(WaxOfRemembrance.ID) && tags.contains(CustomEnums.REMEMBRANCE)) {
+                || AbstractDungeon.player.hasRelic(WaxOfErudition.ID) && tags.contains(CustomEnums.ERUDITION)
+                /*|| AbstractDungeon.player.hasRelic(WaxOfAbundance.ID) && tags.contains(CustomEnums.ABUNDANCE) 
+                || AbstractDungeon.player.hasRelic(WaxOfRemembrance.ID) && tags.contains(CustomEnums.REMEMBRANCE)*/) {
             return true;
         }
         return false;
@@ -226,7 +226,7 @@ public abstract class BaseCard extends CustomCard implements SpawnModificationCa
     }
     
     public abstract void onUse(AbstractPlayer p, AbstractMonster m);
-
+    
     public static CardTags getPathTag(String path){
         CardTags result = null;
         if (path.contains("开拓")) result = CustomEnums.TRAILBLAZE;

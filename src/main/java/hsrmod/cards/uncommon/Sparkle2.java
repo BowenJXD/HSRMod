@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
 import hsrmod.utils.ModHelper;
 
 import java.util.List;
@@ -15,6 +16,7 @@ public class Sparkle2 extends BaseCard {
     public Sparkle2() {
         super(ID);
         energyCost = 110;
+        tags.add(CustomEnums.ENERGY_COSTING);
         exhaust = true;
     }
     

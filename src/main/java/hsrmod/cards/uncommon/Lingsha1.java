@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.misc.BreakEffectPower;
@@ -20,6 +21,7 @@ public class Lingsha1 extends BaseCard {
     public Lingsha1() {
         super(ID);
         energyCost = 110;
+        tags.add(CustomEnums.ENERGY_COSTING);
     }
 
     @Override

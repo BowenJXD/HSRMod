@@ -14,6 +14,7 @@ import hsrmod.actions.BouncingAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.misc.EnergyPower;
@@ -32,6 +33,7 @@ public class Yunli1 extends BaseCard implements OnPlayerDamagedSubscriber {
     public Yunli1() {
         super(ID);
         tags.add(FOLLOW_UP);
+        tags.add(CustomEnums.ENERGY_COSTING);
         selfRetain = true;
     }
 

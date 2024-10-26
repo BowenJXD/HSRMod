@@ -1,4 +1,29 @@
 {
+  "HSRMod:Trailblazer1": {
+    "EXTENDED_DESCRIPTION": [
+      "群体：造成 !D! 点伤害（物理 !TR! ）。"
+    ]
+  },
+  "HSRMod:March7th0": {
+    "EXTENDED_DESCRIPTION": [
+      "群体：造成 !D! 点伤害（冰 !TR! ）。"
+    ]
+  },
+  "HSRMod:Danheng0": {
+    "EXTENDED_DESCRIPTION": [
+      "群体：造成 !D! 点伤害（风 !TR! ）。"
+    ]
+  },
+  "HSRMod:Himeko0": {
+    "EXTENDED_DESCRIPTION": [
+      "群体：造成 !D! 点伤害（火 !TR! ）。"
+    ]
+  },
+  "HSRMod:Welt0": {
+    "EXTENDED_DESCRIPTION": [
+      "群体：造成 !D! 点伤害（虚数 !TR! ）。"
+    ]
+  },
   "HSRMod:Bronya1": {
     "EXTENDED_DESCRIPTION": [
       "从抽牌堆加入手牌"
@@ -84,6 +109,12 @@
   "HSRMod:Lingsha2": {
     "EXTENDED_DESCRIPTION": [
       "打出（若为追击牌则触发追击）"
+    ]
+  },
+  "HSRMod:PenMan": {
+    "EXTENDED_DESCRIPTION": [
+      "弃置来获得 %d 充能",
+      "弃置来获得 %d 充能，或取消，消耗 [E] 并获得双倍充能。"
     ]
   }
 }

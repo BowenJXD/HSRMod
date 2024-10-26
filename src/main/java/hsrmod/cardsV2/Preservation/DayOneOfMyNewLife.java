@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.PlatedArmorPower;
 import hsrmod.cards.BaseCard;
+import hsrmod.utils.ModHelper;
 
 public class DayOneOfMyNewLife extends BaseCard {
     public static final String ID = DayOneOfMyNewLife.class.getSimpleName();
@@ -23,10 +24,10 @@ public class DayOneOfMyNewLife extends BaseCard {
     
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        if (!p.hasPower(PlatedArmorPower.POWER_ID))
-            addToBot(new ApplyPowerAction(p, p, new PlatedArmorPower(p, magicNumber), 0));
+        int plate = magicNumber - ModHelper.getPowerCount(p, PlatedArmorPower.POWER_ID);
+        if (plate > 0) addToBot(new ApplyPowerAction(p, p, new PlatedArmorPower(p, plate), plate));
 
         addToBot(new GainBlockAction(p, block));
-        addToBot(new GainBlockAction(m, baseBlock));
+        addToBot(new GainBlockAction(m, baseBlock / 2));
     }
 }

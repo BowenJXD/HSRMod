@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
 import hsrmod.powers.uniqueBuffs.Trailblazer5Power;
 
 public class Trailblazer5 extends BaseCard {
@@ -12,7 +13,7 @@ public class Trailblazer5 extends BaseCard {
     public Trailblazer5() {
         super(ID);
         energyCost = 140;
-        
+        tags.add(CustomEnums.ENERGY_COSTING);
     }
 
     @Override

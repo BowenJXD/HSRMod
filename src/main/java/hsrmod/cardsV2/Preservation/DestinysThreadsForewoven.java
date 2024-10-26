@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
 
 public class DestinysThreadsForewoven extends BaseCard {
     public static final String ID = DestinysThreadsForewoven.class.getSimpleName();
@@ -14,6 +15,7 @@ public class DestinysThreadsForewoven extends BaseCard {
     public DestinysThreadsForewoven() {
         super(ID);
         energyCost = 80;
+        tags.add(CustomEnums.ENERGY_COSTING);
     }
     
     @Override

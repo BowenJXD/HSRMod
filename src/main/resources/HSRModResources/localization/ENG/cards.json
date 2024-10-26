@@ -1,4 +1,29 @@
 {
+  "HSRMod:Trailblazer1": {
+    "EXTENDED_DESCRIPTION": [
+      "Deal !D! physical damage to all enemies (!TR!)."
+    ]
+  },
+  "HSRMod:March7th0": {
+    "EXTENDED_DESCRIPTION": [
+      "Deal !D! ice damage to all enemies (!TR!)."
+    ]
+  },
+  "HSRMod:Danheng0": {
+    "EXTENDED_DESCRIPTION": [
+      "Deal !D! wind damage to all enemies (!TR!)."
+    ]
+  },
+  "HSRMod:Himeko0": {
+    "EXTENDED_DESCRIPTION": [
+      "Deal !D! fire damage to all enemies (!TR!)."
+    ]
+  },
+  "HSRMod:Welt0": {
+    "EXTENDED_DESCRIPTION": [
+      "Deal !D! imaginary damage to all enemies (!TR!)."
+    ]
+  },
   "HSRMod:Bronya1": {
     "EXTENDED_DESCRIPTION": [
       "get from draw pile."

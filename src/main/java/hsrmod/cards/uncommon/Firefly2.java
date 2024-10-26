@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.powers.uniqueBuffs.FireflyPower;
 import hsrmod.utils.ModHelper;
@@ -20,6 +21,7 @@ public class Firefly2 extends BaseCard {
     public Firefly2() {
         super(ID);
         energyCost = 240;
+        tags.add(CustomEnums.ENERGY_COSTING);
         cardsToPreview = new Firefly1();
     }
 

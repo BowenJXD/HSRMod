@@ -130,12 +130,12 @@ public class StellaCharacter extends CustomPlayer {
             case ERUDITION:
                 retVal.add(HSRMod.makePath(WaxOfErudition.ID));
                 break;
-            case ABUNDANCE:
+            /*case ABUNDANCE:
                 retVal.add(HSRMod.makePath(WaxOfAbundance.ID));
                 break;
             case REMEMBRANCE:
                 retVal.add(HSRMod.makePath(WaxOfRemembrance.ID));
-                break;
+                break;*/
             case TRAILBLAZE:
             default:
                 retVal.add(HSRMod.makePath(TrailblazeTimer.ID));

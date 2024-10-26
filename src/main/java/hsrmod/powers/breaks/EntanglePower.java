@@ -34,6 +34,7 @@ public class EntanglePower extends DebuffPower {
         if (this.amount >= stackLimit) {
             amount = stackLimit;
         }
+        updateDescription();
     }
 
     int getDamage(){

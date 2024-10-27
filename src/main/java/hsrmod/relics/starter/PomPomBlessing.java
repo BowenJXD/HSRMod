@@ -4,7 +4,6 @@ import basemod.abstracts.CustomRelic;
 import basemod.abstracts.CustomSavable;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsAction;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
-import com.megacrit.cardcrawl.actions.ClearCardQueueAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
@@ -21,7 +20,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.IntangiblePlayerPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import hsrmod.actions.ReduceECByHandCardNumAction;
+import hsrmod.actions.ReduceChargeByHandCardNumAction;
 import hsrmod.cards.base.Danheng0;
 import hsrmod.cards.base.Himeko0;
 import hsrmod.cards.base.March7th0;
@@ -106,7 +105,7 @@ public class PomPomBlessing extends CustomRelic implements CustomSavable<Integer
             for (AbstractCard card : cards) {
                 card.retain = true;
             }
-            addToTop(new ReduceECByHandCardNumAction(AbstractDungeon.player, AbstractDungeon.player));
+            addToTop(new ReduceChargeByHandCardNumAction(AbstractDungeon.player, AbstractDungeon.player));
         };
 
         addToTop(new SelectCardsInHandAction(maxRetainNum, String.format(DESCRIPTIONS[1], multiplier), true, true, cardFilter, callback));

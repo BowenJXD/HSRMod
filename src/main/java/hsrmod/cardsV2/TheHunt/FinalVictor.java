@@ -22,10 +22,12 @@ public class FinalVictor extends BaseCard {
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         if (!upgraded) {
             AbstractCard card = ModHelper.getRandomElement(p.hand.group, AbstractDungeon.cardRandomRng, c -> c.canUpgrade() && c.uuid != uuid);
-            upgradeCard(card);
+            if (card != null) upgradeCard(card);
+            else card = ModHelper.getRandomElement(p.hand.group, AbstractDungeon.cardRandomRng, c -> c.uuid != uuid);
+            if (card != null) upgradeCard(card);
         }
         else 
-            addToBot(new SelectCardsInHandAction(1, cardStrings.EXTENDED_DESCRIPTION[0], c -> c.canUpgrade() && c.uuid != uuid, cards -> {
+            addToBot(new SelectCardsInHandAction(1, cardStrings.EXTENDED_DESCRIPTION[0], c -> c.uuid != uuid, cards -> {
                 if (!cards.isEmpty()) {
                     AbstractCard card = cards.get(0);
                     upgradeCard(card);
@@ -34,8 +36,8 @@ public class FinalVictor extends BaseCard {
     }
     
     void upgradeCard(AbstractCard card) {
-        if (card == null || !card.canUpgrade()) return;
-        addToTop(new UpgradeSpecificCardAction(card));
-        AbstractDungeon.player.masterDeck.group.stream().filter(c -> c.uuid == card.uuid).findFirst().ifPresent(AbstractCard::upgrade);
+        if (card == null) return;
+        if (card.canUpgrade()) addToTop(new UpgradeSpecificCardAction(card));
+        AbstractDungeon.player.masterDeck.group.stream().filter(c -> c.canUpgrade() && c.uuid == card.uuid).findFirst().ifPresent(AbstractCard::upgrade);
     }
 }

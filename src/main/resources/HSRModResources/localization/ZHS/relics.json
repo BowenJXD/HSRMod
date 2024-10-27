@@ -135,7 +135,7 @@
     "NAME": "风举云飞的勇烈",
     "FLAVOR": "她迈开步伐，赤足如飞，女孩一路紧紧追赶她的身影。又或者，是她们在追赶彼此的身影。",
     "DESCRIPTIONS": [
-      "战斗开始时，初始攻击牌变为群体，且于打出后，获得1层 #y罐中脑 。"
+      "战斗开始时，初始攻击牌变为群体，且于打出后，获得 #b40 [hsrmod:chargeIcon] 。"
     ]
   },
   "HSRMod:MasterOfDreamMachinations": {

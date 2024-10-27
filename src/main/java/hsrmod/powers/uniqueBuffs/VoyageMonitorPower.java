@@ -25,6 +25,11 @@ public class VoyageMonitorPower extends PowerPower implements PreToughnessReduce
     }
 
     @Override
+    public void updateDescription() {
+        this.description = String.format(DESCRIPTIONS[0], triggerAmount);
+    }
+
+    @Override
     public void stackPower(int stackAmount) {
         super.stackPower(stackAmount);
         int blk = amount / triggerAmount;
@@ -49,8 +54,8 @@ public class VoyageMonitorPower extends PowerPower implements PreToughnessReduce
     
     @Override
     public float preToughnessReduce(float amount, AbstractCreature target, ElementType elementType) {
-        if (SubscriptionManager.checkSubscriber(this) && amount < 0) {
-            stackPower((int)-amount);
+        if (SubscriptionManager.checkSubscriber(this) && amount > 0) {
+            stackPower((int)amount);
         }
         return amount;
     }

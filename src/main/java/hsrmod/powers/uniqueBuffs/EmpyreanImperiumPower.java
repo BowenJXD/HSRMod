@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import hsrmod.actions.RandomCardFromDrawPileToHandAction;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
 import hsrmod.powers.misc.BoostPower;
@@ -29,29 +30,10 @@ public class EmpyreanImperiumPower extends PowerPower {
         if (!AbstractDungeon.player.hand.isEmpty() 
                 && card == AbstractDungeon.player.hand.getBottomCard()) {
             flash();
-            addToTop(new DrawCardAction(1, upgraded ? new AbstractGameAction() {
-                @Override
-                public void update() {
-                    addToTop(new UpgradeSpecificCardAction(AbstractDungeon.player.hand.getTopCard()));
-                    isDone = true;
-                }
+            addToTop(new RandomCardFromDrawPileToHandAction(upgraded ? c -> {
+                if (c.canUpgrade())
+                    addToTop(new UpgradeSpecificCardAction(c));
             } : null));
         }
     }
-    
-    /*@Override
-    public void onCardDraw(AbstractCard card) {
-        super.onCardDraw(card);
-        if (!actions.contains(AbstractDungeon.actionManager.currentAction)) {
-            actions = new ArrayList<>(AbstractDungeon.actionManager.actions);
-            actions.add(0, AbstractDungeon.actionManager.currentAction);
-            hasUpgradedCard = false;
-            flash();
-            addToBot(new ApplyPowerAction(owner, owner, new BoostPower(owner, 1), 1));
-        }
-        if (upgraded && card.upgraded && !hasUpgradedCard) {
-            hasUpgradedCard = true;
-            addToBot(new ApplyPowerAction(owner, owner, new BoostPower(owner, 1), 1));
-        }
-    }*/
 }

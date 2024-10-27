@@ -31,14 +31,6 @@ public class ImbibitorLunae2 extends BaseCard {
         for (int i = 0; i < magicNumber; i++) {
             addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
         }
-        addToBot(new SelectCardsInHandAction(1, cardStrings.EXTENDED_DESCRIPTION[0], true, true, c -> true, cards -> {
-            if (!cards.isEmpty()) {
-                for (AbstractCard c : cards) {
-                    addToTop(new ExhaustSpecificCardAction(c, p.hand));
-                }
-                addToTop(new GainEnergyAction(2));
-                addToBot(new MoveCardsAction(p.hand, p.discardPile, c -> c == this));
-            }
-        }));
+        addToTop(new GainEnergyAction(1));
     }
 }

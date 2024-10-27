@@ -28,7 +28,7 @@ public class BorderstarGunslinger extends BaseCard {
                 true, true, c -> true, list -> {
             if (list.isEmpty())
                 return;
-            addToTop(new GainBlockAction(p, p, list.size() * 2));
+            addToTop(new GainBlockAction(p, p, list.size() * magicNumber));
             for (AbstractCard c : list) {
                 if (upgraded && c.canUpgrade()) addToTop(new UpgradeSpecificCardAction(c));
             }

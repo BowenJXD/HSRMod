@@ -9,7 +9,7 @@ import hsrmod.utils.ModHelper;
 
 public class FungalPustule extends BaseCard {
     public static final String ID = FungalPustule.class.getSimpleName();
-    
+
     public FungalPustule() {
         super(ID);
         exhaust = true;
@@ -25,11 +25,11 @@ public class FungalPustule extends BaseCard {
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainEnergyAction(magicNumber));
         addToBot(new DrawCardAction(1));
-        ModHelper.addToBotAbstract(() -> {
-            if (upgraded) {
+        if (upgraded) {
+            ModHelper.addToBotAbstract(() -> {
                 modifyCostForCombat(1);
-                magicNumber++;
-            }
-        });
+                upgradeMagicNumber(1);
+            });
+        }
     }
 }

@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import hsrmod.actions.RandomCardFromDrawPileToHandAction;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
 import hsrmod.powers.misc.EnergyPower;
@@ -38,7 +39,7 @@ public class SilverheartGuardsPower extends PowerPower implements OnReceivePower
         if (power instanceof EnergyPower
                 && stackAmount < 0) {
             flash();
-            addToBot(new DrawCardAction(owner, drawAmount));
+            addToBot(new RandomCardFromDrawPileToHandAction());
             addToBot(new GainBlockAction(owner, blockAmount));
         }
         return stackAmount;

@@ -15,6 +15,7 @@ import hsrmod.powers.misc.BrainInAVatPower;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.subscribers.PreEnergyChangeSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
+import hsrmod.utils.ModHelper;
 
 public class SMR2AmygdalaPower extends PowerPower implements OnReceivePowerPower {
     public static final String POWER_ID = HSRMod.makePath(SMR2AmygdalaPower.class.getSimpleName());
@@ -45,9 +46,10 @@ public class SMR2AmygdalaPower extends PowerPower implements OnReceivePowerPower
 
     @Override
     public int onReceivePowerStacks(AbstractPower power, AbstractCreature target, AbstractCreature source, int stackAmount) {
-        if (power.amount + stackAmount < minAmount) {
+        int num = ModHelper.getPowerCount(EnergyPower.POWER_ID) + stackAmount;
+        if (power instanceof EnergyPower && num < minAmount) {
             flash();
-            int diff = minAmount - (power.amount + stackAmount);
+            int diff = minAmount - num;
             addToTop(new ApplyPowerAction(owner, owner, new EnergyPower(owner, diff), diff));
         }
         return stackAmount;

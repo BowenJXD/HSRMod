@@ -334,8 +334,8 @@
   "HSRMod:EmpyreanImperium": {
     "NAME": "帝星君临制穹桑",
     "DESCRIPTIONS": [
-      "打出最左侧的牌后，摸1张牌。",
-      "打出最左侧的牌后，摸1张牌并升级之。"
+      "打出最左侧的牌后，获得摸牌堆1张牌。",
+      "打出最左侧的牌后，获得摸牌堆1张牌并升级之。"
     ]
   },
   "HSRMod:RadiantSupreme": {
@@ -387,7 +387,7 @@
   "HSRMod:SilverheartGuards": {
     "NAME": "银河护卫队",
     "DESCRIPTIONS": [
-      "消耗充能后，摸 #b%d 张牌，获得 #b%d 点格挡。"
+      "消耗充能后，获得摸牌堆 #b%d 张牌，，获得 #b%d 点格挡。"
     ]
   },
   "HSRMod:SMR2Amygdala": {

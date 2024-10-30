@@ -18,14 +18,15 @@ public class Burst extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        int dmg = damage;
+        ElementalDamageInfo info = new ElementalDamageInfo(this);
         if (m.currentBlock > 0) {
-            dmg *= 2;
+            info.output *= 2;
+            info.tr *= 2;
         }
         boolean hasBlock = m.currentBlock > 0;
         addToBot(new ElementalDamageAction(
                 m,
-                new ElementalDamageInfo(this, dmg),
+                info,
                 AbstractGameAction.AttackEffect.SLASH_VERTICAL,
                 c -> {
                     if (hasBlock && c.currentBlock <= 0) {

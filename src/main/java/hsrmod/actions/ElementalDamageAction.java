@@ -104,7 +104,7 @@ public class ElementalDamageAction extends AbstractGameAction {
 
         // Reduce toughness
         AbstractPower toughnessPower = this.target.getPower(ToughnessPower.POWER_ID);
-        SubscriptionManager.getInstance().triggerPreToughnessReduce(info.tr, this.target, info.elementType);
+        info.tr = (int) SubscriptionManager.getInstance().triggerPreToughnessReduce(info.tr, this.target, info.elementType);
 
         if (target != null && !target.isDeadOrEscaped()) {
             if (toughnessPower != null

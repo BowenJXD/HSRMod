@@ -26,11 +26,12 @@ public class DestinysThreadsForewoven extends BaseCard {
     
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new SelectCardsInHandAction(1, cardStrings.EXTENDED_DESCRIPTION[0], cards -> {
+        addToBot(new SelectCardsInHandAction(magicNumber, cardStrings.EXTENDED_DESCRIPTION[0], true, true, card -> true, cards -> {
             if (!cards.isEmpty()) {
-                AbstractCard card = cards.get(0);
-                addToTop(new ExhaustSpecificCardAction(card, p.hand));
-                addToTop(new GainBlockAction(p, p, block + (card.isInnate ? magicNumber : 0)));
+                for (AbstractCard card : cards) {
+                    addToTop(new ExhaustSpecificCardAction(card, p.hand));
+                }
+                addToTop(new GainBlockAction(p, p, block * cards.size()));
             }
         }));
     }

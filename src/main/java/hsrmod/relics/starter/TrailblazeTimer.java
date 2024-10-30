@@ -6,54 +6,27 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.ShopRoom;
+import hsrmod.modcore.CustomEnums;
 import hsrmod.relics.BaseRelic;
+import hsrmod.utils.RewardEditor;
 
-public class TrailblazeTimer extends BaseRelic /*implements ClickableRelic */{
+public class TrailblazeTimer extends BaseRelic /*implements ClickableRelic */ {
     public static final String ID = TrailblazeTimer.class.getSimpleName();
-    private boolean cardSelected = true;
-    public boolean canTransform = false;
+    AbstractCard.CardTags tag = CustomEnums.TRAILBLAZE;
 
     public TrailblazeTimer() {
         super(ID);
     }
-
-/*    @Override
-    public void onEnterRoom(AbstractRoom room) {
-        super.onEnterRoom(room);
-        if (room instanceof ShopRoom) {
-            this.canTransform = true;
-            this.beginLongPulse();
-            this.counter = 25;
-        }
-        else {
-            this.stopPulse();
-            this.counter = -1;
-        }
-    }*/
+    
+    @Override
+    public void update() {
+        super.update();
+        if (!isObtained) return;
+        RewardEditor.getInstance().update(AbstractDungeon.getCurrRoom(), tag);
+    }
 
     @Override
     public int changeNumberOfCardsInReward(int numberOfCards) {
         return numberOfCards + 1;
     }
-/*
-    @Override
-    public void onRightClick() {
-        if (canTransform 
-                && AbstractDungeon.isPlayerInDungeon() 
-                && AbstractDungeon.player != null 
-                && AbstractDungeon.player.gold >= counter 
-                && !AbstractDungeon.player.masterDeck.getPurgeableCards().isEmpty()) {
-            this.cardSelected = false;
-            if (AbstractDungeon.isScreenUp) {
-                AbstractDungeon.dynamicBanner.hide();
-                AbstractDungeon.overlayMenu.cancelButton.hide();
-                AbstractDungeon.previousScreen = AbstractDungeon.screen;
-            }
-
-            AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.INCOMPLETE;
-            AbstractDungeon.gridSelectScreen.open(AbstractDungeon.player.masterDeck.getPurgeableCards(),
-                    1, "变化一张牌", false, true, false, false);
-            this.counter += 25;
-        }
-    }*/
 }

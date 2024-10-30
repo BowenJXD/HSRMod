@@ -28,6 +28,8 @@ public class Qingque1 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
+        returnToHand = AbstractDungeon.cardRandomRng.random(100) <= magicNumber;
+        exhaust = !returnToHand;
         if (AbstractDungeon.player.drawPile.size() + AbstractDungeon.player.discardPile.size() == 0) {
             return;
         }
@@ -40,7 +42,5 @@ public class Qingque1 extends BaseCard {
         if (AbstractDungeon.cardRandomRng.random(100) <= magicNumber) {
             addToBot(new GainEnergyAction(costForTurn));
         }
-        returnToHand = AbstractDungeon.cardRandomRng.random(100) <= magicNumber;
-        exhaust = !returnToHand;
     }
 }

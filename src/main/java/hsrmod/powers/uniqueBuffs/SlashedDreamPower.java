@@ -29,10 +29,8 @@ public class SlashedDreamPower extends PowerPower {
 
     int baseDamage = 5;
 
-    boolean upgraded = false;
-
-    public SlashedDreamPower(int Amount, boolean upgraded) {
-        super(POWER_ID, Amount, upgraded);
+    public SlashedDreamPower(int Amount) {
+        super(POWER_ID, Amount);
         
         this.updateDescription();
     }

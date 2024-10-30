@@ -28,6 +28,6 @@ public class DayOneOfMyNewLife extends BaseCard {
         if (plate > 0) addToBot(new ApplyPowerAction(p, p, new PlatedArmorPower(p, plate), plate));
 
         addToBot(new GainBlockAction(p, block));
-        addToBot(new GainBlockAction(m, baseBlock / 2));
+        addToBot(new GainBlockAction(m, 4));
     }
 }

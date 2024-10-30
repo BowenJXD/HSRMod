@@ -7,13 +7,16 @@ import com.megacrit.cardcrawl.actions.utility.LoseBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import hsrmod.modcore.ElementType;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
+import hsrmod.subscribers.PreToughnessReduceSubscriber;
+import hsrmod.subscribers.SubscriptionManager;
 
 import java.util.Collections;
 import java.util.List;
 
-public class Trailblazer7Power extends PowerPower implements DamageModApplyingPower {
+public class Trailblazer7Power extends PowerPower implements DamageModApplyingPower, PreToughnessReduceSubscriber {
     public static final String POWER_ID = HSRMod.makePath(Trailblazer7Power.class.getSimpleName());
     
     public int percentage;
@@ -30,6 +33,18 @@ public class Trailblazer7Power extends PowerPower implements DamageModApplyingPo
     }
 
     @Override
+    public void onInitialApplication() {
+        super.onInitialApplication();
+        SubscriptionManager.getInstance().subscribe(this);
+    }
+
+    @Override
+    public void onRemove() {
+        super.onRemove();
+        SubscriptionManager.getInstance().unsubscribe(this);
+    }
+
+    @Override
     public boolean shouldPushMods(DamageInfo damageInfo, Object o, List<AbstractDamageModifier> list) {
         return o instanceof AbstractCard
                 && list.stream().noneMatch(mod -> mod instanceof Trailblazer7DamageMod);
@@ -38,6 +53,17 @@ public class Trailblazer7Power extends PowerPower implements DamageModApplyingPo
     @Override
     public List<AbstractDamageModifier> modsToPush(DamageInfo damageInfo, Object o, List<AbstractDamageModifier> list) {
         return Collections.singletonList(new Trailblazer7DamageMod(owner, percentage));
+    }
+
+    @Override
+    public float preToughnessReduce(float amount, AbstractCreature target, ElementType elementType) {
+        if (SubscriptionManager.checkSubscriber(this)
+                && target != owner
+                && target.currentBlock > 0
+                && amount > 0) {
+            return amount * (1 + percentage / 100.0f);
+        }
+        return amount;
     }
 
     public static class Trailblazer7DamageMod extends AbstractDamageModifier {
@@ -54,8 +80,7 @@ public class Trailblazer7Power extends PowerPower implements DamageModApplyingPo
             if (target != null 
                     && target != owner
                     && target.currentBlock > 0
-                    && damage > 0
-                    && target.currentBlock <= owner.currentBlock) {
+                    && damage > 0) {
                 return damage * (1 + percentage / 100.0f);
             }
             return damage;

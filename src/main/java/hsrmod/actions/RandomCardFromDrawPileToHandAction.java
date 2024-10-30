@@ -9,7 +9,7 @@ import java.util.function.Consumer;
 
 public class RandomCardFromDrawPileToHandAction extends AbstractGameAction {
     private AbstractPlayer p;
-    
+
     public Consumer<AbstractCard> callback;
 
     public RandomCardFromDrawPileToHandAction(Consumer<AbstractCard> callback) {
@@ -18,20 +18,24 @@ public class RandomCardFromDrawPileToHandAction extends AbstractGameAction {
         this.actionType = ActionType.CARD_MANIPULATION;
         this.callback = callback;
     }
-    
+
     public RandomCardFromDrawPileToHandAction() {
         this(null);
     }
 
     public void update() {
-        if (!this.p.drawPile.isEmpty() && this.p.hand.size() < 10) {
-            AbstractCard card = this.p.drawPile.getRandomCard(AbstractDungeon.cardRandomRng);
-            this.p.hand.addToHand(card);
-            card.lighten(false);
-            this.p.drawPile.removeCard(card);
-            this.p.hand.refreshHandLayout();
-            
-            if (callback != null) callback.accept(card);
+        if (!this.p.drawPile.isEmpty()) {
+            if (this.p.hand.size() >= 10) 
+                p.createHandIsFullDialog();
+            else {
+                AbstractCard card = this.p.drawPile.getRandomCard(AbstractDungeon.cardRandomRng);
+                this.p.hand.addToHand(card);
+                card.lighten(false);
+                this.p.drawPile.removeCard(card);
+                this.p.hand.refreshHandLayout();
+
+                if (callback != null) callback.accept(card);
+            }
         }
 
         this.tickDuration();

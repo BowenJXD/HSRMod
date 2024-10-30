@@ -37,39 +37,51 @@ public class SubscriptionManager {
         }
         return instance;
     }
-
+    
     public void subscribe(ISubscriber sub) {
+        subscribe(sub, false);
+    }
+
+    public void subscribe(ISubscriber sub, boolean addToFront) {
         if (sub instanceof PreBreakDamageSubscriber
             && !preBreakDamageSubscribers.contains(sub)) {
-            preBreakDamageSubscribers.add((PreBreakDamageSubscriber) sub);
+            if (addToFront) preBreakDamageSubscribers.add(0, (PreBreakDamageSubscriber) sub); 
+            else preBreakDamageSubscribers.add((PreBreakDamageSubscriber) sub);
         }
         else if (sub instanceof PreToughnessReduceSubscriber
                 && !preToughnessReduceSubscribers.contains(sub)) {
-            preToughnessReduceSubscribers.add((PreToughnessReduceSubscriber) sub);
+            if (addToFront) preToughnessReduceSubscribers.add(0, (PreToughnessReduceSubscriber) sub);
+            else preToughnessReduceSubscribers.add((PreToughnessReduceSubscriber) sub);
         }
         else if (sub instanceof PreDoTDamageSubscriber
                 && !preDoTDamageSubscribers.contains(sub)) {
-            preDoTDamageSubscribers.add((PreDoTDamageSubscriber) sub);
+            if (addToFront) preDoTDamageSubscribers.add(0, (PreDoTDamageSubscriber) sub);
+            else preDoTDamageSubscribers.add((PreDoTDamageSubscriber) sub);
         }
         else if (sub instanceof PreEnergyChangeSubscriber
                 && !preEnergyChangeSubscribers.contains(sub)) {
-            preEnergyChangeSubscribers.add((PreEnergyChangeSubscriber) sub);
+            if (addToFront) preEnergyChangeSubscribers.add(0, (PreEnergyChangeSubscriber) sub);
+            else preEnergyChangeSubscribers.add((PreEnergyChangeSubscriber) sub);
         }
         else if (sub instanceof PostBreakBlockSubscriber
                 && !postBreakBlockSubscribers.contains(sub)) {
-            postBreakBlockSubscribers.add((PostBreakBlockSubscriber) sub);
+            if (addToFront) postBreakBlockSubscribers.add(0, (PostBreakBlockSubscriber) sub);
+            else postBreakBlockSubscribers.add((PostBreakBlockSubscriber) sub);
         }
         else if (sub instanceof PreBlockChangeSubscriber
                 && !preBlockGainSubscribers.contains(sub)) {
-            preBlockGainSubscribers.add((PreBlockChangeSubscriber) sub);
+            if (addToFront) preBlockGainSubscribers.add(0, (PreBlockChangeSubscriber) sub);
+            else preBlockGainSubscribers.add((PreBlockChangeSubscriber) sub);
         }
         else if (sub instanceof ICheckUsableSubscriber
                 && !checkUsableSubscribers.contains(sub)) {
-            checkUsableSubscribers.add((ICheckUsableSubscriber) sub);
+            if (addToFront) checkUsableSubscribers.add(0, (ICheckUsableSubscriber) sub);
+            else checkUsableSubscribers.add((ICheckUsableSubscriber) sub);
         }
         else if (sub instanceof ISetToughnessReductionSubscriber
                 && !setToughnessReductionSubscribers.contains(sub)) {
-            setToughnessReductionSubscribers.add((ISetToughnessReductionSubscriber) sub);
+            if (addToFront) setToughnessReductionSubscribers.add(0, (ISetToughnessReductionSubscriber) sub);
+            else setToughnessReductionSubscribers.add((ISetToughnessReductionSubscriber) sub);
         }
     }
     

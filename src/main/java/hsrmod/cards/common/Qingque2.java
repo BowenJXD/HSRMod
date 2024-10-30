@@ -12,11 +12,13 @@ import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
+import hsrmod.subscribers.PreEnergyChangeSubscriber;
+import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
-public class Qingque2 extends BaseCard {
+public class Qingque2 extends BaseCard implements PreEnergyChangeSubscriber {
     public static final String ID = Qingque2.class.getSimpleName();
 
     int costCache = -1;
@@ -35,6 +37,18 @@ public class Qingque2 extends BaseCard {
             addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         }
         ModHelper.addToBotAbstract(() -> updateCost(costCache - costForTurn));
+    }
+
+    @Override
+    public void onEnterHand() {
+        super.onEnterHand();
+        SubscriptionManager.getInstance().subscribe(this);
+    }
+
+    @Override
+    public void onLeaveHand() {
+        super.onLeaveHand();
+        SubscriptionManager.getInstance().unsubscribe(this);
     }
 
     @Override
@@ -63,15 +77,15 @@ public class Qingque2 extends BaseCard {
     }
 
     @Override
-    public void triggerOnOtherCardPlayed(AbstractCard c) {
-        if (!AbstractDungeon.player.hand.contains(this)) return;
-        int loop = c.costForTurn;
-        if (c.costForTurn == -1) loop = c.energyOnUse;
-        for (int i = 0; i < loop; i++) {
-            if (AbstractDungeon.cardRandomRng.random(100) <= reduceCostProbability) {
-                updateCost(-1);
-                if (costForTurn <= 0) break;
+    public int preEnergyChange(int changeAmount) {
+        if (SubscriptionManager.checkSubscriber(this) && changeAmount < 0) {
+            for (int i = 0; i < -changeAmount; i++) {
+                if (AbstractDungeon.cardRandomRng.random(100) <= reduceCostProbability) {
+                    updateCost(-1);
+                    if (costForTurn <= 0) break;
+                }
             }
         }
+        return changeAmount;
     }
 }

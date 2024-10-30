@@ -44,10 +44,11 @@ public class RewardEditor {
         if (AbstractDungeon.combatRewardScreen.rewards.stream().anyMatch(r -> r.type == RewardItem.RewardType.CARD)
                 && room != currRoom) {
             this.tag = tag;
+
             List<RewardItem> rewards = AbstractDungeon.combatRewardScreen.rewards;
             for (RewardItem reward : rewards) {
                 if (reward.type == RewardItem.RewardType.CARD) {
-                    setRewardCards(reward);
+                    if (tag != CustomEnums.TRAILBLAZE) setRewardCards(reward);
                     currRoom = room;
                     if (reward.cards.contains(null)) {
                         logger.info("CardRewardPoolEditor: Null card detected in reward pool.");
@@ -59,32 +60,8 @@ public class RewardEditor {
             if (AbstractDungeon.actNum == 1
                     && AbstractDungeon.getMonsters() != null
                     && AbstractDungeon.getMonsters().monsters.stream().anyMatch(m -> m.type == AbstractMonster.EnemyType.BOSS)) {
-                
-                String relicName = "";
-                if (tag == CustomEnums.ELATION) {
-                    relicName = TheAshblazingGrandDuke.ID;
-                }
-                if (tag == CustomEnums.DESTRUCTION) {
-                    relicName = IronCavalryAgainstTheScourge.ID;
-                }
-                if (tag == CustomEnums.NIHILITY) {
-                    relicName = PrisonerInDeepConfinement.ID;
-                }
-                if (tag == CustomEnums.PRESERVATION) {
-                    relicName = KnightOfPurityPalace.ID;
-                }
-                if (tag == CustomEnums.THE_HUNT) {
-                    relicName = MusketeerOfWildWheat.ID;
-                }
-                if (tag == CustomEnums.PROPAGATION) {
-                    relicName = PasserbyOfWanderingCloud.ID;
-                }
-                if (tag == CustomEnums.ERUDITION) {
-                    relicName = TheWindSoaringValorous.ID;
-                }
-                if (tag == CustomEnums.TRAILBLAZE) {
-                    relicName = MasterOfDreamMachinations.ID;
-                }
+
+                String relicName = getRelicByPath(tag);
 
                 if (!relicName.isEmpty())
                     rewards.add(new RewardItem(RelicLibrary.getRelic(HSRMod.makePath(relicName)).makeCopy()));
@@ -97,6 +74,35 @@ public class RewardEditor {
                     rewards.add(new RewardItem(RelicLibrary.getRelic(relicName).makeCopy()));
             }
         }
+    }
+
+    private static String getRelicByPath(AbstractCard.CardTags tag) {
+        String relicName = "";
+        if (tag == CustomEnums.ELATION) {
+            relicName = TheAshblazingGrandDuke.ID;
+        }
+        if (tag == CustomEnums.DESTRUCTION) {
+            relicName = IronCavalryAgainstTheScourge.ID;
+        }
+        if (tag == CustomEnums.NIHILITY) {
+            relicName = PrisonerInDeepConfinement.ID;
+        }
+        if (tag == CustomEnums.PRESERVATION) {
+            relicName = KnightOfPurityPalace.ID;
+        }
+        if (tag == CustomEnums.THE_HUNT) {
+            relicName = MusketeerOfWildWheat.ID;
+        }
+        if (tag == CustomEnums.PROPAGATION) {
+            relicName = PasserbyOfWanderingCloud.ID;
+        }
+        if (tag == CustomEnums.ERUDITION) {
+            relicName = TheWindSoaringValorous.ID;
+        }
+        if (tag == CustomEnums.TRAILBLAZE) {
+            relicName = MasterOfDreamMachinations.ID;
+        }
+        return relicName;
     }
 
     public void setRewardCards(RewardItem reward) {

@@ -19,8 +19,7 @@ import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
 public class SlaughterhouseNo4RestInPeacePower extends PowerPower implements DamageModApplyingPower {
     public static final String POWER_ID = HSRMod.makePath(SlaughterhouseNo4RestInPeacePower.class.getSimpleName());
-
-    boolean upgraded;
+    
     int percentage;
 
     public SlaughterhouseNo4RestInPeacePower(boolean upgraded, int percentage) {

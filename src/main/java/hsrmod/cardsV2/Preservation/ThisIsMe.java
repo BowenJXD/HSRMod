@@ -27,6 +27,6 @@ public class ThisIsMe extends BaseCard {
         if (dex > 0) addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, dex), dex));
 
         addToBot(new GainBlockAction(p, block));
-        addToBot(new GainBlockAction(m, baseBlock / 2));
+        addToBot(new GainBlockAction(m, 4));
     }
 }

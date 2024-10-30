@@ -15,6 +15,6 @@ public class EmpyreanImperium extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new EmpyreanImperiumPower(upgraded), 0));
+        addToBot(new ApplyPowerAction(p, p, new EmpyreanImperiumPower(upgraded, magicNumber), 0));
     }
 }

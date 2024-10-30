@@ -27,6 +27,17 @@ public class March7th4 extends BaseCard {
     }
 
     @Override
+    public void onEnterHand() {
+        super.onEnterHand();
+        // make sifu the card in hand with index 1 less than this card
+        CardGroup hand = AbstractDungeon.player.hand;
+        int index = hand.group.indexOf(this);
+        if (index > 0) {
+            sifu = hand.group.get(index - 1);
+        }
+    }
+
+    @Override
     public void triggerOnOtherCardPlayed(AbstractCard c) {
         super.triggerOnOtherCardPlayed(c);
         CardGroup hand = AbstractDungeon.player.hand;

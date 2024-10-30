@@ -29,11 +29,11 @@ public class PenMan extends BaseCard {
         if (!p.hand.isEmpty() || upgraded) {
             addToBot(new SelectCardsInHandAction(1, String.format(cardStrings.EXTENDED_DESCRIPTION[upgraded ? 1 : 0], magicNumber),
                     false, upgraded, c -> true, list -> {
-                ModHelper.addToTopAbstract(() -> returnToHand = ModHelper.getPowerCount(EnergyPower.POWER_ID) < EnergyPower.AMOUNT_LIMIT);
-                if (list.isEmpty()) {
+                ModHelper.addToTopAbstract(() -> returnToHand = ModHelper.getPowerCount(EnergyPower.POWER_ID) < EnergyPower.AMOUNT_LIMIT && !list.isEmpty());
+                if (list.isEmpty() && energyOnUse > 0) {
                     addToTop(new ApplyPowerAction(p, p, new EnergyPower(p, magicNumber * 2), magicNumber * 2));
                     addToTop(new LoseEnergyAction(1));
-                } else if (energyOnUse > 0){
+                } else if (!list.isEmpty()){
                     addToTop(new ApplyPowerAction(p, p, new EnergyPower(p, magicNumber), magicNumber));
                     addToTop(new DiscardSpecificCardAction(list.get(0)));
                 }

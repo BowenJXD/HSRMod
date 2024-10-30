@@ -25,6 +25,6 @@ public class MetastaticField extends BaseCard {
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p, new QuakePower(p, 1), 1));
         addToBot(new GainBlockAction(p, p, block));
-        addToBot(new GainBlockAction(m, baseBlock));
+        addToBot(new GainBlockAction(m, 4));
     }
 }

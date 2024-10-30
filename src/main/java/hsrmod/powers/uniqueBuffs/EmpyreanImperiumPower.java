@@ -19,9 +19,26 @@ import java.util.List;
 public class EmpyreanImperiumPower extends PowerPower {
     public static final String POWER_ID = HSRMod.makePath(EmpyreanImperiumPower.class.getSimpleName());
 
-    public EmpyreanImperiumPower(boolean upgraded) {
+    public int threshold = 2;
+    
+    public EmpyreanImperiumPower(boolean upgraded, int threshold) {
         super(POWER_ID, upgraded);
+        this.threshold = threshold;
         updateDescription();
+    }
+
+    @Override
+    public void updateDescription() {
+        description = String.format(DESCRIPTIONS[0], threshold);
+    }
+
+    @Override
+    public void stackPower(int stackAmount) {
+        super.stackPower(stackAmount);
+        if (amount >= threshold) {
+            addToTop(new DrawCardAction(1));
+            amount -= threshold;
+        }
     }
 
     @Override
@@ -30,10 +47,7 @@ public class EmpyreanImperiumPower extends PowerPower {
         if (!AbstractDungeon.player.hand.isEmpty() 
                 && card == AbstractDungeon.player.hand.getBottomCard()) {
             flash();
-            addToTop(new RandomCardFromDrawPileToHandAction(upgraded ? c -> {
-                if (c.canUpgrade())
-                    addToTop(new UpgradeSpecificCardAction(c));
-            } : null));
+            stackPower(upgraded && (card.costForTurn > 0 || (card.costForTurn == -1 && card.energyOnUse > 0)) ? 2 : 1 );
         }
     }
 }

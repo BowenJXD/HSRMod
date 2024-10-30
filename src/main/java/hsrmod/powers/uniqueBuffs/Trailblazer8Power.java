@@ -48,7 +48,7 @@ public class Trailblazer8Power extends PowerPower implements PostBreakBlockSubsc
             if (action.target != null) target = action.target;
             else target = ModHelper.betterGetRandomMonster();
             if (target != null) {
-                ElementalDamageInfo info = new ElementalDamageInfo(owner, Math.round(card.block * percentage / 100f), ElementType.Physical, 1);
+                ElementalDamageInfo info = new ElementalDamageInfo(owner, Math.round(card.block * percentage / 100f), ElementType.Physical, 2);
                 info.applyPowers(owner, target);
                 addToTop(new ElementalDamageAction(target, info, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
             }

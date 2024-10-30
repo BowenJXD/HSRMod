@@ -5,7 +5,6 @@ import basemod.interfaces.ISubscriber;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
 import hsrmod.powers.misc.DoTPower;
@@ -38,11 +37,15 @@ public class SubscriptionManager {
         return instance;
     }
     
-    public void subscribe(ISubscriber sub) {
-        subscribe(sub, false);
+    public static void subscribe(ISubscriber sub) {
+        getInstance().subscribeHelper(sub, false);
+    }
+    
+    public static void subscribe(ISubscriber sub, boolean addToFront) {
+        getInstance().subscribeHelper(sub, addToFront);
     }
 
-    public void subscribe(ISubscriber sub, boolean addToFront) {
+    public void subscribeHelper(ISubscriber sub, boolean addToFront) {
         if (sub instanceof PreBreakDamageSubscriber
             && !preBreakDamageSubscribers.contains(sub)) {
             if (addToFront) preBreakDamageSubscribers.add(0, (PreBreakDamageSubscriber) sub); 
@@ -85,7 +88,11 @@ public class SubscriptionManager {
         }
     }
     
-    public void unsubscribe(ISubscriber subscriber) {
+    public static void unsubscribe(ISubscriber subscriber){
+        getInstance().unsubscribeHelper(subscriber);
+    }
+    
+    public void unsubscribeHelper(ISubscriber subscriber) {
         if (subscriber instanceof PreBreakDamageSubscriber) {
             preBreakDamageSubscribers.remove(subscriber);
         }
@@ -223,16 +230,17 @@ public class SubscriptionManager {
                 || AbstractDungeon.player.exhaustPile.contains(card);
         if (!result && card instanceof ISubscriber) {
             BaseMod.unsubscribeLater((ISubscriber) card);
-            instance.unsubscribeLater((ISubscriber) card);
+            getInstance().unsubscribeLater((ISubscriber) card);
         }
         return result;
     }
     
     public static boolean checkSubscriber(AbstractPower power){
-        boolean result = AbstractDungeon.player.powers.contains(power);
+        boolean result = (power.owner == AbstractDungeon.player && AbstractDungeon.player.powers.contains(power)) 
+                || (AbstractDungeon.getMonsters().monsters.contains(power.owner));
         if (!result && power instanceof ISubscriber) {
             BaseMod.unsubscribeLater((ISubscriber) power);
-            instance.unsubscribeLater((ISubscriber) power);
+            getInstance().unsubscribeLater((ISubscriber) power);
         }
         return result;
     }

@@ -6,14 +6,18 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import hsrmod.modcore.ElementType;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.DebuffPower;
 import hsrmod.powers.misc.BrokenPower;
+import hsrmod.powers.misc.ToughnessPower;
+import hsrmod.subscribers.PreToughnessReduceSubscriber;
+import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
 import java.util.Iterator;
 
-public class BefogPower extends DebuffPower implements OnReceivePowerPower{
+public class BefogPower extends DebuffPower implements PreToughnessReduceSubscriber {
     public static final String POWER_ID = HSRMod.makePath(BefogPower.class.getSimpleName());
     
     public BefogPower(AbstractCreature owner, int Amount, boolean upgraded) {
@@ -31,11 +35,23 @@ public class BefogPower extends DebuffPower implements OnReceivePowerPower{
     }
 
     @Override
-    public boolean onReceivePower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        if (power instanceof BrokenPower){
+    public void onInitialApplication() {
+        super.onInitialApplication();
+        SubscriptionManager.subscribe(this);
+    }
+
+    @Override
+    public void onRemove() {
+        super.onRemove();
+        SubscriptionManager.unsubscribe(this);
+    }
+
+    @Override
+    public float preToughnessReduce(float amount, AbstractCreature target, ElementType elementType) {
+        if (SubscriptionManager.checkSubscriber(this) && ModHelper.getPowerCount(ToughnessPower.POWER_ID) - amount <= 0) {
             this.flash();
-            addToBot(new GainEnergyAction(amount));
-            addToBot(new DrawCardAction(amount));
+            addToBot(new GainEnergyAction(this.amount));
+            addToBot(new DrawCardAction(this.amount));
 
             if (upgraded)
                 ModHelper.addToBotAbstract(() -> {
@@ -51,6 +67,6 @@ public class BefogPower extends DebuffPower implements OnReceivePowerPower{
 
             this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
         }
-        return true;
+        return amount;
     }
 }

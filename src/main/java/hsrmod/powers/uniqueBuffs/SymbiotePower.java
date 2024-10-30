@@ -20,12 +20,12 @@ public class SymbiotePower extends PowerPower implements PreBreakDamageSubscribe
     
     @Override
     public void onInitialApplication() {
-        SubscriptionManager.getInstance().subscribe(this);
+        SubscriptionManager.subscribe(this);
     }
 
     @Override
     public void onRemove() {
-        SubscriptionManager.getInstance().unsubscribe(this);
+        SubscriptionManager.unsubscribe(this);
     }
 
     @Override

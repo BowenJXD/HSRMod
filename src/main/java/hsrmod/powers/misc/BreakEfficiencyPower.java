@@ -27,12 +27,12 @@ public class BreakEfficiencyPower extends BuffPower implements ISetToughnessRedu
     @Override
     public void onInitialApplication() {
         super.onInitialApplication();
-        SubscriptionManager.getInstance().subscribe(this);
+        SubscriptionManager.subscribe(this, true);
     }
     
     public void onRemove() {
         super.onRemove();
-        SubscriptionManager.getInstance().unsubscribe(this);
+        SubscriptionManager.unsubscribe(this);
     }
 
     @Override

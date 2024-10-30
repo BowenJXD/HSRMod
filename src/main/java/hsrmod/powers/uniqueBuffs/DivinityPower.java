@@ -35,13 +35,13 @@ public class DivinityPower extends PowerPower implements OnPlayerLoseBlockSubscr
     @Override
     public void onInitialApplication() {
         BaseMod.subscribe(this);
-        SubscriptionManager.getInstance().subscribe(this);
+        SubscriptionManager.subscribe(this, true);
     }
 
     @Override
     public void onRemove() {
         BaseMod.unsubscribe(this);
-        SubscriptionManager.getInstance().unsubscribe(this);
+        SubscriptionManager.unsubscribe(this);
     }
 
     @Override

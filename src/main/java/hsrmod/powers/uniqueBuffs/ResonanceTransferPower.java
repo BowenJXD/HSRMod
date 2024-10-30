@@ -33,13 +33,13 @@ public class ResonanceTransferPower extends PowerPower implements PostBreakBlock
     @Override
     public void onInitialApplication() {
         super.onInitialApplication();
-        if (!upgraded) SubscriptionManager.getInstance().subscribe(this);
+        if (!upgraded) SubscriptionManager.subscribe(this);
     }
 
     @Override
     public void onRemove() {
         super.onRemove();
-        SubscriptionManager.getInstance().unsubscribe(this);
+        SubscriptionManager.unsubscribe(this);
     }
 
     @Override

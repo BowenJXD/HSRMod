@@ -5,9 +5,11 @@ import basemod.interfaces.PostPowerApplySubscriber;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.BetterOnApplyPowerPower;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
@@ -33,7 +35,7 @@ public class ChampionsDinnerCatsCradlePower extends PowerPower implements PostPo
     public void onInitialApplication() {
         super.onInitialApplication();
         BaseMod.subscribe(this);
-        SubscriptionManager.getInstance().subscribe(this);
+        SubscriptionManager.subscribe(this, true);
         ModHelper.findCards((c) -> c.hasTag(CustomEnums.ENERGY_COSTING) && !c.hasTag(FOLLOW_UP)).forEach((r) -> r.card.tags.add(FOLLOW_UP));
     }
 
@@ -45,10 +47,17 @@ public class ChampionsDinnerCatsCradlePower extends PowerPower implements PostPo
     }
 
     @Override
+    public void onPlayCard(AbstractCard card, AbstractMonster m) {
+        super.onPlayCard(card, m);
+        if (card.hasTag(CustomEnums.ENERGY_COSTING) && !card.hasTag(FOLLOW_UP))
+            card.tags.add(FOLLOW_UP);
+    }
+
+    @Override
     public void onRemove() {
         super.onRemove();
         BaseMod.unsubscribe(this);
-        SubscriptionManager.getInstance().unsubscribe(this);
+        SubscriptionManager.unsubscribe(this);
     }
 
     @Override

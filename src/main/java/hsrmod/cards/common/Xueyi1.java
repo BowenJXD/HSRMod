@@ -63,12 +63,12 @@ public class Xueyi1 extends BaseCard implements PreToughnessReduceSubscriber {
 
     @Override
     public void onEnterHand() {
-        SubscriptionManager.getInstance().subscribe(this);
+        SubscriptionManager.subscribe(this);
     }
 
     @Override
     public void onLeaveHand() {
-        SubscriptionManager.getInstance().unsubscribe(this);
+        SubscriptionManager.unsubscribe(this);
     }
 
     @Override

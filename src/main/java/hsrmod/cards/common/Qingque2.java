@@ -42,13 +42,13 @@ public class Qingque2 extends BaseCard implements PreEnergyChangeSubscriber {
     @Override
     public void onEnterHand() {
         super.onEnterHand();
-        SubscriptionManager.getInstance().subscribe(this);
+        SubscriptionManager.subscribe(this);
     }
 
     @Override
     public void onLeaveHand() {
         super.onLeaveHand();
-        SubscriptionManager.getInstance().unsubscribe(this);
+        SubscriptionManager.unsubscribe(this);
     }
 
     @Override

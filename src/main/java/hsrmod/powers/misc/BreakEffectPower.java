@@ -22,13 +22,13 @@ public class BreakEffectPower extends BuffPower implements PreDoTDamageSubscribe
     @Override
     public void onInitialApplication() {
         super.onInitialApplication();
-        SubscriptionManager.getInstance().subscribe(this);
+        SubscriptionManager.subscribe(this, true);
     }
 
     @Override
     public void onRemove() {
         super.onRemove();
-        SubscriptionManager.getInstance().unsubscribe(this);
+        SubscriptionManager.unsubscribe(this);
     }
 
     @Override

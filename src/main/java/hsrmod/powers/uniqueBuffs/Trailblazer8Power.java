@@ -58,13 +58,13 @@ public class Trailblazer8Power extends PowerPower implements PostBreakBlockSubsc
     @Override
     public void onInitialApplication() {
         super.onInitialApplication();
-        SubscriptionManager.getInstance().subscribe(this);
+        SubscriptionManager.subscribe(this);
     }
 
     @Override
     public void onRemove() {
         super.onRemove();
-        SubscriptionManager.getInstance().unsubscribe(this);
+        SubscriptionManager.unsubscribe(this);
     }
 
     @Override

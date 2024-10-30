@@ -25,13 +25,13 @@ public class IntersegmentalMembranePower extends PowerPower implements PreEnergy
     @Override
     public void onInitialApplication() {
         super.onInitialApplication();
-        SubscriptionManager.getInstance().subscribe(this);
+        SubscriptionManager.subscribe(this);
     }
 
     @Override
     public void onRemove() {
         super.onRemove();
-        SubscriptionManager.getInstance().unsubscribe(this);
+        SubscriptionManager.unsubscribe(this);
     }
 
     @Override

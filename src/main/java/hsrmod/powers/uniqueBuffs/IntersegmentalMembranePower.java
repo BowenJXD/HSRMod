@@ -39,7 +39,6 @@ public class IntersegmentalMembranePower extends PowerPower implements PreEnergy
         if (SubscriptionManager.checkSubscriber(this) && changeAmount < 0) {
             flash();
             int num = -changeAmount * block;
-            if (owner.currentBlock < 10) num++;
             addToBot(new GainBlockAction(owner, owner, num));
         }
         return changeAmount;

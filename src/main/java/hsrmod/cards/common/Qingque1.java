@@ -19,6 +19,7 @@ public class Qingque1 extends BaseCard {
     public Qingque1() {
         super(ID);
         returnToHand = true;
+        exhaust = true;
     }
 
     @Override

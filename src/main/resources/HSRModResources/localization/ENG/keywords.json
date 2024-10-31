@@ -25,7 +25,11 @@
   },
   {
     "NAMES": ["Broken", "broken"],
-    "DESCRIPTION": "A state applied when toughness is reduced to 0 or below."
+    "DESCRIPTION": "A state applied when toughness is reduced to 0 or below. Damage received + #b50%, damage dealt - #b25%."
+  },
+  {
+    "NAMES": ["Effect of Breaking", "effect-of-breaking"],
+    "DESCRIPTION": "Ice: #b2 Break damage, apply #yFrozen . NL Physical: #b4 Break damage, apply #yBleed . NL Fire: #b4 Break damage, apply #yBurn . NL Lightning: #b2 Break damage, apply #yShock . NL Wind: #b3 Break damage, apply #yWind-Shear . NL Quantum: #b1 Break damage, apply #yEntangle . NL Imaginary: #b1 Break damage, apply #yImprison ."
   },
   {
     "NAMES": ["Frozen", "frozen"],
@@ -53,7 +57,7 @@
   },
   {
     "NAMES": ["Entangle", "entangle"],
-    "DESCRIPTION": "Adds 1 stack when taking damage, up to 5 stacks. At the start of the turn, remove all stacks and take 2 damage for each removed stack."
+    "DESCRIPTION": "Adds 1 stack when taking damage, up to 5 stacks. At the start of the turn, remove all stacks and take 3 damage for each removed stack."
   },
   {
     "NAMES": ["Break Effect", "break-effect"],
@@ -61,7 +65,7 @@
   },
   {
     "NAMES": ["Break Efficiency", "break-efficiency"],
-    "DESCRIPTION": "Toughness shred value of elemental damage is increased by 50X%. 1 stack is removed at the end of the turn."
+    "DESCRIPTION": "Toughness shred value of elemental damage is increased by 100%. 1 stack is removed at the end of the turn."
   },
   {
     "NAMES": ["Break Damage", "break-damage"],
@@ -76,11 +80,15 @@
     "DESCRIPTION": "Increases DoT taken by X%. Stacks up to 99."
   },
   {
+    "NAMES": ["Quake", "quake"],
+    "DESCRIPTION": "When losing half of your block, remove 1 stack and gain #yQuake with damage equal to the block lost."
+  },
+  {
     "NAMES": ["Spore", "spore", "spores"],
     "DESCRIPTION": "Up to 6 stacks. At the start of the turn, 1 stack is removed. NL Explode when targeted by an attack card: remove all stacks, take X*X wind damage (1)."
   },
   {
-    "NAMES": ["Critical Boost", "critical-boost"],
+    "NAMES": ["Boost", "boost"],
     "DESCRIPTION": "Crit rate is increased by 10X% (Crit DMG is 100%). NL After taking normal damage, all stacks are removed."
   },
   {
@@ -97,7 +105,11 @@
   },
   {
     "NAMES": ["Blind Bet", "blind-bet"],
-    "DESCRIPTION": "When amount >=7, lose 7 amount to deal 1-7 Imaginary damage to a random enemy and gain 1-7 Block."
+    "DESCRIPTION": "When amount >=7, lose 7 amount and gain #yBingo! ."
+  },
+  {
+    "NAMES": ["Block Return", "block-return"],
+    "DESCRIPTION": "You gain X Block upon attacked."
   },
   {
     "NAMES": ["Malleable", "malleable"],

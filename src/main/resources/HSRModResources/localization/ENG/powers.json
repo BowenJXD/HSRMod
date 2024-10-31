@@ -62,16 +62,16 @@
     ]
   },
   "HSRMod:BreakEffect": {
-    "NAME": "BreakEffect",
+    "NAME": "Break Effect",
     "DESCRIPTIONS": [
       "Break damage is increased by #b%d. DoT damage to Broken enemies is increased by #b%d."
     ]
   },
   "HSRMod:BreakEfficiency": {
-    "NAME": "BreakEfficiency",
+    "NAME": "Break Efficiency",
     "DESCRIPTIONS": [
-      "Toughness shred value of elemental damage is increased by #b%d %%. At the end of the turn, remove 1 stack.",
-      "Toughness shred value of elemental damage is increased by #b%d %%. At the end of the turn, if above #b%d stacks, remove 1 stack."
+      "Toughness reduction is increased by #b%d %%. At the end of the turn, remove 1 stack.",
+      "Toughness reduction is increased by #b%d %%. At the end of the turn, if more than #b%d stack, remove 1 stack."
     ]
   },
   "HSRMod:Aftertaste": {
@@ -86,20 +86,26 @@
       "Increases damage over time taken by #b%d %%. Stacks up to #b%d."
     ]
   },
+  "HSRMod:Quake": {
+    "NAME": "Quake",
+    "DESCRIPTIONS": [
+      "When losing half of your Block, remove 1 stack and gain #yQuake with damage equal to the Block lost."
+    ]
+  },
   "HSRMod:Spore": {
     "NAME": "Spore",
     "DESCRIPTIONS": [
-      "Up to 6 stacks. At the start of the turn, remove 1 stack. Explode when targeted by an attack card: remove all stacks, take X*X wind damage (1)."
+      "Up to #b%d stacks. At the start of the turn, remove 1 stack. Burst when targeted by an attack card: remove all stacks, take X*X (#b%d) wind damage (1)."
     ]
   },
   "HSRMod:CriticalBoost": {
-    "NAME": "Critical Boost",
+    "NAME": "Boost",
     "DESCRIPTIONS": [
-      "Crit rate is increased by #b%d %% (Crit DMG is #b%d %%). NL After taking normal damage, all stacks are removed."
+      "Up to #b%d stacks. Damage dealt + #b%d. NL After taking normal damage, all stacks are removed."
     ]
   },
   "HSRMod:BrainInAVat": {
-    "NAME": "BrainInAVat",
+    "NAME": "Brain in a Vat",
     "DESCRIPTIONS": [
       "After consuming [hsrmod:ChargeIcon] , remove 1 stack and recover an equal amount of [hsrmod:ChargeIcon] ."
     ]
@@ -112,86 +118,85 @@
     ]
   },
   "HSRMod:TopazNumby": {
-    "NAME": "TopazNumby",
+    "NAME": "Difficulty Paying?",
     "DESCRIPTIONS": [
       "After chasing, apply 1 stack (up to 2 stacks). If 2 stacks are present and no #yTrotter #yMarket!? is available, remove 2 stacks and gain 1 card.",
       "After chasing, apply 1 stack (up to 2 stacks). If 2 stacks are present and no #yTrotter #yMarket!?+ is available, remove 2 stacks and gain 1 card."
     ]
   },
   "HSRMod:Aventurine": {
-    "NAME": "Aventurine",
+    "NAME": "Blind Bet",
     "DESCRIPTIONS": [
-      "When taking damage, if you have Block, stack #b%d. After Follow Up, stack #b%d, up to 10 stacks. When amount >=7, lose 7 amount to deal 1-7 Imaginary damage to a random enemy and gain 1-7 Block.",
-      "When taking damage, if you have Block, stack #b%d. After Follow Up, stack #b%d, up to 10 stacks. When amount >=7, lose 7 amount to deal 1-7 Imaginary damage to a random enemy, gain 1-7 Block, and if outside your turn, keep your block for next round."
+      "When taking damage, if you have Block, stack #b%d. After Follow Up, stack #b%d, up to 10 stacks. When amount >=7, lose 7 amount and gain #yBingo!."
     ]
   },
   "HSRMod:Robin": {
-    "NAME": "Robin",
+    "NAME": "Vox Harmonique, Opus Cosmique",
     "DESCRIPTIONS": [
-      "After playing an attack card, gain 1 stack of Strength. Remove at start of turn, and remove all Strength gained by this effect.",
-      "After playing an attack card, gain 1 stack of Strength, and gain #b20 [hsrmod:ChargeIcon] if it is a Follow-Up card. Remove at start of turn, and remove all Strength gained by this effect."
+      "After using an attack card, gain Strength equal to the cost of that card. At start of next turn, remove this effect and Strength gained through this effect.",
+      "After using an attack card, gain Strength equal to the cost of that card, and gain #b20 [hsrmod:ChargeIcon] if it is a Follow-Up card. At start of next turn, remove this effect and Strength gained through this effect."
     ]
   },
   "HSRMod:ProofOfDebt": {
-    "NAME": "ProofOfDebt",
+    "NAME": "Proof of Debt",
     "DESCRIPTIONS": [
       "Damage from Follow Up attack cards is increased by #b%d. The target of the Follow Up attack is prioritized."
     ]
   },
   "HSRMod:WisemansFolly": {
-    "NAME": "WisemansFolly",
+    "NAME": "Wiseman's Folly",
     "DESCRIPTIONS": [
       "At the end of the turn, if #yCogito #yErgo #ySum is not in your hand, remove it. Upon removal, consume all #yCogito #yErgo #ySum cards in your hand."
     ]
   },
   "HSRMod:BattlefieldMagician": {
-    "NAME": "BattlefieldMagician",
+    "NAME": "Battlefield Magician",
     "DESCRIPTIONS": [
       "After chasing, gain #b%d Block.",
       "After playing a Follow Up card, gain #b%d Block."
     ]
   },
   "HSRMod:SlaughterhouseNo4RestInPeace": {
-    "NAME": "SlaughterhouseNo4RestInPeace",
+    "NAME": "Slaughterhouse No'4: Rest in Peace",
     "DESCRIPTIONS": [
-      "After dealing Follow Up card damage, if the target has #yBroken, there is a #b%d %% chance to draw 1 card.",
-      "After dealing Follow Up card damage, if the target has/doesn't have #yBroken, there is a #b%d %%/20% chance to draw 1 card."
+      "After dealing Follow Up damage, if the target has #yBroken, there is a #b%d%% chance to draw 1 card.",
+      "After dealing damage through Follow Up card, if the target has/doesn't have #yBroken, there is a #b%d%% / #b20%% chance to draw 1 card."
     ]
   },
   "HSRMod:UselessScholar": {
-    "NAME": "UselessScholar",
+    "NAME": "Useless Scholar",
     "DESCRIPTIONS": [
       "After chasing, if you have any, there is a #b%d %% chance to consume #b%d [hsrmod:ChargeIcon] and Follow Up another Follow Up card.",
       "After playing a Follow Up card, if you have any, there is a #b%d %% chance to consume #b%d [hsrmod:ChargeIcon] and Follow Up another Follow Up card."
     ]
   },
   "HSRMod:BountyHunter": {
-    "NAME": "BountyHunter",
+    "NAME": "Bounty Hunter",
     "DESCRIPTIONS": [
       "After chasing, there is a #b%d %% chance that the card will return to your hand.",
       "After playing a Follow Up card, there is a #b%d %% chance that the card will return to your hand."
     ]
   },
   "HSRMod:ThanatoplumRebloom": {
-    "NAME": "ThanatoplumRebloom",
+    "NAME": "Thanatoplum Rebloom",
     "DESCRIPTIONS": [
       "When losing #yBroken, remove 1 stack and prevent it."
     ]
   },
   "HSRMod:Trailblazer5": {
-    "NAME": "Trailblazer5",
+    "NAME": "Treasure of the Architects",
     "DESCRIPTIONS": [
       "After the first damage dealt by a played card, if the target has #yBroken, deal break damage equal to the toughness reduction amount."
     ]
   },
   "HSRMod:Trailblazer6": {
-    "NAME": "Trailblazer6",
+    "NAME": "Action Beats Overthinking",
     "DESCRIPTIONS": [
       "When dealing toughness reducing damage, if the target has #yBroken , increase the damage by the absolute value of its #yToughness ."
     ]
   },
   "HSRMod:Firefly": {
-    "NAME": "Firefly",
+    "NAME": "In Finalized Morrow, I Full Bloom",
     "DESCRIPTIONS": [
       "After breaking the target, deal break damage equal to its max toughness and gain 1 stack of #yBreak #yEfficiency. Add the card #yFalling #yFrom #yA #yShattered Sky to your hand."
     ]
@@ -210,40 +215,41 @@
     ]
   },
   "HSRMod:VoyageMonitor": {
-    "NAME": "VoyageMonitor",
+    "NAME": "Voyage Monitor",
     "DESCRIPTIONS": [
-      "After breaking the target, gain #yToughness equal to its max toughness.",
-      "After breaking the target, gain #yToughness equal to its max toughness. After dealing break damage, gain 1 stack of Toughness."
+      "For every #b%d toughness reduced, gain 1 block."
     ]
   },
   "HSRMod:IntersegmentalMembrane": {
-    "NAME": "IntersegmentalMembrane",
+    "NAME": "Intersegmental Membrane",
     "DESCRIPTIONS": [
-      "For each [E] consumed, gain #b%d Block."
+      "For each [E] consumed, gain #b%d Block.",
+      "For each [E] consumed, gain #b%d Block. If your Block is less than 10, gain an additional 1 Block."
     ]
   },
   "HSRMod:Kolchis": {
     "NAME": "Kolchis",
     "DESCRIPTIONS": [
-      "Every #b%d [hsrmod:ChargeIcon] you use, gain [E] . Every #b%d [E] you use, gain 1 stack of #yBrain-In-A-Vat."
+      "Recover [E] for every #b%d Charge consumed."
     ]
   },
   "HSRMod:Divinity": {
-    "NAME": "Divinity",
+    "NAME": "Macro-segregation",
     "DESCRIPTIONS": [
-      "All Block gain + #b%d . At the start of the turn, only #b%d %% of current Block is lost."
+      "You are immune to Dexterity and Frail. Incoming Block gain +#b%d, and only #b%d%% of Block is lost at the start of each turn."
     ]
   },
   "HSRMod:Burden": {
     "NAME": "Burden",
     "DESCRIPTIONS": [
-      "After becoming the target of a card, remove 1 stack and recover [E] ."
+      "After becoming the target of a card, remove 1 stack and recover [E] . Remove all stack at start of turn."
     ]
   },
   "HSRMod:Huohuo": {
-    "NAME": "Huohuo",
+    "NAME": "Tail: Spiritual Domination",
     "DESCRIPTIONS": [
-      "After playing a card, recover 1 HP, 10 [hsrmod:ChargeIcon] , and remove 1 stack of a random negative effect."
+      "After playing a card, recover 1 HP, 10 [hsrmod:ChargeIcon] , and remove 1 stack of a random negative effect.",
+      "After playing a card or exhausting [hsrmod:ChargeIcon], recover 1 HP, 10 [hsrmod:ChargeIcon] , and remove 1 stack of a random negative effect."
     ]
   },
   "HSRMod:Epiphany": {
@@ -253,7 +259,7 @@
     ]
   },
   "HSRMod:SlashedDream": {
-    "NAME": "SlashedDream",
+    "NAME": "Slashed Dream",
     "DESCRIPTIONS": [
       "After using a card, if it applied a debuff, stack 1 , stacking up to 12. NL At the end of the turn, if amount >=9, lose 9 amount and bounce 3 times: deal #b%d lightning damage (1) to random enemies; finally, deal #b%d + X lightning damage (1) to all enemies (X equals the number of its debuffs).",
       "I  #rweep  #rfor  #rthe  #rdeparted. ",
@@ -261,35 +267,35 @@
     ]
   },
   "HSRMod:AllThingsArePossible": {
-    "NAME": "AllThingsArePossible",
+    "NAME": "All Things are Possible",
     "DESCRIPTIONS": [
       "After playing an attack card, apply 1 DoT effect that the target doesn't already have.",
       "After playing an attack card, if the target has all DoT effects, randomly trigger one. Otherwise, apply 1 that it doesn't already have."
     ]
   },
   "HSRMod:AnExtraPersonsDiary": {
-    "NAME": "AnExtraPersonsDiary",
+    "NAME": "An Extra Person's Diary",
     "DESCRIPTIONS": [
       "Toughness reduction value of DoT +1. After breaking the target, apply 1 random negative effect X times and draw X cards (X is the first digit of its max toughness).",
       "Toughness reduction value of DoT +1. After breaking the target, apply 1 random negative effect X times, draw X cards, and it loses X stacks of Strength (X is the first digit of its max toughness)."
     ]
   },
   "HSRMod:ReignOfKeys": {
-    "NAME": "ReignOfKeys",
+    "NAME": "Reign of Keys",
     "DESCRIPTIONS": [
       "When enemies trigger DoT effects during their turn, draw 1 card. If it triggers outside of their turn, stacks are not reduced.",
       "When enemies trigger DoT effects, draw 1 card. If it triggers outside of their turn, stacks are not reduced."
     ]
   },
   "HSRMod:FuneralOfSensoryPursuivant": {
-    "NAME": "FuneralOfSensoryPursuivant",
+    "NAME": "Funeral of Sensory Pursuivant",
     "DESCRIPTIONS": [
       "After the enemy takes DoT, apply #b%d stacks of #ySuspicion.",
       "After the enemy takes DoT, apply #b%d stacks of #ySuspicion. When applying DoT to enemies, apply #b%d stacks of #ySuspicion."
     ]
   },
   "HSRMod:CommonMortal": {
-    "NAME": "CommonMortal",
+    "NAME": "Common Mortal",
     "DESCRIPTIONS": [
       "After consuming [hsrmod:ChargeIcon] , apply 1 DoT effect to a random enemy. When you apply a DoT effect, gain #b%d [hsrmod:ChargeIcon] .",
       "After consuming [hsrmod:ChargeIcon] , apply 1 DoT effect to a random enemy. When you apply a negative effect, gain #b%d [hsrmod:ChargeIcon] ."
@@ -301,25 +307,23 @@
       "Damage received - #b%d %%."
     ]
   },
-  "HSRMod:TheArchitects": {
-    "NAME": "The Architects",
+  "HSRMod:ResonanceTransfer": {
+    "NAME": "Resonance Transfer",
     "DESCRIPTIONS": [
-      "When you break enemy's Block, deal #b%d damage. For every 10 Block you have, damage + #b%d .",
-      "When you attack an enemy with Block, deal #b%d damage. For every 10 Block you have, damage + #b%d ."
+      "When breaking Block, gain 1 layer of #yQuake , and if the target's #yToughness exceeds #b%d, remove #b%d layers.",
+      "When dealing damage to an enemy with Block, gain 1 layer of #yQuake , and if the target's #yToughness exceeds #b%d, remove #b%d layers."
     ]
   },
   "HSRMod:Trailblazer7": {
     "NAME": "Treasure of the Architects",
     "DESCRIPTIONS": [
-      "At the start of your turn, a random enemy with attack intent gains #b%d Block. NL When you break Block for the first time of the turn, gain #b%d Block.",
-      "At the start of your turn, a random enemy with attack intent gains #b%d Block. NL When you break Block for the first time of the turn, gain #b%d Block."
+      "When dealing damage to an enemy with Block, increase damage and Toughness reduction by #b%d%%."
     ]
   },
   "HSRMod:Trailblazer8": {
     "NAME": "Action Beats Overthinking",
     "DESCRIPTIONS": [
-      "If you have Block, deal #b%d %% more damage to enemies with Block.",
-      "If you have Block, deal #b%d %% more damage to enemies with Block. NL When breaking Block, gain #b%d Block."
+      "When playing a card, deal physical damage to a random enemy equal to  #b%d%% of the card's Block value (2). Draw 1 card when breaking Block."
     ]
   },
   "HSRMod:ChampionsDinnerCatsCradle": {
@@ -327,6 +331,77 @@
     "DESCRIPTIONS": [
       "Charge using cards are regarded as Follow Up cards, when your [hsrmod:ChargeIcon] is full, Follow Up one of them.",
       "Charge using cards are regarded as Follow Up cards, when your [hsrmod:ChargeIcon] is full, Follow Up one of them. You don't need to have enough [hsrmod:ChargeIcon] to Follow Up."
+    ]
+  },"HSRMod:EmpyreanImperium": {
+  "NAME": "Empyrean Imperium",
+  "DESCRIPTIONS": [
+    "For every #b%d times the leftmost card is played, draw 1 card.",
+    "For every #b%d times the leftmost card is played, draw 1 card. Cards costing more than 0 count as 2 cards."
+  ]
+},
+  "HSRMod:RadiantSupreme": {
+    "NAME": "Radiant Supreme",
+    "DESCRIPTIONS": [
+      "For every #b%d single-target attack cards played, draw 1 card and gain 1 layer of #yBoost .",
+      "For every #b%d single-target attack cards played, draw 1 card and gain 1 layer of #yBoost .Upgraded cards count as 2 cards."
+    ]
+  },
+  "HSRMod:SovereignSkybreaker": {
+    "NAME": "Sovereign Skybreaker",
+    "DESCRIPTIONS": [
+      "For every #b%d single-target skill cards played, reduce the cost of a random hand card by 1 this turn and gain 2 layers of #yBoost .",
+      "For every #b%d single-target skill cards played, reduce the cost of a random hand card by 1 this turn and gain 2 layers of #yBoost . Upgraded cards count as 2 cards."
+    ]
+  },
+  "HSRMod:Prey": {
+    "NAME": "Prey",
+    "DESCRIPTIONS": [
+      "for every #b%d attack cards played against the target, remove 1 layer and add #yCelestial #yDive, #yWing #yClip on top of draw pile"
+    ]
+  },
+  "HSRMod:PhenolCompounds": {
+    "NAME": "Phenol Compounds",
+    "DESCRIPTIONS": [
+      "After playing the next #b%d cards this turn, recover [E] equal to the cost of those cards.",
+      "After playing the next card this turn, recover [E] equal to its cost and apply that many layers of #ySpore to a target."
+    ]
+  },
+  "HSRMod:SerfOfCalamity": {
+    "NAME": "Serf of Calamity",
+    "DESCRIPTIONS": [
+      "After dealing damage with a card, apply 1 layer of #ySpore to the target. For every #b%d layers of #ySpore that burst, draw 1 card."
+    ]
+  },
+  "HSRMod:ExcitatoryGland": {
+    "NAME": "Excitatory Gland",
+    "DESCRIPTIONS": [
+      "For every #b%d points of [E] you consume, recover 1 [E]."
+    ]
+  },
+  "HSRMod:SporeDischarge": {
+    "NAME": "Spore Discharge",
+    "DESCRIPTIONS": [
+      "For each [E] you consume, apply 1 layer of #ySpore to a random enemy.",
+      "For each [E] you consume or recover, apply 1 layer of #ySpore to a random enemy."
+    ]
+  },
+  "HSRMod:SilverheartGuards": {
+    "NAME": "Silverheart Guards",
+    "DESCRIPTIONS": [
+      "After consuming Charge, draw #b%d card from the draw pile and gain #b%d Block."
+    ]
+  },
+  "HSRMod:SMR2Amygdala": {
+    "NAME": "SMR-2 Amygdala",
+    "DESCRIPTIONS": [
+      "Gain 1 layer of #yBrain-In-A-Vat at the start of each turn. Charge would always be at least #b%d."
+    ]
+  },
+  "HSRMod:LoadStriatedCortex": {
+    "NAME": "Load: Striated Cortex",
+    "DESCRIPTIONS": [
+      "When playing an AoE attack card, if there are only 1/2/3 enemies, damage +6/4/2.",
+      "When playing an AoE attack card, if there are only 1/2/3 enemies, damage +9/6/3."
     ]
   }
 }

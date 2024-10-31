@@ -110,7 +110,8 @@ public class ElementalDamageAction extends AbstractGameAction {
             if (toughnessPower != null && toughnessPower.amount > 0 && toughnessPower.amount <= info.tr) {
                 int breakDamage = info.elementType.getBreakDamage();
                 addToBot(new BreakDamageAction(target, new DamageInfo(info.owner, breakDamage)));
-                addToBot(info.applyBreakingPower(target));
+                ApplyPowerAction action = info.applyBreakingPower(target);
+                if (action != null) addToBot(action);
                 addToTop(new ApplyPowerAction(target, AbstractDungeon.player, new BrokenPower(target, 1), 1));
             }
             if (toughnessPower != null) {

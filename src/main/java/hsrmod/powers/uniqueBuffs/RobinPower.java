@@ -52,7 +52,7 @@ public class RobinPower extends BuffPower {
 
     @Override
     public void atStartOfTurn() {
-        remove(1);
+        addToBot(new RemoveSpecificPowerAction(owner, owner, this));
         addToBot(new ReducePowerAction(owner, owner, StrengthPower.POWER_ID, amount));
     }
 

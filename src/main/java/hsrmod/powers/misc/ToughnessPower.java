@@ -77,16 +77,16 @@ public class ToughnessPower extends BuffPower {
             AbstractMonster m = (AbstractMonster)c;
             switch (m.type) {
                 case NORMAL:
-                    result = 3;
+                    result = 4;
                     break;
                 case ELITE:
-                    result = 5;
+                    result = 6;
                     break;
                 case BOSS:
                     result = 10;
                     break;
             }
-            result += Math.min(AbstractDungeon.actNum, 4) * result;
+            result *= Math.min(AbstractDungeon.actNum, 4);
         }
         else if (c instanceof AbstractPlayer) {
             result = 50;

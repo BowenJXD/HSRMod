@@ -14,14 +14,18 @@ public class AstralExpress extends BaseCard {
 
     public AstralExpress() {
         super(ID);
+        exhaust = true;
+    }
+
+    @Override
+    public void upgrade() {
+        super.upgrade();
+        exhaust = false;
     }
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         ModHelper.findCards(c -> c.hasTag(AbstractCard.CardTags.STARTER_STRIKE))
-                .forEach(r -> {
-                    if (upgraded && r.card.canUpgrade()) addToBot(new UpgradeSpecificCardAction(r.card));
-                    addToBot(new FollowUpAction(r.card));
-                });
+                .forEach(r -> addToBot(new FollowUpAction(r.card)));
     }
 }

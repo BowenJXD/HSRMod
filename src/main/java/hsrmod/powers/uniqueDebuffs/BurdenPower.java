@@ -24,4 +24,10 @@ public class BurdenPower extends DebuffPower {
             addToBot(new GainEnergyAction(1));
         }
     }
+
+    @Override
+    public void atStartOfTurn() {
+        super.atStartOfTurn();
+        addToBot(new RemoveSpecificPowerAction(owner, owner, this));
+    }
 }

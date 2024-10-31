@@ -3,7 +3,7 @@
     "NAME": "PomPom Blessing",
     "FLAVOR": "\"Ta-da! Here's to the future expeditions we'll be experiencing together!\"",
     "DESCRIPTIONS": [
-      "At battle start, gain [E] equals to the act number, gain #yIntangible . NL After you use a card, gain #b20 #yhsrmod:Charge . #yCharge will be kept to next battle. NL At the end of turn, you can choose to use 20 #yCharge per card to retain cards. NL #rWould #rsomehow #rsave #ryou #rfrom #rdanger... ",
+      "At battle start, gain [E] equals to the act number, gain #yIntangible . NL After you use a card, gain #b20 #yhsrmod:Charge . #yCharge will be kept between battles. NL At the end of turn, you can choose to use 20 #yCharge per card to retain cards. NL #rWould #rsomehow #rsave #ryou #rfrom #rdanger... ",
       "Retain (each costs 20 Charge)",
       "Choose one crew member to sacrifice",
       "I don't want to… be alone…",
@@ -16,7 +16,8 @@
     "NAME": "Galactic Bat",
     "FLAVOR": "\"Rules are made to be broken!\"",
     "DESCRIPTIONS": [
-      "At start of turn, apply #yhsrmod:Toughness to enemies that has no more than 0 #yToughness . NL when dealing elemental damage to enemies, reduce its #yToughness by the reduction value of the damage, if it reaches 0 or below, break the enemy, apply #yhsrmod:Broken, deal break damage and a special effect depending on the element type of the damage. NL The reduction value of a damage is the number in its parenthesis."
+      "Enemies have #yToughness, deal damage to reduce it. NL When #yToughness is reduced to 0, apply #yBroken, deal break damage and an #yeffect #yof #ybreaking depending on the element type of the damage. NL Right click in game to view more detail.",
+      "Enemies have #yhsrmod:Toughness, deal damage to reduce it. NL When #yToughness is reduced to 0, apply #yhsrmod:Broken, deal #ybreak-damage and an #yhsrmod:effect-of-breaking depending on the element type of the damage. NL Right click in game to close detailed info."
     ]
   },
   "HSRMod:WaxOfElation": {
@@ -100,7 +101,7 @@
     "NAME": "Iron Cavalry Against The Scourge",
     "FLAVOR": "Until the flames are completely extinguished, until the insectoids that blot out the sky turn into ashen black earth, until no one remains alive — such a daily routine would continue...",
     "DESCRIPTIONS": [
-      "Your starter strike cards gain #yExhaust , and their #yhsrmod:Toughness reduction value + #b2 ."
+      "Your starter strike cards gain #yExhaust , and their #yhsrmod:Toughness reduction value + #b3 ."
     ]
   },
   "HSRMod:PrisonerInDeepConfinement": {
@@ -115,6 +116,35 @@
     "FLAVOR": "\"Henceforth, I will become a witch, and you will return to being a devil.\" Safina could not deny the validity of Vanira's statement.",
     "DESCRIPTIONS": [
       "Upon gain, all starter defend card gain #yInnate, and its Block + #b2 . NL When shuffling your deck, gain all innate cards."
+    ]
+  },
+  "HSRMod:MusketeerOfWildWheat": {
+    "NAME": "Musketeer of WildWheat",
+    "FLAVOR": "Waking up, there would be traces of damp tears on Oakley's felt hat. As a child, she learned how to shoot a gun only because she had wanted her father's handsome and stylish hat.",
+    "DESCRIPTIONS": [
+      "Upgrade a starter strike upon gain. When using starter strike, draw 1."
+    ]
+  },
+  "HSRMod:PasserbyOfWanderingCloud": {
+    "NAME": "Passerby of Wandering Cloud",
+    "FLAVOR": "If life could be deemed as a continuous journey, then the unnamed wishes to step over the pool of blood made of all whom he deeply resented before reaching his own end.",
+    "DESCRIPTIONS": [
+      "Gain [E] at start of your turn, exhaust [E] if the number of start strike in your hand is less than 2."
+    ]
+  },
+  "HSRMod:TheWindSoaringValorous": {
+    "NAME": "The Wind Soaring Valorous",
+    "FLAVOR": "She quickened her pace, barefoot and agile, with the girl closely chasing after her. Or perhaps, they were both chasing after each other.",
+    "DESCRIPTIONS": [
+      "All starter strike becomes AoE at start of battle. When using starter strike, gain #b40 [hsrmod:chargeIcon] ."
+    ]
+  },
+  "HSRMod:MasterOfDreamMachinations": {
+    "NAME": "Master of Dream Machinations",
+    "FLAVOR": "The more people want to discover the truth, the more they will be blinded by lies... Amidst the thousands of legends and rumors, this superstar of the festivities will only leave his footprints, but never his face",
+    "DESCRIPTIONS": [
+      "Gain #yAstral #yExpress upon gain. You can right click this relic in shop to use some gold to transform a card.",
+      "Transform a card"
     ]
   },
   "HSRMod:March7th": {

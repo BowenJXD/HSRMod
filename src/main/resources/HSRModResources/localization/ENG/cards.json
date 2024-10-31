@@ -70,9 +70,50 @@
       "Tonight, the stars echo because of me."
     ]
   },
+  "HSRMod:Sparkle1": {
+    "EXTENDED_DESCRIPTION": [
+      "The life of a faker~"
+    ]
+  },
   "HSRMod:Sparkle2": {
     "EXTENDED_DESCRIPTION": [
       "The life of a faker~"
+    ]
+  },
+  "HSRMod:Sparkle3": {
+    "EXTENDED_DESCRIPTION": [
+      "The life of a faker~"
+    ]
+  },
+  "HSRMod:DestinysThreadsForewoven": {
+    "EXTENDED_DESCRIPTION": [
+      "Exhaust"
+    ]
+  },
+  "HSRMod:March7th4": {
+    "EXTENDED_DESCRIPTION": [
+      "be master"
+    ]
+  },
+  "HSRMod:FinalVictor": {
+    "EXTENDED_DESCRIPTION": [
+      "upgrade permanently"
+    ]
+  },
+  "HSRMod:ImbibitorLunae2": {
+    "EXTENDED_DESCRIPTION": [
+      "Exhaust"
+    ]
+  },
+  "HSRMod:Lingsha2": {
+    "EXTENDED_DESCRIPTION": [
+      "follow up"
+    ]
+  },
+  "HSRMod:PenMan": {
+    "EXTENDED_DESCRIPTION": [
+      "discard to gain %d Charge",
+      "discard to gain %d Charge, or consume energy and gain double Charge"
     ]
   }
 }

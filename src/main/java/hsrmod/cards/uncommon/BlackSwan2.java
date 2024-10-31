@@ -25,12 +25,6 @@ public class BlackSwan2 extends BaseCard {
     }
 
     @Override
-    public void upgrade() {
-        super.upgrade();
-        isInnate = true;
-    }
-
-    @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(m, p, new BleedingPower(m, p, bleedStackNum), bleedStackNum));
         addToBot(new ApplyPowerAction(m, p, new BurnPower(m, p, burnStackNum), burnStackNum));

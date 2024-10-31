@@ -2,6 +2,7 @@ package hsrmod.relics.boss;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.cards.BaseCard;
 import hsrmod.relics.BaseRelic;
 import hsrmod.utils.ModHelper;
@@ -14,6 +15,16 @@ public class IronCavalryAgainstTheScourge extends BaseRelic {
     }
 
     @Override
+    public void onEquip() {
+        super.onEquip();
+        AbstractDungeon.player.masterDeck.group.forEach(c -> {
+            if (c.hasTag(AbstractCard.CardTags.STARTER_STRIKE)) {
+                c.exhaust = true;
+            }
+        });
+    }
+
+    @Override
     public void atBattleStart() {
         super.atBattleStart();
         flash();
@@ -22,7 +33,7 @@ public class IronCavalryAgainstTheScourge extends BaseRelic {
                     if (r.card instanceof BaseCard) {
                         BaseCard c = (BaseCard) r.card;
                         c.exhaust = true;
-                        c.tr = c.baseTr += 2;
+                        c.tr = c.baseTr += 3;
                     }
                 });
     }

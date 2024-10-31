@@ -26,21 +26,6 @@ public class Yanqing1 extends BaseCard {
     }
 
     @Override
-    public boolean canUpgrade() {
-        return true;
-    }
-
-    @Override
-    public void upgrade() {
-        upgradeDamage(magicNumber);
-        this.timesUpgraded++;
-        this.upgraded = true;
-        this.name = DataManager.getInstance().getCardData(ID, CardDataCol.Name) + "+" + this.timesUpgraded;
-        initializeTitle();
-        this.initializeDescription();
-    }
-
-    @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         if (AbstractDungeon.cardRandomRng.random(100) < 60) {
             AbstractCard card = new Yanqing2();

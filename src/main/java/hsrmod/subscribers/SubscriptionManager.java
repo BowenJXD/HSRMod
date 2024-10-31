@@ -237,7 +237,9 @@ public class SubscriptionManager {
     
     public static boolean checkSubscriber(AbstractPower power){
         boolean result = (power.owner == AbstractDungeon.player && AbstractDungeon.player.powers.contains(power)) 
-                || (AbstractDungeon.getMonsters().monsters.contains(power.owner));
+                || (AbstractDungeon.getMonsters() != null 
+                && AbstractDungeon.getMonsters().monsters != null 
+                && AbstractDungeon.getMonsters().monsters.contains(power.owner));
         if (!result && power instanceof ISubscriber) {
             BaseMod.unsubscribeLater((ISubscriber) power);
             getInstance().unsubscribeLater((ISubscriber) power);

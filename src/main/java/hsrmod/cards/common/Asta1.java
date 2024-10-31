@@ -39,6 +39,7 @@ public class Asta1 extends BaseCard {
                     }
                 }
         );
-        this.addToBot(new BouncingAction(m, magicNumber, elementalDamageAction, this));
+        this.addToBot(new BouncingAction(m, energyOnUse + magicNumber, elementalDamageAction, this));
+        p.energy.use(energyOnUse);
     }
 }

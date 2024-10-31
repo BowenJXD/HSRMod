@@ -12,7 +12,7 @@ import hsrmod.subscribers.SubscriptionManager;
 public class BreakEfficiencyPower extends BuffPower implements ISetToughnessReductionSubscriber {
     public static final String POWER_ID = HSRMod.makePath(BreakEfficiencyPower.class.getSimpleName());
 
-    public static final float MULTIPLIER = 1f / 2f;
+    public static final float MULTIPLIER = 1f;
 
     public BreakEfficiencyPower(AbstractCreature owner, int Amount) {
         super(POWER_ID, owner, Amount);
@@ -29,7 +29,7 @@ public class BreakEfficiencyPower extends BuffPower implements ISetToughnessRedu
         super.onInitialApplication();
         SubscriptionManager.subscribe(this, true);
     }
-    
+
     public void onRemove() {
         super.onRemove();
         SubscriptionManager.unsubscribe(this);

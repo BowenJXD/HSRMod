@@ -150,8 +150,7 @@ public abstract class BaseCard extends CustomCard implements SpawnModificationCa
         super.update();
         if (!AbstractDungeon.isPlayerInDungeon()
                 || AbstractDungeon.player == null 
-                || AbstractDungeon.player.hand == null 
-                || AbstractDungeon.player.hand.isEmpty()){
+                || AbstractDungeon.player.hand == null){
             inHand = false;
             inBattle = false;
             return;

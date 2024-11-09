@@ -140,7 +140,7 @@
   "HSRMod:ProofOfDebt": {
     "NAME": "负债证明",
     "DESCRIPTIONS": [
-      "受到的追击攻击牌的伤害+ #b%d 。追击选择目标时，优先选择其。"
+      "受到的追击牌的伤害+ #b%d 。追击选择目标时，优先选择其。"
     ]
   },
   "HSRMod:WisemansFolly": {

@@ -79,8 +79,9 @@ public class AventurinePower extends PowerPower implements OnPlayerDamagedSubscr
 
     void trigger() {
         reducePower(triggerAmount);
-
-        addToBot(new MakeTempCardInHandAction(new Aventurine3()));
+        if (AbstractDungeon.player.hand.size() < BaseMod.MAX_HAND_SIZE) {
+            addToTop(new MakeTempCardInHandAction(new Aventurine3()));
+        }
     }
 
     @Override

@@ -12,6 +12,8 @@ import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
+import hsrmod.subscribers.PreElementalDamageSubscriber;
+import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
 import java.util.HashMap;
@@ -19,16 +21,13 @@ import java.util.Map;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
-public class Herta1 extends BaseCard {
+public class Herta1 extends BaseCard implements PreElementalDamageSubscriber {
     public static final String ID = Herta1.class.getSimpleName();
-
-    private Map<String, Boolean> enemyHealthIsHalf;
 
     public Herta1() {
         super(ID);
         this.tags.add(FOLLOW_UP);
         this.isMultiDamage = true;
-        enemyHealthIsHalf = new HashMap<>();
     }
 
     @Override
@@ -40,45 +39,28 @@ public class Herta1 extends BaseCard {
 
     @Override
     public void onEnterHand() {
-        updateEnemyHealthIsHalf();
+        SubscriptionManager.subscribe(this);
     }
 
     @Override
     public void triggerAtStartOfTurn() {
-        updateEnemyHealthIsHalf();
+        SubscriptionManager.unsubscribe(this);
     }
-
+    
     @Override
-    public void triggerOnOtherCardPlayed(AbstractCard c) {
-        if (!AbstractDungeon.player.hand.contains(this)) return;
-        if (!followedUp) {
-            ModHelper.addToBotAbstract(() -> {
-                ModHelper.addToBotAbstract(() -> {
-                    if (updateEnemyHealthIsHalf()) {
-                        followedUp = true;
-                        addToBot(new FollowUpAction(this));
-                    }
-                });
+    public float preElementalDamage(ElementalDamageAction action, float dmg) {
+        if (SubscriptionManager.checkSubscriber(this)
+                && inHand
+                && !followedUp
+                && action.target != null
+                && action.target.currentHealth > action.target.maxHealth / 2) {
+            ModHelper.addToTopAbstract(() -> {
+                if (action.target.currentHealth <= action.target.maxHealth / 2) {
+                    followedUp = true;
+                    addToTop(new FollowUpAction(this));
+                }
             });
         }
-    }
-
-    /**
-     * @return true if changed
-     */
-    public boolean updateEnemyHealthIsHalf() {
-        boolean result = false;
-        for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters) {
-            if (enemyHealthIsHalf.containsKey(monster.id) && monster.isDeadOrEscaped()) {
-                enemyHealthIsHalf.remove(monster.id);
-            }
-
-            boolean isHalf = monster.currentHealth <= monster.maxHealth / 2;
-            if (enemyHealthIsHalf.containsKey(monster.id) && enemyHealthIsHalf.get(monster.id) != isHalf) {
-                result = true;
-            }
-            enemyHealthIsHalf.put(monster.id, isHalf);
-        }
-        return result;
+        return dmg;
     }
 }

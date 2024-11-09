@@ -140,7 +140,7 @@
   "HSRMod:ProofOfDebt": {
     "NAME": "Proof of Debt",
     "DESCRIPTIONS": [
-      "Damage from Follow Up attack cards is increased by #b%d. The target of the Follow Up attack is prioritized."
+      "Damage from Follow Up cards is increased by #b%d. The target of the Follow Up attack is prioritized."
     ]
   },
   "HSRMod:WisemansFolly": {

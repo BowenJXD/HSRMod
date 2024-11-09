@@ -60,8 +60,9 @@ public class RobinPower extends BuffPower {
     public void onPlayCard(AbstractCard card, AbstractMonster m) {
         flash();
         if (card.type == AbstractCard.CardType.ATTACK && (card.costForTurn > 0 || card.cost == -1)) {
-            addToBot(new ApplyPowerAction(owner, owner, new StrengthPower(owner, 1), 1));
-            amount += card.cost == -1 ? card.energyOnUse : card.costForTurn;
+            int amt = card.cost == -1 ? card.energyOnUse : card.costForTurn;
+            addToBot(new ApplyPowerAction(owner, owner, new StrengthPower(owner, amt), amt));
+            amount += amt;
             if (card.hasTag(FOLLOW_UP) && upgraded) addToBot(new ApplyPowerAction(owner, owner, new EnergyPower(owner, 20), 20));
         }
     }

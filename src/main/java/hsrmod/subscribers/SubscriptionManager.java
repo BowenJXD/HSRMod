@@ -5,6 +5,7 @@ import basemod.interfaces.ISubscriber;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
 import hsrmod.powers.misc.DoTPower;
@@ -19,6 +20,7 @@ public class SubscriptionManager {
     private static SubscriptionManager instance = null;
     
     List<ISubscriber> toRemove = new ArrayList<>();
+    List<PreElementalDamageSubscriber> preElementalDamageSubscribers = new ArrayList<>();
     List<PreBreakDamageSubscriber> preBreakDamageSubscribers = new ArrayList<>();
     List<PreToughnessReduceSubscriber> preToughnessReduceSubscribers = new ArrayList<>();
     List<PreDoTDamageSubscriber> preDoTDamageSubscribers = new ArrayList<>();
@@ -46,7 +48,12 @@ public class SubscriptionManager {
     }
 
     public void subscribeHelper(ISubscriber sub, boolean addToFront) {
-        if (sub instanceof PreBreakDamageSubscriber
+        if (sub instanceof PreElementalDamageSubscriber
+                && !preElementalDamageSubscribers.contains(sub)) {
+            if (addToFront) preElementalDamageSubscribers.add(0, (PreElementalDamageSubscriber) sub);
+            else preElementalDamageSubscribers.add((PreElementalDamageSubscriber) sub);
+        }
+        else if (sub instanceof PreBreakDamageSubscriber
             && !preBreakDamageSubscribers.contains(sub)) {
             if (addToFront) preBreakDamageSubscribers.add(0, (PreBreakDamageSubscriber) sub); 
             else preBreakDamageSubscribers.add((PreBreakDamageSubscriber) sub);
@@ -93,7 +100,10 @@ public class SubscriptionManager {
     }
     
     public void unsubscribeHelper(ISubscriber subscriber) {
-        if (subscriber instanceof PreBreakDamageSubscriber) {
+        if (subscriber instanceof PreElementalDamageSubscriber) {
+            preElementalDamageSubscribers.remove(subscriber);
+        }
+        else if (subscriber instanceof PreBreakDamageSubscriber) {
             preBreakDamageSubscribers.remove(subscriber);
         }
         else if (subscriber instanceof PreToughnessReduceSubscriber) {
@@ -129,6 +139,18 @@ public class SubscriptionManager {
                 unsubscribe(sub);
             }
         }
+    }
+    
+    public float triggerPreElementalDamage(ElementalDamageAction action) {
+        float result = action.info.output;
+        
+        for (PreElementalDamageSubscriber sub : preElementalDamageSubscribers) {
+            result = sub.preElementalDamage(action, result);
+        }
+        
+        unsubscribeLaterHelper(PreElementalDamageSubscriber.class);
+        
+        return result;
     }
     
     public float triggerPreBreakDamage(float amount, AbstractCreature target) {

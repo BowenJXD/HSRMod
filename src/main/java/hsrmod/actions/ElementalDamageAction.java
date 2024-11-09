@@ -99,7 +99,9 @@ public class ElementalDamageAction extends AbstractGameAction {
         // Reduce toughness
         AbstractPower toughnessPower = this.target.getPower(ToughnessPower.POWER_ID);
         info.tr = (int) SubscriptionManager.getInstance().triggerPreToughnessReduce(info.tr, this.target, info.elementType);
-
+        // Trigger PreElementalDamageAction
+        info.output = (int) SubscriptionManager.getInstance().triggerPreElementalDamage(this);
+        
         // Apply damage
         this.target.damage(this.info);
         if (callback != null) addToTop(new TriggerCallbackAction(this.callback, this.target));

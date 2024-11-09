@@ -26,7 +26,7 @@
   },
   "HSRMod:Bronya1": {
     "EXTENDED_DESCRIPTION": [
-      "get from draw pile."
+      "Select a card to obtain from draw pile."
     ]
   },
   "HSRMod:Luocha1": {
@@ -82,7 +82,8 @@
   },
   "HSRMod:Sparkle3": {
     "EXTENDED_DESCRIPTION": [
-      "The life of a faker~"
+      "The life of a faker~",
+      "Select a card to obtain from discard pile."
     ]
   },
   "HSRMod:DestinysThreadsForewoven": {

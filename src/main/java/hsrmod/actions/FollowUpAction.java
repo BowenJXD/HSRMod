@@ -31,6 +31,11 @@ public class FollowUpAction extends AbstractGameAction {
 
     public void update() {
         if (this.duration == Settings.ACTION_DUR_FAST) {
+            if (AbstractDungeon.actionManager.turnHasEnded) {
+                this.isDone = true;
+                return;
+            }
+            
             ModHelper.findCards((c) -> c.uuid.equals(card.uuid)).forEach((r) -> r.group.removeCard(r.card));
             AbstractDungeon.getCurrRoom().souls.remove(card); // ?
             AbstractDungeon.player.limbo.group.add(card);
@@ -47,7 +52,7 @@ public class FollowUpAction extends AbstractGameAction {
                 for (AbstractCreature m : AbstractDungeon.getCurrRoom().monsters.monsters) {
                     if (!m.isDeadOrEscaped() && m.hasPower(ProofOfDebtPower.POWER_ID)) {
                         target = m;
-                        card.damage += ModHelper.getPowerCount(m, ProofOfDebtPower.POWER_ID);
+                        // card.damage += ModHelper.getPowerCount(m, ProofOfDebtPower.POWER_ID);
                         break;
                     }
                 }
@@ -66,7 +71,7 @@ public class FollowUpAction extends AbstractGameAction {
             if (!Settings.FAST_MODE) {
                 this.addToTop(new WaitAction(Settings.ACTION_DUR_MED));
             } else {
-                this.addToTop(new WaitAction(Settings.ACTION_DUR_FASTER));
+                this.addToTop(new WaitAction(Settings.ACTION_DUR_XFAST));
             }
 
             this.isDone = true;

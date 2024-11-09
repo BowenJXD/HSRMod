@@ -1,5 +1,6 @@
 package hsrmod.characters;
 
+import basemod.BaseMod;
 import basemod.abstracts.CustomPlayer;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;

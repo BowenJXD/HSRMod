@@ -31,7 +31,7 @@ public class DataManager {
     public static final String RELIC_JSON = "HSRModResources/localization/ZHS/relics.json";
     
     private DataManager() {
-        if (Settings.language == Settings.GameLanguage.ZHS) {
+        if (Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT) {
             cardData = parseCSV(CARD_CSV_ZHS);
         } else {
             cardData = parseCSV(CARD_CSV_ENG);

@@ -1,8 +1,9 @@
 package hsrmod.powers;
 
+import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
-public abstract class PowerPower extends BasePower {
+public abstract class PowerPower extends BasePower implements NonStackablePower {
     public PowerPower(String id, int Amount, boolean upgraded){
         super(id, AbstractDungeon.player, Amount, PowerType.BUFF, upgraded);
     }

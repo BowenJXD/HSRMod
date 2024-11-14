@@ -46,7 +46,7 @@ public class Xueyi1 extends BaseCard implements PreToughnessReduceSubscriber {
         AbstractPower power = mo.getPower(ToughnessPower.POWER_ID);
         if (power == null) return;
         
-        baseDamage = ModHelper.getPowerCount(mo, ToughnessPower.POWER_ID);
+        baseDamage = Math.abs(ModHelper.getPowerCount(mo, ToughnessPower.POWER_ID));
         this.calculateCardDamage(mo);
         
         if (damage > 0) {

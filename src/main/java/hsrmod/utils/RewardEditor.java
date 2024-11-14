@@ -1,5 +1,6 @@
 package hsrmod.utils;
 
+import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.SpawnModificationCard;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -114,7 +115,7 @@ public class RewardEditor {
                 continue;
             }
 
-            AbstractCard newCard = getCard(card.rarity);
+            AbstractCard newCard = getCard(card.rarity, reward.cards);
 
             if (newCard == null || reward.cards.stream().anyMatch(c -> Objects.equals(c.cardID, newCard.cardID))) {
                 continue;
@@ -128,7 +129,7 @@ public class RewardEditor {
         }
     }
 
-    public AbstractCard getCard(AbstractCard.CardRarity rarity) {
+    public AbstractCard getCard(AbstractCard.CardRarity rarity, ArrayList<AbstractCard> currentRewardCards) {
         CardGroup group = null;
         switch (rarity) {
             case COMMON:
@@ -151,6 +152,7 @@ public class RewardEditor {
         ArrayList<AbstractCard> cards = group.group.stream()
                 .filter(c -> c.hasTag(tag))
                 .filter(c -> AbstractDungeon.player.masterDeck.group.stream().noneMatch(card -> c.uuid == card.uuid))
+                .filter(c -> c instanceof SpawnModificationCard && ((SpawnModificationCard) c).canSpawn(currentRewardCards))
                 .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
 
         if (cards.isEmpty()) return null;

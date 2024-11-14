@@ -48,7 +48,9 @@ public class BefogPower extends DebuffPower implements PreToughnessReduceSubscri
 
     @Override
     public float preToughnessReduce(float amount, AbstractCreature target, ElementType elementType) {
-        if (SubscriptionManager.checkSubscriber(this) && ModHelper.getPowerCount(ToughnessPower.POWER_ID) - amount <= 0) {
+        if (SubscriptionManager.checkSubscriber(this) 
+                && ModHelper.getPowerCount(target, ToughnessPower.POWER_ID) > 0 
+                && ModHelper.getPowerCount(target, ToughnessPower.POWER_ID) - amount <= 0) {
             this.flash();
             addToBot(new GainEnergyAction(this.amount));
             addToBot(new DrawCardAction(this.amount));

@@ -13,6 +13,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.monsters.exordium.SlimeBoss;
+import com.megacrit.cardcrawl.relics.UnceasingTop;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToDrawPileEffect;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.RandomCardFromDrawPileToHandAction;
@@ -26,7 +28,6 @@ public class Danheng1 extends BaseCard {
     
     public Danheng1(){
         super(ID);
-        tags.add(CustomEnums.ENERGY_COSTING);
     }
 
     @Override
@@ -42,13 +43,18 @@ public class Danheng1 extends BaseCard {
                 new ElementalDamageInfo(this), 
                 AbstractGameAction.AttackEffect.SLASH_DIAGONAL
         ));
-        ModHelper.addToBotAbstract(() -> ModHelper.addToBotAbstract(() -> {
-            if (p.discardPile.contains(this)) {
-                p.discardPile.removeCard(this);
-                AbstractDungeon.effectList.add(
-                        new ShowCardAndAddToDrawPileEffect(this, (float) Settings.WIDTH / 2.0F, 
-                                (float) Settings.HEIGHT / 2.0F, true, true));
+        ModHelper.addToBotAbstract(() -> {
+            if (p.hand.isEmpty() && p.drawPile.isEmpty() && p.hasRelic(UnceasingTop.ID)) {
+                addToTop(new DrawCardAction(1));
             }
-        }));
+            ModHelper.addToBotAbstract(() -> {
+                if (p.discardPile.contains(this)) {
+                    p.discardPile.removeCard(this);
+                    AbstractDungeon.effectList.add(
+                            new ShowCardAndAddToDrawPileEffect(this, (float) Settings.WIDTH / 2.0F,
+                                    (float) Settings.HEIGHT / 2.0F, true, true));
+                }
+            });
+        });
     }
 }

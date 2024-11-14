@@ -1,3 +1,4 @@
+/*
 package hsrmod.cardsV2.TheHunt;
 
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
@@ -37,3 +38,4 @@ public class GalaxyRanger extends BaseCard {
         TEXT = CardCrawlGame.languagePack.getUIString("DiscardAction").TEXT;
     }
 }
+*/

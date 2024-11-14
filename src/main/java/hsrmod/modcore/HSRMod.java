@@ -124,6 +124,7 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
 
     @Override
     public void receiveAddAudio() {
+        addAudio("Stelle1");
         addAudio("Aventurine1");
         addAudio("Firefly1-1");
         addAudio("Firefly1-2");
@@ -131,10 +132,12 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         addAudio("JingYuan1");
         addAudio("Kafka2");
         addAudio("Robin2");
-        addAudio("Acheron1");
         addAudio("SlashedDream1");
         addAudio("SlashedDream2");
-        addAudio("Stelle1");
+        addAudio("Feixiao2");
+        addAudio("Sparkle2");
+        addAudio("Gepard1");
+        addAudio("Argenti1");
     }
     
     void addAudio(String id){
@@ -143,7 +146,7 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
     
     public void updateLanguage()
     {
-        if (language == Settings.GameLanguage.ZHS) {
+        if (language == Settings.GameLanguage.ZHS || language == Settings.GameLanguage.ZHT) {
             lang = "ZHS";
         }
         else {

@@ -16,7 +16,7 @@ public class MusketeerOfWildWheat extends BaseRelic {
     @Override
     public void onEquip() {
         super.onEquip();
-        AbstractDungeon.player.masterDeck.group.stream().filter(c -> c.hasTag(AbstractCard.CardTags.STARTER_STRIKE) && c.canUpgrade()).findFirst().ifPresent(AbstractCard::upgrade);
+        AbstractDungeon.player.masterDeck.group.stream().filter(c -> c.hasTag(AbstractCard.CardTags.STARTER_STRIKE) && c.canUpgrade()).forEach(AbstractCard::upgrade);
     }
 
     @Override

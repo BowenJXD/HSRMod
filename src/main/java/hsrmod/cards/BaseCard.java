@@ -178,7 +178,7 @@ public abstract class BaseCard extends CustomCard implements SpawnModificationCa
                 || SubscriptionManager.getInstance().triggerCheckUsable(this)) {
             return true;
         }
-        cantUseMessage = Settings.language == Settings.GameLanguage.ZHS ? "我没有足够的充能。" : "I don't have enough charge.";
+        cantUseMessage = Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT ? "我没有足够的充能。" : "I don't have enough charge.";
         return false;
     }
 
@@ -195,6 +195,9 @@ public abstract class BaseCard extends CustomCard implements SpawnModificationCa
     private boolean checkSpawnable() {
         int count = AbstractDungeon.player.masterDeck.group.stream().mapToInt(c -> c.cardID.equals(this.cardID) ? 1 : 0).sum();
 
+        if (count > 0 && type == CardType.POWER) {
+            return false;
+        }
         if (AbstractDungeon.cardRng.random(99) < ((checkPath() ? 100 : 50 * versatility) / (count + 1))) {
             return true;
         }

@@ -77,7 +77,8 @@
   },
   "HSRMod:Sparkle2": {
     "EXTENDED_DESCRIPTION": [
-      "假货的命~"
+      "假货的命~",
+      "愚者千面，游戏人间。"
     ]
   },
   "HSRMod:Sparkle3": {
@@ -115,6 +116,21 @@
     "EXTENDED_DESCRIPTION": [
       "弃置以获得 %d 充能",
       "弃置以获得 %d 充能，若不弃置，则消耗能量并获得双倍充能。"
+    ]
+  },
+  "HSRMod:Feixiao2": {
+    "EXTENDED_DESCRIPTION": [
+      "大捷，已定！"
+    ]
+  },
+  "HSRMod:Gepard1": {
+    "EXTENDED_DESCRIPTION": [
+      "历经冰雪，铸成此志，永不终结！"
+    ]
+  },
+  "HSRMod:Argenti1": {
+    "EXTENDED_DESCRIPTION": [
+      "献给……伊德莉拉。"
     ]
   }
 }

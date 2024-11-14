@@ -1,3 +1,4 @@
+/*
 package hsrmod.cards.common;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -41,3 +42,4 @@ public class Sushang1 extends BaseCard {
         );
     }
 }
+*/

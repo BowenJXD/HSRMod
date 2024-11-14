@@ -31,13 +31,7 @@ public class SkinSelectScreen implements ISubscriber, CustomSavable<Integer> {
     public String nextName = "";
 
     static {
-        /*SKINS.add(new Skin("img/char/ShiBin_f.png", ", "", ""));
-                SKINS.add(new Skin("img/char/JieXuSheng.png", ", ", "PoJun1", true));
-        SKINS.add(new Skin("img/char/ShenGanNing.png", ", ", "JieYing", true));
-        SKINS.add(new Skin("img/char/XiaoQiao.png", ", "", ""));
-                SKINS.add(new Skin("img/char/SunShangXiang.png", ", ", "LiangZhu"));
-        SKINS.add(new Skin("img/char/BaoSanNiang.png", ", "", "ShuYong"));*/
-        if (Settings.language == Settings.GameLanguage.ZHS) {
+        if (Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT) {
             SKINS.add(new Skin("HSRModResources/img/char/TrailblazeLogo.png", "开拓命途", "开拓属于你的道路", Path.TRAILBLAZE));
             SKINS.add(new Skin("HSRModResources/img/char/ElationLogo.png", "欢愉命途", "通过追击进行输出", Path.ELATION));
             SKINS.add(new Skin("HSRModResources/img/char/DestructionLogo.png", "毁灭命途", "通过击破进行输出", Path.DESTRUCTION));
@@ -57,7 +51,6 @@ public class SkinSelectScreen implements ISubscriber, CustomSavable<Integer> {
             SKINS.add(new Skin("HSRModResources/img/char/PropagationLogo.png", "Propagation", "Damage through energy", Path.PROPAGATION));
             SKINS.add(new Skin("HSRModResources/img/char/EruditionLogo.png", "Erudition", "Damage through charge", Path.ERUDITION));
         }
-        // SKINS.add(new Skin("HSRModResources/img/char/TrailblazeLogo.png", "开拓命途", "无特殊效果", "Trailblaze"));
     }
 
     public static SkinSelectScreen Inst = new SkinSelectScreen();

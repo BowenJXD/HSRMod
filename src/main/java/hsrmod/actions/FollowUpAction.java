@@ -33,6 +33,9 @@ public class FollowUpAction extends AbstractGameAction {
         if (this.duration == Settings.ACTION_DUR_FAST) {
             if (AbstractDungeon.actionManager.turnHasEnded) {
                 this.isDone = true;
+                if (card instanceof BaseCard){
+                    ((BaseCard) card).followedUp = false;
+                }
                 return;
             }
             

@@ -20,7 +20,7 @@ public class TopazNumby3 extends BaseCard {
     
     public TopazNumby3() {
         super(ID);
-        tags.add(FOLLOW_UP);
+        // tags.add(FOLLOW_UP);
     }
     
     @Override

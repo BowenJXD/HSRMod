@@ -77,7 +77,8 @@
   },
   "HSRMod:Sparkle2": {
     "EXTENDED_DESCRIPTION": [
-      "The life of a faker~"
+      "The life of a faker~",
+      "A thousand faces in a thousand places..."
     ]
   },
   "HSRMod:Sparkle3": {
@@ -115,6 +116,21 @@
     "EXTENDED_DESCRIPTION": [
       "discard to gain %d Charge",
       "discard to gain %d Charge, or consume energy and gain double Charge"
+    ]
+  },
+  "HSRMod:Feixiao2": {
+    "EXTENDED_DESCRIPTION": [
+      "Victory is inevitable!"
+    ]
+  },
+  "HSRMod:Gepard1": {
+    "EXTENDED_DESCRIPTION": [
+      "Years of cold hardens the will. We shall never fall!"
+    ]
+  },
+  "HSRMod:Argenti1": {
+    "EXTENDED_DESCRIPTION": [
+      "...For Idrila."
     ]
   }
 }

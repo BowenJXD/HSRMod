@@ -20,6 +20,7 @@ public class Aventurine3 extends BaseCard {
     public Aventurine3() {
         super(ID);
         exhaust = true;
+        selfRetain = true;
         tags.add(CustomEnums.FOLLOW_UP);
     }
 

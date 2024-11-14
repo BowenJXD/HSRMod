@@ -342,15 +342,15 @@
   "HSRMod:RadiantSupreme": {
     "NAME": "Radiant Supreme",
     "DESCRIPTIONS": [
-      "For every #b%d single-target attack cards played, draw 1 card and gain 1 layer of #yBoost .",
-      "For every #b%d single-target attack cards played, draw 1 card and gain 1 layer of #yBoost .Upgraded cards count as 2 cards."
+      "Upon using card, stack 1 for each condition met: 1. Single-target, 2. Attack card. For every #b%d layer stacked, draw 1 and gain 1 #yBoost.",
+      "Upon using card, stack 1 for each condition met: 1. Single-target card, 2. Attack card, 3. Upgraded card. For every #b%d layer stacked, draw 1 and gain 1 #yBoost."
     ]
   },
   "HSRMod:SovereignSkybreaker": {
     "NAME": "Sovereign Skybreaker",
     "DESCRIPTIONS": [
-      "For every #b%d single-target skill cards played, reduce the cost of a random hand card by 1 this turn and gain 2 layers of #yBoost .",
-      "For every #b%d single-target skill cards played, reduce the cost of a random hand card by 1 this turn and gain 2 layers of #yBoost . Upgraded cards count as 2 cards."
+      "Upon using card, stack 1 for each condition met: 1. Single Target, 2. Skill card. For every #b%d layer stacked, a random card's cost -1 for this turn, and gain 2 #yBoost.",
+      "Upon using card, stack 1 for each condition met: 1. Single Target, 2. Skill card, 3. Upgraded card. For every #b%d layer stacked, a random card's cost -1 for this turn, and gain 2 #yBoost."
     ]
   },
   "HSRMod:Prey": {
@@ -402,6 +402,13 @@
     "DESCRIPTIONS": [
       "When playing an AoE attack card, if there are only 1/2/3 enemies, damage +6/4/2.",
       "When playing an AoE attack card, if there are only 1/2/3 enemies, damage +9/6/3."
+    ]
+  },
+  "HSRMod:CloudflameLuster": {
+    "NAME": "Cloudflame Luster",
+    "DESCRIPTIONS": [
+      "Upon break, adjust toughness to #b%d.",
+      "Upon break, adjust toughness to #b%d, and gain [E]."
     ]
   }
 }

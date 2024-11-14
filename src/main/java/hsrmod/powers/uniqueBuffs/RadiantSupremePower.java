@@ -38,8 +38,14 @@ public class RadiantSupremePower extends PowerPower {
     @Override
     public void onAfterUseCard(AbstractCard card, UseCardAction action) {
         super.onAfterUseCard(card, action);
-        if (card.type == AbstractCard.CardType.ATTACK && action.target != null) {
-            stackPower(card.upgraded ? 2 : 1);
+        if (card.type == AbstractCard.CardType.ATTACK) {
+            stackPower(1);
+        }
+        if (card.type != AbstractCard.CardType.POWER && (card.target == AbstractCard.CardTarget.SELF || card.target == AbstractCard.CardTarget.ENEMY)) {
+            stackPower(1);
+        }
+        if (upgraded && card.upgraded){
+            stackPower(1);
         }
     }
 }

@@ -17,7 +17,7 @@ public class RuanMei2 extends BaseCard {
         super(ID);
         energyCost = 130;
         tags.add(CustomEnums.ENERGY_COSTING);
-        
+        tags.add(CustomEnums.RUAN_MEI);
     }
 
     @Override

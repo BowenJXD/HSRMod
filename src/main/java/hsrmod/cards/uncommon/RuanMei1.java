@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
 import hsrmod.powers.misc.BreakEffectPower;
 import hsrmod.powers.misc.BreakEfficiencyPower;
 import hsrmod.powers.uniqueDebuffs.ThanatoplumRebloomPower;
@@ -15,6 +16,7 @@ public class RuanMei1 extends BaseCard {
 
     public RuanMei1() {
         super(ID);
+        tags.add(CustomEnums.RUAN_MEI);
     }
 
     @Override

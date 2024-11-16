@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import com.megacrit.cardcrawl.random.Random;
+import hsrmod.modcore.HSRMod;
 
 import java.util.*;
 import java.util.function.Predicate;
@@ -198,5 +199,9 @@ public class ModHelper {
                 return (AbstractMonster)tmp.get(rng.random(0, tmp.size() - 1));
             }
         }
+    }
+    
+    public static boolean hasRelic(String relicID) {
+        return AbstractDungeon.player.hasRelic(HSRMod.makePath(relicID));
     }
 }

@@ -13,6 +13,11 @@ public class AngelTypeIOUDispenser extends BaseRelic {
     public AngelTypeIOUDispenser() {
         super(ID);
     }
+    
+    public AngelTypeIOUDispenser(int initialCounter) {
+        super(ID);
+        magicNumber = initialCounter;
+    }
 
     @Override
     public void onEquip() {
@@ -31,10 +36,10 @@ public class AngelTypeIOUDispenser extends BaseRelic {
             AbstractDungeon.combatRewardScreen.rewards.removeIf(rewardItem -> rewardItem.type == RewardItem.RewardType.GOLD);
             currRoom = AbstractDungeon.getCurrRoom();
             counter--;
-            if (counter <= 0) {
-                doubleGold();
-                destroy();
-            }
+        }
+        if (counter == 0) {
+            doubleGold();
+            destroy();
         }
     }
     

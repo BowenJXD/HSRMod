@@ -1,5 +1,6 @@
 package hsrmod.powers.misc;
 
+import basemod.BaseMod;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -47,7 +48,7 @@ public class ToughnessPower extends BuffPower {
 
     @Override
     public void stackPower(int stackAmount) {        
-        if (stackAmount == stackLimit && owner != AbstractDungeon.player) return;
+        if (stackAmount == stackLimit && owner != AbstractDungeon.player && BaseMod.hasModID("spireTogether:")) return;
         alterPower(stackAmount);
     }
     

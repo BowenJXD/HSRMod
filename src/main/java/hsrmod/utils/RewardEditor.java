@@ -77,7 +77,7 @@ public class RewardEditor {
         }
     }
 
-    private static String getRelicByPath(AbstractCard.CardTags tag) {
+    public static String getRelicByPath(AbstractCard.CardTags tag) {
         String relicName = "";
         if (tag == CustomEnums.ELATION) {
             relicName = TheAshblazingGrandDuke.ID;

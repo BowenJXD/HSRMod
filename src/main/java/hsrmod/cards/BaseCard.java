@@ -205,15 +205,15 @@ public abstract class BaseCard extends CustomCard implements SpawnModificationCa
     }
 
     boolean checkPath() {
-        if (AbstractDungeon.player.hasRelic(WaxOfElation.ID) && tags.contains(CustomEnums.ELATION) 
-                || AbstractDungeon.player.hasRelic(WaxOfDestruction.ID) && tags.contains(CustomEnums.DESTRUCTION)
-                || AbstractDungeon.player.hasRelic(WaxOfNihility.ID) && tags.contains(CustomEnums.NIHILITY) 
-                || AbstractDungeon.player.hasRelic(WaxOfPropagation.ID) && tags.contains(CustomEnums.PROPAGATION)
-                || AbstractDungeon.player.hasRelic(WaxOfPreservation.ID) && tags.contains(CustomEnums.PRESERVATION) 
-                || AbstractDungeon.player.hasRelic(WaxOfTheHunt.ID) && tags.contains(CustomEnums.THE_HUNT) 
-                || AbstractDungeon.player.hasRelic(WaxOfErudition.ID) && tags.contains(CustomEnums.ERUDITION)
-                /*|| AbstractDungeon.player.hasRelic(WaxOfAbundance.ID) && tags.contains(CustomEnums.ABUNDANCE) 
-                || AbstractDungeon.player.hasRelic(WaxOfRemembrance.ID) && tags.contains(CustomEnums.REMEMBRANCE)*/) {
+        if (ModHelper.hasRelic(WaxOfElation.ID) && tags.contains(CustomEnums.ELATION) 
+                || ModHelper.hasRelic(WaxOfDestruction.ID) && tags.contains(CustomEnums.DESTRUCTION)
+                || ModHelper.hasRelic(WaxOfNihility.ID) && tags.contains(CustomEnums.NIHILITY) 
+                || ModHelper.hasRelic(WaxOfPropagation.ID) && tags.contains(CustomEnums.PROPAGATION)
+                || ModHelper.hasRelic(WaxOfPreservation.ID) && tags.contains(CustomEnums.PRESERVATION) 
+                || ModHelper.hasRelic(WaxOfTheHunt.ID) && tags.contains(CustomEnums.THE_HUNT) 
+                || ModHelper.hasRelic(WaxOfErudition.ID) && tags.contains(CustomEnums.ERUDITION)
+                /*|| ModHelper.hasRelic(WaxOfAbundance.ID) && tags.contains(CustomEnums.ABUNDANCE) 
+                || ModHelper.hasRelic(WaxOfRemembrance.ID) && tags.contains(CustomEnums.REMEMBRANCE)*/) {
             return true;
         }
         return false;

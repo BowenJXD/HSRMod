@@ -23,6 +23,7 @@ public class CustomEnums
     @SpireEnum public static AbstractCard.CardTags DEBUFF;
     
     @SpireEnum public static AbstractCard.CardTags REVIVE;
+    @SpireEnum public static AbstractCard.CardTags RUAN_MEI;
     
     @SpireEnum public static RelicType HSR;
 }

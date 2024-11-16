@@ -7,8 +7,8 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.screens.charSelect.CharacterSelectScreen;
 import hsrmod.characters.StellaCharacter;
 
-public class SkinSelectPatch {
-    public SkinSelectPatch() {
+public class PathSelectPatch {
+    public PathSelectPatch() {
     }
 
     public static boolean isSelected() {
@@ -24,8 +24,8 @@ public class SkinSelectPatch {
         }
 
         public static void Postfix(CharacterSelectScreen _inst, SpriteBatch sb) {
-            if (SkinSelectPatch.isSelected()) {
-                SkinSelectScreen.Inst.render(sb);
+            if (PathSelectPatch.isSelected()) {
+                PathSelectScreen.Inst.render(sb);
             }
 
         }
@@ -40,8 +40,8 @@ public class SkinSelectPatch {
         }
 
         public static void Prefix(CharacterSelectScreen _inst) {
-            if (SkinSelectPatch.isSelected()) {
-                SkinSelectScreen.Inst.update();
+            if (PathSelectPatch.isSelected()) {
+                PathSelectScreen.Inst.update();
             }
 
         }

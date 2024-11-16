@@ -3,6 +3,7 @@ package hsrmod.modcore;
 import basemod.AutoAdd;
 import basemod.BaseMod;
 import basemod.abstracts.CustomRelic;
+import basemod.eventUtil.AddEventParams;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.evacipated.cardcrawl.mod.stslib.icons.CustomIconHelper;
@@ -10,12 +11,24 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.dungeons.Exordium;
+import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.localization.*;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.monsters.MonsterGroup;
+import com.megacrit.cardcrawl.monsters.MonsterInfo;
+import com.megacrit.cardcrawl.monsters.city.ShelledParasite;
+import com.megacrit.cardcrawl.monsters.exordium.SlaverRed;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import com.badlogic.gdx.graphics.Color;
 import hsrmod.characters.StellaCharacter;
+import hsrmod.events.*;
 import hsrmod.misc.ChargeIcon;
+import hsrmod.misc.Encounter;
 import hsrmod.misc.ToughnessReductionVariable;
+import hsrmod.relics.starter.*;
+import hsrmod.utils.ModHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -25,7 +38,7 @@ import static com.megacrit.cardcrawl.core.Settings.language;
 import static hsrmod.characters.StellaCharacter.PlayerColorEnum.*;
 
 @SpireInitializer // 加载mod的注解
-public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditCharactersSubscriber, EditRelicsSubscriber, EditKeywordsSubscriber, AddAudioSubscriber {
+public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditCharactersSubscriber, EditRelicsSubscriber, EditKeywordsSubscriber, AddAudioSubscriber, PostInitializeSubscriber {
     public static final String MOD_NAME = "HSRMod";
     
     public static final Color MY_COLOR = new Color(255.0F / 255.0F, 141.0F / 255.0F, 227.0F / 255.0F, 1.0F);
@@ -105,6 +118,7 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         BaseMod.loadCustomStringsFile(CharacterStrings.class, "HSRModResources/localization/" + lang + "/characters.json");
         BaseMod.loadCustomStringsFile(RelicStrings.class, "HSRModResources/localization/" + lang + "/relics.json");
         BaseMod.loadCustomStringsFile(PowerStrings.class, "HSRModResources/localization/" + lang + "/powers.json");
+        BaseMod.loadCustomStringsFile(EventStrings.class, "HSRModResources/localization/" + lang + "/events.json");
     }
 
     @Override
@@ -120,6 +134,46 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
                 BaseMod.addKeyword(MOD_NAME.toLowerCase(), keyword.NAMES[0], keyword.NAMES, keyword.DESCRIPTION);
             }
         }
+    }
+
+    @Override
+    public void receivePostInitialize() {
+        addEvents();
+        addMonsters();
+    }
+    
+    public void addEvents() {
+        BaseMod.addEvent(new AddEventParams.Builder(RuanMeiEvent.ID, RuanMeiEvent.class)
+                .spawnCondition(() -> AbstractDungeon.eventRng.random(99) < 10)
+                .create());
+        BaseMod.addEvent(new AddEventParams.Builder(TavernEvent.ID, TavernEvent.class)
+                .dungeonID(TheCity.ID)
+                .bonusCondition(() -> ModHelper.hasRelic(WaxOfDestruction.ID))
+                .create());
+        BaseMod.addEvent(new AddEventParams.Builder(IOUDispenserEvent.ID, IOUDispenserEvent.class)
+                .dungeonID(TheCity.ID)
+                .bonusCondition(() -> ModHelper.hasRelic(WaxOfNihility.ID))
+                .create());
+        BaseMod.addEvent(new AddEventParams.Builder(LonelyBeautyBugsOneEvent.ID, LonelyBeautyBugsOneEvent.class)
+                .dungeonIDs(Exordium.ID, TheCity.ID)
+                .bonusCondition(() -> ModHelper.hasRelic(WaxOfPreservation.ID))
+                .create());
+        BaseMod.addEvent(new AddEventParams.Builder(RockPaperScissorsEvent.ID, RockPaperScissorsEvent.class)
+                .dungeonID(TheCity.ID)
+                .bonusCondition(() -> ModHelper.hasRelic(WaxOfTheHunt.ID))
+                .create());
+        BaseMod.addEvent(new AddEventParams.Builder(WaxManufacturerEvent.ID, WaxManufacturerEvent.class)
+                .dungeonID(Exordium.ID)
+                .bonusCondition(() -> WaxRelic.getSelectedPathTag(AbstractDungeon.player.relics) != WaxManufacturerEvent.getMostCommonTag(AbstractDungeon.player.masterDeck))
+                .create());
+    }
+    
+    public void addMonsters() {
+        BaseMod.addMonster(Encounter.PARASITE_N_SLAVER, () -> new MonsterGroup(new AbstractMonster[]{
+                new ShelledParasite(),
+                new SlaverRed(130.0F, 20F)
+        }));
+        BaseMod.addStrongMonsterEncounter(TheCity.ID, new MonsterInfo(Encounter.PARASITE_N_SLAVER, 0.0F));
     }
 
     @Override
@@ -159,6 +213,9 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         }
         else if (name.contains("Relic")) {
             name = name.replace("Relic", "");
+        }
+        else if (name.contains("Event")) {
+            name = name.replace("Event", "");
         }
         return MOD_NAME + ":" + name;
     }

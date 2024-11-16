@@ -1,6 +1,5 @@
 package hsrmod.characters;
 
-import basemod.BaseMod;
 import basemod.abstracts.CustomPlayer;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -18,10 +17,9 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
-import com.megacrit.cardcrawl.screens.charSelect.CharacterSelectScreen;
 import hsrmod.cards.base.*;
 import hsrmod.modcore.HSRMod;
-import hsrmod.patches.SkinSelectScreen;
+import hsrmod.patches.PathSelectScreen;
 import hsrmod.relics.starter.*;
 
 import java.util.ArrayList;
@@ -109,7 +107,7 @@ public class StellaCharacter extends CustomPlayer {
         ArrayList<String> retVal = new ArrayList<>();
         retVal.add(GalacticBat.ID);
         retVal.add(PomPomBlessing.ID);
-        switch (SkinSelectScreen.getSkin().path) {
+        switch (PathSelectScreen.getPath().path) {
             case ELATION:
                 retVal.add(HSRMod.makePath(WaxOfElation.ID));
                 break;

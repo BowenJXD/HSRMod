@@ -16,7 +16,7 @@ import hsrmod.utils.ModHelper;
 public class TheWindSoaringValorous extends BaseRelic {
     public static final String ID = TheWindSoaringValorous.class.getSimpleName();
 
-    public int chargeAmount = 40;
+    public int chargeAmount = 30;
     
     public TheWindSoaringValorous() {
         super(ID);

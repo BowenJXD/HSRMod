@@ -43,9 +43,7 @@ public class WaxManufacturerEvent extends PhasedEvent {
         AbstractCard.CardTags selectedPathTag = WaxRelic.getSelectedPathTag(AbstractDungeon.player.relics);
         Supplier<CardGroup> cardGroupSupplier = () -> {
             CardGroup group = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
-            group.group.addAll(AbstractDungeon.commonCardPool.group.stream().filter((c) -> c.hasTag(selectedPathTag)).collect(Collectors.toList()));
             group.group.addAll(AbstractDungeon.uncommonCardPool.group.stream().filter((c) -> c.hasTag(selectedPathTag)).collect(Collectors.toList()));
-            group.group.addAll(AbstractDungeon.rareCardPool.group.stream().filter((c) -> c.hasTag(selectedPathTag)).collect(Collectors.toList()));
             return group;
         };
         if (selectedPathTag != null) {

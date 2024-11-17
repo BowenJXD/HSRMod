@@ -15,16 +15,18 @@ public class MakeTheWorldClamor extends BaseCard {
     
     public MakeTheWorldClamor() {
         super(ID);
+        exhaust = true;
+    }
+
+    @Override
+    public void upgrade() {
+        super.upgrade();
+        exhaust = false;
     }
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         int e = EnergyPower.AMOUNT_LIMIT - ModHelper.getPowerCount(EnergyPower.POWER_ID);
-        if (e <= 0 && upgraded) {
-            addToBot(new ApplyPowerAction(p, p, new BrainInAVatPower(p, 1), 1));
-        }
-        else {
-            addToBot(new ApplyPowerAction(p, p, new EnergyPower(p, e), e));
-        }
+        addToBot(new ApplyPowerAction(p, p, new EnergyPower(p, e), e));
     }
 }

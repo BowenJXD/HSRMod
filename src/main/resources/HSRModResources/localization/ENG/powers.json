@@ -342,15 +342,15 @@
   "HSRMod:RadiantSupreme": {
     "NAME": "Radiant Supreme",
     "DESCRIPTIONS": [
-      "Upon using card, stack 1 for each condition met: 1. Single-target, 2. Attack card. For every #b%d layer stacked, draw 1 and gain 1 #yBoost.",
-      "Upon using card, stack 1 for each condition met: 1. Single-target card, 2. Attack card, 3. Upgraded card. For every #b%d layer stacked, draw 1 and gain 1 #yBoost."
+      "Upon using card, stack 1 for each condition met: 1. Single-target, 2. Attack card. For every #b%d layer stacked, draw 1 and gain 2 #yBoost.",
+      "Upon using card, stack 1 for each condition met: 1. Single-target card, 2. Attack card, 3. Upgraded card. For every #b%d layer stacked, draw 1 and gain 2 #yBoost."
     ]
   },
   "HSRMod:SovereignSkybreaker": {
     "NAME": "Sovereign Skybreaker",
     "DESCRIPTIONS": [
-      "Upon using card, stack 1 for each condition met: 1. Single Target, 2. Skill card. For every #b%d layer stacked, a random card's cost -1 for this turn, and gain 2 #yBoost.",
-      "Upon using card, stack 1 for each condition met: 1. Single Target, 2. Skill card, 3. Upgraded card. For every #b%d layer stacked, a random card's cost -1 for this turn, and gain 2 #yBoost."
+      "Upon using card, stack 1 for each condition met: 1. Single Target, 2. Skill card. For every #b%d layer stacked, a random card's cost -1 for this turn, and gain 3 #yBoost.",
+      "Upon using card, stack 1 for each condition met: 1. Single Target, 2. Skill card, 3. Upgraded card. For every #b%d layer stacked, a random card's cost -1 for this turn, and gain 3 #yBoost."
     ]
   },
   "HSRMod:Prey": {
@@ -375,7 +375,7 @@
   "HSRMod:ExcitatoryGland": {
     "NAME": "Excitatory Gland",
     "DESCRIPTIONS": [
-      "For every #b%d points of [E] you consume, recover 1 [E]."
+      "Gain [E] every turn. When you use [E] to 0 for the first time of the turn, gain [E] ."
     ]
   },
   "HSRMod:SporeDischarge": {

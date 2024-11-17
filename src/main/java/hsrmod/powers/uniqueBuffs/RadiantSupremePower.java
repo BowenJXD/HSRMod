@@ -31,7 +31,7 @@ public class RadiantSupremePower extends PowerPower {
             flash();
             amount -= triggerAmount;
             addToTop(new DrawCardAction(1));
-            addToTop(new ApplyPowerAction(owner, owner, new BoostPower(owner, 1), 1));
+            addToTop(new ApplyPowerAction(owner, owner, new BoostPower(owner, 2), 2));
         }
     }
 

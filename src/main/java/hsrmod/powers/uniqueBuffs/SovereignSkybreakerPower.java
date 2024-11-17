@@ -35,7 +35,7 @@ public class SovereignSkybreakerPower extends PowerPower {
             amount -= triggerAmount;
             AbstractCard card = ModHelper.getRandomElement(AbstractDungeon.player.hand.group, AbstractDungeon.cardRandomRng, c -> c.costForTurn > 0);
             if (card != null) addToTop(new ReduceCostForTurnAction(card, 1));
-            addToTop(new ApplyPowerAction(owner, owner, new BoostPower(owner, 2), 2));
+            addToTop(new ApplyPowerAction(owner, owner, new BoostPower(owner, 3), 3));
         }
     }
 

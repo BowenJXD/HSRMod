@@ -1,0 +1,202 @@
+{
+  "HSRMod:StelleAwake": {
+    "NAME": "Choose your path",
+    "OPTIONS": [
+      "[Elation]",
+      "[Destruction]",
+      "[Nihility]",
+      "[Preservation]",
+      "[Propagation]",
+      "[The Hunt]",
+      "[Erudition]",
+      "[Abundance]",
+      "[Remembrance]",
+      "[Trailblaze]",
+      "[Begin Journey]"
+    ],
+    "DESCRIPTIONS": [
+      "",
+      "~Are~ ~You~ ~Ready~ "
+    ]
+  },
+  "HSRMod:RuanMei": {
+    "NAME": "Ruan Mei",
+    "OPTIONS": [
+      "Who are you?",
+      "Are you another puppet of Herta's?",
+      "What is this place?",
+      "[continue]",
+      "What's the difference between your code and Herta's?",
+      " Both of you like to pull off little tricks",
+      "[Worship Aeons] #gUpgrade all cards",
+      "[Want lots of money] Gain #y1200 gold",
+      "[Steal goodies from Herta] Obtain #b6 relics",
+      "[You are... Ruan Mei?] Trigger 2 effects above",
+      "[LOCK] Needs \"String Sings Slow Swirls \" or \"Petals to Stream, Repose in Dream\"",
+      "[leave]"
+    ],
+    "DESCRIPTIONS": [
+      "You catch a whiff of the aroma of warm pastries. Your eyes fall on a bean pastry adorned with Startled Deer petals. NL You continue to trace the source of the aroma. As you look up, you find a dark-haired lady standing in front of you. You can smell the residual aroma on her lips while she licks the bits of pastry stuck on her fingers.",
+      "\"I nurtured this miniature slice by myself and embedded it into the code of the Simulated Universe.\" She strokes the embroidery on her scarf distractedly as she adds, \"Don't tell Herta and Screwllum about this.\"",
+      "\"Herta invited me to participate in this project and nurture the universe.\" She shakes her head. \"I'm different from her. Although we appear like the best of friends in many aspects... the truth is, we aren't that close with each other.\"",
+      "\"This is the simulated lab, my miniature petri dish.\" She says with a frown.",
+      "\"Herta has a thing for inventing quirky systems and gadgets, while I nurture the prototypes of the universe and the Aeons.\" She answers.",
+      "\"The chance of breaching into my slice is slim, so you should be happy about this. I'll give you some things,\" she says, \"good things. But they don't come for free.\""
+    ]
+  },
+  "HSRMod:CosmicCrescendo": {
+    "NAME": "Cosmic Crescendo",
+    "OPTIONS": [
+      "[continue]",
+      "[Listen] Trigger 10 random effects in a row.",
+      "[Don't listen] Don't listen to bewitching songs...",
+      "[Join the choir!] Trigger 15 random effects in a row.",
+      "[leave]"
+    ],
+    "DESCRIPTIONS": [
+      "One day, a fan of a major rock star hands you a soundtrack album he has kept for a long time. There are dozens of different voices inside. NL \"The noisiest rock music, the most sacred classical rap, the trendiest retro elements, and the most vibrant basic musical ornaments! This precious album showcases the instrumental piece of cosmic trendy toys and food and the latest social deduction game, with a mixture of elements across the ages!\" NL Feeling annoyed, you are certain he is a member of the Contradictory Element Organization!",
+      "You #ggained %d gold.",
+      "You #rlost %d gold.",
+      "You #ggained #y%s .",
+      "You #rlost #y%s .",
+      "Your %s has upgraded.",
+      "Your %s has transformed.",
+      "Your health is #gheal by %d.",
+      "You #rlost %d health.",
+      "Nothing happened.",
+      "The song is over."
+    ]
+  },
+  "HSRMod:IOUDispenser": {
+    "NAME": "I.O.U. Dispenser",
+    "OPTIONS": [
+      "[I'll buy it] Gain Angel-type I.O.U Dispenser",
+      "[I don't need it] Gain #y100 gold",
+      "[Claim an investment] Gain Angel-type I.O.U Dispenser and destroy it.",
+      "[leave]"
+    ],
+    "DESCRIPTIONS": [
+      "Madam Scarred Eye, board member of the IPC, sits across from you. A long and narrow scar cuts through her left eye. You can sense her gaze on you, and you know she is not to be trifled with. NL You are sitting here because of her overwhelming intimidation. A maid offers her a glass of champagne, and softly kisses the back of her hand. NL \"The planet Evelli is hit by a financial crisis,\" Madam Scarred Eye announces. \"To help them tide over, our Business Consolidation Department has launched the Angel-type I.O.U. Dispenser. I'll make you an irresistible offer.\" NL \"Buy the IPC's debt, wait for this catastrophe to be over, and the IPC will pay you an amount more than ten times your principal.\" NL The servant next to Madam Scarred Eye pushes out a robot angel with wings. \"This is the Angel-type I.O.U. Dispenser. You need to feed Gold Coins into it regularly, and it will keep a record of your investment. At the end of the investment term, it will pay you an amount more than ten times your principal.\"",
+      "~Thanks~ ~for~ ~coming~~"
+    ]
+  },
+  "HSRMod:Tavern": {
+    "NAME": "Tavern",
+    "OPTIONS": [
+      "[continue]",
+      "[Expose his bankruptcy] Enter battle, gain a common relic after victory.",
+      "[Expose him] Enter a harder battle, gain an uncommon relic after victory.",
+      "[Fight both together!] Gain a rare relic after victory.",
+      "[leave]"
+    ],
+    "DESCRIPTIONS": [
+      "You reach an Elway-style tavern with a lively atmosphere. NL You order a cocktail concocted with Marian oranges and palm cinnamon. Then, you observe the crowd. Everyone is wearing a mask and has different body sizes. From this, you know it is a tavern where the Masked Fools gather. NL \"Welcome to Tavern World's End.\" Bragi, the bartender, bows deeply to the patrons and continues, \"We only serve customers with a sense of humor.\"",
+      "\"In keeping with Aha's will, we will have some fun next. Mr. France and his team of bodyguards will be the next to join the arena. His opponent will be Avila. He and his mercenaries are burly and not to be underestimated!\" NL \"Who else is coming? Who's up for the 78,201st round?\"",
+      "You #ywon."
+    ]
+  },
+  "HSRMod:RockPaperScissors": {
+    "NAME": "Rock, Paper, Scissors",
+    "OPTIONS": [
+      "[continue]",
+      "[Fight for the 0.63% chance] #rEnter #rbattle",
+      "[Pick the 100% security] Lose #y100 gold",
+      "[Sense the vulnerabilities] #rEnter #ra #rharder #rbattle, gain one more card reward and upgrade them.",
+      "[leave]"
+    ],
+    "DESCRIPTIONS": [
+      "The astral computer before you, with a curved screen on top and a genderless human body at the bottom, is running a calculation at a high speed. While it seems to be simulating the collapse of a massive star, only you know that you are playing a game of rock-paper-scissors with it. NL \"There is an 82.49% chance of you playing rock in the first game, and a 94.61% of you playing scissors in the second. ",
+      "If you choose to flip the table with me and battle with the monsters I created, there is a 99.37% of you losing.\" NL \"But if you leave some Cosmic Fragments behind, your chance of survival is 100%.\" It is waiting for your response.",
+      "You left some gold behind.",
+      "You #ywon."
+    ]
+  },
+  "HSRMod:WaxManufacturer": {
+    "NAME": "Sealing Wax Manufacture Machine",
+    "OPTIONS": [
+      "[Wax Blessing] Get a card from all uncommon cards of current path",
+      "[Purchase Wax] Get a more suitable wax.",
+      "[Wax Enhancement] Upgrade #b3 cards of current path",
+      "[Wax Casting] Gain a suitable path relic",
+      "[leave]"
+    ],
+    "DESCRIPTIONS": [
+      "You look at the scene before you: It is raining in the Black Forest, and there are dew drops on every leaf. The rain saddens you. NL You wander around in the Black Forest amid the drizzle and arrive at a blacksmith's store by the roadside. A machine is immersed in churning out sealing wax and hammering away in full concentration until your presence interrupts its work. NL \"Do you want to ask me about the sealing wax?\" It has a penetrating gaze.",
+      "\"I'll still be making sealing wax here for another 100 years,\" the manufacturing machine says, and then gets back to its hammer.",
+      "Select a card to obtain"
+    ]
+  },
+  "HSRMod:LonelyBeautyBugsOne": {
+    "NAME:": "Loneliness, Cosmic Beauty Bugs, Simulated Universe (I)",
+    "OPTIONS": [
+      "[continue]",
+      "[Feed salt nack] #rlose #b1 random non-starter relic",
+      "[Use cleaning foam] #rlose #b1 random card",
+      "[Feed milk tea] Lose #y100 gold",
+      "[Take care] This is how you treat your friends.",
+      "[leave]"
+    ],
+    "DESCRIPTIONS": [
+      "Despite having traversed the Simulated Universe for eight million miles, you did not find anyone who truly understood you... NL You are tired of continuously testing one project after another. So, you decide to adopt a worm as your companion in the Simulated Universe.",
+      "ou observe your companion: This beautiful space worm is named Sweet Saliva. It secretes secondary metabolites around its wound that give off a unique flowery, fruity, and sweet scent... You know that when it matures, it will linger around the exotic fruit orchards and cosmic tea plantations. Each of its trips may bring the scent of *love* to you. NL Although you are destitute... you can still do your best to nurture it.",
+      "Your space worm wriggles and spurts a mouthful of saliva at your face to show its gratitude to you. NL Oh... You feel so happy!",
+      "Your space worm is wriggling. You wait for it to spurt a mouthful of saliva at your face... NL However, it leaps and smacks its tail against your face instead! It hurts a lot! NL ...Seems like it hates to be treated this way."
+    ]
+  },
+  "HSRMod:LonelyBeautyBugsTwo": {
+    "NAME:": "Loneliness, Cosmic Beauty Bugs, Simulated Universe (II)",
+    "OPTIONS": [
+      "[continue]",
+      "[Accept the \"Heartfelt Gift.\"] Obtain #b3 random common relic",
+      "[Accept the \"Life's Favor.\"] Obtain #yOrrery",
+      "[Accept the \"Life's Favor.\"] Obtain #b1 random #rboss relic",
+      "[Refuse] You just want to keep giving... You don't expect anything in return at all.",
+      "[leave]"
+    ],
+    "DESCRIPTIONS": [
+      "Time flies. The space worm named Sweet Saliva that you have nurtured has been undergoing immersive learning at the cosmic tea plantation for a long time... When you hear the sound of fumbling at the door, you know it is back. NL You open the door and find that it has grown up. Its skin, which was initially green, has faded and is now covered by a colorful pattern that is a mixture of white, yellowish green, and brownish blue hues...",
+      "They are the signs that Sweet Saliva has matured into an adult bug. It calls out for you... which is the proof of its *love* for you.",
+      "A relieved and sorrowful smile breaks out on your face."
+    ]
+  },
+  "HSRMod:SlumberingOverlord": {
+    "NAME": "Swarm: Slumbering Overlord",
+    "OPTIONS": [
+      "[continue]",
+      "[Leave immediately] Lose #r20% health",
+      "[Kill them] Enter #rbattle, gain Intersection Membrane",
+      "[Tidy things up] Enter #rbattle, gain Excitatory Gland",
+      "[Offer spore sacks] Get a Curse, get Plague Nest",
+      "[Get your loot]",
+      "[leave]"
+    ],
+    "DESCRIPTIONS": [
+      "Holding a syringe containing Metabolase, you stride toward the putrefied throne slowly and nervously... All it takes is a tiny dose deliver into the Swarm's fibers and...",
+      "You pierce it with the needle! NL The dose wakes the Lord of Eternal Slumber up! It opens its eyes wide and starts drooling...",
+      "\" @...█Hiss...██...█Hiss█...██...@ \"",
+      "You know metabolism takes time... and you want to witness its completion! However, more and more Swarm larvae are coming! You must escape from them quickly...",
+      "You #ywon.",
+      "You offered your spore sacks to the lord.",
+      "You obtained your loot."
+    ]
+  },
+  "HSRMod:DoubleLottery": {
+    "NAME": "The Double Lottery Experience",
+    "OPTIONS": [
+      "[continue]",
+      "[Vote] Purchase a lotto relic using #y100 gold, and fix all lottos",
+      "[Experience] Fix all lottos using #y50 gold",
+      "[Refuse] You can't find happiness like that!",
+      "[Hack] Destroy all the lotto, gain relic twice of lotto destroyed",
+      "[leave]"
+    ],
+    "DESCRIPTIONS": [
+      "he lottery distributor from the Interastral Peace Corporation's Fanaticism Department is here! NL \"Have you heard of the Double Lottery Experience?\" He whispers into your ear.",
+      "\"I can provide you with... the Double Lottery Experience... as long as you vote for Oswaldo Schneider in the election.\" NL He looks at you with anticipation in his eyes.",
+      "I want to vote for \"Oswaldo Schneider\"! NL You shouted",
+      "I want to have the Double Lottery Experience! NL You shouted",
+      "You refused the distributor's offer.",
+      "You hacked into the \"code\" of the lotto series"
+    ]
+  }
+}

@@ -6,7 +6,7 @@ Himeko0,武装调律,BASIC,ATTACK,ENEMY,1,造成 !D! 点伤害（火 !TR! ）。,6,2,,,,,9,,,
 Welt0,重力压制,BASIC,ATTACK,ENEMY,1,造成 !D! 点伤害（虚数 !TR! ）。,6,2,,,,,9,,,,开拓,虚数,无,攻击
 Trailblazer2,全胜·安息全垒打,BASIC,ATTACK,ALL_ENEMY,0, hsrmod:耗能 120，群体：造成 !D! 点伤害（物理 !TR! ）。,4,2,,,,,6,,,,开拓,物理,无,攻击
 Trailblazer3,炽燃不灭的琥珀,BASIC,SKILL,SELF,1,获得 !B! 点格挡。,,,5,,,,,,8,,开拓,,无,防御
-Sushang2,游刃有余,COMMON,SKILL,SELF,1, hsrmod:击破 后，从摸牌堆加入手牌。 NL 获得 !M! 层 hsrmod:击破特攻 ，若有敌人有 hsrmod:击破状态 ，回复 !M! 点 [E] 。,,,,2,, hsrmod:击破 后，从摸牌堆加入手牌。 NL 获得 !M! 层 hsrmod:击破特攻 ，若有敌人有 hsrmod:击破状态 ，回复 !M! 点 [E] ，摸 !M! 张牌。,,,,,毁灭,,高,运转
+Sushang2,游刃有余,COMMON,SKILL,SELF,1, hsrmod:击破 后，从摸牌堆加入手牌。 NL 消耗 。获得 !M! 层 hsrmod:击破特攻 ，若有敌人有 hsrmod:击破状态 ，回复 [E] [E] 。,,,,2,, hsrmod:击破 后，从摸牌堆加入手牌。 NL 消耗 。获得 !M! 层 hsrmod:击破特攻 ，若有敌人有 hsrmod:击破状态 ，回复 [E] [E] [E] 。,,,,3,毁灭,,高,运转
 Sushang3,破敌,COMMON,ATTACK,ENEMY,1,可重复升级，升级时，削韧值+1。 NL 造成 !D! 点伤害（物理 !TR! ），若 hsrmod:击破 ，则消耗，并永久升级此牌。,6,2,,,,,,,,,毁灭,物理,中,攻击
 Tingyun1,庆云光覆仪祷,COMMON,SKILL,SELF,0, hsrmod:耗能 10，获得 !M! 点 [hsrmod:ChargeIcon] 和1层 力量 。,,,,50,, hsrmod:耗能 10，获得 !M! 点 [hsrmod:ChargeIcon] 和1层 力量 ，获得摸牌堆1张牌。,,,,60,智识,,高,运转
 Qingque1,海底捞月,COMMON,SKILL,SELF,1, 消耗 。摸1张牌， !M! %概率回复消耗的 [E] ， !M! %概率将此牌返还手卡。,,,,66,,,,,,75,繁育,,高,运转
@@ -102,7 +102,7 @@ SinThirster,血罪灵,COMMON,SKILL,SELF,1, hsrmod:持续伤害 最多的敌人每有一种，便摸
 OfferingsOfDeception,虚妄供品,COMMON,SKILL,ALL_ENEMY,1,获得 !B! 点格挡，对所有没有 hsrmod:持续伤害 的敌人施加1个 hsrmod:持续伤害 。,,,3,,,获得 !B! 点格挡，对所有没有 hsrmod:持续伤害 的敌人施加1个 hsrmod:持续伤害 ，所有有全部 hsrmod:持续伤害 的敌人减少1层 力量 。,,,5,,虚无,,中,防御
 IntersegmentalMembrane,节间膜,RARE,POWER,SELF,2,每消耗1点 [E] ，获得 !M! 点格挡。,,,,2,,,,,,3,繁育,,高,防御
 SporeDischarge,子囊释放,RARE,POWER,SELF,2,每消耗1点 [E] ，对随机敌人施加1层 hsrmod:孢子 。,,,,,,每消耗或回复1点 [E] ，对随机敌人施加1层 hsrmod:孢子 。,,,,,繁育,,低,攻击
-ExcitatoryGland,兴奋腺,RARE,POWER,SELF,3,每消耗 !M! 点 [E] ，回复1点 [E] 。,,,,5,, 固有 。每消耗 !M! 点 [E] ，回复1点 [E] 。,,,,,繁育,,中,运转
+ExcitatoryGland,兴奋腺,RARE,POWER,SELF,3, [E] 上限+1。每回合首次使用 hsrmod:耗能 为X的牌后，回复 [E] 。,,,,,, 固有 。 [E] 上限+1。每回合首次使用 hsrmod:耗能 为X的牌后，回复 [E] 。,,,,,繁育,,中,运转
 SerfOfCalamity,孕灾蠧役,UNCOMMON,POWER,SELF,3,通过牌造成伤害后，对目标施加1层 hsrmod:孢子 。每破裂 !M! 层 hsrmod:孢子 ，摸1张牌。,,,,3,2,,,,,,繁育,,中,防御
 FungalPustule,菌种脓疱,UNCOMMON,SKILL,SELF,1, 消耗 。回复 !M! 点 [E] ，摸1张牌。,,,,2,,回复 !M! 点 [E] ，摸1张牌，然后此牌于此次战斗的费用和回能量均+1。,,,,,繁育,,中,运转
 Sparkle3,梦游鱼,UNCOMMON,SKILL,SELF,1, 消耗 。获得 [E] ，从弃牌堆选择1张牌获得，然后杀死其他「梦游鱼」。,,,,,,获得 [E] ，从弃牌堆选择1张牌获得，然后杀死其他「梦游鱼」。,,,,,繁育,,中,运转
@@ -126,25 +126,25 @@ Quake,反震,SPECIAL,ATTACK,ENEMY,0, 消耗 。造成 !D! 点伤害（物理 !TR! ）。,0,4,,,
 Danheng1,寸长寸强,COMMON,ATTACK,ENEMY,0,获得时，获得摸牌堆1张牌。 NL 造成 !D! 点伤害（风 !TR! ），将此牌置入摸牌堆。,2,1,,1,,,5,,,,巡猎,风,中,攻击
 Moze1,迅羽掠袭,COMMON,SKILL,ENEMY,1,施加 !M! 层猎物（每对其打出3张其他攻击牌，则移除1层，将一张「伸天卑飞，折翅为芒」置于牌堆顶）。,,,,3,0,,,,,,巡猎,,中,攻击
 Moze2,伸天卑飞，折翅为芒,SPECIAL,ATTACK,ENEMY,0,从摸牌堆获得此牌后 hsrmod:追击 。 NL 消耗 。造成 !D! 点伤害（雷 !TR! ），摸 !M! 张牌。,1,1,,1,,,3,,,,巡猎,雷,无,攻击
-March7th5,一气化三餐,COMMON,SKILL,SELF,1,可重复升级，升级时，摸牌数+1。 NL 打出升级的牌后，升级此牌。 NL 摸 !M! 张牌，并升级之。,,,,1,,,,,,,巡猎,,中,运转
+March7th5,一气化三餐,COMMON,SKILL,SELF,1,升级所有手牌。,,,,,0,,,,,,巡猎,,中,运转
 Feixiao1,雷狩,UNCOMMON,ATTACK,ENEMY,0,打出攻击牌后，若之和牌堆顶的牌均不为「雷狩」，则将一张「雷狩」置于牌堆顶。 NL 消耗 。造成 !D! 点伤害（风 !TR! ）。,1,1,,,,,3,,,,巡猎,风,低,攻击
 Feixiao2,凿破大荒,UNCOMMON,ATTACK,ENEMY,0,回合结束时 hsrmod:追击 。造成此回合打出的攻击牌数量的伤害（ !D! ）（风 !TR! ）。,,1,,,,,,6,,,巡猎,风,中,攻击
-RadiantSupreme,帝车超光所向捷,RARE,POWER,SELF,2,打出牌时，每满足一项，叠加1层：1. 单体牌；2. 攻击牌。每叠加 !M! 层，摸1张牌，获得1层 hsrmod:会心 。,,,,8,,打出牌时，每满足一项，叠加1层：1. 单体牌；2. 攻击牌；3. 升级过的牌。每叠加 !M! 层，摸1张牌，获得1层 hsrmod:会心 。,,,,,巡猎,,高,运转
-SovereignSkybreaker,帝弓断空彻太清,RARE,POWER,SELF,2,打出牌时，每满足一项，叠加1层：1. 单体牌；2. 技能牌。每叠加 !M! 层，随机一张手牌于此回合费用-1，并获得2层 hsrmod:会心 。,,,,12,,打出牌时，每满足一项，叠加1层：1. 单体牌；2. 技能牌；3. 升级过的牌。每叠加 !M! 层，随机一张手牌于此回合费用-1，并获得2层 hsrmod:会心 。,,,,,巡猎,,中,运转
+RadiantSupreme,帝车超光所向捷,RARE,POWER,SELF,1,打出牌时，每满足一项，叠加1层：1. 单体牌；2. 攻击牌。每叠加 !M! 层，摸1张牌，获得2层 hsrmod:会心 。,,,,8,,打出牌时，每满足一项，叠加1层：1. 单体牌；2. 攻击牌；3. 升级过的牌。每叠加 !M! 层，摸1张牌，获得2层 hsrmod:会心 。,,,,,巡猎,,高,运转
+SovereignSkybreaker,帝弓断空彻太清,RARE,POWER,SELF,1,打出牌时，每满足一项，叠加1层：1. 单体牌；2. 技能牌。每叠加 !M! 层，随机一张手牌于此回合费用-1，并获得3层 hsrmod:会心 。,,,,12,,打出牌时，每满足一项，叠加1层：1. 单体牌；2. 技能牌；3. 升级过的牌。每叠加 !M! 层，随机一张手牌于此回合费用-1，并获得3层 hsrmod:会心 。,,,,,巡猎,,中,运转
 SolemnSnare,肃肃罝罗,UNCOMMON,SKILL,SELF,-1, hsrmod:耗能 100，获得X层 hsrmod:会心 ，令当前所有升级过的手牌于此回合费用-1，每多1级额外-1。,,,,,, hsrmod:耗能 100，摸X张牌，获得X层 hsrmod:会心 ，令当前所有升级过的手牌于此回合费用-1，每多1级额外-1。,,,,,巡猎,,低,运转
 EmpyreanImperium,帝星君临制穹桑,RARE,POWER,SELF,1,每打出 !M! 次最左侧的牌，摸1张牌。,,,,2,,每打出 !M! 次最左侧的牌，摸1张牌。费用大于0的牌算作2张。,,,,,巡猎,,高,运转
 BorderstarGunslinger,边星快枪手,UNCOMMON,SKILL,SELF,0, hsrmod:耗能 80，弃置任意张牌，获得 !M! 倍的格挡。,,,,3,, hsrmod:耗能 80，弃置任意张牌，获得 !M! 倍的格挡，并升级以此法弃置的牌。,,,,,巡猎,,低,运转
 FinalVictor,最后的赢家,UNCOMMON,SKILL,SELF,2, 虚无 。 消耗 。随机选择一张手牌，永久升级之。,,,,,, 虚无 。 消耗 。选择一张手牌，永久升级之。,,,,,巡猎,,中,攻击
-DisasterHaltingMechanism,天灾遏止机关,COMMON,SKILL,SELF,1, hsrmod:耗能 40，获得手牌数数量的格挡。,,,,1,0,,,,,,巡猎,,中,防御
+DisasterHaltingMechanism,天灾遏止机关,COMMON,SKILL,SELF,1, hsrmod:耗能 40，获得手牌数数量的格挡，并随机升级1张手牌。,,,,1,0,,,,,,巡猎,,中,防御
 CivilizationCorrespondent,文明函授员,COMMON,SKILL,SELF,1,消耗所有 [hsrmod:ChargeIcon] ，每消耗10 [hsrmod:ChargeIcon] ，获得1点格挡。,,,,,,消耗所有 [hsrmod:ChargeIcon] ，每消耗10 [hsrmod:ChargeIcon] ，获得1点格挡；每消耗100 [hsrmod:ChargeIcon] ，摸1张牌。,,,,,智识,,中,防御
-PenMan,执笔人,COMMON,SKILL,SELF,0, 保留 。弃置1张牌，获得 !M! 点 [hsrmod:ChargeIcon] ，然后若 [hsrmod:ChargeIcon] 未满，将此牌返还手牌。,,,,50,, 保留 。弃置1张牌，获得 !M! 点 [hsrmod:ChargeIcon] （可以选择不弃置，并消耗 [E] 来获得2倍的 [hsrmod:ChargeIcon] ），然后若 [hsrmod:ChargeIcon] 未满，将此牌返还手牌。,,,,,智识,,中,运转
+PenMan,执笔人,COMMON,SKILL,SELF,0, 保留 。弃置1张牌，获得 !M! 点 [hsrmod:ChargeIcon] ，然后若 [hsrmod:ChargeIcon] 未满，将此牌返还手牌。,,,,40,, 保留 。弃置1张牌，获得 !M! 点 [hsrmod:ChargeIcon] （可以选择不弃置，并消耗 [E] 来获得2倍的 [hsrmod:ChargeIcon] ），然后若 [hsrmod:ChargeIcon] 未满，将此牌返还手牌。,,,,,智识,,中,运转
 Jade2,堕此欲渊，立此狱契,UNCOMMON,ATTACK,ALL_ENEMY,1, hsrmod:耗能 140，群体：造成 !D! 点伤害（量子 !TR! ），手牌中每有一张群体牌，则失去1点生命，令之此回合费用-1。,12,2,,,,,18,,,,智识,量子,低,攻击
 SilverheartGuards,银河护卫队,UNCOMMON,POWER,SELF,2,消耗 [hsrmod:ChargeIcon] 后，获得摸牌堆1张牌，获得 !M! 点格挡。,,,,2,,,,,,3,智识,,中,运转
 SMR2Amygdala,SMR-2型杏仁核,RARE,POWER,SELF,2,每回合开始时，获得1层 hsrmod:罐中脑 。 [hsrmod:ChargeIcon] 至少为 !M! 。,,,,50,1,,,,,,智识,,中,运转
-Kolchis,科尔奇人,RARE,POWER,SELF,3,每消耗 !M! [hsrmod:ChargeIcon] ，回复 [E] 。,,,,100,, 固有 。每消耗 !M! [hsrmod:ChargeIcon] ，回复 [E] 。,,,,,智识,,高,运转
+Kolchis,科尔奇人,RARE,POWER,SELF,3,每消耗 [hsrmod:ChargeIcon] 达到 !M! 点，回复 [E] 。,,,,100,, 固有 。每消耗 [hsrmod:ChargeIcon] 达到 !M! 点，回复 [E] 。,,,,,智识,,高,运转
 Aggregator,聚合者,UNCOMMON,SKILL,SELF,1, 消耗 。 hsrmod:耗能 !M! ，手牌中每有一张其他 hsrmod:耗能 的牌，便摸1张牌，并回复 [E] 和40点 [hsrmod:ChargeIcon] 。,,,,120,, hsrmod:耗能 !M! ，手牌中每有一张其他 hsrmod:耗能 的牌，便摸1张牌，并回复 [E] 和40点 [hsrmod:ChargeIcon] ，然后此牌于此次战斗内 hsrmod:耗能 翻倍。,,,,60,智识,,中,运转
 BCI34GrayMatter,BCI -34 型灰质,COMMON,SKILL,SELF,1,获得 !M! 层 hsrmod:罐中脑 。,,,,2,, 固有 。获得 !M! 层 hsrmod:罐中脑 。,,,,3,智识,,高,运转
-MakeTheWorldClamor,别让世界静下来,COMMON,SKILL,SELF,0,将 [hsrmod:ChargeIcon] 调整至上限。,,,,,,将 [hsrmod:ChargeIcon] 调整至上限，若已达到上限，则获得1层 hsrmod:罐中脑 。,,,,,智识,,中,运转
+MakeTheWorldClamor,别让世界静下来,COMMON,SKILL,SELF,0, 消耗 。将 [hsrmod:ChargeIcon] 调整至上限。,,,,,,将 [hsrmod:ChargeIcon] 调整至上限。,,,,,智识,,中,运转
 LoadStriatedCortex,装载：纹状皮层,UNCOMMON,POWER,SELF,2,打出群体攻击牌时，若只有1/2/3名敌人，则伤害+6/4/2。,,,,2,,打出群体攻击牌时，若只有1/2/3名敌人，则伤害+9/6/3。,,,,3,智识,,低,攻击
 AstralEcologySchool,星空生态学派,UNCOMMON,ATTACK,ALL_ENEMY,2, hsrmod:耗能 100，群体：造成 !D! 点伤害（量子 !TR! ），若手牌中有其他 hsrmod:耗能 的牌，额外造成1次伤害。,12,2,,1,, hsrmod:耗能 100，群体：造成 !D! 点伤害（量子 !TR! ），若手牌中有：其他 hsrmod:耗能 的牌，额外造成1次伤害；其他群体牌，再造成1次伤害。,,,,,智识,量子,低,攻击
 TerminalNirvana,无余涅槃,RARE,SKILL,SELF,2, 消耗 。 保留 。 hsrmod:耗能 !M! ，获得1层 无实体 。,,,,120,, 保留 。 hsrmod:耗能 !M! ，获得1层 无实体 ，然后此牌于此次战斗内 hsrmod:耗能 翻倍。,,,,60,智识,,中,防御

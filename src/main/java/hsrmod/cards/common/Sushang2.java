@@ -26,6 +26,7 @@ public class Sushang2 extends BaseCard implements PostPowerApplySubscriber {
     public Sushang2() {
         super(ID);
         BaseMod.subscribe(this);
+        exhaust = true;
     }
 
     @Override

@@ -24,7 +24,7 @@ public class Sparkle2 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         p.energy.use(energyOnUse);
-        int num = Math.min(energyOnUse * 2, p.energy.energyMaster * 2);
+        int num = Math.min(energyOnUse * 2, p.energy.energy * 2);
         if (upgraded) num += magicNumber;
 
         ModHelper.addToBotAbstract(() -> {

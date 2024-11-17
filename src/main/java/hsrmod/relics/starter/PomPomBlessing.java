@@ -73,7 +73,7 @@ public class PomPomBlessing extends CustomRelic implements CustomSavable<Integer
         flash();
         addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new EnergyPower(AbstractDungeon.player, energy), energy));
         addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new IntangiblePlayerPower(AbstractDungeon.player, 1), 1));
-        addToTop(new GainEnergyAction(AbstractDungeon.actNum));
+        addToTop(new GainEnergyAction(2));
         addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
     }
 

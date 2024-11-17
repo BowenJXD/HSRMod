@@ -1,6 +1,8 @@
 package hsrmod.powers.uniqueBuffs;
 
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
 import hsrmod.subscribers.PreEnergyChangeSubscriber;
@@ -9,45 +11,40 @@ import hsrmod.subscribers.SubscriptionManager;
 public class ExcitatoryGlandPower extends PowerPower implements PreEnergyChangeSubscriber {
     public static final String POWER_ID = HSRMod.makePath(ExcitatoryGlandPower.class.getSimpleName());
     
-    public int triggerAmount = 5;
+    public boolean canTrigger = false;
     
-    public ExcitatoryGlandPower(int triggerAmount) {
+    public ExcitatoryGlandPower() {
         super(POWER_ID);
         this.updateDescription();
     }
-
-    @Override
-    public void updateDescription() {
-        description = String.format(DESCRIPTIONS[0], triggerAmount);
-    }
-
+    
     @Override
     public void onInitialApplication() {
         super.onInitialApplication();
         SubscriptionManager.subscribe(this);
+        ++AbstractDungeon.player.energy.energy;
     }
 
     @Override
     public void onRemove() {
         super.onRemove();
         SubscriptionManager.unsubscribe(this);
+        --AbstractDungeon.player.energy.energy;
     }
 
     @Override
-    public void stackPower(int stackAmount) {
-        super.stackPower(stackAmount);
-        if (amount >= triggerAmount) {
-            flash();
-            amount -= triggerAmount;
-            addToBot(new GainEnergyAction(1));
-        }
+    public void atStartOfTurn() {
+        super.atStartOfTurn();
+        canTrigger = true;
     }
 
     @Override
     public int preEnergyChange(int changeAmount) {
-        if (SubscriptionManager.checkSubscriber(this) 
-                && changeAmount < 0) {
-            stackPower(-changeAmount);
+        if (SubscriptionManager.checkSubscriber(this)
+                && EnergyPanel.getCurrentEnergy() == -changeAmount
+                && canTrigger) {
+            addToTop(new GainEnergyAction(1));
+            canTrigger = false;
         }
         return changeAmount;
     }

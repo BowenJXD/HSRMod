@@ -46,9 +46,8 @@ public class KolchisPower extends PowerPower implements OnReceivePowerPower {
 
             amount += -stackAmount;
             if (amount >= chargeThreshold) {
-                int energyGain = amount / chargeThreshold;
-                amount %= chargeThreshold;
-                addToBot(new GainEnergyAction(energyGain));
+                amount = 0;
+                addToBot(new GainEnergyAction(1));
             }
         }
         return stackAmount;

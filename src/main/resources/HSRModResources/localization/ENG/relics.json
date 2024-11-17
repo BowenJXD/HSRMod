@@ -3,7 +3,7 @@
     "NAME": "PomPom Blessing",
     "FLAVOR": "\"Ta-da! Here's to the future expeditions we'll be experiencing together!\"",
     "DESCRIPTIONS": [
-      "At battle start, gain [E] equals to the act number, gain #yIntangible . NL After you use a card, gain #b20 #yhsrmod:Charge . #yCharge will be kept between battles. NL At the end of turn, you can choose to use 20 #yCharge per card to retain cards. NL #rWould #rsomehow #rsave #ryou #rfrom #rdanger... ",
+      "At battle start, gain [E] [E], gain #yIntangible . NL After you use a card, gain #b20 #yhsrmod:Charge . #yCharge will be kept between battles. NL At the end of turn, you can choose to use 20 #yCharge per card to retain cards. NL #rWould #rsomehow #rsave #ryou #rfrom #rdanger... ",
       "Retain (each costs 20 Charge)",
       "Choose one crew member to sacrifice",
       "I don't want to… be alone…",
@@ -136,7 +136,7 @@
     "NAME": "The Wind Soaring Valorous",
     "FLAVOR": "She quickened her pace, barefoot and agile, with the girl closely chasing after her. Or perhaps, they were both chasing after each other.",
     "DESCRIPTIONS": [
-      "All starter strike becomes AoE at start of battle. When using starter strike, gain #b40 [hsrmod:chargeIcon] ."
+      "All starter strike becomes AoE at start of battle. When using starter strike, gain #b30 [hsrmod:chargeIcon] ."
     ]
   },
   "HSRMod:MasterOfDreamMachinations": {

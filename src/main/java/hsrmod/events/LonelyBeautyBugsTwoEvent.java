@@ -17,7 +17,8 @@ public class LonelyBeautyBugsTwoEvent extends PhasedEvent {
     //This text should be set up through loading an event localization json file
     private static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
     private static final String[] OPTIONS = eventStrings.OPTIONS;
-    private static final String title = Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT ? "孤独，太空美虫（其二）" : "Lonely Beauty Bugs";
+    private static final String title = Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT 
+            ? "孤独，太空美虫（其二）" : "Loneliness, Cosmic Beauty Bugs, Simulated Universe (II)";
 
     public LonelyBeautyBugsTwoEvent() {
         super(ID, title, "HSRModResources/img/events/" + ID + ".png");

@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.Exordium;
+import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -146,25 +147,38 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         BaseMod.addEvent(new AddEventParams.Builder(RuanMeiEvent.ID, RuanMeiEvent.class)
                 .spawnCondition(() -> AbstractDungeon.eventRng.random(99) < 10)
                 .create());
+        
+        BaseMod.addEvent(new AddEventParams.Builder(CosmicCrescendoEvent.ID, CosmicCrescendoEvent.class)
+                .dungeonID(Exordium.ID)
+                // .bonusCondition(() -> ModHelper.hasRelic(WaxOfElation.ID))
+                .create());
         BaseMod.addEvent(new AddEventParams.Builder(TavernEvent.ID, TavernEvent.class)
                 .dungeonID(TheCity.ID)
-                .bonusCondition(() -> ModHelper.hasRelic(WaxOfDestruction.ID))
+                // .bonusCondition(() -> ModHelper.hasRelic(WaxOfDestruction.ID))
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(IOUDispenserEvent.ID, IOUDispenserEvent.class)
                 .dungeonID(TheCity.ID)
-                .bonusCondition(() -> ModHelper.hasRelic(WaxOfNihility.ID))
+                // .bonusCondition(() -> ModHelper.hasRelic(WaxOfNihility.ID))
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(LonelyBeautyBugsOneEvent.ID, LonelyBeautyBugsOneEvent.class)
                 .dungeonIDs(Exordium.ID, TheCity.ID)
-                .bonusCondition(() -> ModHelper.hasRelic(WaxOfPreservation.ID))
+                // .bonusCondition(() -> ModHelper.hasRelic(WaxOfPreservation.ID))
+                .create());
+        BaseMod.addEvent(new AddEventParams.Builder(SlumberingOverlordEvent.ID, SlumberingOverlordEvent.class)
+                .dungeonID(TheBeyond.ID)
+                // .bonusCondition(() -> ModHelper.hasRelic(WaxOfPropagation.ID))
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(RockPaperScissorsEvent.ID, RockPaperScissorsEvent.class)
                 .dungeonID(TheCity.ID)
-                .bonusCondition(() -> ModHelper.hasRelic(WaxOfTheHunt.ID))
+                // .bonusCondition(() -> ModHelper.hasRelic(WaxOfTheHunt.ID))
                 .create());
+        BaseMod.addEvent(new AddEventParams.Builder(DoubleLotteryEvent.ID, DoubleLotteryEvent.class)
+                // .bonusCondition(() -> ModHelper.hasRelic(WaxOfErudition.ID))
+                .create());
+        
         BaseMod.addEvent(new AddEventParams.Builder(WaxManufacturerEvent.ID, WaxManufacturerEvent.class)
                 .dungeonID(Exordium.ID)
-                .bonusCondition(() -> WaxRelic.getSelectedPathTag(AbstractDungeon.player.relics) != WaxManufacturerEvent.getMostCommonTag(AbstractDungeon.player.masterDeck))
+                // .bonusCondition(() -> WaxRelic.getSelectedPathTag(AbstractDungeon.player.relics) != WaxManufacturerEvent.getMostCommonTag(AbstractDungeon.player.masterDeck))
                 .create());
     }
     

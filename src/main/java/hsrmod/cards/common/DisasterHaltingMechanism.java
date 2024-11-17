@@ -1,6 +1,8 @@
 package hsrmod.cards.common;
 
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.UpgradeSpecificCardAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -27,5 +29,6 @@ public class DisasterHaltingMechanism extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, block));
+        p.hand.group.stream().filter(AbstractCard::canUpgrade).findFirst().ifPresent(c -> addToBot(new UpgradeSpecificCardAction(c)));
     }
 }

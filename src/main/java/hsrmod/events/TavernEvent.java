@@ -24,14 +24,19 @@ public class TavernEvent extends PhasedEvent {
         super(ID, title, "HSRModResources/img/events/" + ID + ".png");
         
         registerPhase(0, new TextPhase(DESCRIPTIONS[0]).addOption(OPTIONS[0], (i)->transitionKey(1)));
-        registerPhase(1, new TextPhase(DESCRIPTIONS[1])
-                .addOption(OPTIONS[1], (i)->transitionKey(2))
-                .addOption(OPTIONS[2], (i)->transitionKey(3))
-                .addOption(new TextPhase.OptionInfo(OPTIONS[3])
-                        .setOptionResult((i) -> transitionKey(4))
-                        .enabledCondition(() -> ModHelper.hasRelic(WaxOfDestruction.ID))
-                )
-        );
+        
+        TextPhase phase1 = new TextPhase(DESCRIPTIONS[1]);
+        phase1.addOption(OPTIONS[1], (i)->transitionKey(2));
+        phase1.addOption(OPTIONS[2], (i)->transitionKey(3));
+        
+        if (ModHelper.hasRelic(WaxOfDestruction.ID)) {
+            phase1.addOption(new TextPhase.OptionInfo(OPTIONS[3])
+                    .setOptionResult((i) -> transitionKey(4))
+                    .enabledCondition(() -> ModHelper.hasRelic(WaxOfDestruction.ID))
+            );
+        }
+        
+        registerPhase(1, phase1);
         registerPhase(2, new CombatPhase(MonsterHelper.RED_SLAVER_ENC)
                 .addRewards(false, (room)->room.addRelicToRewards(AbstractRelic.RelicTier.COMMON))
                 .setNextKey(5)

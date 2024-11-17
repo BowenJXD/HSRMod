@@ -40,7 +40,7 @@ public class DisruptivePulse extends BaseCard {
                     if (ModHelper.getPowerCount(m, ToughnessPower.POWER_ID) <= 0
                             && (toughness > 0)) {
                         addToBot(new ApplyPowerAction(p, p, new EnergyPower(p, EnergyPower.AMOUNT_LIMIT), EnergyPower.AMOUNT_LIMIT));
-                        int energyNum = AbstractDungeon.player.energy.energyMaster - EnergyPanel.getCurrentEnergy();
+                        int energyNum = AbstractDungeon.player.energy.energy - EnergyPanel.getCurrentEnergy();
                         if (energyNum > 0) addToBot(new GainEnergyAction(energyNum));
                         addToBot(new BreakDamageAction(m, new DamageInfo(p, tr)));
                     }

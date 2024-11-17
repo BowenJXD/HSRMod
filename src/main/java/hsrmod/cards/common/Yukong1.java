@@ -17,7 +17,7 @@ public class Yukong1 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        int num = Math.min(energyOnUse, p.energy.energyMaster);
+        int num = Math.min(energyOnUse, p.energy.energy);
         num += magicNumber;
         if (num <= 0) return;
         addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, num), num));

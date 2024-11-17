@@ -24,7 +24,8 @@ public class LonelyBeautyBugsOneEvent extends PhasedEvent {
     //This text should be set up through loading an event localization json file
     private static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
     private static final String[] OPTIONS = eventStrings.OPTIONS;
-    private static final String title = Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT ? "孤独，太空美虫（其一）" : "Lonely Beauty Bugs";
+    private static final String title = Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT 
+            ? "孤独，太空美虫（其一）" : "Loneliness, Cosmic Beauty Bugs, Simulated Universe (I)";
 
     public LonelyBeautyBugsOneEvent() {
         super(ID, title, "HSRModResources/img/events/" + ID + ".png");
@@ -54,7 +55,7 @@ public class LonelyBeautyBugsOneEvent extends PhasedEvent {
                 });
         if (ModHelper.hasRelic(WaxOfPreservation.ID)) {
             phase1.addOption(OPTIONS[4], (i) -> {
-                AbstractDungeon.player.gainGold(100);
+                // AbstractDungeon.player.gainGold(100);
                 transition(true);
             });
         }

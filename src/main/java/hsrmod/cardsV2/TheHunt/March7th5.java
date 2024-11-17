@@ -22,41 +22,6 @@ public class March7th5 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        List<AbstractCard> cards = new ArrayList<>(p.hand.group);
-        
-        addToBot(new DrawCardAction(magicNumber, new AbstractGameAction() {
-            @Override
-            public void update() {
-                for (AbstractCard c : p.hand.group) {
-                    if (!cards.contains(c) && c.canUpgrade()) {
-                        addToTop(new UpgradeSpecificCardAction(c));
-                    }
-                }
-                isDone = true;
-            }
-        }));
-    }
-
-    @Override
-    public boolean canUpgrade() {
-        return true;
-    }
-
-    @Override
-    public void upgrade() {
-        upgradeMagicNumber(1);
-        this.timesUpgraded++;
-        this.upgraded = true;
-        this.name = DataManager.getInstance().getCardData(ID, CardDataCol.Name) + "+" + this.timesUpgraded;
-        initializeTitle();
-        this.initializeDescription();
-    }
-
-    @Override
-    public void triggerOnOtherCardPlayed(AbstractCard c) {
-        super.triggerOnOtherCardPlayed(c);
-        if (c.upgraded) {
-            addToBot(new UpgradeSpecificCardAction(this));
-        }
+        p.hand.group.stream().filter(AbstractCard::canUpgrade).forEach(c -> addToBot(new UpgradeSpecificCardAction(c)));
     }
 }

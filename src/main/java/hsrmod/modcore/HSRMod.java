@@ -30,6 +30,7 @@ import hsrmod.misc.Encounter;
 import hsrmod.misc.ToughnessReductionVariable;
 import hsrmod.relics.starter.*;
 import hsrmod.utils.ModHelper;
+import hsrmod.utils.RewardEditor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -141,6 +142,7 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
     public void receivePostInitialize() {
         addEvents();
         addMonsters();
+        BaseMod.addSaveField("RewardEditor", RewardEditor.getInstance());
     }
     
     public void addEvents() {

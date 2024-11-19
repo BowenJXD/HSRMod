@@ -6,8 +6,8 @@ Himeko0,Îä×°µ÷ÂÉ,BASIC,ATTACK,ENEMY,1,Ôì³É !D! µãÉËº¦£¨»ð !TR! £©¡£,6,2,,,,,9,,,
 Welt0,ÖØÁ¦Ñ¹ÖÆ,BASIC,ATTACK,ENEMY,1,Ôì³É !D! µãÉËº¦£¨ÐéÊý !TR! £©¡£,6,2,,,,,9,,,,¿ªÍØ,ÐéÊý,ÎÞ,¹¥»÷
 Trailblazer2,È«Ê¤¡¤°²Ï¢È«ÀÝ´ò,BASIC,ATTACK,ALL_ENEMY,0, hsrmod:ºÄÄÜ 120£¬ÈºÌå£ºÔì³É !D! µãÉËº¦£¨ÎïÀí !TR! £©¡£,4,2,,,,,6,,,,¿ªÍØ,ÎïÀí,ÎÞ,¹¥»÷
 Trailblazer3,³ãÈ¼²»ÃðµÄçúçê,BASIC,SKILL,SELF,1,»ñµÃ !B! µã¸ñµ²¡£,,,5,,,,,,8,,¿ªÍØ,,ÎÞ,·ÀÓù
-Sushang2,ÓÎÈÐÓÐÓà,COMMON,SKILL,SELF,1, hsrmod:»÷ÆÆ ºó£¬´ÓÃþÅÆ¶Ñ¼ÓÈëÊÖÅÆ¡£ NL ÏûºÄ ¡£»ñµÃ !M! ²ã hsrmod:»÷ÆÆÌØ¹¥ £¬ÈôÓÐµÐÈËÓÐ hsrmod:»÷ÆÆ×´Ì¬ £¬»Ø¸´ [E] [E] ¡£,,,,2,, hsrmod:»÷ÆÆ ºó£¬´ÓÃþÅÆ¶Ñ¼ÓÈëÊÖÅÆ¡£ NL ÏûºÄ ¡£»ñµÃ !M! ²ã hsrmod:»÷ÆÆÌØ¹¥ £¬ÈôÓÐµÐÈËÓÐ hsrmod:»÷ÆÆ×´Ì¬ £¬»Ø¸´ [E] [E] [E] ¡£,,,,3,»ÙÃð,,¸ß,ÔË×ª
-Sushang3,ÆÆµÐ,COMMON,ATTACK,ENEMY,1,¿ÉÖØ¸´Éý¼¶£¬Éý¼¶Ê±£¬Ï÷ÈÍÖµ+1¡£ NL Ôì³É !D! µãÉËº¦£¨ÎïÀí !TR! £©£¬Èô hsrmod:»÷ÆÆ £¬ÔòÏûºÄ£¬²¢ÓÀ¾ÃÉý¼¶´ËÅÆ¡£,6,2,,,,,,,,,»ÙÃð,ÎïÀí,ÖÐ,¹¥»÷
+Sushang2,ÓÎÈÐÓÐÓà,COMMON,SKILL,SELF,1, hsrmod:»÷ÆÆ ºó£¬´ÓÃþÅÆ¶Ñ¼ÓÈëÊÖÅÆ¡£ NL ÏûºÄ ¡£»ñµÃ !M! ²ã hsrmod:»÷ÆÆÌØ¹¥ £¬ÈôÓÐµÐÈËÓÐ hsrmod:»÷ÆÆ×´Ì¬ £¬»Ø¸´ [E] [E] ¡£,,,,2,, hsrmod:»÷ÆÆ ºó£¬´ÓÃþÅÆ¶Ñ¼ÓÈëÊÖÅÆ¡£ NL ÏûºÄ ¡£»ñµÃ !M! ²ã hsrmod:»÷ÆÆÌØ¹¥ £¬ÈôÓÐµÐÈËÓÐ hsrmod:»÷ÆÆ×´Ì¬ £¬»Ø¸´ [E] [E] £¬Ãþ !M! ÕÅÅÆ¡£,,,,,»ÙÃð,,¸ß,ÔË×ª
+Sushang3,ÆÆµÐ,COMMON,ATTACK,ENEMY,1,¿ÉÖØ¸´Éý¼¶£¬Éý¼¶Ê±£¬Ï÷ÈÍÖµ+1¡£ NL Ôì³É !D! µãÉËº¦£¨ÎïÀí !TR! £©£¬Èô hsrmod:»÷ÆÆ £¬ÔòÏûºÄ£¬²¢ÓÀ¾ÃÉý¼¶´ËÅÆ¡£,5,2,,,,,,,,,»ÙÃð,ÎïÀí,ÖÐ,¹¥»÷
 Tingyun1,ÇìÔÆ¹â¸²ÒÇµ»,COMMON,SKILL,SELF,0, hsrmod:ºÄÄÜ 10£¬»ñµÃ !M! µã [hsrmod:ChargeIcon] ºÍ1²ã Á¦Á¿ ¡£,,,,50,, hsrmod:ºÄÄÜ 10£¬»ñµÃ !M! µã [hsrmod:ChargeIcon] ºÍ1²ã Á¦Á¿ £¬»ñµÃÃþÅÆ¶Ñ1ÕÅÅÆ¡£,,,,60,ÖÇÊ¶,,¸ß,ÔË×ª
 Qingque1,º£µ×ÀÌÔÂ,COMMON,SKILL,SELF,1, ÏûºÄ ¡£Ãþ1ÕÅÅÆ£¬ !M! %¸ÅÂÊ»Ø¸´ÏûºÄµÄ [E] £¬ !M! %¸ÅÂÊ½«´ËÅÆ·µ»¹ÊÖ¿¨¡£,,,,66,,,,,,75,·±Óý,,¸ß,ÔË×ª
 Qingque2,µÛÔ«ÏèÁÛºÍ¾øÕÅ,COMMON,ATTACK,ALL_ENEMY,4,Ã¿ÏûºÄ1µã [E] £¬´ËÅÆ±ãÓÐ50%¸ÅÂÊ¼õÉÙ1µã·ÑÓÃ¡£·ÑÓÃÎª0Ê± hsrmod:×·»÷ ¡£ NL ÈºÌå£ºÔì³É !D! µãÉËº¦£¨Á¿×Ó !TR! £© !M! ´Î¡£,5,1,,2,,,,,,3,»¶Óä,Á¿×Ó,ÖÐ,¹¥»÷
@@ -25,7 +25,7 @@ Luka1,ÁÑÉËÈ­,COMMON,ATTACK,ENEMY,1,Ö´ÐÐ !M! ´Î£ºÔì³É !D! µãÉËº¦£¨ÎïÀí !TR! £©£¬Ê
 Guinaifen1,Ó­Ãæ¿ªÃÅºì,COMMON,ATTACK,ENEMY,1,Ôì³É !D! µãÉËº¦£¨»ð !TR! £©£¬Ê©¼Ó !M! ²ã hsrmod:×ÆÉÕ ºÍ1²ã Ò×ÉË ¡£,1,2,,2,,Ôì³É !D! µãÉËº¦£¨»ð !TR! £©£¬Ê©¼Ó !M! ²ã hsrmod:×ÆÉÕ £¬È»ºó¶ÔÓÐ hsrmod:×ÆÉÕ µÄµÐÈËÒÀ´ÎÊ©¼Ó1²ã Ò×ÉË ¡£,,,,3,ÐéÎÞ,»ð,ÖÐ,¹¥»÷
 Hanya1,ÉúÃðÏµ¸¿,COMMON,ATTACK,ENEMY,1, ÏûºÄ ¡£Ôì³É !D! µãÉËº¦£¨ÎïÀí !TR! £©£¬Ê©¼Ó !M! ²ã³Ð¸º£¨³ÉÎªÅÆµÄÄ¿±êºóÒÆ³ý1²ã£¬»Ø¸´ [E] £¬»ØºÏ¿ªÊ¼Ê±ÒÆ³ýËùÓÐ²ã£©¡£,4,2,,2,,,,,,3,·±Óý,ÎïÀí,ÖÐ,ÔË×ª
 Xueyi1,Ê®ÍõÊ¥¶Ï£¬Òµ±¨ºã³£,COMMON,ATTACK,ENEMY,8,Ï÷ÈÍºó£¬´ËÅÆ¼õÉÙÏ÷ÈÍÖµÊýÁ¿µÄ·ÑÓÃ¡£·ÑÓÃÎª0Ê± hsrmod:×·»÷ ¡£ NL ¶Ô hsrmod:ÈÍÐÔ ×î¶àµÄµÐÈËÔì³ÉÆä hsrmod:ÈÍÐÔ ¾ø¶ÔÖµÊýÁ¿µÄÉËº¦£¨Á¿×Ó !TR! £©¡£,,3,,,,,,6,,,»ÙÃð,Á¿×Ó,ÖÐ,¹¥»÷
-Gallagher1,ÏãéÄÒÇÀñ,COMMON,ATTACK,ALL_ENEMY,1, hsrmod:ºÄÄÜ 110£¬ÈºÌå£ºÔì³É !D! µãÉËº¦£¨»ð !TR! £©£¬Èô hsrmod:»÷ÆÆ £¬Ãþ1ÕÅÅÆ£¬²¢¶ÔÆäÊ©¼Ó hsrmod:¸ñµ²·µ»¹ ¡£,2,2,,,, hsrmod:ºÄÄÜ 110£¬ÈºÌå£ºÔì³É !D! µãÉËº¦£¨»ð !TR! £©£¬È»ºóÈôÆäÓÐ hsrmod:»÷ÆÆ×´Ì¬ £¬Ãþ1ÕÅÅÆ£¬¶ÔÆäÊ©¼Ó hsrmod:¸ñµ²·µ»¹ ¡£,,3,,,»ÙÃð,»ð,¸ß,·ÀÓù
+Gallagher1,ÏãéÄÒÇÀñ,COMMON,ATTACK,ALL_ENEMY,1, hsrmod:ºÄÄÜ 110£¬ÈºÌå£ºÔì³É !D! µãÉËº¦£¨»ð !TR! £©£¬Èô hsrmod:»÷ÆÆ £¬Ãþ1ÕÅÅÆ£¬²¢¶ÔÆäÊ©¼Ó hsrmod:¸ñµ²·µ»¹ ¡£,3,3,,,, hsrmod:ºÄÄÜ 110£¬ÈºÌå£ºÔì³É !D! µãÉËº¦£¨»ð !TR! £©£¬È»ºóÈôÆäÓÐ hsrmod:»÷ÆÆ×´Ì¬ £¬Ãþ1ÕÅÅÆ£¬¶ÔÆäÊ©¼Ó hsrmod:¸ñµ²·µ»¹ ¡£,4,4,,,»ÙÃð,»ð,¸ß,·ÀÓù
 Yanqing1,¿ìÓêÑàÏàÖð,UNCOMMON,ATTACK,ENEMY,2, hsrmod:ºÄÄÜ 140£¬Ôì³É !D! µãÉËº¦£¨±ù !TR! £©£¬ÈôÄãÓÐ¸ñµ²£¬Ôò¶îÍâÔì³ÉÒ»´ÎÉËº¦£»60%¸ÅÂÊ»ñµÃ¡¸ºô½£ÈçÓ°¡¹¡£,12,2,,3,, hsrmod:ºÄÄÜ 140£¬Ôì³É !D! µãÉËº¦£¨±ù !TR! £©£¬ÈôÄãÓÐ¸ñµ²£¬Ôò¶îÍâÔì³ÉÒ»´ÎÉËº¦£»60%¸ÅÂÊ»ñµÃ¡¸ºô½£ÈçÓ°+¡¹¡£,,,,,»¶Óä,±ù,µÍ,¹¥»÷
 Yanqing2,ºô½£ÈçÓ°,SPECIAL,ATTACK,ENEMY,-2, ÏûºÄ ¡£»ØºÏ¿ªÊ¼Ê±£¬ÈôÄãÓÚÉÏ»ØºÏ½áÊøºóÎ´ÊÜµ½¹ýÎ´±»¸ñµ²µÄÉËº¦£¬Ôò hsrmod:×·»÷ ¡£ NL Ôì³É !D! µãÉËº¦£¨±ù !TR! £©£¬ !M! %»ù´¡¸ÅÂÊÊ©¼Ó1²ã hsrmod:¶³½á ¡£,8,1,,65,,,,,,,»¶Óä,±ù,ÎÞ,¹¥»÷
 Clara1,ÒòÎªÎÒÃÇÊÇ¼ÒÈË,UNCOMMON,SKILL,SELF,-2,»ØºÏ¿ªÊ¼Ê±£¬ÈôÄãÓÚÉÏ»ØºÏ½áÊøºóÊÜµ½¹ýÉËº¦£¬Ôò hsrmod:×·»÷ ¡£ NL Ëæ»ú hsrmod:×·»÷ ÖÁ¶à !M! ÕÅ±»ÏûºÄµÄ hsrmod:×·»÷ ÅÆ¡£,,,,3,,,,,,4,»¶Óä,,µÍ,ÔË×ª
@@ -33,7 +33,7 @@ Gepard1,ÓÀÒÙÖ®±Ú,UNCOMMON,SKILL,SELF,1, hsrmod:ºÄÄÜ 100£¬»ñµÃ !B! µã¸ñµ²¡£,,,15,
 Bronya1,×÷Õ½ÔÙ²¿Êð,UNCOMMON,SKILL,SELF,1,»ñµÃ !M! ²ã Á¦Á¿ £¬´ÓÃþÅÆ¶ÑÑ¡Ôñ1ÕÅÅÆ»ñµÃ¡£,,,,1,, ¹ÌÓÐ ¡£»ñµÃ !M! ²ã Á¦Á¿ £¬´ÓÃþÅÆ¶ÑÑ¡Ôñ1ÕÅÅÆ»ñµÃ¡£,,,,,Ñ²ÁÔ,,¸ß,ÔË×ª
 Welt1,Ðé¿Õ¶Ï½ç,UNCOMMON,ATTACK,ENEMY,1, hsrmod:µ¯Éä !M! ´Î£ºÔì³É !D! µãÉËº¦£¨ÐéÊý !TR! £©£¬¶ÔÆäÊ©¼Ó1²ã hsrmod:½ûïÀ ¡£,3,1,,2,,,,,,3,ÐéÎÞ,ÐéÊý,ÖÐ,·ÀÓù
 Himeko1,³ËÊ¤×·»÷,UNCOMMON,ATTACK,ALL_ENEMY,3, hsrmod:»÷ÆÆ ºó hsrmod:×·»÷ ¡£ÈºÌå£ºÔì³É !D! µãÉËº¦£¨»ð !TR! £© !M! ´Î¡£,6,1,,2,,,,,,3,»¶Óä,»ð,ÖÐ,¹¥»÷
-Seele1,ÂÒµû,UNCOMMON,ATTACK,ENEMY,2,¿ÉÖØ¸´Éý¼¶£¬Éý¼¶Ê±£¬ÉËº¦+ !M! ¡£ NL ÏûºÄ ¡£ hsrmod:ºÄÄÜ 120£¬Ôì³É !D! µãÉËº¦£¨Á¿×Ó !TR! £©£¬Èô Õ¶É± £¬Ôò·µ»¹ÊÖ¿¨£¬»Ø¸´ [E] £¬²¢ÓÀ¾ÃÉý¼¶´ËÅÆ¡£,12,3,,3,,,,,,,Ñ²ÁÔ,Á¿×Ó,ÖÐ,¹¥»÷
+Seele1,ÂÒµû,UNCOMMON,ATTACK,ENEMY,2,¿ÉÖØ¸´Éý¼¶£¬Éý¼¶Ê±£¬ÉËº¦+ !M! ¡£ NL hsrmod:ºÄÄÜ 120£¬Ôì³É !D! µãÉËº¦£¨Á¿×Ó !TR! £©£¬Èô Õ¶É± £¬Ôò·µ»¹ÊÖ¿¨£¬»Ø¸´ [E] £¬²¢ÓÀ¾ÃÉý¼¶´ËÅÆ¡£,12,3,,3,,,,,,,Ñ²ÁÔ,Á¿×Ó,ÖÐ,¹¥»÷
 JingYuan1,Õ¶¿±ÉñÐÎ,UNCOMMON,ATTACK,ENEMY,10,´ò³öÅÆºó£¬´ËÅÆ¼õÉÙ1µã·ÑÓÃ¡£·ÑÓÃÎª0Ê± hsrmod:×·»÷ ¡£ NL hsrmod:µ¯Éä !M! ´Î£ºÔì³É !D! µãÉËº¦£¨À× !TR! £©¡£,4,1,,3,,,,,,4,»¶Óä,À×,µÍ,¹¥»÷
 Luocha1,°×»¨µÄÆíÍû,UNCOMMON,SKILL,SELF,0, ±£Áô ¡£ ÏûºÄ ¡£»Ø¸´ [E] ºÍ !M! µãÉúÃü£¨ÈôÉúÃüÖµÐ¡ÓÚ50%Ôò»Ø¸´Á¿·­±¶£©£¬¾»»¯Ëæ»ú1¸ö¸ºÃæÐ§¹û£¬ÏûºÄ1ÕÅÅÆ¡£,,,,2,, ±£Áô ¡£ ÏûºÄ ¡£»Ø¸´ [E] ºÍ !M! µãÉúÃü£¨ÈôÉúÃüÖµÐ¡ÓÚ50%Ôò»Ø¸´Á¿·­±¶£©£¬¾»»¯Ëæ»ú1¸ö¸ºÃæÐ§¹û£¬ÏûºÄÈÎÒâÕÅÅÆ¡£,,,,,·áÈÄ,,ÖÐ,·ÀÓù
 SilverWolf1,|ÕËºÅÒÑ·â½û|,UNCOMMON,ATTACK,ENEMY,1, hsrmod:ºÄÄÜ 110¡£Ôì³É !D! µãÉËº¦£¨Á¿×Ó !TR! £©£¬¶ÔÆäÊ©¼Ó1²ã Ò×ÉË £¬1²ã ÐéÈõ ¡£,6,4,,,, hsrmod:ºÄÄÜ 110¡£Ôì³É !D! µãÉËº¦£¨Á¿×Ó !TR! £©£¬¶ÔÆäÊ©¼Ó1²ã Ò×ÉË £¬1²ã ÐéÈõ £¬ÆäÊ§È¥1²ã Á¦Á¿ ¡£,8,,,,ÐéÎÞ,Á¿×Ó,ÖÐ,¹¥»÷
@@ -63,17 +63,17 @@ Robin1,¼´ÐË×°ÊÎ,UNCOMMON,SKILL,SELF,-1,ÃþXÕÅÅÆ£¬´Ó×óÒÀ´Î´ò³öXÕÅÊÖÅÆ£¨ÈôÎª hsrmod
 Robin2,Ç§Òôµü×à£¬ÈºÐÇ¸³¸ñ,UNCOMMON,SKILL,SELF,1, hsrmod:ºÄÄÜ 140£¬Ãþ !M! ÕÅÅÆ£¬»ñµÃÒÔÏÂÐ§¹û£º´ò³ö¹¥»÷ÅÆºó£¬»ñµÃÆä·ÑÓÃÊýÁ¿µÄ Á¦Á¿ ¡£ÏÂ»ØºÏ¿ªÊ¼Ê±£¬ÒÆ³ý´ËÐ§¹û£¬ºÍÒÔ´Ë·¨»ñµÃµÄ Á¦Á¿ ¡£,,,,3,, hsrmod:ºÄÄÜ 140£¬Ãþ !M! ÕÅÅÆ£¬»ñµÃÒÔÏÂÐ§¹û£º´ò³ö¹¥»÷ÅÆºó£¬»ñµÃÆä·ÑÓÃÊýÁ¿µÄ Á¦Á¿ £¬ÈôÎª hsrmod:×·»÷ ÅÆ£¬Ôò»Ø¸´20µã [hsrmod:ChargeIcon] ¡£ÏÂ»ØºÏ¿ªÊ¼Ê±£¬ÒÆ³ý´ËÐ§¹û£¬ºÍÒÔ´Ë·¨»ñµÃµÄ Á¦Á¿ ¡£,,,,4,»¶Óä,,¸ß,¹¥»÷
 Trailblazer5,ÐúÏùµÄÎèµÆÑ²ÓÎ,UNCOMMON,POWER,SELF,2, hsrmod:ºÄÄÜ 140¡£´ò³öµÄÅÆÔì³ÉÊ×´ÎÉËº¦ºó£¬ÈôÆäÓÐ hsrmod:»÷ÆÆ×´Ì¬ £¬ÔòÔì³É hsrmod:³¬»÷ÆÆÉËº¦ ¡£,,,,2,, ¹ÌÓÐ ¡£ hsrmod:ºÄÄÜ 140¡£´ò³öµÄÅÆÔì³ÉÊ×´ÎÉËº¦ºó£¬ÈôÆäÓÐ hsrmod:»÷ÆÆ×´Ì¬ £¬ÔòÔì³É hsrmod:³¬»÷ÆÆÉËº¦ ¡£,,,,3,»ÙÃð,,µÍ,¹¥»÷
 Trailblazer6,ÎÀÎÒÆðÎè,UNCOMMON,SKILL,SELF,1,»ñµÃ !M! ²ã hsrmod:»÷ÆÆÌØ¹¥ £¬ÈôÄãÃ»ÓÐ´ò³ö¹ýÐúÏùµÄÎèµÆÑ²ÓÎ£¬Ôò»ñµÃÖ®£¬·ñÔòÔÙ»ñµÃ !M! ²ã hsrmod:»÷ÆÆÌØ¹¥ ¡£,,,,2,, ¹ÌÓÐ ¡£»ñµÃ !M! ²ã hsrmod:»÷ÆÆÌØ¹¥ £¬ÈôÄãÃ»ÓÐ´ò³ö¹ýÐúÏùµÄÎèµÆÑ²ÓÎ£¬Ôò»ñµÃÖ®£¬·ñÔòÔÙ»ñµÃ !M! ²ã hsrmod:»÷ÆÆÌØ¹¥ ¡£,,,,3,»ÙÃð,,µÍ,¹¥»÷
-Boothill1,³ãÀùÎèÕßµÄÌ½¸ê,UNCOMMON,ATTACK,ENEMY,2,Ôì³É !D! µãÉËº¦£¨ÎïÀí !TR! £© !M! ´Î£¬Èô hsrmod:»÷ÆÆ £¬Ôì³ÉÆä hsrmod:ÈÍÐÔ ÉÏÏÞµÄ hsrmod:»÷ÆÆÉËº¦ £»·ñÔò½«´ËÅÆ·µ»¹ÊÖ¿¨£¬²¢ÓÚ´Ë»ØºÏ ±£Áô ¡£,3,3,,2,,,,,,3,»ÙÃð,ÎïÀí,µÍ,¹¥»÷
-Boothill2,»÷´¸Á¬åó,UNCOMMON,ATTACK,ENEMY,1,Ôì³É !D! µãÉËº¦£¨ÎïÀí !TR! £©£¬ÈôÃ»ÓÐ»÷ÆÆ£¬Ôò½«´ËÅÆ·µ»¹ÊÖ¿¨¡£,4,5,,,,,,8,,,»ÙÃð,ÎïÀí,ÖÐ,¹¥»÷
-Firefly1,×ÔÆÆËéµÄÌì¿Õ×¹Âä,UNCOMMON,ATTACK,ENEMY,1,Ôì³É !D! µãÉËº¦£¨»ð !TR! £©£¬È»ºóÈôÆäÓÐ hsrmod:»÷ÆÆ×´Ì¬ £¬ÔòÔì³É hsrmod:³¬»÷ÆÆÉËº¦ £¬²¢½«´ËÅÆ·µ»¹ÊÖ¿¨¡£,3,3,,,,,4,4,,,»ÙÃð,»ð,µÍ,¹¥»÷
+Boothill1,³ãÀùÎèÕßµÄÌ½¸ê,UNCOMMON,ATTACK,ENEMY,2,Ôì³É !D! µãÉËº¦£¨ÎïÀí !TR! £© !M! ´Î£¬Èô hsrmod:»÷ÆÆ £¬Ôì³ÉÆä hsrmod:ÈÍÐÔ ÉÏÏÞµÄ hsrmod:»÷ÆÆÉËº¦ £»·ñÔò½«´ËÅÆ·µ»¹ÊÖ¿¨£¬²¢ÓÚ´Ë»ØºÏ ±£Áô ¡£,4,4,,2,,,,,,3,»ÙÃð,ÎïÀí,µÍ,¹¥»÷
+Boothill2,»÷´¸Á¬åó,UNCOMMON,ATTACK,ENEMY,1,Ôì³É !D! µãÉËº¦£¨ÎïÀí !TR! £©£¬ÈôÃ»ÓÐ»÷ÆÆ£¬Ôò½«´ËÅÆ·µ»¹ÊÖ¿¨¡£,4,7,,,,,,10,,,»ÙÃð,ÎïÀí,ÖÐ,¹¥»÷
+Firefly1,×ÔÆÆËéµÄÌì¿Õ×¹Âä,UNCOMMON,ATTACK,ENEMY,1,Ôì³É !D! µãÉËº¦£¨»ð !TR! £©£¬È»ºóÈôÆäÓÐ hsrmod:»÷ÆÆ×´Ì¬ £¬ÔòÔì³É50%µÄ hsrmod:³¬»÷ÆÆÉËº¦ £¬²¢½«´ËÅÆ·µ»¹ÊÖ¿¨¡£,3,3,,,,,4,4,,,»ÙÃð,»ð,µÍ,¹¥»÷
 Firefly2,ÕÀ·ÅÔÚÖÕ¾¹µÄÃ÷Ìì,UNCOMMON,POWER,SELF,0, hsrmod:ºÄÄÜ 240£¬ÏûºÄ !M! µãÉúÃü¡£ hsrmod:»÷ÆÆ ºó£¬¶ÔÆäÔì³ÉÆä hsrmod:ÈÍÐÔ ÉÏÏÞµÄ hsrmod:»÷ÆÆÉËº¦ £¬»ñµÃ1²ã hsrmod:»÷ÆÆÐ§ÂÊ £¬»ñµÃ¡¸×ÔÆÆËéµÄÌì¿Õ×¹Âä¡¹¡£,,,,3,,»ñµÃ´ËÅÆÊ±£¬½« [hsrmod:ChargeIcon] ²¹³äÖÁ120¡£ hsrmod:ºÄÄÜ 240£¬ÏûºÄ !M! µãÉúÃü¡£ hsrmod:»÷ÆÆ ºó£¬¶ÔÆäÔì³ÉÆä hsrmod:ÈÍÐÔ ÉÏÏÞµÄ hsrmod:»÷ÆÆÉËº¦ £¬»ñµÃ1²ã hsrmod:»÷ÆÆÐ§ÂÊ £¬»ñµÃ×ÔÆÆËéµÄÌì¿Õ×¹Âä¡£,,,,,»ÙÃð,,µÍ,¹¥»÷
 Jade1,ÌÞË¸Ö®ÑÀ,UNCOMMON,ATTACK,ALL_ENEMY,1,ÃþÅÆÊ± hsrmod:×·»÷ ¡£Ê§È¥1µãÉúÃü£¬Ãþ !M! ÕÅÅÆ£¬ÈºÌå£ºÔì³ÉÊÖÅÆÊýÁ¿£¨ !D! £©µÄÉËº¦£¨Á¿×Ó !TR! £©¡£,0,1,,3,,,,,,4,»¶Óä,Á¿×Ó,ÖÐ,¹¥»÷
 Yunli1,½£ÎªµØ¼Í£¬ÈÐ¾ªÌì×Ú,UNCOMMON,ATTACK,ALL_ENEMY,-2, ±£Áô ¡£ÊÜµ½ÉËº¦Ê±£¬ÉËº¦- !M! £¬ÇÒ»Ø¸´10 [hsrmod:ChargeIcon] ¡£»ØºÏ¿ªÊ¼Ê±£¬ÈôÄãÓÚÉÏ»ØºÏ½áÊøºóÊÜµ½¹ýÉËº¦£¬Ôò hsrmod:×·»÷ ¡£ NL ÖØ¸´Ö´ÐÐ£¬Ö±µ½ [hsrmod:ChargeIcon] ²»×ã£º NL hsrmod:ºÄÄÜ 120£¬ hsrmod:µ¯Éä 2´Î£ºÔì³É !D! µãÉËº¦£¨ÎïÀí !TR! £©¡£,5,1,,2,,,,,,4,»¶Óä,ÎïÀí,ÖÐ,¹¥»÷
 Jiaoqiu1,¶¦ÕóÃî·¨£¬ÆæÕýÏàÉú,UNCOMMON,ATTACK,ALL_ENEMY,2, hsrmod:ºÄÄÜ 100£¬»ñµÃ !M! ÕÅ¡¸½ýìÐ¡¹£¬ÈºÌå£ºÔì³É !D! µãÉËº¦£¨»ð !TR! £©£¬Ê©¼Ó1²ã Ò×ÉË ¡£,2,2,,3,,,,,,4,ÐéÎÞ,»ð,ÖÐ,ÔË×ª
 Jiaoqiu2,½ýìÐ,SPECIAL,ATTACK,ENEMY,0, ÏûºÄ ¡£Ôì³É !D! µãÉËº¦£¨»ð !TR! £©£¬¶ÔÆäÊ©¼Ó1²ã hsrmod:×ÆÉÕ ¡£,2,1,,,,,,,,,ÐéÎÞ,»ð,ÎÞ,¹¥»÷
-Lingsha1,á£Í¤çÔÏ¼,UNCOMMON,ATTACK,ENEMY,1, hsrmod:ºÄÄÜ 110£¬Ôì³É !D! µãÉËº¦£¨»ð !TR! £©£¬Ê©¼Ó !M! ²ã´¼×í£¨±» hsrmod:»÷ÆÆ ºóÒÆ³ý£¬»Ø¸´ [E] [E] £¬Ãþ !M! ÕÅÅÆ£©¡£,4,2,,2,, hsrmod:ºÄÄÜ 110£¬Ôì³É !D! µãÉËº¦£¨»ð !TR! £©£¬Ê©¼Ó !M! ²ã´¼×í£¨±» hsrmod:»÷ÆÆ ºóÒÆ³ý£¬»Ø¸´ [E] [E] £¬Ãþ !M! ÕÅÅÆ£¬È»ºóÉý¼¶ËùÓÐÊÖÅÆ£©¡£,,,,,»ÙÃð,»ð,ÖÐ,¹¥»÷
+Lingsha1,á£Í¤çÔÏ¼,UNCOMMON,ATTACK,ENEMY,1, hsrmod:ºÄÄÜ 110£¬Ôì³É !D! µãÉËº¦£¨»ð !TR! £©£¬Ê©¼Ó !M! ²ã´¼×í£¨±» hsrmod:»÷ÆÆ ºóÒÆ³ý£¬»Ø¸´ [E] [E] £¬Ãþ !M! ÕÅÅÆ£©¡£,3,3,,2,, hsrmod:ºÄÄÜ 110£¬Ôì³É !D! µãÉËº¦£¨»ð !TR! £©£¬Ê©¼Ó !M! ²ã´¼×í£¨±» hsrmod:»÷ÆÆ ºóÒÆ³ý£¬»Ø¸´ [E] [E] £¬Ãþ !M! ÕÅÅÆ£¬È»ºóÉý¼¶ËùÓÐÊÖÅÆ£©¡£,4,4,,,»ÙÃð,»ð,ÖÐ,¹¥»÷
 Lingsha2,ÑÌÐ±Îíºá£¬·Õëµ»¯Éú,UNCOMMON,ATTACK,ALL_ENEMY,1, hsrmod:»÷ÆÆ ºó hsrmod:×·»÷ ¡£ÈºÌå£ºÔì³É !D! µãÉËº¦£¨»ð !TR! £©£¬Èô hsrmod:»÷ÆÆ £¬Ôò»Ø¸´ !M! µãÉúÃü£¬²¢Ëæ»ú´ò³öÊÖÅÆÖÐ1ÕÅ¹¥»÷ÅÆ£¨ÈôÎª hsrmod:×·»÷ ÅÆÔò´¥·¢ hsrmod:×·»÷ £©¡£,4,2,,2,, hsrmod:»÷ÆÆ ºó hsrmod:×·»÷ ¡£ÈºÌå£ºÔì³É !D! µãÉËº¦£¨»ð !TR! £©£¬Èô hsrmod:»÷ÆÆ £¬Ôò»Ø¸´ !M! µãÉúÃü£¬²¢Ñ¡Ôñ´ò³öÊÖÅÆÖÐ1ÕÅ¹¥»÷ÅÆ£¨ÈôÎª hsrmod:×·»÷ ÅÆÔò´¥·¢ hsrmod:×·»÷ £©¡£,,,,,»¶Óä,»ð,ÖÐ,¹¥»÷
-Rappa1,ÈÌ ¡¤ ¿ÆÑ§ ¡¤ ¿°ÈÌ´ü,UNCOMMON,ATTACK,ALL_ENEMY,1,»ñµÃ1²ã hsrmod:»÷ÆÆÌØ¹¥ £¬ÈºÌå£ºÔì³É !D! µãÉËº¦£¨ÐéÊý !TR! £©£¬Èô hsrmod:»÷ÆÆ £¬ÔòÔì³É hsrmod:³¬»÷ÆÆÉËº¦ £¬²¢ÖØ¸´´ËÁ÷³Ì¡£,3,2,,,,,3,3,,,»ÙÃð,ÐéÊý,µÍ,¹¥»÷
+Rappa1,ÈÌ ¡¤ ¿ÆÑ§ ¡¤ ¿°ÈÌ´ü,UNCOMMON,ATTACK,ALL_ENEMY,1,»ñµÃ !M! ²ã hsrmod:»÷ÆÆÌØ¹¥ £¬ÈºÌå£ºÔì³É !D! µãÉËº¦£¨ÐéÊý !TR! £©£¬Èô hsrmod:»÷ÆÆ £¬ÔòÔì³É hsrmod:³¬»÷ÆÆÉËº¦ £¬²¢ÖØ¸´´ËÁ÷³Ì¡£,3,3,,1,,,4,4,,2,»ÙÃð,ÐéÊý,µÍ,¹¥»÷
 Fugue1,ÉÆÓ¯ºó¸££¬µÂÆøÁ÷²¼,UNCOMMON,SKILL,ALL_ENEMY,1,ÈºÌå£º½«ÆäÈÍÐÔÖµÏò !M! µ÷ÕûÖÁ¶à !M! µÄÊýÁ¿£¬²¢Ê©¼Ó !M! ²ãÔÆ»ðÕÑ£¨ hsrmod:»÷ÆÆ ºóÒÆ³ý£¬½«ÈÍÐÔ»Ö¸´ÖÁ !M! £©¡£,,,,4,,ÈºÌå£º½«ÆäÈÍÐÔÖµÏò !M! µ÷ÕûÖÁ¶à !M! µÄÊýÁ¿£¬²¢Ê©¼Ó !M! ²ãÔÆ»ðÕÑ£¨ hsrmod:»÷ÆÆ ºóÒÆ³ý£¬½«ÈÍÐÔ»Ö¸´ÖÁ !M! £¬²¢»ñµÃ [E] £©¡£,,,,,»ÙÃð,»ð,µÍ,¹¥»÷
 BattlefieldMagician,Õ½³¡Ä§ÊõÊ¦,RARE,POWER,SELF,2, hsrmod:×·»÷ ºó£¬»ñµÃ !M! µã¸ñµ²¡£,,,,3,,´ò³ö hsrmod:×·»÷ ÅÆºó£¬»ñµÃ !M! µã¸ñµ²¡£,,,,4,»¶Óä,,µÍ,·ÀÓù
 SlaughterhouseNo4RestInPeace,¡¶ËÄºÅÍÀ³¡ ¡¤ ÖÚÉú°²Ãß¡·,RARE,POWER,SELF,2, hsrmod:×·»÷ Ôì³ÉÉËº¦ºó£¬ÈôÄ¿±êÓÐ hsrmod:»÷ÆÆ×´Ì¬ £¬ÔòÓÐ !M! %µÄ¸ÅÂÊÃþ1ÕÅÅÆ¡£,,,,80,,´ò³ö hsrmod:×·»÷ ÅÆÔì³ÉÉËº¦ºó£¬ÈôÊÜµ½ÉËº¦µÄÄ¿±êÓÐ / Ã»ÓÐ hsrmod:»÷ÆÆ×´Ì¬ £¬Ôò·Ö±ðÓÐ !M! % / 20%µÄ¸ÅÂÊÃþ1ÕÅÅÆ¡£,,,,,»¶Óä,,µÍ,ÔË×ª
@@ -82,9 +82,9 @@ BountyHunter,ÉÍ½ðÁÔÈË,RARE,POWER,SELF,1, hsrmod:×·»÷ ºó£¬ÓÐ !M! %µÄ¸ÅÂÊ½«¸ÃÅÆ·µ»
 ChampionsDinnerCatsCradle,¡¶¹Ú¾üÍí²Í ¡¤ Ã¨µÄÒ¡Àº¡·,RARE,POWER,SELF,1, hsrmod:ºÄÄÜ µÄÅÆÊÓÎª hsrmod:×·»÷ ÅÆ£¬ÇÒÓÚ [hsrmod:ChargeIcon] ÂúÊ±£¬ hsrmod:×·»÷ 1ÕÅ¡£,,,,1,, hsrmod:ºÄÄÜ µÄÅÆÊÓÎª hsrmod:×·»÷ ÅÆ£¬ÇÒÓÚ [hsrmod:ChargeIcon] ÂúÊ±£¬ hsrmod:×·»÷ 1ÕÅ¡£ hsrmod:×·»÷ ÐèÒª hsrmod:ºÄÄÜ µÄÅÆÊ±£¬ÎÞÐè×ã¹»µÄ [hsrmod:ChargeIcon] ¡£,,,,,»¶Óä,,¸ß,¹¥»÷
 Symbiote,¹²ÉúÌå,RARE,POWER,SELF,2, hsrmod:»÷ÆÆ ºó£¬»Ø¸´ [E] [E] ¡£Ôì³É hsrmod:»÷ÆÆÉËº¦ ºó£¬Ãþ1ÕÅÅÆ¡£,,,,,1,,,,,,»ÙÃð,,µÍ,ÔË×ª
 RegressionInequalityOfAnnihilation,äÎÃð»Ø¹é²»µÈÊ½,RARE,SKILL,ALL,1,ÁîËùÓÐ¸öÌåÆ½¾ù·ÖÌ¯ hsrmod:ÈÍÐÔ £¨²»»á»÷ÆÆ£©¡£,,,,1,,ÁîËùÓÐ¸öÌåÆ½¾ù·ÖÌ¯ hsrmod:ÈÍÐÔ £¨²»»á»÷ÆÆ£©£¬ÇÒÄãµÄÈ¨ÖØÎª !M! ¡£,,,,2,»ÙÃð,,ÖÐ,·ÀÓù
-CourtOfHomogeneity,Í¬Ì¬·¨Í¥,RARE,ATTACK,ENEMY,-1, ÏûºÄ ¡£ÆúÖÃËùÓÐÊÖÅÆ£¬Ôì³É !D! µãÉËº¦£¨»ð !TR! £©£¬È»ºóÈôÆä hsrmod:ÈÍÐÔ ÊýÉÙÓÚÄã£¬Ôì³ÉÄãÓëÆä hsrmod:ÈÍÐÔ ÊýÖ®²îµÄ hsrmod:»÷ÆÆÉËº¦ ¡£,4,4,,,,ÆúÖÃËùÓÐÊÖÅÆ£¬Ôì³É !D! µãÉËº¦£¨»ð !TR! £©£¬È»ºóÈôÆä hsrmod:ÈÍÐÔ ÊýÉÙÓÚÄã£¬Ôì³ÉÄãÓëÆä hsrmod:ÈÍÐÔ ÊýÖ®²îµÄ hsrmod:»÷ÆÆÉËº¦ ¡£,6,6,,,»ÙÃð,»ð,µÍ,¹¥»÷
+CourtOfHomogeneity,Í¬Ì¬·¨Í¥,RARE,ATTACK,ENEMY,-1, ÏûºÄ ¡£ÆúÖÃËùÓÐÊÖÅÆ£¬Ôì³É !D! µãÉËº¦£¨»ð !TR! £©£¬È»ºóÈôÆä hsrmod:ÈÍÐÔ ÊýÉÙÓÚÄã£¬Ôì³ÉÄãÓëÆä hsrmod:ÈÍÐÔ ÊýÖ®²îµÄ hsrmod:»÷ÆÆÉËº¦ ¡£,8,8,,,,ÆúÖÃËùÓÐÊÖÅÆ£¬Ôì³É !D! µãÉËº¦£¨»ð !TR! £©£¬È»ºóÈôÆä hsrmod:ÈÍÐÔ ÊýÉÙÓÚÄã£¬Ôì³ÉÄãÓëÆä hsrmod:ÈÍÐÔ ÊýÖ®²îµÄ hsrmod:»÷ÆÆÉËº¦ ¡£,12,12,,,»ÙÃð,»ð,µÍ,¹¥»÷
 VoyageMonitor,Ô¶º½¼à»¤Ô±,RARE,POWER,SELF,2,Ã¿Ôì³É !M! µãÏ÷ÈÍ£¬»ñµÃ1µã¸ñµ²¡£,,,,2,, ¹ÌÓÐ ¡£Ã¿Ôì³É !M! µãÏ÷ÈÍ£¬»ñµÃ1µã¸ñµ²¡£,,,,,»ÙÃð,,¸ß,·ÀÓù
-DisruptivePulse,ÈÅÂÒÐÔÂö³å,RARE,ATTACK,ENEMY,2, ÏûºÄ ¡£ hsrmod:ºÄÄÜ 80£¬Ôì³É !D! µãÉËº¦£¨»ð !TR! £©£¬Èô hsrmod:»÷ÆÆ £¬ÔòÔì³É hsrmod:³¬»÷ÆÆÉËº¦ £¬²¢½« [hsrmod:ChargeIcon] ºÍ [E] »Ø¸´ÖÁÉÏÏÞ¡£,4,4,,,,,6,6,,,»ÙÃð,»ð,µÍ,ÔË×ª
+DisruptivePulse,ÈÅÂÒÐÔÂö³å,RARE,ATTACK,ENEMY,2, ÏûºÄ ¡£ hsrmod:ºÄÄÜ 80£¬Ôì³É !D! µãÉËº¦£¨»ð !TR! £©£¬Èô hsrmod:»÷ÆÆ £¬ÔòÔì³É hsrmod:³¬»÷ÆÆÉËº¦ £¬²¢½« [hsrmod:ChargeIcon] ºÍ [E] »Ø¸´ÖÁÉÏÏÞ¡£,6,6,,,,,9,9,,,»ÙÃð,»ð,µÍ,ÔË×ª
 PreBattleCaregiver,Õ½Ç°¹Ø»³Ô±,UNCOMMON,SKILL,SELF_AND_ENEMY,1, ÏûºÄ ¡£ÄãÓëÆä¸÷½«¸ñµ²Öµ²¹³äÖÁX£¨XÎªÆäÈÍÐÔÖµ£©¡£,,,,,, ÏûºÄ ¡£ÄãÓëÆä¸÷½«¸ñµ²Öµ²¹³äÖÁX£¨XÎªÄãÓëÆäÈÍÐÔÖµÖ®ºÍ£©¡£,,,,,»ÙÃð,ÎïÀí,µÍ,·ÀÓù
 NightBeyondPyre,»ð¶ÑÍâµÄÒ¹,COMMON,SKILL,SELF,0, ÏûºÄ ¡£ÈôÃ»ÓÐ hsrmod:»÷ÆÆÐ§ÂÊ £¬»ñµÃ !M! ²ã£»ÈôÃ»ÓÐÊÖÅÆ£¬½«ÊÖÅÆÃþÖÁ !M! ÕÅ¡£,,,,2,, ¹ÌÓÐ ¡£ÈôÃ»ÓÐ hsrmod:»÷ÆÆÐ§ÂÊ £¬»ñµÃ !M! ²ã£»ÈôÃ»ÓÐÊÖÅÆ£¬½«ÊÖÅÆÃþÖÁ !M! ÕÅ¡£,,,,,»ÙÃð,,ÖÐ,·ÀÓù
 StarcrusherWorker,ËéÐÇÐCÒÛ,COMMON,SKILL,ENEMY,0,ÒÆ³ý !M! ²ã hsrmod:ÈÍÐÔ £¨ÖÁÉÙ±£Áô1²ã£©£¬ÈôÄãµÄ hsrmod:ÈÍÐÔ ÉÙÓÚÆä£¬ÔòÄã»ñµÃµÈÁ¿µÄ hsrmod:ÈÍÐÔ ¡£,,,,5,,,,,,8,»ÙÃð,,ÖÐ,·ÀÓù

@@ -26,7 +26,6 @@ public class Seele1 extends BaseCard {
         super(ID);
         energyCost = 120;
         tags.add(CustomEnums.ENERGY_COSTING);
-        exhaust = true;
     }
 
     public boolean canUpgrade() {

@@ -40,6 +40,12 @@ public class Trailblazer5Power extends PowerPower implements PreToughnessReduceS
     }
 
     @Override
+    public void atEndOfTurn(boolean isPlayer) {
+        super.atEndOfTurn(isPlayer);
+        cardCache = null;
+    }
+
+    @Override
     public float preToughnessReduce(float amount, AbstractCreature target, ElementType elementType) {
         if (!SubscriptionManager.checkSubscriber(this) 
                 || cardCache == null 

@@ -45,7 +45,8 @@ public class CloudflameLusterPower extends DebuffPower implements PreToughnessRe
         int newToughness = ModHelper.getPowerCount(target, ToughnessPower.POWER_ID) - (int) amount;
         if (SubscriptionManager.checkSubscriber(this)
                 && ModHelper.getPowerCount(target, ToughnessPower.POWER_ID) > 0        
-                && newToughness <= 0) {
+                && newToughness <= 0
+                && target == this.owner) {
             this.flash();
             
             int amt = this.amount - newToughness;

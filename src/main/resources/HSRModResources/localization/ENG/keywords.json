@@ -65,7 +65,7 @@
   },
   {
     "NAMES": ["Break Efficiency", "break-efficiency"],
-    "DESCRIPTION": "Toughness shred value of elemental damage is increased by 100%. 1 stack is removed at the end of the turn."
+    "DESCRIPTION": "Toughness shred value of elemental damage is increased by 50%. 1 stack is removed at the end of the turn."
   },
   {
     "NAMES": ["Break Damage", "break-damage"],

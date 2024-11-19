@@ -1,5 +1,6 @@
 package hsrmod.utils;
 
+import basemod.abstracts.CustomSavable;
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.SpawnModificationCard;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -24,12 +25,14 @@ import static basemod.BaseMod.logger;
 /**
  * Singleton class for editing the card reward pool.
  */
-public class RewardEditor {
+public class RewardEditor implements CustomSavable<String> {
     private static RewardEditor instance;
 
     AbstractRoom currRoom;
 
     AbstractCard.CardTags tag;
+    
+    public String relicId = "";
 
     private RewardEditor() {
     }
@@ -47,9 +50,11 @@ public class RewardEditor {
             this.tag = tag;
 
             List<RewardItem> rewards = AbstractDungeon.combatRewardScreen.rewards;
+            
             for (RewardItem reward : rewards) {
                 if (reward.type == RewardItem.RewardType.CARD) {
                     if (tag != CustomEnums.TRAILBLAZE) setRewardCards(reward);
+                    if (currRoom != null) relicId = "";
                     currRoom = room;
                     if (reward.cards.contains(null)) {
                         logger.info("CardRewardPoolEditor: Null card detected in reward pool.");
@@ -61,19 +66,19 @@ public class RewardEditor {
             if (AbstractDungeon.actNum == 1
                     && AbstractDungeon.getMonsters() != null
                     && AbstractDungeon.getMonsters().monsters.stream().anyMatch(m -> m.type == AbstractMonster.EnemyType.BOSS)) {
-
-                String relicName = getRelicByPath(tag);
-
-                if (!relicName.isEmpty())
-                    rewards.add(new RewardItem(RelicLibrary.getRelic(HSRMod.makePath(relicName)).makeCopy()));
+                relicId = HSRMod.makePath(getRelicByPath(tag));
             } else if (AbstractDungeon.actNum == 2 
                     && AbstractDungeon.getMonsters() != null
                     && AbstractDungeon.getMonsters().monsters.stream().anyMatch(m -> m.type == AbstractMonster.EnemyType.BOSS)) {
-                String relicName = getRelic(AbstractRelic.RelicTier.RARE);
-
-                if (!relicName.isEmpty())
-                    rewards.add(new RewardItem(RelicLibrary.getRelic(relicName).makeCopy()));
+                relicId = getRelic(AbstractRelic.RelicTier.RARE);
             }
+        }
+        
+        if (!AbstractDungeon.player.hasRelic(relicId) 
+                && !Objects.equals(relicId, "") 
+                && currRoom != null
+                && AbstractDungeon.combatRewardScreen.rewards.stream().noneMatch(r -> r.relic != null && r.relic.relicId.equals(relicId))) {
+            AbstractDungeon.combatRewardScreen.rewards.add(new RewardItem(RelicLibrary.getRelic(relicId).makeCopy()));
         }
     }
 
@@ -156,7 +161,7 @@ public class RewardEditor {
                 .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
 
         if (cards.isEmpty()) return null;
-        return cards.get(AbstractDungeon.cardRandomRng.random(cards.size() - 1));
+        return cards.get(AbstractDungeon.cardRng.random(cards.size() - 1));
     }
 
     public String getRelic(AbstractRelic.RelicTier tier) {
@@ -228,5 +233,15 @@ public class RewardEditor {
 
         // Fallback (should never happen if input is valid)
         return null;
+    }
+
+    @Override
+    public String onSave() {
+        return "";
+    }
+
+    @Override
+    public void onLoad(String s) {
+        currRoom = null;
     }
 }

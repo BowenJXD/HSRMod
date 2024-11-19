@@ -10,7 +10,13 @@ public class Trailblazer7 extends BaseCard {
     public static final String ID = Trailblazer7.class.getSimpleName();
 
     public Trailblazer7() {
-        super(ID);        
+        super(ID);
+    }
+
+    @Override
+    public void upgrade() {
+        super.upgrade();
+        isInnate = true;
     }
 
     @Override

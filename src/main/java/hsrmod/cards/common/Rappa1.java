@@ -41,7 +41,7 @@ public class Rappa1 extends BaseCard {
             toughnessMap.put(q, ModHelper.getPowerCount(q, ToughnessPower.POWER_ID));
         }
 
-        addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new BreakEffectPower(AbstractDungeon.player, 1), 1));
+        addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new BreakEffectPower(AbstractDungeon.player, magicNumber), magicNumber));
         addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL).setCallback((c) -> {
             if ((!toughnessMap.containsKey(c) || toughnessMap.get(c) > 0)
                     && ModHelper.getPowerCount(c, ToughnessPower.POWER_ID) <= 0

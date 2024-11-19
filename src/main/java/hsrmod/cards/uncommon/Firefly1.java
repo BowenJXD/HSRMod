@@ -47,7 +47,7 @@ public class Firefly1 extends BaseCard {
         );
         ModHelper.addToBotAbstract(() -> {
             if (m.hasPower(BrokenPower.POWER_ID)) {
-                addToBot(new BreakDamageAction(m, new DamageInfo(p, tr)));
+                addToBot(new BreakDamageAction(m, new DamageInfo(p, tr), 0.5f));
                 returnToHand = true;
                 setCostForTurn(costCache);
             }

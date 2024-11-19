@@ -16,7 +16,8 @@ public class BreakDamageAction extends AbstractGameAction {
     private DamageInfo info;
     private static final float DURATION = 0.1F;
     private static final float POST_ATTACK_WAIT_DUR = 0.1F;
-
+    public float multiplier = 1.0F;
+    
     public BreakDamageAction(AbstractCreature target, DamageInfo info, AbstractGameAction.AttackEffect effect) {
         this.info = info;
         this.setValues(target, info);
@@ -28,7 +29,11 @@ public class BreakDamageAction extends AbstractGameAction {
     public BreakDamageAction(AbstractCreature target, DamageInfo info) {
         this(target, info, AttackEffect.BLUNT_HEAVY);
     }
-
+    
+    public BreakDamageAction(AbstractCreature target, DamageInfo info, float multiplier) {
+        this(target, info, AttackEffect.BLUNT_HEAVY);
+        this.multiplier = multiplier;
+    }
 
     @Override
     public void update() {
@@ -49,7 +54,7 @@ public class BreakDamageAction extends AbstractGameAction {
                 tmp = p.atDamageReceive(this.info.output, this.info.type);
             }
             
-            this.info.output = (int) SubscriptionManager.getInstance().triggerPreBreakDamage(tmp, this.target);
+            this.info.output = (int) (SubscriptionManager.getInstance().triggerPreBreakDamage(tmp, this.target) * this.multiplier);
             //
             
             addToTop(new DamageAction(this.target, this.info));

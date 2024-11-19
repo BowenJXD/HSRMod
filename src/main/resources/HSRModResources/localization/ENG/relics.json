@@ -122,7 +122,7 @@
     "NAME": "Musketeer of WildWheat",
     "FLAVOR": "Waking up, there would be traces of damp tears on Oakley's felt hat. As a child, she learned how to shoot a gun only because she had wanted her father's handsome and stylish hat.",
     "DESCRIPTIONS": [
-      "Upgrade all starter strike upon gain. When using starter strike, draw 1."
+      "Upgrade 1 starter strike upon gain. When using starter strike, draw 1."
     ]
   },
   "HSRMod:PasserbyOfWanderingCloud": {

@@ -48,12 +48,12 @@ public class FireflyPower extends PowerPower implements PreToughnessReduceSubscr
             addToBot(new BreakDamageAction(target, new DamageInfo(this.owner, ToughnessPower.getStackLimit(target))));
             this.addToBot(new ApplyPowerAction(this.owner, this.owner, new BreakEfficiencyPower(this.owner, 1), 1));
 
+            if (AbstractDungeon.actionManager.lastCard instanceof Firefly1) return amount;
             List<ModHelper.FindResult> fireFiles = ModHelper.findCards(c -> c instanceof Firefly1);
             for (ModHelper.FindResult
                     result : fireFiles) {
-                if (result.group == AbstractDungeon.player.hand) continue;
-                addToBot(new MoveCardsAction(
-                        AbstractDungeon.player.hand, result.group, card -> card == result.card));
+                if (result.group == AbstractDungeon.player.hand) return amount;
+                addToBot(new MoveCardsAction(AbstractDungeon.player.hand, result.group, card -> card == result.card));
             }
 
             if (fireFiles.isEmpty()) {

@@ -1,12 +1,15 @@
 package hsrmod.utils;
 
+import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.random.Random;
 import hsrmod.modcore.HSRMod;
 
@@ -203,5 +206,39 @@ public class ModHelper {
     
     public static boolean hasRelic(String relicID) {
         return AbstractDungeon.player.hasRelic(HSRMod.makePath(relicID));
+    }
+    
+    public static void applyEnemyPowersOnly(DamageInfo info, AbstractCreature target, boolean reset) {
+        if (reset) {
+            info.output = info.base;
+            info.isModified = false;
+        }
+        float tmp = (float)info.output;
+        Iterator var3 = target.powers.iterator();
+
+        AbstractPower p;
+        while(var3.hasNext()) {
+            p = (AbstractPower)var3.next();
+            tmp = p.atDamageReceive(tmp, info.type);
+            if (info.base != info.output) {
+                info.isModified = true;
+            }
+        }
+
+        var3 = target.powers.iterator();
+
+        while(var3.hasNext()) {
+            p = (AbstractPower)var3.next();
+            tmp = p.atDamageFinalReceive(tmp, info.type);
+            if (info.base != info.output) {
+                info.isModified = true;
+            }
+        }
+
+        if (tmp < 0.0F) {
+            tmp = 0.0F;
+        }
+
+        info.output = MathUtils.floor(tmp);
     }
 }

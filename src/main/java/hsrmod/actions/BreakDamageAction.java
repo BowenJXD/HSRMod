@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 import hsrmod.powers.misc.BreakEffectPower;
 import hsrmod.subscribers.SubscriptionManager;
+import hsrmod.utils.ModHelper;
 
 import java.util.Iterator;
 
@@ -47,14 +48,9 @@ public class BreakDamageAction extends AbstractGameAction {
                 this.info.output += breakEffect.amount;
             }
             
-            float tmp = this.info.output;
-            Iterator var1 = this.target.powers.iterator();
-            while (var1.hasNext()) {
-                AbstractPower p = (AbstractPower) var1.next();
-                tmp = p.atDamageReceive(this.info.output, this.info.type);
-            }
-            
-            this.info.output = (int) (SubscriptionManager.getInstance().triggerPreBreakDamage(tmp, this.target) * this.multiplier);
+            this.info.output = (int) (SubscriptionManager.getInstance().triggerPreBreakDamage(this.info.output, this.target) * this.multiplier);
+
+            ModHelper.applyEnemyPowersOnly(this.info, this.target, false);
             //
             
             addToTop(new DamageAction(this.target, this.info));

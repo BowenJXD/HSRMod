@@ -17,8 +17,6 @@ import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 public class Aventurine2 extends BaseCard {
     public static final String ID = Aventurine2.class.getSimpleName();
     
-    int playerBlock = 0;
-    
     public Aventurine2() {
         super(ID);
         tags.add(FOLLOW_UP);
@@ -31,18 +29,6 @@ public class Aventurine2 extends BaseCard {
             addToBot(new GainBlockAction(p, p, blockThisTurn));
         }
         addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new ArtifactPower(AbstractDungeon.player, 1), 1));
-    }
-
-    @Override
-    public void onEnterHand() {
-        super.onEnterHand();
-        playerBlock = AbstractDungeon.player.currentBlock;
-    }
-
-    @Override
-    public void triggerAtStartOfTurn() {
-        super.triggerAtStartOfTurn();
-        playerBlock = AbstractDungeon.player.currentBlock;
     }
 
     @Override

@@ -26,7 +26,6 @@ public class DisruptivePulse extends BaseCard {
         super(ID);
         energyCost = 80;
         tags.add(CustomEnums.ENERGY_COSTING);
-        exhaust = true;
     }
 
     @Override

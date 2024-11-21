@@ -1,3 +1,4 @@
+/*
 package hsrmod.cardsV2.TheHunt;
 
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
@@ -41,3 +42,4 @@ public class FinalVictor extends BaseCard {
         AbstractDungeon.player.masterDeck.group.stream().filter(c -> c.canUpgrade() && c.uuid == card.uuid).findFirst().ifPresent(AbstractCard::upgrade);
     }
 }
+*/

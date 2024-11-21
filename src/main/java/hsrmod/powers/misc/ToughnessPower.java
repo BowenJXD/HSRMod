@@ -13,6 +13,7 @@ import hsrmod.powers.BuffPower;
 public class ToughnessPower extends BuffPower {
     public static final String POWER_ID = HSRMod.makePath(ToughnessPower.class.getSimpleName());
     
+    boolean locked = false;
     int stackLimit = 0;
     
     public ToughnessPower(AbstractCreature owner, int Amount, int stackLimit) {
@@ -49,6 +50,7 @@ public class ToughnessPower extends BuffPower {
     @Override
     public void stackPower(int stackAmount) {        
         if (stackAmount == stackLimit && owner != AbstractDungeon.player && BaseMod.hasModID("spireTogether:")) return;
+        if (locked) return;
         alterPower(stackAmount);
     }
     
@@ -71,10 +73,22 @@ public class ToughnessPower extends BuffPower {
     public void reducePower(int reduceAmount) {
         alterPower(-reduceAmount);
     }
+    
+    public boolean getLocked() {
+        return locked;
+    }
+    
+    public void setLocked(boolean locked) {
+        this.locked = locked;
+    }
 
     public static int getStackLimit(AbstractCreature c){
         int result = 0;
-        if (c instanceof AbstractMonster) {
+        if (c.hasPower(ToughnessPower.POWER_ID)) {
+            ToughnessPower power = (ToughnessPower)c.getPower(ToughnessPower.POWER_ID);
+            if (power != null) result = power.stackLimit;
+        }
+        else if (c instanceof AbstractMonster) {
             AbstractMonster m = (AbstractMonster)c;
             switch (m.type) {
                 case NORMAL:

@@ -283,8 +283,8 @@
   "HSRMod:ReignOfKeys": {
     "NAME": "钥匙的统治",
     "DESCRIPTIONS": [
-      "敌人的持续伤害：于其回合内触发时，摸1张牌。于其回合外触发时，不会减少层数。",
-      "敌人的持续伤害触发时，摸1张牌，然后若为其回合外，则不会减少层数。"
+      "敌人的持续伤害：于你回合外触发时，摸1张牌。于你回合内触发时，不会减少层数。",
+      "敌人的持续伤害触发时，摸1张牌，然后若为你回合内，则不会减少层数。"
     ]
   },
   "HSRMod:FuneralOfSensoryPursuivant": {
@@ -410,6 +410,45 @@
     "DESCRIPTIONS": [
       "击破后移除，将韧性恢复至 #b%d 层。",
       "击破后移除，将韧性恢复至 #b%d 层，并获得 [E] 。"
+    ]
+  },
+  
+  "HSRMod:Charging": {
+    "NAME": "蓄力",
+    "DESCRIPTIONS": [
+      "正在蓄力【%s】，下回合释放。 #y击破 以打断。",
+      "正在蓄力【%s】，剩余回合数： #b%d 。 #y击破 以打断。"
+    ]
+  },
+  "HSRMod:WalkInTheLight": {
+    "NAME": "在光明中行",
+    "DESCRIPTIONS": [
+      "受到的伤害减少 #b%d%% 。被 #y击破 时，或有怪物死亡时，移除1层，回复所有 #y韧性 ，并令玩家获得 #b%d 层 #y临时血量 。0层时，受到的伤害增加 #b%d%% 。",
+      "受到的伤害增加 #b%d%% 。"
+    ]
+  },
+  "HSRMod:IfWeLiveInTheLight": {
+    "NAME": "尔在光明中",
+    "DESCRIPTIONS": [
+      "受到的伤害降低 #b%d%% ， #y韧性 无法被削减。回合开始时移除1层。"
+    ]
+  },
+  "HSRMod:AlienDream": {
+    "NAME": "异梦",
+    "DESCRIPTIONS": [
+      "造成的伤害减少 #b%d%% ，且改为回复伤害量 #b%d%% 的血量。受到伤害时移除，该伤害增加 #b%d%% （意图上不显示）。"
+    ]
+  },
+  "HSRMod:Summoned": {
+    "NAME": "随从",
+    "DESCRIPTIONS": [
+      " #y爪牙 。 NL 受到致命伤害时，令首领：失去随从 #y韧性上限 的 #y韧性 ，失去随从 #r生命上限 的 #r生命 。"
+    ]
+  },
+  "HSRMod:MultiMove": {
+    "NAME": "多次行动",
+    "DESCRIPTIONS": [
+      "下回合多行动 #b%d 次， #y击破 以打断。"
     ]
   }
 }

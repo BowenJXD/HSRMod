@@ -48,23 +48,27 @@ public abstract class BaseCard extends CustomCard implements SpawnModificationCa
     public CardStrings cardStrings;
     
     public BaseCard(String id) {
+        this(id, HSR_PINK);
+    }
+    
+    public BaseCard(String id, CardColor color){
         super("HSRMod:" + id,
                 DataManager.getInstance().getCardData(id, CardDataCol.Name),
                 "HSRModResources/img/cards/" + id + ".png",
                 DataManager.getInstance().getCardDataInt(id, CardDataCol.Cost),
                 DataManager.getInstance().getCardData(id, CardDataCol.Description),
                 CardType.valueOf(DataManager.getInstance().getCardData(id, CardDataCol.Type)),
-                HSR_PINK,
+                color,
                 CardRarity.valueOf(DataManager.getInstance().getCardData(id, CardDataCol.Rarity)),
                 CardTarget.valueOf(DataManager.getInstance().getCardData(id, CardDataCol.Target))
         );
         this.cardStrings = CardCrawlGame.languagePack.getCardStrings(cardID);
-        
+
         this.damage = this.baseDamage = DataManager.getInstance().getCardDataInt(id, CardDataCol.Damage);
         this.block = this.baseBlock = DataManager.getInstance().getCardDataInt(id, CardDataCol.Block);
         this.magicNumber = this.baseMagicNumber = DataManager.getInstance().getCardDataInt(id, CardDataCol.MagicNumber);
         this.tr = this.baseTr = DataManager.getInstance().getCardDataInt(id, CardDataCol.ToughnessReduction);
-        
+
         this.upCost = DataManager.getInstance().getCardDataInt(id, CardDataCol.UpgradeCost);
         this.upDescription = DataManager.getInstance().getCardData(id, CardDataCol.UpgradeDescription);
         this.upDamage = DataManager.getInstance().getCardDataInt(id, CardDataCol.UpgradeDamage);
@@ -81,7 +85,7 @@ public abstract class BaseCard extends CustomCard implements SpawnModificationCa
         this.selfRetain = rawDescription.contains("保留。");
         this.isInnate = rawDescription.contains("固有。");
         this.isEthereal = rawDescription.contains("虚无。");*/
-        
+
         CommonKeywordIconsField.useIcons.set(this, true);
     }
 

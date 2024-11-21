@@ -1,4 +1,3 @@
-/*
 package hsrmod.cardsV2.TheHunt;
 
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
@@ -27,9 +26,10 @@ public class GalaxyRanger extends BaseCard {
             if (list.isEmpty())
                 return;
             addToTop(new DrawCardAction(list.size() * 2));
-            for (AbstractCard c : list) {
-                if (upgraded && c.canUpgrade()) addToTop(new UpgradeSpecificCardAction(c));
-            }
+            if (upgraded)
+                for (AbstractCard c : list)
+                    if (c.canUpgrade()) 
+                        addToTop(new UpgradeSpecificCardAction(c));
             addToTop(new DiscardCardsAction(list));
         }));
     }
@@ -38,4 +38,3 @@ public class GalaxyRanger extends BaseCard {
         TEXT = CardCrawlGame.languagePack.getUIString("DiscardAction").TEXT;
     }
 }
-*/

@@ -97,11 +97,11 @@ public class ElementalDamageAction extends AbstractGameAction {
         }
 
         // Reduce toughness
-        AbstractPower toughnessPower = this.target.getPower(ToughnessPower.POWER_ID);
+        ToughnessPower toughnessPower = target.hasPower(ToughnessPower.POWER_ID) ? (ToughnessPower) this.target.getPower(ToughnessPower.POWER_ID) : null;
         info.tr = (int) SubscriptionManager.getInstance().triggerPreToughnessReduce(info.tr, this.target, info.elementType);
         // Trigger PreElementalDamageAction
         info.output = (int) SubscriptionManager.getInstance().triggerPreElementalDamage(this);
-        
+
         // Apply damage
         this.target.damage(this.info);
         if (callback != null) addToTop(new TriggerCallbackAction(this.callback, this.target));
@@ -109,7 +109,11 @@ public class ElementalDamageAction extends AbstractGameAction {
         //
 
         if (target != null && !target.isDeadOrEscaped()) {
-            if (toughnessPower != null && toughnessPower.amount > 0 && toughnessPower.amount <= info.tr) {
+            if (toughnessPower != null 
+                    && toughnessPower.amount > 0 
+                    && toughnessPower.amount <= info.tr 
+                    && !toughnessPower.getLocked()) {
+                SubscriptionManager.getInstance().triggerPreBreak(info, target);
                 int breakDamage = info.elementType.getBreakDamage();
                 addToBot(new BreakDamageAction(target, new DamageInfo(info.owner, breakDamage)));
                 ApplyPowerAction action = info.applyBreakingPower(target);

@@ -35,6 +35,8 @@ public class MusicPatch {
                 return MainMusic.newMusic("audio/music/STS_Credits_v5.ogg");
             case "RobinBGM":
                 return MainMusic.newMusic("HSRModResources/audio/music/RobinBGM.mp3");
+            case "Salutations of Ashen Dreams":
+                return MainMusic.newMusic("HSRModResources/audio/music/HopeIsTheThingWithFeathers.mp3");
             default:
                 return MainMusic.newMusic("audio/music/" + key);
         }

@@ -2,19 +2,30 @@ package hsrmod.modcore;
 
 import basemod.AutoAdd;
 import basemod.BaseMod;
+import basemod.ModLabeledToggleButton;
+import basemod.ModPanel;
 import basemod.abstracts.CustomRelic;
 import basemod.eventUtil.AddEventParams;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.icons.CustomIconHelper;
+import com.evacipated.cardcrawl.modthespire.Loader;
+import com.evacipated.cardcrawl.modthespire.ModInfo;
+import com.evacipated.cardcrawl.modthespire.Patcher;
+import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.colorless.SadisticNature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.Exordium;
 import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.dungeons.TheCity;
+import com.megacrit.cardcrawl.helpers.FontHelper;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
@@ -28,21 +39,24 @@ import hsrmod.events.*;
 import hsrmod.misc.ChargeIcon;
 import hsrmod.misc.Encounter;
 import hsrmod.misc.ToughnessReductionVariable;
-import hsrmod.relics.starter.*;
-import hsrmod.utils.ModHelper;
+import hsrmod.monsters.EchoOfFadedDreams;
+import hsrmod.monsters.TheGreatSeptimus;
 import hsrmod.utils.RewardEditor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.scannotation.AnnotationDB;
 
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.*;
 
 import static com.megacrit.cardcrawl.core.Settings.language;
 import static hsrmod.characters.StellaCharacter.PlayerColorEnum.*;
 
 @SpireInitializer // 加载mod的注解
-public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditCharactersSubscriber, EditRelicsSubscriber, EditKeywordsSubscriber, AddAudioSubscriber, PostInitializeSubscriber {
-    public static final String MOD_NAME = "HSRMod";
-    
+public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditCharactersSubscriber, EditRelicsSubscriber, EditKeywordsSubscriber, AddAudioSubscriber, PostInitializeSubscriber, StartGameSubscriber {
+    public static String MOD_NAME = "HSRMod";
+
     public static final Color MY_COLOR = new Color(255.0F / 255.0F, 141.0F / 255.0F, 227.0F / 255.0F, 1.0F);
 
     // 人物选择界面按钮的图片
@@ -67,15 +81,22 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
     private static final String BIG_ORB = "HSRModResources/img/char/card_orb.png";
     // 小尺寸的能量图标（战斗中，牌堆预览）
     private static final String ENERGY_ORB = "HSRModResources/img/char/cost_orb.png";
-    
+
     public static final Logger logger = LogManager.getLogger(MOD_NAME);
-    
+
+    public static SpireConfig config;
+    public static ModInfo info;
+    public static boolean addRelic = true;
+    public static boolean addEvent = true;
+    public static boolean addEnemy = true;
+    public static boolean removeOtherBosses = true;
+
     String lang = "ENG";
 
     // 构造方法
     public HSRMod() {
         BaseMod.subscribe(this);
-        BaseMod.addColor(HSR_PINK, MY_COLOR, MY_COLOR, MY_COLOR, MY_COLOR, MY_COLOR, MY_COLOR, MY_COLOR,BG_ATTACK_512,BG_SKILL_512,BG_POWER_512,ENERGY_ORB,BG_ATTACK_1024,BG_SKILL_1024,BG_POWER_1024,BIG_ORB,SMALL_ORB);
+        BaseMod.addColor(HSR_PINK, MY_COLOR, MY_COLOR, MY_COLOR, MY_COLOR, MY_COLOR, MY_COLOR, MY_COLOR, BG_ATTACK_512, BG_SKILL_512, BG_POWER_512, ENERGY_ORB, BG_ATTACK_1024, BG_SKILL_1024, BG_POWER_1024, BIG_ORB, SMALL_ORB);
         updateLanguage();
     }
 
@@ -99,18 +120,32 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
     @Override
     public void receiveEditCharacters() {
         BaseMod.addCharacter(new StellaCharacter(CardCrawlGame.playerName), MY_CHARACTER_BUTTON, MY_CHARACTER_PORTRAIT, STELLA_CHARACTER);
+        try {
+            Properties defaults = new Properties();
+            defaults.setProperty("addRelic", Boolean.toString(true));
+            defaults.setProperty("addEvent", Boolean.toString(true));
+            defaults.setProperty("addEnemy", Boolean.toString(true));
+            config = new SpireConfig(MOD_NAME, HSRMod.makePath("Config"), defaults);
+            config.load();
+            addRelic = config.getBool("addRelic");
+            addEvent = config.getBool("addEvent");
+            addEnemy = config.getBool("addEnemy");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-    
+
     @Override
     public void receiveEditRelics() {
-        new AutoAdd(MOD_NAME)
-                .packageFilter("hsrmod.relics")
-                .any(CustomRelic.class, (info, relic) -> {
-                    BaseMod.addRelicToCustomPool(relic, HSR_PINK);
-                    if (info.seen) {
-                        UnlockTracker.markRelicAsSeen(relic.relicId);
-                    }
-                });
+        if (addRelic)
+            new AutoAdd(MOD_NAME)
+                    .packageFilter("hsrmod.relics")
+                    .any(CustomRelic.class, (info, relic) -> {
+                        BaseMod.addRelicToCustomPool(relic, HSR_PINK);
+                        if (info.seen) {
+                            UnlockTracker.markRelicAsSeen(relic.relicId);
+                        }
+                    });
     }
 
     public void receiveEditStrings() {
@@ -121,6 +156,7 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         BaseMod.loadCustomStringsFile(RelicStrings.class, "HSRModResources/localization/" + lang + "/relics.json");
         BaseMod.loadCustomStringsFile(PowerStrings.class, "HSRModResources/localization/" + lang + "/powers.json");
         BaseMod.loadCustomStringsFile(EventStrings.class, "HSRModResources/localization/" + lang + "/events.json");
+        BaseMod.loadCustomStringsFile(MonsterStrings.class, "HSRModResources/localization/" + lang + "/monsters.json");
     }
 
     @Override
@@ -140,16 +176,24 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
 
     @Override
     public void receivePostInitialize() {
-        addEvents();
-        addMonsters();
+        // addConfigPanel();
         BaseMod.addSaveField("RewardEditor", RewardEditor.getInstance());
+        BaseMod.removeCard(SadisticNature.ID, AbstractCard.CardColor.COLORLESS);
+        if (addEvent) addEvents();
+        if (addEnemy) addMonsters();
     }
-    
+
+    @Override
+    public void receiveStartGame() {
+        /*if (AbstractDungeon.player instanceof StellaCharacter) {
+        }*/
+    }
+
     public void addEvents() {
         BaseMod.addEvent(new AddEventParams.Builder(RuanMeiEvent.ID, RuanMeiEvent.class)
                 .spawnCondition(() -> AbstractDungeon.eventRng.random(99) < 10)
                 .create());
-        
+
         BaseMod.addEvent(new AddEventParams.Builder(CosmicCrescendoEvent.ID, CosmicCrescendoEvent.class)
                 .dungeonID(Exordium.ID)
                 // .bonusCondition(() -> ModHelper.hasRelic(WaxOfElation.ID))
@@ -177,19 +221,27 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         BaseMod.addEvent(new AddEventParams.Builder(DoubleLotteryEvent.ID, DoubleLotteryEvent.class)
                 // .bonusCondition(() -> ModHelper.hasRelic(WaxOfErudition.ID))
                 .create());
-        
+
         BaseMod.addEvent(new AddEventParams.Builder(WaxManufacturerEvent.ID, WaxManufacturerEvent.class)
                 .dungeonID(Exordium.ID)
                 // .bonusCondition(() -> WaxRelic.getSelectedPathTag(AbstractDungeon.player.relics) != WaxManufacturerEvent.getMostCommonTag(AbstractDungeon.player.masterDeck))
                 .create());
     }
-    
+
     public void addMonsters() {
         BaseMod.addMonster(Encounter.PARASITE_N_SLAVER, () -> new MonsterGroup(new AbstractMonster[]{
                 new ShelledParasite(),
                 new SlaverRed(130.0F, 20F)
         }));
         BaseMod.addStrongMonsterEncounter(TheCity.ID, new MonsterInfo(Encounter.PARASITE_N_SLAVER, 0.0F));
+
+        BaseMod.addMonster(Encounter.SALUTATIONS_OF_ASHEN_DREAMS, () -> new MonsterGroup(new AbstractMonster[]{
+                new EchoOfFadedDreams(0, -500F, 0),
+                new TheGreatSeptimus(),
+                new EchoOfFadedDreams(1, 300F, 0)
+        }));
+        // BaseMod.addStrongMonsterEncounter(Exordium.ID, new MonsterInfo(Encounter.SALUTATIONS_OF_ASHEN_DREAMS, 0.0F));
+        BaseMod.addBoss(TheBeyond.ID, Encounter.SALUTATIONS_OF_ASHEN_DREAMS, "HSRModResources/img/monsters/SalutationsOfAshenDreams.png", "HSRModResources/img/monsters/BossOutline.png");
     }
 
     @Override
@@ -208,31 +260,112 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         addAudio("Sparkle2");
         addAudio("Gepard1");
         addAudio("Argenti1");
+
+        for (int i = 1; i <= 8; i++) {
+            addAudio("TheGreatSeptimus_Day" + i);
+        }
     }
-    
-    void addAudio(String id){
+
+    void addAudio(String id) {
         BaseMod.addAudio(id, "HSRModResources/localization/" + lang + "/audio/" + id + ".wav");
     }
-    
-    public void updateLanguage()
-    {
+
+    void addConfigPanel() {
+        loadSettings();
+        ModPanel panel = new ModPanel();
+        String[] buttonLanguage = null;
+        if (language == Settings.GameLanguage.ZHS || language == Settings.GameLanguage.ZHT)
+            buttonLanguage = new String[]{"加入遗物", "加入事件", "加入敌人", "移除原版首领"};
+        else 
+            buttonLanguage = new String[]{"Add Relic", "Add Event", "Add Enemy", "Remove Other Bosses"};
+        Texture badgeTexture = ImageMaster.loadImage("HSRModResources/img/char/badge.png");
+        BaseMod.registerModBadge(badgeTexture, MOD_NAME, Arrays.stream(info.Authors).findFirst().orElse(""), info.Description, panel);
+        
+        ModLabeledToggleButton addRelicButton = new ModLabeledToggleButton(buttonLanguage[0], 400.0F, 700.0F, Color.WHITE, FontHelper.buttonLabelFont, addRelic, panel, (label) -> {}, (button) -> {
+            addRelic = button.enabled;
+            try {
+                config.setBool("addRelic", addRelic);
+                config.save();
+            } catch (IOException e) { e.printStackTrace(); }
+        });
+        // panel.addUIElement(addRelicButton);
+        
+        ModLabeledToggleButton addEventButton = new ModLabeledToggleButton(buttonLanguage[1], 400.0F, 600.0F, Color.WHITE, FontHelper.buttonLabelFont, addEvent, panel, (label) -> {}, (button) -> {
+            addEvent = button.enabled;
+            try {
+                config.setBool("addEvent", addEvent);
+                config.save();
+            } catch (IOException e) { e.printStackTrace(); }
+        });
+        panel.addUIElement(addEventButton);
+        
+        ModLabeledToggleButton addEnemyButton = new ModLabeledToggleButton(buttonLanguage[2], 400.0F, 500.0F, Color.WHITE, FontHelper.buttonLabelFont, addEnemy, panel, (label) -> {}, (button) -> {
+            addEnemy = button.enabled;
+            try {
+                config.setBool("addEnemy", addEnemy);
+                config.save();
+            } catch (IOException e) { e.printStackTrace(); }
+        });
+        panel.addUIElement(addEnemyButton);
+        
+        ModLabeledToggleButton removeOtherBossesButton = new ModLabeledToggleButton(buttonLanguage[3], 400.0F, 400.0F, Color.WHITE, FontHelper.buttonLabelFont, removeOtherBosses, panel, (label) -> {}, (button) -> {
+            removeOtherBosses = button.enabled;
+            try {
+                config.setBool("removeOtherBosses", removeOtherBosses);
+                config.save();
+            } catch (IOException e) { e.printStackTrace(); }
+        });
+        panel.addUIElement(removeOtherBossesButton);
+    }
+
+    private static void loadSettings() {
+        try {
+            config = new SpireConfig(MOD_NAME, makePath("Config"));
+            config.load();
+        } catch (Exception var1) {
+            Exception ex = var1;
+            logger.catching(ex);
+        }
+    }
+
+    private static void loadModInfo() {
+        Optional<ModInfo> infos = Arrays.stream(Loader.MODINFOS).filter((modInfo) -> {
+            AnnotationDB annotationDB = (AnnotationDB) Patcher.annotationDBMap.get(modInfo.jarURL);
+            if (annotationDB == null) {
+                return false;
+            } else {
+                Set<String> initializers = annotationDB.getAnnotationIndex().getOrDefault(SpireInitializer.class.getName(), Collections.emptySet());
+                return initializers.contains(HSRMod.class.getName());
+            }
+        }).findFirst();
+        if (infos.isPresent()) {
+            info = (ModInfo) infos.get();
+            MOD_NAME = info.ID;
+        } else {
+            throw new RuntimeException("Failed to determine mod info/ID based on initializer.");
+        }
+    }
+
+    public void updateLanguage() {
         if (language == Settings.GameLanguage.ZHS || language == Settings.GameLanguage.ZHT) {
             lang = "ZHS";
-        }
-        else {
+        } else {
             lang = "ENG";
         }
     }
-    public static String makePath(String name){
+
+    public static String makePath(String name) {
         if (name.contains("Power")) {
             name = name.replace("Power", "");
-        }
-        else if (name.contains("Relic")) {
+        } else if (name.contains("Relic")) {
             name = name.replace("Relic", "");
-        }
-        else if (name.contains("Event")) {
+        } else if (name.contains("Event")) {
             name = name.replace("Event", "");
         }
         return MOD_NAME + ":" + name;
+    }
+
+    static {
+        loadModInfo();
     }
 }

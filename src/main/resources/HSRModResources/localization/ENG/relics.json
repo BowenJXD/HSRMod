@@ -425,7 +425,7 @@
     "NAME": "Parallel Universe Walkie-Talkie",
     "FLAVOR": "Apparently, it can detect tiny divergences in space-time shifts, and establish a relationship between the two closest divergence points, allowing information to be passed between them.",
     "DESCRIPTIONS": [
-      "When you #yExhaust a card, there is a #b25% chance it is not Exhausted and returned to your hand."
+      "When you #yExhaust a card, there is a #b20% chance it is not Exhausted and returned to your hand."
     ]
   },
   "HSRMod:Revitalization310": {

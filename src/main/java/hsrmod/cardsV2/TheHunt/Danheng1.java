@@ -26,6 +26,8 @@ import hsrmod.utils.ModHelper;
 public class Danheng1 extends BaseCard {
     public static final String ID = Danheng1.class.getSimpleName();
     
+    public AbstractGameAction actionCache;
+    
     public Danheng1(){
         super(ID);
     }
@@ -33,7 +35,17 @@ public class Danheng1 extends BaseCard {
     @Override
     public void onEnterHand() {
         super.onEnterHand();
-        addToTop(new RandomCardFromDrawPileToHandAction());
+        actionCache = new RandomCardFromDrawPileToHandAction();
+        addToTop(actionCache);
+    }
+
+    @Override
+    public void onLeaveHand() {
+        super.onLeaveHand();
+        if (actionCache != null) {
+            AbstractDungeon.actionManager.actions.remove(actionCache);
+            actionCache = null;
+        }
     }
 
     @Override

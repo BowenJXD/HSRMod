@@ -43,11 +43,6 @@ public class Seele1 extends BaseCard {
     }
 
     @Override
-    public void onEnterHand() {
-        super.onEnterHand();
-    }
-
-    @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         AbstractGameAction action = new ElementalDamageAction(
                 m,

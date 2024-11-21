@@ -36,7 +36,6 @@ public class Robin2 extends BaseCard {
         CardCrawlGame.music.precacheTempBgm("RobinBGM");
     }
 
-
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID));

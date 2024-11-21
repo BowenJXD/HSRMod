@@ -2,6 +2,7 @@ package hsrmod.cardsV2;
 
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -19,53 +20,40 @@ import hsrmod.modcore.ElementalDamageInfo;
 public class March7th4 extends BaseCard {
     public static final String ID = March7th4.class.getSimpleName();
 
-    AbstractCard sifu;
-
+    int magicNumberCache;
+    
     public March7th4() {
         super(ID);
         tags.add(CustomEnums.FOLLOW_UP);
+        magicNumberCache = magicNumber;
+        exhaust = true;
     }
 
     @Override
-    public void onEnterHand() {
-        super.onEnterHand();
-        // make sifu the card in hand with index 1 less than this card
-        CardGroup hand = AbstractDungeon.player.hand;
-        int index = hand.group.indexOf(this);
-        if (index > 0) {
-            sifu = hand.group.get(index - 1);
-        }
+    public void upgrade() {
+        super.upgrade();
+        exhaust = false;
     }
 
     @Override
     public void triggerOnOtherCardPlayed(AbstractCard c) {
         super.triggerOnOtherCardPlayed(c);
-        CardGroup hand = AbstractDungeon.player.hand;
-        if (!followedUp
-                && hand.contains(c)
-                && hand.contains(this)
-                && c != this) {
-            int delta = hand.group.indexOf(this) - hand.group.indexOf(c);
-            if (delta == 1 || (upgraded && delta == -1)) {
-                sifu = c;
-                followedUp = true;
-                addToBot(new FollowUpAction(this));
-            }
+        if (c != this && c.upgraded)
+            upgradeMagicNumber(1);
+    }
+
+    @Override
+    protected void upgradeMagicNumber(int amount) {
+        super.upgradeMagicNumber(amount);
+        if (magicNumber >= 7 && !followedUp) {
+            followedUp = true;
+            addToBot(new FollowUpAction(this));
         }
     }
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        if (sifu == null) return;
-        if (sifu.type == CardType.ATTACK && sifu.damage > 0) {
-            addToBot(new ElementalDamageAction(
-                    m,
-                    new ElementalDamageInfo(this, sifu.damage),
-                    AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
-            );
-        } else if (sifu.type == CardType.SKILL && sifu.block > 0) {
-            addToBot(new GainBlockAction(p, p, sifu.block));
-        }
-        sifu = null;
+        addToBot(new DrawCardAction(magicNumber));
+        upgradeMagicNumber(magicNumberCache - magicNumber);
     }
 }

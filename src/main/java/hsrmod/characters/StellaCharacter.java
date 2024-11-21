@@ -73,15 +73,12 @@ public class StellaCharacter extends CustomPlayer {
                 200.0F, 220.0F, // 人物碰撞箱大小，越大的人物模型这个越大
                 new EnergyManager(3) // 初始每回合的能量
         );
-
-
+        
         // 如果你的人物没有动画，那么这些不需要写
         // this.loadAnimation("HSRModResources/img/char/character.atlas", "HSRModResources/img/char/character.json", 1.8F);
         // AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
         // e.setTime(e.getEndTime() * MathUtils.random());
         // e.setTimeScale(1.2F);
-
-
     }
 
     // 初始卡组的ID，可直接写或引用变量
@@ -186,7 +183,7 @@ public class StellaCharacter extends CustomPlayer {
     // 高进阶带来的生命值损失
     @Override
     public int getAscensionMaxHPLoss() {
-        return 5;
+        return 6;
     }
 
     // 卡牌的能量字体，没必要修改

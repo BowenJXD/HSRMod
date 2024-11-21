@@ -19,7 +19,7 @@ Asta1,Á÷ÐÇÈºÂä,COMMON,ATTACK,ENEMY,-1, hsrmod:µ¯Éä X+ !M! ´Î£ºÔì³É !D! µãÉËº¦£¨»
 March7th1,¿É°®¼´ÊÇÕýÒå,COMMON,SKILL,SELF,1,»ñµÃ !B! µã¸ñµ²£¬ÒÆ³ýÒ»²ã¸ºÃæÐ§¹û£¬»ñµÃ¼Ó»¤£¨ÊÜµ½ÉËº¦Ê±£¬ÈôÓÐ¸ñµ²£¬Ôò»ñµÃÒ»ÕÅ¡¸ÉÙÅ®µÄÌØÈ¨¡¹£©¡£,,,3,,,»ñµÃ !B! µã¸ñµ²£¬ÒÆ³ýÒ»²ã¸ºÃæÐ§¹û£¬»ñµÃ¼Ó»¤£¨ÊÜµ½ÉËº¦Ê±£¬ÈôÓÐ¸ñµ²£¬Ôò»ñµÃ !B! µã¸ñµ²£¬²¢»ñµÃÒ»ÕÅ¡¸ÉÙÅ®µÄÌØÈ¨¡¹£©¡£,,,,,»¶Óä,,¸ß,·ÀÓù
 March7th2,ÉÙÅ®µÄÌØÈ¨,SPECIAL,ATTACK,SELF_AND_ENEMY,-2, ÏûºÄ ¡£»ØºÏ¿ªÊ¼Ê± hsrmod:×·»÷ ¡£ NL »ñµÃ !B! µã¸ñµ²£¬Ôì³É !D! µãÉËº¦£¨±ù !TR! £©¡£,1,1,1,,,,,,,,»¶Óä,±ù,ÎÞ,·ÀÓù
 March7th3,±ù¿Ì¼ýÓêÖ®Ê±,COMMON,ATTACK,ALL_ENEMY,2, hsrmod:ºÄÄÜ 120£¬ÈºÌå£ºÔì³É !D! µãÉËº¦£¨±ù !TR! £©£¬ÓÐ50%»ù´¡¸ÅÂÊÊ©¼Ó !M! ²ã hsrmod:¶³½á ¡£,2,2,,2,,,,,,3,¼ÇÒä,±ù,ÖÐ,·ÀÓù
-March7th4,Ê¦¸¸£¬ÎÒÎòÁË£¡,COMMON,ATTACK,ENEMY,1,´ËÅÆ×ó²à×î½üµÄÅÆÎªÊ¦¸¸¡£ NL ´ò³öÊ¦¸¸ºó hsrmod:×·»÷ ¡£ÈôÊ¦¸¸Îª£º NL ¹¥»÷ÅÆ£¬Ôì³ÉÊ¦¸¸ÉËº¦ÖµÊýÁ¿µÄÉËº¦£¨ÐéÊý !TR! £©£» NL ¼¼ÄÜÅÆ£¬»ñµÃÊ¦¸¸¸ñµ²ÖµÊýÁ¿µÄ¸ñµ²¡£,,2,,,,´ËÅÆÁ½²à×î½üµÄÅÆ½ÔÎªÊ¦¸¸¡£ NL ´ò³öÊ¦¸¸ºó hsrmod:×·»÷ ¡£ÈôÊ¦¸¸Îª£º NL ¹¥»÷ÅÆ£¬Ôì³ÉÊ¦¸¸ÉËº¦ÖµÊýÁ¿µÄÉËº¦£¨ÐéÊý !TR! £©£» NL ¼¼ÄÜÅÆ£¬»ñµÃÊ¦¸¸¸ñµ²ÖµÊýÁ¿µÄ¸ñµ²¡£,,,,,»¶Óä,ÐéÊý,ÖÐ,¹¥»÷
+March7th4,Ê¦¸¸£¬ÎÒÎòÁË£¡,COMMON,SKILL,SELF,1,´ò³öÆäËûÅÆºó£¬ÈôÎªÉý¼¶¹ýµÄÅÆ£¬´ËÅÆÃþÅÆÊý+1¡£ÃþÅÆÊý´ïµ½7Ê± hsrmod:×·»÷ ¡£ NL ÏûºÄ ¡£Ãþ !M! ÕÅÅÆ¡£,,,,1,,´ò³öÆäËûÅÆºó£¬ÈôÎªÉý¼¶¹ýµÄÅÆ£¬´ËÅÆÃþÅÆÊý+1¡£ÃþÅÆÊý´ïµ½7Ê± hsrmod:×·»÷ ¡£ NL Ãþ !M! ÕÅÅÆ¡£,,,,,»¶Óä,,¸ß,ÔË×ª
 Yukong1,ÌìãÚÃùÏÒ,COMMON,SKILL,SELF,0,»ñµÃµ±Ç° [E] £¨ÖÁ¶àÎªÉÏÏÞ£©ÊýÁ¿µÄÁÙÊ± Á¦Á¿ ¡£,,,,0,,»ñµÃµ±Ç° [E] £¨ÖÁ¶àÎªÉÏÏÞ£©ÊýÁ¿ + !M! ²ãµÄÁÙÊ± Á¦Á¿ ¡£,,,,1,·±Óý,,ÖÐ,¹¥»÷
 Luka1,ÁÑÉËÈ­,COMMON,ATTACK,ENEMY,1,Ö´ÐÐ !M! ´Î£ºÔì³É !D! µãÉËº¦£¨ÎïÀí !TR! £©£¬Ê©¼Ó1²ã hsrmod:ÁÑÉË ¡£,1,1,,3,,,,,,4,ÐéÎÞ,ÎïÀí,µÍ,¹¥»÷
 Guinaifen1,Ó­Ãæ¿ªÃÅºì,COMMON,ATTACK,ENEMY,1,Ôì³É !D! µãÉËº¦£¨»ð !TR! £©£¬Ê©¼Ó !M! ²ã hsrmod:×ÆÉÕ ºÍ1²ã Ò×ÉË ¡£,1,2,,2,,Ôì³É !D! µãÉËº¦£¨»ð !TR! £©£¬Ê©¼Ó !M! ²ã hsrmod:×ÆÉÕ £¬È»ºó¶ÔÓÐ hsrmod:×ÆÉÕ µÄµÐÈËÒÀ´ÎÊ©¼Ó1²ã Ò×ÉË ¡£,,,,3,ÐéÎÞ,»ð,ÖÐ,¹¥»÷
@@ -64,7 +64,7 @@ Robin2,Ç§Òôµü×à£¬ÈºÐÇ¸³¸ñ,UNCOMMON,SKILL,SELF,1, hsrmod:ºÄÄÜ 140£¬Ãþ !M! ÕÅÅÆ£¬»
 Trailblazer5,ÐúÏùµÄÎèµÆÑ²ÓÎ,UNCOMMON,POWER,SELF,2, hsrmod:ºÄÄÜ 140¡£´ò³öµÄÅÆÔì³ÉÊ×´ÎÉËº¦ºó£¬ÈôÆäÓÐ hsrmod:»÷ÆÆ×´Ì¬ £¬ÔòÔì³É hsrmod:³¬»÷ÆÆÉËº¦ ¡£,,,,2,, ¹ÌÓÐ ¡£ hsrmod:ºÄÄÜ 140¡£´ò³öµÄÅÆÔì³ÉÊ×´ÎÉËº¦ºó£¬ÈôÆäÓÐ hsrmod:»÷ÆÆ×´Ì¬ £¬ÔòÔì³É hsrmod:³¬»÷ÆÆÉËº¦ ¡£,,,,3,»ÙÃð,,µÍ,¹¥»÷
 Trailblazer6,ÎÀÎÒÆðÎè,UNCOMMON,SKILL,SELF,1,»ñµÃ !M! ²ã hsrmod:»÷ÆÆÌØ¹¥ £¬ÈôÄãÃ»ÓÐ´ò³ö¹ýÐúÏùµÄÎèµÆÑ²ÓÎ£¬Ôò»ñµÃÖ®£¬·ñÔòÔÙ»ñµÃ !M! ²ã hsrmod:»÷ÆÆÌØ¹¥ ¡£,,,,2,, ¹ÌÓÐ ¡£»ñµÃ !M! ²ã hsrmod:»÷ÆÆÌØ¹¥ £¬ÈôÄãÃ»ÓÐ´ò³ö¹ýÐúÏùµÄÎèµÆÑ²ÓÎ£¬Ôò»ñµÃÖ®£¬·ñÔòÔÙ»ñµÃ !M! ²ã hsrmod:»÷ÆÆÌØ¹¥ ¡£,,,,3,»ÙÃð,,µÍ,¹¥»÷
 Boothill1,³ãÀùÎèÕßµÄÌ½¸ê,UNCOMMON,ATTACK,ENEMY,2,Ôì³É !D! µãÉËº¦£¨ÎïÀí !TR! £© !M! ´Î£¬Èô hsrmod:»÷ÆÆ £¬Ôì³ÉÆä hsrmod:ÈÍÐÔ ÉÏÏÞµÄ hsrmod:»÷ÆÆÉËº¦ £»·ñÔò½«´ËÅÆ·µ»¹ÊÖ¿¨£¬²¢ÓÚ´Ë»ØºÏ ±£Áô ¡£,4,4,,2,,,,,,3,»ÙÃð,ÎïÀí,µÍ,¹¥»÷
-Boothill2,»÷´¸Á¬åó,UNCOMMON,ATTACK,ENEMY,1,Ôì³É !D! µãÉËº¦£¨ÎïÀí !TR! £©£¬ÈôÃ»ÓÐ»÷ÆÆ£¬Ôò½«´ËÅÆ·µ»¹ÊÖ¿¨¡£,4,7,,,,,,10,,,»ÙÃð,ÎïÀí,ÖÐ,¹¥»÷
+Boothill2,»÷´¸Á¬åó,UNCOMMON,ATTACK,ENEMY,1,Ôì³É !D! µãÉËº¦£¨ÎïÀí !TR! £©£¬ÈôÃ»ÓÐ»÷ÆÆ£¬Ôò½«´ËÅÆ·µ»¹ÊÖ¿¨¡£,4,7,,,,,5,10,,,»ÙÃð,ÎïÀí,ÖÐ,¹¥»÷
 Firefly1,×ÔÆÆËéµÄÌì¿Õ×¹Âä,UNCOMMON,ATTACK,ENEMY,1,Ôì³É !D! µãÉËº¦£¨»ð !TR! £©£¬È»ºóÈôÆäÓÐ hsrmod:»÷ÆÆ×´Ì¬ £¬ÔòÔì³É50%µÄ hsrmod:³¬»÷ÆÆÉËº¦ £¬²¢½«´ËÅÆ·µ»¹ÊÖ¿¨¡£,3,3,,,,,4,4,,,»ÙÃð,»ð,µÍ,¹¥»÷
 Firefly2,ÕÀ·ÅÔÚÖÕ¾¹µÄÃ÷Ìì,UNCOMMON,POWER,SELF,0, hsrmod:ºÄÄÜ 240£¬ÏûºÄ !M! µãÉúÃü¡£ hsrmod:»÷ÆÆ ºó£¬¶ÔÆäÔì³ÉÆä hsrmod:ÈÍÐÔ ÉÏÏÞµÄ hsrmod:»÷ÆÆÉËº¦ £¬»ñµÃ1²ã hsrmod:»÷ÆÆÐ§ÂÊ £¬»ñµÃ¡¸×ÔÆÆËéµÄÌì¿Õ×¹Âä¡¹¡£,,,,3,,»ñµÃ´ËÅÆÊ±£¬½« [hsrmod:ChargeIcon] ²¹³äÖÁ120¡£ hsrmod:ºÄÄÜ 240£¬ÏûºÄ !M! µãÉúÃü¡£ hsrmod:»÷ÆÆ ºó£¬¶ÔÆäÔì³ÉÆä hsrmod:ÈÍÐÔ ÉÏÏÞµÄ hsrmod:»÷ÆÆÉËº¦ £¬»ñµÃ1²ã hsrmod:»÷ÆÆÐ§ÂÊ £¬»ñµÃ×ÔÆÆËéµÄÌì¿Õ×¹Âä¡£,,,,,»ÙÃð,,µÍ,¹¥»÷
 Jade1,ÌÞË¸Ö®ÑÀ,UNCOMMON,ATTACK,ALL_ENEMY,1,ÃþÅÆÊ± hsrmod:×·»÷ ¡£Ê§È¥1µãÉúÃü£¬Ãþ !M! ÕÅÅÆ£¬ÈºÌå£ºÔì³ÉÊÖÅÆÊýÁ¿£¨ !D! £©µÄÉËº¦£¨Á¿×Ó !TR! £©¡£,0,1,,3,,,,,,4,»¶Óä,Á¿×Ó,ÖÐ,¹¥»÷
@@ -79,12 +79,12 @@ BattlefieldMagician,Õ½³¡Ä§ÊõÊ¦,RARE,POWER,SELF,2, hsrmod:×·»÷ ºó£¬»ñµÃ !M! µã¸ñµ
 SlaughterhouseNo4RestInPeace,¡¶ËÄºÅÍÀ³¡ ¡¤ ÖÚÉú°²Ãß¡·,RARE,POWER,SELF,2, hsrmod:×·»÷ Ôì³ÉÉËº¦ºó£¬ÈôÄ¿±êÓÐ hsrmod:»÷ÆÆ×´Ì¬ £¬ÔòÓÐ !M! %µÄ¸ÅÂÊÃþ1ÕÅÅÆ¡£,,,,80,,´ò³ö hsrmod:×·»÷ ÅÆÔì³ÉÉËº¦ºó£¬ÈôÊÜµ½ÉËº¦µÄÄ¿±êÓÐ / Ã»ÓÐ hsrmod:»÷ÆÆ×´Ì¬ £¬Ôò·Ö±ðÓÐ !M! % / 20%µÄ¸ÅÂÊÃþ1ÕÅÅÆ¡£,,,,,»¶Óä,,µÍ,ÔË×ª
 UselessScholar,ÎÞÓÃÑ§Õß,RARE,POWER,SELF,3, hsrmod:×·»÷ ºó£¬ÈôÓÐ50 [hsrmod:ChargeIcon] £¬ÔòÓÐ !M! %µÄ¸ÅÂÊÏûºÄÖ®£¬ hsrmod:×·»÷ Ò»ÕÅ hsrmod:×·»÷ ÅÆ¡£,,,,66,2,´ò³ö hsrmod:×·»÷ ÅÆºó£¬ÈôÓÐ50 [hsrmod:ChargeIcon] £¬ÔòÓÐ !M! %µÄ¸ÅÂÊÏûºÄÖ®£¬ hsrmod:×·»÷ Ò»ÕÅ hsrmod:×·»÷ ÅÆ¡£,,,,,»¶Óä,,µÍ,ÔË×ª
 BountyHunter,ÉÍ½ðÁÔÈË,RARE,POWER,SELF,1, hsrmod:×·»÷ ºó£¬ÓÐ !M! %µÄ¸ÅÂÊ½«¸ÃÅÆ·µ»¹ÊÖ¿¨¡£,,,,25,,´ò³ö hsrmod:×·»÷ ÅÆºó£¬ÓÐ !M! %µÄ¸ÅÂÊ½«¸ÃÅÆ·µ»¹ÊÖ¿¨¡£,,,,33,»¶Óä,,µÍ,ÔË×ª
-ChampionsDinnerCatsCradle,¡¶¹Ú¾üÍí²Í ¡¤ Ã¨µÄÒ¡Àº¡·,RARE,POWER,SELF,1, hsrmod:ºÄÄÜ µÄÅÆÊÓÎª hsrmod:×·»÷ ÅÆ£¬ÇÒÓÚ [hsrmod:ChargeIcon] ÂúÊ±£¬ hsrmod:×·»÷ 1ÕÅ¡£,,,,1,, hsrmod:ºÄÄÜ µÄÅÆÊÓÎª hsrmod:×·»÷ ÅÆ£¬ÇÒÓÚ [hsrmod:ChargeIcon] ÂúÊ±£¬ hsrmod:×·»÷ 1ÕÅ¡£ hsrmod:×·»÷ ÐèÒª hsrmod:ºÄÄÜ µÄÅÆÊ±£¬ÎÞÐè×ã¹»µÄ [hsrmod:ChargeIcon] ¡£,,,,,»¶Óä,,¸ß,¹¥»÷
+ChampionsDinnerCatsCradle,¡¶¹Ú¾üÍí²Í ¡¤ Ã¨µÄÒ¡Àº¡·,RARE,POWER,SELF,1, hsrmod:ºÄÄÜ µÄÅÆÊÓÎª hsrmod:×·»÷ ÅÆ£¬ÇÒÓÚ [hsrmod:ChargeIcon] ÂúÊ±£¬ hsrmod:×·»÷ 1ÕÅ¡£,,,,1,, hsrmod:ºÄÄÜ µÄÅÆÊÓÎª hsrmod:×·»÷ ÅÆ£¬ÇÒÓÚ [hsrmod:ChargeIcon] ÂúÊ±£¬ hsrmod:×·»÷ 1ÕÅ¡£ hsrmod:×·»÷ ÐèÒª hsrmod:ºÄÄÜ µÄÅÆÊ±£¬ÎÞÐè×ã¹»µÄ [hsrmod:ChargeIcon] ¡£,,,,,»¶Óä,,ÖÐ,¹¥»÷
 Symbiote,¹²ÉúÌå,RARE,POWER,SELF,2, hsrmod:»÷ÆÆ ºó£¬»Ø¸´ [E] [E] ¡£Ôì³É hsrmod:»÷ÆÆÉËº¦ ºó£¬Ãþ1ÕÅÅÆ¡£,,,,,1,,,,,,»ÙÃð,,µÍ,ÔË×ª
 RegressionInequalityOfAnnihilation,äÎÃð»Ø¹é²»µÈÊ½,RARE,SKILL,ALL,1,ÁîËùÓÐ¸öÌåÆ½¾ù·ÖÌ¯ hsrmod:ÈÍÐÔ £¨²»»á»÷ÆÆ£©¡£,,,,1,,ÁîËùÓÐ¸öÌåÆ½¾ù·ÖÌ¯ hsrmod:ÈÍÐÔ £¨²»»á»÷ÆÆ£©£¬ÇÒÄãµÄÈ¨ÖØÎª !M! ¡£,,,,2,»ÙÃð,,ÖÐ,·ÀÓù
 CourtOfHomogeneity,Í¬Ì¬·¨Í¥,RARE,ATTACK,ENEMY,-1, ÏûºÄ ¡£ÆúÖÃËùÓÐÊÖÅÆ£¬Ôì³É !D! µãÉËº¦£¨»ð !TR! £©£¬È»ºóÈôÆä hsrmod:ÈÍÐÔ ÊýÉÙÓÚÄã£¬Ôì³ÉÄãÓëÆä hsrmod:ÈÍÐÔ ÊýÖ®²îµÄ hsrmod:»÷ÆÆÉËº¦ ¡£,8,8,,,,ÆúÖÃËùÓÐÊÖÅÆ£¬Ôì³É !D! µãÉËº¦£¨»ð !TR! £©£¬È»ºóÈôÆä hsrmod:ÈÍÐÔ ÊýÉÙÓÚÄã£¬Ôì³ÉÄãÓëÆä hsrmod:ÈÍÐÔ ÊýÖ®²îµÄ hsrmod:»÷ÆÆÉËº¦ ¡£,12,12,,,»ÙÃð,»ð,µÍ,¹¥»÷
 VoyageMonitor,Ô¶º½¼à»¤Ô±,RARE,POWER,SELF,2,Ã¿Ôì³É !M! µãÏ÷ÈÍ£¬»ñµÃ1µã¸ñµ²¡£,,,,2,, ¹ÌÓÐ ¡£Ã¿Ôì³É !M! µãÏ÷ÈÍ£¬»ñµÃ1µã¸ñµ²¡£,,,,,»ÙÃð,,¸ß,·ÀÓù
-DisruptivePulse,ÈÅÂÒÐÔÂö³å,RARE,ATTACK,ENEMY,2, ÏûºÄ ¡£ hsrmod:ºÄÄÜ 80£¬Ôì³É !D! µãÉËº¦£¨»ð !TR! £©£¬Èô hsrmod:»÷ÆÆ £¬ÔòÔì³É hsrmod:³¬»÷ÆÆÉËº¦ £¬²¢½« [hsrmod:ChargeIcon] ºÍ [E] »Ø¸´ÖÁÉÏÏÞ¡£,6,6,,,,,9,9,,,»ÙÃð,»ð,µÍ,ÔË×ª
+DisruptivePulse,ÈÅÂÒÐÔÂö³å,RARE,ATTACK,ENEMY,2, hsrmod:ºÄÄÜ 80£¬Ôì³É !D! µãÉËº¦£¨»ð !TR! £©£¬Èô hsrmod:»÷ÆÆ £¬ÔòÔì³É hsrmod:³¬»÷ÆÆÉËº¦ £¬²¢½« [hsrmod:ChargeIcon] ºÍ [E] »Ø¸´ÖÁÉÏÏÞ¡£,6,6,,,,,9,9,,,»ÙÃð,»ð,µÍ,ÔË×ª
 PreBattleCaregiver,Õ½Ç°¹Ø»³Ô±,UNCOMMON,SKILL,SELF_AND_ENEMY,1, ÏûºÄ ¡£ÄãÓëÆä¸÷½«¸ñµ²Öµ²¹³äÖÁX£¨XÎªÆäÈÍÐÔÖµ£©¡£,,,,,, ÏûºÄ ¡£ÄãÓëÆä¸÷½«¸ñµ²Öµ²¹³äÖÁX£¨XÎªÄãÓëÆäÈÍÐÔÖµÖ®ºÍ£©¡£,,,,,»ÙÃð,ÎïÀí,µÍ,·ÀÓù
 NightBeyondPyre,»ð¶ÑÍâµÄÒ¹,COMMON,SKILL,SELF,0, ÏûºÄ ¡£ÈôÃ»ÓÐ hsrmod:»÷ÆÆÐ§ÂÊ £¬»ñµÃ !M! ²ã£»ÈôÃ»ÓÐÊÖÅÆ£¬½«ÊÖÅÆÃþÖÁ !M! ÕÅ¡£,,,,2,, ¹ÌÓÐ ¡£ÈôÃ»ÓÐ hsrmod:»÷ÆÆÐ§ÂÊ £¬»ñµÃ !M! ²ã£»ÈôÃ»ÓÐÊÖÅÆ£¬½«ÊÖÅÆÃþÖÁ !M! ÕÅ¡£,,,,,»ÙÃð,,ÖÐ,·ÀÓù
 StarcrusherWorker,ËéÐÇÐCÒÛ,COMMON,SKILL,ENEMY,0,ÒÆ³ý !M! ²ã hsrmod:ÈÍÐÔ £¨ÖÁÉÙ±£Áô1²ã£©£¬ÈôÄãµÄ hsrmod:ÈÍÐÔ ÉÙÓÚÆä£¬ÔòÄã»ñµÃµÈÁ¿µÄ hsrmod:ÈÍÐÔ ¡£,,,,5,,,,,,8,»ÙÃð,,ÖÐ,·ÀÓù
@@ -93,7 +93,7 @@ TheDoubtfulFourfoldRoot,»³ÒÉµÄËÄÖØ¸ù,RARE,SKILL,ALL_ENEMY,1,ÁîËùÓÐµÐÈËµÄ hsrmod:
 AllThingsArePossible,ÎÞ¸ù¾ÝËÌ¸è,RARE,POWER,SELF,3,´ò³ö¹¥»÷ÅÆºó£¬¶ÔÆäÊ©¼Ó1¸öÆäÃ»ÓÐµÄ hsrmod:³ÖÐøÉËº¦ ¡£,,,,,,´ò³ö¹¥»÷ÅÆºó£¬ÈôÄ¿±ê£ºÓÐËùÓÐµÄ hsrmod:³ÖÐøÉËº¦ £¬ÔòËæ»ú´¥·¢1¸ö£¬·ñÔò¶ÔÆäÊ©¼Ó1¸öÆäÃ»ÓÐµÄ hsrmod:³ÖÐøÉËº¦ ¡£,,,,,ÐéÎÞ,,¸ß,¹¥»÷
 AnExtraPersonsDiary,¶àÓàÈËµÄÈÕ¼Ç,RARE,POWER,SELF,2, hsrmod:³ÖÐøÉËº¦ µÄÏ÷ÈÍÖµ+1¡£ hsrmod:»÷ÆÆ ºó£¬¶ÔÆäÊ©¼ÓX¸öËæ»úµÄ hsrmod:³ÖÐøÉËº¦ £¨XÎªÆä hsrmod:ÈÍÐÔ ÉÏÏÞµÄÊ®Î»Êý+1£©£¬²¢ÃþXÕÅÅÆ¡£,,,,,, hsrmod:³ÖÐøÉËº¦ µÄÏ÷ÈÍÖµ+1¡£ hsrmod:»÷ÆÆ ºó£¬¶ÔÆäÊ©¼ÓX¸öËæ»úµÄ hsrmod:³ÖÐøÉËº¦ £¨XÎªÆä hsrmod:ÈÍÐÔ ÉÏÏÞµÄÊ®Î»Êý+1£©£¬ÃþXÕÅÅÆ£¬ÆäÊ§È¥X²ã Á¦Á¿ ¡£,,,,,ÐéÎÞ,,ÖÐ,¹¥»÷
 ThePathless,ÎÞÉñÂÛÕß,RARE,SKILL,ALL_ENEMY,1, ÏûºÄ ¡£ÈºÌå£ºÊ©¼Ó2²ã hsrmod:¸ñµ²·µ»¹ ºÍ !M! ²ã hsrmod:»³ÒÉ ¡£,,,,10,, ¹ÌÓÐ ¡£ ÏûºÄ ¡£ÈºÌå£ºÊ©¼Ó2²ã hsrmod:¸ñµ²·µ»¹ ºÍ !M! ²ã hsrmod:»³ÒÉ ¡£,,,,15,ÐéÎÞ,,¸ß,·ÀÓù
-ReignOfKeys,Ô¿³×µÄÍ³ÖÎ,RARE,POWER,SELF,2,µÐÈËµÄ hsrmod:³ÖÐøÉËº¦ £ºÓÚÆä»ØºÏÄÚ´¥·¢Ê±£¬ÄãÃþ1ÕÅÅÆ¡£ÓÚÆä»ØºÏÍâ´¥·¢Ê±£¬²»»á¼õÉÙ²ãÊý¡£,,,,,,µÐÈËµÄ hsrmod:³ÖÐøÉËº¦ ´¥·¢Ê±£¬ÄãÃþ1ÕÅÅÆ£¬È»ºóÈôÎªÆä»ØºÏÍâ£¬Ôò²»»á¼õÉÙ²ãÊý¡£,,,,,ÐéÎÞ,,µÍ,¹¥»÷
+ReignOfKeys,Ô¿³×µÄÍ³ÖÎ,RARE,POWER,SELF,2,µÐÈËµÄ hsrmod:³ÖÐøÉËº¦ £ºÓÚÄã»ØºÏÍâ´¥·¢Ê±£¬ÄãÃþ1ÕÅÅÆ£»ÓÚÄã»ØºÏÄÚ´¥·¢Ê±£¬²»»á¼õÉÙ²ãÊý¡£,,,,,,µÐÈËµÄ hsrmod:³ÖÐøÉËº¦ ´¥·¢Ê±£¬ÄãÃþ1ÕÅÅÆ£¬È»ºóÈôÎªÄã»ØºÏÍâ£¬Ôò²»»á¼õÉÙ²ãÊý¡£,,,,,ÐéÎÞ,,µÍ,¹¥»÷
 FuneralOfSensoryPursuivant,¸Ð¹Ù×··îÕßµÄÔáÀñ,UNCOMMON,POWER,SELF,2,µÐÈËÊÜµ½ hsrmod:³ÖÐøÉËº¦ ºó£¬¶ÔÆäÊ©¼Ó3²ã hsrmod:»³ÒÉ ¡£,,,,,, ¹ÌÓÐ ¡£µÐÈËÊÜµ½ hsrmod:³ÖÐøÉËº¦ ºó£¬¶ÔÆäÊ©¼Ó3²ã hsrmod:»³ÒÉ ¡£µÐÈË±»Ê©¼Ó hsrmod:³ÖÐøÉËº¦ ºó£¬¶ÔÆäÊ©¼Ó1²ã hsrmod:»³ÒÉ ¡£,,,,,ÐéÎÞ,,µÍ,¹¥»÷
 CallOfTheWilderness,¿õÒ°µÄºô¸æ,UNCOMMON,SKILL,ALL_ENEMY,1,ÈºÌå£ºÊ©¼Ó !M! ²ã ÐéÈõ ¡£,,,,2,,ÈºÌå£ºÊ©¼Ó !M! ²ã ÐéÈõ £¬ÈôÆä Á¦Á¿ ¾ø¶ÔÖµ²»´óÓÚÄã£¬ÆäÊ§È¥ !M! ²ã Á¦Á¿ ¡£,,,,,ÐéÎÞ,,ÖÐ,·ÀÓù
 CommonMortal,Ó¹ÖÚ·²·ò,UNCOMMON,POWER,SELF,2,ÏûºÄ [hsrmod:ChargeIcon] ºó£¬¶ÔËæ»úµÐÈËÊ©¼Ó1¸ö hsrmod:³ÖÐøÉËº¦ ¡£Ê©¼Ó hsrmod:³ÖÐøÉËº¦ Ê±£¬»ñµÃ !M! µã [hsrmod:ChargeIcon] ¡£,,,,20,,ÏûºÄ [hsrmod:ChargeIcon] ºó£¬¶ÔËæ»úµÐÈËÊ©¼Ó1¸ö hsrmod:³ÖÐøÉËº¦ ¡£Ê©¼Ó¸ºÃæÐ§¹ûÊ±£¬»ñµÃ !M! µã [hsrmod:ChargeIcon] ¡£,,,,30,ÐéÎÞ,,ÖÐ,ÔË×ª
@@ -134,7 +134,7 @@ SovereignSkybreaker,µÛ¹­¶Ï¿Õ³¹Ì«Çå,RARE,POWER,SELF,1,´ò³öÅÆÊ±£¬Ã¿Âú×ãÒ»Ïî£¬µþ¼Ó1
 SolemnSnare,ËàËàÁDÂÞ,UNCOMMON,SKILL,SELF,-1, hsrmod:ºÄÄÜ 100£¬»ñµÃX²ã hsrmod:»áÐÄ £¬Áîµ±Ç°ËùÓÐÉý¼¶¹ýµÄÊÖÅÆÓÚ´Ë»ØºÏ·ÑÓÃ-1£¬Ã¿¶à1¼¶¶îÍâ-1¡£,,,,,, hsrmod:ºÄÄÜ 100£¬ÃþXÕÅÅÆ£¬»ñµÃX²ã hsrmod:»áÐÄ £¬Áîµ±Ç°ËùÓÐÉý¼¶¹ýµÄÊÖÅÆÓÚ´Ë»ØºÏ·ÑÓÃ-1£¬Ã¿¶à1¼¶¶îÍâ-1¡£,,,,,Ñ²ÁÔ,,µÍ,ÔË×ª
 EmpyreanImperium,µÛÐÇ¾ýÁÙÖÆñ·É£,RARE,POWER,SELF,1,Ã¿´ò³ö !M! ´Î×î×ó²àµÄÅÆ£¬Ãþ1ÕÅÅÆ¡£,,,,2,,Ã¿´ò³ö !M! ´Î×î×ó²àµÄÅÆ£¬Ãþ1ÕÅÅÆ¡£·ÑÓÃ´óÓÚ0µÄÅÆËã×÷2ÕÅ¡£,,,,,Ñ²ÁÔ,,¸ß,ÔË×ª
 BorderstarGunslinger,±ßÐÇ¿ìÇ¹ÊÖ,UNCOMMON,SKILL,SELF,0, hsrmod:ºÄÄÜ 80£¬ÆúÖÃÈÎÒâÕÅÅÆ£¬»ñµÃ !M! ±¶µÄ¸ñµ²¡£,,,,3,, hsrmod:ºÄÄÜ 80£¬ÆúÖÃÈÎÒâÕÅÅÆ£¬»ñµÃ !M! ±¶µÄ¸ñµ²£¬²¢Éý¼¶ÒÔ´Ë·¨ÆúÖÃµÄÅÆ¡£,,,,,Ñ²ÁÔ,,µÍ,ÔË×ª
-FinalVictor,×îºóµÄÓ®¼Ò,UNCOMMON,SKILL,SELF,2, ÐéÎÞ ¡£ ÏûºÄ ¡£Ëæ»úÑ¡ÔñÒ»ÕÅÊÖÅÆ£¬ÓÀ¾ÃÉý¼¶Ö®¡£,,,,,, ÐéÎÞ ¡£ ÏûºÄ ¡£Ñ¡ÔñÒ»ÕÅÊÖÅÆ£¬ÓÀ¾ÃÉý¼¶Ö®¡£,,,,,Ñ²ÁÔ,,ÖÐ,¹¥»÷
+GalaxyRanger,Ñ²º£ÓÎÏÀ,UNCOMMON,SKILL,SELF,1,ÆúÖÃÈÎÒâÕÅÊÖÅÆ£¬ÃþÁ½±¶µÄÅÆ¡£,,,,,,ÆúÖÃÈÎÒâÕÅÊÖÅÆ£¬ÃþÁ½±¶µÄÅÆ£¬²¢Éý¼¶ÒÔ´Ë·¨ÆúÖÃµÄÅÆ¡£,,,,,Ñ²ÁÔ,,ÖÐ,ÔË×ª
 DisasterHaltingMechanism,ÌìÔÖ¶ôÖ¹»ú¹Ø,COMMON,SKILL,SELF,1, hsrmod:ºÄÄÜ 40£¬»ñµÃÊÖÅÆÊýÊýÁ¿µÄ¸ñµ²£¬²¢Ëæ»úÉý¼¶1ÕÅÊÖÅÆ¡£,,,,1,0,,,,,,Ñ²ÁÔ,,ÖÐ,·ÀÓù
 CivilizationCorrespondent,ÎÄÃ÷º¯ÊÚÔ±,COMMON,SKILL,SELF,1,ÏûºÄËùÓÐ [hsrmod:ChargeIcon] £¬Ã¿ÏûºÄ10 [hsrmod:ChargeIcon] £¬»ñµÃ1µã¸ñµ²¡£,,,,,,ÏûºÄËùÓÐ [hsrmod:ChargeIcon] £¬Ã¿ÏûºÄ10 [hsrmod:ChargeIcon] £¬»ñµÃ1µã¸ñµ²£»Ã¿ÏûºÄ100 [hsrmod:ChargeIcon] £¬Ãþ1ÕÅÅÆ¡£,,,,,ÖÇÊ¶,,ÖÐ,·ÀÓù
 PenMan,Ö´±ÊÈË,COMMON,SKILL,SELF,0, ±£Áô ¡£ÆúÖÃ1ÕÅÅÆ£¬»ñµÃ !M! µã [hsrmod:ChargeIcon] £¬È»ºóÈô [hsrmod:ChargeIcon] Î´Âú£¬½«´ËÅÆ·µ»¹ÊÖÅÆ¡£,,,,40,, ±£Áô ¡£ÆúÖÃ1ÕÅÅÆ£¬»ñµÃ !M! µã [hsrmod:ChargeIcon] £¨¿ÉÒÔÑ¡Ôñ²»ÆúÖÃ£¬²¢ÏûºÄ [E] À´»ñµÃ2±¶µÄ [hsrmod:ChargeIcon] £©£¬È»ºóÈô [hsrmod:ChargeIcon] Î´Âú£¬½«´ËÅÆ·µ»¹ÊÖÅÆ¡£,,,,,ÖÇÊ¶,,ÖÐ,ÔË×ª
@@ -149,8 +149,8 @@ LoadStriatedCortex,×°ÔØ£ºÎÆ×´Æ¤²ã,UNCOMMON,POWER,SELF,2,´ò³öÈºÌå¹¥»÷ÅÆÊ±£¬ÈôÖ»ÓÐ
 AstralEcologySchool,ÐÇ¿ÕÉúÌ¬Ñ§ÅÉ,UNCOMMON,ATTACK,ALL_ENEMY,2, hsrmod:ºÄÄÜ 100£¬ÈºÌå£ºÔì³É !D! µãÉËº¦£¨Á¿×Ó !TR! £©£¬ÈôÊÖÅÆÖÐÓÐÆäËû hsrmod:ºÄÄÜ µÄÅÆ£¬¶îÍâÔì³É1´ÎÉËº¦¡£,12,2,,1,, hsrmod:ºÄÄÜ 100£¬ÈºÌå£ºÔì³É !D! µãÉËº¦£¨Á¿×Ó !TR! £©£¬ÈôÊÖÅÆÖÐÓÐ£ºÆäËû hsrmod:ºÄÄÜ µÄÅÆ£¬¶îÍâÔì³É1´ÎÉËº¦£»ÆäËûÈºÌåÅÆ£¬ÔÙÔì³É1´ÎÉËº¦¡£,,,,,ÖÇÊ¶,Á¿×Ó,µÍ,¹¥»÷
 TerminalNirvana,ÎÞÓàÄù˜„,RARE,SKILL,SELF,2, ÏûºÄ ¡£ ±£Áô ¡£ hsrmod:ºÄÄÜ !M! £¬»ñµÃ1²ã ÎÞÊµÌå ¡£,,,,120,, ±£Áô ¡£ hsrmod:ºÄÄÜ !M! £¬»ñµÃ1²ã ÎÞÊµÌå £¬È»ºó´ËÅÆÓÚ´Ë´ÎÕ½¶·ÄÚ hsrmod:ºÄÄÜ ·­±¶¡£,,,,60,ÖÇÊ¶,,ÖÐ,·ÀÓù
 AstralExpress,ÐÇñ·ÁÐ³µ,BASIC,SKILL,SELF,2, ÏûºÄ ¡£´ò³öËùÓÐ³õÊ¼¹¥»÷ÅÆ¡£,,,,,,´ò³öËùÓÐ³õÊ¼¹¥»÷ÅÆ¡£,,,,,¿ªÍØ,,ÎÞ,ÔË×ª
-,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,
+Imprison,½ûïÀ,COMMON,STATUS,NONE,1, ÐéÎÞ ¡£»ñµÃÊ±£¬Ê§È¥ËùÓÐ [hsrmod:ChargeIcon] ¡£ÔÚÊÖÅÆÖÐÊ±£¬ÎÞ·¨»ñµÃ [hsrmod:ChargeIcon] ¡£Ê§È¥Ê±£¬»Ø¸´ÒÔ´Ë·¨»ñµÃµÄ [hsrmod:ChargeIcon] ¡£,,,,,,,,,,,,,,
+Frozen,¶³½á,COMMON,STATUS,NONE,-2, ±£Áô ¡£»ñµÃÊ±£¬¶³½á×îÓÒ²àµÄÊÖÅÆ£¨±£Áô£¬ÎÞ·¨´ò³ö£©¡£,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,

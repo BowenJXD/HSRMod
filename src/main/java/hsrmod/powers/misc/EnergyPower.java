@@ -7,6 +7,7 @@ import hsrmod.powers.BuffPower;
 public class EnergyPower extends BuffPower {
     public static final String POWER_ID = HSRMod.makePath(EnergyPower.class.getSimpleName());
     
+    boolean locked = false;
     public static final int AMOUNT_LIMIT = 240;
 
     public EnergyPower(AbstractCreature owner, int Amount) {
@@ -21,25 +22,33 @@ public class EnergyPower extends BuffPower {
 
     @Override
     public void stackPower(int stackAmount) {
-        super.stackPower(stackAmount);
+        alterPower(stackAmount);
+    }
 
-        // Ensure the new value does not exceed bounds
+    @Override
+    public void reducePower(int reduceAmount) {
+        alterPower(-reduceAmount);
+    }
+    
+    void alterPower(int alterAmount) {
+        if (locked) {
+            return;
+        }
+        this.fontScale = 8.0F;
+        this.amount += alterAmount;
+        
         if (amount > AMOUNT_LIMIT) {
             amount = AMOUNT_LIMIT;
         } else if (amount < 0) {
             amount = 0;
         }
     }
-
-    @Override
-    public void reducePower(int reduceAmount) {
-        super.reducePower(reduceAmount);
-        
-        // Ensure the new value does not exceed bounds
-        if (amount > AMOUNT_LIMIT) {
-            amount = AMOUNT_LIMIT;
-        } else if (amount < 0) {
-            amount = 0;
-        }
+    
+    public void setLocked(boolean locked) {
+        this.locked = locked;
+    }
+    
+    public boolean getLocked() {
+        return locked;
     }
 }

@@ -39,9 +39,9 @@ import hsrmod.events.*;
 import hsrmod.misc.ChargeIcon;
 import hsrmod.misc.Encounter;
 import hsrmod.misc.ToughnessReductionVariable;
-import hsrmod.monsters.AbundanceLotus;
+import hsrmod.monsters.Cocolia;
 import hsrmod.monsters.EchoOfFadedDreams;
-import hsrmod.monsters.PhantyliaTheUndying;
+import hsrmod.monsters.Phantylia;
 import hsrmod.monsters.TheGreatSeptimus;
 import hsrmod.utils.RewardEditor;
 import org.apache.logging.log4j.LogManager;
@@ -245,9 +245,14 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         BaseMod.addBoss(TheBeyond.ID, Encounter.SALUTATIONS_OF_ASHEN_DREAMS, "HSRModResources/img/monsters/SalutationsOfAshenDreams.png", "HSRModResources/img/monsters/BossOutline.png");
         
         BaseMod.addMonster(Encounter.DIVINE_SEED, () -> new MonsterGroup(new AbstractMonster[]{
-                new PhantyliaTheUndying(),
+                new Phantylia(),
         }));
         BaseMod.addBoss(TheCity.ID, Encounter.DIVINE_SEED, "HSRModResources/img/monsters/DivineSeed.png", "HSRModResources/img/monsters/BossOutline.png");
+        
+        BaseMod.addMonster(Encounter.END_OF_THE_ETERNAL_FREEZE, () -> new MonsterGroup(new AbstractMonster[]{
+                new Cocolia()
+        }));
+        BaseMod.addBoss(Exordium.ID, Encounter.END_OF_THE_ETERNAL_FREEZE, "HSRModResources/img/monsters/EndOfTheEternalFreeze.png", "HSRModResources/img/monsters/BossOutline.png");
     }
 
     @Override
@@ -274,7 +279,10 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
             addAudio("TheGreatSeptimus_Crew" + i);
         }
         for (int i = 1; i <= 2; i++) {
-            addAudio("PhantyliaTheUndying_" + i);
+            addAudio("Phantylia_" + i);
+        }
+        for (int i = 1; i <= 2; i++) {
+            addAudio("Cocolia_" + i);
         }
     }
 

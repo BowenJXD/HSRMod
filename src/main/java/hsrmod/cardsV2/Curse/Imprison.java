@@ -39,15 +39,15 @@ public class Imprison extends BaseCard {
     public void onLeaveHand() {
         super.onLeaveHand();
         EnergyPower power = (EnergyPower) AbstractDungeon.player.getPower(EnergyPower.POWER_ID);
-        if (power != null) {
-            ModHelper.addToTopAbstract(() -> power.setLocked(false));
-        }
         if (actionCache != null && AbstractDungeon.actionManager.actions.contains(actionCache)) {
             AbstractDungeon.actionManager.actions.remove(actionCache);
-            actionCache = null;
         }
         else {
             addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new EnergyPower(AbstractDungeon.player, energyCache), energyCache));
+        }
+        actionCache = null;
+        if (power != null) {
+            ModHelper.addToTopAbstract(() -> power.setLocked(false));
         }
     }
 }

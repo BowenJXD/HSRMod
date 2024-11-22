@@ -3,6 +3,7 @@ package hsrmod.relics.starter;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import hsrmod.modcore.Path;
 import hsrmod.relics.BaseRelic;
 import hsrmod.utils.RewardEditor;
@@ -20,7 +21,7 @@ public abstract class WaxRelic extends BaseRelic {
         this.weight = weight;
     }
     
-    public WaxRelic (String id, AbstractCard.CardTags tag){
+    public WaxRelic(String id, AbstractCard.CardTags tag){
         this(id, tag, defaultWeight);
     }
 

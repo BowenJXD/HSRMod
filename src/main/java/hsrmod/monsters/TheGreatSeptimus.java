@@ -61,7 +61,7 @@ public class TheGreatSeptimus extends CustomMonster implements OnCardUseSubscrib
     List<String> cardsCache;
     
     public TheGreatSeptimus() {
-        super(NAME, HSRMod.makePath(ID), 777, 0F, -15.0F, 512F, 512F, PathDefine.MONSTER_PATH + ID + ".png", -100F, 0.0F);
+        super(NAME, HSRMod.makePath(ID), 777, 0F, -15.0F, 400F, 512F, PathDefine.MONSTER_PATH + ID + ".png", -100F, 0.0F);
         this.type = EnemyType.BOSS;
         this.dialogX = -150.0F * Settings.scale;
         this.dialogY = -70.0F * Settings.scale;

@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
 import hsrmod.relics.BaseRelic;
 import hsrmod.utils.RewardEditor;
 
@@ -46,6 +47,7 @@ public class InterastralBigLotto extends BaseRelic {
                 flash();
                 AbstractCard card = AbstractDungeon.player.masterDeck.getRandomCard(AbstractDungeon.relicRng);
                 if (card != null) {
+                    AbstractDungeon.topLevelEffects.add(new PurgeCardEffect(card));
                     AbstractDungeon.player.masterDeck.removeCard(card);
                 }
                 destroy();

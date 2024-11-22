@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import hsrmod.modcore.HSRMod;
+import hsrmod.relics.BaseRelic;
 import hsrmod.relics.starter.WaxOfErudition;
 import hsrmod.relics.uncommon.CosmicBigLotto;
 import hsrmod.relics.uncommon.InterastralBigLotto;
@@ -82,6 +83,7 @@ public class DoubleLotteryEvent extends PhasedEvent {
         for (AbstractRelic relic : AbstractDungeon.player.relics) {
             if (relic instanceof CosmicBigLotto || relic instanceof InterastralBigLotto) {
                 relic.setCounter(1);
+                ((BaseRelic) relic).recover();
             }
         }
     }

@@ -1,11 +1,15 @@
 package hsrmod.powers.uniqueBuffs;
 
+import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
+import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.DamageModApplyingPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import hsrmod.cardsV2.Preservation.ResonanceTransfer;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
 import hsrmod.powers.misc.QuakePower;
@@ -14,11 +18,14 @@ import hsrmod.subscribers.PostBreakBlockSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
-public class ResonanceTransferPower extends PowerPower implements PostBreakBlockSubscriber {
+import java.util.Collections;
+import java.util.List;
+
+public class ResonanceTransferPower extends PowerPower implements PostBreakBlockSubscriber, DamageModApplyingPower {
     public static final String POWER_ID = HSRMod.makePath(ResonanceTransferPower.class.getSimpleName());
 
     public int tr = 2;
-    
+
     public ResonanceTransferPower(boolean upgraded, int tr) {
         super(POWER_ID, upgraded);
         this.tr = tr;
@@ -43,25 +50,52 @@ public class ResonanceTransferPower extends PowerPower implements PostBreakBlock
     }
 
     @Override
-    public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
-        super.onAttack(info, damageAmount, target);
-        if (upgraded && target.currentBlock > 0) {
-            this.flash();
-            addToTop(new ApplyPowerAction(owner, owner, new QuakePower(owner, 1), 1));
-            if (ModHelper.getPowerCount(target, ToughnessPower.POWER_ID) > tr) {
-                addToTop(new ApplyPowerAction(target, owner, new ToughnessPower(target, -tr), -tr));
-            }
+    public void postBreakBlock(AbstractCreature c) {
+        if (SubscriptionManager.checkSubscriber(this) && c != owner && !upgraded) {
+            trigger(c);
+        }
+    }
+
+    public void trigger(AbstractCreature c) {
+        this.flash();
+        addToTop(new ApplyPowerAction(owner, owner, new QuakePower(owner, 1), 1));
+        if (ModHelper.getPowerCount(c, ToughnessPower.POWER_ID) > tr) {
+            addToTop(new ApplyPowerAction(c, owner, new ToughnessPower(c, -tr), -tr));
         }
     }
 
     @Override
-    public void postBreakBlock(AbstractCreature c) {
-        if (SubscriptionManager.checkSubscriber(this) && c != owner && !upgraded) {
-            this.flash();
-            addToTop(new ApplyPowerAction(owner, owner, new QuakePower(owner, 1), 1));
-            if (ModHelper.getPowerCount(c, ToughnessPower.POWER_ID) > tr) {
-                addToTop(new ApplyPowerAction(c, owner, new ToughnessPower(c, -tr), -tr));
+    public boolean shouldPushMods(DamageInfo damageInfo, Object o, List<AbstractDamageModifier> list) {
+        return o instanceof AbstractCard
+                && list.stream().noneMatch(mod -> mod instanceof ResonanceTransferDamageMod)
+                && upgraded;
+    }
+
+    @Override
+    public List<AbstractDamageModifier> modsToPush(DamageInfo damageInfo, Object o, List<AbstractDamageModifier> list) {
+        return Collections.singletonList(new ResonanceTransferDamageMod(this));
+    }
+
+    public static class ResonanceTransferDamageMod extends AbstractDamageModifier {
+        ResonanceTransferPower power;
+
+        public ResonanceTransferDamageMod(ResonanceTransferPower power) {
+            this.power = power;
+        }
+
+        @Override
+        public void onDamageModifiedByBlock(DamageInfo info, int unblockedAmount, int blockedAmount, AbstractCreature target) {
+            if (target != null
+                    && target != power.owner
+                    && blockedAmount > 0
+                    && info.owner == power.owner) {
+                power.trigger(target);
             }
+        }
+
+        @Override
+        public AbstractDamageModifier makeCopy() {
+            return new ResonanceTransferDamageMod(power);
         }
     }
 }

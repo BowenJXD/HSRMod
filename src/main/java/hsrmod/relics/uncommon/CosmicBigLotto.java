@@ -1,5 +1,8 @@
 package hsrmod.relics.uncommon;
 
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.rewards.RewardItem;
@@ -40,8 +43,7 @@ public class CosmicBigLotto extends BaseRelic {
             }
             if (AbstractDungeon.relicRng.random(100) < loseChance) {
                 flash();
-                AbstractDungeon.player.currentHealth = Math.max(AbstractDungeon.player.currentHealth / 2, 1);
-                AbstractDungeon.player.healthBarUpdatedEvent();
+                addToBot(new DamageAction(AbstractDungeon.player, new DamageInfo(AbstractDungeon.player, AbstractDungeon.player.currentHealth / 2, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
                 destroy();
             }
         }

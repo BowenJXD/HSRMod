@@ -15,6 +15,7 @@ import hsrmod.modcore.HSRMod;
 
 import java.util.Collections;
 
+// TODO: Consider add boss from basemod.
 public class AddMonsterPatch {
     @SpirePatch(clz = TheBeyond.class, method = "initializeBoss")
     public static class Act3AddBossPatch {
@@ -49,6 +50,26 @@ public class AddMonsterPatch {
                 } else {
                     TheCity.bossList.add(Encounter.DIVINE_SEED);
                     Collections.shuffle(TheCity.bossList, AbstractDungeon.monsterRng.random);
+                    AbstractDungeon.bossList.remove(AbstractDungeon.bossList.size() - 1);
+                }
+            }
+            return SpireReturn.Return();
+        }
+    }
+    
+    @SpirePatch(clz = Exordium.class, method = "initializeBoss")
+    public static class Act1AddBossPatch {
+        @SpirePostfixPatch
+        public static SpireReturn<Void> PostFix() {
+            if (!Settings.isDailyRun && HSRMod.addEnemy && AbstractDungeon.player instanceof StellaCharacter) {
+                if (HSRMod.removeOtherBosses) {
+                    Exordium.bossList.clear();
+                    Exordium.bossList.add(Encounter.END_OF_THE_ETERNAL_FREEZE);
+                    Exordium.bossList.add(Encounter.END_OF_THE_ETERNAL_FREEZE);
+                    Exordium.bossList.add(Encounter.END_OF_THE_ETERNAL_FREEZE);
+                } else {
+                    Exordium.bossList.add(Encounter.END_OF_THE_ETERNAL_FREEZE);
+                    Collections.shuffle(Exordium.bossList, AbstractDungeon.monsterRng.random);
                     AbstractDungeon.bossList.remove(AbstractDungeon.bossList.size() - 1);
                 }
             }

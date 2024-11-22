@@ -35,7 +35,7 @@ public class EchoOfFadedDreams extends CustomMonster {
     int firstStep = -1;
     
     public EchoOfFadedDreams(int firstStep, float x, float y) {
-        super(NAME, HSRMod.makePath(ID), 77, 0F, -15.0F, 84F, 161F, PathDefine.MONSTER_PATH + ID + ".png", x, y);
+        super(NAME, HSRMod.makePath(ID), 77, 0F, -15.0F, 84F, 180F, PathDefine.MONSTER_PATH + ID + ".png", x, y);
         this.type = EnemyType.NORMAL;
         this.dialogX = -150.0F * Settings.scale;
         this.dialogY = -70.0F * Settings.scale;

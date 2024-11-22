@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
 import hsrmod.relics.BaseRelic;
@@ -76,7 +77,7 @@ public class RewardEditor implements CustomSavable<String> {
         
         if (!AbstractDungeon.player.hasRelic(relicId) 
                 && !Objects.equals(relicId, "") 
-                && currRoom != null
+                && currRoom instanceof MonsterRoomBoss
                 && AbstractDungeon.combatRewardScreen.rewards.stream().noneMatch(r -> r.relic != null && r.relic.relicId.equals(relicId))) {
             AbstractDungeon.combatRewardScreen.rewards.add(new RewardItem(RelicLibrary.getRelic(relicId).makeCopy()));
         }

@@ -2,6 +2,7 @@ package hsrmod.relics;
 
 import basemod.abstracts.CustomRelic;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
+import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import hsrmod.modcore.HSRMod;
 import hsrmod.utils.DataManager;
@@ -40,5 +41,14 @@ public abstract class BaseRelic extends CustomRelic {
         this.tips.clear();
         this.tips.add(new PowerTip(this.name, this.description));
         this.initializeTips();*/
+    }
+    
+    public void recover() {
+        this.grayscale = false;
+        this.usedUp = false;
+        this.description = getUpdatedDescription();
+        this.tips.clear();
+        this.tips.add(new PowerTip(this.name, this.description));
+        this.initializeTips();
     }
 }

@@ -65,6 +65,7 @@ public class ElementalDamageInfo extends DamageInfo {
     }
 
     public ApplyPowerAction applyBreakingPower(AbstractCreature target){
+        if (elementType == null) return null;
         AbstractPower power = null;
         int stackNum = 1;
         switch (elementType){

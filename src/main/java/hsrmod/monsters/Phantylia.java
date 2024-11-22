@@ -2,7 +2,6 @@ package hsrmod.monsters;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.ClearCardQueueAction;
-import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.actions.animations.ShoutAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
@@ -17,14 +16,11 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.monsters.exordium.Cultist;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.UnawakenedPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
-import com.megacrit.cardcrawl.unlock.UnlockTracker;
-import com.megacrit.cardcrawl.vfx.SpeechBubble;
 import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
 import com.megacrit.cardcrawl.vfx.combat.IntenseZoomEffect;
 import hsrmod.misc.Encounter;
@@ -36,8 +32,8 @@ import hsrmod.utils.ModHelper;
 
 import java.util.Iterator;
 
-public class PhantyliaTheUndying extends AbstractMonster {
-    public static final String ID = PhantyliaTheUndying.class.getSimpleName();
+public class Phantylia extends AbstractMonster {
+    public static final String ID = Phantylia.class.getSimpleName();
     private static final MonsterStrings eventStrings = CardCrawlGame.languagePack.getMonsterStrings(HSRMod.makePath(ID));
     public static final String NAME = eventStrings.NAME;
     public static final String[] MOVES = eventStrings.MOVES;
@@ -45,12 +41,12 @@ public class PhantyliaTheUndying extends AbstractMonster {
 
     int[] damages = {4, 14, 24, 24};
     int heal = 14;
-    int chargeRemove = 100;
+    int chargeRemove = -100;
     int strengthGain = 4;
     int phase = 1;
     int turnCount = 0;
 
-    public PhantyliaTheUndying() {
+    public Phantylia() {
         super(NAME, HSRMod.makePath(ID), 200, 0.0F, 30.0F, 400F, 512F, PathDefine.MONSTER_PATH + ID + ".png", 100.0F, 0.0F);
         this.type = EnemyType.BOSS;
         this.dialogX = -150.0F * Settings.scale;
@@ -163,6 +159,7 @@ public class PhantyliaTheUndying extends AbstractMonster {
                     int debuffAmount = p.powers.stream().filter(power -> power.type == AbstractPower.PowerType.DEBUFF).mapToInt(power -> power.amount).sum();
                     dmg += debuffAmount * 10;
                     addToBot(new DamageAction(p, new DamageInfo(this, dmg, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+                    addToBot(new RemoveSpecificPowerAction(this, this, ChargingPower.POWER_ID));
                 }
                 break;
         }

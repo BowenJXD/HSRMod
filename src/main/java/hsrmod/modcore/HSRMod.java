@@ -39,7 +39,9 @@ import hsrmod.events.*;
 import hsrmod.misc.ChargeIcon;
 import hsrmod.misc.Encounter;
 import hsrmod.misc.ToughnessReductionVariable;
+import hsrmod.monsters.AbundanceLotus;
 import hsrmod.monsters.EchoOfFadedDreams;
+import hsrmod.monsters.PhantyliaTheUndying;
 import hsrmod.monsters.TheGreatSeptimus;
 import hsrmod.utils.RewardEditor;
 import org.apache.logging.log4j.LogManager;
@@ -236,12 +238,16 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         BaseMod.addStrongMonsterEncounter(TheCity.ID, new MonsterInfo(Encounter.PARASITE_N_SLAVER, 0.0F));
 
         BaseMod.addMonster(Encounter.SALUTATIONS_OF_ASHEN_DREAMS, () -> new MonsterGroup(new AbstractMonster[]{
-                new EchoOfFadedDreams(0, -500F, 0),
+                new EchoOfFadedDreams(0, -500F, 50.0F),
                 new TheGreatSeptimus(),
-                new EchoOfFadedDreams(1, 300F, 0)
+                new EchoOfFadedDreams(1, 300F, 50.0F)
         }));
-        // BaseMod.addStrongMonsterEncounter(Exordium.ID, new MonsterInfo(Encounter.SALUTATIONS_OF_ASHEN_DREAMS, 0.0F));
         BaseMod.addBoss(TheBeyond.ID, Encounter.SALUTATIONS_OF_ASHEN_DREAMS, "HSRModResources/img/monsters/SalutationsOfAshenDreams.png", "HSRModResources/img/monsters/BossOutline.png");
+        
+        BaseMod.addMonster(Encounter.DIVINE_SEED, () -> new MonsterGroup(new AbstractMonster[]{
+                new PhantyliaTheUndying(),
+        }));
+        BaseMod.addBoss(TheCity.ID, Encounter.DIVINE_SEED, "HSRModResources/img/monsters/DivineSeed.png", "HSRModResources/img/monsters/BossOutline.png");
     }
 
     @Override
@@ -261,8 +267,14 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         addAudio("Gepard1");
         addAudio("Argenti1");
 
-        for (int i = 1; i <= 8; i++) {
+        for (int i = 1; i <= 9; i++) {
             addAudio("TheGreatSeptimus_Day" + i);
+        }
+        for (int i = 1; i <= 5; i++) {
+            addAudio("TheGreatSeptimus_Crew" + i);
+        }
+        for (int i = 1; i <= 2; i++) {
+            addAudio("PhantyliaTheUndying_" + i);
         }
     }
 

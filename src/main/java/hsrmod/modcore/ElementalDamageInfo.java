@@ -1,5 +1,6 @@
 package hsrmod.modcore;
 
+import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.patches.BindingPatches;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -128,5 +129,15 @@ public class ElementalDamageInfo extends DamageInfo {
         BindingPatches.directlyBoundDamageMods.clear();
         BindingPatches.directlyBoundInstigator = null;
         return info;
+    }
+    
+    public Color getColor() {
+        if (elementType == null) return Color.WHITE;
+        return elementType.getColor();
+    }
+    
+    public int getBreakDamage() {
+        if (elementType == null) return 0;
+        return elementType.getBreakDamage();
     }
 }

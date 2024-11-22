@@ -450,5 +450,17 @@
     "DESCRIPTIONS": [
       "下回合多行动 #b%d 次， #y击破 以打断。"
     ]
+  },
+  "HSRMod:AbundanceLotus": {
+    "NAME": "不灭",
+    "DESCRIPTIONS": [
+      "受到致命伤害时，你移除所有 #y斋戒 ，并获得2倍的 [E] 。"
+    ]
+  },
+  "HSRMod:DestructionLotus": {
+    "NAME": "玄气归身",
+    "DESCRIPTIONS": [
+      "受到致命伤害后，你移除所有 #y抽牌减少 ，并摸2倍的牌。"
+    ]
   }
 }

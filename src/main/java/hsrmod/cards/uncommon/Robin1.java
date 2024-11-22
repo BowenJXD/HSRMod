@@ -29,25 +29,26 @@ public class Robin1 extends BaseCard {
         int amt = energyOnUse + magicNumber;
         addToBot(new DrawCardAction(p, amt));
 
-        ModHelper.addToBotAbstract(() ->
-        {
-            int amount = amt;
-
-            for (AbstractCard card : p.hand.group) {
-                if (card.hasTag(FOLLOW_UP)
-                        && card instanceof BaseCard
-                        && !((BaseCard)card).followedUp) {
-                    addToBot(new FollowUpAction(card));
-                    if (!upgraded) amount--;
+        if (amt > 0)
+            ModHelper.addToBotAbstract(() ->
+            {
+                int amount = amt;
+    
+                for (AbstractCard card : p.hand.group) {
+                    if (card.hasTag(FOLLOW_UP)
+                            && card instanceof BaseCard
+                            && !((BaseCard)card).followedUp) {
+                        addToBot(new FollowUpAction(card));
+                        if (!upgraded) amount--;
+                    }
+                    else {
+                        addToBot(new FollowUpAction(card));
+                        amount--;
+                    }
+                    if (amount == 0) break;
                 }
-                else {
-                    addToBot(new FollowUpAction(card));
-                    amount--;
-                }
-                if (amount == 0) break;
-            }
-
-            p.energy.use(EnergyPanel.totalCount);
-        });
+    
+                p.energy.use(EnergyPanel.totalCount);
+            });
     }
 }

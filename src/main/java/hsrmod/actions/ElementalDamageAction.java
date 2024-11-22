@@ -40,7 +40,7 @@ public class ElementalDamageAction extends AbstractGameAction {
         this.duration = 0.1F;
         this.callback = callback;
         this.modifier = modifier;
-        ColoredDamagePatch.DamageActionColorField.damageColor.set(this, info.elementType.getColor());
+        ColoredDamagePatch.DamageActionColorField.damageColor.set(this, info.getColor());
         ColoredDamagePatch.DamageActionColorField.fadeSpeed.set(this, ColoredDamagePatch.FadeSpeed.SLOW);
     }
 
@@ -78,7 +78,7 @@ public class ElementalDamageAction extends AbstractGameAction {
                 this.isDone = true;
                 return;
             }
-            AbstractDungeon.effectList.add(new FlashAtkImgEffect(this.target.hb.cX, this.target.hb.cY, AttackEffect.NONE));
+            AbstractDungeon.effectList.add(new FlashAtkImgEffect(this.target.hb.cX, this.target.hb.cY, attackEffect));
         }
 
         if (this.isFast) this.isDone = true;
@@ -86,7 +86,7 @@ public class ElementalDamageAction extends AbstractGameAction {
 
         if (!this.isDone) return;
 
-        this.target.tint.color.set(info.elementType.getColor());
+        this.target.tint.color.set(info.getColor());
         this.target.tint.changeColor(Color.WHITE.cpy());
 
         if (this.doApplyPower) {
@@ -114,7 +114,7 @@ public class ElementalDamageAction extends AbstractGameAction {
                     && toughnessPower.amount <= info.tr 
                     && !toughnessPower.getLocked()) {
                 SubscriptionManager.getInstance().triggerPreBreak(info, target);
-                int breakDamage = info.elementType.getBreakDamage();
+                int breakDamage = info.getBreakDamage();
                 addToBot(new BreakDamageAction(target, new DamageInfo(info.owner, breakDamage)));
                 ApplyPowerAction action = info.applyBreakingPower(target);
                 if (action != null) addToBot(action);

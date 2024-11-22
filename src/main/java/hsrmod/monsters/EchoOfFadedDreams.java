@@ -32,12 +32,14 @@ public class EchoOfFadedDreams extends CustomMonster {
     public static final String[] MOVES = eventStrings.MOVES;
     public static final String[] DIALOG = eventStrings.DIALOG;
     
+    int firstStep = -1;
+    
     public EchoOfFadedDreams(int firstStep, float x, float y) {
-        super(NAME, ID, 77, 0F, -15.0F, 168F, 321F, PathDefine.MONSTER_PATH + ID + ".png", x, y);
+        super(NAME, HSRMod.makePath(ID), 77, 0F, -15.0F, 84F, 161F, PathDefine.MONSTER_PATH + ID + ".png", x, y);
         this.type = EnemyType.NORMAL;
         this.dialogX = -150.0F * Settings.scale;
         this.dialogY = -70.0F * Settings.scale;
-        this.nextMove = (byte) firstStep;
+        this.firstStep = (byte) firstStep;
         
         this.damage.add(new DamageInfo(this, 17));
         this.damage.add(new DamageInfo(this, 7));
@@ -79,7 +81,7 @@ public class EchoOfFadedDreams extends CustomMonster {
                 }
 
                 addToBot(new HealAction(this, this, this.maxHealth));
-                addToBot(new ChangeStateAction(this, "REVIVE"));
+                this.halfDead = false;
                 onSpawn();
                 Iterator var1 = AbstractDungeon.player.relics.iterator();
 
@@ -98,29 +100,25 @@ public class EchoOfFadedDreams extends CustomMonster {
             setMove((byte) 3, Intent.BUFF);
             return;
         }
+        if (firstStep != -1) {
+            setMove((byte) firstStep, Intent.UNKNOWN);
+            firstStep = -1;
+            return;
+        }
         int r = i % 3;
         if (lastMove((byte) r)) {
             r = (r + 1) % 3;
         }
         switch (r) {
             case 0:
-                setMove((byte) 0, Intent.ATTACK, this.damage.get(0).base);
+                setMove(MOVES[0], (byte) 0, Intent.ATTACK, this.damage.get(0).base);
                 break;
             case 1:
-                setMove((byte) 1, Intent.DEBUFF);
+                setMove(MOVES[1],(byte) 1, Intent.DEBUFF);
                 break;
             case 2:
-                setMove((byte) 2, Intent.ATTACK_DEBUFF, this.damage.get(1).base);
+                setMove(MOVES[2],(byte) 2, Intent.ATTACK_DEBUFF, this.damage.get(1).base);
                 break;
-        }
-    }
-
-    public void changeState(String key) {
-        switch (key) {
-            case "ATTACK":
-                break;
-            case "REVIVE":
-                this.halfDead = false;
         }
     }
 

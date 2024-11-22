@@ -1,13 +1,17 @@
 package hsrmod.monsters;
 
+import basemod.BaseMod;
 import basemod.abstracts.CustomMonster;
+import basemod.interfaces.OnCardUseSubscriber;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.ShoutAction;
+import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.actions.utility.HideHealthBarAction;
 import com.megacrit.cardcrawl.actions.utility.ShakeScreenAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -23,6 +27,11 @@ import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.powers.watcher.EnergyDownPower;
 import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
 import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
+import hsrmod.cards.base.Danheng0;
+import hsrmod.cards.base.Himeko0;
+import hsrmod.cards.base.March7th0;
+import hsrmod.cards.base.Welt0;
+import hsrmod.cards.uncommon.Robin1;
 import hsrmod.misc.Encounter;
 import hsrmod.misc.PathDefine;
 import hsrmod.modcore.HSRMod;
@@ -31,9 +40,11 @@ import hsrmod.powers.misc.BrokenPower;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.utils.ModHelper;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
-public class TheGreatSeptimus extends CustomMonster {
+public class TheGreatSeptimus extends CustomMonster implements OnCardUseSubscriber {
     public static final String ID = TheGreatSeptimus.class.getSimpleName();
     private static final MonsterStrings eventStrings = CardCrawlGame.languagePack.getMonsterStrings(HSRMod.makePath(ID));
     public static final String NAME = eventStrings.NAME;
@@ -47,8 +58,10 @@ public class TheGreatSeptimus extends CustomMonster {
     int powerAmount = 9;
     int toughnessAmount = 17;
     
+    List<String> cardsCache;
+    
     public TheGreatSeptimus() {
-        super(NAME, ID, 777, 0F, -15.0F, 512F, 512F, PathDefine.MONSTER_PATH + ID + ".png", -100F, 0.0F);
+        super(NAME, HSRMod.makePath(ID), 777, 0F, -15.0F, 512F, 512F, PathDefine.MONSTER_PATH + ID + ".png", -100F, 0.0F);
         this.type = EnemyType.BOSS;
         this.dialogX = -150.0F * Settings.scale;
         this.dialogY = -70.0F * Settings.scale;
@@ -65,6 +78,8 @@ public class TheGreatSeptimus extends CustomMonster {
     @Override
     public void usePreBattleAction() {
         super.usePreBattleAction();
+        BaseMod.subscribe(this);
+        cardsCache = new ArrayList<>();
         if (AbstractDungeon.getCurrRoom() instanceof MonsterRoomBoss) {
             CardCrawlGame.music.unsilenceBGM();
             AbstractDungeon.scene.fadeOutAmbiance();
@@ -80,15 +95,9 @@ public class TheGreatSeptimus extends CustomMonster {
     public void takeTurn() {
         AbstractPlayer p = AbstractDungeon.player;
         
-        if (this.nextMove < DIALOG.length) {
-            if (nextMove + 1 != DIALOG.length) {
-                addToBot(new ShoutAction(this, DIALOG[nextMove], 1.0F, 2.0F));
-                ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_Day" + (this.nextMove + 1), 1));
-            }
-            else {
-                addToBot(new ShoutAction(this, DIALOG[nextMove], 3.0F, 4.0F));
-                ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_Day" + (this.nextMove + 1), 2));
-            }
+        if (this.nextMove < 7) {
+            addToBot(new ShoutAction(this, DIALOG[nextMove], 1.0F, 2.0F));
+            ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_Day" + (this.nextMove + 1), 1));
         }
         
         switch (this.nextMove) {
@@ -112,7 +121,7 @@ public class TheGreatSeptimus extends CustomMonster {
                 if (hasPower(ChargingPower.POWER_ID)) {
                     addToBot(new RemoveSpecificPowerAction(this, this, ChargingPower.POWER_ID));
                     for (int i = 0; i < numDamage; i++) {
-                        addToBot(new DamageAction(p, this.damage.get(2), AbstractGameAction.AttackEffect.SLASH_DIAGONAL, true));
+                        addToBot(new DamageAction(p, this.damage.get(2), AbstractGameAction.AttackEffect.BLUNT_HEAVY, true));
                     }
                 }
                 break;
@@ -122,9 +131,15 @@ public class TheGreatSeptimus extends CustomMonster {
                 addToBot(new ApplyPowerAction(this, this, new ChargingPower(this, MOVES[6], 1), 1));
                 break;
             case 7:
+                addToBot(new ShoutAction(this, DIALOG[nextMove], 3.0F, 4.0F));
+                if (AbstractDungeon.miscRng.randomBoolean())
+                    ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_Day8", 2));
+                else
+                    ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_Day9", 2));
+                
                 addToBot(new RemoveSpecificPowerAction(this, this, ChargingPower.POWER_ID));
                 for (int i = 0; i < numDamage; i++) {
-                    addToBot(new DamageAction(p, this.damage.get(3), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+                    addToBot(new DamageAction(p, this.damage.get(3), AbstractGameAction.AttackEffect.SMASH));
                 }
                 addToBot(new ShakeScreenAction(0.3F, ScreenShake.ShakeDur.LONG, ScreenShake.ShakeIntensity.LOW));
                 break;
@@ -170,21 +185,14 @@ public class TheGreatSeptimus extends CustomMonster {
 
     @Override
     public void die() {
+        BaseMod.unsubscribe(this);
         AbstractDungeon.getCurrRoom().cannotLose = false;
-        Iterator var7 = AbstractDungeon.getMonsters().monsters.iterator();
-
-        while (var7.hasNext()) {
-            AbstractMonster m = (AbstractMonster) var7.next();
-            if (m != this && !m.isDead) {
-                m.hideHealthBar();
-                m.die();
-            }
-        }
         
         this.useFastShakeAnimation(5.0F);
         CardCrawlGame.screenShake.rumble(4.0F);
         super.die();
         this.onBossVictoryLogic();
+        this.onFinalBossVictoryLogic();
         Iterator var1 = AbstractDungeon.getCurrRoom().monsters.monsters.iterator();
 
         while(var1.hasNext()) {
@@ -195,5 +203,49 @@ public class TheGreatSeptimus extends CustomMonster {
                 AbstractDungeon.actionManager.addToTop(new VFXAction(m, new InflameEffect(m), 0.2F));
             }
         }
+    }
+
+    @Override
+    public void receiveCardUsed(AbstractCard abstractCard) {
+        if (!AbstractDungeon.getMonsters().monsters.contains(this)) {
+            BaseMod.unsubscribeLater(this);
+            return;
+        }
+        String phrase = null;
+        String voice = ID + "_Crew";
+        int duration = 3;
+        if (cardsCache.contains(abstractCard.cardID)) {
+            return;
+        }
+        else if (abstractCard.cardID.equals(HSRMod.makePath(Welt0.ID))) {
+            phrase = DIALOG[9];
+            voice += "1";
+            duration = 3;
+        }
+        else if (abstractCard.cardID.equals(HSRMod.makePath(March7th0.ID))) {
+            phrase = DIALOG[10];
+            voice += "2";
+            duration = 3;
+        }
+        else if (abstractCard.cardID.equals(HSRMod.makePath(Robin1.ID))) {
+            phrase = DIALOG[11];
+            voice += "3";
+            duration = 4;
+        }
+        else if (abstractCard.cardID.equals(HSRMod.makePath(Himeko0.ID))) {
+            phrase = DIALOG[12];
+            voice += "4";
+            duration = 2;
+        }
+        else if (abstractCard.cardID.equals(HSRMod.makePath(Danheng0.ID))) {
+            phrase = DIALOG[13];
+            voice += "5";
+            duration = 2;
+        }
+        else return;
+        cardsCache.add(abstractCard.cardID);
+        if (phrase != null) addToBot(new TalkAction(true, phrase, duration, duration + 1));
+        String finalVoice = voice;
+        ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(finalVoice, 3));
     }
 }

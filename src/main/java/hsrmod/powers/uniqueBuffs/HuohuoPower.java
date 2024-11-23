@@ -1,5 +1,6 @@
 package hsrmod.powers.uniqueBuffs;
 
+import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.HealAction;
@@ -16,7 +17,7 @@ import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
 import hsrmod.powers.misc.EnergyPower;
 
-public class HuohuoPower extends BuffPower implements OnReceivePowerPower {
+public class HuohuoPower extends BuffPower implements OnReceivePowerPower, NonStackablePower {
     public static final String POWER_ID = HSRMod.makePath(HuohuoPower.class.getSimpleName());
     
     public HuohuoPower(AbstractCreature owner, boolean upgraded) {

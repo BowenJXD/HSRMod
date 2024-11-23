@@ -1,6 +1,7 @@
 package hsrmod.cards.base;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -42,5 +43,19 @@ public class Danheng0 extends BaseCard implements ICanChangeToMulti {
         this.target = CardTarget.ALL_ENEMY;
         this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[0];
         this.initializeDescription();
+    }
+
+    @Override
+    public AbstractCard makeCopy() {
+        AbstractCard result = super.makeCopy();
+        if (isMultiDamage) ((Danheng0) result).changeToMulti();
+        return super.makeCopy();
+    }
+
+    @Override
+    public AbstractCard makeStatEquivalentCopy() {
+        AbstractCard result = super.makeStatEquivalentCopy();
+        if (isMultiDamage) ((Danheng0) result).changeToMulti();
+        return super.makeStatEquivalentCopy();
     }
 }

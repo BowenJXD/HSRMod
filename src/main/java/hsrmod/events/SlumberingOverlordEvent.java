@@ -42,8 +42,8 @@ public class SlumberingOverlordEvent extends PhasedEvent {
             AbstractDungeon.player.damage(new DamageInfo((AbstractCreature) null, dmg, DamageInfo.DamageType.HP_LOSS));
             transitionKey(5);
         });
-        phase2.addOption(OPTIONS[2], (i) -> transitionKey(3));
-        phase2.addOption(OPTIONS[3], (i) -> transitionKey(4));
+        phase2.addOption(new TextPhase.OptionInfo(OPTIONS[2], new IntersegmentalMembrane()).setOptionResult((i) -> transitionKey(3)));
+        phase2.addOption(new TextPhase.OptionInfo(OPTIONS[3], new ExcitatoryGland()).setOptionResult((i) -> transitionKey(4)));
 
         if (ModHelper.hasRelic(WaxOfPropagation.ID)) {
             AbstractCard card = AbstractDungeon.getCard(AbstractCard.CardRarity.CURSE);

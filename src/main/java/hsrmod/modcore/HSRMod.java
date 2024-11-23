@@ -39,10 +39,7 @@ import hsrmod.events.*;
 import hsrmod.misc.ChargeIcon;
 import hsrmod.misc.Encounter;
 import hsrmod.misc.ToughnessReductionVariable;
-import hsrmod.monsters.Cocolia;
-import hsrmod.monsters.EchoOfFadedDreams;
-import hsrmod.monsters.Phantylia;
-import hsrmod.monsters.TheGreatSeptimus;
+import hsrmod.monsters.*;
 import hsrmod.utils.RewardEditor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -231,12 +228,14 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
     }
 
     public void addMonsters() {
+        // =========================== Event ===========================
         BaseMod.addMonster(Encounter.PARASITE_N_SLAVER, () -> new MonsterGroup(new AbstractMonster[]{
                 new ShelledParasite(),
                 new SlaverRed(130.0F, 20F)
         }));
         BaseMod.addStrongMonsterEncounter(TheCity.ID, new MonsterInfo(Encounter.PARASITE_N_SLAVER, 0.0F));
 
+        // =========================== Boss ===========================
         BaseMod.addMonster(Encounter.SALUTATIONS_OF_ASHEN_DREAMS, () -> new MonsterGroup(new AbstractMonster[]{
                 new EchoOfFadedDreams(0, -500F, 50.0F),
                 new TheGreatSeptimus(),
@@ -253,6 +252,12 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
                 new Cocolia()
         }));
         BaseMod.addBoss(Exordium.ID, Encounter.END_OF_THE_ETERNAL_FREEZE, "HSRModResources/img/monsters/EndOfTheEternalFreeze.png", "HSRModResources/img/monsters/BossOutline.png");
+        
+        // =========================== Elite ===========================
+        BaseMod.addMonster(Encounter.GEPARD, () -> new MonsterGroup(new AbstractMonster[]{
+                new Gepard()
+        }));
+        BaseMod.addEliteEncounter(Exordium.ID, new MonsterInfo(Encounter.GEPARD, 1.0F));
     }
 
     @Override
@@ -284,6 +289,8 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         for (int i = 1; i <= 2; i++) {
             addAudio("Cocolia_" + i);
         }
+        addAudio("Gepard_0");
+        addAudio("Gepard_1");
     }
 
     void addAudio(String id) {

@@ -67,7 +67,7 @@ public class Seele1 extends BaseCard {
                         }
 
                         addToBot(new GainEnergyAction(1));
-                        addToBot(new MoveCardsAction(AbstractDungeon.player.hand, AbstractDungeon.player.exhaustPile, card -> card.uuid == this.uuid));
+                        addToBot(new MoveCardsAction(AbstractDungeon.player.hand, AbstractDungeon.player.discardPile, card -> card.uuid == this.uuid));
                     }
                 });
         addToBot(action);

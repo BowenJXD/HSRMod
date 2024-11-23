@@ -1,21 +1,17 @@
 package hsrmod.powers.uniqueBuffs;
 
-import basemod.BaseMod;
-import basemod.interfaces.PostPowerApplySubscriber;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.MoveCardsAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.actions.BreakDamageAction;
 import hsrmod.cards.uncommon.Firefly1;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
 import hsrmod.powers.misc.BreakEfficiencyPower;
-import hsrmod.powers.misc.BrokenPower;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.subscribers.PreToughnessReduceSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
@@ -26,6 +22,8 @@ import java.util.List;
 public class FireflyPower extends PowerPower implements PreToughnessReduceSubscriber {
     public static final String POWER_ID = HSRMod.makePath(FireflyPower.class.getSimpleName());
     
+    public boolean triggered = false;
+    
     public FireflyPower() {
         super(POWER_ID);
         this.updateDescription();
@@ -34,6 +32,7 @@ public class FireflyPower extends PowerPower implements PreToughnessReduceSubscr
     @Override
     public void onInitialApplication() {
         SubscriptionManager.subscribe(this);
+        
     }
 
     @Override
@@ -56,8 +55,9 @@ public class FireflyPower extends PowerPower implements PreToughnessReduceSubscr
                 addToBot(new MoveCardsAction(AbstractDungeon.player.hand, result.group, card -> card == result.card));
             }
 
-            if (fireFiles.isEmpty()) {
+            if (fireFiles.isEmpty() && !triggered) {
                 addToBot(new MakeTempCardInHandAction(new Firefly1()));
+                triggered = true;
             }
         }
         return amount;

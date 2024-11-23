@@ -30,11 +30,11 @@ public class Cocolia extends AbstractMonster {
     public static final String NAME = eventStrings.NAME;
     public static final String[] MOVES = eventStrings.MOVES;
     public static final String[] DIALOG = eventStrings.DIALOG;
-    
-    int[] damages = {9, 9, 16, 6};
+
+    int[] damages = {6, 6, 12, 6};
     int turnCount = 0;
-    
-    public Cocolia(){
+
+    public Cocolia() {
         super(NAME, HSRMod.makePath(ID), 200, 0.0F, -15.0F, 400.0F, 512.0F, PathDefine.MONSTER_PATH + ID + ".png", -100.0F, 0.0F);
         this.type = EnemyType.BOSS;
         this.dialogX = -150.0F * Settings.scale;
@@ -47,7 +47,7 @@ public class Cocolia extends AbstractMonster {
         } else {
             maxHealth = 160;
         }
-        
+
         for (int i = 0; i < 4; i++) {
             this.damage.add(new DamageInfo(this, damages[i]));
         }
@@ -70,7 +70,7 @@ public class Cocolia extends AbstractMonster {
         AbstractPlayer p = AbstractDungeon.player;
         AbstractMonster lance1 = AbstractDungeon.getMonsters().getMonster(HSRMod.makePath(LanceOfTheEternalFreeze.ID));
         AbstractMonster lance2 = AbstractDungeon.getMonsters().monsters.stream().filter(m -> m.id.equals(HSRMod.makePath(LanceOfTheEternalFreeze.ID)) && m != lance1).findFirst().orElse(null);
-        
+
         switch (this.nextMove) {
             case 1:
                 if (lance1 == null || lance1.isDead) {
@@ -102,10 +102,10 @@ public class Cocolia extends AbstractMonster {
                     ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_" + r, 3.0F));
                     CardCrawlGame.music.dispose();
                     CardCrawlGame.music.playTempBGM(Encounter.END_OF_THE_ETERNAL_FREEZE + "_2");
-                    
+
                     int handCount = p.hand.size();
                     addToBot(new ExhaustAction(handCount, true, false, false));
-                    for (int i = 0; i < handCount + 1; i++) {
+                    for (int i = 0; i < handCount; i++) {
                         addToBot(new DamageAction(p, this.damage.get(3), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
                     }
                     addToBot(new RemoveSpecificPowerAction(this, this, ChargingPower.POWER_ID));
@@ -125,32 +125,44 @@ public class Cocolia extends AbstractMonster {
         }
         if (this.lastMove((byte) 5)) {
             this.setMove(MOVES[5], (byte) 6, AbstractMonster.Intent.ATTACK, this.damage.get(3).base);
-        }
-        else if (AbstractDungeon.player.hand.group.stream().mapToInt(c -> c instanceof Frozen ? 1 : 0).sum() >= 3) {
+        } else if (AbstractDungeon.player.hand.group.stream().mapToInt(c -> c instanceof Frozen ? 1 : 0).sum() >= 3) {
             this.setMove(MOVES[4], (byte) 5, AbstractMonster.Intent.UNKNOWN);
-        }
-        else if (i < handCount * 10) {
+        } else if (i < handCount * 10) {
             this.setMove(MOVES[3], (byte) 4, Intent.ATTACK, this.damage.get(2).base);
-        }
-        else if (i > (lanceCount + 1) * 25 && !lastMove((byte) 1)) {
+        } else if (i > (lanceCount + 1) * 33 && !lastMove((byte) 1)) {
             this.setMove(MOVES[0], (byte) 1, AbstractMonster.Intent.UNKNOWN);
-        }
-        else if (i % 2 == 0) {
+        } else if (i % 2 == 0) {
             this.setMove(MOVES[1], (byte) 2, AbstractMonster.Intent.ATTACK_DEBUFF, this.damage.get(0).base);
-        }
-        else {
+        } else {
             this.setMove(MOVES[2], (byte) 3, AbstractMonster.Intent.ATTACK, this.damage.get(1).base);
         }
     }
-    
-    void spawnLance1(){
+
+    void spawnLance1() {
         AbstractMonster lance1 = new LanceOfTheEternalFreeze(-450.0F, 0.0F, 1);
         AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(lance1, true));
     }
-    
-    void spawnLance2(){
+
+    void spawnLance2() {
         AbstractMonster lance2 = new LanceOfTheEternalFreeze(250.0F, 0.0F, 2);
         AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(lance2, true));
+    }
+
+    int playerHandCount = 0;
+
+    @Override
+    public void update() {
+        super.update();
+        if (AbstractDungeon.player != null
+                && AbstractDungeon.player.hand != null
+                && !AbstractDungeon.actionManager.turnHasEnded
+                && !AbstractDungeon.isScreenUp
+                && playerHandCount != AbstractDungeon.player.hand.size()
+                && hasPower(ChargingPower.POWER_ID)) {
+            playerHandCount = AbstractDungeon.player.hand.size();
+            this.setMove(MOVES[5], (byte) 6, Intent.ATTACK, this.damage.get(3).base, playerHandCount, true);
+            this.createIntent();
+        }
     }
 
     @Override
@@ -158,7 +170,7 @@ public class Cocolia extends AbstractMonster {
         super.die();
         this.useFastShakeAnimation(5.0F);
         CardCrawlGame.screenShake.rumble(4.0F);
-        
+
         Iterator var1 = AbstractDungeon.getCurrRoom().monsters.monsters.iterator();
 
         while (var1.hasNext()) {
@@ -169,7 +181,7 @@ public class Cocolia extends AbstractMonster {
                 AbstractDungeon.actionManager.addToTop(new VFXAction(m, new InflameEffect(m), 0.2F));
             }
         }
-        
+
         onBossVictoryLogic();
     }
 }

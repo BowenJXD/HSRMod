@@ -1,5 +1,7 @@
 package hsrmod.monsters;
 
+import basemod.BaseMod;
+import basemod.interfaces.PostPowerApplySubscriber;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.ClearCardQueueAction;
 import com.megacrit.cardcrawl.actions.animations.ShoutAction;
@@ -11,6 +13,7 @@ import com.megacrit.cardcrawl.actions.utility.HideHealthBarAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -28,11 +31,13 @@ import hsrmod.misc.PathDefine;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.enemyOnly.*;
 import hsrmod.powers.misc.EnergyPower;
+import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
 import java.util.Iterator;
+import java.util.Objects;
 
-public class Phantylia extends AbstractMonster {
+public class Phantylia extends AbstractMonster implements PostPowerApplySubscriber {
     public static final String ID = Phantylia.class.getSimpleName();
     private static final MonsterStrings eventStrings = CardCrawlGame.languagePack.getMonsterStrings(HSRMod.makePath(ID));
     public static final String NAME = eventStrings.NAME;
@@ -71,6 +76,7 @@ public class Phantylia extends AbstractMonster {
     @Override
     public void usePreBattleAction() {
         super.usePreBattleAction();
+        BaseMod.subscribe(this);
         if (AbstractDungeon.getCurrRoom() instanceof MonsterRoomBoss) {
             CardCrawlGame.music.unsilenceBGM();
             AbstractDungeon.scene.fadeOutAmbiance();
@@ -146,19 +152,14 @@ public class Phantylia extends AbstractMonster {
                 }
                 break;
             case 6:
-                addToBot(new ApplyPowerAction(p, this, new EnergyPower(p, EnergyPower.AMOUNT_LIMIT), EnergyPower.AMOUNT_LIMIT));
+                addToBot(new ApplyPowerAction(p, this, new EnergyPower(p, -EnergyPower.AMOUNT_LIMIT), -EnergyPower.AMOUNT_LIMIT));
                 addToBot(new ApplyPowerAction(this, this, new ChargingPower(this, MOVES[7], 1), 1));
                 break;
             case 7:
                 if (hasPower(ChargingPower.POWER_ID)) {
                     addToBot(new ShoutAction(this, DIALOG[1]));
                     ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_2", 3.0F));
-                    int dmg = this.damages[3];
-                    int chargeAmount = ModHelper.getPowerCount(EnergyPower.POWER_ID);
-                    dmg -= chargeAmount / 10;
-                    int debuffAmount = p.powers.stream().filter(power -> power.type == AbstractPower.PowerType.DEBUFF).mapToInt(power -> power.amount).sum();
-                    dmg += debuffAmount * 10;
-                    addToBot(new DamageAction(p, new DamageInfo(this, dmg, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+                    addToBot(new DamageAction(p, damage.get(3), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
                     addToBot(new RemoveSpecificPowerAction(this, this, ChargingPower.POWER_ID));
                 }
                 break;
@@ -202,7 +203,10 @@ public class Phantylia extends AbstractMonster {
                         this.setMove(MOVES[5], (byte) 6, Intent.UNKNOWN);
                         break;
                     case 2:
-                        this.setMove(MOVES[6], (byte) 7, Intent.ATTACK, this.damage.get(3).base);
+                        int debuffCount = AbstractDungeon.player.powers.stream().mapToInt(power -> power.type == AbstractPower.PowerType.DEBUFF ? 1 : 0).sum();
+                        int chargeAmount = ModHelper.getPowerCount(EnergyPower.POWER_ID);
+                        int dmg = this.damages[3] - chargeAmount / 10 + debuffCount * 10;
+                        this.setMove(MOVES[6], (byte) 7, Intent.ATTACK, dmg);
                         break;
                 }
                 break;
@@ -271,6 +275,7 @@ public class Phantylia extends AbstractMonster {
     public void die() {
         if (!AbstractDungeon.getCurrRoom().cannotLose) {
             super.die();
+            BaseMod.unsubscribe(this);
             this.useFastShakeAnimation(5.0F);
             CardCrawlGame.screenShake.rumble(4.0F);
 
@@ -286,6 +291,23 @@ public class Phantylia extends AbstractMonster {
             }
 
             this.onBossVictoryLogic();
+        }
+    }
+
+    @Override
+    public void receivePostPowerApplySubscriber(AbstractPower abstractPower, AbstractCreature abstractCreature, AbstractCreature abstractCreature1) {
+        if (!SubscriptionManager.checkSubscriber(this)) return;
+        if (hasPower(ChargingPower.POWER_ID) && abstractCreature == AbstractDungeon.player 
+                && (abstractPower instanceof EnergyPower || abstractPower.type == AbstractPower.PowerType.DEBUFF)) {
+            int debuffCount = abstractCreature.powers.stream().mapToInt(power -> power.type == AbstractPower.PowerType.DEBUFF && !Objects.equals(power.ID, abstractPower.ID) ? 1 : 0).sum();
+            if (abstractPower.type == AbstractPower.PowerType.DEBUFF) debuffCount += 1;
+            int chargeAmount = ModHelper.getPowerCount(EnergyPower.POWER_ID);
+            if (abstractPower instanceof EnergyPower) chargeAmount += abstractPower.amount;
+            chargeAmount = Math.min(chargeAmount, EnergyPower.AMOUNT_LIMIT);
+            int dmg = this.damages[3] - chargeAmount / 10 + debuffCount * 10;
+            this.damage.get(3).base = dmg;
+            this.setMove(MOVES[6], (byte) 7, Intent.ATTACK, dmg);
+            this.createIntent();
         }
     }
 }

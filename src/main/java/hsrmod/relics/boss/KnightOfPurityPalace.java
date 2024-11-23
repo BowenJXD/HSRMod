@@ -1,5 +1,6 @@
 package hsrmod.relics.boss;
 
+import basemod.BaseMod;
 import basemod.abstracts.CustomSavable;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.MoveCardsAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -26,14 +27,15 @@ public class KnightOfPurityPalace extends BaseRelic {
                 .forEach((c) -> {
                     c.isInnate = true;
                     c.baseBlock += 2;
+                    c.applyPowers();
                 });
     }
 
     @Override
     public void onShuffle() {
         super.onShuffle();
-        addToBot(new MoveCardsAction(AbstractDungeon.player.hand, AbstractDungeon.player.drawPile, (c) -> c.isInnate, 99));
-        addToBot(new MoveCardsAction(AbstractDungeon.player.hand, AbstractDungeon.player.discardPile, (c) -> c.isInnate, 99));
+        addToBot(new MoveCardsAction(AbstractDungeon.player.hand, AbstractDungeon.player.drawPile, (c) -> c.isInnate, BaseMod.MAX_HAND_SIZE));
+        addToBot(new MoveCardsAction(AbstractDungeon.player.hand, AbstractDungeon.player.discardPile, (c) -> c.isInnate, BaseMod.MAX_HAND_SIZE));
         // addToBot(new MoveCardsAction(AbstractDungeon.player.hand, AbstractDungeon.player.exhaustPile, (c) -> c.isInnate, 99));
     }
 }

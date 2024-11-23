@@ -1,0 +1,157 @@
+{
+  "HSRMod:TheGreatSeptimus": {
+    "NAME": "The Great Septimus",
+    "MOVES": [
+      "Vaneggiando",
+      "Grazioso",
+      "Maestoso",
+      "Accelerando",
+      "Volteggiando⚠",
+      "Allargando",
+      "Im Anfang war die Tat⚠",
+      "Volteggiando (deal damage, then all unbroken Echo of Faded Dreams act immediately)"
+    ],
+    "DIALOG": [
+      "I swear on Truth...",
+      "I swear on the Calendar...",
+      "I swear on Words...",
+      "I swear on Values...",
+      "I swear on Rules...",
+      "I swear on Meaning...",
+      "I swear on Human Dignity...",
+      "Oh, Ena... NL @may@ @you@ @return!@",
+      "@Awaken@, @judge@ @of@ @the@ @world!@",
+      "Those imprisoned in their dreams are awakening for #rFreedom.",
+      "Even if the future is full of pain... we @won't@ escape from it!",
+      "Brother... The weakness of humanity cannot be #rredeemed by others.",
+      "Witness... the #r@will@ of the weak!",
+      "You have a noble soul... don't be #rshackled by the past!"
+    ]
+  },
+  "HSRMod:EchoOfFadedDreams": {
+    "NAME": "Echo of Faded Dreams",
+    "MOVES": [
+      "Afflitto",
+      "Come In Incubo",
+      "Afflitto",
+      "Upon death, revive with #b100% HP next turn."
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:Phantylia": {
+    "NAME": "Phantylia",
+    "MOVES": [
+      "Cleansing Sweep",
+      "Weaving Roots",
+      "Burgeoning Bloom",
+      "Undying",
+      "Furor",
+      "Kalpa Descend",
+      "Starfall, Mooncry⚠",
+      "Starfall, Mooncry (deal damage equal to 24, reduce damage by 1 for every 10 energy, increase damage by 10 for every debuff)"
+    ],
+    "DIALOG": [
+      "#r@How@ #r@Dare@ #r@You!!!@",
+      "#r@Bloom@ #r@And@ #r@Wither!@"
+    ]
+  },
+  "HSRMod:AbundanceLotus": {
+    "NAME": "Abundance Lotus",
+    "MOVES": [
+      "Non-Living",
+      "Eternal Condemnation"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:DestructionLotus": {
+    "NAME": "Destruction Lotus",
+    "MOVES": [
+      "Black Prana's Snare",
+      "Eternal Condemnation"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:Cocolia": {
+    "NAME": "Cocolia, Mother of Deception",
+    "MOVES": [
+      "Heartless Annihilator Call",
+      "Bone-Shattering Cold",
+      "Icy Rain of Annihilation",
+      "Soulrend Coldstream",
+      "The Creation's Prelude",
+      "Last Choir of Genesis⚠",
+      "Last Choir of Genesis (exhaust all hand cards and deal 6 damage n times, n being the number of cards exhausted)"
+    ],
+    "DIALOG": [
+      "@The@ @Stellaron@ @Changes@ @Everything@",
+      "@Brave@ @New@ @World@"
+    ]
+  },
+  "HSRMod:LanceOfTheEternalFreeze": {
+    "NAME": "Lance of the Eternal Freeze",
+    "MOVES": [
+      "Everwinter Reverberance",
+      "Subzero Pursuit"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:SomethingUntoDeath": {
+    "NAME": "Something Unto Death",
+    "MOVES": [
+      "Sunken Rain",
+      "Funereal Kiss",
+      "Go Into That Good Night",
+      "Watery Dissolution",
+      "Losing Eventide Light⚠",
+      "Losing Eventide Light (deal 49 damage, for every card in any deck, reduce damage by 1)"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:SombrousSepulcher": {
+    "NAME": "Sombrous Sepulcher",
+    "MOVES": [
+      "Temporal Departure"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:Hoolay": {
+    "NAME": "Hoolay",
+    "MOVES": [
+      "Severed Iron as Claws",
+      "Moonhowl Lupus",
+      "Decimation of Roaring Storms",
+      "To My Howls the Pack Obeys",
+      "Lupine Chase Calls Bloody Gleam⚠",
+      "Lupine Chase Calls Bloody Gleam"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:SableclawWolftrooper": {
+    "NAME": "Sableclaw Wolftrooper",
+    "MOVES": [
+      "Massacre"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:EclipseWolftrooper": {
+    "NAME": "Eclipse Wolftrooper",
+    "MOVES": [
+      "Gnaw"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:Gepard": {
+    "NAME": "Gepard",
+    "MOVES": [
+      "Fist of Conviction",
+      "Smite of Frost",
+      "Garrison Aura Field",
+      "Frigid Waterfall⚠",
+      "Frigid Waterfall (deal damage equal to block, and gain 2 #yStrength)"
+    ],
+    "DIALOG": [
+      "@In@ @the@ @name@ @of@ @Preservation!@",
+      "@This@ @ends@ @here!@"
+    ]
+  }
+}

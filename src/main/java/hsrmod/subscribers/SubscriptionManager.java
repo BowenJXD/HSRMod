@@ -2,9 +2,12 @@ package hsrmod.subscribers;
 
 import basemod.BaseMod;
 import basemod.interfaces.ISubscriber;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
@@ -31,9 +34,9 @@ public class SubscriptionManager {
     List<PreBlockChangeSubscriber> preBlockGainSubscribers = new ArrayList<>();
     List<ICheckUsableSubscriber> checkUsableSubscribers = new ArrayList<>();
     List<ISetToughnessReductionSubscriber> setToughnessReductionSubscribers = new ArrayList<>();
+    List<PostUpgradeSubscriber> postUpgradeSubscribers = new ArrayList<>();
 
-    SubscriptionManager() {
-    }
+    SubscriptionManager() {}
 
     public static SubscriptionManager getInstance() {
         if (instance == null) {
@@ -91,6 +94,10 @@ public class SubscriptionManager {
                 && !setToughnessReductionSubscribers.contains(sub)) {
             if (addToFront) setToughnessReductionSubscribers.add(0, (ISetToughnessReductionSubscriber) sub);
             else setToughnessReductionSubscribers.add((ISetToughnessReductionSubscriber) sub);
+        } else if (sub instanceof PostUpgradeSubscriber
+                && !postUpgradeSubscribers.contains(sub)) {
+            if (addToFront) postUpgradeSubscribers.add(0, (PostUpgradeSubscriber) sub);
+            else postUpgradeSubscribers.add((PostUpgradeSubscriber) sub);
         }
     }
 
@@ -119,6 +126,8 @@ public class SubscriptionManager {
             checkUsableSubscribers.remove(subscriber);
         } else if (subscriber instanceof ISetToughnessReductionSubscriber) {
             setToughnessReductionSubscribers.remove(subscriber);
+        } else if (subscriber instanceof PostUpgradeSubscriber) {
+            postUpgradeSubscribers.remove(subscriber);
         }
     }
 
@@ -245,6 +254,14 @@ public class SubscriptionManager {
 
         return result;
     }
+    
+    public void triggerPostUpgrade(AbstractCard card) {
+        for (PostUpgradeSubscriber sub : postUpgradeSubscribers) {
+            sub.postUpgrade(card);
+        }
+
+        unsubscribeLaterHelper(PostUpgradeSubscriber.class);
+    }
 
     public static boolean checkSubscriber(BaseCard card) {
         boolean result = AbstractDungeon.player.hand.contains(card)
@@ -270,6 +287,24 @@ public class SubscriptionManager {
         if (!result && power instanceof ISubscriber) {
             BaseMod.unsubscribeLater((ISubscriber) power);
             getInstance().unsubscribeLater((ISubscriber) power);
+        }
+        return result;
+    }
+    
+    public static boolean checkSubscriber(AbstractMonster monster) {
+        boolean result = AbstractDungeon.getMonsters().monsters.contains(monster);
+        if (!result && monster instanceof ISubscriber) {
+            BaseMod.unsubscribeLater((ISubscriber) monster);
+            getInstance().unsubscribeLater((ISubscriber) monster);
+        }
+        return result;
+    }
+    
+    public static boolean checkSubscriber(AbstractRelic relic) {
+        boolean result = AbstractDungeon.player.relics.contains(relic);
+        if (!result && relic instanceof ISubscriber) {
+            BaseMod.unsubscribeLater((ISubscriber) relic);
+            getInstance().unsubscribeLater((ISubscriber) relic);
         }
         return result;
     }

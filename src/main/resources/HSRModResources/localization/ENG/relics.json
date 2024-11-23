@@ -136,7 +136,7 @@
     "NAME": "The Wind Soaring Valorous",
     "FLAVOR": "She quickened her pace, barefoot and agile, with the girl closely chasing after her. Or perhaps, they were both chasing after each other.",
     "DESCRIPTIONS": [
-      "All starter strike becomes AoE at start of battle. When using starter strike, gain #b30 [hsrmod:chargeIcon] ."
+      "All upgraded starter strike becomes AoE at start of battle. When using starter strike, gain #b40 [hsrmod:chargeIcon] ."
     ]
   },
   "HSRMod:MasterOfDreamMachinations": {

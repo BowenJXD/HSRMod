@@ -38,16 +38,12 @@ public class March7th4 extends BaseCard {
     @Override
     public void triggerOnOtherCardPlayed(AbstractCard c) {
         super.triggerOnOtherCardPlayed(c);
-        if (c != this && c.upgraded)
+        if (c != this && c.upgraded) {
             upgradeMagicNumber(1);
-    }
-
-    @Override
-    protected void upgradeMagicNumber(int amount) {
-        super.upgradeMagicNumber(amount);
-        if (magicNumber >= 7 && !followedUp) {
-            followedUp = true;
-            addToBot(new FollowUpAction(this));
+            if (magicNumber >= AbstractDungeon.player.hand.size() && !followedUp) {
+                followedUp = true;
+                addToBot(new FollowUpAction(this));
+            }
         }
     }
 

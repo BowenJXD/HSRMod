@@ -22,7 +22,7 @@ public class LanceOfTheEternalFreeze extends AbstractMonster {
     public static final String[] DIALOG = eventStrings.DIALOG;
     
     public LanceOfTheEternalFreeze(float x, float y, int picIndex){
-        super(NAME, HSRMod.makePath(ID), 26, 0.0F, -15.0F, 188F, 243.0F, PathDefine.MONSTER_PATH + ID + "_" + picIndex + ".png", x, y);
+        super(NAME, HSRMod.makePath(ID), 22, 0.0F, -15.0F, 188F, 243.0F, PathDefine.MONSTER_PATH + ID + "_" + picIndex + ".png", x, y);
         this.type = EnemyType.NORMAL;
         this.dialogX = -150.0F * Settings.scale;
         this.dialogY = -70.0F * Settings.scale;

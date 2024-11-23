@@ -410,5 +410,62 @@
       "Upon break, adjust toughness to #b%d.",
       "Upon break, adjust toughness to #b%d, and gain [E]."
     ]
+  },
+  
+  "HSRMod:Charging": {
+    "NAME": "Charging",
+    "DESCRIPTIONS": [
+      "Preparing to cast [%s], releasing next turn. #yBreak to interrupt.",
+      "Preparing to cast [%s], releasing in #b%d turns. #yBreak to interrupt."
+    ]
+  },
+  "HSRMod:WalkInTheLight": {
+    "NAME": "Walk in the Light",
+    "DESCRIPTIONS": [
+      "Damage received is reduced by #b%d%%. When #yBroken, or when a monster dies, remove 1 stack, recover all #yToughness, and the player gain #b%d temporary HP. At 0 stacks, damage received is increased by #b%d%%.",
+      "Damage received is increased by #b%d%%."
+    ]
+  },
+  "HSRMod:IfWeLiveInTheLight": {
+    "NAME": "If We Live in the Light",
+    "DESCRIPTIONS": [
+      "Damage received is reduced by #b%d%%. #yToughness can not be reduced. Remove 1 stack at the start of the turn."
+    ]
+  },
+  "HSRMod:AlienDream": {
+    "NAME": "Alien Dream",
+    "DESCRIPTIONS": [
+      "Damage dealt is reduced by #b%d%%, and is converted to heal for #b%d%% of the damage dealt. When taking damage, remove 1 stack, and the damage taken is increased by #b%d%% (not shown in intent)."
+    ]
+  },
+  "HSRMod:Summoned": {
+    "NAME": "Summoned",
+    "DESCRIPTIONS": [
+      "Upon taking fatal damage, the boss loses #yToughness equal to the #yToughness limit of the owner, and loses #rHP equal to the #rHP limit of the owner."
+    ]
+  },
+  "HSRMod:MultiMove": {
+    "NAME": "Multi-Move",
+    "DESCRIPTIONS": [
+      "Move #b%d times more next turn. #yBreak to interrupt."
+    ]
+  },
+  "HSRMod:AbundanceLotus": {
+    "NAME": "Non-Destructing",
+    "DESCRIPTIONS": [
+      "Upon taking fatal damage, remove all #yFasting , and gain [E] twice that amount."
+    ]
+  },
+  "HSRMod:DestructionLotus": {
+    "NAME": "Black Prana's Return",
+    "DESCRIPTIONS": [
+      "Upon taking fatal damage, remove all #yDraw #yReduction, and draw twice that amount."
+    ]
+  },
+  "HSRMod:TitForTat": {
+    "NAME": "Garrison Aura Field",
+    "DESCRIPTIONS": [
+      "Toughness can not be reduced. After breaking Block, remove 1 stack, and lose #b%d HP ( #b%d ). Remove 1 stack at the start of the turn."
+    ]
   }
 }

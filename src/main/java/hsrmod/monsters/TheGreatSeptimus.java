@@ -38,6 +38,7 @@ import hsrmod.modcore.HSRMod;
 import hsrmod.powers.enemyOnly.*;
 import hsrmod.powers.misc.BrokenPower;
 import hsrmod.powers.misc.ToughnessPower;
+import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
 import java.util.ArrayList;
@@ -207,10 +208,7 @@ public class TheGreatSeptimus extends CustomMonster implements OnCardUseSubscrib
 
     @Override
     public void receiveCardUsed(AbstractCard abstractCard) {
-        if (!AbstractDungeon.getMonsters().monsters.contains(this)) {
-            BaseMod.unsubscribeLater(this);
-            return;
-        }
+        if (!SubscriptionManager.checkSubscriber(this)) return;
         String phrase = null;
         String voice = ID + "_Crew";
         int duration = 3;

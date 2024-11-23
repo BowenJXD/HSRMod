@@ -442,7 +442,7 @@
   "HSRMod:Summoned": {
     "NAME": "随从",
     "DESCRIPTIONS": [
-      " #y爪牙 。 NL 受到致命伤害时，令首领：失去随从 #y韧性上限 的 #y韧性 ，失去随从 #r生命上限 的 #r生命 。"
+      "受到致命伤害时，令首领：失去随从 #y韧性上限 的 #y韧性 ，失去随从 #r生命上限 的 #r生命 。"
     ]
   },
   "HSRMod:MultiMove": {
@@ -460,7 +460,13 @@
   "HSRMod:DestructionLotus": {
     "NAME": "玄气归身",
     "DESCRIPTIONS": [
-      "受到致命伤害后，你移除所有 #y抽牌减少 ，并摸2倍的牌。"
+      "受到致命伤害时，你移除所有 #y抽牌减少 ，并摸2倍的牌。"
+    ]
+  },
+  "HSRMod:TitForTat": {
+    "NAME": "戍卫气场",
+    "DESCRIPTIONS": [
+      "韧性无法被削减，突破格挡后移除，失去 #b%d 点生命（ #b%d ）。回合开始时移除1层。"
     ]
   }
 }

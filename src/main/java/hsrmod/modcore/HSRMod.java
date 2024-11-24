@@ -263,6 +263,11 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
                 new Hoolay()
         }));
         BaseMod.addEliteEncounter(TheCity.ID, new MonsterInfo(Encounter.HOOLAY, 2.0F));
+        
+        BaseMod.addMonster(Encounter.SOMETHING_UNTO_DEATH, () -> new MonsterGroup(new AbstractMonster[]{
+                new SomethingUntoDeath()
+        }));
+        BaseMod.addEliteEncounter(TheBeyond.ID, new MonsterInfo(Encounter.SOMETHING_UNTO_DEATH, 2.0F));
     }
 
     @Override

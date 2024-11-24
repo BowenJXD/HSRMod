@@ -487,5 +487,17 @@
     "DESCRIPTIONS": [
       "每摸1次牌，随机牌于此回合费用+ #b%d 。移除时，所有牌于此回合费用+ #b%d 。"
     ]
+  },
+  "HSRMod:Sunset": {
+    "NAME": "白日西沉",
+    "DESCRIPTIONS": [
+      "再打出 #b%d 张牌后移除，结束回合，被盗窃所有手牌。"
+    ]
+  },
+  "HSRMod:SlumberAwakening": {
+    "NAME": "惊醒无声的长眠",
+    "DESCRIPTIONS": [
+      "在死亡时，所盗窃的卡牌会被放回你的手牌：%s"
+    ]
   }
 }

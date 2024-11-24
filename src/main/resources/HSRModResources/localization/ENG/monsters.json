@@ -6,9 +6,9 @@
       "Grazioso",
       "Maestoso",
       "Accelerando",
-      "Volteggiando⚠",
+      "⚠Volteggiando⚠",
       "Allargando",
-      "Im Anfang war die Tat⚠",
+      "⚠Im Anfang war die Tat⚠",
       "Volteggiando (deal damage, then all unbroken Echo of Faded Dreams act immediately)"
     ],
     "DIALOG": [
@@ -47,7 +47,7 @@
       "Undying",
       "Furor",
       "Kalpa Descend",
-      "Starfall, Mooncry⚠",
+      "⚠Starfall, Mooncry⚠",
       "Starfall, Mooncry (deal damage equal to 24, reduce damage by 1 for every 10 energy, increase damage by 10 for every debuff)"
     ],
     "DIALOG": [
@@ -79,7 +79,7 @@
       "Icy Rain of Annihilation",
       "Soulrend Coldstream",
       "The Creation's Prelude",
-      "Last Choir of Genesis⚠",
+      "⚠Last Choir of Genesis⚠",
       "Last Choir of Genesis (exhaust all hand cards and deal 6 damage n times, n being the number of cards exhausted)"
     ],
     "DIALOG": [
@@ -98,11 +98,10 @@
   "HSRMod:SomethingUntoDeath": {
     "NAME": "Something Unto Death",
     "MOVES": [
-      "Sunken Rain",
-      "Funereal Kiss",
       "Go Into That Good Night",
       "Watery Dissolution",
-      "Losing Eventide Light⚠",
+      "⚠Losing Eventide Light⚠",
+      "Funereal Kiss",
       "Losing Eventide Light (deal 49 damage, for every card in any deck, reduce damage by 1)"
     ],
     "DIALOG": []
@@ -118,10 +117,11 @@
     "NAME": "Hoolay",
     "MOVES": [
       "Severed Iron as Claws",
+      "Warhead Moon Rage",
+      "Terror Grip",
       "Moonhowl Lupus",
-      "Decimation of Roaring Storms",
       "To My Howls the Pack Obeys",
-      "Lupine Chase Calls Bloody Gleam⚠",
+      "⚠Lupine Chase Calls Bloody Gleam⚠",
       "Lupine Chase Calls Bloody Gleam"
     ],
     "DIALOG": []
@@ -146,7 +146,7 @@
       "Fist of Conviction",
       "Smite of Frost",
       "Garrison Aura Field",
-      "Frigid Waterfall⚠",
+      "⚠Frigid Waterfall⚠",
       "Frigid Waterfall (deal damage equal to block, and gain 2 #yStrength)"
     ],
     "DIALOG": [

@@ -257,7 +257,12 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         BaseMod.addMonster(Encounter.GEPARD, () -> new MonsterGroup(new AbstractMonster[]{
                 new Gepard()
         }));
-        BaseMod.addEliteEncounter(Exordium.ID, new MonsterInfo(Encounter.GEPARD, 1.0F));
+        BaseMod.addEliteEncounter(Exordium.ID, new MonsterInfo(Encounter.GEPARD, 2.0F));
+        
+        BaseMod.addMonster(Encounter.HOOLAY, () -> new MonsterGroup(new AbstractMonster[]{
+                new Hoolay()
+        }));
+        BaseMod.addEliteEncounter(TheCity.ID, new MonsterInfo(Encounter.HOOLAY, 2.0F));
     }
 
     @Override
@@ -291,6 +296,9 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         }
         addAudio("Gepard_0");
         addAudio("Gepard_1");
+        for (int i = 1; i <= 5; i++) {
+            addAudio("Hoolay" + i);
+        }
     }
 
     void addAudio(String id) {

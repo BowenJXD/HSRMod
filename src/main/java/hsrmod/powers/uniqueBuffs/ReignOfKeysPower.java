@@ -2,6 +2,7 @@ package hsrmod.powers.uniqueBuffs;
 
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
 import hsrmod.powers.misc.DoTPower;
@@ -43,12 +44,13 @@ public class ReignOfKeysPower extends PowerPower implements PreDoTDamageSubscrib
     }
 
     @Override
-    public float preDoTDamage(float amount, AbstractCreature target, DoTPower power) {
+    public float preDoTDamage(ElementalDamageInfo info, AbstractCreature target, DoTPower power) {
         if (SubscriptionManager.checkSubscriber(this)
-                && (canTrigger || upgraded)) {
+                && (canTrigger || upgraded)
+                && info.owner == owner) {
             flash();
             addToBot(new DrawCardAction(1));
         }
-        return amount;
+        return info.output;
     }
 }

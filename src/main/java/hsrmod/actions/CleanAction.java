@@ -23,15 +23,10 @@ public class CleanAction extends AbstractGameAction {
             if (power.type == AbstractPower.PowerType.DEBUFF) {
                 int removeAmount = removeAll ? 1 : Math.min(amount, power.amount);
 
-                if (removeAll) {
+                if (removeAll || power.amount == removeAmount) {
                     addToBot(new RemoveSpecificPowerAction(target, target, power));
                 } else {
                     addToBot(new ApplyPowerAction(target, target, power, -removeAmount));
-                    ModHelper.addToBotAbstract(() -> {
-                        if (power.amount <= 0) {
-                            addToBot(new RemoveSpecificPowerAction(target, target, power));
-                        }
-                    });
                 }
 
                 amount -= removeAmount;

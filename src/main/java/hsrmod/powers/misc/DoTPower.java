@@ -1,5 +1,6 @@
 package hsrmod.powers.misc;
 
+import basemod.interfaces.OnPlayerTurnStartSubscriber;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
@@ -18,7 +19,7 @@ import hsrmod.powers.breaks.ShockPower;
 import hsrmod.powers.breaks.WindShearPower;
 import hsrmod.subscribers.SubscriptionManager;
 
-public abstract class DoTPower extends DebuffPower {
+public abstract class DoTPower extends DebuffPower implements OnPlayerTurnStartSubscriber {
     private AbstractCreature source;
     
     public boolean removeOnTrigger = true;
@@ -33,12 +34,32 @@ public abstract class DoTPower extends DebuffPower {
         this.updateDescription();
     }
 
+    @Override
+    public void onInitialApplication() {
+        super.onInitialApplication();
+        if (owner.isPlayer) SubscriptionManager.subscribe(this);
+    }
+
+    @Override
+    public void onRemove() {
+        super.onRemove();
+        SubscriptionManager.unsubscribe(this);
+    }
+
     public void playApplyPowerSfx() {
-        CardCrawlGame.sound.play("POWER_POISON", 0.05F);
+        CardCrawlGame.sound.play("POWER_POISON", AbstractDungeon.miscRng.random(-0.05F, 0.05F));
+    }
+
+    @Override
+    public void receiveOnPlayerTurnStart() {
+        if (SubscriptionManager.checkSubscriber(this) && owner.isPlayer) {
+            trigger();
+        }
     }
 
     public void atStartOfTurn() {
-        trigger();
+        if (!owner.isPlayer)
+            trigger();
     }
     
     public void trigger(){
@@ -53,7 +74,7 @@ public abstract class DoTPower extends DebuffPower {
             ElementalDamageInfo info = new ElementalDamageInfo(this.source, (int) dmg, this.getElementType(), toughnessReduction);
             info.applyPowers(this.source, this.owner);
             
-            info.output = (int) SubscriptionManager.getInstance().triggerPreDoTDamage(info.output, this.owner, this);
+            info.output = (int) SubscriptionManager.getInstance().triggerPreDoTDamage(info, this.owner, this);
             
             this.addToTop(new ElementalDamageAction(this.owner, info, AbstractGameAction.AttackEffect.NONE));
             if (removeOnTrigger) remove(1);

@@ -47,7 +47,7 @@ public class SlashedDreamPower extends PowerPower {
 
     @Override
     public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        if (canTrigger && power.type == PowerType.DEBUFF) {
+        if (canTrigger && power.type == PowerType.DEBUFF && source == owner) {
             canTrigger = false;
             flash();
             stackPower(1);

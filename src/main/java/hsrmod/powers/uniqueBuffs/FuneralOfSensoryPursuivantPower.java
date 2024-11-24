@@ -3,6 +3,7 @@ package hsrmod.powers.uniqueBuffs;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
 import hsrmod.powers.misc.DoTPower;
@@ -44,16 +45,16 @@ public class FuneralOfSensoryPursuivantPower extends PowerPower implements PreDo
     @Override
     public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
         super.onApplyPower(power, target, source);
-        if (upgraded && power instanceof DoTPower) {
+        if (upgraded && power instanceof DoTPower && source == owner) {
             trigger(target, 1);
         }
     }
 
     @Override
-    public float preDoTDamage(float amount, AbstractCreature target, DoTPower power) {
-        if (SubscriptionManager.checkSubscriber(this))
+    public float preDoTDamage(ElementalDamageInfo info, AbstractCreature target, DoTPower power) {
+        if (SubscriptionManager.checkSubscriber(this) && info.owner == owner)
             trigger(target, 3);
-        return amount;
+        return info.output;
     }
     
     void trigger(AbstractCreature c, int amt){

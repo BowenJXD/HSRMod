@@ -2,6 +2,7 @@ package hsrmod.powers.misc;
 
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
 import hsrmod.subscribers.PreDoTDamageSubscriber;
@@ -40,9 +41,11 @@ public class BreakEffectPower extends BuffPower implements PreDoTDamageSubscribe
     }
 
     @Override
-    public float preDoTDamage(float amount, AbstractCreature target, DoTPower power) {
-        if (target.hasPower(BrokenPower.POWER_ID))
-            amount += this.amount;
-        return amount;
+    public float preDoTDamage(ElementalDamageInfo info, AbstractCreature target, DoTPower power) {
+        if (SubscriptionManager.checkSubscriber(this) 
+                && target.hasPower(BrokenPower.POWER_ID)
+                && info.owner == owner)
+            info.output += this.amount;
+        return info.output;
     }
 }

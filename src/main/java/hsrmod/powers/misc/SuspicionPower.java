@@ -1,6 +1,7 @@
 package hsrmod.powers.misc;
 
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.DebuffPower;
 import hsrmod.subscribers.PreDoTDamageSubscriber;
@@ -49,11 +50,11 @@ public class SuspicionPower extends DebuffPower implements PreDoTDamageSubscribe
     }
 
     @Override
-    public float preDoTDamage(float amount, AbstractCreature target, DoTPower power) {
+    public float preDoTDamage(ElementalDamageInfo info, AbstractCreature target, DoTPower power) {
         if (SubscriptionManager.checkSubscriber(this) 
                 && target == owner) {
-            return incrementDamage(amount);
+            return incrementDamage(info.output);
         }
-        return amount;
+        return info.output;
     }
 }

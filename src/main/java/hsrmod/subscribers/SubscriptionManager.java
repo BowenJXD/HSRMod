@@ -46,10 +46,14 @@ public class SubscriptionManager {
     }
 
     public static void subscribe(ISubscriber sub) {
+        BaseMod.subscribe(sub);
+    }
+    
+    public static void subscribe(IHSRSubscriber sub) {
         getInstance().subscribeHelper(sub, false);
     }
 
-    public static void subscribe(ISubscriber sub, boolean addToFront) {
+    public static void subscribe(IHSRSubscriber sub, boolean addToFront) {
         getInstance().subscribeHelper(sub, addToFront);
     }
 
@@ -101,38 +105,42 @@ public class SubscriptionManager {
         }
     }
 
-    public static void unsubscribe(ISubscriber subscriber) {
-        getInstance().unsubscribeHelper(subscriber);
+    public static void unsubscribe(ISubscriber sub) {
+        BaseMod.unsubscribe(sub);
+    }
+    
+    public static void unsubscribe(IHSRSubscriber sub) {
+        getInstance().unsubscribeHelper(sub);
     }
 
-    public void unsubscribeHelper(ISubscriber subscriber) {
-        if (subscriber instanceof PreElementalDamageSubscriber) {
-            preElementalDamageSubscribers.remove(subscriber);
-        } else if (subscriber instanceof PreBreakDamageSubscriber) {
-            preBreakDamageSubscribers.remove(subscriber);
-        } else if (subscriber instanceof PreToughnessReduceSubscriber) {
-            preToughnessReduceSubscribers.remove(subscriber);
-        } else if (subscriber instanceof PreBreakSubscriber) {
-            preBreakSubscribers.remove(subscriber);
-        } else if (subscriber instanceof PreDoTDamageSubscriber) {
-            preDoTDamageSubscribers.remove(subscriber);
-        } else if (subscriber instanceof PreEnergyChangeSubscriber) {
-            preEnergyChangeSubscribers.remove(subscriber);
-        } else if (subscriber instanceof PostBreakBlockSubscriber) {
-            postBreakBlockSubscribers.remove(subscriber);
-        } else if (subscriber instanceof PreBlockChangeSubscriber) {
-            preBlockGainSubscribers.remove(subscriber);
-        } else if (subscriber instanceof ICheckUsableSubscriber) {
-            checkUsableSubscribers.remove(subscriber);
-        } else if (subscriber instanceof ISetToughnessReductionSubscriber) {
-            setToughnessReductionSubscribers.remove(subscriber);
-        } else if (subscriber instanceof PostUpgradeSubscriber) {
-            postUpgradeSubscribers.remove(subscriber);
+    public void unsubscribeHelper(ISubscriber sub) {
+        if (sub instanceof PreElementalDamageSubscriber) {
+            preElementalDamageSubscribers.remove(sub);
+        } else if (sub instanceof PreBreakDamageSubscriber) {
+            preBreakDamageSubscribers.remove(sub);
+        } else if (sub instanceof PreToughnessReduceSubscriber) {
+            preToughnessReduceSubscribers.remove(sub);
+        } else if (sub instanceof PreBreakSubscriber) {
+            preBreakSubscribers.remove(sub);
+        } else if (sub instanceof PreDoTDamageSubscriber) {
+            preDoTDamageSubscribers.remove(sub);
+        } else if (sub instanceof PreEnergyChangeSubscriber) {
+            preEnergyChangeSubscribers.remove(sub);
+        } else if (sub instanceof PostBreakBlockSubscriber) {
+            postBreakBlockSubscribers.remove(sub);
+        } else if (sub instanceof PreBlockChangeSubscriber) {
+            preBlockGainSubscribers.remove(sub);
+        } else if (sub instanceof ICheckUsableSubscriber) {
+            checkUsableSubscribers.remove(sub);
+        } else if (sub instanceof ISetToughnessReductionSubscriber) {
+            setToughnessReductionSubscribers.remove(sub);
+        } else if (sub instanceof PostUpgradeSubscriber) {
+            postUpgradeSubscribers.remove(sub);
         }
     }
 
-    public void unsubscribeLater(ISubscriber subscriber) {
-        toRemove.add(subscriber);
+    public void unsubscribeLater(ISubscriber sub) {
+        toRemove.add(sub);
     }
 
     private void unsubscribeLaterHelper(Class<? extends ISubscriber> removalClass) {
@@ -187,11 +195,11 @@ public class SubscriptionManager {
         unsubscribeLaterHelper(PreBreakSubscriber.class);
     }
 
-    public float triggerPreDoTDamage(float amount, AbstractCreature target, DoTPower power) {
-        float result = amount;
+    public float triggerPreDoTDamage(ElementalDamageInfo info, AbstractCreature target, DoTPower power) {
+        float result = info.output;
 
         for (PreDoTDamageSubscriber sub : preDoTDamageSubscribers) {
-            result = sub.preDoTDamage(amount, target, power);
+            result = sub.preDoTDamage(info, target, power);
         }
 
         unsubscribeLaterHelper(PreDoTDamageSubscriber.class);

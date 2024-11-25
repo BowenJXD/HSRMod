@@ -1,4 +1,4 @@
-package hsrmod.monsters;
+package hsrmod.monsters.Exordium;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.ShoutAction;
@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.BarricadePower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import hsrmod.misc.PathDefine;
 import hsrmod.modcore.ElementalDamageInfo;
@@ -78,7 +77,6 @@ public class Gepard extends AbstractMonster {
                     ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_" + r, 3.0F));
                     addToBot(new DamageAction(AbstractDungeon.player, this.damage.get(2), AbstractGameAction.AttackEffect.SMASH));
                     addToBot(new ApplyPowerAction(this, this, new StrengthPower(this, strengthGain), strengthGain));
-                    addToBot(new RemoveSpecificPowerAction(this, this, ChargingPower.POWER_ID));
                 }
                 break;
         }

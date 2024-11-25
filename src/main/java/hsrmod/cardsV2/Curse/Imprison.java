@@ -31,7 +31,7 @@ public class Imprison extends BaseCard {
         EnergyPower power = (EnergyPower) AbstractDungeon.player.getPower(EnergyPower.POWER_ID);
         if (power != null && power.amount >= energyCache) {
             energyCache = power.amount;
-            ModHelper.addToTopAbstract(() -> power.setLocked(true));
+            ModHelper.addToTopAbstract(() -> power.lock(this));
             actionCache = new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new EnergyPower(AbstractDungeon.player, -power.amount), -power.amount);
             addToTop(actionCache);
         }
@@ -49,7 +49,7 @@ public class Imprison extends BaseCard {
             energyCache = 0;
         }
         if (power != null && AbstractDungeon.player.hand.group.stream().noneMatch(c -> c instanceof Imprison)) 
-            ModHelper.addToTopAbstract(() -> power.setLocked(false));
+            ModHelper.addToTopAbstract(() -> power.unlock(this));
         actionCache = null;
     }
 }

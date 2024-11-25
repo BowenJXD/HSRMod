@@ -453,13 +453,13 @@
   "HSRMod:AbundanceLotus": {
     "NAME": "不灭",
     "DESCRIPTIONS": [
-      "受到致命伤害时，你移除所有 #y斋戒 ，并获得2倍的 [E] 。"
+      "死亡时，你移除所有 #y斋戒 ，并获得2倍的 [E] 。"
     ]
   },
   "HSRMod:DestructionLotus": {
     "NAME": "玄气归身",
     "DESCRIPTIONS": [
-      "受到致命伤害时，你移除所有 #y抽牌减少 ，并摸2倍的牌。"
+      "死亡时，你移除所有 #y抽牌减少 ，并摸2倍的牌。"
     ]
   },
   "HSRMod:TitForTat": {
@@ -498,6 +498,38 @@
     "NAME": "惊醒无声的长眠",
     "DESCRIPTIONS": [
       "在死亡时，所盗窃的卡牌会被放回你的手牌：%s"
+    ]
+  },
+  "HSRMod:Barrier": {
+    "NAME": "屏障",
+    "DESCRIPTIONS": [
+      "防止下 #b%d 次受到的伤害和削韧，回合开始时移除。"
+    ]
+  },
+  "HSRMod:SanctionRate": {
+    "NAME": "惩戒度",
+    "DESCRIPTIONS": [
+      "打出 #g技能牌 或 #b能力牌 时叠加 #b%d%% ，叠至 #b100%% 时结束回合，进入 #r罚恶模式 （韧性无法被削减，并开启使用技能：戒退和缚束）。",
+      "【 #r罚恶模式 】 #y韧性 无法被削减，并开启使用技能： #y戒退 和 #y缚束 。"
+    ]
+  },
+  "HSRMod:Channel": {
+    "NAME": "串台",
+    "DESCRIPTIONS": [
+      "【 #b惊喜频道 】受到伤害后，会更换至 #r惊吓频道 。",
+      "【 #r惊吓频道 】受到伤害后，会更换至 #b惊喜频道 。"
+    ]
+  },
+  "HSRMod:SoulGladRevel": {
+    "NAME": "酣畅",
+    "DESCRIPTIONS": [
+      "造成的伤害+ #b%d ；受到伤害后叠加1层；至多叠加 #b%d 层。"
+    ]
+  },
+  "HSRMod:ToughnessProtection": {
+    "NAME": "韧性保护",
+    "DESCRIPTIONS": [
+      "韧性无法被削减。"
     ]
   }
 }

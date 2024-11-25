@@ -1,4 +1,4 @@
-package hsrmod.monsters;
+package hsrmod.monsters.TheCity;
 
 import basemod.BaseMod;
 import basemod.interfaces.PostPowerApplySubscriber;
@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.actions.unique.CanLoseAction;
 import com.megacrit.cardcrawl.actions.unique.RemoveAllPowersAction;
-import com.megacrit.cardcrawl.actions.utility.HideHealthBarAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -24,7 +23,6 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.UnawakenedPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
-import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
 import com.megacrit.cardcrawl.vfx.combat.IntenseZoomEffect;
 import hsrmod.misc.Encounter;
 import hsrmod.misc.PathDefine;
@@ -160,7 +158,6 @@ public class Phantylia extends AbstractMonster implements PostPowerApplySubscrib
                     addToBot(new ShoutAction(this, DIALOG[1]));
                     ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_2", 3.0F));
                     addToBot(new DamageAction(p, damage.get(3), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-                    addToBot(new RemoveSpecificPowerAction(this, this, ChargingPower.POWER_ID));
                 }
                 break;
         }
@@ -278,17 +275,8 @@ public class Phantylia extends AbstractMonster implements PostPowerApplySubscrib
             BaseMod.unsubscribe(this);
             this.useFastShakeAnimation(5.0F);
             CardCrawlGame.screenShake.rumble(4.0F);
-
-            Iterator var1 = AbstractDungeon.getCurrRoom().monsters.monsters.iterator();
-
-            while (var1.hasNext()) {
-                AbstractMonster m = (AbstractMonster) var1.next();
-                if (!m.isDead && !m.isDying) {
-                    AbstractDungeon.actionManager.addToTop(new HideHealthBarAction(m));
-                    AbstractDungeon.actionManager.addToTop(new SuicideAction(m));
-                    AbstractDungeon.actionManager.addToTop(new VFXAction(m, new InflameEffect(m), 0.2F));
-                }
-            }
+            
+            ModHelper.killAllMinions();
 
             this.onBossVictoryLogic();
         }

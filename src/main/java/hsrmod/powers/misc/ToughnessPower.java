@@ -10,14 +10,19 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ToughnessPower extends BuffPower {
     public static final String POWER_ID = HSRMod.makePath(ToughnessPower.class.getSimpleName());
     
+    List<Object> lockers;
     boolean locked = false;
     int stackLimit = 0;
     
     public ToughnessPower(AbstractCreature owner, int Amount, int stackLimit) {
         super(POWER_ID, owner, Amount);
+        this.priority = 20;
         this.stackLimit = stackLimit;
         canGoNegative = true;
         
@@ -78,8 +83,15 @@ public class ToughnessPower extends BuffPower {
         return locked;
     }
     
-    public void setLocked(boolean locked) {
-        this.locked = locked;
+    public void lock(Object locker) {
+        if (lockers == null) lockers = new ArrayList<>();
+        lockers.add(locker);
+        locked = true;
+    }
+    
+    public void unlock(Object locker) {
+        if (lockers != null) lockers.remove(locker);
+        if (lockers == null || lockers.isEmpty()) locked = false;
     }
 
     public static int getStackLimit(AbstractCreature c){

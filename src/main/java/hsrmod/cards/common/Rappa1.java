@@ -44,11 +44,12 @@ public class Rappa1 extends BaseCard {
         addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new BreakEffectPower(AbstractDungeon.player, magicNumber), magicNumber));
         addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL).setCallback((c) -> {
             if ((!toughnessMap.containsKey(c) || toughnessMap.get(c) > 0)
-                    && ModHelper.getPowerCount(c, ToughnessPower.POWER_ID) <= 0
-                    && canRepeat) {
-                canRepeat = false;
+                    && ModHelper.getPowerCount(c, ToughnessPower.POWER_ID) <= 0) {
                 addToBot(new BreakDamageAction(c, new DamageInfo(AbstractDungeon.player, tr)));
-                ModHelper.addToBotAbstract(this::execute);
+                if (canRepeat) {
+                    canRepeat = false;
+                    ModHelper.addToBotAbstract(this::execute);
+                }
             }
         }));
     }

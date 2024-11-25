@@ -1,4 +1,4 @@
-package hsrmod.monsters;
+package hsrmod.monsters.TheCity;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.ShoutAction;
@@ -12,7 +12,6 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.monsters.MonsterQueueItem;
 import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
 import hsrmod.misc.PathDefine;
 import hsrmod.modcore.HSRMod;
@@ -21,7 +20,6 @@ import hsrmod.powers.misc.BrokenPower;
 import hsrmod.utils.ModHelper;
 
 import java.util.Iterator;
-import java.util.List;
 
 public class Hoolay extends AbstractMonster {
     public static final String ID = Hoolay.class.getSimpleName();
@@ -41,7 +39,7 @@ public class Hoolay extends AbstractMonster {
     AbstractMonster bottomRightMonster = null;
 
     public Hoolay() {
-        super(NAME, HSRMod.makePath(ID), 200, 0F, -15.0F, 384F, 400F, PathDefine.MONSTER_PATH + ID + ".png", -150, 50);
+        super(NAME, HSRMod.makePath(ID), 200, 0F, -15.0F, 410F, 430F, PathDefine.MONSTER_PATH + ID + ".png", -150, 50);
         this.type = EnemyType.ELITE;
         this.dialogX = -150.0F * Settings.scale;
         this.dialogY = 70.0F * Settings.scale;
@@ -115,7 +113,6 @@ public class Hoolay extends AbstractMonster {
                     for (int i = 0; i < damageTimes[3]; i++) {
                         addToBot(new DamageAction(p, this.damage.get(3), AbstractGameAction.AttackEffect.SMASH));
                     }
-                    addToBot(new RemoveSpecificPowerAction(this, this, ChargingPower.POWER_ID));
                     addToBot(new RemoveSpecificPowerAction(this, this, IratePower.POWER_ID));
                 } else return;
                 break;
@@ -167,15 +164,6 @@ public class Hoolay extends AbstractMonster {
     @Override
     public void die() {
         super.die();
-        Iterator var1 = AbstractDungeon.getCurrRoom().monsters.monsters.iterator();
-
-        while (var1.hasNext()) {
-            AbstractMonster m = (AbstractMonster) var1.next();
-            if (!m.isDead && !m.isDying) {
-                AbstractDungeon.actionManager.addToTop(new HideHealthBarAction(m));
-                AbstractDungeon.actionManager.addToTop(new SuicideAction(m));
-                AbstractDungeon.actionManager.addToTop(new VFXAction(m, new InflameEffect(m), 0.2F));
-            }
-        }
+        ModHelper.killAllMinions();
     }
 }

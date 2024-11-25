@@ -4,9 +4,13 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class EnergyPower extends BuffPower {
     public static final String POWER_ID = HSRMod.makePath(EnergyPower.class.getSimpleName());
     
+    List<Object> lockers;
     boolean locked = false;
     public static final int AMOUNT_LIMIT = 240;
 
@@ -46,6 +50,17 @@ public class EnergyPower extends BuffPower {
     
     public void setLocked(boolean locked) {
         this.locked = locked;
+    }
+    
+    public void lock(Object locker) {
+        if (lockers == null) lockers = new ArrayList<>();
+        lockers.add(locker);
+        locked = true;
+    }
+
+    public void unlock(Object locker) {
+        if (lockers != null) lockers.remove(locker);
+        if (lockers == null || lockers.isEmpty()) locked = false;
     }
     
     public boolean getLocked() {

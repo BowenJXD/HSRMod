@@ -39,7 +39,9 @@ import hsrmod.events.*;
 import hsrmod.misc.ChargeIcon;
 import hsrmod.misc.Encounter;
 import hsrmod.misc.ToughnessReductionVariable;
-import hsrmod.monsters.*;
+import hsrmod.monsters.Exordium.*;
+import hsrmod.monsters.TheBeyond.*;
+import hsrmod.monsters.TheCity.*;
 import hsrmod.utils.RewardEditor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -229,6 +231,7 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
 
     public void addMonsters() {
         // =========================== Event ===========================
+        
         BaseMod.addMonster(Encounter.PARASITE_N_SLAVER, () -> new MonsterGroup(new AbstractMonster[]{
                 new ShelledParasite(),
                 new SlaverRed(130.0F, 20F)
@@ -236,6 +239,7 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         BaseMod.addStrongMonsterEncounter(TheCity.ID, new MonsterInfo(Encounter.PARASITE_N_SLAVER, 0.0F));
 
         // =========================== Boss ===========================
+        
         BaseMod.addMonster(Encounter.SALUTATIONS_OF_ASHEN_DREAMS, () -> new MonsterGroup(new AbstractMonster[]{
                 new EchoOfFadedDreams(0, -500F, 50.0F),
                 new TheGreatSeptimus(),
@@ -254,6 +258,7 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         BaseMod.addBoss(Exordium.ID, Encounter.END_OF_THE_ETERNAL_FREEZE, "HSRModResources/img/monsters/EndOfTheEternalFreeze.png", "HSRModResources/img/monsters/BossOutline.png");
         
         // =========================== Elite ===========================
+        
         BaseMod.addMonster(Encounter.GEPARD, () -> new MonsterGroup(new AbstractMonster[]{
                 new Gepard()
         }));
@@ -268,6 +273,45 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
                 new SomethingUntoDeath()
         }));
         BaseMod.addEliteEncounter(TheBeyond.ID, new MonsterInfo(Encounter.SOMETHING_UNTO_DEATH, 2.0F));
+        
+        // =========================== Stronger ===========================
+        
+        BaseMod.addMonster(Encounter.GRIZZLY, () -> new MonsterGroup(new AbstractMonster[]{
+                new Grizzly()
+        }));
+        BaseMod.addStrongMonsterEncounter(Exordium.ID, new MonsterInfo(Encounter.GRIZZLY, 2.0F));
+        
+        BaseMod.addMonster(Encounter.AUROMATON_GATEKEEPER, () -> new MonsterGroup(new AbstractMonster[]{
+                new AurumatonGatekeeper()
+        }));
+        BaseMod.addStrongMonsterEncounter(TheCity.ID, new MonsterInfo(Encounter.AUROMATON_GATEKEEPER, 2.0F));
+        
+        BaseMod.addMonster(Encounter.SWEET_GORILLA, () -> new MonsterGroup(new AbstractMonster[]{
+                new SweetGorilla()
+        }));
+        BaseMod.addStrongMonsterEncounter(TheBeyond.ID, new MonsterInfo(Encounter.SWEET_GORILLA, 2.0F));
+        
+        // =========================== Normal ===========================
+        
+        BaseMod.addMonster(Encounter.BEETLE_N_SPIDER, () -> new MonsterGroup(new AbstractMonster[]{
+                new Spider(-200, 0),
+                new Beetle(0, 0),
+        }));
+        BaseMod.addMonsterEncounter(Exordium.ID, new MonsterInfo(Encounter.BEETLE_N_SPIDER, 2.0F));
+        
+        BaseMod.addMonster(Encounter.DRAGONFISH_N_DRACOLION, () -> new MonsterGroup(new AbstractMonster[]{
+                new ObedientDracolion(-300, 0),
+                new IlluminationDragonfish(-100, 0),
+                new ObedientDracolion(100, 0),
+        }));
+        BaseMod.addMonsterEncounter(TheCity.ID, new MonsterInfo(Encounter.DRAGONFISH_N_DRACOLION, 2.0F));
+        
+        BaseMod.addMonster(Encounter.HOUND_N_DOMESCREEN, () -> new MonsterGroup(new AbstractMonster[]{
+                new MrDomescreen(-400, 0),
+                new BubbleHound(-100, 0),
+                new MrDomescreen(200, 0),
+        }));
+        BaseMod.addMonsterEncounter(TheBeyond.ID, new MonsterInfo(Encounter.HOUND_N_DOMESCREEN, 2.0F));
     }
 
     @Override

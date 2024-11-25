@@ -14,10 +14,11 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
+import hsrmod.powers.StatePower;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
-public class IratePower extends BuffPower implements OnPlayerDamagedSubscriber {
+public class IratePower extends StatePower implements OnPlayerDamagedSubscriber {
     public static final String POWER_ID = HSRMod.makePath(IratePower.class.getSimpleName());
 
     public static int stackLimit = 16;

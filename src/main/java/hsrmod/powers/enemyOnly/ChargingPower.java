@@ -7,10 +7,11 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
+import hsrmod.powers.StatePower;
 import hsrmod.subscribers.PreBreakSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 
-public class ChargingPower extends BuffPower implements PreBreakSubscriber {
+public class ChargingPower extends StatePower implements PreBreakSubscriber {
     public static final String POWER_ID = HSRMod.makePath(ChargingPower.class.getSimpleName());
     
     public String move;
@@ -49,6 +50,12 @@ public class ChargingPower extends BuffPower implements PreBreakSubscriber {
     public void reducePower(int reduceAmount) {
         super.reducePower(reduceAmount);
         updateDescription();
+    }
+
+    @Override
+    public void duringTurn() {
+        super.duringTurn();
+        remove(1);
     }
 
     @Override

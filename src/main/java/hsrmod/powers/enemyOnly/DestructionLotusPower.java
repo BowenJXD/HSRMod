@@ -10,8 +10,9 @@ import com.megacrit.cardcrawl.powers.DrawReductionPower;
 import com.megacrit.cardcrawl.powers.watcher.EnergyDownPower;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
+import hsrmod.powers.StatePower;
 
-public class DestructionLotusPower extends BuffPower {
+public class DestructionLotusPower extends StatePower {
     public static final String POWER_ID = HSRMod.makePath(DestructionLotusPower.class.getSimpleName());
     
     public DestructionLotusPower(AbstractCreature owner) {

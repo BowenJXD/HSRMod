@@ -1,4 +1,4 @@
-package hsrmod.monsters;
+package hsrmod.monsters.TheBeyond;
 
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -38,7 +38,7 @@ public class SomethingUntoDeath extends AbstractMonster {
     AbstractMonster bottomRightMonster;
     
     public SomethingUntoDeath() {
-        super(NAME, HSRMod.makePath(ID), 199, 0F, -15.0F, 384F, 400F, PathDefine.MONSTER_PATH + ID + ".png", -150, 50);
+        super(NAME, HSRMod.makePath(ID), 199, 0F, -15.0F, 410F, 430F, PathDefine.MONSTER_PATH + ID + ".png", -150, 50);
         this.type = EnemyType.ELITE;
         this.dialogX = -150.0F * Settings.scale;
         this.dialogY = 70.0F * Settings.scale;
@@ -74,7 +74,6 @@ public class SomethingUntoDeath extends AbstractMonster {
             case 3:
                 if (hasPower(ChargingPower.POWER_ID)) {
                     addToBot(new DamageAction(p, damage.get(2), AbstractGameAction.AttackEffect.SMASH));
-                    addToBot(new RemoveSpecificPowerAction(this, this, ChargingPower.POWER_ID));
                 }
                 break;
             case 4:

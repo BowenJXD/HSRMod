@@ -1,10 +1,8 @@
-package hsrmod.monsters;
+package hsrmod.monsters.Exordium;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.ShoutAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
-import com.megacrit.cardcrawl.actions.utility.HideHealthBarAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -14,15 +12,12 @@ import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
-import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
 import hsrmod.cardsV2.Curse.Frozen;
 import hsrmod.misc.Encounter;
 import hsrmod.misc.PathDefine;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.enemyOnly.ChargingPower;
 import hsrmod.utils.ModHelper;
-
-import java.util.Iterator;
 
 public class Cocolia extends AbstractMonster {
     public static final String ID = Cocolia.class.getSimpleName();
@@ -108,7 +103,6 @@ public class Cocolia extends AbstractMonster {
                     for (int i = 0; i < handCount; i++) {
                         addToBot(new DamageAction(p, this.damage.get(3), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
                     }
-                    addToBot(new RemoveSpecificPowerAction(this, this, ChargingPower.POWER_ID));
                 }
                 break;
         }
@@ -171,17 +165,7 @@ public class Cocolia extends AbstractMonster {
         this.useFastShakeAnimation(5.0F);
         CardCrawlGame.screenShake.rumble(4.0F);
 
-        Iterator var1 = AbstractDungeon.getCurrRoom().monsters.monsters.iterator();
-
-        while (var1.hasNext()) {
-            AbstractMonster m = (AbstractMonster) var1.next();
-            if (!m.isDead && !m.isDying) {
-                AbstractDungeon.actionManager.addToTop(new HideHealthBarAction(m));
-                AbstractDungeon.actionManager.addToTop(new SuicideAction(m));
-                AbstractDungeon.actionManager.addToTop(new VFXAction(m, new InflameEffect(m), 0.2F));
-            }
-        }
-
+        ModHelper.killAllMinions();
         onBossVictoryLogic();
     }
 }

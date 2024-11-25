@@ -8,11 +8,12 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
+import hsrmod.powers.StatePower;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.subscribers.PreBreakSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 
-public class WalkInTheLightPower extends BuffPower implements PreBreakSubscriber {
+public class WalkInTheLightPower extends StatePower implements PreBreakSubscriber {
     public static final String POWER_ID = HSRMod.makePath(WalkInTheLightPower.class.getSimpleName());
 
     int tempHPAmount = 17;

@@ -11,17 +11,18 @@ import hsrmod.actions.ElementalDamageAction;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
+import hsrmod.powers.StatePower;
 import hsrmod.powers.misc.ToughnessPower;
 
-public class SummonedPower extends BuffPower {
+public class SummonedPower extends StatePower {
     public static final String POWER_ID = HSRMod.makePath(SummonedPower.class.getSimpleName());
-    
+
     public SummonedPower(AbstractCreature owner) {
         super(POWER_ID, owner);
         amount = -1;
         this.updateDescription();
     }
-    
+
     public void updateDescription() {
         this.description = DESCRIPTIONS[0];
     }
@@ -29,11 +30,11 @@ public class SummonedPower extends BuffPower {
     @Override
     public void onDeath() {
         super.onDeath();
-        AbstractCreature boss = AbstractDungeon.getMonsters().monsters.stream()
+        AbstractDungeon.getMonsters().monsters.stream()
                 .filter(m -> m.type == AbstractMonster.EnemyType.BOSS && !(m.isDying || m.isEscaping || m.halfDead || m.currentHealth <= 0))
-                .findFirst().orElse(null);
-        if (boss != null) {
-            addToTop(new ElementalDamageAction(boss, new ElementalDamageInfo(boss, owner.maxHealth, DamageInfo.DamageType.HP_LOSS, null, ToughnessPower.getStackLimit(owner)), AbstractGameAction.AttackEffect.NONE));
-        }
+                .findFirst().ifPresent(
+                        boss -> addToTop(new ElementalDamageAction(boss, new ElementalDamageInfo(boss, owner.maxHealth, DamageInfo.DamageType.HP_LOSS, 
+                                null, ToughnessPower.getStackLimit(owner)), AbstractGameAction.AttackEffect.NONE))
+                );
     }
 }

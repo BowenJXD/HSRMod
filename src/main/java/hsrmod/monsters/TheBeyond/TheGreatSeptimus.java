@@ -1,15 +1,12 @@
-package hsrmod.monsters;
+package hsrmod.monsters.TheBeyond;
 
 import basemod.BaseMod;
 import basemod.abstracts.CustomMonster;
 import basemod.interfaces.OnCardUseSubscriber;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.ShoutAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
-import com.megacrit.cardcrawl.actions.utility.HideHealthBarAction;
 import com.megacrit.cardcrawl.actions.utility.ShakeScreenAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -17,16 +14,13 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.monsters.MonsterQueueItem;
 import com.megacrit.cardcrawl.powers.FrailPower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.powers.watcher.EnergyDownPower;
 import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
-import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
 import hsrmod.cards.base.Danheng0;
 import hsrmod.cards.base.Himeko0;
 import hsrmod.cards.base.March7th0;
@@ -42,7 +36,6 @@ import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class TheGreatSeptimus extends CustomMonster implements OnCardUseSubscriber {
@@ -120,7 +113,6 @@ public class TheGreatSeptimus extends CustomMonster implements OnCardUseSubscrib
                 break;
             case 5:
                 if (hasPower(ChargingPower.POWER_ID)) {
-                    addToBot(new RemoveSpecificPowerAction(this, this, ChargingPower.POWER_ID));
                     for (int i = 0; i < numDamage; i++) {
                         addToBot(new DamageAction(p, this.damage.get(2), AbstractGameAction.AttackEffect.BLUNT_HEAVY, true));
                     }
@@ -194,16 +186,7 @@ public class TheGreatSeptimus extends CustomMonster implements OnCardUseSubscrib
         super.die();
         this.onBossVictoryLogic();
         this.onFinalBossVictoryLogic();
-        Iterator var1 = AbstractDungeon.getCurrRoom().monsters.monsters.iterator();
-
-        while(var1.hasNext()) {
-            AbstractMonster m = (AbstractMonster)var1.next();
-            if (!m.isDead && !m.isDying) {
-                AbstractDungeon.actionManager.addToTop(new HideHealthBarAction(m));
-                AbstractDungeon.actionManager.addToTop(new SuicideAction(m));
-                AbstractDungeon.actionManager.addToTop(new VFXAction(m, new InflameEffect(m), 0.2F));
-            }
-        }
+        ModHelper.killAllMinions();
     }
 
     @Override

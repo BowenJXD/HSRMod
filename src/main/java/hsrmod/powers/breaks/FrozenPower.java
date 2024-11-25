@@ -39,7 +39,8 @@ public class FrozenPower extends DebuffPower {
     @Override
     public void atStartOfTurn() {
         if (amount >= amountRequired){
-            addToBot(new StunMonsterAction((AbstractMonster) owner, AbstractDungeon.player));
+            if (monsterOwner != null && monsterOwner.intent != AbstractMonster.Intent.STUN)
+                addToBot(new StunMonsterAction((AbstractMonster) owner, AbstractDungeon.player));
             addToBot(new RemoveSpecificPowerAction(owner, owner, this));
         }
     }

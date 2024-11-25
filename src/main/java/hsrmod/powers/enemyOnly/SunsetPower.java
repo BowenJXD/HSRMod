@@ -1,6 +1,5 @@
 package hsrmod.powers.enemyOnly;
 
-import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
@@ -14,12 +13,8 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.StasisPower;
-import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToHandEffect;
 import hsrmod.modcore.HSRMod;
-import hsrmod.monsters.SombrousSepulcher;
 import hsrmod.powers.DebuffPower;
-import hsrmod.utils.ModHelper;
 
 import java.util.ArrayList;
 import java.util.List;

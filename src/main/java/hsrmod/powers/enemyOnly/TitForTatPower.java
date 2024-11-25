@@ -34,7 +34,7 @@ public class TitForTatPower extends BuffPower implements PostBreakBlockSubscribe
         SubscriptionManager.subscribe(this);
         if (owner.hasPower(ToughnessPower.POWER_ID)) {
             ToughnessPower toughnessPower = (ToughnessPower) owner.getPower(ToughnessPower.POWER_ID);
-            toughnessPower.setLocked(true);
+            toughnessPower.lock(this);
         }
     }
 
@@ -44,7 +44,7 @@ public class TitForTatPower extends BuffPower implements PostBreakBlockSubscribe
         SubscriptionManager.unsubscribe(this);
         if (owner.hasPower(ToughnessPower.POWER_ID)) {
             ToughnessPower toughnessPower = (ToughnessPower) owner.getPower(ToughnessPower.POWER_ID);
-            toughnessPower.setLocked(false);
+            toughnessPower.unlock(this);
         }
     }
 

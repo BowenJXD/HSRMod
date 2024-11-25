@@ -28,7 +28,7 @@ public class IfWeLiveInTheLightPower extends BuffPower {
         super.onInitialApplication();
         if (owner.hasPower(ToughnessPower.POWER_ID)) {
             ToughnessPower toughnessPower = (ToughnessPower) owner.getPower(ToughnessPower.POWER_ID);
-            toughnessPower.setLocked(true);
+            toughnessPower.lock(this);
         }
     }
 
@@ -37,7 +37,7 @@ public class IfWeLiveInTheLightPower extends BuffPower {
         super.onRemove();
         if (owner.hasPower(ToughnessPower.POWER_ID)) {
             ToughnessPower toughnessPower = (ToughnessPower) owner.getPower(ToughnessPower.POWER_ID);
-            toughnessPower.setLocked(false);
+            toughnessPower.unlock(this);
         }
     }
 

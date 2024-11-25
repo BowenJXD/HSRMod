@@ -102,7 +102,7 @@ SinThirster,血罪灵,COMMON,SKILL,SELF,1, hsrmod:持续伤害 最多的敌人每有一种，便摸
 OfferingsOfDeception,虚妄供品,COMMON,SKILL,ALL_ENEMY,1,获得 !B! 点格挡，对所有没有 hsrmod:持续伤害 的敌人施加1个 hsrmod:持续伤害 。,,,3,,,获得 !B! 点格挡，对所有没有 hsrmod:持续伤害 的敌人施加1个 hsrmod:持续伤害 ，所有有全部 hsrmod:持续伤害 的敌人减少1层 力量 。,,,5,,虚无,,中,防御
 IntersegmentalMembrane,节间膜,RARE,POWER,SELF,2,每消耗1点 [E] ，获得 !M! 点格挡。,,,,2,,,,,,3,繁育,,高,防御
 SporeDischarge,子囊释放,RARE,POWER,SELF,2,每消耗1点 [E] ，对随机敌人施加1层 hsrmod:孢子 。,,,,,,每消耗或回复1点 [E] ，对随机敌人施加1层 hsrmod:孢子 。,,,,,繁育,,低,攻击
-ExcitatoryGland,兴奋腺,RARE,POWER,SELF,3, [E] 上限+1。每回合首次使用 hsrmod:耗能 为X的牌后，回复 [E] 。,,,,,, 固有 。 [E] 上限+1。每回合首次使用 hsrmod:耗能 为X的牌后，回复 [E] 。,,,,,繁育,,中,运转
+ExcitatoryGland,兴奋腺,RARE,POWER,SELF,3, [E] 上限+1。每回合首次消耗完 [E] 时，回复 [E] 。,,,,,, 固有 。 [E] 上限+1。每回合首次消耗完 [E] 时，回复 [E] 。,,,,,繁育,,中,运转
 SerfOfCalamity,孕灾蠧役,UNCOMMON,POWER,SELF,3,通过牌造成伤害后，对目标施加1层 hsrmod:孢子 。每破裂 !M! 层 hsrmod:孢子 ，摸1张牌。,,,,3,2,,,,,,繁育,,中,防御
 FungalPustule,菌种脓疱,UNCOMMON,SKILL,SELF,1, 消耗 。回复 !M! 点 [E] ，摸1张牌。,,,,2,,回复 !M! 点 [E] ，摸1张牌，然后此牌于此次战斗的费用和回能量均+1。,,,,,繁育,,中,运转
 Sparkle3,梦游鱼,UNCOMMON,SKILL,SELF,1, 消耗 。获得 [E] ，从弃牌堆选择1张牌获得，然后杀死其他「梦游鱼」。,,,,,,获得 [E] ，从弃牌堆选择1张牌获得，然后杀死其他「梦游鱼」。,,,,,繁育,,中,运转

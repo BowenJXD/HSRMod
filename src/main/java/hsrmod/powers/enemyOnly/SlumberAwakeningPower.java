@@ -8,13 +8,14 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
+import hsrmod.powers.StatePower;
 
 import java.util.List;
 
-public class SlumberAwakeningPower extends BuffPower {
+public class SlumberAwakeningPower extends StatePower {
     public static final String POWER_ID = HSRMod.makePath(SlumberAwakeningPower.class.getSimpleName());
     
-    List <AbstractCard> cards;
+    List<AbstractCard> cards;
 
     public SlumberAwakeningPower(AbstractCreature owner, List<AbstractCard> cards) {
         super(POWER_ID, owner);

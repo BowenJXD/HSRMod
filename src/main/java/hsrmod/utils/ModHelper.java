@@ -2,6 +2,9 @@ package hsrmod.utils;
 
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.common.SuicideAction;
+import com.megacrit.cardcrawl.actions.utility.HideHealthBarAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -10,8 +13,11 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.MinionPower;
 import com.megacrit.cardcrawl.random.Random;
+import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
 import hsrmod.modcore.HSRMod;
+import hsrmod.powers.enemyOnly.SummonedPower;
 
 import java.util.*;
 import java.util.function.Predicate;
@@ -240,5 +246,18 @@ public class ModHelper {
         }
 
         info.output = MathUtils.floor(tmp);
+    }
+    
+    public static void killAllMinions(){
+        Iterator var1 = AbstractDungeon.getCurrRoom().monsters.monsters.iterator();
+
+        while(var1.hasNext()) {
+            AbstractMonster m = (AbstractMonster)var1.next();
+            if (!m.isDead && !m.isDying && (m.hasPower(MinionPower.POWER_ID) || m.hasPower(SummonedPower.POWER_ID))) {
+                AbstractDungeon.actionManager.addToTop(new HideHealthBarAction(m));
+                AbstractDungeon.actionManager.addToTop(new SuicideAction(m));
+                AbstractDungeon.actionManager.addToTop(new VFXAction(m, new InflameEffect(m), 0.2F));
+            }
+        }
     }
 }

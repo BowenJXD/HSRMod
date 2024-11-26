@@ -43,17 +43,9 @@ public class BarrierPower extends BuffPower implements PreToughnessReduceSubscri
     }
 
     @Override
-    public void reducePower(int reduceAmount) {
-        super.reducePower(reduceAmount);
-        if (amount <= 0) {
-            addToBot(new RemoveSpecificPowerAction(owner, owner, POWER_ID));
-        }
-    }
-
-    @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
         if (info.type != DamageInfo.DamageType.HP_LOSS) {
-            reducePower(1);
+            remove(1);
             return 0;
         }
         return damageAmount;

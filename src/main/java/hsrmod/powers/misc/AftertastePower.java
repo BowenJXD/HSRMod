@@ -4,6 +4,7 @@ import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.DamageModApplyingPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -49,6 +50,12 @@ public class AftertastePower extends BuffPower implements DamageModApplyingPower
     }
 
     @Override
+    public void atEndOfTurn(boolean isPlayer) {
+        super.atEndOfTurn(isPlayer);
+        addToBot(new ReducePowerAction(owner, owner, this, amount - 1));
+    }
+
+    @Override
     public List<AbstractDamageModifier> modsToPush(DamageInfo damageInfo, Object o, List<AbstractDamageModifier> list) {
         return Collections.singletonList(new AftertasteModifier());
     }
@@ -62,7 +69,7 @@ public class AftertastePower extends BuffPower implements DamageModApplyingPower
     }
     
     public static class AftertasteModifier extends AbstractDamageModifier {
-
+ 
         public AftertasteModifier() {
         }
 

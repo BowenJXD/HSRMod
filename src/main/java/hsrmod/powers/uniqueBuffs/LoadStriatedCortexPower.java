@@ -10,23 +10,19 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class LoadStriatedCortexPower extends PowerPower implements DamageModApplyingPower {
     public static final String POWER_ID = HSRMod.makePath(LoadStriatedCortexPower.class.getSimpleName());
     
-    int damageIncrement = 0;
+    int[] damageIncrement;
     
-    public LoadStriatedCortexPower(int damageIncrement) {
+    public LoadStriatedCortexPower(int[] damageIncrement) {
         super(POWER_ID);
         this.damageIncrement = damageIncrement;
         updateDescription();
-    }
-
-    @Override
-    public void updateDescription() {
-        description = String.format(DESCRIPTIONS[0], damageIncrement);
     }
 
     @Override
@@ -42,9 +38,9 @@ public class LoadStriatedCortexPower extends PowerPower implements DamageModAppl
     }
     
     public static class LoadStriatedCortexModifier extends AbstractDamageModifier {
-        public int damageIncrement;
+        public int[] damageIncrement;
 
-        public LoadStriatedCortexModifier(int damageIncrement) {
+        public LoadStriatedCortexModifier(int[] damageIncrement) {
             super();
             this.damageIncrement = damageIncrement;
         }
@@ -53,7 +49,10 @@ public class LoadStriatedCortexPower extends PowerPower implements DamageModAppl
         public float atDamageGive(float damage, DamageInfo.DamageType type, AbstractCreature target, AbstractCard card) {
             if ((card.target == AbstractCard.CardTarget.ALL_ENEMY || card.target == AbstractCard.CardTarget.ALL)) {
                 int enemyCount = AbstractDungeon.getMonsters().monsters.stream().mapToInt(m -> m.isDeadOrEscaped() ? 0 : 1).sum();
-                int increment = (4 - enemyCount) * damageIncrement;
+                int increment = 0;
+                if (enemyCount <= damageIncrement.length) {
+                    increment = damageIncrement[enemyCount - 1];
+                }
                 increment = Math.max(0, increment);
                 return damage + increment;
             }

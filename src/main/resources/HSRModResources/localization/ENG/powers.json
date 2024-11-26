@@ -77,7 +77,7 @@
   "HSRMod:Aftertaste": {
     "NAME": "Aftertaste",
     "DESCRIPTIONS": [
-      "After dealing damage via Follow-Up cards, deal #b%d damage to the target, and stack 1."
+      "After dealing damage via Follow-Up cards, deal #b%d damage to the target, and stack 1. Reset to 1 at the end of turn."
     ]
   },
   "HSRMod:Suspicion": {
@@ -329,8 +329,8 @@
   "HSRMod:ChampionsDinnerCatsCradle": {
     "NAME": "Champion's Dinner : Cat's Cradle",
     "DESCRIPTIONS": [
-      "Charge using cards are regarded as Follow Up cards, when your [hsrmod:ChargeIcon] is full, Follow Up one of them.",
-      "Charge using cards are regarded as Follow Up cards, when your [hsrmod:ChargeIcon] is full, Follow Up one of them. You don't need to have enough [hsrmod:ChargeIcon] to Follow Up."
+      "Charge using cards are regarded as Follow Up cards, when your [hsrmod:ChargeIcon] is full, Follow Up one of them. You don't need to have enough [hsrmod:ChargeIcon] to Follow Up.",
+      "Charge using cards are regarded as Follow Up cards, when your [hsrmod:ChargeIcon] is full, Follow Up one of them. Won't cost any [hsrmod:ChargeIcon] to Follow Up."
     ]
   },"HSRMod:EmpyreanImperium": {
   "NAME": "Empyrean Imperium",
@@ -466,6 +466,70 @@
     "NAME": "Garrison Aura Field",
     "DESCRIPTIONS": [
       "Toughness can not be reduced. After breaking Block, remove 1 stack, and lose #b%d HP ( #b%d ). Remove 1 stack at the start of the turn."
+    ]
+  },
+  "HSRMod:MoonRage": {
+    "NAME": "Moon Rage",
+    "DESCRIPTIONS": [
+      "After dealing damage, lose #b%d HP, gain #b%d Strength. Remove all Strength when #yBroken."
+    ]
+  },
+  "HSRMod:Irate": {
+    "NAME": "Irate",
+    "DESCRIPTIONS": [
+      "Player/Owner gains 1 stack when taking damage. When reaching #b%d/0 stacks, remove all stacks, and all monsters/players immediately take an extra turn.",
+      "Irate triggered! All monsters taking an extra turn!",
+      "Irate triggered! Player taking an extra turn!"
+    ]
+  },
+  "HSRMod:Terror": {
+    "NAME": "Terror",
+    "DESCRIPTIONS": [
+      "Each time you draw a card, a random card's cost + #b%d for this turn. When removed, all cards' cost + #b%d for this turn."
+    ]
+  },
+  "HSRMod:Sunset": {
+    "NAME": "Sunset",
+    "DESCRIPTIONS": [
+      "After playing #b%d cards, remove this power, end the turn, and all cards in hand will be stolen."
+    ]
+  },
+  "HSRMod:SlumberAwakening": {
+    "NAME": "Slumber Awakening",
+    "DESCRIPTIONS": [
+      "Upon death, the stolen cards will be returned to your hand: %s"
+    ]
+  },
+  "HSRMod:Barrier": {
+    "NAME": "Barrier",
+    "DESCRIPTIONS": [
+      "Prevent the next #b%d damage and toughness reduction. Remove at the start of the turn."
+    ]
+  },
+  "HSRMod:SanctionRate": {
+    "NAME": "Sanction Rate",
+    "DESCRIPTIONS": [
+      "When using a #gSkill card or #bPower card, stack #b%d%% , when reaching #b100%%, end the turn, and enter #rSanction #rMode.",
+      "[ #rSanction #rMode ]"
+    ]
+  },
+  "HSRMod:Channel": {
+    "NAME": "Channel",
+    "DESCRIPTIONS": [
+      "[ #bSurprise #bChannel ] After taking damage, switch to #rFright #rChannel.",
+      "[ #rFright #rChannel ] After taking damage, switch to #bSurprise #bChannel."
+    ]
+  },
+  "HSRMod:SoulGladRevel": {
+    "NAME": "Soul Glad Revel",
+    "DESCRIPTIONS": [
+      "Damage dealt + #b%d ; stack 1 after taking damage; up to #b%d stacks."
+    ]
+  },
+  "HSRMod:ToughnessProtection": {
+    "NAME": "Toughness Protection",
+    "DESCRIPTIONS": [
+      "Toughness can not be reduced."
     ]
   }
 }

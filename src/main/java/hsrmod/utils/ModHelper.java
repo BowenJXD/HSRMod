@@ -253,7 +253,7 @@ public class ModHelper {
 
         while(var1.hasNext()) {
             AbstractMonster m = (AbstractMonster)var1.next();
-            if (!m.isDead && !m.isDying && (m.hasPower(MinionPower.POWER_ID) || m.hasPower(SummonedPower.POWER_ID))) {
+            if (!m.isDead && !m.isDying && (m.hasPower(MinionPower.POWER_ID) || m.hasPower(SummonedPower.POWER_ID) || m.halfDead)) {
                 AbstractDungeon.actionManager.addToTop(new HideHealthBarAction(m));
                 AbstractDungeon.actionManager.addToTop(new SuicideAction(m));
                 AbstractDungeon.actionManager.addToTop(new VFXAction(m, new InflameEffect(m), 0.2F));

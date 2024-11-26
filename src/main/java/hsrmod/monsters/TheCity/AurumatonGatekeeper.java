@@ -1,7 +1,9 @@
 package hsrmod.monsters.TheCity;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.ShoutAction;
 import com.megacrit.cardcrawl.actions.common.*;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -60,6 +62,9 @@ public class AurumatonGatekeeper extends AbstractMonster {
         AbstractPlayer p = AbstractDungeon.player;
         switch (nextMove) {
             case 1:
+                int r = AbstractDungeon.miscRng.random(1);
+                addToBot(new ShoutAction(this, DIALOG[r]));
+                ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_" + r, 3.0F));
                 spawnDragonfishes();
                 break;
             case 2:

@@ -21,6 +21,6 @@ public enum CardDataCol {
     Path,
     Element,
     Versatility,
-    Functionality,
+    // Functionality,
 }
 

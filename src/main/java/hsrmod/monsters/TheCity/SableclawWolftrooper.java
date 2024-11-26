@@ -22,7 +22,7 @@ public class SableclawWolftrooper extends AbstractMonster {
     public static final String[] DIALOG = eventStrings.DIALOG;
     
     public SableclawWolftrooper(float x, float y) {
-        super(NAME, HSRMod.makePath(ID), 30, 0F, -15.0F, 169F, 169F, PathDefine.MONSTER_PATH + ID + ".png", x, y);
+        super(NAME, HSRMod.makePath(ID), 24, 0F, -15.0F, 169F, 169F, PathDefine.MONSTER_PATH + ID + ".png", x, y);
         this.type = EnemyType.NORMAL;
         this.dialogX = -150.0F * Settings.scale;
         this.dialogY = -70.0F * Settings.scale;

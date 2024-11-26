@@ -58,6 +58,7 @@ public class ChampionsDinnerCatsCradlePower extends PowerPower implements PostPo
         super.onRemove();
         BaseMod.unsubscribe(this);
         SubscriptionManager.unsubscribe(this);
+        ModHelper.findCards((c) -> c.hasTag(CustomEnums.ENERGY_COSTING) && c.hasTag(FOLLOW_UP)).forEach((r) -> r.card.tags.remove(FOLLOW_UP));
     }
 
     @Override
@@ -74,8 +75,15 @@ public class ChampionsDinnerCatsCradlePower extends PowerPower implements PostPo
 
     @Override
     public boolean checkUsable(AbstractCard card) {
-        if (SubscriptionManager.checkSubscriber(this)) {
-            return upgraded && ((BaseCard) card).followedUp;
+        if (SubscriptionManager.checkSubscriber(this) && ((BaseCard) card).followedUp) {
+            if (upgraded) {
+                EnergyPower power = (EnergyPower) AbstractDungeon.player.getPower(EnergyPower.POWER_ID);
+                if (power != null) {
+                    power.lock(this);
+                    ModHelper.addToTopAbstract(() -> power.unlock(this));
+                }
+            }
+            return true;
         }
         return false;
     }

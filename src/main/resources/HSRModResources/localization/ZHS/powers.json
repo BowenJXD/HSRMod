@@ -77,7 +77,7 @@
   "HSRMod:Aftertaste": {
     "NAME": "回味",
     "DESCRIPTIONS": [
-      "打出追击牌造成伤害后，对目标造成 #b%d 点伤害，然后叠加1层。"
+      "打出追击牌造成伤害后，对目标造成 #b%d 点伤害，然后叠加1层。每回合结束时重置为1层。"
     ]
   },
   "HSRMod:Suspicion": {
@@ -329,8 +329,8 @@
   "HSRMod:ChampionsDinnerCatsCradle": {
     "NAME": "冠军晚餐 · 猫的摇篮",
     "DESCRIPTIONS": [
-      "耗能的牌视为追击牌，且于充能满时，追击 #b1 张。",
-      "耗能的牌视为追击牌，且于充能满时，追击 #b1 张。追击需要耗能的牌时，无需足够的充能。"
+      "耗能的牌视为追击牌，且于充能满时，追击 #b1 张。追击耗能的牌时，无需足够的 [hsrmod:ChargeIcon] 。",
+      "耗能的牌视为追击牌，且于充能满时，追击 #b1 张。追击耗能的牌时，不消耗 [hsrmod:ChargeIcon] 。"
     ]
   },
   "HSRMod:EmpyreanImperium": {
@@ -401,8 +401,8 @@
   "HSRMod:LoadStriatedCortex": {
     "NAME": "装载：纹状皮层",
     "DESCRIPTIONS": [
-      "打出群体攻击牌时，若只有1/2/3名敌人，则伤害+6/4/2。",
-      "打出群体攻击牌时，若只有1/2/3名敌人，则伤害+9/6/3。"
+      "打出群体攻击牌时，若只有1/2/3名敌人，则伤害+ #b6/3/1 。",
+      "打出群体攻击牌时，若只有1/2/3名敌人，则伤害+ #b9/4/1 。"
     ]
   },
   "HSRMod:CloudflameLuster": {
@@ -412,6 +412,7 @@
       "击破后移除，将韧性恢复至 #b%d 层，并获得 [E] 。"
     ]
   },
+  
   "HSRMod:Charging": {
     "NAME": "蓄力",
     "DESCRIPTIONS": [

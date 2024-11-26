@@ -12,7 +12,13 @@ public class UselessScholar extends BaseCard {
     public UselessScholar() {
         super(ID);
     }
-    
+
+    @Override
+    public void upgrade() {
+        super.upgrade();
+        isInnate = true;
+    }
+
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p, new UselessScholarPower(upgraded, magicNumber)));

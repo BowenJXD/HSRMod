@@ -29,15 +29,21 @@ public class Beetle extends AbstractMonster {
         this.dialogX = -150.0F * Settings.scale;
         this.dialogY = -70.0F * Settings.scale;
         
-        if (AbstractDungeon.ascensionLevel >= 19) {
+        if (AbstractDungeon.ascensionLevel >= 4) {
             dmg = 8;
-        } else if (AbstractDungeon.ascensionLevel >= 4) {
-            dmg = 7;
         } else {
-            dmg = 6;
+            dmg = 7;
         }
         
         this.damage.add(new DamageInfo(this, dmg));
+    }
+
+    @Override
+    public void usePreBattleAction() {
+        super.usePreBattleAction();
+        if (AbstractDungeon.ascensionLevel >= 19) {
+            addToBot(new ApplyPowerAction(this, this, new BarrierPower(this, 1), 1));
+        }
     }
 
     @Override

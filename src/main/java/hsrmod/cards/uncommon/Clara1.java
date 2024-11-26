@@ -1,3 +1,4 @@
+/*
 package hsrmod.cards.uncommon;
 
 import basemod.BaseMod;
@@ -71,3 +72,4 @@ public class Clara1 extends BaseCard implements OnPlayerDamagedSubscriber {
         return i;
     }
 }
+*/

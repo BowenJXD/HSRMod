@@ -45,7 +45,7 @@ public class TheGreatSeptimus extends CustomMonster implements OnCardUseSubscrib
     public static final String[] MOVES = eventStrings.MOVES;
     public static final String[] DIALOG = eventStrings.DIALOG;
     
-    private int[] damages = {17, 27, 7, 17};
+    private int[] damages = {27, 37, 7, 17};
     int turnCount = 0;
     int blockGain = 77;
     int numDamage = 7;
@@ -66,6 +66,9 @@ public class TheGreatSeptimus extends CustomMonster implements OnCardUseSubscrib
 
         for (int dmg : damages) {
             this.damage.add(new DamageInfo(this, dmg));
+        }
+        if (BaseMod.hasModID("spireTogether:")) {
+            toughnessAmount = 27;
         }
     }
 

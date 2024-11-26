@@ -149,6 +149,7 @@ public class SubscriptionManager {
                 unsubscribe(sub);
             }
         }
+        toRemove.clear();
     }
 
     public float triggerPreElementalDamage(ElementalDamageAction action) {

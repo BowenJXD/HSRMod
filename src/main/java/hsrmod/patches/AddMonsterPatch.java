@@ -1,10 +1,7 @@
 package hsrmod.patches;
 
 import basemod.BaseMod;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
+import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.Exordium;
@@ -15,72 +12,11 @@ import hsrmod.characters.StellaCharacter;
 import hsrmod.misc.Encounter;
 import hsrmod.modcore.HSRMod;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 // TODO: Consider add boss from basemod.
 public class AddMonsterPatch {
-    @SpirePatch(clz = TheBeyond.class, method = "initializeBoss")
-    public static class Act3AddBossPatch {
-        @SpirePostfixPatch
-        public static SpireReturn<Void> PostFix() {
-            if (!Settings.isDailyRun && HSRMod.addEnemy && AbstractDungeon.player instanceof StellaCharacter) {
-                if (HSRMod.removeOtherBosses) {
-                    TheBeyond.bossList.clear();
-                    TheBeyond.bossList.add(Encounter.SALUTATIONS_OF_ASHEN_DREAMS);
-                    TheBeyond.bossList.add(Encounter.SALUTATIONS_OF_ASHEN_DREAMS);
-                    TheBeyond.bossList.add(Encounter.SALUTATIONS_OF_ASHEN_DREAMS);
-                } else {
-                    TheBeyond.bossList.add(Encounter.SALUTATIONS_OF_ASHEN_DREAMS);
-                    Collections.shuffle(TheBeyond.bossList, AbstractDungeon.monsterRng.random);
-                    AbstractDungeon.bossList.remove(AbstractDungeon.bossList.size() - 1);
-                }
-            }
-            return SpireReturn.Return();
-        }
-    }
-
-    @SpirePatch(clz = TheCity.class, method = "initializeBoss")
-    public static class Act2AddBossPatch {
-        @SpirePostfixPatch
-        public static SpireReturn<Void> PostFix() {
-            if (!Settings.isDailyRun && HSRMod.addEnemy && AbstractDungeon.player instanceof StellaCharacter) {
-                if (HSRMod.removeOtherBosses) {
-                    TheCity.bossList.clear();
-                    TheCity.bossList.add(Encounter.DIVINE_SEED);
-                    TheCity.bossList.add(Encounter.DIVINE_SEED);
-                    TheCity.bossList.add(Encounter.DIVINE_SEED);
-                } else {
-                    TheCity.bossList.add(Encounter.DIVINE_SEED);
-                    Collections.shuffle(TheCity.bossList, AbstractDungeon.monsterRng.random);
-                    AbstractDungeon.bossList.remove(AbstractDungeon.bossList.size() - 1);
-                }
-            }
-            return SpireReturn.Return();
-        }
-    }
-    
-    @SpirePatch(clz = Exordium.class, method = "initializeBoss")
-    public static class Act1AddBossPatch {
-        @SpirePostfixPatch
-        public static SpireReturn<Void> PostFix() {
-            if (!Settings.isDailyRun && HSRMod.addEnemy && AbstractDungeon.player instanceof StellaCharacter) {
-                if (HSRMod.removeOtherBosses) {
-                    Exordium.bossList.clear();
-                    Exordium.bossList.add(Encounter.END_OF_THE_ETERNAL_FREEZE);
-                    Exordium.bossList.add(Encounter.END_OF_THE_ETERNAL_FREEZE);
-                    Exordium.bossList.add(Encounter.END_OF_THE_ETERNAL_FREEZE);
-                } else {
-                    Exordium.bossList.add(Encounter.END_OF_THE_ETERNAL_FREEZE);
-                    Collections.shuffle(Exordium.bossList, AbstractDungeon.monsterRng.random);
-                    AbstractDungeon.bossList.remove(AbstractDungeon.bossList.size() - 1);
-                }
-            }
-            return SpireReturn.Return();
-        }
-    }
-    
     static List<MonsterInfo> addMonsters(List<MonsterInfo> infos) {
         List<MonsterInfo> result = new ArrayList<>();
         if (HSRMod.addEnemy && AbstractDungeon.player instanceof StellaCharacter) {
@@ -90,7 +26,7 @@ public class AddMonsterPatch {
         }
         return result;
     }
-    
+
     @SpirePatch(clz = BaseMod.class, method = "getMonsterEncounters")
     public static class MonsterEncountersPatch {
         @SpirePostfixPatch
@@ -106,12 +42,28 @@ public class AddMonsterPatch {
             return addMonsters(___customStrongMonsterEncounters);
         }
     }
-    
+
     @SpirePatch(clz = BaseMod.class, method = "getEliteEncounters")
     public static class EliteEncountersPatch {
         @SpirePostfixPatch
         public static List<MonsterInfo> PostFix(List<MonsterInfo> ___customEliteEncounters) {
             return addMonsters(___customEliteEncounters);
+        }
+    }
+
+    @SpirePatch(clz = BaseMod.class, method = "getBossIDs")
+    public static class BossPatch {
+        @SpirePostfixPatch
+        public static List<String> PostFix(List<String> ___customBosses) {
+            List<String> result = new ArrayList<>();
+            if (!___customBosses.isEmpty() && HSRMod.addEnemy && AbstractDungeon.player instanceof StellaCharacter) {
+                result.addAll(___customBosses);
+                if (HSRMod.removeOtherBosses) {
+                    AbstractDungeon.bossList.clear();
+                    AbstractDungeon.bossList.addAll(result);
+                }
+            }
+            return result;
         }
     }
 }

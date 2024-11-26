@@ -43,10 +43,13 @@ public class SunsetPower extends DebuffPower {
         reducePower(1);
         if (amount <= 0) {
             addToTop(new RemoveSpecificPowerAction(owner, owner, this));
-            addToBot(new MultiStasisAction(monsterSupplier.get(), AbstractDungeon.player.hand));
+            if (monsterSupplier != null && monsterSupplier.get() != null)
+                addToBot(new MultiStasisAction(monsterSupplier.get(), AbstractDungeon.player.hand));
             addToBot(new PressEndTurnButtonAction());
         }
-        updateDescription();
+        else {
+            updateDescription();
+        }
     }
 
     /*@Override

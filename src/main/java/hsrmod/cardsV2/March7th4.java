@@ -40,7 +40,7 @@ public class March7th4 extends BaseCard {
         super.triggerOnOtherCardPlayed(c);
         if (c != this && c.upgraded) {
             upgradeMagicNumber(1);
-            if (magicNumber >= AbstractDungeon.player.hand.size() && !followedUp) {
+            if (magicNumber >= 7 && !followedUp) {
                 followedUp = true;
                 addToBot(new FollowUpAction(this));
             }

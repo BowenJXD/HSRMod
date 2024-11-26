@@ -9,12 +9,20 @@ import hsrmod.powers.uniqueBuffs.LoadStriatedCortexPower;
 public class LoadStriatedCortex extends BaseCard {
     public static final String ID = LoadStriatedCortex.class.getSimpleName();
     
+    int[] damageIncrement = new int[]{6, 3, 1};
+    
     public LoadStriatedCortex() {
         super(ID);
     }
 
     @Override
+    public void upgrade() {
+        super.upgrade();
+        damageIncrement = new int[]{9, 4, 1};
+    }
+
+    @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new LoadStriatedCortexPower(magicNumber), magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new LoadStriatedCortexPower(damageIncrement)));
     }
 }

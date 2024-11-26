@@ -18,7 +18,7 @@ import hsrmod.utils.ModHelper;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
-public class Qingque2 extends BaseCard implements PreEnergyChangeSubscriber {
+public class Qingque2 extends BaseCard {
     public static final String ID = Qingque2.class.getSimpleName();
 
     int costCache = -1;
@@ -36,19 +36,7 @@ public class Qingque2 extends BaseCard implements PreEnergyChangeSubscriber {
         for (int i = 0; i < magicNumber; i++) {
             addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         }
-        ModHelper.addToBotAbstract(() -> updateCost(costCache - costForTurn));
-    }
-
-    @Override
-    public void onEnterHand() {
-        super.onEnterHand();
-        SubscriptionManager.subscribe(this);
-    }
-
-    @Override
-    public void onLeaveHand() {
-        super.onLeaveHand();
-        SubscriptionManager.unsubscribe(this);
+        ModHelper.addToBotAbstract(() -> updateCost(costCache - cost));
     }
 
     @Override
@@ -77,15 +65,16 @@ public class Qingque2 extends BaseCard implements PreEnergyChangeSubscriber {
     }
 
     @Override
-    public int preEnergyChange(int changeAmount) {
-        if (SubscriptionManager.checkSubscriber(this) && changeAmount < 0) {
-            for (int i = 0; i < -changeAmount; i++) {
-                if (AbstractDungeon.cardRandomRng.random(100) <= reduceCostProbability) {
-                    updateCost(-1);
-                    if (costForTurn <= 0) break;
-                }
+    public void triggerOnOtherCardPlayed(AbstractCard c) {
+        super.triggerOnOtherCardPlayed(c);
+        int amt = c.costForTurn;
+        if (amt == -1) amt = c.energyOnUse;
+        if (amt < 0) return;
+        for (int i = 0; i < amt; i++) {
+            if (AbstractDungeon.cardRandomRng.random(100) <= reduceCostProbability) {
+                updateCost(-1);
+                if (costForTurn <= 0) break;
             }
         }
-        return changeAmount;
     }
 }

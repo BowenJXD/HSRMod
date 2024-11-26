@@ -5,6 +5,7 @@ import basemod.interfaces.PostPowerApplySubscriber;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.HealAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -47,6 +48,7 @@ public class Lingsha2 extends BaseCard implements PostPowerApplySubscriber {
         addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL).setCallback((c) -> {
             if ((!toughnessMap.containsKey(c) || toughnessMap.get(c) > 0)
                     && ModHelper.getPowerCount(c, ToughnessPower.POWER_ID) <= 0) {
+                addToBot(new ExhaustSpecificCardAction(this, p.discardPile));
                 addToBot(new HealAction(p, p, magicNumber));
                 if (p.hand.group.stream().noneMatch(card -> card.type == CardType.ATTACK)) return;
                 if (upgraded) {

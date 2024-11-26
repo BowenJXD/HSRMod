@@ -114,6 +114,9 @@ public class ToughnessPower extends BuffPower {
                     break;
             }
             result *= Math.min(AbstractDungeon.actNum, 4);
+            if (BaseMod.hasModID("spireTogether:")) {
+                result = Math.round((float)result * 1.5f);
+            }
         }
         else if (c instanceof AbstractPlayer) {
             result = 50;

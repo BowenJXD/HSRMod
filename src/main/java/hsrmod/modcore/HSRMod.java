@@ -262,34 +262,34 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         BaseMod.addMonster(Encounter.GEPARD, () -> new MonsterGroup(new AbstractMonster[]{
                 new Gepard()
         }));
-        BaseMod.addEliteEncounter(Exordium.ID, new MonsterInfo(Encounter.GEPARD, 2.0F));
+        BaseMod.addEliteEncounter(Exordium.ID, new MonsterInfo(Encounter.GEPARD, 3.0F));
         
         BaseMod.addMonster(Encounter.HOOLAY, () -> new MonsterGroup(new AbstractMonster[]{
                 new Hoolay()
         }));
-        BaseMod.addEliteEncounter(TheCity.ID, new MonsterInfo(Encounter.HOOLAY, 2.0F));
+        BaseMod.addEliteEncounter(TheCity.ID, new MonsterInfo(Encounter.HOOLAY, 3.0F));
         
         BaseMod.addMonster(Encounter.SOMETHING_UNTO_DEATH, () -> new MonsterGroup(new AbstractMonster[]{
                 new SomethingUntoDeath()
         }));
-        BaseMod.addEliteEncounter(TheBeyond.ID, new MonsterInfo(Encounter.SOMETHING_UNTO_DEATH, 2.0F));
+        BaseMod.addEliteEncounter(TheBeyond.ID, new MonsterInfo(Encounter.SOMETHING_UNTO_DEATH, 3.0F));
         
         // =========================== Stronger ===========================
         
         BaseMod.addMonster(Encounter.GRIZZLY, () -> new MonsterGroup(new AbstractMonster[]{
                 new Grizzly()
         }));
-        BaseMod.addStrongMonsterEncounter(Exordium.ID, new MonsterInfo(Encounter.GRIZZLY, 2.0F));
+        BaseMod.addStrongMonsterEncounter(Exordium.ID, new MonsterInfo(Encounter.GRIZZLY, 3.0F));
         
         BaseMod.addMonster(Encounter.AUROMATON_GATEKEEPER, () -> new MonsterGroup(new AbstractMonster[]{
                 new AurumatonGatekeeper()
         }));
-        BaseMod.addStrongMonsterEncounter(TheCity.ID, new MonsterInfo(Encounter.AUROMATON_GATEKEEPER, 2.0F));
+        BaseMod.addStrongMonsterEncounter(TheCity.ID, new MonsterInfo(Encounter.AUROMATON_GATEKEEPER, 3.0F));
         
         BaseMod.addMonster(Encounter.SWEET_GORILLA, () -> new MonsterGroup(new AbstractMonster[]{
                 new SweetGorilla()
         }));
-        BaseMod.addStrongMonsterEncounter(TheBeyond.ID, new MonsterInfo(Encounter.SWEET_GORILLA, 2.0F));
+        BaseMod.addStrongMonsterEncounter(TheBeyond.ID, new MonsterInfo(Encounter.SWEET_GORILLA, 3.0F));
         
         // =========================== Normal ===========================
         
@@ -297,21 +297,21 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
                 new Spider(-200, 0),
                 new Beetle(0, 0),
         }));
-        BaseMod.addMonsterEncounter(Exordium.ID, new MonsterInfo(Encounter.BEETLE_N_SPIDER, 2.0F));
+        BaseMod.addMonsterEncounter(Exordium.ID, new MonsterInfo(Encounter.BEETLE_N_SPIDER, 3.0F));
         
         BaseMod.addMonster(Encounter.DRAGONFISH_N_DRACOLION, () -> new MonsterGroup(new AbstractMonster[]{
                 new ObedientDracolion(-300, 0),
                 new IlluminationDragonfish(-100, 0),
                 new ObedientDracolion(100, 0),
         }));
-        BaseMod.addMonsterEncounter(TheCity.ID, new MonsterInfo(Encounter.DRAGONFISH_N_DRACOLION, 2.0F));
+        BaseMod.addMonsterEncounter(TheCity.ID, new MonsterInfo(Encounter.DRAGONFISH_N_DRACOLION, 3.0F));
         
         BaseMod.addMonster(Encounter.HOUND_N_DOMESCREEN, () -> new MonsterGroup(new AbstractMonster[]{
                 new MrDomescreen(-400, 0),
                 new BubbleHound(-100, 0),
                 new MrDomescreen(200, 0),
         }));
-        BaseMod.addMonsterEncounter(TheBeyond.ID, new MonsterInfo(Encounter.HOUND_N_DOMESCREEN, 2.0F));
+        BaseMod.addMonsterEncounter(TheBeyond.ID, new MonsterInfo(Encounter.HOUND_N_DOMESCREEN, 3.0F));
     }
 
     @Override

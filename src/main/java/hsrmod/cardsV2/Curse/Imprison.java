@@ -48,7 +48,7 @@ public class Imprison extends BaseCard {
             addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new EnergyPower(AbstractDungeon.player, energyCache), energyCache));
             energyCache = 0;
         }
-        if (power != null && AbstractDungeon.player.hand.group.stream().noneMatch(c -> c instanceof Imprison)) 
+        if (power != null) 
             ModHelper.addToTopAbstract(() -> power.unlock(this));
         actionCache = null;
     }

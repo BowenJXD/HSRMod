@@ -40,7 +40,7 @@ public class JingYuan1 extends BaseCard {
         );
         this.addToBot(new BouncingAction(m, magicNumber, elementalDamageAction, this));
 
-        ModHelper.addToBotAbstract(() -> updateCost(costCache - costForTurn));
+        ModHelper.addToBotAbstract(() -> updateCost(costCache - cost));
     }
 
     @Override

@@ -41,6 +41,6 @@ public class Qingque1 extends BaseCard {
             addToBot(new DrawCardAction(p, drawAmount));
         }
 
-        ModHelper.addToBotAbstract(() -> updateCost(costCache - costForTurn));
+        ModHelper.addToBotAbstract(() -> updateCost(costCache - cost));
     }
 }

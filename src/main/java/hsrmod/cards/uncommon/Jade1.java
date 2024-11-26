@@ -39,7 +39,7 @@ public class Jade1 extends BaseCard implements PostDrawSubscriber {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {        
-        addToBot(new LoseHPAction(p, p, 1));
+        addToBot(new LoseHPAction(p, p, 2));
         addToBot(new DrawCardAction(p, magicNumber));
 
         addToBot(

@@ -124,7 +124,14 @@
       "⚠Lupine Chase Calls Bloody Gleam⚠",
       "Lupine Chase Calls Bloody Gleam"
     ],
-    "DIALOG": []
+    "DIALOG": [
+      "",
+      "Together, they burn!",
+      "The crimson moon hangs high!",
+      "Fear descends from above!",
+      "Tremble, earth and prey!",
+      "You have nowhere left to run!"
+    ]
   },
   "HSRMod:SableclawWolftrooper": {
     "NAME": "Sableclaw Wolftrooper",
@@ -153,5 +160,94 @@
       "@In@ @the@ @name@ @of@ @Preservation!@",
       "@This@ @ends@ @here!@"
     ]
+  },
+  "HSRMod:SweetGorilla": {
+    "NAME": "Sweet Gorilla",
+    "MOVES": [
+      "SoulGlad Party",
+      "Limited Free Drinks",
+      "Celebration Fountain",
+      "⚠Unlimited Free Drinks⚠",
+      "Unlimited Free Drinks (deal damage, lose #b8 HP for each damage blocked, gain 1 #yVulnerable if all blocked)"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:BubbleHound": {
+    "NAME": "Bubble Hound",
+    "MOVES": [
+      "Drink Invite",
+      "Libation of Sweetness",
+      "Upon death, deal #b1 physical damage to all enemies (1), and apply #yBleeding ."
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:MrDomescreen": {
+    "NAME": "Mr. Domescreen",
+    "MOVES": [
+      "Surprise Variety Show",
+      "Startling Broadcast",
+      "Channel Switch"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:AurumatonGatekeeper": {
+    "NAME": "Aurumaton Gatekeeper",
+    "MOVES": [
+      "Farewell Etiquette",
+      "Dread",
+      "Restraint",
+      "⚠Enchainment⚠",
+      "Enchainment (deal damage, put #yImprison into draw pile, exit #ySanction mode)"
+    ],
+    "DIALOG": [
+      "@Treasonous@",
+      "@Criminal@"
+    ]
+  },
+  "HSRMod:IlluminationDragonfish": {
+    "NAME": "Illumination Dragonfish",
+    "MOVES": [
+      "Nightly Luminosity",
+      "Candle Flame",
+      "Upon death, deal #b5 fire damage to all enemies (2), and apply #yVulnerable ."
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:ObedientDracolion": {
+    "NAME": "Obedient Dracolion",
+    "MOVES": [
+      "Lion's Roar"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:Grizzly": {
+    "NAME": "Grizzly",
+    "MOVES": [
+      "Detonation Order",
+      "Destruction Order",
+      "Overcombust Order",
+      "⚠Purge Order⚠",
+      "Purge Order"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:Spider": {
+    "NAME": "Spider",
+    "MOVES": [
+      "Ram",
+      "Timed Module",
+      "⚠Self-Exploding Module⚠",
+      "Self-Exploding Module (self-destruct, and deal damage)",
+      "Chains of Destruction",
+      "Upon death, deal #b10 fire damage to all enemies (2)."
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:Beetle": {
+    "NAME": "Beetle",
+    "MOVES": [
+      "Unstable Forcefield"
+    ],
+    "DIALOG": []
   }
 }

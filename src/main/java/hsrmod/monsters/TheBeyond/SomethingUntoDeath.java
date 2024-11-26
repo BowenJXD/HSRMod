@@ -16,6 +16,7 @@ import hsrmod.modcore.HSRMod;
 import hsrmod.powers.enemyOnly.ChargingPower;
 import hsrmod.powers.enemyOnly.SunsetPower;
 import hsrmod.powers.misc.EnergyPower;
+import hsrmod.utils.ModHelper;
 
 public class SomethingUntoDeath extends AbstractMonster {
     public static final String ID = SomethingUntoDeath.class.getSimpleName();
@@ -146,5 +147,11 @@ public class SomethingUntoDeath extends AbstractMonster {
         }
         AbstractDungeon.actionManager.addToTop(new SpawnMonsterAction(result, true));
         return result;
+    }
+
+    @Override
+    public void die() {
+        super.die();
+        ModHelper.killAllMinions();
     }
 }

@@ -72,7 +72,7 @@ public class SweetGorilla extends AbstractMonster {
                 addToBot(new ApplyPowerAction(this, this, new ChargingPower(this, MOVES[4], 1), 1));
                 break;
             case 4:
-                if (p.hasPower(StrengthPower.POWER_ID)) {
+                if (hasPower(StrengthPower.POWER_ID)) {
                     bouncedTime = 0;
                     for (int i = 0; i < damageTimes[1]; i++) {
                         addToBot(new DamageCallbackAction(p, this.damage.get(1), AbstractGameAction.AttackEffect.BLUNT_HEAVY, this::takeBouncedDamage));

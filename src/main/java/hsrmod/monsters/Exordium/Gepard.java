@@ -41,13 +41,13 @@ public class Gepard extends AbstractMonster {
         this.damage.add(new DamageInfo(this, 0));
         if (AbstractDungeon.ascensionLevel >= 19) {
             strengthGain = 3;
-            block = 50;
+            block = 40;
         } else if (AbstractDungeon.ascensionLevel >= 4) {
             strengthGain = 2;
-            block = 45;
+            block = 37;
         } else {
             strengthGain = 1;
-            block = 40;
+            block = 35;
         }
     }
 
@@ -107,7 +107,7 @@ public class Gepard extends AbstractMonster {
     @Override
     public void loseBlock(int amount, boolean noAnimation) {
         super.loseBlock(amount, noAnimation);
-        if (hasPower(ChargingPower.POWER_ID)) {
+        if (hasPower(ChargingPower.POWER_ID) && !AbstractDungeon.actionManager.turnHasEnded) {
             this.damage.get(2).base = currentBlock;
             this.setMove(MOVES[3], (byte) 4, Intent.ATTACK_BUFF, currentBlock);
             this.createIntent();
@@ -117,7 +117,7 @@ public class Gepard extends AbstractMonster {
     @Override
     public void addBlock(int blockAmount) {
         super.addBlock(blockAmount);
-        if (hasPower(ChargingPower.POWER_ID)) {
+        if (hasPower(ChargingPower.POWER_ID) && !AbstractDungeon.actionManager.turnHasEnded) {
             this.damage.get(2).base = currentBlock;
             this.setMove(MOVES[3], (byte) 4, Intent.ATTACK_BUFF, currentBlock);
             this.createIntent();

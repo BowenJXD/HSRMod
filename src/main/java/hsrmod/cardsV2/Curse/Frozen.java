@@ -15,6 +15,11 @@ public class Frozen extends BaseCard {
     }
 
     @Override
+    public boolean canUpgrade() {
+        return false;
+    }
+
+    @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         
     }

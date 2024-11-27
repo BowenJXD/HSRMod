@@ -12,6 +12,8 @@ import hsrmod.misc.ICanChangeToMulti;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.relics.boss.TheWindSoaringValorous;
+import hsrmod.utils.ModHelper;
 
 public class March7th0 extends BaseCard implements ICanChangeToMulti {
     public static final String ID = March7th0.class.getSimpleName();
@@ -21,6 +23,12 @@ public class March7th0 extends BaseCard implements ICanChangeToMulti {
         this.tags.add(CardTags.STRIKE);
         this.tags.add(CardTags.STARTER_STRIKE);
         this.tags.add(CustomEnums.REVIVE);
+    }
+
+    @Override
+    public void upgrade() {
+        super.upgrade();
+        if (ModHelper.hasRelic(TheWindSoaringValorous.ID)) changeToMulti();
     }
 
     @Override
@@ -43,19 +51,5 @@ public class March7th0 extends BaseCard implements ICanChangeToMulti {
         this.target = CardTarget.ALL_ENEMY;
         this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[0];
         this.initializeDescription();
-    }
-    
-    @Override
-    public AbstractCard makeCopy() {
-        AbstractCard result = super.makeCopy();
-        if (isMultiDamage) ((March7th0) result).changeToMulti();
-        return super.makeCopy();
-    }
-
-    @Override
-    public AbstractCard makeStatEquivalentCopy() {
-        AbstractCard result = super.makeStatEquivalentCopy();
-        if (isMultiDamage) ((March7th0) result).changeToMulti();
-        return super.makeStatEquivalentCopy();
     }
 }

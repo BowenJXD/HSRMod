@@ -5,6 +5,7 @@ import basemod.interfaces.PostPowerApplySubscriber;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.ClearCardQueueAction;
 import com.megacrit.cardcrawl.actions.animations.ShoutAction;
+import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.actions.unique.CanLoseAction;
@@ -50,10 +51,10 @@ public class Phantylia extends AbstractMonster implements PostPowerApplySubscrib
     int turnCount = 0;
 
     public Phantylia() {
-        super(NAME, HSRMod.makePath(ID), 200, 0.0F, 30.0F, 400F, 512F, PathDefine.MONSTER_PATH + ID + ".png", 100.0F, 0.0F);
+        super(NAME, HSRMod.makePath(ID), 200, 0.0F, 30.0F, 400F, 500F, PathDefine.MONSTER_PATH + ID + ".png", 100.0F, 0.0F);
         this.type = EnemyType.BOSS;
         this.dialogX = -150.0F * Settings.scale;
-        this.dialogY = -70.0F * Settings.scale;
+        this.dialogY = 70.0F * Settings.scale;
 
         if (AbstractDungeon.ascensionLevel >= 19) {
             strengthGain = 4;
@@ -81,6 +82,8 @@ public class Phantylia extends AbstractMonster implements PostPowerApplySubscrib
             AbstractDungeon.getCurrRoom().playBgmInstantly(Encounter.DIVINE_SEED + "_1");
             AbstractDungeon.getCurrRoom().cannotLose = true;
         }
+        // addToBot(new TalkAction(this, DIALOG[0], 4.0F, 5.0F));
+        ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_1", 3.0F));
         addToBot(new ApplyPowerAction(this, this, new UnawakenedPower(this)));
         spawnAbundanceLotus(false);
         spawnDestructionLotus(false);
@@ -94,6 +97,8 @@ public class Phantylia extends AbstractMonster implements PostPowerApplySubscrib
         
         switch (this.nextMove) {
             case 1:
+                addToBot(new ShoutAction(this, DIALOG[1]));
+                ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_2", 3.0F));
                 addToBot(new ApplyPowerAction(p, this, new EnergyPower(p, chargeRemove), chargeRemove));
                 addToBot(new DamageAction(p, this.damage.get(0), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
                 for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
@@ -103,6 +108,8 @@ public class Phantylia extends AbstractMonster implements PostPowerApplySubscrib
                 }
                 break;
             case 2:
+                addToBot(new ShoutAction(this, DIALOG[2]));
+                ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_3", 3.0F));
                 for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
                     addToBot(new HealAction(m, this, heal));
                 }
@@ -111,6 +118,8 @@ public class Phantylia extends AbstractMonster implements PostPowerApplySubscrib
                 }
                 break;
             case 3:
+                addToBot(new ShoutAction(this, DIALOG[3]));
+                ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_4", 3.0F));
                 addToBot(new DamageAction(p, this.damage.get(1), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
                 if (destructionLotus == null || destructionLotus.isDead) {
                     spawnDestructionLotus(false);
@@ -120,8 +129,8 @@ public class Phantylia extends AbstractMonster implements PostPowerApplySubscrib
                 this.halfDead = false;
                 this.turnCount = 0;
                 this.phase = 2;
-                addToBot(new ShoutAction(this, DIALOG[0]));
-                ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_1", 3.0F));
+                addToBot(new ShoutAction(this, DIALOG[4]));
+                ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_5", 3.0F));
                 CardCrawlGame.music.dispose();
                 CardCrawlGame.music.playTempBGM(Encounter.DIVINE_SEED + "_2");
                 addToBot(new SFXAction("VO_AWAKENEDONE_1"));
@@ -141,6 +150,8 @@ public class Phantylia extends AbstractMonster implements PostPowerApplySubscrib
                 spawnDestructionLotus(true);
                 break;
             case 5:
+                addToBot(new ShoutAction(this, DIALOG[5]));
+                ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_6", 3.0F));
                 addToBot(new DamageAction(p, this.damage.get(2), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
                 if (abundanceLotus == null || abundanceLotus.isDead) {
                     spawnAbundanceLotus(true);
@@ -150,13 +161,15 @@ public class Phantylia extends AbstractMonster implements PostPowerApplySubscrib
                 }
                 break;
             case 6:
+                addToBot(new ShoutAction(this, DIALOG[6]));
+                ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_7", 3.0F));
                 addToBot(new ApplyPowerAction(p, this, new EnergyPower(p, -EnergyPower.AMOUNT_LIMIT), -EnergyPower.AMOUNT_LIMIT));
                 addToBot(new ApplyPowerAction(this, this, new ChargingPower(this, MOVES[7], 1), 1));
                 break;
             case 7:
                 if (hasPower(ChargingPower.POWER_ID)) {
-                    addToBot(new ShoutAction(this, DIALOG[1]));
-                    ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_2", 3.0F));
+                    addToBot(new ShoutAction(this, DIALOG[7]));
+                    ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_8", 3.0F));
                     addToBot(new DamageAction(p, damage.get(3), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
                 }
                 break;

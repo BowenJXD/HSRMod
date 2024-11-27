@@ -42,6 +42,7 @@ public class EchoOfFadedDreams extends CustomMonster {
         
         this.damage.add(new DamageInfo(this, 17));
         this.damage.add(new DamageInfo(this, 7));
+        this.damage.add(new DamageInfo(this, 7));
     }
 
     @Override
@@ -63,13 +64,14 @@ public class EchoOfFadedDreams extends CustomMonster {
         AbstractPlayer p = AbstractDungeon.player;
         switch (this.nextMove) {
             case 0: 
-                addToBot(new DamageAction(p, this.damage.get(0), AbstractGameAction.AttackEffect.SLASH_VERTICAL, true));
+                addToBot(new DamageAction(p, this.damage.get(0), AbstractGameAction.AttackEffect.SLASH_HEAVY, true));
                 break;
             case 1:
+                addToBot(new DamageAction(p, this.damage.get(1), AbstractGameAction.AttackEffect.SLASH_VERTICAL, true));
                 addToBot(new MakeTempCardInDrawPileAction(new Imprison(), 1, true, true));
                 break;
             case 2:
-                addToBot(new DamageAction(p, this.damage.get(1), AbstractGameAction.AttackEffect.SLASH_VERTICAL, true));
+                addToBot(new DamageAction(p, this.damage.get(2), AbstractGameAction.AttackEffect.SLASH_VERTICAL, true));
                 addToBot(new ApplyPowerAction(p, this, new ImprisonPower(p, 1), 1));
                 break;
             case 3:
@@ -113,10 +115,10 @@ public class EchoOfFadedDreams extends CustomMonster {
                 setMove(MOVES[0], (byte) 0, Intent.ATTACK, this.damage.get(0).base);
                 break;
             case 1:
-                setMove(MOVES[1],(byte) 1, Intent.DEBUFF);
+                setMove(MOVES[1],(byte) 1, Intent.ATTACK_DEBUFF, this.damage.get(1).base);
                 break;
             case 2:
-                setMove(MOVES[2],(byte) 2, Intent.ATTACK_DEBUFF, this.damage.get(1).base);
+                setMove(MOVES[2],(byte) 2, Intent.ATTACK_DEBUFF, this.damage.get(2).base);
                 break;
         }
     }
@@ -172,7 +174,13 @@ public class EchoOfFadedDreams extends CustomMonster {
             }
         }
     }
-    
+
+    @Override
+    public void update() {
+        super.update();
+        this.animY = MathUtils.cosDeg((float) (System.currentTimeMillis() / 6L % 360L)) * 6.0F * Settings.scale;
+    }
+
     public void die() {
         if (!AbstractDungeon.getCurrRoom().cannotLose) {
             super.die();

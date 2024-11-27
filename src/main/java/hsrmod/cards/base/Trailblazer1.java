@@ -11,6 +11,8 @@ import hsrmod.cards.BaseCard;
 import hsrmod.misc.ICanChangeToMulti;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.relics.boss.TheWindSoaringValorous;
+import hsrmod.utils.ModHelper;
 
 public class Trailblazer1 extends BaseCard implements ICanChangeToMulti {
     public static final String ID = Trailblazer1.class.getSimpleName();
@@ -19,6 +21,12 @@ public class Trailblazer1 extends BaseCard implements ICanChangeToMulti {
         super(ID);
         this.tags.add(CardTags.STRIKE);
         this.tags.add(CardTags.STARTER_STRIKE);
+    }
+
+    @Override
+    public void upgrade() {
+        super.upgrade();
+        if (ModHelper.hasRelic(TheWindSoaringValorous.ID)) changeToMulti();
     }
 
     @Override
@@ -41,19 +49,5 @@ public class Trailblazer1 extends BaseCard implements ICanChangeToMulti {
         this.target = CardTarget.ALL_ENEMY;
         this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[0];
         this.initializeDescription();
-    }
-
-    @Override
-    public AbstractCard makeCopy() {
-        AbstractCard result = super.makeCopy();
-        if (isMultiDamage) ((Trailblazer1) result).changeToMulti();
-        return super.makeCopy();
-    }
-
-    @Override
-    public AbstractCard makeStatEquivalentCopy() {
-        AbstractCard result = super.makeStatEquivalentCopy();
-        if (isMultiDamage) ((Trailblazer1) result).changeToMulti();
-        return super.makeStatEquivalentCopy();
     }
 }

@@ -150,7 +150,7 @@ AstralEcologySchool,ÐÇ¿ÕÉúÌ¬Ñ§ÅÉ,UNCOMMON,ATTACK,ALL_ENEMY,2, hsrmod:ºÄÄÜ 100£¬È
 TerminalNirvana,ÎÞÓàÄù˜„,RARE,SKILL,SELF,2, ÏûºÄ ¡£ ±£Áô ¡£ hsrmod:ºÄÄÜ !M! £¬»ñµÃ1²ã ÎÞÊµÌå ¡£,,,,120,, ±£Áô ¡£ hsrmod:ºÄÄÜ !M! £¬»ñµÃ1²ã ÎÞÊµÌå £¬È»ºó´ËÅÆÓÚ´Ë´ÎÕ½¶·ÄÚ hsrmod:ºÄÄÜ ·­±¶¡£,,,,60,ÖÇÊ¶,,ÖÐ
 AstralExpress,ÐÇñ·ÁÐ³µ,BASIC,SKILL,SELF,2, ÏûºÄ ¡£´ò³öËùÓÐ³õÊ¼¹¥»÷ÅÆ¡£,,,,,,´ò³öËùÓÐ³õÊ¼¹¥»÷ÅÆ¡£,,,,,¿ªÍØ,,ÎÞ
 Imprison,½ûïÀ,COMMON,STATUS,NONE,1, ÐéÎÞ ¡£»ñµÃÊ±£¬Ê§È¥ËùÓÐ [hsrmod:ChargeIcon] ¡£ÔÚÊÖÅÆÖÐÊ±£¬ÎÞ·¨»ñµÃ [hsrmod:ChargeIcon] ¡£Ê§È¥Ê±£¬»Ø¸´ÒÔ´Ë·¨»ñµÃµÄ [hsrmod:ChargeIcon] ¡£,,,,,,,,,,,,,
-Frozen,¶³½á,COMMON,STATUS,NONE,-2, ±£Áô ¡£ #yÎÞ·¨´ò³ö ¡£,,,,,,,,,,,,,
+Frozen,¶³½á,COMMON,STATUS,NONE,-2, ±£Áô ¡£ÎÞ·¨´ò³ö¡£,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,

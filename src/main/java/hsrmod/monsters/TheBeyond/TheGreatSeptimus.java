@@ -58,7 +58,7 @@ public class TheGreatSeptimus extends CustomMonster implements OnCardUseSubscrib
         super(NAME, HSRMod.makePath(ID), 777, 0F, -15.0F, 400F, 512F, PathDefine.MONSTER_PATH + ID + ".png", -100F, 0.0F);
         this.type = EnemyType.BOSS;
         this.dialogX = -150.0F * Settings.scale;
-        this.dialogY = -70.0F * Settings.scale;
+        this.dialogY = 70.0F * Settings.scale;
         
         if (AbstractDungeon.ascensionLevel >= 19) { powerAmount = 9; }
         else if (AbstractDungeon.ascensionLevel >= 4) { powerAmount = 8; }
@@ -85,7 +85,7 @@ public class TheGreatSeptimus extends CustomMonster implements OnCardUseSubscrib
         addToBot(new ApplyPowerAction(this, this, new WalkInTheLightPower(this, powerAmount), powerAmount));
         addToBot(new ApplyPowerAction(this, this, new ToughnessPower(this, toughnessAmount, toughnessAmount), toughnessAmount));
         addToBot(new ShoutAction(this, DIALOG[0], 1.0F, 2.0F));
-        ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_Day1", 1));
+        ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_Day1", 2));
     }
 
     @Override
@@ -94,7 +94,7 @@ public class TheGreatSeptimus extends CustomMonster implements OnCardUseSubscrib
         
         if (this.nextMove < 7) {
             addToBot(new ShoutAction(this, DIALOG[nextMove], 1.0F, 2.0F));
-            ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_Day" + (this.nextMove + 1), 1));
+            ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_Day" + (this.nextMove + 1), 2));
         }
         
         switch (this.nextMove) {
@@ -127,11 +127,14 @@ public class TheGreatSeptimus extends CustomMonster implements OnCardUseSubscrib
                 addToBot(new ApplyPowerAction(this, this, new ChargingPower(this, MOVES[6], 1), 1));
                 break;
             case 7:
-                addToBot(new ShoutAction(this, DIALOG[nextMove], 3.0F, 4.0F));
-                if (AbstractDungeon.miscRng.randomBoolean())
-                    ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_Day8", 2));
-                else
-                    ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_Day9", 2));
+                if (AbstractDungeon.miscRng.randomBoolean()) {
+                    addToBot(new ShoutAction(this, DIALOG[7], 3.0F, 4.0F));
+                    ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_Day8", 3));
+                }
+                else {
+                    addToBot(new ShoutAction(this, DIALOG[8], 3.0F, 4.0F));
+                    ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_Day9", 3));
+                }
                 
                 addToBot(new RemoveSpecificPowerAction(this, this, ChargingPower.POWER_ID));
                 for (int i = 0; i < numDamage; i++) {
@@ -186,6 +189,8 @@ public class TheGreatSeptimus extends CustomMonster implements OnCardUseSubscrib
         
         this.useFastShakeAnimation(5.0F);
         CardCrawlGame.screenShake.rumble(4.0F);
+        ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_Day10", 3.0F));
+        
         super.die();
         this.onBossVictoryLogic();
         this.onFinalBossVictoryLogic();

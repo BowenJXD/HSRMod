@@ -30,17 +30,16 @@ public class Cocolia extends AbstractMonster {
     int turnCount = 0;
 
     public Cocolia() {
-        super(NAME, HSRMod.makePath(ID), 200, 0.0F, -15.0F, 400.0F, 512.0F, PathDefine.MONSTER_PATH + ID + ".png", -100.0F, 0.0F);
+        super(NAME, HSRMod.makePath(ID), 180, 0.0F, -15.0F, 400.0F, 512.0F, PathDefine.MONSTER_PATH + ID + ".png", -100.0F, 0.0F);
         this.type = EnemyType.BOSS;
         this.dialogX = -150.0F * Settings.scale;
-        this.dialogY = -70.0F * Settings.scale;
+        this.dialogY = 70.0F * Settings.scale;
 
         if (AbstractDungeon.ascensionLevel >= 19) {
-            maxHealth = 200;
+            increaseMaxHp(20, false);
         } else if (AbstractDungeon.ascensionLevel >= 4) {
-            maxHealth = 180;
+            increaseMaxHp(10, false);
         } else {
-            maxHealth = 160;
         }
 
         for (int i = 0; i < 4; i++) {
@@ -66,8 +65,12 @@ public class Cocolia extends AbstractMonster {
         AbstractMonster lance1 = AbstractDungeon.getMonsters().getMonster(HSRMod.makePath(LanceOfTheEternalFreeze.ID));
         AbstractMonster lance2 = AbstractDungeon.getMonsters().monsters.stream().filter(m -> m.id.equals(HSRMod.makePath(LanceOfTheEternalFreeze.ID)) && m != lance1).findFirst().orElse(null);
 
+        int r;
         switch (this.nextMove) {
             case 1:
+                r = AbstractDungeon.miscRng.random(1);
+                addToBot(new ShoutAction(this, DIALOG[r]));
+                ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_" + r, 3.0F));
                 if (lance1 == null || lance1.isDead) {
                     spawnLance1();
                 }
@@ -76,23 +79,35 @@ public class Cocolia extends AbstractMonster {
                 }
                 break;
             case 2:
+                r = AbstractDungeon.miscRng.random(2, 3);
+                addToBot(new ShoutAction(this, DIALOG[r]));
+                ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_" + r, 3.0F));
                 addToBot(new DamageAction(p, this.damage.get(0), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
                 addToBot(new ApplyPowerAction(p, this, new WeakPower(p, 1, true), 1));
                 break;
             case 3:
+                r = AbstractDungeon.miscRng.random(2, 3);
+                addToBot(new ShoutAction(this, DIALOG[r]));
+                ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_" + r, 3.0F));
                 addToBot(new DamageAction(p, this.damage.get(1), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
                 addToBot(new MakeTempCardInDrawPileAction(new Frozen(), 1, true, true));
                 break;
             case 4:
+                r = AbstractDungeon.miscRng.random(2, 3);
+                addToBot(new ShoutAction(this, DIALOG[r]));
+                ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_" + r, 3.0F));
                 addToBot(new DamageAction(p, this.damage.get(2), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
                 addToBot(new ExhaustAction(1, true, false, false));
                 break;
             case 5:
+                r = AbstractDungeon.miscRng.random(4, 5);
+                addToBot(new ShoutAction(this, DIALOG[r]));
+                ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_" + r, 3.0F));
                 addToBot(new ApplyPowerAction(this, this, new ChargingPower(this, MOVES[6], 1), 1));
                 break;
             case 6:
                 if (hasPower(ChargingPower.POWER_ID)) {
-                    int r = AbstractDungeon.miscRng.random(1);
+                    r = AbstractDungeon.miscRng.random(6, 7);
                     addToBot(new ShoutAction(this, DIALOG[r]));
                     ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_" + r, 3.0F));
                     CardCrawlGame.music.dispose();
@@ -164,6 +179,7 @@ public class Cocolia extends AbstractMonster {
         super.die();
         this.useFastShakeAnimation(5.0F);
         CardCrawlGame.screenShake.rumble(4.0F);
+        ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_" + 8, 3.0F));
 
         ModHelper.killAllMinions();
         onBossVictoryLogic();

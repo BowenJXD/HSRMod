@@ -331,16 +331,16 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         addAudio("Gepard1");
         addAudio("Argenti1");
 
-        for (int i = 1; i <= 9; i++) {
+        for (int i = 1; i <= 10; i++) {
             addAudio("TheGreatSeptimus_Day" + i);
         }
         for (int i = 1; i <= 5; i++) {
             addAudio("TheGreatSeptimus_Crew" + i);
         }
-        for (int i = 1; i <= 2; i++) {
+        for (int i = 1; i <= 8; i++) {
             addAudio("Phantylia_" + i);
         }
-        for (int i = 1; i <= 2; i++) {
+        for (int i = 0; i <= 8; i++) {
             addAudio("Cocolia_" + i);
         }
         addAudio("Gepard_0");
@@ -348,6 +348,8 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         for (int i = 1; i <= 5; i++) {
             addAudio("Hoolay" + i);
         }
+        addAudio("AurumatonGatekeeper_0");
+        addAudio("AurumatonGatekeeper_1");
     }
 
     void addAudio(String id) {

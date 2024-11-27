@@ -50,7 +50,7 @@ public class LoadStriatedCortexPower extends PowerPower implements DamageModAppl
             if ((card.target == AbstractCard.CardTarget.ALL_ENEMY || card.target == AbstractCard.CardTarget.ALL)) {
                 int enemyCount = AbstractDungeon.getMonsters().monsters.stream().mapToInt(m -> m.isDeadOrEscaped() ? 0 : 1).sum();
                 int increment = 0;
-                if (enemyCount <= damageIncrement.length) {
+                if (enemyCount <= damageIncrement.length && enemyCount > 0) {
                     increment = damageIncrement[enemyCount - 1];
                 }
                 increment = Math.max(0, increment);

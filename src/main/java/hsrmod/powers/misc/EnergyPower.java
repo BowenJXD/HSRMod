@@ -63,7 +63,7 @@ public class EnergyPower extends BuffPower {
         if (lockers == null || lockers.isEmpty()) locked = false;
     }
     
-    public boolean getLocked() {
+    public boolean isLocked() {
         return locked;
     }
 }

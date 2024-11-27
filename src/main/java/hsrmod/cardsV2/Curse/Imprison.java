@@ -26,13 +26,24 @@ public class Imprison extends BaseCard {
     public void onUse(AbstractPlayer p, AbstractMonster m) {}
 
     @Override
+    public boolean canUpgrade() {
+        return false;
+    }
+
+    @Override
     public void onEnterHand() {
         super.onEnterHand();
         EnergyPower power = (EnergyPower) AbstractDungeon.player.getPower(EnergyPower.POWER_ID);
         if (power != null && power.amount >= energyCache) {
             energyCache = power.amount;
-            ModHelper.addToTopAbstract(() -> power.lock(this));
-            actionCache = new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new EnergyPower(AbstractDungeon.player, -power.amount), -power.amount);
+            actionCache = new AbstractGameAction() {
+                @Override
+                public void update() {
+                    power.reducePower(energyCache);
+                    power.lock(Imprison.this);
+                    isDone = true;
+                }
+            };
             addToTop(actionCache);
         }
     }

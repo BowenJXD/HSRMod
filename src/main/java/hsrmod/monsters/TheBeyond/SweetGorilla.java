@@ -43,11 +43,10 @@ public class SweetGorilla extends AbstractMonster {
         this.dialogY = -70.0F * Settings.scale;
 
         if (AbstractDungeon.ascensionLevel >= 19) {
-            maxHealth = 165;
+            increaseMaxHp(10, false);
         } else if (AbstractDungeon.ascensionLevel >= 4) {
-            maxHealth = 160;
+            increaseMaxHp(5, false);
         } else {
-            maxHealth = 155;
         }
 
         for (int j : damages) {

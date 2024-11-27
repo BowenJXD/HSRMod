@@ -25,7 +25,8 @@
       "Even if the future is full of pain... we @won't@ escape from it!",
       "Brother... The weakness of humanity cannot be #rredeemed by others.",
       "Witness... the #r@will@ of the weak!",
-      "You have a noble soul... don't be #rshackled by the past!"
+      "You have a noble soul... don't be #rshackled by the past!",
+      "Dreams... cut short..."
     ]
   },
   "HSRMod:EchoOfFadedDreams": {
@@ -51,8 +52,14 @@
       "Starfall, Mooncry (deal damage equal to 24, reduce damage by 1 for every 10 energy, increase damage by 10 for every debuff)"
     ],
     "DIALOG": [
+      "",
+      "Gift of Abundance",
+      "Blossom...",
+      "Bloom, and wither.",
       "#r@How@ #r@Dare@ #r@You!!!@",
-      "#r@Bloom@ #r@And@ #r@Wither!@"
+      "@Cataclysm!@",
+      "~Power of the Arbor.~",
+      "#r@Shine,@ #r@Celestial@ #r@Spheres.@"
     ]
   },
   "HSRMod:AbundanceLotus": {
@@ -83,6 +90,12 @@
       "Last Choir of Genesis (exhaust all hand cards and deal 6 damage n times, n being the number of cards exhausted)"
     ],
     "DIALOG": [
+      "You will not take away our hope!",
+      "Time for the Old World to collapse!",
+      "You fools!",
+      "Ready to be crushed?",
+      "Engulf the past...",
+      "The only redemption...",
       "@The@ @Stellaron@ @Changes@ @Everything@",
       "@Brave@ @New@ @World@"
     ]

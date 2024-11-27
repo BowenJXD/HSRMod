@@ -1,10 +1,14 @@
 package hsrmod.powers.enemyOnly;
 
+import basemod.BaseMod;
 import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import hsrmod.cardsV2.Curse.Imprison;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
@@ -65,6 +69,10 @@ public class WalkInTheLightPower extends StatePower implements PreBreakSubscribe
         if (alterAmount < 0) {
             addToTop(new ApplyPowerAction(owner, owner, new ToughnessPower(owner, ToughnessPower.getStackLimit(owner) * 2), ToughnessPower.getStackLimit(owner) * 2));
             addToBot(new AddTemporaryHPAction(AbstractDungeon.player, AbstractDungeon.player, tempHPAmount));
+            if (AbstractDungeon.player.hand.size() == BaseMod.MAX_HAND_SIZE)
+                addToBot(new MakeTempCardInDiscardAction(new Imprison(), 1));
+            else
+                addToBot(new MakeTempCardInHandAction(new Imprison(), 1));
         }
         updateDescription();
     }

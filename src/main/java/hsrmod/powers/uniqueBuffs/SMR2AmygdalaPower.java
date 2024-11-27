@@ -47,7 +47,10 @@ public class SMR2AmygdalaPower extends PowerPower implements OnReceivePowerPower
     @Override
     public int onReceivePowerStacks(AbstractPower power, AbstractCreature target, AbstractCreature source, int stackAmount) {
         int num = ModHelper.getPowerCount(EnergyPower.POWER_ID) + stackAmount;
-        if (power instanceof EnergyPower && num < minAmount) {
+        if (power instanceof EnergyPower 
+                && num < minAmount 
+                && target.getPower(EnergyPower.POWER_ID) != null 
+                && !((EnergyPower)target.getPower(EnergyPower.POWER_ID)).isLocked()) {
             flash();
             int diff = minAmount - num;
             addToTop(new ApplyPowerAction(owner, owner, new EnergyPower(owner, diff), diff));

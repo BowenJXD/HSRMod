@@ -2,8 +2,6 @@ package hsrmod.powers.misc;
 
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.modcore.HSRMod;
@@ -27,7 +25,9 @@ public class BrainInAVatPower extends BuffPower implements OnReceivePowerPower {
         if (power instanceof EnergyPower
                 && stackAmount < 0) {
             flash();
-            addToTop(new ApplyPowerAction(owner, owner, new EnergyPower(owner, -stackAmount)));
+            EnergyPower energyPower = (EnergyPower) target.getPower(EnergyPower.POWER_ID);
+            if (energyPower == null || !energyPower.isLocked())
+                addToTop(new ApplyPowerAction(owner, owner, new EnergyPower(owner, -stackAmount)));
             remove(1);
         }
         return stackAmount;

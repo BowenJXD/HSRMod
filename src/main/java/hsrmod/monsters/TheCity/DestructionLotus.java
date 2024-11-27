@@ -1,5 +1,6 @@
 package hsrmod.monsters.TheCity;
 
+import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -73,5 +74,11 @@ public class DestructionLotus extends AbstractMonster {
                 break;
         }
         turnCount++;
+    }
+
+    @Override
+    public void update() {
+        super.update();
+        this.animY = MathUtils.cosDeg((float) (System.currentTimeMillis() / 12L % 360L)) * 6.0F * Settings.scale;
     }
 }

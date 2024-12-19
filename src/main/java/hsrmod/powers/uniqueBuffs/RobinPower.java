@@ -31,16 +31,18 @@ public class RobinPower extends BuffPower {
     public void onInitialApplication() {
         super.onInitialApplication();
 
-        // 取消静音背景音乐
-        CardCrawlGame.music.unsilenceBGM();
-        AbstractDungeon.scene.fadeOutAmbiance();
-
-        Timer.schedule(new Timer.Task() {
-            @Override
-            public void run() {
-                CardCrawlGame.music.playTempBgmInstantly("RobinBGM");
-            }
-        }, 2);
+        if (AbstractDungeon.getMonsters() != null
+                && AbstractDungeon.getMonsters().monsters.stream().noneMatch(m -> m.type == AbstractMonster.EnemyType.BOSS)) {
+            // 取消静音背景音乐
+            CardCrawlGame.music.unsilenceBGM();
+            AbstractDungeon.scene.fadeOutAmbiance();
+            Timer.schedule(new Timer.Task() {
+                @Override
+                public void run() {
+                    CardCrawlGame.music.playTempBgmInstantly("RobinBGM");
+                }
+            }, 2);
+        }
     }
 
     @Override

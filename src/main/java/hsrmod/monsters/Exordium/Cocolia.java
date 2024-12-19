@@ -30,15 +30,15 @@ public class Cocolia extends AbstractMonster {
     int turnCount = 0;
 
     public Cocolia() {
-        super(NAME, HSRMod.makePath(ID), 180, 0.0F, -15.0F, 400.0F, 512.0F, PathDefine.MONSTER_PATH + ID + ".png", -100.0F, 0.0F);
+        super(NAME, HSRMod.makePath(ID), 160, 0.0F, -15.0F, 400.0F, 512.0F, PathDefine.MONSTER_PATH + ID + ".png", -100.0F, 0.0F);
         this.type = EnemyType.BOSS;
         this.dialogX = -150.0F * Settings.scale;
         this.dialogY = 70.0F * Settings.scale;
 
         if (AbstractDungeon.ascensionLevel >= 19) {
-            increaseMaxHp(20, false);
+            increaseMaxHp(40, false);
         } else if (AbstractDungeon.ascensionLevel >= 4) {
-            increaseMaxHp(10, false);
+            increaseMaxHp(20, false);
         } else {
         }
 

@@ -9,6 +9,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireInsertPatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.AbstractEvent;
@@ -44,12 +45,13 @@ public interface StelleAwakeWithNeo {
         @SpirePostfixPatch
         public static void Postfix(NeowRoom room, boolean b) {
             boolean isNeowDone = b;
-            if (!b && AbstractDungeon.player.chosenClass == StellaCharacter.PlayerColorEnum.STELLA_CHARACTER && BaseMod.hasModID("spireTogether:")) {
-                    room.event.roomEventText.clear();
-                    if (Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT)
-                        room.event.roomEventText.addDialogOption(" #b“喂……醒醒……醒醒……” ");
-                    else
-                        room.event.roomEventText.addDialogOption(" “Hey... Wake Up...” ");
+            if (!b && AbstractDungeon.player.chosenClass == StellaCharacter.PlayerColorEnum.STELLA_CHARACTER
+                    && (BaseMod.hasModID("spireTogether:") || Settings.isTrial)) {
+                room.event.roomEventText.clear();
+                if (Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT)
+                    room.event.roomEventText.addDialogOption(" #b“喂……醒醒……醒醒……” ");
+                else
+                    room.event.roomEventText.addDialogOption(" “Hey... Wake Up...” ");
             }
         }
     }
@@ -66,14 +68,15 @@ public interface StelleAwakeWithNeo {
     public static class MaybeStartRewards {
         @SpirePrefixPatch
         public static void Prefix(AbstractEvent e, int buttonPressed) {
-            if (AbstractDungeon.player.chosenClass == StellaCharacter.PlayerColorEnum.STELLA_CHARACTER && BaseMod.hasModID("spireTogether:")) {
+            if (AbstractDungeon.player.chosenClass == StellaCharacter.PlayerColorEnum.STELLA_CHARACTER
+                    && (BaseMod.hasModID("spireTogether:") || Settings.isTrial)) {
                 try {
                     Field screenNumField = NeowEvent.class.getDeclaredField("screenNum");
                     //false有初始捏奥选项，true没有
                     screenNumField.setAccessible(false);
-                    
+
                     test();
-                    
+
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -81,17 +84,15 @@ public interface StelleAwakeWithNeo {
         }
     }
 
-    public static void test(){
-        AbstractDungeon.effectList.add(new AbstractGameEffect(){
+    public static void test() {
+        AbstractDungeon.effectList.add(new AbstractGameEffect() {
             @Override
             public void update() {
                 isDone = true;
                 RoomEventDialog.optionList.clear();
-//                    AbstractDungeon.eventList.add(0, eventName);
-//                    King.Log("Adding event key to event list: " + AbstractDungeon.eventList.get(0));
                 MapRoomNode currNode = AbstractDungeon.getCurrMapNode();
                 MapRoomNode node = new MapRoomNode(currNode.x, currNode.y);
-                node.setRoom(new EventRoom(){
+                node.setRoom(new EventRoom() {
                     @Override
                     public void onPlayerEntry() {
                         AbstractDungeon.overlayMenu.proceedButton.hide();
@@ -107,7 +108,7 @@ public interface StelleAwakeWithNeo {
                 AbstractDungeon.getCurrRoom().onPlayerEntry();
                 AbstractDungeon.scene.nextRoom(node.room);
                 AbstractDungeon.rs = AbstractDungeon.RenderScene.NORMAL;
-                
+
                 //关闭气泡
                 for (int i = AbstractDungeon.effectList.size() - 1; i >= 0; i--) {
                     if (AbstractDungeon.effectList.get(i) instanceof InfiniteSpeechBubble) {
@@ -116,10 +117,14 @@ public interface StelleAwakeWithNeo {
                     }
                 }
             }
+
             @Override
-            public void render(SpriteBatch spriteBatch) {}
+            public void render(SpriteBatch spriteBatch) {
+            }
+
             @Override
-            public void dispose() {}
+            public void dispose() {
+            }
         });
     }
 }

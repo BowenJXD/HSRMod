@@ -189,6 +189,9 @@ public class RewardEditor implements CustomSavable<String> {
             return "";
         }
         List<String> relics = pool.stream().filter(r -> RelicLibrary.getRelic(r) instanceof BaseRelic).collect(Collectors.toList());
+        if (relics.isEmpty()) {
+            return "";
+        }
         String relic = relics.get(AbstractDungeon.cardRandomRng.random(relics.size() - 1));
         pool.remove(relic);
         return relic;

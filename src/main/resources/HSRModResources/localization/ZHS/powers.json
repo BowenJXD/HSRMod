@@ -248,8 +248,8 @@
   "HSRMod:Huohuo": {
     "NAME": "凭附气通天真",
     "DESCRIPTIONS": [
-      "打出牌后，回复1点生命，10点 [hsrmod:ChargeIcon] ，并移除1层随机负面效果。",
-      "打出牌后，或消耗 [hsrmod:ChargeIcon] 后，回复1点生命，10点 [hsrmod:ChargeIcon] ，并移除1层随机负面效果。"
+      "打出牌后，回复1点 #y临时生命 ，10点 [hsrmod:ChargeIcon] ，并净化1层随机负面效果。",
+      "打出牌后，或消耗 [hsrmod:ChargeIcon] 后，回复1点 #y临时生命 ，10点 [hsrmod:ChargeIcon] ，并净化1层随机负面效果。"
     ]
   },
   "HSRMod:Epiphany": {
@@ -423,7 +423,7 @@
   "HSRMod:WalkInTheLight": {
     "NAME": "在光明中行",
     "DESCRIPTIONS": [
-      "受到的伤害减少 #b%d%% 。被 #y击破 时，或有怪物死亡时，移除1层，回复所有 #y韧性 ，并令玩家获得 #b%d 层 #y临时血量 和1张 #y禁锢 。0层时，受到的伤害增加 #b%d%% 。",
+      "受到的伤害减少 #b%d%% 。被 #y击破 时，或有怪物死亡时，移除1层，回复所有 #y韧性 ，并令玩家获得 #b%d 层 #y临时血量 ，若为前者则获得1张 #y禁锢 。0层时，受到的伤害增加 #b%d%% 。",
       "受到的伤害增加 #b%d%% 。"
     ]
   },

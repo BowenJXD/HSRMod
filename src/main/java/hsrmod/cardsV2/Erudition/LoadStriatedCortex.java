@@ -9,7 +9,7 @@ import hsrmod.powers.uniqueBuffs.LoadStriatedCortexPower;
 public class LoadStriatedCortex extends BaseCard {
     public static final String ID = LoadStriatedCortex.class.getSimpleName();
     
-    int[] damageIncrement = new int[]{6, 3, 1};
+    int[] damageIncrement = new int[]{6, 2, 1};
     
     public LoadStriatedCortex() {
         super(ID);
@@ -18,7 +18,7 @@ public class LoadStriatedCortex extends BaseCard {
     @Override
     public void upgrade() {
         super.upgrade();
-        damageIncrement = new int[]{9, 4, 1};
+        damageIncrement = new int[]{9, 3, 1};
     }
 
     @Override

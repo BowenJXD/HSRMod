@@ -422,7 +422,7 @@
   "HSRMod:WalkInTheLight": {
     "NAME": "Walk in the Light",
     "DESCRIPTIONS": [
-      "Damage received is reduced by #b%d%%. When #yBroken, or when a monster dies, remove 1 stack, recover all #yToughness, and the player gain #b%d temporary HP and an #yImprison card. At 0 stacks, damage received is increased by #b%d%%.",
+      "Damage received is reduced by #b%d%%. When #yBroken, or when a monster dies, remove 1 stack, recover all #yToughness, and the player gain #b%d temporary HP and an #yImprison card if its the former. At 0 stacks, damage received is increased by #b%d%%.",
       "Damage received is increased by #b%d%%."
     ]
   },

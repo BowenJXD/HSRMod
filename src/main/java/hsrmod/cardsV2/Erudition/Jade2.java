@@ -30,7 +30,7 @@ public class Jade2 extends BaseCard {
         ModHelper.addToBotAbstract(() -> {
             final int[] hpLoss = {0};
             p.hand.group.stream().filter(c -> (c.target == CardTarget.ALL_ENEMY || c.target == CardTarget.ALL) && c.costForTurn > 0).forEach(c -> {
-                hpLoss[0]++;
+                hpLoss[0] += 2;
                 addToTop(new ReduceCostForTurnAction(c, 1));
             });
             addToTop(new LoseHPAction(p, p, hpLoss[0]));

@@ -61,6 +61,11 @@ public class DivinityPower extends PowerPower implements OnPlayerLoseBlockSubscr
     }
 
     @Override
+    public void onGainedBlock(float blockAmount) {
+        super.onGainedBlock(blockAmount);
+    }
+
+    @Override
     public boolean onReceivePower(AbstractPower abstractPower, AbstractCreature abstractCreature, AbstractCreature abstractCreature1) {
         if (abstractPower instanceof DexterityPower || abstractPower instanceof FrailPower) {
             flash();

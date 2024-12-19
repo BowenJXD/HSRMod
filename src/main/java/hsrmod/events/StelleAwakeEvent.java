@@ -29,8 +29,6 @@ public class StelleAwakeEvent extends PhasedEvent {
 
     public StelleAwakeEvent() {
         super(ID, title, "HSRModResources/img/events/" + ID + ".png");
-        AbstractDungeon.player.loseRelic(HSRMod.makePath(TrailblazeTimer.ID));
-
         List<TextPhase.OptionInfo> options = new ArrayList<>();
 
         for (int i = 0; i < Path.values().length; i++) {
@@ -38,6 +36,7 @@ public class StelleAwakeEvent extends PhasedEvent {
             Path path = Path.values()[i];
             AbstractRelic relic = path == Path.TRAILBLAZE ? new TrailblazeTimer() : WaxRelic.getWaxRelic(RelicLibrary.starterList, Path.toTag(path));
             if (relic == null) continue;
+            AbstractDungeon.player.loseRelic(relic.relicId);
             TextPhase.OptionInfo option = new TextPhase.OptionInfo(OPTIONS[i], relic);
             option.setOptionResult((j) -> {
                 AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float) (Settings.WIDTH / 2), (float) (Settings.HEIGHT / 2), relic);

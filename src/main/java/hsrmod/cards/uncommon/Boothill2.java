@@ -23,11 +23,13 @@ public class Boothill2 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         returnToHand = false;
+        int toughness = ModHelper.getPowerCount(m, ToughnessPower.POWER_ID);
         addToBot(new ElementalDamageAction(m,
                 new ElementalDamageInfo(this),
                 AbstractGameAction.AttackEffect.SLASH_HEAVY,
                 (c) -> {
-                    if (ModHelper.getPowerCount(m, ToughnessPower.POWER_ID) > 0) {
+            int newToughness = ModHelper.getPowerCount(m, ToughnessPower.POWER_ID);
+                    if (newToughness > 0 && toughness >= newToughness) {
                         returnToHand = true;
                         setCostForTurn(costCache);
                     }

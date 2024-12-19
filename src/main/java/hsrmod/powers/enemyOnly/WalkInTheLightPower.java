@@ -20,7 +20,7 @@ import hsrmod.subscribers.SubscriptionManager;
 public class WalkInTheLightPower extends StatePower implements PreBreakSubscriber {
     public static final String POWER_ID = HSRMod.makePath(WalkInTheLightPower.class.getSimpleName());
 
-    int tempHPAmount = 17;
+    int tempHPAmount = 10;
     int damageMultiplier = 10;
     int damageMultiplier2 = 200;
     
@@ -69,10 +69,6 @@ public class WalkInTheLightPower extends StatePower implements PreBreakSubscribe
         if (alterAmount < 0) {
             addToTop(new ApplyPowerAction(owner, owner, new ToughnessPower(owner, ToughnessPower.getStackLimit(owner) * 2), ToughnessPower.getStackLimit(owner) * 2));
             addToBot(new AddTemporaryHPAction(AbstractDungeon.player, AbstractDungeon.player, tempHPAmount));
-            if (AbstractDungeon.player.hand.size() == BaseMod.MAX_HAND_SIZE)
-                addToBot(new MakeTempCardInDiscardAction(new Imprison(), 1));
-            else
-                addToBot(new MakeTempCardInHandAction(new Imprison(), 1));
         }
         updateDescription();
     }
@@ -91,6 +87,10 @@ public class WalkInTheLightPower extends StatePower implements PreBreakSubscribe
                 && target == owner
                 && amount > 0) {
             reducePower(1);
+            if (AbstractDungeon.player.hand.size() == BaseMod.MAX_HAND_SIZE)
+                addToBot(new MakeTempCardInDiscardAction(new Imprison(), 1));
+            else
+                addToBot(new MakeTempCardInHandAction(new Imprison(), 1));
         }
     }
 }

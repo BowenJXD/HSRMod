@@ -1,5 +1,6 @@
 package hsrmod.powers.uniqueBuffs;
 
+import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -38,7 +39,7 @@ public class HuohuoPower extends BuffPower implements OnReceivePowerPower, NonSt
     
     void trigger(){
         flash();
-        addToBot(new HealAction(owner, owner, 1));
+        addToBot(new AddTemporaryHPAction(owner, owner, 1));
         addToBot(new ApplyPowerAction(owner, owner, new EnergyPower(owner, 10), 10));
         addToBot(new CleanAction(owner, 1, false));
     }

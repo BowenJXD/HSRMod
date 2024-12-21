@@ -45,7 +45,7 @@ public class TheGreatSeptimus extends CustomMonster implements OnCardUseSubscrib
     public static final String[] MOVES = eventStrings.MOVES;
     public static final String[] DIALOG = eventStrings.DIALOG;
     
-    private int[] damages = {27, 37, 7, 17};
+    private int[] damages = {17, 27, 37, 7, 17};
     int turnCount = 0;
     int blockGain = 77;
     int numDamage = 7;
@@ -108,6 +108,7 @@ public class TheGreatSeptimus extends CustomMonster implements OnCardUseSubscrib
                 addToBot(new ApplyPowerAction(p, this, new EnergyDownPower(p, 1), 1));
                 break;
             case 3:
+                addToBot(new DamageAction(p, this.damage.get(2), AbstractGameAction.AttackEffect.SLASH_VERTICAL, true));
                 addToBot(new ApplyPowerAction(p, this, new WeakPower(p, 2, true), 2));
                 addToBot(new ApplyPowerAction(p, this, new FrailPower(p, 2, true), 2));
                 break;
@@ -117,7 +118,7 @@ public class TheGreatSeptimus extends CustomMonster implements OnCardUseSubscrib
             case 5:
                 if (hasPower(ChargingPower.POWER_ID)) {
                     for (int i = 0; i < numDamage; i++) {
-                        addToBot(new DamageAction(p, this.damage.get(2), AbstractGameAction.AttackEffect.BLUNT_HEAVY, true));
+                        addToBot(new DamageAction(p, this.damage.get(3), AbstractGameAction.AttackEffect.BLUNT_HEAVY, true));
                     }
                 }
                 break;
@@ -138,7 +139,7 @@ public class TheGreatSeptimus extends CustomMonster implements OnCardUseSubscrib
                 
                 addToBot(new RemoveSpecificPowerAction(this, this, ChargingPower.POWER_ID));
                 for (int i = 0; i < numDamage; i++) {
-                    addToBot(new DamageAction(p, this.damage.get(3), AbstractGameAction.AttackEffect.SMASH));
+                    addToBot(new DamageAction(p, this.damage.get(4), AbstractGameAction.AttackEffect.SMASH));
                 }
                 addToBot(new ShakeScreenAction(0.3F, ScreenShake.ShakeDur.LONG, ScreenShake.ShakeIntensity.LOW));
                 break;
@@ -157,13 +158,13 @@ public class TheGreatSeptimus extends CustomMonster implements OnCardUseSubscrib
                 setMove(MOVES[1], (byte) 2, Intent.ATTACK_DEBUFF, this.damage.get(1).base);
                 break;
             case 2:
-                setMove(MOVES[2], (byte) 3, Intent.DEBUFF);
+                setMove(MOVES[2], (byte) 3, Intent.ATTACK_DEBUFF, this.damage.get(2).base);
                 break;
             case 3:
                 setMove(MOVES[3], (byte) 4, Intent.UNKNOWN);
                 break;
             case 4:
-                setMove(MOVES[4], (byte) 5, Intent.ATTACK, this.damage.get(2).base, numDamage, true);
+                setMove(MOVES[4], (byte) 5, Intent.ATTACK, this.damage.get(3).base, numDamage, true);
                 for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
                     if (m != this && !m.isDead && !m.isDying && !m.halfDead && m.currentHealth > 0 && !m.hasPower(BrokenPower.POWER_ID)) {
                         addToBot(new ApplyPowerAction(m, this, new MultiMovePower(m, 1), 1));
@@ -174,7 +175,7 @@ public class TheGreatSeptimus extends CustomMonster implements OnCardUseSubscrib
                 setMove(MOVES[5], (byte) 6, Intent.DEFEND_BUFF);
                 break;
             case 6:
-                setMove(MOVES[6], (byte) 7, Intent.ATTACK, this.damage.get(3).base, numDamage, true);
+                setMove(MOVES[6], (byte) 7, Intent.ATTACK, this.damage.get(4).base, numDamage, true);
                 break;
         }
         

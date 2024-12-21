@@ -32,14 +32,14 @@ public class SymbiotePower extends PowerPower implements PreBreakDamageSubscribe
     public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
         if (power instanceof BrokenPower) {
             this.flash();
-            addToBot(new GainEnergyAction(2));
+            addToTop(new GainEnergyAction(2));
         }
     }
 
     @Override
     public float preBreakDamage(float amount, AbstractCreature target) {
         if (SubscriptionManager.checkSubscriber(this)) {
-            addToBot(new DrawCardAction(1));
+            addToTop(new DrawCardAction(1));
         }
         return amount;
     }

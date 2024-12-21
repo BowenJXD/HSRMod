@@ -211,7 +211,7 @@ public class ModHelper {
     }
     
     public static boolean hasRelic(String relicID) {
-        return AbstractDungeon.player.hasRelic(HSRMod.makePath(relicID));
+        return AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(HSRMod.makePath(relicID));
     }
     
     public static void applyEnemyPowersOnly(DamageInfo info, AbstractCreature target, boolean reset) {

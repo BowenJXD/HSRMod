@@ -3,12 +3,14 @@ package hsrmod.powers.enemyOnly;
 import basemod.BaseMod;
 import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.cardsV2.Curse.Imprison;
+import hsrmod.misc.IMultiToughness;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
@@ -17,10 +19,11 @@ import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.subscribers.PreBreakSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 
-public class WalkInTheLightPower extends StatePower implements PreBreakSubscriber {
+public class WalkInTheLightPower extends StatePower implements PreBreakSubscriber, IMultiToughness {
     public static final String POWER_ID = HSRMod.makePath(WalkInTheLightPower.class.getSimpleName());
 
     int tempHPAmount = 10;
+    int blockAmount = 7;
     int damageMultiplier = 10;
     int damageMultiplier2 = 200;
     
@@ -31,7 +34,7 @@ public class WalkInTheLightPower extends StatePower implements PreBreakSubscribe
     
     public void updateDescription() {
         if (amount > 0)
-            this.description = String.format(DESCRIPTIONS[0], amount * damageMultiplier, tempHPAmount, damageMultiplier2);
+            this.description = String.format(DESCRIPTIONS[0], amount * damageMultiplier, tempHPAmount, blockAmount, damageMultiplier2);
         else
             this.description = String.format(DESCRIPTIONS[1], damageMultiplier2);
     }
@@ -69,6 +72,7 @@ public class WalkInTheLightPower extends StatePower implements PreBreakSubscribe
         if (alterAmount < 0) {
             addToTop(new ApplyPowerAction(owner, owner, new ToughnessPower(owner, ToughnessPower.getStackLimit(owner) * 2), ToughnessPower.getStackLimit(owner) * 2));
             addToBot(new AddTemporaryHPAction(AbstractDungeon.player, AbstractDungeon.player, tempHPAmount));
+            addToBot(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, blockAmount));
         }
         updateDescription();
     }
@@ -92,5 +96,10 @@ public class WalkInTheLightPower extends StatePower implements PreBreakSubscribe
             else
                 addToBot(new MakeTempCardInHandAction(new Imprison(), 1));
         }
+    }
+
+    @Override
+    public int getToughnessBarCount() {
+        return amount;
     }
 }

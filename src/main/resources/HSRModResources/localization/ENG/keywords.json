@@ -21,7 +21,7 @@
   },
   {
     "NAMES": ["Toughness", "toughness"],
-    "DESCRIPTION": "Elemental damage would reduce target's toughness. The reduction amount would be the number in the parenthesis."
+    "DESCRIPTION": "Damage received - X%. Elemental damage would reduce target's toughness. The reduction amount would be the number in the parenthesis."
   },
   {
     "NAMES": ["Broken", "broken"],

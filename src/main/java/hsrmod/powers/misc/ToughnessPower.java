@@ -1,30 +1,39 @@
 package hsrmod.powers.misc;
 
 import basemod.BaseMod;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.MathUtils;
+import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.stance.StanceAuraEffect;
+import com.megacrit.cardcrawl.vfx.stance.WrathParticleEffect;
+import hsrmod.effects.CustomAuraEffect;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ToughnessPower extends BuffPower {
+public class ToughnessPower extends BuffPower implements InvisiblePower {
     public static final String POWER_ID = HSRMod.makePath(ToughnessPower.class.getSimpleName());
     
     List<Object> lockers;
     boolean locked = false;
     int stackLimit = 0;
-    
+
     public ToughnessPower(AbstractCreature owner, int Amount, int stackLimit) {
         super(POWER_ID, owner, Amount);
         this.priority = 20;
         this.stackLimit = stackLimit;
-        canGoNegative = true;
+        this.canGoNegative = true;
         
         this.updateDescription();
     }
@@ -82,7 +91,7 @@ public class ToughnessPower extends BuffPower {
     public boolean getLocked() {
         return locked;
     }
-    
+
     public void lock(Object locker) {
         if (lockers == null) lockers = new ArrayList<>();
         lockers.add(locker);

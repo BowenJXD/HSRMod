@@ -12,7 +12,7 @@ public class AlienDreamPower extends DebuffPower {
 
     boolean justApplied = true;
     int dmgMultiplier = 100;
-    int healMultiplier = 10;
+    int healMultiplier = 33;
 
     public AlienDreamPower(AbstractCreature owner, int amount) {
         super(POWER_ID, owner, amount);
@@ -26,7 +26,7 @@ public class AlienDreamPower extends DebuffPower {
     @Override
     public int onAttackToChangeDamage(DamageInfo info, int damageAmount) {
         if (info.type != DamageInfo.DamageType.NORMAL) return damageAmount * (int) (1 - dmgMultiplier / 100f);
-        addToTop(new HealAction(owner, owner, (int) (damageAmount * healMultiplier / 100f)));
+        addToTop(new HealAction(owner, owner, Math.round(damageAmount * healMultiplier / 100f)));
         return 0;
     }
 

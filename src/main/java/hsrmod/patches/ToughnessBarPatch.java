@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
+import hsrmod.misc.IMultiToughness;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.misc.ToughnessPower;
 
@@ -36,9 +37,12 @@ public class ToughnessBarPatch {
             float ratio = Math.max(0, 1.0F * Math.abs(tp.amount) / ToughnessPower.getStackLimit(_inst));
 
             renderToughnessBar(sb, _inst, x, y, ratio, tp);
-
-            FontHelper.renderFontCentered(sb, FontHelper.healthInfoFont,
-                    tp.amount + "/" + ToughnessPower.getStackLimit(_inst),
+            String text = tp.amount + "/" + ToughnessPower.getStackLimit(_inst);
+            int barCount = _inst.powers.stream().mapToInt(p -> p instanceof IMultiToughness ? ((IMultiToughness)p).getToughnessBarCount() : 0).sum();
+            if (barCount > 1) {
+                text += "×" + barCount;
+            }
+            FontHelper.renderFontCentered(sb, FontHelper.healthInfoFont, text,
                     _inst.hb.cX, y + HEALTH_BAR_OFFSET_Y + HEALTH_TEXT_OFFSET_Y + 5.0F * Settings.scale,
                     new Color(0.8F, 0.8F, 0.8F, 1.0F));
         }

@@ -102,9 +102,8 @@ public class EchoOfFadedDreams extends CustomMonster {
             return;
         }
         if (firstStep != -1) {
-            setMove((byte) firstStep, Intent.UNKNOWN);
+            i = firstStep;
             firstStep = -1;
-            return;
         }
         int r = i % 3;
         if (lastMove((byte) r)) {

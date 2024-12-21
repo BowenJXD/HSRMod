@@ -1,10 +1,17 @@
 package hsrmod.powers.misc;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.vfx.stance.WrathParticleEffect;
+import hsrmod.effects.CustomAuraEffect;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
 
@@ -16,11 +23,15 @@ public class BrokenPower extends BuffPower {
     private float damageDecrementPercentage = 1f / 4f;
     
     public boolean doReduce = false;
+    private float particleTimer;
+    private float particleTimer2;
     
     public BrokenPower(AbstractCreature owner, int Amount) {
         super(POWER_ID, owner, Amount);
         priority = 6;
         amount = -1;
+        this.particleTimer = 0.0F;
+        this.particleTimer2 = 0.0F;
         
         this.updateDescription();
     }
@@ -36,6 +47,26 @@ public class BrokenPower extends BuffPower {
         this.type = PowerType.DEBUFF;
     }
 
+    @Override
+    public void update(int slot) {
+        super.update(slot);
+        /*if (!Settings.DISABLE_EFFECTS) {
+            this.particleTimer -= Gdx.graphics.getDeltaTime();
+            if (this.particleTimer < 0.0F) {
+                this.particleTimer = 0.05F;
+                AbstractDungeon.effectsQueue.add(new WrathParticleEffect());
+            }
+        }*/
+
+        this.particleTimer2 -= Gdx.graphics.getDeltaTime();
+        if (this.particleTimer2 < 0.0F) {
+            this.particleTimer2 = MathUtils.random(0.3F, 0.4F);
+            AbstractDungeon.effectsQueue.add(new CustomAuraEffect(
+                    owner.hb,
+                    new Color(MathUtils.random(0.9F, 1.0F), MathUtils.random(0.2F, 0.3F), MathUtils.random(0.4F, 0.5F), 0.0F)));
+        }
+    }
+    
     @Override
     public float atDamageReceive(float damage, DamageInfo.DamageType damageType) {
         if (damageType == DamageInfo.DamageType.NORMAL) {

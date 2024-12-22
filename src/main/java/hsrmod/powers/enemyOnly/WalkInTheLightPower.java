@@ -70,7 +70,7 @@ public class WalkInTheLightPower extends StatePower implements PreBreakSubscribe
             return;
         }
         if (alterAmount < 0) {
-            addToTop(new ApplyPowerAction(owner, owner, new ToughnessPower(owner, ToughnessPower.getStackLimit(owner) * 2), ToughnessPower.getStackLimit(owner) * 2));
+            addToBot(new ApplyPowerAction(owner, owner, new ToughnessPower(owner, ToughnessPower.getStackLimit(owner) * 2), ToughnessPower.getStackLimit(owner) * 2));
             addToBot(new AddTemporaryHPAction(AbstractDungeon.player, AbstractDungeon.player, tempHPAmount));
             addToBot(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, blockAmount));
         }

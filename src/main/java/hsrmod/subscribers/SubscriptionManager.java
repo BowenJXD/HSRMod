@@ -62,43 +62,43 @@ public class SubscriptionManager {
                 && !preElementalDamageSubscribers.contains(sub)) {
             if (addToFront) preElementalDamageSubscribers.add(0, (PreElementalDamageSubscriber) sub);
             else preElementalDamageSubscribers.add((PreElementalDamageSubscriber) sub);
-        } else if (sub instanceof PreBreakDamageSubscriber
+        } if (sub instanceof PreBreakDamageSubscriber
                 && !preBreakDamageSubscribers.contains(sub)) {
             if (addToFront) preBreakDamageSubscribers.add(0, (PreBreakDamageSubscriber) sub);
             else preBreakDamageSubscribers.add((PreBreakDamageSubscriber) sub);
-        } else if (sub instanceof PreToughnessReduceSubscriber
+        } if (sub instanceof PreToughnessReduceSubscriber
                 && !preToughnessReduceSubscribers.contains(sub)) {
             if (addToFront) preToughnessReduceSubscribers.add(0, (PreToughnessReduceSubscriber) sub);
             else preToughnessReduceSubscribers.add((PreToughnessReduceSubscriber) sub);
-        } else if (sub instanceof PreBreakSubscriber
+        } if (sub instanceof PreBreakSubscriber
                 && !preBreakSubscribers.contains(sub)) {
             if (addToFront) preBreakSubscribers.add(0, (PreBreakSubscriber) sub);
             else preBreakSubscribers.add((PreBreakSubscriber) sub);
-        } else if (sub instanceof PreDoTDamageSubscriber
+        } if (sub instanceof PreDoTDamageSubscriber
                 && !preDoTDamageSubscribers.contains(sub)) {
             if (addToFront) preDoTDamageSubscribers.add(0, (PreDoTDamageSubscriber) sub);
             else preDoTDamageSubscribers.add((PreDoTDamageSubscriber) sub);
-        } else if (sub instanceof PreEnergyChangeSubscriber
+        } if (sub instanceof PreEnergyChangeSubscriber
                 && !preEnergyChangeSubscribers.contains(sub)) {
             if (addToFront) preEnergyChangeSubscribers.add(0, (PreEnergyChangeSubscriber) sub);
             else preEnergyChangeSubscribers.add((PreEnergyChangeSubscriber) sub);
-        } else if (sub instanceof PostBreakBlockSubscriber
+        } if (sub instanceof PostBreakBlockSubscriber
                 && !postBreakBlockSubscribers.contains(sub)) {
             if (addToFront) postBreakBlockSubscribers.add(0, (PostBreakBlockSubscriber) sub);
             else postBreakBlockSubscribers.add((PostBreakBlockSubscriber) sub);
-        } else if (sub instanceof PreBlockChangeSubscriber
+        } if (sub instanceof PreBlockChangeSubscriber
                 && !preBlockGainSubscribers.contains(sub)) {
             if (addToFront) preBlockGainSubscribers.add(0, (PreBlockChangeSubscriber) sub);
             else preBlockGainSubscribers.add((PreBlockChangeSubscriber) sub);
-        } else if (sub instanceof ICheckUsableSubscriber
+        } if (sub instanceof ICheckUsableSubscriber
                 && !checkUsableSubscribers.contains(sub)) {
             if (addToFront) checkUsableSubscribers.add(0, (ICheckUsableSubscriber) sub);
             else checkUsableSubscribers.add((ICheckUsableSubscriber) sub);
-        } else if (sub instanceof ISetToughnessReductionSubscriber
+        } if (sub instanceof ISetToughnessReductionSubscriber
                 && !setToughnessReductionSubscribers.contains(sub)) {
             if (addToFront) setToughnessReductionSubscribers.add(0, (ISetToughnessReductionSubscriber) sub);
             else setToughnessReductionSubscribers.add((ISetToughnessReductionSubscriber) sub);
-        } else if (sub instanceof PostUpgradeSubscriber
+        } if (sub instanceof PostUpgradeSubscriber
                 && !postUpgradeSubscribers.contains(sub)) {
             if (addToFront) postUpgradeSubscribers.add(0, (PostUpgradeSubscriber) sub);
             else postUpgradeSubscribers.add((PostUpgradeSubscriber) sub);
@@ -116,25 +116,25 @@ public class SubscriptionManager {
     public void unsubscribeHelper(ISubscriber sub) {
         if (sub instanceof PreElementalDamageSubscriber) {
             preElementalDamageSubscribers.remove(sub);
-        } else if (sub instanceof PreBreakDamageSubscriber) {
+        } if (sub instanceof PreBreakDamageSubscriber) {
             preBreakDamageSubscribers.remove(sub);
-        } else if (sub instanceof PreToughnessReduceSubscriber) {
+        } if (sub instanceof PreToughnessReduceSubscriber) {
             preToughnessReduceSubscribers.remove(sub);
-        } else if (sub instanceof PreBreakSubscriber) {
+        } if (sub instanceof PreBreakSubscriber) {
             preBreakSubscribers.remove(sub);
-        } else if (sub instanceof PreDoTDamageSubscriber) {
+        } if (sub instanceof PreDoTDamageSubscriber) {
             preDoTDamageSubscribers.remove(sub);
-        } else if (sub instanceof PreEnergyChangeSubscriber) {
+        } if (sub instanceof PreEnergyChangeSubscriber) {
             preEnergyChangeSubscribers.remove(sub);
-        } else if (sub instanceof PostBreakBlockSubscriber) {
+        } if (sub instanceof PostBreakBlockSubscriber) {
             postBreakBlockSubscribers.remove(sub);
-        } else if (sub instanceof PreBlockChangeSubscriber) {
+        } if (sub instanceof PreBlockChangeSubscriber) {
             preBlockGainSubscribers.remove(sub);
-        } else if (sub instanceof ICheckUsableSubscriber) {
+        } if (sub instanceof ICheckUsableSubscriber) {
             checkUsableSubscribers.remove(sub);
-        } else if (sub instanceof ISetToughnessReductionSubscriber) {
+        } if (sub instanceof ISetToughnessReductionSubscriber) {
             setToughnessReductionSubscribers.remove(sub);
-        } else if (sub instanceof PostUpgradeSubscriber) {
+        } if (sub instanceof PostUpgradeSubscriber) {
             postUpgradeSubscribers.remove(sub);
         }
     }

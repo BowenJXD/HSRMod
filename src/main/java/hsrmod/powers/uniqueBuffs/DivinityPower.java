@@ -3,25 +3,28 @@ package hsrmod.powers.uniqueBuffs;
 import basemod.BaseMod;
 import basemod.interfaces.OnPlayerLoseBlockSubscriber;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.FrailPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import hsrmod.modcore.HSRMod;
+import hsrmod.powers.BuffPower;
 import hsrmod.powers.PowerPower;
 import hsrmod.subscribers.PreBlockChangeSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 
-public class DivinityPower extends PowerPower implements OnPlayerLoseBlockSubscriber, PreBlockChangeSubscriber, OnReceivePowerPower {
+public class DivinityPower extends BuffPower implements OnPlayerLoseBlockSubscriber, PreBlockChangeSubscriber, OnReceivePowerPower {
     public static final String POWER_ID = HSRMod.makePath(DivinityPower.class.getSimpleName());
 
-    private int blockAdd = 2;
     private float loseMultiplier = 1 / 4f;
+    boolean triggered = false;
     
-    public DivinityPower(int blockAdd, float loseMultiplier) {
-        super(POWER_ID);
-        this.blockAdd = blockAdd;
+    public DivinityPower(AbstractCreature owner, int amount, float loseMultiplier) {
+        super(POWER_ID, owner, amount);
+        this.amount = amount;
         this.loseMultiplier = loseMultiplier;
 
         this.updateDescription();
@@ -29,7 +32,7 @@ public class DivinityPower extends PowerPower implements OnPlayerLoseBlockSubscr
 
     @Override
     public void updateDescription() {
-        this.description = String.format(DESCRIPTIONS[0], blockAdd, (int) (loseMultiplier * 100));
+        this.description = String.format(DESCRIPTIONS[0], amount, (int) (loseMultiplier * 100));
     }
 
     @Override
@@ -55,7 +58,8 @@ public class DivinityPower extends PowerPower implements OnPlayerLoseBlockSubscr
         if (SubscriptionManager.checkSubscriber(this) 
                 && creature == owner 
                 && blockAmount > 0) {
-            return blockAmount + blockAdd;
+            triggered = true;
+            return blockAmount + amount;
         }
         return blockAmount;
     }
@@ -63,6 +67,13 @@ public class DivinityPower extends PowerPower implements OnPlayerLoseBlockSubscr
     @Override
     public void onGainedBlock(float blockAmount) {
         super.onGainedBlock(blockAmount);
+        if (!triggered) {
+            addToTop(new GainBlockAction(owner, amount));
+            triggered = true;
+        }
+        else {
+            triggered = false;
+        }
     }
 
     @Override

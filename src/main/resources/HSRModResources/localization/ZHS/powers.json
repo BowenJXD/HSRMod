@@ -15,7 +15,7 @@
   "HSRMod:Broken": {
     "NAME": "击破状态",
     "DESCRIPTIONS": [
-      "受到的伤害+ #b%d%% ，造成的伤害- #b%d%% ，回合开始时移除1层。"
+      "受到的伤害+ #b%d%% ，造成的伤害- #b%d%% ，回合开始时移除。"
     ]
   },
   "HSRMod:Frozen": {

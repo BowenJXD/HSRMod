@@ -25,6 +25,12 @@
       "All stacks are removed at the start of the turn and the turn is skipped. NL After taking damage, remove 1 stack."
     ]
   },
+  "HSRMod:FrozenResistance": {
+    "NAME": "Frozen Resistance",
+    "DESCRIPTIONS": [
+      "Requires additional #b%d stacks to trigger #bFrozen ."
+    ]
+  },
   "HSRMod:Bleeding": {
     "NAME": "Bleeding",
     "DESCRIPTIONS": [
@@ -248,8 +254,8 @@
   "HSRMod:Huohuo": {
     "NAME": "Tail: Spiritual Domination",
     "DESCRIPTIONS": [
-      "After playing a card, recover 1 HP, 10 [hsrmod:ChargeIcon] , and remove 1 stack of a random negative effect.",
-      "After playing a card or exhausting [hsrmod:ChargeIcon], recover 1 HP, 10 [hsrmod:ChargeIcon] , and remove 1 stack of a random negative effect."
+      "After playing a card, recover 1 temp HP, 10 [hsrmod:ChargeIcon] , and remove 1 stack of a random negative effect.",
+      "After playing a card or exhausting [hsrmod:ChargeIcon], recover 1 temp HP, 10 [hsrmod:ChargeIcon] , and remove 1 stack of a random negative effect."
     ]
   },
   "HSRMod:Epiphany": {
@@ -310,8 +316,8 @@
   "HSRMod:ResonanceTransfer": {
     "NAME": "Resonance Transfer",
     "DESCRIPTIONS": [
-      "When breaking Block, gain 1 layer of #yQuake , and if the target's #yToughness exceeds #b%d, remove #b%d layers.",
-      "When dealing damage to an enemy with Block, gain 1 layer of #yQuake , and if the target's #yToughness exceeds #b%d, remove #b%d layers."
+      "When breaking Block, gain 1 layer of #yQuake , and draw #b1 .",
+      "When dealing damage to an enemy with Block, gain 1 layer of #yQuake , and draw #b1 ."
     ]
   },
   "HSRMod:Trailblazer7": {

@@ -14,8 +14,8 @@ public class ReignOfKeysPower extends PowerPower implements PreDoTDamageSubscrib
 
     boolean canTrigger = false;
 
-    public ReignOfKeysPower() {
-        super(POWER_ID);
+    public ReignOfKeysPower(boolean upgraded) {
+        super(POWER_ID, upgraded);
         this.updateDescription();
     }
 

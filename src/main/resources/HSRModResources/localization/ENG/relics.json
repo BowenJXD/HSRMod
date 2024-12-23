@@ -453,21 +453,21 @@
     "NAME": "Dreamdive Can",
     "FLAVOR": "The survivors fall shiveringly asleep and head into dreams to find the freedom they could not find in reality, just like how it was in yesteryear in the Land of Dreams.",
     "DESCRIPTIONS": [
-      "At battle starts, gain #b2 stacks of #yhsrmod:Brain-in-a-Vat . After #yBrain-in-a-Vat is triggered, gain [E]."
+      "At turn starts, choose a card from discard pile to move to the top of draw pile."
     ]
   },
   "HSRMod:SilentSong": {
     "NAME": "Silent Song",
     "FLAVOR": "They connect to form a crystal plain, as the resonance between their particles sings silent Odes of Harmony, like... ice-cold stones.",
     "DESCRIPTIONS": [
-      "At turn starts, apply #b2 stacks of #yhsrmod:Frozen to a random enemy."
+      "At turn starts and ends, apply #b1 stacks of #yhsrmod:Frozen to a random enemy."
     ]
   },
   "HSRMod:DignityAndPassion": {
     "NAME": "Dignity and Passion",
     "FLAVOR": "The Interastral Peace Corporation has the final right of interpretation regarding mining work in star zones under their possession. Any illegal mining activities will be viewed as an act of blasphemy that interferes with the Amber Lord's wall construction.",
     "DESCRIPTIONS": [
-      "At turn ends, gain #yBlock equal to #b20% of your lost HP."
+      "At turn ends, gain temp HP equal to #b20% of your lost HP."
     ]
   }
 }

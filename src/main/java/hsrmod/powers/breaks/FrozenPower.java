@@ -1,7 +1,7 @@
 package hsrmod.powers.breaks;
 
 import com.evacipated.cardcrawl.mod.stslib.actions.common.StunMonsterAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -10,6 +10,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.DebuffPower;
+import hsrmod.powers.misc.FrozenResistancePower;
+import hsrmod.utils.ModHelper;
 
 public class FrozenPower extends DebuffPower {
     public static final String POWER_ID = HSRMod.makePath(FrozenPower.class.getSimpleName());
@@ -38,10 +40,12 @@ public class FrozenPower extends DebuffPower {
 
     @Override
     public void atStartOfTurn() {
-        if (amount >= amountRequired){
+        int frozenRes = ModHelper.getPowerCount(owner, FrozenResistancePower.POWER_ID);
+        if (amount >= amountRequired + frozenRes){
             if (monsterOwner != null && monsterOwner.intent != AbstractMonster.Intent.STUN)
                 addToBot(new StunMonsterAction((AbstractMonster) owner, AbstractDungeon.player));
             addToBot(new RemoveSpecificPowerAction(owner, owner, this));
+            addToBot(new ApplyPowerAction(owner, owner, new FrozenResistancePower(owner, 1), 1));
         }
     }
 

@@ -25,6 +25,12 @@
       "于回合开始时移除所有层，并跳过回合。 NL 受到伤害后，移除1层。"
     ]
   },
+  "HSRMod:FrozenResistance": {
+  "NAME": "冻结抵抗",
+  "DESCRIPTIONS": [
+    "需要额外 #b%d 层 #b冻结 才能成功冻结。"
+  ]
+},
   "HSRMod:Bleeding": {
     "NAME": "裂伤",
     "DESCRIPTIONS": [
@@ -89,7 +95,7 @@
   "HSRMod:Quake": {
     "NAME": "反震",
     "DESCRIPTIONS": [
-      "一次性失去一半及以上的格挡时，移除 #b1 层，获得一张伤害值为X的 #y反震 （X为失去的格挡数）。"
+      "一次性失去一半及以上的格挡时，移除 #b1 层，获得一张伤害值为X的 #y反震+ （X为失去的格挡数）。"
     ]
   },
   "HSRMod:Spore": {
@@ -310,20 +316,20 @@
   "HSRMod:ResonanceTransfer": {
     "NAME": "谐振传递",
     "DESCRIPTIONS": [
-      "突破格挡时，获得1层 #y反震 ，然后若其 #y韧性 大于 #b%d 层，则移除 #b%d 层。",
-      "对有格挡的敌人造成伤害时，获得1层 #y反震 ，然后若其 #y韧性 大于 #b%d 层，则移除 #b%d 层。"
+      "突破格挡时，获得1层 #y反震 ，并摸 #b1 张牌。",
+      "对有格挡的敌人造成伤害时，获得1层 #y反震 ，并摸 #b1 张牌。"
     ]
   },
   "HSRMod:Trailblazer7": {
     "NAME": "筑城者遗宝",
     "DESCRIPTIONS": [
-      "对有格挡的敌人造成伤害时，令伤害和削韧值+ #b%d%% 。"
+      "每打出一张牌，获得 #b%d 点格挡，每有一个敌人有格挡，额外获得1点。回合结束时移除。"
     ]
   },
   "HSRMod:Trailblazer8": {
     "NAME": "行胜思",
     "DESCRIPTIONS": [
-      "打出牌时，对随机敌人造成该牌格挡值 #b%d%% 的伤害（物理1）。突破格挡时，摸 #b1 张牌。"
+      "打出有格挡值的牌时，获得一张伤害为该牌格挡值的 #y反震 。"
     ]
   },
   "HSRMod:ChampionsDinnerCatsCradle": {

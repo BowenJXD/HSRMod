@@ -15,6 +15,6 @@ public class ReignOfKeys extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new ReignOfKeysPower()));
+        addToBot(new ApplyPowerAction(p, p, new ReignOfKeysPower(upgraded)));
     }
 }

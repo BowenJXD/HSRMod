@@ -1,7 +1,9 @@
 package hsrmod.cardsV2.Preservation;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -20,8 +22,7 @@ public class Burst extends BaseCard {
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         ElementalDamageInfo info = new ElementalDamageInfo(this);
         if (m.currentBlock > 0) {
-            info.output *= 2;
-            info.tr *= 2;
+            addToBot(new DrawCardAction(1));
         }
         boolean hasBlock = m.currentBlock > 0;
         addToBot(new ElementalDamageAction(
@@ -30,7 +31,7 @@ public class Burst extends BaseCard {
                 AbstractGameAction.AttackEffect.SLASH_VERTICAL,
                 c -> {
                     if (hasBlock && c.currentBlock <= 0) {
-                        addToBot(new GainBlockAction(p, p, damage));
+                        addToTop(new GainEnergyAction(1));
                     }
                 }));
     }

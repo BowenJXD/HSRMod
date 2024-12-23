@@ -22,6 +22,7 @@ public class PhenolCompounds extends BaseCard {
     public PhenolCompounds() {
         super(ID);
         energyCost = 80;
+        exhaust = true;
         tags.add(CustomEnums.ENERGY_COSTING);
     }
 

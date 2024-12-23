@@ -22,6 +22,6 @@ public class ResonanceTransfer extends BaseCard {
     
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new ResonanceTransferPower(upgraded, magicNumber)));
+        addToBot(new ApplyPowerAction(p, p, new ResonanceTransferPower(upgraded)));
     }
 }

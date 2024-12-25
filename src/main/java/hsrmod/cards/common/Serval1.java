@@ -24,11 +24,9 @@ public class Serval1 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(
-                new ElementalDamageAllAction(
-                        this,
-                        AbstractGameAction.AttackEffect.SLASH_HORIZONTAL).setCallback(c -> {
-                    addToBot(new ApplyPowerAction(c, p, new ShockPower(c, p, magicNumber), magicNumber));
+        addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)
+                .setCallback(ci -> {
+                    addToBot(new ApplyPowerAction(ci.target, p, new ShockPower(ci.target, p, magicNumber), magicNumber));
                 })
         );
     }

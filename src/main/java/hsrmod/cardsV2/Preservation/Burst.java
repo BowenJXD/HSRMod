@@ -4,8 +4,10 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
+import com.megacrit.cardcrawl.actions.common.ReduceCostForTurnAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
@@ -20,19 +22,18 @@ public class Burst extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        ElementalDamageInfo info = new ElementalDamageInfo(this);
-        if (m.currentBlock > 0) {
-            addToBot(new DrawCardAction(1));
-        }
         boolean hasBlock = m.currentBlock > 0;
         addToBot(new ElementalDamageAction(
                 m,
-                info,
+                new ElementalDamageInfo(this),
                 AbstractGameAction.AttackEffect.SLASH_VERTICAL,
-                c -> {
-                    if (hasBlock && c.currentBlock <= 0) {
-                        addToTop(new GainEnergyAction(1));
+                ci -> {
+                    if (hasBlock && ci.target.currentBlock <= 0) {
+                        p.hand.group.stream().filter(c -> c.isInnate).findAny().ifPresent(c -> {
+                            addToBot(new ReduceCostForTurnAction(c, c.costForTurn));
+                        });
                     }
-                }));
+                })
+        );
     }
 }

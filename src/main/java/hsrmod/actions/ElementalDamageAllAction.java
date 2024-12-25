@@ -18,16 +18,16 @@ import java.util.function.Function;
 
 public class ElementalDamageAllAction extends AbstractGameAction {
     public int[] damage;
-    private BaseCard card; 
+    private BaseCard card;
     private ElementType elementType;
     private int tr;
-    private Consumer<AbstractCreature> callback;
+    private Consumer<ElementalDamageAction.CallbackInfo> callback;
     private Function<AbstractCreature, Integer> modifier;
     private int baseDamage;
     private boolean firstFrame;
     private boolean utilizeBaseDamage;
-    
-    public ElementalDamageAllAction(AbstractCreature source, int[] amount, DamageInfo.DamageType type, ElementType elementType, int tr, 
+
+    public ElementalDamageAllAction(AbstractCreature source, int[] amount, DamageInfo.DamageType type, ElementType elementType, int tr,
                                     AbstractGameAction.AttackEffect effect, boolean isFast) {
         this.firstFrame = true;
         this.utilizeBaseDamage = false;
@@ -45,28 +45,28 @@ public class ElementalDamageAllAction extends AbstractGameAction {
         }
     }
 
-    public ElementalDamageAllAction(AbstractCreature source, int[] amount, DamageInfo.DamageType type, ElementType elementType, int tr, 
+    public ElementalDamageAllAction(AbstractCreature source, int[] amount, DamageInfo.DamageType type, ElementType elementType, int tr,
                                     AbstractGameAction.AttackEffect effect) {
         this(source, amount, type, elementType, tr, effect, false);
     }
 
     public ElementalDamageAllAction(BaseCard card, int baseDamage, AttackEffect effect) {
-        this(AbstractDungeon.player, (int[])null, card.damageTypeForTurn, card.elementType, card.tr, effect);
+        this(AbstractDungeon.player, (int[]) null, card.damageTypeForTurn, card.elementType, card.tr, effect);
         this.card = card;
         this.baseDamage = baseDamage;
         this.utilizeBaseDamage = true;
     }
-    
+
     public ElementalDamageAllAction(BaseCard card, AttackEffect effect) {
         this(AbstractDungeon.player, card.multiDamage, card.damageTypeForTurn, card.elementType, card.tr, effect);
         this.card = card;
     }
-    
-    public ElementalDamageAllAction setCallback(Consumer<AbstractCreature> callback) {
+
+    public ElementalDamageAllAction setCallback(Consumer<ElementalDamageAction.CallbackInfo> callback) {
         this.callback = callback;
         return this;
     }
-    
+
     public ElementalDamageAllAction setModifier(Function<AbstractCreature, Integer> modifier) {
         this.modifier = modifier;
         return this;
@@ -86,19 +86,30 @@ public class ElementalDamageAllAction extends AbstractGameAction {
         if (this.isDone) {
             Iterator var4 = AbstractDungeon.player.powers.iterator();
 
-            while(var4.hasNext()) {
-                AbstractPower p = (AbstractPower)var4.next();
+            while (var4.hasNext()) {
+                AbstractPower p = (AbstractPower) var4.next();
                 p.onDamageAllEnemies(this.damage);
             }
 
             temp = AbstractDungeon.getCurrRoom().monsters.monsters.size();
 
-            for(int i = 0; i < temp; ++i) {
-                if (!((AbstractMonster)AbstractDungeon.getCurrRoom().monsters.monsters.get(i)).isDeadOrEscaped()) {
-                    ElementalDamageAction action = new ElementalDamageAction((AbstractMonster)AbstractDungeon.getCurrRoom().monsters.monsters.get(i), 
-                            new ElementalDamageInfo(this.source, this.damage[i], this.damageType, this.elementType, this.tr, this.card), 
-                            this.attackEffect, this.callback, this.modifier).setIsFast(true);
-                    
+            for (int i = 0; i < temp; ++i) {
+                if (!((AbstractMonster) AbstractDungeon.getCurrRoom().monsters.monsters.get(i)).isDeadOrEscaped()) {
+                    ElementalDamageAction action = new ElementalDamageAction(
+                            (AbstractMonster) AbstractDungeon.getCurrRoom().monsters.monsters.get(i),
+                            new ElementalDamageInfo(
+                                    this.source,
+                                    this.damage[i],
+                                    this.damageType,
+                                    this.elementType,
+                                    this.tr,
+                                    this.card
+                            ),
+                            this.attackEffect,
+                            this.callback,
+                            this.modifier
+                    ).setIsFast(true);
+
                     action.update();
                 }
             }

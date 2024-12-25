@@ -16,7 +16,7 @@ import hsrmod.modcore.CustomEnums;
 
 public class Jiaoqiu1 extends BaseCard {
     public static final String ID = Jiaoqiu1.class.getSimpleName();
-    
+
     public Jiaoqiu1() {
         super(ID);
         energyCost = 100;
@@ -32,8 +32,10 @@ public class Jiaoqiu1 extends BaseCard {
             // if (upgraded) card.upgrade();
             addToBot(new MakeTempCardInHandAction(card));
         }
-        addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.FIRE).setCallback(c -> {
-            addToBot(new ApplyPowerAction(c, p, new VulnerablePower(c, 1, false), 1));
-        }));
+        addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.FIRE)
+                .setCallback(ci -> {
+                    addToBot(new ApplyPowerAction(ci.target, p, new VulnerablePower(ci.target, 1, false), 1));
+                })
+        );
     }
 }

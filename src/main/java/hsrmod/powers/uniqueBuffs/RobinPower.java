@@ -48,8 +48,11 @@ public class RobinPower extends BuffPower {
     @Override
     public void onRemove() {
         super.onRemove();
-        AbstractDungeon.scene.fadeInAmbiance();
-        CardCrawlGame.music.fadeOutTempBGM();
+        if (AbstractDungeon.getMonsters() != null
+                && AbstractDungeon.getMonsters().monsters.stream().noneMatch(m -> m.type == AbstractMonster.EnemyType.BOSS)) {
+            AbstractDungeon.scene.fadeInAmbiance();
+            CardCrawlGame.music.fadeOutTempBGM();
+        }
     }
 
     @Override

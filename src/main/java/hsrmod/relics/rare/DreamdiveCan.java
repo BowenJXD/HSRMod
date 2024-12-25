@@ -20,13 +20,6 @@ public class DreamdiveCan extends BaseRelic {
     public void atTurnStart() {
         super.atTurnStart();
         flash();
-        if (AbstractDungeon.player.discardPile.isEmpty()) {
-            return;
-        }
-        addToBot(new SelectCardsAction(AbstractDungeon.player.discardPile.group, DESCRIPTIONS[1], list -> {
-            if (!list.isEmpty()) {
-                addToTop(new MoveCardsAction(AbstractDungeon.player.discardPile, AbstractDungeon.player.drawPile, list::contains, list.size()));
-            }
-        }));
+        addToBot(new DiscardPileToTopOfDeckAction(AbstractDungeon.player));
     }
 }

@@ -19,23 +19,36 @@ import java.util.stream.Collectors;
 
 public class Fugue1 extends BaseCard {
     public static final String ID = Fugue1.class.getSimpleName();
-    
+
     public Fugue1() {
         super(ID);
+        this.isEthereal = true;
+    }
+
+    @Override
+    public void upgrade() {
+        super.upgrade();
+        this.isEthereal = false;
+        this.target = CardTarget.ALL_ENEMY;
     }
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        List<AbstractMonster> monsters = AbstractDungeon.getMonsters().monsters.stream().filter(mo -> !mo.isDeadOrEscaped()).collect(Collectors.toList());
-        for (AbstractMonster monster : monsters) {
-            int amt = magicNumber - ModHelper.getPowerCount(monster, ToughnessPower.POWER_ID);
-            amt = Math.min(magicNumber, Math.max(amt, -magicNumber));
-            AbstractPower power = monster.getPower(ToughnessPower.POWER_ID);
-            if (power != null) {
-                int finalAmt = amt;
-                ModHelper.addToBotAbstract(() -> ((ToughnessPower)power).alterPower(finalAmt));
-            }
-            addToBot(new ApplyPowerAction(monster, p, new CloudflameLusterPower(monster, magicNumber, upgraded), magicNumber));
+        if (m != null) {
+            trigger(m);
+        } else {
+            AbstractDungeon.getMonsters().monsters.stream().filter(mo -> !mo.isDeadOrEscaped()).forEach(this::trigger);
         }
+    }
+
+    public void trigger(AbstractMonster m) {
+        int amt = magicNumber - ModHelper.getPowerCount(m, ToughnessPower.POWER_ID);
+        amt = Math.min(magicNumber, Math.max(amt, -magicNumber));
+        AbstractPower power = m.getPower(ToughnessPower.POWER_ID);
+        if (power != null) {
+            int finalAmt = amt;
+            ModHelper.addToBotAbstract(() -> ((ToughnessPower) power).alterPower(finalAmt));
+        }
+        addToBot(new ApplyPowerAction(m, AbstractDungeon.player, new CloudflameLusterPower(m, magicNumber), magicNumber));
     }
 }

@@ -34,20 +34,15 @@ public class Gallagher1 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        Map<AbstractCreature, Integer> toughnessMap = new HashMap<>();
-        for (AbstractMonster q : AbstractDungeon.getCurrRoom().monsters.monsters) {
-            toughnessMap.put(q, ModHelper.getPowerCount(q, ToughnessPower.POWER_ID));
-        }
-        addToBot(
-                new ElementalDamageAllAction(
-                        this,
-                        AbstractGameAction.AttackEffect.FIRE).setCallback(
-                        (c) -> {
-                            if ((ModHelper.getPowerCount(c, ToughnessPower.POWER_ID) <= 0 || c.hasPower(BrokenPower.POWER_ID)) 
-                                    && (!toughnessMap.containsKey(c) || toughnessMap.get(c) > 0 || upgraded)) {
+        addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.FIRE)
+                .setCallback(
+                        (ci) -> {
+                            if (ci.didBreak || (ci.target.hasPower(BrokenPower.POWER_ID) && upgraded)) {
                                 addToBot(new DrawCardAction(1));
-                                addToBot(new ApplyPowerAction(c, p, new BlockReturnPower(c, 1), 1));
+                                addToBot(new ApplyPowerAction(ci.target, p, new BlockReturnPower(ci.target, 1), 1));
                             }
-                        }));
+                        }
+                )
+        );
     }
 }

@@ -48,8 +48,8 @@ public class Seele1 extends BaseCard {
                 m,
                 new ElementalDamageInfo(this),
                 AbstractGameAction.AttackEffect.SLASH_HEAVY,
-                (q) -> {
-                    if ((q.isDying || q.currentHealth <= 0) && !q.halfDead && !q.hasPower("Minion")) {
+                (info) -> {
+                    if ((info.target.isDying || info.target.currentHealth <= 0) && !info.target.halfDead && !info.target.hasPower("Minion")) {
                         Iterator var1 = AbstractDungeon.player.masterDeck.group.iterator();
 
                         AbstractCard c;

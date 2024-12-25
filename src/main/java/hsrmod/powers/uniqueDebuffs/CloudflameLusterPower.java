@@ -17,15 +17,15 @@ import java.util.Iterator;
 public class CloudflameLusterPower extends DebuffPower implements PreToughnessReduceSubscriber {
     public static final String ID = HSRMod.makePath(CloudflameLusterPower.class.getSimpleName());
     
-    public CloudflameLusterPower(AbstractCreature owner, int amount, boolean upgraded) {
-        super(ID, owner, amount, upgraded);
+    public CloudflameLusterPower(AbstractCreature owner, int amount) {
+        super(ID, owner, amount);
         updateDescription();
     }
 
     @Override
     public void updateDescription() {
         super.updateDescription();
-        description = String.format(upgraded ? DESCRIPTIONS[1] : DESCRIPTIONS[0], amount);
+        description = String.format(DESCRIPTIONS[0], amount);
     }
 
     @Override
@@ -51,8 +51,6 @@ public class CloudflameLusterPower extends DebuffPower implements PreToughnessRe
             
             int amt = this.amount - newToughness;
             addToTop(new ApplyPowerAction(this.owner, this.owner, new ToughnessPower(this.owner, amt), amt));
-
-            if (upgraded) addToTop(new GainEnergyAction(1));
             
             this.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this));
         }

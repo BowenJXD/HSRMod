@@ -60,9 +60,9 @@ public class Yanqing2 extends BaseCard implements OnPlayerDamagedSubscriber {
                         m,
                         new ElementalDamageInfo(this),
                         AbstractGameAction.AttackEffect.SLASH_HEAVY,
-                        (c) -> {
+                        (ci) -> {
                             if (AbstractDungeon.cardRandomRng.random(100) <= magicNumber)
-                                addToBot(new ApplyPowerAction(c, p, new FrozenPower(c, 1), 1));
+                                addToBot(new ApplyPowerAction(ci.target, p, new FrozenPower(ci.target, 1), 1));
                         }
                 )
         );

@@ -106,6 +106,7 @@ public class WaxManufacturerEvent extends PhasedEvent {
             AbstractCard c = (AbstractCard)var2.next();
             if (c.canUpgrade() && c.hasTag(tag)) {
                 upgradableCards.add(c);
+                c.upgrade();
             }
         }
 

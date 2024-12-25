@@ -217,7 +217,7 @@
   "HSRMod:Symbiote": {
     "NAME": "Symbiote",
     "DESCRIPTIONS": [
-      "After breaking the target, recover [E] [E] . After dealing break damage, draw 1 card."
+      "After break, if first time on this turn, gain [E] [E] , otherwise, gain [E] . After dealing break damage, draw 1 card."
     ]
   },
   "HSRMod:VoyageMonitor": {
@@ -316,8 +316,8 @@
   "HSRMod:ResonanceTransfer": {
     "NAME": "Resonance Transfer",
     "DESCRIPTIONS": [
-      "When breaking Block, gain 1 layer of #yQuake , and draw #b1 .",
-      "When dealing damage to an enemy with Block, gain 1 layer of #yQuake , and draw #b1 ."
+      "When breaking Block, gain 1 layer of #yQuake , and get an Innate card.",
+      "When dealing damage to an enemy with Block, gain 1 layer of #yQuake , and get an Innate card."
     ]
   },
   "HSRMod:Trailblazer7": {

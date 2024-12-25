@@ -15,19 +15,21 @@ import hsrmod.powers.breaks.FrozenPower;
 
 public class March7th3 extends BaseCard {
     public static final String ID = March7th3.class.getSimpleName();
-    
+
     public March7th3() {
         super(ID);
         energyCost = 120;
         tags.add(CustomEnums.ENERGY_COSTING);
         isMultiDamage = true;
     }
-    
+
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL).setCallback(c -> {
-            if (AbstractDungeon.cardRng.random(99) < 50)
-                addToBot(new ApplyPowerAction(c, p, new FrozenPower(c, magicNumber), magicNumber));
-        }));
+        addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)
+                .setCallback(ci -> {
+                    if (AbstractDungeon.cardRng.random(99) < 50)
+                        addToBot(new ApplyPowerAction(ci.target, p, new FrozenPower(ci.target, magicNumber), magicNumber));
+                })
+        );
     }
 }

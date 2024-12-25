@@ -453,7 +453,8 @@
     "NAME": "Dreamdive Can",
     "FLAVOR": "The survivors fall shiveringly asleep and head into dreams to find the freedom they could not find in reality, just like how it was in yesteryear in the Land of Dreams.",
     "DESCRIPTIONS": [
-      "At turn starts, choose a card from discard pile to move to the top of draw pile."
+      "At turn starts, choose a card from discard pile to move to the top of draw pile.",
+      "Choose a card to move to the top of draw pile"
     ]
   },
   "HSRMod:SilentSong": {

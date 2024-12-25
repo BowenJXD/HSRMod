@@ -28,7 +28,7 @@
   "HSRMod:FrozenResistance": {
   "NAME": "冻结抵抗",
   "DESCRIPTIONS": [
-    "需要额外 #b%d 层 #b冻结 才能成功冻结。"
+    "冻结所需的层数增加 #b%d 。"
   ]
 },
   "HSRMod:Bleeding": {
@@ -217,7 +217,8 @@
   "HSRMod:Symbiote": {
     "NAME": "共生体",
     "DESCRIPTIONS": [
-      "击破后，回复 [E]  [E] 。造成击破伤害后，摸1张牌。"
+      "#y击破 后，若为一回合首次，则获得 [E] [E] 。 NL 造成 #y击破伤害 后，摸 #b1 张牌。",
+      "#y击破 后，若为一回合首次，则获得 [E] [E] ，否则获得 [E] 。 NL 造成 #y击破伤害 后，摸1张牌。"
     ]
   },
   "HSRMod:VoyageMonitor": {
@@ -316,8 +317,8 @@
   "HSRMod:ResonanceTransfer": {
     "NAME": "谐振传递",
     "DESCRIPTIONS": [
-      "突破格挡时，获得1层 #y反震 ，并摸 #b1 张牌。",
-      "对有格挡的敌人造成伤害时，获得1层 #y反震 ，并摸 #b1 张牌。"
+      "突破格挡时，获得1层 #y反震 ，并获得 #b1 张 #y固有 牌。",
+      "对有格挡的敌人造成伤害时，获得1层 #y反震 ，并获得 #b1 张 #y固有 牌。"
     ]
   },
   "HSRMod:Trailblazer7": {

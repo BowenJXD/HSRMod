@@ -14,40 +14,42 @@ import hsrmod.powers.misc.BreakEffectPower;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.utils.ModHelper;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
 public class Boothill1 extends BaseCard {
     public static final String ID = Boothill1.class.getSimpleName();
-    
+
     int costCache = -1;
-    
+
     public Boothill1() {
         super(ID);
         costCache = cost;
     }
-    
+
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         returnToHand = false;
-        
+        AtomicBoolean didBreak = new AtomicBoolean(false);
         for (int i = 0; i < magicNumber; i++) {
             addToBot(
-                    new ElementalDamageAction(m, new ElementalDamageInfo(this),
-                            AbstractGameAction.AttackEffect.SLASH_DIAGONAL
+                    new ElementalDamageAction(
+                            m,
+                            new ElementalDamageInfo(this),
+                            AbstractGameAction.AttackEffect.SLASH_DIAGONAL,
+                            ci -> {
+                                if (ci.didBreak) didBreak.set(true);
+                            }
                     )
             );
         }
-        int toughness = ModHelper.getPowerCount(m, ToughnessPower.POWER_ID);
         ModHelper.addToBotAbstract(() -> {
-            if (ModHelper.getPowerCount(m, ToughnessPower.POWER_ID) <= 0
-                    && (toughness > 0)){
-                // addToBot(new GainEnergyAction(1));
+            if (didBreak.get()) {
                 int val = ToughnessPower.getStackLimit(m);
                 addToBot(new BreakDamageAction(m, new DamageInfo(p, val)));
-            }
-            else if (EnergyPanel.getCurrentEnergy() > 0) {
+            } else {
                 returnToHand = true;
                 retain = true;
                 setCostForTurn(costCache);
-                // addToBot(new LoseEnergyAction(1));
             }
         });
     }

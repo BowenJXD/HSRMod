@@ -11,6 +11,7 @@ public class Trailblazer8 extends BaseCard {
 
     public Trailblazer8() {
         super(ID);        
+        cardsToPreview = new Quake();
     }
 
     @Override

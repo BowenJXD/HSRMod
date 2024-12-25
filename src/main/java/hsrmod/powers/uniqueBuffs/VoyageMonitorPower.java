@@ -12,6 +12,7 @@ import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.subscribers.PreBreakDamageSubscriber;
 import hsrmod.subscribers.PreToughnessReduceSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
+import hsrmod.utils.ModHelper;
 
 public class VoyageMonitorPower extends PowerPower implements PreToughnessReduceSubscriber {
     public static final String POWER_ID = HSRMod.makePath(VoyageMonitorPower.class.getSimpleName());

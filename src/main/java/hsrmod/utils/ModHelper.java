@@ -102,8 +102,16 @@ public class ModHelper {
         return result;
     }
     
+    public static List<FindResult> findCards(Predicate<AbstractCard> predicate, boolean shuffle) {
+        List<FindResult> result = findCards(predicate);
+        if (shuffle) {
+            Collections.shuffle(result, AbstractDungeon.cardRandomRng.random);
+        }
+        return result;
+    }
+    
     public static List<FindResult> findCards(Predicate<AbstractCard> predicate) {
-        return findCards(predicate, true, true, true, true, true);
+        return findCards(predicate, true, true, true, true, false);
     }
     
     public static class FindResult {

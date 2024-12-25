@@ -29,9 +29,14 @@ public class Sampo1 extends BaseCard {
                 m,
                 new ElementalDamageInfo(this),
                 AbstractGameAction.AttackEffect.POISON,
-                c -> {
-                    if (!c.isDeadOrEscaped())
-                        this.addToBot(new ApplyPowerAction(c, p, new WindShearPower(c, p, this.windShearStackNum), this.windShearStackNum));
+                ci -> {
+                    if (!ci.target.isDeadOrEscaped())
+                        this.addToBot(new ApplyPowerAction(
+                                ci.target,
+                                p,
+                                new WindShearPower(ci.target, p, this.windShearStackNum),
+                                this.windShearStackNum
+                        ));
                 }
         );
         this.addToBot(new BouncingAction(m, magicNumber, elementalDamageAction, this));

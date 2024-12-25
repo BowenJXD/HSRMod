@@ -20,8 +20,8 @@ import hsrmod.utils.ModHelper;
 
 public class Sushang3 extends BaseCard {
     public static final String ID = Sushang3.class.getSimpleName();
-    
-    public Sushang3(){
+
+    public Sushang3() {
         super(ID);
     }
 
@@ -44,16 +44,14 @@ public class Sushang3 extends BaseCard {
         addToBot(new ElementalDamageAction(
                 m,
                 new ElementalDamageInfo(this),
-                AbstractGameAction.AttackEffect.SLASH_HEAVY
-        ));
-        int toughness = ModHelper.getPowerCount(m, ToughnessPower.POWER_ID);
-        ModHelper.addToBotAbstract(() -> {
-            if (ModHelper.getPowerCount(m, ToughnessPower.POWER_ID) <= 0
-                    && (toughness > 0)){
+                AbstractGameAction.AttackEffect.SLASH_HEAVY, 
+                ci -> {
+            if (ci.didBreak) {
                 addToBot(new ExhaustSpecificCardAction(this, p.discardPile));
                 addToTop(new UpgradeSpecificCardAction(this));
                 AbstractDungeon.player.masterDeck.group.stream().filter(c -> c.uuid == uuid).findFirst().ifPresent(AbstractCard::upgrade);
             }
-        });
+        }
+        ));
     }
 }

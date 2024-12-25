@@ -105,18 +105,17 @@ public class CosmicCrescendoEvent extends PhasedEvent {
                     transitionKey(2);
                     overrideBody = String.format(DESCRIPTIONS[2], amount1);
                 }
+                break;
             case GOLD_PER:
+                int percentage = AbstractDungeon.eventRng.random(25, 50);
+                int amount2 = AbstractDungeon.player.gold * percentage / 100;
                 if (good) {
                     // Gain gold in percentage
-                    int percentage = AbstractDungeon.eventRng.random(20, 40);
-                    int amount2 = AbstractDungeon.player.gold * percentage / 100;
                     AbstractDungeon.player.gainGold(amount2);
                     transitionKey(1);
                     overrideBody = String.format(DESCRIPTIONS[1], amount2);
                 } else {
                     // Lose gold in percentage
-                    int percentage = AbstractDungeon.eventRng.random(25, 50);
-                    int amount2 = AbstractDungeon.player.gold * percentage / 100;
                     AbstractDungeon.player.loseGold(amount2);
                     transitionKey(2);
                     overrideBody = String.format(DESCRIPTIONS[2], amount2);

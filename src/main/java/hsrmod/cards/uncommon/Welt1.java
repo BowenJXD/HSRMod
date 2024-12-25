@@ -27,9 +27,9 @@ public class Welt1 extends BaseCard {
                 m,
                 new ElementalDamageInfo(this), 
                 AbstractGameAction.AttackEffect.BLUNT_LIGHT,
-                c -> {
-                    if (!c.isDeadOrEscaped())
-                        this.addToBot(new ApplyPowerAction(c, p, new ImprisonPower(c, 1), 1));
+                ci -> {
+                    if (!ci.target.isDeadOrEscaped())
+                        this.addToBot(new ApplyPowerAction(ci.target, p, new ImprisonPower(ci.target, 1), 1));
                 }
         );
         this.addToBot(new BouncingAction(m, magicNumber, elementalDamageAction, this));

@@ -33,18 +33,18 @@ public class BlackSwan1 extends BaseCard {
             addToBot(new ElementalDamageAllAction(
                     this,
                     AbstractGameAction.AttackEffect.POISON)
-                    .setCallback(c -> {
-                        addToBot(new ApplyPowerAction(c, p, new WindShearPower(c, p, 1), 1));
-                        addToBot(new ApplyPowerAction(c, p, new EpiphanyPower(c, 1), 1));
+                    .setCallback(ci -> {
+                        addToBot(new ApplyPowerAction(ci.target, p, new WindShearPower(ci.target, p, 1), 1));
+                        addToBot(new ApplyPowerAction(ci.target, p, new EpiphanyPower(ci.target, 1), 1));
                     }));
         } else {
             addToBot(new ElementalDamageAction(
                     m,
                     new ElementalDamageInfo(this),
                     AbstractGameAction.AttackEffect.POISON,
-                    c -> {
-                        addToBot(new ApplyPowerAction(c, p, new WindShearPower(c, p, 1), 1));
-                        addToBot(new ApplyPowerAction(c, p, new EpiphanyPower(c, 1), 1));
+                    ci -> {
+                        addToBot(new ApplyPowerAction(ci.target, p, new WindShearPower(ci.target, p, 1), 1));
+                        addToBot(new ApplyPowerAction(ci.target, p, new EpiphanyPower(ci.target, 1), 1));
                     }));
         }
     }

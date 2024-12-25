@@ -1,38 +1,25 @@
 package hsrmod.patches;
 
 import basemod.BaseMod;
-import basemod.eventUtil.EventUtils;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.evacipated.cardcrawl.modthespire.Loader;
-import com.evacipated.cardcrawl.modthespire.ModInfo;
-import com.evacipated.cardcrawl.modthespire.lib.SpireInsertPatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.AbstractEvent;
 import com.megacrit.cardcrawl.events.RoomEventDialog;
-import com.megacrit.cardcrawl.helpers.EventHelper;
 import com.megacrit.cardcrawl.map.MapEdge;
 import com.megacrit.cardcrawl.map.MapRoomNode;
 import com.megacrit.cardcrawl.neow.NeowEvent;
 import com.megacrit.cardcrawl.neow.NeowRoom;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.EventRoom;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.InfiniteSpeechBubble;
-import com.megacrit.cardcrawl.vfx.ObtainKeyEffect;
-import com.megacrit.cardcrawl.vfx.SpeechTextEffect;
 import hsrmod.characters.StellaCharacter;
 import hsrmod.events.StelleAwakeEvent;
-import hsrmod.modcore.HSRMod;
-import org.apache.logging.log4j.Level;
 
 import java.lang.reflect.Field;
 
-public interface StelleAwakeWithNeo {
+public interface StelleAwakeWithNeow {
     public static class ForceBlessing {
         @SpireInsertPatch(rloc = 1)
         public static void Insert(Object o, boolean b) {
@@ -44,7 +31,6 @@ public interface StelleAwakeWithNeo {
     public static class AddBetterRewardsButton {
         @SpirePostfixPatch
         public static void Postfix(NeowRoom room, boolean b) {
-            boolean isNeowDone = b;
             if (!b && AbstractDungeon.player.chosenClass == StellaCharacter.PlayerColorEnum.STELLA_CHARACTER
                     && (BaseMod.hasModID("spireTogether:") || Settings.isTrial)) {
                 room.event.roomEventText.clear();
@@ -67,20 +53,23 @@ public interface StelleAwakeWithNeo {
     @SpirePatch(clz = NeowEvent.class, method = "buttonEffect")
     public static class MaybeStartRewards {
         @SpirePrefixPatch
-        public static void Prefix(AbstractEvent e, int buttonPressed) {
+        public static SpireReturn<Void> Prefix(AbstractEvent e, int buttonPressed) {
             if (AbstractDungeon.player.chosenClass == StellaCharacter.PlayerColorEnum.STELLA_CHARACTER
                     && (BaseMod.hasModID("spireTogether:") || Settings.isTrial)) {
                 try {
                     Field screenNumField = NeowEvent.class.getDeclaredField("screenNum");
                     //false有初始捏奥选项，true没有
-                    screenNumField.setAccessible(false);
-
-                    test();
-
+                    screenNumField.setAccessible(true);
+                    int screenNum = screenNumField.getInt(e);
+                    if (screenNum == 2 || screenNum == 99) {
+                        test();
+                        return SpireReturn.Return();
+                    }
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
             }
+            return SpireReturn.Continue();
         }
     }
 

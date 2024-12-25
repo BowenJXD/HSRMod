@@ -23,7 +23,7 @@ import java.util.List;
 public class SubscriptionManager {
     private static SubscriptionManager instance = null;
 
-    List<ISubscriber> toRemove = new ArrayList<>();
+    List<IHSRSubscriber> toRemove = new ArrayList<>();
     List<PreElementalDamageSubscriber> preElementalDamageSubscribers = new ArrayList<>();
     List<PreBreakDamageSubscriber> preBreakDamageSubscribers = new ArrayList<>();
     List<PreToughnessReduceSubscriber> preToughnessReduceSubscribers = new ArrayList<>();
@@ -139,12 +139,12 @@ public class SubscriptionManager {
         }
     }
 
-    public void unsubscribeLater(ISubscriber sub) {
+    public void unsubscribeLater(IHSRSubscriber sub) {
         toRemove.add(sub);
     }
 
     private void unsubscribeLaterHelper(Class<? extends ISubscriber> removalClass) {
-        for (ISubscriber sub : toRemove) {
+        for (IHSRSubscriber sub : toRemove) {
             if (removalClass.isInstance(sub)) {
                 unsubscribe(sub);
             }
@@ -180,7 +180,7 @@ public class SubscriptionManager {
         float result = amount;
 
         for (PreToughnessReduceSubscriber sub : preToughnessReduceSubscribers) {
-            result = sub.preToughnessReduce(amount, target, elementType);
+            result = sub.preToughnessReduce(result, target, elementType);
         }
 
         unsubscribeLaterHelper(PreToughnessReduceSubscriber.class);
@@ -212,7 +212,7 @@ public class SubscriptionManager {
         int result = changeAmount;
 
         for (PreEnergyChangeSubscriber sub : preEnergyChangeSubscribers) {
-            result = sub.preEnergyChange(changeAmount);
+            result = sub.preEnergyChange(result);
         }
 
         unsubscribeLaterHelper(PreEnergyChangeSubscriber.class);
@@ -232,7 +232,7 @@ public class SubscriptionManager {
         int result = amount;
 
         for (PreBlockChangeSubscriber sub : preBlockGainSubscribers) {
-            result = sub.preBlockChange(creature, amount);
+            result = sub.preBlockChange(creature, result);
         }
 
         unsubscribeLaterHelper(PreBlockChangeSubscriber.class);
@@ -256,7 +256,7 @@ public class SubscriptionManager {
         int result = amount;
 
         for (ISetToughnessReductionSubscriber sub : setToughnessReductionSubscribers) {
-            result = sub.setToughnessReduction(target, amount);
+            result = sub.setToughnessReduction(target, result);
         }
 
         unsubscribeLaterHelper(ISetToughnessReductionSubscriber.class);
@@ -277,9 +277,9 @@ public class SubscriptionManager {
                 || AbstractDungeon.player.drawPile.contains(card)
                 || AbstractDungeon.player.discardPile.contains(card)
                 || AbstractDungeon.player.exhaustPile.contains(card);
-        if (!result && card instanceof ISubscriber) {
-            BaseMod.unsubscribeLater((ISubscriber) card);
-            getInstance().unsubscribeLater((ISubscriber) card);
+        if (!result) {
+            if (card instanceof IHSRSubscriber) getInstance().unsubscribeLater((IHSRSubscriber) card);
+            if (card instanceof ISubscriber) BaseMod.unsubscribeLater((ISubscriber) card);
         }
         return result;
     }
@@ -293,27 +293,27 @@ public class SubscriptionManager {
                         && AbstractDungeon.getMonsters().monsters != null
                         && AbstractDungeon.getMonsters().monsters.contains(power.owner)
         );
-        if (!result && power instanceof ISubscriber) {
-            BaseMod.unsubscribeLater((ISubscriber) power);
-            getInstance().unsubscribeLater((ISubscriber) power);
+        if (!result) {
+            if (power instanceof IHSRSubscriber) getInstance().unsubscribeLater((IHSRSubscriber) power);
+            if (power instanceof ISubscriber) BaseMod.unsubscribeLater((ISubscriber) power);
         }
         return result;
     }
     
     public static boolean checkSubscriber(AbstractMonster monster) {
         boolean result = AbstractDungeon.getMonsters().monsters.contains(monster);
-        if (!result && monster instanceof ISubscriber) {
-            BaseMod.unsubscribeLater((ISubscriber) monster);
-            getInstance().unsubscribeLater((ISubscriber) monster);
+        if (!result) {
+            if (monster instanceof IHSRSubscriber) getInstance().unsubscribeLater((IHSRSubscriber) monster);
+            if (monster instanceof ISubscriber) BaseMod.unsubscribeLater((ISubscriber) monster);
         }
         return result;
     }
     
     public static boolean checkSubscriber(AbstractRelic relic) {
         boolean result = AbstractDungeon.player.relics.contains(relic);
-        if (!result && relic instanceof ISubscriber) {
-            BaseMod.unsubscribeLater((ISubscriber) relic);
-            getInstance().unsubscribeLater((ISubscriber) relic);
+        if (!result) {
+            if (relic instanceof IHSRSubscriber) getInstance().unsubscribeLater((IHSRSubscriber) relic);
+            if (relic instanceof ISubscriber) BaseMod.unsubscribeLater((ISubscriber) relic);
         }
         return result;
     }

@@ -25,11 +25,9 @@ public class Pela1 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(
-                new ElementalDamageAllAction(
-                        this,
-                        AbstractGameAction.AttackEffect.SLASH_HORIZONTAL).setCallback(c -> {
-                    addToBot(new ApplyPowerAction(c, p, new VulnerablePower(c, this.magicNumber, false), this.magicNumber));
+        addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)
+                .setCallback(ci -> {
+                    addToBot(new ApplyPowerAction(ci.target, p, new VulnerablePower(ci.target, magicNumber, false), magicNumber));
                 })
         );
     }

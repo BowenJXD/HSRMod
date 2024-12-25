@@ -18,7 +18,7 @@ import hsrmod.utils.ModHelper;
 
 public class Kafka2 extends BaseCard {
     public static final String ID = Kafka2.class.getSimpleName();
-    
+
     public Kafka2() {
         super(ID);
         isMultiDamage = true;
@@ -30,12 +30,14 @@ public class Kafka2 extends BaseCard {
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID));
         addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
-        
-        addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.LIGHTNING).setCallback(c -> {
-            if(!c.isDeadOrEscaped() && c.currentHealth > 0) {
-                addToBot(new TriggerDoTAction(c, 1, true));
-                addToBot(new ApplyPowerAction(c, p, new ShockPower(c, p, magicNumber), magicNumber));
-            }
-        }));
+
+        addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.LIGHTNING)
+                .setCallback(ci -> {
+                    if (!ci.target.isDeadOrEscaped() && ci.target.currentHealth > 0) {
+                        addToBot(new TriggerDoTAction(ci.target, 1, true));
+                        addToBot(new ApplyPowerAction(ci.target, p, new ShockPower(ci.target, p, magicNumber), magicNumber));
+                    }
+                })
+        );
     }
 }

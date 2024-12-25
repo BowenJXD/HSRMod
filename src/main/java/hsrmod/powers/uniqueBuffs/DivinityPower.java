@@ -65,18 +65,6 @@ public class DivinityPower extends BuffPower implements OnPlayerLoseBlockSubscri
     }
 
     @Override
-    public void onGainedBlock(float blockAmount) {
-        super.onGainedBlock(blockAmount);
-        if (!triggered) {
-            addToTop(new GainBlockAction(owner, amount));
-            triggered = true;
-        }
-        else {
-            triggered = false;
-        }
-    }
-
-    @Override
     public boolean onReceivePower(AbstractPower abstractPower, AbstractCreature abstractCreature, AbstractCreature abstractCreature1) {
         if (abstractPower instanceof DexterityPower || abstractPower instanceof FrailPower) {
             flash();

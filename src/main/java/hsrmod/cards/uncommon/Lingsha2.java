@@ -1,3 +1,4 @@
+/*
 package hsrmod.cards.uncommon;
 
 import basemod.BaseMod;
@@ -40,29 +41,25 @@ public class Lingsha2 extends BaseCard implements PostPowerApplySubscriber {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        Map<AbstractCreature, Integer> toughnessMap = new HashMap<>();
-        for (AbstractMonster q : AbstractDungeon.getCurrRoom().monsters.monsters) {
-            toughnessMap.put(q, ModHelper.getPowerCount(q, ToughnessPower.POWER_ID));
-        }
-
-        addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL).setCallback((c) -> {
-            if ((!toughnessMap.containsKey(c) || toughnessMap.get(c) > 0)
-                    && ModHelper.getPowerCount(c, ToughnessPower.POWER_ID) <= 0) {
-                addToBot(new ExhaustSpecificCardAction(this, p.discardPile));
-                addToBot(new HealAction(p, p, magicNumber));
-                if (p.hand.group.stream().noneMatch(card -> card.type == CardType.ATTACK)) return;
-                if (upgraded) {
-                    addToBot(new SelectCardsInHandAction(cardStrings.EXTENDED_DESCRIPTION[0], card -> card.type == CardType.ATTACK, (cards) -> {
-                        if (!cards.isEmpty() && cards.get(0) != null) {
-                            addToBot(new FollowUpAction(cards.get(0)));
+        addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)
+                .setCallback((c) -> {
+                    if (c.didBreak) {
+                        addToBot(new ExhaustSpecificCardAction(this, p.discardPile));
+                        addToBot(new HealAction(p, p, magicNumber));
+                        if (p.hand.group.stream().noneMatch(card -> card.type == CardType.ATTACK)) return;
+                        if (upgraded) {
+                            addToBot(new SelectCardsInHandAction(cardStrings.EXTENDED_DESCRIPTION[0], card -> card.type == CardType.ATTACK, (cards) -> {
+                                if (!cards.isEmpty() && cards.get(0) != null) {
+                                    addToBot(new FollowUpAction(cards.get(0)));
+                                }
+                            }));
+                        } else {
+                            ModHelper.addToBotAbstract(() -> p.hand.group.stream().filter(card -> card.type == CardType.ATTACK).findAny()
+                                    .ifPresent(card -> addToBot(new FollowUpAction(card))));
                         }
-                    }));
-                } else {
-                    ModHelper.addToBotAbstract(() -> p.hand.group.stream().filter(card -> card.type == CardType.ATTACK).findAny()
-                            .ifPresent(card -> addToBot(new FollowUpAction(card))));
-                }
-            }
-        }));
+                    }
+                })
+        );
     }
 
     @Override
@@ -88,3 +85,4 @@ public class Lingsha2 extends BaseCard implements PostPowerApplySubscriber {
         }
     }
 }
+*/

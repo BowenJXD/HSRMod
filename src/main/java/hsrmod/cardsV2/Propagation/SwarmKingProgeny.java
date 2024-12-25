@@ -27,8 +27,8 @@ public class SwarmKingProgeny extends BaseCard {
                 m,
                 new ElementalDamageInfo(this),
                 AbstractGameAction.AttackEffect.POISON,
-                q -> {
-                    addToBot(new ApplyPowerAction(q, p, new SporePower(q, 1), 1));
+                ci -> {
+                    addToBot(new ApplyPowerAction(ci.target, p, new SporePower(ci.target, 1), 1));
                 }
         );
         addToBot(new BouncingAction(m, energyOnUse, action, this));

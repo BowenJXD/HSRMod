@@ -13,8 +13,10 @@ import hsrmod.subscribers.SubscriptionManager;
 public class SymbiotePower extends PowerPower implements PreBreakDamageSubscriber {
     public static final String POWER_ID = HSRMod.makePath(SymbiotePower.class.getSimpleName());
 
-    public SymbiotePower() {
-        super(POWER_ID);
+    boolean triggeredThisTurn = false;
+    
+    public SymbiotePower(boolean upgraded) {
+        super(POWER_ID, upgraded);
         this.updateDescription();
     }
     
@@ -29,10 +31,23 @@ public class SymbiotePower extends PowerPower implements PreBreakDamageSubscribe
     }
 
     @Override
+    public void atStartOfTurn() {
+        super.atStartOfTurn();
+        triggeredThisTurn = false;
+    }
+
+    @Override
     public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
         if (power instanceof BrokenPower) {
-            this.flash();
-            addToTop(new GainEnergyAction(2));
+            if (!triggeredThisTurn) {
+                this.flash();
+                addToTop(new GainEnergyAction(2));
+            }
+            else if (upgraded) {
+                this.flash();
+                addToTop(new GainEnergyAction(1));
+            }
+            triggeredThisTurn = true;
         }
     }
 

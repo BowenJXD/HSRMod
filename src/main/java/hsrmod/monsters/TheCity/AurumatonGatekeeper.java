@@ -16,39 +16,23 @@ import com.megacrit.cardcrawl.powers.WeakPower;
 import hsrmod.cardsV2.Curse.Imprison;
 import hsrmod.misc.PathDefine;
 import hsrmod.modcore.HSRMod;
+import hsrmod.monsters.BaseMonster;
 import hsrmod.monsters.Exordium.Spider;
 import hsrmod.monsters.TheBeyond.BubbleHound;
 import hsrmod.powers.enemyOnly.ChargingPower;
 import hsrmod.powers.enemyOnly.SanctionRatePower;
 import hsrmod.utils.ModHelper;
 
-public class AurumatonGatekeeper extends AbstractMonster {
+public class AurumatonGatekeeper extends BaseMonster {
     public static final String ID = AurumatonGatekeeper.class.getSimpleName();
-    private static final MonsterStrings eventStrings = CardCrawlGame.languagePack.getMonsterStrings(HSRMod.makePath(ID));
-    public static final String NAME = eventStrings.NAME;
-    public static final String[] MOVES = eventStrings.MOVES;
-    public static final String[] DIALOG = eventStrings.DIALOG;
-
-    int turnCount = 0;
-    int[] damages = {6, 12, 6};
 
     public AurumatonGatekeeper() {
-        super(NAME, HSRMod.makePath(ID), 82, 0F, -15.0F, 300, 384, PathDefine.MONSTER_PATH + ID + ".png", -150, 0);
-        this.type = EnemyType.NORMAL;
-        this.dialogX = -150.0F * Settings.scale;
-        this.dialogY = -70.0F * Settings.scale;
+        super(ID, 300, 384, -150, 0);
 
-        if (AbstractDungeon.ascensionLevel >= 19) {
-            damages[1] = 18;
-        } else if (AbstractDungeon.ascensionLevel >= 4) {
-            damages[1] = 14;
-        } else {
-            damages[1] = 10;
-        }
-
-        for (int j : damages) {
-            this.damage.add(new DamageInfo(this, j));
-        }
+        if (ModHelper.moreDamageAscension(type))
+            setDamages(6, 15, 7);
+        else
+            setDamages(6, 12, 6);
     }
 
     @Override
@@ -75,6 +59,9 @@ public class AurumatonGatekeeper extends AbstractMonster {
             case 3:
                 addToBot(new DamageAction(p, this.damage.get(1), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
                 addToBot(new ApplyPowerAction(this, this, new ChargingPower(this, MOVES[4], 1), 1));
+                if (ModHelper.specialAscension(type)) {
+                    addToBot(new ApplyPowerAction(p, this, new WeakPower(p, 1, true), 1));
+                }
                 break;
             case 4:
                 if (hasPower(ChargingPower.POWER_ID)) {
@@ -107,7 +94,7 @@ public class AurumatonGatekeeper extends AbstractMonster {
                         turnCount++;
                     }
                 case 1:
-                    setMove(MOVES[2], (byte) 3, Intent.ATTACK, this.damage.get(1).base);
+                    setMove(MOVES[2], (byte) 3, ModHelper.specialAscension(type) ? Intent.ATTACK_DEBUFF : Intent.ATTACK, this.damage.get(1).base);
                     break;
                 case 2:
                     setMove(MOVES[3], (byte) 4, Intent.ATTACK, this.damage.get(2).base, 3, true);

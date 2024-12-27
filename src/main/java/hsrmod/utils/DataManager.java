@@ -27,6 +27,8 @@ public class DataManager {
     public static final String CARD_CSV_ENG = "HSRModResources/localization/ENG/cardData.csv";
     public Map<String, String[]> relicData;
     public static final String RELIC_CSV = "HSRModResources/localization/ZHS/relicData.csv";
+    public Map<String, String[]> monsterData;
+    public static final String MONSTER_CSV = "HSRModResources/localization/ZHS/monsterData.csv";
     
     public static final String RELIC_JSON = "HSRModResources/localization/ZHS/relics.json";
     
@@ -37,6 +39,7 @@ public class DataManager {
             cardData = parseCSV(CARD_CSV_ENG);
         }
         relicData = parseCSV(RELIC_CSV);
+        monsterData = parseCSV(MONSTER_CSV);
     }
 
     public static DataManager getInstance() {
@@ -132,6 +135,25 @@ public class DataManager {
     
     public int getRelicDataInt(String key, RelicDataCol col) {
         return Integer.parseInt(getRelicData(key, col));
+    }
+    
+    public String getMonsterData(String key, MonsterDataCol col) {
+        String result = monsterData.get(key)[col.ordinal()];
+        switch (col) {
+            case HP1:
+            case HP2:
+            case TV1:
+            case TV2:
+                if (Objects.equals(result, "")) {
+                    return 0 + "";
+                }
+                break;
+        }
+        return result;
+    }
+    
+    public int getMonsterDataInt(String key, MonsterDataCol col) {
+        return Integer.parseInt(getMonsterData(key, col));
     }
     
     public static final int NULL_INT = -9;

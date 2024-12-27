@@ -27,8 +27,8 @@ import java.util.List;
 public class Trailblazer7Power extends BuffPower {
     public static final String POWER_ID = HSRMod.makePath(Trailblazer7Power.class.getSimpleName());
     
-    public Trailblazer7Power(AbstractCreature owner, int amount) {
-        super(POWER_ID, owner, amount);
+    public Trailblazer7Power(AbstractCreature owner, int amount, boolean upgraded) {
+        super(POWER_ID, owner, amount, upgraded);
         this.updateDescription();
     }
 
@@ -38,10 +38,13 @@ public class Trailblazer7Power extends BuffPower {
     }
 
     public void onUseCard(AbstractCard card, UseCardAction action) {
-        int amt = amount;
-        amt += AbstractDungeon.getMonsters().monsters.stream().mapToInt(m -> m.currentBlock > 0 ? 1 : 0).sum();
-        this.addToBot(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, amt, Settings.FAST_MODE));
-        this.flash();
+        if (card.type == AbstractCard.CardType.SKILL) {
+            this.flash();
+            int amt = amount;
+            if (upgraded)
+                amt += AbstractDungeon.getMonsters().monsters.stream().mapToInt(m -> m.currentBlock > 0 ? 1 : 0).sum();
+            this.addToBot(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, amt, Settings.FAST_MODE));
+        }
     }
 
     @Override

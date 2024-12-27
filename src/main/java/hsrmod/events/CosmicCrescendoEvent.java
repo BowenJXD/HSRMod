@@ -166,12 +166,13 @@ public class CosmicCrescendoEvent extends PhasedEvent {
                         overrideBody = String.format(DESCRIPTIONS[3], card.name);
                     }
                     else {
-                        transitionKey(9);
                     }
+                        transitionKey(9);
                 } else {
                     // Lose random card
                     AbstractCard card = AbstractDungeon.player.masterDeck.getRandomCard(true);
                     AbstractDungeon.effectList.add(new PurgeCardEffect(card));
+                    AbstractDungeon.player.masterDeck.removeCard(card);
                     transitionKey(4);
                     overrideBody = String.format(DESCRIPTIONS[4], card.name);
                 }

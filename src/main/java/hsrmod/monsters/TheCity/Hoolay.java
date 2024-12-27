@@ -15,22 +15,17 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
 import hsrmod.misc.PathDefine;
 import hsrmod.modcore.HSRMod;
+import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.enemyOnly.*;
 import hsrmod.powers.misc.BrokenPower;
 import hsrmod.utils.ModHelper;
 
 import java.util.Iterator;
 
-public class Hoolay extends AbstractMonster {
+public class Hoolay extends BaseMonster {
     public static final String ID = Hoolay.class.getSimpleName();
-    private static final MonsterStrings eventStrings = CardCrawlGame.languagePack.getMonsterStrings(HSRMod.makePath(ID));
-    public static final String NAME = eventStrings.NAME;
-    public static final String[] MOVES = eventStrings.MOVES;
-    public static final String[] DIALOG = eventStrings.DIALOG;
 
-    int turnCount = 0;
     int[] damageTimes = {4, 2, 3, 4};
-    int[] damages = {2, 2, 2, 4};
     int irateCount = 10;
     int spawnCount = 1;
     AbstractMonster topLeftMonster = null;
@@ -39,22 +34,17 @@ public class Hoolay extends AbstractMonster {
     AbstractMonster bottomRightMonster = null;
 
     public Hoolay() {
-        super(NAME, HSRMod.makePath(ID), 200, 0F, -15.0F, 410F, 430F, PathDefine.MONSTER_PATH + ID + ".png", -150, 50);
-        this.type = EnemyType.ELITE;
-        this.dialogX = -150.0F * Settings.scale;
-        this.dialogY = 70.0F * Settings.scale;
+        super(ID, 410F, 430F, -150, 50);
 
-        for (int j : damages) {
-            this.damage.add(new DamageInfo(this, j));
-        }
-        if (AbstractDungeon.ascensionLevel >= 19) {
-            irateCount = 10;
-            // spawnCount = 2;
-        } else if (AbstractDungeon.ascensionLevel >= 4) {
-            irateCount = 8;
-            // spawnCount = 1;
+        if (ModHelper.moreDamageAscension(type))
+            setDamages(2, 2, 3, 4);
+        else
+            setDamages(1, 2, 3, 4);
+        
+        if (ModHelper.specialAscension(type)) {
+            spawnCount = 1;
         } else {
-            irateCount = 6;
+            spawnCount = 0;
         }
     }
 

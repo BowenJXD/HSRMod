@@ -113,13 +113,13 @@ public class ToughnessPower extends BuffPower implements InvisiblePower {
             AbstractMonster m = (AbstractMonster)c;
             switch (m.type) {
                 case NORMAL:
-                    result = 4;
+                    result = AbstractDungeon.ascensionLevel < 7 ? 4 : 5;
                     break;
                 case ELITE:
-                    result = 6;
+                    result = AbstractDungeon.ascensionLevel < 8 ? 6 : 7;
                     break;
                 case BOSS:
-                    result = 10;
+                    result = AbstractDungeon.ascensionLevel < 9 ? 10 : 12;
                     break;
             }
             result *= Math.min(AbstractDungeon.actNum, 4);

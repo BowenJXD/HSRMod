@@ -1,6 +1,7 @@
 package hsrmod.relics.rare;
 
 import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
+import com.evacipated.cardcrawl.mod.stslib.patches.core.AbstractCreature.TempHPField;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.relics.BaseRelic;
@@ -18,8 +19,11 @@ public class DignityAndPassion extends BaseRelic {
         flash();
         AbstractPlayer p = AbstractDungeon.player;
         int hpLost = p.maxHealth - p.currentHealth;
-        if (hpLost > 0) {
-            addToBot(new AddTemporaryHPAction(p, p, hpLost * magicNumber / 100));
+        int value = hpLost * magicNumber / 100;
+        int tempHp = TempHPField.tempHp.get(p);
+        int amt = value - tempHp;
+        if (amt > 0) {
+            addToBot(new AddTemporaryHPAction(p, p, amt));
         }
     }
 }

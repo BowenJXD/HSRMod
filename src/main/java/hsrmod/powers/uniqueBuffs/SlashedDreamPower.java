@@ -72,11 +72,7 @@ public class SlashedDreamPower extends PowerPower {
         }
     }
 
-    void trigger() {
-        CardCrawlGame.music.silenceBGMInstantly();
-        AbstractDungeon.scene.fadeOutAmbiance();
-        // AbstractDungeon.topLevelEffects.add(new BlackwhiteEffect(2.0F));
-        
+    void trigger() {        
         CardCrawlGame.sound.play("SlashedDream1");
         addToBot(new TalkAction(true, String.format(" #r%s ", DESCRIPTIONS[1]), 1.0F, 2.0F));
         AbstractCreature target = AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster) null, true, AbstractDungeon.cardRandomRng);
@@ -94,7 +90,7 @@ public class SlashedDreamPower extends PowerPower {
                 target, 
                 new ElementalDamageInfo(owner, baseDamage, ElementType.Lightning, 1), 
                 AbstractGameAction.AttackEffect.LIGHTNING, null,
-                c -> c.powers.stream().filter(p -> p.type == PowerType.DEBUFF).mapToInt(p -> 1).sum()
+                ci -> ci.info.output += ci.target.powers.stream().mapToInt(p -> p.type == PowerType.DEBUFF ? 1 : 0).sum()
         );
         action2.doApplyPower = true;
         ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play("SlashedDream2"));
@@ -104,9 +100,5 @@ public class SlashedDreamPower extends PowerPower {
             a.target = q;
             return a;
         }));
-        ModHelper.addToBotAbstract(() -> {
-            CardCrawlGame.music.unsilenceBGM();
-            AbstractDungeon.scene.fadeInAmbiance();
-        });
     }
 }

@@ -28,6 +28,7 @@ import com.megacrit.cardcrawl.vfx.combat.IntenseZoomEffect;
 import hsrmod.misc.Encounter;
 import hsrmod.misc.PathDefine;
 import hsrmod.modcore.HSRMod;
+import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.enemyOnly.*;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.subscribers.SubscriptionManager;
@@ -36,40 +37,29 @@ import hsrmod.utils.ModHelper;
 import java.util.Iterator;
 import java.util.Objects;
 
-public class Phantylia extends AbstractMonster implements PostPowerApplySubscriber {
+public class Phantylia extends BaseMonster implements PostPowerApplySubscriber {
     public static final String ID = Phantylia.class.getSimpleName();
-    private static final MonsterStrings eventStrings = CardCrawlGame.languagePack.getMonsterStrings(HSRMod.makePath(ID));
-    public static final String NAME = eventStrings.NAME;
-    public static final String[] MOVES = eventStrings.MOVES;
-    public static final String[] DIALOG = eventStrings.DIALOG;
 
-    int[] damages = {4, 14, 24, 24};
     int heal = 14;
     int chargeRemove = -100;
     int strengthGain = 4;
     int phase = 1;
-    int turnCount = 0;
 
     public Phantylia() {
-        super(NAME, HSRMod.makePath(ID), 200, 0.0F, 30.0F, 400F, 500F, PathDefine.MONSTER_PATH + ID + ".png", 100.0F, 0.0F);
-        this.type = EnemyType.BOSS;
-        this.dialogX = -150.0F * Settings.scale;
-        this.dialogY = 70.0F * Settings.scale;
+        super(ID, 0.0F, 30.0F, 400F, 500F, 100.0F, 0.0F);
 
-        if (AbstractDungeon.ascensionLevel >= 19) {
+        if (ModHelper.specialAscension(type)) {
             strengthGain = 4;
             heal = 14;
-        } else if (AbstractDungeon.ascensionLevel >= 4) {
+        } else {
             strengthGain = 3;
             heal = 10;
-        } else {
-            strengthGain = 2;
-            heal = 4;
         }
         
-        for (int i = 0; i < damages.length; i++) {
-            this.damage.add(new DamageInfo(this, damages[i]));
-        }
+        if (ModHelper.moreDamageAscension(type))
+            setDamages(4, 14, 24, 34);
+        else
+            setDamages(4, 14, 24, 24);
     }
 
     @Override

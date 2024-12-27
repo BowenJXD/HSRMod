@@ -1,5 +1,6 @@
 package hsrmod.cardsV2.Preservation;
 
+import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -29,9 +30,16 @@ public class Burst extends BaseCard {
                 AbstractGameAction.AttackEffect.SLASH_VERTICAL,
                 ci -> {
                     if (hasBlock && ci.target.currentBlock <= 0) {
-                        p.hand.group.stream().filter(c -> c.isInnate).findAny().ifPresent(c -> {
-                            addToBot(new ReduceCostForTurnAction(c, c.costForTurn));
-                        });
+                        if (upgraded) {
+                            addToBot(new SelectCardsInHandAction(1, cardStrings.EXTENDED_DESCRIPTION[0], c -> c.isInnate, list -> {
+                                list.forEach(c -> addToTop(new ReduceCostForTurnAction(c, c.costForTurn)));
+                            }));
+                        }
+                        else {
+                            p.hand.group.stream().filter(c -> c.isInnate).findAny().ifPresent(c -> {
+                                addToBot(new ReduceCostForTurnAction(c, c.costForTurn));
+                            });
+                        }
                     }
                 })
         );

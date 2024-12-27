@@ -5,47 +5,30 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.VulnerablePower;
 import hsrmod.actions.ElementalDamageAction;
-import hsrmod.misc.PathDefine;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
+import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.breaks.BleedingPower;
 import hsrmod.powers.enemyOnly.DeathExplosionPower;
 import hsrmod.powers.enemyOnly.SoulGladRevelPower;
+import hsrmod.utils.ModHelper;
 
-public class BubbleHound extends AbstractMonster {
+public class BubbleHound extends BaseMonster {
     public static final String ID = BubbleHound.class.getSimpleName();
-    private static final MonsterStrings eventStrings = CardCrawlGame.languagePack.getMonsterStrings(HSRMod.makePath(ID));
-    public static final String NAME = eventStrings.NAME;
-    public static final String[] MOVES = eventStrings.MOVES;
-    public static final String[] DIALOG = eventStrings.DIALOG;
     
-    int turnCount = 0;
-    int dmg = 6;
     int explosionDmg = 5;
+    int soulGladAmount = 0;
     
     public BubbleHound(float x, float y) {
-        super(NAME, HSRMod.makePath(ID), 42, 0F, -15.0F, 256, 256, PathDefine.MONSTER_PATH + ID + ".png", x, y);
-        this.type = EnemyType.NORMAL;
-        this.dialogX = -150.0F * Settings.scale;
-        this.dialogY = -70.0F * Settings.scale;
+        super(ID, 256, 256, x, y);
         
-        if (AbstractDungeon.ascensionLevel >= 19) {
-            dmg = 20;
-        } else if (AbstractDungeon.ascensionLevel >= 4) {
-            dmg = 18;
-        } else {
-            dmg = 16;
-        }
-        
-        this.damage.add(new DamageInfo(this, dmg));
+        setDamagesWithAscension(17);
+        soulGladAmount = ModHelper.specialAscension(type) ? 1 : 0;
+        explosionDmg = ModHelper.moreDamageAscension(type) ? 3 : 4;
     }
 
     @Override
@@ -59,7 +42,7 @@ public class BubbleHound extends AbstractMonster {
                 }
             }
         })));
-        addToBot(new ApplyPowerAction(this, this, new SoulGladRevelPower(this, 0, 4), 0));
+        addToBot(new ApplyPowerAction(this, this, new SoulGladRevelPower(this, soulGladAmount, 4), soulGladAmount));
     }
 
     @Override

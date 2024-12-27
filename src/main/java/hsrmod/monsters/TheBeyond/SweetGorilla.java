@@ -17,6 +17,7 @@ import com.megacrit.cardcrawl.powers.WeakPower;
 import hsrmod.cardsV2.Curse.Imprison;
 import hsrmod.misc.PathDefine;
 import hsrmod.modcore.HSRMod;
+import hsrmod.monsters.BaseMonster;
 import hsrmod.monsters.Exordium.Spider;
 import hsrmod.monsters.TheCity.IlluminationDragonfish;
 import hsrmod.powers.enemyOnly.ChargingPower;
@@ -24,34 +25,17 @@ import hsrmod.powers.enemyOnly.SanctionRatePower;
 import hsrmod.powers.enemyOnly.ToughnessProtectionPower;
 import hsrmod.utils.ModHelper;
 
-public class SweetGorilla extends AbstractMonster {
+public class SweetGorilla extends BaseMonster {
     public static final String ID = SweetGorilla.class.getSimpleName();
-    private static final MonsterStrings eventStrings = CardCrawlGame.languagePack.getMonsterStrings(HSRMod.makePath(ID));
-    public static final String NAME = eventStrings.NAME;
-    public static final String[] MOVES = eventStrings.MOVES;
-    public static final String[] DIALOG = eventStrings.DIALOG;
     
-    int turnCount = 0;
-    int[] damages = {5, 7};
     int[] damageTimes = {3, 4};
-    int hpLoss = 8;
+    int hpLoss = 10;
     
     public SweetGorilla() {
-        super(NAME, HSRMod.makePath(ID), 155, 0F, -15.0F, 384, 384, PathDefine.MONSTER_PATH + ID + ".png", -100, 0);
-        this.type = EnemyType.NORMAL;
-        this.dialogX = -150.0F * Settings.scale;
-        this.dialogY = -70.0F * Settings.scale;
+        super(ID, 384, 384, -100, 0);
 
-        if (AbstractDungeon.ascensionLevel >= 19) {
-            increaseMaxHp(10, false);
-        } else if (AbstractDungeon.ascensionLevel >= 4) {
-            increaseMaxHp(5, false);
-        } else {
-        }
-
-        for (int j : damages) {
-            this.damage.add(new DamageInfo(this, j));
-        }
+        setDamagesWithAscension(5, 7);
+        hpLoss = ModHelper.specialAscension(type) ? 8 : 10;
     }
 
     @Override

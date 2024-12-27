@@ -323,7 +323,8 @@
   "HSRMod:Trailblazer7": {
     "NAME": "Treasure of the Architects",
     "DESCRIPTIONS": [
-      "When dealing damage to an enemy with Block, increase damage and Toughness reduction by #b%d%%."
+      "When using a skill card, gain #b%d block.",
+      "When using a skill card, gain #b%d block, for every enemy that has Block, gain 1 more."
     ]
   },
   "HSRMod:Trailblazer8": {
@@ -536,6 +537,12 @@
     "NAME": "Toughness Protection",
     "DESCRIPTIONS": [
       "Toughness can not be reduced."
+    ]
+  },
+  "HSRMod:HeartIsMeantToBeBroken": {
+    "NAME": "Heart is Meant to be Broken!",
+    "DESCRIPTIONS": [
+      "When #yinvincible triggers, takes #toughness reduction equal to limit. When break by player, remove #yinvincible and this power, take damage equal to the #ytoughness limit."
     ]
   }
 }

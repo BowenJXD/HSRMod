@@ -137,5 +137,15 @@
     "EXTENDED_DESCRIPTION": [
       "追击"
     ]
+  },
+  "HSRMod:Burst": {
+    "EXTENDED_DESCRIPTION": [
+      "将此回合费用变为0。"
+    ]
+  },
+  "HSRMod:Concentration": {
+    "EXTENDED_DESCRIPTION": [
+      "获得"
+    ]
   }
 }

@@ -13,19 +13,15 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import hsrmod.misc.PathDefine;
 import hsrmod.modcore.HSRMod;
+import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.enemyOnly.ChargingPower;
 import hsrmod.powers.enemyOnly.SunsetPower;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.utils.ModHelper;
 
-public class SomethingUntoDeath extends AbstractMonster {
+public class SomethingUntoDeath extends BaseMonster {
     public static final String ID = SomethingUntoDeath.class.getSimpleName();
-    private static final MonsterStrings eventStrings = CardCrawlGame.languagePack.getMonsterStrings(HSRMod.makePath(ID));
-    public static final String NAME = eventStrings.NAME;
-    public static final String[] MOVES = eventStrings.MOVES;
-    public static final String[] DIALOG = eventStrings.DIALOG;
     
-    int turnCount = 0;
     int[] damages = {9, 9, 49};
     int[] damageTimes = {3, 2, 1};
     int sunsetCount = 3;
@@ -39,22 +35,11 @@ public class SomethingUntoDeath extends AbstractMonster {
     AbstractMonster bottomRightMonster;
     
     public SomethingUntoDeath() {
-        super(NAME, HSRMod.makePath(ID), 199, 0F, -15.0F, 410F, 430F, PathDefine.MONSTER_PATH + ID + ".png", -150, 50);
-        this.type = EnemyType.ELITE;
-        this.dialogX = -150.0F * Settings.scale;
-        this.dialogY = 70.0F * Settings.scale;
+        super(ID, 410F, 430F, -150, 50);
 
-
-        for (int j : damages) {
-            this.damage.add(new DamageInfo(this, j));
-        }
-        if (AbstractDungeon.ascensionLevel >= 19) {
-            ssHp = 7;
-        } else if (AbstractDungeon.ascensionLevel >= 4) {
-            ssHp = 6;
-        } else {
-            ssHp = 5;
-        }
+        setDamages(9, 9, 49);
+        strengthGain = ModHelper.moreDamageAscension(type) ? 3 : 2;
+        ssHp = ModHelper.specialAscension(type) ? 5 : 4;
     }
 
     @Override

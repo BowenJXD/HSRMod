@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.EnemyData;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import com.megacrit.cardcrawl.powers.AbstractPower;
@@ -151,6 +152,10 @@ public class ModHelper {
         return getRandomMonster(m -> !(m.isDying || m.isEscaping || m.halfDead || m.currentHealth <= 0), true);
     }
     
+    public static boolean checkMonster(AbstractMonster m){
+        return !(m.isDying || m.isEscaping || m.halfDead || m.currentHealth <= 0);
+    }
+    
     public static AbstractMonster getRandomMonster(Predicate<AbstractMonster> predicate, boolean aliveOnly) {
         MonsterGroup group = AbstractDungeon.getCurrRoom().monsters;
         Random rng = AbstractDungeon.cardRandomRng;
@@ -267,5 +272,53 @@ public class ModHelper {
                 AbstractDungeon.actionManager.addToTop(new VFXAction(m, new InflameEffect(m), 0.2F));
             }
         }
+    }
+    
+    public static boolean moreDamageAscension(AbstractMonster.EnemyType type) {
+        int level = 2;
+        switch (type) {
+            case NORMAL:
+                level = 2;
+                break;
+            case ELITE:
+                level = 3;
+                break;
+            case BOSS:
+                level = 4;
+                break;
+        }
+        return AbstractDungeon.ascensionLevel >= level;
+    }
+    
+    public static boolean moreHPAscension(AbstractMonster.EnemyType type) {
+        int level = 7;
+        switch (type) {
+            case NORMAL:
+                level = 7;
+                break;
+            case ELITE:
+                level = 8;
+                break;
+            case BOSS:
+                level = 9;
+                break;
+        }
+        return AbstractDungeon.ascensionLevel >= level;
+    }
+    
+    public static boolean specialAscension(AbstractMonster.EnemyType type) {
+        int level = 17;
+        switch (type) {
+            case NORMAL:
+                level = 17;
+                break;
+            case ELITE:
+                level = 18;
+                break;
+            case BOSS:
+                level = 19;
+                break;
+        }
+        return AbstractDungeon.ascensionLevel >= level;
     }
 }

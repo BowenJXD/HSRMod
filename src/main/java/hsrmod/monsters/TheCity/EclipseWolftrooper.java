@@ -11,22 +11,16 @@ import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.misc.PathDefine;
 import hsrmod.modcore.HSRMod;
+import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.enemyOnly.MoonRagePower;
 
-public class EclipseWolftrooper extends AbstractMonster {
+public class EclipseWolftrooper extends BaseMonster {
     public static final String ID = EclipseWolftrooper.class.getSimpleName();
-    private static final MonsterStrings eventStrings = CardCrawlGame.languagePack.getMonsterStrings(HSRMod.makePath(ID));
-    public static final String NAME = eventStrings.NAME;
-    public static final String[] MOVES = eventStrings.MOVES;
-    public static final String[] DIALOG = eventStrings.DIALOG;
     
     public EclipseWolftrooper(float x, float y) {
-        super(NAME, HSRMod.makePath(ID), 24, 0F, -15.0F, 169F, 169F, PathDefine.MONSTER_PATH + ID + ".png", x, y);
-        this.type = EnemyType.NORMAL;
-        this.dialogX = -150.0F * Settings.scale;
-        this.dialogY = -70.0F * Settings.scale;
+        super(ID, 169F, 169F, x, y);
         
-        this.damage.add(new DamageInfo(this, 2));
+        setDamages(2);
     }
 
     @Override

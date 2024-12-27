@@ -22,7 +22,7 @@ public class ElementalDamageAllAction extends AbstractGameAction {
     private ElementType elementType;
     private int tr;
     private Consumer<ElementalDamageAction.CallbackInfo> callback;
-    private Function<AbstractCreature, Integer> modifier;
+    private Consumer<ElementalDamageAction.CallbackInfo> modifier;
     private int baseDamage;
     private boolean firstFrame;
     private boolean utilizeBaseDamage;
@@ -67,7 +67,7 @@ public class ElementalDamageAllAction extends AbstractGameAction {
         return this;
     }
 
-    public ElementalDamageAllAction setModifier(Function<AbstractCreature, Integer> modifier) {
+    public ElementalDamageAllAction setModifier(Consumer<ElementalDamageAction.CallbackInfo> modifier) {
         this.modifier = modifier;
         return this;
     }

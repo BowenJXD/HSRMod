@@ -18,6 +18,6 @@ public class FuXuan1 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p, new MatrixOfPresciencePower(p, magicNumber), magicNumber));
-        addToBot(new ApplyPowerAction(p, p, new BlurPower(p, 1), 1));
+        addToBot(new ApplyPowerAction(p, p, new BlurPower(p, magicNumber), magicNumber));
     }
 }

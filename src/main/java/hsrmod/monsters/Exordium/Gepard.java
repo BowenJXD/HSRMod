@@ -13,41 +13,31 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import hsrmod.misc.PathDefine;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
+import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.enemyOnly.ChargingPower;
 import hsrmod.powers.enemyOnly.TitForTatPower;
 import hsrmod.utils.ModHelper;
 
-public class Gepard extends AbstractMonster {
+public class Gepard extends BaseMonster {
     public static final String ID = Gepard.class.getSimpleName();
-    private static final MonsterStrings eventStrings = CardCrawlGame.languagePack.getMonsterStrings(HSRMod.makePath(ID));
-    public static final String NAME = eventStrings.NAME;
-    public static final String[] MOVES = eventStrings.MOVES;
-    public static final String[] DIALOG = eventStrings.DIALOG;
     
-    int[] damages = {10, 20};
-    int block0 = 10;
-    int block = 50;
-    int strengthGain = 3;
-    int turnCount = 0;
+    int[] block = {10, 36};
+    int strengthGain = 2;
     
     public Gepard() {
-        super(NAME, HSRMod.makePath(ID), 80, 0.0F, -15.0F, 300F, 400.0F, PathDefine.MONSTER_PATH + ID + ".png", 0.0F, 0.0F);
-        this.type = EnemyType.ELITE;
-        this.dialogX = -150.0F * Settings.scale;
-        this.dialogY = 70.0F * Settings.scale;
+        super(ID, 300F, 400.0F);
         
-        this.damage.add(new DamageInfo(this, damages[0]));
-        this.damage.add(new DamageInfo(this, damages[1]));
-        this.damage.add(new DamageInfo(this, 0));
-        if (AbstractDungeon.ascensionLevel >= 19) {
-            strengthGain = 3;
-            block = 40;
-        } else if (AbstractDungeon.ascensionLevel >= 4) {
-            strengthGain = 2;
-            block = 37;
-        } else {
-            strengthGain = 1;
-            block = 35;
+        if (ModHelper.specialAscension(type)) {
+            turnCount = 2;
+        }
+        if (ModHelper.moreHPAscension(type)) {
+            block = new int[]{10, 40};
+        }
+        if (ModHelper.moreDamageAscension(type)) {
+            setDamages(10, 24, 0);
+        }
+        else {
+            setDamages(10, 20, 0);
         }
     }
 
@@ -57,7 +47,7 @@ public class Gepard extends AbstractMonster {
             case 1: 
                 addToBot(new DamageAction(AbstractDungeon.player, this.damage.get(0), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
                 for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
-                    addToBot(new GainBlockAction(m, block0));
+                    addToBot(new GainBlockAction(m, block[0]));
                 }
                 break;
             case 2:
@@ -65,7 +55,7 @@ public class Gepard extends AbstractMonster {
                 break;
             case 3:
                 for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
-                    addToBot(new GainBlockAction(m, block));
+                    addToBot(new GainBlockAction(m, block[1]));
                 }
                 addToBot(new ApplyPowerAction(this, this, new ChargingPower(this, MOVES[4], 1), 1));
                 addToBot(new ApplyPowerAction(this, this, new TitForTatPower(this, 1, new ElementalDamageInfo(this, 10, null, 6))));

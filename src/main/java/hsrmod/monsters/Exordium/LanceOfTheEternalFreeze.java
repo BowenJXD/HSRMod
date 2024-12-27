@@ -13,26 +13,19 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cardsV2.Curse.Frozen;
 import hsrmod.misc.PathDefine;
 import hsrmod.modcore.HSRMod;
+import hsrmod.monsters.BaseMonster;
 
-public class LanceOfTheEternalFreeze extends AbstractMonster {
+public class LanceOfTheEternalFreeze extends BaseMonster {
     public static final String ID = LanceOfTheEternalFreeze.class.getSimpleName();
-    private static final MonsterStrings eventStrings = CardCrawlGame.languagePack.getMonsterStrings(HSRMod.makePath(ID));
-    public static final String NAME = eventStrings.NAME;
-    public static final String[] MOVES = eventStrings.MOVES;
-    public static final String[] DIALOG = eventStrings.DIALOG;
     
     public LanceOfTheEternalFreeze(float x, float y, int picIndex){
-        super(NAME, HSRMod.makePath(ID), 22, 0.0F, -15.0F, 188F, 243.0F, PathDefine.MONSTER_PATH + ID + "_" + picIndex + ".png", x, y);
-        this.type = EnemyType.NORMAL;
-        this.dialogX = -150.0F * Settings.scale;
-        this.dialogY = -70.0F * Settings.scale;
+        super(ID, PathDefine.MONSTER_PATH + ID + "_" + picIndex + ".png", 0.0F, -15.0F, 188F, 243.0F, x, y);
         
-        this.damage.add(new DamageInfo(this, 6));
+        setDamagesWithAscension(6);
     }
 
     @Override
     public void takeTurn() {
-        AbstractPlayer p = AbstractDungeon.player;
         addToBot(new DamageAction(p, this.damage.get(0), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         addToBot(new MakeTempCardInDrawPileAction(new Frozen(), 1, true, true));
     }

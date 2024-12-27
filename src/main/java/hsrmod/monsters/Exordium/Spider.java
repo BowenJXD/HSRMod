@@ -5,53 +5,34 @@ import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.ExplosionSmallEffect;
 import hsrmod.actions.ElementalDamageAction;
-import hsrmod.misc.PathDefine;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
-import hsrmod.powers.enemyOnly.BarrierPower;
+import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.enemyOnly.ChargingPower;
 import hsrmod.powers.enemyOnly.DeathExplosionPower;
+import hsrmod.utils.ModHelper;
 
-public class Spider extends AbstractMonster {
+public class Spider extends BaseMonster {
     public static final String ID = Spider.class.getSimpleName();
-    private static final MonsterStrings eventStrings = CardCrawlGame.languagePack.getMonsterStrings(HSRMod.makePath(ID));
-    public static final String NAME = eventStrings.NAME;
-    public static final String[] MOVES = eventStrings.MOVES;
-    public static final String[] DIALOG = eventStrings.DIALOG;
     
-    int turnCount = 0;
-    int dmg = 6;
-    int explosionDmg = 20;
-    int explosionDmg2 = 10;
+    int explosionDmg = 15;
+    int selfExpDamage = 10;
     
     public Spider(int turnCount, float x, float y) {
-        super(NAME, HSRMod.makePath(ID), 24, 0F, -15.0F, 165F, 197F, PathDefine.MONSTER_PATH + ID + ".png", x, y);
-        this.type = EnemyType.NORMAL;
+        super(ID, 165F, 197F, x, y);
         this.turnCount = turnCount;
-        this.dialogX = -150.0F * Settings.scale;
-        this.dialogY = -70.0F * Settings.scale;
         
-        if (AbstractDungeon.ascensionLevel >= 19) {
-            dmg = 7;
-            explosionDmg = 16;
-        } else if (AbstractDungeon.ascensionLevel >= 4) {
-            dmg = 6;
-            explosionDmg = 14;
-        } else {
-            dmg = 5;
-            explosionDmg = 12;
+        setDamagesWithAscension(7, explosionDmg);
+        
+        if (ModHelper.specialAscension(type) && turnCount == 0) {
+            this.turnCount = 1;
         }
-        
-        this.damage.add(new DamageInfo(this, dmg));
-        this.damage.add(new DamageInfo(this, explosionDmg));
     }
     
     public Spider(float x, float y) {
@@ -64,7 +45,7 @@ public class Spider extends AbstractMonster {
         addToBot(new ApplyPowerAction(this, this, new DeathExplosionPower(this, MOVES[4], MOVES[5], () -> {
             for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
                 if (m != this && !m.isDying && !m.isDead) {
-                    addToBot(new ElementalDamageAction(m, new ElementalDamageInfo(m, explosionDmg2, DamageInfo.DamageType.THORNS, ElementType.Fire, 2), AbstractGameAction.AttackEffect.FIRE));
+                    addToBot(new ElementalDamageAction(m, new ElementalDamageInfo(m, selfExpDamage, DamageInfo.DamageType.THORNS, ElementType.Fire, 2), AbstractGameAction.AttackEffect.FIRE));
                 }
             }
         })));

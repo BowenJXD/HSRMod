@@ -16,47 +16,18 @@ import hsrmod.cardsV2.Curse.Frozen;
 import hsrmod.misc.Encounter;
 import hsrmod.misc.PathDefine;
 import hsrmod.modcore.HSRMod;
+import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.enemyOnly.ChargingPower;
 import hsrmod.utils.ModHelper;
 
-public class Cocolia extends AbstractMonster {
+public class Cocolia extends BaseMonster {
     public static final String ID = Cocolia.class.getSimpleName();
-    private static final MonsterStrings eventStrings = CardCrawlGame.languagePack.getMonsterStrings(HSRMod.makePath(ID));
-    public static final String NAME = eventStrings.NAME;
-    public static final String[] MOVES = eventStrings.MOVES;
-    public static final String[] DIALOG = eventStrings.DIALOG;
-
-    int[] damages = {6, 6, 12, 6};
-    int turnCount = 0;
 
     public Cocolia() {
-        super(NAME, HSRMod.makePath(ID), 160, 0.0F, -15.0F, 400.0F, 512.0F, PathDefine.MONSTER_PATH + ID + ".png", -100.0F, 0.0F);
-        this.type = EnemyType.BOSS;
-        this.dialogX = -150.0F * Settings.scale;
-        this.dialogY = 70.0F * Settings.scale;
+        super(ID, 400.0F, 512.0F, -100.0F, 0.0F);
 
-        if (AbstractDungeon.ascensionLevel >= 19) {
-            increaseMaxHp(40, false);
-        } else if (AbstractDungeon.ascensionLevel >= 4) {
-            increaseMaxHp(20, false);
-        } else {
-        }
-
-        for (int i = 0; i < 4; i++) {
-            this.damage.add(new DamageInfo(this, damages[i]));
-        }
-    }
-
-    @Override
-    public void usePreBattleAction() {
-        super.usePreBattleAction();
-        if (AbstractDungeon.getCurrRoom() instanceof MonsterRoomBoss) {
-            CardCrawlGame.music.unsilenceBGM();
-            AbstractDungeon.scene.fadeOutAmbiance();
-            AbstractDungeon.getCurrRoom().playBgmInstantly(Encounter.END_OF_THE_ETERNAL_FREEZE + "_1");
-        }
-        // spawnLance1();
-        // spawnLance2();
+        setDamages(6, 6, 12 ,6);
+        bgm = Encounter.END_OF_THE_ETERNAL_FREEZE + "_1";
     }
 
     @Override

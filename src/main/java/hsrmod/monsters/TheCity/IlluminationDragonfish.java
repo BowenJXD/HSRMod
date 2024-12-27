@@ -20,35 +20,22 @@ import hsrmod.misc.PathDefine;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
+import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.enemyOnly.ChargingPower;
 import hsrmod.powers.enemyOnly.DeathExplosionPower;
+import hsrmod.utils.ModHelper;
 
-public class IlluminationDragonfish extends AbstractMonster {
+public class IlluminationDragonfish extends BaseMonster {
     public static final String ID = IlluminationDragonfish.class.getSimpleName();
-    private static final MonsterStrings eventStrings = CardCrawlGame.languagePack.getMonsterStrings(HSRMod.makePath(ID));
-    public static final String NAME = eventStrings.NAME;
-    public static final String[] MOVES = eventStrings.MOVES;
-    public static final String[] DIALOG = eventStrings.DIALOG;
     
-    int turnCount = 0;
-    int dmg = 6;
     int explosionDmg = 5;
+    int vulnerableAmt = 1;
     
     public IlluminationDragonfish(float x, float y) {
-        super(NAME, HSRMod.makePath(ID), 24, 0F, -15.0F, 211, 240, PathDefine.MONSTER_PATH + ID + ".png", x, y);
-        this.type = EnemyType.NORMAL;
-        this.dialogX = -150.0F * Settings.scale;
-        this.dialogY = -70.0F * Settings.scale;
+        super(ID, 211, 240, x, y);
         
-        if (AbstractDungeon.ascensionLevel >= 19) {
-            dmg = 7;
-        } else if (AbstractDungeon.ascensionLevel >= 4) {
-            dmg = 6;
-        } else {
-            dmg = 5;
-        }
-        
-        this.damage.add(new DamageInfo(this, dmg));
+        setDamagesWithAscension(7);
+        vulnerableAmt = ModHelper.specialAscension(type) ? 2 : 1;
     }
 
     @Override
@@ -68,7 +55,7 @@ public class IlluminationDragonfish extends AbstractMonster {
     public void takeTurn() {
         AbstractPlayer p = AbstractDungeon.player;
         addToBot(new DamageAction(p, this.damage.get(0), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-        addToBot(new ApplyPowerAction(p, this, new VulnerablePower(p, 1, true), 1));
+        addToBot(new ApplyPowerAction(p, this, new VulnerablePower(p, vulnerableAmt, true), 1));
     }
 
     @Override

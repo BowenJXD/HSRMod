@@ -28,12 +28,12 @@ import java.util.function.Function;
 public class ElementalDamageAction extends AbstractGameAction {
     public ElementalDamageInfo info;
     private Consumer<CallbackInfo> callback;
-    private Function<AbstractCreature, Integer> modifier;
+    private Consumer<CallbackInfo> modifier;
     public boolean doApplyPower = false;
     public boolean isFast = false;
 
     public ElementalDamageAction(AbstractCreature target, ElementalDamageInfo info,
-                                 AbstractGameAction.AttackEffect effect, Consumer<CallbackInfo> callback, Function<AbstractCreature, Integer> modifier) {
+                                 AbstractGameAction.AttackEffect effect, Consumer<CallbackInfo> callback, Consumer<CallbackInfo> modifier) {
         this.info = info;
         this.setValues(target, info);
         this.actionType = ActionType.DAMAGE;
@@ -63,7 +63,7 @@ public class ElementalDamageAction extends AbstractGameAction {
         return this;
     }
 
-    public ElementalDamageAction setModifier(Function<AbstractCreature, Integer> modifier) {
+    public ElementalDamageAction setModifier(Consumer<CallbackInfo> modifier) {
         this.modifier = modifier;
         return this;
     }
@@ -94,7 +94,7 @@ public class ElementalDamageAction extends AbstractGameAction {
             this.applyPowers();
         }
         if (this.modifier != null) {
-            this.info.output += this.modifier.apply(this.target);
+            this.modifier.accept(new CallbackInfo(target, false, info));
         }
 
         // Reduce toughness

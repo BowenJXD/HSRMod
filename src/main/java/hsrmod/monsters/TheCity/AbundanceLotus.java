@@ -16,28 +16,21 @@ import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.powers.watcher.EnergyDownPower;
 import hsrmod.misc.PathDefine;
 import hsrmod.modcore.HSRMod;
+import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.enemyOnly.AbundanceLotusPower;
 import hsrmod.powers.enemyOnly.SummonedPower;
+import hsrmod.utils.ModHelper;
 
-public class AbundanceLotus extends AbstractMonster {
+public class AbundanceLotus extends BaseMonster {
     public static final String ID = AbundanceLotus.class.getSimpleName();
-    private static final MonsterStrings eventStrings = CardCrawlGame.languagePack.getMonsterStrings(HSRMod.makePath(ID));
-    public static final String NAME = eventStrings.NAME;
-    public static final String[] MOVES = eventStrings.MOVES;
-    public static final String[] DIALOG = eventStrings.DIALOG;
     
     boolean awakened = false;
-    int turnCount = 0;
     
     public AbundanceLotus(float x, float y, boolean awakened) {
-        super(NAME, HSRMod.makePath(ID), 40, 0F, -15.0F, 140F, 150F, PathDefine.MONSTER_PATH + ID + (awakened ? "_2" : "_1") + ".png", x, y);
-        this.type = EnemyType.NORMAL;
+        super(ID, PathDefine.MONSTER_PATH + ID + (awakened ? "_2" : "_1") + ".png", 0F, -15.0F, 140F, 150F, x, y);
         this.awakened = awakened;
-        this.dialogX = -150.0F * Settings.scale;
-        this.dialogY = -70.0F * Settings.scale;
         
-        this.damage.add(new DamageInfo(this, awakened ? 8 : 4));
-        this.damage.add(new DamageInfo(this, 8));
+        setDamagesWithAscension(awakened ? 8 : 4, 8);
     }
 
     @Override
@@ -53,8 +46,8 @@ public class AbundanceLotus extends AbstractMonster {
         switch (nextMove) {
             case 1:
                 addToBot(new DamageAction(p, this.damage.get(0), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-                if (p.energy.energy > 3)
-                    addToBot(new ApplyPowerAction(p, this, new EnergyDownPower(p, 1), 0));
+                if (p.energy.energy - ModHelper.getPowerCount(EnergyDownPower.POWER_ID) > 3)
+                    addToBot(new ApplyPowerAction(p, this, new EnergyDownPower(p, 1), 1));
                 break;
             case 2:
                 addToBot(new DamageAction(p, this.damage.get(1), AbstractGameAction.AttackEffect.SLASH_HEAVY));

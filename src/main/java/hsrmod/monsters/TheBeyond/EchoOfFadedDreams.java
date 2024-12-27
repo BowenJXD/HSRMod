@@ -18,31 +18,27 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import hsrmod.cardsV2.Curse.Imprison;
 import hsrmod.misc.PathDefine;
 import hsrmod.modcore.HSRMod;
+import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.breaks.ImprisonPower;
 import hsrmod.powers.enemyOnly.SummonedPower;
 import hsrmod.powers.enemyOnly.WalkInTheLightPower;
+import hsrmod.utils.ModHelper;
 
 import java.util.Iterator;
 
-public class EchoOfFadedDreams extends CustomMonster {
+public class EchoOfFadedDreams extends BaseMonster {
     public static final String ID = EchoOfFadedDreams.class.getSimpleName();
-    private static final MonsterStrings eventStrings = CardCrawlGame.languagePack.getMonsterStrings(HSRMod.makePath(ID));
-    public static final String NAME = eventStrings.NAME;
-    public static final String[] MOVES = eventStrings.MOVES;
-    public static final String[] DIALOG = eventStrings.DIALOG;
     
     int firstStep = -1;
     
     public EchoOfFadedDreams(int firstStep, float x, float y) {
-        super(NAME, HSRMod.makePath(ID), 77, 0F, -15.0F, 84F, 180F, PathDefine.MONSTER_PATH + ID + ".png", x, y);
-        this.type = EnemyType.NORMAL;
-        this.dialogX = -150.0F * Settings.scale;
-        this.dialogY = -70.0F * Settings.scale;
+        super(ID, 84F, 180F, x, y);
         this.firstStep = (byte) firstStep;
         
-        this.damage.add(new DamageInfo(this, 17));
-        this.damage.add(new DamageInfo(this, 7));
-        this.damage.add(new DamageInfo(this, 7));
+        if (ModHelper.moreDamageAscension(EnemyType.BOSS))
+            setDamages(17, 7, 10);
+        else
+            setDamages(17, 7, 7);
     }
 
     @Override

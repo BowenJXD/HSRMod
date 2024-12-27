@@ -11,35 +11,29 @@ import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.misc.PathDefine;
 import hsrmod.modcore.HSRMod;
+import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.enemyOnly.ChargingPower;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.utils.ModHelper;
 
-public class Grizzly extends AbstractMonster {
+public class Grizzly extends BaseMonster {
     public static final String ID = Grizzly.class.getSimpleName();
-    private static final MonsterStrings eventStrings = CardCrawlGame.languagePack.getMonsterStrings(HSRMod.makePath(ID));
-    public static final String NAME = eventStrings.NAME;
-    public static final String[] MOVES = eventStrings.MOVES;
-    public static final String[] DIALOG = eventStrings.DIALOG;
-    
-    int turnCount = 0;
     
     public Grizzly() {
-        super(NAME, HSRMod.makePath(ID), 46, 0F, -15.0F, 384, 384, PathDefine.MONSTER_PATH + ID + ".png", -100, 0);
-        this.type = EnemyType.NORMAL;
-        this.dialogX = -150.0F * Settings.scale;
-        this.dialogY = -70.0F * Settings.scale;
+        super(ID, 0F, -15.0F, 384, 384, -100, 0);
         
-        if (AbstractDungeon.ascensionLevel >= 19) {
-            turnCount = 2;
-        } else if (AbstractDungeon.ascensionLevel >= 4) {
+        if (ModHelper.specialAscension(type)) {
             turnCount = 1;
         } else {
             turnCount = 0;
         }
         
-        this.damage.add(new DamageInfo(this, 12));
-        this.damage.add(new DamageInfo(this, 10));
+        if (ModHelper.moreDamageAscension(type)) {
+            setDamages(14, 10);
+        }
+        else {
+            setDamages(12, 10);
+        }
     }
 
     @Override
@@ -48,7 +42,6 @@ public class Grizzly extends AbstractMonster {
         if (turnCount > 0) {
             spawnSpiders();
         }
-        addToBot(new ApplyPowerAction(this, this, new ToughnessPower(this, 6, 6), 6));
     }
 
     @Override

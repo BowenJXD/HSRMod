@@ -9,9 +9,11 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.InvinciblePower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.relics.BottledFlame;
 import hsrmod.modcore.HSRMod;
+import hsrmod.powers.enemyOnly.HeartIsMeantToBeBrokenPower;
 import hsrmod.powers.misc.ToughnessPower;
 
 import java.util.ArrayList;
@@ -41,6 +43,13 @@ public class GalacticBat extends CustomRelic implements ClickableRelic {
 
     public AbstractRelic makeCopy() {
         return new GalacticBat();
+    }
+
+    @Override
+    public void atBattleStart() {
+        super.atBattleStart();
+        AbstractDungeon.getMonsters().monsters.stream().filter(m -> m.hasPower(InvinciblePower.POWER_ID)).findFirst()
+                .ifPresent(m -> addToTop(new ApplyPowerAction(m, m, new HeartIsMeantToBeBrokenPower(m))));
     }
 
     @Override

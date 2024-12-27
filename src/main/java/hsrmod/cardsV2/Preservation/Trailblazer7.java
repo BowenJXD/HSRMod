@@ -21,6 +21,6 @@ public class Trailblazer7 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new Trailblazer7Power(p, magicNumber), magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new Trailblazer7Power(p, magicNumber, upgraded), magicNumber));
     }
 }

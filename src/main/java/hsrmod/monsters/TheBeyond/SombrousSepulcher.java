@@ -10,17 +10,14 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.IntangiblePlayerPower;
 import hsrmod.misc.PathDefine;
 import hsrmod.modcore.HSRMod;
+import hsrmod.monsters.BaseMonster;
 
-public class SombrousSepulcher extends AbstractMonster {
+public class SombrousSepulcher extends BaseMonster {
     public static final String ID = SombrousSepulcher.class.getSimpleName();
-    private static final MonsterStrings eventStrings = CardCrawlGame.languagePack.getMonsterStrings(HSRMod.makePath(ID));
-    public static final String NAME = eventStrings.NAME;
-    public static final String[] MOVES = eventStrings.MOVES;
-    public static final String[] DIALOG = eventStrings.DIALOG;
     
     public SombrousSepulcher(int health, float x, float y) {
-        super(NAME, HSRMod.makePath(ID), health, 0F, -15.0F, 100F, 200F, PathDefine.MONSTER_PATH + ID + ".png", x, y);
-        this.type = EnemyType.NORMAL;
+        super(ID, 100F, 200F, x, y);
+        setHp(health);
     }
 
     @Override
@@ -38,5 +35,10 @@ public class SombrousSepulcher extends AbstractMonster {
     public void update() {
         super.update();
         this.animY = -MathUtils.cosDeg((float)(System.currentTimeMillis() / 6L % 360L)) * 6.0F * Settings.scale;
+    }
+
+    @Override
+    public void addBlock(int blockAmount) {
+        super.addBlock(0);
     }
 }

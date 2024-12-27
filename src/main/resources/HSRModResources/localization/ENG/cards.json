@@ -137,5 +137,15 @@
     "EXTENDED_DESCRIPTION": [
       "follow up"
     ]
+  },
+  "HSRMod:Burst": {
+    "EXTENDED_DESCRIPTION": [
+      "set the cost to 0 for this turn."
+    ]
+  },
+  "HSRMod:Concentration": {
+    "EXTENDED_DESCRIPTION": [
+      "obtain"
+    ]
   }
 }

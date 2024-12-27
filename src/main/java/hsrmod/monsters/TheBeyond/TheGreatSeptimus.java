@@ -29,6 +29,7 @@ import hsrmod.cards.uncommon.Robin1;
 import hsrmod.misc.Encounter;
 import hsrmod.misc.PathDefine;
 import hsrmod.modcore.HSRMod;
+import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.enemyOnly.*;
 import hsrmod.powers.misc.BrokenPower;
 import hsrmod.powers.misc.ToughnessPower;
@@ -38,37 +39,26 @@ import hsrmod.utils.ModHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TheGreatSeptimus extends CustomMonster implements OnCardUseSubscriber {
+public class TheGreatSeptimus extends BaseMonster implements OnCardUseSubscriber {
     public static final String ID = TheGreatSeptimus.class.getSimpleName();
-    private static final MonsterStrings eventStrings = CardCrawlGame.languagePack.getMonsterStrings(HSRMod.makePath(ID));
-    public static final String NAME = eventStrings.NAME;
-    public static final String[] MOVES = eventStrings.MOVES;
-    public static final String[] DIALOG = eventStrings.DIALOG;
     
-    private int[] damages = {17, 27, 37, 7, 17};
-    int turnCount = 0;
     int blockGain = 77;
     int numDamage = 7;
     int powerAmount = 9;
-    int toughnessAmount = 17;
     
     List<String> cardsCache;
     
     public TheGreatSeptimus() {
-        super(NAME, HSRMod.makePath(ID), 777, 0F, -15.0F, 400F, 512F, PathDefine.MONSTER_PATH + ID + ".png", -100F, 0.0F);
-        this.type = EnemyType.BOSS;
-        this.dialogX = -150.0F * Settings.scale;
-        this.dialogY = 70.0F * Settings.scale;
+        super(ID, 400F, 512F, -100F, 0.0F);
         
-        if (AbstractDungeon.ascensionLevel >= 19) { powerAmount = 9; }
-        else if (AbstractDungeon.ascensionLevel >= 4) { powerAmount = 8; }
-        else { powerAmount = 7; }
+        if (ModHelper.moreHPAscension(type))
+            powerAmount++;
+        if (ModHelper.specialAscension(type))
+            powerAmount++;
 
-        for (int dmg : damages) {
-            this.damage.add(new DamageInfo(this, dmg));
-        }
+        setDamages(17, 27, 37, 7, 17);
         if (BaseMod.hasModID("spireTogether:")) {
-            toughnessAmount = 27;
+            tv = 27;
         }
     }
 
@@ -83,7 +73,6 @@ public class TheGreatSeptimus extends CustomMonster implements OnCardUseSubscrib
             AbstractDungeon.getCurrRoom().playBgmInstantly(Encounter.SALUTATIONS_OF_ASHEN_DREAMS);
         }
         addToBot(new ApplyPowerAction(this, this, new WalkInTheLightPower(this, powerAmount), powerAmount));
-        addToBot(new ApplyPowerAction(this, this, new ToughnessPower(this, toughnessAmount, toughnessAmount), toughnessAmount));
         addToBot(new ShoutAction(this, DIALOG[0], 1.0F, 2.0F));
         ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_Day1", 2));
     }
@@ -105,7 +94,8 @@ public class TheGreatSeptimus extends CustomMonster implements OnCardUseSubscrib
                 break;
             case 2:
                 addToBot(new DamageAction(p, this.damage.get(1), AbstractGameAction.AttackEffect.SLASH_VERTICAL, true));
-                addToBot(new ApplyPowerAction(p, this, new EnergyDownPower(p, 1), 1));
+                if (p.energy.energy - ModHelper.getPowerCount(EnergyDownPower.POWER_ID) > 3)
+                    addToBot(new ApplyPowerAction(p, this, new EnergyDownPower(p, 1), 1));
                 break;
             case 3:
                 addToBot(new DamageAction(p, this.damage.get(2), AbstractGameAction.AttackEffect.SLASH_VERTICAL, true));

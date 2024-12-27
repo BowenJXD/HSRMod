@@ -25,7 +25,7 @@ public class AstralExpress extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        ModHelper.findCards(c -> c.hasTag(AbstractCard.CardTags.STARTER_STRIKE), false, true, true, false, false)
+        ModHelper.findCards(c -> c.hasTag(AbstractCard.CardTags.STARTER_STRIKE), true, true, true, false, false)
                 .forEach(r -> addToBot(new FollowUpAction(r.card)));
     }
 }

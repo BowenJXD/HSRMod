@@ -21,7 +21,7 @@ import hsrmod.utils.ModHelper;
 public class Spider extends BaseMonster {
     public static final String ID = Spider.class.getSimpleName();
     
-    int explosionDmg = 15;
+    int explosionDmg = 14;
     int selfExpDamage = 10;
     
     public Spider(int turnCount, float x, float y) {

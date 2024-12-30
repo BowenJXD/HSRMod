@@ -50,9 +50,9 @@ public class Argenti1 extends BaseCard {
             addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player,
                     new EnergyPower(AbstractDungeon.player, energyGain), energyGain));
         });*/
-        addToBot(action);
+        ModHelper.addToTopAbstract(this::execute);
+        addToTop(action);
         addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player,
                 new EnergyPower(AbstractDungeon.player, -energyExhaust), -energyExhaust));
-        ModHelper.addToBotAbstract(this::execute);
     }
 }

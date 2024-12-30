@@ -12,12 +12,12 @@ import hsrmod.modcore.ElementalDamageInfo;
 
 import java.util.Comparator;
 
-public class AstralEcologySchool extends BaseCard {
-    public static final String ID = AstralEcologySchool.class.getSimpleName();
+public class TheHerta1 extends BaseCard {
+    public static final String ID = TheHerta1.class.getSimpleName();
     
-    public AstralEcologySchool() {
+    public TheHerta1() {
         super(ID);
-        energyCost = 100;
+        energyCost = 220;
         tags.add(CustomEnums.ENERGY_COSTING);
         isMultiDamage = true;
     }

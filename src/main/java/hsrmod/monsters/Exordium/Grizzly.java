@@ -29,10 +29,10 @@ public class Grizzly extends BaseMonster {
         }
         
         if (ModHelper.moreDamageAscension(type)) {
-            setDamages(14, 10);
+            setDamages(13, 8);
         }
         else {
-            setDamages(12, 10);
+            setDamages(12, 8);
         }
     }
 

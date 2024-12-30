@@ -28,16 +28,16 @@ public class Gepard extends BaseMonster {
         super(ID, 300F, 400.0F);
         
         if (ModHelper.specialAscension(type)) {
-            turnCount = 2;
+            turnCount = 1;
         }
         if (ModHelper.moreHPAscension(type)) {
             block = new int[]{10, 40};
         }
         if (ModHelper.moreDamageAscension(type)) {
-            setDamages(10, 24, 0);
+            setDamages(10, 15, 0);
         }
         else {
-            setDamages(10, 20, 0);
+            setDamages(10, 12, 0);
         }
     }
 

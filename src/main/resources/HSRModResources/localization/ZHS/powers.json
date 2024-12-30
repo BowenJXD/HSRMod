@@ -336,8 +336,8 @@
   "HSRMod:ChampionsDinnerCatsCradle": {
     "NAME": "冠军晚餐 · 猫的摇篮",
     "DESCRIPTIONS": [
-      "耗能的牌视为追击牌，且于充能满时，追击 #b1 张。追击耗能的牌时，无需足够的 [hsrmod:ChargeIcon] 。",
-      "耗能的牌视为追击牌，且于充能满时，追击 #b1 张。追击耗能的牌时，不消耗 [hsrmod:ChargeIcon] 。"
+      "耗能的牌视为追击牌，且于充能满时， #b%d 概率追击 #b1 张。追击耗能的牌时，无需足够的 [hsrmod:ChargeIcon] 。",
+      "耗能的牌视为追击牌，且于充能满时， #b%d 概率追击 #b1 张。追击耗能的牌时，不消耗 [hsrmod:ChargeIcon] 。"
     ]
   },
   "HSRMod:EmpyreanImperium": {
@@ -396,7 +396,7 @@
   "HSRMod:SilverheartGuards": {
     "NAME": "银河护卫队",
     "DESCRIPTIONS": [
-      "消耗充能后，获得摸牌堆 #b%d 张牌，，获得 #b%d 点格挡。"
+      "消耗充能后，获得摸牌堆 #b%d 张牌，获得 #b%d 点格挡。"
     ]
   },
   "HSRMod:SMR2Amygdala": {

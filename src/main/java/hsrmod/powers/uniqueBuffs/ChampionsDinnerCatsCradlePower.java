@@ -21,13 +21,21 @@ import hsrmod.subscribers.ICheckUsableSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
 public class ChampionsDinnerCatsCradlePower extends PowerPower implements PostPowerApplySubscriber, ICheckUsableSubscriber {
     public static final String POWER_ID = HSRMod.makePath(ChampionsDinnerCatsCradlePower.class.getSimpleName());
     
-    public ChampionsDinnerCatsCradlePower(boolean upgraded) {
+    int chance = 75;
+    Map<AbstractCard, Integer> costMap;
+    
+    public ChampionsDinnerCatsCradlePower(boolean upgraded, int chance) {
         super(POWER_ID, upgraded);
+        this.chance = chance;
+        costMap = new HashMap<>();
         this.updateDescription();
     }
 
@@ -36,21 +44,30 @@ public class ChampionsDinnerCatsCradlePower extends PowerPower implements PostPo
         super.onInitialApplication();
         BaseMod.subscribe(this);
         SubscriptionManager.subscribe(this, true);
-        ModHelper.findCards((c) -> c.hasTag(CustomEnums.ENERGY_COSTING) && !c.hasTag(FOLLOW_UP)).forEach((r) -> r.card.tags.add(FOLLOW_UP));
+        ModHelper.findCards((c) -> c.hasTag(CustomEnums.ENERGY_COSTING) && !c.hasTag(FOLLOW_UP)).forEach((r) -> processCard(r.card));
     }
 
     @Override
     public void onCardDraw(AbstractCard card) {
         super.onCardDraw(card);
-        if (card.hasTag(CustomEnums.ENERGY_COSTING) && !card.hasTag(FOLLOW_UP))
-            card.tags.add(FOLLOW_UP);
+        processCard(card);
     }
 
     @Override
     public void onPlayCard(AbstractCard card, AbstractMonster m) {
         super.onPlayCard(card, m);
-        if (card.hasTag(CustomEnums.ENERGY_COSTING) && !card.hasTag(FOLLOW_UP))
+        processCard(card);
+    }
+    
+    void processCard(AbstractCard card){
+        if (card.hasTag(CustomEnums.ENERGY_COSTING) && !card.hasTag(FOLLOW_UP)) {
             card.tags.add(FOLLOW_UP);
+            if (upgraded && card instanceof BaseCard) {
+                BaseCard c = (BaseCard) card;
+                costMap.put(card, c.energyCost);
+                c.energyCost = 0;
+            }
+        }
     }
 
     @Override
@@ -58,17 +75,32 @@ public class ChampionsDinnerCatsCradlePower extends PowerPower implements PostPo
         super.onRemove();
         BaseMod.unsubscribe(this);
         SubscriptionManager.unsubscribe(this);
-        ModHelper.findCards((c) -> c.hasTag(CustomEnums.ENERGY_COSTING) && c.hasTag(FOLLOW_UP)).forEach((r) -> r.card.tags.remove(FOLLOW_UP));
+        ModHelper.findCards((c) -> c.hasTag(CustomEnums.ENERGY_COSTING) && c.hasTag(FOLLOW_UP))
+                .forEach((r) -> {
+                    r.card.tags.remove(FOLLOW_UP);
+                    if (upgraded && r.card instanceof BaseCard && costMap.containsKey(r.card)) {
+                        BaseCard c = (BaseCard) r.card;
+                        c.energyCost = costMap.get(r.card);
+                    }
+                });
     }
 
     @Override
     public void receivePostPowerApplySubscriber(AbstractPower abstractPower, AbstractCreature abstractCreature, AbstractCreature abstractCreature1) {
         if (SubscriptionManager.checkSubscriber(this)) {
-            if (abstractPower instanceof EnergyPower && abstractPower.amount > 0 && ModHelper.getPowerCount(EnergyPower.POWER_ID) >= EnergyPower.AMOUNT_LIMIT) {
-                AbstractCard card = ModHelper.getRandomElement(AbstractDungeon.player.hand.group, AbstractDungeon.cardRandomRng, 
-                        (c) -> c.hasTag(CustomEnums.ENERGY_COSTING));
-                if (card != null)  
+            if (abstractPower instanceof EnergyPower 
+                    && abstractPower.amount > 0 
+                    && ModHelper.getPowerCount(EnergyPower.POWER_ID) >= EnergyPower.AMOUNT_LIMIT
+                    && AbstractDungeon.cardRandomRng.random(99) < chance) {
+                AbstractCard card = ModHelper.getRandomElement(
+                        AbstractDungeon.player.hand.group, 
+                        AbstractDungeon.cardRandomRng, 
+                        (c) -> c.hasTag(CustomEnums.ENERGY_COSTING)
+                );
+                if (card != null) {
+                    flash();
                     addToBot(new FollowUpAction(card));
+                }
             }
         }
     }
@@ -76,13 +108,6 @@ public class ChampionsDinnerCatsCradlePower extends PowerPower implements PostPo
     @Override
     public boolean checkUsable(AbstractCard card) {
         if (SubscriptionManager.checkSubscriber(this) && ((BaseCard) card).followedUp) {
-            if (upgraded) {
-                EnergyPower power = (EnergyPower) AbstractDungeon.player.getPower(EnergyPower.POWER_ID);
-                if (power != null) {
-                    power.lock(this);
-                    ModHelper.addToTopAbstract(() -> power.unlock(this));
-                }
-            }
             return true;
         }
         return false;

@@ -10,6 +10,7 @@ import hsrmod.actions.RandomCardFromDrawPileToHandAction;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
 import hsrmod.powers.misc.EnergyPower;
+import hsrmod.utils.ModHelper;
 
 public class SilverheartGuardsPower extends PowerPower implements OnReceivePowerPower {
     public static final String POWER_ID = HSRMod.makePath(SilverheartGuardsPower.class.getSimpleName());

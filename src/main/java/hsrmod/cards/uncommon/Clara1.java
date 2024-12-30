@@ -1,10 +1,8 @@
-/*
 package hsrmod.cards.uncommon;
 
 import basemod.BaseMod;
 import basemod.interfaces.OnPlayerDamagedSubscriber;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -12,9 +10,8 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.subscribers.SubscriptionManager;
-import hsrmod.utils.ModHelper;
 
-import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
@@ -23,10 +20,11 @@ public class Clara1 extends BaseCard implements OnPlayerDamagedSubscriber {
     public static final String ID = Clara1.class.getSimpleName();
 
     boolean canBeUsed = false;
-    
+
     public Clara1() {
         super(ID);
         tags.add(FOLLOW_UP);
+        selfRetain = true;
     }
 
     @Override
@@ -36,12 +34,12 @@ public class Clara1 extends BaseCard implements OnPlayerDamagedSubscriber {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        canBeUsed = false;
-
-        ModHelper.getRandomElements(p.exhaustPile.group.stream().filter((c) -> c.hasTag(FOLLOW_UP)).collect(Collectors.toList()), 
-                AbstractDungeon.cardRandomRng, magicNumber).forEach((c) -> {
-                    addToBot(new FollowUpAction(c));
-        });
+        int count = (int) p.exhaustPile.group.stream().map(c -> c.name).distinct().count();
+        if (upgraded) {
+            Map<String, Long> map = p.exhaustPile.group.stream().collect(Collectors.groupingBy(c -> c.name, Collectors.counting()));
+            count += map.values().stream().max(Long::compareTo).orElse(0L);
+        }
+        addToBot(new GainBlockAction(p, p, count + block));
     }
 
     @Override
@@ -72,4 +70,3 @@ public class Clara1 extends BaseCard implements OnPlayerDamagedSubscriber {
         return i;
     }
 }
-*/

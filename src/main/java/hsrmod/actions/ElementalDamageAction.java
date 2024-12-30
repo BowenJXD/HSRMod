@@ -105,34 +105,40 @@ public class ElementalDamageAction extends AbstractGameAction {
 
         // Apply damage
         this.target.damage(this.info);
-        //
 
-        if (target != null && !target.isDeadOrEscaped()) {
-            if (toughnessPower != null 
-                    && toughnessPower.amount > 0 
-                    && toughnessPower.amount <= info.tr 
-                    && !toughnessPower.getLocked()) {
-                // callback
-                if (callback != null) addToTop(new TriggerCallbackAction(this.callback, new CallbackInfo(target, true, info)));
-                // trigger PreBreak
-                SubscriptionManager.getInstance().triggerPreBreak(info, target);
-                // break damage
-                int breakDamage = info.getBreakDamage();
-                addToBot(new BreakDamageAction(target, new DamageInfo(info.owner, breakDamage)));
-                // break power
-                ApplyPowerAction action = info.applyBreakingPower(target);
-                if (action != null) addToBot(action);
-                // broken
-                addToTop(new ApplyPowerAction(target, AbstractDungeon.player, new BrokenPower(target, 1), 1));
-            }
-            else {
-                if (callback != null) addToTop(new TriggerCallbackAction(this.callback, new CallbackInfo(target, false, info)));
-            }
-            if (toughnessPower != null) {
-                addToTop(new ApplyPowerAction(target, AbstractDungeon.player, new ToughnessPower(target, -info.tr), -info.tr));
-            }
+        // check break
+        boolean didBreak = false;
+        if (target != null
+                && toughnessPower != null
+                && toughnessPower.amount > 0
+                && toughnessPower.amount <= info.tr
+                && !toughnessPower.getLocked()) {
+            didBreak = true;
         }
-        //
+
+        // callback
+        if (callback != null) {
+            addToTop(new TriggerCallbackAction(this.callback, new CallbackInfo(target, didBreak, info)));
+        }
+
+        // break logic
+        if (didBreak && !target.isDeadOrEscaped()) {
+            // trigger PreBreak
+            SubscriptionManager.getInstance().triggerPreBreak(info, target);
+            // break damage
+            int breakDamage = info.getBreakDamage();
+            addToBot(new BreakDamageAction(target, new DamageInfo(info.owner, breakDamage)));
+            // break power
+            ApplyPowerAction action = info.applyBreakingPower(target);
+            if (action != null) addToBot(action);
+            // broken
+            addToTop(new ApplyPowerAction(target, AbstractDungeon.player, new BrokenPower(target, 1), 1));
+        }
+
+        // reduce toughness
+        if (toughnessPower != null) {
+            addToTop(new ApplyPowerAction(target, AbstractDungeon.player, new ToughnessPower(target, -info.tr), -info.tr));
+        }
 
         // Check to remove actions except HealAction, GainBlockAction, UseCardAction, TriggerCallbackAction, and DamageAction
         if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
@@ -166,12 +172,12 @@ public class ElementalDamageAction extends AbstractGameAction {
             this.isDone = true;
         }
     }
-    
+
     public static class CallbackInfo {
         public AbstractCreature target;
         public boolean didBreak;
         public ElementalDamageInfo info;
-        
+
         public CallbackInfo(AbstractCreature target, boolean didBreak, ElementalDamageInfo info) {
             this.target = target;
             this.didBreak = didBreak;

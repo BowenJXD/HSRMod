@@ -1,3 +1,4 @@
+/*
 package hsrmod.cards.common;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -43,3 +44,4 @@ public class Asta1 extends BaseCard {
         p.energy.use(energyOnUse);
     }
 }
+*/

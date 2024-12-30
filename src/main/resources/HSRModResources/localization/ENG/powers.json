@@ -336,8 +336,8 @@
   "HSRMod:ChampionsDinnerCatsCradle": {
     "NAME": "Champion's Dinner : Cat's Cradle",
     "DESCRIPTIONS": [
-      "Charge using cards are regarded as Follow Up cards, when your [hsrmod:ChargeIcon] is full, Follow Up one of them. You don't need to have enough [hsrmod:ChargeIcon] to Follow Up.",
-      "Charge using cards are regarded as Follow Up cards, when your [hsrmod:ChargeIcon] is full, Follow Up one of them. Won't cost any [hsrmod:ChargeIcon] to Follow Up."
+      "Charge using cards are regarded as Follow Up cards, when your [hsrmod:ChargeIcon] is full, #b%d chance to Follow Up one of them. You don't need to have enough [hsrmod:ChargeIcon] to Follow Up.",
+      "Charge using cards are regarded as Follow Up cards, when your [hsrmod:ChargeIcon] is full, #b%d chance to Follow Up one of them. Won't cost any [hsrmod:ChargeIcon] to Follow Up."
     ]
   },"HSRMod:EmpyreanImperium": {
   "NAME": "Empyrean Imperium",
@@ -542,7 +542,7 @@
   "HSRMod:HeartIsMeantToBeBroken": {
     "NAME": "Heart is Meant to be Broken!",
     "DESCRIPTIONS": [
-      "When #yinvincible triggers, takes #toughness reduction equal to limit. When break by player, remove #yinvincible and this power, take damage equal to the #ytoughness limit."
+      "When #yinvincible triggers, take #ytoughness reduction equal to limit. When break by player, remove #yinvincible and this power, take damage equal to the #ytoughness limit."
     ]
   }
 }

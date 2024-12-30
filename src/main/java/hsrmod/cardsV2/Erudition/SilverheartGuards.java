@@ -14,6 +14,12 @@ public class SilverheartGuards extends BaseCard {
     }
 
     @Override
+    public void upgrade() {
+        super.upgrade();
+        isInnate = true;
+    }
+
+    @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p, new SilverheartGuardsPower(1, magicNumber)));
     }

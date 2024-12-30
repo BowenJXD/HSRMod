@@ -43,7 +43,7 @@ public class Rappa1 extends BaseCard {
                 addToBot(new BreakDamageAction(c.target, new DamageInfo(AbstractDungeon.player, tr)));
                 if (canRepeat) {
                     canRepeat = false;
-                    ModHelper.addToBotAbstract(this::execute);
+                    ModHelper.addToTopAbstract(this::execute);
                 }
             }
         }));

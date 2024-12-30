@@ -1,7 +1,9 @@
 package hsrmod.relics.starter;
 
+import basemod.BaseMod;
 import basemod.abstracts.CustomRelic;
 import basemod.abstracts.CustomSavable;
+import basemod.interfaces.OnPlayerDamagedSubscriber;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsAction;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
@@ -32,6 +34,7 @@ import hsrmod.relics.special.DanhengRelic;
 import hsrmod.relics.special.HimekoRelic;
 import hsrmod.relics.special.March7thRelic;
 import hsrmod.relics.special.WeltRelic;
+import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
 import java.util.ArrayList;
@@ -113,17 +116,7 @@ public class PomPomBlessing extends CustomRelic implements CustomSavable<Integer
     }
 
     @Override
-    public void onObtainCard(AbstractCard c) {
-        super.onObtainCard(c);
-    }
-
-    @Override
-    public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
-        super.onAttack(info, damageAmount, target);
-    }
-
-    @Override
-    public int onAttackedToChangeDamage(DamageInfo info, int damageAmount) {
+    public int onLoseHpLast(int damageAmount) {
         if (AbstractDungeon.player.currentHealth - damageAmount <= 0
                 && AbstractDungeon.player.masterDeck.group.stream().anyMatch(card -> card.hasTag(CustomEnums.REVIVE))) {
             flash();

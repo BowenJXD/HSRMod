@@ -15,12 +15,14 @@ import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.misc.BrokenPower;
+import hsrmod.subscribers.PreBreakSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
-public class Himeko1 extends BaseCard implements PostPowerApplySubscriber {
+public class Himeko1 extends BaseCard implements PreBreakSubscriber {
     public static final String ID = Himeko1.class.getSimpleName();
     
     public Himeko1() {
@@ -49,13 +51,12 @@ public class Himeko1 extends BaseCard implements PostPowerApplySubscriber {
         super.onLeaveHand();
         BaseMod.unsubscribe(this);
     }
-    
+
     @Override
-    public void receivePostPowerApplySubscriber(AbstractPower abstractPower, AbstractCreature abstractCreature, AbstractCreature abstractCreature1) {
-        if (SubscriptionManager.checkSubscriber(this)
-                && AbstractDungeon.player.hand.contains(this) 
-                && abstractPower instanceof BrokenPower 
-                && !followedUp) {
+    public void preBreak(ElementalDamageInfo info, AbstractCreature target) {
+        if (SubscriptionManager.checkSubscriber(this) 
+                && info.elementType != null 
+                && info.owner == AbstractDungeon.player) {
             followedUp = true;
             addToBot(new FollowUpAction(this));
         }

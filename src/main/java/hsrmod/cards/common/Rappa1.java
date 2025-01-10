@@ -36,6 +36,8 @@ public class Rappa1 extends BaseCard {
 
     void execute() {
         canRepeat = true;
+        
+        if (AbstractDungeon.getMonsters().areMonstersBasicallyDead()) return;
 
         addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new BreakEffectPower(AbstractDungeon.player, magicNumber), magicNumber));
         addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL).setCallback((c) -> {

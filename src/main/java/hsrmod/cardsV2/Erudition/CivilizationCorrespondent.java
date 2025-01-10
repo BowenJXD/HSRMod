@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
@@ -20,7 +21,7 @@ public class CivilizationCorrespondent extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        int count = ModHelper.getPowerCount(EnergyPower.POWER_ID);
+        int count = ModHelper.getPowerCount(p, EnergyPower.POWER_ID);
         addToBot(new ApplyPowerAction(p, p, new EnergyPower(p, -count), -count));
         
         int blk = count / 10;

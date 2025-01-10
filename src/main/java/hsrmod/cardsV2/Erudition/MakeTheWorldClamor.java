@@ -26,7 +26,7 @@ public class MakeTheWorldClamor extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        int e = EnergyPower.AMOUNT_LIMIT - ModHelper.getPowerCount(EnergyPower.POWER_ID);
+        int e = EnergyPower.AMOUNT_LIMIT - ModHelper.getPowerCount(p, EnergyPower.POWER_ID);
         addToBot(new ApplyPowerAction(p, p, new EnergyPower(p, e), e));
     }
 }

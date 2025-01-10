@@ -1,6 +1,7 @@
 package hsrmod.monsters.TheCity;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.AnimateFastAttackAction;
 import com.megacrit.cardcrawl.actions.animations.ShoutAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
@@ -52,11 +53,13 @@ public class AurumatonGatekeeper extends BaseMonster {
                 spawnDragonfishes();
                 break;
             case 2:
+                addToBot(new AnimateFastAttackAction(this));
                 addToBot(new DamageAction(p, this.damage.get(0), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
                 addToBot(new ApplyPowerAction(p, this, new WeakPower(p, 1, true), 1));
                 addToBot(new ApplyPowerAction(this, this, new SanctionRatePower(this, SanctionRatePower.stackCount), SanctionRatePower.stackCount));
                 break;
             case 3:
+                addToBot(new AnimateFastAttackAction(this));
                 addToBot(new DamageAction(p, this.damage.get(1), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
                 addToBot(new ApplyPowerAction(this, this, new ChargingPower(this, MOVES[4], 1), 1));
                 if (ModHelper.specialAscension(type)) {
@@ -65,6 +68,7 @@ public class AurumatonGatekeeper extends BaseMonster {
                 break;
             case 4:
                 if (hasPower(ChargingPower.POWER_ID)) {
+                    addToBot(new AnimateFastAttackAction(this));
                     for (int i = 0; i < 3; i++) {
                         addToBot(new DamageAction(p, this.damage.get(2), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
                     }

@@ -7,17 +7,19 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.modcore.ElementType;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.DebuffPower;
 import hsrmod.powers.misc.BrokenPower;
 import hsrmod.powers.misc.ToughnessPower;
+import hsrmod.subscribers.PreBreakSubscriber;
 import hsrmod.subscribers.PreToughnessReduceSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
 import java.util.Iterator;
 
-public class BefogPower extends DebuffPower implements PreToughnessReduceSubscriber {
+public class BefogPower extends DebuffPower implements PreBreakSubscriber {
     public static final String POWER_ID = HSRMod.makePath(BefogPower.class.getSimpleName());
     
     public BefogPower(AbstractCreature owner, int Amount, boolean upgraded) {
@@ -47,10 +49,8 @@ public class BefogPower extends DebuffPower implements PreToughnessReduceSubscri
     }
 
     @Override
-    public float preToughnessReduce(float amount, AbstractCreature target, ElementType elementType) {
-        if (SubscriptionManager.checkSubscriber(this) 
-                && ModHelper.getPowerCount(target, ToughnessPower.POWER_ID) > 0 
-                && ModHelper.getPowerCount(target, ToughnessPower.POWER_ID) - amount <= 0) {
+    public void preBreak(ElementalDamageInfo info, AbstractCreature target) {
+        if (SubscriptionManager.checkSubscriber(this)) {
             this.flash();
             addToBot(new GainEnergyAction(this.amount));
             addToBot(new DrawCardAction(this.amount));
@@ -69,6 +69,5 @@ public class BefogPower extends DebuffPower implements PreToughnessReduceSubscri
 
             this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
         }
-        return amount;
     }
 }

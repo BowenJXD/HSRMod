@@ -36,10 +36,12 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import com.badlogic.gdx.graphics.Color;
 import hsrmod.characters.StellaCharacter;
 import hsrmod.events.*;
+import hsrmod.misc.BonusManager;
 import hsrmod.misc.ChargeIcon;
 import hsrmod.misc.Encounter;
 import hsrmod.misc.ToughnessReductionVariable;
 import hsrmod.monsters.Exordium.*;
+import hsrmod.monsters.SequenceTrotter;
 import hsrmod.monsters.TheBeyond.*;
 import hsrmod.monsters.TheCity.*;
 import hsrmod.utils.RewardEditor;
@@ -90,7 +92,7 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
     public static boolean addRelic = true;
     public static boolean addEvent = true;
     public static boolean addEnemy = true;
-    public static boolean removeOtherBosses = true;
+    public static boolean removeOtherEnemies = true;
 
     String lang = "ENG";
 
@@ -126,11 +128,13 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
             defaults.setProperty("addRelic", Boolean.toString(true));
             defaults.setProperty("addEvent", Boolean.toString(true));
             defaults.setProperty("addEnemy", Boolean.toString(true));
+            defaults.setProperty("removeOtherEnemies", Boolean.toString(true));
             config = new SpireConfig(MOD_NAME, HSRMod.makePath("Config"), defaults);
             config.load();
             addRelic = config.getBool("addRelic");
             addEvent = config.getBool("addEvent");
             addEnemy = config.getBool("addEnemy");
+            removeOtherEnemies = config.getBool("removeOtherEnemies");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -177,11 +181,14 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
 
     @Override
     public void receivePostInitialize() {
-        // addConfigPanel();
+        addConfigPanel();
         BaseMod.addSaveField("RewardEditor", RewardEditor.getInstance());
         BaseMod.removeCard(SadisticNature.ID, AbstractCard.CardColor.COLORLESS);
         if (addEvent) addEvents();
-        if (addEnemy) addMonsters();
+        if (addEnemy) {
+            addMonsters();
+            BonusManager.getInstance();
+        }
     }
 
     @Override
@@ -227,16 +234,26 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
                 .dungeonID(Exordium.ID)
                 // .bonusCondition(() -> WaxRelic.getSelectedPathTag(AbstractDungeon.player.relics) != WaxManufacturerEvent.getMostCommonTag(AbstractDungeon.player.masterDeck))
                 .create());
-    }
-
-    public void addMonsters() {
-        // =========================== Event ===========================
         
+        BaseMod.addEvent(new AddEventParams.Builder(ThreeLittlePigsEvent.ID, ThreeLittlePigsEvent.class)
+                .create());
+        
+        // =========================== Event Monsters ===========================
+
         BaseMod.addMonster(Encounter.PARASITE_N_SLAVER, () -> new MonsterGroup(new AbstractMonster[]{
                 new ShelledParasite(),
                 new SlaverRed(130.0F, 20F)
         }));
         BaseMod.addStrongMonsterEncounter(TheCity.ID, new MonsterInfo(Encounter.PARASITE_N_SLAVER, 0.0F));
+        BaseMod.addMonster(Encounter.THREE_LIL_PIGS, () -> new MonsterGroup(new AbstractMonster[]{
+                new SequenceTrotter(-400, AbstractDungeon.monsterRng.random(-15, 15), 0),
+                new SequenceTrotter(-100, AbstractDungeon.monsterRng.random(-15, 15), 2),
+                new SequenceTrotter(+200, AbstractDungeon.monsterRng.random(-15, 15), 1),
+        }));
+        BaseMod.addStrongMonsterEncounter(Exordium.ID, new MonsterInfo(Encounter.THREE_LIL_PIGS, 0.0F));
+    }
+
+    public void addMonsters() {
 
         // =========================== Boss ===========================
         
@@ -280,11 +297,44 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
                 new Grizzly()
         }));
         BaseMod.addStrongMonsterEncounter(Exordium.ID, new MonsterInfo(Encounter.GRIZZLY, 3.0F));
+        BaseMod.addMonster(Encounter.FRIGID_PROWLER, () -> new MonsterGroup(new AbstractMonster[]{
+                new FrigidProwler()
+        }));
+        BaseMod.addStrongMonsterEncounter(Exordium.ID, new MonsterInfo(Encounter.FRIGID_PROWLER, 3.0F));
+        BaseMod.addMonster(Encounter.GUARDIAN_SHADOW, () -> new MonsterGroup(new AbstractMonster[]{
+                new GuardianShadow()
+        }));
+        BaseMod.addStrongMonsterEncounter(Exordium.ID, new MonsterInfo(Encounter.GUARDIAN_SHADOW, 3.0F));
+        BaseMod.addMonster(Encounter.DECAYING_SHADOW, () -> new MonsterGroup(new AbstractMonster[]{
+                new DecayingShadow()
+        }));
+        BaseMod.addStrongMonsterEncounter(Exordium.ID, new MonsterInfo(Encounter.DECAYING_SHADOW, 3.0F));
+        BaseMod.addMonster(Encounter.SILVERMANE_LIEUTENANT, () -> new MonsterGroup(new AbstractMonster[]{
+                new SilvermaneLieutenant(-100, AbstractDungeon.monsterRng.random(-15, 15))
+        }));
+        BaseMod.addStrongMonsterEncounter(Exordium.ID, new MonsterInfo(Encounter.SILVERMANE_LIEUTENANT, 3.0F));
+        BaseMod.addMonster(Encounter.VAGRANTS, () -> new MonsterGroup(new AbstractMonster[]{
+                new Vagrant(-250, AbstractDungeon.monsterRng.random(-15, 30)),
+                new Vagrant(0, AbstractDungeon.monsterRng.random(-15, 30)),
+        }));
+        BaseMod.addStrongMonsterEncounter(Exordium.ID, new MonsterInfo(Encounter.VAGRANTS, 3.0F));
+        BaseMod.addMonster(Encounter.STORMBRINGER, () -> new MonsterGroup(new AbstractMonster[]{
+                new Windspawn(-300, AbstractDungeon.monsterRng.random(180, 200)),
+                new Stormbringer(0, AbstractDungeon.monsterRng.random(-15, 15)),
+        }));
+        BaseMod.addStrongMonsterEncounter(Exordium.ID, new MonsterInfo(Encounter.STORMBRINGER, 3.0F));
+        BaseMod.addMonster(Encounter.DIREWOLF, () -> new MonsterGroup(new AbstractMonster[]{
+                Encounter.getRandomAutomaton(-300, AbstractDungeon.monsterRng.random(-15, 15)),
+                new Direwolf(0, AbstractDungeon.monsterRng.random(-15, 15)),
+        }));
+        BaseMod.addStrongMonsterEncounter(Exordium.ID, new MonsterInfo(Encounter.DIREWOLF, 3.0F));
+        
         
         BaseMod.addMonster(Encounter.AUROMATON_GATEKEEPER, () -> new MonsterGroup(new AbstractMonster[]{
                 new AurumatonGatekeeper()
         }));
         BaseMod.addStrongMonsterEncounter(TheCity.ID, new MonsterInfo(Encounter.AUROMATON_GATEKEEPER, 3.0F));
+        
         
         BaseMod.addMonster(Encounter.SWEET_GORILLA, () -> new MonsterGroup(new AbstractMonster[]{
                 new SweetGorilla()
@@ -293,23 +343,40 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         
         // =========================== Normal ===========================
         
-        BaseMod.addMonster(Encounter.BEETLE_N_SPIDER, () -> new MonsterGroup(new AbstractMonster[]{
-                new Spider(-200, 0),
-                new Beetle(0, 0),
+        BaseMod.addMonster(Encounter.TWO_AUTOMATONS, () -> new MonsterGroup(new AbstractMonster[]{
+                Encounter.getRandomAutomaton(-250, AbstractDungeon.monsterRng.random(-15, 15)),
+                Encounter.getRandomAutomaton(0, AbstractDungeon.monsterRng.random(-15, 15)),
         }));
-        BaseMod.addMonsterEncounter(Exordium.ID, new MonsterInfo(Encounter.BEETLE_N_SPIDER, 3.0F));
+        BaseMod.addMonsterEncounter(Exordium.ID, new MonsterInfo(Encounter.TWO_AUTOMATONS, 3.0F));
+        BaseMod.addMonster(Encounter.SHADEWALKERS, () -> new MonsterGroup(new AbstractMonster[]{
+                new EverwinterShadewalker(-250, AbstractDungeon.monsterRng.random(-15, 15)),
+                new IncinerationShadewalker(0, AbstractDungeon.monsterRng.random(-15, 15)),
+        }));
+        BaseMod.addMonsterEncounter(Exordium.ID, new MonsterInfo(Encounter.SHADEWALKERS, 3.0F));
+        BaseMod.addMonster(Encounter.VAGRANT, () -> new MonsterGroup(new AbstractMonster[]{
+                new Vagrant(0, AbstractDungeon.monsterRng.random(-15, 30)),
+        }));
+        BaseMod.addMonsterEncounter(Exordium.ID, new MonsterInfo(Encounter.VAGRANT, 3.0F));
+        BaseMod.addMonster(Encounter.MASK_N_SPAWNS, () -> new MonsterGroup(new AbstractMonster[]{
+                Encounter.getRandomSpawn(-300, AbstractDungeon.monsterRng.random(180, 200)),
+                new MaskOfNoThought(-100, AbstractDungeon.monsterRng.random(150, 180)),
+                Encounter.getRandomSpawn(100, AbstractDungeon.monsterRng.random(180, 200)),
+        }));
+        BaseMod.addMonsterEncounter(Exordium.ID, new MonsterInfo(Encounter.MASK_N_SPAWNS, 3.0F));
+        
         
         BaseMod.addMonster(Encounter.DRAGONFISH_N_DRACOLION, () -> new MonsterGroup(new AbstractMonster[]{
-                new ObedientDracolion(-300, 0),
-                new IlluminationDragonfish(-100, 0),
-                new ObedientDracolion(100, 0),
+                new ObedientDracolion(-300, AbstractDungeon.monsterRng.random(0, 15)),
+                new IlluminationDragonfish(-100, AbstractDungeon.monsterRng.random(-15, 0)),
+                new ObedientDracolion(100, AbstractDungeon.monsterRng.random(0, 15)),
         }));
         BaseMod.addMonsterEncounter(TheCity.ID, new MonsterInfo(Encounter.DRAGONFISH_N_DRACOLION, 3.0F));
         
+        
         BaseMod.addMonster(Encounter.HOUND_N_DOMESCREEN, () -> new MonsterGroup(new AbstractMonster[]{
-                new MrDomescreen(-400, 0),
-                new BubbleHound(-100, 0),
-                new MrDomescreen(200, 0),
+                new MrDomescreen(-400, AbstractDungeon.monsterRng.random(-15, 15)),
+                new BubbleHound(-100, AbstractDungeon.monsterRng.random(-15, 15)),
+                new MrDomescreen(200, AbstractDungeon.monsterRng.random(-15, 15)),
         }));
         BaseMod.addMonsterEncounter(TheBeyond.ID, new MonsterInfo(Encounter.HOUND_N_DOMESCREEN, 3.0F));
     }
@@ -361,9 +428,9 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         ModPanel panel = new ModPanel();
         String[] buttonLanguage = null;
         if (language == Settings.GameLanguage.ZHS || language == Settings.GameLanguage.ZHT)
-            buttonLanguage = new String[]{"加入遗物", "加入事件", "加入敌人", "移除原版首领"};
+            buttonLanguage = new String[]{"加入遗物", "加入事件", "加入敌人", "移除原版敌人"};
         else 
-            buttonLanguage = new String[]{"Add Relic", "Add Event", "Add Enemy", "Remove Other Bosses"};
+            buttonLanguage = new String[]{"Add Relic", "Add Event", "Add Enemy", "Remove Other Enemies"};
         Texture badgeTexture = ImageMaster.loadImage("HSRModResources/img/char/badge.png");
         BaseMod.registerModBadge(badgeTexture, MOD_NAME, Arrays.stream(info.Authors).findFirst().orElse(""), info.Description, panel);
         
@@ -374,7 +441,7 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
                 config.save();
             } catch (IOException e) { e.printStackTrace(); }
         });
-        // panel.addUIElement(addRelicButton);
+        panel.addUIElement(addRelicButton);
         
         ModLabeledToggleButton addEventButton = new ModLabeledToggleButton(buttonLanguage[1], 400.0F, 600.0F, Color.WHITE, FontHelper.buttonLabelFont, addEvent, panel, (label) -> {}, (button) -> {
             addEvent = button.enabled;
@@ -394,14 +461,14 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         });
         panel.addUIElement(addEnemyButton);
         
-        ModLabeledToggleButton removeOtherBossesButton = new ModLabeledToggleButton(buttonLanguage[3], 400.0F, 400.0F, Color.WHITE, FontHelper.buttonLabelFont, removeOtherBosses, panel, (label) -> {}, (button) -> {
-            removeOtherBosses = button.enabled;
+        ModLabeledToggleButton removeOtherEnemiesButton = new ModLabeledToggleButton(buttonLanguage[3], 400.0F, 400.0F, Color.WHITE, FontHelper.buttonLabelFont, removeOtherEnemies, panel, (label) -> {}, (button) -> {
+            removeOtherEnemies = button.enabled;
             try {
-                config.setBool("removeOtherBosses", removeOtherBosses);
+                config.setBool("removeOtherEnemies", removeOtherEnemies);
                 config.save();
             } catch (IOException e) { e.printStackTrace(); }
         });
-        panel.addUIElement(removeOtherBossesButton);
+        panel.addUIElement(removeOtherEnemiesButton);
     }
 
     private static void loadSettings() {

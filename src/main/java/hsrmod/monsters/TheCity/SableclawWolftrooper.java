@@ -1,6 +1,8 @@
 package hsrmod.monsters.TheCity;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.AnimateHopAction;
+import com.megacrit.cardcrawl.actions.animations.AnimateSlowAttackAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -26,6 +28,7 @@ public class SableclawWolftrooper extends BaseMonster {
 
     @Override
     public void takeTurn() {
+        addToBot(new AnimateHopAction(this));
         addToBot(new DamageAction(AbstractDungeon.player, this.damage.get(0), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
         addToBot(new DamageAction(AbstractDungeon.player, this.damage.get(0), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
         if (hasPower(MoonRagePower.POWER_ID))
@@ -34,6 +37,6 @@ public class SableclawWolftrooper extends BaseMonster {
 
     @Override
     protected void getMove(int i) {
-        setMove((byte) 0, AbstractMonster.Intent.ATTACK, this.damage.get(0).base, 2, true);
+        setMove(MOVES[0], (byte) 0, AbstractMonster.Intent.ATTACK, this.damage.get(0).base, 2, true);
     }
 }

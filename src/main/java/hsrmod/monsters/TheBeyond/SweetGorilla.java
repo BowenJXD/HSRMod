@@ -2,6 +2,7 @@ package hsrmod.monsters.TheBeyond;
 
 import com.evacipated.cardcrawl.mod.stslib.actions.common.DamageCallbackAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.AnimateHopAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -32,7 +33,7 @@ public class SweetGorilla extends BaseMonster {
     int hpLoss = 10;
     
     public SweetGorilla() {
-        super(ID, 384, 384, -100, 0);
+        super(ID, 384, 384, -175, 0);
 
         setDamagesWithAscension(5, 7);
         hpLoss = ModHelper.specialAscension(type) ? 8 : 10;
@@ -57,6 +58,7 @@ public class SweetGorilla extends BaseMonster {
             case 4:
                 if (hasPower(StrengthPower.POWER_ID)) {
                     bouncedTime = 0;
+                    addToBot(new AnimateHopAction(this));
                     for (int i = 0; i < damageTimes[1]; i++) {
                         addToBot(new DamageCallbackAction(p, this.damage.get(1), AbstractGameAction.AttackEffect.BLUNT_HEAVY, this::takeBouncedDamage));
                     }
@@ -92,10 +94,10 @@ public class SweetGorilla extends BaseMonster {
     }
     
     void spawnHounds() {
-        BubbleHound hound1 = new BubbleHound(-450, 0);
+        BubbleHound hound1 = new BubbleHound(-500, 0);
         addToBot(new SpawnMonsterAction(hound1, true));
         ModHelper.addToBotAbstract(hound1::usePreBattleAction);
-        BubbleHound hound2 = new BubbleHound(250, 0);
+        BubbleHound hound2 = new BubbleHound(150, 0);
         addToBot(new SpawnMonsterAction(hound2, true));
         ModHelper.addToBotAbstract(hound2::usePreBattleAction);
     }

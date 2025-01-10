@@ -104,7 +104,8 @@
     "NAME": "无尽寒冬之槊",
     "MOVES": [
       "永冬余响",
-      "冷酷追击"
+      "冷酷追击",
+      "死亡时，消耗随机一张手牌。"
     ],
     "DIALOG": []
   },
@@ -260,6 +261,160 @@
     "NAME": "甲虫",
     "MOVES": [
       "不稳定力场"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:GuardianShadow": {
+    "NAME": "守护者之影",
+    "MOVES": [
+      "追忆闪电",
+      "⚠谴罚雷暴⚠"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:FrigidProwler": {
+    "NAME": "深寒徘徊者",
+    "MOVES": [
+      "召来衍生物",
+      "冰轮铁拳",
+      "冻结风暴",
+      "吞噬衍生物",
+      "⚠冰轮碎碾⚠",
+      "冰轮碎碾（造成 #r3*3 点伤害，消耗所有手牌，每消耗1张 #g回复 1点生命）"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:EverwinterShadewalker": {
+    "NAME": "永冬灾影",
+    "MOVES": [
+      "霜冻重击"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:IncinerationShadewalker": {
+    "NAME": "火焚灾影",
+    "MOVES": [
+      "灼炎重击"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:DecayingShadow": {
+    "NAME": "蚕食者之影",
+    "MOVES": [
+      "流年谴罚",
+      "流年盾纱",
+      "黄金年代的绸缪",
+      "⚠黄金年代的解放⚠",
+      "黄金年代的解放（造成 #r3*0 的伤害，每有1层 #y追忆刻度 ，额外造成1次伤害）"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:SilvermaneLieutenant": {
+    "NAME": "银鬃尉官",
+    "MOVES": [
+      "突击",
+      "增援",
+      "盾反",
+      "每受到一次 #y攻击 ，造成 #b%d 点反伤。 #y击破 后，或回合开始时移除。"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:Stormbringer": {
+    "NAME": "兴风者",
+    "MOVES": [
+      "踏风而行",
+      "风浪急旋",
+      "拈风张弩",
+      "⚠风落暴矢⚠",
+      "风落暴矢（触发 #y风化 ，施加 #b%d 层 #y风化 ）"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:Direwolf": {
+    "NAME": "齿狼",
+    "MOVES": [
+      "解体指令",
+      "解体拆除",
+      "⚠砍伐指令⚠",
+      "砍伐指令（造成 #r2*5 的伤害，每次造成伤害后，若未被格挡，则施加1层 #y裂伤 ）"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:Hound": {
+    "NAME": "战犬",
+    "MOVES": [
+      "垂直打击",
+      "自愈模块"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:Vagrant": {
+    "NAME": "流浪者",
+    "MOVES": [
+      "铲击",
+      "找烟雾弹",
+      "⚠逃跑⚠",
+      "逃跑（带着钱离开战斗）"
+    ],
+    "DIALOG": [
+      "把钱交出来！",
+      "我的烟雾弹在哪里呢？",
+      "我可溜啦！",
+      "@不！@"
+    ]
+  },
+  "HSRMod:SilvermaneSoldier": {
+    "NAME": "银鬃近卫",
+    "MOVES": [
+      "奔袭"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:MaskOfNoThought": {
+    "NAME": "无想面具",
+    "MOVES": [
+      "虹彩光束",
+      "聚焦充能",
+      "能量涌泄",
+      "死亡时，获得 [E] 。"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:Thunderspawn": {
+    "NAME": "鸣雷造物",
+    "MOVES": [
+      "雷腾"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:Windspawn": {
+    "NAME": "巽风造物",
+    "MOVES": [
+      "风色"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:Flamespawn": {
+    "NAME": "炎华造物",
+    "MOVES": [
+      "烈袭"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:Frostspawn": {
+    "NAME": "霜晶造物",
+    "MOVES": [
+      "冰封"
+    ],
+    "DIALOG": []
+  },
+  
+  "HSRMod:SequenceTrotter": {
+    "NAME": "序列扑满",
+    "MOVES": [
+      "害…害怕",
+      "跑…跑啊",
+      "呼…逃走了"
     ],
     "DIALOG": []
   }

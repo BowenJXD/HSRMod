@@ -29,7 +29,7 @@ public class SombrousSepulcher extends BaseMonster {
 
     @Override
     protected void getMove(int i) {
-        setMove((byte) 0, Intent.NONE);
+        setMove(MOVES[0], (byte) 0, Intent.NONE);
     }
     
     public void update() {

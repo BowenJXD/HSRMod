@@ -15,28 +15,28 @@ public class TriggerDoTAction extends AbstractGameAction {
     String powerID;
     boolean triggerAll;
     
-    public TriggerDoTAction(AbstractCreature target, int amount, boolean triggerAll, String powerID) {
+    public TriggerDoTAction(AbstractCreature target, AbstractCreature source, int amount, boolean triggerAll, String powerID) {
         this.target = target;
-        this.source = AbstractDungeon.player;
+        this.source = source;
         this.powerID = powerID;
         this.amount = amount;
         this.triggerAll = triggerAll;
     }
     
-    public TriggerDoTAction(AbstractCreature target, int amount, String powerID) {
-        this(target, amount, false, powerID);
+    public TriggerDoTAction(AbstractCreature target, AbstractCreature source, int amount, String powerID) {
+        this(target, source, amount, false, powerID);
     }
     
-    public TriggerDoTAction(AbstractCreature target, int amount, boolean triggerAll) {
-        this(target, amount, triggerAll, null);
+    public TriggerDoTAction(AbstractCreature target, AbstractCreature source, int amount, boolean triggerAll) {
+        this(target, source, amount, triggerAll, null);
     }
     
-    public TriggerDoTAction(AbstractCreature target, int amount) {
-        this(target, amount, false, null);
+    public TriggerDoTAction(AbstractCreature target, AbstractCreature source, int amount) {
+        this(target, source, amount, false, null);
     }
     
-    public TriggerDoTAction(AbstractCreature target) {
-        this(target, 1, false, null);
+    public TriggerDoTAction(AbstractCreature target, AbstractCreature source) {
+        this(target, source, 1, false, null);
     }
 
     public void update() {
@@ -53,7 +53,7 @@ public class TriggerDoTAction extends AbstractGameAction {
         if (dots.isEmpty()) return;
         
         if (--amount > 0)
-            addToTop(new TriggerDoTAction(target, amount, triggerAll, powerID));
+            addToTop(new TriggerDoTAction(target, source, amount, triggerAll, powerID));
         
         boolean removeOnTrigger;
         AbstractPower r = source.getPower(ReignOfKeysPower.POWER_ID);
@@ -66,9 +66,9 @@ public class TriggerDoTAction extends AbstractGameAction {
         }
 
         if (triggerAll) {
-            dots.forEach(d -> d.trigger(removeOnTrigger));
+            dots.forEach(d -> d.trigger(source, removeOnTrigger, false));
         } else {
-            dots.get(AbstractDungeon.cardRandomRng.random(dots.size() - 1)).trigger(removeOnTrigger);
+            dots.get(AbstractDungeon.cardRandomRng.random(dots.size() - 1)).trigger(source, removeOnTrigger, false);
         }
     }
 }

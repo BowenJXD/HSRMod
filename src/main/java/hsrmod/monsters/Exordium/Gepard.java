@@ -1,6 +1,8 @@
 package hsrmod.monsters.Exordium;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.AnimateFastAttackAction;
+import com.megacrit.cardcrawl.actions.animations.AnimateHopAction;
 import com.megacrit.cardcrawl.actions.animations.ShoutAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -44,13 +46,15 @@ public class Gepard extends BaseMonster {
     @Override
     public void takeTurn() {
         switch (nextMove) {
-            case 1: 
+            case 1:
+                addToBot(new AnimateFastAttackAction(this));
                 addToBot(new DamageAction(AbstractDungeon.player, this.damage.get(0), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
                 for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
                     addToBot(new GainBlockAction(m, block[0]));
                 }
                 break;
             case 2:
+                addToBot(new AnimateFastAttackAction(this));
                 addToBot(new DamageAction(AbstractDungeon.player, this.damage.get(1), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
                 break;
             case 3:
@@ -65,6 +69,7 @@ public class Gepard extends BaseMonster {
                     int r = AbstractDungeon.miscRng.random(1);
                     addToBot(new ShoutAction(this, DIALOG[r]));
                     ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_" + r, 3.0F));
+                    addToBot(new AnimateHopAction(this));
                     addToBot(new DamageAction(AbstractDungeon.player, this.damage.get(2), AbstractGameAction.AttackEffect.SMASH));
                     addToBot(new ApplyPowerAction(this, this, new StrengthPower(this, strengthGain), strengthGain));
                 }

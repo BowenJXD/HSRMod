@@ -26,7 +26,7 @@ public class Cocolia extends BaseMonster {
     public Cocolia() {
         super(ID, 400.0F, 512.0F, -100.0F, 0.0F);
 
-        setDamages(6, 6, 12 ,6);
+        setDamages(6, 6, 12, 6);
         bgm = Encounter.END_OF_THE_ETERNAL_FREEZE + "_1";
     }
 
@@ -120,12 +120,14 @@ public class Cocolia extends BaseMonster {
 
     void spawnLance1() {
         AbstractMonster lance1 = new LanceOfTheEternalFreeze(-450.0F, 0.0F, 1);
-        AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(lance1, true));
+        lance1.usePreBattleAction();
+        AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(lance1, false));
     }
 
     void spawnLance2() {
         AbstractMonster lance2 = new LanceOfTheEternalFreeze(250.0F, 0.0F, 2);
-        AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(lance2, true));
+        lance2.usePreBattleAction();
+        AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(lance2, false));
     }
 
     int playerHandCount = 0;

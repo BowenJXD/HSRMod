@@ -43,13 +43,13 @@ public class Himeko1 extends BaseCard implements PreBreakSubscriber {
     @Override
     public void onEnterHand() {
         super.onEnterHand();
-        BaseMod.subscribe(this);
+        SubscriptionManager.subscribe(this);
     }
 
     @Override
     public void onLeaveHand() {
         super.onLeaveHand();
-        BaseMod.unsubscribe(this);
+        SubscriptionManager.unsubscribe(this);
     }
 
     @Override

@@ -160,7 +160,7 @@ public class PomPomBlessing extends CustomRelic implements CustomSavable<Integer
     @Override
     public void onVictory() {
         super.onVictory();
-        energy = ModHelper.getPowerCount(EnergyPower.POWER_ID);
+        energy = ModHelper.getPowerCount(AbstractDungeon.player, EnergyPower.POWER_ID);
     }
 
     @Override

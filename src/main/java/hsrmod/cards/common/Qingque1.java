@@ -19,7 +19,6 @@ public class Qingque1 extends BaseCard {
     public Qingque1() {
         super(ID);
         returnToHand = true;
-        exhaust = true;
         costCache = cost;
     }
 
@@ -31,8 +30,12 @@ public class Qingque1 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         returnToHand = AbstractDungeon.cardRandomRng.random(100) <= magicNumber;
-        exhaust = !returnToHand;
-        
+        if (returnToHand) {
+            exhaust = false;
+        } else {
+            exhaust = AbstractDungeon.cardRandomRng.random(100) <= magicNumber;
+        }
+
         if (AbstractDungeon.cardRandomRng.random(100) <= magicNumber) {
             addToBot(new GainEnergyAction(costForTurn));
         }

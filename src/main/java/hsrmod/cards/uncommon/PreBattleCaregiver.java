@@ -23,7 +23,7 @@ public class PreBattleCaregiver extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         int num = ModHelper.getPowerCount(m, ToughnessPower.POWER_ID);
-        if (upgraded) num += ModHelper.getPowerCount(ToughnessPower.POWER_ID);
+        if (upgraded) num += ModHelper.getPowerCount(p, ToughnessPower.POWER_ID);
         
         int pBlock = num - p.currentBlock;
         if (pBlock > 0) addToBot(new GainBlockAction(p, p, pBlock));

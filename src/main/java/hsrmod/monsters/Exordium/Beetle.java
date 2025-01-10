@@ -1,6 +1,7 @@
 package hsrmod.monsters.Exordium;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.AnimateHopAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -35,12 +36,13 @@ public class Beetle extends BaseMonster {
 
     @Override
     public void takeTurn() {
+        addToBot(new AnimateHopAction(this));
         addToBot(new DamageAction(p, this.damage.get(0), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
         addToBot(new ApplyPowerAction(this, this, new BarrierPower(this, 1), 1));
     }
 
     @Override
     protected void getMove(int i) {
-        setMove((byte) 0, Intent.ATTACK_BUFF, this.damage.get(0).base);
+        setMove(MOVES[0], (byte) 0, Intent.ATTACK_BUFF, this.damage.get(0).base);
     }
 }

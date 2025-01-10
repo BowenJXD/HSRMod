@@ -1,6 +1,7 @@
 package hsrmod.monsters.TheBeyond;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.AnimateFastAttackAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -59,6 +60,7 @@ public class MrDomescreen extends BaseMonster {
                 lastMoved1 = true;
                 break;
             case 2:
+                addToBot(new AnimateFastAttackAction(this));
                 addToBot(new DamageAction(p, this.damage.get(0), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
                 addToBot(new ApplyPowerAction(p, this, new EnergyPower(p, -chargeLoss), -chargeLoss));
                 lastMoved1 = false;

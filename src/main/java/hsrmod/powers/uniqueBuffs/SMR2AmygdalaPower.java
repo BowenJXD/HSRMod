@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.modcore.HSRMod;
@@ -46,7 +47,7 @@ public class SMR2AmygdalaPower extends PowerPower implements OnReceivePowerPower
 
     @Override
     public int onReceivePowerStacks(AbstractPower power, AbstractCreature target, AbstractCreature source, int stackAmount) {
-        int num = ModHelper.getPowerCount(EnergyPower.POWER_ID) + stackAmount;
+        int num = ModHelper.getPowerCount(AbstractDungeon.player, EnergyPower.POWER_ID) + stackAmount;
         if (power instanceof EnergyPower 
                 && num < minAmount 
                 && target.getPower(EnergyPower.POWER_ID) != null 

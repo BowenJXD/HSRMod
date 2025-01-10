@@ -1,7 +1,9 @@
 package hsrmod.monsters.Exordium;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.ExhaustAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -14,14 +16,26 @@ import hsrmod.cardsV2.Curse.Frozen;
 import hsrmod.misc.PathDefine;
 import hsrmod.modcore.HSRMod;
 import hsrmod.monsters.BaseMonster;
+import hsrmod.powers.enemyOnly.ChargingPower;
+import hsrmod.powers.enemyOnly.DeathExplosionPower;
+import hsrmod.powers.enemyOnly.SummonedPower;
 
 public class LanceOfTheEternalFreeze extends BaseMonster {
     public static final String ID = LanceOfTheEternalFreeze.class.getSimpleName();
-    
-    public LanceOfTheEternalFreeze(float x, float y, int picIndex){
+
+    public LanceOfTheEternalFreeze(float x, float y, int picIndex) {
         super(ID, PathDefine.MONSTER_PATH + ID + "_" + picIndex + ".png", 0.0F, -15.0F, 188F, 243.0F, x, y);
-        
+
         setDamagesWithAscension(6);
+    }
+
+    @Override
+    public void usePreBattleAction() {
+        super.usePreBattleAction();
+        addToBot(new ApplyPowerAction(this, this, new SummonedPower(this)));
+        addToBot(new ApplyPowerAction(this, this, new DeathExplosionPower(this, MOVES[1], MOVES[2], () ->
+                addToTop(new ExhaustAction(1, true, false, false))
+        )));
     }
 
     @Override
@@ -32,6 +46,6 @@ public class LanceOfTheEternalFreeze extends BaseMonster {
 
     @Override
     protected void getMove(int i) {
-        setMove((byte) 0, Intent.ATTACK, this.damage.get(0).base);
+        setMove(MOVES[0], (byte) 0, Intent.ATTACK, this.damage.get(0).base);
     }
 }

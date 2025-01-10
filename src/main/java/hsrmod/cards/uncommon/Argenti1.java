@@ -32,7 +32,7 @@ public class Argenti1 extends BaseCard {
 
     @Override
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        return super.canUse(p, m) && ModHelper.getPowerCount(EnergyPower.POWER_ID) >= energyExhaust;
+        return super.canUse(p, m) && ModHelper.getPowerCount(p, EnergyPower.POWER_ID) >= energyExhaust;
     }
 
     @Override
@@ -43,7 +43,7 @@ public class Argenti1 extends BaseCard {
     }
 
     void execute() {
-        if (AbstractDungeon.player.getPower(EnergyPower.POWER_ID).amount < energyExhaust
+        if (ModHelper.getPowerCount(AbstractDungeon.player, EnergyPower.POWER_ID) < energyExhaust
                 || AbstractDungeon.getMonsters().areMonstersBasicallyDead()) return;
         ElementalDamageAllAction action = new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_VERTICAL);
         /*if (upgraded) action.setCallback(c -> {

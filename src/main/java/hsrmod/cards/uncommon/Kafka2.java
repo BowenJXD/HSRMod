@@ -34,7 +34,7 @@ public class Kafka2 extends BaseCard {
         addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.LIGHTNING)
                 .setCallback(ci -> {
                     if (!ci.target.isDeadOrEscaped() && ci.target.currentHealth > 0) {
-                        addToBot(new TriggerDoTAction(ci.target, 1, true));
+                        addToBot(new TriggerDoTAction(ci.target, p, 1, true));
                         addToBot(new ApplyPowerAction(ci.target, p, new ShockPower(ci.target, p, magicNumber), magicNumber));
                     }
                 })

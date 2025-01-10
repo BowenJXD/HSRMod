@@ -2,6 +2,8 @@ package hsrmod.monsters.TheBeyond;
 
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.AnimateFastAttackAction;
+import com.megacrit.cardcrawl.actions.animations.AnimateSlowAttackAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -51,6 +53,7 @@ public class SomethingUntoDeath extends BaseMonster {
                 addToBot(new ApplyPowerAction(p, this, new SunsetPower(p, sunsetCount, this::getSpawningSombrousSepulcher)));
                 break;
             case 2:
+                addToBot(new AnimateSlowAttackAction(this));
                 for (int i = 0; i < damageTimes[1]; i++) {
                     addToBot(new DamageAction(p, damage.get(1), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
                 }
@@ -59,10 +62,12 @@ public class SomethingUntoDeath extends BaseMonster {
                 break;
             case 3:
                 if (hasPower(ChargingPower.POWER_ID)) {
+                    addToBot(new AnimateFastAttackAction(this));
                     addToBot(new DamageAction(p, damage.get(2), AbstractGameAction.AttackEffect.SMASH));
                 }
                 break;
             case 4:
+                addToBot(new AnimateFastAttackAction(this));
                 for (int i = 0; i < damageTimes[0]; i++) {
                     addToBot(new DamageAction(p, damage.get(0), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
                 }
@@ -81,20 +86,20 @@ public class SomethingUntoDeath extends BaseMonster {
                         && topRightMonster != null && !topRightMonster.isDead) {
                     turnCount++;
                 } else {
-                    setMove((byte) 1, Intent.UNKNOWN);
+                    setMove(MOVES[0], (byte) 1, Intent.UNKNOWN);
                     break;
                 }
             case 1:
-                setMove((byte) 2, Intent.ATTACK_BUFF, damage.get(1).base, damageTimes[1], true);
+                setMove(MOVES[1], (byte) 2, Intent.ATTACK_BUFF, damage.get(1).base, damageTimes[1], true);
                 break;
             case 2:
                 int currentDeckSize = AbstractDungeon.player.drawPile.size() + AbstractDungeon.player.discardPile.size();
                 deckSize = currentDeckSize;
                 this.damage.get(2).base = this.damages[2] - currentDeckSize;
-                setMove((byte) 3, Intent.ATTACK, damage.get(2).base);
+                setMove(MOVES[2], (byte) 3, Intent.ATTACK, damage.get(2).base);
                 break;
             case 3:
-                setMove((byte) 4, Intent.ATTACK, damage.get(0).base, damageTimes[0], true);
+                setMove(MOVES[3], (byte) 4, Intent.ATTACK, damage.get(0).base, damageTimes[0], true);
                 break;
         }
         turnCount++;
@@ -109,7 +114,7 @@ public class SomethingUntoDeath extends BaseMonster {
             if (deckSize != currentDeckSize) {
                 deckSize = currentDeckSize;
                 this.damage.get(2).base = this.damages[2] - currentDeckSize;
-                this.setMove((byte) 3, Intent.ATTACK, this.damage.get(2).base);
+                this.setMove(MOVES[2], (byte) 3, Intent.ATTACK, this.damage.get(2).base);
                 this.createIntent();
             }
         }

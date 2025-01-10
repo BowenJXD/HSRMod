@@ -30,7 +30,7 @@ public class PenMan extends BaseCard {
         if (!p.hand.isEmpty() || upgraded) {
             addToBot(new SelectCardsInHandAction(1, String.format(cardStrings.EXTENDED_DESCRIPTION[upgraded ? 1 : 0], magicNumber),
                     false, upgraded, c -> true, list -> {
-                ModHelper.addToTopAbstract(() -> returnToHand = ModHelper.getPowerCount(EnergyPower.POWER_ID) < EnergyPower.AMOUNT_LIMIT);
+                ModHelper.addToTopAbstract(() -> returnToHand = ModHelper.getPowerCount(p, EnergyPower.POWER_ID) < EnergyPower.AMOUNT_LIMIT);
                 if (list.isEmpty() && energyOnUse > 0) {
                     addToTop(new ApplyPowerAction(p, p, new EnergyPower(p, magicNumber * 2), magicNumber * 2));
                     addToTop(new LoseEnergyAction(1));

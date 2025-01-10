@@ -44,10 +44,6 @@ public class SubscriptionManager {
         }
         return instance;
     }
-
-    public static void subscribe(ISubscriber sub) {
-        BaseMod.subscribe(sub);
-    }
     
     public static void subscribe(IHSRSubscriber sub) {
         getInstance().subscribeHelper(sub, false);

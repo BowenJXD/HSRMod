@@ -104,7 +104,8 @@
     "NAME": "Lance of the Eternal Freeze",
     "MOVES": [
       "Everwinter Reverberance",
-      "Subzero Pursuit"
+      "Subzero Pursuit",
+      "Upon death, exhaust a random hand card."
     ],
     "DIALOG": []
   },

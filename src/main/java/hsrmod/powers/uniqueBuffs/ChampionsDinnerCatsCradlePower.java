@@ -90,7 +90,7 @@ public class ChampionsDinnerCatsCradlePower extends PowerPower implements PostPo
         if (SubscriptionManager.checkSubscriber(this)) {
             if (abstractPower instanceof EnergyPower 
                     && abstractPower.amount > 0 
-                    && ModHelper.getPowerCount(EnergyPower.POWER_ID) >= EnergyPower.AMOUNT_LIMIT
+                    && ModHelper.getPowerCount(AbstractDungeon.player, EnergyPower.POWER_ID) >= EnergyPower.AMOUNT_LIMIT
                     && AbstractDungeon.cardRandomRng.random(99) < chance) {
                 AbstractCard card = ModHelper.getRandomElement(
                         AbstractDungeon.player.hand.group, 

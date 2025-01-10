@@ -2,6 +2,8 @@ package hsrmod.monsters.TheCity;
 
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.AnimateFastAttackAction;
+import com.megacrit.cardcrawl.actions.animations.AnimateSlowAttackAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.RollMoveAction;
@@ -48,10 +50,12 @@ public class DestructionLotus extends BaseMonster {
         AbstractPlayer p = AbstractDungeon.player;
         switch (nextMove) {
             case 1:
+                addToBot(new AnimateSlowAttackAction(this));
                 addToBot(new DamageAction(p, this.damage.get(0), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
                 addToBot(new ApplyPowerAction(p, this, new DrawReductionPower(p, awakened ? 2 : 1), 1));
                 break;
             case 2:
+                addToBot(new AnimateFastAttackAction(this));
                 addToBot(new DamageAction(p, this.damage.get(1), AbstractGameAction.AttackEffect.SLASH_HEAVY));
                 addToBot(new ApplyPowerAction(p, this, new FrailPower(p, awakened ? 2 : 1, true), 1));
                 break;

@@ -44,7 +44,7 @@ public class TheGreatSeptimus extends BaseMonster implements OnCardUseSubscriber
     
     int blockGain = 77;
     int numDamage = 7;
-    int powerAmount = 9;
+    int powerAmount = 7;
     
     List<String> cardsCache;
     
@@ -94,7 +94,7 @@ public class TheGreatSeptimus extends BaseMonster implements OnCardUseSubscriber
                 break;
             case 2:
                 addToBot(new DamageAction(p, this.damage.get(1), AbstractGameAction.AttackEffect.SLASH_VERTICAL, true));
-                if (p.energy.energy - ModHelper.getPowerCount(EnergyDownPower.POWER_ID) > 3)
+                if (p.energy.energy - ModHelper.getPowerCount(p, EnergyDownPower.POWER_ID) > 3)
                     addToBot(new ApplyPowerAction(p, this, new EnergyDownPower(p, 1), 1));
                 break;
             case 3:

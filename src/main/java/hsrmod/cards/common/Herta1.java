@@ -44,6 +44,8 @@ public class Herta1 extends BaseCard implements PreElementalDamageSubscriber {
     void execute(){
         canRepeat = true;
         
+        if (AbstractDungeon.getMonsters().areMonstersBasicallyDead()) return;
+        
         addToBot(
                 new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL).setCallback(
                 ci -> {

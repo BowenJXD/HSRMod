@@ -1,6 +1,7 @@
 package hsrmod.monsters.Exordium;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.AnimateSlowAttackAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -56,6 +57,7 @@ public class Spider extends BaseMonster {
         AbstractPlayer p = AbstractDungeon.player;
         switch (nextMove) {
             case 1:
+                addToBot(new AnimateSlowAttackAction(this));
                 addToBot(new DamageAction(p, this.damage.get(0), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
                 break;
             case 2:
@@ -77,13 +79,13 @@ public class Spider extends BaseMonster {
     protected void getMove(int i) {
         switch (turnCount % 3) {
             case 0:
-                setMove((byte) 1, Intent.ATTACK, this.damage.get(0).base);
+                setMove(MOVES[0], (byte) 1, Intent.ATTACK, this.damage.get(0).base);
                 break;
             case 1:
-                setMove((byte) 2, Intent.UNKNOWN);
+                setMove(MOVES[1], (byte) 2, Intent.UNKNOWN);
                 break;
             case 2:
-                setMove((byte) 3, Intent.ATTACK, this.damage.get(1).base);
+                setMove(MOVES[2], (byte) 3, Intent.ATTACK, this.damage.get(1).base);
                 break;
         }
         turnCount++;

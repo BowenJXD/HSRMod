@@ -2,10 +2,10 @@ package hsrmod.monsters;
 
 import basemod.abstracts.CustomMonster;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.AnimateSlowAttackAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.SpawnMonsterAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -14,8 +14,6 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
-import hsrmod.misc.Encounter;
 import hsrmod.misc.PathDefine;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.misc.ToughnessPower;
@@ -23,10 +21,8 @@ import hsrmod.utils.DataManager;
 import hsrmod.utils.ModHelper;
 import hsrmod.utils.MonsterDataCol;
 
-import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public abstract class BaseMonster extends CustomMonster {
     public MonsterStrings monsterStrings;
@@ -38,7 +34,7 @@ public abstract class BaseMonster extends CustomMonster {
     public int tv = 0;
     public List<MonsterSlot> slots = new ArrayList<>();
     public String bgm;
-    public static final AbstractPlayer p = AbstractDungeon.player;
+    public AbstractPlayer p = AbstractDungeon.player;
     
     public BaseMonster(String name, String id, int maxHealth, float hb_x, float hb_y, float hb_w, float hb_h, String atlas, float x, float y) {
         super(name, HSRMod.makePath(id), maxHealth, hb_x, hb_y, hb_w, hb_h, atlas, x, y);
@@ -52,7 +48,13 @@ public abstract class BaseMonster extends CustomMonster {
         
         type = EnemyType.valueOf(DataManager.getInstance().getMonsterData(id, MonsterDataCol.Type));
         
-        int hp = DataManager.getInstance().getMonsterDataInt(id, ModHelper.moreHPAscension(type) ? MonsterDataCol.HP2 : MonsterDataCol.HP1);
+        int hp;
+        try {
+            hp = DataManager.getInstance().getMonsterDataInt(id + AbstractDungeon.actNum, ModHelper.moreHPAscension(type) ? MonsterDataCol.HP2 : MonsterDataCol.HP1);
+        } catch (Exception e) {
+            hp = DataManager.getInstance().getMonsterDataInt(id, ModHelper.moreHPAscension(type) ? MonsterDataCol.HP2 : MonsterDataCol.HP1);
+        }
+        
         switch (type) {
             case NORMAL:
                 hp += AbstractDungeon.monsterHpRng.random(-2, 2);
@@ -63,7 +65,13 @@ public abstract class BaseMonster extends CustomMonster {
         }
         setHp(hp);
         
-        tv = DataManager.getInstance().getMonsterDataInt(id, ModHelper.moreHPAscension(type) ? MonsterDataCol.TV2 : MonsterDataCol.TV1);
+        try {
+            tv = DataManager.getInstance().getMonsterDataInt(id + AbstractDungeon.actNum, ModHelper.moreHPAscension(type) ? MonsterDataCol.TV2 : MonsterDataCol.TV1);
+        } catch (Exception e) {
+            tv = DataManager.getInstance().getMonsterDataInt(id, ModHelper.moreHPAscension(type) ? MonsterDataCol.TV2 : MonsterDataCol.TV1);
+        }
+        
+        p = AbstractDungeon.player;
     }
 
     public BaseMonster(String id, String imgUrl, float hb_x, float hb_y, float hb_w, float hb_h, float x, float y) {
@@ -136,15 +144,14 @@ public abstract class BaseMonster extends CustomMonster {
         }
     }
     
-    public void addDamageActions(AbstractCreature target, int numTimes, AbstractGameAction.AttackEffect effect) {
+    public void addDamageActions(AbstractCreature target, int index, int numTimes, AbstractGameAction.AttackEffect effect) {
         for (int i = 0; i < numTimes; i++) {
-            addToBot(new DamageAction(target, this.damage.get(i), effect));
+            addToBot(new DamageAction(target, this.damage.get(index), effect));
         }
     }
     
-    public BaseMonster addSlot(float x, float y) {
+    public void addSlot(float x, float y) {
         slots.add(new MonsterSlot(x, y));
-        return this;
     }
     
     public MonsterSlot getEmptySlot(boolean randomSlot) {
@@ -160,6 +167,37 @@ public abstract class BaseMonster extends CustomMonster {
             }
         }
         return null;
+    }
+    
+    public MonsterSlot getEmptySlot() {
+        return getEmptySlot(true);
+    }
+    
+    public int getEmptySlotCount() {
+        int count = 0;
+        for (MonsterSlot slot : slots) {
+            if (slot.isEmpty()) {
+                count++;
+            }
+        }
+        return count;
+    }
+    
+    public MonsterSlot getOccupiedSlot() {
+        for (MonsterSlot slot : slots) {
+            if (!slot.isEmpty()) {
+                return slot;
+            }
+        }
+        return null;
+    }
+    
+    public void spawnMonster(AbstractMonster monster, MonsterSlot slot, boolean isMinion, boolean usePrebattleAction) {
+        if (usePrebattleAction) {
+            monster.usePreBattleAction();
+        }
+        addToBot(new SpawnMonsterAction(monster, isMinion));
+        slot.setMonster(monster);
     }
     
     public static class MonsterSlot {

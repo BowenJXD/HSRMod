@@ -58,7 +58,7 @@ public class AllThingsArePossiblePower extends PowerPower {
         }
         else if (upgraded) {
             flash();
-            addToBot(new TriggerDoTAction(c));
+            addToBot(new TriggerDoTAction(c, AbstractDungeon.player));
         }
     }
 }

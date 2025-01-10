@@ -1,6 +1,8 @@
 package hsrmod.monsters.Exordium;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.AnimateHopAction;
+import com.megacrit.cardcrawl.actions.animations.AnimateJumpAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -20,7 +22,7 @@ public class Grizzly extends BaseMonster {
     public static final String ID = Grizzly.class.getSimpleName();
     
     public Grizzly() {
-        super(ID, 0F, -15.0F, 384, 384, -100, 0);
+        super(ID, 0F, -15.0F, 384, 384, -175, 0);
         
         if (ModHelper.specialAscension(type)) {
             turnCount = 1;
@@ -29,10 +31,10 @@ public class Grizzly extends BaseMonster {
         }
         
         if (ModHelper.moreDamageAscension(type)) {
-            setDamages(13, 8);
+            setDamages(10, 6);
         }
         else {
-            setDamages(12, 8);
+            setDamages(9, 6);
         }
     }
 
@@ -59,6 +61,7 @@ public class Grizzly extends BaseMonster {
                 break;
             case 4:
                 if (hasPower(ChargingPower.POWER_ID)) {
+                    addToBot(new AnimateJumpAction(this));
                     addToBot(new DamageAction(p, this.damage.get(1), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
                     addToBot(new DamageAction(p, this.damage.get(1), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
                 }
@@ -93,10 +96,10 @@ public class Grizzly extends BaseMonster {
     }
     
     void spawnSpiders() {
-        Spider spider1 = new Spider(1, -450, 0);
+        Spider spider1 = new Spider(1, -500, 0);
         addToBot(new SpawnMonsterAction(spider1, true));
         ModHelper.addToBotAbstract(spider1::usePreBattleAction);
-        Spider spider2 = new Spider(1, 250, 0);
+        Spider spider2 = new Spider(1, 150, 0);
         addToBot(new SpawnMonsterAction(spider2, true));
         ModHelper.addToBotAbstract(spider2::usePreBattleAction);
     }

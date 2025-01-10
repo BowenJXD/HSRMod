@@ -204,7 +204,7 @@ public class Phantylia extends BaseMonster implements PostPowerApplySubscriber {
                         break;
                     case 2:
                         int debuffCount = AbstractDungeon.player.powers.stream().mapToInt(power -> power.type == AbstractPower.PowerType.DEBUFF ? 1 : 0).sum();
-                        int chargeAmount = ModHelper.getPowerCount(EnergyPower.POWER_ID);
+                        int chargeAmount = ModHelper.getPowerCount(p, EnergyPower.POWER_ID);
                         int dmg = this.damages[3] - chargeAmount / 10 + debuffCount * 10;
                         this.setMove(MOVES[6], (byte) 7, Intent.ATTACK, dmg);
                         break;
@@ -243,7 +243,7 @@ public class Phantylia extends BaseMonster implements PostPowerApplySubscriber {
             while (true) {
                 do {
                     if (!s.hasNext()) {
-                        this.setMove((byte) 4, Intent.UNKNOWN);
+                        this.setMove(MOVES[3], (byte) 4, Intent.UNKNOWN);
                         this.createIntent();
                         AbstractDungeon.actionManager.addToBottom(new SetMoveAction(this, (byte) 4, Intent.UNKNOWN));
                         this.applyPowers();
@@ -292,7 +292,7 @@ public class Phantylia extends BaseMonster implements PostPowerApplySubscriber {
                 && (abstractPower instanceof EnergyPower || abstractPower.type == AbstractPower.PowerType.DEBUFF)) {
             int debuffCount = abstractCreature.powers.stream().mapToInt(power -> power.type == AbstractPower.PowerType.DEBUFF && !Objects.equals(power.ID, abstractPower.ID) ? 1 : 0).sum();
             if (abstractPower.type == AbstractPower.PowerType.DEBUFF) debuffCount += 1;
-            int chargeAmount = ModHelper.getPowerCount(EnergyPower.POWER_ID);
+            int chargeAmount = ModHelper.getPowerCount(p, EnergyPower.POWER_ID);
             if (abstractPower instanceof EnergyPower) chargeAmount += abstractPower.amount;
             chargeAmount = Math.min(chargeAmount, EnergyPower.AMOUNT_LIMIT);
             int dmg = this.damages[3] - chargeAmount / 10 + debuffCount * 10;

@@ -2,14 +2,12 @@ package hsrmod.patches;
 
 import basemod.BaseMod;
 import com.evacipated.cardcrawl.modthespire.lib.*;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.Exordium;
 import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.monsters.MonsterInfo;
 import hsrmod.characters.StellaCharacter;
-import hsrmod.misc.Encounter;
 import hsrmod.modcore.HSRMod;
 
 import java.util.*;
@@ -58,12 +56,34 @@ public class AddMonsterPatch {
             List<String> result = new ArrayList<>();
             if (!___customBosses.isEmpty() && HSRMod.addEnemy && AbstractDungeon.player instanceof StellaCharacter) {
                 result.addAll(___customBosses);
-                if (HSRMod.removeOtherBosses) {
+                if (HSRMod.removeOtherEnemies) {
                     AbstractDungeon.bossList.clear();
                     AbstractDungeon.bossList.addAll(result);
                 }
             }
             return result;
+        }
+    }
+
+    @SpirePatch(clz = MonsterInfo.class, method = "normalizeWeights")
+    public static class PopulatePatch {
+        static int calls = 0;
+
+        @SpirePrefixPatch
+        public static void Prefix(@ByRef ArrayList<MonsterInfo>[] monsters) {
+            ++calls;
+            switch (calls) {
+                case 1:
+                case 2:
+                    if (AbstractDungeon.actNum == 1 && HSRMod.removeOtherEnemies) {
+                        monsters[0].clear();
+                    }
+                    break;
+                case 3:
+                    break;
+                default:
+                    calls = 0;
+            }
         }
     }
 }

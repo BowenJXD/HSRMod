@@ -1,8 +1,7 @@
 package hsrmod.monsters.TheCity;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.ShoutAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.animations.*;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.actions.utility.HideHealthBarAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -65,6 +64,7 @@ public class Hoolay extends BaseMonster {
                 for (int i = 0; i < damageTimes[0]; i++) {
                     addToBot(new DamageAction(p, this.damage.get(0), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
                 }
+                addToBot(new AnimateHopAction(this));
                 break;
             case 2:
                 int r = AbstractDungeon.miscRng.random(1, 2);
@@ -74,6 +74,7 @@ public class Hoolay extends BaseMonster {
                 for (int i = 0; i < damageTimes[1]; i++) {
                     addToBot(new DamageAction(p, this.damage.get(1), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
                 }
+                addToBot(new AnimateHopAction(this));
                 AbstractDungeon.getMonsters().monsters.stream().filter(m -> !m.isDead && !m.hasPower(MoonRagePower.POWER_ID)).forEach(m -> {
                     addToBot(new ApplyPowerAction(m, this, new MoonRagePower(m, 1), 1));
                     addToBot(new LoseHPAction(this, this, 4));
@@ -88,6 +89,7 @@ public class Hoolay extends BaseMonster {
                 for (int i = 0; i < damageTimes[2]; i++) {
                     addToBot(new DamageAction(p, this.damage.get(2), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
                 }
+                addToBot(new AnimateHopAction(this));
                 addToBot(new ApplyPowerAction(p, this, new TerrorPower(p, 1), 1));
                 break;
             case 4:
@@ -103,6 +105,7 @@ public class Hoolay extends BaseMonster {
                     for (int i = 0; i < damageTimes[3]; i++) {
                         addToBot(new DamageAction(p, this.damage.get(3), AbstractGameAction.AttackEffect.SMASH));
                     }
+                    addToBot(new AnimateHopAction(this));
                     addToBot(new RemoveSpecificPowerAction(this, this, IratePower.POWER_ID));
                 } else return;
                 break;
@@ -113,7 +116,7 @@ public class Hoolay extends BaseMonster {
     @Override
     protected void getMove(int i) {
         if (this.lastMove((byte) 5)) {
-            setMove((byte) 6, Intent.ATTACK, this.damage.get(3).base, damageTimes[3], true);
+            setMove(MOVES[5], (byte) 6, Intent.ATTACK, this.damage.get(3).base, damageTimes[3], true);
             for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
                 if (m != this && !m.isDead && !m.hasPower(BrokenPower.POWER_ID)) {
                     addToBot(new ApplyPowerAction(m, this, new MultiMovePower(m, 1), 1));
@@ -121,13 +124,13 @@ public class Hoolay extends BaseMonster {
             }
         } else if (hasPower(IratePower.POWER_ID) && getPower(IratePower.POWER_ID).amount == IratePower.stackLimit) {
             addToTop(new RemoveSpecificPowerAction(this, this, IratePower.POWER_ID));
-            setMove((byte) 5, Intent.UNKNOWN);
-        } else if (!lastMove((byte) 3) && i > ModHelper.getPowerCount(TerrorPower.POWER_ID) * 33) {
-            setMove((byte) 3, AbstractMonster.Intent.ATTACK_DEBUFF, this.damage.get(2).base, damageTimes[2], true);
+            setMove(MOVES[4], (byte) 5, Intent.UNKNOWN);
+        } else if (!lastMove((byte) 3) && i > ModHelper.getPowerCount(p, TerrorPower.POWER_ID) * 33) {
+            setMove(MOVES[2], (byte) 3, AbstractMonster.Intent.ATTACK_DEBUFF, this.damage.get(2).base, damageTimes[2], true);
         } else if (!lastMove((byte) 2) && i > AbstractDungeon.getMonsters().monsters.stream().mapToInt(m -> m.hasPower(MoonRagePower.POWER_ID) ? 50 : 0).sum()) {
-            setMove((byte) 2, AbstractMonster.Intent.ATTACK_DEBUFF, this.damage.get(1).base, damageTimes[1], true);
+            setMove(MOVES[1], (byte) 2, AbstractMonster.Intent.ATTACK_DEBUFF, this.damage.get(1).base, damageTimes[1], true);
         } else {
-            setMove((byte) 1, AbstractMonster.Intent.ATTACK, this.damage.get(0).base, damageTimes[0], true);
+            setMove(MOVES[0], (byte) 1, AbstractMonster.Intent.ATTACK, this.damage.get(0).base, damageTimes[0], true);
         }
 
         if (!lastMove((byte) 5) && nextMove != 5 && !hasPower(IratePower.POWER_ID)) {

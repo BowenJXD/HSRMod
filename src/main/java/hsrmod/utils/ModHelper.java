@@ -72,10 +72,6 @@ public class ModHelper {
         return values[randomIndex];
     }
     
-    public static int getPowerCount(String powerID) {
-        return AbstractDungeon.player.hasPower(powerID) ? AbstractDungeon.player.getPower(powerID).amount : 0;
-    }
-    
     public static int getPowerCount(AbstractCreature creature, String powerID) {
         return creature.hasPower(powerID) ? creature.getPower(powerID).amount : 0;
     }

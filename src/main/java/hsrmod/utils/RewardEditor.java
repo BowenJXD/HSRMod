@@ -55,12 +55,13 @@ public class RewardEditor implements CustomSavable<String> {
             for (RewardItem reward : rewards) {
                 if (reward.type == RewardItem.RewardType.CARD) {
                     if (tag != CustomEnums.TRAILBLAZE) setRewardCards(reward);
-                    if (currRoom != null) relicId = "";
-                    currRoom = room;
-                    if (reward.cards.contains(null)) {
-                        logger.info("CardRewardPoolEditor: Null card detected in reward pool.");
+                    if (currRoom != room) {
+                        if (currRoom != null) relicId = "";
+                        currRoom = room;
+                        if (reward.cards.contains(null)) {
+                            logger.info("CardRewardPoolEditor: Null card detected in reward pool.");
+                        }
                     }
-                    break;
                 }
             }
             

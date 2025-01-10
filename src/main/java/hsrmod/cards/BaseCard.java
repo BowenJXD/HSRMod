@@ -178,7 +178,7 @@ public abstract class BaseCard extends CustomCard implements SpawnModificationCa
     }
 
     protected boolean checkEnergy() {
-        if (SubscriptionManager.getInstance().triggerCheckUsable(this) || ModHelper.getPowerCount(EnergyPower.POWER_ID) >= energyCost) {
+        if (SubscriptionManager.getInstance().triggerCheckUsable(this) || ModHelper.getPowerCount(AbstractDungeon.player, EnergyPower.POWER_ID) >= energyCost) {
             return true;
         }
         cantUseMessage = Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT ? "我没有足够的充能。" : "I don't have enough charge.";

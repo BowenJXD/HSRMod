@@ -32,7 +32,8 @@ public class SummonedPower extends StatePower {
         super.onDeath();
         AbstractDungeon.getMonsters().monsters.stream()
                 .filter(m -> m.type == AbstractMonster.EnemyType.BOSS && !(m.isDying || m.isEscaping || m.halfDead || m.currentHealth <= 0))
-                .findFirst().ifPresent(
+                .findFirst()
+                .ifPresent(
                         boss -> addToTop(new ElementalDamageAction(boss, new ElementalDamageInfo(boss, owner.maxHealth, DamageInfo.DamageType.HP_LOSS, 
                                 null, ToughnessPower.getStackLimit(owner)), AbstractGameAction.AttackEffect.NONE))
                 );

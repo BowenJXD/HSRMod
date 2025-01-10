@@ -1,5 +1,6 @@
 package hsrmod.powers.misc;
 
+import basemod.BaseMod;
 import basemod.interfaces.OnPlayerTurnStartSubscriber;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
@@ -12,6 +13,7 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.DebuffPower;
 import hsrmod.powers.breaks.BleedingPower;
 import hsrmod.powers.breaks.BurnPower;
@@ -37,7 +39,7 @@ public abstract class DoTPower extends DebuffPower implements OnPlayerTurnStartS
     @Override
     public void onInitialApplication() {
         super.onInitialApplication();
-        if (owner.isPlayer) SubscriptionManager.subscribe(this);
+        if (owner.isPlayer) BaseMod.subscribe(this);
     }
 
     @Override
@@ -53,30 +55,36 @@ public abstract class DoTPower extends DebuffPower implements OnPlayerTurnStartS
     @Override
     public void receiveOnPlayerTurnStart() {
         if (SubscriptionManager.checkSubscriber(this) && owner.isPlayer) {
-            trigger();
+            trigger(source, removeOnTrigger, true);
         }
     }
 
     public void atStartOfTurn() {
         if (!owner.isPlayer)
-            trigger();
+            trigger(source, removeOnTrigger, false);
     }
     
     public void trigger(){
-        trigger(removeOnTrigger);
+        trigger(source, removeOnTrigger, false);
     }
     
-    public void trigger(boolean removeOnTrigger){
+    public void trigger(AbstractCreature source, boolean removeOnTrigger, boolean isFast){
         if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT && !AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
             this.flash();
             
             float dmg = this.getDamage();
-            ElementalDamageInfo info = new ElementalDamageInfo(this.source, (int) dmg, this.getElementType(), toughnessReduction);
-            info.applyPowers(this.source, this.owner);
+            ElementalDamageInfo info = new ElementalDamageInfo(source, (int) dmg, this.getElementType(), toughnessReduction);
+            info.applyPowers(source, this.owner);
             
             info.output = (int) SubscriptionManager.getInstance().triggerPreDoTDamage(info, this.owner, this);
             
-            this.addToTop(new ElementalDamageAction(this.owner, info, AbstractGameAction.AttackEffect.NONE));
+            ElementalDamageAction action = new ElementalDamageAction(this.owner, info, AbstractGameAction.AttackEffect.NONE);
+            if (isFast) {
+                action.isFast = true;
+                action.update();
+            } else {
+                this.addToTop(new ElementalDamageAction(this.owner, info, AbstractGameAction.AttackEffect.NONE));
+            }
             if (removeOnTrigger) remove(1);
         }
     }

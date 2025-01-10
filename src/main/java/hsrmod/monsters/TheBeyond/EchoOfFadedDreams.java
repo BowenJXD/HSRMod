@@ -94,7 +94,7 @@ public class EchoOfFadedDreams extends BaseMonster {
     @Override
     protected void getMove(int i) {
         if (halfDead) {
-            setMove((byte) 3, Intent.BUFF);
+            setMove(MOVES[3], (byte) 3, Intent.BUFF);
             return;
         }
         if (firstStep != -1) {
@@ -110,10 +110,10 @@ public class EchoOfFadedDreams extends BaseMonster {
                 setMove(MOVES[0], (byte) 0, Intent.ATTACK, this.damage.get(0).base);
                 break;
             case 1:
-                setMove(MOVES[1],(byte) 1, Intent.ATTACK_DEBUFF, this.damage.get(1).base);
+                setMove(MOVES[1], (byte) 1, Intent.ATTACK_DEBUFF, this.damage.get(1).base);
                 break;
             case 2:
-                setMove(MOVES[2],(byte) 2, Intent.ATTACK_DEBUFF, this.damage.get(2).base);
+                setMove(MOVES[2], (byte) 2, Intent.ATTACK_DEBUFF, this.damage.get(2).base);
                 break;
         }
     }

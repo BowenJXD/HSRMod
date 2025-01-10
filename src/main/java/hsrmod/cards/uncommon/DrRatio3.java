@@ -2,6 +2,8 @@ package hsrmod.cards.uncommon;
 
 import com.evacipated.cardcrawl.mod.stslib.actions.common.MoveCardsAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ExhaustAction;
+import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -44,7 +46,7 @@ public class DrRatio3 extends BaseCard {
     @Override
     public void triggerOnEndOfTurnForPlayingCard() {
         if (AbstractDungeon.getMonsters().monsters.stream().noneMatch(m -> m.hasPower(WisemansFollyPower.POWER_ID))) {
-            addToBot(new MoveCardsAction(AbstractDungeon.player.exhaustPile, AbstractDungeon.player.hand, c -> c.uuid.equals(uuid), 1));
+            addToBot(new ExhaustSpecificCardAction(this, AbstractDungeon.player.hand));
         }
     }
 }

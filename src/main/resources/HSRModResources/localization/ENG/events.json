@@ -198,5 +198,19 @@
       "You refused the distributor's offer.",
       "You hacked into the \"code\" of the lotto series"
     ]
+  },
+  "HSRMod:ThreeLittlePigs": {
+    "NAME": "Three Little Pigs",
+    "OPTIONS": [
+      "[continue]",
+      "[Play a bit with Sequence Trotters] Enter combat with 3 #ySequence #yTrotters — Trot Prime, Trot Deuce, and Trot Tri.",
+      "[Leave] A person shouldn't be on the same level as Trotters!",
+      "[leave]"
+    ],
+    "DESCRIPTIONS": [
+      "Three timid sequence creatures that resemble a pig bump into you as you wander across the wilderness where the Hithradahn people dwell. They react differently to your presence: one is trembling, one is ready to flee, and one is in a combat position.",
+      "You remember the description written in the Interastral Peace Guide. The creatures are called Sequence Trotters, and they are trans-latitudinal organisms. They spend most time of their lives eating and escaping. NL Running into a Sequence Trotter is an auspicious sign. You start to think of a way to deal with them. The rules of the game must be fixed according to the personality of each Trotter.",
+      "The trotter catching game ended."
+    ]
   }
 }

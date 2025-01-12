@@ -9,7 +9,7 @@ Trailblazer3,Ever-Burning Amber,BASIC,SKILL,SELF,1,Gain !B! Block.,,,5,,,,,,8,,¿
 Sushang2,Cut With Ease,COMMON,SKILL,SELF,1,"Obtain from draw pile upon hsrmod:break. NL Exhaust. Gain !M! hsrmod:Break-Effect, if there's broken enemy, gain [E] [E].",,,,2,,"Obtain from draw pile upon hsrmod:break. NL Exhaust. Gain !M! hsrmod:Break-Effect, if there's broken enemy, gain [E] [E] , draw !M! cards.",,,,,»ÙÃð,,¸ß
 Sushang3,Vanquisher,COMMON,ATTACK,ENEMY,1,"Multi-upgradable. Toughness reduction +1 upon upgrade. NL Deal !D! phyical damage (!TR!), if hsrmod:break, exhaust and upgrade permanently.",5,2,,,,,,,,,»ÙÃð,ÎïÀí,ÖÐ
 Tingyun1,Amidst the Rejoicing Clouds,COMMON,SKILL,SELF,0,"Use 10 [hsrmod:ChargeIcon] , Gain !M! [hsrmod:ChargeIcon] and 1 Strength.",,,,50,,"Use 10 [hsrmod:ChargeIcon] , Gain !M! [hsrmod:ChargeIcon] and 1 Strength. Get 1 card from draw pile.",,,,60,ÖÇÊ¶,,¸ß
-Qingque1,A Scoop of Moon,COMMON,SKILL,SELF,1,"Exhaust. Draw 1 card. NL !M!% chance: gain [E] used, !M!% chance: return to hand. !M! % chance not to exhaust.",,,,66,,,,,,75,·±Óý,,¸ß
+Qingque1,A Scoop of Moon,COMMON,SKILL,SELF,1,"Exhaust. Draw 1 card. NL !M!% chance: gain [E] used, !M!% chance: return to hand, !M! % chance not to exhaust.",,,,66,,,,,,75,·±Óý,,¸ß
 Qingque2,Right on the Tiles,COMMON,ATTACK,ALL_ENEMY,4,"When playing card, for every cost of the card, 50% chance: reduce cost by 1. hsrmod:Follow-Up when cost reaches 0. NL Deal !D! Quantum damage (!TR!) to all enemies !M! times.",4,1,,2,,,,,,3,»¶Óä,Á¿×Ó,ÖÐ
 Sampo1,Ricochet Love,COMMON,ATTACK,ENEMY,1," hsrmod:Bounce !M!: deal !D! wind damage (!TR!), and apply 1 hsrmod:Wind-Shear.",1,1,,3,,,,,,4,ÐéÎÞ,·ç,ÖÐ
 Pela1,Zone Suppression,COMMON,ATTACK,ALL_ENEMY,1,"Use 100 [hsrmod:ChargeIcon] , deal !D! ice damage (!TR!) to all enemies, and apply !M! stacks of Vulnerable.",5,2,,1,0,,,,,,ÐéÎÞ,±ù,¸ß
@@ -27,7 +27,7 @@ Xueyi1,Karmic Perpetuation,COMMON,ATTACK,ENEMY,8,"After reducing toughness, cost
 Gallagher1,Champagne Etiquette,COMMON,ATTACK,ALL_ENEMY,1,"Use 110 [hsrmod:ChargeIcon] , deal !D! fire damage (!TR!) to all enemies. If breaks, apply hsrmod:Block-Return and draw 1.",3,3,,,,"Use 110 [hsrmod:ChargeIcon] , deal !D! fire damage (!TR!) to all enemies. If it has hsrmod:Broken, apply hsrmod:Block-Return and draw 1.",4,4,,,»ÙÃð,»ð,¸ß
 Yanqing1,Amidst the Raining Bliss,UNCOMMON,ATTACK,ENEMY,2,"Use 140 [hsrmod:ChargeIcon] , Deal !D! ice damage (!TR!), if you have Block, deal the damage again; 60% chance to gain *One *With *the *Sword.",12,2,,3,,,15,,,,»¶Óä,±ù,µÍ
 Yanqing2,One With the Sword,SPECIAL,ATTACK,ENEMY,-2,"Exhaust. At the start of the turn, hsrmod:Follow-Up if you haven't received unblocked damage. NL Deal !D! ice damage (!TR!), !M!% chance to apply 1 stack of hsrmod:Frozen.",8,1,,65,,,,,,,»¶Óä,±ù,ÎÞ
-Clara1,Because We Are Family,UNCOMMON,SKILL,SELF,-2,"At the start of turn, if you took damage after the last turn ended, hsrmod:Follow-Up . NL Gain !B! block, for every distinct card name in exhaust pile, gain 1 more.",,,3,,,"At the start of turn, if you took damage after the last turn ended, hsrmod:Follow-Up . NL Gain !B! block, for every distinct card name in exhaust pile, gain 1 more, for every occurence of the most frequent card in exhaust pile, gain 1 more.",,,,,»¶Óä,,¸ß
+Clara1,Because We Are Family,UNCOMMON,SKILL,SELF,1,"At the start of turn, if you took damage after the last turn ended, hsrmod:Follow-Up . NL Gain !B! block, for every distinct card name in exhaust pile, gain 1 more.",,,3,,,"At the start of turn, if you took damage after the last turn ended, hsrmod:Follow-Up . NL Gain !B! block, for every distinct card name in exhaust pile, gain 1 more, for every occurence of the most frequent card in exhaust pile, gain 1 more.",,,,,»¶Óä,,¸ß
 Gepard1,Enduring Bulwark,UNCOMMON,SKILL,SELF,0,"Use 100 [hsrmod:ChargeIcon] , Gain !B! Block.",,,8,,,,,,12,,´æ»¤,,ÖÐ
 Bronya1,Combat Redeployment,UNCOMMON,SKILL,SELF,1,"Gain !M! stacks of Strength, select 1 card from the draw pile and add it to your hand.",,,,1,,"Innate. Gain !M! stacks of Strength, select 1 card from the draw pile and add it to your hand.",,,,,Ñ²ÁÔ,,¸ß
 Welt1,Edge of the Void,UNCOMMON,ATTACK,ENEMY,1," hsrmod:Bounce !M!: deal !D! imaginary damage, and apply 1 stack of hsrmod:Imprison.",3,1,,2,,,,,,3,ÐéÎÞ,ÐéÊý,ÖÐ
@@ -151,18 +151,15 @@ TerminalNirvana,Terminal Nirvana,RARE,SKILL,SELF,2,Exhaust. Retain. Consume !M! 
 AstralExpress,Astral Express,BASIC,SKILL,SELF,2,Exhaust. Play all starter strike cards.,,,,,,Play all starter strike cards.,,,,,¿ªÍØ,,ÎÞ
 Imprison,Imprison,COMMON,STATUS,NONE,1,"When enters hand, lose all [hsrmod:ChargeIcon] . When in hand, unable to gain any [hsrmod:ChargeIcon] . When losing, obtain all [hsrmod:ChargeIcon] lost.",,,,,,,,,,,,,
 Frozen,Frozen,COMMON,STATUS,NONE,-2,Retain. Can not be played.,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,
+Elation,Elation,SPECIAL,SKILL,NONE,-2,,,,,,,,,,,,»¶Óä,,
+Destruction,Destruction,SPECIAL,SKILL,NONE,-2,,,,,,,,,,,,»ÙÃð,,
+Nihility,Nihility,SPECIAL,SKILL,NONE,-2,,,,,,,,,,,,ÐéÎÞ,,
+Preservation,Preservation,SPECIAL,SKILL,NONE,-2,,,,,,,,,,,,´æ»¤,,
+Propagation,Propagation,SPECIAL,SKILL,NONE,-2,,,,,,,,,,,,·±Óý,,
+TheHunt,TheHunt,SPECIAL,SKILL,NONE,-2,,,,,,,,,,,,Ñ²ÁÔ,,
+Erudition,Erudition,SPECIAL,SKILL,NONE,-2,,,,,,,,,,,,ÖÇÊ¶,,
+Abundance,Abundance,SPECIAL,SKILL,NONE,-2,,,,,,,,,,,,·áÈÄ,,
+Remembrance,Remembrance,SPECIAL,SKILL,NONE,-2,,,,,,,,,,,,¼ÇÒä,,
 ,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,

@@ -34,4 +34,11 @@ public class Bronya1 extends BaseCard {
             }
         }));
     }
+
+    @Override
+    public AbstractCard makeStatEquivalentCopy() {
+        AbstractCard card = super.makeStatEquivalentCopy();
+        card.exhaust = this.exhaust;
+        return card;
+    }
 }

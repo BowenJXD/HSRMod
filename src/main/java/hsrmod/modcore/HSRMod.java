@@ -1,9 +1,6 @@
 package hsrmod.modcore;
 
-import basemod.AutoAdd;
-import basemod.BaseMod;
-import basemod.ModLabeledToggleButton;
-import basemod.ModPanel;
+import basemod.*;
 import basemod.abstracts.CustomRelic;
 import basemod.eventUtil.AddEventParams;
 import basemod.interfaces.*;
@@ -183,6 +180,7 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
     public void receivePostInitialize() {
         addConfigPanel();
         BaseMod.addSaveField("RewardEditor", RewardEditor.getInstance());
+        BaseMod.addSaveField("BonusManager", BonusManager.getInstance());
         BaseMod.removeCard(SadisticNature.ID, AbstractCard.CardColor.COLORLESS);
         if (addEvent) addEvents();
         if (addEnemy) {
@@ -256,6 +254,22 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
     public void addMonsters() {
 
         // =========================== Boss ===========================
+
+        BaseMod.addMonster(Encounter.END_OF_THE_ETERNAL_FREEZE, () -> new MonsterGroup(new AbstractMonster[]{
+                new Cocolia()
+        }));
+        BaseMod.addBoss(Exordium.ID, Encounter.END_OF_THE_ETERNAL_FREEZE, "HSRModResources/img/monsters/EndOfTheEternalFreeze.png", "HSRModResources/img/monsters/BossOutline.png");
+        BaseMod.addMonster(Encounter.DESTRUCTIONS_BEGINNING, () -> new MonsterGroup(new AbstractMonster[]{
+                new DawnsLeftHand(),
+                new AntimatterEngine(),
+                new DisastersRightHand()
+        }));
+        BaseMod.addBoss(Exordium.ID, Encounter.DESTRUCTIONS_BEGINNING, "HSRModResources/img/monsters/DestructionsBeginning.png", "HSRModResources/img/monsters/BossOutline.png");
+        
+        BaseMod.addMonster(Encounter.DIVINE_SEED, () -> new MonsterGroup(new AbstractMonster[]{
+                new Phantylia(),
+        }));
+        BaseMod.addBoss(TheCity.ID, Encounter.DIVINE_SEED, "HSRModResources/img/monsters/DivineSeed.png", "HSRModResources/img/monsters/BossOutline.png");
         
         BaseMod.addMonster(Encounter.SALUTATIONS_OF_ASHEN_DREAMS, () -> new MonsterGroup(new AbstractMonster[]{
                 new EchoOfFadedDreams(0, -500F, 50.0F),
@@ -263,23 +277,21 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
                 new EchoOfFadedDreams(1, 300F, 50.0F)
         }));
         BaseMod.addBoss(TheBeyond.ID, Encounter.SALUTATIONS_OF_ASHEN_DREAMS, "HSRModResources/img/monsters/SalutationsOfAshenDreams.png", "HSRModResources/img/monsters/BossOutline.png");
-        
-        BaseMod.addMonster(Encounter.DIVINE_SEED, () -> new MonsterGroup(new AbstractMonster[]{
-                new Phantylia(),
-        }));
-        BaseMod.addBoss(TheCity.ID, Encounter.DIVINE_SEED, "HSRModResources/img/monsters/DivineSeed.png", "HSRModResources/img/monsters/BossOutline.png");
-        
-        BaseMod.addMonster(Encounter.END_OF_THE_ETERNAL_FREEZE, () -> new MonsterGroup(new AbstractMonster[]{
-                new Cocolia()
-        }));
-        BaseMod.addBoss(Exordium.ID, Encounter.END_OF_THE_ETERNAL_FREEZE, "HSRModResources/img/monsters/EndOfTheEternalFreeze.png", "HSRModResources/img/monsters/BossOutline.png");
-        
+
         // =========================== Elite ===========================
         
         BaseMod.addMonster(Encounter.GEPARD, () -> new MonsterGroup(new AbstractMonster[]{
                 new Gepard()
         }));
         BaseMod.addEliteEncounter(Exordium.ID, new MonsterInfo(Encounter.GEPARD, 3.0F));
+        BaseMod.addMonster(Encounter.BRONYA, () -> new MonsterGroup(new AbstractMonster[]{
+                new Bronya()
+        }));
+        BaseMod.addEliteEncounter(Exordium.ID, new MonsterInfo(Encounter.BRONYA, 3.0F));
+        BaseMod.addMonster(Encounter.SWAROG, () -> new MonsterGroup(new AbstractMonster[]{
+                new Svarog()
+        }));
+        BaseMod.addEliteEncounter(Exordium.ID, new MonsterInfo(Encounter.SWAROG, 3.0F));
         
         BaseMod.addMonster(Encounter.HOOLAY, () -> new MonsterGroup(new AbstractMonster[]{
                 new Hoolay()
@@ -428,12 +440,13 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         ModPanel panel = new ModPanel();
         String[] buttonLanguage = null;
         if (language == Settings.GameLanguage.ZHS || language == Settings.GameLanguage.ZHT)
-            buttonLanguage = new String[]{"加入遗物", "加入事件", "加入敌人", "移除原版敌人"};
+            buttonLanguage = new String[]{"加入遗物", "加入事件", "加入敌人", "移除原版敌人", "部分设定需要重启并重开游戏才能生效"};
         else 
-            buttonLanguage = new String[]{"Add Relic", "Add Event", "Add Enemy", "Remove Other Enemies"};
+            buttonLanguage = new String[]{"Add Relic", "Add Event", "Add Enemy", "Remove Other Enemies", "Some settings need to restart and reopen the game to take effect"};
         Texture badgeTexture = ImageMaster.loadImage("HSRModResources/img/char/badge.png");
         BaseMod.registerModBadge(badgeTexture, MOD_NAME, Arrays.stream(info.Authors).findFirst().orElse(""), info.Description, panel);
         
+        panel.addUIElement(new ModLabel(buttonLanguage[4], 400.0F, 800.0F, panel, (me) -> {}));
         ModLabeledToggleButton addRelicButton = new ModLabeledToggleButton(buttonLanguage[0], 400.0F, 700.0F, Color.WHITE, FontHelper.buttonLabelFont, addRelic, panel, (label) -> {}, (button) -> {
             addRelic = button.enabled;
             try {

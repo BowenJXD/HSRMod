@@ -10,7 +10,6 @@ import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.EnemyData;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import com.megacrit.cardcrawl.powers.AbstractPower;
@@ -148,7 +147,7 @@ public class ModHelper {
         return getRandomMonster(m -> !(m.isDying || m.isEscaping || m.halfDead || m.currentHealth <= 0), true);
     }
     
-    public static boolean checkMonster(AbstractMonster m){
+    public static boolean check(AbstractCreature m){
         return !(m.isDying || m.isEscaping || m.halfDead || m.currentHealth <= 0);
     }
     

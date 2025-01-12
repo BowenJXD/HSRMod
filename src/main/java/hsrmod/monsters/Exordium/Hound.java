@@ -28,7 +28,7 @@ public class Hound extends BaseMonster {
                 break;
             case 1:
                 for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters) {
-                    if (ModHelper.checkMonster(monster)) {
+                    if (ModHelper.check(monster)) {
                         addToBot(new HealAction(monster, this, heal));
                     }
                 }
@@ -39,7 +39,7 @@ public class Hound extends BaseMonster {
 
     @Override
     protected void getMove(int i) {
-        if (AbstractDungeon.getMonsters().monsters.stream().anyMatch(m -> m.currentHealth < m.maxHealth / 2 && ModHelper.checkMonster(m))) {
+        if (AbstractDungeon.getMonsters().monsters.stream().anyMatch(m -> m.currentHealth < m.maxHealth / 2 && ModHelper.check(m))) {
             setMove((byte) 1, Intent.BUFF);
         } else {
             setMove((byte) 0, Intent.ATTACK, this.damage.get(0).base);

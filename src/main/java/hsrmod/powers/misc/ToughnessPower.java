@@ -55,6 +55,14 @@ public class ToughnessPower extends BuffPower implements InvisiblePower {
     }
 
     @Override
+    public void atStartOfTurn() {
+        super.atStartOfTurn();
+        if (amount <= 0) {
+            alterPower(stackLimit * 2);
+        }
+    }
+
+    @Override
     public float atDamageReceive(float damage, DamageInfo.DamageType damageType) {
         if (damageType == DamageInfo.DamageType.NORMAL)
             return damage * ( 1 - (this.amount / 100.0F) );

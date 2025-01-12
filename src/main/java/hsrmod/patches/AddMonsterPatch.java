@@ -75,11 +75,10 @@ public class AddMonsterPatch {
             switch (calls) {
                 case 1:
                 case 2:
+                case 3:
                     if (AbstractDungeon.actNum == 1 && HSRMod.removeOtherEnemies) {
                         monsters[0].clear();
                     }
-                    break;
-                case 3:
                     break;
                 default:
                     calls = 0;

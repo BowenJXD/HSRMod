@@ -109,6 +109,38 @@
     ],
     "DIALOG": []
   },
+  "HSRMod:DawnsLeftHand": {
+    "NAME": "Dawn's Left Hand",
+    "MOVES": [
+      "Fallen Forge Hammer",
+      "Fallen Star's Visit",
+      "When the Dawn Is Dark"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:AntimatterEngine": {
+    "NAME": "Antimatter Engine",
+    "MOVES": [
+      "Total Annihilation",
+      "Calamity Strike",
+      "Void Fission",
+      "Engine Boost",
+      "Cataclysm Precursor",
+      "⚠Impending Doom⚠",
+      "Impending Doom(Deal #r3*%d damage, deal 1 additional damage for each #yImprison or #yEntangle )"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:DisastersRightHand": {
+    "NAME": "Disaster's Right Hand",
+    "MOVES": [
+      "Calamity Tear",
+      "Tough Cuts",
+      "The Breakdown of Tyranny"
+    ],
+    "DIALOG": []
+  },
+  
   "HSRMod:SomethingUntoDeath": {
     "NAME": "Something Unto Death",
     "MOVES": [
@@ -175,6 +207,37 @@
       "@This@ @ends@ @here!@"
     ]
   },
+  "HSRMod:Bronya": {
+  "NAME": "Bronya",
+  "MOVES": [
+    "Coordinated Reinforcement",
+    "Windrider Bullet",
+    "Combat Redeployment",
+    "⚠Suppressive Fire⚠",
+    "Suppressive Fire (steal #yStrength from player, deal damage)"
+  ],
+  "DIALOG": []
+},
+  "HSRMod:Svarog": {
+    "NAME": "Svarog",
+    "MOVES": [
+      "Burning Beam",
+      "Boost Deployment",
+      "Shrewd Bombing"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:RobotArmUnit": {
+    "NAME": "Robot Arm Unit",
+    "MOVES": [
+      "Oppressive Embrace",
+      "Overload Warning",
+      "⚠Controlled Blasting⚠",
+      "Controlled Blasting (self-destruct, deal damage, and destroy stolen cards)"
+    ],
+    "DIALOG": []
+  },
+
   "HSRMod:SweetGorilla": {
     "NAME": "Sweet Gorilla",
     "MOVES": [
@@ -261,6 +324,168 @@
     "NAME": "Beetle",
     "MOVES": [
       "Unstable Forcefield"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:GuardianShadow": {
+    "NAME": "Guardian Shadow",
+    "MOVES": [
+      "Lightning Recollection",
+      "⚠Lightning Condemnation⚠"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:FrigidProwler": {
+    "NAME": "Frigid Prowler",
+    "MOVES": [
+      "Summon Otherling",
+      "Ice Wheel Fist",
+      "Frozen Storm",
+      "Devour Otherling",
+      "⚠Ice Wheel Crusher⚠",
+      "Ice Wheel Crusher (deal #r3*3 damage, exhaust all hand cards, heal 1 HP for each card exhausted)"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:EverwinterShadewalker": {
+    "NAME": "Everwinter Shadewalker",
+    "MOVES": [
+      "Frost Crush"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:IncinerationShadewalker": {
+    "NAME": "Incineration Shadewalker",
+    "MOVES": [
+      "Scorching Crush"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:DecayingShadow": {
+    "NAME": "Decaying Shadow",
+    "MOVES": [
+      "Fleeting Punishment",
+      "Fleeting Veil",
+      "Binding of the Golden Age",
+      "⚠Liberation of the Golden Age⚠",
+      "Liberation of the Golden Age (deal #r3*0 damage, deal 1 more damage for each #yGauge #yRecollection )"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:SilvermaneLieutenant": {
+    "NAME": "Silvermane Lieutenant",
+    "MOVES": [
+      "Assault",
+      "Reinforcement",
+      "Shield Reflect",
+      "Upon taking damage , deal #b%d damage. Remove after #yBreak , or at the start of turn."
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:Stormbringer": {
+    "NAME": "Stormbringer",
+    "MOVES": [
+      "Wind Walker",
+      "Storm Cyclone",
+      "Wind-Twisting Crossbow",
+      "⚠Windfall Storm⚠",
+      "Windfall Storm (trigger #yWind #yShear , apply #b%d #yWind #yShear )"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:Direwolf": {
+    "NAME": "Direwolf",
+    "MOVES": [
+      "Disintegration Order",
+      "Dismantle",
+      "⚠Felling Order⚠",
+      "Felling Order (deal damage, apply #yBleeding for each unblocked damage)"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:Hound": {
+    "NAME": "Hound",
+    "MOVES": [
+      "Vertical Strike",
+      "Self-Healing Module"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:Vagrant": {
+    "NAME": "Vagrant",
+    "MOVES": [
+      "Shovel Attack",
+      "Find Smoke Bomb",
+      "⚠Escape⚠",
+      "Escape (leave with your money)"
+    ],
+    "DIALOG": [
+      "Give your money!",
+      "Where's my smoke bomb?",
+      "Runnin' away!",
+      "@No!!!@"
+    ]
+  },
+  "HSRMod:SilvermaneSoldier": {
+    "NAME": "Silvermane Soldier",
+    "MOVES": [
+      "Tireless Charge"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:MaskOfNoThought": {
+    "NAME": "Mask of No Thought",
+    "MOVES": [
+      "Iridescent Beam",
+      "Focused Charge",
+      "Energy Burst",
+      "Upon death, gain [E] ."
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:Thunderspawn": {
+    "NAME": "Thunderspawn",
+    "MOVES": [
+      "Thunderflash"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:Windspawn": {
+    "NAME": "Windspawn",
+    "MOVES": [
+      "Windpath"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:Flamespawn": {
+    "NAME": "Flamespawn",
+    "MOVES": [
+      "Distract"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:Frostspawn": {
+    "NAME": "Frostspawn",
+    "MOVES": [
+      "Distract"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:SequenceTrotter": {
+    "NAME": "Sequence Trotter",
+    "MOVES": [
+      "S—S—S—Scared",
+      "Run... Run!",
+      "Phew... Escaped"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:WarpTrotter": {
+    "NAME": "Warp Trotter",
+    "MOVES": [
+      "S—S—S—Scared",
+      "Run... Run!",
+      "Phew... Escaped"
     ],
     "DIALOG": []
   }

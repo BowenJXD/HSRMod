@@ -544,5 +544,27 @@
     "DESCRIPTIONS": [
       "When #yinvincible triggers, take #ytoughness reduction equal to limit. When break by player, remove #yinvincible and this power, take damage equal to the #ytoughness limit."
     ]
+  },
+  "HSRMod:Ban": {
+    "NAME" : "Ban",
+    "DESCRIPTIONS": [
+      "When playing an #rAttack card, discard a random card. Remove after #yBreak.",
+      "When playing a #gSkill card, a random card's cost +1 for this turn. Remove after #yBreak.",
+      "When dealing damage to #yGuardian #yShadow, take #b%d damage. Remove after #yBreak."
+    ]
+  },
+  "HSRMod:GaugeRecollection": {
+    "NAME": "Gauge Recollection",
+    "DESCRIPTIONS": [
+      "Remove 1 stack after taking damage. Remove after #yBreak. When completely removed, gain #yVulnerable ."
+    ]
+  },
+  "HSRMod:Snarelock": {
+    "NAME": "Snarelock",
+    "DESCRIPTIONS": [
+      "When playing #rAttack cards consecutively, gain #yImprison . NL When playing #gNon-Attack cards consecutively, gain 1 #yEntangle .",
+      "When playing #rAttack cards consecutively, gain #yImprison . NL When playing #gNon-Attack cards consecutively, gain 1 #yEntangle . NL The last card played is: #rAttack .",
+      "When playing #rAttack cards consecutively, gain #yImprison . NL When playing #gNon-Attack cards consecutively, gain 1 #yEntangle . NL The last card played is: #gNon-Attack ."
+    ]
   }
 }

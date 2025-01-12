@@ -8,8 +8,11 @@ import hsrmod.modcore.HSRMod;
 import hsrmod.utils.DataManager;
 import hsrmod.utils.RelicDataCol;
 
+import java.util.ArrayList;
+
 public abstract class BaseRelic extends CustomRelic {
     public int magicNumber;
+    public String modNameCache = null;
     
     public BaseRelic(String id){
         super(HSRMod.makePath(id),
@@ -50,5 +53,20 @@ public abstract class BaseRelic extends CustomRelic {
         this.tips.clear();
         this.tips.add(new PowerTip(this.name, this.description));
         this.initializeTips();
+    }
+    
+    @Override
+    protected void initializeTips() {
+        if (modNameCache == null) {
+            modNameCache = tips.get(0).body;
+        }
+        super.initializeTips();
+    }
+    
+    public void updateDescription(String newDescription){
+        description = newDescription;
+        tips.clear();
+        this.tips.add(new PowerTip(this.name, this.description));
+        initializeTips();
     }
 }

@@ -26,7 +26,11 @@ public class Cocolia extends BaseMonster {
     public Cocolia() {
         super(ID, 400.0F, 512.0F, -100.0F, 0.0F);
 
-        setDamages(6, 6, 12, 6);
+        if (ModHelper.moreDamageAscension(type)) {
+            setDamages(6, 6, 12, 6);
+        } else {
+            setDamages(6, 6, 9, 6);
+        }
         bgm = Encounter.END_OF_THE_ETERNAL_FREEZE + "_1";
     }
 

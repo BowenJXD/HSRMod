@@ -97,10 +97,4 @@ public class FrigidProwler extends BaseMonster {
         }
         turnCount++;
     }
-
-    @Override
-    public void die() {
-        super.die();
-        ModHelper.killAllMinions();
-    }
 }

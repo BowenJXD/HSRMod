@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.*;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
@@ -116,7 +117,10 @@ public class SequenceTrotter extends BaseMonster implements PreBreakSubscriber {
     public void die() {
         super.die();
         SubscriptionManager.unsubscribe(this);
-        AbstractDungeon.getCurrRoom().addCardReward(new RewardItem());
+        RewardItem rewardItem = new RewardItem();
+        RewardEditor.getInstance().setRewardCards(rewardItem, AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardRarity.RARE);
+        AbstractDungeon.getCurrRoom().addCardReward(rewardItem);
+        
     }
 
     @Override

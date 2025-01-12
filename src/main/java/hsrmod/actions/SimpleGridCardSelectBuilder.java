@@ -190,7 +190,8 @@ public class SimpleGridCardSelectBuilder extends AbstractGameAction {
                 AbstractDungeon.gridSelectScreen.open(tmpGroup, amount, msg, forUpgrade, forTransform, canCancel, forPurge);
             }
         }
-        if (!AbstractDungeon.gridSelectScreen.selectedCards.isEmpty() && gridOpened) {
+        if (AbstractDungeon.gridSelectScreen.selectedCards.size() >= amount 
+                || AbstractDungeon.gridSelectScreen.confirmButton.hb.clicked) {
             int index = 0;
             for (AbstractCard card : tmpGroup.group) {
                 CardGroup group = cardGroupMap.get(card);

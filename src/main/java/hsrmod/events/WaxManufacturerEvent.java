@@ -2,17 +2,14 @@ package hsrmod.events;
 
 import basemod.abstracts.events.PhasedEvent;
 import basemod.abstracts.events.phases.TextPhase;
-import basemod.devcommands.relic.Relic;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.events.city.TheLibrary;
 import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.vfx.UpgradeShineEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
@@ -63,7 +60,7 @@ public class WaxManufacturerEvent extends PhasedEvent {
             TextPhase.OptionInfo opt2 = new TextPhase.OptionInfo(OPTIONS[1], relic).setOptionResult((i) -> {
                 for (int j = AbstractDungeon.player.relics.size() - 1; j >= 0; j--) {
                     AbstractRelic r = AbstractDungeon.player.relics.get(j);
-                    if (r instanceof WaxRelic && ((WaxRelic) r).tag == selectedPathTag) {
+                    if (r instanceof WaxRelic && ((WaxRelic) r).selectedTag == selectedPathTag) {
                         AbstractDungeon.player.loseRelic(r.relicId);
                         break;
                     }

@@ -58,11 +58,6 @@ public class GalacticBat extends CustomRelic implements ClickableRelic {
             if (!m.hasPower(ToughnessPower.POWER_ID)) {
                 addToTop(new ApplyPowerAction(m, AbstractDungeon.player, new ToughnessPower(m), ToughnessPower.getStackLimit(m)));
             }
-            else if (m.getPower(ToughnessPower.POWER_ID).amount <= 0) {
-                AbstractPower power = m.getPower(ToughnessPower.POWER_ID);
-                ((ToughnessPower)power).alterPower(ToughnessPower.getStackLimit(m) * 2);
-                // addToTop(new ApplyPowerAction(m, AbstractDungeon.player, new ToughnessPower(m), ToughnessPower.getStackLimit(m) * 2));
-            }
         }
     }
 

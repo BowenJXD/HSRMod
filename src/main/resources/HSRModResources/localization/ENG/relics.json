@@ -24,70 +24,90 @@
     "NAME": "Wax Of Elation",
     "FLAVOR": "It is said that stamping with this Sealing Wax will attract a glimpse from the corresponding Aeon from across space and time - Aha is watching you! ",
     "DESCRIPTIONS": [
-      "Increase the chance of appearing of \"Elation\" cards."
+      "Increase the chance of appearing of \"Elation\" cards. Right click in Neow's room to ban paths.",
+      "Increase the chance of appearing of \"Elation\" cards. Banned paths: %s.",
+      "Choose %d paths to ban"
     ]
   },
   "HSRMod:WaxOfDestruction": {
     "NAME": "Wax Of Destruction",
     "FLAVOR": "It is said that stamping with this Sealing Wax will attract a glimpse from the corresponding Aeon from across space and time - Nanook is watching you! ",
     "DESCRIPTIONS": [
-      "Increase the chance of appearing of \"Destruction\" cards."
+      "Increase the chance of appearing of \"Destruction\" cards. Right click in Neow's room to ban paths.",
+      "Increase the chance of appearing of \"Destruction\" cards. Banned paths: %s.",
+      "Choose %d paths to ban"
     ]
   },
   "HSRMod:WaxOfNihility": {
     "NAME": "Wax Of Nihility",
     "FLAVOR": "It is said that stamping with this Sealing Wax will attract a glimpse from the corresponding Aeon from across space and time - IX is watching you! ",
     "DESCRIPTIONS": [
-      "Increase the chance of appearing of \"Nihility\" cards."
+      "Increase the chance of appearing of \"Nihility\" cards. Right click in Neow's room to ban paths.",
+      "Increase the chance of appearing of \"Nihility\" cards. Banned paths: %s.",
+      "Choose %d paths to ban"
     ]
   },
   "HSRMod:WaxOfPropagation": {
     "NAME": "Wax Of Propagation",
     "FLAVOR": "It is said that stamping with this Sealing Wax will attract a glimpse from the corresponding Aeon from across space and time - IX is watching you! ",
     "DESCRIPTIONS": [
-      "Increase the chance of appearing of \"Propagation\" cards."
+      "Increase the chance of appearing of \"Propagation\" cards. Right click in Neow's room to ban paths.",
+      "Increase the chance of appearing of \"Propagation\" cards. Banned paths: %s.",
+      "Choose %d paths to ban"
     ]
   },
   "HSRMod:WaxOfPreservation": {
     "NAME": "Wax Of Preservation",
     "FLAVOR": "It is said that stamping with this Sealing Wax will attract a glimpse from the corresponding Aeon from across space and time - IX is watching you! ",
     "DESCRIPTIONS": [
-      "Increase the chance of appearing of \"Preservation\" cards."
+      "Increase the chance of appearing of \"Preservation\" cards. Right click in Neow's room to ban paths.",
+      "Increase the chance of appearing of \"Preservation\" cards. Banned paths: %s.",
+      "Choose %d paths to ban"
     ]
   },
   "HSRMod:WaxOfTheHunt": {
     "NAME": "Wax Of The Hunt",
     "FLAVOR": "It is said that stamping with this Sealing Wax will attract a glimpse from the corresponding Aeon from across space and time - IX is watching you! ",
     "DESCRIPTIONS": [
-      "Increase the chance of appearing of \"The Hunt\" cards."
+      "Increase the chance of appearing of \"The Hunt\" cards. Right click in Neow's room to ban paths.",
+      "Increase the chance of appearing of \"The Hunt\" cards. Banned paths: %s.",
+      "Choose %d paths to ban"
     ]
   },
   "HSRMod:WaxOfErudition": {
     "NAME": "Wax Of Erudition",
     "FLAVOR": "It is said that stamping with this Sealing Wax will attract a glimpse from the corresponding Aeon from across space and time - IX is watching you! ",
     "DESCRIPTIONS": [
-      "Increase the chance of appearing of \"Erudition\" cards."
+      "Increase the chance of appearing of \"Erudition\" cards. Right click in Neow's room to ban paths.",
+      "Increase the chance of appearing of \"Erudition\" cards. Banned paths: %s.",
+      "Choose %d paths to ban"
     ]
   },
   "HSRMod:WaxOfAbundance": {
     "NAME": "Wax Of Abundance",
     "FLAVOR": "It is said that stamping with this Sealing Wax will attract a glimpse from the corresponding Aeon from across space and time - IX is watching you! ",
     "DESCRIPTIONS": [
-      "Increase the chance of appearing of \"Abundance\" cards."
+      "Increase the chance of appearing of \"Abundance\" cards. Right click in Neow's room to ban paths.",
+      "Increase the chance of appearing of \"Abundance\" cards. Banned paths: %s.",
+      "Choose %d paths to ban"
     ]
   },
   "HSRMod:WaxOfRemembrance": {
     "NAME": "Wax Of Remembrance",
     "FLAVOR": "It is said that stamping with this Sealing Wax will attract a glimpse from the corresponding Aeon from across space and time - IX is watching you! ",
     "DESCRIPTIONS": [
-      "Increase the chance of appearing of \"Remembrance\" cards."
+      "Increase the chance of appearing of \"Remembrance\" cards. Right click in Neow's room to ban paths.",
+      "Increase the chance of appearing of \"Remembrance\" cards. Banned paths: %s.",
+      "Choose %d paths to ban"
     ]
   },
   "HSRMod:TrailblazeTimer": {
     "NAME": "Trailblaze Timer",
     "FLAVOR": "It broke countless times and underwent endless repairs. Its former shape was no longer discernible, and only the stilled sharp hands were pointing ever forward.",
     "DESCRIPTIONS": [
-      "Future card rewards have #b1 more cards to choose from."
+      "Future card rewards have #b1 more cards to choose from. NL Right click in Neow's room to ban paths.",
+      "Future card rewards have #b1 more cards to choose from. Banned paths: %s.",
+      "Choose %d paths to ban"
     ]
   },
   "HSRMod:TheAshblazingGrandDuke": {

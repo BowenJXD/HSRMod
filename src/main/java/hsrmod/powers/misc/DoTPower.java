@@ -23,16 +23,16 @@ import hsrmod.subscribers.SubscriptionManager;
 
 public abstract class DoTPower extends DebuffPower implements OnPlayerTurnStartSubscriber {
     private AbstractCreature source;
-    
+
     public boolean removeOnTrigger = true;
-    
+
     public int toughnessReduction = 1;
 
     public DoTPower(String id, AbstractCreature owner, AbstractCreature source, int amount) {
         super(id, owner, amount);
         this.source = source;
         this.isTurnBased = true;
-        
+
         this.updateDescription();
     }
 
@@ -63,37 +63,39 @@ public abstract class DoTPower extends DebuffPower implements OnPlayerTurnStartS
         if (!owner.isPlayer)
             trigger(source, removeOnTrigger, false);
     }
-    
-    public void trigger(){
+
+    public void trigger() {
         trigger(source, removeOnTrigger, false);
     }
-    
-    public void trigger(AbstractCreature source, boolean removeOnTrigger, boolean isFast){
+
+    public void trigger(AbstractCreature source, boolean removeOnTrigger, boolean isFast) {
         if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT && !AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
             this.flash();
-            
+
             float dmg = this.getDamage();
             ElementalDamageInfo info = new ElementalDamageInfo(source, (int) dmg, this.getElementType(), toughnessReduction);
             info.applyPowers(source, this.owner);
-            
+
             info.output = (int) SubscriptionManager.getInstance().triggerPreDoTDamage(info, this.owner, this);
-            
+
             ElementalDamageAction action = new ElementalDamageAction(this.owner, info, AbstractGameAction.AttackEffect.NONE);
             if (isFast) {
-                action.isFast = true;
-                action.update();
+                action.setIsSourceNullable(true)
+                        .setIsFast(true)
+                        .update();
             } else {
                 this.addToTop(new ElementalDamageAction(this.owner, info, AbstractGameAction.AttackEffect.NONE));
             }
             if (removeOnTrigger) remove(1);
         }
     }
-    
+
     public abstract int getDamage();
+
     public abstract ElementType getElementType();
-    
-    public static DoTPower getRandomDoTPower(AbstractCreature owner, AbstractCreature source, int amount){
-        switch(AbstractDungeon.cardRandomRng.random(0, 3)){
+
+    public static DoTPower getRandomDoTPower(AbstractCreature owner, AbstractCreature source, int amount) {
+        switch (AbstractDungeon.cardRandomRng.random(0, 3)) {
             case 1:
                 return new BurnPower(owner, source, amount);
             case 2:
@@ -108,20 +110,21 @@ public abstract class DoTPower extends DebuffPower implements OnPlayerTurnStartS
 
     /**
      * Check if the owner has all the DoT powers (Bleeding, Burn, Shock, WindShear)
+     *
      * @param owner
      * @return
      */
-    public static boolean hasAllDoTPower(AbstractCreature owner){
-        return owner.hasPower(BleedingPower.POWER_ID) 
-                && owner.hasPower(BurnPower.POWER_ID) 
-                && owner.hasPower(ShockPower.POWER_ID) 
+    public static boolean hasAllDoTPower(AbstractCreature owner) {
+        return owner.hasPower(BleedingPower.POWER_ID)
+                && owner.hasPower(BurnPower.POWER_ID)
+                && owner.hasPower(ShockPower.POWER_ID)
                 && owner.hasPower(WindShearPower.POWER_ID);
     }
-    
-    public static boolean hasAnyDoTPower(AbstractCreature owner){
-        return owner.hasPower(BleedingPower.POWER_ID) 
-                || owner.hasPower(BurnPower.POWER_ID) 
-                || owner.hasPower(ShockPower.POWER_ID) 
+
+    public static boolean hasAnyDoTPower(AbstractCreature owner) {
+        return owner.hasPower(BleedingPower.POWER_ID)
+                || owner.hasPower(BurnPower.POWER_ID)
+                || owner.hasPower(ShockPower.POWER_ID)
                 || owner.hasPower(WindShearPower.POWER_ID);
     }
 }

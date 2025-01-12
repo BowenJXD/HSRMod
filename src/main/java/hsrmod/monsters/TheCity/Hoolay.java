@@ -61,20 +61,20 @@ public class Hoolay extends BaseMonster {
         addToBot(new RollMoveAction(this));
         switch (nextMove) {
             case 1:
+                addToBot(new AnimateHopAction(this));
                 for (int i = 0; i < damageTimes[0]; i++) {
                     addToBot(new DamageAction(p, this.damage.get(0), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
                 }
-                addToBot(new AnimateHopAction(this));
                 break;
             case 2:
                 int r = AbstractDungeon.miscRng.random(1, 2);
                 addToBot(new ShoutAction(this, DIALOG[r]));
                 ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + r, 3.0F));
 
+                addToBot(new AnimateHopAction(this));
                 for (int i = 0; i < damageTimes[1]; i++) {
                     addToBot(new DamageAction(p, this.damage.get(1), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
                 }
-                addToBot(new AnimateHopAction(this));
                 AbstractDungeon.getMonsters().monsters.stream().filter(m -> !m.isDead && !m.hasPower(MoonRagePower.POWER_ID)).forEach(m -> {
                     addToBot(new ApplyPowerAction(m, this, new MoonRagePower(m, 1), 1));
                     addToBot(new LoseHPAction(this, this, 4));
@@ -86,10 +86,10 @@ public class Hoolay extends BaseMonster {
                     ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "3", 3.0F));
                 }
 
+                addToBot(new AnimateHopAction(this));
                 for (int i = 0; i < damageTimes[2]; i++) {
                     addToBot(new DamageAction(p, this.damage.get(2), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
                 }
-                addToBot(new AnimateHopAction(this));
                 addToBot(new ApplyPowerAction(p, this, new TerrorPower(p, 1), 1));
                 break;
             case 4:

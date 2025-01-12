@@ -3,9 +3,12 @@ package hsrmod.monsters;
 import basemod.abstracts.CustomMonster;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.AnimateSlowAttackAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.SpawnMonsterAction;
+import com.megacrit.cardcrawl.actions.common.SuicideAction;
+import com.megacrit.cardcrawl.actions.utility.HideHealthBarAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -14,8 +17,12 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.MinionPower;
+import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
 import hsrmod.misc.PathDefine;
 import hsrmod.modcore.HSRMod;
+import hsrmod.powers.enemyOnly.SummonedPower;
+import hsrmod.powers.misc.DoTPower;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.utils.DataManager;
 import hsrmod.utils.ModHelper;
@@ -199,7 +206,35 @@ public abstract class BaseMonster extends CustomMonster {
         addToBot(new SpawnMonsterAction(monster, isMinion));
         slot.setMonster(monster);
     }
-    
+
+    @Override
+    public void die() {
+        super.die();
+        int shakeTime = 0;
+        switch (type) {
+            case NORMAL:
+                shakeTime = 2;
+                break;
+            case ELITE:
+                shakeTime = 3;
+                break;
+            case BOSS:
+                shakeTime = 5;
+                break;
+        }
+        this.useShakeAnimation(shakeTime);
+        for (MonsterSlot slot : slots) {
+            if (!slot.isEmpty()) {
+                AbstractMonster m = slot.monster;
+                if (!m.isDead && !m.isDying && (m.hasPower(MinionPower.POWER_ID) || m.hasPower(SummonedPower.POWER_ID) || m.halfDead)) {
+                    AbstractDungeon.actionManager.addToTop(new HideHealthBarAction(m));
+                    AbstractDungeon.actionManager.addToTop(new SuicideAction(m));
+                    AbstractDungeon.actionManager.addToTop(new VFXAction(m, new InflameEffect(m), 0.2F));
+                }
+            }
+        }
+    }
+
     public static class MonsterSlot {
         public float x;
         public float y;

@@ -37,6 +37,9 @@ public class MusicPatch {
             case "Salutations of Ashen Dreams":
                 music = MainMusic.newMusic("HSRModResources/audio/music/HopeIsTheThingWithFeathers.mp3");
                 break;
+            case "Destruction's Beginning":
+                music = MainMusic.newMusic("HSRModResources/audio/music/DawnOfDisaster.mp3");
+                break;
         }
         if (music == null)
             return SpireReturn.Continue();

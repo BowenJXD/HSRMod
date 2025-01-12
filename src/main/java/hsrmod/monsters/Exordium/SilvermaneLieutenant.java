@@ -57,7 +57,7 @@ public class SilvermaneLieutenant extends BaseMonster implements PreBreakSubscri
                 break;
             case 2:
                 for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
-                    if (ModHelper.checkMonster(m)) {
+                    if (ModHelper.check(m)) {
                         addToBot(new GainBlockAction(m, this, block));
                     }
                 }
@@ -90,11 +90,5 @@ public class SilvermaneLieutenant extends BaseMonster implements PreBreakSubscri
         if (SubscriptionManager.checkSubscriber(this) && target == this) {
             addToBot(new RemoveSpecificPowerAction(this, this, ThornsPower.POWER_ID));
         }
-    }
-    
-    @Override
-    public void die() {
-        super.die();
-        ModHelper.killAllMinions();
     }
 }

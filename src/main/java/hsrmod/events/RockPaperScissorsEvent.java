@@ -47,7 +47,7 @@ public class RockPaperScissorsEvent extends PhasedEvent {
                 .setNextKey(5)
         );
         registerPhase(3, new CombatPhase(MonsterHelper.SLAVERS_ENC)
-                .addRewards(false, (room)-> {
+                .addRewards(true, (room)-> {
                     for (int i = 0; i < 2; i++) {
                         RewardItem reward = new RewardItem();
                         reward.cards.forEach(AbstractCard::upgrade);

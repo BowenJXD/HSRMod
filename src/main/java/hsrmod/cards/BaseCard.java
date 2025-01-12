@@ -19,6 +19,7 @@ import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.CardDataCol;
 import hsrmod.utils.DataManager;
 import hsrmod.utils.ModHelper;
+import hsrmod.utils.RewardEditor;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -44,6 +45,7 @@ public abstract class BaseCard extends CustomCard implements SpawnModificationCa
     public boolean followedUp = false;
     public boolean inBattle = false;
     public boolean inHand = false;
+    public CardTags pathTag = null;
     
     public CardStrings cardStrings;
     
@@ -76,7 +78,7 @@ public abstract class BaseCard extends CustomCard implements SpawnModificationCa
         this.upBlock = DataManager.getInstance().getCardDataInt(id, CardDataCol.UpgradeBlock);
         this.upMagicNumber = DataManager.getInstance().getCardDataInt(id, CardDataCol.UpgradeMagicNumber);
 
-        CardTags pathTag = getPathTag(DataManager.getInstance().getCardData(id, CardDataCol.Path));
+        pathTag = getPathTag(DataManager.getInstance().getCardData(id, CardDataCol.Path));
         if (pathTag != null) tags.add(pathTag);
         elementType = getElementType(DataManager.getInstance().getCardData(id, CardDataCol.Element));
         versatility = getVersatility(DataManager.getInstance().getCardData(id, CardDataCol.Versatility));
@@ -196,6 +198,10 @@ public abstract class BaseCard extends CustomCard implements SpawnModificationCa
     }
 
     private boolean checkSpawnable() {
+        if (!RewardEditor.getInstance().checkPath(pathTag)) {
+            return false;
+        }
+        
         int count = AbstractDungeon.player.masterDeck.group.stream().mapToInt(c -> c.cardID.equals(this.cardID) ? 1 : 0).sum();
 
         if (count > 0 && type == CardType.POWER) {
@@ -244,6 +250,21 @@ public abstract class BaseCard extends CustomCard implements SpawnModificationCa
         else if (path.contains("智识")) result = CustomEnums.ERUDITION;
         else if (path.contains("丰饶")) result = CustomEnums.ABUNDANCE;
         else if (path.contains("记忆")) result = CustomEnums.REMEMBRANCE;
+        return result;
+    }
+    
+    public static String getPathStringZH(AbstractCard.CardTags tag) {
+        String result = "";
+        if (tag == CustomEnums.TRAILBLAZE) result = "开拓";
+        else if (tag == CustomEnums.ELATION) result = "欢愉";
+        else if (tag == CustomEnums.DESTRUCTION) result = "毁灭";
+        else if (tag == CustomEnums.NIHILITY) result = "虚无";
+        else if (tag == CustomEnums.PROPAGATION) result = "繁育";
+        else if (tag == CustomEnums.PRESERVATION) result = "存护";
+        else if (tag == CustomEnums.THE_HUNT) result = "巡猎";
+        else if (tag == CustomEnums.ERUDITION) result = "智识";
+        else if (tag == CustomEnums.ABUNDANCE) result = "丰饶";
+        else if (tag == CustomEnums.REMEMBRANCE) result = "记忆";
         return result;
     }
     

@@ -30,7 +30,7 @@ public class MaskOfNoThought extends BaseMonster {
     @Override
     public void usePreBattleAction() {
         super.usePreBattleAction();
-        addToBot(new ApplyPowerAction(this, this, new DeathExplosionPower(this, MOVES[2], MOVES[3], () -> {
+        addToBot(new ApplyPowerAction(this, this, new DeathExplosionPower(this, MOVES[2], MOVES[3], false, () -> {
             addToBot(new GainEnergyAction(1));
         })));
     }
@@ -45,7 +45,7 @@ public class MaskOfNoThought extends BaseMonster {
             case 1:
                 addToBot(new AnimateFastAttackAction(this));
                 for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
-                    if (ModHelper.checkMonster(m)) {
+                    if (ModHelper.check(m)) {
                         addToBot(new ApplyPowerAction(m, this, new StrengthPower(m, 1)));
                     }
                 }

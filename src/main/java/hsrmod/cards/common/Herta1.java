@@ -28,7 +28,7 @@ public class Herta1 extends BaseCard implements PreElementalDamageSubscriber {
     public static final String ID = Herta1.class.getSimpleName();
     List<AbstractCreature> moreThanHalfMonsters;
     boolean canRepeat = false;
-    
+
     public Herta1() {
         super(ID);
         this.tags.add(FOLLOW_UP);
@@ -40,23 +40,23 @@ public class Herta1 extends BaseCard implements PreElementalDamageSubscriber {
         moreThanHalfMonsters = AbstractDungeon.getMonsters().monsters.stream().filter(monster -> monster.currentHealth > monster.maxHealth / 2).collect(Collectors.toList());
         execute();
     }
-    
-    void execute(){
+
+    void execute() {
         canRepeat = true;
-        
+
         if (AbstractDungeon.getMonsters().areMonstersBasicallyDead()) return;
-        
+
         addToBot(
                 new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL).setCallback(
-                ci -> {
-                    if (moreThanHalfMonsters.contains(ci.target) && ci.target.currentHealth <= ci.target.maxHealth / 2) {
-                        moreThanHalfMonsters.remove(ci.target);
-                        if (canRepeat) {    
-                            canRepeat = false;
-                            ModHelper.addToTopAbstract(this::execute);
-                        }
-                    }
-                })
+                        ci -> {
+                            if (moreThanHalfMonsters.contains(ci.target) && ci.target.currentHealth <= ci.target.maxHealth / 2) {
+                                moreThanHalfMonsters.remove(ci.target);
+                                if (canRepeat) {
+                                    canRepeat = false;
+                                    ModHelper.addToTopAbstract(this::execute);
+                                }
+                            }
+                        })
         );
     }
 
@@ -69,7 +69,7 @@ public class Herta1 extends BaseCard implements PreElementalDamageSubscriber {
     public void triggerAtStartOfTurn() {
         SubscriptionManager.unsubscribe(this);
     }
-    
+
     @Override
     public float preElementalDamage(ElementalDamageAction action, float dmg) {
         if (SubscriptionManager.checkSubscriber(this)
@@ -77,11 +77,13 @@ public class Herta1 extends BaseCard implements PreElementalDamageSubscriber {
                 && !followedUp
                 && action.target != null
                 && action.target.currentHealth > action.target.maxHealth / 2) {
-            ModHelper.addToTopAbstract(() -> {
-                if (action.target.currentHealth <= action.target.maxHealth / 2) {
-                    followedUp = true;
-                    addToTop(new FollowUpAction(this));
-                }
+            ModHelper.addToBotAbstract(() -> {
+                ModHelper.addToBotAbstract(() -> {
+                    if (action.target.currentHealth <= action.target.maxHealth / 2) {
+                        followedUp = true;
+                        addToTop(new FollowUpAction(this));
+                    }
+                });
             });
         }
         return dmg;

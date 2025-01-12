@@ -19,6 +19,7 @@ import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.enemyOnly.ChargingPower;
 import hsrmod.powers.enemyOnly.DeathExplosionPower;
 import hsrmod.powers.enemyOnly.SummonedPower;
+import hsrmod.utils.ModHelper;
 
 public class LanceOfTheEternalFreeze extends BaseMonster {
     public static final String ID = LanceOfTheEternalFreeze.class.getSimpleName();
@@ -26,14 +27,19 @@ public class LanceOfTheEternalFreeze extends BaseMonster {
     public LanceOfTheEternalFreeze(float x, float y, int picIndex) {
         super(ID, PathDefine.MONSTER_PATH + ID + "_" + picIndex + ".png", 0.0F, -15.0F, 188F, 243.0F, x, y);
 
-        setDamagesWithAscension(6);
+        if (ModHelper.moreDamageAscension(type)) {
+            setDamages(6);
+        }
+        else {
+            setDamages(4);
+        }
     }
 
     @Override
     public void usePreBattleAction() {
         super.usePreBattleAction();
         addToBot(new ApplyPowerAction(this, this, new SummonedPower(this)));
-        addToBot(new ApplyPowerAction(this, this, new DeathExplosionPower(this, MOVES[1], MOVES[2], () ->
+        addToBot(new ApplyPowerAction(this, this, new DeathExplosionPower(this, MOVES[1], MOVES[2], false, () ->
                 addToTop(new ExhaustAction(1, true, false, false))
         )));
     }

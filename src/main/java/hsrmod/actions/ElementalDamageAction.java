@@ -31,6 +31,7 @@ public class ElementalDamageAction extends AbstractGameAction {
     private Consumer<CallbackInfo> modifier;
     public boolean doApplyPower = false;
     public boolean isFast = false;
+    public boolean isSourceNullable = false;
 
     public ElementalDamageAction(AbstractCreature target, ElementalDamageInfo info,
                                  AbstractGameAction.AttackEffect effect, Consumer<CallbackInfo> callback, Consumer<CallbackInfo> modifier) {
@@ -67,6 +68,11 @@ public class ElementalDamageAction extends AbstractGameAction {
         this.modifier = modifier;
         return this;
     }
+    
+    public ElementalDamageAction setIsSourceNullable(boolean isSourceNullable) {
+        this.isSourceNullable = isSourceNullable;
+        return this;
+    }
 
     public void update() {
         if ((this.shouldCancelAction() && this.info.type != DamageInfo.DamageType.THORNS)
@@ -74,11 +80,8 @@ public class ElementalDamageAction extends AbstractGameAction {
             this.isDone = true;
             return;
         }
+        // Start of the action
         if (this.duration == 0.1F) {
-            if (this.info.type != DamageInfo.DamageType.THORNS && (this.info.owner.isDying || this.info.owner.halfDead)) {
-                this.isDone = true;
-                return;
-            }
             AbstractDungeon.effectList.add(new FlashAtkImgEffect(this.target.hb.cX, this.target.hb.cY, attackEffect));
         }
 
@@ -156,6 +159,12 @@ public class ElementalDamageAction extends AbstractGameAction {
             }
         }
         //
+    }
+
+    @Override
+    protected boolean shouldCancelAction() {
+        if (this.isSourceNullable) return this.target == null || this.target.isDeadOrEscaped();
+        return this.target == null || this.source != null && !ModHelper.check(source) || this.target.isDeadOrEscaped();
     }
 
     public static class TriggerCallbackAction extends AbstractGameAction {

@@ -81,14 +81,7 @@ public interface StelleAwakeWithNeow {
                 RoomEventDialog.optionList.clear();
                 MapRoomNode currNode = AbstractDungeon.getCurrMapNode();
                 MapRoomNode node = new MapRoomNode(currNode.x, currNode.y);
-                node.setRoom(new EventRoom() {
-                    @Override
-                    public void onPlayerEntry() {
-                        AbstractDungeon.overlayMenu.proceedButton.hide();
-                        event = new StelleAwakeEvent();
-                        event.onEnterRoom();
-                    }
-                });
+                node.setRoom(new PathSelectEventRoom());
                 for (MapEdge e : currNode.getEdges()) {
                     node.addEdge(e);
                 }
@@ -115,5 +108,14 @@ public interface StelleAwakeWithNeow {
             public void dispose() {
             }
         });
+    }
+
+    class PathSelectEventRoom extends EventRoom {
+        @Override
+        public void onPlayerEntry() {
+            AbstractDungeon.overlayMenu.proceedButton.hide();
+            event = new StelleAwakeEvent();
+            event.onEnterRoom();
+        }
     }
 }

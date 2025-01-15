@@ -40,6 +40,11 @@ public class ChampionsDinnerCatsCradlePower extends PowerPower implements PostPo
     }
 
     @Override
+    public void updateDescription() {
+        description = String.format(DESCRIPTIONS[0], chance);
+    }
+
+    @Override
     public void onInitialApplication() {
         super.onInitialApplication();
         BaseMod.subscribe(this);

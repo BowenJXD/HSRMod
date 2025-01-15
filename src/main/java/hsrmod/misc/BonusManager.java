@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import hsrmod.monsters.SequenceTrotter;
 import hsrmod.monsters.WarpTrotter;
+import hsrmod.utils.ModHelper;
 
 public class BonusManager implements OnStartBattleSubscriber, StartActSubscriber, CustomSavable<Integer> {
     private static BonusManager instance;
@@ -34,7 +35,8 @@ public class BonusManager implements OnStartBattleSubscriber, StartActSubscriber
                 && AbstractDungeon.actNum > 0 
                 && !room.eliteTrigger
                 && room.monsters.monsters.stream().noneMatch(m -> m instanceof SequenceTrotter || m.type == AbstractMonster.EnemyType.BOSS)
-                && AbstractDungeon.monsterRng.random(99) < appearChance) {
+                && AbstractDungeon.monsterRng.random(99) < appearChance
+                && !BaseMod.hasModID("spireTogether:")) {
             AbstractMonster monster = AbstractDungeon.monsterRng.random(99) < warpChance ? new WarpTrotter(400, 0) : new SequenceTrotter(400, 0);
             monster.usePreBattleAction();
             AbstractDungeon.actionManager.addToTop(new SpawnMonsterAction(monster, false));
@@ -44,11 +46,7 @@ public class BonusManager implements OnStartBattleSubscriber, StartActSubscriber
 
     @Override
     public void receiveStartAct() {
-        if (AbstractDungeon.actNum <= 1) {
-            appearChance = 10;
-        } else {
-            appearChance *= 2;
-        }
+        appearChance = 10;
     }
 
     @Override
@@ -58,6 +56,7 @@ public class BonusManager implements OnStartBattleSubscriber, StartActSubscriber
 
     @Override
     public void onLoad(Integer integer) {
+        if (integer == null) return;
         appearChance = integer;
     }
 }

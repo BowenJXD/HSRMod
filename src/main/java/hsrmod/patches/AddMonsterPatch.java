@@ -76,7 +76,10 @@ public class AddMonsterPatch {
                 case 1:
                 case 2:
                 case 3:
-                    if (AbstractDungeon.actNum == 1 && HSRMod.removeOtherEnemies) {
+                    if (AbstractDungeon.player instanceof StellaCharacter 
+                            && AbstractDungeon.actNum == 1 
+                            && HSRMod.removeOtherEnemies
+                            && !BaseMod.hasModID("spireTogether:")) {
                         monsters[0].clear();
                     }
                     break;

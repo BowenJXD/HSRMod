@@ -52,21 +52,17 @@ public class SnarelockPower extends DebuffPower {
             if (amount == 1)
                 addToBot(new ApplyPowerAction(this.owner, this.owner, new ImprisonPower(this.owner, 1), 1));
             else
-                switchMode();
+                switchMode(1);
         } else {
             if (amount == -1)
                 addToBot(new ApplyPowerAction(this.owner, this.owner, new EntanglePower(this.owner, source, 1), 1));
             else
-                switchMode();
+                switchMode(-1);
         }
     }
 
-    void switchMode() {
-        if (amount > 0) {
-            amount = -1;
-        } else {
-            amount = 1;
-        }
+    void switchMode(int newAmount) {
+        amount = newAmount;
         updateDescription();
     }
 }

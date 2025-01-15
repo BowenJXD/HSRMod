@@ -1,5 +1,7 @@
 package hsrmod.actions;
 
+import com.evacipated.cardcrawl.mod.stslib.damagemods.BindingHelper;
+import com.evacipated.cardcrawl.mod.stslib.patches.BindingPatches;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;

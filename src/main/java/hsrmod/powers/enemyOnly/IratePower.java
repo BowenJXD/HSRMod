@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.actions.common.EndTurnAction;
 import com.megacrit.cardcrawl.actions.common.MonsterStartTurnAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.common.RollMoveAction;
+import com.megacrit.cardcrawl.actions.watcher.PressEndTurnButtonAction;
 import com.megacrit.cardcrawl.actions.watcher.SkipEnemiesTurnAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -84,7 +85,7 @@ public class IratePower extends StatePower implements OnPlayerDamagedSubscriber 
             flash();
             addToBot(new TalkAction(owner, DESCRIPTIONS[2], 2.0F, 3.0F));
             if (!AbstractDungeon.actionManager.turnHasEnded)
-                addToBot(new EndTurnAction());
+                addToBot(new PressEndTurnButtonAction());
             addToBot(new SkipEnemiesTurnAction());
             addToTop(new RemoveSpecificPowerAction(owner, owner, this));
         }

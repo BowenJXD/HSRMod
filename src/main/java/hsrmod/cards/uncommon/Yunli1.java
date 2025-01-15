@@ -65,7 +65,6 @@ public class Yunli1 extends BaseCard implements OnPlayerDamagedSubscriber {
         ModHelper.addToTopAbstract(this::execute);
         AbstractMonster randomMonster = AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster)null, true, AbstractDungeon.cardRandomRng);
         if (randomMonster == null) return;
-        BindingPatches.directlyBoundInstigator = this;
         ElementalDamageAction action = new ElementalDamageAction(randomMonster, ElementalDamageInfo.makeInfo(this), AbstractGameAction.AttackEffect.SLASH_VERTICAL);
         
         addToTop(new BouncingAction(randomMonster, 2, action, this));

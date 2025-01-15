@@ -55,8 +55,8 @@ public class ToughnessPower extends BuffPower implements InvisiblePower {
     }
 
     @Override
-    public void atStartOfTurn() {
-        super.atStartOfTurn();
+    public void atEndOfRound() {
+        super.atEndOfRound();
         if (amount <= 0) {
             alterPower(stackLimit * 2);
         }

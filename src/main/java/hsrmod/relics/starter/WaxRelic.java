@@ -19,6 +19,7 @@ import hsrmod.cardsV2.Paths.*;
 import hsrmod.characters.StellaCharacter;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
+import hsrmod.patches.StelleAwakeWithNeow;
 import hsrmod.relics.BaseRelic;
 import hsrmod.utils.DataManager;
 import hsrmod.utils.RewardEditor;
@@ -33,7 +34,6 @@ public abstract class WaxRelic extends BaseRelic implements ClickableRelic/*, Cu
     public AbstractCard.CardTags selectedTag;
     public CardGroup pathGroup;
     public int pathToBan = 2;
-    public String descriptionAddOns = "";
 
     public WaxRelic(String id, AbstractCard.CardTags tag, int weight) {
         super(id);
@@ -90,7 +90,7 @@ public abstract class WaxRelic extends BaseRelic implements ClickableRelic/*, Cu
     @Override
     public void onRightClick() {
         if (isObtained
-                && AbstractDungeon.getCurrRoom() instanceof NeowRoom
+                && (AbstractDungeon.getCurrRoom() instanceof NeowRoom || AbstractDungeon.getCurrRoom() instanceof StelleAwakeWithNeow.PathSelectEventRoom)
                 && (RewardEditor.getInstance().bannedTags == null || RewardEditor.getInstance().bannedTags.isEmpty())) {
             AbstractGameAction action = new SimpleGridCardSelectBuilder(c -> true)
                     .setCardGroup(pathGroup)

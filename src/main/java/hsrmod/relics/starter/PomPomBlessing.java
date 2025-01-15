@@ -53,7 +53,7 @@ public class PomPomBlessing extends CustomRelic implements CustomSavable<Integer
     private static final LandingSound LANDING_SOUND = LandingSound.FLAT;
 
     private static int ENERGY_GAIN_PER_CARD = 20;
-    
+
     private int energy = 100;
 
     private int multiplier = 20;
@@ -87,7 +87,7 @@ public class PomPomBlessing extends CustomRelic implements CustomSavable<Integer
     }
 
     ArrayList<CardQueueItem> tempCardQueue = new ArrayList<>();
-    
+
     @Override
     public void onPlayerEndTurn() {
         if (AbstractDungeon.player.hand.isEmpty()) {
@@ -170,7 +170,7 @@ public class PomPomBlessing extends CustomRelic implements CustomSavable<Integer
 
     @Override
     public void onLoad(Integer integer) {
-        if (integer != null)
-            energy = integer;
+        if (integer == null) return;
+        energy = integer;
     }
 }

@@ -191,12 +191,13 @@ public class PathSelectScreen implements ISubscriber, CustomSavable<Integer> {
     }
 
     public void onLoad(Integer arg0) {
-        this.index = arg0.intValue();
+        if (arg0 == null) return;
+        this.index = arg0;
         refresh();
     }
 
     public Integer onSave() {
-        return Integer.valueOf(this.index);
+        return this.index;
     }
 }
 

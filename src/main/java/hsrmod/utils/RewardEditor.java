@@ -236,12 +236,13 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String> {
     }
 
     public boolean checkPath(AbstractCard card) {
-        if (card.tags == null || card.tags.isEmpty()) return true;
+        if (card.tags == null || card.tags.isEmpty() || bannedTags == null) return true;
         return card.tags.stream().noneMatch(t -> bannedTags.contains(t));
     }
 
     public boolean checkPath(AbstractCard.CardTags tag) {
-        return !bannedTags.contains(tag);
+        if (bannedTags == null) return true;
+        else return !bannedTags.contains(tag);
     }
 
     public static <T> T getWeightedRandomElement(List<T> items, List<Integer> weights) {
@@ -279,7 +280,7 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String> {
     @Override
     public void onLoad(String cardTags) {
         currRoom = null;
-        if (cardTags.isEmpty()) return;
+        if (cardTags == null || cardTags.isEmpty()) return;
         String tags = cardTags.substring(1, cardTags.length() - 1);
         if (tags.isEmpty()) return;
         if (bannedTags == null) {

@@ -79,7 +79,7 @@ SlaughterhouseNo4RestInPeace,《四号屠场 · 众生安眠》,RARE,POWER,SELF,2, hsrmod:
 UselessScholar,无用学者,RARE,POWER,SELF,3, hsrmod:追击 后，若有50 [hsrmod:ChargeIcon] ，则有 !M! %的概率消耗之， hsrmod:追击 一张 hsrmod:追击 牌。,,,,66,, 固有 。打出 hsrmod:追击 牌后，若有50 [hsrmod:ChargeIcon] ，则有 !M! %的概率消耗之， hsrmod:追击 一张 hsrmod:追击 牌。,,,,,欢愉,,低
 BountyHunter,赏金猎人,RARE,POWER,SELF,1, hsrmod:追击 后，有 !M! %的概率将该牌返还手牌。,,,,25,,打出 hsrmod:追击 牌后，有 !M! %的概率将该牌返还手牌。,,,,33,欢愉,,低
 ChampionsDinnerCatsCradle,《冠军晚餐 · 猫的摇篮》,RARE,POWER,SELF,2, hsrmod:耗能 的牌视为 hsrmod:追击 牌，且于 [hsrmod:ChargeIcon] 满时， !M! %概率 hsrmod:追击 1张。 hsrmod:追击 需要 hsrmod:耗能 的牌时，无需足够的 [hsrmod:ChargeIcon] 。,,,,75,, 固有 。 hsrmod:耗能 的牌视为 hsrmod:追击 牌，且于 [hsrmod:ChargeIcon] 满时， !M! %概率 hsrmod:追击 1张。 hsrmod:追击 需要 hsrmod:耗能 的牌时，不消耗 [hsrmod:ChargeIcon] 。,,,,,欢愉,,中
-VineyardAgainstTheNight,《葡萄庄园 · 抵抗黑夜》,UNCOMMON,SKILL,SELF,1,获得1层 hsrmod:回味 。,,,,,, 固有 。 消耗 。获得1层 hsrmod:回味 。,,,,,欢愉,,低
+VineyardAgainstTheNight,《葡萄庄园 · 抵抗黑夜》,UNCOMMON,SKILL,SELF,1,获得 !M! 层 hsrmod:回味 。,,,,1,, 固有 。 消耗 。获得 !M! 层 hsrmod:回味 。,,,,,欢愉,,低
 Symbiote,共生体,RARE,POWER,SELF,2, hsrmod:击破 后，若为一回合首次，则获得 [E] [E] 。 NL 造成 hsrmod:击破伤害 后，摸1张牌。,,,,,, hsrmod:击破 后，若为一回合首次，则获得 [E] [E] ，否则获得 [E] 。 NL 造成 hsrmod:击破伤害 后，摸1张牌。,,,,,毁灭,,低
 RegressionInequalityOfAnnihilation,湮灭回归不等式,RARE,SKILL,ALL,1,令所有个体平均分配 hsrmod:韧性 （不会击破）。,,,,1,,令所有个体平均分配 hsrmod:韧性 （不会击破），且你的权重为 !M! 。,,,,2,毁灭,,中
 CourtOfHomogeneity,同态法庭,RARE,ATTACK,ENEMY,-1, 消耗 。弃置所有手牌，造成 !D! 点伤害（火 !TR! ），然后若其 hsrmod:韧性 数少于你，造成你与其 hsrmod:韧性 数之差的 hsrmod:击破伤害 。,8,8,,,,弃置所有手牌，造成 !D! 点伤害（火 !TR! ），然后若其 hsrmod:韧性 数少于你，造成你与其 hsrmod:韧性 数之差的 hsrmod:击破伤害 。,12,12,,,毁灭,火,低

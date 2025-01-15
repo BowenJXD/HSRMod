@@ -14,6 +14,8 @@ import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
+import hsrmod.subscribers.PreElementalDamageSubscriber;
+import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
 import java.util.Collections;
@@ -21,10 +23,8 @@ import java.util.List;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
-public class AftertastePower extends BuffPower implements DamageModApplyingPower {
+public class AftertastePower extends BuffPower implements PreElementalDamageSubscriber {
     public static final String POWER_ID = HSRMod.makePath(AftertastePower.class.getSimpleName());
-
-    public static final int ENERGY_REQUIRED = 10;
     
     public AftertastePower(AbstractCreature owner, int Amount) {
         super(POWER_ID, owner, Amount);
@@ -37,16 +37,15 @@ public class AftertastePower extends BuffPower implements DamageModApplyingPower
     }
 
     @Override
-    public boolean shouldPushMods(DamageInfo damageInfo, Object o, List<AbstractDamageModifier> list) {
-        boolean result = false;
-        if (!(o instanceof AbstractCard)) return result;
-        if (list.stream().anyMatch(mod -> mod instanceof AftertasteModifier)) return result;
-        AbstractCard card = (AbstractCard) o;
-        if (card.hasTag(FOLLOW_UP)) {
-            return true;
-        }
+    public void onInitialApplication() {
+        super.onInitialApplication();
+        SubscriptionManager.subscribe(this);
+    }
 
-        return result;
+    @Override
+    public void onRemove() {
+        super.onRemove();
+        SubscriptionManager.unsubscribe(this);
     }
 
     @Override
@@ -56,37 +55,21 @@ public class AftertastePower extends BuffPower implements DamageModApplyingPower
     }
 
     @Override
-    public List<AbstractDamageModifier> modsToPush(DamageInfo damageInfo, Object o, List<AbstractDamageModifier> list) {
-        return Collections.singletonList(new AftertasteModifier());
-    }
-    
-    void trigger(DamageInfo info, AbstractCreature target){
-        flash();
-        // addToTop(new ApplyPowerAction(info.owner, info.owner, new EnergyPower(info.owner, -ENERGY_REQUIRED), -ENERGY_REQUIRED));
-        addToBot(new ElementalDamageAction(target, new ElementalDamageInfo(info.owner, amount, DamageInfo.DamageType.NORMAL,
-                ModHelper.getRandomEnumValue(ElementType.class), 1), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-        addToBot(new ApplyPowerAction(info.owner, info.owner, this, 1));
-    }
-    
-    public static class AftertasteModifier extends AbstractDamageModifier {
- 
-        public AftertasteModifier() {
-        }
-
-        @Override
-        public void onLastDamageTakenUpdate(DamageInfo info, int lastDamageTaken, int overkillAmount, AbstractCreature target) {
-            if (!target.isDeadOrEscaped()
-                    && target.currentHealth > 0  
-                    && target != AbstractDungeon.player
-                    && info.owner.hasPower(AftertastePower.POWER_ID) 
-                    /*&& ModHelper.getPowerCount(info.owner, EnergyPower.POWER_ID) >= AftertastePower.ENERGY_REQUIRED*/) {
-                ((AftertastePower) info.owner.getPower(AftertastePower.POWER_ID)).trigger(info, target);
+    public float preElementalDamage(ElementalDamageAction action, float dmg) {
+        if (SubscriptionManager.checkSubscriber(this)) {
+            if (action.info != null 
+                    && action.info.card != null 
+                    && action.info.card.hasTag(FOLLOW_UP) 
+                    && ModHelper.check(action.target) 
+                    && action.target != owner
+                    && action.info.owner == owner) {
+                flash();
+                // addToTop(new ApplyPowerAction(info.owner, info.owner, new EnergyPower(info.owner, -ENERGY_REQUIRED), -ENERGY_REQUIRED));
+                addToBot(new ElementalDamageAction(action.target, new ElementalDamageInfo(owner, amount, DamageInfo.DamageType.NORMAL,
+                        ModHelper.getRandomEnumValue(ElementType.class), 1), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+                addToBot(new ApplyPowerAction(owner, owner, this, 1));
             }
         }
-
-        @Override
-        public AbstractDamageModifier makeCopy() {
-            return new AftertasteModifier();
-        }
+        return dmg;
     }
 }

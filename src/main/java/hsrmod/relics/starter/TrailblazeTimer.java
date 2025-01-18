@@ -34,6 +34,7 @@ public class TrailblazeTimer extends BaseRelic implements ClickableRelic  {
 
     public TrailblazeTimer() {
         super(ID);
+        selectedTag = CustomEnums.TRAILBLAZE;
         pathGroup = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
         pathGroup.addToBottom(new Elation());
         pathGroup.addToBottom(new Destruction());

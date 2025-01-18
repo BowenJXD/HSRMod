@@ -3,8 +3,8 @@
   "name": "HSR【崩坏：星穹铁道】", 
   "author_list": ["喏"], 
   "description": "以崩坏：星穹铁道为主题的mod。A mod themed after Honkai: Star Rail.", 
-  "version": "2.4.0", 
-  "sts_version": "12-22-2020", 
+  "version": "2.4.1", 
+  "sts_version": "12-18-2022", 
   "mts_version": "3.23.3", 
   "dependencies": ["basemod", "stslib"] 
 }

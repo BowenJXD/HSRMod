@@ -15,6 +15,7 @@ import com.megacrit.cardcrawl.events.shrines.Duplicator;
 import com.megacrit.cardcrawl.events.shrines.GoldShrine;
 import com.megacrit.cardcrawl.events.shrines.WomanInBlue;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
+import com.megacrit.cardcrawl.helpers.EventHelper;
 import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -25,6 +26,7 @@ import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import hsrmod.cards.uncommon.RuanMei1;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
+import hsrmod.utils.RelicEventHelper;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -69,14 +71,14 @@ public class RuanMeiEvent extends PhasedEvent {
                     switch (r) {
                         case 0:
                             upgrade(i);
-                            gainGold(i);
+                            RelicEventHelper.gainGold(i);
                             break;
                         case 1:
-                            gainGold(i);
-                            gainRelics(i);
+                            RelicEventHelper.gainGold(i);
+                            RelicEventHelper.gainRelics(i);
                             break;
                         case 2:
-                            gainRelics(i);
+                            RelicEventHelper.gainRelics(i);
                             upgrade(i);
                             break;
                     }
@@ -89,11 +91,11 @@ public class RuanMeiEvent extends PhasedEvent {
                     transitionKey(6);
                 })
                 .addOption(OPTIONS[7], (i) -> {
-                    gainGold(i);
+                    RelicEventHelper.gainGold(i);
                     transitionKey(6);
                 })
                 .addOption(OPTIONS[8], (i) -> {
-                    gainRelics(i);
+                    RelicEventHelper.gainRelics(i);
                     transitionKey(6);
                 })
                 .addOption(opt)
@@ -109,12 +111,14 @@ public class RuanMeiEvent extends PhasedEvent {
     public void upgrade(Integer i){
         this.imageEventText.updateBodyText(DESCRIPTIONS[1]);
         int effectCount = 0;
-        List<String> upgradedCards = new ArrayList();
         Iterator var11 = AbstractDungeon.player.masterDeck.group.iterator();
 
         while (var11.hasNext()) {
             AbstractCard c = (AbstractCard) var11.next();
             if (c.canUpgrade()) {
+                c.upgrade();
+                AbstractDungeon.player.bottledCardUpgradeCheck(c);
+                
                 ++effectCount;
                 if (effectCount <= 20) {
                     float x = MathUtils.random(0.1F, 0.9F) * (float) Settings.WIDTH;
@@ -122,10 +126,6 @@ public class RuanMeiEvent extends PhasedEvent {
                     AbstractDungeon.effectList.add(new ShowCardBrieflyEffect(c.makeStatEquivalentCopy(), x, y));
                     AbstractDungeon.topLevelEffects.add(new UpgradeShineEffect(x, y));
                 }
-
-                upgradedCards.add(c.cardID);
-                c.upgrade();
-                AbstractDungeon.player.bottledCardUpgradeCheck(c);
             }
         }
     }

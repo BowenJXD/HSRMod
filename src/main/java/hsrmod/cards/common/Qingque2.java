@@ -1,6 +1,7 @@
 package hsrmod.cards.common;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -36,6 +37,7 @@ public class Qingque2 extends BaseCard {
         for (int i = 0; i < magicNumber; i++) {
             addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         }
+        addToBot(new GainEnergyAction(1));
         ModHelper.addToBotAbstract(() -> updateCost(costCache - cost));
     }
 

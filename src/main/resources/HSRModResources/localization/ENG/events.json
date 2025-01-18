@@ -212,5 +212,34 @@
       "You remember the description written in the Interastral Peace Guide. The creatures are called Sequence Trotters, and they are trans-latitudinal organisms. They spend most time of their lives eating and escaping. NL Running into a Sequence Trotter is an auspicious sign. You start to think of a way to deal with them. The rules of the game must be fixed according to the personality of each Trotter.",
       "The trotter catching game ended."
     ]
+  },
+  "HSRMod:ImperialLegacy": {
+    "NAME": "Imperial Legacy",
+    "OPTIONS": [
+      "[continue]",
+      "What happened next?",
+      "Who is he?",
+      "[Touch] There is a very low chance of receiving a response from the legacy.",
+      "[Embrace] Gain 1 random #yRubert #yEmpire series relic.",
+      "[Accept] Spend #y300 gold and gain 2 random #yRubert #yEmpire series relics.",
+      "[ #bReturn ] Lose Rubert Empire Difference Machine. Obtains #y2400 gold, #y24 random relics, and upgrade 24 cards.",
+      "[leave]"
+    ],
+    "DESCRIPTIONS": [
+      "You find yourself on a nameless planet full of towering metallic structures. Among the ruins basked in faint sunlight, a massive, sophisticated machine slowly makes its way toward you. It picks up the parts scattered all over the ground and fixes them onto its fortress-like body in an orderly manner.",
+      "The piston rises and falls, resulting in a vigorous lever effect that brings about the turning of the gears. The machine emits a deep growl as it mends its damaged body with little hope of completion.",
+      "An old man approaches you with one-half of his arm drooping. The ancient Intellitron is unfazed by the peculiar scene before him. Using his last piece of visual crystal he has, he fixates his gaze upon you, an unexpected visitor, and nods approvingly.",
+      "\"How nostalgic. Once, there was also an organic creature like you standing here, marveling at the lives created by the emperor.\"",
+      "\"How could I possibly remember?\" The ancient Intellitron shakes his head, and a string of chewed cables falls out along with several oxidized chips engraved with the crest of the Rubert Empire. \"They say I'm broken, just like this kid here.\"",
+      "The dreadful steel fortress comes to a halt behind the old man. Its gears grind against each other non-stop, producing an odd noise. It seems to be responding to the old man's commands.",
+      "\"The emperor's legacy isn't only available for inorganic creatures. If you can free yourself from your current shackles... it will guide you in the right direction.\" A faint crimson light flashes in the Intellitron's eyes. His words send ripples of resonance in your consciousness like a spell.",
+      "The battered moving fortress glides past the top of your head. Your heart almost stops beating because of the enormous roar.",
+      "By the time you snap out of your trance, the ancient Intellitron has gone far with the machine, leaving behind tire tracks on the ground.",
+      "The colossal metal behemoth has not responded to your expectations. However, there is no need to rush because one day, the successor to the Empire will come here.",
+      "A grand formula unfolds in your mind. Cold data permeates your perception, waiting for subtle changes to take place in the future.",
+      "The old man takes a part from the metal behemoth. The part moves closer to the rest of the parts surrounding you in apparent eagerness. Amid their resonance, you seem to discern the lingering voice of the Emperor Rubert.",
+      "The old man takes two parts from the metal behemoth and hands them over to you solemnly. A plethora of equations alters your cognition, their intense reverberations causing your head to split.",
+      "The old man stares at you blankly, his obsolete logic chip unable to comprehend your actions. With his hands trembling, he takes the difference machine from you, looking just like an ordinary, despondent citizen of a fallen kingdom."
+    ]
   }
 }

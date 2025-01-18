@@ -3,7 +3,9 @@ package hsrmod.powers.enemyOnly;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.StunMonsterAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.effects.BetterWarningSignEffect;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
@@ -50,6 +52,12 @@ public class ChargingPower extends StatePower implements PreBreakSubscriber {
     public void reducePower(int reduceAmount) {
         super.reducePower(reduceAmount);
         updateDescription();
+    }
+
+    @Override
+    public void atStartOfTurn() {
+        super.atStartOfTurn();
+        AbstractDungeon.effectList.add(new BetterWarningSignEffect(owner.hb.cX, owner.hb.cY + owner.hb.y, 3.0f));
     }
 
     @Override

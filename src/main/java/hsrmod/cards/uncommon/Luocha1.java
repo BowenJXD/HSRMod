@@ -1,6 +1,7 @@
 package hsrmod.cards.uncommon;
 
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
+import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.common.HealAction;
@@ -22,7 +23,10 @@ public class Luocha1 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainEnergyAction(1));
-        addToBot(new HealAction(p, p, p.maxHealth / 2 < p.currentHealth ? magicNumber : magicNumber * 2));
+        addToBot(new HealAction(p, p, magicNumber));
+        if (p.currentHealth < p.maxHealth / 2) {
+            addToBot(new AddTemporaryHPAction(p, p, magicNumber));
+        }
         addToBot(new CleanAction(p, 1, true));
         addToBot(new SelectCardsInHandAction(upgraded ? p.hand.size() : 1, cardStrings.EXTENDED_DESCRIPTION[0], upgraded, upgraded, card -> true, (cards) -> {
             for (AbstractCard card : cards) {

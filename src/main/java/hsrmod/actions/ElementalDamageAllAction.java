@@ -11,10 +11,10 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.utils.ModHelper;
 
 import java.util.Iterator;
 import java.util.function.Consumer;
-import java.util.function.Function;
 
 public class ElementalDamageAllAction extends AbstractGameAction {
     public int[] damage;
@@ -73,7 +73,6 @@ public class ElementalDamageAllAction extends AbstractGameAction {
     }
 
     public void update() {
-        int temp;
         if (this.firstFrame) {
             if (this.utilizeBaseDamage) {
                 this.damage = DamageInfo.createDamageMatrix(this.baseDamage);
@@ -84,19 +83,15 @@ public class ElementalDamageAllAction extends AbstractGameAction {
 
         this.tickDuration();
         if (this.isDone) {
-            Iterator var4 = AbstractDungeon.player.powers.iterator();
-
-            while (var4.hasNext()) {
-                AbstractPower p = (AbstractPower) var4.next();
+            for (AbstractPower p : AbstractDungeon.player.powers) {
                 p.onDamageAllEnemies(this.damage);
             }
 
-            temp = AbstractDungeon.getCurrRoom().monsters.monsters.size();
-
-            for (int i = 0; i < temp; ++i) {
-                if (!((AbstractMonster) AbstractDungeon.getCurrRoom().monsters.monsters.get(i)).isDeadOrEscaped()) {
+            for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
+                AbstractMonster m = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
+                if (ModHelper.check(m)) {
                     ElementalDamageAction action = new ElementalDamageAction(
-                            (AbstractMonster) AbstractDungeon.getCurrRoom().monsters.monsters.get(i),
+                            m,
                             new ElementalDamageInfo(
                                     this.source,
                                     this.damage[i],

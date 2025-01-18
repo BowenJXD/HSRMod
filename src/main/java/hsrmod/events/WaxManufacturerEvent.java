@@ -17,6 +17,7 @@ import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
 import hsrmod.modcore.Path;
 import hsrmod.relics.starter.WaxRelic;
+import hsrmod.utils.RelicEventHelper;
 import hsrmod.utils.RewardEditor;
 
 import java.util.*;
@@ -61,7 +62,7 @@ public class WaxManufacturerEvent extends PhasedEvent {
                 for (int j = AbstractDungeon.player.relics.size() - 1; j >= 0; j--) {
                     AbstractRelic r = AbstractDungeon.player.relics.get(j);
                     if (r instanceof WaxRelic && ((WaxRelic) r).selectedTag == selectedPathTag) {
-                        AbstractDungeon.player.loseRelic(r.relicId);
+                        RelicEventHelper.loseRelics(r);
                         break;
                     }
                 }
@@ -79,7 +80,7 @@ public class WaxManufacturerEvent extends PhasedEvent {
             phase.addOption(opt3);
         }
 
-        AbstractRelic relic1 = RelicLibrary.getRelic(HSRMod.makePath(RewardEditor.getRelicByPath(mostCommonTag))).makeCopy();
+        AbstractRelic relic1 = RelicLibrary.getRelic(RewardEditor.getRelicByPath(mostCommonTag)).makeCopy();
         if (selectedPathTag == null && relic1 != null) {
             TextPhase.OptionInfo opt4 = new TextPhase.OptionInfo(OPTIONS[3], relic1).setOptionResult((i) -> {
                 AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float)(Settings.WIDTH / 2), (float)(Settings.HEIGHT / 2), relic1);

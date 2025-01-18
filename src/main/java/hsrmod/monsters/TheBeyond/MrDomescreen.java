@@ -53,8 +53,10 @@ public class MrDomescreen extends BaseMonster {
         switch (nextMove) {
             case 1:
                 isSurprise = ModHelper.getPowerCount(this, ChannelPower.POWER_ID) > 0;
-                if (lastMoved1 && isSurprise)
+                if (lastMoved1 && isSurprise) {
                     addToBot(new ApplyPowerAction(this, this, new ChannelPower(this, isSurprise), -2));
+                    ModHelper.addToBotAbstract(this::setSurprise);
+                }
                 else
                     addToBot(new ApplyPowerAction(p, this, new EnergyPower(p, chargeGain), chargeGain));
                 lastMoved1 = true;

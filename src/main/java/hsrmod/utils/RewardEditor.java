@@ -76,7 +76,7 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String> {
             if (AbstractDungeon.actNum == 1
                     && AbstractDungeon.getMonsters() != null
                     && AbstractDungeon.getMonsters().monsters.stream().anyMatch(m -> m.type == AbstractMonster.EnemyType.BOSS)) {
-                relicId = HSRMod.makePath(getRelicByPath(tag));
+                relicId = getRelicByPath(tag);
             } else if (AbstractDungeon.actNum == 2
                     && AbstractDungeon.getMonsters() != null
                     && AbstractDungeon.getMonsters().monsters.stream().anyMatch(m -> m.type == AbstractMonster.EnemyType.BOSS)) {
@@ -117,6 +117,9 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String> {
         }
         if (tag == CustomEnums.TRAILBLAZE) {
             relicName = MasterOfDreamMachinations.ID;
+        }
+        if (!relicName.isEmpty()) {
+            relicName = HSRMod.makePath(relicName);
         }
         return relicName;
     }

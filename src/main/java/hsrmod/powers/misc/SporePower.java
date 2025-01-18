@@ -21,6 +21,7 @@ public class SporePower extends DebuffPower {
     
     public SporePower(AbstractCreature owner, int amount) {
         super(POWER_ID, owner, amount);
+        this.amount = Math.min(amount, stackLimit);
         updateDescription();
     }
 

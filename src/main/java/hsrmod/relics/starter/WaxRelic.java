@@ -79,7 +79,7 @@ public abstract class WaxRelic extends BaseRelic implements ClickableRelic/*, Cu
                     stringBuilder.append(tags.get(i));
                 }
                 if (i < tags.size() - 1) {
-                    stringBuilder.append(" & ");
+                    stringBuilder.append("&");
                 }
             }
             description = String.format(DESCRIPTIONS[1], stringBuilder);

@@ -19,6 +19,7 @@ public class TheArchitects extends BaseCard {
 
     public TheArchitects() {
         super(ID);
+        isMultiDamage = true;
     }
 
     @Override

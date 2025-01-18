@@ -25,6 +25,7 @@ import hsrmod.modcore.Path;
 import hsrmod.relics.starter.WaxOfElation;
 import hsrmod.relics.starter.WaxRelic;
 import hsrmod.utils.ModHelper;
+import hsrmod.utils.RelicEventHelper;
 
 import java.lang.reflect.Field;
 import java.util.*;
@@ -134,7 +135,7 @@ public class CosmicCrescendoEvent extends PhasedEvent {
                     AbstractRelic r;
                     if (!relics.isEmpty()) {
                         r = relics.get(AbstractDungeon.eventRng.random(relics.size() - 1));
-                        AbstractDungeon.player.loseRelic(r.relicId);
+                        RelicEventHelper.loseRelics(r);
                         transitionKey(4);
                         overrideBody = String.format(DESCRIPTIONS[4], r.name);
                     }

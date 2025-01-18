@@ -1,9 +1,15 @@
 package hsrmod.relics;
 
 import basemod.abstracts.CustomRelic;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.vfx.RelicAboveCreatureEffect;
+import hsrmod.effects.BetterWarningSignEffect;
 import hsrmod.modcore.HSRMod;
 import hsrmod.utils.DataManager;
 import hsrmod.utils.RelicDataCol;
@@ -40,6 +46,8 @@ public abstract class BaseRelic extends CustomRelic {
 
     protected void destroy(){
         this.setCounter(-2);
+        AbstractDungeon.effectList.add(new RelicAboveCreatureEffect(Settings.WIDTH * 0.5f, Settings.HEIGHT * 0.6f, this));
+        AbstractDungeon.topLevelEffects.add(new BetterWarningSignEffect(Settings.WIDTH * 0.5f, Settings.HEIGHT * 0.7f, 4.0f));
 /*        this.description = "该遗物已损毁。";
         this.tips.clear();
         this.tips.add(new PowerTip(this.name, this.description));

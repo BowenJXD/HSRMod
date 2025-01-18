@@ -14,6 +14,7 @@ import hsrmod.relics.starter.WaxOfErudition;
 import hsrmod.relics.uncommon.CosmicBigLotto;
 import hsrmod.relics.uncommon.InterastralBigLotto;
 import hsrmod.utils.ModHelper;
+import hsrmod.utils.RelicEventHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -93,7 +94,7 @@ public class DoubleLotteryEvent extends PhasedEvent {
         for (int i = AbstractDungeon.player.relics.size() - 1; i >= 0; i--) {
             AbstractRelic relic = AbstractDungeon.player.relics.get(i);
             if (relic instanceof CosmicBigLotto || relic instanceof InterastralBigLotto) {
-                AbstractDungeon.player.loseRelic(relic.relicId);
+                RelicEventHelper.loseRelics(relic);
                 result++;
             }
         }

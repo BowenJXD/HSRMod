@@ -23,12 +23,14 @@ import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
+import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import com.megacrit.cardcrawl.monsters.MonsterInfo;
 import com.megacrit.cardcrawl.monsters.city.ShelledParasite;
 import com.megacrit.cardcrawl.monsters.exordium.SlaverRed;
+import com.megacrit.cardcrawl.relics.ChemicalX;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import com.badlogic.gdx.graphics.Color;
 import hsrmod.characters.StellaCharacter;
@@ -182,6 +184,7 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         BaseMod.addSaveField("RewardEditor", RewardEditor.getInstance());
         BaseMod.addSaveField("BonusManager", BonusManager.getInstance());
         BaseMod.removeCard(SadisticNature.ID, AbstractCard.CardColor.COLORLESS);
+        BaseMod.removeRelic(RelicLibrary.getRelic(ChemicalX.ID));
         if (addEvent) addEvents();
         if (addEnemy) {
             addMonsters();
@@ -227,13 +230,15 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         BaseMod.addEvent(new AddEventParams.Builder(DoubleLotteryEvent.ID, DoubleLotteryEvent.class)
                 // .bonusCondition(() -> ModHelper.hasRelic(WaxOfErudition.ID))
                 .create());
-
         BaseMod.addEvent(new AddEventParams.Builder(WaxManufacturerEvent.ID, WaxManufacturerEvent.class)
                 .dungeonID(Exordium.ID)
                 // .bonusCondition(() -> WaxRelic.getSelectedPathTag(AbstractDungeon.player.relics) != WaxManufacturerEvent.getMostCommonTag(AbstractDungeon.player.masterDeck))
                 .create());
         
         BaseMod.addEvent(new AddEventParams.Builder(ThreeLittlePigsEvent.ID, ThreeLittlePigsEvent.class)
+                .create());
+        BaseMod.addEvent(new AddEventParams.Builder(ImperialLegacyEvent.ID, ImperialLegacyEvent.class)
+                .dungeonID(TheBeyond.ID)
                 .create());
         
         // =========================== Event Monsters ===========================

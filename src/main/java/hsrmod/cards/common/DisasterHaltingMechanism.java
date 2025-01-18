@@ -29,6 +29,6 @@ public class DisasterHaltingMechanism extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, block));
-        p.hand.group.stream().filter(AbstractCard::canUpgrade).findFirst().ifPresent(c -> addToBot(new UpgradeSpecificCardAction(c)));
+        p.hand.group.stream().filter(c -> c.canUpgrade() && c != this).findFirst().ifPresent(c -> addToBot(new UpgradeSpecificCardAction(c)));
     }
 }

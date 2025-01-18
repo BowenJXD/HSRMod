@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
 import hsrmod.modcore.HSRMod;
 import hsrmod.relics.starter.WaxOfPreservation;
 import hsrmod.utils.ModHelper;
+import hsrmod.utils.RelicEventHelper;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -37,7 +38,7 @@ public class LonelyBeautyBugsOneEvent extends PhasedEvent {
                     List<AbstractRelic> relics = AbstractDungeon.player.relics.stream().filter(r -> r.tier != AbstractRelic.RelicTier.STARTER).collect(Collectors.toList());
                     if (!relics.isEmpty()) {
                         AbstractRelic relic = relics.get(AbstractDungeon.cardRandomRng.random(relics.size() - 1));
-                        AbstractDungeon.player.loseRelic(relic.relicId);
+                        RelicEventHelper.loseRelics(relic);
                     }
                     transition(false);
                 })

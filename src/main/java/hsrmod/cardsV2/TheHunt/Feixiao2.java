@@ -26,7 +26,7 @@ public class Feixiao2 extends BaseCard {
     @Override
     public void triggerOnOtherCardPlayed(AbstractCard c) {
         super.triggerOnOtherCardPlayed(c);
-        if (c.type == CardType.ATTACK) baseDamage++;
+        if (c.type == CardType.ATTACK) baseDamage += magicNumber;
     }
 
     @Override

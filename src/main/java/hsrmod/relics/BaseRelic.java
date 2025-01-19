@@ -1,6 +1,7 @@
 package hsrmod.relics;
 
 import basemod.abstracts.CustomRelic;
+import basemod.devcommands.relic.Relic;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
@@ -28,6 +29,8 @@ public abstract class BaseRelic extends CustomRelic {
                 AbstractRelic.LandingSound.valueOf(DataManager.getInstance().getRelicData(id, RelicDataCol.Sound))
                 );
         magicNumber = DataManager.getInstance().getRelicDataInt(id, RelicDataCol.MagicNumber);
+        RelicTagField.destructible.set(this, DataManager.getInstance().getRelicDataBoolean(id, RelicDataCol.Destructible));
+        RelicTagField.subtle.set(this, DataManager.getInstance().getRelicDataBoolean(id, RelicDataCol.Subtle));
     }
     
     // 获取遗物描述，但原版游戏只在初始化和获取遗物时调用，故该方法等于初始描述

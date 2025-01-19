@@ -13,12 +13,18 @@ import com.megacrit.cardcrawl.vfx.RelicAboveCreatureEffect;
 import com.megacrit.cardcrawl.vfx.UpgradeShineEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import hsrmod.effects.BetterWarningSignEffect;
+import hsrmod.modcore.CustomEnums;
+import hsrmod.modcore.HSRMod;
+import hsrmod.relics.BaseRelic;
+import hsrmod.relics.RelicTagField;
+import hsrmod.relics.boss.*;
 import hsrmod.relics.common.IRubertEmpireRelic;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RelicEventHelper {
     public static void upgradeCards(int amount) {
@@ -66,9 +72,9 @@ public class RelicEventHelper {
     }
     
     public static void gainRelics(int amount){
-        for (int i = 0; i < amount; ++i) {
+        for (int i = 0, j = 0; i < amount && j < 1000; ++i, ++j) {
             AbstractRelic r = AbstractDungeon.returnRandomScreenlessRelic(AbstractDungeon.returnRandomRelicTier());
-            if (r instanceof IRubertEmpireRelic)
+            if (RelicTagField.subtle.get(r))
                 --i;
             else
                 AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float)(Settings.WIDTH / 2), (float)(Settings.HEIGHT / 2), r);
@@ -78,7 +84,10 @@ public class RelicEventHelper {
     public static void gainRelics(int amount, AbstractRelic.RelicTier tier) {
         for (int i = 0; i < amount; ++i) {
             AbstractRelic r = AbstractDungeon.returnRandomScreenlessRelic(tier);
-            AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float) (Settings.WIDTH / 2), (float) (Settings.HEIGHT / 2), r);
+            if (RelicTagField.subtle.get(r))
+                --i;
+            else
+                AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float) (Settings.WIDTH / 2), (float) (Settings.HEIGHT / 2), r);
         }
     }
     
@@ -112,5 +121,79 @@ public class RelicEventHelper {
     public static void gainGold(int amount) {
         AbstractDungeon.effectList.add(new RainingGoldEffect(amount));
         AbstractDungeon.player.gainGold(amount);
+    }
+
+    /**
+     * Get a hsr relic of the specified tier and path.
+     * @param tier the tier of the relic
+     * @return the relic's id
+     */
+    public static String getHSRRelic(AbstractRelic.RelicTier tier) {
+        ArrayList<String> pool = new ArrayList<>();
+        switch (tier) {
+            case COMMON:
+                pool = AbstractDungeon.commonRelicPool;
+                break;
+            case UNCOMMON:
+                pool = AbstractDungeon.uncommonRelicPool;
+                break;
+            case RARE:
+                pool = AbstractDungeon.rareRelicPool;
+                break;
+            case SHOP:
+                pool = AbstractDungeon.shopRelicPool;
+                break;
+            case BOSS:
+                pool = AbstractDungeon.bossRelicPool;
+                break;
+        }
+
+        if (pool.isEmpty()) {
+            return "";
+        }
+        List<String> relics = pool.stream().filter(r -> RelicLibrary.getRelic(r) instanceof BaseRelic).collect(Collectors.toList());
+        if (relics.isEmpty()) {
+            return "";
+        }
+        String relic = relics.get(AbstractDungeon.relicRng.random(relics.size() - 1));
+        pool.remove(relic);
+        return relic;
+    }
+
+    /**
+     * Get the path relic.
+     * @param tag the path tag
+     * @return the path relic's id
+     */
+    public static String getRelicByPath(AbstractCard.CardTags tag) {
+        String relicName = "";
+        if (tag == CustomEnums.ELATION) {
+            relicName = TheAshblazingGrandDuke.ID;
+        }
+        if (tag == CustomEnums.DESTRUCTION) {
+            relicName = IronCavalryAgainstTheScourge.ID;
+        }
+        if (tag == CustomEnums.NIHILITY) {
+            relicName = PrisonerInDeepConfinement.ID;
+        }
+        if (tag == CustomEnums.PRESERVATION) {
+            relicName = KnightOfPurityPalace.ID;
+        }
+        if (tag == CustomEnums.THE_HUNT) {
+            relicName = MusketeerOfWildWheat.ID;
+        }
+        if (tag == CustomEnums.PROPAGATION) {
+            relicName = PasserbyOfWanderingCloud.ID;
+        }
+        if (tag == CustomEnums.ERUDITION) {
+            relicName = TheWindSoaringValorous.ID;
+        }
+        if (tag == CustomEnums.TRAILBLAZE) {
+            relicName = MasterOfDreamMachinations.ID;
+        }
+        if (!relicName.isEmpty()) {
+            relicName = HSRMod.makePath(relicName);
+        }
+        return relicName;
     }
 }

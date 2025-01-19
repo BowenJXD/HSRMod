@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
+import com.megacrit.cardcrawl.powers.BufferPower;
 import com.megacrit.cardcrawl.powers.IntangiblePlayerPower;
 import hsrmod.relics.BaseRelic;
 
@@ -18,7 +19,7 @@ public class RecordFromBeyondTheSky extends BaseRelic {
     public void atBattleStart() {
         flash();
         addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new ArtifactPower(AbstractDungeon.player, magicNumber), magicNumber));
-        addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new IntangiblePlayerPower(AbstractDungeon.player, magicNumber), magicNumber));
+        this.addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new BufferPower(AbstractDungeon.player, magicNumber), magicNumber));
         addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
     }
 }

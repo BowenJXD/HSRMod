@@ -1,7 +1,6 @@
 package hsrmod.powers.uniqueBuffs;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.ReduceCostForTurnAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -9,7 +8,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
 import hsrmod.powers.misc.BoostPower;
-import hsrmod.utils.ModHelper;
+import hsrmod.utils.GeneralUtil;
 
 public class SovereignSkybreakerPower extends PowerPower {
     public static final String POWER_ID = HSRMod.makePath(SovereignSkybreakerPower.class.getSimpleName());
@@ -33,7 +32,7 @@ public class SovereignSkybreakerPower extends PowerPower {
         if (amount >= triggerAmount) {
             flash();
             amount -= triggerAmount;
-            AbstractCard card = ModHelper.getRandomElement(AbstractDungeon.player.hand.group, AbstractDungeon.cardRandomRng, c -> c.costForTurn > 0);
+            AbstractCard card = GeneralUtil.getRandomElement(AbstractDungeon.player.hand.group, AbstractDungeon.cardRandomRng, c -> c.costForTurn > 0);
             if (card != null) addToTop(new ReduceCostForTurnAction(card, 1));
             addToTop(new ApplyPowerAction(owner, owner, new BoostPower(owner, 3), 3));
         }

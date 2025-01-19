@@ -52,12 +52,12 @@ public abstract class WaxRelic extends BaseRelic implements ClickableRelic/*, Cu
     public WaxRelic(String id, AbstractCard.CardTags tag) {
         this(id, tag, defaultWeight);
     }
-
+    
     @Override
     public void update() {
         super.update();
         if (!isObtained) return;
-        RewardEditor.getInstance().update(AbstractDungeon.getCurrRoom(), selectedTag);
+        RewardEditor.getInstance().tag = selectedTag;
         if (Objects.equals(description, DESCRIPTIONS[0]) 
                 && RewardEditor.getInstance().bannedTags != null 
                 && !RewardEditor.getInstance().bannedTags.isEmpty()) {

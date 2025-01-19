@@ -2,27 +2,31 @@ package hsrmod.utils;
 
 import basemod.BaseMod;
 import basemod.abstracts.CustomSavable;
+import basemod.interfaces.PostUpdateSubscriber;
 import basemod.interfaces.StartActSubscriber;
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.SpawnModificationCard;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
-import com.megacrit.cardcrawl.helpers.ModHelper;
 import com.megacrit.cardcrawl.helpers.RelicLibrary;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
+import com.megacrit.cardcrawl.saveAndContinue.SaveFile;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
-import hsrmod.relics.BaseRelic;
-import hsrmod.relics.boss.*;
+import hsrmod.relics.common.RubertEmpireMechanicalCogwheel;
+import hsrmod.relics.common.RubertEmpireMechanicalLever;
+import hsrmod.relics.common.RubertEmpireMechanicalPiston;
 import hsrmod.relics.starter.TrailblazeTimer;
 import hsrmod.relics.starter.WaxRelic;
 
 import java.util.*;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 import static basemod.BaseMod.logger;
@@ -30,19 +34,22 @@ import static basemod.BaseMod.logger;
 /**
  * Singleton class for editing the card reward pool.
  */
-public class RewardEditor implements StartActSubscriber, CustomSavable<String> {
+public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>, PostUpdateSubscriber {
     private static RewardEditor instance;
 
     AbstractRoom currRoom;
 
-    AbstractCard.CardTags tag;
+    public AbstractCard.CardTags tag;
 
     public String relicId = "";
 
     public List<AbstractCard.CardTags> bannedTags;
+    
+    public List<Consumer<List<RewardItem>>> extraRewards;
 
     private RewardEditor() {
         bannedTags = new ArrayList<>();
+        extraRewards = new ArrayList<>();
         BaseMod.subscribe(this);
     }
 
@@ -54,34 +61,23 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String> {
     }
 
     public void update(AbstractRoom room, AbstractCard.CardTags tag) {
-        if (AbstractDungeon.combatRewardScreen.rewards.stream().anyMatch(r -> r.type == RewardItem.RewardType.CARD)
-                && room != currRoom) {
+        if (room.rewardTime && room != currRoom) {
+            currRoom = room;
             this.tag = tag;
 
             List<RewardItem> rewards = AbstractDungeon.combatRewardScreen.rewards;
 
+            for (Consumer<List<RewardItem>> extraReward : extraRewards) {
+                extraReward.accept(rewards);
+            }
+
             for (RewardItem reward : rewards) {
                 if (reward.type == RewardItem.RewardType.CARD) {
-                    if (tag != CustomEnums.TRAILBLAZE) setRewardCards(reward);
-                    if (currRoom != room) {
-                        if (currRoom != null) relicId = "";
-                        currRoom = room;
-                        if (reward.cards.contains(null)) {
-                            logger.info("CardRewardPoolEditor: Null card detected in reward pool.");
-                        }
-                    }
+                    setRewardCards(reward);
                 }
             }
 
-            if (AbstractDungeon.actNum == 1
-                    && AbstractDungeon.getMonsters() != null
-                    && AbstractDungeon.getMonsters().monsters.stream().anyMatch(m -> m.type == AbstractMonster.EnemyType.BOSS)) {
-                relicId = getRelicByPath(tag);
-            } else if (AbstractDungeon.actNum == 2
-                    && AbstractDungeon.getMonsters() != null
-                    && AbstractDungeon.getMonsters().monsters.stream().anyMatch(m -> m.type == AbstractMonster.EnemyType.BOSS)) {
-                relicId = getRelic(AbstractRelic.RelicTier.RARE);
-            }
+            checkBossRelic(tag);
         }
 
         if (!AbstractDungeon.player.hasRelic(relicId)
@@ -92,74 +88,84 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String> {
         }
     }
 
-    public static String getRelicByPath(AbstractCard.CardTags tag) {
-        String relicName = "";
-        if (tag == CustomEnums.ELATION) {
-            relicName = TheAshblazingGrandDuke.ID;
+    /**
+     * Check for extra relic reward to give in boss room.
+     * @param tag the path tag
+     */
+    private void checkBossRelic(AbstractCard.CardTags tag) {
+        if (AbstractDungeon.getMonsters() != null && currRoom instanceof MonsterRoomBoss) {
+            if (AbstractDungeon.actNum == 1) 
+                relicId = RelicEventHelper.getRelicByPath(tag);
+            else if (AbstractDungeon.actNum == 2) 
+                relicId = RelicEventHelper.getHSRRelic(AbstractRelic.RelicTier.RARE);
+            else if (AbstractDungeon.actNum == 3) {
+                List<String> empireRelics = new ArrayList<>();
+                if (!ModHelper.hasRelic(RubertEmpireMechanicalLever.ID) || AbstractDungeon.player.getRelic(RubertEmpireMechanicalLever.ID).usedUp)
+                    empireRelics.add(HSRMod.makePath(RubertEmpireMechanicalLever.ID));
+                if (!ModHelper.hasRelic(RubertEmpireMechanicalPiston.ID) || AbstractDungeon.player.getRelic(RubertEmpireMechanicalPiston.ID).usedUp) 
+                    empireRelics.add(HSRMod.makePath(RubertEmpireMechanicalPiston.ID));
+                if (!ModHelper.hasRelic(RubertEmpireMechanicalCogwheel.ID) || AbstractDungeon.player.getRelic(RubertEmpireMechanicalCogwheel.ID).usedUp)
+                    empireRelics.add(HSRMod.makePath(RubertEmpireMechanicalCogwheel.ID));
+                if (empireRelics.size() == 1) {
+                    relicId = empireRelics.get(0);
+                }
+            }
         }
-        if (tag == CustomEnums.DESTRUCTION) {
-            relicName = IronCavalryAgainstTheScourge.ID;
-        }
-        if (tag == CustomEnums.NIHILITY) {
-            relicName = PrisonerInDeepConfinement.ID;
-        }
-        if (tag == CustomEnums.PRESERVATION) {
-            relicName = KnightOfPurityPalace.ID;
-        }
-        if (tag == CustomEnums.THE_HUNT) {
-            relicName = MusketeerOfWildWheat.ID;
-        }
-        if (tag == CustomEnums.PROPAGATION) {
-            relicName = PasserbyOfWanderingCloud.ID;
-        }
-        if (tag == CustomEnums.ERUDITION) {
-            relicName = TheWindSoaringValorous.ID;
-        }
-        if (tag == CustomEnums.TRAILBLAZE) {
-            relicName = MasterOfDreamMachinations.ID;
-        }
-        if (!relicName.isEmpty()) {
-            relicName = HSRMod.makePath(relicName);
-        }
-        return relicName;
     }
 
+    /**
+     * Set the reward cards to be within the specified path if chance is met.
+     * @param reward the reward item to modify
+     */
     public void setRewardCards(RewardItem reward) {
         for (int i = 0; i < reward.cards.size(); i++) {
             AbstractCard card = reward.cards.get(i);
 
-            if (checkPath(card)) {
-                if (card.color == AbstractCard.CardColor.COLORLESS
-                        || !checkChance(card.rarity)) {
-                    continue;
-                }
-            }
-
+            // skip colorless cards
+            if (card.color == AbstractCard.CardColor.COLORLESS) continue;
+            // skip if card path is not banned and chance is not met
+            if (checkPath(card) && !checkChance(card.rarity)) continue;
+            
+            // change card to a new card of the selected path
             AbstractCard newCard = getCard(card.rarity, reward.cards);
 
-            if (newCard == null
-                    || reward.cards.stream().anyMatch(c -> Objects.equals(c.cardID, newCard.cardID))) {
-                continue;
-            }
-
-            if (card.upgraded) {
-                newCard.upgrade();
-            }
+            // skip if new card is null or repeated
+            if (newCard == null) continue;
+            if (reward.cards.stream().anyMatch(c -> Objects.equals(c.cardID, newCard.cardID))) continue;
+            
+            // upgrade new card if the original card is upgraded
+            if (card.upgraded) newCard.upgrade();
 
             reward.cards.set(i, newCard);
         }
     }
 
-    public void setRewardCards(RewardItem reward, AbstractCard.CardRarity... rarities) {
+    /**
+     * Set the reward cards to be within the specified rarities, if not, set to the least common rarity.
+     * @param reward the reward item to modify
+     * @param rarities the rarities to set the cards to
+     */
+    public static void setRewardCards(RewardItem reward, AbstractCard.CardRarity... rarities) {
         if (rarities.length == 0) return;
         List<AbstractCard.CardRarity> rarityList = Arrays.asList(rarities);
         for (int i = 0; i < reward.cards.size(); i++) {
             if (!rarityList.contains(reward.cards.get(i).rarity)) {
-                reward.cards.set(i, AbstractDungeon.getCard(rarities[0]));
+                for (int j = 0; j < 10; j++) {
+                    AbstractCard newCard = AbstractDungeon.getCard(rarities[0]);
+                    if (reward.cards.contains(newCard)) continue;
+                    reward.cards.set(i, newCard);
+                    break;
+                }
             }
         }
     }
 
+    /**
+     * Get a card of the specified rarity and path.
+     * @param rarity the rarity of the card
+     * @param currentRewardCards the current reward cards
+     * @return the card to change
+     */
     public AbstractCard getCard(AbstractCard.CardRarity rarity, ArrayList<AbstractCard> currentRewardCards) {
         CardGroup group = null;
         switch (rarity) {
@@ -180,48 +186,21 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String> {
                 return null;
         }
 
-        ArrayList<AbstractCard> cards = group.group.stream()
-                .filter(c -> c.hasTag(tag))
+        List<AbstractCard> cards = group.group.stream()
+                .filter(c -> c.hasTag(tag) || (tag == CustomEnums.TRAILBLAZE && checkPath(c)))
                 .filter(c -> AbstractDungeon.player.masterDeck.group.stream().noneMatch(card -> c.uuid == card.uuid))
                 .filter(c -> c instanceof SpawnModificationCard && ((SpawnModificationCard) c).canSpawn(currentRewardCards))
-                .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
+                .collect(Collectors.toList());
 
         if (cards.isEmpty()) return null;
         return cards.get(AbstractDungeon.cardRng.random(cards.size() - 1));
     }
 
-    public String getRelic(AbstractRelic.RelicTier tier) {
-        ArrayList<String> pool = new ArrayList<>();
-        switch (tier) {
-            case COMMON:
-                pool = AbstractDungeon.commonRelicPool;
-                break;
-            case UNCOMMON:
-                pool = AbstractDungeon.uncommonRelicPool;
-                break;
-            case RARE:
-                pool = AbstractDungeon.rareRelicPool;
-                break;
-            case SHOP:
-                pool = AbstractDungeon.shopRelicPool;
-                break;
-            case BOSS:
-                pool = AbstractDungeon.bossRelicPool;
-                break;
-        }
-
-        if (pool.isEmpty()) {
-            return "";
-        }
-        List<String> relics = pool.stream().filter(r -> RelicLibrary.getRelic(r) instanceof BaseRelic).collect(Collectors.toList());
-        if (relics.isEmpty()) {
-            return "";
-        }
-        String relic = relics.get(AbstractDungeon.cardRandomRng.random(relics.size() - 1));
-        pool.remove(relic);
-        return relic;
-    }
-
+    /**
+     * Check the chance of changing a card of the specified rarity.
+     * @param rarity the rarity of the card
+     * @return true if the chance is met
+     */
     public boolean checkChance(AbstractCard.CardRarity rarity) {
         float chance = 0;
         switch (rarity) {
@@ -238,63 +217,100 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String> {
         return AbstractDungeon.cardRandomRng.random(99) < chance;
     }
 
+    /**
+     * Check if the card's path is banned.
+     * @param card the card to check
+     * @return true if the card's path is not banned
+     */
     public boolean checkPath(AbstractCard card) {
         if (card.tags == null || card.tags.isEmpty() || bannedTags == null) return true;
         return card.tags.stream().noneMatch(t -> bannedTags.contains(t));
     }
 
+    /**
+     * Check if the path is banned.
+     * @param tag the path tag
+     */
     public boolean checkPath(AbstractCard.CardTags tag) {
         if (bannedTags == null) return true;
         else return !bannedTags.contains(tag);
     }
 
-    public static <T> T getWeightedRandomElement(List<T> items, List<Integer> weights) {
-        if (items == null || weights == null || items.size() != weights.size() || items.isEmpty()) {
-            throw new IllegalArgumentException("Invalid input: items and weights must be non-null and have the same size.");
-        }
-
-        // Calculate the total sum of the weights
-        int totalWeight = 0;
-        for (int weight : weights) {
-            totalWeight += weight;
-        }
-
-        // Generate a random number between 0 and totalWeight
-        int randomValue = AbstractDungeon.cardRandomRng.random(totalWeight);
-
-        // Iterate over the weights to find the corresponding item
-        for (int i = 0; i < items.size(); i++) {
-            randomValue -= weights.get(i);
-            if (randomValue < 0) {
-                return items.get(i);
+    @Override
+    public String[] onSave() {
+        String[] result = new String[2];
+        if (bannedTags == null) result[0] = "";
+        else result[0] = bannedTags.toString();
+        result[1] = saveCardRewards();
+        return result;
+    }
+    
+    String saveCardRewards() {
+        StringBuilder result = new StringBuilder();
+        if (AbstractDungeon.currMapNode == null) return "";
+        for (RewardItem reward : AbstractDungeon.currMapNode.room.rewards) {
+            if (reward.type == RewardItem.RewardType.CARD) {
+                result.append("[");
+                for (int i = 0; i < reward.cards.size(); i++) {
+                    result.append(reward.cards.get(i).cardID);
+                    if (reward.cards.get(i).upgraded) result.append("+");
+                    if (i < reward.cards.size() - 1) result.append(", ");
+                }
+                result.append("];");
             }
         }
-
-        // Fallback (should never happen if input is valid)
-        return null;
+        return result.toString();
     }
 
     @Override
-    public String onSave() {
-        if (bannedTags == null) return "";
-        return bannedTags.toString();
-    }
-
-    @Override
-    public void onLoad(String cardTags) {
-        currRoom = null;
-        if (cardTags == null || cardTags.isEmpty()) return;
-        String tags = cardTags.substring(1, cardTags.length() - 1);
-        if (tags.isEmpty()) return;
+    public void onLoad(String[] data) {
+        if (data == null) return;
+        
+        String cardTags = data[0];
         if (bannedTags == null) {
             bannedTags = new ArrayList<>();
         } else {
-            bannedTags = Arrays.stream(tags.split(", "))
-                    .map(AbstractCard.CardTags::valueOf)
-                    .collect(Collectors.toList());
+            bannedTags = GeneralUtil.unpackSaveData(cardTags, AbstractCard.CardTags::valueOf);
+        }
+        
+        String cardRewards = data[1];
+        loadCardRewards(cardRewards);
+    }
+    
+    void loadCardRewards(String data) {
+        if (data == null || data.isEmpty()) return;
+        String[] rewards = data.split(";");
+        for (String reward : rewards) {
+            List<String> cards = GeneralUtil.unpackSaveData(reward, String::valueOf);
+            try {
+                ArrayList<AbstractCard> cardList = cards.stream().map(string -> {
+                    AbstractCard result;
+                    if (string.endsWith("+")) {
+                        string = string.substring(0, string.length() - 1);
+                        result = CardLibrary.getCard(string);
+                        result.upgrade();
+                    } else {
+                        result = CardLibrary.getCard(string);
+                    }
+                    return result;
+                }).collect(Collectors.toCollection(ArrayList::new));
+                extraRewards.add(rewardsList -> {
+                    RewardItem rewardItem = new RewardItem();
+                    rewardItem.cards = cardList;
+                    rewardsList.add(rewardItem);
+                });
+            } catch (Exception e) {
+                logger.error("Error loading card rewards: {}", e.getMessage());
+            }
         }
     }
 
+    @Override
+    public void receivePostUpdate() {
+        if (tag == null || AbstractDungeon.currMapNode == null) return;
+        this.update(AbstractDungeon.getCurrRoom(), tag);
+    }
+    
     @Override
     public void receiveStartAct() {
         if (AbstractDungeon.actNum <= 1) {
@@ -307,6 +323,21 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String> {
                     ((TrailblazeTimer) relic).updateDescription(relic.getUpdatedDescription());
                 }
             }
+        }
+    }
+    
+    @SpirePatch(clz = AbstractDungeon.class, method = "nextRoomTransition", paramtypez = {SaveFile.class})
+    public static class EnterRoomPatch {
+        @SpirePostfixPatch
+        public static void Postfix(AbstractDungeon __instance, SaveFile saveFile) {
+            ModHelper.addEffectAbstract(() -> {
+                if (instance != null 
+                        && AbstractDungeon.currMapNode != null 
+                        && !AbstractDungeon.getCurrRoom().rewardTime) {
+                    instance.relicId = null;
+                    instance.extraRewards.clear();
+                }
+            });
         }
     }
 }

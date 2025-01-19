@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.EventRoom;
 import hsrmod.relics.BaseRelic;
-import hsrmod.utils.ModHelper;
+import hsrmod.utils.GeneralUtil;
 import hsrmod.utils.RelicEventHelper;
 
 public class RubertEmpireMechanicalLever extends BaseRelic implements IRubertEmpireRelic {
@@ -26,7 +26,7 @@ public class RubertEmpireMechanicalLever extends BaseRelic implements IRubertEmp
         super.onEnterRoom(room);
         if (usedUp) return;
         if (room instanceof EventRoom) {
-            AbstractCard card = ModHelper.getRandomElement(AbstractDungeon.player.masterDeck.group, AbstractDungeon.relicRng);
+            AbstractCard card = GeneralUtil.getRandomElement(AbstractDungeon.player.masterDeck.group, AbstractDungeon.relicRng);
             if (card != null && !card.upgraded) {
                 RelicEventHelper.upgradeCards(card);
             } else {

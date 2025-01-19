@@ -6,5 +6,7 @@ public enum RelicDataCol {
     Description,
     MagicNumber,
     Flavor,
-    Sound
+    Sound,
+    Destructible,
+    Subtle,
 }

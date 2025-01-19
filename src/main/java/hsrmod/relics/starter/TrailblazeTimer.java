@@ -44,12 +44,17 @@ public class TrailblazeTimer extends BaseRelic implements ClickableRelic  {
         pathGroup.addToBottom(new TheHunt());
         pathGroup.addToBottom(new Erudition());
     }
+
+    @Override
+    public void onEquip() {
+        super.onEquip();
+    }
     
     @Override
     public void update() {
         super.update();
         if (!isObtained) return;
-        RewardEditor.getInstance().update(AbstractDungeon.getCurrRoom(), selectedTag);
+        RewardEditor.getInstance().tag = tag;
         if (Objects.equals(description, DESCRIPTIONS[0])
                 && RewardEditor.getInstance().bannedTags != null
                 && !RewardEditor.getInstance().bannedTags.isEmpty()) {

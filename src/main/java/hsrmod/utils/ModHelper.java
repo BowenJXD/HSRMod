@@ -76,12 +76,6 @@ public class ModHelper {
     public interface Lambda extends Runnable {
     }
 
-    public static <T extends Enum<T>> T getRandomEnumValue(Class<T> enumClass) {
-        T[] values = enumClass.getEnumConstants();
-        int randomIndex = new Random().random(values.length - 1);
-        return values[randomIndex];
-    }
-
     public static int getPowerCount(AbstractCreature creature, String powerID) {
         return creature.hasPower(powerID) ? creature.getPower(powerID).amount : 0;
     }
@@ -124,34 +118,6 @@ public class ModHelper {
     public static class FindResult {
         public AbstractCard card;
         public CardGroup group;
-    }
-
-    public static <T> T getRandomElement(List<T> list, Random rand) {
-        if (list.isEmpty()) {
-            return null;
-        }
-        return list.get(rand.random(list.size() - 1));
-    }
-
-    public static <T> T getRandomElement(List<T> list, Random random, Predicate<T> predicate) {
-        List<T> filtered = new ArrayList<>();
-        for (T element : list) {
-            if (predicate.test(element)) {
-                filtered.add(element);
-            }
-        }
-        if (filtered.isEmpty()) {
-            return null;
-        }
-        return getRandomElement(filtered, random);
-    }
-
-    public static <T> List<T> getRandomElements(List<T> list, Random random, int count) {
-        count = Math.min(count, list.size());
-
-        List<T> shuffledList = new ArrayList<>(list);
-        Collections.shuffle(shuffledList, random.random);  // Randomly shuffle the list
-        return shuffledList.subList(0, count);  // Return the first x elements
     }
 
     public static AbstractMonster betterGetRandomMonster() {

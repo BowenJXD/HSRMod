@@ -1,14 +1,10 @@
 package hsrmod.powers.misc;
 
-import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
-import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.DamageModApplyingPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
@@ -16,10 +12,8 @@ import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
 import hsrmod.subscribers.PreElementalDamageSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
+import hsrmod.utils.GeneralUtil;
 import hsrmod.utils.ModHelper;
-
-import java.util.Collections;
-import java.util.List;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
@@ -66,7 +60,7 @@ public class AftertastePower extends BuffPower implements PreElementalDamageSubs
                 flash();
                 // addToTop(new ApplyPowerAction(info.owner, info.owner, new EnergyPower(info.owner, -ENERGY_REQUIRED), -ENERGY_REQUIRED));
                 addToBot(new ElementalDamageAction(action.target, new ElementalDamageInfo(owner, amount, DamageInfo.DamageType.NORMAL,
-                        ModHelper.getRandomEnumValue(ElementType.class), 1), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+                        GeneralUtil.getRandomEnumValue(ElementType.class), 1), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
                 addToBot(new ApplyPowerAction(owner, owner, this, 1));
             }
         }

@@ -114,9 +114,8 @@ public class WarpTrotter extends BaseMonster implements PreBreakSubscriber {
         super.die();
         SubscriptionManager.unsubscribe(this);
         RewardItem rewardItem = new RewardItem();
-        RewardEditor.getInstance().setRewardCards(rewardItem, AbstractCard.CardRarity.RARE);
+        RewardEditor.setRewardCards(rewardItem, AbstractCard.CardRarity.RARE);
         AbstractDungeon.getCurrRoom().addCardReward(rewardItem);
-        
     }
 
     @Override

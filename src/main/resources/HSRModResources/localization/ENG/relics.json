@@ -135,7 +135,7 @@
     "NAME": "Knight of Purity Palace",
     "FLAVOR": "\"Henceforth, I will become a witch, and you will return to being a devil.\" Safina could not deny the validity of Vanira's statement.",
     "DESCRIPTIONS": [
-      "Upon gain, all starter defend card gain #yInnate, and its Block + #b2 . NL When shuffling your deck, gain all innate cards."
+      "At battle starts, all starter defend card gain #yInnate, and its Block + #b2 . NL When shuffling your deck, gain all innate cards."
     ]
   },
   "HSRMod:MusketeerOfWildWheat": {
@@ -196,17 +196,17 @@
     ]
   },
   "HSRMod:WarpingCompoundEye": {
-    "NAME": "跃迁复眼",
-    "FLAVOR": "它的光线能率先跃迁至前方的星系，带回新世界的信息。",
+    "NAME": "Warping Compound Eye",
+    "FLAVOR": "",
     "DESCRIPTIONS": [
-      "在选择奖励牌时，强化其中所有普通品质的卡牌。"
+      "When selecting card rewards, upgrade all Common cards among them."
     ]
   },
   "HSRMod:CasketOfInaccuracy": {
     "NAME": "Casket of Inaccuracy",
     "FLAVOR": "Each side of this casket can be opened, but the spaces that should overlap do not, and due to this unique property, you cannot be sure what will happen when you open it. It is not recommended to store anything inside.",
     "DESCRIPTIONS": [
-      "When picked up, you can add a card to your deck.",
+      "When picked up, gain an extra card reward.",
       "Casket of Inaccuracy!"
     ]
   },
@@ -232,24 +232,24 @@
     ]
   },
   "HSRMod:SocietyTicket": {
-    "NAME": "俱乐部券",
-    "FLAVOR": "事实是，6以后的每位会员都确实使用过「俱乐部券」，可时间从来没有重合过哪怕一次。",
+    "NAME": "Society Ticket",
+    "FLAVOR": "",
     "DESCRIPTIONS": [
-      "战斗结束后，获得的金币数提高 #b33 %。"
+      "At the end of combat, the amount of gold gained is increased by #b33%."
     ]
   },
   "HSRMod:FaithBond": {
-    "NAME": "信仰债券",
-    "FLAVOR": "但一代又一代的「你」汇聚起来，终将拥有守护整个宇宙的力量。",
+    "NAME": "Faith Bond",
+    "FLAVOR": "",
     "DESCRIPTIONS": [
-      "商店区域的药水和奇物商品价格减少 #b33 %。"
+      "Potion and relic prices in shops are reduced by #b33%."
     ]
   },
   "HSRMod:RecordFromBeyondTheSky": {
     "NAME": "Record From Beyond The Sky",
     "FLAVOR": "The last Phonograph of Order was destroyed in the Emperor's War, and now the thick layer of dust on the records protests against that soundless era.",
     "DESCRIPTIONS": [
-      "At battle starts, gain #b1 stack of #yIntangible and #b1 stack of #yArtifact."
+      "Prevent the first debuff and damage you receive in each combat."
     ]
   },
   "HSRMod:EntropicDie": {
@@ -267,38 +267,38 @@
     ]
   },
   "HSRMod:BlackHoleTrap": {
-    "NAME": "黑洞之阱",
-    "FLAVOR": "星系中时空曲率最大的地方曾出现疑似「虚无」星神的巨影。",
+    "NAME": "Black Hole Trap",
+    "FLAVOR": "",
     "DESCRIPTIONS": [
-      "战斗结束后，根据你生命值大于 #b80 %的数量，获得等量金币。"
+      "At the end of combat, gain gold equal to the number of times your HP exceeded #b66%."
     ]
   },
   "HSRMod:RubertEmpireMechanicalCogwheel": {
-    "NAME": "鲁珀特帝国机械齿轮",
-    "FLAVOR": "鲁珀特二世自称继承了天才俱乐部500.07帝皇鲁珀特的记忆。",
+    "NAME": "Rubert Empire Mechanical Cogwheel",
+    "FLAVOR": "",
     "DESCRIPTIONS": [
-      "进入战斗时，获得 #b50 金币，然后若你的金币数大于 #b500 ，则失去所有金币，该遗物损毁。 NL 若同时携带全部鲁珀特帝国机械系列遗物，将引发反有机方程的局域共鸣。"
+      "When entering combat, gain #b50 gold. If your gold exceeds #b750, lose all gold and this relic is destroyed. NL Obtaining the relic when simultaneously carrying all Rubert Empire-series relics will trigger the Anti-Organic Equation's Regional Resonance."
     ]
   },
   "HSRMod:RubertEmpireMechanicalLever": {
-    "NAME": "鲁珀特帝国机械杠杆",
-    "FLAVOR": "鲁珀特二世自称继承了天才俱乐部 #b1 . #b07 帝皇鲁珀特的记忆。",
+    "NAME": "Rubert Empire Mechanical Lever",
+    "FLAVOR": "",
     "DESCRIPTIONS": [
-      "进入？时，随机选择一张牌，若其未升级，则升级之，否则该遗物损毁。 NL 若同时携带全部鲁珀特帝国机械系列遗物，将引发反有机方程的局域共鸣。"
+      "When entering a #y? room, randomly select a card. If it is not upgraded, upgrade it. Otherwise, this relic is destroyed. NL Obtaining the relic when simultaneously carrying all Rubert Empire-series relics will trigger the Anti-Organic Equation's Regional Resonance."
     ]
   },
   "HSRMod:RubertEmpireMechanicalPiston": {
-    "NAME": "鲁珀特帝国机械活塞",
-    "FLAVOR": "鲁珀特二世自称继承了天才俱乐部 #b2 . #b07 帝皇鲁珀特的记忆。",
+    "NAME": "Rubert Empire Mechanical Piston",
+    "FLAVOR": "",
     "DESCRIPTIONS": [
-      "进入休息处时，获得 #b2 个遗物，随机失去 #b1 个不为初始遗物的遗物，若以此法失去自身，则失去所有遗物。 NL 若同时携带全部鲁珀特帝国机械系列遗物，将引发反有机方程的局域共鸣。"
+      "When entering Campfire room, gain #b2 relics and randomly lose #b1 relic that is not a starting relic. If this relic is lost this way, lose all relics. NL Obtaining the relic when simultaneously carrying all Rubert Empire-series relics will trigger the Anti-Organic Equation's Regional Resonance."
     ]
   },
   "HSRMod:VileMechanicalSatellite900": {
-    "NAME": "邪恶机械卫星#900",
-    "FLAVOR": "它们是典型的反有机文明，对待有机生命手腕狠辣，而其中尤以卫星# #b900 最为邪恶。",
+    "NAME": "Vile Mechanical Satellite #900",
+    "FLAVOR": "",
     "DESCRIPTIONS": [
-      "商店区域的所有商品价格降低 #b20 %。"
+      "All shop prices are reduced by #b20%."
     ]
   },
   "HSRMod:PriceOfPeace": {
@@ -309,24 +309,24 @@
     ]
   },
   "HSRMod:MysteriousMagnetism": {
-    "NAME": "「神秘」磁力",
-    "FLAVOR": "为对抗「智识」的确定性，谜语人曾在不确定领域做出诸多努力。",
+    "NAME": "\"Mysterious\" Magnetism",
+    "FLAVOR": "",
     "DESCRIPTIONS": [
-      "进入新楼层时，获得 #b50 金币。战斗胜利后，失去 #b50 金币。"
+      "When entering a combat room, replace monsters with Elites. After triggering this effect 2 times, #rdestroys and gets #b200 gold."
     ]
   },
   "HSRMod:ShatterboneBlade": {
-    "NAME": "断骨剑",
-    "FLAVOR": "多年以后，每每在私下讲起森林里的遭遇时，少年都会痛哭流涕，并对那人面兽心的卡耶尔大骂不止。",
+    "NAME": "Shatterbone Blade",
+    "FLAVOR": "",
     "DESCRIPTIONS": [
-      "第二章及之前，受到伤害提高 #b20 %；第三章及之后，受到伤害降低 #b20 %。"
+      "Before Act 3, damage received is increased by #b1. Starting from Act 3, damage received is reduced by #b1."
     ]
   },
   "HSRMod:BeaconColoringPaste": {
-    "NAME": "信标着色剂",
-    "FLAVOR": "它的发明者乃是一位画技卓绝的无名客。",
+    "NAME": "Beacon Coloring Paste",
+    "FLAVOR": "",
     "DESCRIPTIONS": [
-      "战斗胜利选择卡牌时，升级其中 #b1 张。"
+      "When choosing a card as a combat reward, upgrade #b1 of the options."
     ]
   },
   "HSRMod:SuperOverlordSpinningTop": {
@@ -336,18 +336,60 @@
       "At battle starts, gain #b1 stack of #yhsrmod:Break-Effect. At start of the first turn, removes #b50% of enemy's #yhsrmod:Toughness."
     ]
   },
-  "HSRMod:FortuneGlue": {
-    "NAME": "福灵胶",
-    "FLAVOR": "运气是一种能力吗？也许；运气能够被改变吗？黑塔认为能。",
+  "HSRMod:GeniusSocietysDangerousGossip": {
+    "NAME": "Genius Society's Dangerous Gossip",
+    "FLAVOR": "",
     "DESCRIPTIONS": [
-      "战斗结束后，出现的牌是稀有品质的概率提高 #b100 %，触发 #b1 次后该遗物损毁。"
+      "Cannot gain #ygold. Each time you lose #b80 #ygold this way, obtain a random relic. Destroys after #b3 triggers."
+    ]
+  },
+  "HSRMod:PunklordianBalance": {
+    "NAME": "Punklordian Balance",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "For the next #b2 normal combats, all enemies will have #b1 HP. Destroys after #b2 activations."
+    ]
+  },
+  "HSRMod:GreenFingers": {
+    "NAME": "Green Fingers",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "After winning #b3 / #b6 / #b9 combats, gain #b50 / #b150 / #b250 #ygold. Destroys after winning #b9 combats."
+    ]
+  },
+  "HSRMod:FruitOfTheAlienTree": {
+    "NAME": "Fruit Of The Alien Tree",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "Upon pickup, gain a Lizard Tail."
+    ]
+  },
+  "HSRMod:Dreams0110": {
+    "NAME": "Dreams 0110",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "At the start of combat, gain #b5 #yStrength. At the start of each turn, lose #b1 #yStrength."
+    ]
+  },
+  "HSRMod:DimensionReductionDice": {
+    "NAME": "Dimension Reduction Dice",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "After winning a combat, gain an additional card reward, but the number of cards to choose from is reduced by #b1. Destroys after #b2 uses."
+    ]
+  },
+  "HSRMod:FortuneGlue": {
+    "NAME": "Fortune Glue",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "After combat ends, the probability of cards being of Rare quality increases by #b100%. Destroys after trigger."
     ]
   },
   "HSRMod:ShiningTrapezohedronDie": {
     "NAME": "Shining Trapezohedron Die",
     "FLAVOR": "That is how the famous Shining Trapezohedron Die Paradox came to be — You cannot prove something that cannot be proven.",
     "DESCRIPTIONS": [
-      "When gaining, regain all non-starter relics."
+      "When gaining, change all common, uncommon and rare relics."
     ]
   },
   "HSRMod:GoldCoinOfDiscord": {
@@ -365,10 +407,10 @@
     ]
   },
   "HSRMod:ShatteredStarBait": {
-    "NAME": "碎星芳饵",
-    "FLAVOR": "在黄昏战争前，混沌星云膨胀所产生的爆炸碎屑可以作为饵料，其特有的宇宙尘埃芳香能够吸引到古兽前来觅食。",
+    "NAME": "Shattered Star Bait",
+    "FLAVOR": "",
     "DESCRIPTIONS": [
-      "战斗开始时，获得 #b1 层 敏捷 。你在选择下一层的房间时有 #b1 次机会可以无视当前的路线。"
+      "At the start of combat, gain #b1 #yDexterity . When choosing the next room, you have #b1 chance to ignore the current path."
     ]
   },
   "HSRMod:SpaceTimePrism": {
@@ -400,31 +442,73 @@
     ]
   },
   "HSRMod:ManMadeMeteorite": {
-    "NAME": "人造陨石球",
-    "FLAVOR": "陨石球表面坐落着由其复刻的「博识之眼」。",
+    "NAME": "Man-Made Meteorite",
+    "FLAVOR": "",
     "DESCRIPTIONS": [
-      "拾起时，重新获得你的所有火漆。"
+      "Upon pickup, gain an additional card reward, containing cards from your current #ypath only."
     ]
   },
   "HSRMod:RottingFruitOfTheAlienTree": {
-    "NAME": "腐化异木果实",
-    "FLAVOR": "他们一人拥抱蜕变，一人当场毙命。",
+    "NAME": "Rotting Fruit Of The Alien Tree",
+    "FLAVOR": "",
     "DESCRIPTIONS": [
-      "初始有 #b3 次触发次数。回合开始时，若你没有 #y人工制品 ，你获得 #b1 层，然后若不为首回合，你受到 #b5 点伤害。"
+      "In combat, right-click this relic to lose #b3 HP and gain #b1 layer of #yArtifact . Destroys after #b3 triggers."
+    ]
+  },
+  "HSRMod:IndecipherableBox": {
+    "NAME": "Indecipherable Box",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "Increases the drop rate of Wax relic. Enhances effects of Trailblaze Timer."
+    ]
+  },
+  "HSRMod:KingOfSponges": {
+    "NAME": "King Of Sponges",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "Upon entering Campfire room, lose #b20% of your current HP and increase your max HP by #b5%. Destroys after #b4 triggers."
+    ]
+  },
+  "HSRMod:AncientCommunications": {
+    "NAME": "Ancient Communications",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "Greatly increases the probability of encountering a Warping Trotter. Destroys upon entering a room containing a Trotter."
+    ]
+  },
+  "HSRMod:PunklordianRegards": {
+    "NAME": "Punklordian Regards",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "At the start of each turn, gain #b2 #yDexterity on odd-numbered turns and lose #b2 #yDexterity on even-numbered turns."
     ]
   },
   "HSRMod:RobeOfTheBeauty": {
     "NAME": "Robe Of The Beauty",
-    "FLAVOR": "The entire universe bowed before the grace of the Knights of Beauty while they still traversed the skies.",
+    "FLAVOR": "",
     "DESCRIPTIONS": [
-      "At battle starts, for every 100 gold you have, gain #b1 #yStrength ."
+      "At the start of combat, gain #b1 #yStrength for every #b100 #ygold you have."
     ]
   },
   "HSRMod:CavitySystemModel": {
     "NAME": "Cavity System Model",
-    "FLAVOR": "\"The universe is irregularly shaped, just like a tooth!\"",
+    "FLAVOR": "",
     "DESCRIPTIONS": [
-      "拾起时，失去 #b50 %金币。 NL 战斗结束后，失去 #b50 金币，然后如果金币不足 #b100 ，该遗物损毁。 NL 进入战斗时，对生命值最多的敌方造成 #b10 点伤害，每因为该奇物的效果损失 #b100 金币，额外造成 #b1 次伤害。"
+      "Upon pickup, lose all #ygold. For every #b100 #ygold lost this way, draw #b1 additional card each turn."
+    ]
+  },
+  "HSRMod:ByAnyMeansNecessary": {
+    "NAME": "By Any Means Necessary",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "When obtaining Common/Uncommon/Rare relics, gain #b30 / #b60 / #b120 #ygold. At the start of combat, deal damage equal to the number of relics to the enemy with the highest HP. Uncommon/Rare relics count as #b2 / #b4 ."
+    ]
+  },
+  "HSRMod:HerosTriumphantReturn": {
+    "NAME": "Hero's Triumphant Return",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "At the start of combat, play up to #b2 random Power cards from your draw pile."
     ]
   },
   "HSRMod:Plaguenest": {
@@ -434,11 +518,67 @@
       "Gain [E] at the start of your turn, if you have Curse or Status card in your hand, draw 1, otherwise, lose 1 [E] ."
     ]
   },
-  "HSRMod:RubertEmpireDifferenceMachine": {
-    "NAME": "鲁珀特帝国差分机",
-    "FLAVOR": "「如果这就是天才，那世上还是多些蠢人为好。」",
+  "HSRMod:WrittenInWater": {
+    "NAME": "Written In Water",
+    "FLAVOR": "The Memokeepers had stored the entirety of this world's memories inside the Boquelet and strutted casually through the encirclement the Lord Ravager had set up around them.",
     "DESCRIPTIONS": [
-      "进入新楼层时，复制该房间的所有奖励。"
+      "Restore #b3 HP and #b30 [hsrmod:ChargeIcon] upon entering a new room."
+    ]
+  },
+  "HSRMod:ARuanPouch": {
+    "NAME": "A Ruan Pouch",
+    "FLAVOR": "It is said that she wished to carry the universe in her pocket, yet was forced to seal it when the dimensionality within continued to expand.",
+    "DESCRIPTIONS": [
+      "Upon pickup, gain #b3 additional card rewards. Afterward, the number of cards available to choose from in rewards is reduced to #b1. Destroys after #b2 uses."
+    ]
+  },
+  "HSRMod:AshesToAshesDustToDust": {
+    "NAME": "Ashes To Ashes, Dust To Dust",
+    "FLAVOR": "On the 100th Amber Era since the withering of Dr. Kray, the Intelligentsia Guild issued a set of commemorative stamps of it, which featured simply the words: \"Just a sentient plant.\"",
+    "DESCRIPTIONS": [
+      "Right-click this relic in the shop to upgrade a card for #b50 #ygold."
+    ]
+  },
+  "HSRMod:TemporaryStake": {
+    "NAME": "Temporary Stake",
+    "FLAVOR": "penniless gamblers brew their last gemstones with their tears of regret, staking everything in a gamble. These chips will quickly dissolve, becoming new debts, and the gamblers' lives are corroded completely in the digestive fluids that pour out.",
+    "DESCRIPTIONS": [
+      "Immediately gain #b300 cosmic shards. After entering #b4 rooms, destroy this relic, and you lose #b600 #ygold."
+    ]
+  },
+  "HSRMod:SparkleDoll": {
+    "NAME": "Sparkle Doll",
+    "FLAVOR": "Sparkle will never give you up, never let you down, or run around and desert you...",
+    "DESCRIPTIONS": [
+      "You will never know when she will explode..."
+    ]
+  },
+  "HSRMod:FoolsMask": {
+    "NAME": "Fool's Mask",
+    "FLAVOR": "These masks are made of heavy material, are vibrant in color, and with a maniacal smile yet with surprisingly intricate brushstrokes, as if waiting for each playful prank.",
+    "DESCRIPTIONS": [
+      "Upon pickup, transform and upgrade all non-starter cards. Cards transformed this way will match the same #ypath."
+    ]
+  },
+  "HSRMod:ThePinkestCollision": {
+    "NAME": "The Pinkest Collision",
+    "FLAVOR": "The drink Yu Qingtu concocted, named the Pinkest Collision, was proven to be non-toxic, but a mixologist once spent days trying to recreate its formula, seeking to prove that the beverage was made from various insect carcasses, insect spores, carapaces, and phosphorous.",
+    "DESCRIPTIONS": [
+      "At the start of combat, gain #b1 #yhsrmod:Break-Effect for each type of #ypath card you have."
+    ]
+  },
+  "HSRMod:ThalanToxiFlame": {
+    "NAME": "Thalan Toxi Flame",
+    "FLAVOR": "Records show that in the Aterlexian System, the Thalan Toxi-Flame was once extremely popular among the locals, with each of the locals that sampled its taste no longer able to describe the flavors thereafter.",
+    "DESCRIPTIONS": [
+      "At the start of combat, lose #b2 HP and gain #b2 #yDexterity."
+    ]
+  },
+  "HSRMod:RubertEmpireDifferenceMachine": {
+    "NAME": "Rubert Empire Difference Machine",
+    "FLAVOR": "\"If this is what geniuses are, then it'd be far better for the world to produce more idiots.\"",
+    "DESCRIPTIONS": [
+      "Upon obtaining, upgrade #b3 cards, gain #b300 gold, and obtain #b3 relics. NL Upon entering a new room, upgrade #b1 card, gain #b100 gold, and obtain #b1 relic."
     ]
   },
   "HSRMod:ParallelUniverseWalkieTalkie": {
@@ -489,6 +629,13 @@
     "FLAVOR": "The Interastral Peace Corporation has the final right of interpretation regarding mining work in star zones under their possession. Any illegal mining activities will be viewed as an act of blasphemy that interferes with the Amber Lord's wall construction.",
     "DESCRIPTIONS": [
       "At turn ends, gain temp HP equal to #b20% of your lost HP."
+    ]
+  },
+  "HSRMod:TenLightYearsForesight": {
+    "NAME": "Ten Light-Years Foresight",
+    "FLAVOR": "Whenever he drives his prey to a set coordinates, a bullet fired ten years prior will cross the distance of ten light years to accurately collide with the prey's skull.",
+    "DESCRIPTIONS": [
+      "After playing a card, deal #b2 damage to all enemies that were not targeted by that card."
     ]
   }
 }

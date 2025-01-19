@@ -137,6 +137,10 @@ public class DataManager {
         return Integer.parseInt(getRelicData(key, col));
     }
     
+    public boolean getRelicDataBoolean(String key, RelicDataCol col) {
+        return Boolean.parseBoolean(getRelicData(key, col));
+    }
+    
     public String getMonsterData(String key, MonsterDataCol col) {
         String result = monsterData.get(key)[col.ordinal()];
         switch (col) {

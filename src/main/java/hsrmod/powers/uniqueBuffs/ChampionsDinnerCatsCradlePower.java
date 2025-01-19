@@ -2,10 +2,6 @@ package hsrmod.powers.uniqueBuffs;
 
 import basemod.BaseMod;
 import basemod.interfaces.PostPowerApplySubscriber;
-import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.BetterOnApplyPowerPower;
-import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -19,6 +15,7 @@ import hsrmod.powers.PowerPower;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.subscribers.ICheckUsableSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
+import hsrmod.utils.GeneralUtil;
 import hsrmod.utils.ModHelper;
 
 import java.util.HashMap;
@@ -97,7 +94,7 @@ public class ChampionsDinnerCatsCradlePower extends PowerPower implements PostPo
                     && abstractPower.amount > 0 
                     && ModHelper.getPowerCount(AbstractDungeon.player, EnergyPower.POWER_ID) >= EnergyPower.AMOUNT_LIMIT
                     && AbstractDungeon.cardRandomRng.random(99) < chance) {
-                AbstractCard card = ModHelper.getRandomElement(
+                AbstractCard card = GeneralUtil.getRandomElement(
                         AbstractDungeon.player.hand.group, 
                         AbstractDungeon.cardRandomRng, 
                         (c) -> c.hasTag(CustomEnums.ENERGY_COSTING)

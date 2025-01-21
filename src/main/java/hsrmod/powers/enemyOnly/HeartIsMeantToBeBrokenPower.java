@@ -17,6 +17,7 @@ import hsrmod.subscribers.PreElementalDamageSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
+// TODO: add audio and bubble text
 public class HeartIsMeantToBeBrokenPower extends DebuffPower implements PreBreakSubscriber {
     public static final String POWER_ID = HSRMod.makePath(HeartIsMeantToBeBrokenPower.class.getSimpleName());
     

@@ -1,17 +1,10 @@
-package hsrmod.relics.boss;
+package hsrmod.relics.special;
 
 import basemod.BaseMod;
-import basemod.abstracts.CustomSavable;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.MoveCardsAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.*;
 import hsrmod.cards.BaseCard;
 import hsrmod.relics.BaseRelic;
-import hsrmod.utils.ModHelper;
 
 public class KnightOfPurityPalace extends BaseRelic {
     public static final String ID = KnightOfPurityPalace.class.getSimpleName();

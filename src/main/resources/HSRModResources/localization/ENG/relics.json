@@ -235,7 +235,7 @@
     "NAME": "Society Ticket",
     "FLAVOR": "",
     "DESCRIPTIONS": [
-      "At the end of combat, the amount of gold gained is increased by #b33%."
+      "At the end of combat, the amount of gold gained is increased by #b20%."
     ]
   },
   "HSRMod:FaithBond": {
@@ -270,7 +270,7 @@
     "NAME": "Black Hole Trap",
     "FLAVOR": "",
     "DESCRIPTIONS": [
-      "At the end of combat, gain gold equal to the number of times your HP exceeded #b66%."
+      "At the end of combat, gain gold equal to the percentage of your HP that is exceeding #b80%."
     ]
   },
   "HSRMod:RubertEmpireMechanicalCogwheel": {
@@ -319,7 +319,7 @@
     "NAME": "Shatterbone Blade",
     "FLAVOR": "",
     "DESCRIPTIONS": [
-      "Before Act 3, damage received is increased by #b1. Starting from Act 3, damage received is reduced by #b1."
+      "Before Act 3, HP reduced #b+1. NL Starting from Act 3, HP reduced #b-1."
     ]
   },
   "HSRMod:BeaconColoringPaste": {
@@ -347,28 +347,28 @@
     "NAME": "Punklordian Balance",
     "FLAVOR": "",
     "DESCRIPTIONS": [
-      "For the next #b2 normal combats, all enemies will have #b1 HP. Destroys after #b2 activations."
+      "For the next #b2 normal combats, all enemies will have #b50% HP. Destroys after #b2 triggers."
     ]
   },
   "HSRMod:GreenFingers": {
     "NAME": "Green Fingers",
     "FLAVOR": "",
     "DESCRIPTIONS": [
-      "After winning #b3 / #b6 / #b9 combats, gain #b50 / #b150 / #b250 #ygold. Destroys after winning #b9 combats."
+      "After winning #b3 / #b6 / #b9 combats, gain #b50 / #b100 / #b150 #ygold. Destroys after winning #b9 combats."
     ]
   },
   "HSRMod:FruitOfTheAlienTree": {
     "NAME": "Fruit Of The Alien Tree",
     "FLAVOR": "",
     "DESCRIPTIONS": [
-      "Upon pickup, gain a Lizard Tail."
+      "Upon taking fatal damage, prevents it and heal 20% of your max HP. Destroys after #b1 trigger."
     ]
   },
   "HSRMod:Dreams0110": {
     "NAME": "Dreams 0110",
     "FLAVOR": "",
     "DESCRIPTIONS": [
-      "At the start of combat, gain #b5 #yStrength. At the start of each turn, lose #b1 #yStrength."
+      "At the start of combat, gain #b3 #yStrength. At the start of each turn, if you have #yStrength, lose #b1."
     ]
   },
   "HSRMod:DimensionReductionDice": {
@@ -445,7 +445,8 @@
     "NAME": "Man-Made Meteorite",
     "FLAVOR": "",
     "DESCRIPTIONS": [
-      "Upon pickup, gain an additional card reward, containing cards from your current #ypath only."
+      "Upon pickup, gain an additional card reward, containing cards from your current #ypath only.",
+      "Man-Made Meteorite !"
     ]
   },
   "HSRMod:RottingFruitOfTheAlienTree": {
@@ -466,7 +467,7 @@
     "NAME": "King Of Sponges",
     "FLAVOR": "",
     "DESCRIPTIONS": [
-      "Upon entering Campfire room, lose #b20% of your current HP and increase your max HP by #b5%. Destroys after #b4 triggers."
+      "Upon entering Campfire room, lose #b10% of your current HP and increase your max HP by #b10%. Destroys after #b4 triggers."
     ]
   },
   "HSRMod:AncientCommunications": {
@@ -490,18 +491,18 @@
       "At the start of combat, gain #b1 #yStrength for every #b100 #ygold you have."
     ]
   },
-  "HSRMod:CavitySystemModel": {
-    "NAME": "Cavity System Model",
-    "FLAVOR": "",
-    "DESCRIPTIONS": [
-      "Upon pickup, lose all #ygold. For every #b100 #ygold lost this way, draw #b1 additional card each turn."
-    ]
-  },
   "HSRMod:ByAnyMeansNecessary": {
     "NAME": "By Any Means Necessary",
     "FLAVOR": "",
     "DESCRIPTIONS": [
-      "When obtaining Common/Uncommon/Rare relics, gain #b30 / #b60 / #b120 #ygold. At the start of combat, deal damage equal to the number of relics to the enemy with the highest HP. Uncommon/Rare relics count as #b2 / #b4 ."
+      "When obtaining Common/Uncommon/Rare relics, gain #b20 / #b40 / #b80 #ygold. At the start of combat, deal damage equal to the number of relics to the enemy with the highest HP. Uncommon/Rare relics count as #b2 / #b4 ."
+    ]
+  },
+  "HSRMod:FamilyTies": {
+    "NAME": "Family Ties",
+    "FLAVOR": "The will of numerous heavenly bodies were intertwined, coiling into a single bound knot. Under Family Ties, people open their eyes wide, their faces etched with eerie smiles, staring at one another with identical expressions.",
+    "DESCRIPTIONS": [
+      "Upon pickup, or when a relic is destroyed, gain #b1 #ydestructible relic . For each #ydestroyed relic, gain #b1 [E] and draw #b1 card on the first turn."
     ]
   },
   "HSRMod:HerosTriumphantReturn": {
@@ -529,14 +530,16 @@
     "NAME": "A Ruan Pouch",
     "FLAVOR": "It is said that she wished to carry the universe in her pocket, yet was forced to seal it when the dimensionality within continued to expand.",
     "DESCRIPTIONS": [
-      "Upon pickup, gain #b3 additional card rewards. Afterward, the number of cards available to choose from in rewards is reduced to #b1. Destroys after #b2 uses."
+      "Upon pickup, gain #b3 additional card rewards. Afterward, the number of cards available to choose from in rewards is reduced to #b1. Destroys after #b2 uses.",
+      "A Ruan Pouch!"
     ]
   },
   "HSRMod:AshesToAshesDustToDust": {
     "NAME": "Ashes To Ashes, Dust To Dust",
     "FLAVOR": "On the 100th Amber Era since the withering of Dr. Kray, the Intelligentsia Guild issued a set of commemorative stamps of it, which featured simply the words: \"Just a sentient plant.\"",
     "DESCRIPTIONS": [
-      "Right-click this relic in the shop to upgrade a card for #b50 #ygold."
+      "Right-click this relic in the shop to upgrade a card.",
+      "Upgrade a card"
     ]
   },
   "HSRMod:TemporaryStake": {
@@ -544,6 +547,13 @@
     "FLAVOR": "penniless gamblers brew their last gemstones with their tears of regret, staking everything in a gamble. These chips will quickly dissolve, becoming new debts, and the gamblers' lives are corroded completely in the digestive fluids that pour out.",
     "DESCRIPTIONS": [
       "Immediately gain #b300 cosmic shards. After entering #b4 rooms, destroy this relic, and you lose #b600 #ygold."
+    ]
+  },
+  "HSRMod:CavitySystemModel": {
+    "NAME": "Cavity System Model",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "Upon pickup, lose all #ygold. For every #b100 #ygold lost this way, draw #b1 additional card each turn."
     ]
   },
   "HSRMod:SparkleDoll": {
@@ -635,7 +645,7 @@
     "NAME": "Ten Light-Years Foresight",
     "FLAVOR": "Whenever he drives his prey to a set coordinates, a bullet fired ten years prior will cross the distance of ten light years to accurately collide with the prey's skull.",
     "DESCRIPTIONS": [
-      "After playing a card, deal #b2 damage to all enemies that were not targeted by that card."
+      "After playing an attack card, deal #b2 damage to all enemies that were not targeted by that card."
     ]
   }
 }

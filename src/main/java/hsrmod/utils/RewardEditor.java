@@ -24,6 +24,7 @@ import hsrmod.relics.common.RubertEmpireMechanicalLever;
 import hsrmod.relics.common.RubertEmpireMechanicalPiston;
 import hsrmod.relics.starter.TrailblazeTimer;
 import hsrmod.relics.starter.WaxRelic;
+import hsrmod.subscribers.SubscriptionManager;
 
 import java.util.*;
 import java.util.function.Consumer;
@@ -44,8 +45,8 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
     public String relicId = "";
 
     public List<AbstractCard.CardTags> bannedTags;
-    
-    public List<Consumer<List<RewardItem>>> extraRewards;
+
+    private List<Consumer<List<RewardItem>>> extraRewards;
 
     private RewardEditor() {
         bannedTags = new ArrayList<>();
@@ -84,25 +85,27 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
                 && !Objects.equals(relicId, "")
                 && currRoom instanceof MonsterRoomBoss
                 && AbstractDungeon.combatRewardScreen.rewards.stream().noneMatch(r -> r.relic != null && r.relic.relicId.equals(relicId))) {
+            RelicEventHelper.removeRelicFromPool(relicId);
             AbstractDungeon.combatRewardScreen.rewards.add(new RewardItem(RelicLibrary.getRelic(relicId).makeCopy()));
         }
     }
 
     /**
      * Check for extra relic reward to give in boss room.
+     *
      * @param tag the path tag
      */
     private void checkBossRelic(AbstractCard.CardTags tag) {
         if (AbstractDungeon.getMonsters() != null && currRoom instanceof MonsterRoomBoss) {
-            if (AbstractDungeon.actNum == 1) 
+            if (AbstractDungeon.actNum == 1)
                 relicId = RelicEventHelper.getRelicByPath(tag);
-            else if (AbstractDungeon.actNum == 2) 
+            else if (AbstractDungeon.actNum == 2)
                 relicId = RelicEventHelper.getHSRRelic(AbstractRelic.RelicTier.RARE);
             else if (AbstractDungeon.actNum == 3) {
                 List<String> empireRelics = new ArrayList<>();
                 if (!ModHelper.hasRelic(RubertEmpireMechanicalLever.ID) || AbstractDungeon.player.getRelic(RubertEmpireMechanicalLever.ID).usedUp)
                     empireRelics.add(HSRMod.makePath(RubertEmpireMechanicalLever.ID));
-                if (!ModHelper.hasRelic(RubertEmpireMechanicalPiston.ID) || AbstractDungeon.player.getRelic(RubertEmpireMechanicalPiston.ID).usedUp) 
+                if (!ModHelper.hasRelic(RubertEmpireMechanicalPiston.ID) || AbstractDungeon.player.getRelic(RubertEmpireMechanicalPiston.ID).usedUp)
                     empireRelics.add(HSRMod.makePath(RubertEmpireMechanicalPiston.ID));
                 if (!ModHelper.hasRelic(RubertEmpireMechanicalCogwheel.ID) || AbstractDungeon.player.getRelic(RubertEmpireMechanicalCogwheel.ID).usedUp)
                     empireRelics.add(HSRMod.makePath(RubertEmpireMechanicalCogwheel.ID));
@@ -115,24 +118,30 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
 
     /**
      * Set the reward cards to be within the specified path if chance is met.
+     *
      * @param reward the reward item to modify
      */
     public void setRewardCards(RewardItem reward) {
-        for (int i = 0; i < reward.cards.size(); i++) {
+        for (int i = 0, j = 0; i < reward.cards.size() && j < 1000; i++, j++) {
             AbstractCard card = reward.cards.get(i);
 
             // skip colorless cards
             if (card.color == AbstractCard.CardColor.COLORLESS) continue;
             // skip if card path is not banned and chance is not met
             if (checkPath(card) && !checkChance(card.rarity)) continue;
-            
+            // skip if card path is already the selected path
+            if (card.tags.contains(tag)) continue;
+
             // change card to a new card of the selected path
             AbstractCard newCard = getCard(card.rarity, reward.cards);
 
             // skip if new card is null or repeated
             if (newCard == null) continue;
-            if (reward.cards.stream().anyMatch(c -> Objects.equals(c.cardID, newCard.cardID))) continue;
-            
+            if (reward.cards.stream().anyMatch(c -> Objects.equals(c.cardID, newCard.cardID))) {
+                i--;
+                continue;
+            }
+
             // upgrade new card if the original card is upgraded
             if (card.upgraded) newCard.upgrade();
 
@@ -142,27 +151,26 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
 
     /**
      * Set the reward cards to be within the specified rarities, if not, set to the least common rarity.
-     * @param reward the reward item to modify
+     *
+     * @param reward   the reward item to modify
      * @param rarities the rarities to set the cards to
      */
     public static void setRewardCards(RewardItem reward, AbstractCard.CardRarity... rarities) {
         if (rarities.length == 0) return;
         List<AbstractCard.CardRarity> rarityList = Arrays.asList(rarities);
-        for (int i = 0; i < reward.cards.size(); i++) {
+        for (int i = 0, j = 0; i < reward.cards.size() && j < 1000; i++, j++) {
             if (!rarityList.contains(reward.cards.get(i).rarity)) {
-                for (int j = 0; j < 10; j++) {
-                    AbstractCard newCard = AbstractDungeon.getCard(rarities[0]);
-                    if (reward.cards.contains(newCard)) continue;
-                    reward.cards.set(i, newCard);
-                    break;
-                }
+                AbstractCard newCard = AbstractDungeon.getCard(rarities[0]);
+                if (reward.cards.stream().anyMatch(c -> Objects.equals(c.cardID, newCard.cardID))) i--;
+                else reward.cards.set(i, newCard);
             }
         }
     }
 
     /**
      * Get a card of the specified rarity and path.
-     * @param rarity the rarity of the card
+     *
+     * @param rarity             the rarity of the card
      * @param currentRewardCards the current reward cards
      * @return the card to change
      */
@@ -198,6 +206,7 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
 
     /**
      * Check the chance of changing a card of the specified rarity.
+     *
      * @param rarity the rarity of the card
      * @return true if the chance is met
      */
@@ -214,11 +223,13 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
                 chance = 60 - AbstractDungeon.actNum * 10;
                 break;
         }
+        chance = SubscriptionManager.getInstance().triggerNumChanger(SubscriptionManager.NumChangerType.WAX_WEIGHT, chance);
         return AbstractDungeon.cardRandomRng.random(99) < chance;
     }
 
     /**
      * Check if the card's path is banned.
+     *
      * @param card the card to check
      * @return true if the card's path is not banned
      */
@@ -229,6 +240,7 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
 
     /**
      * Check if the path is banned.
+     *
      * @param tag the path tag
      */
     public boolean checkPath(AbstractCard.CardTags tag) {
@@ -244,7 +256,7 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
         result[1] = saveCardRewards();
         return result;
     }
-    
+
     String saveCardRewards() {
         StringBuilder result = new StringBuilder();
         if (AbstractDungeon.currMapNode == null) return "";
@@ -265,18 +277,18 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
     @Override
     public void onLoad(String[] data) {
         if (data == null) return;
-        
+
         String cardTags = data[0];
         if (bannedTags == null) {
             bannedTags = new ArrayList<>();
         } else {
             bannedTags = GeneralUtil.unpackSaveData(cardTags, AbstractCard.CardTags::valueOf);
         }
-        
+
         String cardRewards = data[1];
         loadCardRewards(cardRewards);
     }
-    
+
     void loadCardRewards(String data) {
         if (data == null || data.isEmpty()) return;
         String[] rewards = data.split(";");
@@ -294,7 +306,7 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
                     }
                     return result;
                 }).collect(Collectors.toCollection(ArrayList::new));
-                extraRewards.add(rewardsList -> {
+                addExtraRewardToTop(rewardsList -> {
                     RewardItem rewardItem = new RewardItem();
                     rewardItem.cards = cardList;
                     rewardsList.add(rewardItem);
@@ -310,7 +322,7 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
         if (tag == null || AbstractDungeon.currMapNode == null) return;
         this.update(AbstractDungeon.getCurrRoom(), tag);
     }
-    
+
     @Override
     public void receiveStartAct() {
         if (AbstractDungeon.actNum <= 1) {
@@ -325,14 +337,22 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
             }
         }
     }
-    
+
+    public static void addExtraRewardToTop(Consumer<List<RewardItem>> extraReward) {
+        getInstance().extraRewards.add(0, extraReward);
+    }
+
+    public static void addExtraRewardToBot(Consumer<List<RewardItem>> extraReward) {
+        getInstance().extraRewards.add(extraReward);
+    }
+
     @SpirePatch(clz = AbstractDungeon.class, method = "nextRoomTransition", paramtypez = {SaveFile.class})
     public static class EnterRoomPatch {
         @SpirePostfixPatch
         public static void Postfix(AbstractDungeon __instance, SaveFile saveFile) {
             ModHelper.addEffectAbstract(() -> {
-                if (instance != null 
-                        && AbstractDungeon.currMapNode != null 
+                if (instance != null
+                        && AbstractDungeon.currMapNode != null
                         && !AbstractDungeon.getCurrRoom().rewardTime) {
                     instance.relicId = null;
                     instance.extraRewards.clear();

@@ -1,17 +1,14 @@
 package hsrmod.cards.base;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.misc.ICanChangeToMulti;
-import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
-import hsrmod.relics.boss.TheWindSoaringValorous;
+import hsrmod.relics.special.TheWindSoaringValorous;
 import hsrmod.utils.ModHelper;
 
 public class Trailblazer1 extends BaseCard implements ICanChangeToMulti {

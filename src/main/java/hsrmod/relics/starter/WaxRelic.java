@@ -22,6 +22,8 @@ import hsrmod.modcore.HSRMod;
 import hsrmod.patches.StelleAwakeWithNeow;
 import hsrmod.relics.BaseRelic;
 import hsrmod.utils.DataManager;
+import hsrmod.utils.ModHelper;
+import hsrmod.utils.RelicEventHelper;
 import hsrmod.utils.RewardEditor;
 
 import java.util.ArrayList;
@@ -52,7 +54,15 @@ public abstract class WaxRelic extends BaseRelic implements ClickableRelic/*, Cu
     public WaxRelic(String id, AbstractCard.CardTags tag) {
         this(id, tag, defaultWeight);
     }
-    
+
+    @Override
+    public void onEquip() {
+        super.onEquip();
+        AbstractDungeon.player.relics.stream()
+                .filter(r -> r instanceof WaxRelic && r != this)
+                .forEach(RelicEventHelper::loseRelicsAfterwards);
+    }
+
     @Override
     public void update() {
         super.update();

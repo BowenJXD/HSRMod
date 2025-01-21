@@ -70,16 +70,16 @@ public class RuanMeiEvent extends PhasedEvent {
                     int r = AbstractDungeon.eventRng.random(0, 2);
                     switch (r) {
                         case 0:
-                            upgrade(i);
-                            RelicEventHelper.gainGold(i);
+                            upgrade();
+                            RelicEventHelper.gainGold(goldAmt);
                             break;
                         case 1:
-                            RelicEventHelper.gainGold(i);
-                            RelicEventHelper.gainRelics(i);
+                            RelicEventHelper.gainGold(goldAmt);
+                            RelicEventHelper.gainRelics(relicAmt);
                             break;
                         case 2:
-                            RelicEventHelper.gainRelics(i);
-                            upgrade(i);
+                            RelicEventHelper.gainRelics(relicAmt);
+                            upgrade();
                             break;
                     }
                     transitionKey(6);
@@ -87,15 +87,15 @@ public class RuanMeiEvent extends PhasedEvent {
                 .enabledCondition(() -> AbstractDungeon.player.masterDeck.group.stream().anyMatch(c -> c.hasTag(CustomEnums.RUAN_MEI)), OPTIONS[10]);
         registerPhase(5, new TextPhase(DESCRIPTIONS[5])
                 .addOption(OPTIONS[6], (i) -> {
-                    upgrade(i);
+                    upgrade();
                     transitionKey(6);
                 })
                 .addOption(OPTIONS[7], (i) -> {
-                    RelicEventHelper.gainGold(i);
+                    RelicEventHelper.gainGold(goldAmt);
                     transitionKey(6);
                 })
                 .addOption(OPTIONS[8], (i) -> {
-                    RelicEventHelper.gainRelics(i);
+                    RelicEventHelper.gainRelics(relicAmt);
                     transitionKey(6);
                 })
                 .addOption(opt)
@@ -108,7 +108,7 @@ public class RuanMeiEvent extends PhasedEvent {
         transitionKey(0);
     }
     
-    public void upgrade(Integer i){
+    public void upgrade(){
         this.imageEventText.updateBodyText(DESCRIPTIONS[1]);
         int effectCount = 0;
         Iterator var11 = AbstractDungeon.player.masterDeck.group.iterator();

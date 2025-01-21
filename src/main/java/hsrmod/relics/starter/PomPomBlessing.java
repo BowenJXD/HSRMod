@@ -3,6 +3,7 @@ package hsrmod.relics.starter;
 import basemod.BaseMod;
 import basemod.abstracts.CustomRelic;
 import basemod.abstracts.CustomSavable;
+import basemod.devcommands.energy.Energy;
 import basemod.interfaces.OnPlayerDamagedSubscriber;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsAction;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
@@ -42,7 +43,7 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
-public class PomPomBlessing extends CustomRelic implements CustomSavable<Integer> {
+public class PomPomBlessing extends CustomRelic {
     // 遗物ID（此处的ModHelper在“04 - 本地化”中提到）
     public static final String ID = HSRMod.makePath(PomPomBlessing.class.getSimpleName());
     // 图片路径
@@ -54,12 +55,11 @@ public class PomPomBlessing extends CustomRelic implements CustomSavable<Integer
 
     private static int ENERGY_GAIN_PER_CARD = 20;
 
-    private int energy = 100;
-
     private int multiplier = 20;
 
     public PomPomBlessing() {
         super(ID, ImageMaster.loadImage(IMG_PATH), RELIC_TIER, LANDING_SOUND);
+        setCounter(100);
     }
 
     // 获取遗物描述，但原版游戏只在初始化和获取遗物时调用，故该方法等于初始描述
@@ -74,10 +74,19 @@ public class PomPomBlessing extends CustomRelic implements CustomSavable<Integer
     @Override
     public void atBattleStart() {
         flash();
-        addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new EnergyPower(AbstractDungeon.player, energy), energy));
+        ModHelper.addToTopAbstract(() -> setCounter(-1));
+        addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new EnergyPower(AbstractDungeon.player, counter), counter));
         addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new IntangiblePlayerPower(AbstractDungeon.player, 1), 1));
         addToTop(new GainEnergyAction(2));
         addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
+    }
+
+    @Override
+    public void setCounter(int counter) {
+        super.setCounter(counter);
+        if (counter > EnergyPower.AMOUNT_LIMIT) {
+            this.counter = EnergyPower.AMOUNT_LIMIT;
+        }
     }
 
     @Override
@@ -160,17 +169,6 @@ public class PomPomBlessing extends CustomRelic implements CustomSavable<Integer
     @Override
     public void onVictory() {
         super.onVictory();
-        energy = ModHelper.getPowerCount(AbstractDungeon.player, EnergyPower.POWER_ID);
-    }
-
-    @Override
-    public Integer onSave() {
-        return energy;
-    }
-
-    @Override
-    public void onLoad(Integer integer) {
-        if (integer == null) return;
-        energy = integer;
+        setCounter(ModHelper.getPowerCount(AbstractDungeon.player, EnergyPower.POWER_ID));
     }
 }

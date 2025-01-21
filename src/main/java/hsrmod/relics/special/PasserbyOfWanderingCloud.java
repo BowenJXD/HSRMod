@@ -1,12 +1,8 @@
-package hsrmod.relics.boss;
+package hsrmod.relics.special;
 
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.unique.LoseEnergyAction;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import hsrmod.cards.BaseCard;
 import hsrmod.relics.BaseRelic;
 import hsrmod.utils.ModHelper;
 

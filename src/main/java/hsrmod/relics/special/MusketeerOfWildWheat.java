@@ -1,4 +1,4 @@
-package hsrmod.relics.boss;
+package hsrmod.relics.special;
 
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;

@@ -1,13 +1,11 @@
 package hsrmod.utils;
 
-import basemod.devcommands.relic.Relic;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.vfx.RainingGoldEffect;
 import com.megacrit.cardcrawl.vfx.RelicAboveCreatureEffect;
 import com.megacrit.cardcrawl.vfx.UpgradeShineEffect;
@@ -16,14 +14,15 @@ import hsrmod.effects.BetterWarningSignEffect;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
 import hsrmod.relics.BaseRelic;
-import hsrmod.relics.RelicTagField;
+import hsrmod.patches.RelicTagField;
 import hsrmod.relics.boss.*;
-import hsrmod.relics.common.IRubertEmpireRelic;
+import hsrmod.relics.special.*;
+import hsrmod.relics.special.TheWindSoaringValorous;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class RelicEventHelper {
@@ -72,27 +71,32 @@ public class RelicEventHelper {
     }
     
     public static void gainRelics(int amount){
-        for (int i = 0, j = 0; i < amount && j < 1000; ++i, ++j) {
-            AbstractRelic r = AbstractDungeon.returnRandomScreenlessRelic(AbstractDungeon.returnRandomRelicTier());
-            if (RelicTagField.subtle.get(r))
-                --i;
-            else
-                AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float)(Settings.WIDTH / 2), (float)(Settings.HEIGHT / 2), r);
-        }
+        gainRelics(amount, AbstractDungeon.returnRandomRelicTier());
     }
     
     public static void gainRelics(int amount, AbstractRelic.RelicTier tier) {
-        for (int i = 0; i < amount; ++i) {
+        gainRelics(amount, tier, r -> !RelicTagField.subtle.get(r));
+    }
+    
+    public static void gainRelics(int amount, Predicate<AbstractRelic> predicate) {
+        gainRelics(amount, AbstractDungeon.returnRandomRelicTier(), predicate);
+    }
+    
+    public static void gainRelics(int amount, AbstractRelic.RelicTier tier, Predicate<AbstractRelic> predicate) {
+        for (int i = 0, j = 0; i < amount && j < 99; ++i, ++j) {
             AbstractRelic r = AbstractDungeon.returnRandomScreenlessRelic(tier);
-            if (RelicTagField.subtle.get(r))
+            if (!predicate.test(r)) {
                 --i;
-            else
+                addRelicToPool(r);
+            } else {
                 AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float) (Settings.WIDTH / 2), (float) (Settings.HEIGHT / 2), r);
+            }
         }
     }
     
     public static void gainRelics(String... relicIDs) {
         for (String relicId : relicIDs) {
+            RelicEventHelper.removeRelicFromPool(relicId);
             AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float) (Settings.WIDTH / 2), (float) (Settings.HEIGHT / 2), RelicLibrary.getRelic(relicId).makeCopy());
         }
     }
@@ -100,6 +104,10 @@ public class RelicEventHelper {
     /*public static void loseRelics(String... relicIDs) {
         loseRelics(Arrays.stream(relicIDs).map(RelicLibrary::getRelic).map(AbstractRelic::makeCopy).toArray(AbstractRelic[]::new));
     }*/
+    
+    public static void loseRelicsAfterwards(AbstractRelic... relics) {
+        ModHelper.addEffectAbstract(() -> loseRelics(relics));
+    }
     
     public static void loseRelics(AbstractRelic... relics) {
         if (relics.length == 0) return;
@@ -195,5 +203,31 @@ public class RelicEventHelper {
             relicName = HSRMod.makePath(relicName);
         }
         return relicName;
+    }
+    
+    public static void removeRelicFromPool(String relicID) {
+        AbstractDungeon.commonRelicPool.remove(relicID);
+        AbstractDungeon.uncommonRelicPool.remove(relicID);
+        AbstractDungeon.rareRelicPool.remove(relicID);
+    }
+    
+    public static void addRelicToPool(AbstractRelic relic) {
+        switch (relic.tier) {
+            case COMMON:
+                AbstractDungeon.commonRelicPool.add(relic.relicId);
+                break;
+            case UNCOMMON:
+                AbstractDungeon.uncommonRelicPool.add(relic.relicId);
+                break;
+            case RARE:
+                AbstractDungeon.rareRelicPool.add(relic.relicId);
+                break;
+            case SHOP:
+                AbstractDungeon.shopRelicPool.add(relic.relicId);
+                break;
+            case BOSS:
+                AbstractDungeon.bossRelicPool.add(relic.relicId);
+                break;
+        }
     }
 }

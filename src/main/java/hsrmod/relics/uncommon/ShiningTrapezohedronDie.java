@@ -1,4 +1,3 @@
-/*
 package hsrmod.relics.uncommon;
 
 import com.megacrit.cardcrawl.core.Settings;
@@ -7,6 +6,7 @@ import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import hsrmod.relics.BaseRelic;
 import hsrmod.utils.ModHelper;
+import hsrmod.utils.RelicEventHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +15,6 @@ import java.util.stream.Collectors;
 
 public class ShiningTrapezohedronDie extends BaseRelic {
     public static final String ID = ShiningTrapezohedronDie.class.getSimpleName();
-
-    List<AbstractRelic> toAdd = new ArrayList<>();
     
     public ShiningTrapezohedronDie() {
         super(ID);
@@ -26,23 +24,12 @@ public class ShiningTrapezohedronDie extends BaseRelic {
     public void onEquip() {
         super.onEquip();
         
-        List<AbstractRelic> relics = AbstractDungeon.player.relics.stream().filter(r -> r.tier != RelicTier.STARTER && !Objects.equals(r.relicId, relicId)).collect(Collectors.toList());
-        toAdd = new ArrayList<>(relics);
-        for (AbstractRelic relic : toAdd) {
-            AbstractDungeon.player.loseRelic(relic.relicId);
+        AbstractRelic[] relics = AbstractDungeon.player.relics.stream()
+                .filter(r -> r.tier == RelicTier.COMMON || r.tier == RelicTier.UNCOMMON || r.tier == RelicTier.RARE)
+                .toArray(AbstractRelic[]::new);
+        if (relics.length > 0) {
+            RelicEventHelper.loseRelicsAfterwards(relics);
+            RelicEventHelper.gainRelicsAfterwards(relics.length);
         }
-    }
-
-    @Override
-    public void update() {
-        if (toAdd != null && !toAdd.isEmpty()) {
-            AbstractRelic relic = toAdd.get(0);
-            if (relic == null || RelicLibrary.getRelic(relic.relicId) == null) return;
-            AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float) (Settings.WIDTH / 2), (float) (Settings.HEIGHT / 2),
-                    RelicLibrary.getRelic(relic.relicId).makeCopy());
-            toAdd.remove(0);
-        }
-        super.update();
     }
 }
-*/

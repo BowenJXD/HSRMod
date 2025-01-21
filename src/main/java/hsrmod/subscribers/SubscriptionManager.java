@@ -15,6 +15,7 @@ import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.misc.DoTPower;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -36,6 +37,9 @@ public class SubscriptionManager {
     List<ISetToughnessReductionSubscriber> setToughnessReductionSubscribers = new ArrayList<>();
     List<PostUpgradeSubscriber> postUpgradeSubscribers = new ArrayList<>();
 
+    HashMap<RunnableType, List<IRunnableSubscriber>> runnableSubscribers = new HashMap<>();
+    HashMap<NumChangerType, List<INumChangerSubscriber>> numChangerSubscribers = new HashMap<>();
+
     SubscriptionManager() {}
 
     public static SubscriptionManager getInstance() {
@@ -44,7 +48,7 @@ public class SubscriptionManager {
         }
         return instance;
     }
-    
+
     public static void subscribe(IHSRSubscriber sub) {
         getInstance().subscribeHelper(sub, false);
     }
@@ -58,53 +62,87 @@ public class SubscriptionManager {
                 && !preElementalDamageSubscribers.contains(sub)) {
             if (addToFront) preElementalDamageSubscribers.add(0, (PreElementalDamageSubscriber) sub);
             else preElementalDamageSubscribers.add((PreElementalDamageSubscriber) sub);
-        } if (sub instanceof PreBreakDamageSubscriber
+        }
+        if (sub instanceof PreBreakDamageSubscriber
                 && !preBreakDamageSubscribers.contains(sub)) {
             if (addToFront) preBreakDamageSubscribers.add(0, (PreBreakDamageSubscriber) sub);
             else preBreakDamageSubscribers.add((PreBreakDamageSubscriber) sub);
-        } if (sub instanceof PreToughnessReduceSubscriber
+        }
+        if (sub instanceof PreToughnessReduceSubscriber
                 && !preToughnessReduceSubscribers.contains(sub)) {
             if (addToFront) preToughnessReduceSubscribers.add(0, (PreToughnessReduceSubscriber) sub);
             else preToughnessReduceSubscribers.add((PreToughnessReduceSubscriber) sub);
-        } if (sub instanceof PreBreakSubscriber
+        }
+        if (sub instanceof PreBreakSubscriber
                 && !preBreakSubscribers.contains(sub)) {
             if (addToFront) preBreakSubscribers.add(0, (PreBreakSubscriber) sub);
             else preBreakSubscribers.add((PreBreakSubscriber) sub);
-        } if (sub instanceof PreDoTDamageSubscriber
+        }
+        if (sub instanceof PreDoTDamageSubscriber
                 && !preDoTDamageSubscribers.contains(sub)) {
             if (addToFront) preDoTDamageSubscribers.add(0, (PreDoTDamageSubscriber) sub);
             else preDoTDamageSubscribers.add((PreDoTDamageSubscriber) sub);
-        } if (sub instanceof PreEnergyChangeSubscriber
+        }
+        if (sub instanceof PreEnergyChangeSubscriber
                 && !preEnergyChangeSubscribers.contains(sub)) {
             if (addToFront) preEnergyChangeSubscribers.add(0, (PreEnergyChangeSubscriber) sub);
             else preEnergyChangeSubscribers.add((PreEnergyChangeSubscriber) sub);
-        } if (sub instanceof PostBreakBlockSubscriber
+        }
+        if (sub instanceof PostBreakBlockSubscriber
                 && !postBreakBlockSubscribers.contains(sub)) {
             if (addToFront) postBreakBlockSubscribers.add(0, (PostBreakBlockSubscriber) sub);
             else postBreakBlockSubscribers.add((PostBreakBlockSubscriber) sub);
-        } if (sub instanceof PreBlockChangeSubscriber
+        }
+        if (sub instanceof PreBlockChangeSubscriber
                 && !preBlockGainSubscribers.contains(sub)) {
             if (addToFront) preBlockGainSubscribers.add(0, (PreBlockChangeSubscriber) sub);
             else preBlockGainSubscribers.add((PreBlockChangeSubscriber) sub);
-        } if (sub instanceof ICheckUsableSubscriber
+        }
+        if (sub instanceof ICheckUsableSubscriber
                 && !checkUsableSubscribers.contains(sub)) {
             if (addToFront) checkUsableSubscribers.add(0, (ICheckUsableSubscriber) sub);
             else checkUsableSubscribers.add((ICheckUsableSubscriber) sub);
-        } if (sub instanceof ISetToughnessReductionSubscriber
+        }
+        if (sub instanceof ISetToughnessReductionSubscriber
                 && !setToughnessReductionSubscribers.contains(sub)) {
             if (addToFront) setToughnessReductionSubscribers.add(0, (ISetToughnessReductionSubscriber) sub);
             else setToughnessReductionSubscribers.add((ISetToughnessReductionSubscriber) sub);
-        } if (sub instanceof PostUpgradeSubscriber
+        }
+        if (sub instanceof PostUpgradeSubscriber
                 && !postUpgradeSubscribers.contains(sub)) {
             if (addToFront) postUpgradeSubscribers.add(0, (PostUpgradeSubscriber) sub);
             else postUpgradeSubscribers.add((PostUpgradeSubscriber) sub);
+        }
+        if (sub instanceof IRunnableSubscriber) {
+            subscribeRunnableHelper((IRunnableSubscriber) sub, ((IRunnableSubscriber) sub).getSubType());
+        }
+        if (sub instanceof INumChangerSubscriber) {
+            subscribeNumHelper((INumChangerSubscriber) sub, ((INumChangerSubscriber) sub).getSubType());
+        }
+    }
+
+    void subscribeRunnableHelper(IRunnableSubscriber sub, RunnableType type) {
+        if (!runnableSubscribers.containsKey(type)) {
+            runnableSubscribers.put(type, new ArrayList<>());
+        }
+        if (!runnableSubscribers.get(type).contains(sub)) {
+            runnableSubscribers.get(type).add(sub);
+        }
+    }
+
+    void subscribeNumHelper(INumChangerSubscriber sub, NumChangerType type) {
+        if (!numChangerSubscribers.containsKey(type)) {
+            numChangerSubscribers.put(type, new ArrayList<>());
+        }
+        if (!numChangerSubscribers.get(type).contains(sub)) {
+            numChangerSubscribers.get(type).add(sub);
         }
     }
 
     public static void unsubscribe(ISubscriber sub) {
         BaseMod.unsubscribe(sub);
     }
-    
+
     public static void unsubscribe(IHSRSubscriber sub) {
         getInstance().unsubscribeHelper(sub);
     }
@@ -112,27 +150,53 @@ public class SubscriptionManager {
     public void unsubscribeHelper(ISubscriber sub) {
         if (sub instanceof PreElementalDamageSubscriber) {
             preElementalDamageSubscribers.remove(sub);
-        } if (sub instanceof PreBreakDamageSubscriber) {
+        }
+        if (sub instanceof PreBreakDamageSubscriber) {
             preBreakDamageSubscribers.remove(sub);
-        } if (sub instanceof PreToughnessReduceSubscriber) {
+        }
+        if (sub instanceof PreToughnessReduceSubscriber) {
             preToughnessReduceSubscribers.remove(sub);
-        } if (sub instanceof PreBreakSubscriber) {
+        }
+        if (sub instanceof PreBreakSubscriber) {
             preBreakSubscribers.remove(sub);
-        } if (sub instanceof PreDoTDamageSubscriber) {
+        }
+        if (sub instanceof PreDoTDamageSubscriber) {
             preDoTDamageSubscribers.remove(sub);
-        } if (sub instanceof PreEnergyChangeSubscriber) {
+        }
+        if (sub instanceof PreEnergyChangeSubscriber) {
             preEnergyChangeSubscribers.remove(sub);
-        } if (sub instanceof PostBreakBlockSubscriber) {
+        }
+        if (sub instanceof PostBreakBlockSubscriber) {
             postBreakBlockSubscribers.remove(sub);
-        } if (sub instanceof PreBlockChangeSubscriber) {
+        }
+        if (sub instanceof PreBlockChangeSubscriber) {
             preBlockGainSubscribers.remove(sub);
-        } if (sub instanceof ICheckUsableSubscriber) {
+        }
+        if (sub instanceof ICheckUsableSubscriber) {
             checkUsableSubscribers.remove(sub);
-        } if (sub instanceof ISetToughnessReductionSubscriber) {
+        }
+        if (sub instanceof ISetToughnessReductionSubscriber) {
             setToughnessReductionSubscribers.remove(sub);
-        } if (sub instanceof PostUpgradeSubscriber) {
+        }
+        if (sub instanceof PostUpgradeSubscriber) {
             postUpgradeSubscribers.remove(sub);
         }
+        if (sub instanceof IRunnableSubscriber) {
+            unsubscribeRunnableHelper((IRunnableSubscriber) sub, ((IRunnableSubscriber) sub).getSubType());
+        }
+        if (sub instanceof INumChangerSubscriber) {
+            unsubscribeNumHelper((INumChangerSubscriber) sub, ((INumChangerSubscriber) sub).getSubType());
+        }
+    }
+    
+    void unsubscribeRunnableHelper(IRunnableSubscriber sub, RunnableType type) {
+        if (!runnableSubscribers.containsKey(type)) return;
+        runnableSubscribers.get(type).remove(sub);
+    }
+    
+    void unsubscribeNumHelper(INumChangerSubscriber sub, NumChangerType type) {
+        if (!numChangerSubscribers.containsKey(type)) return;
+        numChangerSubscribers.get(type).remove(sub);
     }
 
     public void unsubscribeLater(IHSRSubscriber sub) {
@@ -259,13 +323,37 @@ public class SubscriptionManager {
 
         return result;
     }
-    
+
     public void triggerPostUpgrade(AbstractCard card) {
         for (PostUpgradeSubscriber sub : postUpgradeSubscribers) {
             sub.postUpgrade(card);
         }
 
         unsubscribeLaterHelper(PostUpgradeSubscriber.class);
+    }
+
+    public void triggerRunnable(RunnableType type) {
+        if (!runnableSubscribers.containsKey(type)) return;
+
+        for (IRunnableSubscriber sub : runnableSubscribers.get(type)) {
+            sub.run();
+        }
+
+        unsubscribeLaterHelper(IRunnableSubscriber.class);
+    }
+    
+    public float triggerNumChanger(NumChangerType type, float baseNum) {
+        float result = baseNum;
+        
+        if (!numChangerSubscribers.containsKey(type)) return result;
+        
+        for (INumChangerSubscriber sub : numChangerSubscribers.get(type)) {
+            result = sub.changeNum(result);
+        }
+
+        unsubscribeLaterHelper(INumChangerSubscriber.class);
+
+        return result;
     }
 
     public static boolean checkSubscriber(BaseCard card) {
@@ -295,7 +383,7 @@ public class SubscriptionManager {
         }
         return result;
     }
-    
+
     public static boolean checkSubscriber(AbstractMonster monster) {
         boolean result = AbstractDungeon.getMonsters().monsters.contains(monster);
         if (!result) {
@@ -304,13 +392,24 @@ public class SubscriptionManager {
         }
         return result;
     }
-    
+
     public static boolean checkSubscriber(AbstractRelic relic) {
-        boolean result = AbstractDungeon.player.relics.contains(relic);
+        boolean result = AbstractDungeon.player != null
+                && AbstractDungeon.player.relics != null        
+                && AbstractDungeon.player.relics.contains(relic);
         if (!result) {
             if (relic instanceof IHSRSubscriber) getInstance().unsubscribeLater((IHSRSubscriber) relic);
             if (relic instanceof ISubscriber) BaseMod.unsubscribeLater((ISubscriber) relic);
         }
         return result;
+    }
+
+    public static enum RunnableType {
+        ON_RELIC_DESTROYS
+    }
+    
+    public static enum NumChangerType {
+        WAX_WEIGHT,
+        TROTTER_WEIGHT,
     }
 }

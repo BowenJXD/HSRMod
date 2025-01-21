@@ -17,6 +17,7 @@ public class March7thRelic extends CustomRelic {
 
     public March7thRelic() {
         super(ID, ImageMaster.loadImage(IMG_PATH), RELIC_TIER, LANDING_SOUND);
+        setCounter(-2);
     }
 
     // 获取遗物描述，但原版游戏只在初始化和获取遗物时调用，故该方法等于初始描述

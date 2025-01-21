@@ -51,7 +51,6 @@ public class MasterOfDreamMachinations extends BaseRelic implements ClickableRel
         if (!this.cardSelected && AbstractDungeon.gridSelectScreen.selectedCards.size() == 1) {
             this.giveCards(AbstractDungeon.gridSelectScreen.selectedCards.get(0));
         }
-
     }
 
     public void giveCards(AbstractCard card) {

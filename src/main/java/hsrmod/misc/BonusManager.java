@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import hsrmod.monsters.SequenceTrotter;
 import hsrmod.monsters.WarpTrotter;
+import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
 public class BonusManager implements OnStartBattleSubscriber, StartActSubscriber, CustomSavable<Integer> {
@@ -35,12 +36,15 @@ public class BonusManager implements OnStartBattleSubscriber, StartActSubscriber
                 && AbstractDungeon.actNum > 0 
                 && !room.eliteTrigger
                 && room.monsters.monsters.stream().noneMatch(m -> m instanceof SequenceTrotter || m.type == AbstractMonster.EnemyType.BOSS)
-                && AbstractDungeon.monsterRng.random(99) < appearChance
                 && !BaseMod.hasModID("spireTogether:")) {
-            AbstractMonster monster = AbstractDungeon.monsterRng.random(99) < warpChance ? new WarpTrotter(400, 0) : new SequenceTrotter(400, 0);
-            monster.usePreBattleAction();
-            AbstractDungeon.actionManager.addToTop(new SpawnMonsterAction(monster, false));
-            appearChance /= 2;
+            float aChance = SubscriptionManager.getInstance().triggerNumChanger(SubscriptionManager.NumChangerType.TROTTER_WEIGHT, appearChance);
+            float wChance = SubscriptionManager.getInstance().triggerNumChanger(SubscriptionManager.NumChangerType.TROTTER_WEIGHT, warpChance);
+            if (AbstractDungeon.monsterRng.random(99) < aChance) {
+                AbstractMonster monster = AbstractDungeon.monsterRng.random(99) < wChance ? new WarpTrotter(400, 0) : new SequenceTrotter(400, 0);
+                monster.usePreBattleAction();
+                AbstractDungeon.actionManager.addToTop(new SpawnMonsterAction(monster, false));
+                appearChance /= 2;
+            }
         }
     }
 

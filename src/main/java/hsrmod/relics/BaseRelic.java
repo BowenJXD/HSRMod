@@ -1,9 +1,6 @@
 package hsrmod.relics;
 
 import basemod.abstracts.CustomRelic;
-import basemod.devcommands.relic.Relic;
-import com.megacrit.cardcrawl.actions.utility.SFXAction;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
@@ -12,10 +9,9 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.vfx.RelicAboveCreatureEffect;
 import hsrmod.effects.BetterWarningSignEffect;
 import hsrmod.modcore.HSRMod;
+import hsrmod.patches.RelicTagField;
 import hsrmod.utils.DataManager;
 import hsrmod.utils.RelicDataCol;
-
-import java.util.ArrayList;
 
 public abstract class BaseRelic extends CustomRelic {
     public int magicNumber;
@@ -46,10 +42,17 @@ public abstract class BaseRelic extends CustomRelic {
             this.usedUp();
         }
     }
+    
+    public void reduceCounterAndCheckUsedUp() {
+        super.setCounter(counter - 1);
+        if (counter <= 0) {
+            this.destroy();
+        }
+    }
 
     protected void destroy(){
         this.setCounter(-2);
-        AbstractDungeon.effectList.add(new RelicAboveCreatureEffect(Settings.WIDTH * 0.5f, Settings.HEIGHT * 0.6f, this));
+        AbstractDungeon.topLevelEffects.add(new RelicAboveCreatureEffect(Settings.WIDTH * 0.5f, Settings.HEIGHT * 0.6f, this));
         AbstractDungeon.topLevelEffects.add(new BetterWarningSignEffect(Settings.WIDTH * 0.5f, Settings.HEIGHT * 0.7f, 4.0f));
 /*        this.description = "该遗物已损毁。";
         this.tips.clear();

@@ -1,20 +1,12 @@
-package hsrmod.relics.boss;
+package hsrmod.relics.special;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import hsrmod.cards.BaseCard;
 import hsrmod.misc.ICanChangeToMulti;
-import hsrmod.powers.misc.BrainInAVatPower;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.relics.BaseRelic;
-import hsrmod.subscribers.PostUpgradeSubscriber;
-import hsrmod.subscribers.SubscriptionManager;
-import hsrmod.utils.ModHelper;
 
 public class TheWindSoaringValorous extends BaseRelic {
     public static final String ID = TheWindSoaringValorous.class.getSimpleName();

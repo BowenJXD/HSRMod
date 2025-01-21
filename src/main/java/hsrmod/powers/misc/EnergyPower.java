@@ -17,6 +17,7 @@ public class EnergyPower extends BuffPower implements InvisiblePower {
 
     public EnergyPower(AbstractCreature owner, int Amount) {
         super(POWER_ID, owner, Amount);
+        alterPower(0);
         this.updateDescription();
     }
 

@@ -1,4 +1,4 @@
-package hsrmod.relics;
+package hsrmod.patches;
 
 import com.evacipated.cardcrawl.modthespire.lib.SpireField;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;

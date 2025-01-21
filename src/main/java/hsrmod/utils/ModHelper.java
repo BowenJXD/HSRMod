@@ -194,6 +194,18 @@ public class ModHelper {
             }
         }
     }
+    
+    public static AbstractMonster getMonsterWithMaxHealth() {
+        if (AbstractDungeon.currMapNode == null
+                || AbstractDungeon.getMonsters() == null
+                || AbstractDungeon.getMonsters().monsters == null) {
+            return null;
+        }
+        return AbstractDungeon.getCurrRoom().monsters.monsters.stream()
+                .filter(ModHelper::check)
+                .max(Comparator.comparingInt(m -> m.maxHealth))
+                .orElse(null);
+    }
 
     public static boolean hasRelic(String relicID) {
         return AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(HSRMod.makePath(relicID));

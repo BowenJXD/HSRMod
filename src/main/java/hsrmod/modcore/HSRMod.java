@@ -18,7 +18,6 @@ import com.megacrit.cardcrawl.cards.colorless.SadisticNature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.dungeons.Exordium;
 import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.FontHelper;
@@ -34,6 +33,7 @@ import com.megacrit.cardcrawl.relics.ChemicalX;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import com.badlogic.gdx.graphics.Color;
 import hsrmod.characters.StellaCharacter;
+import hsrmod.dungeons.Belobog;
 import hsrmod.events.*;
 import hsrmod.misc.BonusManager;
 import hsrmod.misc.ChargeIcon;
@@ -43,6 +43,10 @@ import hsrmod.monsters.Exordium.*;
 import hsrmod.monsters.SequenceTrotter;
 import hsrmod.monsters.TheBeyond.*;
 import hsrmod.monsters.TheCity.*;
+import hsrmod.relics.special.Pineapple;
+import hsrmod.relics.special.ThalanToxiFlame;
+import hsrmod.relics.special.ThePinkestCollision;
+import hsrmod.utils.ModHelper;
 import hsrmod.utils.RewardEditor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -161,6 +165,7 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         BaseMod.loadCustomStringsFile(PowerStrings.class, "HSRModResources/localization/" + lang + "/powers.json");
         BaseMod.loadCustomStringsFile(EventStrings.class, "HSRModResources/localization/" + lang + "/events.json");
         BaseMod.loadCustomStringsFile(MonsterStrings.class, "HSRModResources/localization/" + lang + "/monsters.json");
+        BaseMod.loadCustomStringsFile(UIStrings.class, "HSRModResources/localization/" + lang + "/ui.json");
     }
 
     @Override
@@ -182,14 +187,13 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
     public void receivePostInitialize() {
         addConfigPanel();
         BaseMod.addSaveField("RewardEditor", RewardEditor.getInstance());
-        BaseMod.addSaveField("BonusManager", BonusManager.getInstance());
         BaseMod.removeCard(SadisticNature.ID, AbstractCard.CardColor.COLORLESS);
         BaseMod.removeRelic(RelicLibrary.getRelic(ChemicalX.ID));
-        if (addEvent) addEvents();
         if (addEnemy) {
             addMonsters();
-            BonusManager.getInstance();
+            BaseMod.addSaveField("BonusManager", BonusManager.getInstance());
         }
+        if (addEvent) addEvents();
     }
 
     @Override
@@ -204,7 +208,7 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
                 .create());
 
         BaseMod.addEvent(new AddEventParams.Builder(CosmicCrescendoEvent.ID, CosmicCrescendoEvent.class)
-                .dungeonID(Exordium.ID)
+                .dungeonID(Belobog.ID)
                 // .bonusCondition(() -> ModHelper.hasRelic(WaxOfElation.ID))
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(TavernEvent.ID, TavernEvent.class)
@@ -216,7 +220,7 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
                 // .bonusCondition(() -> ModHelper.hasRelic(WaxOfNihility.ID))
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(LonelyBeautyBugsOneEvent.ID, LonelyBeautyBugsOneEvent.class)
-                .dungeonIDs(Exordium.ID, TheCity.ID)
+                .dungeonIDs(Belobog.ID, TheCity.ID)
                 // .bonusCondition(() -> ModHelper.hasRelic(WaxOfPreservation.ID))
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(SlumberingOverlordEvent.ID, SlumberingOverlordEvent.class)
@@ -231,13 +235,24 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
                 // .bonusCondition(() -> ModHelper.hasRelic(WaxOfErudition.ID))
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(WaxManufacturerEvent.ID, WaxManufacturerEvent.class)
-                .dungeonID(Exordium.ID)
+                .dungeonID(Belobog.ID)
                 // .bonusCondition(() -> WaxRelic.getSelectedPathTag(AbstractDungeon.player.relics) != WaxManufacturerEvent.getMostCommonTag(AbstractDungeon.player.masterDeck))
                 .create());
-        
+
         BaseMod.addEvent(new AddEventParams.Builder(ThreeLittlePigsEvent.ID, ThreeLittlePigsEvent.class)
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(ImperialLegacyEvent.ID, ImperialLegacyEvent.class)
+                .dungeonID(TheBeyond.ID)
+                .create());
+        BaseMod.addEvent(new AddEventParams.Builder(AceTrashDiggerEvent.ID, AceTrashDiggerEvent.class)
+                .create());
+        BaseMod.addEvent(new AddEventParams.Builder(PineappleBreadEvent.ID, PineappleBreadEvent.class)
+                .spawnCondition(() -> !ModHelper.hasRelic(Pineapple.ID))
+                .create());
+        BaseMod.addEvent(new AddEventParams.Builder(YuQingtuEvent.ID, YuQingtuEvent.class)
+                .spawnCondition(() -> !ModHelper.hasRelic(ThePinkestCollision.ID) && !ModHelper.hasRelic(ThalanToxiFlame.ID))   
+                .create());
+        BaseMod.addEvent(new AddEventParams.Builder(IPMBShoppingMallEvent.ID, IPMBShoppingMallEvent.class)
                 .dungeonID(TheBeyond.ID)
                 .create());
         
@@ -253,23 +268,20 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
                 new SequenceTrotter(-100, AbstractDungeon.monsterRng.random(-15, 15), 2),
                 new SequenceTrotter(+200, AbstractDungeon.monsterRng.random(-15, 15), 1),
         }));
-        BaseMod.addStrongMonsterEncounter(Exordium.ID, new MonsterInfo(Encounter.THREE_LIL_PIGS, 0.0F));
+        BaseMod.addStrongMonsterEncounter(Belobog.ID, new MonsterInfo(Encounter.THREE_LIL_PIGS, 0.0F));
     }
 
     public void addMonsters() {
+        Belobog belobog = new Belobog();
 
         // =========================== Boss ===========================
 
-        BaseMod.addMonster(Encounter.END_OF_THE_ETERNAL_FREEZE, () -> new MonsterGroup(new AbstractMonster[]{
-                new Cocolia()
-        }));
-        BaseMod.addBoss(Exordium.ID, Encounter.END_OF_THE_ETERNAL_FREEZE, "HSRModResources/img/monsters/EndOfTheEternalFreeze.png", "HSRModResources/img/monsters/BossOutline.png");
-        BaseMod.addMonster(Encounter.DESTRUCTIONS_BEGINNING, () -> new MonsterGroup(new AbstractMonster[]{
+        belobog.addBoss(Encounter.END_OF_THE_ETERNAL_FREEZE, Cocolia::new, "HSRModResources/img/monsters/EndOfTheEternalFreeze.png", "HSRModResources/img/monsters/BossOutline.png");
+        belobog.addBoss(Encounter.DESTRUCTIONS_BEGINNING, () -> new MonsterGroup(new AbstractMonster[]{
                 new DawnsLeftHand(),
                 new AntimatterEngine(),
                 new DisastersRightHand()
-        }));
-        BaseMod.addBoss(Exordium.ID, Encounter.DESTRUCTIONS_BEGINNING, "HSRModResources/img/monsters/DestructionsBeginning.png", "HSRModResources/img/monsters/BossOutline.png");
+        }), "HSRModResources/img/monsters/DestructionsBeginning.png", "HSRModResources/img/monsters/BossOutline.png");
         
         BaseMod.addMonster(Encounter.DIVINE_SEED, () -> new MonsterGroup(new AbstractMonster[]{
                 new Phantylia(),
@@ -288,15 +300,12 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         BaseMod.addMonster(Encounter.GEPARD, () -> new MonsterGroup(new AbstractMonster[]{
                 new Gepard()
         }));
-        BaseMod.addEliteEncounter(Exordium.ID, new MonsterInfo(Encounter.GEPARD, 3.0F));
         BaseMod.addMonster(Encounter.BRONYA, () -> new MonsterGroup(new AbstractMonster[]{
                 new Bronya()
         }));
-        BaseMod.addEliteEncounter(Exordium.ID, new MonsterInfo(Encounter.BRONYA, 3.0F));
-        BaseMod.addMonster(Encounter.SWAROG, () -> new MonsterGroup(new AbstractMonster[]{
+        BaseMod.addMonster(Encounter.SVAROG, () -> new MonsterGroup(new AbstractMonster[]{
                 new Svarog()
         }));
-        BaseMod.addEliteEncounter(Exordium.ID, new MonsterInfo(Encounter.SWAROG, 3.0F));
         
         BaseMod.addMonster(Encounter.HOOLAY, () -> new MonsterGroup(new AbstractMonster[]{
                 new Hoolay()
@@ -313,38 +322,30 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         BaseMod.addMonster(Encounter.GRIZZLY, () -> new MonsterGroup(new AbstractMonster[]{
                 new Grizzly()
         }));
-        BaseMod.addStrongMonsterEncounter(Exordium.ID, new MonsterInfo(Encounter.GRIZZLY, 3.0F));
         BaseMod.addMonster(Encounter.FRIGID_PROWLER, () -> new MonsterGroup(new AbstractMonster[]{
                 new FrigidProwler()
         }));
-        BaseMod.addStrongMonsterEncounter(Exordium.ID, new MonsterInfo(Encounter.FRIGID_PROWLER, 3.0F));
         BaseMod.addMonster(Encounter.GUARDIAN_SHADOW, () -> new MonsterGroup(new AbstractMonster[]{
                 new GuardianShadow()
         }));
-        BaseMod.addStrongMonsterEncounter(Exordium.ID, new MonsterInfo(Encounter.GUARDIAN_SHADOW, 3.0F));
         BaseMod.addMonster(Encounter.DECAYING_SHADOW, () -> new MonsterGroup(new AbstractMonster[]{
                 new DecayingShadow()
         }));
-        BaseMod.addStrongMonsterEncounter(Exordium.ID, new MonsterInfo(Encounter.DECAYING_SHADOW, 3.0F));
         BaseMod.addMonster(Encounter.SILVERMANE_LIEUTENANT, () -> new MonsterGroup(new AbstractMonster[]{
                 new SilvermaneLieutenant(-100, AbstractDungeon.monsterRng.random(-15, 15))
         }));
-        BaseMod.addStrongMonsterEncounter(Exordium.ID, new MonsterInfo(Encounter.SILVERMANE_LIEUTENANT, 3.0F));
         BaseMod.addMonster(Encounter.VAGRANTS, () -> new MonsterGroup(new AbstractMonster[]{
                 new Vagrant(-250, AbstractDungeon.monsterRng.random(-15, 30)),
                 new Vagrant(0, AbstractDungeon.monsterRng.random(-15, 30)),
         }));
-        BaseMod.addStrongMonsterEncounter(Exordium.ID, new MonsterInfo(Encounter.VAGRANTS, 3.0F));
         BaseMod.addMonster(Encounter.STORMBRINGER, () -> new MonsterGroup(new AbstractMonster[]{
                 new Windspawn(-300, AbstractDungeon.monsterRng.random(180, 200)),
                 new Stormbringer(0, AbstractDungeon.monsterRng.random(-15, 15)),
         }));
-        BaseMod.addStrongMonsterEncounter(Exordium.ID, new MonsterInfo(Encounter.STORMBRINGER, 3.0F));
         BaseMod.addMonster(Encounter.DIREWOLF, () -> new MonsterGroup(new AbstractMonster[]{
                 Encounter.getRandomAutomaton(-300, AbstractDungeon.monsterRng.random(-15, 15)),
                 new Direwolf(0, AbstractDungeon.monsterRng.random(-15, 15)),
         }));
-        BaseMod.addStrongMonsterEncounter(Exordium.ID, new MonsterInfo(Encounter.DIREWOLF, 3.0F));
         
         
         BaseMod.addMonster(Encounter.AUROMATON_GATEKEEPER, () -> new MonsterGroup(new AbstractMonster[]{
@@ -364,22 +365,18 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
                 Encounter.getRandomAutomaton(-250, AbstractDungeon.monsterRng.random(-15, 15)),
                 Encounter.getRandomAutomaton(0, AbstractDungeon.monsterRng.random(-15, 15)),
         }));
-        BaseMod.addMonsterEncounter(Exordium.ID, new MonsterInfo(Encounter.TWO_AUTOMATONS, 3.0F));
-        BaseMod.addMonster(Encounter.SHADEWALKERS, () -> new MonsterGroup(new AbstractMonster[]{
+        /*BaseMod.addMonster(Encounter.SHADEWALKERS, () -> new MonsterGroup(new AbstractMonster[]{
                 new EverwinterShadewalker(-250, AbstractDungeon.monsterRng.random(-15, 15)),
                 new IncinerationShadewalker(0, AbstractDungeon.monsterRng.random(-15, 15)),
-        }));
-        BaseMod.addMonsterEncounter(Exordium.ID, new MonsterInfo(Encounter.SHADEWALKERS, 3.0F));
+        }));*/
         BaseMod.addMonster(Encounter.VAGRANT, () -> new MonsterGroup(new AbstractMonster[]{
                 new Vagrant(0, AbstractDungeon.monsterRng.random(-15, 30)),
         }));
-        BaseMod.addMonsterEncounter(Exordium.ID, new MonsterInfo(Encounter.VAGRANT, 3.0F));
         BaseMod.addMonster(Encounter.MASK_N_SPAWNS, () -> new MonsterGroup(new AbstractMonster[]{
                 Encounter.getRandomSpawn(-300, AbstractDungeon.monsterRng.random(180, 200)),
                 new MaskOfNoThought(-100, AbstractDungeon.monsterRng.random(150, 180)),
                 Encounter.getRandomSpawn(100, AbstractDungeon.monsterRng.random(180, 200)),
         }));
-        BaseMod.addMonsterEncounter(Exordium.ID, new MonsterInfo(Encounter.MASK_N_SPAWNS, 3.0F));
         
         
         BaseMod.addMonster(Encounter.DRAGONFISH_N_DRACOLION, () -> new MonsterGroup(new AbstractMonster[]{
@@ -396,6 +393,10 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
                 new MrDomescreen(200, AbstractDungeon.monsterRng.random(-15, 15)),
         }));
         BaseMod.addMonsterEncounter(TheBeyond.ID, new MonsterInfo(Encounter.HOUND_N_DOMESCREEN, 3.0F));
+        
+        // ==================================================================
+        
+        belobog.addAct("Exordium");
     }
 
     @Override

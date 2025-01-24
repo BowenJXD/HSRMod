@@ -16,8 +16,8 @@ import hsrmod.actions.GridCardManipulator;
 import hsrmod.actions.SimpleGridCardSelectBuilder;
 import hsrmod.cards.BaseCard;
 import hsrmod.cardsV2.Paths.*;
+import hsrmod.events.StelleAwakeEvent;
 import hsrmod.modcore.CustomEnums;
-import hsrmod.patches.StelleAwakeWithNeow;
 import hsrmod.relics.BaseRelic;
 import hsrmod.utils.RewardEditor;
 
@@ -87,7 +87,7 @@ public class TrailblazeTimer extends BaseRelic implements ClickableRelic  {
     @Override
     public void onRightClick() {
         if (isObtained
-                && (AbstractDungeon.getCurrRoom() instanceof NeowRoom || AbstractDungeon.getCurrRoom() instanceof StelleAwakeWithNeow.PathSelectEventRoom)
+                && (AbstractDungeon.getCurrRoom() instanceof NeowRoom || AbstractDungeon.getCurrRoom().event instanceof StelleAwakeEvent)
                 && (RewardEditor.getInstance().bannedTags == null || RewardEditor.getInstance().bannedTags.isEmpty())) {
             AbstractGameAction action = new SimpleGridCardSelectBuilder(c -> true)
                     .setCardGroup(pathGroup)

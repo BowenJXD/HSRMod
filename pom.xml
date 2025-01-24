@@ -57,6 +57,13 @@
             <scope>system</scope>
             <systemPath>${Steam.path}/workshop/content/646570/1609158507/StsLib.jar</systemPath>
         </dependency>
+        <dependency>
+            <groupId>com.evacipated.cardcrawl.mod</groupId>
+            <artifactId>ActLikeIt</artifactId>
+            <version>0.9.0</version>
+            <scope>system</scope>
+            <systemPath>${Steam.path}/workshop/content/646570/1934902042/actlikeit.jar</systemPath>
+        </dependency>
         
     </dependencies>
 

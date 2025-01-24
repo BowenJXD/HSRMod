@@ -22,9 +22,11 @@ public class TemporaryStake extends BaseRelic {
     @Override
     public void onEnterRoom(AbstractRoom room) {
         super.onEnterRoom(room);
-        reduceCounterAndCheckUsedUp();
-        if (usedUp) {
-            AbstractDungeon.player.loseGold(600);
+        if (!usedUp) {
+            reduceCounterAndCheckUsedUp();
+            if (usedUp) {
+                AbstractDungeon.player.loseGold(600);
+            }
         }
     }
 }

@@ -1,3 +1,4 @@
+/*
 package hsrmod.patches;
 
 import basemod.BaseMod;
@@ -119,3 +120,4 @@ public interface StelleAwakeWithNeow {
         }
     }
 }
+*/

@@ -19,16 +19,16 @@ public class ManMadeMeteorite extends BaseRelic implements INumChangerSubscriber
 
     public void onEquip() {
         flash();
-        if (AbstractDungeon.currMapNode != null && AbstractDungeon.getCurrRoom().phase != AbstractRoom.RoomPhase.COMBAT) {
-            AbstractDungeon.combatRewardScreen.open(this.DESCRIPTIONS[1]);
-        } else if (!AbstractDungeon.getCurrRoom().rewardTime) {
-            RewardItem reward = new RewardItem();
-            RewardEditor.getInstance().setRewardCards(reward);
-            AbstractDungeon.getCurrRoom().rewards.add(0, reward);
-        } else {
+        if (AbstractDungeon.getCurrRoom().rewardTime) {
             RewardItem reward = new RewardItem();
             RewardEditor.getInstance().setRewardCards(reward);
             AbstractDungeon.combatRewardScreen.rewards.add(reward);
+        } else if (AbstractDungeon.currMapNode != null && AbstractDungeon.getCurrRoom().phase != AbstractRoom.RoomPhase.COMBAT) {
+            AbstractDungeon.combatRewardScreen.open(this.DESCRIPTIONS[1]);
+        } else {
+            RewardItem reward = new RewardItem();
+            RewardEditor.getInstance().setRewardCards(reward);
+            AbstractDungeon.getCurrRoom().rewards.add(0, reward);
         }
         counter = -2;
     }

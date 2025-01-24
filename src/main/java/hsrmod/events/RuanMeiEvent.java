@@ -26,6 +26,7 @@ import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import hsrmod.cards.uncommon.RuanMei1;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
+import hsrmod.relics.shop.ARuanPouch;
 import hsrmod.utils.RelicEventHelper;
 
 import java.util.ArrayList;
@@ -84,7 +85,7 @@ public class RuanMeiEvent extends PhasedEvent {
                     }
                     transitionKey(6);
                 })
-                .enabledCondition(() -> AbstractDungeon.player.masterDeck.group.stream().anyMatch(c -> c.hasTag(CustomEnums.RUAN_MEI)), OPTIONS[10]);
+                .enabledCondition(() -> AbstractDungeon.player.relics.stream().anyMatch(r -> r instanceof ARuanPouch), OPTIONS[10]);
         registerPhase(5, new TextPhase(DESCRIPTIONS[5])
                 .addOption(OPTIONS[6], (i) -> {
                     upgrade();

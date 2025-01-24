@@ -484,6 +484,14 @@
       "At the start of each turn, gain #b2 #yDexterity on odd-numbered turns and lose #b2 #yDexterity on even-numbered turns."
     ]
   },
+  "HSRMod:JellyfishOnTheStaircase": {
+    "NAME": "\"Jellyfish On The Staircase\"",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "Upon pickup, remove 2 cards from deck.",
+      "Jellyfish On The Staircase!"
+    ]
+  },
   "HSRMod:RobeOfTheBeauty": {
     "NAME": "Robe Of The Beauty",
     "FLAVOR": "",
@@ -582,6 +590,13 @@
     "FLAVOR": "Records show that in the Aterlexian System, the Thalan Toxi-Flame was once extremely popular among the locals, with each of the locals that sampled its taste no longer able to describe the flavors thereafter.",
     "DESCRIPTIONS": [
       "At the start of combat, lose #b2 HP and gain #b2 #yDexterity."
+    ]
+  },
+  "HSRMod:Pineapple": {
+    "NAME": "Pineapple",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "When entering a new room, lose #b15% of current health. Destroys after 3 triggers."
     ]
   },
   "HSRMod:RubertEmpireDifferenceMachine": {

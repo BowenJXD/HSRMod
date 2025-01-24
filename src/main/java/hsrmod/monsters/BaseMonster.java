@@ -1,5 +1,6 @@
 package hsrmod.monsters;
 
+import basemod.BaseMod;
 import basemod.abstracts.CustomMonster;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.AnimateSlowAttackAction;
@@ -76,6 +77,9 @@ public abstract class BaseMonster extends CustomMonster {
             tv = DataManager.getInstance().getMonsterDataInt(id + AbstractDungeon.actNum, ModHelper.moreHPAscension(type) ? MonsterDataCol.TV2 : MonsterDataCol.TV1);
         } catch (Exception e) {
             tv = DataManager.getInstance().getMonsterDataInt(id, ModHelper.moreHPAscension(type) ? MonsterDataCol.TV2 : MonsterDataCol.TV1);
+        }
+        if (BaseMod.hasModID("spireTogether:")) {
+            tv += (int) (tv * 0.5);
         }
         
         p = AbstractDungeon.player;

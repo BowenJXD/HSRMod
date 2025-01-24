@@ -32,7 +32,7 @@
       "[Want lots of money] Gain #y1200 gold",
       "[Steal goodies from Herta] Obtain #b6 relics",
       "[You are... Ruan Mei?] Trigger 2 effects above",
-      "[LOCK] Needs \"String Sings Slow Swirls \" or \"Petals to Stream, Repose in Dream\"",
+      "[LOCK] Needs A-Ruan Pouch. ",
       "[leave]"
     ],
     "DESCRIPTIONS": [
@@ -240,6 +240,118 @@
       "The old man takes a part from the metal behemoth. The part moves closer to the rest of the parts surrounding you in apparent eagerness. Amid their resonance, you seem to discern the lingering voice of the Emperor Rubert.",
       "The old man takes two parts from the metal behemoth and hands them over to you solemnly. A plethora of equations alters your cognition, their intense reverberations causing your head to split.",
       "The old man stares at you blankly, his obsolete logic chip unable to comprehend your actions. With his hands trembling, he takes the difference machine from you, looking just like an ordinary, despondent citizen of a fallen kingdom."
+    ]
+  },
+  "HSRMod:PineappleBread": {
+    "NAME": "Pineapple Bread",
+    "OPTIONS": [
+      "[continue]",
+      "[Choose Pineapple] Choose to remove #b3 cards, but gain negative relic: Pineapple.",
+      "remove 3 cards",
+      "[Choose Bread] Nothing happens.",
+      "[Take a drink] Obtain #b2 random subtle relic.",
+      "[leave]"
+    ],
+    "DESCRIPTIONS": [
+      "You sit on the hot sofa as the lights make you temporarily dizzy. The game of bravery: Pineapple Bread is approaching its final stages as everyone awaits your decision as the final survivor. NL NL \"There are two boxes left. Eat the pineapple and take the prize or eat the bread and get lost.\" The manic faces of the audience are reflected in the host's compound eyes — They don't want to see you win. They want to see you fail.",
+      "There are over nine thousand objects in the cosmos that go by the name of \"pineapple.\" Some are rocks, some are leaves, and some are even black holes. Until you open this box, no one knows what lies within. NL NL Your brain freezes as images of the last runner-up being evaporated by a plasma pineapple rush through your mind.",
+      "\" #y@Pineapple@ or #y@bread!?@ \" The spectators impatiently spur you on.",
+      "One doesn't get rich without taking risks! As you swallow the pineapple, a bitterness runs over your tongue.",
+      "You become deeply aware of a great truth: That no matter how much money you have, you have to be alive to spend it.",
+      "This program is sponsored by the Interastral Peace Corporation. Authentic pineapple soda, bringing you an unforgettable feast of flavor."
+    ]
+  },
+  "HSRMod:TrashSymphony": {
+    "NAME": "Trash Symphony",
+    "OPTIONS": [
+      "[continue]",
+      "[Never turn my back on humanity] Enter a battle against trashcans, gain #b2 relics after victory.",
+      "[I am the king of trashcans!] Enter battle against Rumbas the Third, gain #b3 destructible relics after victory.",
+      "[leave]"
+    ],
+    "DESCRIPTIONS": [
+      "You enter the underground stronghold of the Rumbas system. A large number of weapons and trashcans fall from the production pipeline. Rumbas the Third rides atop his horse, displaying his authority that rivals Tatalov, undiminishing and ever-burgeoning. NL NL For a long time, trashcans have endured unequal treatment. They are treated as mere tools of humanity, devoid of dignity. NL NL Rumbas the Third raises his arm and shouts. He demands power, power to freely access organic and recyclable waste. He vows to lead an army of trashcans to dominate the universe and become the master of all realms.",
+      "Rumbas the Third's gaze falls on you. \"The hero who defeated Tatalov... You are different from other inferior humans. I will give you a chance.\" NL NL Will you kneel before Rumbas the Third and accept the emperor's honors, or swear loyalty to the human race to which you belong and continue to oppress the trashcans?",
+      "Rumbas the Third respects your choice. He fakes his sadness as he summons his cloned trash kin, instructing them to give you a \"dignified\" end.",
+      "A mere trashcan dares to order you around? You swing your bat and charge at Rumbas the Third, ready to snatch this emperor's perch.",
+      "You #ywon."
+    ]
+  },
+  "HSRMod:AceTrashDigger": {
+    "NAME": "Ace Trash Digger",
+    "OPTIONS": [
+      "[continue]",
+      "[Even trash has its unique \"value\"...] #yGain #b3 destroyed relics。",
+      "[Toss your trash in!] #rLose #b1 normal relic， #yGain #b2 random relics.",
+      "[leave] You are not interested the trashcans.",
+      ""
+    ],
+    "DESCRIPTIONS": [
+      "A person carrying a trashcan meets you. He crouches down and shows you his treasured trashcan. NL NL \"This is an incredulous space.\" He beckons. Then, he tosses out some collections of pitiful love poems from the trashcan to make some space for you. NL NL In a hushed voice, he says, \"Put your waste in it, and the items will evolve into an advanced awareness, then come running out energetically on their own!\"",
+      "Who can deny a brand new Trash?"
+    ]
+  },
+  "HSRMod:CulinaryColosseum": {
+    "NAME": "厨王争霸",
+    "OPTIONS": [
+      "[continue]",
+      "[一起上吧] 进入战斗，胜利后获得 #b2 个普通遗物。",
+      "[往对手的桶里丢垃圾] 进入战斗，胜利后移除 #b2 张牌。",
+      "[跨级挑战评委] 进入战斗，胜利后获得 #b4 个可损毁遗物。",
+      "[leave]"
+    ],
+    "DESCRIPTIONS": [
+      "你走进 #y冉比希星 的废品回收站，成千上万的垃圾桶在垃圾堆里 ~喝彩欢呼~ 。 NL NL 作为第二十一届垃圾厨王争霸赛的 #y擂主 ，反观测护罩、吃剩一半的天环翅堡、未知星球的硬币，观众扔下垃圾来代替花束，表达对你的 ~期待~ 。",
+      "你淡然地瞥向身边的挑战者， #y塔塔洛夫 的宫廷大厨埃罗琳，尝遍 #b一千种垃圾 的分子食客瑞赛可，还有 ~举世闻名~ 的 #g垃圾美食家 贾克佛，全都是些难缠的家伙。 NL NL 然而，在你的脑海内， #y胜利 的菜单已然敲定。",
+      "有骨气！听了你的话，三位对手纷纷 #y~严阵以待~ ，决定以自己 #y最高 的水准来表达对你的尊重。",
+      "「 @吁——吁！@ 」观众纷纷喝出倒彩，挑战者们更是 #r@怒不可遏@ ，准备给你点颜色瞧瞧。",
+      "「嚯，好 #y@狂妄@ 的后生。」几位评委一跃而上，观众们擦干净盖子，准备见证垃圾厨艺界这 #y~史诗级~ 的对决。"
+    ]
+  },
+  "HSRMod:YuQingtu": {
+    "NAME": "Genius Society #55 Yu Qingtu",
+    "OPTIONS": [
+      "[continue]",
+      "Add sugar.",
+      "Add toothpaste.",
+      "[Elation] You decide to add more weird stuff to it...",
+      "[Nihility] A glass of wine should learn to swirl itself.",
+      "Stir gently...",
+      "Stir vigorously!",
+      "Give in to the sleepiness...",
+      "First, take care of the unfriendly eyes around you!",
+      "[Deal with the mutant] Enter battle, and gain 1 rare card after victory.",
+      "[leave]"
+    ],
+    "DESCRIPTIONS": [
+      "You arrive at a strange restaurant in outer space. In the building built with red bricks, there are some Bavirus, foxians, and humans. There is even a Diting sitting at a long table. NL NL Yet, some exiles dressed in gray prisoners' robes are here too... The sight of the shackles on their feet makes you shudder. You bypass them and walk to the bar with its comparative safety.",
+      "\"We specialize in exotic cocktails.\" The waiter speaks in an odd tone. \"Out of all the cocktail recipes left by Genius Society #55 Yu Qingtu, only 25 of them have been passed down to this day. Three of them are available here, but we can't guarantee whether those involve her toxic concoctions. Which one would you like?\" NL NL You start to doubt the waiter's professionalism.",
+      "It's time to stir it.",
+      "You receive a glass of cocktail! You gulp it down...",
+      "Your cocktail explodes in front of you! NL NL You gain nothing, in addition to being blasted out of the restaurant by this strong force.",
+      "You're badly injured.",
+      "You receive a glass of cocktail! You gulp it down... Soon, a wave of lethargy hits you. NL NL As you are feeling drowsy, you notice a mischievous *thief* sizing you up slyly from the other end of the long table... She seems to have no qualms about openly showing her evil intentions.",
+      "You fail to resist the urge to sleep... By the time you wake up, the thief with her dazzling eyes is already gone. NL NL Your wallet is no longer stuffed, and you have lost lots of Cosmic Fragments... You hope to run into her again.",
+      "You have finished stirring your cocktail. A lady in a sequined dress with a sensuous gaze suddenly walks over. The gems on her earrings sparkle under the lights, and you are bedazzled. She grabs the cocktail from your hands but still waves at you with a provocative smile. NL NL While you are still experiencing outrage at her action, she suddenly lets out a shrill cry, and her body curls up in a horrifying manner... You stagger a few steps backward.",
+      "You are shocked by the recipe of Genius Society #55, Yu Qingtu. As it turns out, you have made a legendarily toxic cocktail...",
+      "You #ywon."
+    ]
+  },
+  "HSRMod:IPMBShoppingMall": {
+    "NAME": "Interastral Peace Mechanical Branch Shopping Mall",
+    "OPTIONS": [
+      "[continue]",
+      "Ambergris Cheese",
+      "Casket of Inaccuracy",
+      "Fruit of the Alien Tree",
+      "Level up your Cognition",
+      "Recycle all items above with 200 gold each.",
+      "[leave]"
+    ],
+    "DESCRIPTIONS": [
+      "You arrive at the docking bay of the Freon Mechanical Alliance. It is a vast harbor with mechanical attendants everywhere. NL NL A mechanical attendant leads you up a staircase, which you notice is formed by numerous mechanical arms. You keep going until you leave the harbor and see the sign of \"Interastral Peace Mechanical Branch Shopping Mall.\"",
+      "The place is renovated in a style very much iconic to the IPC... You walk up to the counter. NL NL \"We sell our stuff cheaper at the port. That's it.\" The mechanical staff doesn't bother to explain too much — a signal for you to make your own choice.",
+      "You gained what you want."
     ]
   }
 }

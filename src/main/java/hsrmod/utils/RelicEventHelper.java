@@ -20,6 +20,7 @@ import hsrmod.relics.special.*;
 import hsrmod.relics.special.TheWindSoaringValorous;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
@@ -60,7 +61,7 @@ public class RelicEventHelper {
                 AbstractDungeon.player.bottledCardUpgradeCheck(c);
                 float x = MathUtils.random(0.1F, 0.9F) * (float) Settings.WIDTH;
                 float y = MathUtils.random(0.2F, 0.8F) * (float) Settings.HEIGHT;
-                AbstractDungeon.effectList.add(new ShowCardBrieflyEffect(c.makeStatEquivalentCopy(), x, y));
+                AbstractDungeon.topLevelEffects.add(new ShowCardBrieflyEffect(c.makeStatEquivalentCopy(), x, y));
                 AbstractDungeon.topLevelEffects.add(new UpgradeShineEffect(x, y));
             }
         }
@@ -107,6 +108,10 @@ public class RelicEventHelper {
     
     public static void loseRelicsAfterwards(AbstractRelic... relics) {
         ModHelper.addEffectAbstract(() -> loseRelics(relics));
+    }
+    
+    public static void loseRelics(String... relicIds) {
+        loseRelics(Arrays.stream(relicIds).map(id -> AbstractDungeon.player.getRelic(id)).toArray(AbstractRelic[]::new));
     }
     
     public static void loseRelics(AbstractRelic... relics) {

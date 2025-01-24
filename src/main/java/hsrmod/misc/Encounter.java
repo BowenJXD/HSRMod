@@ -21,7 +21,7 @@ public class Encounter {
     
     public static final String GEPARD = "Gepard";
     public static final String BRONYA = "Bronya";
-    public static final String SWAROG = "Swarog";
+    public static final String SVAROG = "Svarog";
     
     public static final String HOOLAY = "Hoolay";
     

@@ -65,7 +65,7 @@ public class AddMonsterPatch {
         }
     }
 
-    @SpirePatch(clz = MonsterInfo.class, method = "normalizeWeights")
+    /*@SpirePatch(clz = MonsterInfo.class, method = "normalizeWeights")
     public static class PopulatePatch {
         static int calls = 0;
 
@@ -79,6 +79,7 @@ public class AddMonsterPatch {
                     if (AbstractDungeon.player instanceof StellaCharacter 
                             && AbstractDungeon.actNum == 1 
                             && HSRMod.removeOtherEnemies
+                            && HSRMod.addEnemy
                             && !BaseMod.hasModID("spireTogether:")) {
                         monsters[0].clear();
                     }
@@ -87,5 +88,5 @@ public class AddMonsterPatch {
                     calls = 0;
             }
         }
-    }
+    }*/
 }

@@ -39,9 +39,11 @@ public class AshesToAshesDustToDust extends BaseRelic implements ClickableRelic 
     void updateCounter() {
         if (AbstractDungeon.currMapNode != null && AbstractDungeon.getCurrRoom() instanceof ShopRoom) {
             setCounter(basePrice);
+            beginLongPulse();
         }
         else {
             setCounter(-1);
+            stopPulse();
         }
     }
     
@@ -49,6 +51,9 @@ public class AshesToAshesDustToDust extends BaseRelic implements ClickableRelic 
         super.update();
         if (!this.cardSelected && AbstractDungeon.gridSelectScreen.selectedCards.size() == 1) {
             RelicEventHelper.upgradeCards(AbstractDungeon.gridSelectScreen.selectedCards.get(0));
+            this.cardSelected = true;
+            AbstractDungeon.gridSelectScreen.selectedCards.clear();
+            AbstractDungeon.getCurrRoom().rewardPopOutTimer = 0.25F;
         }
     }
 
@@ -60,7 +65,7 @@ public class AshesToAshesDustToDust extends BaseRelic implements ClickableRelic 
 
         this.cardSelected = false;
         CardGroup tmp = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
-        Iterator var2 = AbstractDungeon.player.masterDeck.getPurgeableCards().group.iterator();
+        Iterator var2 = AbstractDungeon.player.masterDeck.getUpgradableCards().group.iterator();
 
         while(var2.hasNext()) {
             AbstractCard card = (AbstractCard)var2.next();
@@ -76,6 +81,9 @@ public class AshesToAshesDustToDust extends BaseRelic implements ClickableRelic 
         AbstractDungeon.player.loseGold(counter);
         if (tmp.group.size() <= 1) {
             RelicEventHelper.upgradeCards(tmp.group.get(0));
+            this.cardSelected = true;
+            AbstractDungeon.gridSelectScreen.selectedCards.clear();
+            AbstractDungeon.getCurrRoom().rewardPopOutTimer = 0.25F;
         } else if (!AbstractDungeon.isScreenUp) {
             AbstractDungeon.gridSelectScreen.open(tmp, 1, this.DESCRIPTIONS[1] + this.name + LocalizedStrings.PERIOD, true, false, false, false);
         } else {

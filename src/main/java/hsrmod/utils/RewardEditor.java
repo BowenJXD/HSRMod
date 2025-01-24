@@ -47,10 +47,12 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
     public List<AbstractCard.CardTags> bannedTags;
 
     private List<Consumer<List<RewardItem>>> extraRewards;
+    private List<RewardItem> savedCardRewards;
 
     private RewardEditor() {
         bannedTags = new ArrayList<>();
         extraRewards = new ArrayList<>();
+        savedCardRewards = new ArrayList<>();
         BaseMod.subscribe(this);
     }
 
@@ -68,6 +70,8 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
 
             List<RewardItem> rewards = AbstractDungeon.combatRewardScreen.rewards;
 
+            rewards.addAll(savedCardRewards);
+            
             for (Consumer<List<RewardItem>> extraReward : extraRewards) {
                 extraReward.accept(rewards);
             }
@@ -81,8 +85,11 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
             checkBossRelic(tag);
         }
 
-        if (!AbstractDungeon.player.hasRelic(relicId)
+        if (AbstractDungeon.player != null
+                && AbstractDungeon.player.relics != null
+                && relicId != null
                 && !Objects.equals(relicId, "")
+                && !AbstractDungeon.player.hasRelic(relicId)
                 && currRoom instanceof MonsterRoomBoss
                 && AbstractDungeon.combatRewardScreen.rewards.stream().noneMatch(r -> r.relic != null && r.relic.relicId.equals(relicId))) {
             RelicEventHelper.removeRelicFromPool(relicId);
@@ -292,6 +299,7 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
     void loadCardRewards(String data) {
         if (data == null || data.isEmpty()) return;
         String[] rewards = data.split(";");
+        savedCardRewards.clear();
         for (String reward : rewards) {
             List<String> cards = GeneralUtil.unpackSaveData(reward, String::valueOf);
             try {
@@ -306,11 +314,9 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
                     }
                     return result;
                 }).collect(Collectors.toCollection(ArrayList::new));
-                addExtraRewardToTop(rewardsList -> {
-                    RewardItem rewardItem = new RewardItem();
-                    rewardItem.cards = cardList;
-                    rewardsList.add(rewardItem);
-                });
+                RewardItem rewardItem = new RewardItem();
+                rewardItem.cards = cardList;
+                savedCardRewards.add(rewardItem);
             } catch (Exception e) {
                 logger.error("Error loading card rewards: {}", e.getMessage());
             }
@@ -354,7 +360,7 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
                 if (instance != null
                         && AbstractDungeon.currMapNode != null
                         && !AbstractDungeon.getCurrRoom().rewardTime) {
-                    instance.relicId = null;
+                    instance.relicId = "";
                     instance.extraRewards.clear();
                 }
             });

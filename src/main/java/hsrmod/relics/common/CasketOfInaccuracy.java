@@ -20,12 +20,12 @@ public class CasketOfInaccuracy extends BaseRelic {
 
     public void onEquip() {
         flash();
-        if (AbstractDungeon.currMapNode != null && AbstractDungeon.getCurrRoom().phase != AbstractRoom.RoomPhase.COMBAT) {
-            AbstractDungeon.combatRewardScreen.open(this.DESCRIPTIONS[1]);
-        } else if (!AbstractDungeon.getCurrRoom().rewardTime) {
-            AbstractDungeon.getCurrRoom().addCardToRewards();
-        } else {
+        if (AbstractDungeon.getCurrRoom().rewardTime) {
             AbstractDungeon.combatRewardScreen.rewards.add(new RewardItem());
+        } else if (AbstractDungeon.currMapNode != null && AbstractDungeon.getCurrRoom().phase != AbstractRoom.RoomPhase.COMBAT) {
+            AbstractDungeon.combatRewardScreen.open(this.DESCRIPTIONS[1]);
+        } else {
+            AbstractDungeon.getCurrRoom().addCardToRewards();
         }
     }
 }

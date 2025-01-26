@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.actions.AOEAction;
 import hsrmod.actions.BouncingAction;
 import hsrmod.actions.ElementalDamageAction;
+import hsrmod.effects.PortraitDisplayEffect;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
@@ -72,9 +73,11 @@ public class SlashedDreamPower extends PowerPower {
         }
     }
 
-    void trigger() {        
+    void trigger() {
+        AbstractDungeon.topLevelEffects.add(new PortraitDisplayEffect("Acheron"));
         CardCrawlGame.sound.play("SlashedDream1");
         addToBot(new TalkAction(true, String.format(" #r%s ", DESCRIPTIONS[1]), 1.0F, 2.0F));
+        
         AbstractCreature target = AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster) null, true, AbstractDungeon.cardRandomRng);
         if (target == null) return;
         

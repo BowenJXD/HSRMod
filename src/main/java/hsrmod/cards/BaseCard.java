@@ -38,10 +38,12 @@ public abstract class BaseCard extends CustomCard implements SpawnModificationCa
     public int upTr;
     public boolean upgradedTr = false;
     
+    public int baseEnergyCost = 0;
+    public int energyCost = 0;
+    
     public boolean isTrModified = false;
     public ElementType elementType = ElementType.None;
     public float versatility = 0;
-    public int energyCost = 0;
     public boolean followedUp = false;
     public boolean inBattle = false;
     public boolean inHand = false;
@@ -176,11 +178,11 @@ public abstract class BaseCard extends CustomCard implements SpawnModificationCa
 
     @Override
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        return super.canUse(p, m) && checkEnergy();
+        return super.canUse(p, m) && checkEnergy() && SubscriptionManager.getInstance().triggerCheckUsable(this);
     }
 
     protected boolean checkEnergy() {
-        if (SubscriptionManager.getInstance().triggerCheckUsable(this) || ModHelper.getPowerCount(AbstractDungeon.player, EnergyPower.POWER_ID) >= energyCost) {
+        if (Math.max(0, ModHelper.getPowerCount(AbstractDungeon.player, EnergyPower.POWER_ID)) >= energyCost) {
             return true;
         }
         cantUseMessage = Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT ? "我没有足够的充能。" : "I don't have enough charge.";
@@ -232,11 +234,21 @@ public abstract class BaseCard extends CustomCard implements SpawnModificationCa
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (!checkEnergy()) return;
         if (energyCost != 0) addToTop(new ApplyPowerAction(p, p, new EnergyPower(p, -energyCost), -energyCost));
+        energyCost = baseEnergyCost;
         onUse(p, m);
         ModHelper.addToBotAbstract( () -> this.followedUp = false);
     }
     
     public abstract void onUse(AbstractPlayer p, AbstractMonster m);
+
+    public int getEnergyCost() {
+        return energyCost;
+    }
+
+    public void setBaseEnergyCost(int energyCost) {
+        this.baseEnergyCost = energyCost;
+        this.energyCost = energyCost;
+    }
     
     public static CardTags getPathTag(String path){
         CardTags result = null;
@@ -287,5 +299,5 @@ public abstract class BaseCard extends CustomCard implements SpawnModificationCa
         if (versatility.contains("低")) result = 1 / 2f;
         else if (versatility.contains("高")) result = 2f;
         return result;
-    } 
+    }
 }

@@ -3,7 +3,6 @@ package hsrmod.monsters;
 import basemod.BaseMod;
 import basemod.abstracts.CustomMonster;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.AnimateSlowAttackAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -23,7 +22,6 @@ import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
 import hsrmod.misc.PathDefine;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.enemyOnly.SummonedPower;
-import hsrmod.powers.misc.DoTPower;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.utils.DataManager;
 import hsrmod.utils.ModHelper;
@@ -31,6 +29,7 @@ import hsrmod.utils.MonsterDataCol;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 public abstract class BaseMonster extends CustomMonster {
     public MonsterStrings monsterStrings;
@@ -41,6 +40,7 @@ public abstract class BaseMonster extends CustomMonster {
     public int[] damages;
     public int tv = 0;
     public List<MonsterSlot> slots = new ArrayList<>();
+    public Function<MonsterSlot, AbstractMonster> monFunc;
     public String bgm;
     public AbstractPlayer p = AbstractDungeon.player;
     
@@ -132,8 +132,8 @@ public abstract class BaseMonster extends CustomMonster {
             addToBot(new ApplyPowerAction(this, this, new ToughnessPower(this, tv, tv), 0));
         }
         if (bgm != null) {
-            CardCrawlGame.music.unsilenceBGM();
             AbstractDungeon.scene.fadeOutAmbiance();
+            CardCrawlGame.music.silenceTempBgmInstantly();
             AbstractDungeon.getCurrRoom().playBgmInstantly(bgm);
         }
     }
@@ -203,12 +203,24 @@ public abstract class BaseMonster extends CustomMonster {
         return null;
     }
     
-    public void spawnMonster(AbstractMonster monster, MonsterSlot slot, boolean isMinion, boolean usePrebattleAction) {
-        if (usePrebattleAction) {
-            monster.usePreBattleAction();
-        }
-        addToBot(new SpawnMonsterAction(monster, isMinion));
-        slot.setMonster(monster);
+    public void spawnMonsters() {
+        spawnMonsters(getEmptySlotCount());
+    }
+
+    public void spawnMonsters(int count) {
+        count = Math.min(count, getEmptySlotCount());
+        if (count > 0 && monFunc != null)
+            for (int i = 0; i < count; i++) {
+                MonsterSlot slot = getEmptySlot();
+                if (slot != null) {
+                    AbstractMonster monster = monFunc.apply(slot);
+                    if (monster != null) {
+                        monster.usePreBattleAction();
+                        addToBot(new SpawnMonsterAction(monster, true));
+                        slot.setMonster(monster);
+                    }
+                }
+            }
     }
 
     @Override

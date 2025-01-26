@@ -20,6 +20,6 @@ public class Pineapple extends BaseRelic {
         flash();
         int dmg = AbstractDungeon.player.currentHealth * 15 / 100;
         AbstractDungeon.player.damage(new DamageInfo(null, dmg, DamageInfo.DamageType.HP_LOSS));
-        reduceCounterAndCheckUsedUp();
+        reduceCounterAndCheckDestroy();
     }
 }

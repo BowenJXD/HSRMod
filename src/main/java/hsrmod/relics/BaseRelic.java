@@ -42,18 +42,47 @@ public abstract class BaseRelic extends CustomRelic {
             this.usedUp();
         }
     }
-    
-    public void reduceCounterAndCheckUsedUp() {
-        super.setCounter(counter - 1);
-        if (counter <= 0) {
-            this.destroy();
+
+    @Override
+    public void flash() {
+        if (!AbstractDungeon.player.relics.contains(this)) {
+            AbstractRelic relic = AbstractDungeon.player.getRelic(relicId);
+            if (relic != null) {
+                relic.flash();
+            }
+        } else {
+            super.flash();
         }
     }
 
+    public boolean reduceCounterAndCheckDestroy() {
+        boolean result = false;
+        AbstractRelic relic = this;
+        if (!AbstractDungeon.player.relics.contains(this)) {
+            relic = AbstractDungeon.player.getRelic(relicId);
+        }
+        if (relic != null) {
+            relic.setCounter(relic.counter - 1);
+            if (relic.counter <= 0) {
+                relic.setCounter(-2);
+                AbstractDungeon.topLevelEffectsQueue.add(new RelicAboveCreatureEffect(Settings.WIDTH * 0.5f, Settings.HEIGHT * 0.6f, relic));
+                AbstractDungeon.topLevelEffectsQueue.add(new BetterWarningSignEffect(Settings.WIDTH * 0.5f, Settings.HEIGHT * 0.7f, 4.0f));
+                result = true;
+            }
+        }
+        return result;
+    }
+    
     protected void destroy(){
-        this.setCounter(-2);
-        AbstractDungeon.topLevelEffects.add(new RelicAboveCreatureEffect(Settings.WIDTH * 0.5f, Settings.HEIGHT * 0.6f, this));
-        AbstractDungeon.topLevelEffects.add(new BetterWarningSignEffect(Settings.WIDTH * 0.5f, Settings.HEIGHT * 0.7f, 4.0f));
+        AbstractRelic relic = this;
+        if (!AbstractDungeon.player.relics.contains(this)) {
+            relic = AbstractDungeon.player.getRelic(relicId);
+        }
+        if (relic != null) {
+            relic.setCounter(-2);
+            AbstractDungeon.topLevelEffectsQueue.add(new RelicAboveCreatureEffect(Settings.WIDTH * 0.5f, Settings.HEIGHT * 0.6f, relic));
+            AbstractDungeon.topLevelEffectsQueue.add(new BetterWarningSignEffect(Settings.WIDTH * 0.5f, Settings.HEIGHT * 0.7f, 4.0f));
+        }
 /*        this.description = "该遗物已损毁。";
         this.tips.clear();
         this.tips.add(new PowerTip(this.name, this.description));

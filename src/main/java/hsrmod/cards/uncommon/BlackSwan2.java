@@ -20,7 +20,7 @@ public class BlackSwan2 extends BaseCard {
     
     public BlackSwan2() {
         super(ID);
-        energyCost = 120;
+        setBaseEnergyCost(120);
         tags.add(CustomEnums.ENERGY_COSTING);
     }
 

@@ -12,8 +12,11 @@ import java.util.List;
 public class SocietyTicket extends BaseRelic {
     public static final String ID = SocietyTicket.class.getSimpleName();
     
+    public static int staticMagicNumber = 100;
+    
     public SocietyTicket() {
         super(ID);
+        staticMagicNumber = magicNumber;
     }
 
     @Override
@@ -26,7 +29,7 @@ public class SocietyTicket extends BaseRelic {
         boolean doFlash = false;
         for (RewardItem reward : rewards) {
             if (reward.type == RewardItem.RewardType.GOLD) {
-                reward.incrementGold((int) (reward.goldAmt * magicNumber / 100f));
+                reward.incrementGold((int) (reward.goldAmt * staticMagicNumber / 100f));
                 doFlash = true;
                 break;
             }

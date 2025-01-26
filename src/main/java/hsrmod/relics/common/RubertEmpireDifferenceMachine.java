@@ -30,7 +30,7 @@ public class RubertEmpireDifferenceMachine extends BaseRelic {
     public void onEquip() {
         super.onEquip();
 
-        AbstractDungeon.topLevelEffects.add(new ShineSparkleEffect(0, 0));
+        AbstractDungeon.topLevelEffectsQueue.add(new ShineSparkleEffect(0, 0));
         RelicEventHelper.gainGold(300);
         RelicEventHelper.gainRelicsAfterwards(3);
         RelicEventHelper.upgradeCards(3);

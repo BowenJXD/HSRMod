@@ -17,26 +17,26 @@ public class AncientCommunications extends BaseRelic implements INumChangerSubsc
     }
 
     @Override
+    public void atBattleStart() {
+        super.atBattleStart();
+        if (usedUp) return;
+        ModHelper.addToBotAbstract(() -> {
+            if (AbstractDungeon.getMonsters() != null
+                    && AbstractDungeon.getMonsters().monsters != null
+                    && AbstractDungeon.getMonsters().monsters.stream().anyMatch(m -> m instanceof SequenceTrotter || m instanceof WarpTrotter)) {
+                flash();
+                destroy();
+            }
+        });
+    }
+
+    @Override
     public float changeNum(float base) {
         if (SubscriptionManager.checkSubscriber(this)) {
             if (usedUp) SubscriptionManager.getInstance().unsubscribeLater(this);
             else return base * 4;
         }
         return base;
-    }
-
-    @Override
-    public void atBattleStart() {
-        super.atBattleStart();
-        if (usedUp) return;
-        ModHelper.addToBotAbstract(() -> {
-            if (AbstractDungeon.getMonsters() != null 
-                    && AbstractDungeon.getMonsters().monsters != null
-                    && AbstractDungeon.getMonsters().monsters.stream().anyMatch(m -> m instanceof SequenceTrotter || m instanceof WarpTrotter)) {
-                flash();
-                usedUp();
-            }
-        });
     }
 
     @Override

@@ -2,42 +2,37 @@ package hsrmod.cards.common;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import hsrmod.actions.AOEAction;
-import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
-import hsrmod.modcore.ElementType;
-import hsrmod.subscribers.PreElementalDamageSubscriber;
-import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
-public class Herta1 extends BaseCard implements PreElementalDamageSubscriber {
+public class Herta1 extends BaseCard {
     public static final String ID = Herta1.class.getSimpleName();
     List<AbstractCreature> moreThanHalfMonsters;
     boolean canRepeat = false;
 
     public Herta1() {
         super(ID);
+        moreThanHalfMonsters = new ArrayList<>();
         this.tags.add(FOLLOW_UP);
         this.isMultiDamage = true;
     }
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        moreThanHalfMonsters = AbstractDungeon.getMonsters().monsters.stream().filter(monster -> monster.currentHealth > monster.maxHealth / 2).collect(Collectors.toList());
+        updateMoreThanHalfMonsters();
         execute();
     }
 
@@ -62,30 +57,37 @@ public class Herta1 extends BaseCard implements PreElementalDamageSubscriber {
 
     @Override
     public void onEnterHand() {
-        SubscriptionManager.subscribe(this);
+        updateMoreThanHalfMonsters();
     }
 
     @Override
     public void triggerAtStartOfTurn() {
-        SubscriptionManager.unsubscribe(this);
+        updateMoreThanHalfMonsters();
     }
-
+    
     @Override
-    public float preElementalDamage(ElementalDamageAction action, float dmg) {
-        if (SubscriptionManager.checkSubscriber(this)
-                && inHand
-                && !followedUp
-                && action.target != null
-                && action.target.currentHealth > action.target.maxHealth / 2) {
+    public void triggerOnOtherCardPlayed(AbstractCard c) {
+        if (!AbstractDungeon.player.hand.contains(this)) return;
+        if (!followedUp) {
             ModHelper.addToBotAbstract(() -> {
                 ModHelper.addToBotAbstract(() -> {
-                    if (action.target.currentHealth <= action.target.maxHealth / 2) {
+                    if (updateMoreThanHalfMonsters()) {
                         followedUp = true;
-                        addToTop(new FollowUpAction(this));
+                        addToBot(new FollowUpAction(this));
                     }
                 });
             });
         }
-        return dmg;
+    }
+
+    /**
+     * @return true if changed
+     */
+    public boolean updateMoreThanHalfMonsters() {
+        boolean result = false;
+        List<AbstractCreature> temp = AbstractDungeon.getMonsters().monsters.stream().filter(monster -> monster.currentHealth > monster.maxHealth / 2).collect(Collectors.toList());
+        if (!new HashSet<>(temp).containsAll(moreThanHalfMonsters)) result = true;
+        moreThanHalfMonsters = temp;
+        return result;
     }
 }

@@ -1,7 +1,5 @@
 package hsrmod.relics.uncommon;
 
-import com.megacrit.cardcrawl.actions.common.LoseHPAction;
-import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -28,7 +26,7 @@ public class KingOfSponges extends BaseRelic {
         AbstractDungeon.effectList.add(new RelicAboveCreatureEffect(Settings.WIDTH / 2f, Settings.HEIGHT / 2f, this));
         p.damage(new DamageInfo(p, p.currentHealth / 10, DamageInfo.DamageType.HP_LOSS));
         increaseMaxHealth(p, p.maxHealth / 10);
-        reduceCounterAndCheckUsedUp();
+        reduceCounterAndCheckDestroy();
     }
     
     void increaseMaxHealth(AbstractPlayer p, int amount) {

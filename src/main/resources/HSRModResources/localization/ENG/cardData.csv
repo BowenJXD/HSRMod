@@ -30,12 +30,12 @@ Yanqing2,One With the Sword,SPECIAL,ATTACK,ENEMY,-2,"Exhaust. At the start of th
 Clara1,Because We Are Family,UNCOMMON,SKILL,SELF,1,"At the start of turn, if you took damage after the last turn ended, hsrmod:Follow-Up . NL Gain !B! block, for every distinct card name in exhaust pile, gain 1 more.",,,3,,,"At the start of turn, if you took damage after the last turn ended, hsrmod:Follow-Up . NL Gain !B! block, for every distinct card name in exhaust pile, gain 1 more, for every occurence of the most frequent card in exhaust pile, gain 1 more.",,,,,»¶Óä,,¸ß
 Gepard1,Enduring Bulwark,UNCOMMON,SKILL,SELF,0,"Use 100 [hsrmod:ChargeIcon] , Gain !B! Block.",,,8,,,,,,12,,´æ»¤,,ÖÐ
 Bronya1,Combat Redeployment,UNCOMMON,SKILL,SELF,1,"Gain !M! stacks of Strength, select 1 card from the draw pile and add it to your hand.",,,,1,,"Innate. Gain !M! stacks of Strength, select 1 card from the draw pile and add it to your hand.",,,,,Ñ²ÁÔ,,¸ß
-Welt1,Edge of the Void,UNCOMMON,ATTACK,ENEMY,1," hsrmod:Bounce !M!: deal !D! imaginary damage, and apply 1 stack of hsrmod:Imprison.",3,1,,2,,,,,,3,ÐéÎÞ,ÐéÊý,ÖÐ
+Welt1,Edge of the Void,UNCOMMON,ATTACK,ENEMY,1," hsrmod:Bounce !M!: deal !D! imaginary damage, and apply 1 stack of hsrmod:Imprison.",4,1,,2,,,,,,3,ÐéÎÞ,ÐéÊý,ÖÐ
 Himeko1,Victory Rush,UNCOMMON,ATTACK,ALL_ENEMY,3,"After breaking an enemy, hsrmod:Follow-Up . Deal !D! fire damage (!TR!) to all enemies !M! times.",5,1,,2,,,,,,3,»¶Óä,»ð,ÖÐ
 Seele1,Butterfly Flurry,UNCOMMON,ATTACK,ENEMY,2,"Multi-upgradable. Damage + !M! upon upgrade. NL Use 120 [hsrmod:ChargeIcon] , deal !D! quantum damage (!TR!), if kills, gain [E] , return the card to hand, and upgrade permanently.",12,3,,3,,,,,,,Ñ²ÁÔ,Á¿×Ó,ÖÐ
 JingYuan1,Prana Extirpated,UNCOMMON,ATTACK,ENEMY,10,"After playing a card, this card's [E] cost is reduced by 1. hsrmod:Follow-Up when [E] reaches 0. NL hsrmod:Bounce !M!: deal !D! *lightning damage (!TR!) to random enemies, draw 1.",4,1,,2,,,,,,3,»¶Óä,À×,µÍ
 Luocha1,Prayer of Abyss Flower,UNCOMMON,SKILL,SELF,0,"Retain. Exhaust. Gain [E] and heal !M! HP (gain !M! temp HP if HP below 50%), dispel 1 random debuff, and Exhaust 1 card.",,,,2,,"Retain. Exhaust. Gain [E] and heal !M! HP (gain !M! temp HP if HP below 50%), dispel 1 random debuff, and Exhaust any number of cards.",,,,3,·áÈÄ,,ÖÐ
-SilverWolf1,User Banned,UNCOMMON,ATTACK,ENEMY,1,"Use 110 [hsrmod:ChargeIcon] . Deal !D! quantum damage (!TR!), apply 1 stack of Vulnerable and 1 stack of Weak.",6,4,,,,"Use 110 [hsrmod:ChargeIcon] . Deal !D! quantum damage (!TR!), apply 1 stack of Vulnerable and 1 stack of Weak, and the target loses 1 stack of Strength.",8,,,,ÐéÎÞ,Á¿×Ó,ÖÐ
+SilverWolf1,User Banned,UNCOMMON,ATTACK,ENEMY,1,"Use 110 [hsrmod:ChargeIcon] . Deal !D! quantum damage (!TR!), trigger the following effects !M! times: NL 1. Apply 1 stack of Vulnerable. NL 2. Apply 1 stack of Weak.",6,4,,3,,"Use 110 [hsrmod:ChargeIcon] . Deal !D! quantum damage (!TR!), trigger the following effects !M! times: NL 1. Apply 1 stack of Vulnerable. NL 2. Apply 1 stack of Weak. NL 3. Reduce 1 stack of Strength.",,,,4,ÐéÎÞ,Á¿×Ó,ÖÐ
 Kafka1,Gentle but Cruel,UNCOMMON,ATTACK,ENEMY,1,"After using a card on an enemy with hsrmod:DoT , hsrmod:Follow-Up . Deal !D! *lightning damage (!TR!), trigger a random hsrmod:DoT !M! times, then apply !M! stacks of hsrmod:Shock.",1,2,,2,,,,,,3,ÐéÎÞ,À×,µÍ
 Kafka2,Twilight Trill,UNCOMMON,ATTACK,ALL_ENEMY,1,"Use 120 [hsrmod:ChargeIcon] , deal !D! *lightning damage (!TR!) to all enemies, trigger all their hsrmod:DoT s once, then apply !M! stacks of hsrmod:Shock.",2,2,,1,,,,,,2,ÐéÎÞ,À×,µÍ
 ImbibitorLunae1,Dracore Libre,UNCOMMON,ATTACK,ENEMY,-1,"If X equals 0/1/2/3+, deal !D! imaginary damage (!TR!) 2/3/5/7 times. Gain 20 [hsrmod:ChargeIcon] for each [E] you *exhaust.",3,1,,,,,5,,,,·±Óý,ÐéÊý,µÍ
@@ -75,10 +75,10 @@ Sunday1,Benison of Paper and Rites,UNCOMMON,SKILL,SELF,1,"Gain !M! stacks of Str
 Rappa1,Ninja Tech: Endurance Gauge,UNCOMMON,ATTACK,ALL_ENEMY,1,"Gain 1 stack of hsrmod:Break-Effect , deal !D! imaginary damage (!TR!) to all enemies. If breaks, repeat the process.",3,3,,1,,,4,4,,2,»ÙÃð,ÐéÊý,µÍ
 Fugue1,Fortune Follows Where Virtue Spreads,UNCOMMON,SKILL,ENEMY,1,"Ethereal, adjust toughness of enemy towards !M! (max change !M! stacks), and apply Cloudflame Luster (Upon break, adjust toughness to !M!).",,,,4,,"Adjust toughness of all enemies towards !M! (max change !M! stacks), and apply Cloudflame Luster (Upon break, adjust toughness to !M!, and gain [E] ).",,,,,»ÙÃð,»ð,µÍ
 BattlefieldMagician,BattlefieldMagician,RARE,POWER,SELF,2,"After you hsrmod:Follow-Up , gain !M! Block.",,,,3,,"After using a hsrmod:Follow-Up card, gain !M! Block.",,,,4,»¶Óä,,µÍ
-SlaughterhouseNo4RestInPeace,Slaughterhouse No.4 RestInPeace,RARE,POWER,SELF,2,"After you hsrmod:Follow-Up and deal damage, if the target has hsrmod:Broken, there is a !M!% chance to draw 1 card.",,,,80,,"After using a hsrmod:Follow-Up card and dealing damage, if the target has/doesn't have hsrmod:Broken, there is a !M!%/20% chance to draw 1 card.",,,,,»¶Óä,,µÍ
+SlaughterhouseNo4RestInPeace,Slaughterhouse No.4 RestInPeace,RARE,POWER,SELF,2,"Toughness reduction of Follow up damage +1. After you hsrmod:Follow-Up and deal damage, if the target has hsrmod:Broken, there is a !M!% chance to draw 1 card.",,,,80,,"Toughness reduction of Follow up cards +1. After using a hsrmod:Follow-Up card and dealing damage, if the target has/doesn't have hsrmod:Broken, there is a !M!%/20% chance to draw 1 card.",,,,,»¶Óä,,µÍ
 UselessScholar,Useless Scholar,RARE,POWER,SELF,3,"After you hsrmod:Follow-Up , if you have 50 [hsrmod:ChargeIcon] , there is a !M!% chance to use it and hsrmod:Follow-Up another hsrmod:Follow-Up card.",,,,66,,"Innate. After using a hsrmod:Follow-Up card, if you have 50 [hsrmod:ChargeIcon] , there is a !M!% chance to use it and hsrmod:Follow-Up another hsrmod:Follow-Up card.",,,,,»¶Óä,,µÍ
 BountyHunter,Bounty Hunter,RARE,POWER,SELF,1,"After you hsrmod:Follow-Up , there is a !M!% chance to return the card to your hand.",,,,25,,"After using a hsrmod:Follow-Up card, there is a !M!% chance to return the card to your hand.",,,,33,»¶Óä,,µÍ
-ChampionsDinnerCatsCradle,ChampionsDinnerCatsCradle,RARE,POWER,SELF,2," [hsrmod:ChargeIcon] using cards are regarded as hsrmod:Follow-Up cards, when your [hsrmod:ChargeIcon] is full, !M! chance to hsrmod:Follow-Up one of them. When you hsrmod:Follow-Up a card that requires [hsrmod:ChargeIcon] , you don't need to have enough energy.",,,,75,," [hsrmod:ChargeIcon] using cards are regarded as hsrmod:Follow-Up cards, when your [hsrmod:ChargeIcon] is full, !M! chance to hsrmod:Follow-Up one of them. When you hsrmod:Follow-Up a card that requires [hsrmod:ChargeIcon] , it won't use any [hsrmod:ChargeIcon] .",,,,,»¶Óä,,ÖÐ
+ChampionsDinnerCatsCradle,ChampionsDinnerCatsCradle,RARE,POWER,SELF,2," [hsrmod:ChargeIcon] using cards are regarded as hsrmod:Follow-Up cards, when [hsrmod:ChargeIcon] changes, !M! chance to hsrmod:Follow-Up one of them without using charge. ",,,,75,,"Innate. [hsrmod:ChargeIcon] using cards are regarded as hsrmod:Follow-Up cards, when [hsrmod:ChargeIcon] changes, !M! chance to hsrmod:Follow-Up one of them without using charge. ",,,,,»¶Óä,,ÖÐ
 VineyardAgainstTheNight,Vineyard Against The Night,UNCOMMON,SKILL,SELF,1,Gain 1 stack of hsrmod:Aftertaste.,,,,,,Innate. Exhaust. Gain 1 stack of hsrmod:Aftertaste.,,,,,»¶Óä,,µÍ
 Symbiote,Symbiote,RARE,POWER,SELF,2,"After break, if first time on this turn, gain [E] [E] . After dealing hsrmod:Break-Damage , draw 1 card.",,,,,,"After break, if first time on this turn, gain [E] [E] , otherwise, gain [E] . After dealing hsrmod:Break-Damage , draw 1 card.",,,,,»ÙÃð,,µÍ
 RegressionInequalityOfAnnihilation,Regression Inequality Of Annihilation,RARE,SKILL,ALL,1,"All entities (including you) evenly distribute hsrmod:Toughness, with your weight being !M!.",,,,1,,,,,,2,»ÙÃð,,ÖÐ
@@ -151,15 +151,15 @@ TerminalNirvana,Terminal Nirvana,RARE,SKILL,SELF,2,Exhaust. Retain. Consume !M! 
 AstralExpress,Astral Express,BASIC,SKILL,SELF,2,Exhaust. Play all starter strike cards.,,,,,,Play all starter strike cards.,,,,,¿ªÍØ,,ÎÞ
 Imprison,Imprison,COMMON,STATUS,NONE,1,"When enters hand, lose all [hsrmod:ChargeIcon] . When in hand, unable to gain any [hsrmod:ChargeIcon] . When losing, obtain all [hsrmod:ChargeIcon] lost.",,,,,,,,,,,,,
 Frozen,Frozen,COMMON,STATUS,NONE,-2,Retain. Can not be played.,,,,,,,,,,,,,
-Elation,Elation,SPECIAL,SKILL,NONE,-2,,,,,,,,,,,,»¶Óä,,
-Destruction,Destruction,SPECIAL,SKILL,NONE,-2,,,,,,,,,,,,»ÙÃð,,
-Nihility,Nihility,SPECIAL,SKILL,NONE,-2,,,,,,,,,,,,ÐéÎÞ,,
-Preservation,Preservation,SPECIAL,SKILL,NONE,-2,,,,,,,,,,,,´æ»¤,,
-Propagation,Propagation,SPECIAL,SKILL,NONE,-2,,,,,,,,,,,,·±Óý,,
-TheHunt,TheHunt,SPECIAL,SKILL,NONE,-2,,,,,,,,,,,,Ñ²ÁÔ,,
-Erudition,Erudition,SPECIAL,SKILL,NONE,-2,,,,,,,,,,,,ÖÇÊ¶,,
-Abundance,Abundance,SPECIAL,SKILL,NONE,-2,,,,,,,,,,,,·áÈÄ,,
-Remembrance,Remembrance,SPECIAL,SKILL,NONE,-2,,,,,,,,,,,,¼ÇÒä,,
+#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!
+#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!
+#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!
+#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!
+#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!
+#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!
+#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!
+#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!
+#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!
 ,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,

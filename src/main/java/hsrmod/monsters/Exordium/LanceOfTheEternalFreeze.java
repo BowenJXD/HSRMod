@@ -23,6 +23,10 @@ import hsrmod.utils.ModHelper;
 
 public class LanceOfTheEternalFreeze extends BaseMonster {
     public static final String ID = LanceOfTheEternalFreeze.class.getSimpleName();
+    
+    public LanceOfTheEternalFreeze(float x, float y) {
+        this(x, y, 1);
+    }
 
     public LanceOfTheEternalFreeze(float x, float y, int picIndex) {
         super(ID, PathDefine.MONSTER_PATH + ID + "_" + picIndex + ".png", 0.0F, -15.0F, 188F, 243.0F, x, y);

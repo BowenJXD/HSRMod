@@ -2,8 +2,8 @@ package hsrmod.cards.uncommon;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
@@ -11,7 +11,6 @@ import com.megacrit.cardcrawl.powers.WeakPower;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
-import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
 
 public class SilverWolf1 extends BaseCard {
@@ -19,7 +18,7 @@ public class SilverWolf1 extends BaseCard {
     
     public SilverWolf1() {
         super(ID);
-        energyCost = 110;
+        setBaseEnergyCost(110);
         tags.add(CustomEnums.ENERGY_COSTING);
     }
 
@@ -30,9 +29,18 @@ public class SilverWolf1 extends BaseCard {
                 new ElementalDamageInfo(this), 
                 AbstractGameAction.AttackEffect.SLASH_VERTICAL
         ));
-        addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, 1, false), 1));
-        addToBot(new ApplyPowerAction(m, p, new WeakPower(m, 1, false), 1));
-        if (upgraded)
-            addToBot(new ApplyPowerAction(m, p, new StrengthPower(m, -1), -1));
+        for (int i = 0; i < magicNumber; i++) {
+            switch (AbstractDungeon.cardRandomRng.random(upgraded ? 2 : 1)) {
+                case 0:
+                    addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, 1, false), 1));
+                    break;
+                case 1:
+                    addToBot(new ApplyPowerAction(m, p, new WeakPower(m, 1, false), 1));
+                    break;
+                case 2:
+                    addToBot(new ApplyPowerAction(m, p, new StrengthPower(m, -1), -1));
+                    break;
+            }
+        }
     }
 }

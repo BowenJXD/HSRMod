@@ -365,10 +365,10 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
                 Encounter.getRandomAutomaton(-250, AbstractDungeon.monsterRng.random(-15, 15)),
                 Encounter.getRandomAutomaton(0, AbstractDungeon.monsterRng.random(-15, 15)),
         }));
-        /*BaseMod.addMonster(Encounter.SHADEWALKERS, () -> new MonsterGroup(new AbstractMonster[]{
+        BaseMod.addMonster(Encounter.SHADEWALKERS, () -> new MonsterGroup(new AbstractMonster[]{
                 new EverwinterShadewalker(-250, AbstractDungeon.monsterRng.random(-15, 15)),
                 new IncinerationShadewalker(0, AbstractDungeon.monsterRng.random(-15, 15)),
-        }));*/
+        }));
         BaseMod.addMonster(Encounter.VAGRANT, () -> new MonsterGroup(new AbstractMonster[]{
                 new Vagrant(0, AbstractDungeon.monsterRng.random(-15, 30)),
         }));

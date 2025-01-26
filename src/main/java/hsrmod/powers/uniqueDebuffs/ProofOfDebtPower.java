@@ -1,15 +1,17 @@
 package hsrmod.powers.uniqueDebuffs;
 
-import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.DamageModApplyingPower;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.DebuffPower;
 import hsrmod.subscribers.PreElementalDamageSubscriber;
+import hsrmod.subscribers.PreFollowUpSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
+import hsrmod.utils.ModHelper;
 
-public class ProofOfDebtPower extends DebuffPower implements PreElementalDamageSubscriber {
+public class ProofOfDebtPower extends DebuffPower implements PreFollowUpSubscriber, PreElementalDamageSubscriber {
     public static final String POWER_ID = HSRMod.makePath(ProofOfDebtPower.class.getSimpleName());
 
     public ProofOfDebtPower(AbstractCreature owner, int Amount) {
@@ -43,5 +45,14 @@ public class ProofOfDebtPower extends DebuffPower implements PreElementalDamageS
             return dmg + this.amount;
         }
         return dmg;
+    }
+
+    @Override
+    public AbstractCreature preFollowUpAction(AbstractCard card, AbstractCreature target) {
+        if (SubscriptionManager.checkSubscriber(this) && ModHelper.check(owner)) {
+            card.damage += this.amount;
+            return owner;
+        }
+        return target;
     }
 }

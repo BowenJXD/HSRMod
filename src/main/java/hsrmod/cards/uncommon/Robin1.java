@@ -19,14 +19,14 @@ import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
 public class Robin1 extends BaseCard {
     public static final String ID = Robin1.class.getSimpleName();
-    
+
     public Robin1() {
         super(ID);
     }
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        int amt = energyOnUse + magicNumber;
+        int amt = energyOnUse;
         addToBot(new DrawCardAction(p, amt));
 
         ModHelper.addToBotAbstract(() ->
@@ -34,13 +34,7 @@ public class Robin1 extends BaseCard {
             int amount = amt;
 
             for (AbstractCard card : p.hand.group) {
-                if (card.hasTag(FOLLOW_UP)
-                        && card instanceof BaseCard
-                        && !((BaseCard)card).followedUp) {
-                    if (!upgraded) amount--;
-                }
-                else {
-                    addToBot(new FollowUpAction(card));
+                if (!upgraded || !card.hasTag(FOLLOW_UP)) {
                     amount--;
                 }
 

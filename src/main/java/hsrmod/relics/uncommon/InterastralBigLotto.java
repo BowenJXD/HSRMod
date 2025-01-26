@@ -34,13 +34,13 @@ public class InterastralBigLotto extends BaseRelic {
         if (usedUp) return;
         if (AbstractDungeon.relicRng.random(100) < winChance) {
             flash();
-            AbstractDungeon.getCurrRoom().addCardToRewards();
+            RewardEditor.addExtraCardRewardToTop();
         }
         if (AbstractDungeon.relicRng.random(100) < loseChance) {
             flash();
             AbstractCard card = GeneralUtil.getRandomElement(AbstractDungeon.player.masterDeck.getPurgeableCards().group, AbstractDungeon.relicRng);
             if (card != null) {
-                AbstractDungeon.topLevelEffects.add(new PurgeCardEffect(card));
+                AbstractDungeon.topLevelEffectsQueue.add(new PurgeCardEffect(card));
                 AbstractDungeon.player.masterDeck.removeCard(card);
             }
             destroy();

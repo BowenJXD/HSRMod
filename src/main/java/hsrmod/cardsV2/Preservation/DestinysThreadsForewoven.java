@@ -14,7 +14,7 @@ public class DestinysThreadsForewoven extends BaseCard {
     
     public DestinysThreadsForewoven() {
         super(ID);
-        energyCost = 80;
+        setBaseEnergyCost(80);
         tags.add(CustomEnums.ENERGY_COSTING);
     }
     

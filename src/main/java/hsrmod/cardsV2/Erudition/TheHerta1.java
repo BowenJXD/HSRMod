@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.effects.PortraitDisplayEffect;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementalDamageInfo;
 
@@ -17,13 +18,15 @@ public class TheHerta1 extends BaseCard {
     
     public TheHerta1() {
         super(ID);
-        energyCost = 220;
+        setBaseEnergyCost(220);
         tags.add(CustomEnums.ENERGY_COSTING);
         isMultiDamage = true;
     }
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
+        AbstractDungeon.topLevelEffects.add(new PortraitDisplayEffect("TheHerta"));
+        
         addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         int useCount = 0;
         if (p.hand.group.stream().anyMatch(c -> c.hasTag(CustomEnums.ENERGY_COSTING) && c != this)) useCount++;

@@ -67,9 +67,9 @@ public class ModHelper {
         };
         
         if (topLevel) {
-            AbstractDungeon.topLevelEffects.add(effect);
+            AbstractDungeon.topLevelEffectsQueue.add(effect);
         } else {
-            AbstractDungeon.effectList.add(effect);
+            AbstractDungeon.effectsQueue.add(effect);
         }
     }
 

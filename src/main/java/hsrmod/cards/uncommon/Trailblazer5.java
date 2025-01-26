@@ -12,7 +12,7 @@ public class Trailblazer5 extends BaseCard {
 
     public Trailblazer5() {
         super(ID);
-        energyCost = 140;
+        setBaseEnergyCost(140);
         tags.add(CustomEnums.ENERGY_COSTING);
     }
 

@@ -2,12 +2,9 @@ package hsrmod.cards.common;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import hsrmod.actions.AOEAction;
-import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
@@ -18,7 +15,7 @@ public class March7th3 extends BaseCard {
 
     public March7th3() {
         super(ID);
-        energyCost = 120;
+        setBaseEnergyCost(120);
         tags.add(CustomEnums.ENERGY_COSTING);
         isMultiDamage = true;
     }

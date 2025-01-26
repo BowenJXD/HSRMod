@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.actions.utility.NewQueueCardAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import hsrmod.actions.FollowUpAction;
 import hsrmod.relics.BaseRelic;
 
 public class HerosTriumphantReturn extends BaseRelic {
@@ -19,6 +20,6 @@ public class HerosTriumphantReturn extends BaseRelic {
         AbstractDungeon.player.drawPile.group.stream()
                 .filter(c -> c.type == AbstractCard.CardType.POWER)
                 .limit(2)
-                .forEach(c -> addToBot(new NewQueueCardAction(c, true, false, true)));
+                .forEach(c -> addToBot(new FollowUpAction(c)));
     }
 }

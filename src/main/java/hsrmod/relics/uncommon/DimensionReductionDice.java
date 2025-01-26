@@ -23,11 +23,7 @@ public class DimensionReductionDice extends BaseRelic {
 
     void processRewards(List<RewardItem> rewards) {
         rewards.add(new RewardItem());
-        if (counter > 0)
-            setCounter(counter - 1);
-        if (counter <= 0) {
-            destroy();
-        }
+        reduceCounterAndCheckDestroy();
     }
 
     @Override

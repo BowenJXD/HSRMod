@@ -20,7 +20,7 @@ public class Aggregator extends BaseCard implements PostBattleSubscriber {
     public Aggregator() {
         super(ID);
         exhaust = true;
-        energyCost = magicNumber;
+        setBaseEnergyCost(magicNumber);
         magicNumberCache = magicNumber;
         tags.add(CustomEnums.ENERGY_COSTING);
     }
@@ -29,7 +29,7 @@ public class Aggregator extends BaseCard implements PostBattleSubscriber {
     public void upgrade() {
         super.upgrade();
         exhaust = false;
-        energyCost = magicNumber;
+        setBaseEnergyCost(magicNumber);
         magicNumberCache = magicNumber;
     }
 
@@ -43,14 +43,14 @@ public class Aggregator extends BaseCard implements PostBattleSubscriber {
 
         if (upgraded) {
             upgradeMagicNumber(magicNumber);
-            energyCost *= 2;
+            setBaseEnergyCost(getEnergyCost() * 2);
         }
     }
 
     @Override
     public void receivePostBattle(AbstractRoom abstractRoom) {
         if (SubscriptionManager.checkSubscriber(this)) {
-            energyCost = magicNumberCache;
+            setBaseEnergyCost(magicNumberCache);
             upgradeMagicNumber(magicNumberCache - magicNumber);
         }
     }

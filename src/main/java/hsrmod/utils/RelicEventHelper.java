@@ -44,7 +44,7 @@ public class RelicEventHelper {
                     float x = MathUtils.random(0.1F, 0.9F) * (float) Settings.WIDTH;
                     float y = MathUtils.random(0.2F, 0.8F) * (float) Settings.HEIGHT;
                     AbstractDungeon.effectList.add(new ShowCardBrieflyEffect(c.makeStatEquivalentCopy(), x, y));
-                    AbstractDungeon.topLevelEffects.add(new UpgradeShineEffect(x, y));
+                    AbstractDungeon.topLevelEffectsQueue.add(new UpgradeShineEffect(x, y));
                 }
 
                 if (count >= amount) {
@@ -61,8 +61,8 @@ public class RelicEventHelper {
                 AbstractDungeon.player.bottledCardUpgradeCheck(c);
                 float x = MathUtils.random(0.1F, 0.9F) * (float) Settings.WIDTH;
                 float y = MathUtils.random(0.2F, 0.8F) * (float) Settings.HEIGHT;
-                AbstractDungeon.topLevelEffects.add(new ShowCardBrieflyEffect(c.makeStatEquivalentCopy(), x, y));
-                AbstractDungeon.topLevelEffects.add(new UpgradeShineEffect(x, y));
+                AbstractDungeon.topLevelEffectsQueue.add(new ShowCardBrieflyEffect(c.makeStatEquivalentCopy(), x, y));
+                AbstractDungeon.topLevelEffectsQueue.add(new UpgradeShineEffect(x, y));
             }
         }
     }
@@ -71,21 +71,13 @@ public class RelicEventHelper {
         ModHelper.addEffectAbstract(() -> gainRelics(amount));
     }
     
-    public static void gainRelics(int amount){
-        gainRelics(amount, AbstractDungeon.returnRandomRelicTier());
-    }
-    
-    public static void gainRelics(int amount, AbstractRelic.RelicTier tier) {
-        gainRelics(amount, tier, r -> !RelicTagField.subtle.get(r));
+    public static void gainRelics(int amount) {
+        gainRelics(amount, r -> !RelicTagField.subtle.get(r));
     }
     
     public static void gainRelics(int amount, Predicate<AbstractRelic> predicate) {
-        gainRelics(amount, AbstractDungeon.returnRandomRelicTier(), predicate);
-    }
-    
-    public static void gainRelics(int amount, AbstractRelic.RelicTier tier, Predicate<AbstractRelic> predicate) {
         for (int i = 0, j = 0; i < amount && j < 99; ++i, ++j) {
-            AbstractRelic r = AbstractDungeon.returnRandomScreenlessRelic(tier);
+            AbstractRelic r = AbstractDungeon.returnRandomScreenlessRelic(AbstractDungeon.returnRandomRelicTier());
             if (!predicate.test(r)) {
                 --i;
                 addRelicToPool(r);

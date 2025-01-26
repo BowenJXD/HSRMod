@@ -33,7 +33,7 @@ public class UselessScholarPower extends PowerPower {
 
     @Override
     public void updateDescription() {
-        this.description = String.format(DESCRIPTIONS[upgraded ? 1 : 0], percentage, ENERGY_REQUIRED);
+        this.description = String.format(DESCRIPTIONS[upgraded ? 1 : 0], ENERGY_REQUIRED, percentage);
     }
 
     @Override

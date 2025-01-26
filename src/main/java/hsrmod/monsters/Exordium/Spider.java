@@ -25,7 +25,7 @@ public class Spider extends BaseMonster {
     int explosionDmg = 14;
     int selfExpDamage = 10;
     
-    public Spider(int turnCount, float x, float y) {
+    public Spider(float x, float y, int turnCount) {
         super(ID, 165F, 197F, x, y);
         this.turnCount = turnCount;
         
@@ -37,7 +37,7 @@ public class Spider extends BaseMonster {
     }
     
     public Spider(float x, float y) {
-        this(0, x, y);
+        this(x, y, 0);
     }
 
     @Override

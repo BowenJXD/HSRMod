@@ -1,3 +1,4 @@
+/*
 package hsrmod.relics.uncommon;
 
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -20,11 +21,20 @@ public class ManMadeMeteorite extends BaseRelic implements INumChangerSubscriber
     public void onEquip() {
         flash();
         if (AbstractDungeon.getCurrRoom().rewardTime) {
-            RewardItem reward = new RewardItem();
-            RewardEditor.getInstance().setRewardCards(reward);
-            AbstractDungeon.combatRewardScreen.rewards.add(reward);
+            ModHelper.addEffectAbstract(() -> {
+                RewardItem reward = new RewardItem();
+                RewardEditor.getInstance().setRewardCards(reward);
+                AbstractDungeon.combatRewardScreen.rewards.add(reward);
+            });
         } else if (AbstractDungeon.currMapNode != null && AbstractDungeon.getCurrRoom().phase != AbstractRoom.RoomPhase.COMBAT) {
             AbstractDungeon.combatRewardScreen.open(this.DESCRIPTIONS[1]);
+            ModHelper.addEffectAbstract(() -> {
+                if (AbstractDungeon.combatRewardScreen.rewards.isEmpty()) {
+                    RewardItem reward = new RewardItem();
+                    RewardEditor.getInstance().setRewardCards(reward);
+                    AbstractDungeon.combatRewardScreen.rewards.add(reward);
+                }
+            });
         } else {
             RewardItem reward = new RewardItem();
             RewardEditor.getInstance().setRewardCards(reward);
@@ -47,3 +57,4 @@ public class ManMadeMeteorite extends BaseRelic implements INumChangerSubscriber
         return SubscriptionManager.NumChangerType.WAX_WEIGHT;
     }
 }
+*/

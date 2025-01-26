@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.relics.TinyHouse;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import hsrmod.relics.BaseRelic;
+import hsrmod.utils.ModHelper;
 import hsrmod.utils.RewardEditor;
 
 import java.util.ArrayList;
@@ -21,11 +22,11 @@ public class CasketOfInaccuracy extends BaseRelic {
     public void onEquip() {
         flash();
         if (AbstractDungeon.getCurrRoom().rewardTime) {
-            AbstractDungeon.combatRewardScreen.rewards.add(new RewardItem());
+            ModHelper.addEffectAbstract(() -> AbstractDungeon.combatRewardScreen.rewards.add(new RewardItem()));
         } else if (AbstractDungeon.currMapNode != null && AbstractDungeon.getCurrRoom().phase != AbstractRoom.RoomPhase.COMBAT) {
             AbstractDungeon.combatRewardScreen.open(this.DESCRIPTIONS[1]);
         } else {
-            AbstractDungeon.getCurrRoom().addCardToRewards();
+            RewardEditor.addExtraCardRewardToTop();
         }
     }
 }

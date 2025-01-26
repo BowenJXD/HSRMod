@@ -12,19 +12,15 @@ import hsrmod.actions.BreakDamageAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
-import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
-import hsrmod.powers.misc.BreakEffectPower;
 import hsrmod.powers.misc.EnergyPower;
-import hsrmod.powers.misc.ToughnessPower;
-import hsrmod.utils.ModHelper;
 
 public class DisruptivePulse extends BaseCard {
     public static final String ID = DisruptivePulse.class.getSimpleName();
 
     public DisruptivePulse() {
         super(ID);
-        energyCost = 80;
+        setBaseEnergyCost(80);
         tags.add(CustomEnums.ENERGY_COSTING);
     }
 

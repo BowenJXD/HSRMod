@@ -1,10 +1,8 @@
 package hsrmod.monsters.Exordium;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.AnimateHopAction;
 import com.megacrit.cardcrawl.actions.animations.AnimateJumpAction;
 import com.megacrit.cardcrawl.actions.common.*;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import hsrmod.cardsV2.Curse.Frozen;
@@ -19,6 +17,7 @@ public class FrigidProwler extends BaseMonster {
         super(ID, 0F, -15.0F, 300, 384, 0, 0);
         setDamagesWithAscension(5, 9, 3);
         addSlot(-300.0F, 0.0F);
+        monFunc = slot -> new EverwinterShadewalker(slot.x, slot.y);
     }
 
     @Override
@@ -26,18 +25,6 @@ public class FrigidProwler extends BaseMonster {
         super.usePreBattleAction();
         if (ModHelper.specialAscension(type)) {
             spawnMonsters();
-        }
-    }
-
-    private void spawnMonsters() {
-        for (int i = 0; i < 2; i++) {
-            MonsterSlot slot = getEmptySlot();
-            if (slot != null) {
-                AbstractMonster monster = new EverwinterShadewalker(slot.x, slot.y);
-                monster.usePreBattleAction();
-                addToBot(new SpawnMonsterAction(monster, true));
-                slot.setMonster(monster);
-            }
         }
     }
 

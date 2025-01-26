@@ -12,6 +12,7 @@ import hsrmod.actions.AOEAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.effects.PortraitDisplayEffect;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementType;
 import hsrmod.powers.misc.EnergyPower;
@@ -37,7 +38,9 @@ public class Argenti1 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
+        AbstractDungeon.topLevelEffects.add(new PortraitDisplayEffect("Argenti"));
         ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID));
+        
         addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
         ModHelper.addToBotAbstract(this::execute);
     }

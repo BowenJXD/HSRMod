@@ -4,8 +4,10 @@ import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cards.BaseCard;
+import hsrmod.effects.PortraitDisplayEffect;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.utils.ModHelper;
 
@@ -16,13 +18,15 @@ public class Sparkle2 extends BaseCard {
     
     public Sparkle2() {
         super(ID);
-        energyCost = 110;
+        setBaseEnergyCost(110);
         tags.add(CustomEnums.ENERGY_COSTING);
         exhaust = true;
     }
     
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
+        AbstractDungeon.topLevelEffects.add(new PortraitDisplayEffect("Sparkle"));
+        
         p.energy.use(energyOnUse);
         int num = Math.min(energyOnUse * 2, p.energy.energy * 2 + magicNumber);
 

@@ -21,10 +21,7 @@ public class PunklordianBalance extends BaseRelic {
         if (AbstractDungeon.getMonsters().monsters == null) return;
         if (usedUp) return;
         
-        setCounter(this.counter - 1);
-        if (this.counter <= 0) {
-            this.destroy();
-        }
+        reduceCounterAndCheckDestroy();
         this.flash();
 
         for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {

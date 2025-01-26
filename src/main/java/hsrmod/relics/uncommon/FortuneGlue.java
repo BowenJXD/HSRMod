@@ -17,7 +17,8 @@ public class FortuneGlue extends BaseRelic {
     @Override
     public void atBattleStart() {
         super.atBattleStart();
-        RewardEditor.addExtraRewardToBot(this::processRewards);
+        if (!usedUp)
+            RewardEditor.addExtraRewardToBot(this::processRewards);
     }
     
     public void processRewards(List<RewardItem> rewards) {
@@ -26,7 +27,7 @@ public class FortuneGlue extends BaseRelic {
             if (reward.type == RewardItem.RewardType.CARD && !reward.cards.isEmpty()) {
                 RewardEditor.setRewardCards(reward, AbstractCard.CardRarity.RARE);
                 doFlash = true;
-                destroy();
+                reduceCounterAndCheckDestroy();
                 break;
             }
         }

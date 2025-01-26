@@ -19,7 +19,7 @@ import hsrmod.utils.ModHelper;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
-public class Qingque2 extends BaseCard {
+public class Qingque2 extends BaseCard implements PreEnergyChangeSubscriber{
     public static final String ID = Qingque2.class.getSimpleName();
 
     int costCache = -1;
@@ -30,6 +30,16 @@ public class Qingque2 extends BaseCard {
         this.tags.add(FOLLOW_UP);
         costCache = cost;
         isMultiDamage = true;
+    }
+
+    @Override
+    public void onEnterHand() {
+        SubscriptionManager.subscribe(this);
+    }
+
+    @Override
+    public void triggerAtStartOfTurn() {
+        SubscriptionManager.unsubscribe(this);
     }
 
     @Override
@@ -67,16 +77,15 @@ public class Qingque2 extends BaseCard {
     }
 
     @Override
-    public void triggerOnOtherCardPlayed(AbstractCard c) {
-        super.triggerOnOtherCardPlayed(c);
-        int amt = c.costForTurn;
-        if (amt == -1) amt = c.energyOnUse;
-        if (amt < 0) return;
-        for (int i = 0; i < amt; i++) {
-            if (AbstractDungeon.cardRandomRng.random(100) <= reduceCostProbability) {
-                updateCost(-1);
-                if (costForTurn <= 0) break;
+    public int preEnergyChange(int changeAmount) {
+        if (SubscriptionManager.checkSubscriber(this) && changeAmount < 0) {
+            for (int i = 0; i < -changeAmount; i++) {
+                if (AbstractDungeon.cardRandomRng.random(100) <= reduceCostProbability) {
+                    updateCost(-1);
+                    if (costForTurn <= 0) break;
+                }
             }
         }
+        return changeAmount;
     }
 }

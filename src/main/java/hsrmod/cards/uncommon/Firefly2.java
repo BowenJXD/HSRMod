@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cards.BaseCard;
+import hsrmod.effects.PortraitDisplayEffect;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.powers.uniqueBuffs.FireflyPower;
@@ -20,7 +21,7 @@ public class Firefly2 extends BaseCard {
     
     public Firefly2() {
         super(ID);
-        energyCost = 240;
+        setBaseEnergyCost(240);
         tags.add(CustomEnums.ENERGY_COSTING);
         cardsToPreview = new Firefly1();
     }
@@ -28,7 +29,10 @@ public class Firefly2 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         addToBot(new LoseHPAction(p, p, magicNumber));
+        
+        AbstractDungeon.topLevelEffects.add(new PortraitDisplayEffect("Firefly"));
         ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID));
+        
         addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
         addToBot(new ApplyPowerAction(p, p, new FireflyPower()));
     }

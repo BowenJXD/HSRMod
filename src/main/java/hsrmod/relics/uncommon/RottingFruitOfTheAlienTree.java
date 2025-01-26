@@ -3,11 +3,9 @@ package hsrmod.relics.uncommon;
 import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
-import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import com.megacrit.cardcrawl.rooms.MonsterRoom;
 import hsrmod.relics.BaseRelic;
 
 public class RottingFruitOfTheAlienTree extends BaseRelic implements ClickableRelic {
@@ -35,6 +33,6 @@ public class RottingFruitOfTheAlienTree extends BaseRelic implements ClickableRe
         flash();
         addToBot(new LoseHPAction(AbstractDungeon.player, AbstractDungeon.player, hpLoss));
         addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new ArtifactPower(AbstractDungeon.player, 1)));
-        reduceCounterAndCheckUsedUp();
+        reduceCounterAndCheckDestroy();
     }
 }

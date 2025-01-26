@@ -29,8 +29,10 @@ public class FamilyTies extends BaseRelic implements IRunnableSubscriber {
     @Override
     public void onEquip() {
         super.onEquip();
-        ModHelper.addEffectAbstract(() -> RelicEventHelper.gainRelics(1, r -> RelicTagField.destructible.get(r)));
-        updateCounter();
+        ModHelper.addEffectAbstract(() -> {
+            RelicEventHelper.gainRelics(1, r -> RelicTagField.destructible.get(r));
+            updateCounter();
+        });
     }
     
     void updateCounter() {

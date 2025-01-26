@@ -74,7 +74,7 @@ public class PomPomBlessing extends CustomRelic {
     @Override
     public void atBattleStart() {
         flash();
-        addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new EnergyPower(AbstractDungeon.player, counter), counter));
+        addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new EnergyPower(AbstractDungeon.player, Math.max(0, counter))));
         addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new IntangiblePlayerPower(AbstractDungeon.player, 1), 1));
         addToBot(new GainEnergyAction(2));
         addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));

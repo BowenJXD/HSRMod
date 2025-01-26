@@ -11,8 +11,11 @@ import java.util.List;
 public class BlackHoleTrap extends BaseRelic {
     public static final String ID = BlackHoleTrap.class.getSimpleName();
     
+    public static int staticMagicNumber = 100;
+    
     public BlackHoleTrap() {
         super(ID);
+        staticMagicNumber = magicNumber;
     }
 
     @Override
@@ -22,19 +25,17 @@ public class BlackHoleTrap extends BaseRelic {
     }
 
     void processRewards(List<RewardItem> rewards) {
-        boolean doFlash = false;
         for (RewardItem reward : rewards) {
             if (reward.type == RewardItem.RewardType.GOLD) {
                 reward.incrementGold(getAmount());
-                doFlash = true;
+                flash();
                 break;
             }
         }
-        if (doFlash) flash();
     }
     
-    int getAmount() {
+    static int getAmount() {
         AbstractPlayer p = AbstractDungeon.player;
-        return Math.max(0, (int) (p.currentHealth * 100f / p.maxHealth - magicNumber));
+        return Math.max(0, (int) (p.currentHealth * 100f / p.maxHealth - staticMagicNumber));
     }
 }

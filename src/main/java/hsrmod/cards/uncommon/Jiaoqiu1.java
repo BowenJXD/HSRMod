@@ -4,12 +4,9 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
-import hsrmod.actions.AOEAction;
-import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
@@ -19,7 +16,7 @@ public class Jiaoqiu1 extends BaseCard {
 
     public Jiaoqiu1() {
         super(ID);
-        energyCost = 100;
+        setBaseEnergyCost(100);
         tags.add(CustomEnums.ENERGY_COSTING);
         isMultiDamage = true;
         cardsToPreview = new Jiaoqiu2();

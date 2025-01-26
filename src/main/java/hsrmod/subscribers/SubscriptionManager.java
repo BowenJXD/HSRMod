@@ -36,6 +36,7 @@ public class SubscriptionManager {
     List<ICheckUsableSubscriber> checkUsableSubscribers = new ArrayList<>();
     List<ISetToughnessReductionSubscriber> setToughnessReductionSubscribers = new ArrayList<>();
     List<PostUpgradeSubscriber> postUpgradeSubscribers = new ArrayList<>();
+    List<PreFollowUpSubscriber> preFollowUpSubscribers = new ArrayList<>();
 
     HashMap<RunnableType, List<IRunnableSubscriber>> runnableSubscribers = new HashMap<>();
     HashMap<NumChangerType, List<INumChangerSubscriber>> numChangerSubscribers = new HashMap<>();
@@ -113,6 +114,11 @@ public class SubscriptionManager {
             if (addToFront) postUpgradeSubscribers.add(0, (PostUpgradeSubscriber) sub);
             else postUpgradeSubscribers.add((PostUpgradeSubscriber) sub);
         }
+        if (sub instanceof PreFollowUpSubscriber
+                && !preFollowUpSubscribers.contains(sub)) {
+            if (addToFront) preFollowUpSubscribers.add(0, (PreFollowUpSubscriber) sub);
+            else preFollowUpSubscribers.add((PreFollowUpSubscriber) sub);
+        }
         if (sub instanceof IRunnableSubscriber) {
             subscribeRunnableHelper((IRunnableSubscriber) sub, ((IRunnableSubscriber) sub).getSubType());
         }
@@ -180,6 +186,9 @@ public class SubscriptionManager {
         }
         if (sub instanceof PostUpgradeSubscriber) {
             postUpgradeSubscribers.remove(sub);
+        }
+        if (sub instanceof PreFollowUpSubscriber) {
+            preFollowUpSubscribers.remove(sub);
         }
         if (sub instanceof IRunnableSubscriber) {
             unsubscribeRunnableHelper((IRunnableSubscriber) sub, ((IRunnableSubscriber) sub).getSubType());
@@ -301,10 +310,10 @@ public class SubscriptionManager {
     }
 
     public boolean triggerCheckUsable(BaseCard card) {
-        boolean result = false;
+        boolean result = true;
 
         for (ICheckUsableSubscriber sub : checkUsableSubscribers) {
-            result |= sub.checkUsable(card);
+            result &= sub.checkUsable(card);
         }
 
         unsubscribeLaterHelper(ICheckUsableSubscriber.class);
@@ -330,6 +339,18 @@ public class SubscriptionManager {
         }
 
         unsubscribeLaterHelper(PostUpgradeSubscriber.class);
+    }
+    
+    public AbstractCreature triggerPreFollowUp(AbstractCard card, AbstractCreature target) {
+        AbstractCreature result = target;
+        
+        for (PreFollowUpSubscriber sub : preFollowUpSubscribers) {
+            result = sub.preFollowUpAction(card, result);
+        }
+
+        unsubscribeLaterHelper(PreFollowUpSubscriber.class);
+        
+        return result;
     }
 
     public void triggerRunnable(RunnableType type) {
@@ -411,5 +432,6 @@ public class SubscriptionManager {
     public static enum NumChangerType {
         WAX_WEIGHT,
         TROTTER_WEIGHT,
+        ENERGY_COST,
     }
 }

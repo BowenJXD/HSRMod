@@ -2,11 +2,9 @@ package hsrmod.cards.common;
 
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.UpgradeSpecificCardAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
 
@@ -15,7 +13,7 @@ public class DisasterHaltingMechanism extends BaseCard {
 
     public DisasterHaltingMechanism() {
         super(ID);
-        energyCost = 40;
+        setBaseEnergyCost(40);
         tags.add(CustomEnums.ENERGY_COSTING);
     }
 

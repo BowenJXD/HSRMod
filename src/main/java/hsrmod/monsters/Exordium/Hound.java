@@ -40,9 +40,9 @@ public class Hound extends BaseMonster {
     @Override
     protected void getMove(int i) {
         if (AbstractDungeon.getMonsters().monsters.stream().anyMatch(m -> m.currentHealth < m.maxHealth / 2 && ModHelper.check(m))) {
-            setMove((byte) 1, Intent.BUFF);
+            setMove(MOVES[1], (byte) 1, Intent.BUFF);
         } else {
-            setMove((byte) 0, Intent.ATTACK, this.damage.get(0).base);
+            setMove(MOVES[0], (byte) 0, Intent.ATTACK, this.damage.get(0).base);
         }
         turnCount++;
     }

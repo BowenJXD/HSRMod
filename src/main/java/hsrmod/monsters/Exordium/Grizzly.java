@@ -36,13 +36,17 @@ public class Grizzly extends BaseMonster {
         else {
             setDamages(9, 6);
         }
+        
+        addSlot(-500, AbstractDungeon.monsterRng.random(-15, 15));
+        addSlot(150, AbstractDungeon.monsterRng.random(-15, 15));
+        monFunc = slot -> new Spider(slot.x, slot.y);
     }
 
     @Override
     public void usePreBattleAction() {
         super.usePreBattleAction();
-        if (turnCount > 0) {
-            spawnSpiders();
+        if (ModHelper.specialAscension(type)) {
+            spawnMonsters();
         }
     }
 
@@ -51,7 +55,7 @@ public class Grizzly extends BaseMonster {
         AbstractPlayer p = AbstractDungeon.player;
         switch (nextMove) {
             case 1:
-                spawnSpiders();
+                spawnMonsters();
                 break;
             case 2:
                 addToBot(new DamageAction(p, this.damage.get(0), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
@@ -93,15 +97,6 @@ public class Grizzly extends BaseMonster {
                 break;
         }
         turnCount++;
-    }
-    
-    void spawnSpiders() {
-        Spider spider1 = new Spider(1, -500, 0);
-        addToBot(new SpawnMonsterAction(spider1, true));
-        ModHelper.addToBotAbstract(spider1::usePreBattleAction);
-        Spider spider2 = new Spider(1, 150, 0);
-        addToBot(new SpawnMonsterAction(spider2, true));
-        ModHelper.addToBotAbstract(spider2::usePreBattleAction);
     }
 
     @Override

@@ -35,11 +35,9 @@ public class AngelTypeIOUDispenser extends BaseRelic {
             flash();
             AbstractDungeon.combatRewardScreen.rewards.removeIf(rewardItem -> rewardItem.type == RewardItem.RewardType.GOLD);
             currRoom = AbstractDungeon.getCurrRoom();
-            counter--;
-        }
-        if (counter == 0) {
-            doubleGold();
-            destroy();
+            if (reduceCounterAndCheckDestroy()) {
+                doubleGold();
+            }
         }
     }
     

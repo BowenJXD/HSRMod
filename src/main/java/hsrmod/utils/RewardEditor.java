@@ -4,19 +4,24 @@ import basemod.BaseMod;
 import basemod.abstracts.CustomSavable;
 import basemod.interfaces.PostUpdateSubscriber;
 import basemod.interfaces.StartActSubscriber;
+import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.SpawnModificationCard;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
+import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
+import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.helpers.RelicLibrary;
+import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
 import com.megacrit.cardcrawl.saveAndContinue.SaveFile;
+import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
+import hsrmod.characters.StellaCharacter;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
 import hsrmod.relics.common.RubertEmpireMechanicalCogwheel;
@@ -47,6 +52,7 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
     public List<AbstractCard.CardTags> bannedTags;
 
     private List<Consumer<List<RewardItem>>> extraRewards;
+    @Deprecated
     private List<RewardItem> savedCardRewards;
 
     private RewardEditor() {
@@ -69,8 +75,6 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
             this.tag = tag;
 
             List<RewardItem> rewards = AbstractDungeon.combatRewardScreen.rewards;
-
-            rewards.addAll(savedCardRewards);
             
             for (Consumer<List<RewardItem>> extraReward : extraRewards) {
                 extraReward.accept(rewards);
@@ -260,10 +264,11 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
         String[] result = new String[2];
         if (bannedTags == null) result[0] = "";
         else result[0] = bannedTags.toString();
-        result[1] = saveCardRewards();
+        // result[1] = saveCardRewards();
         return result;
     }
 
+    @Deprecated
     String saveCardRewards() {
         StringBuilder result = new StringBuilder();
         if (AbstractDungeon.currMapNode == null) return "";
@@ -292,10 +297,11 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
             bannedTags = GeneralUtil.unpackSaveData(cardTags, AbstractCard.CardTags::valueOf);
         }
 
-        String cardRewards = data[1];
-        loadCardRewards(cardRewards);
+        // String cardRewards = data[1];
+        // loadCardRewards(cardRewards);
     }
 
+    @Deprecated
     void loadCardRewards(String data) {
         if (data == null || data.isEmpty()) return;
         String[] rewards = data.split(";");
@@ -314,9 +320,11 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
                     }
                     return result;
                 }).collect(Collectors.toCollection(ArrayList::new));
-                RewardItem rewardItem = new RewardItem();
-                rewardItem.cards = cardList;
-                savedCardRewards.add(rewardItem);
+                ModHelper.addEffectAbstract(() -> {
+                    RewardItem rewardItem = new RewardItem(StellaCharacter.PlayerColorEnum.HSR_PINK);
+                    rewardItem.cards = cardList;
+                    savedCardRewards.add(rewardItem);
+                });
             } catch (Exception e) {
                 logger.error("Error loading card rewards: {}", e.getMessage());
             }
@@ -347,6 +355,10 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
     public static void addExtraRewardToTop(Consumer<List<RewardItem>> extraReward) {
         getInstance().extraRewards.add(0, extraReward);
     }
+    
+    public static void addExtraCardRewardToTop() {
+        getInstance().extraRewards.add(0, rewards -> rewards.add(new RewardItem()));
+    }
 
     public static void addExtraRewardToBot(Consumer<List<RewardItem>> extraReward) {
         getInstance().extraRewards.add(extraReward);
@@ -362,6 +374,7 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
                         && !AbstractDungeon.getCurrRoom().rewardTime) {
                     instance.relicId = "";
                     instance.extraRewards.clear();
+                    // instance.savedCardRewards.clear();
                 }
             });
         }

@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cardsV2.Curse.Imprison;
 import hsrmod.misc.IMultiToughness;
 import hsrmod.modcore.ElementalDamageInfo;
@@ -18,6 +19,7 @@ import hsrmod.powers.StatePower;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.subscribers.PreBreakSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
+import hsrmod.utils.ModHelper;
 
 public class WalkInTheLightPower extends StatePower implements PreBreakSubscriber, IMultiToughness {
     public static final String POWER_ID = HSRMod.makePath(WalkInTheLightPower.class.getSimpleName());
@@ -34,9 +36,12 @@ public class WalkInTheLightPower extends StatePower implements PreBreakSubscribe
     
     public void updateDescription() {
         if (amount > 0)
-            this.description = String.format(DESCRIPTIONS[0], amount * damageMultiplier, tempHPAmount, blockAmount, damageMultiplier2);
+            if (ModHelper.specialAscension(AbstractMonster.EnemyType.BOSS))
+                this.description = String.format(DESCRIPTIONS[1], amount * damageMultiplier, tempHPAmount, blockAmount, damageMultiplier2);
+            else
+                this.description = String.format(DESCRIPTIONS[0], amount * damageMultiplier, tempHPAmount, blockAmount, damageMultiplier2);
         else
-            this.description = String.format(DESCRIPTIONS[1], damageMultiplier2);
+            this.description = String.format(DESCRIPTIONS[2], damageMultiplier2);
     }
 
     @Override
@@ -73,6 +78,9 @@ public class WalkInTheLightPower extends StatePower implements PreBreakSubscribe
             addToBot(new ApplyPowerAction(owner, owner, new ToughnessPower(owner, ToughnessPower.getStackLimit(owner) * 2), ToughnessPower.getStackLimit(owner) * 2));
             addToBot(new AddTemporaryHPAction(AbstractDungeon.player, AbstractDungeon.player, tempHPAmount));
             addToBot(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, blockAmount));
+            if (ModHelper.specialAscension(AbstractMonster.EnemyType.BOSS)) {
+                addImprison();
+            }
         }
         updateDescription();
     }
@@ -91,11 +99,16 @@ public class WalkInTheLightPower extends StatePower implements PreBreakSubscribe
                 && target == owner
                 && amount > 0) {
             reducePower(1);
-            if (AbstractDungeon.player.hand.size() == BaseMod.MAX_HAND_SIZE)
-                addToBot(new MakeTempCardInDiscardAction(new Imprison(), 1));
-            else
-                addToBot(new MakeTempCardInHandAction(new Imprison(), 1));
+            if (!ModHelper.specialAscension(AbstractMonster.EnemyType.BOSS))
+                addImprison();
         }
+    }
+    
+    void addImprison() {
+        if (AbstractDungeon.player.hand.size() == BaseMod.MAX_HAND_SIZE)
+            addToBot(new MakeTempCardInDiscardAction(new Imprison(), 1));
+        else
+            addToBot(new MakeTempCardInHandAction(new Imprison(), 1));
     }
 
     @Override

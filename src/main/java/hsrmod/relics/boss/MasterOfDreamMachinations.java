@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.rooms.ShopRoom;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import hsrmod.cardsV2.AstralExpress;
 import hsrmod.relics.BaseRelic;
+import hsrmod.utils.RewardEditor;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -62,6 +63,7 @@ public class MasterOfDreamMachinations extends BaseRelic implements ClickableRel
         AbstractDungeon.player.masterDeck.removeCard(card);
         AbstractDungeon.transformCard(card, true, AbstractDungeon.miscRng);
         if (AbstractDungeon.screen != AbstractDungeon.CurrentScreen.TRANSFORM && AbstractDungeon.transformedCard != null) {
+            AbstractDungeon.transformedCard = RewardEditor.getInstance().getCard(AbstractDungeon.transformedCard.rarity, new ArrayList<>());
             AbstractDungeon.topLevelEffectsQueue.add(new ShowCardAndObtainEffect(AbstractDungeon.getTransformedCard(), (float)Settings.WIDTH / 3.0F + displayCount, (float)Settings.HEIGHT / 2.0F, false));
         }
 

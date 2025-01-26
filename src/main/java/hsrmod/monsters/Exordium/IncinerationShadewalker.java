@@ -10,7 +10,7 @@ import hsrmod.monsters.BaseMonster;
 public class IncinerationShadewalker extends BaseMonster {
     public static final String ID = IncinerationShadewalker.class.getSimpleName();
     
-    public IncinerationShadewalker(int x, int y) {
+    public IncinerationShadewalker(float x, float y) {
         super(ID, 0F, -15.0F, 200, 256, x, y);
         setDamagesWithAscension(5);
     }
@@ -24,6 +24,6 @@ public class IncinerationShadewalker extends BaseMonster {
 
     @Override
     protected void getMove(int i) {
-        setMove((byte) 0, Intent.ATTACK_DEBUFF, this.damage.get(0).base);
+        setMove(MOVES[0], (byte) 0, Intent.ATTACK_DEBUFF, this.damage.get(0).base);
     }
 }

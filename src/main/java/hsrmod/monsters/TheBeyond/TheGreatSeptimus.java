@@ -60,6 +60,8 @@ public class TheGreatSeptimus extends BaseMonster implements OnCardUseSubscriber
         if (BaseMod.hasModID("spireTogether:")) {
             tv = 27;
         }
+        
+        bgm = Encounter.SALUTATIONS_OF_ASHEN_DREAMS;
     }
 
     @Override
@@ -67,11 +69,6 @@ public class TheGreatSeptimus extends BaseMonster implements OnCardUseSubscriber
         super.usePreBattleAction();
         BaseMod.subscribe(this);
         cardsCache = new ArrayList<>();
-        if (AbstractDungeon.getCurrRoom() instanceof MonsterRoomBoss) {
-            CardCrawlGame.music.unsilenceBGM();
-            AbstractDungeon.scene.fadeOutAmbiance();
-            AbstractDungeon.getCurrRoom().playBgmInstantly(Encounter.SALUTATIONS_OF_ASHEN_DREAMS);
-        }
         addToBot(new ApplyPowerAction(this, this, new WalkInTheLightPower(this, powerAmount), powerAmount));
         addToBot(new ShoutAction(this, DIALOG[0], 1.0F, 2.0F));
         ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_Day1", 2));

@@ -60,18 +60,15 @@ public class Phantylia extends BaseMonster implements PostPowerApplySubscriber {
             setDamages(4, 14, 24, 34);
         else
             setDamages(4, 14, 24, 24);
+        
+        bgm = Encounter.DIVINE_SEED + "_1";
     }
 
     @Override
     public void usePreBattleAction() {
         super.usePreBattleAction();
         BaseMod.subscribe(this);
-        if (AbstractDungeon.getCurrRoom() instanceof MonsterRoomBoss) {
-            CardCrawlGame.music.unsilenceBGM();
-            AbstractDungeon.scene.fadeOutAmbiance();
-            AbstractDungeon.getCurrRoom().playBgmInstantly(Encounter.DIVINE_SEED + "_1");
-            AbstractDungeon.getCurrRoom().cannotLose = true;
-        }
+        AbstractDungeon.getCurrRoom().cannotLose = true;
         // addToBot(new TalkAction(this, DIALOG[0], 4.0F, 5.0F));
         ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_1", 3.0F));
         addToBot(new ApplyPowerAction(this, this, new UnawakenedPower(this)));

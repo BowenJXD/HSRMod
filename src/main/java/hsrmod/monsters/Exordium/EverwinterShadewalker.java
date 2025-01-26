@@ -24,6 +24,6 @@ public class EverwinterShadewalker extends BaseMonster {
 
     @Override
     protected void getMove(int i) {
-        setMove((byte) 0, Intent.ATTACK_DEBUFF, this.damage.get(0).base);
+        setMove(MOVES[0], (byte) 0, Intent.ATTACK_DEBUFF, this.damage.get(0).base);
     }
 }

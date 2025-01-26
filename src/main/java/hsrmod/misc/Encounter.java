@@ -4,6 +4,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.monsters.Exordium.*;
 
+import java.awt.*;
+
 public class Encounter {
     // ======================== EVENT ========================
     
@@ -37,8 +39,14 @@ public class Encounter {
     public static final String VAGRANTS = "Vagrants";
     public static final String DIREWOLF = "Direwolf";
     public static final String STORMBRINGER = "Stormbringer";
-    
+
+    public static final String SHAPE_SHIFTER = "Shape Shifter";
     public static final String AUROMATON_GATEKEEPER = "Auromaton Gatekeeper";
+    public static final String HOWLING_CASKET = "Howling Casket";
+    public static final String AURUMATON_SPECTRAL_ENVOY = "Aurumaton Spectral Envoy";
+    public static final String MALEFIC_APE = "Malefic Ape";
+    public static final String THE_ASCENDED = "The Ascended";
+    public static final String TWIGS = "Twigs";
     
     public static final String SWEET_GORILLA = "Sweet Gorilla";
     
@@ -50,6 +58,9 @@ public class Encounter {
     public static final String VAGRANT = "Vagrant";
     
     public static final String DRAGONFISH_N_DRACOLION = "Dragonfish and Dracolion";
+    public static final String MARA_STRUCK = "Mara Struck Soldier and Internal Alchemist";
+    public static final String HOUNDS = "Wooden Lupus and Golden Hound";
+    public static final String CLOUD_KNIGHTS_PATROLLERS = "2 Cloud Knights Patroller";
     
     public static final String HOUND_N_DOMESCREEN = "Hound and Domescreen";
     

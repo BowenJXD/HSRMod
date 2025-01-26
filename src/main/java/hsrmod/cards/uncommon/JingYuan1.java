@@ -13,6 +13,7 @@ import hsrmod.actions.BouncingAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.effects.PortraitDisplayEffect;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.utils.ModHelper;
 
@@ -31,7 +32,9 @@ public class JingYuan1 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
+        AbstractDungeon.topLevelEffects.add(new PortraitDisplayEffect("JingYuan"));
         ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID));
+        
         addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
 
         ElementalDamageAction elementalDamageAction = new ElementalDamageAction(

@@ -7,8 +7,6 @@ import hsrmod.relics.BaseRelic;
 import hsrmod.utils.ModHelper;
 import hsrmod.utils.RewardEditor;
 
-import java.util.List;
-
 public class ARuanPouch extends BaseRelic {
     public static final String ID = ARuanPouch.class.getSimpleName();
 
@@ -21,26 +19,29 @@ public class ARuanPouch extends BaseRelic {
         flash();
         if (AbstractDungeon.currMapNode != null && AbstractDungeon.getCurrRoom().phase != AbstractRoom.RoomPhase.COMBAT) {
             for(int i = 0; i < 2; ++i) {
-                AbstractDungeon.getCurrRoom().addCardToRewards();
+                RewardEditor.addExtraCardRewardToTop();
             }
             AbstractDungeon.combatRewardScreen.open(this.DESCRIPTIONS[1]);
         } else if (!AbstractDungeon.getCurrRoom().rewardTime) {
             for (int i = 0; i < 3; ++i) {
-                AbstractDungeon.getCurrRoom().addCardToRewards();
+                RewardEditor.addExtraCardRewardToTop();
             }
         } else {
-            for (int i = 0; i < 3; ++i) {
-                AbstractDungeon.combatRewardScreen.rewards.add(new RewardItem());
-            }
+            ModHelper.addEffectAbstract( () ->
+            {
+                for (int i = 0; i < 3; ++i) {
+                    AbstractDungeon.combatRewardScreen.rewards.add(new RewardItem());
+                }
+            });
         }
-        ModHelper.addEffectAbstract(this::reduceCounterAndCheckUsedUp); 
+        ModHelper.addEffectAbstract(this::reduceCounterAndCheckDestroy); 
     }
 
     @Override
     public int changeNumberOfCardsInReward(int numberOfCards) {
         if (usedUp) return numberOfCards;
         if (counter == magicNumber) return numberOfCards;
-        reduceCounterAndCheckUsedUp();
+        reduceCounterAndCheckDestroy();
         return 1;
     }
 }

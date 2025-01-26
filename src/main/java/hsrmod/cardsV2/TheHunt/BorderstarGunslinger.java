@@ -1,8 +1,6 @@
 package hsrmod.cardsV2.TheHunt;
 
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
-import com.megacrit.cardcrawl.actions.common.DiscardSpecificCardAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.UpgradeSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -18,7 +16,7 @@ public class BorderstarGunslinger extends BaseCard {
 
     public BorderstarGunslinger() {
         super(ID);
-        energyCost = 80;
+        setBaseEnergyCost(80);
         tags.add(CustomEnums.ENERGY_COSTING);
     }
 

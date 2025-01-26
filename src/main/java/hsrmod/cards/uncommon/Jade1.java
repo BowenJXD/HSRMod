@@ -17,13 +17,12 @@ import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
 import hsrmod.subscribers.SubscriptionManager;
+import hsrmod.utils.ModHelper;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
 public class Jade1 extends BaseCard implements PostDrawSubscriber {
     public static final String ID = Jade1.class.getSimpleName();
-    
-    boolean isDetecting = false;
     
     public Jade1() {
         super(ID);
@@ -50,28 +49,19 @@ public class Jade1 extends BaseCard implements PostDrawSubscriber {
     @Override
     public void onEnterHand() {
         super.onEnterHand();
-        isDetecting = false;
-        BaseMod.subscribe(this);
+        ModHelper.addToBotAbstract(() -> BaseMod.subscribe(this));
     }
 
     @Override
     public void onLeaveHand() {
         super.onLeaveHand();
-        isDetecting = false;
         BaseMod.unsubscribe(this);
-    }
-
-    @Override
-    public void triggerOnOtherCardPlayed(AbstractCard c) {
-        if (!AbstractDungeon.player.hand.contains(this)) return;
-        isDetecting = true;
     }
 
     @Override
     public void receivePostDraw(AbstractCard abstractCard) {
         if (SubscriptionManager.checkSubscriber(this)
                 && AbstractDungeon.player.hand.contains(this)
-                && isDetecting 
                 && !this.followedUp) {
             this.followedUp = true;
             addToBot(new FollowUpAction(this));

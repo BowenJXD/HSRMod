@@ -40,10 +40,8 @@ public class GeniusSocietysDangerousGossip extends BaseRelic implements CustomSa
         while (goldGained > goldRequired && counter > 0) {
             goldGained -= goldRequired;
             flash();
-            setCounter(counter - 1);
             RelicEventHelper.gainRelicsAfterwards(1);
-            if (counter <= 0) {
-                destroy();
+            if (reduceCounterAndCheckDestroy()) {
                 tmp -= goldGained;
                 break;
             }

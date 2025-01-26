@@ -20,7 +20,7 @@ public class SilvermaneLieutenant extends BaseMonster implements PreBreakSubscri
     int block = 10;
     int thornCount = 3;
     
-    public SilvermaneLieutenant(int x, int y) {
+    public SilvermaneLieutenant(float x, float y) {
         super(ID, 0F, -15.0F, 300, 384, x, y);
         setDamagesWithAscension(7);
         block = ModHelper.moreHPAscension(type) ? 10 : 8;

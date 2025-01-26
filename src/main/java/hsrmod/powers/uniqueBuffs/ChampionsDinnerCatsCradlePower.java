@@ -2,6 +2,7 @@ package hsrmod.powers.uniqueBuffs;
 
 import basemod.BaseMod;
 import basemod.interfaces.PostPowerApplySubscriber;
+import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -14,25 +15,22 @@ import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.subscribers.ICheckUsableSubscriber;
+import hsrmod.subscribers.PreFollowUpSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.GeneralUtil;
 import hsrmod.utils.ModHelper;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import static hsrmod.modcore.CustomEnums.ENERGY_COSTING;
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
-public class ChampionsDinnerCatsCradlePower extends PowerPower implements PostPowerApplySubscriber, ICheckUsableSubscriber {
+public class ChampionsDinnerCatsCradlePower extends PowerPower implements OnReceivePowerPower {
     public static final String POWER_ID = HSRMod.makePath(ChampionsDinnerCatsCradlePower.class.getSimpleName());
-    
+
     int chance = 75;
-    Map<AbstractCard, Integer> costMap;
-    
+
     public ChampionsDinnerCatsCradlePower(boolean upgraded, int chance) {
         super(POWER_ID, upgraded);
         this.chance = chance;
-        costMap = new HashMap<>();
         this.updateDescription();
     }
 
@@ -44,8 +42,6 @@ public class ChampionsDinnerCatsCradlePower extends PowerPower implements PostPo
     @Override
     public void onInitialApplication() {
         super.onInitialApplication();
-        BaseMod.subscribe(this);
-        SubscriptionManager.subscribe(this, true);
         ModHelper.findCards((c) -> c.hasTag(CustomEnums.ENERGY_COSTING) && !c.hasTag(FOLLOW_UP)).forEach((r) -> processCard(r.card));
     }
 
@@ -60,58 +56,45 @@ public class ChampionsDinnerCatsCradlePower extends PowerPower implements PostPo
         super.onPlayCard(card, m);
         processCard(card);
     }
-    
-    void processCard(AbstractCard card){
+
+    void processCard(AbstractCard card) {
         if (card.hasTag(CustomEnums.ENERGY_COSTING) && !card.hasTag(FOLLOW_UP)) {
             card.tags.add(FOLLOW_UP);
-            if (upgraded && card instanceof BaseCard) {
-                BaseCard c = (BaseCard) card;
-                costMap.put(card, c.energyCost);
-                c.energyCost = 0;
-            }
         }
     }
 
     @Override
     public void onRemove() {
         super.onRemove();
-        BaseMod.unsubscribe(this);
-        SubscriptionManager.unsubscribe(this);
-        ModHelper.findCards((c) -> c.hasTag(CustomEnums.ENERGY_COSTING) && c.hasTag(FOLLOW_UP))
-                .forEach((r) -> {
-                    r.card.tags.remove(FOLLOW_UP);
-                    if (upgraded && r.card instanceof BaseCard && costMap.containsKey(r.card)) {
-                        BaseCard c = (BaseCard) r.card;
-                        c.energyCost = costMap.get(r.card);
-                    }
-                });
+        /*ModHelper.findCards((c) -> c.hasTag(CustomEnums.ENERGY_COSTING) && c.hasTag(FOLLOW_UP))
+                .forEach((r) -> r.card.tags.remove(FOLLOW_UP));*/
     }
 
     @Override
-    public void receivePostPowerApplySubscriber(AbstractPower abstractPower, AbstractCreature abstractCreature, AbstractCreature abstractCreature1) {
-        if (SubscriptionManager.checkSubscriber(this)) {
-            if (abstractPower instanceof EnergyPower 
-                    && abstractPower.amount > 0 
-                    && ModHelper.getPowerCount(AbstractDungeon.player, EnergyPower.POWER_ID) >= EnergyPower.AMOUNT_LIMIT
-                    && AbstractDungeon.cardRandomRng.random(99) < chance) {
-                AbstractCard card = GeneralUtil.getRandomElement(
-                        AbstractDungeon.player.hand.group, 
-                        AbstractDungeon.cardRandomRng, 
-                        (c) -> c.hasTag(CustomEnums.ENERGY_COSTING)
-                );
-                if (card != null) {
-                    flash();
-                    addToBot(new FollowUpAction(card));
-                }
+    public boolean onReceivePower(AbstractPower abstractPower, AbstractCreature abstractCreature, AbstractCreature abstractCreature1) {
+        if (abstractPower instanceof EnergyPower) {
+            if ((abstractPower.amount > 0 && ModHelper.getPowerCount(owner, EnergyPower.POWER_ID) < EnergyPower.AMOUNT_LIMIT)
+                    || (abstractPower.amount < 0 && ModHelper.getPowerCount(owner, EnergyPower.POWER_ID) > 0)) {
+                onSpecificTrigger();
             }
         }
+        return true;
     }
 
     @Override
-    public boolean checkUsable(AbstractCard card) {
-        if (SubscriptionManager.checkSubscriber(this) && ((BaseCard) card).followedUp) {
-            return true;
+    public void onSpecificTrigger() {
+        super.onSpecificTrigger();
+        if (AbstractDungeon.cardRandomRng.random(99) < chance) {
+            BaseCard card = (BaseCard) GeneralUtil.getRandomElement(
+                    AbstractDungeon.player.hand.group,
+                    AbstractDungeon.cardRandomRng,
+                    (c) -> c.hasTag(CustomEnums.ENERGY_COSTING) && c instanceof BaseCard
+            );
+            if (card != null) {
+                flash();
+                card.energyCost = 0;
+                addToBot(new FollowUpAction(card));
+            }
         }
-        return false;
     }
 }

@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.cards.BaseCard;
 import hsrmod.powers.uniqueDebuffs.ProofOfDebtPower;
+import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
 public class FollowUpAction extends AbstractGameAction {
@@ -46,20 +47,12 @@ public class FollowUpAction extends AbstractGameAction {
             card.target_x = (float)Settings.WIDTH / 2.0F + 200.0F * Settings.xScale;
             card.target_y = (float)Settings.HEIGHT / 2.0F;
             card.targetAngle = 0.0F;
-            card.lighten(false);
-            card.drawScale = 0.12F;
             card.targetDrawScale = 0.75F;
+            card.drawScale = 0.12F;
+            card.lighten(false);
             card.applyPowers();
-            
-            if (target == null) {
-                for (AbstractCreature m : AbstractDungeon.getCurrRoom().monsters.monsters) {
-                    if (!m.isDeadOrEscaped() && m.hasPower(ProofOfDebtPower.POWER_ID)) {
-                        target = m;
-                        // card.damage += ModHelper.getPowerCount(m, ProofOfDebtPower.POWER_ID);
-                        break;
-                    }
-                }
-            }
+
+            target = SubscriptionManager.getInstance().triggerPreFollowUp(card, target);
             
             if (card instanceof BaseCard){
                 ((BaseCard) card).followedUp = true;

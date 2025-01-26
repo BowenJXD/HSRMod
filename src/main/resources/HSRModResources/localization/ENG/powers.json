@@ -165,8 +165,8 @@
   "HSRMod:SlaughterhouseNo4RestInPeace": {
     "NAME": "Slaughterhouse No'4: Rest in Peace",
     "DESCRIPTIONS": [
-      "After dealing Follow Up damage, if the target has #yBroken, there is a #b%d%% chance to draw 1 card.",
-      "After dealing damage through Follow Up card, if the target has/doesn't have #yBroken, there is a #b%d%% / #b20%% chance to draw 1 card."
+      "Toughness reduction of Follow up damage +1. After dealing Follow Up damage, if the target has #yBroken, there is a #b%d%% chance to draw 1 card.",
+      "Toughness reduction of Follow up cards +1. After dealing damage through Follow Up card, if the target has/doesn't have #yBroken, there is a #b%d%% / #b20%% chance to draw 1 card."
     ]
   },
   "HSRMod:UselessScholar": {
@@ -336,8 +336,7 @@
   "HSRMod:ChampionsDinnerCatsCradle": {
     "NAME": "Champion's Dinner : Cat's Cradle",
     "DESCRIPTIONS": [
-      "Charge using cards are regarded as Follow Up cards, when your [hsrmod:ChargeIcon] is full, #b%d chance to Follow Up one of them. You don't need to have enough [hsrmod:ChargeIcon] to Follow Up.",
-      "Charge using cards are regarded as Follow Up cards, when your [hsrmod:ChargeIcon] is full, #b%d chance to Follow Up one of them. Won't cost any [hsrmod:ChargeIcon] to Follow Up."
+      "Charge using cards are regarded as Follow Up cards, when [hsrmod:ChargeIcon] changes, #b%d chance to Follow Up one of them without using [hsrmod:ChargeIcon] . "
     ]
   },"HSRMod:EmpyreanImperium": {
   "NAME": "Empyrean Imperium",
@@ -430,6 +429,7 @@
     "NAME": "Walk in the Light",
     "DESCRIPTIONS": [
       "Damage received is reduced by #b%d%%. When #yBroken, or when a monster dies, remove 1 stack, recover all #yToughness, and the player gain #b%d temporary HP and an #yImprison card if its the former. At 0 stacks, damage received is increased by #b%d%%.",
+      "Damage received is reduced by #b%d%%. When #yBroken, or when a monster dies, remove 1 stack, recover all #yToughness, and the player gain #b%d temporary HP and an #yImprison card. At 0 stacks, damage received is increased by #b%d%%.",
       "Damage received is increased by #b%d%%."
     ]
   },

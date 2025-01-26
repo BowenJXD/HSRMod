@@ -65,7 +65,7 @@ public class JellyfishOnTheStaircase extends BaseRelic {
             AbstractCard card = (AbstractCard)i.next();
             card.untip();
             card.unhover();
-            AbstractDungeon.topLevelEffects.add(new PurgeCardEffect(card, (float)Settings.WIDTH / 3.0F + displayCount, (float)Settings.HEIGHT / 2.0F));
+            AbstractDungeon.topLevelEffectsQueue.add(new PurgeCardEffect(card, (float)Settings.WIDTH / 3.0F + displayCount, (float)Settings.HEIGHT / 2.0F));
             displayCount += (float) Settings.WIDTH / 6.0F;
             AbstractDungeon.player.masterDeck.removeCard(card);
         }

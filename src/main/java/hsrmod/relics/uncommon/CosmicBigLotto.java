@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import hsrmod.relics.BaseRelic;
+import hsrmod.utils.RewardEditor;
 
 public class CosmicBigLotto extends BaseRelic {
     public static final String ID = CosmicBigLotto.class.getSimpleName();
@@ -31,8 +32,7 @@ public class CosmicBigLotto extends BaseRelic {
         if (usedUp) return;
         if (AbstractDungeon.relicRng.random(100) < winChance) {
             flash();
-            RewardItem rewardItem = new RewardItem(RelicLibrary.getRelic(AbstractDungeon.returnRandomRelicKey(AbstractDungeon.returnRandomRelicTier())).makeCopy());
-            AbstractDungeon.combatRewardScreen.rewards.add(rewardItem);
+            RewardEditor.addExtraRewardToTop(rewards -> rewards.add(new RewardItem(RelicLibrary.getRelic(AbstractDungeon.returnRandomRelicKey(AbstractDungeon.returnRandomRelicTier())).makeCopy())));
         }
         if (AbstractDungeon.relicRng.random(100) < loseChance) {
             flash();

@@ -6,7 +6,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import hsrmod.cards.BaseCard;
-import hsrmod.cardsV2.Preservation.Quake;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.powers.misc.BoostPower;
 import hsrmod.utils.ModHelper;
@@ -17,7 +16,7 @@ public class SolemnSnare extends BaseCard {
     public SolemnSnare() {
         super(ID);
         exhaust = true;
-        energyCost = 100;
+        setBaseEnergyCost(100);
         tags.add(CustomEnums.ENERGY_COSTING);
     }
 

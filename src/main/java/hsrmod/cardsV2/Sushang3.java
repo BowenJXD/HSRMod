@@ -48,6 +48,7 @@ public class Sushang3 extends BaseCard {
                 ci -> {
             if (ci.didBreak) {
                 addToBot(new ExhaustSpecificCardAction(this, p.discardPile));
+                addToBot(new ExhaustSpecificCardAction(this, p.drawPile));
                 addToTop(new UpgradeSpecificCardAction(this));
                 AbstractDungeon.player.masterDeck.group.stream().filter(c -> c.uuid == uuid).findFirst().ifPresent(AbstractCard::upgrade);
             }

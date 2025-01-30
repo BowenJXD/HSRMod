@@ -27,9 +27,10 @@ public class AceTrashDiggerEvent extends BaseEvent {
         registerPhase(0, new TextPhase(DESCRIPTIONS[0])
                 .addOption(OPTIONS[1], (i) -> {
                     RelicEventHelper.gainRelics(dRelicCount, r -> RelicTagField.destructible.get(r));
-                    for (int j = AbstractDungeon.player.relics.size() - 1; j >= 0; j--) {
+                    for (int j = AbstractDungeon.player.relics.size() - 1, k = dRelicCount; j >= 0 && k > 0; j--) {
                         if (RelicTagField.destructible.get(AbstractDungeon.player.relics.get(j))) {
                             AbstractDungeon.player.relics.get(j).setCounter(-2);
+                            k--;
                         }
                     }
                     transitionKey(1);

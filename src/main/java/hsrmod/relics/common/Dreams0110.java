@@ -17,7 +17,7 @@ public class Dreams0110 extends BaseRelic {
     @Override
     public void atBattleStart() {
         super.atBattleStart();
-        addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new StrengthPower(AbstractDungeon.player, magicNumber)));
+        addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new StrengthPower(AbstractDungeon.player, magicNumber)));
     }
 
     @Override

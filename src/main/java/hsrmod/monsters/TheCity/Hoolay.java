@@ -45,6 +45,7 @@ public class Hoolay extends BaseMonster {
         } else {
             spawnCount = 0;
         }
+        bgm = "Fatal Clash of Swordgraves";
     }
 
     @Override

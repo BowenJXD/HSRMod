@@ -21,6 +21,7 @@ public class Svarog extends BaseMonster {
         super(ID, 251, 384, 0, 0);
         setDamagesWithAscension(6, 10);
         addSlot(-300, 0);
+        bgm = "Godfather";
     }
 
     @Override

@@ -27,6 +27,7 @@ public class Belobog extends CustomDungeon {
         setMainMusic("HSRModResources/audio/music/Embers.mp3");
         addTempMusic("Braving the Cold", "HSRModResources/audio/music/Braving the Cold.mp3");
         addTempMusic("Kindling", "HSRModResources/audio/music/Kindling.mp3");
+        addTempMusic("Godfather", "HSRModResources/audio/music/Godfather.mp3");
         if ((BaseMod.hasModID("spireTogether:") || Settings.isTrial)) {
             onEnterEvent(StelleAwakeEvent.class);
         }
@@ -79,7 +80,7 @@ public class Belobog extends CustomDungeon {
         ArrayList<MonsterInfo> monsters = new ArrayList<>();
         
         monsters.add(new MonsterInfo(Encounter.TWO_AUTOMATONS, 2.0F));
-        // monsters.add(new MonsterInfo(Encounter.SHADEWALKERS, 2.0F));
+        monsters.add(new MonsterInfo(Encounter.SHADEWALKERS, 2.0F));
         monsters.add(new MonsterInfo(Encounter.VAGRANT, 2.0F));
         monsters.add(new MonsterInfo(Encounter.MASK_N_SPAWNS, 2.0F));
         

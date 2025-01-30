@@ -27,6 +27,10 @@ public class ChargingPower extends StatePower implements PreBreakSubscriber {
             description = String.format(DESCRIPTIONS[0], move);
         this.updateDescription();
     }
+    
+    public ChargingPower(AbstractCreature owner, String move) {
+        this(owner, move, 1);
+    }
 
     @Override
     public void updateDescription() {

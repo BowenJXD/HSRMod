@@ -2,12 +2,12 @@ package hsrmod.monsters;
 
 import basemod.BaseMod;
 import basemod.abstracts.CustomMonster;
+import com.badlogic.gdx.math.MathUtils;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.SpawnMonsterAction;
-import com.megacrit.cardcrawl.actions.common.SuicideAction;
+import com.megacrit.cardcrawl.actions.animations.*;
+import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.actions.utility.HideHealthBarAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -17,6 +17,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.monsters.EnemyMoveInfo;
 import com.megacrit.cardcrawl.powers.MinionPower;
 import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
 import hsrmod.misc.PathDefine;
@@ -29,7 +30,9 @@ import hsrmod.utils.MonsterDataCol;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 public abstract class BaseMonster extends CustomMonster {
     public MonsterStrings monsterStrings;
@@ -43,6 +46,10 @@ public abstract class BaseMonster extends CustomMonster {
     public Function<MonsterSlot, AbstractMonster> monFunc;
     public String bgm;
     public AbstractPlayer p = AbstractDungeon.player;
+    public List<MoveInfo> moveInfos = new ArrayList<>();
+    public EnemyMoveInfo currMove;
+    public boolean moreDamageAs, moreHPAs, specialAs;
+    public int floatIndex = 0;
     
     public BaseMonster(String name, String id, int maxHealth, float hb_x, float hb_y, float hb_w, float hb_h, String atlas, float x, float y) {
         super(name, HSRMod.makePath(id), maxHealth, hb_x, hb_y, hb_w, hb_h, atlas, x, y);
@@ -83,6 +90,9 @@ public abstract class BaseMonster extends CustomMonster {
         }
         
         p = AbstractDungeon.player;
+        moreDamageAs = ModHelper.moreDamageAscension(type);
+        moreHPAs = ModHelper.moreHPAscension(type);
+        specialAs = ModHelper.specialAscension(type);
     }
 
     public BaseMonster(String id, String imgUrl, float hb_x, float hb_y, float hb_w, float hb_h, float x, float y) {
@@ -137,7 +147,21 @@ public abstract class BaseMonster extends CustomMonster {
             AbstractDungeon.getCurrRoom().playBgmInstantly(bgm);
         }
     }
-    
+
+    @Override
+    public void takeTurn() {
+        if (nextMove < moveInfos.size()) {
+            moveInfos.get(nextMove).move();
+        }
+        addToBot(new RollMoveAction(this));
+    }
+
+    @Override
+    public void update() {
+        super.update();
+        this.animY = floatIndex * MathUtils.cosDeg((float) (System.currentTimeMillis() / 6L % 360L)) * 6.0F * Settings.scale;
+    }
+
     public void setDamagesWithAscension(int... damages){
         this.damage.clear();
         this.damages = damages;
@@ -165,10 +189,10 @@ public abstract class BaseMonster extends CustomMonster {
         slots.add(new MonsterSlot(x, y));
     }
     
-    public MonsterSlot getEmptySlot(boolean randomSlot) {
+    public MonsterSlot getEmptySlot(boolean inOrder) {
         if (slots.isEmpty()) return null;
         int startIndex = 0;
-        if (randomSlot) {
+        if (!inOrder) {
             startIndex = AbstractDungeon.monsterHpRng.random(slots.size() - 1);
         }
         for (int i = 0; i < slots.size(); i++) {
@@ -206,12 +230,16 @@ public abstract class BaseMonster extends CustomMonster {
     public void spawnMonsters() {
         spawnMonsters(getEmptySlotCount());
     }
-
+    
     public void spawnMonsters(int count) {
+        spawnMonsters(count, false);
+    }
+
+    public void spawnMonsters(int count, boolean inOrder) {
         count = Math.min(count, getEmptySlotCount());
         if (count > 0 && monFunc != null)
             for (int i = 0; i < count; i++) {
-                MonsterSlot slot = getEmptySlot();
+                MonsterSlot slot = getEmptySlot(inOrder);
                 if (slot != null) {
                     AbstractMonster monster = monFunc.apply(slot);
                     if (monster != null) {
@@ -250,21 +278,145 @@ public abstract class BaseMonster extends CustomMonster {
             }
         }
     }
+    
+    public void addMove(Intent intent, int dmg, Supplier<Integer> dmgTimeSupplier, Consumer<MoveInfo> takeMove) {
+        int index = moveInfos.size();
+        this.damage.add(new DamageInfo(this, dmg));
+        moveInfos.add(new MoveInfo(index, intent, () -> damage.get(index).base, dmgTimeSupplier, takeMove));
+    }
+    
+    public void addMoveA(Intent intent, int dmg, Supplier<Integer> dmgTime, Consumer<MoveInfo> takeMove) {
+        if (ModHelper.moreDamageAscension(type)) dmg = Math.round(dmg * 1.1f);
+        addMove(intent, dmg, dmgTime, takeMove);
+    }
+    
+    public void addMove(Intent intent, int dmg, int dmgTime, Consumer<MoveInfo> takeMove) {
+        addMove(intent, dmg, () -> dmgTime, takeMove);
+    }
 
+    public void addMoveA(Intent intent, int dmg, int dmgTime, Consumer<MoveInfo> takeMove) {
+        if (ModHelper.moreDamageAscension(type)) dmg = Math.round(dmg * 1.1f);
+        addMove(intent, dmg, () -> dmgTime, takeMove);
+    }
+    
+    public void addMove(Intent intent, int dmg, Consumer<MoveInfo> takeMove) {
+        addMove(intent, dmg, () -> 1, takeMove);
+    }
+    
+    public void addMoveA(Intent intent, int dmg, Consumer<MoveInfo> takeMove) {
+        if (ModHelper.moreDamageAscension(type)) dmg = Math.round(dmg * 1.1f);
+        addMove(intent, dmg, () -> 1, takeMove);
+    }
+    
+    public void addMove(Intent intent, Consumer<MoveInfo> takeMove) {
+        addMove(intent, 0, () -> 0, takeMove);
+    }
+    
+    public void setMove(int i) {
+        MoveInfo info = moveInfos.get(i);
+        int dmgTime = info.damageTimeSupplier.get();
+        if (dmgTime <= 0) {
+            setMove(MOVES[i], (byte) i, info.intent);
+        } else if (dmgTime == 1) {
+            setMove(MOVES[i], (byte) i, info.intent, damage.get(i).base);
+        } else {
+            setMove(MOVES[i], (byte) i, info.intent, damage.get(i).base, dmgTime, true);
+        }
+    }
+    
+    public void attack(MoveInfo info, AbstractGameAction.AttackEffect effect, AttackAnim anim) {
+        if (anim != null)
+            switch (anim) {
+                case FAST:
+                    addToBot(new AnimateFastAttackAction(this));
+                    break;
+                case SLOW:
+                    addToBot(new AnimateSlowAttackAction(this));
+                    break;
+                case HOP:
+                    addToBot(new AnimateHopAction(this));
+                    break;
+                case JUMP:
+                    addToBot(new AnimateJumpAction(this));
+                    break;
+            }
+        for (int i = 0; i < info.damageTimeSupplier.get(); i++) {
+            addToBot(new DamageAction(p, this.damage.get(info.index), effect));
+        }        
+    }
+    
+    public void attack(MoveInfo info, AbstractGameAction.AttackEffect effect) {
+        attack(info, effect, null);
+    }
+    
+    public String getLastMove() {
+        return MOVES[MOVES.length - 1];
+    }
+    
+    public void shout(int index, float volume) {
+        if (index >= DIALOG.length) return;
+        ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(this.getClass().getSimpleName() + "_" + index, volume));
+        addToBot(new ShoutAction(this, DIALOG[index]));
+    }
+    
+    public void shout(int index) {
+        shout(index, 1.0F);
+    }
+    
+    public void shout(int start, int end, float volume) {
+        shout(AbstractDungeon.miscRng.random(start, end), volume);
+    }
+    
+    public void shout(int start, int end) {
+        shout(AbstractDungeon.miscRng.random(start, end), 3.0F);
+    }
+    
+    public void shoutIf(int index) {
+        if (AbstractDungeon.miscRng.randomBoolean()) {
+            shout(index);
+        }
+    }
+    
+    public void shoutIf(int index, int chance) {
+        if (chance < AbstractDungeon.miscRng.random(100)) {
+            shout(index);
+        }
+    }
+
+    public static class MoveInfo {
+        public int index;
+        public AbstractMonster.Intent intent;
+        public Consumer<MoveInfo> takeMove;
+        public Supplier<Integer> damageSupplier;
+        public Supplier<Integer> damageTimeSupplier;
+
+        public MoveInfo(int index, Intent intent, Supplier<Integer> damageSupplier, Supplier<Integer> damageTimeSupplier, Consumer<MoveInfo> takeMove) {
+            this.index = index;
+            this.intent = intent;
+            this.takeMove = takeMove;
+            this.damageSupplier = damageSupplier;
+            this.damageTimeSupplier = damageTimeSupplier;
+        }
+
+        public void move() {
+            takeMove.accept(this);
+        }
+    }
+    
     public static class MonsterSlot {
         public float x;
         public float y;
         public AbstractMonster monster;
-        
+
         public MonsterSlot(float x, float y) {
             this.x = x;
             this.y = y;
         }
-        
+
         public boolean isEmpty() {
             return (monster == null || monster.isDeadOrEscaped());
         }
-        
+
         public void setMonster(AbstractMonster monster) {
             this.monster = monster;
         }
@@ -274,5 +426,22 @@ public abstract class BaseMonster extends CustomMonster {
         NONE,
         MINION,
         SUMMONED
+    }
+    
+    public static enum AttackAnim {
+        FAST,
+        SLOW,
+        HOP,
+        JUMP,
+    }
+    
+    @SpirePatch(clz = AbstractMonster.class, method = SpirePatch.CONSTRUCTOR, paramtypez = {String.class, String.class, int.class, float.class, float.class, float.class, float.class, String.class, float.class, float.class, boolean.class})
+    public static class MonsterMoveInfoPatch {
+        @SpirePostfixPatch
+        public static void Postfix(AbstractMonster __instance, String name, String id, int maxHealth, float hb_x, float hb_y, float hb_w, float hb_h, String imgUrl, float offsetX, float offsetY, boolean ignoreBlights, EnemyMoveInfo ___move) {
+            if (__instance instanceof BaseMonster) {
+                ((BaseMonster) __instance).currMove = ___move;
+            }
+        }
     }
 }

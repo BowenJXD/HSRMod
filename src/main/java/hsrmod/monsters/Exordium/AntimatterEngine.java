@@ -8,6 +8,8 @@ import com.megacrit.cardcrawl.actions.common.RollMoveAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+import com.megacrit.cardcrawl.vfx.combat.LaserBeamEffect;
+import com.megacrit.cardcrawl.vfx.combat.SmallLaserEffect;
 import hsrmod.misc.Encounter;
 import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.breaks.EntanglePower;
@@ -75,6 +77,7 @@ public class AntimatterEngine extends BaseMonster implements OnPowersModifiedSub
             case 5:
                 if (hasPower(ChargingPower.POWER_ID)) {
                     int count = ultCount + powerCount;
+                    AbstractDungeon.effectsQueue.add(new LaserBeamEffect(hb.cX, hb.cY));
                     addDamageActions(p, 0, count, AbstractGameAction.AttackEffect.BLUNT_HEAVY);
                     BaseMod.unsubscribe(this);
                 }

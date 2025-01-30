@@ -27,10 +27,11 @@ public class FortuneGlue extends BaseRelic {
             if (reward.type == RewardItem.RewardType.CARD && !reward.cards.isEmpty()) {
                 RewardEditor.setRewardCards(reward, AbstractCard.CardRarity.RARE);
                 doFlash = true;
-                reduceCounterAndCheckDestroy();
-                break;
             }
         }
-        if (doFlash) flash();
+        if (doFlash) {
+            flash();
+            destroy();
+        }
     }
 }

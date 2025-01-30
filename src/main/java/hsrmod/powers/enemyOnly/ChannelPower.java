@@ -1,6 +1,7 @@
 package hsrmod.powers.enemyOnly;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -25,7 +26,7 @@ public class ChannelPower extends AbstractPower {
         this.DESCRIPTIONS = CardCrawlGame.languagePack.getPowerStrings(POWER_ID).DESCRIPTIONS;
         this.owner = owner;
         this.amount = 0;
-        this.type = CustomEnums.STATUS;
+        this.type = NeutralPowertypePatch.NEUTRAL;
         powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
 
         this.isTurnBased = true;

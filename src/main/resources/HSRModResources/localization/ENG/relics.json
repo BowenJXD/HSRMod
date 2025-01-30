@@ -3,7 +3,7 @@
     "NAME": "PomPom Blessing",
     "FLAVOR": "\"Ta-da! Here's to the future expeditions we'll be experiencing together!\"",
     "DESCRIPTIONS": [
-      "At battle start, gain [E] [E], gain #yIntangible . NL After you use a card, gain #b20 #yhsrmod:Charge . #yCharge will be kept between battles. NL At the end of turn, you can choose to use 20 #yCharge per card to retain cards. NL #rWould #rsomehow #rsave #ryou #rfrom #rdanger... ",
+      "At battle start, gain [E] [E] , gain #yIntangible . NL After you use a card, gain #b20 #yhsrmod:Charge . #yCharge will be kept between battles. NL At the end of turn, you can choose to use 20 #yCharge per card to retain cards. NL #rWould #rsomehow #rsave #ryou #rfrom #rdanger... ",
       "Retain (each costs 20 Charge)",
       "Choose one crew member to sacrifice",
       "I don't want to… be alone…",
@@ -263,7 +263,7 @@
     "NAME": "Angel-Type IOU Dispenser",
     "FLAVOR": "A debt dispenser distributed by the Business Consolidation Department of the Interastral Peace Corporation.",
     "DESCRIPTIONS": [
-      "After battle, you cannot gain any gold. After this effect triggers #b5 times, this relic is destroyed, your current gold is doubled, and the relic is destroyed."
+      "After battle, you cannot gain any gold. #rDestroys after #b5 trigger and doubles your gold."
     ]
   },
   "HSRMod:BlackHoleTrap": {
@@ -312,7 +312,7 @@
     "NAME": "\"Mysterious\" Magnetism",
     "FLAVOR": "",
     "DESCRIPTIONS": [
-      "When entering a combat room, replace monsters with Elites. After triggering this effect 2 times, #rdestroys and gets #b200 gold."
+      "When entering a combat room, replace monsters with Elites. #rDestroys after #b2 trigger, and gain #b200 gold."
     ]
   },
   "HSRMod:ShatterboneBlade": {
@@ -333,35 +333,35 @@
     "NAME": "Super Overlord Spinning Top",
     "FLAVOR": "There is a reason behind the creation of every rule in the Intelligentsia Guild.",
     "DESCRIPTIONS": [
-      "At battle starts, gain #b1 stack of #yhsrmod:Break-Effect. At start of the first turn, removes #b50% of enemy's #yhsrmod:Toughness."
+      "At battle starts, gain #b1 stack of #yhsrmod:Break-Effect. At start of the first turn, removes #b33% of enemy's #yhsrmod:Toughness."
     ]
   },
   "HSRMod:GeniusSocietysDangerousGossip": {
     "NAME": "Genius Society's Dangerous Gossip",
     "FLAVOR": "",
     "DESCRIPTIONS": [
-      "Cannot gain #ygold. Each time you lose #b80 #ygold this way, obtain a random relic. Destroys after #b3 triggers."
+      "Cannot gain #ygold. Each time you lose #b80 #ygold this way, obtain a random relic. #rDestroys after #b3 triggers."
     ]
   },
   "HSRMod:PunklordianBalance": {
     "NAME": "Punklordian Balance",
     "FLAVOR": "",
     "DESCRIPTIONS": [
-      "For the next #b2 normal combats, all enemies will have #b50% HP. Destroys after #b2 triggers."
+      "For the next #b2 normal combats, all enemies will have #b50% HP. #rDestroys after #b2 triggers."
     ]
   },
   "HSRMod:GreenFingers": {
     "NAME": "Green Fingers",
     "FLAVOR": "",
     "DESCRIPTIONS": [
-      "After winning #b3 / #b6 / #b9 combats, gain #b50 / #b100 / #b150 #ygold. Destroys after winning #b9 combats."
+      "After winning #b3 / #b6 / #b9 combats, gain #b50 / #b100 / #b150 #ygold. #rDestroys after winning #b9 combats."
     ]
   },
   "HSRMod:FruitOfTheAlienTree": {
     "NAME": "Fruit Of The Alien Tree",
     "FLAVOR": "",
     "DESCRIPTIONS": [
-      "Upon taking fatal damage, prevents it and heal 20% of your max HP. Destroys after #b1 trigger."
+      "Upon taking fatal damage, prevents it and heal #b20% of your max HP. #rDestroys after #b1 trigger."
     ]
   },
   "HSRMod:Dreams0110": {
@@ -371,18 +371,32 @@
       "At the start of combat, gain #b3 #yStrength. At the start of each turn, if you have #yStrength, lose #b1."
     ]
   },
+  "HSRMod:VoidWickTrimmer": {
+    "NAME": "Void Wick Trimmer",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "Upon gain, re-obtain up to #b2 destroyed relics you have."
+    ]
+  },
+  "HSRMod:UnmannedComms": {
+    "NAME": "Unmanned Comms",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "When a relic is destroyed, re-obtain it. #rDestroys after #b2 triggers."
+    ]
+  },
   "HSRMod:DimensionReductionDice": {
     "NAME": "Dimension Reduction Dice",
     "FLAVOR": "",
     "DESCRIPTIONS": [
-      "After winning a combat, gain an additional card reward, but the number of cards to choose from is reduced by #b1. Destroys after #b2 uses."
+      "After winning a combat, gain an additional card reward, but the number of cards to choose from is reduced by #b1. #rDestroys after #b2 triggers."
     ]
   },
   "HSRMod:FortuneGlue": {
     "NAME": "Fortune Glue",
     "FLAVOR": "",
     "DESCRIPTIONS": [
-      "After combat ends, the probability of cards being of Rare quality increases by #b100%. Destroys after trigger."
+      "After combat ends, the probability of cards being of Rare quality increases by #b100%. #rDestroys after trigger."
     ]
   },
   "HSRMod:ShiningTrapezohedronDie": {
@@ -453,28 +467,28 @@
     "NAME": "Rotting Fruit Of The Alien Tree",
     "FLAVOR": "",
     "DESCRIPTIONS": [
-      "In combat, right-click this relic to lose #b3 HP and gain #b1 layer of #yArtifact . Destroys after #b3 triggers."
+      "In combat, right-click this relic to lose #b3 HP and gain #b1 layer of #yArtifact . #rDestroys after #b3 triggers."
     ]
   },
   "HSRMod:IndecipherableBox": {
     "NAME": "Indecipherable Box",
     "FLAVOR": "",
     "DESCRIPTIONS": [
-      "Increases the drop rate of Wax relic. Enhances effects of Trailblaze Timer."
+      "Enhances the effect of Wax relics and Trailblaze Timer."
     ]
   },
   "HSRMod:KingOfSponges": {
     "NAME": "King Of Sponges",
     "FLAVOR": "",
     "DESCRIPTIONS": [
-      "Upon entering Campfire room, lose #b10% of your current HP and increase your max HP by #b10%. Destroys after #b4 triggers."
+      "Upon entering Campfire room, lose #b10% of your current HP and increase your max HP by #b10%. #rDestroys after #b4 triggers."
     ]
   },
   "HSRMod:AncientCommunications": {
     "NAME": "Ancient Communications",
     "FLAVOR": "",
     "DESCRIPTIONS": [
-      "Greatly increases the probability of encountering a Warping Trotter. Destroys upon entering a room containing a Trotter."
+      "Greatly increases the probability of encountering a Warping Trotter. #rDestroys upon entering a room containing a Trotter."
     ]
   },
   "HSRMod:PunklordianRegards": {
@@ -538,7 +552,7 @@
     "NAME": "A Ruan Pouch",
     "FLAVOR": "It is said that she wished to carry the universe in her pocket, yet was forced to seal it when the dimensionality within continued to expand.",
     "DESCRIPTIONS": [
-      "Upon pickup, gain #b3 additional card rewards. Afterward, the number of cards available to choose from in rewards is reduced to #b1. Destroys after #b2 uses.",
+      "Upon pickup, gain #b3 additional card rewards. Afterward, the number of cards available to choose from in rewards is reduced to #b1. #rDestroys after #b2 trigger.",
       "A Ruan Pouch!"
     ]
   },
@@ -554,7 +568,7 @@
     "NAME": "Temporary Stake",
     "FLAVOR": "penniless gamblers brew their last gemstones with their tears of regret, staking everything in a gamble. These chips will quickly dissolve, becoming new debts, and the gamblers' lives are corroded completely in the digestive fluids that pour out.",
     "DESCRIPTIONS": [
-      "Immediately gain #b300 cosmic shards. After entering #b4 rooms, destroy this relic, and you lose #b600 #ygold."
+      "Immediately gain #b300 gold. #rDestroys after entering #b4 rooms, and lose #b600 #ygold."
     ]
   },
   "HSRMod:CavitySystemModel": {
@@ -596,7 +610,7 @@
     "NAME": "Pineapple",
     "FLAVOR": "",
     "DESCRIPTIONS": [
-      "When entering a new room, lose #b15% of current health. Destroys after 3 triggers."
+      "When entering a new room, lose #b15% of current health. #rDestroys after #b3 triggers."
     ]
   },
   "HSRMod:RubertEmpireDifferenceMachine": {

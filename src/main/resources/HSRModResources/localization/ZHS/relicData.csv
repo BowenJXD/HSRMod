@@ -25,7 +25,7 @@ GreenFingers,ÂñµãÍÁ,COMMON,»ñµÃ 3 / 6 / 9 ³¡Õ½¶·Ê¤Àûºó£¬»ñµÃ 50 / 100 / 150 ½ð±Ò
 FruitOfTheAlienTree,ÒìÄ¾¹ûÊµ,COMMON,ÊÜµ½ÖÂÃüÉËº¦Ê±£¬·ÀÖ¹Ö®£¬²¢»Ø¸´20%ÉúÃü¡£,20,Õâ¿ÅÐÎËÆÐÄÔàµÄ¹ûÊµÀ´×ÔÓÚÄ³Öê±»Ò©Ê¦´Í¸£µÄ´óÊ÷£¬¾ÝËµÒÑÓÐÎåÊ®çúçê¼ÍµÄÀúÊ·¡£,FLAT,FALSE,FALSE,
 Dreams0110,ÓÐÃÎ0110,COMMON,Õ½¶·¿ªÊ¼Ê±£¬»ñµÃ3µã¡¼Á¦Á¿¡½¡£»ØºÏ¿ªÊ¼Ê±£¬Èô¡¼Á¦Á¿¡½´óÓÚ0£¬Ê§È¥1µã¡£,3,µ«¾Ý»¼ÕßÍ¸Â¶£¬Ã¿Î»µÎ¼ÓÁËÈó»¬ÓÍµÄÖÇÐµ£¬¶¼ÔÚÒ¹ÀïÃÎ¼ûÁËÕÅ×ÅÑªÅè´ó¿ÚµÄµç×Óºûµû¡£,FLAT,FALSE,TRUE,
 VileMechanicalSatellite900,Ð°¶ñ»úÐµÎÀÐÇ#900,COMMON,Ïû·Ñºó£¬·µ»¹20%¡£,20,ËüÃÇÊÇµäÐÍµÄ·´ÓÐ»úÎÄÃ÷£¬¶Ô´ýÓÐ»úÉúÃüÊÖÍóºÝÀ±£¬¶øÆäÖÐÓÈÒÔÎÀÐÇ#900×îÎªÐ°¶ñ¡£,FLAT,FALSE,FALSE,
-VoidWickTrimmer,¿ÕÎÞÖò¼ô,COMMON,Ê°ÆðÊ±£¬ÖØÐÂ»ñµÃÖÁ¶à2¸öÒÑËð»ÙµÄÒÅÎï¡£,2,¼ôµ¶¼ô¶ÏµÄ²»ÊÇÎïÖÊ£¬¶øÊÇÉúÎïÐÄÖÐµÄÈÈÁ¿¡ª¡ª±»³ÆÎªÈÈÇéµÄ¶¯Á¦¡£¼ÙÈç¿ÕÎÞÖò¼ô»®¹ýÄãµÄÐÄÔà£¬Äã½«¸ÐÊÜµ½µÄ²»ÊÇÍ´³þ£¬¶øÊÇÀäÄ®¡£,FLAT,FALSE,FALSE,
+VoidWickTrimmer,¿ÕÎÞÖò¼ô,COMMON,Ê°ÆðÊ±£¬ÖØÐÂ»ñµÃÖÁ¶à2¸öÒÑÓÐµ«ÒÑËð»ÙµÄÒÅÎï¡£,2,¼ôµ¶¼ô¶ÏµÄ²»ÊÇÎïÖÊ£¬¶øÊÇÉúÎïÐÄÖÐµÄÈÈÁ¿¡ª¡ª±»³ÆÎªÈÈÇéµÄ¶¯Á¦¡£¼ÙÈç¿ÕÎÞÖò¼ô»®¹ýÄãµÄÐÄÔà£¬Äã½«¸ÐÊÜµ½µÄ²»ÊÇÍ´³þ£¬¶øÊÇÀäÄ®¡£,FLAT,FALSE,FALSE,
 UnmannedComms,ÎÞÈËÍ¨Ñ¶,COMMON,ÒÅÎïËð»ÙÊ±£¬ÖØÐÂ»ñµÃÖ®¡£´¥·¢2´Îºó£¬´ËÒÅÎïËð»Ù¡£,2,ËüµÄÉíÌåÈä¶¯£¬±ÅÉä³öæß×Ó£¬·Â·ðËæÊ±¶¼½«ÆÆ¼ë¶ø³ö¡£¡¸ÓëÆäËµÊÇÄ¦Ë¹¿¨ÈËÀûÓÃÁË³æÈº£¬²»ÈçËµ£¬ÊÇ³æÈº±»¶¯¼ÄÉúÔÚÁËËûÃÇµÄÎÄÃ÷ÉÏ¡£¡¹,FLAT,TRUE,FALSE,
 DimensionReductionDice,½µÎ¬÷»×Ó,UNCOMMON,Õ½¶·Ê¤Àûºó¶îÍâ»ñµÃ1´Î¿¨ÅÆ½±Àø£¬µ«¿É¹©Ñ¡ÔñµÄÅÆÊý-1¡£´¥·¢2´Îºó¸ÃÒÅÎïËð»Ù¡£,2,¾ÅÃ¶ÁùÃæ÷»×é³ÉÁËÕâ¸öÆæÌØµÄÈý½ÇÌå£¬ËüÄÜ¶Ô×ÔÉí½øÐÐ³ÖÐø²»¶ÏµÄ½µÎ¬£¬´Ó¶øÒÔ¶þÎ¬Æ½ÃæµÄ·½Ê½´æÔÚÓÚÁ¢ÌåµÄÊÀ½çÀï¡£,FLAT,TRUE,FALSE,
 FortuneGlue,¸£Áé½º,UNCOMMON,Õ½¶·½áÊøºó£¬³öÏÖµÄÅÆÊÇÏ¡ÓÐÆ·ÖÊµÄ¸ÅÂÊÌá¸ß100%£¬´¥·¢1´Îºó¸ÃÒÅÎïËð»Ù¡£,100,ÔËÆøÊÇÒ»ÖÖÄÜÁ¦Âð£¿Ò²Ðí£»ÔËÆøÄÜ¹»±»¸Ä±äÂð£¿ºÚËþÈÏÎªÄÜ¡£,FLAT,TRUE,FALSE,
@@ -89,14 +89,14 @@ HunterOfGlacialForest,ÃÜÁÖÎÔÑ©µÄÁÔÈË,SPECIAL,ÄãµÄ³õÊ¼¹¥»÷ÅÆ»ñµÃ±£Áô£¬ÇÒ²»»áÒÆ³ý¡
 MasterOfDreamMachinations,»úÐÄÏ·ÃÎµÄÖÓ±í½³,BOSS,Ê°ÆðÊ±£¬»ñµÃ¡¸ÐÇñ·ÁÐ³µ¡¹¡£ NL Äã¿ÉÒÔÓÚÉÌµêÄÚÓÒ¼ü´ËÅÆ£¬ÏûºÄ½ð±Ò£¬±ä»¯1ÕÅÅÆ¡£,,ÔÚÇ§Æª¹ÊÊÂÓëÍò°ã´«ÑÔÖÐ£¬ÕâÎ»Ê¢»á¾ÞÐÇÖ»ÊÇÁôÏÂ×ã¼££¬²»ÔøÁôÏÂÉíÓ°¡£,FLAT,FALSE,FALSE,
 ,,,,,,,FALSE,FALSE,
 µÚ¶þÕÂ½ÚBOSS,,,,,,,FALSE,FALSE,
-ParallelUniverseWalkieTalkie,Æ½ÐÐÓîÖæ¶Ô½²»ú,RARE,ÄãÏûºÄÅÆÊ±£¬ÓÐ20%¸ÅÂÊ²»ÏûºÄ£¬¶øÊÇ·µ»¹ÊÖÅÆ¡£,,¾Ý³ÆËüÄÜ¼ì²âÊ±¿Õ±ä¶¯µÄÎ¢Ð¡·ÖÆç£¬ÔÚ×î½üµÄÁ½¸ö·ÖÆçµã¼ä½¨Á¢ÁªÏµ£¬ÊµÏÖ¶þÕßµÄÐÅÏ¢½»Á÷¡£,FLAT,FALSE,FALSE,50.00 
-Revitalization310,ÐÑ¾õ -310,RARE,Ê×¸ö»ØºÏ¿ªÊ¼Ê±£¬½«ÊÖÅÆ×ª»¯ÎªÐéÎÞ¡£ÄãÊ¹ÓÃÐéÎÞÅÆºó£¬ÁîÒ»ÃûµÐÈËÊ§È¥1²ã¡¼Á¦Á¿¡½£¨ÓÅÏÈÎªÄ¿±ê£©¡£,1,ÕâÐ©ÆæÒìµÄÒ©¸à½«´Ó»¼ÕßµÄÈÏÖªÈëÊÖ£¬½«¿ÉÄÜ²úÉú¡¸ÐéÎÞ¡¹µÄÇéÐ÷´Ó¸ùÔ´Ä¨Ïû¡£,FLAT,FALSE,TRUE,50.00 
-ChanceJailbreak,Å¼ÓÐÔ½Óü,RARE,Õ½¶·¿ªÊ¼Ê±£¬»ñµÃËùÓÐ¹ÌÓÐÅÆ£¨²»Õ¼¾Ý³õÊ¼ÊÖÅÆÊý£©¡£ÄãÊ¹ÓÃ¹ÌÓÐÅÆºó£¬Ãþ1ÕÅÅÆ¡£,1,µkµÄÎ°Á¦²¢²»ÊÇÌæÓîÖæÐÞÖþµÌ·À£¬¶øÊÇÔÚÎªÇ½ÍâµÄÊÂÎï´òÔì¼àÓü¡£,FLAT,FALSE,FALSE,50.00 
-RoadToComets,Í¨ÏòåçÐÇÖ®Â·,RARE,»ØºÏ½áÊøÊ±£¬ÄãÃ¿ÓÐÒ»ÕÅÏûºÄ³äÄÜµÄÅÆ£¬Ôò»ñµÃ20³äÄÜ£¬Ã¿ÓÐÒ»ÕÅ±£ÁôµÄÅÆ£¬Ôò»ñµÃ2µã¸ñµ²¡£,2,Í¨¹ýÔÚ¿Õ¼ä½á¹¹ÉÏµÄÍ¶Ó°¼ÜÉè³öµÄÒýÁ¦ÇÅÁº£¬±»²©Ê¶Ñ§»áÆÀÎªÓîÖæ×îÎÞÓÃµÄÒ»Íò¸ö·¢Ã÷Ö®Ò»¡£,FLAT,FALSE,FALSE,50.00 
-DreamdiveCan,ÈëÃÎ¹Þ,RARE,»ØºÏ¿ªÊ¼Ê±£¬Ñ¡Ôñ½«ÆúÅÆ¶ÑÒ»ÕÅÅÆÖÃÓÚÃþÅÆ¶Ñ¶¥¡£,,ÐÒ´æÕßÃÇ²ü¶¶×ÅÈëË¯£¬È¥ÍùÃÎÀïÕÒÑ°ÏÖÊµÇó²»µÃµÄ×ÔÓÉ£¬Ò»ÈçÃÎÏëÖ®µØµÄ×òÌì¡£,FLAT,FALSE,FALSE,50.00 
-SilentSong,¾²Ú×µÄ¸èÉù,RARE,»ØºÏ¿ªÊ¼ºÍ½áÊøÊ±£¬¶ÔËæ»úµÐÈËÊ©¼Ó1²ã¡¾¶³½á¡¿¡£,,ËüÃÇÁ¬½Ó³ÉÒ»Æ¬Ë®¾§²ÝÔ­£¬Á£×Ó¼äµÄ¹²ÃùÎÞÉùÑÝ×à×ÅÐ³ÀÖËÌµÄÇúµ÷£¬¾ÍÏñ¡­±ùÀäµÄÊ¯Í·¡£,FLAT,FALSE,FALSE,50.00 
-DignityAndPassion,×ðÑÏÓëÈÈ³À,RARE,»ØºÏ½áÊøÊ±£¬»ñµÃÒÑËðÊ§ÉúÃüÖµ20%µÄÁÙÊ±ÉúÃü¡£,20,ÐÇ¼ÊºÍÆ½¹«Ë¾ÓµÓÐÊôµØÐÇÇø²É¿ó×÷ÒµµÄ×îÖÕ½âÊÍÈ¨£¬ÈÎºÎ·Ç·¨²É¿óµÄÐÐÎª¶¼½«±»ÊÓ×÷¸ÉÈÅçúçêÍõÖþÇ½µÄÙôäÂÖ®¾Ù¡£,FLAT,FALSE,FALSE,50.00 
-TenLightYearsForesight,Ê®¹âÄê²»Íí,RARE,´ò³ö¹¥»÷ÅÆºó£¬¶ÔËùÓÐ²»Îª´ËÅÆÄ¿±êµÄµÐÈËÔì³É2µãÉËº¦¡£,2,Ã¿µ±Ëû½«ÁÔÎïÇý¸ÏÏò¼È¶¨µÄ×ø±ê£¬Ê®ÄêÇ°»÷·¢µÄ×Óµ¯£¬±ã»á¿çÔ½Ê®¹âÄêµÄ¾àÀë£¬¾«×¼µØºÍ¶Ô·½µÄÄÔ´ü²úÉú½»¼¯¡£,FLAT,FALSE,FALSE,50.00 
+ParallelUniverseWalkieTalkie,Æ½ÐÐÓîÖæ¶Ô½²»ú,RARE,ÄãÏûºÄÅÆÊ±£¬ÓÐ20%¸ÅÂÊ²»ÏûºÄ£¬¶øÊÇ·µ»¹ÊÖÅÆ¡£,,¾Ý³ÆËüÄÜ¼ì²âÊ±¿Õ±ä¶¯µÄÎ¢Ð¡·ÖÆç£¬ÔÚ×î½üµÄÁ½¸ö·ÖÆçµã¼ä½¨Á¢ÁªÏµ£¬ÊµÏÖ¶þÕßµÄÐÅÏ¢½»Á÷¡£,FLAT,FALSE,FALSE,50 
+Revitalization310,ÐÑ¾õ -310,RARE,Ê×¸ö»ØºÏ¿ªÊ¼Ê±£¬½«ÊÖÅÆ×ª»¯ÎªÐéÎÞ¡£ÄãÊ¹ÓÃÐéÎÞÅÆºó£¬ÁîÒ»ÃûµÐÈËÊ§È¥1²ã¡¼Á¦Á¿¡½£¨ÓÅÏÈÎªÄ¿±ê£©¡£,1,ÕâÐ©ÆæÒìµÄÒ©¸à½«´Ó»¼ÕßµÄÈÏÖªÈëÊÖ£¬½«¿ÉÄÜ²úÉú¡¸ÐéÎÞ¡¹µÄÇéÐ÷´Ó¸ùÔ´Ä¨Ïû¡£,FLAT,FALSE,TRUE,50 
+ChanceJailbreak,Å¼ÓÐÔ½Óü,RARE,Õ½¶·¿ªÊ¼Ê±£¬»ñµÃËùÓÐ¹ÌÓÐÅÆ£¨²»Õ¼¾Ý³õÊ¼ÊÖÅÆÊý£©¡£ÄãÊ¹ÓÃ¹ÌÓÐÅÆºó£¬Ãþ1ÕÅÅÆ¡£,1,µkµÄÎ°Á¦²¢²»ÊÇÌæÓîÖæÐÞÖþµÌ·À£¬¶øÊÇÔÚÎªÇ½ÍâµÄÊÂÎï´òÔì¼àÓü¡£,FLAT,FALSE,FALSE,50 
+RoadToComets,Í¨ÏòåçÐÇÖ®Â·,RARE,»ØºÏ½áÊøÊ±£¬ÄãÃ¿ÓÐÒ»ÕÅÏûºÄ³äÄÜµÄÅÆ£¬Ôò»ñµÃ20³äÄÜ£¬Ã¿ÓÐÒ»ÕÅ±£ÁôµÄÅÆ£¬Ôò»ñµÃ2µã¸ñµ²¡£,2,Í¨¹ýÔÚ¿Õ¼ä½á¹¹ÉÏµÄÍ¶Ó°¼ÜÉè³öµÄÒýÁ¦ÇÅÁº£¬±»²©Ê¶Ñ§»áÆÀÎªÓîÖæ×îÎÞÓÃµÄÒ»Íò¸ö·¢Ã÷Ö®Ò»¡£,FLAT,FALSE,FALSE,50 
+DreamdiveCan,ÈëÃÎ¹Þ,RARE,»ØºÏ¿ªÊ¼Ê±£¬Ñ¡Ôñ½«ÆúÅÆ¶ÑÒ»ÕÅÅÆÖÃÓÚÃþÅÆ¶Ñ¶¥¡£,,ÐÒ´æÕßÃÇ²ü¶¶×ÅÈëË¯£¬È¥ÍùÃÎÀïÕÒÑ°ÏÖÊµÇó²»µÃµÄ×ÔÓÉ£¬Ò»ÈçÃÎÏëÖ®µØµÄ×òÌì¡£,FLAT,FALSE,FALSE,50 
+SilentSong,¾²Ú×µÄ¸èÉù,RARE,»ØºÏ¿ªÊ¼ºÍ½áÊøÊ±£¬¶ÔËæ»úµÐÈËÊ©¼Ó1²ã¡¾¶³½á¡¿¡£,,ËüÃÇÁ¬½Ó³ÉÒ»Æ¬Ë®¾§²ÝÔ­£¬Á£×Ó¼äµÄ¹²ÃùÎÞÉùÑÝ×à×ÅÐ³ÀÖËÌµÄÇúµ÷£¬¾ÍÏñ¡­±ùÀäµÄÊ¯Í·¡£,FLAT,FALSE,FALSE,50 
+DignityAndPassion,×ðÑÏÓëÈÈ³À,RARE,»ØºÏ½áÊøÊ±£¬½«ÁÙÊ±ÉúÃü²¹³äÖÁÒÑËðÊ§ÉúÃüÖµµÄ20%¡£,20,ÐÇ¼ÊºÍÆ½¹«Ë¾ÓµÓÐÊôµØÐÇÇø²É¿ó×÷ÒµµÄ×îÖÕ½âÊÍÈ¨£¬ÈÎºÎ·Ç·¨²É¿óµÄÐÐÎª¶¼½«±»ÊÓ×÷¸ÉÈÅçúçêÍõÖþÇ½µÄÙôäÂÖ®¾Ù¡£,FLAT,FALSE,FALSE,50 
+TenLightYearsForesight,Ê®¹âÄê²»Íí,RARE,´ò³ö¹¥»÷ÅÆºó£¬¶ÔËùÓÐ²»Îª´ËÅÆÄ¿±êµÄµÐÈËÔì³É2µãÉËº¦¡£,2,Ã¿µ±Ëû½«ÁÔÎïÇý¸ÏÏò¼È¶¨µÄ×ø±ê£¬Ê®ÄêÇ°»÷·¢µÄ×Óµ¯£¬±ã»á¿çÔ½Ê®¹âÄêµÄ¾àÀë£¬¾«×¼µØºÍ¶Ô·½µÄÄÔ´ü²úÉú½»¼¯¡£,FLAT,FALSE,FALSE,50 
 ,,,,,,,FALSE,FALSE,
 ÎþÉüÒÅÎï,,,,,,,FALSE,FALSE,
 Himeko,¼§×ÓµÄÒÅÎï,SPECIAL,,,Ëý×Ô»ðÖÐÐÂÉú£¬Ëý×Ô»ðÖÐÎ¢Ð¦¡£,FLAT,FALSE,FALSE,

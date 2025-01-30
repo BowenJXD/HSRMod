@@ -1,6 +1,7 @@
 package hsrmod.powers.enemyOnly;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -35,7 +36,7 @@ public class BanPower extends AbstractPower implements PreBreakSubscriber {
         this.DESCRIPTIONS = CardCrawlGame.languagePack.getPowerStrings(POWER_ID).DESCRIPTIONS;
         this.owner = owner;
         this.amount = -1;
-        this.type = CustomEnums.STATUS;
+        this.type = NeutralPowertypePatch.NEUTRAL;
         powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
         this.banType = banType;
         switch (banType) {

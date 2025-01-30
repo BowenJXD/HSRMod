@@ -1,5 +1,6 @@
 package hsrmod.powers.enemyOnly;
 
+import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.localization.PowerStrings;
@@ -20,7 +21,7 @@ public class DeathExplosionPower extends AbstractPower {
         this.name = name;
         this.DESCRIPTIONS = new String[]{description};
         this.owner = owner;
-        this.type = CustomEnums.STATUS;
+        this.type = NeutralPowertypePatch.NEUTRAL;
         this.action = action;
         this.explodeEffect = explodeEffect;
         powerStrings = new PowerStrings();

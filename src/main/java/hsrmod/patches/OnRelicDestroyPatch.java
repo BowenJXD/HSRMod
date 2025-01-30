@@ -11,7 +11,7 @@ public class OnRelicDestroyPatch {
         @SpirePostfixPatch
         public static void PostFix(AbstractRelic __instance, int counter) {
             if (counter == -2) {
-                SubscriptionManager.getInstance().triggerRunnable(SubscriptionManager.RunnableType.ON_RELIC_DESTROYS);
+                SubscriptionManager.getInstance().triggerPostRelicDestroy(__instance);
             }
         }
     }

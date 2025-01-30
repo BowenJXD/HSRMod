@@ -37,7 +37,7 @@ public class EmpyreanImperiumPower extends PowerPower {
         super.stackPower(stackAmount);
         if (amount >= threshold) {
             addToTop(new DrawCardAction(1));
-            amount -= threshold;
+            amount = 0;
         }
     }
 

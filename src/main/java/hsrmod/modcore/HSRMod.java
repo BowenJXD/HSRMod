@@ -34,6 +34,7 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import com.badlogic.gdx.graphics.Color;
 import hsrmod.characters.StellaCharacter;
 import hsrmod.dungeons.Belobog;
+import hsrmod.dungeons.Luofu;
 import hsrmod.events.*;
 import hsrmod.misc.BonusManager;
 import hsrmod.misc.ChargeIcon;
@@ -212,15 +213,15 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
                 // .bonusCondition(() -> ModHelper.hasRelic(WaxOfElation.ID))
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(TavernEvent.ID, TavernEvent.class)
-                .dungeonID(TheCity.ID)
+                .dungeonID(Luofu.ID)
                 // .bonusCondition(() -> ModHelper.hasRelic(WaxOfDestruction.ID))
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(IOUDispenserEvent.ID, IOUDispenserEvent.class)
-                .dungeonID(TheCity.ID)
+                .dungeonID(Luofu.ID)
                 // .bonusCondition(() -> ModHelper.hasRelic(WaxOfNihility.ID))
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(LonelyBeautyBugsOneEvent.ID, LonelyBeautyBugsOneEvent.class)
-                .dungeonIDs(Belobog.ID, TheCity.ID)
+                .dungeonIDs(Belobog.ID, Luofu.ID)
                 // .bonusCondition(() -> ModHelper.hasRelic(WaxOfPreservation.ID))
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(SlumberingOverlordEvent.ID, SlumberingOverlordEvent.class)
@@ -228,7 +229,7 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
                 // .bonusCondition(() -> ModHelper.hasRelic(WaxOfPropagation.ID))
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(RockPaperScissorsEvent.ID, RockPaperScissorsEvent.class)
-                .dungeonID(TheCity.ID)
+                .dungeonID(Luofu.ID)
                 // .bonusCondition(() -> ModHelper.hasRelic(WaxOfTheHunt.ID))
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(DoubleLotteryEvent.ID, DoubleLotteryEvent.class)
@@ -262,7 +263,7 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
                 new ShelledParasite(),
                 new SlaverRed(130.0F, 20F)
         }));
-        BaseMod.addStrongMonsterEncounter(TheCity.ID, new MonsterInfo(Encounter.PARASITE_N_SLAVER, 0.0F));
+        BaseMod.addStrongMonsterEncounter(Luofu.ID, new MonsterInfo(Encounter.PARASITE_N_SLAVER, 0.0F));
         BaseMod.addMonster(Encounter.THREE_LIL_PIGS, () -> new MonsterGroup(new AbstractMonster[]{
                 new SequenceTrotter(-400, AbstractDungeon.monsterRng.random(-15, 15), 0),
                 new SequenceTrotter(-100, AbstractDungeon.monsterRng.random(-15, 15), 2),
@@ -273,6 +274,7 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
 
     public void addMonsters() {
         Belobog belobog = new Belobog();
+        Luofu luofu = new Luofu();
 
         // =========================== Boss ===========================
 
@@ -283,10 +285,9 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
                 new DisastersRightHand()
         }), "HSRModResources/img/monsters/DestructionsBeginning.png", "HSRModResources/img/monsters/BossOutline.png");
         
-        BaseMod.addMonster(Encounter.DIVINE_SEED, () -> new MonsterGroup(new AbstractMonster[]{
+        luofu.addBoss(Encounter.DIVINE_SEED, () -> new MonsterGroup(new AbstractMonster[]{
                 new Phantylia(),
-        }));
-        BaseMod.addBoss(TheCity.ID, Encounter.DIVINE_SEED, "HSRModResources/img/monsters/DivineSeed.png", "HSRModResources/img/monsters/BossOutline.png");
+        }), "HSRModResources/img/monsters/DivineSeed.png", "HSRModResources/img/monsters/BossOutline.png");
         
         BaseMod.addMonster(Encounter.SALUTATIONS_OF_ASHEN_DREAMS, () -> new MonsterGroup(new AbstractMonster[]{
                 new EchoOfFadedDreams(0, -500F, 50.0F),
@@ -310,7 +311,6 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         BaseMod.addMonster(Encounter.HOOLAY, () -> new MonsterGroup(new AbstractMonster[]{
                 new Hoolay()
         }));
-        BaseMod.addEliteEncounter(TheCity.ID, new MonsterInfo(Encounter.HOOLAY, 3.0F));
         
         BaseMod.addMonster(Encounter.SOMETHING_UNTO_DEATH, () -> new MonsterGroup(new AbstractMonster[]{
                 new SomethingUntoDeath()
@@ -351,7 +351,25 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         BaseMod.addMonster(Encounter.AUROMATON_GATEKEEPER, () -> new MonsterGroup(new AbstractMonster[]{
                 new AurumatonGatekeeper()
         }));
-        BaseMod.addStrongMonsterEncounter(TheCity.ID, new MonsterInfo(Encounter.AUROMATON_GATEKEEPER, 3.0F));
+        BaseMod.addMonster(Encounter.SHAPE_SHIFTER, () -> new MonsterGroup(new AbstractMonster[]{
+                new ShapeShifter(-100, 0),
+        }));
+        BaseMod.addMonster(Encounter.HOWLING_CASKET, () -> new MonsterGroup(new AbstractMonster[]{
+                new SableclawWolftrooper(-300, AbstractDungeon.monsterRng.random(-15, 15)),
+                new HowlingCasket(-50, 0),
+                new EclipseWolftrooper(200, AbstractDungeon.monsterRng.random(-15, 15)),
+        }));
+        BaseMod.addMonster(Encounter.AURUMATON_SPECTRAL_ENVOY, () -> new MonsterGroup(new AbstractMonster[]{
+                new WraithWarden(-300, AbstractDungeon.monsterRng.random(-15, 15)),
+                new AurumatonSpectralEnvoy(-50, AbstractDungeon.monsterRng.random(-15, 15)),
+                new WraithWarden(200, AbstractDungeon.monsterRng.random(-15, 15)),
+        }));
+        BaseMod.addMonster(Encounter.MALEFIC_APE, () -> new MonsterGroup(new AbstractMonster[]{
+                new MaleficApe(0, AbstractDungeon.monsterRng.random(-15, 15)),
+        }));
+        BaseMod.addMonster(Encounter.THE_ASCENDED, () -> new MonsterGroup(new AbstractMonster[]{
+                new TheAscended(0, AbstractDungeon.monsterRng.random(15, 50)),
+        }));
         
         
         BaseMod.addMonster(Encounter.SWEET_GORILLA, () -> new MonsterGroup(new AbstractMonster[]{
@@ -384,7 +402,18 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
                 new IlluminationDragonfish(-100, AbstractDungeon.monsterRng.random(-15, 0)),
                 new ObedientDracolion(100, AbstractDungeon.monsterRng.random(0, 15)),
         }));
-        BaseMod.addMonsterEncounter(TheCity.ID, new MonsterInfo(Encounter.DRAGONFISH_N_DRACOLION, 3.0F));
+        BaseMod.addMonster(Encounter.MARA_STRUCK, () -> new MonsterGroup(new AbstractMonster[]{
+                new MaraStruckSoldier(-200, AbstractDungeon.monsterRng.random(-15, 15)),
+                new InternalAlchemist(100, AbstractDungeon.monsterRng.random(15, 50)),
+        }));
+        BaseMod.addMonster(Encounter.HOUNDS, () -> new MonsterGroup(new AbstractMonster[]{
+                new GoldenHound(-200, AbstractDungeon.monsterRng.random(-15, 15)),
+                new WoodenLupus(100, AbstractDungeon.monsterRng.random(-15, 15)),
+        }));
+        BaseMod.addMonster(Encounter.CLOUD_KNIGHTS_PATROLLERS, () -> new MonsterGroup(new AbstractMonster[]{
+                new CloudKnightsPatroller(-200, AbstractDungeon.monsterRng.random(-15, 15)),
+                new CloudKnightsPatroller(100, AbstractDungeon.monsterRng.random(-15, 15)),
+        }));
         
         
         BaseMod.addMonster(Encounter.HOUND_N_DOMESCREEN, () -> new MonsterGroup(new AbstractMonster[]{
@@ -397,48 +426,61 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         // ==================================================================
         
         belobog.addAct("Exordium");
+        luofu.addAct("TheCity");
     }
 
     @Override
     public void receiveAddAudio() {
-        addAudio("Stelle1");
-        addAudio("Aventurine1");
-        addAudio("Firefly1-1");
-        addAudio("Firefly1-2");
-        addAudio("Firefly2");
-        addAudio("JingYuan1");
-        addAudio("Kafka2");
-        addAudio("Robin2");
-        addAudio("SlashedDream1");
-        addAudio("SlashedDream2");
-        addAudio("Feixiao2");
-        addAudio("Sparkle2");
-        addAudio("Gepard1");
-        addAudio("Argenti1");
+        addWav("Stelle1");
+        addWav("Aventurine1");
+        addWav("Firefly1-1");
+        addWav("Firefly1-2");
+        addWav("Firefly2");
+        addWav("JingYuan1");
+        addWav("Kafka2");
+        addWav("Robin2");
+        addWav("SlashedDream1");
+        addWav("SlashedDream2");
+        addWav("Feixiao2");
+        addWav("Sparkle2");
+        addWav("Gepard1");
+        addWav("Argenti1");
 
         for (int i = 1; i <= 10; i++) {
-            addAudio("TheGreatSeptimus_Day" + i);
+            addWav("TheGreatSeptimus_Day" + i);
         }
         for (int i = 1; i <= 5; i++) {
-            addAudio("TheGreatSeptimus_Crew" + i);
+            addWav("TheGreatSeptimus_Crew" + i);
         }
         for (int i = 1; i <= 8; i++) {
-            addAudio("Phantylia_" + i);
+            addWav("Phantylia_" + i);
         }
         for (int i = 0; i <= 8; i++) {
-            addAudio("Cocolia_" + i);
+            addWav("Cocolia_" + i);
         }
-        addAudio("Gepard_0");
-        addAudio("Gepard_1");
+        addWav("Gepard_0");
+        addWav("Gepard_1");
         for (int i = 1; i <= 5; i++) {
-            addAudio("Hoolay" + i);
+            addWav("Hoolay" + i);
         }
-        addAudio("AurumatonGatekeeper_0");
-        addAudio("AurumatonGatekeeper_1");
+        addWav("AurumatonGatekeeper_0");
+        addWav("AurumatonGatekeeper_1");
+        addOgg("ShapeShifter_0");
+        addOgg("ShapeShifter_1");
+        addOgg("HowlingCasket_0");
+        addOgg("HowlingCasket_1");
+        addOgg("AurumatonSpectralEnvoy_0");
+        addOgg("AurumatonSpectralEnvoy_1");
+        addOgg("TheAscended_0");
+        addOgg("TheAscended_1");
     }
 
-    void addAudio(String id) {
+    void addWav(String id) {
         BaseMod.addAudio(id, "HSRModResources/localization/" + lang + "/audio/" + id + ".wav");
+    }
+    
+    void addOgg(String id) {
+        BaseMod.addAudio(id, "HSRModResources/localization/" + lang + "/audio/" + id + ".ogg");
     }
 
     void addConfigPanel() {

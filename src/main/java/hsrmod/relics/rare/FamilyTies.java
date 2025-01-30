@@ -3,14 +3,16 @@ package hsrmod.relics.rare;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import hsrmod.patches.RelicTagField;
 import hsrmod.relics.BaseRelic;
 import hsrmod.subscribers.IRunnableSubscriber;
+import hsrmod.subscribers.PostRelicDestroySubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 import hsrmod.utils.RelicEventHelper;
 
-public class FamilyTies extends BaseRelic implements IRunnableSubscriber {
+public class FamilyTies extends BaseRelic implements PostRelicDestroySubscriber {
     public static final String ID = FamilyTies.class.getSimpleName();
 
     public FamilyTies() {
@@ -40,15 +42,10 @@ public class FamilyTies extends BaseRelic implements IRunnableSubscriber {
     }
 
     @Override
-    public void run() {
+    public void postRelicDestroy(AbstractRelic relic) {
         if (SubscriptionManager.checkSubscriber(this)) {
             ModHelper.addEffectAbstract(() -> RelicEventHelper.gainRelics(1, r -> RelicTagField.destructible.get(r)));
             updateCounter();
         }
-    }
-
-    @Override
-    public SubscriptionManager.RunnableType getSubType() {
-        return SubscriptionManager.RunnableType.ON_RELIC_DESTROYS;
     }
 }

@@ -16,7 +16,7 @@ public class TerrorPower extends DebuffPower {
     public static final String POWER_ID = HSRMod.makePath(TerrorPower.class.getSimpleName());
 
     public AbstractGameAction actionCache = null;
-    
+
     public TerrorPower(AbstractCreature owner, int amount) {
         super(POWER_ID, owner, amount);
         updateDescription();
@@ -31,18 +31,18 @@ public class TerrorPower extends DebuffPower {
     public void onCardDraw(AbstractCard card) {
         super.onCardDraw(card);
         if (!AbstractDungeon.actionManager.actions.contains(actionCache)) {
-            AbstractCard c = AbstractDungeon.player.hand.getRandomCard(true);
-            if (c != null) {
-                flash();
-                actionCache = new AbstractGameAction() {
-                    @Override
-                    public void update() {
+            actionCache = new AbstractGameAction() {
+                @Override
+                public void update() {
+                    AbstractCard c = AbstractDungeon.player.hand.getRandomCard(true);
+                    if (c != null) {
+                        flash();
                         c.setCostForTurn(c.costForTurn + TerrorPower.this.amount);
                         isDone = true;
                     }
-                };
-                addToBot(actionCache);
-            }
+                }
+            };
+            addToBot(actionCache);
         }
     }
 

@@ -104,7 +104,7 @@
       "Up to #b%d stacks. At the start of the turn, remove 1 stack. Burst when targeted by an attack card: remove all stacks, take X*X (#b%d) wind damage (1)."
     ]
   },
-  "HSRMod:CriticalBoost": {
+  "HSRMod:Boost": {
     "NAME": "Boost",
     "DESCRIPTIONS": [
       "Up to #b%d stacks. Damage dealt + #b%d. NL After taking normal damage, all stacks are removed."
@@ -126,8 +126,8 @@
   "HSRMod:TopazNumby": {
     "NAME": "Difficulty Paying?",
     "DESCRIPTIONS": [
-      "After chasing, apply 1 stack (up to 2 stacks). If 2 stacks are present and no #yTrotter #yMarket!? is available, remove 2 stacks and gain 1 card.",
-      "After chasing, apply 1 stack (up to 2 stacks). If 2 stacks are present and no #yTrotter #yMarket!?+ is available, remove 2 stacks and gain 1 card."
+      "For every #b2 #yFollow-Up, gain *Trotter *Market!?.",
+      "For every #b2 #yFollow-Up, gain *Trotter *Market!?+."
     ]
   },
   "HSRMod:Aventurine": {
@@ -229,14 +229,14 @@
   "HSRMod:IntersegmentalMembrane": {
     "NAME": "Intersegmental Membrane",
     "DESCRIPTIONS": [
-      "For each [E] consumed, gain #b%d Block.",
-      "For each [E] consumed, gain #b%d Block. If your Block is less than 10, gain an additional 1 Block."
+      "For each [E] used, gain #b%d Block.",
+      "For each [E] used, gain #b%d Block. If your Block is less than 10, gain an additional 1 Block."
     ]
   },
   "HSRMod:Kolchis": {
     "NAME": "Kolchis",
     "DESCRIPTIONS": [
-      "Recover [E] for every #b%d Charge consumed."
+      "Recover [E] for every #b%d Charge used."
     ]
   },
   "HSRMod:Divinity": {
@@ -255,7 +255,7 @@
     "NAME": "Tail: Spiritual Domination",
     "DESCRIPTIONS": [
       "After playing a card, recover 1 temp HP, 10 [hsrmod:ChargeIcon] , and remove 1 stack of a random negative effect.",
-      "After playing a card or exhausting [hsrmod:ChargeIcon], recover 1 temp HP, 10 [hsrmod:ChargeIcon] , and remove 1 stack of a random negative effect."
+      "After playing a card or exhausting [hsrmod:ChargeIcon] , recover 1 temp HP, 10 [hsrmod:ChargeIcon] , and remove 1 stack of a random negative effect."
     ]
   },
   "HSRMod:Epiphany": {
@@ -289,8 +289,8 @@
   "HSRMod:ReignOfKeys": {
     "NAME": "Reign of Keys",
     "DESCRIPTIONS": [
-      "When enemies trigger DoT effects during their turn, draw 1 card. If it triggers outside of their turn, stacks are not reduced.",
-      "When enemies trigger DoT effects, draw 1 card. If it triggers outside of their turn, stacks are not reduced."
+      "When enemies trigger DoT effects in their turn, draw 1 card. If it triggers in your turn, stacks are not reduced.",
+      "When enemies trigger DoT effects, draw 1 card, if it is in your turn, stacks are not reduced."
     ]
   },
   "HSRMod:FuneralOfSensoryPursuivant": {
@@ -517,7 +517,7 @@
     "NAME": "Sanction Rate",
     "DESCRIPTIONS": [
       "When using a #gSkill card or #bPower card, stack #b%d%% , when reaching #b100%%, end the turn, and enter #rSanction #rMode.",
-      "[ #rSanction #rMode ]"
+      "[ #rSanction #rMode ] #yToughness can not be reduced."
     ]
   },
   "HSRMod:Channel": {

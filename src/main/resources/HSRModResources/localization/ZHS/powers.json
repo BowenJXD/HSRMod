@@ -26,11 +26,11 @@
     ]
   },
   "HSRMod:FrozenResistance": {
-  "NAME": "冻结抵抗",
-  "DESCRIPTIONS": [
-    "冻结所需的层数增加 #b%d 。"
-  ]
-},
+    "NAME": "冻结抵抗",
+    "DESCRIPTIONS": [
+      "冻结所需的层数增加 #b%d 。"
+    ]
+  },
   "HSRMod:Bleeding": {
     "NAME": "裂伤",
     "DESCRIPTIONS": [
@@ -107,7 +107,7 @@
   "HSRMod:Boost": {
     "NAME": "会心",
     "DESCRIPTIONS": [
-      "上限 #b%d 层。造成的伤害+ #b%d 。被攻击后移除所有层。"
+      "上限 #b%d 层。造成的伤害+ #b%d 。受击后移除。"
     ]
   },
   "HSRMod:BrainInAVat": {
@@ -418,7 +418,6 @@
       "击破后移除，将韧性恢复至 #b%d 层，并获得 [E] 。"
     ]
   },
-  
   "HSRMod:Charging": {
     "NAME": "蓄力",
     "DESCRIPTIONS": [
@@ -547,7 +546,7 @@
     ]
   },
   "HSRMod:Ban": {
-    "NAME" : "禁令",
+    "NAME": "禁令",
     "DESCRIPTIONS": [
       "打出 #r攻击牌 ：随机弃置1张牌。 #y击破 后移除。",
       "打出 #g技能牌 ：随机1张牌此回合费用+1。 #y击破 后移除。",
@@ -566,6 +565,42 @@
       "连续打出 #r攻击牌 时，陷入1层 #y禁锢 。 NL 连续打出 #g非攻击牌 时，陷入1层 #y纠缠 。",
       "连续打出 #r攻击牌 时，陷入1层 #y禁锢 。 NL 连续打出 #g非攻击牌 时，陷入1层 #y纠缠 。 NL 上一张打出的牌为： #r攻击牌 。",
       "连续打出 #r攻击牌 时，陷入1层 #y禁锢 。 NL 连续打出 #g非攻击牌 时，陷入1层 #y纠缠 。 NL 上一张打出的牌为： #g非攻击牌 。"
+    ]
+  },
+  "HSRMod:DrainingHit": {
+    "NAME": "击中回复",
+    "DESCRIPTIONS": [
+      "造成伤害后，回复 #b%d 点生命。有怪物死亡后，若没有怪物有 #y重生 ，则移除。"
+    ]
+  },
+  "HSRMod:Rebirth": {
+    "NAME": "重生",
+    "DESCRIPTIONS": [
+      "受到致命伤害时移除，将生命恢复至 #b50% 。"
+    ]
+  },
+  "HSRMod:Reverberation": {
+    "NAME": "震荡",
+    "DESCRIPTIONS": [
+      "受到未被格挡的伤害时，叠加 #b1 层。回合开始时，若大于 #b1 层，则移除，并 #y结束回合 。"
+    ]
+  },
+  "HSRMod:Gusto": {
+    "NAME": "元气",
+    "DESCRIPTIONS": [
+      "你每打出 #b1 张 #r攻击牌 ，其获得 #b%d 层 #y力量 。击破后移除。移除时，失去所有 #y力量 。"
+    ]
+  },
+  "HSRMod:PranaSiphoned": {
+    "NAME": "噬命",
+    "DESCRIPTIONS": [
+      "你每打出1张 #g技能牌 ，失去 #b1 点 #y敏捷 。回合结束时移除。移除时，回复 #b%d 层 #y敏捷 。"
+    ]
+  },
+  "HSRMod:SpurOfThunderwoe": {
+    "NAME": "丹毁",
+    "DESCRIPTIONS": [
+      "内丹士死亡时，对你造成 #b%d 点伤害。"
     ]
   }
 }

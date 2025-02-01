@@ -18,6 +18,7 @@ public class ReverberationPower extends DebuffPower {
 
     public ReverberationPower(AbstractCreature owner, int amount) {
         super(POWER_ID, owner, amount);
+        updateDescription();
     }
 
     @Override

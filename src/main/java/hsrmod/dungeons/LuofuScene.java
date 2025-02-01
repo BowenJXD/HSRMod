@@ -247,19 +247,16 @@ public class LuofuScene extends AbstractScene {
         super.nextRoom(room);
         this.fireFlies.clear();
         this.randomizeScene();
-        if (room instanceof MonsterRoomBoss) {
+        if (room instanceof MonsterRoomBoss || room.eliteTrigger) {
             CardCrawlGame.music.silenceBGM();
-        }
-
-        //
-        if (room.monsters != null && !(room.eliteTrigger || room instanceof MonsterRoomBoss)) {
+        } else if (room.monsters != null) {
             if (AbstractDungeon.miscRng.randomBoolean(0.1F)) {
                 room.playBGM("Thundering Chariot");
             } else {
                 room.playBGM("Into the Desolate");
             }
         } else if (room instanceof ShopRoom) {
-            CardCrawlGame.music.silenceBGM();
+            CardCrawlGame.music.silenceTempBgmInstantly();
             room.playBGM("Paean of Indulgence");
         } else {
             CustomDungeon.resumeMainMusic();

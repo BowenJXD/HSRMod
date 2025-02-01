@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.utils.ModHelper;
 
 public class CleanAction extends AbstractGameAction {
@@ -21,7 +22,7 @@ public class CleanAction extends AbstractGameAction {
     public void update() {
         isDone = true;
         for (AbstractPower power : target.powers) {
-            if (power.type == AbstractPower.PowerType.DEBUFF) {
+            if (power.type == AbstractPower.PowerType.DEBUFF && !(power instanceof ToughnessPower)) {
                 int removeAmount = removeAll ? 1 : Math.min(amount, power.amount);
 
                 if (removeAll || power.amount == removeAmount) {

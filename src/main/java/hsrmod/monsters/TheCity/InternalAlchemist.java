@@ -3,6 +3,7 @@ package hsrmod.monsters.TheCity;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -20,7 +21,7 @@ public class InternalAlchemist extends BaseMonster {
     int spurCount = 10;
 
     public InternalAlchemist(float x, float y) {
-        super(ID, 170, 256, x, y);
+        super(ID, 170, 256, x, y + 40);
         
         spurCount = specialAs ? 15 : 12;
         
@@ -48,7 +49,8 @@ public class InternalAlchemist extends BaseMonster {
         int spurNum = ModHelper.getPowerCount(p, SpurOfThunderwoePower.POWER_ID);
         if (spurNum > 0) {
             AbstractDungeon.effectsQueue.add(new ExplosionSmallEffect(p.hb.cX, p.hb.cY));
-            addToTop(new ElementalDamageAction(p, new ElementalDamageInfo(this, spurNum, DamageInfo.DamageType.THORNS, null, 0), AbstractGameAction.AttackEffect.FIRE));
+            addToTop(new ElementalDamageAction(p, new ElementalDamageInfo(this, spurNum, DamageInfo.DamageType.THORNS, ElementType.None, 0), AbstractGameAction.AttackEffect.FIRE));
+            addToBot(new RemoveSpecificPowerAction(p, this, SpurOfThunderwoePower.POWER_ID));
         }
         super.die();
     }

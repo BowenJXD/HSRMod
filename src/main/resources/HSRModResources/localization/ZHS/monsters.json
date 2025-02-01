@@ -78,6 +78,56 @@
     ],
     "DIALOG": []
   },
+  "HSRMod:ShadowOfFeixiao": {
+    "NAME": "飞霄之影",
+    "MOVES": [
+      "巨钺 · 铁爪",
+      "心兽合击",
+      "风胄雷鞮",
+      "⚠席卷乾圜，气吞坤矩⚠",
+      "席卷乾圜，气吞坤矩（造成伤害，每有一个怪物 #y未被击破 ，额外造成1次伤害）"
+    ],
+    "DIALOG": [
+      "步离人，受死！",
+      "@负隅顽抗！@",
+      "@吐息风暴！@",
+      "@砥砺牙爪！@",
+      "@涤荡一切！@",
+      "@该结束狩猎了！@",
+      "#r@吞天之兽，彻地而来！@",
+      "狩猎...失败了..."
+    ]
+  },
+  "HSRMod:NebulaDevourer": {
+    "NAME": "喰云之首",
+    "MOVES": [
+      "喰云",
+      "吐纳太虚",
+      ""
+    ],
+    "DIALOG": [
+    ]
+  },
+  "HSRMod:PlaneshredClaws": {
+    "NAME": "裂维之爪",
+    "MOVES": [
+      "裂维",
+      "裂决天维",
+      ""
+    ],
+    "DIALOG": [
+    ]
+  },
+  "HSRMod:WorldpurgeTail": {
+    "NAME": "辟尘之尾",
+    "MOVES": [
+      "辟尘",
+      "荡涤尘寰",
+      ""
+    ],
+    "DIALOG": [
+    ]
+  },
   "HSRMod:Cocolia": {
     "NAME": "可可莉亚，虚妄之母",
     "MOVES": [
@@ -191,6 +241,57 @@
       "厮杀"
     ],
     "DIALOG": []
+  },
+  "HSRMod:AbundantEbonDeer": {
+    "NAME": "丰饶玄鹿",
+    "MOVES": [
+      "衔枝",
+      "呦鸣",
+      "永寿",
+      "蕉覆",
+      "⚠斑龙触⚠",
+      "斑龙触（造成伤害，移除所有杪，每移除1个，再造成1次伤害）"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:TwigOfWintryWind": {
+    "NAME": "肃风之杪",
+    "MOVES": [
+      "怒噪"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:TwigOfMarpleLeaf": {
+    "NAME": "缃叶之杪",
+    "MOVES": [
+      "繁生",
+      "折叶"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:TwigOfGloriousBlooms": {
+    "NAME": "繁花之杪",
+    "MOVES": [
+      "驻春"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:TwigOfLavishFruits": {
+    "NAME": "嘉实之杪",
+    "MOVES": [
+      "初实"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:Cirrus": {
+    "NAME": "浮烟",
+    "MOVES": [
+      "棋快一着"
+    ],
+    "DIALOG": [
+      "尝尝这招！",
+      "我还…没输…"
+    ]
   },
   "HSRMod:Gepard": {
     "NAME": "杰帕德",
@@ -416,6 +517,27 @@
       "我可溜啦！",
       "@不！@"
     ]
+  },
+  "HSRMod:MaraStruckWarden": {
+    "NAME": "魔阴武弁",
+    "MOVES": [
+      "锯恶"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:Ballistarius": {
+    "NAME": "器元士",
+    "MOVES": [
+      "犀弩"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:GoldenCloudToad": {
+    "NAME": "浓云金蟾",
+    "MOVES": [
+      "霏雾"
+    ],
+    "DIALOG": []
   },
   "HSRMod:Grizzly": {
     "NAME": "灰熊",

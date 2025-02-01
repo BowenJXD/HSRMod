@@ -20,6 +20,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.RegenerateMonsterPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.UnawakenedPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -74,6 +75,8 @@ public class Phantylia extends BaseMonster implements PostPowerApplySubscriber {
         addToBot(new ApplyPowerAction(this, this, new UnawakenedPower(this)));
         spawnAbundanceLotus(false);
         spawnDestructionLotus(false);
+        if (specialAs)
+            addToBot(new ApplyPowerAction(this, this, new RegenerateMonsterPower(this, 4)));
     }
 
     @Override

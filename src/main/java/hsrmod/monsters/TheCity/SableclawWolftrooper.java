@@ -21,7 +21,7 @@ public class SableclawWolftrooper extends BaseMonster {
     public static final String ID = SableclawWolftrooper.class.getSimpleName();
     
     public SableclawWolftrooper(float x, float y) {
-        super(ID, 169F, 169F, x, y);
+        super(ID, 120F, 169F, x, y);
         
         setDamages(2);
     }

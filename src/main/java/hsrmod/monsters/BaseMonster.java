@@ -49,7 +49,7 @@ public abstract class BaseMonster extends CustomMonster {
     public List<MoveInfo> moveInfos = new ArrayList<>();
     public EnemyMoveInfo currMove;
     public boolean moreDamageAs, moreHPAs, specialAs;
-    public int floatIndex = 0;
+    public float floatIndex = 0;
     
     public BaseMonster(String name, String id, int maxHealth, float hb_x, float hb_y, float hb_w, float hb_h, String atlas, float x, float y) {
         super(name, HSRMod.makePath(id), maxHealth, hb_x, hb_y, hb_w, hb_h, atlas, x, y);
@@ -159,7 +159,8 @@ public abstract class BaseMonster extends CustomMonster {
     @Override
     public void update() {
         super.update();
-        this.animY = floatIndex * MathUtils.cosDeg((float) (System.currentTimeMillis() / 6L % 360L)) * 6.0F * Settings.scale;
+        if (floatIndex != 0)
+            this.animY = floatIndex * MathUtils.cosDeg((float) (System.currentTimeMillis() / 6L % 360L)) * 6.0F * Settings.scale;
     }
 
     public void setDamagesWithAscension(int... damages){
@@ -232,10 +233,10 @@ public abstract class BaseMonster extends CustomMonster {
     }
     
     public void spawnMonsters(int count) {
-        spawnMonsters(count, false);
+        spawnMonsters(count, SpawnType.MINION, false);
     }
 
-    public void spawnMonsters(int count, boolean inOrder) {
+    public void spawnMonsters(int count, SpawnType spawnType, boolean inOrder) {
         count = Math.min(count, getEmptySlotCount());
         if (count > 0 && monFunc != null)
             for (int i = 0; i < count; i++) {
@@ -244,7 +245,10 @@ public abstract class BaseMonster extends CustomMonster {
                     AbstractMonster monster = monFunc.apply(slot);
                     if (monster != null) {
                         monster.usePreBattleAction();
-                        addToBot(new SpawnMonsterAction(monster, true));
+                        addToBot(new SpawnMonsterAction(monster, spawnType == SpawnType.MINION));
+                        if (spawnType == SpawnType.SUMMONED) {
+                            addToBot(new ApplyPowerAction(monster, monster, new SummonedPower(this)));
+                        }
                         slot.setMonster(monster);
                     }
                 }

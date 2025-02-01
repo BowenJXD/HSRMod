@@ -22,7 +22,7 @@ public class HowlingCasket extends BaseMonster implements OnPowersModifiedSubscr
     public static final String ID = HowlingCasket.class.getSimpleName();
 
     public HowlingCasket(float x, float y) {
-        super(ID, 340, 384, x, y);
+        super(ID, 300, 384, x, y);
         
         addMoveA(Intent.ATTACK, 5, 2, mi -> {
             attack(mi, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, AttackAnim.FAST);

@@ -1,5 +1,6 @@
 package hsrmod.monsters.TheCity;
 
+import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.AnimateFastAttackAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
@@ -63,5 +64,11 @@ public class IlluminationDragonfish extends BaseMonster {
     @Override
     protected void getMove(int i) {
         setMove(MOVES[0], (byte) 0, Intent.ATTACK_DEBUFF, this.damage.get(0).base);
+    }
+
+    @Override
+    public void update() {
+        super.update();
+        this.animX = MathUtils.cosDeg((float) (System.currentTimeMillis() / 6L % 360L)) * 6.0F * Settings.scale;
     }
 }

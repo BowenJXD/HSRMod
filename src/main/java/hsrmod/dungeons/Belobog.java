@@ -28,6 +28,7 @@ public class Belobog extends CustomDungeon {
         addTempMusic("Braving the Cold", "HSRModResources/audio/music/Braving the Cold.mp3");
         addTempMusic("Kindling", "HSRModResources/audio/music/Kindling.mp3");
         addTempMusic("Godfather", "HSRModResources/audio/music/Godfather.mp3");
+        addTempMusic("Tempered Cord", "HSRModResources/audio/music/Tempered Cord.mp3");
         if ((BaseMod.hasModID("spireTogether:") || Settings.isTrial)) {
             onEnterEvent(StelleAwakeEvent.class);
         }

@@ -20,7 +20,7 @@ public class EclipseWolftrooper extends BaseMonster {
     public static final String ID = EclipseWolftrooper.class.getSimpleName();
     
     public EclipseWolftrooper(float x, float y) {
-        super(ID, 169F, 169F, x, y);
+        super(ID, 120F, 169F, x, y);
         
         setDamages(2);
     }

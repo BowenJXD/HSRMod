@@ -26,9 +26,9 @@ import static hsrmod.modcore.ElementType.*;
 public class ElementalDamageInfo extends DamageInfo {
     public int tr;
     public ElementType elementType;
-    public AbstractCard card;
+    public BaseCard card;
     
-    public ElementalDamageInfo(AbstractCreature damageSource, int base, DamageType type, ElementType elementType, int tr, AbstractCard card) {
+    public ElementalDamageInfo(AbstractCreature damageSource, int base, DamageType type, ElementType elementType, int tr, BaseCard card) {
         super(damageSource, base, type);
         this.tr = tr;
         this.elementType = elementType;
@@ -114,7 +114,7 @@ public class ElementalDamageInfo extends DamageInfo {
         return null;
     }
     
-    public static ElementalDamageInfo makeInfo(AbstractCreature damageSource, int base, DamageType type, ElementType elementType, int tr, AbstractCard card) {
+    public static ElementalDamageInfo makeInfo(AbstractCreature damageSource, int base, DamageType type, ElementType elementType, int tr, BaseCard card) {
         BindingPatches.directlyBoundInstigator = card;
         BindingPatches.directlyBoundDamageMods.addAll(DamageModifierManager.modifiers(card));
         ElementalDamageInfo info = new ElementalDamageInfo(damageSource, base, type, elementType, tr, card);

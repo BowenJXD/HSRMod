@@ -17,13 +17,20 @@ public class FollowUpAction extends AbstractGameAction {
     private AbstractCard card;
     
     AbstractCreature target;
+    
+    boolean autoPlay;
 
-    public FollowUpAction(AbstractCard card, AbstractCreature target) {
+    public FollowUpAction(AbstractCard card, AbstractCreature target, boolean autoPlay) {
         this.duration = Settings.ACTION_DUR_FAST;
         this.actionType = ActionType.WAIT;
         this.source = AbstractDungeon.player;
         this.card = card;
         this.target = target;
+        this.autoPlay = autoPlay;
+    }
+    
+    public FollowUpAction(AbstractCard card, AbstractCreature target) {
+        this(card, target, true);
     }
 
     public FollowUpAction(AbstractCard card) {
@@ -59,9 +66,9 @@ public class FollowUpAction extends AbstractGameAction {
             }
             
             if (target == null)
-                this.addToTop(new NewQueueCardAction(card, true, false, true));
+                this.addToTop(new NewQueueCardAction(card, true, false, autoPlay));
             else 
-                this.addToTop(new NewQueueCardAction(card, target, false, true));
+                this.addToTop(new NewQueueCardAction(card, target, false, autoPlay));
             
             this.addToTop(new UnlimboAction(card));
             if (!Settings.FAST_MODE) {

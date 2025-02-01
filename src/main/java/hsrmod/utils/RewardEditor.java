@@ -86,7 +86,9 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
                 }
             }
 
-            checkBossRelic(tag);
+            if (Objects.equals(relicId, "")) {
+                checkBossRelic(tag);
+            }
         }
 
         if (AbstractDungeon.player != null

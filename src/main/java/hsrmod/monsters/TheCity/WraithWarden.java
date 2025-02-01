@@ -22,7 +22,7 @@ public class WraithWarden extends BaseMonster {
             addToBot(new DamageAction(p, damage.get(mi.index), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
             addToBot(new DamageCallbackAction(p, damage.get(mi.index), AbstractGameAction.AttackEffect.SLASH_VERTICAL, dmg -> {
                 if (dmg > 0) {
-                    addToTop(new MakeTempCardInDrawPileAction(new Dazed(), 1, true, true));
+                    addToTop(new MakeTempCardInDrawPileAction(new Dazed(), 1, !specialAs, true));
                 }
             }));
         });

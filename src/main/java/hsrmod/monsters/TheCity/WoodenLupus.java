@@ -34,7 +34,7 @@ public class WoodenLupus extends BaseMonster {
             addToBot(new ApplyPowerAction(p, this, new ShockPower(p, this, shockCount)));
         });
         addMove(Intent.UNKNOWN, mi -> {
-            spawnMonsters(1, true);
+            spawnMonsters(1, SpawnType.NONE, true);
         });
     }
     

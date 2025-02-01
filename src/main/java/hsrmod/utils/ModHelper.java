@@ -144,7 +144,7 @@ public class ModHelper {
 
                     while (var5.hasNext()) {
                         m = (AbstractMonster) var5.next();
-                        if (!m.halfDead && !m.isDying && !m.isEscaping) {
+                        if (check(m)) {
                             tmp.add(m);
                         }
                     }

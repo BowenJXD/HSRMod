@@ -1,16 +1,13 @@
 package hsrmod.dungeons;
 
 import actlikeit.dungeons.CustomDungeon;
-import basemod.BaseMod;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.MonsterInfo;
 import com.megacrit.cardcrawl.saveAndContinue.SaveFile;
 import com.megacrit.cardcrawl.scenes.AbstractScene;
-import hsrmod.events.StelleAwakeEvent;
 import hsrmod.misc.Encounter;
 import hsrmod.modcore.HSRMod;
 
@@ -23,7 +20,7 @@ public class Luofu extends CustomDungeon {
     public static final String NAME;
     
     public Luofu() {
-        super(NAME, ID, "HSRModResources/img/UI/panel.png", true, 4, 12, 10);
+        super(NAME, ID, "HSRModResources/img/UI/panel.png", true, 3, 12, 10);
         setMainMusic("HSRModResources/audio/music/Lustrous Moonlight.mp3");
         // fight 1
         addTempMusic("Thundering Chariot", "HSRModResources/audio/music/Thundering Chariot.mp3");
@@ -90,8 +87,8 @@ public class Luofu extends CustomDungeon {
     protected void generateWeakEnemies(int count) {
         ArrayList<MonsterInfo> monsters = new ArrayList<>();
         
-        monsters.add(new MonsterInfo(Encounter.DRAGONFISH_N_DRACOLION, 2.0F));
-        monsters.add(new MonsterInfo(Encounter.MARA_STRUCK, 2.0F));
+        monsters.add(new MonsterInfo(Encounter.DRAGONFISH_N_FLOATINGS, 2.0F));
+        monsters.add(new MonsterInfo(Encounter.TWO_MARA_STRUCK, 2.0F));
         monsters.add(new MonsterInfo(Encounter.HOUNDS, 2.0F));
         monsters.add(new MonsterInfo(Encounter.CLOUD_KNIGHTS_PATROLLERS, 2.0F));
         
@@ -118,8 +115,8 @@ public class Luofu extends CustomDungeon {
         ArrayList<MonsterInfo> monsters = new ArrayList<>();
         
         monsters.add(new MonsterInfo(Encounter.HOOLAY, 1.0F));
-        monsters.add(new MonsterInfo(Encounter.SVAROG, 1.0F));
-        monsters.add(new MonsterInfo(Encounter.BRONYA, 1.0F));
+        monsters.add(new MonsterInfo(Encounter.ABUNDANT_EBON_DEER, 1.0F));
+        monsters.add(new MonsterInfo(Encounter.CIRRUS, 1.0F));
         
         MonsterInfo.normalizeWeights(monsters);
         this.populateMonsterList(monsters, count, true);

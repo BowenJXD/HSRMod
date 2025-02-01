@@ -28,6 +28,7 @@ public class ObedientDracolion extends BaseMonster {
         
         setDamagesWithAscension(9);
         weakAmount = ModHelper.specialAscension(type) ? 2 : 1;
+        floatIndex = AbstractDungeon.monsterRng.randomBoolean() ? -1 : 1;
     }
 
     @Override

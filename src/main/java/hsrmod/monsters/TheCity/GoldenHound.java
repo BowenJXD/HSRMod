@@ -25,7 +25,7 @@ public class GoldenHound extends BaseMonster {
         super.usePreBattleAction();
         addToBot(new ApplyPowerAction(this, this, new DeathExplosionPower(this, MOVES[1], MOVES[2], () -> {
             for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
-                if (ModHelper.check(m) && m != this) {
+                if (ModHelper.check(m) && m != this && m.type == EnemyType.NORMAL) {
                     addToTop(new ApplyPowerAction(m, this, new MultiMovePower(m, 1)));
                 }
             }

@@ -18,12 +18,7 @@ public class CosmicBigLotto extends BaseRelic {
 
     public CosmicBigLotto() {
         super(ID);
-    }
-
-    @Override
-    public void onEquip() {
-        super.onEquip();
-        counter = 1;
+        setCounter(1);
     }
 
     @Override

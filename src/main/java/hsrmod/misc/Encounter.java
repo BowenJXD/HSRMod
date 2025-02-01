@@ -3,8 +3,7 @@ package hsrmod.misc;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.monsters.Exordium.*;
-
-import java.awt.*;
+import hsrmod.monsters.TheCity.*;
 
 public class Encounter {
     // ======================== EVENT ========================
@@ -15,9 +14,11 @@ public class Encounter {
     // ======================== BOSS ========================
     
     public static final String SALUTATIONS_OF_ASHEN_DREAMS = "Salutations of Ashen Dreams";
-    public static final String DIVINE_SEED = "Divine Seed";
-    public static final String END_OF_THE_ETERNAL_FREEZE = "End of the Eternal Freeze";
     public static final String DESTRUCTIONS_BEGINNING = "Destruction's Beginning";
+    public static final String DIVINE_SEED = "Divine Seed";
+    public static final String INNER_BEASTS_BATTLEFIELD = "Inner Beast's Battlefield";
+    public static final String END_OF_THE_ETERNAL_FREEZE = "End of the Eternal Freeze";
+    public static final String BOREHOLE_PLANETS_OLD_CRATER = "Borehole Planet's Old Crater";
     
     // ======================== ELITE ========================
     
@@ -26,6 +27,8 @@ public class Encounter {
     public static final String SVAROG = "Svarog";
     
     public static final String HOOLAY = "Hoolay";
+    public static final String ABUNDANT_EBON_DEER = "Abundant Ebon Deer";
+    public static final String CIRRUS = "Cirrus";
     
     public static final String SOMETHING_UNTO_DEATH = "Something Unto Death";
     
@@ -57,8 +60,8 @@ public class Encounter {
     public static final String MASK_N_SPAWNS = "Mask and Spawn";
     public static final String VAGRANT = "Vagrant";
     
-    public static final String DRAGONFISH_N_DRACOLION = "Dragonfish and Dracolion";
-    public static final String MARA_STRUCK = "Mara Struck Soldier and Internal Alchemist";
+    public static final String DRAGONFISH_N_FLOATINGS = "Dragonfish and Dracolion";
+    public static final String TWO_MARA_STRUCK = "Mara Struck Soldier and Internal Alchemist";
     public static final String HOUNDS = "Wooden Lupus and Golden Hound";
     public static final String CLOUD_KNIGHTS_PATROLLERS = "2 Cloud Knights Patroller";
     
@@ -91,6 +94,38 @@ public class Encounter {
                 break;
             case 2:
                 result = new Flamespawn(x, y);
+                break;
+        }
+        return result;
+    }
+    
+    public static AbstractMonster getRandomMaraStruck(float x, float y) {
+        AbstractMonster result = null;
+        switch (AbstractDungeon.monsterRng.random(3)) {
+            case 0:
+                result = new MaraStruckSoldier(x, y);
+                break;
+            case 1:
+                result = new InternalAlchemist(x, y);
+                break;
+            case 2:
+                result = new MaraStruckWarden(x, y);
+                break;
+            case 3:
+                result = new Ballistarius(x, y);
+                break;
+        }
+        return result;
+    }
+    
+    public static AbstractMonster getRandomFloating(float x, float y) {
+        AbstractMonster result = null;
+        switch (AbstractDungeon.monsterRng.random(1)) {
+            case 0:
+                result = new ObedientDracolion(x, y);
+                break;
+            case 1:
+                result = new GoldenCloudToad(x, y);
                 break;
         }
         return result;

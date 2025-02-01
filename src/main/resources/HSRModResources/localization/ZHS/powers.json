@@ -588,7 +588,7 @@
   "HSRMod:Gusto": {
     "NAME": "元气",
     "DESCRIPTIONS": [
-      "你每打出 #b1 张 #r攻击牌 ，其获得 #b%d 层 #y力量 。击破后移除。移除时，失去所有 #y力量 。"
+      "你每打出 #b1 张 #r攻击牌 ，其获得 #b%d 层 #y力量 。 #y击破 后移除。移除时，失去所有 #y力量 。"
     ]
   },
   "HSRMod:PranaSiphoned": {
@@ -600,7 +600,55 @@
   "HSRMod:SpurOfThunderwoe": {
     "NAME": "丹毁",
     "DESCRIPTIONS": [
-      "内丹士死亡时，对你造成 #b%d 点伤害。"
+      " #y内丹士 死亡时，对你造成 #b%d 点伤害。"
+    ]
+  },
+  "HSRMod:Outrage": {
+    "NAME": "怒噪",
+    "DESCRIPTIONS": [
+      "回合开始时移除，随机打出 #b%d 张 #r攻击牌 （会消耗能量）。"
+    ]
+  },
+  "HSRMod:LastSpring": {
+    "NAME": "驻春",
+    "DESCRIPTIONS": [
+      "受到伤害后，令所有怪物回复 #b%d 点生命。"
+    ]
+  },
+  "HSRMod:HardyLeafSheath": {
+    "NAME": "蕉覆",
+    "DESCRIPTIONS": [
+      " #y韧性 无法被削减，受到的伤害- #b50% 。回合开始时移除 #b1 层。"
+    ]
+  },
+  "HSRMod:LavishFruit": {
+    "NAME": "嘉实",
+    "DESCRIPTIONS": [
+      "2层时， #y丰饶玄鹿 将施放 #y⚠斑龙触⚠ ， #y击破 后移除 #b1 层。"
+    ]
+  },
+  "HSRMod:VigorOverflow": {
+    "NAME": "生机充盈",
+    "DESCRIPTIONS": [
+      "每获得一次 #g增益 效果，获得 #b1 点 #y力量 。每获得一次 #r负面效果，失去 #b1 点 #y力量 。"
+    ]
+  },
+  "HSRMod:Soulsplit": {
+    "NAME": "分灵",
+    "DESCRIPTIONS": [
+      "无法受到伤害。有怪物被击杀时，失去 #b%d点 生命。"
+    ]
+  },
+  "HSRMod:Safeguard": {
+    "NAME": "守备",
+    "DESCRIPTIONS": [
+      "若有其他敌人在场，受到的伤害 #b-80% 。"
+    ]
+  },
+  "HSRMod:Resonate": {
+    "NAME": "共鸣",
+    "DESCRIPTIONS": [
+      "技能获得强化。受到的韧性削减 #b+%d 。一张牌首次对有 #y共鸣 的目标造成伤害后，其他有 #y共鸣 的单位失去等量生命。 #y击破 后，若为小怪，则移除，锁定韧性，且无法再行动。"
     ]
   }
 }

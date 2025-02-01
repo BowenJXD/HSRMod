@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import hsrmod.actions.CleanAction;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
 import hsrmod.utils.ModHelper;
@@ -36,6 +37,7 @@ public class RebirthPower extends BuffPower {
     public int onAttackedToChangeDamage(DamageInfo info, int damageAmount) {
         if (damageAmount >= owner.currentHealth) {
             addToTop(new HealAction(owner, owner, owner.maxHealth / 2));
+            addToBot(new CleanAction(owner, owner.powers.size(), true));
             remove(1);
             return owner.currentHealth - 1;
         }

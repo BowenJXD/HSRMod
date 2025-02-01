@@ -19,7 +19,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.TheBeyond;
-import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.RelicLibrary;
@@ -288,6 +287,12 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         luofu.addBoss(Encounter.DIVINE_SEED, () -> new MonsterGroup(new AbstractMonster[]{
                 new Phantylia(),
         }), "HSRModResources/img/monsters/DivineSeed.png", "HSRModResources/img/monsters/BossOutline.png");
+        luofu.addBoss(Encounter.INNER_BEASTS_BATTLEFIELD, () -> new MonsterGroup(new AbstractMonster[]{
+                new WorldpurgeTail(-400, 220),
+                new PlaneshredClaws(-160, 220),
+                new NebulaDevourer(160, 220),
+                new ShadowOfFeixiao(),
+        }), "HSRModResources/img/monsters/InnerBeastsBattlefield.png", "HSRModResources/img/monsters/BossOutline.png");
         
         BaseMod.addMonster(Encounter.SALUTATIONS_OF_ASHEN_DREAMS, () -> new MonsterGroup(new AbstractMonster[]{
                 new EchoOfFadedDreams(0, -500F, 50.0F),
@@ -310,6 +315,12 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         
         BaseMod.addMonster(Encounter.HOOLAY, () -> new MonsterGroup(new AbstractMonster[]{
                 new Hoolay()
+        }));
+        BaseMod.addMonster(Encounter.ABUNDANT_EBON_DEER, () -> new MonsterGroup(new AbstractMonster[]{
+                new AbundantEbonDeer()
+        }));
+        BaseMod.addMonster(Encounter.CIRRUS, () -> new MonsterGroup(new AbstractMonster[]{
+                new Cirrus()
         }));
         
         BaseMod.addMonster(Encounter.SOMETHING_UNTO_DEATH, () -> new MonsterGroup(new AbstractMonster[]{
@@ -370,6 +381,11 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         BaseMod.addMonster(Encounter.THE_ASCENDED, () -> new MonsterGroup(new AbstractMonster[]{
                 new TheAscended(0, AbstractDungeon.monsterRng.random(15, 50)),
         }));
+        BaseMod.addMonster(Encounter.TWIGS, () -> new MonsterGroup(new AbstractMonster[]{
+                new TwigOfWintryWind(-200, AbstractDungeon.monsterRng.random(-15, 15)),
+                new TwigOfMarpleLeaf(-50, AbstractDungeon.monsterRng.random(-15, 15)),
+                new TwigOfGloriousBlooms(100, AbstractDungeon.monsterRng.random(-15, 15)),
+        }));
         
         
         BaseMod.addMonster(Encounter.SWEET_GORILLA, () -> new MonsterGroup(new AbstractMonster[]{
@@ -397,14 +413,14 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         }));
         
         
-        BaseMod.addMonster(Encounter.DRAGONFISH_N_DRACOLION, () -> new MonsterGroup(new AbstractMonster[]{
-                new ObedientDracolion(-300, AbstractDungeon.monsterRng.random(0, 15)),
-                new IlluminationDragonfish(-100, AbstractDungeon.monsterRng.random(-15, 0)),
-                new ObedientDracolion(100, AbstractDungeon.monsterRng.random(0, 15)),
+        BaseMod.addMonster(Encounter.DRAGONFISH_N_FLOATINGS, () -> new MonsterGroup(new AbstractMonster[]{
+                Encounter.getRandomFloating(-300, AbstractDungeon.monsterRng.random(15, 30)),
+                new IlluminationDragonfish(-100, AbstractDungeon.monsterRng.random(0, 15)),
+                Encounter.getRandomFloating(100, AbstractDungeon.monsterRng.random(15, 30)),
         }));
-        BaseMod.addMonster(Encounter.MARA_STRUCK, () -> new MonsterGroup(new AbstractMonster[]{
-                new MaraStruckSoldier(-200, AbstractDungeon.monsterRng.random(-15, 15)),
-                new InternalAlchemist(100, AbstractDungeon.monsterRng.random(15, 50)),
+        BaseMod.addMonster(Encounter.TWO_MARA_STRUCK, () -> new MonsterGroup(new AbstractMonster[]{
+                Encounter.getRandomMaraStruck(-200, AbstractDungeon.monsterRng.random(-15, 15)),
+                Encounter.getRandomMaraStruck(100, AbstractDungeon.monsterRng.random(-15, 15)),
         }));
         BaseMod.addMonster(Encounter.HOUNDS, () -> new MonsterGroup(new AbstractMonster[]{
                 new GoldenHound(-200, AbstractDungeon.monsterRng.random(-15, 15)),
@@ -473,6 +489,11 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         addOgg("AurumatonSpectralEnvoy_1");
         addOgg("TheAscended_0");
         addOgg("TheAscended_1");
+        addOgg("Cirrus_0");
+        addOgg("Cirrus_1");
+        for (int i = 0; i <= 7; i++) {
+            addOgg("ShadowOfFeixiao_" + i);
+        }
     }
 
     void addWav(String id) {

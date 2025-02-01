@@ -12,17 +12,7 @@ public class AngelTypeIOUDispenser extends BaseRelic {
     
     public AngelTypeIOUDispenser() {
         super(ID);
-    }
-    
-    public AngelTypeIOUDispenser(int initialCounter) {
-        super(ID);
-        magicNumber = initialCounter;
-    }
-
-    @Override
-    public void onEquip() {
-        super.onEquip();
-        counter = magicNumber;
+        setCounter(magicNumber);
     }
 
     @Override

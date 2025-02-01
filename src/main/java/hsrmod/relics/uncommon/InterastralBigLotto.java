@@ -20,12 +20,7 @@ public class InterastralBigLotto extends BaseRelic {
     
     public InterastralBigLotto() {
         super(ID);
-    }
-
-    @Override
-    public void onEquip() {
-        super.onEquip();
-        counter = 1;
+        setCounter(1);
     }
 
     @Override

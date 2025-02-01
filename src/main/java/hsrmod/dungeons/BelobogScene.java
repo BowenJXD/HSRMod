@@ -150,6 +150,9 @@ public class BelobogScene extends AbstractScene {
             } else if (!(room instanceof MonsterRoomBoss)) {
                 room.playBGM("Kindling");
             }
+        } else if (room instanceof ShopRoom) {
+            CardCrawlGame.music.silenceTempBgmInstantly();
+            room.playBGM("Tempered Cord");
         } else {
             CustomDungeon.resumeMainMusic();
         }

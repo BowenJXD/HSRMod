@@ -1,0 +1,39 @@
+package hsrmod.monsters.TheCity;
+
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.powers.WeakPower;
+import hsrmod.monsters.BaseMonster;
+import hsrmod.powers.enemyOnly.ResonatePower;
+import hsrmod.powers.misc.ToughnessPower;
+import hsrmod.utils.ModHelper;
+
+public class WorldpurgeTail extends BaseMonster {
+    public static final String ID = WorldpurgeTail.class.getSimpleName();
+    
+    public WorldpurgeTail(float x, float y) {
+        super(ID, 128, 128, x, y);
+        floatIndex = -0.5f;
+
+        addMove(Intent.ATTACK, 2, mi -> {
+            attack(mi, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL);
+        });
+        addMoveA(Intent.ATTACK_DEBUFF, 6, mi -> {
+            attack(mi, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL);
+            addToBot(new ApplyPowerAction(p, this, new WeakPower(p, 1, true)));
+        });
+        addMove(Intent.STUN, mi -> {});
+    }
+
+    @Override
+    protected void getMove(int i) {
+        if (hasPower(ToughnessPower.POWER_ID) && ModHelper.getPowerCount(this, ToughnessPower.POWER_ID) <= 0) {
+            setMove(2);
+        } else if (hasPower(ResonatePower.POWER_ID)) {
+            setMove(1);
+        } else {
+            setMove(0);
+        }
+    }
+}

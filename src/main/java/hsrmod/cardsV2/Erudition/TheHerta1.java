@@ -25,7 +25,7 @@ public class TheHerta1 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.topLevelEffects.add(new PortraitDisplayEffect("TheHerta"));
+        shout(0);
         
         addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         int useCount = 0;

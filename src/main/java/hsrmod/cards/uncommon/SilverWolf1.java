@@ -3,6 +3,7 @@ package hsrmod.cards.uncommon;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
@@ -24,6 +25,11 @@ public class SilverWolf1 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
+        if (Settings.FAST_MODE)
+            shout(1);
+        else
+            shout(0);
+        
         addToBot(new ElementalDamageAction(
                 m,
                 new ElementalDamageInfo(this), 

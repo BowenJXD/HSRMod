@@ -78,6 +78,56 @@
     ],
     "DIALOG": []
   },
+  "HSRMod:ShadowOfFeixiao": {
+    "NAME": "Shadow of \"Feixiao\"",
+    "MOVES": [
+      "Great Ax: Irontalon",
+      "Heaven's Binds",
+      "Wreathed in Storm",
+      "⚠Sweep the Heavens, Swallow the Earth⚠",
+      "Sweep the Heavens, Swallow the Earth (deal damage, deal 1 additional damage for every unbroken monster)"
+    ],
+    "DIALOG": [
+      "Die, borisin!",
+      "@Futile@ @resistance!@",
+      "@Exhale@ @death,@ @awaken@ @storm!@",
+      "@I@ @shall@ @hone@ @my@ @claws!@",
+      "@Ransack@ @everything!@",
+      "@Time@ @to@ @finish@ @this@ @hunt!@",
+      "#r@Devour@ #r@heaven@ #r@and@ #r@earth!@",
+      "The hunt... failed..."
+    ]
+  },
+  "HSRMod:NebulaDevourer": {
+    "NAME": "Nebula Devourer",
+    "MOVES": [
+      "Nebula Eater",
+      "Breathing Ether",
+      ""
+    ],
+    "DIALOG": [
+    ]
+  },
+  "HSRMod:PlaneshredClaws": {
+    "NAME": "Planeshred Claws",
+    "MOVES": [
+      "Plane Shred",
+      "Firmament Divider",
+      ""
+    ],
+    "DIALOG": [
+    ]
+  },
+  "HSRMod:WorldpurgeTail": {
+    "NAME": "Worldpurge Tail",
+    "MOVES": [
+      "Worldpurge",
+      "Realm Exterminator",
+      ""
+    ],
+    "DIALOG": [
+    ]
+  },
   "HSRMod:Cocolia": {
     "NAME": "Cocolia, Mother of Deception",
     "MOVES": [
@@ -140,7 +190,6 @@
     ],
     "DIALOG": []
   },
-  
   "HSRMod:SomethingUntoDeath": {
     "NAME": "Something Unto Death",
     "MOVES": [
@@ -193,6 +242,58 @@
     ],
     "DIALOG": []
   },
+  "HSRMod:AbundantEbonDeer": {
+    "NAME": "Abundant Ebon Deer",
+    "MOVES": [
+      "Pedicel",
+      "Wavering Bleat",
+      "Everlife",
+      "Hardy Leaf Sheath",
+      "⚠Flamboyant Gore⚠",
+      "Flamboyant Gore (deal damage, remove all #yTwigs , deal 1 more damage for each removed)"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:TwigOfWintryWind": {
+    "NAME": "Twig of Wintry Wind",
+    "MOVES": [
+      "Outrage"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:TwigOfMarpleLeaf": {
+    "NAME": "Twig of Marple Leaf",
+    "MOVES": [
+      "Engender",
+      "Leaf Hinging"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:TwigOfGloriousBlooms": {
+    "NAME": "Twig of Glorious Blooms",
+    "MOVES": [
+      "Last Spring"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:TwigOfLavishFruits": {
+    "NAME": "Twig of Lavish Fruits",
+    "MOVES": [
+      "Crude Fruits",
+      "Mellow Fruits"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:Cirrus": {
+    "NAME": "Cirrus",
+    "MOVES": [
+      "Rapid Gambit"
+    ],
+    "DIALOG": [
+      "Time to suffer!",
+      "It's not... over..."
+    ]
+  },
   "HSRMod:Gepard": {
     "NAME": "Gepard",
     "MOVES": [
@@ -208,16 +309,16 @@
     ]
   },
   "HSRMod:Bronya": {
-  "NAME": "Bronya",
-  "MOVES": [
-    "Coordinated Reinforcement",
-    "Windrider Bullet",
-    "Combat Redeployment",
-    "⚠Suppressive Fire⚠",
-    "Suppressive Fire (steal #yStrength from player, deal damage)"
-  ],
-  "DIALOG": []
-},
+    "NAME": "Bronya",
+    "MOVES": [
+      "Coordinated Reinforcement",
+      "Windrider Bullet",
+      "Combat Redeployment",
+      "⚠Suppressive Fire⚠",
+      "Suppressive Fire (steal #yStrength from player, deal damage)"
+    ],
+    "DIALOG": []
+  },
   "HSRMod:Svarog": {
     "NAME": "Svarog",
     "MOVES": [
@@ -237,7 +338,6 @@
     ],
     "DIALOG": []
   },
-
   "HSRMod:SweetGorilla": {
     "NAME": "Sweet Gorilla",
     "MOVES": [
@@ -294,6 +394,149 @@
     "NAME": "Obedient Dracolion",
     "MOVES": [
       "Lion's Roar"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:ShapeShifter": {
+    "NAME": "Shape Shifter",
+    "MOVES": [
+      "Thunder-Shock",
+      "Mara-Summon",
+      "Punishing Bolts"
+    ],
+    "DIALOG": [
+      "@Merciful@ @Medicus!@",
+      "Immortality means forever."
+    ]
+  },
+  "HSRMod:MaraStruckSoldier": {
+    "NAME": "Mara-Struck Soldier",
+    "MOVES": [
+      "Callous Tailwind"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:HowlingCasket": {
+    "NAME": "Howling Casket",
+    "MOVES": [
+      "Thunderous Roar",
+      "Moon Rage Mimicry",
+      "Lupitoxin Synthesis",
+      "⚠Slaughter Algorithm⚠",
+      "Slaughter Algorithm (deal damage, deal 1 additional damage for each #yFear )"
+    ],
+    "DIALOG": [
+      "#rSlaughter, #ractivate.",
+      "Beast form."
+    ]
+  },
+  "HSRMod:AurumatonSpectralEnvoy": {
+    "NAME": "Aurumaton Spectral Envoy",
+    "MOVES": [
+      "Adjudicate",
+      "Subdue",
+      "Revert Yin and Yang",
+      "⚠Heaven's Fall⚠",
+      "Heaven's Fall (deal damage, remove #yReverberation )"
+    ],
+    "DIALOG": [
+      "@Engage!@",
+      "@Surrender!@"
+    ]
+  },
+  "HSRMod:WraithWarden": {
+    "NAME": "Wraith Warden",
+    "MOVES": [
+      "Sawing Evil"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:MaleficApe": {
+    "NAME": "Malefic Ape",
+    "MOVES": [
+      "Wrathful Roar",
+      "⚠Simian Strike⚠",
+      "Simian Strike (gain #yStrength , deal damage, consume #yGusto , if still have #yGusto , then prepare #ySimian #yStrike )"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:TheAscended": {
+    "NAME": "The Ascended",
+    "MOVES": [
+      "Black Prana's Snare",
+      "Rite of Great Arbor Metamorphosis",
+      "Guiding Vulturnus"
+    ],
+    "DIALOG": [
+      "Mastery... of immortality!",
+      "Rebirth!"
+    ]
+  },
+  "HSRMod:InternalAlchemist": {
+    "NAME": "Internal Alchemist",
+    "MOVES": [
+      "Seeding Core",
+      "Thundering Reign"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:GoldenHound": {
+    "NAME": "Golden Hound",
+    "MOVES": [
+      "Horn Gore",
+      "Rebound Roar",
+      "Upon death, apply #b1 #yMulti-Move to all enemies."
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:WoodenLupus": {
+    "NAME": "Wooden Lupus",
+    "MOVES": [
+      "Wolf Predation",
+      "Rallying Howl"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:ShadowJackhyena": {
+    "NAME": "Shadow Jackhyena",
+    "MOVES": [
+      "Wolf Predation"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:CloudKnightsPatroller": {
+    "NAME": "Cloud Knights Patroller",
+    "MOVES": [
+      "Cloud Edge",
+      "Find Smoke Bomb",
+      "⚠Escape⚠",
+      "Escape (leave with your money)"
+    ],
+    "DIALOG": [
+      "Give your money!",
+      "Where's my smoke bomb?",
+      "Runnin' away!",
+      "@No!!!@"
+    ]
+  },
+  "HSRMod:MaraStruckWarden": {
+    "NAME": "Mara-Struck Warden",
+    "MOVES": [
+      "Sawing Evil"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:Ballistarius": {
+    "NAME": "Ballistarius",
+    "MOVES": [
+      "Mounted Crossbow"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:GoldenCloudToad": {
+    "NAME": "Golden Cloud Toad",
+    "MOVES": [
+      "Dense Fog"
     ],
     "DIALOG": []
   },

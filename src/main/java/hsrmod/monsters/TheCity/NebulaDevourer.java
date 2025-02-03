@@ -18,7 +18,7 @@ public class NebulaDevourer extends BaseMonster {
         super(ID, 200, 256, x, y);
         floatIndex = 0.5f;
         
-        addMove(Intent.ATTACK, 4, mi -> {
+        addMove(Intent.ATTACK, 8, mi -> {
             attack(mi, AbstractGameAction.AttackEffect.BLUNT_LIGHT);
         });
         addMove(Intent.ATTACK_DEBUFF, moreDamageAs ? 10 : 8, mi -> {

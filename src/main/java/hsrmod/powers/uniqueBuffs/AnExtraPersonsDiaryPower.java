@@ -2,6 +2,7 @@ package hsrmod.powers.uniqueBuffs;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
@@ -63,9 +64,8 @@ public class AnExtraPersonsDiaryPower extends PowerPower {
             for (int i = 0; i < x; i++) {
                 addToBot(new ApplyPowerAction(target, owner, DoTPower.getRandomDoTPower(target, source, 1), 1));
             }
-            addToBot(new DrawCardAction(x));
             if (upgraded)
-                addToBot(new ApplyPowerAction(target, owner, new StrengthPower(target, -x), -x));
+                addToBot(new GainEnergyAction(1));
         }
     }
 }

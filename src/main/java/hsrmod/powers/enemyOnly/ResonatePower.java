@@ -64,7 +64,9 @@ public class ResonatePower extends StatePower implements PreElementalDamageSubsc
                 && action.info.card != card) {
             card = action.info.card;
             if (action.target != owner) {
-                AbstractGameAction copy = new ElementalDamageAction(owner, new ElementalDamageInfo(action.info.card), action.attackEffect);
+                ElementalDamageInfo info = new ElementalDamageInfo(action.info.card);
+                info.tr = 0;
+                AbstractGameAction copy = new ElementalDamageAction(owner, info, action.attackEffect);
                 addToTop(copy);
             } else {
                 action.info.tr += this.amount;

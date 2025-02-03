@@ -22,17 +22,17 @@ public class ImperialLegacyEvent extends PhasedEvent {
     private static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
     private static final String[] OPTIONS = eventStrings.OPTIONS;
     private static final String title = eventStrings.NAME;
-    
+
     public ImperialLegacyEvent() {
         super(ID, title, "HSRModResources/img/events/" + ID + ".png");
-        
+
         registerPhase(0, new TextPhase(DESCRIPTIONS[0]).addOption(OPTIONS[0], (i) -> transitionKey(1)));
         registerPhase(1, new TextPhase(DESCRIPTIONS[1]).addOption(OPTIONS[0], (i) -> transitionKey(2)));
         registerPhase(2, new TextPhase(DESCRIPTIONS[2]).addOption(OPTIONS[0], (i) -> transitionKey(3)));
         registerPhase(3, new TextPhase(DESCRIPTIONS[3]).addOption(OPTIONS[1], (i) -> transitionKey(4)).addOption(OPTIONS[2], (i) -> transitionKey(4)));
         registerPhase(4, new TextPhase(DESCRIPTIONS[4]).addOption(OPTIONS[0], (i) -> transitionKey(5)));
         registerPhase(5, new TextPhase(DESCRIPTIONS[5]).addOption(OPTIONS[0], (i) -> transitionKey(6)));
-        
+
         TextPhase phase6 = new TextPhase(DESCRIPTIONS[6]);
         phase6.addOption(OPTIONS[3], (i) -> {
             if (AbstractDungeon.eventRng.random(100) < 10) {
@@ -45,9 +45,12 @@ public class ImperialLegacyEvent extends PhasedEvent {
             }
         });
         List<String> empireRelics = new ArrayList<>();
-        if (!ModHelper.hasRelic(RubertEmpireMechanicalPiston.ID)) empireRelics.add(HSRMod.makePath(RubertEmpireMechanicalPiston.ID));
-        if (!ModHelper.hasRelic(RubertEmpireMechanicalCogwheel.ID)) empireRelics.add(HSRMod.makePath(RubertEmpireMechanicalCogwheel.ID));
-        if (!ModHelper.hasRelic(RubertEmpireMechanicalLever.ID)) empireRelics.add(HSRMod.makePath(RubertEmpireMechanicalLever.ID));
+        if (!ModHelper.hasRelic(RubertEmpireMechanicalPiston.ID))
+            empireRelics.add(HSRMod.makePath(RubertEmpireMechanicalPiston.ID));
+        if (!ModHelper.hasRelic(RubertEmpireMechanicalCogwheel.ID))
+            empireRelics.add(HSRMod.makePath(RubertEmpireMechanicalCogwheel.ID));
+        if (!ModHelper.hasRelic(RubertEmpireMechanicalLever.ID))
+            empireRelics.add(HSRMod.makePath(RubertEmpireMechanicalLever.ID));
         if (!empireRelics.isEmpty()) {
             phase6.addOption(OPTIONS[4], (i) -> {
                 String relicId = empireRelics.get(AbstractDungeon.eventRng.random(empireRelics.size() - 1));
@@ -55,13 +58,15 @@ public class ImperialLegacyEvent extends PhasedEvent {
                 transitionKey(11);
             });
         }
-        if (empireRelics.size() == 3 && AbstractDungeon.player.gold >= 300) {
-            phase6.addOption(OPTIONS[5], (i) -> {
-                AbstractDungeon.player.loseGold(300);
-                empireRelics.remove(AbstractDungeon.eventRng.random(empireRelics.size() - 1));
-                RelicEventHelper.gainRelics(empireRelics.toArray(new String[0]));
-                transitionKey(12);
-            });
+        if (empireRelics.size() == 3) {
+            phase6.addOption(new TextPhase.OptionInfo(OPTIONS[5])
+                    .setOptionResult((i) -> {
+                        AbstractDungeon.player.loseGold(300);
+                        empireRelics.remove(AbstractDungeon.eventRng.random(empireRelics.size() - 1));
+                        RelicEventHelper.gainRelics(empireRelics.toArray(new String[0]));
+                        transitionKey(12);
+                    })
+                    .enabledCondition(() -> AbstractDungeon.player.gold >= 300));
         }
         if (ModHelper.hasRelic(RubertEmpireDifferenceMachine.ID)) {
             phase6.addOption(OPTIONS[6], (i) -> {
@@ -72,7 +77,7 @@ public class ImperialLegacyEvent extends PhasedEvent {
                 transitionKey(13);
             });
         }
-        
+
         registerPhase(6, phase6);
         registerPhase(7, new TextPhase(DESCRIPTIONS[7]).addOption(OPTIONS[0], (i) -> transitionKey(8)));
         registerPhase(8, new TextPhase(DESCRIPTIONS[8]).addOption(OPTIONS[7], (i) -> openMap()));
@@ -81,7 +86,7 @@ public class ImperialLegacyEvent extends PhasedEvent {
         registerPhase(11, new TextPhase(DESCRIPTIONS[11]).addOption(OPTIONS[0], (i) -> transitionKey(7)));
         registerPhase(12, new TextPhase(DESCRIPTIONS[12]).addOption(OPTIONS[0], (i) -> transitionKey(7)));
         registerPhase(13, new TextPhase(DESCRIPTIONS[13]).addOption(OPTIONS[0], (i) -> transitionKey(7)));
-        
+
         transitionKey(0);
     }
 }

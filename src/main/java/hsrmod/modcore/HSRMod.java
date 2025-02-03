@@ -29,6 +29,7 @@ import com.megacrit.cardcrawl.monsters.MonsterInfo;
 import com.megacrit.cardcrawl.monsters.city.ShelledParasite;
 import com.megacrit.cardcrawl.monsters.exordium.SlaverRed;
 import com.megacrit.cardcrawl.relics.ChemicalX;
+import com.megacrit.cardcrawl.relics.SneckoEye;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import com.badlogic.gdx.graphics.Color;
 import hsrmod.characters.StellaCharacter;
@@ -187,8 +188,11 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
     public void receivePostInitialize() {
         addConfigPanel();
         BaseMod.addSaveField("RewardEditor", RewardEditor.getInstance());
-        BaseMod.removeCard(SadisticNature.ID, AbstractCard.CardColor.COLORLESS);
-        BaseMod.removeRelic(RelicLibrary.getRelic(ChemicalX.ID));
+        if (AbstractDungeon.isPlayerInDungeon() && AbstractDungeon.player instanceof StellaCharacter) {
+            BaseMod.removeCard(SadisticNature.ID, AbstractCard.CardColor.COLORLESS);
+            BaseMod.removeRelic(RelicLibrary.getRelic(ChemicalX.ID));
+            BaseMod.removeRelic(RelicLibrary.getRelic(SneckoEye.ID));
+        }
         if (addEnemy) {
             addMonsters();
             BaseMod.addSaveField("BonusManager", BonusManager.getInstance());
@@ -204,7 +208,7 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
 
     public void addEvents() {
         BaseMod.addEvent(new AddEventParams.Builder(RuanMeiEvent.ID, RuanMeiEvent.class)
-                .spawnCondition(() -> AbstractDungeon.eventRng.random(99) < 10)
+                .spawnCondition(() -> AbstractDungeon.eventRng.random(99) < 6)
                 .create());
 
         BaseMod.addEvent(new AddEventParams.Builder(CosmicCrescendoEvent.ID, CosmicCrescendoEvent.class)
@@ -279,9 +283,9 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
 
         belobog.addBoss(Encounter.END_OF_THE_ETERNAL_FREEZE, Cocolia::new, "HSRModResources/img/monsters/EndOfTheEternalFreeze.png", "HSRModResources/img/monsters/BossOutline.png");
         belobog.addBoss(Encounter.DESTRUCTIONS_BEGINNING, () -> new MonsterGroup(new AbstractMonster[]{
-                new DawnsLeftHand(),
                 new AntimatterEngine(),
-                new DisastersRightHand()
+                new DawnsLeftHand(),
+                new DisastersRightHand(),
         }), "HSRModResources/img/monsters/DestructionsBeginning.png", "HSRModResources/img/monsters/BossOutline.png");
         
         luofu.addBoss(Encounter.DIVINE_SEED, () -> new MonsterGroup(new AbstractMonster[]{
@@ -461,6 +465,16 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         addWav("Sparkle2");
         addWav("Gepard1");
         addWav("Argenti1");
+        addWav("Seele1");
+        addWav("SilverWolf1_0");
+        addWav("SilverWolf1_1");
+        addWav("ImbibitorLunae1_0");
+        addWav("ImbibitorLunae1_1");
+        addWav("Yunli1_0");
+        addWav("Yunli1_1");
+        addWav("Rappa1");
+        addWav("Trailblazer8");
+        addWav("TheHerta1");
 
         for (int i = 1; i <= 10; i++) {
             addWav("TheGreatSeptimus_Day" + i);

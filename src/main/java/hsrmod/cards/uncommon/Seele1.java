@@ -42,6 +42,7 @@ public class Seele1 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
+        shout(0);
         AbstractGameAction action = new ElementalDamageAction(
                 m,
                 new ElementalDamageInfo(this),

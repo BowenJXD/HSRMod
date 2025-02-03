@@ -33,27 +33,35 @@ public class LonelyBeautyBugsOneEvent extends PhasedEvent {
 
         registerPhase(0, new TextPhase(DESCRIPTIONS[0]).addOption(OPTIONS[0], (i) -> transitionKey(1)));
 
-        TextPhase phase1 = new TextPhase(DESCRIPTIONS[1])
-                .addOption(OPTIONS[1], (i) -> {
-                    List<AbstractRelic> relics = AbstractDungeon.player.relics.stream().filter(r -> r.tier != AbstractRelic.RelicTier.STARTER).collect(Collectors.toList());
-                    if (!relics.isEmpty()) {
-                        AbstractRelic relic = relics.get(AbstractDungeon.cardRandomRng.random(relics.size() - 1));
-                        RelicEventHelper.loseRelics(relic);
-                    }
-                    transition(false);
-                })
-                .addOption(OPTIONS[2], (i) -> {
-                    AbstractCard card = AbstractDungeon.player.masterDeck.getRandomCard(true);
-                    if (card != null) {
-                        AbstractDungeon.effectList.add(new PurgeCardEffect(card));
-                        AbstractDungeon.player.masterDeck.removeCard(card);
-                    }
-                    transition(false);
-                })
-                .addOption(OPTIONS[3], (i) -> {
-                    AbstractDungeon.player.loseGold(100);
-                    transition(false);
-                });
+        TextPhase phase1 = new TextPhase(DESCRIPTIONS[1]);
+        
+        TextPhase.OptionInfo opt1 = new TextPhase.OptionInfo(OPTIONS[1]).setOptionResult((i) -> {
+            List<AbstractRelic> relics = AbstractDungeon.player.relics.stream().filter(r -> r.tier != AbstractRelic.RelicTier.STARTER).collect(Collectors.toList());
+            if (!relics.isEmpty()) {
+                AbstractRelic relic = relics.get(AbstractDungeon.cardRandomRng.random(relics.size() - 1));
+                RelicEventHelper.loseRelics(relic);
+            }
+            transition(false);
+        }).enabledCondition(() -> AbstractDungeon.player.relics.stream().anyMatch(r -> r.tier != AbstractRelic.RelicTier.STARTER));
+        
+        TextPhase.OptionInfo opt2 = new TextPhase.OptionInfo(OPTIONS[2]).setOptionResult((i) -> {
+            AbstractCard card = AbstractDungeon.player.masterDeck.getRandomCard(true);
+            if (card != null) {
+                AbstractDungeon.effectList.add(new PurgeCardEffect(card));
+                AbstractDungeon.player.masterDeck.removeCard(card);
+            }
+            transition(false);
+        });
+
+        TextPhase.OptionInfo opt3 = new TextPhase.OptionInfo(OPTIONS[3]).setOptionResult((i) -> {
+            AbstractDungeon.player.loseGold(100);
+            transition(false);
+        }).enabledCondition(() -> AbstractDungeon.player.gold >= 100);
+        
+        phase1.addOption(opt1);
+        phase1.addOption(opt2);
+        phase1.addOption(opt3);
+        
         if (ModHelper.hasRelic(WaxOfPreservation.ID)) {
             phase1.addOption(OPTIONS[4], (i) -> {
                 // AbstractDungeon.player.gainGold(100);

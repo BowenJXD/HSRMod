@@ -3,6 +3,7 @@ package hsrmod.cards;
 import basemod.abstracts.CustomCard;
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.SpawnModificationCard;
 import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.CommonKeywordIconsField;
+import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -11,6 +12,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.effects.PortraitDisplayEffect;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementType;
 import hsrmod.powers.misc.EnergyPower;
@@ -213,6 +215,30 @@ public abstract class BaseCard extends CustomCard implements SpawnModificationCa
             return true;
         }
         return false;
+    }
+    
+    public void shout(int index, float volume, float duration) {
+        try {
+            String portraitName = this.getClass().getSimpleName();
+            AbstractDungeon.topLevelEffects.add(new PortraitDisplayEffect(portraitName.substring(0, portraitName.length() - 1)));
+            String[] extDesc = cardStrings.EXTENDED_DESCRIPTION;
+            if (extDesc.length == 1)
+                ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(portraitName, volume));
+            else {
+                ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(portraitName + "_" + index, volume));
+            }
+            addToBot(new TalkAction(true, extDesc[index], duration, duration + 1));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void shout(int index) {
+        shout(index, 3.0F, 2.0F);
+    }
+
+    public void shout(int start, int end) {
+        shout(AbstractDungeon.miscRng.random(start, end));
     }
 
     boolean checkPath() {

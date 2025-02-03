@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.BouncingAction;
@@ -43,7 +44,9 @@ public class Yunli1 extends BaseCard implements OnPlayerDamagedSubscriber {
     }
 
     @Override
-    public void onUse(AbstractPlayer p, AbstractMonster m) {        
+    public void onUse(AbstractPlayer p, AbstractMonster m) {
+        CardCrawlGame.MUTE_IF_BG = false;
+        shout(0, 1);
         ModHelper.addToBotAbstract(this::execute);
         canBeUsed = false;
     }

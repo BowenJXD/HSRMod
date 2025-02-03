@@ -1,5 +1,7 @@
 package hsrmod.cardsV2.TheHunt;
 
+import basemod.BaseMod;
+import basemod.interfaces.OnCardUseSubscriber;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -12,38 +14,79 @@ import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.effects.PortraitDisplayEffect;
 import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.monsters.BaseMonster;
+import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
-public class Feixiao2 extends BaseCard {
+public class Feixiao2 extends BaseCard implements OnCardUseSubscriber {
     public static final String ID = Feixiao2.class.getSimpleName();
     
-    public int baseDamageCache = 0;
+    int costCache;
+    boolean subscribed = false;
     
     public Feixiao2() {
         super(ID);
-        selfRetain = true;
-        baseDamageCache = baseDamage;
+        costCache = cost;
     }
 
     @Override
-    public void triggerOnOtherCardPlayed(AbstractCard c) {
-        super.triggerOnOtherCardPlayed(c);
-        if (c.type == CardType.ATTACK) baseDamage += magicNumber;
+    public void atTurnStart() {
+        super.atTurnStart();
+        if (!subscribed) {
+            BaseMod.subscribe(this);
+            subscribed = true;
+        }
     }
 
     @Override
-    public void triggerOnEndOfTurnForPlayingCard() {
-        super.triggerOnEndOfTurnForPlayingCard();
-        if (!followedUp) addToBot(new FollowUpAction(this));
+    public void updateCost(int amt) {
+        super.updateCost(amt);
+        followUp();
+    }
+
+    @Override
+    public void modifyCostForCombat(int amt) {
+        super.modifyCostForCombat(amt);
+        followUp();
+    }
+
+    @Override
+    public void setCostForTurn(int amt) {
+        super.setCostForTurn(amt);
+        followUp();
+    }
+
+    void followUp() {
+        if (!followedUp && costForTurn == 0) {
+            followedUp = true;
+            addToBot(new FollowUpAction(this));
+        }
     }
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.topLevelEffects.add(new PortraitDisplayEffect("Feixiao"));
         ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID));
-        
         addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
+        
         addToBot(new ElementalDamageAction(m, new ElementalDamageInfo(this), AbstractGameAction.AttackEffect.SLASH_HEAVY));
-        baseDamage = baseDamageCache;
+        ModHelper.addToBotAbstract(() -> updateCost(costCache - cost));
+    }
+
+    @Override
+    public void triggerOnOtherCardPlayed(AbstractCard c) {
+        super.triggerOnOtherCardPlayed(c);
+        if (AbstractDungeon.player.hand.contains(this) && !followedUp && c.type == CardType.ATTACK) {
+            updateCost(-1);
+        }
+    }
+
+    @Override
+    public void receiveCardUsed(AbstractCard abstractCard) {
+        if (abstractCard != this 
+                && SubscriptionManager.checkSubscriber(this) 
+                && abstractCard.type == CardType.ATTACK) {
+            baseDamage++;
+        }
     }
 }

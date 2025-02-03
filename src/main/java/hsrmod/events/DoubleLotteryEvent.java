@@ -33,22 +33,27 @@ public class DoubleLotteryEvent extends PhasedEvent {
 
         TextPhase phase1 = new TextPhase(DESCRIPTIONS[1]);
 
-        phase1.addOption(new TextPhase.OptionInfo(OPTIONS[1]).setOptionResult((i) -> {
-            AbstractDungeon.player.loseGold(100);
-            gainLotto();
-            fix();
-            transitionKey(2);
-        }).enabledCondition(() -> !ModHelper.hasRelic(CosmicBigLotto.ID) || !ModHelper.hasRelic(InterastralBigLotto.ID)));
+        phase1.addOption(new TextPhase.OptionInfo(OPTIONS[1])
+                .setOptionResult((i) -> {
+                    AbstractDungeon.player.loseGold(100);
+                    gainLotto();
+                    fix();
+                    transitionKey(2);
+                })
+                .enabledCondition(() -> !ModHelper.hasRelic(CosmicBigLotto.ID) || !ModHelper.hasRelic(InterastralBigLotto.ID))
+                .enabledCondition(() -> AbstractDungeon.player.gold >= 100));
 
-        phase1.addOption(new TextPhase.OptionInfo(OPTIONS[2]).setOptionResult((i) -> {
-            AbstractDungeon.player.loseGold(50);
-            fix();
-            transitionKey(3);
-        }).enabledCondition(() -> {
-            AbstractRelic lotto1 = AbstractDungeon.player.getRelic(HSRMod.makePath(CosmicBigLotto.ID));
-            AbstractRelic lotto2 = AbstractDungeon.player.getRelic(HSRMod.makePath(InterastralBigLotto.ID));
-            return ((lotto1 != null && lotto1.counter == -2) || (lotto2 != null && lotto2.counter == -2));
-        }));
+        phase1.addOption(new TextPhase.OptionInfo(OPTIONS[2])
+                .setOptionResult((i) -> {
+                    AbstractDungeon.player.loseGold(50);
+                    fix();
+                    transitionKey(3);
+                })
+                .enabledCondition(() -> {
+                    AbstractRelic lotto1 = AbstractDungeon.player.getRelic(HSRMod.makePath(CosmicBigLotto.ID));
+                    AbstractRelic lotto2 = AbstractDungeon.player.getRelic(HSRMod.makePath(InterastralBigLotto.ID));
+                    return ((lotto1 != null && lotto1.counter == -2) || (lotto2 != null && lotto2.counter == -2));
+                }).enabledCondition(() -> AbstractDungeon.player.gold >= 50));
 
         phase1.addOption(OPTIONS[3], (i) -> transitionKey(4));
 
@@ -66,14 +71,16 @@ public class DoubleLotteryEvent extends PhasedEvent {
         registerPhase(3, new TextPhase(DESCRIPTIONS[3]).addOption(OPTIONS[5], (i) -> openMap()));
         registerPhase(4, new TextPhase(DESCRIPTIONS[4]).addOption(OPTIONS[5], (i) -> openMap()));
         registerPhase(5, new TextPhase(DESCRIPTIONS[5]).addOption(OPTIONS[5], (i) -> openMap()));
-        
+
         transitionKey(0);
     }
 
     public void gainLotto() {
         List<AbstractRelic> lottos = new ArrayList<>();
-        if (!ModHelper.hasRelic(CosmicBigLotto.ID)) lottos.add(RelicLibrary.getRelic(HSRMod.makePath(CosmicBigLotto.ID)).makeCopy());
-        if (!ModHelper.hasRelic(InterastralBigLotto.ID)) lottos.add(RelicLibrary.getRelic(HSRMod.makePath(InterastralBigLotto.ID)).makeCopy());
+        if (!ModHelper.hasRelic(CosmicBigLotto.ID))
+            lottos.add(RelicLibrary.getRelic(HSRMod.makePath(CosmicBigLotto.ID)).makeCopy());
+        if (!ModHelper.hasRelic(InterastralBigLotto.ID))
+            lottos.add(RelicLibrary.getRelic(HSRMod.makePath(InterastralBigLotto.ID)).makeCopy());
         if (!lottos.isEmpty()) {
             AbstractRelic r = lottos.get(AbstractDungeon.eventRng.random(lottos.size() - 1));
             AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float) (Settings.WIDTH / 2), (float) (Settings.HEIGHT / 2), r);
@@ -88,7 +95,7 @@ public class DoubleLotteryEvent extends PhasedEvent {
             }
         }
     }
-    
+
     public int loseLotto() {
         int result = 0;
         for (int i = AbstractDungeon.player.relics.size() - 1; i >= 0; i--) {
@@ -100,11 +107,11 @@ public class DoubleLotteryEvent extends PhasedEvent {
         }
         return result;
     }
-    
-    public void gainRelics(int amt){
+
+    public void gainRelics(int amt) {
         for (int i1 = 0; i1 < amt; ++i1) {
             AbstractRelic r = AbstractDungeon.returnRandomScreenlessRelic(AbstractDungeon.returnRandomRelicTier());
-            AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float)(Settings.WIDTH / 2), (float)(Settings.HEIGHT / 2), r);
+            AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float) (Settings.WIDTH / 2), (float) (Settings.HEIGHT / 2), r);
         }
     }
 }

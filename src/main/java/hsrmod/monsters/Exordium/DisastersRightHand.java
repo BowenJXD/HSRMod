@@ -4,8 +4,10 @@ import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.InstantKillAction;
 import com.megacrit.cardcrawl.actions.common.RollMoveAction;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.breaks.EntanglePower;
 import hsrmod.powers.breaks.ImprisonPower;
@@ -15,7 +17,7 @@ public class DisastersRightHand extends BaseMonster {
     public static final String ID = DisastersRightHand.class.getSimpleName();
 
     public DisastersRightHand() {
-        super(ID, 0F, -15.0F, 320, 224, -500, 50);
+        super(ID, 0F, 0F, 200, 150, -250, 45);
         if (ModHelper.moreDamageAscension(type)) {
             setDamages(6, 12);
         } else {
@@ -56,5 +58,15 @@ public class DisastersRightHand extends BaseMonster {
     public void update() {
         super.update();
         this.animY = MathUtils.cosDeg((float) (System.currentTimeMillis() / 6L % 360L)) * 6.0F * Settings.scale;
+    }
+
+    @Override
+    public void die() {
+        super.die();
+        if (AbstractDungeon.getMonsters().monsters.stream().noneMatch(ModHelper::check)) {
+            AbstractDungeon.getMonsters().monsters.forEach(m -> {
+                addToBot(new InstantKillAction(m));
+            });
+        }
     }
 }

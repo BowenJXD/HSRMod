@@ -91,10 +91,10 @@ StarcrusherWorker,碎星蠧役,COMMON,SKILL,ENEMY,0,移除 !M! 层 hsrmod:韧性 （至少保
 CleftSingularity,突裂奇点,COMMON,SKILL,SELF,1, 消耗 。获得 !M! 层 hsrmod:击破特攻 。,,,,5,,,,,,7,毁灭,,低
 TheDoubtfulFourfoldRoot,怀疑的四重根,RARE,SKILL,ALL_ENEMY,1,令所有敌人的 hsrmod:持续伤害 层数+1。,,,,,,令所有敌人的负面效果层数+1。,,,,,虚无,,低
 AllThingsArePossible,无根据颂歌,RARE,POWER,SELF,3,打出攻击牌后，对其施加1个其没有的 hsrmod:持续伤害 。,,,,,,打出攻击牌后，若目标：有所有的 hsrmod:持续伤害 ，则随机触发1个，否则对其施加1个其没有的 hsrmod:持续伤害 。,,,,,虚无,,高
-AnExtraPersonsDiary,多余人的日记,RARE,POWER,SELF,2, hsrmod:持续伤害 的削韧值+1。 hsrmod:击破 后，对其施加X个随机的 hsrmod:持续伤害 （X为其 hsrmod:韧性 上限的十位数+1），并摸X张牌。,,,,,, hsrmod:持续伤害 的削韧值+1。 hsrmod:击破 后，对其施加X个随机的 hsrmod:持续伤害 （X为其 hsrmod:韧性 上限的十位数+1），摸X张牌，其失去X层 力量 。,,,,,虚无,,中
+AnExtraPersonsDiary,多余人的日记,RARE,POWER,SELF,1, hsrmod:持续伤害 的削韧值+1。 hsrmod:击破 后，对其施加X个随机的 hsrmod:持续伤害 （X为其 hsrmod:韧性 上限的十位数+1）。,,,,,, hsrmod:持续伤害 的削韧值+1。 hsrmod:击破 后，对其施加X个随机的 hsrmod:持续伤害 （X为其 hsrmod:韧性 上限的十位数+1），并回复 [E] 。,,,,,虚无,,中
 ThePathless,无神论者,RARE,SKILL,ALL_ENEMY,1, 消耗 。群体：施加2层 hsrmod:格挡返还 和 !M! 层 hsrmod:怀疑 。,,,,10,, 固有 。 消耗 。群体：施加2层 hsrmod:格挡返还 和 !M! 层 hsrmod:怀疑 。,,,,15,虚无,,高
 ReignOfKeys,钥匙的统治,RARE,POWER,SELF,2,敌人的 hsrmod:持续伤害 ：于你回合外触发时，你摸1张牌；于你回合内触发时，不会减少层数。,,,,,,敌人的 hsrmod:持续伤害 触发时，你摸1张牌，然后若为你回合内，则不会减少层数。,,,,,虚无,,低
-FuneralOfSensoryPursuivant,感官追奉者的葬礼,UNCOMMON,POWER,SELF,2,敌人受到 hsrmod:持续伤害 后，对其施加3层 hsrmod:怀疑 。,,,,,, 固有 。敌人受到 hsrmod:持续伤害 后，对其施加3层 hsrmod:怀疑 。敌人被施加 hsrmod:持续伤害 后，对其施加1层 hsrmod:怀疑 。,,,,,虚无,,低
+FuneralOfSensoryPursuivant,感官追奉者的葬礼,UNCOMMON,POWER,SELF,1,敌人受到 hsrmod:持续伤害 后，对其施加3层 hsrmod:怀疑 。,,,,,, 固有 。敌人受到 hsrmod:持续伤害 后，对其施加3层 hsrmod:怀疑 。敌人被施加 hsrmod:持续伤害 后，对其施加1层 hsrmod:怀疑 。,,,,,虚无,,低
 CallOfTheWilderness,旷野的呼告,UNCOMMON,SKILL,ALL_ENEMY,1,群体：施加 !M! 层 虚弱 。,,,,2,,群体：施加 !M! 层 虚弱 ，若其 力量 绝对值不大于你，其失去 !M! 层 力量 。,,,,,虚无,,中
 CommonMortal,庸众凡夫,UNCOMMON,POWER,SELF,2,消耗 [hsrmod:ChargeIcon] 后，对随机敌人施加1个 hsrmod:持续伤害 。施加 hsrmod:持续伤害 时，获得 !M! 点 [hsrmod:ChargeIcon] 。,,,,20,,消耗 [hsrmod:ChargeIcon] 后，对随机敌人施加1个 hsrmod:持续伤害 。施加负面效果时，获得 !M! 点 [hsrmod:ChargeIcon] 。,,,,30,虚无,,中
 NightWatch,守夜人,COMMON,SKILL,SELF,1, hsrmod:持续伤害 最多的敌人每有一种，获得3点格挡。,,,0,,,负面效果最多的敌人每有一种，获得3点格挡。,,,,,虚无,,低
@@ -128,7 +128,7 @@ Moze1,迅羽掠袭,COMMON,SKILL,ENEMY,1,施加 !M! 层猎物（每对其打出3张其他攻击牌，则
 Moze2,伸天卑飞，折翅为芒,SPECIAL,ATTACK,ENEMY,0,从摸牌堆获得此牌后 hsrmod:追击 。 NL 消耗 。造成 !D! 点伤害（雷 !TR! ），摸 !M! 张牌。,1,1,,1,,,3,,,,巡猎,雷,无
 March7th5,一气化三餐,COMMON,SKILL,SELF,1,升级所有手牌。,,,,,0,,,,,,巡猎,,中
 Feixiao1,雷狩,UNCOMMON,ATTACK,ENEMY,0,打出攻击牌后，若之和牌堆顶的牌均不为「雷狩」，则将一张「雷狩」置于牌堆顶。 NL 消耗 。造成 !D! 点伤害（风 !TR! ）。,1,1,,,,,3,,,,巡猎,风,低
-Feixiao2,凿破大荒,UNCOMMON,ATTACK,ENEMY,0,回合结束时 hsrmod:追击 。造成此回合打出的攻击牌数量 !M! 倍的伤害（ !D! ）（风 !TR! ）。,,1,,2,,,,6,,,巡猎,风,中
+Feixiao2,凿破大荒,UNCOMMON,ATTACK,ENEMY,6,打出攻击牌后，此牌费用-1，为0时 hsrmod:追击 。 NL 造成此次战斗累计打出的攻击牌数量的伤害（ !D! ）（风 !TR! ）。,0,1,,,,,,6,,,巡猎,风,中
 RadiantSupreme,帝车超光所向捷,RARE,POWER,SELF,1,打出牌时，每满足一项，叠加1层：1. 单体牌；2. 攻击牌。每叠加 !M! 层，摸1张牌，获得2层 hsrmod:会心 。,,,,8,,打出牌时，每满足一项，叠加1层：1. 单体牌；2. 攻击牌；3. 升级过的牌。每叠加 !M! 层，摸1张牌，获得2层 hsrmod:会心 。,,,,,巡猎,,高
 SovereignSkybreaker,帝弓断空彻太清,RARE,POWER,SELF,1,打出牌时，每满足一项，叠加1层：1. 单体牌；2. 技能牌。每叠加 !M! 层，随机一张手牌于此回合费用-1，并获得3层 hsrmod:会心 。,,,,12,,打出牌时，每满足一项，叠加1层：1. 单体牌；2. 技能牌；3. 升级过的牌。每叠加 !M! 层，随机一张手牌于此回合费用-1，并获得3层 hsrmod:会心 。,,,,,巡猎,,中
 SolemnSnare,肃肃罝罗,UNCOMMON,SKILL,SELF,-1, 消耗 。 hsrmod:耗能 100，获得X层 hsrmod:会心 ，令当前所有升级过的手牌于此回合费用-1，每多1级额外-1。,,,,,, 消耗 。 hsrmod:耗能 100，摸X张牌，获得X层 hsrmod:会心 ，令当前所有升级过的手牌于此回合费用-1，每多1级额外-1。,,,,,巡猎,,低

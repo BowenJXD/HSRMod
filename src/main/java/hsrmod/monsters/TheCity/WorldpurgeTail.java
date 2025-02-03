@@ -2,6 +2,8 @@ package hsrmod.monsters.TheCity;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
+import com.megacrit.cardcrawl.cards.status.Wound;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import hsrmod.monsters.BaseMonster;
@@ -16,12 +18,14 @@ public class WorldpurgeTail extends BaseMonster {
         super(ID, 128, 128, x, y);
         floatIndex = -0.5f;
 
-        addMove(Intent.ATTACK, 2, mi -> {
+        addMove(Intent.ATTACK, 6, mi -> {
             attack(mi, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL);
         });
         addMoveA(Intent.ATTACK_DEBUFF, 6, mi -> {
             attack(mi, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL);
             addToBot(new ApplyPowerAction(p, this, new WeakPower(p, 1, true)));
+            if (specialAs)
+                addToBot(new MakeTempCardInDrawPileAction(new Wound(), 1, true, true));
         });
         addMove(Intent.STUN, mi -> {});
     }

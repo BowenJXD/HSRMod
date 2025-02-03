@@ -3,9 +3,11 @@ package hsrmod.monsters.TheCity;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.ClearCardQueueAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.common.SetMoveAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.cards.status.Wound;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -41,12 +43,13 @@ public class ShadowOfFeixiao extends BaseMonster implements PreBreakSubscriber {
 
         toughnessHealCount = moreHPAs ? 6 : 4;
 
-        addMove(Intent.ATTACK_DEBUFF, 6, mi -> {
+        addMove(Intent.ATTACK_DEBUFF, 3 * 2, mi -> {
             if (AbstractDungeon.miscRng.randomBoolean()) {
-                shout(1, 3f);
+                shout(1, 3f);   
             }
             attack(mi, AbstractGameAction.AttackEffect.SLASH_DIAGONAL, AttackAnim.FAST);
             addToBot(new ApplyPowerAction(p, this, new WeakPower(p, 1, true)));
+            addToBot(new MakeTempCardInDrawPileAction(new Wound(), 1, true, true));
         });
         addMove(Intent.BUFF, mi -> {
             addToBot(new ApplyPowerAction(this, this, new ResonatePower(this, resonateCount), 0));
@@ -118,7 +121,7 @@ public class ShadowOfFeixiao extends BaseMonster implements PreBreakSubscriber {
         int nonResonateCount = AbstractDungeon.getMonsters().monsters.stream().mapToInt(m -> ModHelper.check(m) && !m.hasPower(ResonatePower.POWER_ID) ? 1 : 0).sum();
         if (nonResonateCount <= 1 || (currentHealth < i * 2)) {
             setMove(2);
-        } else if (hasPower(ResonatePower.POWER_ID) || lastMove((byte) 0)) {
+        } else if (hasPower(ResonatePower.POWER_ID) || lastMove((byte) 0) || specialAs) {
             setMove(1);
         } else {
             setMove(0);
@@ -130,6 +133,7 @@ public class ShadowOfFeixiao extends BaseMonster implements PreBreakSubscriber {
         super.die();
         ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(this.getClass().getSimpleName() + "_" + 7, 2f));
         ModHelper.killAllMinions();
+        onBossVictoryLogic();
     }
 
     @Override

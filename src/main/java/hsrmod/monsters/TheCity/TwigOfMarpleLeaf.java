@@ -2,6 +2,7 @@ package hsrmod.monsters.TheCity;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.ThornsPower;
@@ -35,6 +36,14 @@ public class TwigOfMarpleLeaf extends BaseMonster {
     public void usePreBattleAction() {
         super.usePreBattleAction();
         addToBot(new ApplyPowerAction(this, this, new ThornsPower(this, thornCount)));
+    }
+
+    @Override
+    public void die() {
+        super.die();
+        AbstractDungeon.getMonsters().monsters.forEach(m -> {
+            addToBot(new RemoveSpecificPowerAction(m, this, ThornsPower.POWER_ID));
+        });
     }
 
     @Override

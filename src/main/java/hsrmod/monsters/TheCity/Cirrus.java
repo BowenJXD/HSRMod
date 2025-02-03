@@ -1,6 +1,7 @@
 package hsrmod.monsters.TheCity;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.monsters.BaseMonster;
@@ -19,6 +20,8 @@ public class Cirrus extends BaseMonster {
         type = EnemyType.ELITE;
         floatIndex = AbstractDungeon.monsterRng.randomBoolean() ? -1 : 1;
         bgm = "Dancing Fantasms";
+        dialogX = -120.0F * Settings.scale;
+        dialogY = -50.0F * Settings.scale;
 
         addSlot(-400, AbstractDungeon.monsterRng.random(-15, 15));
         addSlot(-100, AbstractDungeon.monsterRng.random(-15, 15));

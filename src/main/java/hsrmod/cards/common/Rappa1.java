@@ -31,6 +31,7 @@ public class Rappa1 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
+        shout(0);
         execute();
     }
 

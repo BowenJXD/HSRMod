@@ -30,7 +30,7 @@ public class AntimatterEngine extends BaseMonster implements OnPowersModifiedSub
     int ultCount = 1;
     
     public AntimatterEngine() {
-        super(ID, 0F, -15.0F, 512, 512, -100, 0);
+        super(ID, 25F, 90F, 160, 160, -50, 0);
         setDamages(3);
         if (ModHelper.specialAscension(type)) {
             handMove = 2;
@@ -116,6 +116,16 @@ public class AntimatterEngine extends BaseMonster implements OnPowersModifiedSub
             }
             handMove = (handMove + 1) % 3;
         }
+    }
+
+    @Override
+    public void die() {
+        if ((leftHand != null && ModHelper.check(leftHand)) 
+                || (rightHand != null && ModHelper.check(rightHand))) {
+            return;
+        }
+        super.die();
+        onBossVictoryLogic();
     }
 
     @Override

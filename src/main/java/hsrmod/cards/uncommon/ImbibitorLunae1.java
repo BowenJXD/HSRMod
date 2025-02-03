@@ -21,6 +21,8 @@ public class ImbibitorLunae1 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
+        shout(0, 1);
+        
         int x = 0;
         switch (energyOnUse) {
             case 0:

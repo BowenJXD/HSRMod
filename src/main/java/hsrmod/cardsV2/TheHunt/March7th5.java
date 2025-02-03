@@ -22,6 +22,6 @@ public class March7th5 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        p.hand.group.stream().filter(AbstractCard::canUpgrade).forEach(c -> addToBot(new UpgradeSpecificCardAction(c)));
+        p.hand.group.stream().filter(c -> c.canUpgrade() && c != this).forEach(c -> addToBot(new UpgradeSpecificCardAction(c)));
     }
 }

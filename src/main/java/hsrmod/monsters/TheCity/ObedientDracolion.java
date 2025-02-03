@@ -26,7 +26,7 @@ public class ObedientDracolion extends BaseMonster {
     public ObedientDracolion(float x, float y) {
         super(ID, 104F, 200F, x, y);
         
-        setDamagesWithAscension(9);
+        setDamagesWithAscension(5);
         weakAmount = ModHelper.specialAscension(type) ? 2 : 1;
         floatIndex = AbstractDungeon.monsterRng.randomBoolean() ? -1 : 1;
     }

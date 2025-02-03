@@ -282,8 +282,8 @@
   "HSRMod:AnExtraPersonsDiary": {
     "NAME": "An Extra Person's Diary",
     "DESCRIPTIONS": [
-      "Toughness reduction value of DoT +1. After breaking the target, apply 1 random negative effect X times and draw X cards (X is the first digit of its max toughness).",
-      "Toughness reduction value of DoT +1. After breaking the target, apply 1 random negative effect X times, draw X cards, and it loses X stacks of Strength (X is the first digit of its max toughness)."
+      "Toughness reduction value of DoT +1. After breaking the target, apply 1 random negative effect X times (X is the first digit of its max toughness).",
+      "Toughness reduction value of DoT +1. After breaking the target, apply 1 random negative effect X times, and gain [E] (X is the first digit of its max toughness)."
     ]
   },
   "HSRMod:ReignOfKeys": {
@@ -565,6 +565,90 @@
       "When playing #rAttack cards consecutively, gain #yImprison . NL When playing #gNon-Attack cards consecutively, gain 1 #yEntangle .",
       "When playing #rAttack cards consecutively, gain #yImprison . NL When playing #gNon-Attack cards consecutively, gain 1 #yEntangle . NL The last card played is: #rAttack .",
       "When playing #rAttack cards consecutively, gain #yImprison . NL When playing #gNon-Attack cards consecutively, gain 1 #yEntangle . NL The last card played is: #gNon-Attack ."
+    ]
+  },
+  "HSRMod:DrainingHit": {
+    "NAME": "Draining Hit",
+    "DESCRIPTIONS": [
+      "After dealing damage, recover #b%d HP. If no monster has #yRebirth after a monster dies, remove this power."
+    ]
+  },
+  "HSRMod:Rebirth": {
+    "NAME": "Rebirth",
+    "DESCRIPTIONS": [
+      "Upon taking fatal damage, remove this power, and recover to #b50% HP."
+    ]
+  },
+  "HSRMod:Reverberation": {
+    "NAME": "Reverberation",
+    "DESCRIPTIONS": [
+      "Upon taking unblocked damage, stack 1. At the start of the turn, if more than 1 stack, remove all stacks and end the turn."
+    ]
+  },
+  "HSRMod:Gusto": {
+    "NAME": "Gusto",
+    "DESCRIPTIONS": [
+      "For every #b1 #rAttack card played, gain #b%d Strength. #yBreak to remove. When removed, lose all Strength."
+    ]
+  },
+  "HSRMod:PranaSiphoned": {
+    "NAME": "Prana Siphoned",
+    "DESCRIPTIONS": [
+      "For every #b1 #gSkill card played, lose #b1 Dexterity. Remove at the end of the turn. When removed, gain #b%d Dexterity."
+    ]
+  },
+  "HSRMod:SpurOfThunderwoe": {
+    "NAME": "Spur of Thunderwoe",
+    "DESCRIPTIONS": [
+      "When #Internal #yAlchemist dies, deal #b%d damage to you."
+    ]
+  },
+  "HSRMod:Outrage": {
+    "NAME": "Outrage",
+    "DESCRIPTIONS": [
+      "Remove at the start of the turn, play #b%d random #rAttack cards (costs Energy)."
+    ]
+  },
+  "HSRMod:LastSpring": {
+    "NAME": "Last Spring",
+    "DESCRIPTIONS": [
+      "Upon taking damage, all monsters recover #b%d HP."
+    ]
+  },
+  "HSRMod:HardyLeafSheath": {
+    "NAME": "Hardy Leaf Sheath",
+    "DESCRIPTIONS": [
+      "#Toughness can not be reduced, damage received - #b50% . Remove 1 stack at the start of the turn."
+    ]
+  },
+  "HSRMod:LavishFruit": {
+    "NAME": "Lavish Fruit",
+    "DESCRIPTIONS": [
+      "When reaching 2 stacks, #yAbundant #yEbon #Deer will cast #r⚠Flamboyant #rGore⚠. Remove 1 stack after #yBreak ."
+    ]
+  },
+  "HSRMod:VigorOverflow": {
+    "NAME": "Vigor Overflow",
+    "DESCRIPTIONS": [
+      "For every #gBuff effect gained, gain #b1 Strength. For every #rDebuff effect gained, lose #b1 Strength."
+    ]
+  },
+  "HSRMod:Soulsplit": {
+    "NAME": "Soulsplit",
+    "DESCRIPTIONS": [
+      "Immune to normal damage. Upon a monster dies, lose #b%d HP."
+    ]
+  },
+  "HSRMod:Safeguard": {
+    "NAME": "Safeguard",
+    "DESCRIPTIONS": [
+      "If there are other enemies, damage received - #b80% ."
+    ]
+  },
+  "HSRMod:Resonate": {
+    "NAME": "Resonate",
+    "DESCRIPTIONS": [
+      "Skills are upgraded. Toughness reduction + #b%d%% . After a card deals damage to a target with #yResonate , other targets with #yResonate lose the same amount of HP. After #yBreak , if the target is a minion, remove this power, lock the toughness, and prevent it from acting."
     ]
   }
 }

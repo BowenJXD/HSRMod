@@ -36,7 +36,7 @@ public class IlluminationDragonfish extends BaseMonster {
     public IlluminationDragonfish(float x, float y) {
         super(ID, 211, 240, x, y);
         
-        setDamagesWithAscension(7);
+        setDamagesWithAscension(6);
         vulnerableAmt = ModHelper.specialAscension(type) ? 2 : 1;
     }
 

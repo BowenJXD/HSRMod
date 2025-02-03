@@ -23,31 +23,33 @@ public class RockPaperScissorsEvent extends PhasedEvent {
     private static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
     private static final String[] OPTIONS = eventStrings.OPTIONS;
     private static final String title = eventStrings.NAME;
-    
-    public RockPaperScissorsEvent(){
+
+    public RockPaperScissorsEvent() {
         super(ID, title, "HSRModResources/img/events/" + ID + ".png");
 
-        registerPhase(0, new TextPhase(DESCRIPTIONS[0]).addOption(OPTIONS[0], (i)->transitionKey(1)));
-        
+        registerPhase(0, new TextPhase(DESCRIPTIONS[0]).addOption(OPTIONS[0], (i) -> transitionKey(1)));
+
         TextPhase phase1 = new TextPhase(DESCRIPTIONS[1])
-                .addOption(OPTIONS[1], (i)->transitionKey(2))
-                .addOption(OPTIONS[2], (i)-> {
-                    AbstractDungeon.player.loseGold(100);
-                    transitionKey(4);
-                });
+                .addOption(OPTIONS[1], (i) -> transitionKey(2))
+                .addOption(new TextPhase.OptionInfo(OPTIONS[2])
+                        .setOptionResult((i) -> {
+                            AbstractDungeon.player.loseGold(100);
+                            transitionKey(4);
+                        })
+                        .enabledCondition(() -> AbstractDungeon.player.gold >= 100));
         if (ModHelper.hasRelic(WaxOfTheHunt.ID)) {
             phase1.addOption(new TextPhase.OptionInfo(OPTIONS[3])
                     .setOptionResult((i) -> transitionKey(3))
                     .enabledCondition(() -> ModHelper.hasRelic(WaxOfTheHunt.ID)));
         }
-        
+
         registerPhase(1, phase1);
         registerPhase(2, new CombatPhase(MonsterHelper.COLOSSEUM_SLAVER_ENC)
                 .addRewards(true, null)
                 .setNextKey(5)
         );
         registerPhase(3, new CombatPhase(MonsterHelper.SLAVERS_ENC)
-                .addRewards(true, (room)-> {
+                .addRewards(true, (room) -> {
                     for (int i = 0; i < 2; i++) {
                         RewardItem reward = new RewardItem();
                         reward.cards.forEach(AbstractCard::upgrade);
@@ -57,8 +59,8 @@ public class RockPaperScissorsEvent extends PhasedEvent {
                 .setNextKey(5)
                 .setType(AbstractMonster.EnemyType.ELITE)
         );
-        registerPhase(4, new TextPhase(DESCRIPTIONS[2]).addOption(OPTIONS[4], (i)->openMap()));
-        registerPhase(5, new TextPhase(DESCRIPTIONS[3]).addOption(OPTIONS[4], (i)->openMap()));
+        registerPhase(4, new TextPhase(DESCRIPTIONS[2]).addOption(OPTIONS[4], (i) -> openMap()));
+        registerPhase(5, new TextPhase(DESCRIPTIONS[3]).addOption(OPTIONS[4], (i) -> openMap()));
 
         transitionKey(0);
     }

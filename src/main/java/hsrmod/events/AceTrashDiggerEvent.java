@@ -20,10 +20,10 @@ public class AceTrashDiggerEvent extends BaseEvent {
 
     int dRelicCount = 3;
     int nRelicCount = 2;
-    
+
     public AceTrashDiggerEvent() {
         super(ID);
-        
+
         registerPhase(0, new TextPhase(DESCRIPTIONS[0])
                 .addOption(OPTIONS[1], (i) -> {
                     RelicEventHelper.gainRelics(dRelicCount, r -> RelicTagField.destructible.get(r));
@@ -35,20 +35,22 @@ public class AceTrashDiggerEvent extends BaseEvent {
                     }
                     transitionKey(1);
                 })
-                .addOption(OPTIONS[2], (i) -> {
-                    AbstractRelic relic = GeneralUtil.getRandomElement(AbstractDungeon.player.relics, AbstractDungeon.eventRng, r -> r.tier == AbstractRelic.RelicTier.COMMON);
-                    if (relic != null) {
-                        RelicEventHelper.loseRelics(relic);
-                    }
-                    RelicEventHelper.gainRelics(nRelicCount);
-                    transitionKey(1);
-                })
+                .addOption(new TextPhase.OptionInfo(OPTIONS[2])
+                        .setOptionResult((i) -> {
+                            AbstractRelic relic = GeneralUtil.getRandomElement(AbstractDungeon.player.relics, AbstractDungeon.eventRng, r -> r.tier == AbstractRelic.RelicTier.COMMON);
+                            if (relic != null) {
+                                RelicEventHelper.loseRelics(relic);
+                            }
+                            RelicEventHelper.gainRelics(nRelicCount);
+                            transitionKey(1);
+                        })
+                        .enabledCondition(() -> AbstractDungeon.player.relics.stream().anyMatch(r -> r.tier == AbstractRelic.RelicTier.COMMON)))
                 .addOption(OPTIONS[3], (i) -> {
                     openMap();
                 })
         );
         registerPhase(1, new TextPhase(DESCRIPTIONS[1]).addOption(OPTIONS[0], (i) -> openMap()));
-        
+
         transitionKey(0);
     }
 }

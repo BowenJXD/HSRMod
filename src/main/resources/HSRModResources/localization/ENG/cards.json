@@ -147,5 +147,43 @@
     "EXTENDED_DESCRIPTION": [
       "obtain"
     ]
+  },
+  "HSRMod:Seele1": {
+    "EXTENDED_DESCRIPTION": [
+      "Disappear among the sea of butterflies, illusions of the past!"
+    ]
+  },
+  "HSRMod:SilverWolf1": {
+    "EXTENDED_DESCRIPTION": [
+      "Hmph, at this speed? Too slow!",
+      "Hmph, at this speed? Too slow!"
+    ]
+  },
+  "HSRMod:ImbibitorLunae1": {
+    "EXTENDED_DESCRIPTION": [
+      "Celestial dragon... Break!",
+      "Cloud-faring dragon... rise!"
+    ]
+  },
+  "HSRMod:Yunli1": {
+    "EXTENDED_DESCRIPTION": [
+      "Through the clouds, it cleaves a path, Hah!",
+      "To earth, it descends with might, eradicate!"
+    ]
+  },
+  "HSRMod:Rappa1": {
+    "EXTENDED_DESCRIPTION": [
+      "Slash! Cut! Cleave!"
+    ]
+  },
+  "HSRMod:Trailblazer8": {
+    "EXTENDED_DESCRIPTION": [
+      "Lance ablaze."
+    ]
+  },
+  "HSRMod:TheHerta1": {
+    "EXTENDED_DESCRIPTION": [
+      "Endless riddles, but the answer... is nothing but a void."
+    ]
   }
 }

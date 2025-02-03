@@ -50,14 +50,14 @@ public class CosmicCrescendoEvent extends PhasedEvent {
             transitionToRandom();
         });
         phase0.addOption(OPTIONS[2], (i) -> openMap());
-        
+
         if (ModHelper.hasRelic(WaxOfElation.ID)) {
             phase0.addOption(new TextPhase.OptionInfo(OPTIONS[3]).setOptionResult((i) -> {
                 count = 15;
                 transitionToRandom();
             }).enabledCondition(() -> ModHelper.hasRelic(WaxOfElation.ID)));
         }
-        
+
         registerPhase(0, phase0);
         registerPhase(1, new TextPhase(DESCRIPTIONS[1]).addOption(OPTIONS[0], (i) -> transitionToRandom()));
         registerPhase(2, new TextPhase(DESCRIPTIONS[2]).addOption(OPTIONS[0], (i) -> transitionToRandom()));
@@ -89,7 +89,7 @@ public class CosmicCrescendoEvent extends PhasedEvent {
             return;
         }
         count--;
-        
+
         boolean good = AbstractDungeon.eventRng.random(99) <= 66;
         Effect effect = Effect.values()[AbstractDungeon.eventRng.random(Effect.values().length - 1)];
         switch (effect) {
@@ -138,8 +138,7 @@ public class CosmicCrescendoEvent extends PhasedEvent {
                         RelicEventHelper.loseRelics(r);
                         transitionKey(4);
                         overrideBody = String.format(DESCRIPTIONS[4], r.name);
-                    }
-                    else {
+                    } else {
                         transitionKey(9);
                     }
                 }
@@ -149,7 +148,9 @@ public class CosmicCrescendoEvent extends PhasedEvent {
                     // Gain card from the same path
                     AbstractCard card = null;
                     CardGroup group = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
-                    AbstractCard.CardTags tag = WaxRelic.getSelectedPathTag(AbstractDungeon.player.relics);
+                    AbstractCard.CardTags tag = null;
+                    if (AbstractDungeon.eventRng.random(99) < 50)
+                        tag = WaxRelic.getSelectedPathTag(AbstractDungeon.player.relics);
                     if (tag != null) {
                         group.group.addAll(AbstractDungeon.commonCardPool.group.stream().filter((c) -> c.hasTag(WaxRelic.getSelectedPathTag(AbstractDungeon.player.relics))).collect(Collectors.toList()));
                         group.group.addAll(AbstractDungeon.uncommonCardPool.group.stream().filter((c) -> c.hasTag(WaxRelic.getSelectedPathTag(AbstractDungeon.player.relics))).collect(Collectors.toList()));
@@ -157,8 +158,7 @@ public class CosmicCrescendoEvent extends PhasedEvent {
                         if (!group.isEmpty()) {
                             card = group.getRandomCard(true);
                         }
-                    }
-                    else {
+                    } else {
                         card = AbstractDungeon.getCard(AbstractDungeon.rollRarity());
                     }
                     if (card != null) {
@@ -166,9 +166,7 @@ public class CosmicCrescendoEvent extends PhasedEvent {
                         transitionKey(3);
                         overrideBody = String.format(DESCRIPTIONS[3], card.name);
                     }
-                    else {
-                    }
-                        transitionKey(9);
+                    transitionKey(9);
                 } else {
                     // Lose random card
                     AbstractCard card = AbstractDungeon.player.masterDeck.getRandomCard(true);
@@ -221,8 +219,7 @@ public class CosmicCrescendoEvent extends PhasedEvent {
                         AbstractDungeon.player.obtainPotion(potion);
                         transitionKey(3);
                         overrideBody = String.format(DESCRIPTIONS[3], potion.name);
-                    }
-                    else {
+                    } else {
                         transitionKey(9);
                     }
                 } else {
@@ -234,8 +231,7 @@ public class CosmicCrescendoEvent extends PhasedEvent {
                         AbstractDungeon.player.removePotion(potion);
                         transitionKey(4);
                         overrideBody = String.format(DESCRIPTIONS[4], potion.name);
-                    }
-                    else {
+                    } else {
                         transitionKey(9);
                     }
                 }

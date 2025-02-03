@@ -17,13 +17,11 @@ public class PlaneshredClaws extends BaseMonster {
     public PlaneshredClaws(float x, float y) {
         super(ID, 128, 128, x, y);
 
-        addMove(Intent.ATTACK, 6, mi -> {
+        addMove(Intent.ATTACK, 10, mi -> {
             attack(mi, AbstractGameAction.AttackEffect.SLASH_VERTICAL);
         });
         addMove(Intent.ATTACK, moreDamageAs ? 15 : 12, mi -> {
             attack(mi, AbstractGameAction.AttackEffect.SLASH_VERTICAL);
-            if (specialAs)
-                addToBot(new MakeTempCardInDrawPileAction(new Wound(), 1, true, true));
         });
         addMove(Intent.STUN, mi -> {});
     }

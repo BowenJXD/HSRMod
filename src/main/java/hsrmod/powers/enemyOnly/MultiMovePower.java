@@ -1,6 +1,7 @@
 package hsrmod.powers.enemyOnly;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.megacrit.cardcrawl.actions.common.MonsterStartTurnAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -68,6 +69,8 @@ public class MultiMovePower extends AbstractPower implements PreBreakSubscriber 
             flash();
             ModHelper.addToBotAbstract(() -> {
                 if (owner.hasPower(MultiMovePower.POWER_ID)) {
+                    AbstractMonster m = (AbstractMonster) owner;
+                    m.applyStartOfTurnPowers();
                     AbstractDungeon.actionManager.monsterQueue.add(new MonsterQueueItem((AbstractMonster) owner));
                     remove(1);
                 }

@@ -214,7 +214,9 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
                 .collect(Collectors.toList());
 
         if (cards.isEmpty()) return null;
-        return cards.get(AbstractDungeon.cardRng.random(cards.size() - 1));
+        AbstractCard result = cards.get(AbstractDungeon.cardRng.random(cards.size() - 1));
+        result.unfadeOut();
+        return result.makeCopy();
     }
 
     /**
@@ -225,15 +227,20 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
      */
     public boolean checkChance(AbstractCard.CardRarity rarity) {
         float chance = 0;
+        int[] commonChance = new int[]{30, 15, 10, 5};
+        int[] uncommonChance = new int[]{40, 20, 10, 5};
+        int[] rareChance = new int[]{50, 30, 20, 10};
+        int actIndex = Math.min(AbstractDungeon.actNum - 1, 3);
+        if (actIndex < 0) actIndex = 0;
         switch (rarity) {
             case COMMON:
-                chance = 40 - AbstractDungeon.actNum * 10;
+                chance = commonChance[actIndex];
                 break;
             case UNCOMMON:
-                chance = 50 - AbstractDungeon.actNum * 10;
+                chance = uncommonChance[actIndex];
                 break;
             case RARE:
-                chance = 60 - AbstractDungeon.actNum * 10;
+                chance = rareChance[actIndex];
                 break;
         }
         chance = SubscriptionManager.getInstance().triggerNumChanger(SubscriptionManager.NumChangerType.WAX_WEIGHT, chance);

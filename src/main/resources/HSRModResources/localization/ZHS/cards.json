@@ -147,5 +147,43 @@
     "EXTENDED_DESCRIPTION": [
       "获得"
     ]
+  },
+  "HSRMod:Seele1": {
+    "EXTENDED_DESCRIPTION": [
+      "随蝴蝶一起消散吧，旧日的幻影。"
+    ]
+  },
+  "HSRMod:SilverWolf1": {
+    "EXTENDED_DESCRIPTION": [
+      "哼，就这速度？ @太慢了！@ ",
+      "二倍速就这？！"
+    ]
+  },
+  "HSRMod:ImbibitorLunae1": {
+    "EXTENDED_DESCRIPTION": [
+      "霄龙现影，破！",
+      "神蛟腾云，起！"
+    ]
+  },
+  "HSRMod:Yunli1": {
+    "EXTENDED_DESCRIPTION": [
+      "上决浮云，喝——",
+      "下绝地纪，灭——"
+    ]
+  },
+  "HSRMod:Rappa1": {
+    "EXTENDED_DESCRIPTION": [
+      "斩！断！破！"
+    ]
+  },
+  "HSRMod:Trailblazer8": {
+    "EXTENDED_DESCRIPTION": [
+      "枪尖已经点燃。"
+    ]
+  },
+  "HSRMod:TheHerta1": {
+    "EXTENDED_DESCRIPTION": [
+      "但谜底却是…乌有之物。"
+    ]
   }
 }

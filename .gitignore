@@ -43,3 +43,4 @@ build/
 /.idea/vcs.xml
 
 **/src/main/resources/HSRModResources/img/source/崩铁全员透明底/**
+/.idea/jsLibraryMappings.xml

@@ -5,6 +5,10 @@ import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.relics.BaseRelic;
+import hsrmod.utils.GeneralUtil;
+import hsrmod.utils.RelicEventHelper;
+
+import java.util.stream.Collectors;
 
 public class MusketeerOfWildWheat extends BaseRelic {
     public static final String ID = MusketeerOfWildWheat.class.getSimpleName();
@@ -16,7 +20,10 @@ public class MusketeerOfWildWheat extends BaseRelic {
     @Override
     public void onEquip() {
         super.onEquip();
-        AbstractDungeon.player.masterDeck.group.stream().filter(c -> c.hasTag(AbstractCard.CardTags.STARTER_STRIKE) && c.canUpgrade()).findFirst().ifPresent(AbstractCard::upgrade);
+        AbstractCard card = GeneralUtil.getRandomElement(
+                AbstractDungeon.player.masterDeck.group.stream().filter(c -> c.hasTag(AbstractCard.CardTags.STARTER_STRIKE) && c.canUpgrade()).collect(Collectors.toList()), 
+                AbstractDungeon.relicRng);
+        RelicEventHelper.upgradeCards(card);
     }
 
     @Override

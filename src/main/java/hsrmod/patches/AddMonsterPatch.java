@@ -53,6 +53,9 @@ public class AddMonsterPatch {
     public static class BossPatch {
         @SpirePostfixPatch
         public static List<String> PostFix(List<String> ___customBosses) {
+            if (AbstractDungeon.id.contains(HSRMod.MOD_NAME)) {
+                return ___customBosses;
+            }
             List<String> result = new ArrayList<>();
             if (!___customBosses.isEmpty() && HSRMod.addEnemy && AbstractDungeon.player instanceof StellaCharacter) {
                 result.addAll(___customBosses);

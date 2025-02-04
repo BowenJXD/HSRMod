@@ -28,7 +28,7 @@ public class SequenceTrotter extends BaseMonster implements PreBreakSubscriber {
     float effectTimer = 0.0F;
     float effectInterval = 0.5F;
     
-    public SequenceTrotter(int x, int y, int turnCount) {
+    public SequenceTrotter(float x, float y, int turnCount) {
         super(ID, 0F, -15.0F, 200, 200, x, y);
         this.turnCount = turnCount;
         effectImages = new TextureAtlas.AtlasRegion[12];
@@ -47,7 +47,7 @@ public class SequenceTrotter extends BaseMonster implements PreBreakSubscriber {
         effectImages[11] = new TextureAtlas.AtlasRegion(ImageMaster.loadImage(String.format(url, 12)), 0, 0, 82, 55); //
     }
     
-    public SequenceTrotter(int x, int y) {
+    public SequenceTrotter(float x, float y) {
         this(x, y, 0);
     }
 

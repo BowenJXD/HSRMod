@@ -612,7 +612,7 @@
   "HSRMod:LastSpring": {
     "NAME": "Last Spring",
     "DESCRIPTIONS": [
-      "Upon taking damage, all monsters recover #b%d HP."
+      "Upon taking damage, all monsters recover #b%d HP. Remove after #yBreak ."
     ]
   },
   "HSRMod:HardyLeafSheath": {

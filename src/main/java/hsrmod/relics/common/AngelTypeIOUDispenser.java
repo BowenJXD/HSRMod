@@ -19,6 +19,7 @@ public class AngelTypeIOUDispenser extends BaseRelic {
     public void update() {
         super.update();
         if (counter > 0 
+                && AbstractDungeon.currMapNode != null
                 && AbstractDungeon.getCurrRoom().isBattleOver
                 && AbstractDungeon.getCurrRoom() != currRoom
                 && AbstractDungeon.combatRewardScreen.rewards.stream().anyMatch(rewardItem -> rewardItem.type == RewardItem.RewardType.GOLD)) {

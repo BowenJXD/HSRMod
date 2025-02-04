@@ -24,10 +24,10 @@ import hsrmod.utils.ModHelper;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
-public class Yanqing2 extends BaseCard implements OnPlayerDamagedSubscriber {
+public class Yanqing2 extends BaseCard {
     public static final String ID = Yanqing2.class.getSimpleName();
     
-    boolean damaged = false;
+    int cachedDamaged = 0;
     boolean canBeUsed = false;
     
     public Yanqing2() {
@@ -35,19 +35,7 @@ public class Yanqing2 extends BaseCard implements OnPlayerDamagedSubscriber {
         tags.add(FOLLOW_UP);
         exhaust = true;
     }
-
-    @Override
-    public void onEnterHand() {
-        super.onEnterHand();
-        BaseMod.subscribe(this);
-    }
-
-    @Override
-    public void onLeaveHand() {
-        super.onLeaveHand();
-        BaseMod.unsubscribe(this);
-    }
-
+    
     @Override
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
         return super.canUse(p,m) && (canBeUsed || followedUp);
@@ -70,7 +58,7 @@ public class Yanqing2 extends BaseCard implements OnPlayerDamagedSubscriber {
 
     @Override
     public void atTurnStartPreDraw() {
-        if (!damaged) {
+        if (GameActionManager.damageReceivedThisTurn == cachedDamaged) {
             canBeUsed = true;
             followedUp = true;
             addToBot(new FollowUpAction(this));
@@ -80,16 +68,6 @@ public class Yanqing2 extends BaseCard implements OnPlayerDamagedSubscriber {
     @Override
     public void triggerOnEndOfTurnForPlayingCard() {
         super.triggerOnEndOfTurnForPlayingCard();
-        damaged = false;
-    }
-
-    @Override
-    public int receiveOnPlayerDamaged(int i, DamageInfo damageInfo) {
-        if (SubscriptionManager.checkSubscriber(this) 
-                && AbstractDungeon.player.hand.contains(this))
-            ModHelper.addToTopAbstract(() -> {
-                if (GameActionManager.damageReceivedThisTurn > 0) damaged = true;
-            });
-        return i;
+        cachedDamaged = GameActionManager.damageReceivedThisTurn;
     }
 }

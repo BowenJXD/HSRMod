@@ -27,7 +27,8 @@ public class Feixiao2 extends BaseCard implements OnCardUseSubscriber {
     public Feixiao2() {
         super(ID);
         costCache = cost;
-    }
+        BaseMod.subscribe(this);
+    }/*
 
     @Override
     public void atTurnStart() {
@@ -36,7 +37,7 @@ public class Feixiao2 extends BaseCard implements OnCardUseSubscriber {
             BaseMod.subscribe(this);
             subscribed = true;
         }
-    }
+    }*/
 
     @Override
     public void updateCost(int amt) {

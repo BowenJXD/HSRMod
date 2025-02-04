@@ -376,7 +376,8 @@ public class SubscriptionManager {
         boolean result = AbstractDungeon.player.hand.contains(card)
                 || AbstractDungeon.player.drawPile.contains(card)
                 || AbstractDungeon.player.discardPile.contains(card)
-                || AbstractDungeon.player.exhaustPile.contains(card);
+                || AbstractDungeon.player.exhaustPile.contains(card)
+                || AbstractDungeon.actionManager.cardQueue.stream().anyMatch(cqi -> cqi.card.cardID.equals(card.cardID));
         if (!result) {
             if (card instanceof IHSRSubscriber) getInstance().unsubscribeLater((IHSRSubscriber) card);
             if (card instanceof ISubscriber) BaseMod.unsubscribeLater((ISubscriber) card);

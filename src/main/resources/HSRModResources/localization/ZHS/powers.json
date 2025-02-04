@@ -336,7 +336,7 @@
   "HSRMod:ChampionsDinnerCatsCradle": {
     "NAME": "冠军晚餐 · 猫的摇篮",
     "DESCRIPTIONS": [
-      "耗能的牌视为追击牌，且于 [hsrmod:ChargeIcon] 变化时， #b%d%% 概率不消耗 [hsrmod:ChargeIcon] 追击 #b1 张。"
+      "耗能的牌视为追击牌，且于充能变化时， #b%d%% 概率不消耗充能追击 #b1 张。"
     ]
   },
   "HSRMod:EmpyreanImperium": {
@@ -612,7 +612,7 @@
   "HSRMod:LastSpring": {
     "NAME": "驻春",
     "DESCRIPTIONS": [
-      "受到伤害后，令所有怪物回复 #b%d 点生命。"
+      "受到伤害后，令所有怪物回复 #b%d 点生命。 #y击破 后移除。"
     ]
   },
   "HSRMod:HardyLeafSheath": {

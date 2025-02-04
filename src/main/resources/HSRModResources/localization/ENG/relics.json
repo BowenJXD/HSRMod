@@ -263,7 +263,7 @@
     "NAME": "Angel-Type IOU Dispenser",
     "FLAVOR": "A debt dispenser distributed by the Business Consolidation Department of the Interastral Peace Corporation.",
     "DESCRIPTIONS": [
-      "After battle, you cannot gain any gold. #rDestroys after #b5 trigger and doubles your gold."
+      "After battle, you cannot gain any gold. #rDestroys after #b4 trigger and doubles your gold."
     ]
   },
   "HSRMod:BlackHoleTrap": {
@@ -417,7 +417,7 @@
     "NAME": "Silver Coin Of Discord",
     "FLAVOR": "An ingenious plan was born: Since silver's exceptional malleability allowed it to be stretched from one gram into yards of antenna, a researcher devised a Silver Coin of Discord that split itself infinitely, dramatically increasing the quantity of silver available to meet demands.",
     "DESCRIPTIONS": [
-      "When gaining, gain #b50 % of your current gold."
+      "When gaining, gain #b33% of your current gold."
     ]
   },
   "HSRMod:ShatteredStarBait": {

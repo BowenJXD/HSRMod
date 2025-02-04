@@ -23,12 +23,12 @@ public class InternalAlchemist extends BaseMonster {
     public InternalAlchemist(float x, float y) {
         super(ID, 170, 256, x, y + 40);
         
-        spurCount = specialAs ? 15 : 12;
+        spurCount = specialAs ? 12 : 10;
         
         addMove(Intent.DEBUFF, mi -> {
             addToBot(new ApplyPowerAction(p, this, new SpurOfThunderwoePower(p, spurCount)));
         });
-        addMove(Intent.ATTACK, 7, mi -> {
+        addMoveA(Intent.ATTACK, 5, mi -> {
             attack(mi, AbstractGameAction.AttackEffect.SLASH_VERTICAL);
         });
         

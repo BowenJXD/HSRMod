@@ -4,15 +4,18 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.HealAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.RegenerateMonsterPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import hsrmod.actions.LockToughnessAction;
 import hsrmod.actions.UnlockToughnessAction;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.enemyOnly.*;
 import hsrmod.subscribers.PostMonsterDeathSubscriber;
+import hsrmod.subscribers.PreBreakSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
@@ -126,7 +129,6 @@ public class AbundantEbonDeer extends BaseMonster implements PostMonsterDeathSub
                 && hasPower(ChargingPower.POWER_ID)) {
             setMove(4);
             createIntent();
-
         }
     }
 }

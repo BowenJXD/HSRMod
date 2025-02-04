@@ -8,6 +8,8 @@ import com.megacrit.cardcrawl.actions.common.SpawnMonsterAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import hsrmod.characters.StellaCharacter;
+import hsrmod.modcore.HSRMod;
 import hsrmod.monsters.SequenceTrotter;
 import hsrmod.monsters.WarpTrotter;
 import hsrmod.subscribers.SubscriptionManager;
@@ -15,28 +17,32 @@ import hsrmod.utils.ModHelper;
 
 public class BonusManager implements OnStartBattleSubscriber, StartActSubscriber, CustomSavable<Integer> {
     private static BonusManager instance;
-    
+
     int appearChance = 10;
     int warpChance = 20;
-    
+
     private BonusManager() {
         BaseMod.subscribe(this);
     }
-    
+
     public static BonusManager getInstance() {
         if (instance == null) {
             instance = new BonusManager();
         }
         return instance;
     }
-    
+
     @Override
     public void receiveOnBattleStart(AbstractRoom room) {
-        if (AbstractDungeon.actNum < 3 
-                && AbstractDungeon.actNum > 0 
+        if (AbstractDungeon.actNum < 3
+                && AbstractDungeon.actNum > 0
                 && !room.eliteTrigger
-                && room.monsters.monsters.stream().noneMatch(m -> m instanceof SequenceTrotter || m.type == AbstractMonster.EnemyType.BOSS)
-                && !BaseMod.hasModID("spireTogether:")) {
+                && room.monsters.monsters.stream().noneMatch(
+                        m -> m instanceof SequenceTrotter
+                        || m instanceof WarpTrotter
+                        || m.type == AbstractMonster.EnemyType.BOSS
+                        || m.type == AbstractMonster.EnemyType.ELITE)
+                && (AbstractDungeon.id.contains(HSRMod.MOD_NAME) || AbstractDungeon.player instanceof StellaCharacter)) {
             float aChance = SubscriptionManager.getInstance().triggerNumChanger(SubscriptionManager.NumChangerType.TROTTER_WEIGHT, appearChance);
             float wChance = SubscriptionManager.getInstance().triggerNumChanger(SubscriptionManager.NumChangerType.TROTTER_WEIGHT, warpChance);
             if (AbstractDungeon.monsterRng.random(99) < aChance) {

@@ -193,8 +193,8 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
             BaseMod.removeRelic(RelicLibrary.getRelic(ChemicalX.ID));
             BaseMod.removeRelic(RelicLibrary.getRelic(SneckoEye.ID));
         }
+        addMonsters();
         if (addEnemy) {
-            addMonsters();
             BaseMod.addSaveField("BonusManager", BonusManager.getInstance());
         }
         if (addEvent) addEvents();

@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.actions.unique.CanLoseAction;
+import com.megacrit.cardcrawl.actions.unique.CannotLoseAction;
 import com.megacrit.cardcrawl.actions.unique.RemoveAllPowersAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -69,7 +70,7 @@ public class Phantylia extends BaseMonster implements PostPowerApplySubscriber {
     public void usePreBattleAction() {
         super.usePreBattleAction();
         BaseMod.subscribe(this);
-        AbstractDungeon.getCurrRoom().cannotLose = true;
+        addToBot(new CannotLoseAction());
         // addToBot(new TalkAction(this, DIALOG[0], 4.0F, 5.0F));
         ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_1", 3.0F));
         addToBot(new ApplyPowerAction(this, this, new UnawakenedPower(this)));
@@ -259,17 +260,25 @@ public class Phantylia extends BaseMonster implements PostPowerApplySubscriber {
     }
     
     void spawnAbundanceLotus(boolean awakened){
-        AbstractMonster lotus = new AbundanceLotus(-400.0F, 300.0F, awakened);
-        addToBot(new SpawnMonsterAction(lotus, true));
-        addToBot(new ApplyPowerAction(lotus, this, new SummonedPower(lotus)));
-        addToBot(new ApplyPowerAction(lotus, this, new AbundanceLotusPower(lotus)));
+        ModHelper.addToBotAbstract(() -> {
+            if (AbstractDungeon.getMonsters().monsters.stream().noneMatch(m -> m instanceof AbundanceLotus)) {
+                AbstractMonster lotus = new AbundanceLotus(-400.0F, 300.0F, awakened);
+                addToTop(new ApplyPowerAction(lotus, this, new SummonedPower(lotus)));
+                addToTop(new ApplyPowerAction(lotus, this, new AbundanceLotusPower(lotus)));
+                addToTop(new SpawnMonsterAction(lotus, true));
+            }
+        });
     }
     
     void spawnDestructionLotus(boolean awakened){
-        AbstractMonster lotus = new DestructionLotus(-400.0F, 0.0F, awakened);
-        addToBot(new SpawnMonsterAction(lotus, true));
-        addToBot(new ApplyPowerAction(lotus, this, new SummonedPower(lotus)));
-        addToBot(new ApplyPowerAction(lotus, this, new DestructionLotusPower(lotus)));
+        ModHelper.addToBotAbstract(() -> {
+            if (AbstractDungeon.getMonsters().monsters.stream().noneMatch(m -> m instanceof DestructionLotus)) {
+                AbstractMonster lotus = new DestructionLotus(-400.0F, 0.0F, awakened);
+                addToTop(new ApplyPowerAction(lotus, this, new SummonedPower(lotus)));
+                addToTop(new ApplyPowerAction(lotus, this, new DestructionLotusPower(lotus)));
+                addToTop(new SpawnMonsterAction(lotus, true));
+            }
+        });
     }
 
     public void die() {

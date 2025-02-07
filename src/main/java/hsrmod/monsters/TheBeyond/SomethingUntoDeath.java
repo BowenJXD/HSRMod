@@ -4,6 +4,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.AnimateFastAttackAction;
 import com.megacrit.cardcrawl.actions.animations.AnimateSlowAttackAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -13,6 +14,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+import com.megacrit.cardcrawl.vfx.combat.BossCrystalImpactEffect;
+import com.megacrit.cardcrawl.vfx.combat.ThirdEyeEffect;
 import hsrmod.misc.PathDefine;
 import hsrmod.modcore.HSRMod;
 import hsrmod.monsters.BaseMonster;
@@ -50,6 +53,7 @@ public class SomethingUntoDeath extends BaseMonster {
         switch (nextMove) {
             case 1:
                 addToBot(new ApplyPowerAction(p, this, new EnergyPower(p, EnergyPower.AMOUNT_LIMIT), EnergyPower.AMOUNT_LIMIT));
+                addToBot(new VFXAction(new BossCrystalImpactEffect(p.hb.cX, p.hb.cY)));
                 addToBot(new ApplyPowerAction(p, this, new SunsetPower(p, sunsetCount, this::getSpawningSombrousSepulcher)));
                 break;
             case 2:
@@ -63,6 +67,7 @@ public class SomethingUntoDeath extends BaseMonster {
             case 3:
                 if (hasPower(ChargingPower.POWER_ID)) {
                     addToBot(new AnimateFastAttackAction(this));
+                    addToBot(new VFXAction(new ThirdEyeEffect(p.hb.cX, p.hb.cY)));
                     addToBot(new DamageAction(p, damage.get(2), AbstractGameAction.AttackEffect.SMASH));
                 }
                 break;

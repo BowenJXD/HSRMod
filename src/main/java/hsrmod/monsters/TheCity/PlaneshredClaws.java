@@ -1,11 +1,14 @@
 package hsrmod.monsters.TheCity;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.status.Wound;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.WeakPower;
+import com.megacrit.cardcrawl.vfx.combat.ClawEffect;
 import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.enemyOnly.ResonatePower;
 import hsrmod.powers.misc.ToughnessPower;
@@ -18,9 +21,10 @@ public class PlaneshredClaws extends BaseMonster {
         super(ID, 128, 128, x, y);
 
         addMove(Intent.ATTACK, 10, mi -> {
+            addToBot(new VFXAction(new ClawEffect(p.hb.cX, p.hb.cY, Color.WHITE, Color.SKY)));
             attack(mi, AbstractGameAction.AttackEffect.SLASH_VERTICAL);
         });
-        addMove(Intent.ATTACK, moreDamageAs ? 15 : 12, mi -> {
+        addMoveA(Intent.ATTACK, 20, mi -> {
             attack(mi, AbstractGameAction.AttackEffect.SLASH_VERTICAL);
         });
         addMove(Intent.STUN, mi -> {});

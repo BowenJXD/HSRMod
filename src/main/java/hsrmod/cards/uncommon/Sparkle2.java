@@ -2,10 +2,12 @@ package hsrmod.cards.uncommon;
 
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
+import com.megacrit.cardcrawl.actions.unique.LoseEnergyAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import hsrmod.cards.BaseCard;
 import hsrmod.effects.PortraitDisplayEffect;
 import hsrmod.modcore.CustomEnums;
@@ -26,9 +28,8 @@ public class Sparkle2 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.topLevelEffects.add(new PortraitDisplayEffect("Sparkle"));
-        
-        p.energy.use(energyOnUse);
-        int num = Math.min(energyOnUse * 2, p.energy.energy * 2 + magicNumber);
+        int x = energyOnUse + (p.hasRelic("Chemical X") ? 2 : 0);
+        int num = Math.min(x * 2, p.energy.energy * 2 + magicNumber);
 
         ModHelper.addToBotAbstract(() -> {
             List<ModHelper.FindResult> sparkles = ModHelper.findCards(c -> c instanceof Sparkle2 && c.uuid != uuid);
@@ -44,5 +45,6 @@ public class Sparkle2 extends BaseCard {
             }
         });
         addToBot(new GainEnergyAction(num));
+        addToBot(new LoseEnergyAction(EnergyPanel.totalCount));
     }
 }

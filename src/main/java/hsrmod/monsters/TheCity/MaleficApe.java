@@ -1,9 +1,12 @@
 package hsrmod.monsters.TheCity;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+import com.megacrit.cardcrawl.vfx.combat.ShockWaveEffect;
 import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.enemyOnly.ChargingPower;
 import hsrmod.powers.enemyOnly.GustoPower;
@@ -21,6 +24,7 @@ public class MaleficApe extends BaseMonster {
         strengthCount = specialAs ? 3 : 2;
         
         addMove(Intent.BUFF, mi -> {
+            addToBot(new VFXAction(new ShockWaveEffect(hb.cX, hb.cY, Color.SKY, ShockWaveEffect.ShockWaveType.NORMAL)));
             addToBot(new ApplyPowerAction(this, this, new StrengthPower(this, strengthCount)));
             addToBot(new ApplyPowerAction(this, this, new GustoPower(this, gustoCount)));
             addToBot(new ApplyPowerAction(this, this, new ChargingPower(this, getLastMove())));

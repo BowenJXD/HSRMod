@@ -1,11 +1,13 @@
 package hsrmod.cardsV2;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.vfx.combat.SearingBlowEffect;
 import hsrmod.actions.AOEAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
@@ -42,6 +44,7 @@ public class Fugue1 extends BaseCard {
     }
 
     public void trigger(AbstractMonster m) {
+        addToBot(new VFXAction(new SearingBlowEffect(m.hb.cX, m.hb.cY, upgraded ? 2 : 1)));
         int amt = magicNumber - ModHelper.getPowerCount(m, ToughnessPower.POWER_ID);
         amt = Math.min(magicNumber, Math.max(amt, -magicNumber));
         AbstractPower power = m.getPower(ToughnessPower.POWER_ID);

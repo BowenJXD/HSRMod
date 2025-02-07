@@ -1,9 +1,12 @@
 package hsrmod.monsters.TheCity;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.combat.BiteEffect;
 import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.breaks.ShockPower;
 import hsrmod.powers.enemyOnly.DeathExplosionPower;
@@ -30,7 +33,8 @@ public class WoodenLupus extends BaseMonster {
         };
         
         addMove(Intent.ATTACK_DEBUFF, moreDamageAs ? 3 : 2, mi -> {
-            attack(mi, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, AttackAnim.SLOW);
+            addToBot(new VFXAction(new BiteEffect(p.hb.cX, p.hb.cY, Color.BLUE)));
+            attack(mi, AbstractGameAction.AttackEffect.NONE, AttackAnim.MOVE);
             addToBot(new ApplyPowerAction(p, this, new ShockPower(p, this, shockCount)));
         });
         addMove(Intent.UNKNOWN, mi -> {

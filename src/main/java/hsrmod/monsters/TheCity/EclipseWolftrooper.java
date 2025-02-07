@@ -1,8 +1,10 @@
 package hsrmod.monsters.TheCity;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.AnimateHopAction;
 import com.megacrit.cardcrawl.actions.animations.AnimateSlowAttackAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -11,12 +13,15 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.combat.BiteEffect;
+import com.megacrit.cardcrawl.vfx.combat.ClawEffect;
 import hsrmod.misc.PathDefine;
 import hsrmod.modcore.HSRMod;
 import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.enemyOnly.MoonRagePower;
 
-public class EclipseWolftrooper extends BaseMonster {
+public class 
+EclipseWolftrooper extends BaseMonster {
     public static final String ID = EclipseWolftrooper.class.getSimpleName();
     
     public EclipseWolftrooper(float x, float y) {
@@ -28,8 +33,10 @@ public class EclipseWolftrooper extends BaseMonster {
     @Override
     public void takeTurn() {
         addToBot(new AnimateHopAction(this));
-        addToBot(new DamageAction(AbstractDungeon.player, this.damage.get(0), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-        addToBot(new DamageAction(AbstractDungeon.player, this.damage.get(0), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+        addToBot(new VFXAction(new BiteEffect(p.hb.cX, p.hb.cY, Color.RED)));
+        addToBot(new DamageAction(AbstractDungeon.player, this.damage.get(0)));
+        addToBot(new VFXAction(new BiteEffect(p.hb.cX, p.hb.cY, Color.RED)));
+        addToBot(new DamageAction(AbstractDungeon.player, this.damage.get(0)));
         if (hasPower(MoonRagePower.POWER_ID)) {
             for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
                 addToBot(new GainBlockAction(m, this, 4));

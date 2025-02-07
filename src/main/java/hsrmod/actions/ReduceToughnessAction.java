@@ -1,107 +1,101 @@
-/*
 package hsrmod.actions;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.HealAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 import hsrmod.modcore.ElementType;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.breaks.*;
-import hsrmod.powers.misc.BreakEfficiencyPower;
 import hsrmod.powers.misc.BrokenPower;
 import hsrmod.powers.misc.ToughnessPower;
-import hsrmod.powers.uniqueBuffs.Trailblazer5Power;
 import hsrmod.subscribers.SubscriptionManager;
 
+import java.util.Iterator;
+
+/**
+ * Used for other characters to reduce toughness of hsr enemies.
+ */
 public class ReduceToughnessAction extends AbstractGameAction {
     private static final float DURATION = 0.1F;
-    public int toughnessReduction;
+    public int tr;
     private ElementType elementType;
-    private DamageInfo info;
 
-    public ReduceToughnessAction(AbstractCreature target, int toughnessReduction, ElementType elementType, DamageInfo info) {
+    public ReduceToughnessAction(AbstractCreature target, AbstractCreature source, int tr, ElementType elementType) {
+        setValues(target, source, tr);
         this.target = target;
-        this.toughnessReduction = toughnessReduction;
+        this.tr = tr;
         this.duration = DURATION;
         this.elementType = elementType;
-        this.info = info;
-        this.source = info.owner;
     }
 
     public void update() {
+        if ((this.shouldCancelAction()) || this.target == null) {
+            this.isDone = true;
+            return;
+        }
+        // Start of the action
         if (this.duration == 0.1F) {
-            //
-            AbstractPower toughnessPower = this.target.getPower(ToughnessPower.POWER_ID);
-
-            SubscriptionManager.getInstance().triggerPreToughnessReduce(toughnessReduction, this.target, this.elementType);
-            
-            if (toughnessPower != null 
-                    && toughnessPower.amount > 0 
-                    && toughnessPower.amount <= toughnessReduction) {
-                int breakDamage = elementType.getBreakDamage();
-                addToBot(new BreakDamageAction(target, new DamageInfo(info.owner, breakDamage)));
-                addToBot(applyBreakingPower());
-                addToTop(new ApplyPowerAction(target, AbstractDungeon.player, new BrokenPower(target, 1), 1));
-            }
-            if (toughnessPower != null) {
-                addToTop(new ApplyPowerAction(target, AbstractDungeon.player, new ToughnessPower(target, -toughnessReduction), -toughnessReduction));
-            }
-            //
+            AbstractDungeon.effectList.add(new FlashAtkImgEffect(this.target.hb.cX, this.target.hb.cY, attackEffect));
         }
 
-        this.tickDuration();
-    }
-    
-    ApplyPowerAction applyBreakingPower(){
-        AbstractPower power = null;
-        int stackNum = 1;
-        switch (elementType){
-            case Ice:
-                power = new FrozenPower(target, stackNum);
-                break;
-            case Physical:
-                power = new BleedingPower(target, AbstractDungeon.player, stackNum);
-                break;
-            case Fire:
-                power = new BurnPower(target, AbstractDungeon.player, stackNum);
-                break;
-            case Lightning:
-                power = new ShockPower(target, AbstractDungeon.player, stackNum);
-                break;
-            case Wind:
-                AbstractMonster monster = (AbstractMonster)target;
-                if (monster != null) {
-                    switch (monster.type) {
-                        case NORMAL:
-                            break;
-                        case ELITE:
-                            stackNum = 2;
-                            break;
-                        case BOSS:
-                            stackNum = 3;
-                            break;
-                        default:
-                            break;
-                    }
+        if (Settings.FAST_MODE) this.isDone = true;
+        else this.tickDuration();
+        if (!this.isDone) return;
+
+        this.target.tint.changeColor(Color.WHITE.cpy());
+
+        // Reduce toughness
+        ToughnessPower toughnessPower = target.hasPower(ToughnessPower.POWER_ID) ? (ToughnessPower) this.target.getPower(ToughnessPower.POWER_ID) : null;
+        tr = (int) SubscriptionManager.getInstance().triggerPreToughnessReduce(tr, this.target, elementType);
+        
+        // check break
+        boolean didBreak = false;
+        if (target != null
+                && toughnessPower != null
+                && toughnessPower.amount > 0
+                && toughnessPower.amount <= tr
+                && !toughnessPower.getLocked()) {
+            didBreak = true;
+        }
+
+        // break logic
+        if (didBreak && !target.isDeadOrEscaped()) {
+            // trigger PreBreak
+            SubscriptionManager.getInstance().triggerPreBreak(new ElementalDamageInfo(source, 0, elementType, tr), target);
+            // broken
+            addToTop(new ApplyPowerAction(target, AbstractDungeon.player, new BrokenPower(target, 1), 1));
+        }
+
+        // reduce toughness
+        if (toughnessPower != null) {
+            addToTop(new ApplyPowerAction(target, AbstractDungeon.player, new ToughnessPower(target, -tr), -tr));
+        }
+
+        // Check to remove actions except HealAction, GainBlockAction, UseCardAction, TriggerCallbackAction, and DamageAction
+        if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
+            Iterator<AbstractGameAction> i = AbstractDungeon.actionManager.actions.iterator();
+
+            while (i.hasNext()) {
+                AbstractGameAction e = (AbstractGameAction) i.next();
+                if (!(e instanceof HealAction)
+                        && !(e instanceof GainBlockAction)
+                        && !(e instanceof UseCardAction)
+                        && !(e instanceof ElementalDamageAction.TriggerCallbackAction)
+                        && e.actionType != ActionType.DAMAGE) {
+                    i.remove();
                 }
-                power = new WindShearPower(target, AbstractDungeon.player, stackNum);
-                break;
-            case Quantum:
-                power = new EntanglePower(target, source, stackNum);
-                break;
-            case Imaginary:
-                power = new ImprisonPower(target, stackNum);
-                break;
-            default:
-                break;
+            }
         }
-        if (power != null){
-            return new ApplyPowerAction(target, AbstractDungeon.player, power, stackNum);
-        }
-        return null;
+        //
     }
 }
-*/

@@ -2,6 +2,7 @@ package hsrmod.monsters.Exordium;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.ShoutAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -12,6 +13,7 @@ import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
+import com.megacrit.cardcrawl.vfx.combat.BlizzardEffect;
 import hsrmod.cardsV2.Curse.Frozen;
 import hsrmod.misc.Encounter;
 import hsrmod.misc.PathDefine;
@@ -90,6 +92,7 @@ public class Cocolia extends BaseMonster {
 
                     int handCount = p.hand.size();
                     addToBot(new ExhaustAction(handCount, true, false, false));
+                    addToBot(new VFXAction(new BlizzardEffect(handCount, true)));
                     for (int i = 0; i < handCount; i++) {
                         addToBot(new DamageAction(p, this.damage.get(3), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
                     }

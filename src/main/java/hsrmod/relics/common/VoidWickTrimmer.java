@@ -29,7 +29,7 @@ public class VoidWickTrimmer extends BaseRelic {
     public void onEquip() {
         super.onEquip();
         List<AbstractRelic> relics = AbstractDungeon.player.relics.stream().filter(r -> r.usedUp).collect(Collectors.toList());
-        Collections.shuffle(relics, AbstractDungeon.relicRng.random);
+        Collections.shuffle(relics, AbstractDungeon.miscRng.random);
         if (!relics.isEmpty()) {
             AbstractRelic[] relicsArray = relics.subList(0, Math.min(relics.size(), magicNumber)).toArray(new AbstractRelic[0]);
             RelicEventHelper.loseRelicsAfterwards(relicsArray);

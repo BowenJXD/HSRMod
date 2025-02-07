@@ -79,6 +79,8 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
             for (Consumer<List<RewardItem>> extraReward : extraRewards) {
                 extraReward.accept(rewards);
             }
+            
+            if (tag == null) return;
 
             for (RewardItem reward : rewards) {
                 if (reward.type == RewardItem.RewardType.CARD) {
@@ -342,13 +344,14 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
 
     @Override
     public void receivePostUpdate() {
-        if (tag == null || AbstractDungeon.currMapNode == null) return;
+        if (AbstractDungeon.currMapNode == null) return;
         this.update(AbstractDungeon.getCurrRoom(), tag);
     }
 
     @Override
     public void receiveStartAct() {
         if (AbstractDungeon.actNum <= 1) {
+            relicId = "";
             bannedTags = null;
             for (AbstractRelic relic : AbstractDungeon.player.relics) {
                 if (relic instanceof WaxRelic) {
@@ -379,8 +382,7 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
         public static void Postfix(AbstractDungeon __instance, SaveFile saveFile) {
             ModHelper.addEffectAbstract(() -> {
                 if (instance != null
-                        && AbstractDungeon.currMapNode != null
-                        && !AbstractDungeon.getCurrRoom().rewardTime) {
+                        && (AbstractDungeon.currMapNode == null || !AbstractDungeon.getCurrRoom().rewardTime)) {
                     instance.relicId = "";
                     instance.extraRewards.clear();
                     // instance.savedCardRewards.clear();

@@ -1,5 +1,6 @@
 package hsrmod.powers.enemyOnly;
 
+import com.badlogic.gdx.Gdx;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.common.RollMoveAction;
@@ -8,6 +9,8 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.combat.SmallLaserEffect;
+import com.megacrit.cardcrawl.vfx.stance.DivinityParticleEffect;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.LockToughnessAction;
 import hsrmod.modcore.ElementalDamageInfo;
@@ -26,9 +29,11 @@ public class ResonatePower extends StatePower implements PreElementalDamageSubsc
     public static final String POWER_ID = HSRMod.makePath(ResonatePower.class.getSimpleName());
     
     AbstractCard card;
+    float particleTimer = 0;
     
     public ResonatePower(AbstractCreature owner, int amount) {
         super(POWER_ID, owner, amount);
+        particleTimer = 0.0F;
         updateDescription();
     }
     
@@ -53,6 +58,18 @@ public class ResonatePower extends StatePower implements PreElementalDamageSubsc
     public void onPlayCard(AbstractCard card, AbstractMonster m) {
         super.onPlayCard(card, m);
         this.card = null;
+    }
+
+    @Override
+    public void update(int slot) {
+        super.update(slot);
+        this.particleTimer -= Gdx.graphics.getDeltaTime();
+        if (this.particleTimer < 0.0F) {
+            this.particleTimer = 0.33F;
+            AbstractDungeon.getMonsters().monsters.stream().filter(m -> ModHelper.check(m) && m.hasPower(POWER_ID) && m != owner).forEach(m -> {
+                AbstractDungeon.effectsQueue.add(new SmallLaserEffect(owner.hb.cX, owner.hb.cY, m.hb.cX, m.hb.cY));
+            });
+        }
     }
 
     @Override

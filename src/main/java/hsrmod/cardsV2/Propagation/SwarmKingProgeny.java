@@ -2,6 +2,7 @@ package hsrmod.cardsV2.Propagation;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.unique.LoseEnergyAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -22,7 +23,8 @@ public class SwarmKingProgeny extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        if (energyOnUse <= 0) return;
+        int x = energyOnUse + (p.hasRelic("Chemical X") ? 2 : 0);
+        if (x <= 0) return;
         ElementalDamageAction action = new ElementalDamageAction(
                 m,
                 new ElementalDamageInfo(this),
@@ -31,7 +33,7 @@ public class SwarmKingProgeny extends BaseCard {
                     addToBot(new ApplyPowerAction(ci.target, p, new SporePower(ci.target, 1), 1));
                 }
         );
-        addToBot(new BouncingAction(m, energyOnUse, action, this));
-        p.energy.use(EnergyPanel.totalCount);
+        addToBot(new BouncingAction(m, x, action, this));
+        addToBot(new LoseEnergyAction(EnergyPanel.totalCount));
     }
 }

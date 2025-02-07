@@ -1,6 +1,7 @@
 package hsrmod.cards.common;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -9,6 +10,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.effects.BackFlipEffect;
 import hsrmod.utils.ModHelper;
 
 import java.util.ArrayList;
@@ -40,7 +42,7 @@ public class Herta1 extends BaseCard {
         canRepeat = true;
 
         if (AbstractDungeon.getMonsters().areMonstersBasicallyDead()) return;
-
+        addToBot(new VFXAction(new BackFlipEffect(AbstractDungeon.player, false)));
         addToBot(
                 new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL).setCallback(
                         ci -> {

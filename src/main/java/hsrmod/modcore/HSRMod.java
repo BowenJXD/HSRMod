@@ -3,6 +3,7 @@ package hsrmod.modcore;
 import basemod.*;
 import basemod.abstracts.CustomRelic;
 import basemod.eventUtil.AddEventParams;
+import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -29,6 +30,8 @@ import com.megacrit.cardcrawl.monsters.MonsterInfo;
 import com.megacrit.cardcrawl.monsters.city.ShelledParasite;
 import com.megacrit.cardcrawl.monsters.exordium.SlaverRed;
 import com.megacrit.cardcrawl.relics.ChemicalX;
+import com.megacrit.cardcrawl.relics.LizardTail;
+import com.megacrit.cardcrawl.relics.MawBank;
 import com.megacrit.cardcrawl.relics.SneckoEye;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import com.badlogic.gdx.graphics.Color;
@@ -44,6 +47,8 @@ import hsrmod.monsters.Exordium.*;
 import hsrmod.monsters.SequenceTrotter;
 import hsrmod.monsters.TheBeyond.*;
 import hsrmod.monsters.TheCity.*;
+import hsrmod.patches.RelicTagField;
+import hsrmod.relics.BaseRelic;
 import hsrmod.relics.special.Pineapple;
 import hsrmod.relics.special.ThalanToxiFlame;
 import hsrmod.relics.special.ThePinkestCollision;
@@ -122,6 +127,9 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
                 .packageFilter("hsrmod.cards")
                 .setDefaultSeen(true)
                 .cards();
+        if (AbstractDungeon.isPlayerInDungeon() && AbstractDungeon.player instanceof StellaCharacter) {
+            BaseMod.removeCard(SadisticNature.ID, AbstractCard.CardColor.COLORLESS);
+        }
     }
 
     @Override
@@ -146,15 +154,26 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
 
     @Override
     public void receiveEditRelics() {
-        if (addRelic)
+        if (addRelic) {
             new AutoAdd(MOD_NAME)
                     .packageFilter("hsrmod.relics")
                     .any(CustomRelic.class, (info, relic) -> {
-                        BaseMod.addRelicToCustomPool(relic, HSR_PINK);
-                        if (info.seen) {
+                        if (relic instanceof BaseRelic && ((BaseRelic)relic).hsrOnly) {
+                            BaseMod.addRelicToCustomPool(relic, HSR_PINK);
+                        } else {
+                            BaseMod.addRelic(relic, RelicType.SHARED);
+                        }
+                        if (info.seen && relic != null) {
                             UnlockTracker.markRelicAsSeen(relic.relicId);
                         }
                     });
+        }
+        if (AbstractDungeon.isPlayerInDungeon() && AbstractDungeon.player instanceof StellaCharacter) {
+            BaseMod.removeRelic(RelicLibrary.getRelic(ChemicalX.ID));
+            BaseMod.removeRelic(RelicLibrary.getRelic(SneckoEye.ID));
+        }
+        RelicTagField.destructible.set(RelicLibrary.getRelic(LizardTail.ID), true);
+        RelicTagField.destructible.set(RelicLibrary.getRelic(MawBank.ID), true);
     }
 
     public void receiveEditStrings() {
@@ -188,11 +207,6 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
     public void receivePostInitialize() {
         addConfigPanel();
         BaseMod.addSaveField("RewardEditor", RewardEditor.getInstance());
-        if (AbstractDungeon.isPlayerInDungeon() && AbstractDungeon.player instanceof StellaCharacter) {
-            BaseMod.removeCard(SadisticNature.ID, AbstractCard.CardColor.COLORLESS);
-            BaseMod.removeRelic(RelicLibrary.getRelic(ChemicalX.ID));
-            BaseMod.removeRelic(RelicLibrary.getRelic(SneckoEye.ID));
-        }
         addMonsters();
         if (addEnemy) {
             BaseMod.addSaveField("BonusManager", BonusManager.getInstance());

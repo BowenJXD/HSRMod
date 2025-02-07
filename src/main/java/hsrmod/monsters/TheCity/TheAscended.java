@@ -2,12 +2,15 @@ package hsrmod.monsters.TheCity;
 
 import com.evacipated.cardcrawl.mod.stslib.actions.common.DamageCallbackAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+import com.megacrit.cardcrawl.vfx.combat.BossCrystalImpactEffect;
 import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.breaks.WindShearPower;
 import hsrmod.powers.enemyOnly.PranaSiphonedPower;
+import hsrmod.powers.enemyOnly.SnarelockPower;
 import hsrmod.utils.ModHelper;
 
 public class TheAscended extends BaseMonster {
@@ -36,6 +39,7 @@ public class TheAscended extends BaseMonster {
                 ModHelper.addToBotAbstract(() -> {
                     if (p.hasPower(WindShearPower.POWER_ID)) {
                         addToTop(new ApplyPowerAction(p, this, new PranaSiphonedPower(p)));
+                        addToTop(new VFXAction(new BossCrystalImpactEffect(p.hb.cX, p.hb.cY)));
                     }
                 });
             }

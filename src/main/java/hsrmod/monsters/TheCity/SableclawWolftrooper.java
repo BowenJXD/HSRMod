@@ -1,8 +1,10 @@
 package hsrmod.monsters.TheCity;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.AnimateHopAction;
 import com.megacrit.cardcrawl.actions.animations.AnimateSlowAttackAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -11,6 +13,8 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.combat.BiteEffect;
+import com.megacrit.cardcrawl.vfx.combat.ClawEffect;
 import hsrmod.misc.PathDefine;
 import hsrmod.modcore.HSRMod;
 import hsrmod.monsters.BaseMonster;
@@ -29,8 +33,10 @@ public class SableclawWolftrooper extends BaseMonster {
     @Override
     public void takeTurn() {
         addToBot(new AnimateHopAction(this));
-        addToBot(new DamageAction(AbstractDungeon.player, this.damage.get(0), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-        addToBot(new DamageAction(AbstractDungeon.player, this.damage.get(0), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+        addToBot(new VFXAction(new BiteEffect(p.hb.cX, p.hb.cY, Color.RED)));
+        addToBot(new DamageAction(AbstractDungeon.player, this.damage.get(0)));
+        addToBot(new VFXAction(new BiteEffect(p.hb.cX, p.hb.cY, Color.RED)));
+        addToBot(new DamageAction(AbstractDungeon.player, this.damage.get(0)));
         if (hasPower(MoonRagePower.POWER_ID))
             addToBot(new ApplyPowerAction(AbstractDungeon.player, this, new BleedingPower(AbstractDungeon.player, this, 1), 1));
     }

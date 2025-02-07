@@ -1,13 +1,16 @@
 package hsrmod.monsters.TheBeyond;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.AnimateFastAttackAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.combat.BiteEffect;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
@@ -49,8 +52,9 @@ public class BubbleHound extends BaseMonster {
     @Override
     public void takeTurn() {
         AbstractPlayer p = AbstractDungeon.player;
+        addToBot(new VFXAction(new BiteEffect(p.hb.cX, p.hb.cY, Color.YELLOW)));
         addToBot(new AnimateFastAttackAction(this));
-        addToBot(new DamageAction(p, this.damage.get(0), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+        addToBot(new DamageAction(p, this.damage.get(0), AbstractGameAction.AttackEffect.NONE));
     }
 
     @Override

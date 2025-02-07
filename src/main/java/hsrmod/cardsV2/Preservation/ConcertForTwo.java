@@ -1,10 +1,13 @@
 package hsrmod.cardsV2.Preservation;
 
+import com.badlogic.gdx.graphics.Color;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.utility.LoseBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.combat.FastingEffect;
 import hsrmod.cards.BaseCard;
 
 public class ConcertForTwo extends BaseCard {
@@ -23,6 +26,7 @@ public class ConcertForTwo extends BaseCard {
     
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new VFXAction(new FastingEffect(p.hb.cX, p.hb.cY, Color.WHITE)));
         if (p.currentBlock < block) {
             addToBot(new GainBlockAction(p, p, block - p.currentBlock));
         }

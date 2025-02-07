@@ -26,7 +26,7 @@ public class RubertEmpireMechanicalLever extends BaseRelic implements IRubertEmp
         super.onEnterRoom(room);
         if (usedUp) return;
         if (room instanceof EventRoom) {
-            AbstractCard card = GeneralUtil.getRandomElement(AbstractDungeon.player.masterDeck.group, AbstractDungeon.relicRng);
+            AbstractCard card = GeneralUtil.getRandomElement(AbstractDungeon.player.masterDeck.group, AbstractDungeon.miscRng);
             if (card != null && !card.upgraded) {
                 RelicEventHelper.upgradeCards(card);
             } else {

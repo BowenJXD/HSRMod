@@ -64,7 +64,7 @@ public class QuakePower extends BuffPower implements OnPlayerLoseBlockSubscriber
             Quake quake = new Quake();
             quake.baseDamage = damage;
             quake.upgrade();
-            addToTop(new MakeTempCardInHandAction(quake));
+            addToBot(new MakeTempCardInHandAction(quake));
         }
     }
 }

@@ -25,11 +25,11 @@ public class CosmicBigLotto extends BaseRelic {
     public void atBattleStart() {
         super.atBattleStart();
         if (usedUp) return;
-        if (AbstractDungeon.relicRng.random(100) < winChance) {
+        if (AbstractDungeon.miscRng.random(100) < winChance) {
             flash();
             RewardEditor.addExtraRewardToTop(rewards -> rewards.add(new RewardItem(RelicLibrary.getRelic(AbstractDungeon.returnRandomRelicKey(AbstractDungeon.returnRandomRelicTier())).makeCopy())));
         }
-        if (AbstractDungeon.relicRng.random(100) < loseChance) {
+        if (AbstractDungeon.miscRng.random(100) < loseChance) {
             flash();
             addToBot(new DamageAction(AbstractDungeon.player, new DamageInfo(AbstractDungeon.player, AbstractDungeon.player.currentHealth / 2, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
             destroy();

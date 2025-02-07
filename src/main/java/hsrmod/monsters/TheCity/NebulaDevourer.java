@@ -1,9 +1,12 @@
 package hsrmod.monsters.TheCity;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.WeakPower;
+import com.megacrit.cardcrawl.vfx.combat.FireballEffect;
+import com.megacrit.cardcrawl.vfx.combat.GhostIgniteEffect;
 import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.enemyOnly.OutragePower;
 import hsrmod.powers.enemyOnly.ResonatePower;
@@ -21,7 +24,9 @@ public class NebulaDevourer extends BaseMonster {
         addMove(Intent.ATTACK, 8, mi -> {
             attack(mi, AbstractGameAction.AttackEffect.BLUNT_LIGHT);
         });
-        addMove(Intent.ATTACK_DEBUFF, moreDamageAs ? 10 : 8, mi -> {
+        addMoveA(Intent.ATTACK_DEBUFF, 16, mi -> {
+            addToBot(new VFXAction(new FireballEffect(hb.cX, hb.cY, p.hb.cX, p.hb.cY), 0.5f));
+            addToBot(new VFXAction(new GhostIgniteEffect(p.hb.cX, p.hb.cY)));
             attack(mi, AbstractGameAction.AttackEffect.BLUNT_HEAVY);
             addToBot(new ApplyPowerAction(p, this, new OutragePower(p, 1)));
         });

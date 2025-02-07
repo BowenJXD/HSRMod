@@ -26,7 +26,7 @@ public class Robin1 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        int amt = energyOnUse;
+        int amt = energyOnUse + (p.hasRelic("Chemical X") ? 2 : 0);
         addToBot(new DrawCardAction(p, amt));
 
         ModHelper.addToBotAbstract(() ->

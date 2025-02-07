@@ -1,6 +1,9 @@
 package hsrmod.powers.enemyOnly;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.ShowCardAction;
@@ -13,6 +16,9 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.combat.GiantEyeEffect;
+import com.megacrit.cardcrawl.vfx.combat.TimeWarpTurnEndEffect;
+import com.megacrit.cardcrawl.vfx.stance.DivinityParticleEffect;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.DebuffPower;
 
@@ -25,9 +31,13 @@ public class SunsetPower extends DebuffPower {
 
     public Supplier<AbstractMonster> monsterSupplier;
     
+    float duration;
+    private float particleTimer;
+
     public SunsetPower(AbstractCreature owner, int amount, Supplier<AbstractMonster> monsterSupplier) {
         super(POWER_ID, owner, amount);
         this.monsterSupplier = monsterSupplier;
+        this.particleTimer = 0.0F;
         updateDescription();
     }
 
@@ -43,9 +53,11 @@ public class SunsetPower extends DebuffPower {
         reducePower(1);
         if (amount <= 0) {
             addToTop(new RemoveSpecificPowerAction(owner, owner, this));
+            addToBot(new VFXAction(new GiantEyeEffect(owner.hb.cX, owner.hb.cY, Color.PURPLE)));
             AbstractMonster monster = monsterSupplier.get();
             if (monsterSupplier != null && monster != null)
                 addToBot(new MultiStasisAction(monster, AbstractDungeon.player.hand));
+            addToBot(new VFXAction(new TimeWarpTurnEndEffect()));
             addToBot(new PressEndTurnButtonAction());
         }
         else {
@@ -53,6 +65,16 @@ public class SunsetPower extends DebuffPower {
         }
     }
 
+    @Override
+    public void update(int slot) {
+        super.update(slot);
+        this.particleTimer -= Gdx.graphics.getDeltaTime();
+        if (this.particleTimer < 0.0F) {
+            this.particleTimer = 0.2F;
+            AbstractDungeon.effectsQueue.add(new DivinityParticleEffect());
+        }
+    }
+    
     /*@Override
     public void atEndOfTurnPreEndTurnCards(boolean isPlayer) {
         super.atEndOfTurnPreEndTurnCards(isPlayer);

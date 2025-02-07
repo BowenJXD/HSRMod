@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.actions.unique.LoseEnergyAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
@@ -24,7 +25,7 @@ public class ImbibitorLunae1 extends BaseCard {
         shout(0, 1);
         
         int x = 0;
-        switch (energyOnUse) {
+        switch (energyOnUse + (p.hasRelic("Chemical X") ? 2 : 0)) {
             case 0:
                 x = 2;
                 break;
@@ -47,6 +48,6 @@ public class ImbibitorLunae1 extends BaseCard {
             ));
         }
         addToBot(new ApplyPowerAction(p, p, new EnergyPower(p, energyOnUse * 20), energyOnUse * 20));
-        addToBot(new LoseEnergyAction(energyOnUse));
+        addToBot(new LoseEnergyAction(EnergyPanel.totalCount));
     }
 }

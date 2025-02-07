@@ -1,5 +1,6 @@
 package hsrmod.monsters.TheCity;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.*;
 import com.megacrit.cardcrawl.actions.common.*;
@@ -11,7 +12,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
+import com.megacrit.cardcrawl.vfx.combat.*;
 import hsrmod.misc.PathDefine;
 import hsrmod.modcore.HSRMod;
 import hsrmod.monsters.BaseMonster;
@@ -64,7 +65,8 @@ public class Hoolay extends BaseMonster {
             case 1:
                 addToBot(new AnimateHopAction(this));
                 for (int i = 0; i < damageTimes[0]; i++) {
-                    addToBot(new DamageAction(p, this.damage.get(0), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+                    addToBot(new VFXAction(new ClawEffect(p.hb.cX, p.hb.cY, Color.MAROON, Color.SCARLET)));
+                    addToBot(new DamageAction(p, this.damage.get(0)));
                 }
                 break;
             case 2:
@@ -73,9 +75,11 @@ public class Hoolay extends BaseMonster {
                 ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + r, 3.0F));
 
                 addToBot(new AnimateHopAction(this));
+                addToBot(new VFXAction(new ScrapeEffect(p.hb.cX, p.hb.cY)));
                 for (int i = 0; i < damageTimes[1]; i++) {
-                    addToBot(new DamageAction(p, this.damage.get(1), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+                    addToBot(new DamageAction(p, this.damage.get(1)));
                 }
+                addToBot(new VFXAction(new ShockWaveEffect(hb.cX, hb.cY, Color.FIREBRICK, ShockWaveEffect.ShockWaveType.CHAOTIC)));
                 AbstractDungeon.getMonsters().monsters.stream().filter(m -> !m.isDead && !m.hasPower(MoonRagePower.POWER_ID)).forEach(m -> {
                     addToBot(new ApplyPowerAction(m, this, new MoonRagePower(m, 1), 1));
                     addToBot(new LoseHPAction(this, this, 4));
@@ -89,7 +93,8 @@ public class Hoolay extends BaseMonster {
 
                 addToBot(new AnimateHopAction(this));
                 for (int i = 0; i < damageTimes[2]; i++) {
-                    addToBot(new DamageAction(p, this.damage.get(2), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+                    addToBot(new VFXAction(new RipAndTearEffect(p.hb.cX, p.hb.cY, Color.MAROON, Color.SCARLET)));
+                    addToBot(new DamageAction(p, this.damage.get(2)));
                 }
                 addToBot(new ApplyPowerAction(p, this, new TerrorPower(p, 1), 1));
                 break;

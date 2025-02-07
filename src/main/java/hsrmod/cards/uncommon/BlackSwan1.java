@@ -1,10 +1,12 @@
 package hsrmod.cards.uncommon;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.combat.BossCrystalImpactEffect;
 import hsrmod.actions.AOEAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.ElementalDamageAllAction;
@@ -30,6 +32,7 @@ public class BlackSwan1 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         if (upgraded) {
+            addToBot(new AOEAction((q) -> new VFXAction(new BossCrystalImpactEffect(q.hb.cX, q.hb.cY))));
             addToBot(new ElementalDamageAllAction(
                     this,
                     AbstractGameAction.AttackEffect.POISON)
@@ -38,6 +41,7 @@ public class BlackSwan1 extends BaseCard {
                         addToBot(new ApplyPowerAction(ci.target, p, new EpiphanyPower(ci.target, 1), 1));
                     }));
         } else {
+            addToBot(new VFXAction(new BossCrystalImpactEffect(m.hb.cX, m.hb.cY)));
             addToBot(new ElementalDamageAction(
                     m,
                     new ElementalDamageInfo(this),

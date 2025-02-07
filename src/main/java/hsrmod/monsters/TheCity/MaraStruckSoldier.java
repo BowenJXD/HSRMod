@@ -13,7 +13,7 @@ public class MaraStruckSoldier extends BaseMonster {
         super(ID, 200, 256, x, y);
         
         addMove(Intent.ATTACK_DEBUFF, 2, 2, mi -> {
-            attack(mi, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, AttackAnim.FAST);
+            attack(mi, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, AttackAnim.MOVE);
             addToBot(new ApplyPowerAction(p, this, new WindShearPower(p, this, 2)));
         });
     }

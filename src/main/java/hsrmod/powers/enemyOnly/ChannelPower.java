@@ -1,7 +1,9 @@
 package hsrmod.powers.enemyOnly;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -9,6 +11,7 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.vfx.combat.FastingEffect;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.StatePower;
@@ -53,10 +56,12 @@ public class ChannelPower extends AbstractPower {
         isSurprise = !isSurprise;
         this.fontScale = 8.0F;
         if (isSurprise) {
+            addToTop(new VFXAction(new FastingEffect(owner.hb.cX, owner.hb.cY, Color.YELLOW)));
             loadRegion("Channel_SurprisePower");
             amount = 1;
         }
         else {
+            addToTop(new VFXAction(new FastingEffect(owner.hb.cX, owner.hb.cY, Color.RED)));
             loadRegion("Channel_FrightPower");
             amount = -1;
         }

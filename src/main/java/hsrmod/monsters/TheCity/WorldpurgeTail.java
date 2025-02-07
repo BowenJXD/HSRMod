@@ -21,7 +21,7 @@ public class WorldpurgeTail extends BaseMonster {
         addMove(Intent.ATTACK, 6, mi -> {
             attack(mi, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL);
         });
-        addMoveA(Intent.ATTACK_DEBUFF, 6, mi -> {
+        addMoveA(Intent.ATTACK_DEBUFF, 12, mi -> {
             attack(mi, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL);
             addToBot(new ApplyPowerAction(p, this, new WeakPower(p, 1, true)));
             if (specialAs)

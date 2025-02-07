@@ -1,15 +1,19 @@
 package hsrmod.cards.uncommon;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.combat.VerticalImpactEffect;
 import hsrmod.actions.BreakDamageAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.effects.MultiSlashEffect;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.misc.BreakEffectPower;
@@ -30,6 +34,8 @@ public class Firefly1 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         returnToHand = false;
+        //addToBot(new VFXAction(new VerticalImpactEffect(m.hb.cX, m.hb.cY)));
+        addToBot(new VFXAction(new MultiSlashEffect(m.hb.cX, m.hb.cY, 5, Color.CHARTREUSE, Color.ORANGE)));
 
         if (AbstractDungeon.cardRandomRng.randomBoolean()) {
             ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID + "-1"));

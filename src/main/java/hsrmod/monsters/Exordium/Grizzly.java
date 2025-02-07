@@ -102,6 +102,5 @@ public class Grizzly extends BaseMonster {
     @Override
     public void die() {
         super.die();
-        ModHelper.killAllMinions();
     }
 }

@@ -1,10 +1,13 @@
 package hsrmod.cards.common;
 
+import com.badlogic.gdx.graphics.Color;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.vfx.combat.FastingEffect;
 import hsrmod.actions.CleanAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.powers.uniqueBuffs.HuohuoPower;
@@ -20,6 +23,7 @@ public class March7th1 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new VFXAction(new FastingEffect(p.hb.cX, p.hb.cY, Color.PINK)));
         addToBot(new GainBlockAction(p, p, block));
         AbstractPower power = p.getPower(ReinforcePower.POWER_ID);
         if (power != null)

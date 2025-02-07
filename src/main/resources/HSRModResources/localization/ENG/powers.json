@@ -83,7 +83,7 @@
   "HSRMod:Aftertaste": {
     "NAME": "Aftertaste",
     "DESCRIPTIONS": [
-      "After dealing damage via Follow-Up cards, deal #b%d damage to the target, and stack 1. Reset to 1 at the end of turn."
+      "After a Follow-Up card deals its first damage, deal #b%d damage to the target, and stack 1. Reset to 1 at the end of turn."
     ]
   },
   "HSRMod:Suspicion": {

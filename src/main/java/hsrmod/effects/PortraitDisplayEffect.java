@@ -35,12 +35,12 @@ public class PortraitDisplayEffect extends AbstractGameEffect {
         this.img = new TextureAtlas.AtlasRegion(texture, 0, 0, texture.getWidth(), texture.getHeight());  // Load the image
         this.duration = shrinkTime + stayTime + fadeTime;  // Total duration
         this.shrinkTime = 0.1f;  // A
-        this.stayTime = 0.5f;    // B
+        this.stayTime = 0.3f;    // B
         this.fadeTime = 0.2f;    // C
         this.totalTime = 0f;
 
         // Calculate the target scale based on screen height
-        this.initialScale = 1.2f;
+        this.initialScale = 1.5f;
         this.targetScale = 1;
         this.scaleX = 1;
         this.scaleY = 1;

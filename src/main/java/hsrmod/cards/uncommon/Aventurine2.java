@@ -1,5 +1,7 @@
 package hsrmod.cards.uncommon;
 
+import com.badlogic.gdx.graphics.Color;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -8,6 +10,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
 import com.megacrit.cardcrawl.powers.BlurPower;
+import com.megacrit.cardcrawl.vfx.combat.FastingEffect;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.utils.ModHelper;
@@ -24,6 +27,7 @@ public class Aventurine2 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new VFXAction(new FastingEffect(p.hb.cX, p.hb.cY, Color.YELLOW)));
         for (int i = 0; i < magicNumber; i++) {
             int blockThisTurn = AbstractDungeon.cardRandomRng.random(1, block);
             addToBot(new GainBlockAction(p, p, blockThisTurn));

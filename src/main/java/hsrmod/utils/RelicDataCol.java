@@ -9,4 +9,5 @@ public enum RelicDataCol {
     Sound,
     Destructible,
     Subtle,
+    Special,
 }

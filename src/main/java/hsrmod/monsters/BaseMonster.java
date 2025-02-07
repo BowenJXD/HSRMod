@@ -19,7 +19,8 @@ import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.EnemyMoveInfo;
 import com.megacrit.cardcrawl.powers.MinionPower;
-import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
+import com.megacrit.cardcrawl.vfx.combat.*;
+import hsrmod.effects.MoveToEffect;
 import hsrmod.misc.PathDefine;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.enemyOnly.SummonedPower;
@@ -343,10 +344,13 @@ public abstract class BaseMonster extends CustomMonster {
                 case JUMP:
                     addToBot(new AnimateJumpAction(this));
                     break;
+                case MOVE:
+                    addToBot(new VFXAction(new MoveToEffect(this, p.hb.cX + p.hb.width / 2 - hb.cX, p.hb.cY - hb.cY, true, 0.4f)));
+                    break;
             }
         for (int i = 0; i < info.damageTimeSupplier.get(); i++) {
             addToBot(new DamageAction(p, this.damage.get(info.index), effect));
-        }        
+        }
     }
     
     public void attack(MoveInfo info, AbstractGameAction.AttackEffect effect) {
@@ -437,6 +441,7 @@ public abstract class BaseMonster extends CustomMonster {
         SLOW,
         HOP,
         JUMP,
+        MOVE,
     }
     
     @SpirePatch(clz = AbstractMonster.class, method = SpirePatch.CONSTRUCTOR, paramtypez = {String.class, String.class, int.class, float.class, float.class, float.class, float.class, String.class, float.class, float.class, boolean.class})

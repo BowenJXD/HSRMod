@@ -1,11 +1,13 @@
 package hsrmod.powers.uniqueBuffs;
 
 import com.evacipated.cardcrawl.mod.stslib.actions.common.MoveCardsAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.vfx.combat.FlameBarrierEffect;
 import hsrmod.actions.BreakDamageAction;
 import hsrmod.cards.uncommon.Firefly1;
 import hsrmod.modcore.ElementType;
@@ -45,10 +47,11 @@ public class FireflyPower extends PowerPower implements PreBreakSubscriber {
     public void preBreak(ElementalDamageInfo info, AbstractCreature target) {
         if (SubscriptionManager.checkSubscriber(this)) {
             this.flash();
+            addToBot(new VFXAction(new FlameBarrierEffect(owner.hb.cX, owner.hb.cY)));
             addToBot(new BreakDamageAction(target, new DamageInfo(this.owner, ToughnessPower.getStackLimit(target))));
             this.addToBot(new ApplyPowerAction(this.owner, this.owner, new BreakEfficiencyPower(this.owner, 1), 1));
 
-            if (AbstractDungeon.actionManager.lastCard instanceof Firefly1) return;
+            if (AbstractDungeon.actionManager.lastCard instanceof Firefly1 || AbstractDungeon.actionManager.cardQueue.stream().anyMatch(cqi -> cqi.card instanceof Firefly1)) return;
             List<ModHelper.FindResult> fireFiles = ModHelper.findCards(c -> c instanceof Firefly1);
             for (ModHelper.FindResult
                     result : fireFiles) {

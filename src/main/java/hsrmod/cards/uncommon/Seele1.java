@@ -1,7 +1,9 @@
 package hsrmod.cards.uncommon;
 
+import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.MoveCardsAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -10,6 +12,7 @@ import com.megacrit.cardcrawl.helpers.GetAllInBattleInstances;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.effects.MultiShivFreezeEffect;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.utils.CardDataCol;
@@ -43,6 +46,7 @@ public class Seele1 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         shout(0);
+        addToBot(new VFXAction(new MultiShivFreezeEffect(Color.PURPLE, Color.BLUE, Color.MAGENTA), 1f));
         AbstractGameAction action = new ElementalDamageAction(
                 m,
                 new ElementalDamageInfo(this),

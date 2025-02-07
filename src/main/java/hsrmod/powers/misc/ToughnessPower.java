@@ -5,7 +5,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -14,9 +16,17 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.stance.StanceAuraEffect;
 import com.megacrit.cardcrawl.vfx.stance.WrathParticleEffect;
+import hsrmod.actions.ElementalDamageAction;
+import hsrmod.actions.ReduceToughnessAction;
+import hsrmod.characters.StellaCharacter;
 import hsrmod.effects.CustomAuraEffect;
+import hsrmod.modcore.ElementType;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
+import hsrmod.relics.starter.GalacticBat;
+import hsrmod.subscribers.SubscriptionManager;
+import hsrmod.utils.ModHelper;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -67,6 +77,16 @@ public class ToughnessPower extends BuffPower implements InvisiblePower {
         if (damageType == DamageInfo.DamageType.NORMAL)
             return damage * ( 1 - (this.amount / 100.0F) );
         return damage;
+    }
+
+    @Override
+    public int onAttacked(DamageInfo info, int damageAmount) {
+        if (!(info instanceof ElementalDamageInfo)
+                && !(AbstractDungeon.player instanceof StellaCharacter)
+                && info.type == DamageInfo.DamageType.NORMAL) {
+            addToTop(new ReduceToughnessAction(owner, info.owner, 2, ElementType.None));
+        }
+        return damageAmount;
     }
 
     @Override

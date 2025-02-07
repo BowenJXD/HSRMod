@@ -1,10 +1,13 @@
 package hsrmod.cards.uncommon;
 
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.PetalEffect;
 import hsrmod.cards.BaseCard;
+import hsrmod.effects.PetalFallingEffect;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.powers.uniqueDebuffs.ThanatoplumRebloomPower;
 
@@ -22,6 +25,7 @@ public class RuanMei2 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new VFXAction(new PetalFallingEffect()));
         Iterator<AbstractMonster> var3 = AbstractDungeon.getMonsters().monsters.iterator();
         
         while (var3.hasNext()) {

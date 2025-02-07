@@ -31,7 +31,7 @@ public class RelicEventHelper {
         int count = 0;
         List<String> upgradedCards = new ArrayList<>();
         List<AbstractCard> list = AbstractDungeon.player.masterDeck.group;
-        Collections.shuffle(list, AbstractDungeon.relicRng.random);
+        Collections.shuffle(list, AbstractDungeon.miscRng.random);
 
         for (AbstractCard c : list) {
             if (c.canUpgrade() && !upgradedCards.contains(c.cardID)) {

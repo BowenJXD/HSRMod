@@ -2,10 +2,12 @@ package hsrmod.cards.rare;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DiscardAction;
+import com.megacrit.cardcrawl.actions.unique.LoseEnergyAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import hsrmod.actions.BreakDamageAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
@@ -37,6 +39,6 @@ public class CourtOfHomogeneity extends BaseCard {
                 addToBot(new BreakDamageAction(m, new DamageInfo(p, dmg)));
             }
         });
-        p.energy.use(energyOnUse);
+        addToBot(new LoseEnergyAction(EnergyPanel.totalCount));
     }
 }

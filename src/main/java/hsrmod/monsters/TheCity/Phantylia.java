@@ -26,6 +26,7 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.UnawakenedPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
+import com.megacrit.cardcrawl.vfx.combat.BossCrystalImpactEffect;
 import com.megacrit.cardcrawl.vfx.combat.IntenseZoomEffect;
 import hsrmod.misc.Encounter;
 import hsrmod.misc.PathDefine;
@@ -44,17 +45,15 @@ public class Phantylia extends BaseMonster implements PostPowerApplySubscriber {
 
     int heal = 14;
     int chargeRemove = -100;
-    int strengthGain = 4;
+    int strengthGain = 1;
     int phase = 1;
 
     public Phantylia() {
         super(ID, 0.0F, 30.0F, 400F, 500F, 100.0F, 0.0F);
 
         if (ModHelper.specialAscension(type)) {
-            strengthGain = 4;
             heal = 14;
         } else {
-            strengthGain = 3;
             heal = 10;
         }
         
@@ -90,6 +89,7 @@ public class Phantylia extends BaseMonster implements PostPowerApplySubscriber {
             case 1:
                 addToBot(new ShoutAction(this, DIALOG[1]));
                 ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_2", 3.0F));
+                addToBot(new VFXAction(new BossCrystalImpactEffect(p.hb.cX, p.hb.cY)));
                 addToBot(new ApplyPowerAction(p, this, new EnergyPower(p, chargeRemove), chargeRemove));
                 addToBot(new DamageAction(p, this.damage.get(0), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
                 for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
@@ -154,6 +154,7 @@ public class Phantylia extends BaseMonster implements PostPowerApplySubscriber {
             case 6:
                 addToBot(new ShoutAction(this, DIALOG[6]));
                 ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_7", 3.0F));
+                addToBot(new VFXAction(new BossCrystalImpactEffect(p.hb.cX, p.hb.cY)));
                 addToBot(new ApplyPowerAction(p, this, new EnergyPower(p, -EnergyPower.AMOUNT_LIMIT), -EnergyPower.AMOUNT_LIMIT));
                 addToBot(new ApplyPowerAction(this, this, new ChargingPower(this, MOVES[7], 1), 1));
                 break;
@@ -261,22 +262,20 @@ public class Phantylia extends BaseMonster implements PostPowerApplySubscriber {
     
     void spawnAbundanceLotus(boolean awakened){
         ModHelper.addToBotAbstract(() -> {
-            if (AbstractDungeon.getMonsters().monsters.stream().noneMatch(m -> m instanceof AbundanceLotus)) {
+            if (AbstractDungeon.getMonsters().monsters.stream().noneMatch(m -> m instanceof AbundanceLotus && ModHelper.check(m))) {
                 AbstractMonster lotus = new AbundanceLotus(-400.0F, 300.0F, awakened);
-                addToTop(new ApplyPowerAction(lotus, this, new SummonedPower(lotus)));
-                addToTop(new ApplyPowerAction(lotus, this, new AbundanceLotusPower(lotus)));
-                addToTop(new SpawnMonsterAction(lotus, true));
+                lotus.usePreBattleAction();
+                addToTop(new SpawnMonsterAction(lotus, false));
             }
         });
     }
     
     void spawnDestructionLotus(boolean awakened){
         ModHelper.addToBotAbstract(() -> {
-            if (AbstractDungeon.getMonsters().monsters.stream().noneMatch(m -> m instanceof DestructionLotus)) {
+            if (AbstractDungeon.getMonsters().monsters.stream().noneMatch(m -> m instanceof DestructionLotus && ModHelper.check(m))) {
                 AbstractMonster lotus = new DestructionLotus(-400.0F, 0.0F, awakened);
-                addToTop(new ApplyPowerAction(lotus, this, new SummonedPower(lotus)));
-                addToTop(new ApplyPowerAction(lotus, this, new DestructionLotusPower(lotus)));
-                addToTop(new SpawnMonsterAction(lotus, true));
+                lotus.usePreBattleAction();
+                addToTop(new SpawnMonsterAction(lotus, false));
             }
         });
     }

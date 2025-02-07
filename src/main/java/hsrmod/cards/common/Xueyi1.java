@@ -1,12 +1,14 @@
 package hsrmod.cards.common;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.vfx.combat.ClashEffect;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
@@ -32,6 +34,7 @@ public class Xueyi1 extends BaseCard implements PreToughnessReduceSubscriber {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         // find the monster with greatest toughness
+        addToBot(new VFXAction(new ClashEffect(m.hb.cX, m.hb.cY)));
         AbstractMonster mo = AbstractDungeon.getMonsters().monsters.stream()
                 .filter(monster -> !monster.isDead && !monster.isDying)
                 .max((monster1, monster2) -> {
@@ -53,7 +56,7 @@ public class Xueyi1 extends BaseCard implements PreToughnessReduceSubscriber {
             addToBot(new ElementalDamageAction(
                     mo,
                     new ElementalDamageInfo(this),
-                    AbstractGameAction.AttackEffect.SLASH_DIAGONAL
+                    AbstractGameAction.AttackEffect.NONE
             ));
         }
         

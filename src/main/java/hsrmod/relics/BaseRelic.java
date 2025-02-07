@@ -16,6 +16,7 @@ import hsrmod.utils.RelicDataCol;
 public abstract class BaseRelic extends CustomRelic {
     public int magicNumber;
     public String modNameCache = null;
+    public boolean hsrOnly = false;
     
     public BaseRelic(String id){
         super(HSRMod.makePath(id),
@@ -27,6 +28,7 @@ public abstract class BaseRelic extends CustomRelic {
         magicNumber = DataManager.getInstance().getRelicDataInt(id, RelicDataCol.MagicNumber);
         RelicTagField.destructible.set(this, DataManager.getInstance().getRelicDataBoolean(id, RelicDataCol.Destructible));
         RelicTagField.subtle.set(this, DataManager.getInstance().getRelicDataBoolean(id, RelicDataCol.Subtle));
+        hsrOnly = DataManager.getInstance().getRelicDataBoolean(id, RelicDataCol.Special);
     }
     
     // 获取遗物描述，但原版游戏只在初始化和获取遗物时调用，故该方法等于初始描述

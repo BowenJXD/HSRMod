@@ -1,9 +1,12 @@
 package hsrmod.monsters.TheCity;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.combat.BiteEffect;
 import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.enemyOnly.DeathExplosionPower;
 import hsrmod.powers.enemyOnly.MultiMovePower;
@@ -16,7 +19,8 @@ public class GoldenHound extends BaseMonster {
         super(ID, 150, 222, x, y);
         
         addMove(Intent.ATTACK, 8, mi -> {
-            attack(mi, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, AttackAnim.SLOW);
+            addToBot(new VFXAction(new BiteEffect(p.hb.cX, p.hb.cY, Color.YELLOW)));
+            attack(mi, AbstractGameAction.AttackEffect.NONE, AttackAnim.MOVE);
         });
     }
 

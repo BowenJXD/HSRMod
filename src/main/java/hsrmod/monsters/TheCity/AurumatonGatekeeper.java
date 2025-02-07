@@ -3,6 +3,7 @@ package hsrmod.monsters.TheCity;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.AnimateFastAttackAction;
 import com.megacrit.cardcrawl.actions.animations.ShoutAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -14,6 +15,8 @@ import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.WeakPower;
+import com.megacrit.cardcrawl.vfx.combat.SmallLaserEffect;
+import com.megacrit.cardcrawl.vfx.combat.SweepingBeamEffect;
 import hsrmod.cardsV2.Curse.Imprison;
 import hsrmod.misc.PathDefine;
 import hsrmod.modcore.HSRMod;
@@ -47,6 +50,7 @@ public class AurumatonGatekeeper extends BaseMonster {
         AbstractPlayer p = AbstractDungeon.player;
         switch (nextMove) {
             case 1:
+                addToBot(new VFXAction(new SmallLaserEffect(this.hb.cX, this.hb.cY + 100.0F * Settings.scale, p.hb.cX, p.hb.cY), 0.5F));
                 int r = AbstractDungeon.miscRng.random(1);
                 addToBot(new ShoutAction(this, DIALOG[r]));
                 ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_" + r, 3.0F));
@@ -54,6 +58,7 @@ public class AurumatonGatekeeper extends BaseMonster {
                 break;
             case 2:
                 addToBot(new AnimateFastAttackAction(this));
+                addToBot(new VFXAction(new SweepingBeamEffect(p.hb.cX, p.hb.cY, true)));
                 addToBot(new DamageAction(p, this.damage.get(0), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
                 addToBot(new ApplyPowerAction(p, this, new WeakPower(p, 1, true), 1));
                 addToBot(new ApplyPowerAction(this, this, new SanctionRatePower(this, SanctionRatePower.stackCount), SanctionRatePower.stackCount));

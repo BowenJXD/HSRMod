@@ -3,9 +3,11 @@ package hsrmod.monsters.TheBeyond;
 import basemod.BaseMod;
 import basemod.abstracts.CustomMonster;
 import basemod.interfaces.OnCardUseSubscriber;
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.ShoutAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.actions.utility.ShakeScreenAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -21,6 +23,12 @@ import com.megacrit.cardcrawl.powers.FrailPower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.powers.watcher.EnergyDownPower;
 import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
+import com.megacrit.cardcrawl.vfx.SpotlightEffect;
+import com.megacrit.cardcrawl.vfx.StarBounceEffect;
+import com.megacrit.cardcrawl.vfx.combat.BossCrystalImpactEffect;
+import com.megacrit.cardcrawl.vfx.combat.ViolentAttackEffect;
+import com.megacrit.cardcrawl.vfx.combat.WeightyImpactEffect;
+import hsrmod.actions.ForceWaitAction;
 import hsrmod.cards.base.Danheng0;
 import hsrmod.cards.base.Himeko0;
 import hsrmod.cards.base.March7th0;
@@ -86,16 +94,19 @@ public class TheGreatSeptimus extends BaseMonster implements OnCardUseSubscriber
         switch (this.nextMove) {
             case 1:
                 // AbstractDungeon.topLevelEffectsQueue.add(new PlayVideoEffect(PathDefine.VIDEO_PATH + ID + ".webm"));
-                addToBot(new DamageAction(p, this.damage.get(0), AbstractGameAction.AttackEffect.SLASH_VERTICAL, true));
+                addToBot(new VFXAction(new BossCrystalImpactEffect(p.hb.cX, p.hb.cY)));
+                addToBot(new DamageAction(p, this.damage.get(0), AbstractGameAction.AttackEffect.BLUNT_LIGHT, true));
                 addToBot(new ApplyPowerAction(p, this, new AlienDreamPower(p, 1), 1));
                 break;
             case 2:
-                addToBot(new DamageAction(p, this.damage.get(1), AbstractGameAction.AttackEffect.SLASH_VERTICAL, true));
+                addToBot(new DamageAction(p, this.damage.get(1), AbstractGameAction.AttackEffect.BLUNT_HEAVY, true));
                 if (p.energy.energy - ModHelper.getPowerCount(p, EnergyDownPower.POWER_ID) > 3)
                     addToBot(new ApplyPowerAction(p, this, new EnergyDownPower(p, 1), 1));
                 break;
             case 3:
-                addToBot(new DamageAction(p, this.damage.get(2), AbstractGameAction.AttackEffect.SLASH_VERTICAL, true));
+                addToBot(new VFXAction(new WeightyImpactEffect(p.hb.cX, p.hb.cY)));
+                if (Settings.FAST_MODE) addToBot(new ForceWaitAction(0.5F));
+                addToBot(new DamageAction(p, this.damage.get(2), AbstractGameAction.AttackEffect.SMASH));
                 addToBot(new ApplyPowerAction(p, this, new WeakPower(p, 2, true), 2));
                 addToBot(new ApplyPowerAction(p, this, new FrailPower(p, 2, true), 2));
                 break;
@@ -105,11 +116,12 @@ public class TheGreatSeptimus extends BaseMonster implements OnCardUseSubscriber
             case 5:
                 if (hasPower(ChargingPower.POWER_ID)) {
                     for (int i = 0; i < numDamage; i++) {
-                        addToBot(new DamageAction(p, this.damage.get(3), AbstractGameAction.AttackEffect.BLUNT_HEAVY, true));
+                        addToBot(new DamageAction(p, this.damage.get(3), AbstractGameAction.AttackEffect.SLASH_DIAGONAL, true));
                     }
                 }
                 break;
             case 6:
+                addToBot(new VFXAction(new SpotlightEffect()));
                 addToBot(new GainBlockAction(this, this, blockGain));
                 addToBot(new ApplyPowerAction(this, this, new IfWeLiveInTheLightPower(this, 1), 1));
                 addToBot(new ApplyPowerAction(this, this, new ChargingPower(this, MOVES[6], 1), 1));
@@ -123,10 +135,14 @@ public class TheGreatSeptimus extends BaseMonster implements OnCardUseSubscriber
                     addToBot(new ShoutAction(this, DIALOG[8], 3.0F, 4.0F));
                     ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_Day9", 3));
                 }
-                
-                addToBot(new RemoveSpecificPowerAction(this, this, ChargingPower.POWER_ID));
+                if (Settings.FAST_MODE) {
+                    this.addToBot(new VFXAction(new ViolentAttackEffect(p.hb.cX, p.hb.cY, Color.YELLOW)));
+                } else {
+                    this.addToBot(new VFXAction(new ViolentAttackEffect(p.hb.cX, p.hb.cY, Color.YELLOW), 0.4F));
+                }
                 for (int i = 0; i < numDamage; i++) {
-                    addToBot(new DamageAction(p, this.damage.get(4), AbstractGameAction.AttackEffect.SMASH));
+                    addToBot(new DamageAction(p, this.damage.get(4)));
+                    this.addToBot(new VFXAction(new StarBounceEffect(p.hb.cX, p.hb.cY)));
                 }
                 addToBot(new ShakeScreenAction(0.3F, ScreenShake.ShakeDur.LONG, ScreenShake.ShakeIntensity.LOW));
                 break;

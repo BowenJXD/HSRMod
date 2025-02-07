@@ -3,11 +3,13 @@ package hsrmod.monsters.Exordium;
 import basemod.BaseMod;
 import basemod.interfaces.OnPowersModifiedSubscriber;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RollMoveAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+import com.megacrit.cardcrawl.vfx.combat.BossCrystalImpactEffect;
 import com.megacrit.cardcrawl.vfx.combat.LaserBeamEffect;
 import com.megacrit.cardcrawl.vfx.combat.SmallLaserEffect;
 import hsrmod.misc.Encounter;
@@ -51,7 +53,6 @@ public class AntimatterEngine extends BaseMonster implements OnPowersModifiedSub
     public void takeTurn() {
         switch (nextMove) {
             case 0:
-                addToBot(new ApplyPowerAction(p, this, new SnarelockPower(p, this, 0), 0));
                 break;
             case 1:
                 if (leftHand != null) {
@@ -82,6 +83,10 @@ public class AntimatterEngine extends BaseMonster implements OnPowersModifiedSub
                     BaseMod.unsubscribe(this);
                 }
                 break;
+        }
+        if (!p.hasPower(SnarelockPower.POWER_ID)) {
+            addToBot(new VFXAction(new BossCrystalImpactEffect(p.hb.cX, p.hb.cY)));
+            addToBot(new ApplyPowerAction(p, this, new SnarelockPower(p, this, 0), 0));
         }
         addToBot(new RollMoveAction(this));
     }

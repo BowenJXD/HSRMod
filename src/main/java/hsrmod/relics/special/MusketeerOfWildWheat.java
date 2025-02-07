@@ -22,7 +22,7 @@ public class MusketeerOfWildWheat extends BaseRelic {
         super.onEquip();
         AbstractCard card = GeneralUtil.getRandomElement(
                 AbstractDungeon.player.masterDeck.group.stream().filter(c -> c.hasTag(AbstractCard.CardTags.STARTER_STRIKE) && c.canUpgrade()).collect(Collectors.toList()), 
-                AbstractDungeon.relicRng);
+                AbstractDungeon.miscRng);
         RelicEventHelper.upgradeCards(card);
     }
 

@@ -45,9 +45,11 @@ public class Yunli1 extends BaseCard implements OnPlayerDamagedSubscriber {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        CardCrawlGame.MUTE_IF_BG = false;
-        shout(0, 1);
-        ModHelper.addToBotAbstract(this::execute);
+        if (ModHelper.getPowerCount(p, EnergyPower.POWER_ID) >= energyExhaust) {
+            CardCrawlGame.MUTE_IF_BG = false;
+            shout(0, 1);
+            ModHelper.addToBotAbstract(this::execute);
+        }
         canBeUsed = false;
     }
 

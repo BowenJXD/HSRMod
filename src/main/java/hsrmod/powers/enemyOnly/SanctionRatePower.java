@@ -1,6 +1,7 @@
 package hsrmod.powers.enemyOnly;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.RollMoveAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.actions.watcher.PressEndTurnButtonAction;
@@ -11,6 +12,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterQueueItem;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.vfx.combat.TimeWarpTurnEndEffect;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
@@ -59,8 +61,10 @@ public class SanctionRatePower extends StatePower {
                 ModHelper.addToBotAbstract(m::createIntent);
             }
             
-            if (!AbstractDungeon.actionManager.turnHasEnded)
+            if (!AbstractDungeon.actionManager.turnHasEnded) {
+                addToBot(new VFXAction(new TimeWarpTurnEndEffect()));
                 addToBot(new PressEndTurnButtonAction());
+            }
             else if (m != null) {
                 AbstractDungeon.actionManager.monsterQueue.add(new MonsterQueueItem(m));
             }

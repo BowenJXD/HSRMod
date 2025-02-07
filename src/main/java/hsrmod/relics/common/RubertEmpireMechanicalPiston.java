@@ -36,7 +36,7 @@ public class RubertEmpireMechanicalPiston extends BaseRelic implements IRubertEm
 
             AbstractRelic[] relics = AbstractDungeon.player.relics.stream().filter(r -> r.tier != AbstractRelic.RelicTier.STARTER).toArray(AbstractRelic[]::new);
             if (relics.length == 0) return;
-            AbstractRelic relic = relics[AbstractDungeon.relicRng.random(relics.length - 1)];
+            AbstractRelic relic = relics[AbstractDungeon.miscRng.random(relics.length - 1)];
             if (relic == RubertEmpireMechanicalPiston.this) {
                 RelicEventHelper.loseRelics(
                         Arrays.stream(relics)

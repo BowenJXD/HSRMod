@@ -4,6 +4,7 @@ import basemod.abstracts.CustomCard;
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.SpawnModificationCard;
 import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.CommonKeywordIconsField;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -12,6 +13,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.combat.MiracleEffect;
 import hsrmod.effects.PortraitDisplayEffect;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementType;
@@ -261,6 +263,7 @@ public abstract class BaseCard extends CustomCard implements SpawnModificationCa
         if (!checkEnergy()) return;
         if (energyCost != 0) addToTop(new ApplyPowerAction(p, p, new EnergyPower(p, -energyCost), -energyCost));
         energyCost = baseEnergyCost;
+        if (type == CardType.POWER && rarity == CardRarity.RARE) addToBot(new VFXAction(new MiracleEffect()));
         onUse(p, m);
         ModHelper.addToBotAbstract( () -> this.followedUp = false);
     }

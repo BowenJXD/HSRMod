@@ -359,6 +359,9 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
         BaseMod.addMonster(Encounter.CIRRUS, () -> new MonsterGroup(new AbstractMonster[]{
                 new Cirrus()
         }));
+        BaseMod.addMonster(Encounter.YANQING, () -> new MonsterGroup(new AbstractMonster[]{
+                new Yanqing()
+        }));
 
         BaseMod.addMonster(Encounter.SOMETHING_UNTO_DEATH, () -> new MonsterGroup(new AbstractMonster[]{
                 new SomethingUntoDeath()
@@ -373,6 +376,12 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
                 new PresentInebriatedInRevelry(-400, 0),
                 new TomorrowInHarmoniousChords(-100, 0),
                 new PastConfinedAndCaged(200, 0)
+        }));
+        BaseMod.addMonster(Encounter.AVENTURINE_OF_STRATAGEMS, () -> new MonsterGroup(new AbstractMonster[]{
+                new AventurineOfStratagems()
+        }));
+        BaseMod.addMonster(Encounter.SAM, () -> new MonsterGroup(new AbstractMonster[]{
+                new Sam()
         }));
 
         // =========================== Stronger ===========================
@@ -429,9 +438,9 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
                 new TheAscended(0, AbstractDungeon.monsterRng.random(15, 50)),
         }));
         BaseMod.addMonster(Encounter.TWIGS, () -> new MonsterGroup(new AbstractMonster[]{
-                new TwigOfWintryWind(-200, AbstractDungeon.monsterRng.random(-15, 15)),
+                new TwigOfWintryWind(-250, AbstractDungeon.monsterRng.random(-15, 15)),
                 new TwigOfMarpleLeaf(-50, AbstractDungeon.monsterRng.random(-15, 15)),
-                new TwigOfGloriousBlooms(100, AbstractDungeon.monsterRng.random(-15, 15)),
+                new TwigOfGloriousBlooms(150, AbstractDungeon.monsterRng.random(-15, 15)),
         }));
 
 
@@ -579,6 +588,15 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
         addOgg("Cirrus_1");
         for (int i = 0; i <= 7; i++) {
             addOgg("ShadowOfFeixiao_" + i);
+        }
+        for (int i = 0; i <= 7; i++) {
+            addOgg("AventurineOfStratagems_" + i);
+        }
+        for (int i = 0; i <= 5; i++) {
+            addOgg("Sam_" + i);
+        }
+        for (int i = 0; i <= 5; i++) {
+            addOgg("Yanqing_" + i);
         }
     }
 

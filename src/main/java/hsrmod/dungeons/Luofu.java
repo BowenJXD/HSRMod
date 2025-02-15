@@ -33,6 +33,8 @@ public class Luofu extends CustomDungeon {
         addTempMusic("Deerstalker", "HSRModResources/audio/music/Deerstalker.mp3");
         // cirrus
         addTempMusic("Dancing Fantasms", "HSRModResources/audio/music/Dancing Fantasms.mp3");
+        // yanqing
+        addTempMusic("Gleaming Clash", "HSRModResources/audio/music/Gleaming Clash.mp3");
         // shop
         addTempMusic("Paean of Indulgence", "HSRModResources/audio/music/Paean of Indulgence.mp3");
         // feixiao
@@ -120,6 +122,7 @@ public class Luofu extends CustomDungeon {
         monsters.add(new MonsterInfo(Encounter.HOOLAY, 1.0F));
         monsters.add(new MonsterInfo(Encounter.ABUNDANT_EBON_DEER, 1.0F));
         monsters.add(new MonsterInfo(Encounter.CIRRUS, 1.0F));
+        monsters.add(new MonsterInfo(Encounter.YANQING, 1.0F));
         
         MonsterInfo.normalizeWeights(monsters);
         this.populateMonsterList(monsters, count, true);

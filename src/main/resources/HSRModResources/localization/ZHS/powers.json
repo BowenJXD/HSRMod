@@ -498,7 +498,13 @@
   "HSRMod:Sunset": {
     "NAME": "白日西沉",
     "DESCRIPTIONS": [
-      "再打出 #b%d 张牌后移除，结束回合，被盗窃所有手牌。"
+      "再打出 #b%d 张牌后移除，结束回合，被 #r盗窃 所有手牌。"
+    ]
+  },
+  "HSRMod:Nightfall": {
+    "NAME": "夜幕将临",
+    "DESCRIPTIONS": [
+      "打出的下 #b%d 张牌将被 #r消耗 。"
     ]
   },
   "HSRMod:SlumberAwakening": {
@@ -657,7 +663,7 @@
   "HSRMod:DeceptionsCrown": {
     "NAME": "本真沉沦",
     "DESCRIPTIONS": [
-      "受到伤害后，回复 #b%d 点生命。 #y击破 后移除。" 
+      "受到伤害后，回复 #b%d 点生命。 #y击破 后移除。"
     ]
   },
   "HSRMod:Simmer": {
@@ -699,19 +705,36 @@
   "HSRMod:SecondaryCombustion": {
     "NAME": "次级燃烧",
     "DESCRIPTIONS": [
-      " #y萨姆 攻击时，或 #y玩家 打出牌消耗 [E] 后，均会受到 #b%d 点伤害，令伤害+ #b%d 。 #y击破 时移除。移除时，玩家恢复所有 [E] ，且获得 #y易伤 。"
+      " #y萨姆 攻击时，或 #y玩家 打出牌消耗 [E] 后，均会受到 #b%d 点伤害，令伤害+ #b%d 。 #y击破 时移除。移除时，获得 #y易伤 ，玩家恢复所有 [E] 。"
     ]
   },
   "HSRMod:MoltenCore": {
     "NAME": "熔火能量",
     "DESCRIPTIONS": [
-      "打出 #r攻击牌 后，移除费用数量的层数，完全移除时，移除萨姆的 #y次级燃烧 ，并 #y击破 之。"
+      "打出牌后，移除费用数量的层数，完全移除时， #y击破 之。"
     ]
   },
   "HSRMod:TheCansCreed": {
     "NAME": "桶的信条",
     "DESCRIPTIONS": [
       " #y击破 后，离开战斗。"
+    ]
+  },
+  "HSRMod:SwordFormation": {
+    "NAME": "剑阵",
+    "DESCRIPTIONS": [
+      "造成的伤害 #b+%d%% ，受到的伤害 #b-%d%% 。若场上没有 #y阵眼 ，则移除，移除韧性锁定，被击破，并受到 #b%d%% 生命上限的伤害。"
+    ]
+  },
+  "HSRMod:FormationCore": {
+    "NAME": "剑眼",
+    "DESCRIPTIONS": [
+      "只能受到 %s 牌的削韧。 #y击破 后死亡。死亡时，所有手牌各自随机获得一个标签，标签只会与场上剩余阵眼的标签相同。",
+      "有一个 #y消耗/虚无/固有/保留 的标签，只能受到标签牌的削韧。 #y击破 后死亡。死亡时，所有手牌各自随机获得一个标签，标签只会与场上剩余阵眼的标签相同。",
+      "#r消耗",
+      "#p虚无",
+      "#y固有",
+      "#g保留"
     ]
   }
 }

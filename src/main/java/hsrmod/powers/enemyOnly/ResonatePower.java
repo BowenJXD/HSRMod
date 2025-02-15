@@ -47,7 +47,7 @@ public class ResonatePower extends StatePower implements PreElementalDamageSubsc
     @Override
     public void onInitialApplication() {
         super.onInitialApplication();
-        SubscriptionManager.subscribe(this);
+        SubscriptionManager.subscribe(this, true);
     }
 
     @Override

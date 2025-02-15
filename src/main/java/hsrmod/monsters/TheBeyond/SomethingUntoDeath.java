@@ -1,6 +1,8 @@
 package hsrmod.monsters.TheBeyond;
 
+import basemod.abstracts.cardbuilder.actionbuilder.ApplyPowerActionBuilder;
 import com.badlogic.gdx.math.MathUtils;
+import com.evacipated.cardcrawl.mod.stslib.actions.common.DamageCallbackAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.AnimateFastAttackAction;
 import com.megacrit.cardcrawl.actions.animations.AnimateSlowAttackAction;
@@ -13,6 +15,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.ArtifactPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.vfx.combat.BossCrystalImpactEffect;
 import com.megacrit.cardcrawl.vfx.combat.ThirdEyeEffect;
@@ -20,6 +23,7 @@ import hsrmod.misc.PathDefine;
 import hsrmod.modcore.HSRMod;
 import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.enemyOnly.ChargingPower;
+import hsrmod.powers.enemyOnly.NightfallPower;
 import hsrmod.powers.enemyOnly.SunsetPower;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.utils.ModHelper;
@@ -55,12 +59,17 @@ public class SomethingUntoDeath extends BaseMonster {
             case 1:
                 addToBot(new ApplyPowerAction(p, this, new EnergyPower(p, EnergyPower.AMOUNT_LIMIT), EnergyPower.AMOUNT_LIMIT));
                 addToBot(new VFXAction(new BossCrystalImpactEffect(p.hb.cX, p.hb.cY)));
+                addToBot(new RemoveSpecificPowerAction(p, this, ArtifactPower.POWER_ID));
                 addToBot(new ApplyPowerAction(p, this, new SunsetPower(p, sunsetCount, this::getSpawningSombrousSepulcher)));
                 break;
             case 2:
                 addToBot(new AnimateSlowAttackAction(this));
                 for (int i = 0; i < damageTimes[1]; i++) {
-                    addToBot(new DamageAction(p, damage.get(1), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+                    addToBot(new DamageCallbackAction(p, damage.get(1), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, dmg->{
+                        if (dmg > 0) {
+                            addToBot(new ApplyPowerAction(p, this, new NightfallPower(p, 1)));
+                        }
+                    }));
                 }
                 addToBot(new ApplyPowerAction(this, this, new StrengthPower(this, strengthGain), strengthGain));
                 addToBot(new ApplyPowerAction(this, this, new ChargingPower(this, MOVES[4], 1), 1));
@@ -74,9 +83,14 @@ public class SomethingUntoDeath extends BaseMonster {
                 break;
             case 4:
                 addToBot(new AnimateFastAttackAction(this));
-                for (int i = 0; i < damageTimes[0]; i++) {
-                    addToBot(new DamageAction(p, damage.get(0), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-                }
+                if (specialAs)
+                    for (int i = 0; i < damageTimes[0]; i++) {
+                        addToBot(new DamageCallbackAction(p, damage.get(0), AbstractGameAction.AttackEffect.SLASH_VERTICAL, dmg->{
+                            if (dmg > 0) {
+                                addToBot(new ApplyPowerAction(p, this, new NightfallPower(p, 1)));
+                            }
+                        }));
+                    }
                 break;
         }
         addToBot(new RollMoveAction(this));

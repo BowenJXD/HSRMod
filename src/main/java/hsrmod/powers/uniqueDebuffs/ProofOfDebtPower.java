@@ -27,7 +27,7 @@ public class ProofOfDebtPower extends DebuffPower implements PreFollowUpSubscrib
     @Override
     public void onInitialApplication() {
         super.onInitialApplication();
-        SubscriptionManager.subscribe(this);
+        SubscriptionManager.subscribe(this, true);
     }
 
     @Override

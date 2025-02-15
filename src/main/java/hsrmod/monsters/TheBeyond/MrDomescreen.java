@@ -39,7 +39,7 @@ public class MrDomescreen extends BaseMonster {
         this.isSurprise = isSurprise;
         
         setDamagesWithAscension(20);
-        chargeLoss = ModHelper.specialAscension(type) ? 160 : 80;
+        chargeLoss = ModHelper.specialAscension(type) ? 120 : 80;
         channelCount = specialAs ? 2 : 1;
     }
 

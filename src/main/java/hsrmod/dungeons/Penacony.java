@@ -118,6 +118,7 @@ public class Penacony extends CustomDungeon {
         monsters.add(new MonsterInfo(Encounter.PRESENT, 2.0F));
         monsters.add(new MonsterInfo(Encounter.TOMORROW, 2.0F));
         monsters.add(new MonsterInfo(Encounter.COMPANY, 2.0F));
+        
         MonsterInfo.normalizeWeights(monsters);
         this.populateFirstStrongEnemy(monsters, this.generateExclusions());
         this.populateMonsterList(monsters, count, false);
@@ -129,6 +130,8 @@ public class Penacony extends CustomDungeon {
         monsters.add(new MonsterInfo(Encounter.SOMETHING_UNTO_DEATH, 1.0F));
         monsters.add(new MonsterInfo(Encounter.BLAZNANA_MONKEY_TRICK, 1.0F));
         monsters.add(new MonsterInfo(Encounter.THE_PAST_PRESENT_AND_ETERNAL_SHOW, 1.0F));
+        monsters.add(new MonsterInfo(Encounter.AVENTURINE_OF_STRATAGEMS, 1.0F));
+        monsters.add(new MonsterInfo(Encounter.SAM, 1.0F));
 
         MonsterInfo.normalizeWeights(monsters);
         this.populateMonsterList(monsters, count, true);

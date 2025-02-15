@@ -219,7 +219,7 @@ public class PenaconyScene extends AbstractScene {
         super.nextRoom(room);
         this.randomizeScene();
         int r = AbstractDungeon.miscRng.random(99);
-        if (room instanceof MonsterRoomBoss || room.eliteTrigger) {
+        if (room instanceof MonsterRoomBoss) {
             CardCrawlGame.music.silenceBGM();
         } else if (room.monsters != null) {
             if (room.monsters.monsters.stream().anyMatch(m 
@@ -227,6 +227,8 @@ public class PenaconyScene extends AbstractScene {
                     || m instanceof PresentInebriatedInRevelry 
                     || m instanceof TomorrowInHarmoniousChords)) {
                 room.playBGM("The Past, Present, and Eternal Show");
+            } else if (room.eliteTrigger) {
+                CardCrawlGame.music.silenceBGM();
             } else switch (r % 3) {
                 case 0:
                     room.playBGM("The Player on The Other Side");

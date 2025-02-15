@@ -39,7 +39,7 @@ public class Fugue1 extends BaseCard {
         if (m != null) {
             trigger(m);
         } else {
-            AbstractDungeon.getMonsters().monsters.stream().filter(mo -> !mo.isDeadOrEscaped()).forEach(this::trigger);
+            AbstractDungeon.getMonsters().monsters.stream().filter(ModHelper::check).forEach(this::trigger);
         }
     }
 

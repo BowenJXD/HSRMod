@@ -37,7 +37,7 @@ public class AftertastePower extends BuffPower implements PreElementalDamageSubs
     @Override
     public void onInitialApplication() {
         super.onInitialApplication();
-        SubscriptionManager.subscribe(this);
+        SubscriptionManager.subscribe(this, true);
     }
 
     @Override

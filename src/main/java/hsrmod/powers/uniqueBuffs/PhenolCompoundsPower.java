@@ -28,7 +28,7 @@ public class PhenolCompoundsPower extends BuffPower {
     @Override
     public void atEndOfTurn(boolean isPlayer) {
         super.atEndOfTurn(isPlayer);
-        addToBot(new RemoveSpecificPowerAction(owner, owner, this));
+        addToTop(new RemoveSpecificPowerAction(owner, owner, this));
     }
 
     @Override

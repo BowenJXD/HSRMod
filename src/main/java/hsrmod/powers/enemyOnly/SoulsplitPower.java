@@ -1,13 +1,18 @@
 package hsrmod.powers.enemyOnly;
 
+import com.megacrit.cardcrawl.actions.GameActionManager;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.sun.java.swing.action.ActionManager;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.StatePower;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.subscribers.PostMonsterDeathSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
+import hsrmod.utils.ModHelper;
 
 public class SoulsplitPower extends StatePower implements PostMonsterDeathSubscriber {
     public static final String POWER_ID = HSRMod.makePath(SoulsplitPower.class.getSimpleName());
@@ -39,6 +44,16 @@ public class SoulsplitPower extends StatePower implements PostMonsterDeathSubscr
         ToughnessPower toughness = (ToughnessPower) owner.getPower(ToughnessPower.POWER_ID);
         if (toughness != null) {
             toughness.unlock(this);
+        }
+    }
+
+    @Override
+    public void atStartOfTurn() {
+        super.atStartOfTurn();
+        if (GameActionManager.turn > 1) {
+            AbstractDungeon.getMonsters().monsters.stream().filter(m -> ModHelper.check(m) && m != owner).forEach(m -> {
+                addToBot(new ApplyPowerAction(m, owner, new MultiMovePower(m, 1)));
+            });
         }
     }
 

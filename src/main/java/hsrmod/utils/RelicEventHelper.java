@@ -18,6 +18,7 @@ import hsrmod.patches.RelicTagField;
 import hsrmod.relics.boss.*;
 import hsrmod.relics.special.*;
 import hsrmod.relics.special.TheWindSoaringValorous;
+import hsrmod.relics.uncommon.JellyfishOnTheStaircase;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -78,7 +79,7 @@ public class RelicEventHelper {
     public static void gainRelics(int amount, Predicate<AbstractRelic> predicate) {
         for (int i = 0, j = 0; i < amount && j < 99; ++i, ++j) {
             AbstractRelic r = AbstractDungeon.returnRandomScreenlessRelic(AbstractDungeon.returnRandomRelicTier());
-            if (!predicate.test(r)) {
+            if (!predicate.test(r) || r instanceof JellyfishOnTheStaircase) {
                 --i;
                 addRelicToPool(r);
             } else {

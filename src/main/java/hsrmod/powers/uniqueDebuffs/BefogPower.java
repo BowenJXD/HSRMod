@@ -67,7 +67,7 @@ public class BefogPower extends DebuffPower implements PreBreakSubscriber {
                     }
                 });
 
-            this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+            this.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this));
         }
     }
 }

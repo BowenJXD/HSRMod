@@ -5,6 +5,7 @@ import basemod.abstracts.CustomSavable;
 import basemod.interfaces.RelicGetSubscriber;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -56,10 +57,16 @@ public class ByAnyMeansNecessary extends BaseRelic implements RelicGetSubscriber
                 flash();
                 AbstractDungeon.player.gainGold(goldGain);
             }
-            updateCounter();
+            ModHelper.addEffectAbstract(this::updateCounter);
         }
     }
-    
+
+    @Override
+    public void reorganizeObtain(AbstractPlayer p, int slot, boolean callOnEquip, int relicAmount) {
+        super.reorganizeObtain(p, slot, callOnEquip, relicAmount);
+        updateCounter();
+    }
+
     void updateCounter() {
         setCounter(AbstractDungeon.player.relics.stream().mapToInt(r -> {
             switch (r.tier) {

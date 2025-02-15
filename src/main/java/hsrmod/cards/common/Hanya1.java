@@ -23,7 +23,8 @@ public class Hanya1 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new VFXAction(new FlyingDaggerEffect(m.hb.cX, m.hb.cY, 0, false)));
+        if (m != null)
+            addToBot(new VFXAction(new FlyingDaggerEffect(m.hb.cX, m.hb.cY, 0, false)));
         addToBot(new ElementalDamageAction(
                 m,
                 new ElementalDamageInfo(this),

@@ -41,7 +41,8 @@ public class BlackSwan1 extends BaseCard {
                         addToBot(new ApplyPowerAction(ci.target, p, new EpiphanyPower(ci.target, 1), 1));
                     }));
         } else {
-            addToBot(new VFXAction(new BossCrystalImpactEffect(m.hb.cX, m.hb.cY)));
+            if (m != null)
+                addToBot(new VFXAction(new BossCrystalImpactEffect(m.hb.cX, m.hb.cY)));
             addToBot(new ElementalDamageAction(
                     m,
                     new ElementalDamageInfo(this),

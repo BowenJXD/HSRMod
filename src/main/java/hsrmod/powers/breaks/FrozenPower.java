@@ -8,12 +8,15 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.actions.ElementalDamageAction;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.DebuffPower;
 import hsrmod.powers.misc.FrozenResistancePower;
+import hsrmod.subscribers.PreElementalDamageSubscriber;
+import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
-public class FrozenPower extends DebuffPower {
+public class FrozenPower extends DebuffPower implements PreElementalDamageSubscriber {
     public static final String POWER_ID = HSRMod.makePath(FrozenPower.class.getSimpleName());
     
     private int amountRequired = 99;
@@ -39,6 +42,18 @@ public class FrozenPower extends DebuffPower {
     }
 
     @Override
+    public void onInitialApplication() {
+        super.onInitialApplication();
+        SubscriptionManager.subscribe(this);
+    }
+
+    @Override
+    public void remove(int val) {
+        super.remove(val);
+        SubscriptionManager.unsubscribe(this);
+    }
+
+    @Override
     public void atStartOfTurn() {
         int frozenRes = ModHelper.getPowerCount(owner, FrozenResistancePower.POWER_ID);
         if (amount >= amountRequired + frozenRes){
@@ -52,13 +67,6 @@ public class FrozenPower extends DebuffPower {
     @Override
     public void onPlayCard(AbstractCard card, AbstractMonster m) {
         detecting = true;
-    }
-
-    @Override
-    public int onAttacked(DamageInfo info, int damageAmount) {
-        if (!detecting) return damageAmount;
-        remove(1);
-        return damageAmount;
     }
 
     public static int getAmountRequired(AbstractMonster m){
@@ -78,5 +86,16 @@ public class FrozenPower extends DebuffPower {
         }
         return result;
         
+    }
+
+    @Override
+    public float preElementalDamage(ElementalDamageAction action, float dmg) {
+        if (SubscriptionManager.checkSubscriber(this) 
+                && action.info.card != null
+                && action.target == owner 
+                && detecting) {
+            remove(1);
+        }
+        return dmg;
     }
 }

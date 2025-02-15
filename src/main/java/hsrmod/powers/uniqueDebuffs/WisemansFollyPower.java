@@ -65,7 +65,7 @@ public class WisemansFollyPower extends DebuffPower {
     @Override
     public void atEndOfTurn(boolean isPlayer) {
         if (AbstractDungeon.player.hand.group.stream().noneMatch(c -> c instanceof DrRatio3)) {
-            addToBot(new RemoveSpecificPowerAction(owner, owner, this));
+            addToTop(new RemoveSpecificPowerAction(owner, owner, this));
         }
     }
 

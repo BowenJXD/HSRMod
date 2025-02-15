@@ -43,5 +43,6 @@ public class SoulGladRevelPower extends BuffPower {
         if (amount > stackLimit) {
             amount = stackLimit;
         }
+        updateDescription();
     }
 }

@@ -55,7 +55,8 @@ public class Kafka1 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new VFXAction(new EntangleEffect(p.hb.cX, p.hb.cY, m.hb.cX, m.hb.cY)));
+        if (m != null)
+            addToBot(new VFXAction(new EntangleEffect(p.hb.cX, p.hb.cY, m.hb.cX, m.hb.cY)));
         addToBot(new ElementalDamageAction(
                 m,
                 new ElementalDamageInfo(this), 

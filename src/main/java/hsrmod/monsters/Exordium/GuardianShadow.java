@@ -21,8 +21,8 @@ import hsrmod.utils.ModHelper;
 public class GuardianShadow extends BaseMonster implements PreBreakSubscriber {
     public static final String ID = GuardianShadow.class.getSimpleName();
     
-    public GuardianShadow() {
-        super(ID, 0F, -15.0F, 384, 384, -100, 0);
+    public GuardianShadow(float x, float y) {
+        super(ID, 0F, -15.0F, 384, 384, x, y);
         setDamagesWithAscension(8);
     }
 

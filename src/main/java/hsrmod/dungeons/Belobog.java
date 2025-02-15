@@ -2,6 +2,7 @@ package hsrmod.dungeons;
 
 import actlikeit.dungeons.CustomDungeon;
 import basemod.BaseMod;
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
@@ -127,5 +128,7 @@ public class Belobog extends CustomDungeon {
         uiStrings = CardCrawlGame.languagePack.getUIString(ID);
         TEXT = uiStrings.TEXT;
         NAME = TEXT[0];
+        fadeColor = Color.valueOf("0a1e1eff");
+        sourceFadeColor = Color.valueOf("0a1e1eff");
     }
 }

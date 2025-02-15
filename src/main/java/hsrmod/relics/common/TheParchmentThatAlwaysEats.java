@@ -1,8 +1,11 @@
 package hsrmod.relics.common;
 
+import com.badlogic.gdx.graphics.Color;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.combat.BiteEffect;
 import hsrmod.relics.BaseRelic;
 
 import java.util.Iterator;
@@ -24,6 +27,7 @@ public class TheParchmentThatAlwaysEats extends BaseRelic {
             while(var1.hasNext()) {
                 AbstractMonster m = (AbstractMonster)var1.next();
                 if (m.currentHealth > (int)((float)m.maxHealth * (1.0F - magicNumber / 100.0F))) {
+                    addToTop(new VFXAction(new BiteEffect(m.hb.cX, m.hb.cY, Color.PURPLE)));
                     m.currentHealth = (int)((float)m.maxHealth * (1.0F - magicNumber / 100.0F));
                     m.healthBarUpdatedEvent();
                 }

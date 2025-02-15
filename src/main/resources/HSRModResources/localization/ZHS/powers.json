@@ -22,7 +22,7 @@
     "NAME": "冻结",
     "DESCRIPTIONS": [
       "达到 #b%d 层时（普通/精英/首领敌人为1/2/3层），",
-      "于回合开始时移除所有层，并跳过回合。 NL 受到伤害后，移除1层。"
+      "于回合开始时移除所有层，并跳过回合。 NL 受到牌的伤害后，移除1层。"
     ]
   },
   "HSRMod:FrozenResistance": {
@@ -421,8 +421,8 @@
   "HSRMod:Charging": {
     "NAME": "蓄力",
     "DESCRIPTIONS": [
-      "正在蓄力【%s】，下回合释放。 #y击破 以打断。",
-      "正在蓄力【%s】，剩余回合数： #b%d 。 #y击破 以打断。"
+      "正在蓄力，下回合释放。 #y击破 以打断。 NL %s",
+      "正在蓄力，剩余回合数： #b%d 。 #y击破 以打断。 NL %s"
     ]
   },
   "HSRMod:WalkInTheLight": {
@@ -523,14 +523,16 @@
   "HSRMod:Channel": {
     "NAME": "串台",
     "DESCRIPTIONS": [
-      "【 #b惊喜频道 】受到伤害后，会更换至 #r惊吓频道 。",
-      "【 #r惊吓频道 】受到伤害后，会更换至 #b惊喜频道 。"
+      "【 #b惊喜频道 】受到 #b%d 伤害后，会切换至 #r惊吓频道 。",
+      "【 #r惊吓频道 】受到 #b%d 伤害后，会切换至 #b惊喜频道 。",
+      "【 #b课间频道 】受到 #b%d 伤害后，会切换至 #r课堂频道 。",
+      "【 #r课堂频道 】受到 #b%d 伤害后，会切换至 #b课间频道 。"
     ]
   },
   "HSRMod:SoulGladRevel": {
     "NAME": "酣畅",
     "DESCRIPTIONS": [
-      "造成的伤害+ #b%d ；受到伤害后叠加1层；至多叠加 #b%d 层。"
+      "造成的伤害+ #b%d ；受到伤害后叠加 #b1 层；至多叠加 #b%d 层。"
     ]
   },
   "HSRMod:ToughnessProtection": {
@@ -606,7 +608,7 @@
   "HSRMod:Outrage": {
     "NAME": "怒噪",
     "DESCRIPTIONS": [
-      "回合开始时移除，随机打出 #b%d 张 #r攻击牌 （会消耗能量）。"
+      "打出非攻击牌后，移除 #b1 层，随机打出 #b1 张 #r攻击牌 （会消耗 [E] ）。"
     ]
   },
   "HSRMod:LastSpring": {
@@ -642,13 +644,74 @@
   "HSRMod:Safeguard": {
     "NAME": "守备",
     "DESCRIPTIONS": [
-      "若有其他敌人在场，受到的伤害 #b-80% 。"
+      "若未被 #y击破 ，受到的伤害 #b-%d%% 。"
     ]
   },
   "HSRMod:Resonate": {
     "NAME": "共鸣",
     "DESCRIPTIONS": [
-      "技能获得强化。受到的韧性削减 #b+%d 。一张牌首次对有 #y共鸣 的目标造成伤害后，其他有 #y共鸣 的单位失去等量生命。 #y击破 后，若为小怪，则移除，锁定韧性，且无法再行动。"
+      "技能获得强化。受到的韧性削减 #b+%d 。一张牌首次对有 #y共鸣 的目标造成伤害后，其他有 #y共鸣 的单位失去等量生命。 #y击破 后移除，若为小怪，则锁定韧性，且无法再行动。",
+      "受到的韧性削减 #b+%d 。一张牌首次对有 #y共鸣 的目标造成伤害后，其他有 #y共鸣 的单位失去等量生命。 #y击破 后眩晕。"
+    ]
+  },
+  "HSRMod:DeceptionsCrown": {
+    "NAME": "本真沉沦",
+    "DESCRIPTIONS": [
+      "受到伤害后，回复 #b%d 点生命。 #y击破 后移除。" 
+    ]
+  },
+  "HSRMod:Simmer": {
+    "NAME": "文火",
+    "DESCRIPTIONS": [
+      "受到伤害后叠加 #b1 层，叠加至 #b%d 层后转至 #y急火 。"
+    ]
+  },
+  "HSRMod:Boil": {
+    "NAME": "急火",
+    "DESCRIPTIONS": [
+      "造成的伤害会施加 #y易伤 ，并将 #y灼烧 置入摸牌堆。受到伤害后移除 #b1 层，若完全移除，对自己造成伤害（火 #b%d ），获得 #y易伤 并 #y眩晕 。"
+    ]
+  },
+  "HSRMod:ObscureBlaze": {
+    "NAME": "无明火",
+    "DESCRIPTIONS": [
+      " #y痛恶如刺剔骨 的伤害段数增加， #y击破 时移除。"
+    ]
+  },
+  "HSRMod:PerformancePoint": {
+    "NAME": "绩效点",
+    "DESCRIPTIONS": [
+      "造成的伤害+ #b%d ， #y击破 或 #y击杀 后夺取。"
+    ]
+  },
+  "HSRMod:Tutoring": {
+    "NAME": "补课",
+    "DESCRIPTIONS": [
+      "不会切换 #y频道 。 #y击破 后移除。"
+    ]
+  },
+  "HSRMod:FickleFortune": {
+    "NAME": "运数莫测",
+    "DESCRIPTIONS": [
+      "受到的伤害改为随机 #b1~6 ，死亡时，移除 #y诡弈砂金 的 #y无实体 和 #y韧性保护 效果，回复全部 #y充能 。"
+    ]
+  },
+  "HSRMod:SecondaryCombustion": {
+    "NAME": "次级燃烧",
+    "DESCRIPTIONS": [
+      " #y萨姆 攻击时，或 #y玩家 打出牌消耗 [E] 后，均会受到 #b%d 点伤害，令伤害+ #b%d 。 #y击破 时移除。移除时，玩家恢复所有 [E] ，且获得 #y易伤 。"
+    ]
+  },
+  "HSRMod:MoltenCore": {
+    "NAME": "熔火能量",
+    "DESCRIPTIONS": [
+      "打出 #r攻击牌 后，移除费用数量的层数，完全移除时，移除萨姆的 #y次级燃烧 ，并 #y击破 之。"
+    ]
+  },
+  "HSRMod:TheCansCreed": {
+    "NAME": "桶的信条",
+    "DESCRIPTIONS": [
+      " #y击破 后，离开战斗。"
     ]
   }
 }

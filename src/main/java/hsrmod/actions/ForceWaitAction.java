@@ -5,7 +5,8 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 
 public class ForceWaitAction extends AbstractGameAction {
-    public ForceWaitAction(float setDuration) {this.setValues((AbstractCreature)null, (AbstractCreature)null, 0);
+    public ForceWaitAction(float setDuration) {
+        this.setValues((AbstractCreature) null, (AbstractCreature) null, 0);
         this.duration = setDuration;
 
         this.actionType = ActionType.WAIT;

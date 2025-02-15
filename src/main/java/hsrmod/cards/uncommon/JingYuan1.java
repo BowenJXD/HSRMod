@@ -2,6 +2,7 @@ package hsrmod.cards.uncommon;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -9,6 +10,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
 import hsrmod.actions.BouncingAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.FollowUpAction;
@@ -41,8 +43,10 @@ public class JingYuan1 extends BaseCard {
                 m,
                 new ElementalDamageInfo(this), 
                 AbstractGameAction.AttackEffect.LIGHTNING,
-                ci -> addToTop(new DrawCardAction(1))
-        );
+                ci -> {
+                    addToTop(new DrawCardAction(1));
+                    addToTop(new VFXAction(new LightningEffect(ci.target.hb.cX, ci.target.hb.cY)));
+                });
         this.addToBot(new BouncingAction(m, magicNumber, elementalDamageAction, this));
 
         ModHelper.addToBotAbstract(() -> updateCost(costCache - cost));

@@ -19,38 +19,38 @@ public class TavernEvent extends PhasedEvent {
     private static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
     private static final String[] OPTIONS = eventStrings.OPTIONS;
     private static final String title = eventStrings.NAME;
-    
+
     public TavernEvent() {
         super(ID, title, "HSRModResources/img/events/" + ID + ".png");
-        
-        registerPhase(0, new TextPhase(DESCRIPTIONS[0]).addOption(OPTIONS[0], (i)->transitionKey(1)));
-        
+
+        registerPhase(0, new TextPhase(DESCRIPTIONS[0]).addOption(OPTIONS[0], (i) -> transitionKey(1)));
+
         TextPhase phase1 = new TextPhase(DESCRIPTIONS[1]);
-        phase1.addOption(OPTIONS[1], (i)->transitionKey(2));
-        phase1.addOption(OPTIONS[2], (i)->transitionKey(3));
-        
+        phase1.addOption(OPTIONS[1], (i) -> transitionKey(2));
+        phase1.addOption(OPTIONS[2], (i) -> transitionKey(3));
+
         if (ModHelper.hasRelic(WaxOfDestruction.ID)) {
             phase1.addOption(new TextPhase.OptionInfo(OPTIONS[3])
                     .setOptionResult((i) -> transitionKey(4))
                     .enabledCondition(() -> ModHelper.hasRelic(WaxOfDestruction.ID))
             );
         }
-        
+
         registerPhase(1, phase1);
-        registerPhase(2, new CombatPhase(MonsterHelper.RED_SLAVER_ENC)
-                .addRewards(true, (room)->room.addRelicToRewards(AbstractRelic.RelicTier.COMMON))
+        registerPhase(2, new CombatPhase(Encounter.TAVERN_1)
+                .addRewards(true, (room) -> room.addRelicToRewards(AbstractRelic.RelicTier.COMMON))
                 .setNextKey(5)
         );
-        registerPhase(3, new CombatPhase(MonsterHelper.SHELL_PARASITE_ENC)
-                .addRewards(true, (room)->room.addRelicToRewards(AbstractRelic.RelicTier.UNCOMMON))
+        registerPhase(3, new CombatPhase(Encounter.TAVERN_2)
+                .addRewards(true, (room) -> room.addRelicToRewards(AbstractRelic.RelicTier.UNCOMMON))
                 .setNextKey(5)
         );
-        registerPhase(4, new CombatPhase(Encounter.PARASITE_N_SLAVER)
-                .addRewards(true, (room)->room.addRelicToRewards(AbstractRelic.RelicTier.RARE))
+        registerPhase(4, new CombatPhase(Encounter.TAVERN_3)
+                .addRewards(true, (room) -> room.addRelicToRewards(AbstractRelic.RelicTier.RARE))
                 .setNextKey(5)
         );
-        registerPhase(5, new TextPhase(DESCRIPTIONS[2]).addOption(OPTIONS[4], (i)->openMap()));
-        
+        registerPhase(5, new TextPhase(DESCRIPTIONS[2]).addOption(OPTIONS[4], (i) -> openMap()));
+
         transitionKey(0);
     }
 }

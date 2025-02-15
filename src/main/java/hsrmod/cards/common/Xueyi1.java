@@ -34,7 +34,8 @@ public class Xueyi1 extends BaseCard implements PreToughnessReduceSubscriber {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         // find the monster with greatest toughness
-        addToBot(new VFXAction(new ClashEffect(m.hb.cX, m.hb.cY)));
+        if (m != null)
+            addToBot(new VFXAction(new ClashEffect(m.hb.cX, m.hb.cY)));
         AbstractMonster mo = AbstractDungeon.getMonsters().monsters.stream()
                 .filter(monster -> !monster.isDead && !monster.isDying)
                 .max((monster1, monster2) -> {

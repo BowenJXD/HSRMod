@@ -51,8 +51,8 @@ public class MoonRagePower extends BuffPower implements PreBreakSubscriber {
     @Override
     public void preBreak(ElementalDamageInfo info, AbstractCreature target) {
         if (SubscriptionManager.checkSubscriber(this) && target == owner) {
-            addToBot(new RemoveSpecificPowerAction(owner, owner, this));
-            addToBot(new RemoveSpecificPowerAction(owner, owner, StrengthPower.POWER_ID));
+            addToTop(new RemoveSpecificPowerAction(owner, owner, this));
+            addToTop(new RemoveSpecificPowerAction(owner, owner, StrengthPower.POWER_ID));
         }
     }
 }

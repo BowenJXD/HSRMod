@@ -31,7 +31,8 @@ public class SilverWolf1 extends BaseCard {
             shout(1);
         else
             shout(0);
-        addToBot(new VFXAction(new InversionBeamEffect(m.hb.cX)));
+        if (m != null)
+            addToBot(new VFXAction(new InversionBeamEffect(m.hb.cX)));
         
         addToBot(new ElementalDamageAction(
                 m,

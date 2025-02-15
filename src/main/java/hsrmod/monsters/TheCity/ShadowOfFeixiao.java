@@ -52,7 +52,7 @@ public class ShadowOfFeixiao extends BaseMonster implements PreBreakSubscriber {
             addToBot(new MakeTempCardInDrawPileAction(new Wound(), 1, true, true));
         });
         addMove(Intent.BUFF, mi -> {
-            addToBot(new ApplyPowerAction(this, this, new ResonatePower(this, resonateCount), 0));
+            addToBot(new ApplyPowerAction(this, this, new ResonatePower(this, resonateCount, ResonatePower.ResonateType.FEIXIAO), 0));
             if (ModHelper.getPowerCount(this, ToughnessPower.POWER_ID) > 0)
                 addToBot(new ApplyPowerAction(this, this, new ToughnessPower(this, toughnessHealCount)));
             if (specialAs)
@@ -63,7 +63,7 @@ public class ShadowOfFeixiao extends BaseMonster implements PreBreakSubscriber {
                 else if (monster instanceof PlaneshredClaws) shout(3, 3f);
                 else if (monster instanceof WorldpurgeTail) shout(4, 3f);
 
-                addToBot(new ApplyPowerAction(monster, this, new ResonatePower(monster, resonateCount), 0));
+                addToBot(new ApplyPowerAction(monster, this, new ResonatePower(monster, resonateCount, ResonatePower.ResonateType.FEIXIAO), 0));
                 addToBot(new RollMoveAction(monster));
                 addToBot(new UnlockToughnessAction(monster, monster));
                 if (ModHelper.getPowerCount(monster, ToughnessPower.POWER_ID) > 0)
@@ -76,7 +76,7 @@ public class ShadowOfFeixiao extends BaseMonster implements PreBreakSubscriber {
             shout(5, 3f);
             AbstractDungeon.getMonsters().monsters.stream().filter(m -> ModHelper.check(m) && !m.hasPower(ResonatePower.POWER_ID))
                     .forEach(m -> {
-                                addToBot(new ApplyPowerAction(m, this, new ResonatePower(m, resonateCount), 0));
+                                addToBot(new ApplyPowerAction(m, this, new ResonatePower(m, resonateCount, ResonatePower.ResonateType.FEIXIAO), 0));
                                 addToBot(new UnlockToughnessAction(m, m));
                                 if (ModHelper.getPowerCount(m, ToughnessPower.POWER_ID) > 0)
                                     addToBot(new ApplyPowerAction(m, this, new ToughnessPower(m, toughnessHealCount)));

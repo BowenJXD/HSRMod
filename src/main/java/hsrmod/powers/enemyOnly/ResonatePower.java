@@ -30,16 +30,18 @@ public class ResonatePower extends StatePower implements PreElementalDamageSubsc
     
     AbstractCard card;
     float particleTimer = 0;
+    ResonateType type;
     
-    public ResonatePower(AbstractCreature owner, int amount) {
+    public ResonatePower(AbstractCreature owner, int amount, ResonateType type) {
         super(POWER_ID, owner, amount);
         particleTimer = 0.0F;
+        this.type = type;
         updateDescription();
     }
     
     @Override
     public void updateDescription() {
-        description = String.format(DESCRIPTIONS[0], amount);
+        description = String.format(DESCRIPTIONS[type.ordinal()], amount);
     }
 
     @Override
@@ -95,14 +97,20 @@ public class ResonatePower extends StatePower implements PreElementalDamageSubsc
     @Override
     public void preBreak(ElementalDamageInfo info, AbstractCreature target) {
         if (SubscriptionManager.checkSubscriber(this) && target == owner) {
-            addToBot(new RemoveSpecificPowerAction(owner, owner, this));
             AbstractMonster monster = (AbstractMonster) owner;
             if (monster != null) {
-                if (monster.type == AbstractMonster.EnemyType.NORMAL)
+                if (monster.type == AbstractMonster.EnemyType.NORMAL && type == ResonateType.FEIXIAO) {
+                    addToTop(new RemoveSpecificPowerAction(owner, owner, this));
                     addToBot(new LockToughnessAction(owner, owner));
+                }
                 addToBot(new RollMoveAction(monster));
                 ModHelper.addToBotAbstract(monster::createIntent);
             }
         }
+    }
+    
+    public enum ResonateType {
+        FEIXIAO,
+        PAST_PRESENT_AND_ETERNAL,
     }
 }

@@ -29,8 +29,8 @@ public class DecayingShadow extends BaseMonster implements OnPowersModifiedSubsc
 
     int gaugeAmount;
 
-    public DecayingShadow() {
-        super(ID, 0F, -15.0F, 384, 384, -100, 0);
+    public DecayingShadow(float x, float y) {
+        super(ID, 0F, -15.0F, 384, 384, x, y);
         setDamagesWithAscension(5, 3);
     }
 

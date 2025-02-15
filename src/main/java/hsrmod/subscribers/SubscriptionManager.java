@@ -118,7 +118,7 @@ public class SubscriptionManager {
             if (addToFront) postMonsterDeathSubscribers.add(0, (PostMonsterDeathSubscriber) sub);
             else postMonsterDeathSubscribers.add((PostMonsterDeathSubscriber) sub);
         }
-        
+
         if (sub instanceof IRunnableSubscriber) {
             subscribeRunnableHelper((IRunnableSubscriber) sub, ((IRunnableSubscriber) sub).getSubType());
         }
@@ -168,7 +168,7 @@ public class SubscriptionManager {
         if (sub instanceof PreFollowUpSubscriber) preFollowUpSubscribers.remove(sub);
         if (sub instanceof PostRelicDestroySubscriber) postRelicDestroySubscribers.remove(sub);
         if (sub instanceof PostMonsterDeathSubscriber) postMonsterDeathSubscribers.remove(sub);
-        
+
         if (sub instanceof IRunnableSubscriber) {
             unsubscribeRunnableHelper((IRunnableSubscriber) sub, ((IRunnableSubscriber) sub).getSubType());
         }
@@ -331,7 +331,7 @@ public class SubscriptionManager {
 
         return result;
     }
-    
+
     public void triggerPostRelicDestroy(AbstractRelic relic) {
         for (PostRelicDestroySubscriber sub : postRelicDestroySubscribers) {
             sub.postRelicDestroy(relic);
@@ -339,7 +339,7 @@ public class SubscriptionManager {
 
         unsubscribeLaterHelper(PostRelicDestroySubscriber.class);
     }
-    
+
     public void triggerPostMonsterDeath(AbstractMonster monster) {
         for (PostMonsterDeathSubscriber sub : postMonsterDeathSubscribers) {
             sub.postMonsterDeath(monster);
@@ -377,7 +377,9 @@ public class SubscriptionManager {
                 || AbstractDungeon.player.drawPile.contains(card)
                 || AbstractDungeon.player.discardPile.contains(card)
                 || AbstractDungeon.player.exhaustPile.contains(card)
-                || AbstractDungeon.actionManager.cardQueue.stream().anyMatch(cqi -> cqi.card.cardID.equals(card.cardID));
+                || (AbstractDungeon.actionManager != null
+                && AbstractDungeon.actionManager.cardQueue != null
+                && AbstractDungeon.actionManager.cardQueue.stream().anyMatch(cqi -> cqi != null && cqi.card != null && cqi.card.cardID.equals(card.cardID)));
         if (!result) {
             if (card instanceof IHSRSubscriber) getInstance().unsubscribeLater((IHSRSubscriber) card);
             if (card instanceof ISubscriber) BaseMod.unsubscribeLater((ISubscriber) card);
@@ -422,6 +424,7 @@ public class SubscriptionManager {
     }
 
     public static enum RunnableType {
+        END_OF_PLAYERS_TURN
     }
 
     public static enum NumChangerType {

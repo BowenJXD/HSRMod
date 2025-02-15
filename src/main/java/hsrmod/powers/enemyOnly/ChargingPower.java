@@ -1,10 +1,13 @@
 package hsrmod.powers.enemyOnly;
 
+import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.StunMonsterAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.combat.FastingEffect;
 import hsrmod.effects.BetterWarningSignEffect;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
@@ -43,6 +46,7 @@ public class ChargingPower extends StatePower implements PreBreakSubscriber {
     @Override
     public void onInitialApplication() {
         super.onInitialApplication();
+        addToBot(new VFXAction(new FastingEffect(owner.hb.cX, owner.hb.cY, Color.RED)));
         SubscriptionManager.subscribe(this);
     }
 
@@ -59,14 +63,9 @@ public class ChargingPower extends StatePower implements PreBreakSubscriber {
     }
 
     @Override
-    public void atStartOfTurn() {
-        super.atStartOfTurn();
-        AbstractDungeon.effectList.add(new BetterWarningSignEffect(owner.hb.cX, owner.hb.cY + owner.hb.y, 3.0f));
-    }
-
-    @Override
     public void duringTurn() {
         super.duringTurn();
+        AbstractDungeon.effectList.add(new BetterWarningSignEffect(owner.hb.cX, owner.hb.cY + owner.hb.y, 3.0f));
         remove(1);
     }
 

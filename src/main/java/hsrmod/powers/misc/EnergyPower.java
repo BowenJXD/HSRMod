@@ -4,11 +4,12 @@ import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
+import hsrmod.powers.StatePower;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class EnergyPower extends BuffPower implements InvisiblePower {
+public class EnergyPower extends StatePower implements InvisiblePower {
     public static final String POWER_ID = HSRMod.makePath(EnergyPower.class.getSimpleName());
     
     List<Object> lockers;

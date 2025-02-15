@@ -29,7 +29,6 @@ import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import com.megacrit.cardcrawl.monsters.MonsterInfo;
 import com.megacrit.cardcrawl.monsters.city.ShelledParasite;
 import com.megacrit.cardcrawl.monsters.exordium.SlaverRed;
-import com.megacrit.cardcrawl.relics.ChemicalX;
 import com.megacrit.cardcrawl.relics.LizardTail;
 import com.megacrit.cardcrawl.relics.MawBank;
 import com.megacrit.cardcrawl.relics.SneckoEye;
@@ -38,13 +37,14 @@ import com.badlogic.gdx.graphics.Color;
 import hsrmod.characters.StellaCharacter;
 import hsrmod.dungeons.Belobog;
 import hsrmod.dungeons.Luofu;
+import hsrmod.dungeons.Penacony;
 import hsrmod.events.*;
 import hsrmod.misc.BonusManager;
 import hsrmod.misc.ChargeIcon;
 import hsrmod.misc.Encounter;
 import hsrmod.misc.ToughnessReductionVariable;
 import hsrmod.monsters.Exordium.*;
-import hsrmod.monsters.SequenceTrotter;
+import hsrmod.monsters.Bonus.SequenceTrotter;
 import hsrmod.monsters.TheBeyond.*;
 import hsrmod.monsters.TheCity.*;
 import hsrmod.patches.RelicTagField;
@@ -66,7 +66,7 @@ import static com.megacrit.cardcrawl.core.Settings.language;
 import static hsrmod.characters.StellaCharacter.PlayerColorEnum.*;
 
 @SpireInitializer // 加载mod的注解
-public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditCharactersSubscriber, EditRelicsSubscriber, EditKeywordsSubscriber, AddAudioSubscriber, PostInitializeSubscriber, StartGameSubscriber {
+public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditCharactersSubscriber, EditRelicsSubscriber, EditKeywordsSubscriber, AddAudioSubscriber, PostInitializeSubscriber, StartGameSubscriber {
     public static String MOD_NAME = "HSRMod";
 
     public static final Color MY_COLOR = new Color(255.0F / 255.0F, 141.0F / 255.0F, 227.0F / 255.0F, 1.0F);
@@ -158,7 +158,7 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
             new AutoAdd(MOD_NAME)
                     .packageFilter("hsrmod.relics")
                     .any(CustomRelic.class, (info, relic) -> {
-                        if (relic instanceof BaseRelic && ((BaseRelic)relic).hsrOnly) {
+                        if (relic instanceof BaseRelic && ((BaseRelic) relic).hsrOnly) {
                             BaseMod.addRelicToCustomPool(relic, HSR_PINK);
                         } else {
                             BaseMod.addRelic(relic, RelicType.SHARED);
@@ -169,7 +169,6 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
                     });
         }
         if (AbstractDungeon.isPlayerInDungeon() && AbstractDungeon.player instanceof StellaCharacter) {
-            BaseMod.removeRelic(RelicLibrary.getRelic(ChemicalX.ID));
             BaseMod.removeRelic(RelicLibrary.getRelic(SneckoEye.ID));
         }
         RelicTagField.destructible.set(RelicLibrary.getRelic(LizardTail.ID), true);
@@ -242,7 +241,7 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
                 // .bonusCondition(() -> ModHelper.hasRelic(WaxOfPreservation.ID))
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(SlumberingOverlordEvent.ID, SlumberingOverlordEvent.class)
-                .dungeonID(TheBeyond.ID)
+                .dungeonID(Penacony.ID)
                 // .bonusCondition(() -> ModHelper.hasRelic(WaxOfPropagation.ID))
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(RockPaperScissorsEvent.ID, RockPaperScissorsEvent.class)
@@ -260,7 +259,7 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         BaseMod.addEvent(new AddEventParams.Builder(ThreeLittlePigsEvent.ID, ThreeLittlePigsEvent.class)
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(ImperialLegacyEvent.ID, ImperialLegacyEvent.class)
-                .dungeonID(TheBeyond.ID)
+                .dungeonID(Penacony.ID)
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(AceTrashDiggerEvent.ID, AceTrashDiggerEvent.class)
                 .create());
@@ -268,40 +267,61 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
                 .spawnCondition(() -> !ModHelper.hasRelic(Pineapple.ID))
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(YuQingtuEvent.ID, YuQingtuEvent.class)
-                .spawnCondition(() -> !ModHelper.hasRelic(ThePinkestCollision.ID) && !ModHelper.hasRelic(ThalanToxiFlame.ID))   
+                .spawnCondition(() -> !ModHelper.hasRelic(ThePinkestCollision.ID) && !ModHelper.hasRelic(ThalanToxiFlame.ID))
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(IPMBShoppingMallEvent.ID, IPMBShoppingMallEvent.class)
-                .dungeonID(TheBeyond.ID)
+                .dungeonID(Penacony.ID)
                 .create());
-        
+
         // =========================== Event Monsters ===========================
 
         BaseMod.addMonster(Encounter.PARASITE_N_SLAVER, () -> new MonsterGroup(new AbstractMonster[]{
                 new ShelledParasite(),
                 new SlaverRed(130.0F, 20F)
         }));
-        BaseMod.addStrongMonsterEncounter(Luofu.ID, new MonsterInfo(Encounter.PARASITE_N_SLAVER, 0.0F));
         BaseMod.addMonster(Encounter.THREE_LIL_PIGS, () -> new MonsterGroup(new AbstractMonster[]{
                 new SequenceTrotter(-400, AbstractDungeon.monsterRng.random(-15, 15), 0),
                 new SequenceTrotter(-100, AbstractDungeon.monsterRng.random(-15, 15), 2),
                 new SequenceTrotter(+200, AbstractDungeon.monsterRng.random(-15, 15), 1),
         }));
-        BaseMod.addStrongMonsterEncounter(Belobog.ID, new MonsterInfo(Encounter.THREE_LIL_PIGS, 0.0F));
+        BaseMod.addMonster(Encounter.RPS_1, () -> new MonsterGroup(new AbstractMonster[]{
+                Encounter.getRandomFloating(-300, AbstractDungeon.monsterRng.random(15, 30)),
+                new IlluminationDragonfish(-100, AbstractDungeon.monsterRng.random(0, 15)),
+                Encounter.getRandomFloating(100, AbstractDungeon.monsterRng.random(15, 30)),
+        }));
+        BaseMod.addMonster(Encounter.RPS_2, () -> new MonsterGroup(new AbstractMonster[]{
+                Encounter.getRandomMaraStruck(-300, AbstractDungeon.monsterRng.random(-15, 15)).modifyHpByPercent(1.25f),
+                Encounter.getRandomMaraStruck(0, AbstractDungeon.monsterRng.random(-15, 15)).modifyHpByPercent(1.25f),
+                Encounter.getRandomMaraStruck(300, AbstractDungeon.monsterRng.random(-15, 15)).modifyHpByPercent(1.25f),
+        }));
+        BaseMod.addMonster(Encounter.TAVERN_1, () -> new MonsterGroup(new AbstractMonster[]{
+                new Direwolf(0, AbstractDungeon.monsterRng.random(-15, 15)).modifyHpByPercent(1.5f),
+        }));
+        BaseMod.addMonster(Encounter.TAVERN_2, () -> new MonsterGroup(new AbstractMonster[]{
+                new Grizzly(-100, 0).modifyHpByPercent(1.5f),
+        }));
+        BaseMod.addMonster(Encounter.TAVERN_3, () -> new MonsterGroup(new AbstractMonster[]{
+                new Grizzly(-200, 0).process(m -> m.specialAs = false),
+                new Direwolf(300, 0),
+        }));
     }
 
     public void addMonsters() {
         Belobog belobog = new Belobog();
         Luofu luofu = new Luofu();
+        Penacony penacony = new Penacony();
 
         // =========================== Boss ===========================
 
-        belobog.addBoss(Encounter.END_OF_THE_ETERNAL_FREEZE, Cocolia::new, "HSRModResources/img/monsters/EndOfTheEternalFreeze.png", "HSRModResources/img/monsters/BossOutline.png");
+        belobog.addBoss(Encounter.END_OF_THE_ETERNAL_FREEZE, () -> new MonsterGroup(new AbstractMonster[]{
+                new Cocolia()
+        }), "HSRModResources/img/monsters/EndOfTheEternalFreeze.png", "HSRModResources/img/monsters/BossOutline.png");
         belobog.addBoss(Encounter.DESTRUCTIONS_BEGINNING, () -> new MonsterGroup(new AbstractMonster[]{
                 new AntimatterEngine(),
                 new DawnsLeftHand(),
                 new DisastersRightHand(),
         }), "HSRModResources/img/monsters/DestructionsBeginning.png", "HSRModResources/img/monsters/BossOutline.png");
-        
+
         luofu.addBoss(Encounter.DIVINE_SEED, () -> new MonsterGroup(new AbstractMonster[]{
                 new Phantylia(),
         }), "HSRModResources/img/monsters/DivineSeed.png", "HSRModResources/img/monsters/BossOutline.png");
@@ -311,16 +331,15 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
                 new NebulaDevourer(160, 220),
                 new ShadowOfFeixiao(),
         }), "HSRModResources/img/monsters/InnerBeastsBattlefield.png", "HSRModResources/img/monsters/BossOutline.png");
-        
-        BaseMod.addMonster(Encounter.SALUTATIONS_OF_ASHEN_DREAMS, () -> new MonsterGroup(new AbstractMonster[]{
+
+        penacony.addBoss(Encounter.SALUTATIONS_OF_ASHEN_DREAMS, () -> new MonsterGroup(new AbstractMonster[]{
                 new EchoOfFadedDreams(0, -500F, 50.0F),
                 new TheGreatSeptimus(),
                 new EchoOfFadedDreams(1, 300F, 50.0F)
-        }));
-        BaseMod.addBoss(TheBeyond.ID, Encounter.SALUTATIONS_OF_ASHEN_DREAMS, "HSRModResources/img/monsters/SalutationsOfAshenDreams.png", "HSRModResources/img/monsters/BossOutline.png");
+        }), "HSRModResources/img/monsters/SalutationsOfAshenDreams.png", "HSRModResources/img/monsters/BossOutline.png");
 
         // =========================== Elite ===========================
-        
+
         BaseMod.addMonster(Encounter.GEPARD, () -> new MonsterGroup(new AbstractMonster[]{
                 new Gepard()
         }));
@@ -330,7 +349,7 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         BaseMod.addMonster(Encounter.SVAROG, () -> new MonsterGroup(new AbstractMonster[]{
                 new Svarog()
         }));
-        
+
         BaseMod.addMonster(Encounter.HOOLAY, () -> new MonsterGroup(new AbstractMonster[]{
                 new Hoolay()
         }));
@@ -340,25 +359,35 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         BaseMod.addMonster(Encounter.CIRRUS, () -> new MonsterGroup(new AbstractMonster[]{
                 new Cirrus()
         }));
-        
+
         BaseMod.addMonster(Encounter.SOMETHING_UNTO_DEATH, () -> new MonsterGroup(new AbstractMonster[]{
                 new SomethingUntoDeath()
         }));
-        BaseMod.addEliteEncounter(TheBeyond.ID, new MonsterInfo(Encounter.SOMETHING_UNTO_DEATH, 3.0F));
-        
+        BaseMod.addMonster(Encounter.BLAZNANA_MONKEY_TRICK, () -> new MonsterGroup(new AbstractMonster[]{
+                new DreamweaverBananAdvisor(-500, AbstractDungeon.monsterRng.random(-15, 15), true),
+                new Assistanana(-270, AbstractDungeon.monsterRng.random(-15, 15), false),
+                new CharmonyBananAdvisor(0, AbstractDungeon.monsterRng.random(-15, 15), true),
+                new FortuneBananAdvisor(300, AbstractDungeon.monsterRng.random(50, 75), ModHelper.specialAscension(AbstractMonster.EnemyType.ELITE)),
+        }));
+        BaseMod.addMonster(Encounter.THE_PAST_PRESENT_AND_ETERNAL_SHOW, () -> new MonsterGroup(new AbstractMonster[]{
+                new PresentInebriatedInRevelry(-400, 0),
+                new TomorrowInHarmoniousChords(-100, 0),
+                new PastConfinedAndCaged(200, 0)
+        }));
+
         // =========================== Stronger ===========================
-        
+
         BaseMod.addMonster(Encounter.GRIZZLY, () -> new MonsterGroup(new AbstractMonster[]{
-                new Grizzly()
+                new Grizzly(-175, 0)
         }));
         BaseMod.addMonster(Encounter.FRIGID_PROWLER, () -> new MonsterGroup(new AbstractMonster[]{
-                new FrigidProwler()
+                new FrigidProwler(0, 0)
         }));
         BaseMod.addMonster(Encounter.GUARDIAN_SHADOW, () -> new MonsterGroup(new AbstractMonster[]{
-                new GuardianShadow()
+                new GuardianShadow(-100, 0)
         }));
         BaseMod.addMonster(Encounter.DECAYING_SHADOW, () -> new MonsterGroup(new AbstractMonster[]{
-                new DecayingShadow()
+                new DecayingShadow(-100, 0)
         }));
         BaseMod.addMonster(Encounter.SILVERMANE_LIEUTENANT, () -> new MonsterGroup(new AbstractMonster[]{
                 new SilvermaneLieutenant(-100, AbstractDungeon.monsterRng.random(-15, 15))
@@ -375,8 +404,8 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
                 Encounter.getRandomAutomaton(-300, AbstractDungeon.monsterRng.random(-15, 15)),
                 new Direwolf(0, AbstractDungeon.monsterRng.random(-15, 15)),
         }));
-        
-        
+
+
         BaseMod.addMonster(Encounter.AUROMATON_GATEKEEPER, () -> new MonsterGroup(new AbstractMonster[]{
                 new AurumatonGatekeeper()
         }));
@@ -404,15 +433,35 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
                 new TwigOfMarpleLeaf(-50, AbstractDungeon.monsterRng.random(-15, 15)),
                 new TwigOfGloriousBlooms(100, AbstractDungeon.monsterRng.random(-15, 15)),
         }));
-        
-        
+
+
         BaseMod.addMonster(Encounter.SWEET_GORILLA, () -> new MonsterGroup(new AbstractMonster[]{
                 new SweetGorilla()
         }));
-        BaseMod.addStrongMonsterEncounter(TheBeyond.ID, new MonsterInfo(Encounter.SWEET_GORILLA, 3.0F));
-        
+        BaseMod.addMonster(Encounter.BEYOND_OVERCOOKED, () -> new MonsterGroup(new AbstractMonster[]{
+                new BeyondOvercooked(0, AbstractDungeon.monsterRng.random(-15, 15))
+        }));
+        BaseMod.addMonster(Encounter.SHELL_OF_FADED_RAGE, () -> new MonsterGroup(new AbstractMonster[]{
+                new ShellOfFadedRage(0, AbstractDungeon.monsterRng.random(-15, 15))
+        }));
+        BaseMod.addMonster(Encounter.PAST, () -> new MonsterGroup(new AbstractMonster[]{
+                Encounter.getRandomDreamjoltTroupe(-200, AbstractDungeon.monsterRng.random(-15, 15)),
+                new PastConfinedAndCaged(100, AbstractDungeon.monsterRng.random(-15, 15)),
+        }));
+        BaseMod.addMonster(Encounter.PRESENT, () -> new MonsterGroup(new AbstractMonster[]{
+                Encounter.getRandomDreamjoltTroupe(-200, AbstractDungeon.monsterRng.random(-15, 15)),
+                new PresentInebriatedInRevelry(100, AbstractDungeon.monsterRng.random(-15, 15)),
+        }));
+        BaseMod.addMonster(Encounter.TOMORROW, () -> new MonsterGroup(new AbstractMonster[]{
+                Encounter.getRandomDreamjoltTroupe(-200, AbstractDungeon.monsterRng.random(-15, 15)),
+                new TomorrowInHarmoniousChords(100, AbstractDungeon.monsterRng.random(-15, 15)),
+        }));
+        BaseMod.addMonster(Encounter.COMPANY, () -> new MonsterGroup(new AbstractMonster[]{
+                new TeamLeader(-200, AbstractDungeon.monsterRng.random(-15, 15)),
+        }));
+
         // =========================== Normal ===========================
-        
+
         BaseMod.addMonster(Encounter.TWO_AUTOMATONS, () -> new MonsterGroup(new AbstractMonster[]{
                 Encounter.getRandomAutomaton(-250, AbstractDungeon.monsterRng.random(-15, 15)),
                 Encounter.getRandomAutomaton(0, AbstractDungeon.monsterRng.random(-15, 15)),
@@ -429,8 +478,7 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
                 new MaskOfNoThought(-100, AbstractDungeon.monsterRng.random(150, 180)),
                 Encounter.getRandomSpawn(100, AbstractDungeon.monsterRng.random(180, 200)),
         }));
-        
-        
+
         BaseMod.addMonster(Encounter.DRAGONFISH_N_FLOATINGS, () -> new MonsterGroup(new AbstractMonster[]{
                 Encounter.getRandomFloating(-300, AbstractDungeon.monsterRng.random(15, 30)),
                 new IlluminationDragonfish(-100, AbstractDungeon.monsterRng.random(0, 15)),
@@ -448,19 +496,29 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
                 new CloudKnightsPatroller(-200, AbstractDungeon.monsterRng.random(-15, 15)),
                 new CloudKnightsPatroller(100, AbstractDungeon.monsterRng.random(-15, 15)),
         }));
-        
-        
+
         BaseMod.addMonster(Encounter.HOUND_N_DOMESCREEN, () -> new MonsterGroup(new AbstractMonster[]{
                 new MrDomescreen(-400, AbstractDungeon.monsterRng.random(-15, 15)),
                 new BubbleHound(-100, AbstractDungeon.monsterRng.random(-15, 15)),
                 new MrDomescreen(200, AbstractDungeon.monsterRng.random(-15, 15)),
         }));
-        BaseMod.addMonsterEncounter(TheBeyond.ID, new MonsterInfo(Encounter.HOUND_N_DOMESCREEN, 3.0F));
-        
+        BaseMod.addMonster(Encounter.TWO_FLOATINGS_N_HEARTBREAKER, () -> new MonsterGroup(new AbstractMonster[]{
+                Encounter.getRandomFloatingPenacony(-250, AbstractDungeon.monsterRng.random(100, 115)),
+                new Heartbreaker(0, AbstractDungeon.monsterRng.random(-15, 15)),
+                Encounter.getRandomFloatingPenacony(250, AbstractDungeon.monsterRng.random(100, 115)),
+        }));
+        BaseMod.addMonster(Encounter.MEMORY_ZONE_MEME, () -> new MonsterGroup(new AbstractMonster[]{
+                new SomethingInTheMirror(-200, AbstractDungeon.monsterRng.random(-15, 15)),
+                new SomethingInTheMirror(200, AbstractDungeon.monsterRng.random(-15, 15)),
+                new InsatiableVanity(-200, AbstractDungeon.monsterRng.random(300, 315)),
+                new InsatiableVanity(200, AbstractDungeon.monsterRng.random(300, 315)),
+        }));
+
         // ==================================================================
-        
+
         belobog.addAct("Exordium");
         luofu.addAct("TheCity");
+        penacony.addAct("TheBeyond");
     }
 
     @Override
@@ -527,7 +585,7 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
     void addWav(String id) {
         BaseMod.addAudio(id, "HSRModResources/localization/" + lang + "/audio/" + id + ".wav");
     }
-    
+
     void addOgg(String id) {
         BaseMod.addAudio(id, "HSRModResources/localization/" + lang + "/audio/" + id + ".ogg");
     }
@@ -538,45 +596,58 @@ public class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         String[] buttonLanguage = null;
         if (language == Settings.GameLanguage.ZHS || language == Settings.GameLanguage.ZHT)
             buttonLanguage = new String[]{"加入遗物", "加入事件", "加入敌人", "移除原版敌人", "部分设定需要重启并重开游戏才能生效"};
-        else 
+        else
             buttonLanguage = new String[]{"Add Relic", "Add Event", "Add Enemy", "Remove Other Enemies", "Some settings need to restart and reopen the game to take effect"};
         Texture badgeTexture = ImageMaster.loadImage("HSRModResources/img/char/badge.png");
         BaseMod.registerModBadge(badgeTexture, MOD_NAME, Arrays.stream(info.Authors).findFirst().orElse(""), info.Description, panel);
-        
-        panel.addUIElement(new ModLabel(buttonLanguage[4], 400.0F, 800.0F, panel, (me) -> {}));
-        ModLabeledToggleButton addRelicButton = new ModLabeledToggleButton(buttonLanguage[0], 400.0F, 700.0F, Color.WHITE, FontHelper.buttonLabelFont, addRelic, panel, (label) -> {}, (button) -> {
+
+        panel.addUIElement(new ModLabel(buttonLanguage[4], 400.0F, 800.0F, panel, (me) -> {
+        }));
+        ModLabeledToggleButton addRelicButton = new ModLabeledToggleButton(buttonLanguage[0], 400.0F, 700.0F, Color.WHITE, FontHelper.buttonLabelFont, addRelic, panel, (label) -> {
+        }, (button) -> {
             addRelic = button.enabled;
             try {
                 config.setBool("addRelic", addRelic);
                 config.save();
-            } catch (IOException e) { e.printStackTrace(); }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         });
         panel.addUIElement(addRelicButton);
-        
-        ModLabeledToggleButton addEventButton = new ModLabeledToggleButton(buttonLanguage[1], 400.0F, 600.0F, Color.WHITE, FontHelper.buttonLabelFont, addEvent, panel, (label) -> {}, (button) -> {
+
+        ModLabeledToggleButton addEventButton = new ModLabeledToggleButton(buttonLanguage[1], 400.0F, 600.0F, Color.WHITE, FontHelper.buttonLabelFont, addEvent, panel, (label) -> {
+        }, (button) -> {
             addEvent = button.enabled;
             try {
                 config.setBool("addEvent", addEvent);
                 config.save();
-            } catch (IOException e) { e.printStackTrace(); }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         });
         panel.addUIElement(addEventButton);
-        
-        ModLabeledToggleButton addEnemyButton = new ModLabeledToggleButton(buttonLanguage[2], 400.0F, 500.0F, Color.WHITE, FontHelper.buttonLabelFont, addEnemy, panel, (label) -> {}, (button) -> {
+
+        ModLabeledToggleButton addEnemyButton = new ModLabeledToggleButton(buttonLanguage[2], 400.0F, 500.0F, Color.WHITE, FontHelper.buttonLabelFont, addEnemy, panel, (label) -> {
+        }, (button) -> {
             addEnemy = button.enabled;
             try {
                 config.setBool("addEnemy", addEnemy);
                 config.save();
-            } catch (IOException e) { e.printStackTrace(); }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         });
         panel.addUIElement(addEnemyButton);
-        
-        ModLabeledToggleButton removeOtherEnemiesButton = new ModLabeledToggleButton(buttonLanguage[3], 400.0F, 400.0F, Color.WHITE, FontHelper.buttonLabelFont, removeOtherEnemies, panel, (label) -> {}, (button) -> {
+
+        ModLabeledToggleButton removeOtherEnemiesButton = new ModLabeledToggleButton(buttonLanguage[3], 400.0F, 400.0F, Color.WHITE, FontHelper.buttonLabelFont, removeOtherEnemies, panel, (label) -> {
+        }, (button) -> {
             removeOtherEnemies = button.enabled;
             try {
                 config.setBool("removeOtherEnemies", removeOtherEnemies);
                 config.save();
-            } catch (IOException e) { e.printStackTrace(); }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         });
         panel.addUIElement(removeOtherEnemiesButton);
     }

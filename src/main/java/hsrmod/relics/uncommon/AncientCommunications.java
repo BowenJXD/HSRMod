@@ -1,8 +1,8 @@
 package hsrmod.relics.uncommon;
 
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import hsrmod.monsters.SequenceTrotter;
-import hsrmod.monsters.WarpTrotter;
+import hsrmod.monsters.Bonus.SequenceTrotter;
+import hsrmod.monsters.Bonus.WarpTrotter;
 import hsrmod.relics.BaseRelic;
 import hsrmod.subscribers.INumChangerSubscriber;
 import hsrmod.subscribers.SubscriptionManager;

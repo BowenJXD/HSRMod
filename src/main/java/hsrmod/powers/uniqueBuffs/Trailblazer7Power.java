@@ -50,6 +50,6 @@ public class Trailblazer7Power extends BuffPower {
     @Override
     public void atEndOfTurn(boolean isPlayer) {
         super.atEndOfTurn(isPlayer);
-        this.addToBot(new RemoveSpecificPowerAction(owner, owner, this));
+        this.addToTop(new RemoveSpecificPowerAction(owner, owner, this));
     }
 }

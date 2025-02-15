@@ -45,6 +45,7 @@ public class SomethingUntoDeath extends BaseMonster {
         setDamages(9, 9, 49);
         strengthGain = ModHelper.moreDamageAscension(type) ? 3 : 2;
         ssHp = ModHelper.specialAscension(type) ? 5 : 4;
+        bgm = "Return of None";
     }
 
     @Override

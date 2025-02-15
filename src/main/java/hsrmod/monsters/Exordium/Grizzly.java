@@ -21,8 +21,8 @@ import hsrmod.utils.ModHelper;
 public class Grizzly extends BaseMonster {
     public static final String ID = Grizzly.class.getSimpleName();
     
-    public Grizzly() {
-        super(ID, 0F, -15.0F, 384, 384, -175, 0);
+    public Grizzly(float x, float y) {
+        super(ID, 0F, -15.0F, 384, 384, x, y);
         
         if (ModHelper.specialAscension(type)) {
             turnCount = 1;
@@ -37,15 +37,15 @@ public class Grizzly extends BaseMonster {
             setDamages(9, 6);
         }
         
-        addSlot(-500, AbstractDungeon.monsterRng.random(-15, 15));
-        addSlot(150, AbstractDungeon.monsterRng.random(-15, 15));
+        addSlot(x - 300, AbstractDungeon.monsterRng.random(-15, 15));
+        addSlot(x + 300, AbstractDungeon.monsterRng.random(-15, 15));
         monFunc = slot -> new Spider(slot.x, slot.y);
     }
 
     @Override
     public void usePreBattleAction() {
         super.usePreBattleAction();
-        if (ModHelper.specialAscension(type)) {
+        if (specialAs) {
             spawnMonsters();
         }
     }

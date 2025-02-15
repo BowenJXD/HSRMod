@@ -13,8 +13,8 @@ import hsrmod.utils.ModHelper;
 public class FrigidProwler extends BaseMonster {
     public static final String ID = FrigidProwler.class.getSimpleName();
 
-    public FrigidProwler() {
-        super(ID, 0F, -15.0F, 300, 384, 0, 0);
+    public FrigidProwler(float x, float y) {
+        super(ID, 0F, -15.0F, 300, 384, x, y);
         setDamagesWithAscension(5, 9, 3);
         addSlot(-300.0F, 0.0F);
         monFunc = slot -> new EverwinterShadewalker(slot.x, slot.y);

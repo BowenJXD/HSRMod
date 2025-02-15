@@ -25,7 +25,8 @@ public class Lingsha1 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         // addToBot(new HealAction(p, p, p.hasPower(BreakEffectPower.POWER_ID) ? p.getPower(BreakEffectPower.POWER_ID).amount : 0));
-        addToBot(new VFXAction(new SearingBlowEffect(m.hb.cX, m.hb.cY, upgraded ? 2 : 1)));
+        if (m != null)
+            addToBot(new VFXAction(new SearingBlowEffect(m.hb.cX, m.hb.cY, upgraded ? 2 : 1)));
         addToBot(new ElementalDamageAction(
                 m,
                 new ElementalDamageInfo(this),

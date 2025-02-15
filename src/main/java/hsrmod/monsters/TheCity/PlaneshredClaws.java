@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.InstantKillAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.status.Wound;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -39,5 +40,11 @@ public class PlaneshredClaws extends BaseMonster {
         } else {
             setMove(0);
         }
+    }
+
+    @Override
+    public void die() {
+        AbstractDungeon.getMonsters().monsters.stream().filter(m -> m instanceof NebulaDevourer && !ModHelper.check(m)).forEach(m -> addToBot(new InstantKillAction(m)));
+        super.die();
     }
 }

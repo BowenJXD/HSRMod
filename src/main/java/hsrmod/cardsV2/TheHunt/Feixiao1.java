@@ -26,7 +26,8 @@ public class Feixiao1 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new VFXAction(new ThrowDaggerEffect(m.hb.cX, m.hb.cY)));
+        if (m != null)
+            addToBot(new VFXAction(new ThrowDaggerEffect(m.hb.cX, m.hb.cY)));
         addToBot(
                 new ElementalDamageAction(
                         m,

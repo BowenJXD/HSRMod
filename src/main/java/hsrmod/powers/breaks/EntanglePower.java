@@ -50,7 +50,14 @@ public class EntanglePower extends DebuffPower {
 
     @Override
     public void atStartOfTurn() {
-        addToBot(new ElementalDamageAction(owner, new ElementalDamageInfo(source, getDamage(), ElementType.Quantum, 1), AbstractGameAction.AttackEffect.SLASH_HEAVY));
+        ElementalDamageAction action = new ElementalDamageAction(owner, new ElementalDamageInfo(source, getDamage(), ElementType.Quantum, 1), AbstractGameAction.AttackEffect.SLASH_HEAVY);
+        if (owner.isPlayer) {
+            action.setIsSourceNullable(true)
+                    .setIsFast(true)
+                    .update();
+        } else {
+            addToBot(action);
+        }
         addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
     }
 }

@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.*;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.actions.utility.HideHealthBarAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -19,10 +20,12 @@ import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.EnemyMoveInfo;
 import com.megacrit.cardcrawl.powers.MinionPower;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.vfx.combat.*;
 import hsrmod.effects.MoveToEffect;
 import hsrmod.misc.PathDefine;
 import hsrmod.modcore.HSRMod;
+import hsrmod.powers.enemyOnly.ChannelPower;
 import hsrmod.powers.enemyOnly.SummonedPower;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.utils.DataManager;
@@ -30,6 +33,7 @@ import hsrmod.utils.ModHelper;
 import hsrmod.utils.MonsterDataCol;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -134,6 +138,21 @@ public abstract class BaseMonster extends CustomMonster {
                 hb_w, hb_h,
                 PathDefine.MONSTER_PATH + id + ".png",
                 0, 0);
+    }
+    
+    public BaseMonster process(Consumer<BaseMonster> consumer){
+        consumer.accept(this);
+        return this;
+    }
+    
+    public BaseMonster modifyHpByPercent(float percent) {
+        setHp((int) (maxHealth * percent));
+        return this;
+    }
+    
+    public BaseMonster modifyHp(int modifyAmount){
+        setHp(maxHealth + modifyAmount);
+        return this;
     }
     
     @Override
@@ -254,6 +273,23 @@ public abstract class BaseMonster extends CustomMonster {
                     }
                 }
             }
+    }
+    
+    public void respawn(){
+        if (MathUtils.randomBoolean()) {
+            addToBot(new SFXAction("DARKLING_REGROW_2", MathUtils.random(-0.1F, 0.1F)));
+        } else {
+            addToBot(new SFXAction("DARKLING_REGROW_1", MathUtils.random(-0.1F, 0.1F)));
+        }
+
+        addToBot(new HealAction(this, this, this.maxHealth / 2));
+        this.halfDead = false;
+        Iterator var1 = AbstractDungeon.player.relics.iterator();
+
+        while(var1.hasNext()) {
+            AbstractRelic r = (AbstractRelic)var1.next();
+            r.onSpawnMonster(this);
+        }
     }
 
     @Override

@@ -16,7 +16,7 @@ public class Direwolf extends BaseMonster {
     public static final String ID = Direwolf.class.getSimpleName();
 
     public Direwolf(float x, float y) {
-        super(ID, 0F, -15.0F, 300, 384, x, y);
+        super(ID, 0F, -15.0F, 200, 384, x, y);
         setDamagesWithAscension(4, 9, 1);
     }
 

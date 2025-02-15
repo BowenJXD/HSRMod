@@ -3,6 +3,7 @@ package hsrmod.monsters.TheCity;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.RollMoveAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.vfx.combat.FireballEffect;
@@ -35,12 +36,27 @@ public class NebulaDevourer extends BaseMonster {
 
     @Override
     protected void getMove(int i) {
-        if (hasPower(ToughnessPower.POWER_ID) && ModHelper.getPowerCount(this, ToughnessPower.POWER_ID) <= 0) {
+        if (halfDead || (hasPower(ToughnessPower.POWER_ID) && ModHelper.getPowerCount(this, ToughnessPower.POWER_ID) <= 0)) {
             setMove(2);
         } else if (hasPower(ResonatePower.POWER_ID)) {
             setMove(1);
-        } else {
+        } else { 
             setMove(0);
+        }
+    }
+
+    @Override
+    public void die() {
+        if (halfDead) {
+            isDying = true;
+        } else {
+            super.die();
+        }
+        if (AbstractDungeon.getMonsters().monsters.stream().anyMatch(m -> m instanceof PlaneshredClaws && ModHelper.check(m))) {
+            isDying = false;
+            halfDead = true;
+            addToBot(new RollMoveAction(this));
+            ModHelper.addToBotAbstract(this::createIntent);
         }
     }
 }

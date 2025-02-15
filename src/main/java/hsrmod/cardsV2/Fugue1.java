@@ -44,7 +44,8 @@ public class Fugue1 extends BaseCard {
     }
 
     public void trigger(AbstractMonster m) {
-        addToBot(new VFXAction(new SearingBlowEffect(m.hb.cX, m.hb.cY, upgraded ? 2 : 1)));
+        if (m != null)
+            addToBot(new VFXAction(new SearingBlowEffect(m.hb.cX, m.hb.cY, upgraded ? 2 : 1)));
         int amt = magicNumber - ModHelper.getPowerCount(m, ToughnessPower.POWER_ID);
         amt = Math.min(magicNumber, Math.max(amt, -magicNumber));
         AbstractPower power = m.getPower(ToughnessPower.POWER_ID);

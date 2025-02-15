@@ -31,7 +31,7 @@ public class CosmicBigLotto extends BaseRelic {
         }
         if (AbstractDungeon.miscRng.random(100) < loseChance) {
             flash();
-            addToBot(new DamageAction(AbstractDungeon.player, new DamageInfo(AbstractDungeon.player, AbstractDungeon.player.currentHealth / 2, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+            addToTop(new DamageAction(AbstractDungeon.player, new DamageInfo(AbstractDungeon.player, AbstractDungeon.player.currentHealth / 2, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
             destroy();
         }
     }

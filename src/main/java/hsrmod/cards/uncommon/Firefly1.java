@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.VerticalImpactEffect;
@@ -35,8 +36,6 @@ public class Firefly1 extends BaseCard {
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         returnToHand = false;
         //addToBot(new VFXAction(new VerticalImpactEffect(m.hb.cX, m.hb.cY)));
-        addToBot(new VFXAction(new MultiSlashEffect(m.hb.cX, m.hb.cY, 5, Color.CHARTREUSE, Color.ORANGE)));
-
         if (AbstractDungeon.cardRandomRng.randomBoolean()) {
             ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID + "-1"));
             addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
@@ -44,6 +43,8 @@ public class Firefly1 extends BaseCard {
             ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID + "-2"));
             addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[1], 1.0F, 2.0F));
         }
+        addToBot(new VFXAction(new MultiSlashEffect(m.hb.cX, m.hb.cY, 5, Color.CHARTREUSE, Color.ORANGE), Settings.FAST_MODE ? 0.6f : 0f));
+
         addToBot(
                 new ElementalDamageAction(
                         m,

@@ -22,7 +22,7 @@
     "NAME": "Frozen",
     "DESCRIPTIONS": [
       "When there are #b%d stacks (1/2/3 for normal/elite/BOSS enemies):",
-      "All stacks are removed at the start of the turn and the turn is skipped. NL After taking damage, remove 1 stack."
+      "All stacks are removed at the start of the turn and the turn is skipped. NL After taking damage from card, remove 1 stack."
     ]
   },
   "HSRMod:FrozenResistance": {
@@ -606,7 +606,7 @@
   "HSRMod:Outrage": {
     "NAME": "Outrage",
     "DESCRIPTIONS": [
-      "Remove at the start of the turn, play #b%d random #rAttack cards (costs Energy)."
+      "When using a #gnon-Attack card, remove #b1 stack and play #b1 random #rAttack card (costs [E] )."
     ]
   },
   "HSRMod:LastSpring": {

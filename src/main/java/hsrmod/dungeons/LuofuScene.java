@@ -250,7 +250,7 @@ public class LuofuScene extends AbstractScene {
         if (room instanceof MonsterRoomBoss || room.eliteTrigger) {
             CardCrawlGame.music.silenceBGM();
         } else if (room.monsters != null) {
-            if (AbstractDungeon.miscRng.randomBoolean(0.1F)) {
+            if (AbstractDungeon.miscRng.randomBoolean(0.5F)) {
                 room.playBGM("Thundering Chariot");
             } else {
                 room.playBGM("Into the Desolate");

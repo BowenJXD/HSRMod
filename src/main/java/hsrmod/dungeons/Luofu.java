@@ -1,6 +1,7 @@
 package hsrmod.dungeons;
 
 import actlikeit.dungeons.CustomDungeon;
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -51,7 +52,8 @@ public class Luofu extends CustomDungeon {
         return new LuofuScene();
     }
 
-    protected void initializeLevelSpecificChances() {shopRoomChance = 0.05F;
+    protected void initializeLevelSpecificChances() {
+        shopRoomChance = 0.05F;
         restRoomChance = 0.12F;
         treasureRoomChance = 0.0F;
         eventRoomChance = 0.22F;
@@ -105,6 +107,7 @@ public class Luofu extends CustomDungeon {
         monsters.add(new MonsterInfo(Encounter.AURUMATON_SPECTRAL_ENVOY, 2.0F));
         monsters.add(new MonsterInfo(Encounter.MALEFIC_APE, 2.0F));
         monsters.add(new MonsterInfo(Encounter.THE_ASCENDED, 2.0F));
+        monsters.add(new MonsterInfo(Encounter.TWIGS, 2.0F));
         
         MonsterInfo.normalizeWeights(monsters);
         this.populateFirstStrongEnemy(monsters, this.generateExclusions());
@@ -132,5 +135,7 @@ public class Luofu extends CustomDungeon {
         uiStrings = CardCrawlGame.languagePack.getUIString(ID);
         TEXT = uiStrings.TEXT;
         NAME = TEXT[0];
+        fadeColor = Color.valueOf("1e0f0aff");
+        sourceFadeColor = Color.valueOf("1e0f0aff");
     }
 }

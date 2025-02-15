@@ -10,10 +10,9 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import hsrmod.characters.StellaCharacter;
 import hsrmod.modcore.HSRMod;
-import hsrmod.monsters.SequenceTrotter;
-import hsrmod.monsters.WarpTrotter;
+import hsrmod.monsters.Bonus.SequenceTrotter;
+import hsrmod.monsters.Bonus.WarpTrotter;
 import hsrmod.subscribers.SubscriptionManager;
-import hsrmod.utils.ModHelper;
 
 public class BonusManager implements OnStartBattleSubscriber, StartActSubscriber, CustomSavable<Integer> {
     private static BonusManager instance;

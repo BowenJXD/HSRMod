@@ -28,6 +28,6 @@ public class BurdenPower extends DebuffPower {
     @Override
     public void atStartOfTurn() {
         super.atStartOfTurn();
-        addToBot(new RemoveSpecificPowerAction(owner, owner, this));
+        addToTop(new RemoveSpecificPowerAction(owner, owner, this));
     }
 }

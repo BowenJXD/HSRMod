@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.enemyOnly.MultiMovePower;
 import hsrmod.powers.enemyOnly.SoulsplitPower;
@@ -50,11 +51,6 @@ public class Cirrus extends BaseMonster {
 
     @Override
     protected void getMove(int i) {
-        if (lastMove((byte) 0)) {
-            AbstractDungeon.getMonsters().monsters.stream().filter(m -> ModHelper.check(m) && m != this).forEach(m -> {
-                addToBot(new ApplyPowerAction(m, this, new MultiMovePower(m, 1)));
-            });
-        }
         setMove(0);
     }
     

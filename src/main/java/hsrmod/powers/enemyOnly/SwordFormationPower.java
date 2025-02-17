@@ -1,7 +1,9 @@
 package hsrmod.powers.enemyOnly;
 
+import com.evacipated.cardcrawl.mod.stslib.actions.common.MoveCardsAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.utility.ExhaustToHandAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -52,6 +54,7 @@ public class SwordFormationPower extends StatePower implements PostMonsterDeathS
         int hpLossAmount = owner.currentHealth * hpLoss / 100;
         int tr = ModHelper.getPowerCount(owner, ToughnessPower.POWER_ID);
         addToBot(new ElementalDamageAction(owner, new ElementalDamageInfo(owner, hpLossAmount, DamageInfo.DamageType.HP_LOSS, ElementType.None, tr), AbstractGameAction.AttackEffect.NONE));
+        AbstractDungeon.player.exhaustPile.group.forEach(c -> addToBot(new ExhaustToHandAction(c)));
     }
 
     @Override

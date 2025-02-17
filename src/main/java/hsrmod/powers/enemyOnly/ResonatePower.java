@@ -34,6 +34,7 @@ public class ResonatePower extends StatePower implements PreElementalDamageSubsc
     
     public ResonatePower(AbstractCreature owner, int amount, ResonateType type) {
         super(POWER_ID, owner, amount);
+        priority = 4;
         particleTimer = 0.0F;
         this.type = type;
         updateDescription();
@@ -87,7 +88,7 @@ public class ResonatePower extends StatePower implements PreElementalDamageSubsc
                 info.tr = 0;
                 AbstractGameAction copy = new ElementalDamageAction(owner, info, action.attackEffect);
                 addToTop(copy);
-            } else {
+            } else if (action.info.tr > 0) {
                 action.info.tr += this.amount;
             }
         }

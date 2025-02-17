@@ -28,7 +28,6 @@ public class FlyingSword extends BaseMonster {
         addMoveA(Intent.ATTACK_DEBUFF, 3, mi->{
             addToBot(new AnimateFastAttackAction(this));
             addToBot(new VFXAction(new FlyingSpikeEffect(hb.cX, hb.cY, 0, p.hb.cX - hb.cX, p.hb.cY - hb.cY, Color.CYAN)));
-            attack(mi, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL);
             addToBot(new DamageCallbackAction(p, damage.get(mi.index), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, dmg->{
                 if (dmg > 0) {
                     addToBot(new MakeTempCardInDrawPileAction(new Frozen(), 1, true, true));

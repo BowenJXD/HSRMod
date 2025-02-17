@@ -28,6 +28,7 @@ public class FormationCorePower extends StatePower implements PreElementalDamage
 
     public FormationCorePower(AbstractCreature owner, Tag tag, boolean hidden) {
         super(POWER_ID, owner);
+        priority = 9;
         this.tag = tag;
         this.hidden = hidden;
         updateDescription();

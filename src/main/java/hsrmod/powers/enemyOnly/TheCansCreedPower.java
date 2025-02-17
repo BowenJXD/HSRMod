@@ -20,8 +20,8 @@ import hsrmod.subscribers.SubscriptionManager;
 public class TheCansCreedPower extends StatePower implements PreBreakSubscriber {
     public static final String POWER_ID = HSRMod.makePath(TheCansCreedPower.class.getSimpleName());
     
-    public TheCansCreedPower(AbstractCreature owner, int amount) {
-        super(POWER_ID, owner, amount);
+    public TheCansCreedPower(AbstractCreature owner) {
+        super(POWER_ID, owner);
         updateDescription();
     }
 

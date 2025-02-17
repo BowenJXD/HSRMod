@@ -101,7 +101,7 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
     public static boolean addRelic = true;
     public static boolean addEvent = true;
     public static boolean addEnemy = true;
-    public static boolean removeOtherEnemies = true;
+    // public static boolean removeOtherEnemies = true;
 
     String lang = "ENG";
 
@@ -146,7 +146,7 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
             addRelic = config.getBool("addRelic");
             addEvent = config.getBool("addEvent");
             addEnemy = config.getBool("addEnemy");
-            removeOtherEnemies = config.getBool("removeOtherEnemies");
+            // removeOtherEnemies = config.getBool("removeOtherEnemies");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -337,6 +337,9 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
                 new TheGreatSeptimus(),
                 new EchoOfFadedDreams(1, 300F, 50.0F)
         }), "HSRModResources/img/monsters/SalutationsOfAshenDreams.png", "HSRModResources/img/monsters/BossOutline.png");
+        penacony.addBoss(Encounter.BOREHOLE_PLANETS_OLD_CRATER, () -> new MonsterGroup(new AbstractMonster[]{
+                new Skaracabaz(),
+        }), "HSRModResources/img/monsters/BoreholePlanetsOldCrater.png", "HSRModResources/img/monsters/BossOutline.png");
 
         // =========================== Elite ===========================
 
@@ -414,7 +417,6 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
                 new Direwolf(0, AbstractDungeon.monsterRng.random(-15, 15)),
         }));
 
-
         BaseMod.addMonster(Encounter.AUROMATON_GATEKEEPER, () -> new MonsterGroup(new AbstractMonster[]{
                 new AurumatonGatekeeper()
         }));
@@ -442,7 +444,6 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
                 new TwigOfMarpleLeaf(-50, AbstractDungeon.monsterRng.random(-15, 15)),
                 new TwigOfGloriousBlooms(150, AbstractDungeon.monsterRng.random(-15, 15)),
         }));
-
 
         BaseMod.addMonster(Encounter.SWEET_GORILLA, () -> new MonsterGroup(new AbstractMonster[]{
                 new SweetGorilla()
@@ -613,9 +614,9 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
         ModPanel panel = new ModPanel();
         String[] buttonLanguage = null;
         if (language == Settings.GameLanguage.ZHS || language == Settings.GameLanguage.ZHT)
-            buttonLanguage = new String[]{"加入遗物", "加入事件", "加入敌人", "移除原版敌人", "部分设定需要重启并重开游戏才能生效"};
+            buttonLanguage = new String[]{"加入遗物", "加入事件", "加入敌人（扑满和王下一桶）", "移除原版敌人", "部分设定需要重启并重开游戏才能生效"};
         else
-            buttonLanguage = new String[]{"Add Relic", "Add Event", "Add Enemy", "Remove Other Enemies", "Some settings need to restart and reopen the game to take effect"};
+            buttonLanguage = new String[]{"Add Relic", "Add Event", "Add Enemy （Trotter and Lordly Trashcan)", "Remove Other Enemies", "Some settings need to restart and reopen the game to take effect"};
         Texture badgeTexture = ImageMaster.loadImage("HSRModResources/img/char/badge.png");
         BaseMod.registerModBadge(badgeTexture, MOD_NAME, Arrays.stream(info.Authors).findFirst().orElse(""), info.Description, panel);
 
@@ -657,7 +658,7 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
         });
         panel.addUIElement(addEnemyButton);
 
-        ModLabeledToggleButton removeOtherEnemiesButton = new ModLabeledToggleButton(buttonLanguage[3], 400.0F, 400.0F, Color.WHITE, FontHelper.buttonLabelFont, removeOtherEnemies, panel, (label) -> {
+        /*ModLabeledToggleButton removeOtherEnemiesButton = new ModLabeledToggleButton(buttonLanguage[3], 400.0F, 400.0F, Color.WHITE, FontHelper.buttonLabelFont, removeOtherEnemies, panel, (label) -> {
         }, (button) -> {
             removeOtherEnemies = button.enabled;
             try {
@@ -667,7 +668,7 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
                 e.printStackTrace();
             }
         });
-        panel.addUIElement(removeOtherEnemiesButton);
+        panel.addUIElement(removeOtherEnemiesButton);*/
     }
 
     private static void loadSettings() {

@@ -20,9 +20,9 @@ WorldpurgeTail,辟尘之尾,NORMAL,100,110,30,32
 TheGreatSeptimus,神主日,BOSS,770,777,17,17
 EchoOfFadedDreams,旧梦的回声,NORMAL,70,77,12,15
 ,,,,,,
-,碎星王虫 · 斯喀拉卡巴兹,,,,,
-,蚀蛰虫,,,,,
-,次蛰虫,,,,,
+Skaracabaz,碎星王虫 · 斯喀拉卡巴兹,BOSS,900,1000,30,33
+GnawSting,蚀蛰虫,NORMAL,39,39,9,10
+LesserSting,次蛰虫,NORMAL,49,49,9,10
 ,,,,,,
 Gepard,杰帕德,ELITE,80,82,6,7
 Bronya,布洛妮娅,ELITE,91,93,6,7

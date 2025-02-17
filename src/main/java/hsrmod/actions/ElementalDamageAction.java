@@ -73,6 +73,11 @@ public class ElementalDamageAction extends AbstractGameAction {
         this.isSourceNullable = isSourceNullable;
         return this;
     }
+    
+    public ElementalDamageAction setDoApplyPower(boolean doApplyPower) {
+        this.doApplyPower = doApplyPower;
+        return this;
+    }
 
     public void update() {
         if ((this.shouldCancelAction() && this.info.type != DamageInfo.DamageType.THORNS)

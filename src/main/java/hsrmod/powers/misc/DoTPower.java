@@ -45,7 +45,7 @@ public abstract class DoTPower extends DebuffPower implements OnPlayerTurnStartS
     @Override
     public void onRemove() {
         super.onRemove();
-        SubscriptionManager.unsubscribe(this);
+        BaseMod.unsubscribe(this);
     }
 
     public void playApplyPowerSfx() {

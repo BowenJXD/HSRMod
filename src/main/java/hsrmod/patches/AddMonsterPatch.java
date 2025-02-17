@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 // TODO: Consider add boss from basemod.
 public class AddMonsterPatch {
-    static List<MonsterInfo> addMonsters(List<MonsterInfo> infos) {
+    /*static List<MonsterInfo> addMonsters(List<MonsterInfo> infos) {
         List<MonsterInfo> result = new ArrayList<>();
         if (HSRMod.addEnemy && AbstractDungeon.player instanceof StellaCharacter) {
             for (MonsterInfo info : infos) {
@@ -66,7 +66,7 @@ public class AddMonsterPatch {
             }
             return result;
         }
-    }
+    }*/
 
     /*@SpirePatch(clz = MonsterInfo.class, method = "normalizeWeights")
     public static class PopulatePatch {

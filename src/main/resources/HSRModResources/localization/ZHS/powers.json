@@ -119,8 +119,8 @@
   "HSRMod:Reinforce": {
     "NAME": "加护",
     "DESCRIPTIONS": [
-      "受到伤害时，若你有格挡，则获得一张 #y少女的特权 。",
-      "受到伤害时，若你有格挡，则获得 #b%d 点格挡，并获得一张 #y少女的特权 。"
+      "受到伤害时，若你有格挡，则获得一张目标为伤害来源的 #y少女的特权 。",
+      "受到伤害时，若你有格挡，则获得 #b%d 点格挡，并获得一张目标为伤害来源的 #y少女的特权 。"
     ]
   },
   "HSRMod:TopazNumby": {
@@ -650,7 +650,7 @@
   "HSRMod:Safeguard": {
     "NAME": "守备",
     "DESCRIPTIONS": [
-      "若未被 #y击破 ，受到的伤害 #b-%d%% 。"
+      "若未被 #y击破 ，受到的伤害 #b-%d%% ，受到的单次削韧至多为 #b%d 。"
     ]
   },
   "HSRMod:Resonate": {
@@ -723,7 +723,7 @@
   "HSRMod:SwordFormation": {
     "NAME": "剑阵",
     "DESCRIPTIONS": [
-      "造成的伤害 #b+%d%% ，受到的伤害 #b-%d%% 。若场上没有 #y阵眼 ，则移除，移除韧性锁定，被击破，并受到 #b%d%% 生命上限的伤害。"
+      "造成的伤害 #b+%d%% ，受到的伤害 #b-%d%% 。若场上没有 #y阵眼 ，则移除，移除韧性锁定，被击破，并受到 #b%d%% 生命上限的伤害，玩家获得所有消耗的牌。"
     ]
   },
   "HSRMod:FormationCore": {
@@ -735,6 +735,37 @@
       "#p虚无",
       "#y固有",
       "#g保留"
+    ]
+  },
+  "HSRMod:Defense": {
+    "NAME": "防御",
+    "DESCRIPTIONS": [
+      "受到的伤害 #b-%d%% 。",
+      "受到的伤害 #b+%d%% 。 "
+    ]
+  },
+  "HSRMod:Multiply": {
+    "NAME": "增殖",
+    "DESCRIPTIONS": [
+      "每回合结束获得 #b%d 层 #y虫卵 。用牌后首次受到攻击后，消耗1层 #y虫卵 ，召唤 #y蚀蛰虫 或 #y次蛰虫 。 #y击破 后移除，所有怪物获得 #y易伤 ，并 #y眩晕 。"
+    ]
+  },
+  "HSRMod:InsectEgg": {
+    "NAME": "虫卵",
+    "DESCRIPTIONS": [
+      "造成的伤害+%d*%d( #b%d )。"
+    ]
+  },
+  "HSRMod:DecayEulogy": {
+    "NAME": "蛰亡语",
+    "DESCRIPTIONS": [
+      "死亡时，玩家恢复 #b%d 点生命，对所有敌人造成 #b%d 点伤害（无 #b%d ），并移除 #b%d 层 #y防御 。"
+    ]
+  },
+  "HSRMod:ExtraToughness": {
+    "NAME": "额外韧性",
+    "DESCRIPTIONS": [
+      "即将被 #y击破 时，移除1层，若还有剩余层数，防止该削韧，并立即回复所有韧性。"
     ]
   }
 }

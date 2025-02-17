@@ -123,9 +123,9 @@ public class ModHelper {
     public static AbstractMonster betterGetRandomMonster() {
         return getRandomMonster(m -> !(m.isDying || m.isEscaping || m.halfDead || m.currentHealth <= 0), true);
     }
-
+    
     public static boolean check(AbstractCreature m) {
-        return !(m.isDying || m.isEscaping || m.halfDead || m.currentHealth <= 0);
+        return !(m == null || m.isDying || m.isEscaping || m.halfDead || m.currentHealth <= 0);
     }
 
     public static AbstractMonster getRandomMonster(Predicate<AbstractMonster> predicate, boolean aliveOnly) {

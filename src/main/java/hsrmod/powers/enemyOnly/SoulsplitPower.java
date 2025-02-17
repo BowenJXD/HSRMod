@@ -6,7 +6,6 @@ import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.sun.java.swing.action.ActionManager;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.StatePower;
 import hsrmod.powers.misc.ToughnessPower;

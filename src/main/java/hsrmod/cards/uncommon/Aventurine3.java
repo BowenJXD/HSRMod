@@ -45,13 +45,13 @@ public class Aventurine3 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        if (m != null) addToBot(new VFXAction(new FlickCoinEffect(p.hb.cX, p.hb.cY, m.hb.cX, m.hb.cY)));
+        if (m != null) addToBot(new VFXAction(new FlickCoinEffect(p.hb.cX, p.hb.cY, m.hb.cX, m.hb.cY), 0.5f));
         if (damage > 1) {
             int dmg = AbstractDungeon.cardRandomRng.random(1, damage);
             addToBot(new ElementalDamageAction(
                     m, 
                     new ElementalDamageInfo(this, dmg), 
-                    AbstractGameAction.AttackEffect.SLASH_DIAGONAL
+                    AbstractGameAction.AttackEffect.NONE
             ));
         }
         if (block > 1) {

@@ -24,7 +24,7 @@ public class Sunday1 extends BaseCard {
         addToBot(new VFXAction(new SpotlightEffect()));
         addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, magicNumber)));
         addToBot(new SelectCardsInHandAction(1, cardStrings.EXTENDED_DESCRIPTION[0], c -> c.hasTag(CustomEnums.FOLLOW_UP), list -> {
-            if (!list.isEmpty()) list.forEach(c -> addToBot(new FollowUpAction(c)));
+            if (!list.isEmpty()) list.forEach(c -> addToBot(new FollowUpAction(c, m, true)));
         }));
         if (upgraded) addToBot(new CleanAction(p, 1, true));
     }

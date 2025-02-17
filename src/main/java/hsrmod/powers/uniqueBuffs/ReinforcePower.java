@@ -56,7 +56,8 @@ public class ReinforcePower extends BuffPower implements OnPlayerDamagedSubscrib
                 && AbstractDungeon.player.currentBlock > 0
                 && damageInfo.type != DamageInfo.DamageType.HP_LOSS) {
             if (AbstractDungeon.player.hand.size() < BaseMod.MAX_HAND_SIZE) {
-                AbstractCard card = new March7th2();
+                March7th2 card = new March7th2();
+                card.priorityTarget = damageInfo.owner;
                 addToTop(new MakeTempCardInHandAction(card));
             }
             if (block > 0) {

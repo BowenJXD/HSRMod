@@ -14,21 +14,27 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import hsrmod.actions.ElementalDamageAction;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
 import hsrmod.powers.misc.ToughnessPower;
+import hsrmod.subscribers.PreElementalDamageSubscriber;
+import hsrmod.subscribers.PreToughnessReduceSubscriber;
+import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
-public class SafeguardPower extends BuffPower implements OnReceivePowerPower {
+public class SafeguardPower extends BuffPower implements OnReceivePowerPower, PreElementalDamageSubscriber {
     public static final String POWER_ID = HSRMod.makePath(SafeguardPower.class.getSimpleName());
     String normalImgUrl;
     String brokenImgUrl;
 
     int dmgReduce = 80;
+    int maxTr = 8;
 
     public SafeguardPower(AbstractCreature owner) {
         super(POWER_ID, owner);
+        priority = 9;
         normalImgUrl = SafeguardPower.class.getSimpleName();
         brokenImgUrl = "Safeguard_BrokenPower";
         updateDescription();
@@ -36,7 +42,7 @@ public class SafeguardPower extends BuffPower implements OnReceivePowerPower {
 
     @Override
     public void updateDescription() {
-        this.description = String.format(DESCRIPTIONS[0], dmgReduce);
+        this.description = String.format(DESCRIPTIONS[0], dmgReduce, maxTr);
     }
 
     @Override
@@ -63,6 +69,17 @@ public class SafeguardPower extends BuffPower implements OnReceivePowerPower {
             }
         }
         return stackAmount;
+    }
+
+    @Override
+    public float preElementalDamage(ElementalDamageAction action, float dmg) {
+        if (SubscriptionManager.checkSubscriber(this) 
+                && action.target == owner 
+                && action.info.type == DamageInfo.DamageType.NORMAL
+                && ModHelper.getPowerCount(owner, ToughnessPower.POWER_ID) > 0) {
+            action.info.tr = Math.min(action.info.tr, maxTr);
+        }
+        return dmg;
     }
 
     @SpirePatch(clz = AbstractCreature.class, method = "renderRedHealthBar")

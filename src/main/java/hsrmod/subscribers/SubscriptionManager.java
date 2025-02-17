@@ -144,11 +144,7 @@ public class SubscriptionManager {
             numChangerSubscribers.get(type).add(sub);
         }
     }
-
-    public static void unsubscribe(ISubscriber sub) {
-        BaseMod.unsubscribe(sub);
-    }
-
+    
     public static void unsubscribe(IHSRSubscriber sub) {
         getInstance().unsubscribeHelper(sub);
     }

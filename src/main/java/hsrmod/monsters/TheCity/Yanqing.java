@@ -42,7 +42,7 @@ public class Yanqing extends BaseMonster implements PostMonsterDeathSubscriber {
         bgm = "Gleaming Clash";
         floatIndex = AbstractDungeon.miscRng.randomBoolean() ? 1 : -1;
 
-        Collections.shuffle(tags);
+        // Collections.shuffle(tags);
         addSlot(-450, 0);
         addSlot(-300, 0);
         addSlot(100, 0);
@@ -110,7 +110,6 @@ public class Yanqing extends BaseMonster implements PostMonsterDeathSubscriber {
         } else if (turnCount == 0) {
             setMove(0);
             turnCount++;
-            if (specialAs) turnCount++;
         } else if (turnCount == 1) {
             setMove(1);
             turnCount++;

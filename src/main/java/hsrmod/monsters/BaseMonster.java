@@ -170,8 +170,10 @@ public abstract class BaseMonster extends CustomMonster {
 
     @Override
     public void takeTurn() {
-        if (nextMove < moveInfos.size()) {
+        if (nextMove >= 0 && nextMove < moveInfos.size()) {
             moveInfos.get(nextMove).move();
+        } else {
+            HSRMod.logger.info("Monster {} has no {} move!", NAME, nextMove);
         }
         addToBot(new RollMoveAction(this));
     }

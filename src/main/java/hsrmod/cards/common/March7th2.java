@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.FastingEffect;
 import hsrmod.actions.ElementalDamageAction;
@@ -13,6 +14,7 @@ import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.utils.ModHelper;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
@@ -20,6 +22,7 @@ public class March7th2 extends BaseCard {
     public static final String ID = March7th2.class.getSimpleName();
     
     boolean canBeUsed = false;
+    public AbstractCreature priorityTarget;
 
     public March7th2() {
         super(ID);
@@ -41,12 +44,12 @@ public class March7th2 extends BaseCard {
 
     @Override
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        return super.canUse(p,m) && (canBeUsed || followedUp);
+        return super.canUse(p, m) && (canBeUsed || followedUp);
     }
 
     @Override
     public void atTurnStartPreDraw() {
         canBeUsed = true;
-        addToTop(new FollowUpAction(this));
+        addToTop(new FollowUpAction(this, ModHelper.check(priorityTarget) ? priorityTarget : null));
     }
 }

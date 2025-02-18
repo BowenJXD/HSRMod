@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.combat.ExplosionSmallEffect;
 import hsrmod.actions.ElementalDamageAction;
+import hsrmod.misc.IMultiToughness;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
@@ -35,14 +36,18 @@ public class DecayEulogyPower extends StatePower {
         addToBot(new VFXAction(new ExplosionSmallEffect(owner.hb.cX, owner.hb.cY)));
         addToBot(new HealAction(AbstractDungeon.player, AbstractDungeon.player, amount));
         AbstractDungeon.getMonsters().monsters.stream().filter(ModHelper::check).forEach(m -> {
-            // int dmg = m.currentHealth * amount / 100;
-            // int tr = ModHelper.getPowerCount(m, ToughnessPower.POWER_ID) * amount / 100;
-            int dmg = amount;
-            int tr = amount;
+            int dmg = m.maxHealth * amount / 100;
+            int tr = ToughnessPower.getStackLimit(m) * amount / 100;
+            int multiToughness = m.powers.stream().mapToInt(p -> p instanceof IMultiToughness ? ((IMultiToughness) p).getToughnessBarCount() : 0).sum();
+            if (multiToughness > 0) {
+                tr *= multiToughness;
+            }
+            // int dmg = amount;
+            // int tr = amount;
             addToBot(
                     new ElementalDamageAction(
                             m,
-                            new ElementalDamageInfo(owner, dmg, DamageInfo.DamageType.HP_LOSS, ElementType.None, tr),
+                            new ElementalDamageInfo(owner, dmg, DamageInfo.DamageType.NORMAL, ElementType.None, tr),
                             AbstractGameAction.AttackEffect.NONE)
                             .setIsSourceNullable(true)
                             .setDoApplyPower(true)

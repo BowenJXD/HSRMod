@@ -41,10 +41,15 @@ public class ExtraToughnessPower extends BuffPower implements PreElementalDamage
     public float preElementalDamage(ElementalDamageAction action, float dmg) {
         if (SubscriptionManager.checkSubscriber(this) 
                 && action.target == owner
+                && owner.hasPower(ToughnessPower.POWER_ID)
                 && action.info.tr >= ModHelper.getPowerCount(owner, ToughnessPower.POWER_ID)) {
             if (amount > 1) {
-                action.info.tr = 0;
-                addToTop(new ApplyPowerAction(owner, owner, new ToughnessPower(owner, ToughnessPower.getStackLimit(owner))));
+                ToughnessPower power = (ToughnessPower) owner.getPower(ToughnessPower.POWER_ID);
+                action.info.tr -= power.amount;
+                if (action.info.tr < 0) {
+                    action.info.tr = 0;
+                }
+                power.alterPower(ToughnessPower.getStackLimit(owner));
             }
             remove(1);
         }

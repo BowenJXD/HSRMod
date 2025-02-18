@@ -124,7 +124,7 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
                     empireRelics.add(HSRMod.makePath(RubertEmpireMechanicalPiston.ID));
                 if (!ModHelper.hasRelic(RubertEmpireMechanicalCogwheel.ID) || AbstractDungeon.player.getRelic(RubertEmpireMechanicalCogwheel.ID).usedUp)
                     empireRelics.add(HSRMod.makePath(RubertEmpireMechanicalCogwheel.ID));
-                if (empireRelics.size() == 1) {
+                if (empireRelics.size() == 1 &&  AbstractDungeon.miscRng.randomBoolean()) {
                     relicId = empireRelics.get(0);
                 }
             }

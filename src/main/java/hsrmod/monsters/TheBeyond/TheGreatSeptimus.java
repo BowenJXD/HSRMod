@@ -93,7 +93,7 @@ public class TheGreatSeptimus extends BaseMonster implements OnCardUseSubscriber
         
         switch (this.nextMove) {
             case 1:
-                // AbstractDungeon.topLevelEffectsQueue.add(new PlayVideoEffect(PathDefine.VIDEO_PATH + ID + ".webm"));
+                // addToBot(new VFXAction(new SimplePlayVideoEffect(PathDefine.VIDEO_PATH + ID + ".webm")));
                 addToBot(new VFXAction(new BossCrystalImpactEffect(p.hb.cX, p.hb.cY)));
                 addToBot(new DamageAction(p, this.damage.get(0), AbstractGameAction.AttackEffect.BLUNT_LIGHT, true));
                 addToBot(new ApplyPowerAction(p, this, new AlienDreamPower(p, 1), 1));

@@ -2,23 +2,18 @@ package hsrmod.cardsV2.Erudition;
 
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.actions.common.DiscardSpecificCardAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.unique.LoseEnergyAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cards.BaseCard;
-import hsrmod.modcore.CustomEnums;
-import hsrmod.powers.misc.BrainInAVatPower;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.utils.ModHelper;
 
-public class PenMan extends BaseCard {
-    public static final String ID = PenMan.class.getSimpleName();
+public class ThePenMan extends BaseCard {
+    public static final String ID = ThePenMan.class.getSimpleName();
     
-    public PenMan() {
+    public ThePenMan() {
         super(ID);
         selfRetain = true;
         returnToHand = true;

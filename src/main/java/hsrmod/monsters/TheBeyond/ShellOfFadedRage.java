@@ -5,7 +5,9 @@ import com.megacrit.cardcrawl.actions.animations.AnimateSlowAttackAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
+import hsrmod.cardsV2.Curse.Entangle;
 import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.enemyOnly.ChargingPower;
 import hsrmod.powers.enemyOnly.ObscureBlazePower;
@@ -22,9 +24,10 @@ public class ShellOfFadedRage extends BaseMonster {
 
         damageTime = moreDamageAs ? 4 : 3;
 
-        addMoveA(Intent.ATTACK_BUFF, 10, mi -> {
+        addMoveA(Intent.ATTACK_DEBUFF, 10, mi -> {
             attack(mi, AbstractGameAction.AttackEffect.LIGHTNING);
             addToBot(new ApplyPowerAction(this, this, new ObscureBlazePower(this, specialAs ? 2 : 1)));
+            addToBot(new MakeTempCardInDrawPileAction(new Entangle(), 1, true, true));
         });
         addMove(Intent.BUFF, mi -> {
             addToBot(new ApplyPowerAction(this, this, new ObscureBlazePower(this, 1)));

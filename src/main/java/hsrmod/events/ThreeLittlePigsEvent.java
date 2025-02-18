@@ -22,7 +22,7 @@ public class ThreeLittlePigsEvent extends PhasedEvent {
         registerPhase(1, new TextPhase(DESCRIPTIONS[1])
                 .addOption(OPTIONS[1], (i)->transitionKey(2))
                 .addOption(OPTIONS[2], (i)->transitionKey(3)));
-        registerPhase(2, new CombatPhase(Encounter.THREE_LIL_PIGS).setNextKey(3).addRewards(false, room -> {}));
+        registerPhase(2, new CombatPhase(Encounter.THREE_LIL_PIGS).addRewards(false, room -> {}));
         registerPhase(3, new TextPhase(DESCRIPTIONS[2]).addOption(OPTIONS[3], (i)->openMap()));
         
         transitionKey(0);

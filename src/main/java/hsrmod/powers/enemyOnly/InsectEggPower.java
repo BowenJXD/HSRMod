@@ -22,7 +22,7 @@ public class InsectEggPower extends BuffPower {
 
     @Override
     public float atDamageGive(float damage, DamageInfo.DamageType type) {
-        if (type != DamageInfo.DamageType.THORNS) {
+        if (type == DamageInfo.DamageType.NORMAL) {
             return damage + amount * multiplier;
         }
         return damage;

@@ -78,7 +78,7 @@ public class Entangle extends BaseCard implements PostDrawSubscriber {
     @Override
     public void update() {
         super.update();
-        if (!entangledCards.isEmpty() && AbstractDungeon.player.hand.contains(this)) {
+        if (!entangledCards.isEmpty() && inHand) {
             this.particleTimer -= Gdx.graphics.getDeltaTime();
             if (this.particleTimer < 0.0F) {
                 this.particleTimer = 0.33F;

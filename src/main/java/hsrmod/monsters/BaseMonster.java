@@ -155,6 +155,11 @@ public abstract class BaseMonster extends CustomMonster {
         return this;
     }
     
+    public BaseMonster modifyToughnessByPercent(float percent) {
+        tv = (int) (tv * percent);
+        return this;
+    }
+    
     @Override
     public void usePreBattleAction() {
         super.usePreBattleAction();

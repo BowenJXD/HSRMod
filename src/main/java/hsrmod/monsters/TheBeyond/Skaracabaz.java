@@ -66,7 +66,6 @@ public class Skaracabaz extends BaseMonster implements OnCardUseSubscriber {
         });
         addMove(Intent.BUFF, mi -> {
             spawnMonsters(summonCount);
-            addToBot(new LockToughnessAction(this, this));
             addToBot(new ApplyPowerAction(this, this, new DefensePower(this, hasPower(ExtraToughnessPower.POWER_ID) ? defenseCount : defenseCount / 3)));
             addToBot(new ApplyPowerAction(this, this, new MultiplyPower(this, multiplyCount)));
             addToBot(new ApplyPowerAction(this, this, new InsectEggPower(this, insectEggCount)));

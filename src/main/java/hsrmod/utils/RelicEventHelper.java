@@ -165,6 +165,18 @@ public class RelicEventHelper {
         pool.remove(relic);
         return relic;
     }
+    
+    public static AbstractRelic getRelicString(Predicate<AbstractRelic> predicate) {
+        for (int j = 0; j < 99; ++j) {
+            AbstractRelic r = AbstractDungeon.returnRandomScreenlessRelic(AbstractDungeon.returnRandomRelicTier());
+            if (!predicate.test(r) || r instanceof JellyfishOnTheStaircase) {
+                addRelicToPool(r);
+            } else {
+                return r;
+            }
+        }
+        return null;
+    }
 
     /**
      * Get the path relic.

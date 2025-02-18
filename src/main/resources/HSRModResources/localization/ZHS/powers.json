@@ -336,7 +336,7 @@
   "HSRMod:ChampionsDinnerCatsCradle": {
     "NAME": "冠军晚餐 · 猫的摇篮",
     "DESCRIPTIONS": [
-      "耗能的牌视为追击牌，且于充能变化时， #b%d%% 概率不消耗充能追击 #b1 张。"
+      "耗能的牌视为追击牌，且于消耗充能时， #b%d%% 概率不消耗充能追击 #b1 张。"
     ]
   },
   "HSRMod:EmpyreanImperium": {
@@ -747,7 +747,7 @@
   "HSRMod:Multiply": {
     "NAME": "增殖",
     "DESCRIPTIONS": [
-      "每回合结束获得 #b%d 层 #y虫卵 。用牌后首次受到攻击后，消耗1层 #y虫卵 ，召唤 #y蚀蛰虫 或 #y次蛰虫 。 #y击破 后移除，所有怪物获得 #y易伤 ，并 #y眩晕 。"
+      "无法受到通常伤害的削韧。每回合结束获得 #b%d 层 #y虫卵 。用牌后首次受到攻击后，消耗1层 #y虫卵 ，召唤 #y蚀蛰虫 或 #y次蛰虫 。 #y击破 后移除，所有怪物获得 #y易伤 ，并 #y眩晕 。"
     ]
   },
   "HSRMod:InsectEgg": {
@@ -759,7 +759,7 @@
   "HSRMod:DecayEulogy": {
     "NAME": "蛰亡语",
     "DESCRIPTIONS": [
-      "死亡时，玩家恢复 #b%d 点生命，对所有敌人造成 #b%d 点伤害（无 #b%d ），并移除 #b%d 层 #y防御 。"
+      "死亡时，玩家恢复 #b%d 点生命，对所有敌人造成其生命上限 #b%d%% 的伤害，造成其韧性上限 #b%d%% 的削韧，并移除 #b%d 层 #y防御 。"
     ]
   },
   "HSRMod:ExtraToughness": {

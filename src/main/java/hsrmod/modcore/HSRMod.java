@@ -3,6 +3,7 @@ package hsrmod.modcore;
 import basemod.*;
 import basemod.abstracts.CustomRelic;
 import basemod.eventUtil.AddEventParams;
+import basemod.eventUtil.EventUtils;
 import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
@@ -16,6 +17,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.colorless.SadisticNature;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -43,6 +45,8 @@ import hsrmod.misc.BonusManager;
 import hsrmod.misc.ChargeIcon;
 import hsrmod.misc.Encounter;
 import hsrmod.misc.ToughnessReductionVariable;
+import hsrmod.monsters.Bonus.KingTrashcan;
+import hsrmod.monsters.Bonus.LordlyTrashcan;
 import hsrmod.monsters.Exordium.*;
 import hsrmod.monsters.Bonus.SequenceTrotter;
 import hsrmod.monsters.TheBeyond.*;
@@ -221,7 +225,9 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
 
     public void addEvents() {
         BaseMod.addEvent(new AddEventParams.Builder(RuanMeiEvent.ID, RuanMeiEvent.class)
-                .spawnCondition(() -> AbstractDungeon.eventRng.random(99) < 6)
+                .spawnCondition(() -> AbstractDungeon.eventRng.random(99) < 10)
+                .eventType(EventUtils.EventType.ONE_TIME)
+                .playerClass(STELLA_CHARACTER)
                 .create());
 
         BaseMod.addEvent(new AddEventParams.Builder(CosmicCrescendoEvent.ID, CosmicCrescendoEvent.class)
@@ -257,9 +263,11 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
                 .create());
 
         BaseMod.addEvent(new AddEventParams.Builder(ThreeLittlePigsEvent.ID, ThreeLittlePigsEvent.class)
+                .endsWithRewardsUI(true)
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(ImperialLegacyEvent.ID, ImperialLegacyEvent.class)
                 .dungeonID(Penacony.ID)
+                .eventType(EventUtils.EventType.ONE_TIME)
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(AceTrashDiggerEvent.ID, AceTrashDiggerEvent.class)
                 .create());
@@ -270,7 +278,14 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
                 .spawnCondition(() -> !ModHelper.hasRelic(ThePinkestCollision.ID) && !ModHelper.hasRelic(ThalanToxiFlame.ID))
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(IPMBShoppingMallEvent.ID, IPMBShoppingMallEvent.class)
+                .create());
+        BaseMod.addEvent(new AddEventParams.Builder(TrashSymphonyEvent.ID, TrashSymphonyEvent.class)
                 .dungeonID(Penacony.ID)
+                .endsWithRewardsUI(true)
+                .create());
+        BaseMod.addEvent(new AddEventParams.Builder(CulinaryColosseumEvent.ID, CulinaryColosseumEvent.class)
+                .dungeonID(Penacony.ID)
+                .endsWithRewardsUI(true)
                 .create());
 
         // =========================== Event Monsters ===========================
@@ -303,6 +318,28 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
         BaseMod.addMonster(Encounter.TAVERN_3, () -> new MonsterGroup(new AbstractMonster[]{
                 new Grizzly(-200, 0).process(m -> m.specialAs = false),
                 new Direwolf(300, 0),
+        }));
+        BaseMod.addMonster(Encounter.TRASH_SYMPHONY_1, () -> new MonsterGroup(new AbstractMonster[]{
+                new LordlyTrashcan(-250, 0),
+                new Heartbreaker(0, 0),
+                new LordlyTrashcan(250, 0),
+        }));
+        BaseMod.addMonster(Encounter.TRASH_SYMPHONY_2, () -> new MonsterGroup(new AbstractMonster[]{
+                new KingTrashcan(0, 0).modifyHpByPercent(2).modifyToughnessByPercent(2),
+        }));
+        BaseMod.addMonster(Encounter.CULINARY_COLOSSEUM_1, () -> new MonsterGroup(new AbstractMonster[]{
+                new MrDomescreen(-250, 0),
+                new LordlyTrashcan(0, 0),
+                new MrDomescreen(250, 0),
+        }));
+        BaseMod.addMonster(Encounter.CULINARY_COLOSSEUM_2, () -> new MonsterGroup(new AbstractMonster[]{
+                new SweetGorilla(-175, 0),
+                new LordlyTrashcan(350, 0)
+        }));
+        BaseMod.addMonster(Encounter.CULINARY_COLOSSEUM_3, () -> new MonsterGroup(new AbstractMonster[]{
+                new LordlyTrashcan(-250, 0),
+                new KingTrashcan(0, 0).modifyHpByPercent(1.5f).modifyToughnessByPercent(1.5f),
+                new LordlyTrashcan(250, 0),
         }));
     }
 
@@ -418,10 +455,10 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
         }));
 
         BaseMod.addMonster(Encounter.AUROMATON_GATEKEEPER, () -> new MonsterGroup(new AbstractMonster[]{
-                new AurumatonGatekeeper()
+                new AurumatonGatekeeper(-150, AbstractDungeon.monsterRng.random(-15, 15))
         }));
         BaseMod.addMonster(Encounter.SHAPE_SHIFTER, () -> new MonsterGroup(new AbstractMonster[]{
-                new ShapeShifter(-100, 0),
+                new ShapeShifter(-100, AbstractDungeon.monsterRng.random(-15, 15))
         }));
         BaseMod.addMonster(Encounter.HOWLING_CASKET, () -> new MonsterGroup(new AbstractMonster[]{
                 new SableclawWolftrooper(-300, AbstractDungeon.monsterRng.random(-15, 15)),
@@ -446,7 +483,7 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
         }));
 
         BaseMod.addMonster(Encounter.SWEET_GORILLA, () -> new MonsterGroup(new AbstractMonster[]{
-                new SweetGorilla()
+                new SweetGorilla(-175, AbstractDungeon.monsterRng.random(-15, 15))
         }));
         BaseMod.addMonster(Encounter.BEYOND_OVERCOOKED, () -> new MonsterGroup(new AbstractMonster[]{
                 new BeyondOvercooked(0, AbstractDungeon.monsterRng.random(-15, 15))
@@ -620,8 +657,7 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
         Texture badgeTexture = ImageMaster.loadImage("HSRModResources/img/char/badge.png");
         BaseMod.registerModBadge(badgeTexture, MOD_NAME, Arrays.stream(info.Authors).findFirst().orElse(""), info.Description, panel);
 
-        panel.addUIElement(new ModLabel(buttonLanguage[4], 400.0F, 800.0F, panel, (me) -> {
-        }));
+        panel.addUIElement(new ModLabel(buttonLanguage[4], 400.0F, 800.0F, panel, (me) -> {}));
         ModLabeledToggleButton addRelicButton = new ModLabeledToggleButton(buttonLanguage[0], 400.0F, 700.0F, Color.WHITE, FontHelper.buttonLabelFont, addRelic, panel, (label) -> {
         }, (button) -> {
             addRelic = button.enabled;

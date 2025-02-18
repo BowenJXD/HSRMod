@@ -619,6 +619,13 @@
     ],
     "DIALOG": []
   },
+  "HSRMod:Allseer": {
+    "NAME": "视线无处不在",
+    "MOVES": [
+      "他者凝视"
+    ],
+    "DIALOG": []
+  },
   "HSRMod:AurumatonGatekeeper": {
     "NAME": "金人司阍",
     "MOVES": [

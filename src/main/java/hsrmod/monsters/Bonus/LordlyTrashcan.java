@@ -22,7 +22,8 @@ public class LordlyTrashcan extends BaseMonster {
     @Override
     public void usePreBattleAction() {
         super.usePreBattleAction();
-        addToBot(new ApplyPowerAction(this, this, new TheCansCreedPower(this)));
+        if (AbstractDungeon.getCurrRoom().event == null || !AbstractDungeon.getCurrRoom().combatEvent)
+            addToBot(new ApplyPowerAction(this, this, new TheCansCreedPower(this)));
     }
 
     @Override
@@ -37,7 +38,8 @@ public class LordlyTrashcan extends BaseMonster {
     @Override
     public void escape() {
         super.escape();
-        AbstractDungeon.getCurrRoom().addRelicToRewards(AbstractDungeon.returnRandomRelicTier());
+        if (hasPower(TheCansCreedPower.POWER_ID))
+            AbstractDungeon.getCurrRoom().addRelicToRewards(AbstractDungeon.returnRandomRelicTier());
     }
 
     @Override

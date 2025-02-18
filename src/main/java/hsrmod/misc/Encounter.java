@@ -4,10 +4,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.monsters.BaseMonster;
 import hsrmod.monsters.Exordium.*;
-import hsrmod.monsters.TheBeyond.Birdskull;
-import hsrmod.monsters.TheBeyond.BubbleHound;
-import hsrmod.monsters.TheBeyond.MrDomescreen;
-import hsrmod.monsters.TheBeyond.SpringLoader;
+import hsrmod.monsters.TheBeyond.*;
 import hsrmod.monsters.TheCity.*;
 
 public class Encounter {
@@ -20,6 +17,11 @@ public class Encounter {
     public static final String TAVERN_1 = "Tavern 1";
     public static final String TAVERN_2 = "Tavern 2";
     public static final String TAVERN_3 = "Tavern 3";
+    public static final String TRASH_SYMPHONY_1 = "Trash Symphony 1";
+    public static final String TRASH_SYMPHONY_2 = "Trash Symphony 2";
+    public static final String CULINARY_COLOSSEUM_1 = "CulinaryColosseum 1";
+    public static final String CULINARY_COLOSSEUM_2 = "CulinaryColosseum 2";
+    public static final String CULINARY_COLOSSEUM_3 = "CulinaryColosseum 3";
     
     // ======================== BOSS ========================
     
@@ -176,6 +178,9 @@ public class Encounter {
                 break;
             case 1:
                 result = new Birdskull(x, y);
+                break;
+            case 2:
+                result = new Allseer(x, y);
                 break;
         }
         return result;

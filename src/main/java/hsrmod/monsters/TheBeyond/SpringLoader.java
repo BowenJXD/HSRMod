@@ -2,7 +2,12 @@ package hsrmod.monsters.TheBeyond;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.cards.status.Slimed;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.powers.ArtifactPower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.breaks.BleedingPower;
@@ -16,7 +21,8 @@ public class SpringLoader extends BaseMonster {
         
         addMoveA(Intent.ATTACK_DEBUFF, 10, mi->{
             attack(mi, AbstractGameAction.AttackEffect.SLASH_DIAGONAL, AttackAnim.SLOW);
-            addToBot(new ApplyPowerAction(p, this, new WeakPower(p, 1, true)));
+            addToBot(new ReducePowerAction(p, this, ArtifactPower.POWER_ID, 1));
+            addToBot(new MakeTempCardInDrawPileAction(new Slimed(), 1, true, true));
         });
     }
 

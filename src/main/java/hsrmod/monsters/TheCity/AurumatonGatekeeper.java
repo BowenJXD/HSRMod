@@ -30,8 +30,8 @@ import hsrmod.utils.ModHelper;
 public class AurumatonGatekeeper extends BaseMonster {
     public static final String ID = AurumatonGatekeeper.class.getSimpleName();
 
-    public AurumatonGatekeeper() {
-        super(ID, 300, 384, -150, 0);
+    public AurumatonGatekeeper(float x, float y) {
+        super(ID, 300, 384, x, y);
 
         if (ModHelper.moreDamageAscension(type))
             setDamages(6, 15, 7);

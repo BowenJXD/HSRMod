@@ -27,6 +27,7 @@ public class Cocolia extends BaseMonster {
 
     public Cocolia() {
         super(ID, 400.0F, 512.0F, -100.0F, 0.0F);
+        floatIndex = -1;
 
         if (ModHelper.moreDamageAscension(type)) {
             setDamages(6, 6, 12, 6);

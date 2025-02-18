@@ -1,7 +1,9 @@
 package hsrmod.dungeons;
 
 import actlikeit.dungeons.CustomDungeon;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
@@ -11,10 +13,11 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rooms.*;
 import com.megacrit.cardcrawl.scenes.AbstractScene;
 import com.megacrit.cardcrawl.scenes.TheBeyondScene;
-import hsrmod.monsters.TheBeyond.PastConfinedAndCaged;
-import hsrmod.monsters.TheBeyond.PresentInebriatedInRevelry;
-import hsrmod.monsters.TheBeyond.TomorrowInHarmoniousChords;
+import com.megacrit.cardcrawl.vfx.scene.BottomFogEffect;
+import hsrmod.monsters.TheBeyond.*;
 import org.apache.logging.log4j.core.appender.db.jdbc.ColumnConfig;
+
+import java.util.Iterator;
 
 public class PenaconyScene extends AbstractScene {
     private final TextureAtlas.AtlasRegion bg1;
@@ -72,6 +75,9 @@ public class PenaconyScene extends AbstractScene {
     private Color tmpColor;
     private Color whiteColor;
 
+    private TextureAtlas.AtlasRegion customBg; //
+    protected TextureAtlas customAtlas; //
+
     public PenaconyScene() {
         super("beyondScene/scene.atlas");
         this.columnConfig = ColumnConfig.OPEN;
@@ -108,6 +114,8 @@ public class PenaconyScene extends AbstractScene {
         this.s5 = this.atlas.findRegion("mod/s5");
         this.ambianceName = "AMBIANCE_BEYOND";
         this.fadeInAmbiance();
+
+        customAtlas = new TextureAtlas(Gdx.files.internal("HSRModResources/img/scene/atlas.atlas")); //
     }
 
     public void randomizeScene() {
@@ -217,9 +225,16 @@ public class PenaconyScene extends AbstractScene {
 
     public void nextRoom(AbstractRoom room) {
         super.nextRoom(room);
-        this.randomizeScene();
+        
+        this.customBg = null;
+        
         int r = AbstractDungeon.miscRng.random(99);
         if (room instanceof MonsterRoomBoss) {
+            if (room.monsters.monsters.stream().anyMatch(m -> m instanceof TheGreatSeptimus)) {
+                customBg = customAtlas.findRegion("mod/PenaconyTheGreatSeptimus");
+            } else if (room.monsters.monsters.stream().anyMatch(m -> m instanceof Skaracabaz)) {
+                customBg = customAtlas.findRegion("mod/PenaconySkaracabaz");
+            }
             CardCrawlGame.music.silenceBGM();
         } else if (room.monsters != null) {
             if (room.monsters.monsters.stream().anyMatch(m 
@@ -255,10 +270,20 @@ public class PenaconyScene extends AbstractScene {
         }
         //
 
+        this.randomizeScene();
         this.fadeInAmbiance();
     }
 
     public void renderCombatRoomBg(SpriteBatch sb) {
+        if (customBg != null) {
+            sb.setColor(Color.WHITE.cpy());
+            this.renderAtlasRegionIf(sb, this.customBg, true);
+            GL20 var10001 = Gdx.gl20;
+            GL20 var10002 = Gdx.gl20;
+            sb.setBlendFunction(770, 771);
+            return;
+        }
+        
         float prevAlpha = this.overlayColor.a;
         this.overlayColor.a = 1.0F;
         sb.setColor(this.overlayColor);

@@ -47,6 +47,8 @@ public class Penacony extends CustomDungeon {
         addTempMusic("If I Can Stop One Heart From Breaking (Encore)", "HSRModResources/audio/music/If I Can Stop One Heart From Breaking (Encore).mp3");
         // campfire 2
         addTempMusic("Im Anfang war das Wort", "HSRModResources/audio/music/Im Anfang war das Wort.mp3");
+        // Skaracabaz
+        addTempMusic("Aberrant Receptacle", "HSRModResources/audio/music/Aberrant Receptacle.mp3");
     }
     
     public Penacony(CustomDungeon cd, AbstractPlayer p, ArrayList<String> emptyList) {

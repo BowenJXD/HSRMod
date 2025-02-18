@@ -3,6 +3,7 @@ package hsrmod.dungeons;
 import actlikeit.dungeons.CustomDungeon;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
@@ -13,10 +14,13 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.rooms.*;
 import com.megacrit.cardcrawl.scenes.AbstractScene;
 import com.megacrit.cardcrawl.scenes.TheCityScene;
+import com.megacrit.cardcrawl.vfx.scene.BottomFogEffect;
 import com.megacrit.cardcrawl.vfx.scene.CeilingDustEffect;
 import com.megacrit.cardcrawl.vfx.scene.FireFlyEffect;
 import hsrmod.monsters.Exordium.*;
 import hsrmod.monsters.TheCity.Hoolay;
+import hsrmod.monsters.TheCity.Phantylia;
+import hsrmod.monsters.TheCity.ShadowOfFeixiao;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -62,6 +66,9 @@ public class LuofuScene extends AbstractScene {
     private ArrayList<FireFlyEffect> fireFlies;
     private boolean hasFlies;
     private boolean blueFlies;
+    
+    private TextureAtlas.AtlasRegion customBg; //
+    protected TextureAtlas customAtlas; //
 
     public LuofuScene() {
         super("cityScene/scene.atlas");
@@ -96,6 +103,8 @@ public class LuofuScene extends AbstractScene {
         this.fg2 = this.atlas.findRegion("mod/fgHideWindow");
         this.ambianceName = "AMBIANCE_CITY";
         this.fadeInAmbiance();
+        
+        customAtlas = new TextureAtlas(Gdx.files.internal("HSRModResources/img/scene/atlas.atlas")); //
     }
 
     public void update() {
@@ -246,8 +255,14 @@ public class LuofuScene extends AbstractScene {
     public void nextRoom(AbstractRoom room) {
         super.nextRoom(room);
         this.fireFlies.clear();
-        this.randomizeScene();
+        
+        this.customBg = null;
         if (room instanceof MonsterRoomBoss || room.eliteTrigger) {
+            if (room.monsters.monsters.stream().anyMatch(m -> m instanceof Phantylia)) {
+                this.customBg = customAtlas.findRegion("mod/LuofuPhantylia");
+            } else if (room.monsters.monsters.stream().anyMatch(m -> m instanceof ShadowOfFeixiao)) {
+                this.customBg = customAtlas.findRegion("mod/LuofuFeixiao");
+            }
             CardCrawlGame.music.silenceBGM();
         } else if (room.monsters != null) {
             if (AbstractDungeon.miscRng.randomBoolean(0.5F)) {
@@ -263,10 +278,20 @@ public class LuofuScene extends AbstractScene {
         }
         //
 
+        this.randomizeScene();
         this.fadeInAmbiance();
     }
 
     public void renderCombatRoomBg(SpriteBatch sb) {
+        if (customBg != null) {
+            sb.setColor(Color.WHITE.cpy());
+            this.renderAtlasRegionIf(sb, this.customBg, true);
+            GL20 var10001 = Gdx.gl20;
+            GL20 var10002 = Gdx.gl20;
+            sb.setBlendFunction(770, 771);
+            return;
+        }
+        
         sb.setColor(this.overlayColor);
         this.renderAtlasRegionIf(sb, this.bg, true);
         sb.setBlendFunction(770, 1);

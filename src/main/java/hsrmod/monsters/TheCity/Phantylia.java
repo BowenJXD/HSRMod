@@ -263,7 +263,7 @@ public class Phantylia extends BaseMonster implements PostPowerApplySubscriber {
     void spawnAbundanceLotus(boolean awakened){
         ModHelper.addToBotAbstract(() -> {
             if (AbstractDungeon.getMonsters().monsters.stream().noneMatch(m -> m instanceof AbundanceLotus && ModHelper.check(m))) {
-                AbstractMonster lotus = new AbundanceLotus(-400.0F, 300.0F, awakened);
+                AbstractMonster lotus = new AbundanceLotus(-300.0F, 300.0F, awakened);
                 lotus.usePreBattleAction();
                 addToTop(new SpawnMonsterAction(lotus, false));
             }
@@ -273,7 +273,7 @@ public class Phantylia extends BaseMonster implements PostPowerApplySubscriber {
     void spawnDestructionLotus(boolean awakened){
         ModHelper.addToBotAbstract(() -> {
             if (AbstractDungeon.getMonsters().monsters.stream().noneMatch(m -> m instanceof DestructionLotus && ModHelper.check(m))) {
-                AbstractMonster lotus = new DestructionLotus(-400.0F, 0.0F, awakened);
+                AbstractMonster lotus = new DestructionLotus(-300.0F, 0.0F, awakened);
                 lotus.usePreBattleAction();
                 addToTop(new SpawnMonsterAction(lotus, false));
             }

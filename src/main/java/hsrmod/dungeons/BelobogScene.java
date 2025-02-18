@@ -49,6 +49,10 @@ public class BelobogScene extends AbstractScene {
     private ArrayList<BottomFogEffect> fog;
     private ArrayList<InteractableTorchEffect> torches;
     private static final int DUST_AMT = 24;
+    
+    private TextureAtlas.AtlasRegion customBg; //
+    private TextureAtlas.AtlasRegion campfireBg; //
+    protected TextureAtlas customAtlas; //
 
     BelobogScene() {
         super("bottomScene/scene.atlas");
@@ -71,6 +75,9 @@ public class BelobogScene extends AbstractScene {
         this.ceilingMod6 = this.atlas.findRegion("mod/ceilingMod6");
         this.ambianceName = "AMBIANCE_BOTTOM";
         this.fadeInAmbiance();
+        
+        customAtlas = new TextureAtlas(Gdx.files.internal("HSRModResources/img/scene/atlas.atlas"));
+        campfireBg = customAtlas.findRegion("campfire");
     }
 
     public void update() {
@@ -129,16 +136,21 @@ public class BelobogScene extends AbstractScene {
 
     public void nextRoom(AbstractRoom room) {
         super.nextRoom(room);
-        this.randomizeScene();
         if (room instanceof MonsterRoomBoss) {
             CardCrawlGame.music.silenceBGM();
         }
         
         //
+        this.customBg = null;
+        
         if (room.monsters != null) {
             ArrayList<AbstractMonster> monsters = room.monsters.monsters;
-
-            if (monsters.stream().anyMatch(m
+            
+            if (monsters.stream().anyMatch(m -> m instanceof Cocolia)) {
+                this.customBg = customAtlas.findRegion("mod/BelobogEverwinter");
+            } else if (monsters.stream().anyMatch(m -> m instanceof AntimatterEngine)) {
+                this.customBg = customAtlas.findRegion("mod/BelobogStation");
+            } else if (monsters.stream().anyMatch(m
                     -> m instanceof Gepard
                     || m instanceof Bronya
                     || m instanceof FrigidProwler
@@ -162,6 +174,7 @@ public class BelobogScene extends AbstractScene {
             this.torches.clear();
         }
 
+        this.randomizeScene();
         this.fadeInAmbiance();
     }
 
@@ -198,6 +211,24 @@ public class BelobogScene extends AbstractScene {
     }
 
     public void renderCombatRoomBg(SpriteBatch sb) {
+        if (customBg != null) {
+            sb.setColor(Color.WHITE.cpy());
+            this.renderAtlasRegionIf(sb, this.customBg, true);
+            GL20 var10001 = Gdx.gl20;
+            GL20 var10002 = Gdx.gl20;
+            sb.setBlendFunction(770, 771);
+            Iterator var2;
+            if (!this.isCamp) {
+                var2 = this.fog.iterator();
+
+                while (var2.hasNext()) {
+                    BottomFogEffect e = (BottomFogEffect) var2.next();
+                    e.render(sb);
+                }
+            }
+            return;
+        }
+        
         sb.setColor(Color.WHITE);
         this.renderAtlasRegionIf(sb, this.bg, true);
         Iterator var2;
@@ -241,6 +272,8 @@ public class BelobogScene extends AbstractScene {
     }
 
     private void randomizeTorch() {
+        if (customBg != null) return;
+        
         this.torches.clear();
         if (MathUtils.randomBoolean(0.1F)) {
             this.torches.add(new InteractableTorchEffect(1790.0F * Settings.xScale, 850.0F * Settings.yScale, InteractableTorchEffect.TorchSize.S));

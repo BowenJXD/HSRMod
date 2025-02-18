@@ -39,98 +39,150 @@ repeat: none
 mod/BelobogOverworld1
   rotate: false
   xy: 2, 2
-  size: 1680, 1050
+  size: 2560, 1440
   orig: 1920, 1136
   offset: 0, 0
   index: -1
 
 BelobogOverworld2.png
-size: 1680, 1050
+size: 2560, 1440
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
 mod/BelobogOverworld2
   rotate: false
   xy: 2, 2
-  size: 1680, 1050
+  size: 2560, 1440
   orig: 1920, 1136
   offset: 0, 0
   index: -1
   
 BelobogUnderworld1.png
-size: 1680, 1050
+size: 2560, 1440
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
 mod/BelobogUnderworld1
   rotate: false
   xy: 2, 2
-  size: 1680, 1050
+  size: 2560, 1440
   orig: 1920, 1136
   offset: 0, 0
   index: -1
   
 BelobogUnderworld1.png
-size: 1680, 1050
+size: 2560, 1440
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
 mod/BelobogUnderworld1
   rotate: false
   xy: 2, 2
-  size: 1680, 1050
+  size: 2560, 1440
   orig: 1920, 1136
   offset: 0, 0
   index: -1
 
 BelobogCampfire.png
-size: 1680, 1050
+size: 2048, 2048
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
 campfire
   rotate: false
   xy: 2, 2
-  size: 1680, 1050
+  size: 1920, 1136
   orig: 1920, 1136
   offset: 0, 0
   index: -1
 
 BelobogPillars.png
-size: 1680, 1050
+size: 2560, 1440
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
 mod/BelobogPillars
   rotate: false
   xy: 2, 2
-  size: 1680, 1050
+  size: 1920, 1136
   orig: 1920, 1136
   offset: 0, 0
   index: -1
 
 BelobogStation.png
-size: 1680, 1050
+size: 2048, 2048
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
 mod/BelobogStation
   rotate: false
   xy: 2, 2
-  size: 1680, 1050
+  size: 1920, 1136
   orig: 1920, 1136
   offset: 0, 0
   index: -1
 
 BelobogEverwinter.png
-size: 1680, 1050
+size: 2048, 2048
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
 mod/BelobogEverwinter
   rotate: false
   xy: 2, 2
-  size: 1680, 1050
+  size: 1920, 1136
+  orig: 1920, 1136
+  offset: 0, 0
+  index: -1
+  
+LuofuPhantylia.png
+size: 2048, 2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+mod/LuofuPhantylia
+  rotate: false
+  xy: 2, 2
+  size: 1920, 1136
+  orig: 1920, 1136
+  offset: 0, 0
+  index: -1
+  
+LuofuFeixiao.png
+size: 2048, 2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+mod/LuofuFeixiao
+  rotate: false
+  xy: 2, 2
+  size: 1920, 1136
+  orig: 1920, 1136
+  offset: 0, 0
+  index: -1
+
+PenaconySkaracabaz.png
+size: 2048, 2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+mod/PenaconySkaracabaz
+  rotate: false
+  xy: 2, 2
+  size: 1920, 1136
+  orig: 1920, 1136
+  offset: 0, 0
+  index: -1
+
+PenaconyTheGreatSeptimus.png
+size: 2048, 2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+mod/PenaconyTheGreatSeptimus
+  rotate: false
+  xy: 2, 2
+  size: 1920, 1136
   orig: 1920, 1136
   offset: 0, 0
   index: -1

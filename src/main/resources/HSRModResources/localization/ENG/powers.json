@@ -727,7 +727,7 @@
   "HSRMod:FormationCore": {
     "NAME": "Formation Core",
     "DESCRIPTIONS": [
-      "Can only be reduced by %s cards. #yBreak to die. When death, all cards in hand gain a random tag, which will be the same as the remaining tags of the formation.",
+      "Toughness can only be reduced by %s cards. #yBreak to die. When death, all cards in hand gain a random other tag, and other Flying Swords gain the tag of this one.",
       "Has a tag of #rExhaust / #pEthereal / #yInnate / #gRetain , can only be reduced by specific tag cards. Dies when #yBreak . When death, all cards in hand gain a random tag, which will be the same as the remaining tags of the formation.",
       "#rExhaust",
       "#pEthereal",

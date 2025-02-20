@@ -4,11 +4,13 @@ import basemod.BaseMod;
 import basemod.interfaces.PostPowerApplySubscriber;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
@@ -17,6 +19,7 @@ import hsrmod.actions.BouncingAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.effects.GrayscaleScreenEffect;
 import hsrmod.effects.PortraitDisplayEffect;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
@@ -64,8 +67,8 @@ public class Acheron1 extends BaseCard implements PostPowerApplySubscriber {
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.topLevelEffects.add(new PortraitDisplayEffect("Acheron"));
         CardCrawlGame.sound.play("SlashedDream1");
-        addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
         // addToBot(new VFXAction(new GrayscaleScreenEffect(Settings.FAST_MODE ? 3 : 4)));
+        addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
 
         AbstractCreature target = ModHelper.betterGetRandomMonster();
         if (target == null) return;

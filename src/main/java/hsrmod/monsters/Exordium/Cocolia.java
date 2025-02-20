@@ -25,6 +25,7 @@ import com.megacrit.cardcrawl.vfx.combat.ExplosionSmallEffect;
 import com.megacrit.cardcrawl.vfx.combat.LightFlareParticleEffect;
 import com.megacrit.cardcrawl.vfx.scene.LightFlareMEffect;
 import com.megacrit.cardcrawl.vfx.scene.LightFlareSEffect;
+import hsrmod.actions.ForceWaitAction;
 import hsrmod.cardsV2.Curse.Frozen;
 import hsrmod.misc.Encounter;
 import hsrmod.misc.PathDefine;
@@ -122,6 +123,7 @@ public class Cocolia extends BaseMonster {
                     addToBot(new ExhaustAction(handCount, true, false, false));
                     for (int i = 0; i < handCount - 1; i++) {
                         addToBot(new DamageAction(p, this.damage.get(3), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+                        addToBot(new ForceWaitAction(0.1f));
                     }
                     addToBot(new DamageAction(p, this.damage.get(3), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
                 }

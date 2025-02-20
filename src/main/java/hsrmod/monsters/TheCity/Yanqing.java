@@ -91,7 +91,7 @@ public class Yanqing extends BaseMonster implements PostMonsterDeathSubscriber {
                     if (hasPower(ChargingPower.POWER_ID)) {
                         shout(3, 4);
                         addToBot(new VFXAction(new WeightyImpactEffect(p.hb.cX, p.hb.cY, Color.CYAN), 1f));
-                        attack(mi, AbstractGameAction.AttackEffect.BLUNT_HEAVY, AttackAnim.FAST);
+                        attack(mi, AbstractGameAction.AttackEffect.BLUNT_HEAVY);
                     }
                     SubscriptionManager.unsubscribe(this);
                 }

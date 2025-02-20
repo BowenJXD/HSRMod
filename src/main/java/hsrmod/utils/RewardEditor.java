@@ -88,7 +88,7 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
                 }
             }
 
-            if (Objects.equals(relicId, "")) {
+            if (Objects.equals(relicId, "") && AbstractDungeon.player instanceof StellaCharacter) {
                 checkBossRelic(tag);
             }
         }

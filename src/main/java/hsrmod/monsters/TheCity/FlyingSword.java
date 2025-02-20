@@ -21,7 +21,7 @@ public class FlyingSword extends BaseMonster {
     FormationCorePower.Tag tag;
     
     public FlyingSword(float x, float y, FormationCorePower.Tag tag) {
-        super(ID, 100, 200, x, y);
+        super(ID, 100, 250, x, y);
         floatIndex = AbstractDungeon.miscRng.randomBoolean() ? 1 : -1;
         this.tag = tag;
         

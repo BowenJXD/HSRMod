@@ -32,6 +32,7 @@ public class ChargingPower extends StatePower implements PreBreakSubscriber {
 
     public ChargingPower(AbstractCreature owner, String move, int amount) {
         super(POWER_ID, owner, amount);
+        priority = 1;
         this.move = move;
         if (amount > 1)
             description = String.format(DESCRIPTIONS[1], move, amount);
@@ -49,9 +50,9 @@ public class ChargingPower extends StatePower implements PreBreakSubscriber {
     @Override
     public void updateDescription() {
         if (amount > 1)
-            description = String.format(DESCRIPTIONS[1], move, amount);
+            description = String.format(DESCRIPTIONS[1], " #r" + move, amount);
         else
-            description = String.format(DESCRIPTIONS[0], move);
+            description = String.format(DESCRIPTIONS[0], " #r" + move);
     }
 
     @Override

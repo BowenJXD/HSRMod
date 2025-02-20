@@ -56,15 +56,15 @@ public class SwordFormationPower extends StatePower implements PostMonsterDeathS
         addToBot(new ElementalDamageAction(owner, new ElementalDamageInfo(owner, hpLossAmount, DamageInfo.DamageType.HP_LOSS, ElementType.None, tr), AbstractGameAction.AttackEffect.NONE));
         AbstractDungeon.player.exhaustPile.group.forEach(c -> addToBot(new ExhaustToHandAction(c)));
     }
-
+    
     @Override
-    public int onAttackToChangeDamage(DamageInfo info, int damageAmount) {
-        return damageAmount * (100 + damageIncrement) / 100;
+    public float atDamageGive(float damage, DamageInfo.DamageType type) {
+        return damage * (100 + damageIncrement) / 100;
     }
 
     @Override
-    public int onAttackedToChangeDamage(DamageInfo info, int damageAmount) {
-        return damageAmount * (100 - damageDecrement) / 100;
+    public float atDamageReceive(float damage, DamageInfo.DamageType damageType) {
+        return damage * (100 - damageDecrement) / 100;
     }
 
     @Override

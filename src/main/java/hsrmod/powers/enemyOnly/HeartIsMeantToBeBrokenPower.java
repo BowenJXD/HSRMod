@@ -1,6 +1,7 @@
 package hsrmod.powers.enemyOnly;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -61,7 +62,7 @@ public class HeartIsMeantToBeBrokenPower extends DebuffPower implements PreBreak
             addToTop(new RemoveSpecificPowerAction(owner, owner, this));
             addToTop(new RemoveSpecificPowerAction(owner, owner, InvinciblePower.POWER_ID));
             addToTop(new BreakDamageAction(target, new DamageInfo(owner, ToughnessPower.getStackLimit(owner)), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-
+            addToTop(new TalkAction(AbstractDungeon.player, DESCRIPTIONS[1], 1.0F, 2.0F));
         }
     }
 }

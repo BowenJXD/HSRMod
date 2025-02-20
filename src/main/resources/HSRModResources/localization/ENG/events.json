@@ -184,8 +184,8 @@
     "NAME": "The Double Lottery Experience",
     "OPTIONS": [
       "[continue]",
-      "[Vote] Purchase a lotto relic using #y100 gold, and fix all lottos",
-      "[Experience] Fix all lottos using #y50 gold",
+      "[Vote] Purchase a lotto relic using #y50 gold, and fix all lottos",
+      "[Experience] Fix all lottos using #y25 gold",
       "[Refuse] You can't find happiness like that!",
       "[Hack] Destroy all the lotto, gain relic twice of lotto destroyed",
       "[leave]"
@@ -266,7 +266,7 @@
     "OPTIONS": [
       "[continue]",
       "[Never turn my back on humanity] Enter a battle against trashcans, gain #b2 relics after victory.",
-      "[I am the king of trashcans!] Enter battle against Rumbas the Third, gain #b3 destructible relics after victory.",
+      "[I am the king of trashcans!] Enter battle against Rumbas the Third, gain #b2 destructible relics after victory.",
       "[leave]"
     ],
     "DESCRIPTIONS": [
@@ -292,20 +292,24 @@
     ]
   },
   "HSRMod:CulinaryColosseum": {
-    "NAME": "厨王争霸",
+    "NAME": "Culinary Colosseum",
     "OPTIONS": [
       "[continue]",
-      "[一起上吧] 进入战斗，胜利后获得 #b2 个普通遗物。",
-      "[往对手的桶里丢垃圾] 进入战斗，胜利后移除 #b2 张牌。",
-      "[跨级挑战评委] 进入战斗，胜利后获得 #b4 个可损毁遗物。",
-      "[leave]"
+      "[Come at me all at once] Enter battle, gain #b2 random relics after victory.",
+      "[Throw trash into the opponent's can] Enter battle, remove #b2 cards after victory.",
+      "[Challenge the jury] Enter battle, gain #b3 destructible relics after victory.",
+      "[Claim reward]",
+      "[leave]",
+      "Choose to remove  cards"
     ],
     "DESCRIPTIONS": [
-      "你走进 #y冉比希星 的废品回收站，成千上万的垃圾桶在垃圾堆里 ~喝彩欢呼~ 。 NL NL 作为第二十一届垃圾厨王争霸赛的 #y擂主 ，反观测护罩、吃剩一半的天环翅堡、未知星球的硬币，观众扔下垃圾来代替花束，表达对你的 ~期待~ 。",
-      "你淡然地瞥向身边的挑战者， #y塔塔洛夫 的宫廷大厨埃罗琳，尝遍 #b一千种垃圾 的分子食客瑞赛可，还有 ~举世闻名~ 的 #g垃圾美食家 贾克佛，全都是些难缠的家伙。 NL NL 然而，在你的脑海内， #y胜利 的菜单已然敲定。",
-      "有骨气！听了你的话，三位对手纷纷 #y~严阵以待~ ，决定以自己 #y最高 的水准来表达对你的尊重。",
-      "「 @吁——吁！@ 」观众纷纷喝出倒彩，挑战者们更是 #r@怒不可遏@ ，准备给你点颜色瞧瞧。",
-      "「嚯，好 #y@狂妄@ 的后生。」几位评委一跃而上，观众们擦干净盖子，准备见证垃圾厨艺界这 #y~史诗级~ 的对决。"
+      "Walking into the recycling station on the Rumbas system, you hear thousands upon thousands of trash dumps cheering from inside the garbage pile. NL NL As ring master of the 21st Garbage Chef Championship, you view the observation shield, half-eaten Halovian Winged Burgers, currency from an unknown system, as well as the garbage thrown from the audience instead of flowers, as an expression of their hopes for you.",
+      "You casually glance around at the challengers: Tatalov's palace chef, Erolyn, the molecular eater Risaac, who's tasted a thousand kinds of garbage, and the world-famous garbage gourmand Jacques Feaux. Every one of them is a demanding prospect. NL NL And yet, in your mind, the menu for victory has already been decided.",
+      "You've got guts! After hearing what you have to say, three fighters get ready to fight and decide to express their respect for you at the highest level.",
+      "\"Whoa... boo!\" jeer the audience as the challengers grow furious, preparing to teach you a lesson.",
+      "\"Wow, what an arrogant youngster.\" Several referees jump forth, and the audience wipe their lids clean — preparing to witness an epic showdown in the world of garbage cuisine."
+      "You #ywon.",
+      "You got what you deserved."
     ]
   },
   "HSRMod:YuQingtu": {

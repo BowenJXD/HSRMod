@@ -34,7 +34,8 @@ public class RobinPower extends BuffPower {
         if (AbstractDungeon.getMonsters() != null
                 && AbstractDungeon.getMonsters().monsters.stream().noneMatch(m -> m.type == AbstractMonster.EnemyType.BOSS)) {
             // 取消静音背景音乐
-            CardCrawlGame.music.unsilenceBGM();
+            CardCrawlGame.music.silenceBGM();
+            CardCrawlGame.music.justFadeOutTempBGM();
             AbstractDungeon.scene.fadeOutAmbiance();
             Timer.schedule(new Timer.Task() {
                 @Override

@@ -2,20 +2,30 @@ package hsrmod.powers.misc;
 
 import basemod.BaseMod;
 import basemod.interfaces.OnPlayerLoseBlockSubscriber;
+import basemod.interfaces.PreMonsterTurnSubscriber;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnLoseBlockPower;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cardsV2.Preservation.Quake;
+import hsrmod.modcore.ElementType;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
-public class QuakePower extends BuffPower implements OnPlayerLoseBlockSubscriber, OnLoseBlockPower {
+import java.util.function.Consumer;
+
+public class QuakePower extends BuffPower implements PreMonsterTurnSubscriber, OnLoseBlockPower {
     public static final String POWER_ID = HSRMod.makePath(QuakePower.class.getSimpleName());
 
+    AbstractCreature lastTarget;
+    
     public QuakePower(AbstractCreature creature, int amount) {
         super(POWER_ID, creature, amount);
         this.updateDescription();
@@ -35,36 +45,33 @@ public class QuakePower extends BuffPower implements OnPlayerLoseBlockSubscriber
 
     @Override
     public int onLoseBlock(DamageInfo damageInfo, int i) {
-        if (i >= Math.round(owner.currentBlock * 0.5f)) {
+        if (i > 0 
+                && damageInfo.type == DamageInfo.DamageType.NORMAL) {
             flash();
             remove(1);
-            AbstractCreature target = null;
-            if (damageInfo != null && damageInfo.owner != null) {
-                target = damageInfo.owner;
+            AbstractCreature target = damageInfo.owner;
+            if (target != null && target != lastTarget) {
+                attack(target);
+                lastTarget = target;
             }
-            attack(target, Math.min(i, owner.currentBlock));
+            // attack(target, Math.min(i, owner.currentBlock));
         }
         return i;
+    }
+    
+    public void attack(AbstractCreature target) {
+        attack(target, 1, null);
+    }
+
+    public void attack(AbstractCreature target, float dmgMultiplier, Consumer<ElementalDamageAction.CallbackInfo> callback) {
+        addToBot(new ElementalDamageAction(target, new ElementalDamageInfo(owner, (int) (owner.currentBlock * dmgMultiplier), DamageInfo.DamageType.THORNS, ElementType.Physical, 5), AbstractGameAction.AttackEffect.BLUNT_HEAVY).setCallback(callback));
     }
 
     @Override
-    public int receiveOnPlayerLoseBlock(int i) {
-        if (SubscriptionManager.checkSubscriber(this)
-                && i >= Math.round(owner.currentBlock * 0.5f)) {
-            flash();
-            remove(1);
-            attack(null, i);
+    public boolean receivePreMonsterTurn(AbstractMonster abstractMonster) {
+        if (SubscriptionManager.checkSubscriber(this)) {
+            lastTarget = null;
         }
-        return i;
-    }
-
-    public void attack(AbstractCreature target, int damage) {
-        if (target == null) target = ModHelper.betterGetRandomMonster();
-        if (target != null && damage > 0) {
-            Quake quake = new Quake();
-            quake.baseDamage = damage;
-            quake.upgrade();
-            addToBot(new MakeTempCardInHandAction(quake));
-        }
+        return true;
     }
 }

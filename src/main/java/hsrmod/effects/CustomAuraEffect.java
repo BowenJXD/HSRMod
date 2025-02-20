@@ -22,6 +22,7 @@ public class CustomAuraEffect extends AbstractGameEffect {
     public static boolean switcher = true;
     float scaleX;
     float scaleY;
+    float maxAlpha = 0.2F;
 
     public CustomAuraEffect(Hitbox hb, Color color) {
         this.img = ImageMaster.EXHAUST_L;
@@ -30,6 +31,7 @@ public class CustomAuraEffect extends AbstractGameEffect {
         this.scaleX = hb.width / (float)this.img.packedWidth;
         this.scaleY = hb.height / (float)this.img.packedHeight;
         this.color = color;
+        if (color.a > 0) maxAlpha = color.a;
 
         this.x = hb.cX + MathUtils.random(-hb.width / 16.0F, hb.width / 16.0F);
         this.y = hb.cY + MathUtils.random(-hb.height / 16.0F, hb.height / 12.0F);
@@ -50,9 +52,9 @@ public class CustomAuraEffect extends AbstractGameEffect {
 
     public void update() {
         if (this.duration > 1.0F) {
-            this.color.a = Interpolation.fade.apply(0.2F, 0.0F, this.duration - 1.0F);
+            this.color.a = Interpolation.fade.apply(maxAlpha, 0.0F, this.duration - 1.0F);
         } else {
-            this.color.a = Interpolation.fade.apply(0.0F, 0.2F, this.duration);
+            this.color.a = Interpolation.fade.apply(0.0F, maxAlpha, this.duration);
         }
 
         this.rotation += Gdx.graphics.getDeltaTime() * this.vY;

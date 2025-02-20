@@ -9,7 +9,7 @@
       "⚠Volteggiando⚠",
       "Allargando",
       "⚠Im Anfang war die Tat⚠",
-      "Volteggiando (deal damage, then all unbroken Echo of Faded Dreams act immediately)"
+      "Volteggiando: deal damage, then all unbroken Echo of Faded Dreams act immediately."
     ],
     "DIALOG": [
       "I swear on Truth...",
@@ -39,6 +39,32 @@
     ],
     "DIALOG": []
   },
+  "HSRMod:Skaracabaz": {
+    "NAME": "Starcrusher Swarm King: Skaracabaz",
+    "MOVES": [
+      "Radiating Venom",
+      "Carapace of Begotten Spawn",
+      "⚠Ovum of Collapsed Star⚠",
+      "Ovum of Collapsed Star: deal damage, deal 1 additional damage for each summoned minion; charge #yOvum #yof #yCollapsed #yStar."
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:GnawSting": {
+    "NAME": "Gnaw Sting",
+    "MOVES": [
+      "Horn Clash"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:LesserSting": {
+    "NAME": "Lesser Sting",
+    "MOVES": [
+      "Prepare to Fight",
+      "⚠Bursting Detonation⚠",
+      "Bursting Detonation: self-destruct, deal damage, apply #b2 #yOutrage ."
+    ],
+    "DIALOG": []
+  },
   "HSRMod:Phantylia": {
     "NAME": "Phantylia",
     "MOVES": [
@@ -49,7 +75,7 @@
       "Furor",
       "Kalpa Descend",
       "⚠Starfall, Mooncry⚠",
-      "Starfall, Mooncry (deal damage equal to 24, reduce damage by 1 for every 10 energy, increase damage by 10 for every debuff)"
+      "Starfall, Mooncry: deal damage equal to 24, reduce damage by 1 for every 10 energy, increase damage by 10 for every debuff."
     ],
     "DIALOG": [
       "",
@@ -85,7 +111,7 @@
       "Heaven's Binds",
       "Wreathed in Storm",
       "⚠Sweep the Heavens, Swallow the Earth⚠",
-      "Sweep the Heavens, Swallow the Earth (deal damage, deal 1 additional damage for every unbroken monster)"
+      "Sweep the Heavens, Swallow the Earth: deal damage, deal 1 additional damage for every unbroken monster."
     ],
     "DIALOG": [
       "Die, borisin!",
@@ -137,7 +163,7 @@
       "Soulrend Coldstream",
       "The Creation's Prelude",
       "⚠Last Choir of Genesis⚠",
-      "Last Choir of Genesis (exhaust all hand cards and deal 6 damage n times, n being the number of cards exhausted)"
+      "Last Choir of Genesis: exhaust all hand cards and deal 6 damage n times, n being the number of cards exhausted."
     ],
     "DIALOG": [
       "You will not take away our hope!",
@@ -177,7 +203,7 @@
       "Engine Boost",
       "Cataclysm Precursor",
       "⚠Impending Doom⚠",
-      "Impending Doom(Deal #r3*%d damage, deal 1 additional damage for each #yImprison or #yEntangle )"
+      "Impending Doom(Deal #r3*%d damage, deal 1 additional damage for each #yImprison or #yEntangle ."
     ],
     "DIALOG": []
   },
@@ -197,7 +223,7 @@
       "Watery Dissolution",
       "⚠Losing Eventide Light⚠",
       "Funereal Kiss",
-      "Losing Eventide Light (deal 49 damage, for every card in any deck, reduce damage by 1)"
+      "Losing Eventide Light: deal damage, for every card in any deck, reduce damage by 1."
     ],
     "DIALOG": []
   },
@@ -207,6 +233,55 @@
       "Temporal Departure"
     ],
     "DIALOG": []
+  },
+  "HSRMod:AventurineOfStratagems": {
+    "NAME": "Aventurine of Stratagems",
+    "MOVES": [
+      "Distributed Investment",
+      "Points Fountain",
+      "Time For A Bet",
+      "⚠The Loser's Time Is Over⚠",
+      "The Loser's Time Is Over: deal damage, put #yImprison into draw pile, charge #yThe #yLoser's #yTime #yIs #yOver."
+    ],
+    "DIALOG": [
+      "",
+      "Going all in.",
+      "Prepare for some hard luck.",
+      "Final play, coming down from above!",
+      "All or nothing.",
+      "Take everything I've got.",
+      "It's all or nothing!",
+      ""
+    ]
+  },
+  "HSRMod:AllOrNothing": {
+    "NAME": "\"All or Nothing\"",
+    "MOVES": [
+      "",
+      "Fickle Fortune",
+      "Damage taken would be randomly between 1 and 6. Upon death, remove #yAventurine's #yintangible and #ytoughness Lock, #ybreaks him, and set #yCharge to max."
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:Sam": {
+    "NAME": "Stellaron Hunter: Sam",
+    "MOVES": [
+      "BHF-Heavenly Fire",
+      "BBHF-Scorched Earth",
+      "DHGDR: Secondary Combustion",
+      "SGE-Molten Core",
+      "⚠DHGDR: Supernova Overload⚠",
+      "DHGDR: Supernova Overload: deal damage, charge #rDHGDR: #rSecondary #rCombustion, with its damage time +1.",
+      "DHGDR: Supernova Overload: deal damage, if not blocked, apply #yBurn; charge #rDHGDR: #rSecondary #rCombustion, with its damage time +1."
+    ],
+    "DIALOG": [
+      "Time to clean up!",
+      "Prepare... for annihilation!",
+      "Incinerate and detonate!",
+      "Now commencing... Scorched Earth operations!",
+      "Target marked. Execution... underway!",
+      "Mission... failed."
+    ]
   },
   "HSRMod:Hoolay": {
     "NAME": "Hoolay",
@@ -250,7 +325,7 @@
       "Everlife",
       "Hardy Leaf Sheath",
       "⚠Flamboyant Gore⚠",
-      "Flamboyant Gore (deal damage, remove all #yTwigs , deal 1 more damage for each removed)"
+      "Flamboyant Gore: deal damage, remove all #yTwigs , deal 1 more damage for each removed."
     ],
     "DIALOG": []
   },
@@ -294,6 +369,34 @@
       "It's not... over..."
     ]
   },
+  "HSRMod:Yanqing": {
+    "NAME": "Cloud Knight Lieutenant: Yanqing",
+    "MOVES": [
+      "Swallow Return",
+      "Ironthorn",
+      "Qi Advance",
+      "⚠Cascading Laceration⚠",
+      "Qi Converge",
+      "⚠Aethereal Dreamflux⚠",
+      "Cascading Laceration: deal damage, remove all #bFrozen in hand.",
+      "Aethereal Dreamflux: deal damage, remove all #yFlying #ySword, deal 1 additional damage for each removed."
+    ],
+    "DIALOG": [
+      "Sword, heed me.",
+      "I'm just warmin' up!",
+      "Punish evil!",
+      "Cut through the ranks!",
+      "My blade... levels armies!",
+      "I failed..."
+    ]
+  },
+  "HSRMod:FlyingSword": {
+    "NAME": "Flying Sword",
+    "MOVES": [
+      "Jadecarve Strike"
+    ],
+    "DIALOG": []
+  },
   "HSRMod:Gepard": {
     "NAME": "Gepard",
     "MOVES": [
@@ -301,7 +404,7 @@
       "Smite of Frost",
       "Garrison Aura Field",
       "⚠Frigid Waterfall⚠",
-      "Frigid Waterfall (deal damage equal to block, and gain 2 #yStrength)"
+      "Frigid Waterfall: deal damage equal to block, and gain 2 #yStrength."
     ],
     "DIALOG": [
       "@In@ @the@ @name@ @of@ @Preservation!@",
@@ -315,7 +418,7 @@
       "Windrider Bullet",
       "Combat Redeployment",
       "⚠Suppressive Fire⚠",
-      "Suppressive Fire (steal #yStrength from player, deal damage)"
+      "Suppressive Fire: steal #yStrength from player, deal damage."
     ],
     "DIALOG": []
   },
@@ -334,7 +437,7 @@
       "Oppressive Embrace",
       "Overload Warning",
       "⚠Controlled Blasting⚠",
-      "Controlled Blasting (self-destruct, deal damage, and destroy stolen cards)"
+      "Controlled Blasting: self-destruct, deal damage, and destroy stolen cards."
     ],
     "DIALOG": []
   },
@@ -345,7 +448,121 @@
       "Limited Free Drinks",
       "Celebration Fountain",
       "⚠Unlimited Free Drinks⚠",
-      "Unlimited Free Drinks (deal damage, lose #b8 HP for each damage blocked, gain 1 #yVulnerable if all blocked)"
+      "Unlimited Free Drinks: deal damage, lose #b8 HP for each damage blocked, gain 1 #yVulnerable if all blocked."
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:BeyondOvercooked": {
+    "NAME": "Beyond Overcooked",
+    "MOVES": [
+      "Inferno Stove",
+      "Ladle Swirl",
+      "Ignite Stove",
+      "⚠Flaming Stir-Fry⚠",
+      "Flaming Stir-Fry: deal damage."
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:ShellOfFadedRage": {
+    "NAME": "Shell of Faded Rage",
+    "MOVES": [
+      "Tide of Enduring Grudges",
+      "Roar of Furious Thunder",
+      "⚠Bonepiercing Odium⚠",
+      "Bonepiercing Odium: deal damage, deal 1 additional damage for each #yObscure #yFire ."
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:PastConfinedAndCaged": {
+    "NAME": "\"Past Confined and Caged\"",
+    "MOVES": [
+      "Admonishment of the Masses",
+      "Shackle-Bearing Messenger",
+      "⚠Desmios Evangelion⚠",
+      "",
+      "Desmios Evangelion: deal damage, reduce damage for every damage taken by a different #rAttack card."
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:PresentInebriatedInRevelry": {
+    "NAME": "\"Present Inebriated in Revelry\"",
+    "MOVES": [
+      "Feast That Is Set For You",
+      "A Cup Runneth Over For You",
+      "⚠Wash Away All Sins For You⚠",
+      "",
+      "Wash Away All Sins For You: apply multiple #yDoT, trigger all #yDoT #b1 times. For each #gSkill card played, apply #b1 less #yDoT."
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:TomorrowInHarmoniousChords": {
+    "NAME": "\"Tomorrow in Harmonious Chords\"",
+    "MOVES": [
+      "All Is Bright",
+      "Redeeming Grace",
+      "Holy Night",
+      "⚠Sleep In Heavenly Peace⚠",
+      "",
+      "Sleep In Heavenly Peace: double #yStrength , apply #yAlienDream , for each #gPower card played, lose #b1 #yStrength , if no #yStrength , then #yBreak ."
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:TeamLeader": {
+    "NAME": "Senior Staff: Team Leader",
+    "MOVES": [
+      "Team Building",
+      "Disciplined",
+      "In Training...",
+      "⚠Work Culture Shock⚠",
+      "Work Culture Shock: deal multi-hit damage, remove all #yPerformance #yPoints ."
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:FieldPersonnel": {
+    "NAME": "Grunt: Security Personnel",
+    "MOVES": [
+      "Performance Boost"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:CharmonyBananAdvisor": {
+    "NAME": "Charmony BananAdvisor",
+    "MOVES": [
+      "Physical Banashment! Take This!",
+      "Collective Banashment! Take This!",
+      "Monkey Yes! Holiday Activities!",
+      "",
+      "Rebirth"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:Assistanana": {
+    "NAME": "Assistanana",
+    "MOVES": [
+      "Banappiness Holiday",
+      "Banascary Semester",
+      "",
+      "Rebirth"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:DreamweaverBananAdvisor": {
+    "NAME": "Dreamweaver BananAdvisor",
+    "MOVES": [
+      "Break Time! Chaaarge!",
+      "Class Time! Sit Down!",
+      "",
+      "Rebirth"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:FortuneBananAdvisor": {
+    "NAME": "Fortune BananAdvisor",
+    "MOVES": [
+      "Good Monkeys Get Grades",
+      "Bad Monkeys Get Demerits",
+      "",
+      "Rebirth"
     ],
     "DIALOG": []
   },
@@ -367,6 +584,48 @@
     ],
     "DIALOG": []
   },
+  "HSRMod:SpringLoader": {
+    "NAME": "Spring Loader",
+    "MOVES": [
+      "Throw Die"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:Birdskull": {
+    "NAME": "Birdskull",
+    "MOVES": [
+      "Dance Invite"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:Heartbreaker": {
+    "NAME": "Heartbreaker",
+    "MOVES": [
+      "Structural Deviation"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:InsatiableVanity": {
+    "NAME": "Insatiable Vanity",
+    "MOVES": [
+      "Crowned in Mortal Name"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:SomethingInTheMirror": {
+    "NAME": "Something in the Mirror",
+    "MOVES": [
+      "Mirror Cognition"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:Allseer": {
+    "NAME": "Allseer",
+    "MOVES": [
+      "Glare of the Other"
+    ],
+    "DIALOG": []
+  },
   "HSRMod:AurumatonGatekeeper": {
     "NAME": "Aurumaton Gatekeeper",
     "MOVES": [
@@ -374,7 +633,7 @@
       "Dread",
       "Restraint",
       "⚠Enchainment⚠",
-      "Enchainment (deal damage, put #yImprison into draw pile, exit #ySanction mode)"
+      "Enchainment: deal damage, put #yImprison into draw pile, exit #ySanction mode."
     ],
     "DIALOG": [
       "@Treasonous@",
@@ -423,7 +682,7 @@
       "Moon Rage Mimicry",
       "Lupitoxin Synthesis",
       "⚠Slaughter Algorithm⚠",
-      "Slaughter Algorithm (deal damage, deal 1 additional damage for each #yFear )"
+      "Slaughter Algorithm: deal damage, deal 1 additional damage for each #yFear ."
     ],
     "DIALOG": [
       "#rSlaughter, #ractivate.",
@@ -437,7 +696,7 @@
       "Subdue",
       "Revert Yin and Yang",
       "⚠Heaven's Fall⚠",
-      "Heaven's Fall (deal damage, remove #yReverberation )"
+      "Heaven's Fall: deal damage, remove #yReverberation ."
     ],
     "DIALOG": [
       "@Engage!@",
@@ -456,7 +715,7 @@
     "MOVES": [
       "Wrathful Roar",
       "⚠Simian Strike⚠",
-      "Simian Strike (gain #yStrength , deal damage, consume #yGusto , if still have #yGusto , then prepare #ySimian #yStrike )"
+      "Simian Strike: gain #yStrength , deal damage, consume #yGusto , if still have #yGusto , then prepare #ySimian #yStrike ."
     ],
     "DIALOG": []
   },
@@ -510,7 +769,7 @@
       "Cloud Edge",
       "Find Smoke Bomb",
       "⚠Escape⚠",
-      "Escape (leave with your money)"
+      "Escape: leave with your money."
     ],
     "DIALOG": [
       "Give your money!",
@@ -557,7 +816,7 @@
       "Ram",
       "Timed Module",
       "⚠Self-Exploding Module⚠",
-      "Self-Exploding Module (self-destruct, and deal damage)",
+      "Self-Exploding Module: self-destruct, and deal damage.",
       "Chains of Destruction",
       "Upon death, deal #b10 fire damage to all enemies (2)."
     ],
@@ -586,7 +845,7 @@
       "Frozen Storm",
       "Devour Otherling",
       "⚠Ice Wheel Crusher⚠",
-      "Ice Wheel Crusher (deal #r3*3 damage, exhaust all hand cards, heal 1 HP for each card exhausted)"
+      "Ice Wheel Crusher: deal damage, exhaust all hand cards, heal 1 HP for each card exhausted."
     ],
     "DIALOG": []
   },
@@ -611,7 +870,7 @@
       "Fleeting Veil",
       "Binding of the Golden Age",
       "⚠Liberation of the Golden Age⚠",
-      "Liberation of the Golden Age (deal #r3*0 damage, deal 1 more damage for each #yGauge #yRecollection )"
+      "Liberation of the Golden Age: deal damage, deal 1 more damage for each #yGauge #yRecollection ."
     ],
     "DIALOG": []
   },
@@ -632,7 +891,7 @@
       "Storm Cyclone",
       "Wind-Twisting Crossbow",
       "⚠Windfall Storm⚠",
-      "Windfall Storm (trigger #yWind #yShear , apply #b%d #yWind #yShear )"
+      "Windfall Storm: trigger #yWind #yShear , apply #b%d #yWind #yShear ."
     ],
     "DIALOG": []
   },
@@ -642,7 +901,7 @@
       "Disintegration Order",
       "Dismantle",
       "⚠Felling Order⚠",
-      "Felling Order (deal damage, apply #yBleeding for each unblocked damage)"
+      "Felling Order: deal damage, apply #yBleeding for each unblocked damage."
     ],
     "DIALOG": []
   },
@@ -660,7 +919,7 @@
       "Shovel Attack",
       "Find Smoke Bomb",
       "⚠Escape⚠",
-      "Escape (leave with your money)"
+      "Escape: leave with your money."
     ],
     "DIALOG": [
       "Give your money!",
@@ -729,6 +988,20 @@
       "S—S—S—Scared",
       "Run... Run!",
       "Phew... Escaped"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:LordlyTrashcan": {
+    "NAME": "Lordly Trashcan",
+    "MOVES": [
+      "The Can's Trials"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:KingTrashcan": {
+    "NAME": "Golden Lordly Trashcan",
+    "MOVES": [
+      "The Can's Trials"
     ],
     "DIALOG": []
   }

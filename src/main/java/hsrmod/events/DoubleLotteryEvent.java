@@ -35,17 +35,17 @@ public class DoubleLotteryEvent extends PhasedEvent {
 
         phase1.addOption(new TextPhase.OptionInfo(OPTIONS[1])
                 .setOptionResult((i) -> {
-                    AbstractDungeon.player.loseGold(100);
+                    AbstractDungeon.player.loseGold(50);
                     gainLotto();
                     fix();
                     transitionKey(2);
                 })
                 .enabledCondition(() -> !ModHelper.hasRelic(CosmicBigLotto.ID) || !ModHelper.hasRelic(InterastralBigLotto.ID))
-                .enabledCondition(() -> AbstractDungeon.player.gold >= 100));
+                .enabledCondition(() -> AbstractDungeon.player.gold >= 50));
 
         phase1.addOption(new TextPhase.OptionInfo(OPTIONS[2])
                 .setOptionResult((i) -> {
-                    AbstractDungeon.player.loseGold(50);
+                    AbstractDungeon.player.loseGold(25);
                     fix();
                     transitionKey(3);
                 })
@@ -53,7 +53,7 @@ public class DoubleLotteryEvent extends PhasedEvent {
                     AbstractRelic lotto1 = AbstractDungeon.player.getRelic(HSRMod.makePath(CosmicBigLotto.ID));
                     AbstractRelic lotto2 = AbstractDungeon.player.getRelic(HSRMod.makePath(InterastralBigLotto.ID));
                     return ((lotto1 != null && lotto1.counter == -2) || (lotto2 != null && lotto2.counter == -2));
-                }).enabledCondition(() -> AbstractDungeon.player.gold >= 50));
+                }).enabledCondition(() -> AbstractDungeon.player.gold >= 25));
 
         phase1.addOption(OPTIONS[3], (i) -> transitionKey(4));
 

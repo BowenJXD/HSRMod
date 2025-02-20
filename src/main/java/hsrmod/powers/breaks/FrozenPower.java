@@ -48,8 +48,8 @@ public class FrozenPower extends DebuffPower implements PreElementalDamageSubscr
     }
 
     @Override
-    public void remove(int val) {
-        super.remove(val);
+    public void onRemove() {
+        super.onRemove();
         SubscriptionManager.unsubscribe(this);
     }
 

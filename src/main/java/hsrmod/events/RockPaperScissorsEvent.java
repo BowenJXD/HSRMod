@@ -46,7 +46,6 @@ public class RockPaperScissorsEvent extends PhasedEvent {
         registerPhase(1, phase1);
         registerPhase(2, new CombatPhase(Encounter.RPS_1)
                 .addRewards(true, null)
-                .setNextKey(5)
         );
         registerPhase(3, new CombatPhase(Encounter.RPS_2)
                 .addRewards(false, (room) -> {
@@ -56,7 +55,6 @@ public class RockPaperScissorsEvent extends PhasedEvent {
                         room.addCardReward(reward);
                     }
                 })
-                .setNextKey(5)
                 .setType(AbstractMonster.EnemyType.ELITE)
         );
         registerPhase(4, new TextPhase(DESCRIPTIONS[2]).addOption(OPTIONS[4], (i) -> openMap()));

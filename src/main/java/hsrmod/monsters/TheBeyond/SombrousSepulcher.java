@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.IntangiblePlayerPower;
+import com.megacrit.cardcrawl.powers.IntangiblePower;
 import hsrmod.misc.PathDefine;
 import hsrmod.modcore.HSRMod;
 import hsrmod.monsters.BaseMonster;
@@ -22,7 +23,7 @@ public class SombrousSepulcher extends BaseMonster {
 
     @Override
     public void takeTurn() {
-        AbstractPower power = new IntangiblePlayerPower(this, 2);
+        AbstractPower power = new IntangiblePower(this, 1);
         power.name = MOVES[0];
         addToBot(new ApplyPowerAction(this, this, power, 1));
     }

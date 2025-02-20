@@ -31,6 +31,7 @@ public class DestinysThreadsForewoven extends BaseCard {
                 for (AbstractCard card : cards) {
                     addToTop(new ExhaustSpecificCardAction(card, p.hand));
                 }
+                if (m != null) addToTop(new GainBlockAction(m, m, cards.size()));
                 addToTop(new GainBlockAction(p, p, block * cards.size()));
             }
         }));

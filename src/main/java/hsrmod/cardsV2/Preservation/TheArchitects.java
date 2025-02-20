@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import hsrmod.actions.AOEAction;
 import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.powers.misc.QuakePower;
@@ -39,12 +40,32 @@ public class TheArchitects extends BaseCard {
     }
 
     @Override
+    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
+        return super.canUse(p, m) && p.hasPower(QuakePower.POWER_ID);
+    }
+
+    @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        int blockLose = p.currentBlock;
+        QuakePower quakePower = (QuakePower) p.getPower(QuakePower.POWER_ID);
+        if (quakePower != null) {
+            AbstractDungeon.getMonsters().monsters.stream()
+                    .filter(ModHelper::check)
+                    .filter(mon -> mon.currentBlock > 0 || upgraded)
+                    .forEach(mon -> {
+                        boolean hasBlock = mon.currentBlock > 0;
+                        quakePower.attack(mon, 1, ci->{
+                            if (hasBlock && ci.target.currentBlock <= 0) {
+                                quakePower.attack(ci.target, magicNumber / 100f, null);
+                            }
+                        });
+                    });
+        }
+        
+        /*nt blockLose = p.currentBlock;
         addToBot(new RemoveAllBlockAction(p, p));
-        if (p.hasPower(QuakePower.POWER_ID)) {
+            if (p.hasPower(QuakePower.POWER_ID)) {
             AbstractPower quakePower = p.getPower(QuakePower.POWER_ID);
-            ((QuakePower) quakePower).attack(m, p.currentBlock);
+            ((QuakePower) quakePower).attack(m);
         }
         int count = AbstractDungeon.getMonsters().monsters.stream()
                 .mapToInt(monster -> ModHelper.check(monster) ? 1 : 0)
@@ -62,6 +83,6 @@ public class TheArchitects extends BaseCard {
                         else
                             addToBot(new GainBlockAction(monster, monster, blockGain));
                     });
-        }
+        }*/
     }
 }

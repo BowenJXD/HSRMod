@@ -438,7 +438,7 @@
     "NAME": "Cosmic Big Lotto",
     "FLAVOR": "The marketing tactics for the Cosmic Big Lotto, sold by the Interastral Peace Corporation's Marketing Development Department, is as passionate and hot-blooded as Oswaldo Schneider himself.",
     "DESCRIPTIONS": [
-      "After battle: #b20 % chance to gain an extra relic. #b10 % chance to lose half of your current HP and destroy this relic."
+      "After battle: #b20% chance to gain an extra relic. #b10% chance to lose #b25% of your current HP and destroy this relic."
     ]
   },
   "HSRMod:InterastralBigLotto": {

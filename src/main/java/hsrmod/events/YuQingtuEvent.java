@@ -143,7 +143,6 @@ public class YuQingtuEvent extends BaseEvent {
         registerPhase(Phase.SLEEP, new TextPhase(DESCRIPTIONS[7]).addOption(OPTIONS[10], (i) -> openMap()));
         
         registerPhase(Phase.THIEF_BATTLE, new CombatPhase(Encounter.VAGRANTS)
-                .setNextKey(Phase.BATTLE_WON)
                 .addRewards(true, null));
         
         registerPhase(Phase.PROVOKE_1, new TextPhase(DESCRIPTIONS[8]).addOption(OPTIONS[0], (i) -> transitionKey(Phase.PROVOKE_2)));
@@ -151,7 +150,6 @@ public class YuQingtuEvent extends BaseEvent {
         registerPhase(Phase.PROVOKE_2, new TextPhase(DESCRIPTIONS[9]).addOption(OPTIONS[9], (i) -> transitionKey(Phase.PROVOKE_BATTLE)));
         
         registerPhase(Phase.PROVOKE_BATTLE, new CombatPhase(Encounter.GUARDIAN_SHADOW)
-                .setNextKey(Phase.BATTLE_WON)
                 .addRewards(true, room -> {
                     for (RewardItem r : room.rewards) {
                         if (r.type == RewardItem.RewardType.CARD) {

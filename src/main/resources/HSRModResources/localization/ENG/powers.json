@@ -95,7 +95,7 @@
   "HSRMod:Quake": {
     "NAME": "Quake",
     "DESCRIPTIONS": [
-      "When losing half of your Block, remove 1 stack and gain #yQuake with damage equal to the Block lost."
+      "When taking the first damage in a monster's turn, remove 1 layer to trigger: deal physical damage to it (5) with damage equal to your block left."
     ]
   },
   "HSRMod:Spore": {
@@ -336,7 +336,7 @@
   "HSRMod:ChampionsDinnerCatsCradle": {
     "NAME": "Champion's Dinner : Cat's Cradle",
     "DESCRIPTIONS": [
-      "Charge using cards are regarded as Follow Up cards, when [hsrmod:ChargeIcon] changes, #b%d chance to Follow Up one of them without using [hsrmod:ChargeIcon] . "
+      "Charge using cards are regarded as Follow Up cards, when using [hsrmod:ChargeIcon] , #b%d chance to Follow Up one of them without using [hsrmod:ChargeIcon] . "
     ]
   },"HSRMod:EmpyreanImperium": {
   "NAME": "Empyrean Imperium",
@@ -501,10 +501,16 @@
       "After playing #b%d cards, remove this power, end the turn, and all cards in hand will be stolen."
     ]
   },
+  "HSRMod:Nightfall": {
+    "NAME": "Nightfall",
+    "DESCRIPTIONS": [
+      "Next #b%d cards played will be exhausted."
+    ]
+  },
   "HSRMod:SlumberAwakening": {
     "NAME": "Slumber Awakening",
     "DESCRIPTIONS": [
-      "Upon death, the stolen cards will be returned to your hand: %s"
+      "Upon death, if killed by you, the stolen cards will be returned to your hand, otherwise, they will be removed from your master deck. Cards: %s"
     ]
   },
   "HSRMod:Barrier": {
@@ -542,7 +548,8 @@
   "HSRMod:HeartIsMeantToBeBroken": {
     "NAME": "Heart is Meant to be Broken!",
     "DESCRIPTIONS": [
-      "When #yinvincible triggers, take #ytoughness reduction equal to limit. When break by player, remove #yinvincible and this power, take damage equal to the #ytoughness limit."
+      "When #yinvincible triggers, take #ytoughness reduction equal to limit. When break by player, remove #yinvincible and this power, take damage equal to the #ytoughness limit.",
+      "Heart is Meant to be #r@Broken@ !"
     ]
   },
   "HSRMod:Ban": {
@@ -649,6 +656,114 @@
     "NAME": "Resonate",
     "DESCRIPTIONS": [
       "Skills are upgraded. Toughness reduction + #b%d%% . After a card deals damage to a target with #yResonate , other targets with #yResonate lose the same amount of HP. After #yBreak , if the target is a minion, remove this power, lock the toughness, and prevent it from acting."
+    ]
+  },
+  "HSRMod:DeceptionsCrown": {
+    "NAME": "Deception's Crown",
+    "DESCRIPTIONS": [
+      "Heal #b%d HP after taking damage. Remove after #yBreak ."
+    ]
+  },
+  "HSRMod:Simmer": {
+    "NAME": "Simmer",
+    "DESCRIPTIONS": [
+      "Stack 1 after taking damage. When reaching #b%d stacks, switch to #yBoil ."
+    ]
+  },
+  "HSRMod:Boil": {
+    "NAME": "Boil",
+    "DESCRIPTIONS": [
+      "Attacks apply #yVulnerable , and put #yBurn into draw pile. Remove #b1 stack after taking damage. If completely removed, deal damage to self ( #b%d ), gain #yVulnerable and #yStun ."
+    ]
+  },
+  "HSRMod:ObscureBlaze": {
+    "NAME": "Obscure Blaze",
+    "DESCRIPTIONS": [
+      " #yBonepiercing #yOdium's attack time increases, remove after #yBreak ."
+    ]
+  },
+  "HSRMod:PerformancePoint": {
+    "NAME": "Performance Point",
+    "DESCRIPTIONS": [
+      "Damage dealt + #b%d , #yBreak or #yKill to take."
+    ]
+  },
+  "HSRMod:Tutoring": {
+    "NAME": "Tutoring",
+    "DESCRIPTIONS": [
+      "Won't change #yChannel . Remove after #yBreak ."
+    ]
+  },
+  "HSRMod:FickleFortune": {
+    "NAME": "Fickle Fortune",
+    "DESCRIPTIONS": [
+      "Damage taken be 1~6 randomly. Upon death, remove #yAventurine's #yintangible and #ytoughness Lock, #ybreaks him, and set #yCharge to max."
+    ]
+  },
+  "HSRMod:SecondaryCombustion": {
+    "NAME": "Secondary Combustion",
+    "DESCRIPTIONS": [
+      "When #ySam attacks, or the player uses a card that consumes [E] , takes #b%d damage to increase the attack damage by #b%d . Remove after #yBreak . When removed, gain #yVulnerable , and the player recovers all [E] ."
+    ]
+  },
+  "HSRMod:MoltenCore": {
+    "NAME": "Molten Core",
+    "DESCRIPTIONS": [
+      "After playing a card, remove stack equal to its cost, when completely removed, #yBreak it."
+    ]
+  },
+  "HSRMod:TheCansCreed": {
+    "NAME": "The Can's Creed",
+    "DESCRIPTIONS": [
+      "Leave the battle when #yBroken ."
+    ]
+  },
+  "HSRMod:SwordFormation": {
+    "NAME": "Sword Formation",
+    "DESCRIPTIONS": [
+      "Damage dealt #b+%d%% , damage received #b-%d%% . If there is no #yFormation #yCore on the field, remove, remove toughness lock, be broken, and take #b%d%% of max HP as damage, player gains all exhausted cards."
+    ]
+  },
+  "HSRMod:FormationCore": {
+    "NAME": "Formation Core",
+    "DESCRIPTIONS": [
+      "Can only be reduced by %s cards. #yBreak to die. When death, all cards in hand gain a random tag, which will be the same as the remaining tags of the formation.",
+      "Has a tag of #rExhaust / #pEthereal / #yInnate / #gRetain , can only be reduced by specific tag cards. Dies when #yBreak . When death, all cards in hand gain a random tag, which will be the same as the remaining tags of the formation.",
+      "#rExhaust",
+      "#pEthereal",
+      "#yInnate",
+      "#gRetain"
+    ]
+  },
+  "HSRMod:Defense": {
+    "NAME": "Defense",
+    "DESCRIPTIONS": [
+      "Damage received #b-%d%% .",
+      "Damage received #b+%d%% ."
+    ]
+  },
+  "HSRMod:Multiply": {
+    "NAME": "Multiply",
+    "DESCRIPTIONS": [
+      "Won't take toughness reduce from normal damage. Gain #b%d #yInsect #yEgg at end of turn. After taking damage for the first time after playing a card, consume 1 #yInsect #yEgg , summon a minion. Remove after #yBreak , all monsters gain #yVulnerable and #yStun ."
+    ]
+  },
+  "HSRMod:InsectEgg": {
+    "NAME": "Insect Egg",
+    "DESCRIPTIONS": [
+      "Damage dealt +%d*%d( #b%d )."
+    ]
+  },
+  "HSRMod:DecayEulogy": {
+    "NAME": "Decay Eulogy",
+    "DESCRIPTIONS": [
+      "Upon death, the player heals #b%d HP, deals damage equal to #b%d%% of the max HP to all enemies, and reduces their toughness by #b%d%% of their max, and removes #b%d layers of their #yDefense ."
+    ]
+  },
+  "HSRMod:ExtraToughness": {
+    "NAME": "Extra Toughness",
+    "DESCRIPTIONS": [
+      "Removes before being broken, removes 1 stack, if there is any stack left, recovers all #yToughness."
     ]
   }
 }

@@ -1,5 +1,8 @@
 package hsrmod.monsters.Exordium;
 
+import basemod.helpers.VfxBuilder;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.ShoutAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
@@ -13,7 +16,15 @@ import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
+import com.megacrit.cardcrawl.vfx.FireBurstParticleEffect;
+import com.megacrit.cardcrawl.vfx.GlowRelicParticle;
+import com.megacrit.cardcrawl.vfx.RarePotionParticleEffect;
+import com.megacrit.cardcrawl.vfx.ShineSparkleEffect;
 import com.megacrit.cardcrawl.vfx.combat.BlizzardEffect;
+import com.megacrit.cardcrawl.vfx.combat.ExplosionSmallEffect;
+import com.megacrit.cardcrawl.vfx.combat.LightFlareParticleEffect;
+import com.megacrit.cardcrawl.vfx.scene.LightFlareMEffect;
+import com.megacrit.cardcrawl.vfx.scene.LightFlareSEffect;
 import hsrmod.cardsV2.Curse.Frozen;
 import hsrmod.misc.Encounter;
 import hsrmod.misc.PathDefine;
@@ -67,6 +78,7 @@ public class Cocolia extends BaseMonster {
                 r = AbstractDungeon.miscRng.random(2, 3);
                 addToBot(new ShoutAction(this, DIALOG[r]));
                 ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_" + r, 3.0F));
+                addToBot(new VFXAction(new BlizzardEffect(6, true), 0.5f));
                 addToBot(new DamageAction(p, this.damage.get(1), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
                 addToBot(new MakeTempCardInDrawPileAction(new Frozen(), 1, true, true));
                 break;
@@ -88,15 +100,30 @@ public class Cocolia extends BaseMonster {
                     r = AbstractDungeon.miscRng.random(6, 7);
                     addToBot(new ShoutAction(this, DIALOG[r]));
                     ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_" + r, 3.0F));
+                    addToBot(new VFXAction(
+                            new VfxBuilder(new Texture(PathDefine.EFFECT_PATH + "CocoliaMeteor.png"),
+                                    hb.cX, hb.cY + hb.height/2, Settings.FAST_MODE ? 0.5f : 1f)
+                                    .fadeIn(0.1f)
+                                    .wobble(1f, 1f, 10f)
+                                    .scale(0.6f, 1f, VfxBuilder.Interpolations.POW3OUT)
+                                    .andThen(Settings.FAST_MODE ? 1.5f : 2f)
+                                    .scale(1f, 1.2f, VfxBuilder.Interpolations.POW3OUT_INVERSE)
+                                    .moveX(hb.cX, p.hb.cX, VfxBuilder.Interpolations.EXP5IN)
+                                    .moveY(hb.cY + hb.height/2, p.hb.cY, VfxBuilder.Interpolations.EXP5IN)
+                                    .wobble(1f, 1f, 10f)
+                                    .emitEvery(RarePotionParticleEffect::new, 0.02f)
+                                    .fadeOut(0.1f)
+                                    .triggerVfxAt(Settings.FAST_MODE ? 1.5f : 2f, 1, ExplosionSmallEffect::new)
+                                    .build(), Settings.FAST_MODE ? 2f : 3f));
                     CardCrawlGame.music.dispose();
                     CardCrawlGame.music.playTempBGM(Encounter.END_OF_THE_ETERNAL_FREEZE + "_2");
 
                     int handCount = p.hand.size();
                     addToBot(new ExhaustAction(handCount, true, false, false));
-                    addToBot(new VFXAction(new BlizzardEffect(handCount, true)));
-                    for (int i = 0; i < handCount; i++) {
-                        addToBot(new DamageAction(p, this.damage.get(3), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+                    for (int i = 0; i < handCount - 1; i++) {
+                        addToBot(new DamageAction(p, this.damage.get(3), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
                     }
+                    addToBot(new DamageAction(p, this.damage.get(3), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
                 }
                 break;
         }

@@ -128,7 +128,9 @@ public class Luofu extends CustomDungeon {
         this.populateMonsterList(monsters, count, true);
     }
 
+    @Override
     protected void initializeShrineList() {
+        super.initializeShrineList();
     }
 
     protected void initializeEventList() {

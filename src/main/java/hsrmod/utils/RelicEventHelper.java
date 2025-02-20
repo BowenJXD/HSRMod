@@ -113,6 +113,7 @@ public class RelicEventHelper {
             AbstractDungeon.effectList.add(new BetterWarningSignEffect(Settings.WIDTH * 0.5f, Settings.HEIGHT * 0.5f, 4.0f));
             AbstractDungeon.player.loseRelic(relics[0].relicId);
             AbstractDungeon.effectList.add(new RelicAboveCreatureEffect(Settings.WIDTH * 0.5f, Settings.HEIGHT * 0.4f, relics[0]));
+            addRelicToPool(relics[0]);
         } else {
             for (int i = relics.length - 1; i >= 0; --i) {
                 float x = MathUtils.random(0.1F, 0.9F) * (float) Settings.WIDTH;
@@ -120,6 +121,7 @@ public class RelicEventHelper {
                 AbstractDungeon.effectList.add(new BetterWarningSignEffect(x, y, 4.0f));
                 AbstractDungeon.player.loseRelic(relics[i].relicId);
                 AbstractDungeon.effectList.add(new RelicAboveCreatureEffect(x, y - 0.1f, relics[i]));
+                addRelicToPool(relics[i]);
             }
         }
     }

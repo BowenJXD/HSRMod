@@ -3,8 +3,10 @@ package hsrmod.monsters.TheBeyond;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.common.SuicideAction;
+import com.megacrit.cardcrawl.cards.status.Slimed;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.combat.ExplosionSmallEffect;
 import hsrmod.effects.MoveToEffect;
@@ -32,6 +34,7 @@ public class LesserSting extends BaseMonster {
             addToBot(new VFXAction(new ExplosionSmallEffect(p.hb.cX + 50, p.hb.cY)));
             attack(mi, AbstractGameAction.AttackEffect.SLASH_HEAVY);
             addToBot(new ApplyPowerAction(p, this, new OutragePower(p, 2)));
+            addToBot(new MakeTempCardInDrawPileAction(new Slimed(), 1, true, true));
             addToBot(new RemoveSpecificPowerAction(this, this, DecayEulogyPower.POWER_ID));
             addToBot(new SuicideAction(this));
         });

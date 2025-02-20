@@ -28,19 +28,19 @@ public class TrashSymphonyEvent extends PhasedEvent {
                 .addOption(OPTIONS[2], (i)->transitionKey(3)));
         registerPhase(2, new TextPhase(DESCRIPTIONS[2]).addOption(OPTIONS[0], (i)->transitionKey(4)));
         registerPhase(3, new TextPhase(DESCRIPTIONS[3]).addOption(OPTIONS[0], (i)->transitionKey(5)));
-        registerPhase(5, new CombatPhase(Encounter.TRASH_SYMPHONY_1).addRewards(false, room -> {
+        registerPhase(4, new CombatPhase(Encounter.TRASH_SYMPHONY_1).addRewards(false, room -> {
             for (int i = 0; i < 2; i++) {
                 room.addRelicToRewards(AbstractDungeon.returnRandomRelicTier());
             }
         }));
-        registerPhase(6, new CombatPhase(Encounter.TRASH_SYMPHONY_2).addRewards(false, room -> {
-            for (int i = 0; i < 3; i++) {
+        registerPhase(5, new CombatPhase(Encounter.TRASH_SYMPHONY_2).addRewards(false, room -> {
+            for (int i = 0; i < 2; i++) {
                 AbstractRelic relic = RelicEventHelper.getRelicString(r -> RelicTagField.destructible.get(r));
                 if (relic != null) room.addRelicToRewards(relic);
                 else break;
             }
         }));
-        registerPhase(7, new TextPhase(DESCRIPTIONS[4]).addOption(OPTIONS[4], (i)->openMap()));
+        registerPhase(6, new TextPhase(DESCRIPTIONS[4]).addOption(OPTIONS[3], (i)->openMap()));
         
         transitionKey(0);
     }

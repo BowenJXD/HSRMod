@@ -1,11 +1,13 @@
 package hsrmod.monsters.TheCity;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RollMoveAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.WeakPower;
+import com.megacrit.cardcrawl.vfx.combat.BiteEffect;
 import com.megacrit.cardcrawl.vfx.combat.FireballEffect;
 import com.megacrit.cardcrawl.vfx.combat.GhostIgniteEffect;
 import hsrmod.monsters.BaseMonster;
@@ -23,6 +25,7 @@ public class NebulaDevourer extends BaseMonster {
         floatIndex = 0.5f;
         
         addMove(Intent.ATTACK, 8, mi -> {
+            addToBot(new VFXAction(new BiteEffect(p.hb.cX, p.hb.cY, Color.SKY)));
             attack(mi, AbstractGameAction.AttackEffect.BLUNT_LIGHT);
         });
         addMoveA(Intent.ATTACK_DEBUFF, 16, mi -> {

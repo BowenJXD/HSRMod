@@ -1,9 +1,12 @@
 package hsrmod.powers.enemyOnly;
 
+import com.evacipated.cardcrawl.mod.stslib.actions.common.StunMonsterAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
@@ -38,12 +41,15 @@ public class BoilPower extends StatePower {
             dmg = ((AbstractMonster) owner).getIntentDmg();
         }
         addToTop(new ElementalDamageAction(owner, new ElementalDamageInfo(owner, dmg, ElementType.Fire, tr), AbstractGameAction.AttackEffect.FIRE));
+        if (owner instanceof AbstractMonster) {
+            addToTop(new StunMonsterAction((AbstractMonster) owner, owner));
+        }
     }
 
     @Override
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
         super.onAttack(info, damageAmount, target);
-        addToBot(new ApplyPowerAction(target, owner, new BurnPower(target, owner, 1)));
+        addToBot(new MakeTempCardInDrawPileAction(new Burn(), 1, true, true));
     }
 
     @Override

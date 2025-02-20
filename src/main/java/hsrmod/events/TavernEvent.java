@@ -39,15 +39,12 @@ public class TavernEvent extends PhasedEvent {
         registerPhase(1, phase1);
         registerPhase(2, new CombatPhase(Encounter.TAVERN_1)
                 .addRewards(true, (room) -> room.addRelicToRewards(AbstractRelic.RelicTier.COMMON))
-                .setNextKey(5)
         );
         registerPhase(3, new CombatPhase(Encounter.TAVERN_2)
                 .addRewards(true, (room) -> room.addRelicToRewards(AbstractRelic.RelicTier.UNCOMMON))
-                .setNextKey(5)
         );
         registerPhase(4, new CombatPhase(Encounter.TAVERN_3)
                 .addRewards(true, (room) -> room.addRelicToRewards(AbstractRelic.RelicTier.RARE))
-                .setNextKey(5)
         );
         registerPhase(5, new TextPhase(DESCRIPTIONS[2]).addOption(OPTIONS[4], (i) -> openMap()));
 

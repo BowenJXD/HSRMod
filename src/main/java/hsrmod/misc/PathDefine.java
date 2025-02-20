@@ -12,6 +12,7 @@ public class PathDefine {
     public static final String POWER_PATH = "HSRModResources/img/powers/";
     public static final String RELIC_PATH = "HSRModResources/img/relics/";
     public static final String UI_PATH = "HSRModResources/img/ui/";
+    public static final String EFFECT_PATH = "HSRModResources/img/effects/";
     
     public static final String VIDEO_PATH = "HSRModResources/video/";
     

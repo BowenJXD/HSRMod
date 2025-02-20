@@ -17,6 +17,7 @@ import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.breaks.ShockPower;
 import hsrmod.powers.misc.DoTPower;
+import hsrmod.utils.ModHelper;
 
 import java.util.Iterator;
 
@@ -30,9 +31,7 @@ public class Kafka1 extends BaseCard {
     @Override
     public void onPlayCard(AbstractCard c, AbstractMonster m) {
         if (inHand && !followedUp) {
-            if (m != null 
-                    && !m.isDeadOrEscaped()
-                    && m.currentHealth > 0
+            if (ModHelper.check(m)
                     && m.powers.stream().anyMatch(power -> power instanceof DoTPower)) {
                 followedUp = true;
                 addToBot(new FollowUpAction(this, m));
@@ -41,8 +40,7 @@ public class Kafka1 extends BaseCard {
                 
                 while (mons.hasNext()) {
                     AbstractMonster mon = mons.next();
-                    if (!mon.isDeadOrEscaped() 
-                            && mon.currentHealth > 0 
+                    if (ModHelper.check(m)
                             && mon.powers.stream().anyMatch(power -> power instanceof DoTPower)) {
                         followedUp = true;
                         addToBot(new FollowUpAction(this, mon));

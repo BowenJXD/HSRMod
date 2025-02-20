@@ -42,7 +42,7 @@ public class Skaracabaz extends BaseMonster implements OnCardUseSubscriber {
         defenseCount = specialAs ? 100 : 90;
         summonCount = specialAs ? 2 : 1;
         multiplyCount = specialAs ? 3 : 3;
-        insectEggCount = specialAs ? 1 : 0;
+        insectEggCount = specialAs ? 3 : 1;
 
         addSlot(-550, 300);
         addSlot(-450, 0);
@@ -78,7 +78,7 @@ public class Skaracabaz extends BaseMonster implements OnCardUseSubscriber {
             BaseMod.unsubscribe(this);
             BaseMod.subscribe(this);
         });
-        addMoveA(Intent.ATTACK, 9,
+        addMoveA(Intent.ATTACK, 3,
                 () -> AbstractDungeon.getMonsters().monsters.stream().mapToInt(m -> ModHelper.check(m) ? 1 : 0).sum(),
                 mi -> {
                     if (hasPower(ChargingPower.POWER_ID)) {

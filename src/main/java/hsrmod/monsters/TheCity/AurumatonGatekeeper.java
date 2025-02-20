@@ -50,7 +50,7 @@ public class AurumatonGatekeeper extends BaseMonster {
         AbstractPlayer p = AbstractDungeon.player;
         switch (nextMove) {
             case 1:
-                addToBot(new VFXAction(new SmallLaserEffect(this.hb.cX, this.hb.cY + 100.0F * Settings.scale, p.hb.cX, p.hb.cY), 0.5F));
+                // addToBot(new VFXAction(new SmallLaserEffect(this.hb.cX, this.hb.cY + 100.0F * Settings.scale, p.hb.cX, p.hb.cY), 0.5F));
                 int r = AbstractDungeon.miscRng.random(1);
                 addToBot(new ShoutAction(this, DIALOG[r]));
                 ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_" + r, 3.0F));

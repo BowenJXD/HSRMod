@@ -22,7 +22,7 @@ public class LordlyTrashcan extends BaseMonster {
     @Override
     public void usePreBattleAction() {
         super.usePreBattleAction();
-        if (AbstractDungeon.getCurrRoom().event == null || !AbstractDungeon.getCurrRoom().combatEvent)
+        if (AbstractDungeon.getCurrRoom().event == null)
             addToBot(new ApplyPowerAction(this, this, new TheCansCreedPower(this)));
     }
 

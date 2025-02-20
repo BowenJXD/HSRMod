@@ -33,7 +33,7 @@ public class SweetGorilla extends BaseMonster {
     int hpLoss = 10;
     
     public SweetGorilla(float x, float y) {
-        super(ID, 384, 384, x, y);
+        super(ID, 300, 384, x, y);
 
         setDamagesWithAscension(6, 8);
         hpLoss = ModHelper.specialAscension(type) ? 8 : 10;

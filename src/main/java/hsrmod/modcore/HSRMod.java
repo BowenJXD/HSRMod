@@ -32,6 +32,7 @@ import com.megacrit.cardcrawl.monsters.MonsterInfo;
 import com.megacrit.cardcrawl.monsters.city.ShelledParasite;
 import com.megacrit.cardcrawl.monsters.exordium.SlaverRed;
 import com.megacrit.cardcrawl.relics.LizardTail;
+import com.megacrit.cardcrawl.relics.Matryoshka;
 import com.megacrit.cardcrawl.relics.MawBank;
 import com.megacrit.cardcrawl.relics.SneckoEye;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
@@ -53,6 +54,7 @@ import hsrmod.monsters.TheBeyond.*;
 import hsrmod.monsters.TheCity.*;
 import hsrmod.patches.RelicTagField;
 import hsrmod.relics.BaseRelic;
+import hsrmod.relics.common.AngelTypeIOUDispenser;
 import hsrmod.relics.special.Pineapple;
 import hsrmod.relics.special.ThalanToxiFlame;
 import hsrmod.relics.special.ThePinkestCollision;
@@ -177,6 +179,7 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
         }
         RelicTagField.destructible.set(RelicLibrary.getRelic(LizardTail.ID), true);
         RelicTagField.destructible.set(RelicLibrary.getRelic(MawBank.ID), true);
+        RelicTagField.destructible.set(RelicLibrary.getRelic(Matryoshka.ID), true);
     }
 
     public void receiveEditStrings() {
@@ -236,7 +239,9 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(TavernEvent.ID, TavernEvent.class)
                 .dungeonID(Luofu.ID)
+                .spawnCondition(()-> !ModHelper.hasRelic(AngelTypeIOUDispenser.ID))
                 // .bonusCondition(() -> ModHelper.hasRelic(WaxOfDestruction.ID))
+                .endsWithRewardsUI(true)
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(IOUDispenserEvent.ID, IOUDispenserEvent.class)
                 .dungeonID(Luofu.ID)
@@ -253,6 +258,7 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
         BaseMod.addEvent(new AddEventParams.Builder(RockPaperScissorsEvent.ID, RockPaperScissorsEvent.class)
                 .dungeonID(Luofu.ID)
                 // .bonusCondition(() -> ModHelper.hasRelic(WaxOfTheHunt.ID))
+                .endsWithRewardsUI(true)
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(DoubleLotteryEvent.ID, DoubleLotteryEvent.class)
                 // .bonusCondition(() -> ModHelper.hasRelic(WaxOfErudition.ID))
@@ -272,19 +278,23 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
         BaseMod.addEvent(new AddEventParams.Builder(AceTrashDiggerEvent.ID, AceTrashDiggerEvent.class)
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(PineappleBreadEvent.ID, PineappleBreadEvent.class)
+                .eventType(EventUtils.EventType.ONE_TIME)
                 .spawnCondition(() -> !ModHelper.hasRelic(Pineapple.ID))
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(YuQingtuEvent.ID, YuQingtuEvent.class)
                 .spawnCondition(() -> !ModHelper.hasRelic(ThePinkestCollision.ID) && !ModHelper.hasRelic(ThalanToxiFlame.ID))
+                .endsWithRewardsUI(true)
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(IPMBShoppingMallEvent.ID, IPMBShoppingMallEvent.class)
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(TrashSymphonyEvent.ID, TrashSymphonyEvent.class)
                 .dungeonID(Penacony.ID)
+                .eventType(EventUtils.EventType.ONE_TIME)
                 .endsWithRewardsUI(true)
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(CulinaryColosseumEvent.ID, CulinaryColosseumEvent.class)
                 .dungeonID(Penacony.ID)
+                .eventType(EventUtils.EventType.ONE_TIME)
                 .endsWithRewardsUI(true)
                 .create());
 
@@ -379,7 +389,7 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
         }), "HSRModResources/img/monsters/BoreholePlanetsOldCrater.png", "HSRModResources/img/monsters/BossOutline.png");
 
         // =========================== Elite ===========================
-
+    
         BaseMod.addMonster(Encounter.GEPARD, () -> new MonsterGroup(new AbstractMonster[]{
                 new Gepard()
         }));
@@ -657,7 +667,8 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
         Texture badgeTexture = ImageMaster.loadImage("HSRModResources/img/char/badge.png");
         BaseMod.registerModBadge(badgeTexture, MOD_NAME, Arrays.stream(info.Authors).findFirst().orElse(""), info.Description, panel);
 
-        panel.addUIElement(new ModLabel(buttonLanguage[4], 400.0F, 800.0F, panel, (me) -> {}));
+        panel.addUIElement(new ModLabel(buttonLanguage[4], 400.0F, 800.0F, panel, (me) -> {
+        }));
         ModLabeledToggleButton addRelicButton = new ModLabeledToggleButton(buttonLanguage[0], 400.0F, 700.0F, Color.WHITE, FontHelper.buttonLabelFont, addRelic, panel, (label) -> {
         }, (button) -> {
             addRelic = button.enabled;

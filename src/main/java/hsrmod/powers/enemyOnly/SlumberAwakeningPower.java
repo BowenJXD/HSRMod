@@ -7,8 +7,10 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.modcore.HSRMod;
+import hsrmod.monsters.TheBeyond.SomethingUntoDeath;
 import hsrmod.powers.BuffPower;
 import hsrmod.powers.StatePower;
+import hsrmod.utils.ModHelper;
 
 import java.util.List;
 
@@ -30,14 +32,21 @@ public class SlumberAwakeningPower extends StatePower {
     }
 
     public void onDeath() {
-        int handSize = BaseMod.MAX_HAND_SIZE;
-        for (AbstractCard card : cards) {
-            if (AbstractDungeon.player.hand.size() < handSize) {
-                this.addToBot(new MakeTempCardInHandAction(card, false, true));
-            } else {
-                this.addToBot(new MakeTempCardInDiscardAction(card, true));
+        if (AbstractDungeon.getMonsters().monsters.stream()
+                .anyMatch(m -> m instanceof SomethingUntoDeath && ModHelper.check(m))) {
+            int handSize = BaseMod.MAX_HAND_SIZE;
+            for (AbstractCard card : cards) {
+                if (AbstractDungeon.player.hand.size() < handSize) {
+                    this.addToBot(new MakeTempCardInHandAction(card, false, true));
+                } else {
+                    this.addToBot(new MakeTempCardInDiscardAction(card, true));
+                }
+                handSize--;
             }
-            handSize--;
+        } else {
+            for (AbstractCard card : cards) {
+                AbstractDungeon.player.masterDeck.removeCard(card.cardID);
+            }
         }
     }
 }

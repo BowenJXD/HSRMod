@@ -294,11 +294,11 @@ public class Phantylia extends BaseMonster implements PostPowerApplySubscriber {
     }
 
     @Override
-    public void receivePostPowerApplySubscriber(AbstractPower abstractPower, AbstractCreature abstractCreature, AbstractCreature abstractCreature1) {
+    public void receivePostPowerApplySubscriber(AbstractPower abstractPower, AbstractCreature target, AbstractCreature source) {
         if (!SubscriptionManager.checkSubscriber(this)) return;
-        if (hasPower(ChargingPower.POWER_ID) && abstractCreature == AbstractDungeon.player 
+        if (hasPower(ChargingPower.POWER_ID) && target == AbstractDungeon.player 
                 && (abstractPower instanceof EnergyPower || abstractPower.type == AbstractPower.PowerType.DEBUFF)) {
-            int debuffCount = abstractCreature.powers.stream().mapToInt(power -> power.type == AbstractPower.PowerType.DEBUFF && !Objects.equals(power.ID, abstractPower.ID) ? 1 : 0).sum();
+            int debuffCount = target.powers.stream().mapToInt(power -> power.type == AbstractPower.PowerType.DEBUFF && !Objects.equals(power.ID, abstractPower.ID) ? 1 : 0).sum();
             if (abstractPower.type == AbstractPower.PowerType.DEBUFF) debuffCount += 1;
             int chargeAmount = ModHelper.getPowerCount(p, EnergyPower.POWER_ID);
             if (abstractPower instanceof EnergyPower) chargeAmount += abstractPower.amount;

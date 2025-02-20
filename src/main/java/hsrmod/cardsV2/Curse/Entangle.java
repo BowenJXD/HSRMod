@@ -35,6 +35,16 @@ public class Entangle extends BaseCard implements PostDrawSubscriber {
     }
 
     @Override
+    public boolean canPlay(AbstractCard card) {
+        return true;
+    }
+
+    @Override
+    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
+        return followedUp;
+    }
+
+    @Override
     public void onEnterHand() {
         super.onEnterHand();
         BaseMod.subscribe(this);

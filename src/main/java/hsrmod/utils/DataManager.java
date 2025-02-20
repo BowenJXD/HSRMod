@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
@@ -244,7 +245,8 @@ public class DataManager {
             
             // 读取文件内容，使用 UTF-8 编码
             StringBuilder content = new StringBuilder();
-            try (BufferedReader reader = Files.newBufferedReader(Paths.get(filePath), Charset.forName(charset))) {
+            Path path = Paths.get(filePath);
+            try (BufferedReader reader = Files.newBufferedReader(path, Charset.forName(charset))) {
                 String line;
                 while ((line = reader.readLine()) != null) {
                     content.append(line).append(System.lineSeparator());
@@ -261,7 +263,7 @@ public class DataManager {
             }
 
             // 将替换后的内容写回文件，使用 UTF-8 编码
-            try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(filePath), Charset.forName(charset))) {
+            try (BufferedWriter writer = Files.newBufferedWriter(path, Charset.forName(charset))) {
                 writer.write(text);
             } catch (IOException e) {
                 System.out.println("写入文件时出错: " + e.getMessage());

@@ -142,12 +142,14 @@ public class Penacony extends CustomDungeon {
     @Override
     protected void initializeBoss() {
         super.initializeBoss();
-        bossList.add(Encounter.SALUTATIONS_OF_ASHEN_DREAMS);
+        /*bossList.add(Encounter.SALUTATIONS_OF_ASHEN_DREAMS);
         if (AbstractDungeon.ascensionLevel >= 20)
-            bossList.add(Encounter.BOREHOLE_PLANETS_OLD_CRATER);
+            bossList.add(Encounter.BOREHOLE_PLANETS_OLD_CRATER);*/
     }
-
+    
+    @Override
     protected void initializeShrineList() {
+        super.initializeShrineList();
     }
 
     protected void initializeEventList() {

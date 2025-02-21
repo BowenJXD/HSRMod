@@ -1,6 +1,7 @@
 package hsrmod.powers.enemyOnly;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.actions.common.MonsterStartTurnAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
@@ -23,6 +24,8 @@ public class MultiMovePower extends AbstractPower implements PreBreakSubscriber 
     public static final String POWER_ID = HSRMod.makePath(MultiMovePower.class.getSimpleName());
     public String[] DESCRIPTIONS;
     public PowerStrings powerStrings;
+    
+    int turnCountCache = 0;
 
     public MultiMovePower(AbstractCreature owner, int Amount) {
         this.ID = POWER_ID;
@@ -65,6 +68,8 @@ public class MultiMovePower extends AbstractPower implements PreBreakSubscriber 
     @Override
     public void atStartOfTurn() {
         super.atStartOfTurn();
+        if (GameActionManager.turn == turnCountCache) return;
+        turnCountCache = GameActionManager.turn;
         if (owner instanceof AbstractMonster) {
             flash();
             ModHelper.addToBotAbstract(() -> {

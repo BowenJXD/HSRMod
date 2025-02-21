@@ -58,15 +58,15 @@ public class SoulsplitPower extends StatePower implements PostMonsterDeathSubscr
 
     @Override
     public float atDamageFinalReceive(float damage, DamageInfo.DamageType type) {
-        if (type != DamageInfo.DamageType.HP_LOSS)
-            return 0;
+        if (type != DamageInfo.DamageType.HP_LOSS && damage > 1)
+            return 1;
         return damage;
     }
 
     @Override
     public int onAttackedToChangeDamage(DamageInfo info, int damageAmount) {
-        if (info.type != DamageInfo.DamageType.HP_LOSS)
-            return 0;
+        if (info.type != DamageInfo.DamageType.HP_LOSS && damageAmount > 1)
+            return 1;
         return damageAmount;
     }
 

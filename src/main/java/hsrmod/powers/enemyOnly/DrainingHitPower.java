@@ -16,6 +16,11 @@ public class DrainingHitPower extends BuffPower {
     }
 
     @Override
+    public void updateDescription() {
+        this.description = String.format(DESCRIPTIONS[0], amount);
+    }
+
+    @Override
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
         if (info.type == DamageInfo.DamageType.NORMAL) {
             addToBot(new HealAction(owner, owner, amount));

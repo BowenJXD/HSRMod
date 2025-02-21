@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.vfx.combat.SmallLaserEffect;
 import com.megacrit.cardcrawl.vfx.stance.DivinityParticleEffect;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.LockToughnessAction;
+import hsrmod.characters.StellaCharacter;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.StatePower;

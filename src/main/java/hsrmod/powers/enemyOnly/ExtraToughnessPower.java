@@ -4,14 +4,16 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.misc.IMultiToughness;
+import hsrmod.modcore.ElementType;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.subscribers.PreElementalDamageSubscriber;
+import hsrmod.subscribers.PreToughnessReduceSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
-public class ExtraToughnessPower extends BuffPower implements PreElementalDamageSubscriber, IMultiToughness {
+public class ExtraToughnessPower extends BuffPower implements PreToughnessReduceSubscriber, IMultiToughness {
     public static final String POWER_ID = HSRMod.makePath(ExtraToughnessPower.class.getSimpleName());
 
     public ExtraToughnessPower(AbstractCreature owner, int amount) {
@@ -38,21 +40,21 @@ public class ExtraToughnessPower extends BuffPower implements PreElementalDamage
     }
 
     @Override
-    public float preElementalDamage(ElementalDamageAction action, float dmg) {
+    public float preToughnessReduce(float amount, AbstractCreature target, ElementType elementType) {
         if (SubscriptionManager.checkSubscriber(this) 
-                && action.target == owner
+                && target == owner
                 && owner.hasPower(ToughnessPower.POWER_ID)
-                && action.info.tr >= ModHelper.getPowerCount(owner, ToughnessPower.POWER_ID)) {
-            if (amount > 1) {
+                && amount >= ModHelper.getPowerCount(owner, ToughnessPower.POWER_ID)) {
+            if (this.amount > 1) {
                 ToughnessPower power = (ToughnessPower) owner.getPower(ToughnessPower.POWER_ID);
-                action.info.tr -= power.amount;
-                if (action.info.tr < 0) {
-                    action.info.tr = 0;
+                amount -= power.amount;
+                if (amount < 0) {
+                    amount = 0;
                 }
                 power.alterPower(ToughnessPower.getStackLimit(owner));
             }
             remove(1);
         }
-        return dmg;
+        return amount;
     }
 }

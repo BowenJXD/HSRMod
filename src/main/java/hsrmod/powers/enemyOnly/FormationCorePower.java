@@ -23,13 +23,14 @@ import hsrmod.utils.ModHelper;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
 public class FormationCorePower extends StatePower implements PreElementalDamageSubscriber, PreBreakSubscriber {
     public static final String POWER_ID = HSRMod.makePath(FormationCorePower.class.getSimpleName());
 
     List<Tag> tags;
-    boolean hidden = false;
+    final boolean hidden;
     float particleTimer = 0;
 
     public FormationCorePower(AbstractCreature owner, Tag tag, boolean hidden) {
@@ -46,13 +47,11 @@ public class FormationCorePower extends StatePower implements PreElementalDamage
         if (hidden) {
             description = DESCRIPTIONS[1];
         } else {
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < tags.size(); i++) {
-                Tag tag = tags.get(i);
-                sb.append(DESCRIPTIONS[tag.ordinal() + 2]);
-                if (i < tags.size() - 1) sb.append("&");
+            StringJoiner sj = new StringJoiner("&");
+            for (Tag tag : tags) {
+                sj.add(DESCRIPTIONS[tag.ordinal() + 2]);
             }
-            description = String.format(DESCRIPTIONS[0], sb);
+            description = String.format(DESCRIPTIONS[0], sj);
         }
     }
 

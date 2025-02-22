@@ -31,8 +31,8 @@ public class Trailblazer8Power extends PowerPower {
     
     public int percentage = 50;
     
-    public Trailblazer8Power(int percentage) {
-        super(POWER_ID);
+    public Trailblazer8Power(boolean upgraded, int percentage) {
+        super(POWER_ID, upgraded);
         this.percentage = percentage;
         this.updateDescription();
     }
@@ -48,6 +48,7 @@ public class Trailblazer8Power extends PowerPower {
         if (card.baseBlock > 0 && card.block > 0) {
             Quake quake = new Quake();
             quake.baseDamage = card.block;
+            if (upgraded) quake.upgrade();
             addToTop(new MakeTempCardInHandAction(quake));
         }
     }

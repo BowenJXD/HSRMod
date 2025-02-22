@@ -47,18 +47,13 @@ public class TheArchitects extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         QuakePower quakePower = (QuakePower) p.getPower(QuakePower.POWER_ID);
-        if (quakePower != null) {
-            AbstractDungeon.getMonsters().monsters.stream()
-                    .filter(ModHelper::check)
-                    .filter(mon -> mon.currentBlock > 0 || upgraded)
-                    .forEach(mon -> {
-                        boolean hasBlock = mon.currentBlock > 0;
-                        quakePower.attack(mon, 1, ci->{
-                            if (hasBlock && ci.target.currentBlock <= 0) {
-                                quakePower.attack(ci.target, magicNumber / 100f, null);
-                            }
-                        });
-                    });
+        boolean hasBlock = m.currentBlock > 0;
+        if (quakePower != null && (hasBlock || upgraded)) {
+            quakePower.attack(m, p.currentBlock, ci->{
+                if (hasBlock && ci.target.currentBlock <= 0) {
+                    quakePower.attack(ci.target, (int) (p.currentBlock * magicNumber / 100f), null);
+                }
+            });
         }
         
         /*nt blockLose = p.currentBlock;

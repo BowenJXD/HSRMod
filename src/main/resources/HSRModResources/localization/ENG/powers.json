@@ -95,7 +95,7 @@
   "HSRMod:Quake": {
     "NAME": "Quake",
     "DESCRIPTIONS": [
-      "When taking the first damage in a monster's turn, remove 1 layer to trigger: deal physical damage to it (5) with damage equal to your block left."
+      "Trigger when taking the first damage in a monster's turn: remove 1 layer to deal physical damage to it ( #b%d ) with damage equal to your block left."
     ]
   },
   "HSRMod:Spore": {
@@ -316,21 +316,22 @@
   "HSRMod:ResonanceTransfer": {
     "NAME": "Resonance Transfer",
     "DESCRIPTIONS": [
-      "When breaking Block, gain 1 layer of #yQuake , and get an Innate card.",
-      "When dealing damage to an enemy with Block, gain 1 layer of #yQuake , and get an Innate card."
+      "When breaking Block, gain 1 layer of #yQuake .",
+      "When dealing damage to an enemy with Block, gain 1 layer of #yQuake ."
     ]
   },
   "HSRMod:Trailblazer7": {
     "NAME": "Treasure of the Architects",
     "DESCRIPTIONS": [
-      "When using a skill card, gain #b%d block.",
-      "When using a skill card, gain #b%d block, for every enemy that has Block, gain 1 more."
+      "When using a #gskill card, gain #b%d block.",
+      "When using a #gskill card, gain #b%d block, for every enemy that has Block, gain 1 more."
     ]
   },
   "HSRMod:Trailblazer8": {
     "NAME": "Action Beats Overthinking",
     "DESCRIPTIONS": [
-      "When playing a card, deal physical damage to a random enemy equal to  #b%d%% of the card's Block value (2). Draw 1 card when breaking Block."
+      "When playing a card, gain a #yQuake with damage equal to the block value of the card (if more than 0).",
+      "When playing a card, gain a #yQuake+ with damage equal to the block value of the card (if more than 0)."
     ]
   },
   "HSRMod:ChampionsDinnerCatsCradle": {
@@ -421,8 +422,8 @@
   "HSRMod:Charging": {
     "NAME": "Charging",
     "DESCRIPTIONS": [
-      "Preparing to cast [%s], releasing next turn. #yBreak to interrupt.",
-      "Preparing to cast [%s], releasing in #b%d turns. #yBreak to interrupt."
+      "Casting ult, releasing next turn. #yBreak to interrupt. NL %s",
+      "Casting ult, releasing in #b%d turns. #yBreak to interrupt. NL %s"
     ]
   },
   "HSRMod:WalkInTheLight": {
@@ -583,7 +584,7 @@
   "HSRMod:Rebirth": {
     "NAME": "Rebirth",
     "DESCRIPTIONS": [
-      "Upon taking fatal damage, remove this power, and recover to #b50% HP."
+      "Upon taking fatal damage, remove this power, and recover to #b50%% HP."
     ]
   },
   "HSRMod:Reverberation": {
@@ -625,7 +626,7 @@
   "HSRMod:HardyLeafSheath": {
     "NAME": "Hardy Leaf Sheath",
     "DESCRIPTIONS": [
-      "#Toughness can not be reduced, damage received - #b50% . Remove 1 stack at the start of the turn."
+      "#Toughness can not be reduced, damage received - #b50%% . Remove 1 stack at the start of the turn."
     ]
   },
   "HSRMod:LavishFruit": {
@@ -643,13 +644,13 @@
   "HSRMod:Soulsplit": {
     "NAME": "Soulsplit",
     "DESCRIPTIONS": [
-      "Immune to normal damage. Upon a monster dies, lose #b%d HP."
+      "Normal damage reduced to #b1 . Upon a monster dies, lose #b%d HP."
     ]
   },
   "HSRMod:Safeguard": {
     "NAME": "Safeguard",
     "DESCRIPTIONS": [
-      "If there are other enemies, damage received - #b80% ."
+      "Damage received - #b80%% , toughness reduced at once won't be more than #b%d , remove #b1 stack after break."
     ]
   },
   "HSRMod:Resonate": {

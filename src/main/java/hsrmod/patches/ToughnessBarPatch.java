@@ -47,7 +47,6 @@ public class ToughnessBarPatch {
                     new Color(0.8F, 0.8F, 0.8F, 1.0F));
         }
     }
-
     private static void renderToughnessBar(SpriteBatch sb, AbstractCreature c, float x, float y, float ratio, ToughnessPower power) {
         try {
             sb.setColor(new Color(0.1F, 0.1F, 0.1F, c.hbAlpha));

@@ -20,7 +20,7 @@ public class Heartbreaker extends BaseMonster {
     @Override
     public void usePreBattleAction() {
         super.usePreBattleAction();
-        addToBot(new ApplyPowerAction(this, this, new SafeguardPower(this)));
+        addToBot(new ApplyPowerAction(this, this, new SafeguardPower(this, 2)));
     }
 
     @Override

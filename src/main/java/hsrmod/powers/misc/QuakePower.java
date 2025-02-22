@@ -25,10 +25,16 @@ public class QuakePower extends BuffPower implements PreMonsterTurnSubscriber, O
     public static final String POWER_ID = HSRMod.makePath(QuakePower.class.getSimpleName());
 
     AbstractCreature lastTarget;
+    int tr = 4;
     
     public QuakePower(AbstractCreature creature, int amount) {
         super(POWER_ID, creature, amount);
         this.updateDescription();
+    }
+
+    @Override
+    public void updateDescription() {
+        this.description = String.format(DESCRIPTIONS[0], tr);
     }
 
     @Override
@@ -45,13 +51,10 @@ public class QuakePower extends BuffPower implements PreMonsterTurnSubscriber, O
 
     @Override
     public int onLoseBlock(DamageInfo damageInfo, int i) {
-        if (i > 0 
-                && damageInfo.type == DamageInfo.DamageType.NORMAL) {
-            flash();
-            remove(1);
+        if (i > 0 && damageInfo.type == DamageInfo.DamageType.NORMAL) {
             AbstractCreature target = damageInfo.owner;
             if (target != null && target != lastTarget) {
-                attack(target);
+                attack(target, owner.currentBlock - i);
                 lastTarget = target;
             }
             // attack(target, Math.min(i, owner.currentBlock));
@@ -59,12 +62,14 @@ public class QuakePower extends BuffPower implements PreMonsterTurnSubscriber, O
         return i;
     }
     
-    public void attack(AbstractCreature target) {
-        attack(target, 1, null);
+    public void attack(AbstractCreature target, int dmg) {
+        attack(target, dmg, null);
     }
 
-    public void attack(AbstractCreature target, float dmgMultiplier, Consumer<ElementalDamageAction.CallbackInfo> callback) {
-        addToBot(new ElementalDamageAction(target, new ElementalDamageInfo(owner, (int) (owner.currentBlock * dmgMultiplier), DamageInfo.DamageType.THORNS, ElementType.Physical, 5), AbstractGameAction.AttackEffect.BLUNT_HEAVY).setCallback(callback));
+    public void attack(AbstractCreature target, int dmg, Consumer<ElementalDamageAction.CallbackInfo> callback) {
+        flash();
+        remove(1);
+        addToBot(new ElementalDamageAction(target, new ElementalDamageInfo(owner, dmg, DamageInfo.DamageType.THORNS, ElementType.Physical, tr), AbstractGameAction.AttackEffect.BLUNT_HEAVY).setCallback(callback));
     }
 
     @Override

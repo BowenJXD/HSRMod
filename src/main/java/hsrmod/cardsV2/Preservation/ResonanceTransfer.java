@@ -12,9 +12,6 @@ public class ResonanceTransfer extends BaseCard {
 
     public ResonanceTransfer() {
         super(ID);
-        AbstractCard quake = new Quake();
-        quake.upgrade();
-        cardsToPreview = quake;
     }
 
     @Override

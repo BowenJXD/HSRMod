@@ -7,6 +7,7 @@ import com.evacipated.cardcrawl.modthespire.lib.ByRef;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -19,12 +20,13 @@ import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
 import hsrmod.powers.misc.ToughnessPower;
+import hsrmod.subscribers.PreBreakSubscriber;
 import hsrmod.subscribers.PreElementalDamageSubscriber;
 import hsrmod.subscribers.PreToughnessReduceSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
-public class SafeguardPower extends BuffPower implements OnReceivePowerPower, PreElementalDamageSubscriber {
+public class SafeguardPower extends BuffPower implements OnReceivePowerPower, PreElementalDamageSubscriber, PreBreakSubscriber {
     public static final String POWER_ID = HSRMod.makePath(SafeguardPower.class.getSimpleName());
     String normalImgUrl;
     String brokenImgUrl;
@@ -32,8 +34,8 @@ public class SafeguardPower extends BuffPower implements OnReceivePowerPower, Pr
     int dmgReduce = 80;
     int maxTr = 8;
 
-    public SafeguardPower(AbstractCreature owner) {
-        super(POWER_ID, owner);
+    public SafeguardPower(AbstractCreature owner, int amount) {
+        super(POWER_ID, owner, amount);
         priority = 9;
         normalImgUrl = SafeguardPower.class.getSimpleName();
         brokenImgUrl = "Safeguard_BrokenPower";
@@ -80,6 +82,13 @@ public class SafeguardPower extends BuffPower implements OnReceivePowerPower, Pr
             action.info.tr = Math.min(action.info.tr, maxTr);
         }
         return dmg;
+    }
+
+    @Override
+    public void preBreak(ElementalDamageInfo info, AbstractCreature target) {
+        if (SubscriptionManager.checkSubscriber(this) && target == owner) {
+            remove(1);
+        }
     }
 
     @SpirePatch(clz = AbstractCreature.class, method = "renderRedHealthBar")

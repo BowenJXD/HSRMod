@@ -1,6 +1,7 @@
 package hsrmod.actions;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -15,10 +16,12 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.modcore.HSRMod;
 import hsrmod.powers.breaks.*;
 import hsrmod.powers.misc.BrokenPower;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.subscribers.SubscriptionManager;
+import org.apache.logging.log4j.Level;
 
 import java.util.Iterator;
 
@@ -36,6 +39,13 @@ public class ReduceToughnessAction extends AbstractGameAction {
         this.tr = tr;
         this.duration = DURATION;
         this.elementType = elementType;
+        
+        String playerName = AbstractDungeon.player.chosenClass.name();
+        if (playerName.equals("Aventurine_CLASS")) {
+            this.tr = MathUtils.random(1, 6);
+        } else if (playerName.equals("ACHERON_CHAR")) {
+            this.tr = target.hasPower("AcheronMod:Flow") ? 3 : 2;
+        }
     }
 
     public void update() {

@@ -16,6 +16,7 @@ import com.megacrit.cardcrawl.vfx.stance.StanceChangeParticleGenerator;
 import hsrmod.effects.BetterWarningSignEffect;
 import hsrmod.effects.CustomAuraEffect;
 import hsrmod.effects.CustomWrathParticleEffect;
+import hsrmod.effects.TopWarningEffect;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.StatePower;
@@ -69,6 +70,7 @@ public class ChargingPower extends StatePower implements PreBreakSubscriber {
         sfxId = CardCrawlGame.sound.playAndLoop("STANCE_LOOP_WRATH");
         AbstractDungeon.effectsQueue.add(new BorderFlashEffect(Color.SCARLET, true));
         AbstractDungeon.effectsQueue.add(new StanceChangeParticleGenerator(owner.hb.cX, owner.hb.cY, "Wrath"));
+        // AbstractDungeon.effectsQueue.add(new TopWarningEffect(description));
     }
     
     public void stopIdleSfx() {

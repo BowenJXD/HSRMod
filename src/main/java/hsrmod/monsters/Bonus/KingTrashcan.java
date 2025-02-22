@@ -23,7 +23,6 @@ public class KingTrashcan extends BaseMonster {
     @Override
     public void usePreBattleAction() {
         super.usePreBattleAction();
-        if (AbstractDungeon.getCurrRoom().event == null)
             addToBot(new ApplyPowerAction(this, this, new TheCansCreedPower(this)));
     }
 
@@ -39,7 +38,7 @@ public class KingTrashcan extends BaseMonster {
     @Override
     public void escape() {
         super.escape();
-        if (hasPower(TheCansCreedPower.POWER_ID))
+        if (AbstractDungeon.getCurrRoom().event == null)
             AbstractDungeon.getCurrRoom().addRelicToRewards(AbstractRelic.RelicTier.RARE);
     }
 

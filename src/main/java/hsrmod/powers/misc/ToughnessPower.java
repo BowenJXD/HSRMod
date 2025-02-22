@@ -1,34 +1,20 @@
 package hsrmod.powers.misc;
 
 import basemod.BaseMod;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.TalkAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.stance.StanceAuraEffect;
-import com.megacrit.cardcrawl.vfx.stance.WrathParticleEffect;
-import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.ReduceToughnessAction;
 import hsrmod.characters.StellaCharacter;
-import hsrmod.effects.CustomAuraEffect;
+import hsrmod.modcore.HSRModConfig;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
-import hsrmod.relics.starter.GalacticBat;
-import hsrmod.subscribers.SubscriptionManager;
-import hsrmod.utils.ModHelper;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -152,7 +138,11 @@ public class ToughnessPower extends BuffPower implements InvisiblePower {
             }
             result *= Math.min(AbstractDungeon.actNum, 4);
             if (BaseMod.hasModID("spireTogether:")) {
-                result = Math.round((float)result * 1.5f);
+                result += result / 2;
+            }
+            int count = HSRModConfig.getActiveTPCount();
+            if (count > 0) {
+                result += result * count / 10;
             }
         }
         else if (c instanceof AbstractPlayer) {

@@ -70,7 +70,7 @@ public abstract class BaseCard extends CustomCard implements SpawnModificationCa
                 CardRarity.valueOf(DataManager.getInstance().getCardData(id, CardDataCol.Rarity)),
                 CardTarget.valueOf(DataManager.getInstance().getCardData(id, CardDataCol.Target))
         );
-        this.cardStrings = CardCrawlGame.languagePack.getCardStrings(cardID);
+        cardStrings = CardCrawlGame.languagePack.getCardStrings(cardID);
 
         this.damage = this.baseDamage = DataManager.getInstance().getCardDataInt(id, CardDataCol.Damage);
         this.block = this.baseBlock = DataManager.getInstance().getCardDataInt(id, CardDataCol.Block);

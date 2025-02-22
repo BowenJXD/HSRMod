@@ -97,7 +97,7 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
                 && AbstractDungeon.player.relics != null
                 && relicId != null
                 && !Objects.equals(relicId, "")
-                && !AbstractDungeon.player.hasRelic(relicId)
+                && AbstractDungeon.player.relics.stream().noneMatch(r -> r.relicId.equals(relicId))
                 && currRoom instanceof MonsterRoomBoss
                 && AbstractDungeon.combatRewardScreen.rewards.stream().noneMatch(r -> r.relic != null && r.relic.relicId.equals(relicId))) {
             RelicEventHelper.removeRelicFromPool(relicId);

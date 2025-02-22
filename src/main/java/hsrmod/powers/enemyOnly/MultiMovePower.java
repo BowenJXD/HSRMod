@@ -25,7 +25,7 @@ public class MultiMovePower extends AbstractPower implements PreBreakSubscriber 
     public String[] DESCRIPTIONS;
     public PowerStrings powerStrings;
     
-    int turnCountCache = 0;
+    int turnCountCache = -1;
 
     public MultiMovePower(AbstractCreature owner, int Amount) {
         this.ID = POWER_ID;

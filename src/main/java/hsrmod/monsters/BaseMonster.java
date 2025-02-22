@@ -23,9 +23,9 @@ import com.megacrit.cardcrawl.powers.MinionPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.vfx.combat.*;
 import hsrmod.effects.MoveToEffect;
+import hsrmod.modcore.HSRModConfig;
 import hsrmod.misc.PathDefine;
 import hsrmod.modcore.HSRMod;
-import hsrmod.powers.enemyOnly.ChannelPower;
 import hsrmod.powers.enemyOnly.SummonedPower;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.utils.DataManager;
@@ -92,6 +92,9 @@ public abstract class BaseMonster extends CustomMonster {
         }
         if (BaseMod.hasModID("spireTogether:")) {
             tv += (int) (tv * 0.5);
+        }
+        if (HSRModConfig.getActiveTPCount() > 0) {
+            tv += tv * HSRModConfig.getActiveTPCount() / 10;
         }
         
         p = AbstractDungeon.player;

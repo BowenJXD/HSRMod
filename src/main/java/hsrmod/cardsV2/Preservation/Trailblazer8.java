@@ -19,6 +19,7 @@ public class Trailblazer8 extends BaseCard {
     @Override
     public void upgrade() {
         super.upgrade();
+        cardsToPreview.upgrade();
         isInnate = true;
     }
 
@@ -26,6 +27,6 @@ public class Trailblazer8 extends BaseCard {
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         shout(0);
         addToBot(new VFXAction(new FlameBarrierEffect(p.hb.cX, p.hb.cY)));
-        addToBot(new ApplyPowerAction(p, p, new Trailblazer8Power(magicNumber)));
+        addToBot(new ApplyPowerAction(p, p, new Trailblazer8Power(upgraded, magicNumber)));
     }
 }

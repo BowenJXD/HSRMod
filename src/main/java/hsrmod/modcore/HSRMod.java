@@ -7,28 +7,18 @@ import basemod.eventUtil.EventUtils;
 import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.icons.CustomIconHelper;
-import com.evacipated.cardcrawl.modthespire.Loader;
-import com.evacipated.cardcrawl.modthespire.ModInfo;
-import com.evacipated.cardcrawl.modthespire.Patcher;
-import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.colorless.SadisticNature;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.dungeons.TheBeyond;
-import com.megacrit.cardcrawl.helpers.FontHelper;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
-import com.megacrit.cardcrawl.monsters.MonsterInfo;
 import com.megacrit.cardcrawl.monsters.city.ShelledParasite;
 import com.megacrit.cardcrawl.monsters.exordium.SlaverRed;
 import com.megacrit.cardcrawl.relics.LizardTail;
@@ -42,10 +32,7 @@ import hsrmod.dungeons.Belobog;
 import hsrmod.dungeons.Luofu;
 import hsrmod.dungeons.Penacony;
 import hsrmod.events.*;
-import hsrmod.misc.BonusManager;
-import hsrmod.misc.ChargeIcon;
-import hsrmod.misc.Encounter;
-import hsrmod.misc.ToughnessReductionVariable;
+import hsrmod.misc.*;
 import hsrmod.monsters.Bonus.KingTrashcan;
 import hsrmod.monsters.Bonus.LordlyTrashcan;
 import hsrmod.monsters.Exordium.*;
@@ -62,11 +49,8 @@ import hsrmod.utils.ModHelper;
 import hsrmod.utils.RewardEditor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.scannotation.AnnotationDB;
 
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.*;
 
 import static com.megacrit.cardcrawl.core.Settings.language;
 import static hsrmod.characters.StellaCharacter.PlayerColorEnum.*;
@@ -102,13 +86,6 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
 
     public static final Logger logger = LogManager.getLogger(MOD_NAME);
 
-    public static SpireConfig config;
-    public static ModInfo info;
-    public static boolean addRelic = true;
-    public static boolean addEvent = true;
-    public static boolean addEnemy = true;
-    // public static boolean removeOtherEnemies = true;
-
     String lang = "ENG";
 
     // 构造方法
@@ -141,26 +118,12 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
     @Override
     public void receiveEditCharacters() {
         BaseMod.addCharacter(new StellaCharacter(CardCrawlGame.playerName), MY_CHARACTER_BUTTON, MY_CHARACTER_PORTRAIT, STELLA_CHARACTER);
-        try {
-            Properties defaults = new Properties();
-            defaults.setProperty("addRelic", Boolean.toString(true));
-            defaults.setProperty("addEvent", Boolean.toString(true));
-            defaults.setProperty("addEnemy", Boolean.toString(true));
-            defaults.setProperty("removeOtherEnemies", Boolean.toString(true));
-            config = new SpireConfig(MOD_NAME, HSRMod.makePath("Config"), defaults);
-            config.load();
-            addRelic = config.getBool("addRelic");
-            addEvent = config.getBool("addEvent");
-            addEnemy = config.getBool("addEnemy");
-            // removeOtherEnemies = config.getBool("removeOtherEnemies");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        HSRModConfig.getInstance().setProperties();
     }
 
     @Override
     public void receiveEditRelics() {
-        if (addRelic) {
+        if (HSRModConfig.addRelic) {
             new AutoAdd(MOD_NAME)
                     .packageFilter("hsrmod.relics")
                     .any(CustomRelic.class, (info, relic) -> {
@@ -211,13 +174,15 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
 
     @Override
     public void receivePostInitialize() {
-        addConfigPanel();
         BaseMod.addSaveField("RewardEditor", RewardEditor.getInstance());
+        HSRModConfig.getInstance().addConfigPanel();
         addMonsters();
-        if (addEnemy) {
+        if (HSRModConfig.addEnemy) {
             BaseMod.addSaveField("BonusManager", BonusManager.getInstance());
         }
-        if (addEvent) addEvents();
+        if (HSRModConfig.addEvent) {
+            addEvents();
+        }
     }
 
     @Override
@@ -239,7 +204,7 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(TavernEvent.ID, TavernEvent.class)
                 .dungeonID(Luofu.ID)
-                .spawnCondition(()-> !ModHelper.hasRelic(AngelTypeIOUDispenser.ID))
+                .spawnCondition(() -> !ModHelper.hasRelic(AngelTypeIOUDispenser.ID))
                 // .bonusCondition(() -> ModHelper.hasRelic(WaxOfDestruction.ID))
                 .endsWithRewardsUI(true)
                 .create());
@@ -273,7 +238,7 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(ImperialLegacyEvent.ID, ImperialLegacyEvent.class)
                 .dungeonID(Penacony.ID)
-                .eventType(EventUtils.EventType.ONE_TIME)
+                // .eventType(EventUtils.EventType.ONE_TIME)
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(AceTrashDiggerEvent.ID, AceTrashDiggerEvent.class)
                 .create());
@@ -289,12 +254,12 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(TrashSymphonyEvent.ID, TrashSymphonyEvent.class)
                 .dungeonID(Penacony.ID)
-                .eventType(EventUtils.EventType.ONE_TIME)
+                // .eventType(EventUtils.EventType.ONE_TIME)
                 .endsWithRewardsUI(true)
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(CulinaryColosseumEvent.ID, CulinaryColosseumEvent.class)
                 .dungeonID(Penacony.ID)
-                .eventType(EventUtils.EventType.ONE_TIME)
+                // .eventType(EventUtils.EventType.ONE_TIME)
                 .endsWithRewardsUI(true)
                 .create());
 
@@ -389,7 +354,7 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
         }), "HSRModResources/img/monsters/BoreholePlanetsOldCrater.png", "HSRModResources/img/monsters/BossOutline.png");
 
         // =========================== Elite ===========================
-    
+
         BaseMod.addMonster(Encounter.GEPARD, () -> new MonsterGroup(new AbstractMonster[]{
                 new Gepard()
         }));
@@ -656,96 +621,6 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
         BaseMod.addAudio(id, "HSRModResources/localization/" + lang + "/audio/" + id + ".ogg");
     }
 
-    void addConfigPanel() {
-        loadSettings();
-        ModPanel panel = new ModPanel();
-        String[] buttonLanguage = null;
-        if (language == Settings.GameLanguage.ZHS || language == Settings.GameLanguage.ZHT)
-            buttonLanguage = new String[]{"加入遗物", "加入事件", "加入敌人（扑满和王下一桶）", "移除原版敌人", "部分设定需要重启并重开游戏才能生效"};
-        else
-            buttonLanguage = new String[]{"Add Relic", "Add Event", "Add Enemy （Trotter and Lordly Trashcan)", "Remove Other Enemies", "Some settings need to restart and reopen the game to take effect"};
-        Texture badgeTexture = ImageMaster.loadImage("HSRModResources/img/char/badge.png");
-        BaseMod.registerModBadge(badgeTexture, MOD_NAME, Arrays.stream(info.Authors).findFirst().orElse(""), info.Description, panel);
-
-        panel.addUIElement(new ModLabel(buttonLanguage[4], 400.0F, 800.0F, panel, (me) -> {
-        }));
-        ModLabeledToggleButton addRelicButton = new ModLabeledToggleButton(buttonLanguage[0], 400.0F, 700.0F, Color.WHITE, FontHelper.buttonLabelFont, addRelic, panel, (label) -> {
-        }, (button) -> {
-            addRelic = button.enabled;
-            try {
-                config.setBool("addRelic", addRelic);
-                config.save();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-        panel.addUIElement(addRelicButton);
-
-        ModLabeledToggleButton addEventButton = new ModLabeledToggleButton(buttonLanguage[1], 400.0F, 600.0F, Color.WHITE, FontHelper.buttonLabelFont, addEvent, panel, (label) -> {
-        }, (button) -> {
-            addEvent = button.enabled;
-            try {
-                config.setBool("addEvent", addEvent);
-                config.save();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-        panel.addUIElement(addEventButton);
-
-        ModLabeledToggleButton addEnemyButton = new ModLabeledToggleButton(buttonLanguage[2], 400.0F, 500.0F, Color.WHITE, FontHelper.buttonLabelFont, addEnemy, panel, (label) -> {
-        }, (button) -> {
-            addEnemy = button.enabled;
-            try {
-                config.setBool("addEnemy", addEnemy);
-                config.save();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-        panel.addUIElement(addEnemyButton);
-
-        /*ModLabeledToggleButton removeOtherEnemiesButton = new ModLabeledToggleButton(buttonLanguage[3], 400.0F, 400.0F, Color.WHITE, FontHelper.buttonLabelFont, removeOtherEnemies, panel, (label) -> {
-        }, (button) -> {
-            removeOtherEnemies = button.enabled;
-            try {
-                config.setBool("removeOtherEnemies", removeOtherEnemies);
-                config.save();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-        panel.addUIElement(removeOtherEnemiesButton);*/
-    }
-
-    private static void loadSettings() {
-        try {
-            config = new SpireConfig(MOD_NAME, makePath("Config"));
-            config.load();
-        } catch (Exception var1) {
-            Exception ex = var1;
-            logger.catching(ex);
-        }
-    }
-
-    private static void loadModInfo() {
-        Optional<ModInfo> infos = Arrays.stream(Loader.MODINFOS).filter((modInfo) -> {
-            AnnotationDB annotationDB = (AnnotationDB) Patcher.annotationDBMap.get(modInfo.jarURL);
-            if (annotationDB == null) {
-                return false;
-            } else {
-                Set<String> initializers = annotationDB.getAnnotationIndex().getOrDefault(SpireInitializer.class.getName(), Collections.emptySet());
-                return initializers.contains(HSRMod.class.getName());
-            }
-        }).findFirst();
-        if (infos.isPresent()) {
-            info = (ModInfo) infos.get();
-            MOD_NAME = info.ID;
-        } else {
-            throw new RuntimeException("Failed to determine mod info/ID based on initializer.");
-        }
-    }
-
     public void updateLanguage() {
         if (language == Settings.GameLanguage.ZHS || language == Settings.GameLanguage.ZHT) {
             lang = "ZHS";
@@ -763,9 +638,5 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
             name = name.replace("Event", "");
         }
         return MOD_NAME + ":" + name;
-    }
-
-    static {
-        loadModInfo();
     }
 }

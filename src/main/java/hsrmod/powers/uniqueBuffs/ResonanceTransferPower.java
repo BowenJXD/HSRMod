@@ -59,14 +59,14 @@ public class ResonanceTransferPower extends PowerPower implements PostBreakBlock
     public void trigger(AbstractCreature c) {
         this.flash();
         addToTop(new ApplyPowerAction(owner, owner, new QuakePower(owner, 1), 1));
-        ModHelper.findCards(card -> card.isInnate, true)
+        /*ModHelper.findCards(card -> card.isInnate, true)
                 .stream()
                 .filter(r -> r.group != AbstractDungeon.player.hand)
                 .findAny()
                 .ifPresent(r -> {
                             addToTop(new MoveCardsAction(AbstractDungeon.player.hand, r.group, card -> card == r.card, 1));
                         }
-                );
+                );*/
     }
 
     @Override

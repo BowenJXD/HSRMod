@@ -49,6 +49,8 @@ public class Penacony extends CustomDungeon {
         addTempMusic("Im Anfang war das Wort", "HSRModResources/audio/music/Im Anfang war das Wort.mp3");
         // Skaracabaz
         addTempMusic("Aberrant Receptacle", "HSRModResources/audio/music/Aberrant Receptacle.mp3");
+        
+        allowFinalActRewards();
     }
     
     public Penacony(CustomDungeon cd, AbstractPlayer p, ArrayList<String> emptyList) {

@@ -147,15 +147,19 @@ public class Hoolay extends BaseMonster {
     void spawn() {
         if (bottomLeftMonster == null || bottomLeftMonster.isDead || bottomLeftMonster.isDying || bottomLeftMonster.currentHealth <= 0) {
             bottomLeftMonster = new EclipseWolftrooper(-450, 0);
+            bottomLeftMonster.usePreBattleAction();
             AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(bottomLeftMonster, true));
         } else if (bottomRightMonster == null || bottomRightMonster.isDead || bottomRightMonster.isDying || bottomRightMonster.currentHealth <= 0) {
             bottomRightMonster = new SableclawWolftrooper(150, 0);
+            bottomRightMonster.usePreBattleAction();
             AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(bottomRightMonster, true));
         } else if (topLeftMonster == null || topLeftMonster.isDead || topLeftMonster.isDying || topLeftMonster.currentHealth <= 0) {
             topLeftMonster = new EclipseWolftrooper(-450, 300);
+            topLeftMonster.usePreBattleAction();
             AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(topLeftMonster, true));
         } else if (topRightMonster == null || topRightMonster.isDead || topRightMonster.isDying || topRightMonster.currentHealth <= 0) {
             topRightMonster = new SableclawWolftrooper(150, 300);
+            topRightMonster.usePreBattleAction();
             AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(topRightMonster, true));
         }
     }

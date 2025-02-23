@@ -67,6 +67,7 @@ public class AventurineOfStratagems extends BaseMonster {
         addMove(Intent.ATTACK_DEBUFF, 35, mi->{
             if (hasPower(ChargingPower.POWER_ID)) {
                 shout(6);
+                addToBot(new VFXAction(new RainingGoldEffect(100, true)));
                 addToBot(new VFXAction(new WeightyImpactEffect(p.hb.cX, p.hb.cY), 1));
                 attack(mi, AbstractGameAction.AttackEffect.BLUNT_HEAVY, AttackAnim.SLOW);
                 addToBot(new MakeTempCardInDrawPileAction(new Imprison(), 1, true, true));
@@ -88,7 +89,7 @@ public class AventurineOfStratagems extends BaseMonster {
     @Override
     protected void getMove(int i) {
         turnCount++;
-        if (hasPower(ChargingPower.POWER_ID)) {
+        if (hasPower(ChargingPower.POWER_ID) && AbstractDungeon.getMonsters().monsters.stream().anyMatch(m -> ModHelper.check(m) && m instanceof AllOrNothing)) {
             setMove(3);
         } else if (turnCount == 3) {
             setMove(2);

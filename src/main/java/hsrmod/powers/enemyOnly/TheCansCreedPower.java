@@ -22,6 +22,7 @@ public class TheCansCreedPower extends StatePower implements PreBreakSubscriber 
     
     public TheCansCreedPower(AbstractCreature owner) {
         super(POWER_ID, owner);
+        priority = 2;
         updateDescription();
     }
 

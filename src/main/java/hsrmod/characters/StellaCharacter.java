@@ -19,6 +19,7 @@ import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import hsrmod.cards.base.*;
 import hsrmod.modcore.HSRMod;
+import hsrmod.modcore.HSRModConfig;
 import hsrmod.patches.PathSelectScreen;
 import hsrmod.relics.starter.*;
 
@@ -147,7 +148,7 @@ public class StellaCharacter extends CustomPlayer {
                 73, // 当前血量
                 73, // 最大血量
                 0, // 初始充能球栏位
-                73, // 初始携带金币
+                73 + HSRModConfig.getActiveTPCount() * 200, // 初始携带金币
                 5, // 每回合抽牌数量
                 this, // 别动
                 this.getStartingRelics(), // 初始遗物

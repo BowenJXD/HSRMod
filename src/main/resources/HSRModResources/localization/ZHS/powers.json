@@ -769,5 +769,11 @@
     "DESCRIPTIONS": [
       "即将被 #y击破 时，移除1层，若还有剩余层数，并立即回复所有韧性。"
     ]
+  },
+  "HSRMod:ShuffleState": {
+    "NAME": "阈值诅咒",
+    "DESCRIPTIONS": [
+      "洗牌后，获得1张状态牌。"
+    ]
   }
 }

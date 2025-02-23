@@ -100,20 +100,24 @@ public class RelicEventHelper {
     }*/
     
     public static void loseRelicsAfterwards(AbstractRelic... relics) {
-        ModHelper.addEffectAbstract(() -> loseRelics(relics));
+        ModHelper.addEffectAbstract(() -> loseRelics(true, relics));
     }
     
     public static void loseRelics(String... relicIds) {
-        loseRelics(Arrays.stream(relicIds).map(id -> AbstractDungeon.player.getRelic(id)).toArray(AbstractRelic[]::new));
+        loseRelics(true, Arrays.stream(relicIds).map(id -> AbstractDungeon.player.getRelic(id)).toArray(AbstractRelic[]::new));
     }
     
     public static void loseRelics(AbstractRelic... relics) {
+        loseRelics(false, relics);
+    }
+    
+    public static void loseRelics(boolean addRelicToPool, AbstractRelic... relics) {
         if (relics.length == 0) return;
         if (relics.length == 1) {
             AbstractDungeon.effectList.add(new BetterWarningSignEffect(Settings.WIDTH * 0.5f, Settings.HEIGHT * 0.5f, 4.0f));
             AbstractDungeon.player.loseRelic(relics[0].relicId);
             AbstractDungeon.effectList.add(new RelicAboveCreatureEffect(Settings.WIDTH * 0.5f, Settings.HEIGHT * 0.4f, relics[0]));
-            addRelicToPool(relics[0]);
+            if (addRelicToPool) addRelicToPool(relics[0]);
         } else {
             for (int i = relics.length - 1; i >= 0; --i) {
                 float x = MathUtils.random(0.1F, 0.9F) * (float) Settings.WIDTH;
@@ -121,7 +125,7 @@ public class RelicEventHelper {
                 AbstractDungeon.effectList.add(new BetterWarningSignEffect(x, y, 4.0f));
                 AbstractDungeon.player.loseRelic(relics[i].relicId);
                 AbstractDungeon.effectList.add(new RelicAboveCreatureEffect(x, y - 0.1f, relics[i]));
-                addRelicToPool(relics[i]);
+                if (addRelicToPool) addRelicToPool(relics[i]);
             }
         }
     }

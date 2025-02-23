@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.scenes.AbstractScene;
 import hsrmod.events.StelleAwakeEvent;
 import hsrmod.misc.Encounter;
 import hsrmod.modcore.HSRMod;
+import hsrmod.modcore.HSRModConfig;
 
 import java.util.ArrayList;
 
@@ -50,7 +51,7 @@ public class Belobog extends CustomDungeon {
 
     protected void initializeLevelSpecificChances() {
         shopRoomChance = 0.05F;
-        restRoomChance = 0.12F;
+        restRoomChance = 0.12F + HSRModConfig.getActiveTPCount() * 0.01F;
         treasureRoomChance = 0.0F;
         eventRoomChance = 0.25F;
         eliteRoomChance = 0.08F;

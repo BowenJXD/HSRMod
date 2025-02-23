@@ -67,7 +67,7 @@ public class Acheron1 extends BaseCard implements PostPowerApplySubscriber {
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.topLevelEffects.add(new PortraitDisplayEffect("Acheron"));
         CardCrawlGame.sound.play("SlashedDream1");
-        // addToBot(new VFXAction(new GrayscaleScreenEffect(Settings.FAST_MODE ? 3 : 4)));
+        addToBot(new VFXAction(new GrayscaleScreenEffect(Settings.FAST_MODE ? 3 : 4)));
         addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
 
         AbstractCreature target = ModHelper.betterGetRandomMonster();

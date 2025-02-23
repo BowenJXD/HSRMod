@@ -16,14 +16,18 @@ public class TopWarningEffect extends AbstractGameEffect {
     private Color color;
     String text;
 
-    public TopWarningEffect(String text) {
+    public TopWarningEffect(String text, float duration) {
         this.color = Settings.RED_TEXT_COLOR.cpy();
-        this.duration = 2.0F;
+        this.duration = duration;
         this.color.a = 0.0F;
         this.x = (float)Settings.WIDTH / 2.0F;
         this.y = Settings.OPTION_Y + 460.0F * Settings.scale;
         this.scale = 1.3F;
         this.text = text;
+    }
+    
+    public TopWarningEffect(String text) {
+        this(text, 2.0F);
     }
 
     public void update() {

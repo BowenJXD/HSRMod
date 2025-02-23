@@ -4,6 +4,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.unique.IncreaseMaxHpAction;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -35,14 +36,12 @@ public class ThresholdProtocolPatch {
                 }
                 int count = HSRModConfig.getActiveTPCount();
                 if (count > 0) {
-                    _inst.currentHealth += _inst.currentHealth * count / 5;
-                    _inst.maxHealth += _inst.maxHealth * count / 5;
-                    _inst.healthBarUpdatedEvent();
-                    if (AbstractDungeon.effectsQueue.stream().noneMatch(e -> e instanceof TopWarningEffect)) {
+                    AbstractDungeon.actionManager.addToBottom(new IncreaseMaxHpAction(_inst, count / 5f, true));
+                    if (AbstractDungeon.topLevelEffectsQueue.stream().noneMatch(e -> e instanceof TopWarningEffect)) {
                         if (Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT) {
-                            AbstractDungeon.effectsQueue.add(new TopWarningEffect("⚠阈值协议生效⚠"));
+                            AbstractDungeon.topLevelEffectsQueue.add(new TopWarningEffect("⚠阈值协议生效⚠"));
                         } else {
-                            AbstractDungeon.effectsQueue.add(new TopWarningEffect("⚠THRESHOLD PROTOCOLS ACTIVATED⚠"));
+                            AbstractDungeon.topLevelEffectsQueue.add(new TopWarningEffect("⚠THRESHOLD PROTOCOLS ACTIVATED⚠"));
                         }
                     }
                 }

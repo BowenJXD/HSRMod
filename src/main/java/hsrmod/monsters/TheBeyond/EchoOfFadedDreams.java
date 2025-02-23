@@ -22,19 +22,20 @@ import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.breaks.ImprisonPower;
 import hsrmod.powers.enemyOnly.SummonedPower;
 import hsrmod.powers.enemyOnly.WalkInTheLightPower;
+import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.utils.ModHelper;
 
 import java.util.Iterator;
 
 public class EchoOfFadedDreams extends BaseMonster {
     public static final String ID = EchoOfFadedDreams.class.getSimpleName();
-    
+
     int firstStep = -1;
-    
+
     public EchoOfFadedDreams(int firstStep, float x, float y) {
         super(ID, 84F, 180F, x, y);
         this.firstStep = (byte) firstStep;
-        
+
         if (ModHelper.moreDamageAscension(EnemyType.BOSS))
             setDamages(17, 7, 10);
         else
@@ -47,7 +48,7 @@ public class EchoOfFadedDreams extends BaseMonster {
         AbstractDungeon.getCurrRoom().cannotLose = true;
         onSpawn();
     }
-    
+
     void onSpawn() {
         AbstractPower power = new RegrowPower(this);
         power.description = MOVES[3];
@@ -59,7 +60,7 @@ public class EchoOfFadedDreams extends BaseMonster {
     public void takeTurn() {
         AbstractPlayer p = AbstractDungeon.player;
         switch (this.nextMove) {
-            case 0: 
+            case 0:
                 addToBot(new DamageAction(p, this.damage.get(0), AbstractGameAction.AttackEffect.SLASH_HEAVY, true));
                 break;
             case 1:
@@ -82,12 +83,12 @@ public class EchoOfFadedDreams extends BaseMonster {
                 onSpawn();
                 Iterator var1 = AbstractDungeon.player.relics.iterator();
 
-                while(var1.hasNext()) {
-                    AbstractRelic r = (AbstractRelic)var1.next();
+                while (var1.hasNext()) {
+                    AbstractRelic r = (AbstractRelic) var1.next();
                     r.onSpawnMonster(this);
                 }
         }
-        
+
         addToBot(new RollMoveAction(this));
     }
 
@@ -136,7 +137,7 @@ public class EchoOfFadedDreams extends BaseMonster {
                 r.onMonsterDeath(this);
             }
 
-            this.powers.clear();
+            this.powers.removeIf(po -> !(po instanceof ToughnessPower));
             boolean allDead = true;
             Iterator var7 = AbstractDungeon.getMonsters().monsters.iterator();
 

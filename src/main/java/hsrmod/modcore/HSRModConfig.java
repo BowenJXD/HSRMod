@@ -14,6 +14,7 @@ import com.evacipated.cardcrawl.modthespire.ModInfo;
 import com.evacipated.cardcrawl.modthespire.Patcher;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -31,6 +32,7 @@ import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import hsrmod.characters.StellaCharacter;
 import hsrmod.effects.TopWarningEffect;
 import hsrmod.misc.PathDefine;
+import hsrmod.powers.misc.ShuffleStatePower;
 import org.scannotation.AnnotationDB;
 
 import java.io.IOException;
@@ -69,12 +71,12 @@ public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscrib
                     "基础设定",
                     "部分设定需要重启并\n重开游戏才能生效。",
                     "  阈值协议⚠", // 5
-                    "⚠阈值协议为高难模式，A20以上解锁。\n星满阈值通关时，阈值上限+1。\n勾选阈值协议条目，以激活阈值效果。\n每项条目额外增加怪物20%的生命和10%的韧性。",
+                    "⚠阈值协议为高难模式，A20以上解锁。\n星满阈值通关时，阈值上限+1。\n勾选阈值协议条目，以激活阈值效果。\n每项条目额外增加200初始金币，怪物20%的生命和10%的韧性。",
                     "怪物初始拥有1层【荆棘】。",
                     "怪物初始拥有1层【柔韧】。",
                     "怪物初始拥有1层【仪式】。",
                     "精英和首领初始拥有1层【守备】。", // 10
-                    "精英战开始后，摸牌堆加入1张状态牌；\n首领战开始时，主卡组加入1张诅咒牌。",
+                    "洗牌后，获得1张随机状态牌。",
                     "⚠当前阈值协议等级：%d / %d 。",
                     "阈值协议已达上限。",
                     "游戏中无法修改阈值协议。",
@@ -87,12 +89,12 @@ public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscrib
                     "Basic Settings",
                     "Some settings need to restart \nand reopen the game to apply.",
                     "    Threshold Protocol", // 5
-                    "Threshold Protocol is a hard mode that is effective above A20. \nWhen Stelle passing the game with full threshold, increase the level by 1. \nTick the threshold protocol item to activate the threshold effect. \nEach item adds an extra 20% HP and 10% toughness to monsters.",
+                    "Threshold Protocol is a hard mode that is effective above A20. \nWhen Stelle passing the game with full threshold, increase the level by 1. \nTick the threshold protocol item to activate the threshold effect. \nEach item adds an extra 200 starting gold, and 20% HP & 10% toughness to monsters.",
                     "Monsters start with 1 layer of Thorns.",
                     "Monsters start with 1 layer of Malleable.",
                     "Monsters start with 1 layer of Ritual.",
                     "Elites and Bosses start with Safeguard.", // 10
-                    "When Elite battle starts, add a status card. \nBefore Boss battle, add a curse card.",
+                    "Obtain a random state card upon shuffle.",
                     "Current Threshold Protocol Level: %d / %d.",
                     "Threshold Protocol has reached the limit.",
                     "Cannot modify Threshold Protocol during a run.",
@@ -135,6 +137,7 @@ public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscrib
             tpMalleable = config.getBool("tpMalleable");
             tpRitual = config.getBool("tpRitual");
             tpSafeguard = config.getBool("tpSafeguard");
+            tpCurse = config.getBool("tpCurse");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -259,7 +262,7 @@ public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscrib
         });
         panel.addUIElement(tpSafeguardButton);
 
-        ModLabeledToggleButton tpStatusButton = new ModLabeledToggleButton(buttonLanguage[11], x, 450.0F, Color.WHITE, FontHelper.buttonLabelFont, tpCurse, panel, (label) -> {
+        ModLabeledToggleButton tpStatusButton = new ModLabeledToggleButton(buttonLanguage[11], x, 500.0F, Color.WHITE, FontHelper.buttonLabelFont, tpCurse, panel, (label) -> {
         }, (button) -> {
             if (!checkButton(button, (b) -> tpCurse = b)) return;
             try {
@@ -289,7 +292,7 @@ public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscrib
         }
         setter.accept(button.enabled);
         if (button.enabled) {
-            CardCrawlGame.sound.playA("HEART_BEAT", MathUtils.random(0.0F, 0.6F));
+            CardCrawlGame.sound.playA("STANCE_ENTER_WRATH", MathUtils.random(0.0F, 0.6F));
         }
         return true;
     }
@@ -372,27 +375,13 @@ public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscrib
             e.printStackTrace();
         }
     }
-
-    static {
-        loadModInfo();
-    }
-
     @Override
     public void receiveOnBattleStart(AbstractRoom abstractRoom) {
-        if (tpCurse && abstractRoom instanceof MonsterRoomBoss) {
-            AbstractCard curse = AbstractDungeon.getCardFromPool(AbstractCard.CardRarity.CURSE, AbstractCard.CardType.CURSE, true);
-            if (curse != null) {
-                AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(curse.makeCopy(), 1, true, true));
-                AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(curse.makeCopy(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
-            }
-        }
-        if (tpCurse && abstractRoom.eliteTrigger) {
-            CardLibrary.getAllCards().stream().filter((c) -> c.type == AbstractCard.CardType.STATUS).findAny().ifPresent(
-                    state -> AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(state.makeCopy(), 1, true, true))
-            );
+        if (tpCurse) {
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new ShuffleStatePower(AbstractDungeon.player)));
         }
     }
-
+    
     @Override
     public void receivePostBattle(AbstractRoom abstractRoom) {
         if (CardCrawlGame.stopClock 
@@ -426,5 +415,9 @@ public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscrib
             AbstractGameEffect e = (AbstractGameEffect)var2.next();
             e.render(spriteBatch);
         }
+    }
+
+    static {
+        loadModInfo();
     }
 }

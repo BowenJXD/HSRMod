@@ -45,7 +45,9 @@ public class PreyPower extends DebuffPower {
                 amount2 -= amount2Threshold;
                 flash();
                 remove(1);
-                this.addToBot(new MakeTempCardInDrawPileAction(new Moze2(), 1, false, true));
+                Moze2 moze2 = new Moze2();
+                moze2.priorityTarget = owner;
+                this.addToBot(new MakeTempCardInDrawPileAction(moze2, 1, false, true));
             }
         }
     }

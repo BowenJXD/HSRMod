@@ -55,8 +55,8 @@ public class SporePower extends DebuffPower {
     
     public void trigger(){
         addToTop(new RemoveSpecificPowerAction(owner, owner, this));
+        addToTop(new ApplyPowerAction(owner, AbstractDungeon.player, new SporePower(owner, -amount), -amount));
         addToBot(new ElementalDamageAction(owner, new ElementalDamageInfo(AbstractDungeon.player, amount * amount, 
                 DamageInfo.DamageType.NORMAL, ElementType.Wind, 1), AbstractGameAction.AttackEffect.POISON));
-        addToBot(new ApplyPowerAction(owner, AbstractDungeon.player, new SporePower(owner, -amount), -amount));
     }
 }

@@ -766,5 +766,11 @@
     "DESCRIPTIONS": [
       "Removes before being broken, removes 1 stack, if there is any stack left, recovers all #yToughness."
     ]
+  },
+  "HSRMod:ShuffleState": {
+    "NAME": "Threshold Curse",
+    "DESCRIPTIONS": [
+      "Obtain a random state card upon shuffle."
+    ]
   }
 }

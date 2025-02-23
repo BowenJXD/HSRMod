@@ -39,7 +39,7 @@ public class NebulaDevourer extends BaseMonster {
 
     @Override
     protected void getMove(int i) {
-        if (halfDead || (hasPower(ToughnessPower.POWER_ID) && ModHelper.getPowerCount(this, ToughnessPower.POWER_ID) <= 0)) {
+        if (halfDead || (hasPower(ToughnessPower.POWER_ID) && ((ToughnessPower) getPower(ToughnessPower.POWER_ID)).getLocked())) {
             setMove(2);
         } else if (hasPower(ResonatePower.POWER_ID)) {
             setMove(1);

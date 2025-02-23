@@ -20,13 +20,12 @@ import hsrmod.modcore.HSRMod;
 import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.enemyOnly.MoonRagePower;
 
-public class 
-EclipseWolftrooper extends BaseMonster {
+public class EclipseWolftrooper extends BaseMonster {
     public static final String ID = EclipseWolftrooper.class.getSimpleName();
-    
+
     public EclipseWolftrooper(float x, float y) {
         super(ID, 120F, 169F, x, y);
-        
+
         setDamages(2);
     }
 

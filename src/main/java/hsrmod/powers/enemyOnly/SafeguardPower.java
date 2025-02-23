@@ -51,7 +51,7 @@ public class SafeguardPower extends BuffPower implements OnReceivePowerPower, Pr
     public float atDamageReceive(float damage, DamageInfo.DamageType damageType) {
         if (ModHelper.getPowerCount(owner, ToughnessPower.POWER_ID) > 0
                 && damageType == DamageInfo.DamageType.NORMAL) {
-            return damage * dmgReduce / 100;
+            return damage * (100 - dmgReduce) / 100;
         }
         return damage;  
     }

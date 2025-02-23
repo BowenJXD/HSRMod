@@ -185,11 +185,11 @@ public abstract class BaseCard extends CustomCard implements SpawnModificationCa
         return super.canUse(p, m) && checkEnergy() && SubscriptionManager.getInstance().triggerCheckUsable(this);
     }
 
-    protected boolean checkEnergy() {
+    public boolean checkEnergy() {
         if (Math.max(0, ModHelper.getPowerCount(AbstractDungeon.player, EnergyPower.POWER_ID)) >= energyCost) {
             return true;
         }
-        cantUseMessage = Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT ? "我没有足够的充能。" : "I don't have enough charge.";
+        cantUseMessage = Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT ? "我没有足够的 #b充能 。" : "I don't have enough #bcharge .";
         return false;
     }
 
@@ -203,7 +203,7 @@ public abstract class BaseCard extends CustomCard implements SpawnModificationCa
         return checkSpawnable();
     }
 
-    private boolean checkSpawnable() {
+    protected boolean checkSpawnable() {
         if (!RewardEditor.getInstance().checkPath(pathTag)) {
             return false;
         }

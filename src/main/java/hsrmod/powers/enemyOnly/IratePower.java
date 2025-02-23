@@ -3,6 +3,7 @@ package hsrmod.powers.enemyOnly;
 import basemod.BaseMod;
 import basemod.interfaces.OnPlayerDamagedSubscriber;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.EndTurnAction;
 import com.megacrit.cardcrawl.actions.common.MonsterStartTurnAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
@@ -13,6 +14,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.effects.TopWarningEffect;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
 import hsrmod.powers.StatePower;
@@ -113,7 +115,7 @@ public class IratePower extends StatePower implements OnPlayerDamagedSubscriber 
     
     void triggerMonster(){
         flash();
-        addToBot(new TalkAction(owner, DESCRIPTIONS[1], 2.0F, 3.0F));
+        addToBot(new VFXAction(new TopWarningEffect(DESCRIPTIONS[1], 3)));
         if (!AbstractDungeon.actionManager.turnHasEnded)
             addToBot(new EndTurnAction());
         AbstractDungeon.getCurrRoom().monsters.queueMonsters();

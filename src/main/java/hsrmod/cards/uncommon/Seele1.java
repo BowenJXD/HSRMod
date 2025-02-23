@@ -15,6 +15,7 @@ import hsrmod.cards.BaseCard;
 import hsrmod.effects.MultiShivFreezeEffect;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.powers.enemyOnly.SummonedPower;
 import hsrmod.utils.CardDataCol;
 import hsrmod.utils.DataManager;
 
@@ -52,7 +53,7 @@ public class Seele1 extends BaseCard {
                 new ElementalDamageInfo(this),
                 AbstractGameAction.AttackEffect.SLASH_HEAVY,
                 (info) -> {
-                    if ((info.target.isDying || info.target.currentHealth <= 0) && !info.target.halfDead && !info.target.hasPower("Minion")) {
+                    if ((info.target.isDying || info.target.currentHealth <= 0) && !info.target.halfDead && !info.target.hasPower("Minion") && !info.target.hasPower(SummonedPower.POWER_ID)) {
                         Iterator var1 = AbstractDungeon.player.masterDeck.group.iterator();
 
                         AbstractCard c;

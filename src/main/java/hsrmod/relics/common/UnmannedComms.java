@@ -22,8 +22,11 @@ public class UnmannedComms extends BaseRelic implements PostRelicDestroySubscrib
     @Override
     public void postRelicDestroy(AbstractRelic relic) {
         if (SubscriptionManager.checkSubscriber(this) && relic != this) {
-            if (usedUp) SubscriptionManager.getInstance().unsubscribeLater(this);
-            RelicEventHelper.loseRelicsAfterwards(relic);
+            if (usedUp) {
+                SubscriptionManager.getInstance().unsubscribeLater(this);
+                return;
+            }
+            ModHelper.addEffectAbstract(() -> RelicEventHelper.loseRelics(false, relic));
             ModHelper.addEffectAbstract(() -> {
                 AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float) (Settings.WIDTH / 2), (float) (Settings.HEIGHT / 2), relic.makeCopy());
                 reduceCounterAndCheckDestroy();

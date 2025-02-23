@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.FollowUpAction;
@@ -13,6 +14,8 @@ import hsrmod.modcore.ElementalDamageInfo;
 
 public class Moze2 extends BaseCard {
     public static final String ID = Moze2.class.getSimpleName();
+    
+    public AbstractCreature priorityTarget;
     
     public Moze2(){
         super(ID);
@@ -25,7 +28,7 @@ public class Moze2 extends BaseCard {
         super.onEnterHand();
         if (!followedUp) {
             followedUp = true;
-            addToBot(new FollowUpAction(this));
+            addToBot(new FollowUpAction(this, priorityTarget));
         }
     }
 

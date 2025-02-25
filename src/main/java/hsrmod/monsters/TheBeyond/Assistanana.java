@@ -38,7 +38,7 @@ public class Assistanana extends BaseMonster implements IBanana {
                 addToBot(new ApplyPowerAction(this, this, new ChannelPower(this, -channelCount, ChannelPower.ChannelType.OFFCLASS_CLASSROOM), -channelCount));
             addToBot(new ApplyPowerAction(p, this, new EnergyPower(p, chargeGain)));
         });
-        addMoveA(Intent.ATTACK_DEBUFF, 16, mi->{
+        addMoveA(Intent.ATTACK_DEBUFF, 17, mi->{
             addToBot(new VFXAction(new ShockWaveEffect(hb.cX, hb.cY, Color.NAVY, ShockWaveEffect.ShockWaveType.CHAOTIC), 0.2f));
             attack(mi, AbstractGameAction.AttackEffect.BLUNT_LIGHT);
             addToBot(new ApplyPowerAction(p, this, new EnergyPower(p, -chargeLoss), -chargeLoss));

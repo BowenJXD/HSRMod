@@ -19,22 +19,24 @@ public class LesserSting extends BaseMonster {
     public static final String ID = LesserSting.class.getSimpleName();
     
     int decayCount = 9;
+    int slimedCount = 1;
     
     public LesserSting(float x, float y) {
         super(ID, 200, 218, x, y);
         floatIndex = AbstractDungeon.miscRng.randomBoolean() ? -1 : 1;
         
         decayCount = specialAs ? 10 : 9;
+        slimedCount = specialAs ? 2 : 1;
         
         addMove(Intent.BUFF, mi->{
             addToBot(new ApplyPowerAction(this, this, new ChargingPower(this, getLastMove())));
         });
-        addMove(Intent.ATTACK, 3, 2, mi->{
+        addMove(Intent.ATTACK, 9, 2, mi->{
             addToBot(new VFXAction(new MoveToEffect(this, p.hb.cX + p.hb.width / 2 - hb.cX, p.hb.cY - hb.cY, false, 0.4f)));
             addToBot(new VFXAction(new ExplosionSmallEffect(p.hb.cX + 50, p.hb.cY)));
             attack(mi, AbstractGameAction.AttackEffect.SLASH_HEAVY);
             addToBot(new ApplyPowerAction(p, this, new OutragePower(p, 2)));
-            addToBot(new MakeTempCardInDrawPileAction(new Slimed(), 1, true, true));
+            addToBot(new MakeTempCardInDrawPileAction(new Slimed(), slimedCount, true, true));
             addToBot(new RemoveSpecificPowerAction(this, this, DecayEulogyPower.POWER_ID));
             addToBot(new SuicideAction(this));
         });

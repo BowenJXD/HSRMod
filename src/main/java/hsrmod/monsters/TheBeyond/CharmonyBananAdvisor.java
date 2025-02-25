@@ -32,11 +32,11 @@ public class CharmonyBananAdvisor extends BaseMonster implements IBanana {
         super(ID, 300, 384, x, y);
         this.inClass = inClass;
         
-        addMove(Intent.ATTACK_DEBUFF, 8, mi->{
+        addMove(Intent.ATTACK_DEBUFF, 16, mi->{
             attack(mi, AbstractGameAction.AttackEffect.FIRE, AttackAnim.FAST);
             addToBot(new ApplyPowerAction(p, this, new BurnPower(p, this, 2)));
         });
-        addMove(Intent.ATTACK_DEBUFF, 12, mi->{
+        addMove(Intent.ATTACK_DEBUFF, 24, mi->{
             attack(mi, AbstractGameAction.AttackEffect.FIRE, AttackAnim.SLOW);
             AbstractCard card = new Burn();
             if (moreDamageAs) card.upgrade();

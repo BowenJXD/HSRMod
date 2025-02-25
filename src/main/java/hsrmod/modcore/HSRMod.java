@@ -237,10 +237,12 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
                 .endsWithRewardsUI(true)
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(ImperialLegacyEvent.ID, ImperialLegacyEvent.class)
+                .spawnCondition(() -> AbstractDungeon.eventRng.random(99) < 50)
                 .dungeonID(Penacony.ID)
                 // .eventType(EventUtils.EventType.ONE_TIME)
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(AceTrashDiggerEvent.ID, AceTrashDiggerEvent.class)
+                .spawnCondition(() -> AbstractDungeon.eventRng.random(99) < 50)
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(PineappleBreadEvent.ID, PineappleBreadEvent.class)
                 .eventType(EventUtils.EventType.ONE_TIME)
@@ -253,11 +255,13 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
         BaseMod.addEvent(new AddEventParams.Builder(IPMBShoppingMallEvent.ID, IPMBShoppingMallEvent.class)
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(TrashSymphonyEvent.ID, TrashSymphonyEvent.class)
+                .spawnCondition(() -> AbstractDungeon.eventRng.random(99) < 25)
                 .dungeonID(Penacony.ID)
                 // .eventType(EventUtils.EventType.ONE_TIME)
                 .endsWithRewardsUI(true)
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(CulinaryColosseumEvent.ID, CulinaryColosseumEvent.class)
+                .spawnCondition(() -> AbstractDungeon.eventRng.random(99) < 25)
                 .dungeonID(Penacony.ID)
                 // .eventType(EventUtils.EventType.ONE_TIME)
                 .endsWithRewardsUI(true)
@@ -388,9 +392,9 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
                 new FortuneBananAdvisor(300, AbstractDungeon.monsterRng.random(50, 75), ModHelper.specialAscension(AbstractMonster.EnemyType.ELITE)),
         }));
         BaseMod.addMonster(Encounter.THE_PAST_PRESENT_AND_ETERNAL_SHOW, () -> new MonsterGroup(new AbstractMonster[]{
-                new PresentInebriatedInRevelry(-400, 0),
-                new TomorrowInHarmoniousChords(-100, 0),
-                new PastConfinedAndCaged(200, 0)
+                new PresentInebriatedInRevelry(-400, 0).modifyToughnessByPercent(1.5f),
+                new TomorrowInHarmoniousChords(-100, 0).modifyToughnessByPercent(1.5f),
+                new PastConfinedAndCaged(200, 0).modifyToughnessByPercent(1.5f),
         }));
         BaseMod.addMonster(Encounter.AVENTURINE_OF_STRATAGEMS, () -> new MonsterGroup(new AbstractMonster[]{
                 new AventurineOfStratagems()

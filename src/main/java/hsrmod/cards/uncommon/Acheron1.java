@@ -67,7 +67,7 @@ public class Acheron1 extends BaseCard implements PostPowerApplySubscriber {
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.topLevelEffects.add(new PortraitDisplayEffect("Acheron"));
         CardCrawlGame.sound.play("SlashedDream1");
-        addToBot(new VFXAction(new GrayscaleScreenEffect(Settings.FAST_MODE ? 3 : 4)));
+        addToBot(new VFXAction(new GrayscaleScreenEffect(Settings.FAST_MODE ? 3 : 5)));
         addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
 
         AbstractCreature target = ModHelper.betterGetRandomMonster();
@@ -77,7 +77,7 @@ public class Acheron1 extends BaseCard implements PostPowerApplySubscriber {
                 target,
                 new ElementalDamageInfo(this),
                 AbstractGameAction.AttackEffect.LIGHTNING
-        );
+        ).setModifier(ci -> ci.info.output += ci.target.powers.stream().mapToInt(power -> power.type == AbstractPower.PowerType.DEBUFF ? 1 : 0).sum());
         addToBot(new BouncingAction(target, magicNumber, action));
         
         ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play("SlashedDream2"));
@@ -91,7 +91,8 @@ public class Acheron1 extends BaseCard implements PostPowerApplySubscriber {
     @Override
     public void receivePostPowerApplySubscriber(AbstractPower abstractPower, AbstractCreature target, AbstractCreature source) {
         if (SubscriptionManager.checkSubscriber(this)
-                && canTrigger && abstractPower.type == AbstractPower.PowerType.DEBUFF
+                && canTrigger 
+                && abstractPower.type == AbstractPower.PowerType.DEBUFF
                 && target != AbstractDungeon.player) {
             canTrigger = false;
             updateCost(-1);

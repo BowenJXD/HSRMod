@@ -39,7 +39,7 @@ public class Skaracabaz extends BaseMonster implements OnCardUseSubscriber {
         bgm = "Aberrant Receptacle";
         floatIndex = AbstractDungeon.miscRng.randomBoolean() ? -1 : 1;
 
-        defenseCount = specialAs ? 100 : 90;
+        defenseCount = specialAs ? 90 : 90;
         summonCount = specialAs ? 2 : 1;
         multiplyCount = specialAs ? 3 : 3;
         insectEggCount = specialAs ? 3 : 1;
@@ -70,7 +70,7 @@ public class Skaracabaz extends BaseMonster implements OnCardUseSubscriber {
         });
         addMove(Intent.BUFF, mi -> {
             spawnMonsters(summonCount);
-            addToBot(new ApplyPowerAction(this, this, new DefensePower(this, hasPower(ExtraToughnessPower.POWER_ID) ? defenseCount : defenseCount / 3)));
+            addToBot(new ApplyPowerAction(this, this, new DefensePower(this, hasPower(ExtraToughnessPower.POWER_ID) && !moreHPAs ? defenseCount : defenseCount / 3)));
             addToBot(new ApplyPowerAction(this, this, new MultiplyPower(this, multiplyCount)));
             if (insectEggCount > 0)
                 addToBot(new ApplyPowerAction(this, this, new InsectEggPower(this, insectEggCount)));
@@ -104,6 +104,9 @@ public class Skaracabaz extends BaseMonster implements OnCardUseSubscriber {
     public void usePreBattleAction() {
         super.usePreBattleAction();
         addToBot(new ApplyPowerAction(this, this, new ExtraToughnessPower(this, 3)));
+        if (moreHPAs) {
+            addToBot(new ApplyPowerAction(this, this, new DefensePower(this, defenseCount)));
+        }
     }
 
     @Override

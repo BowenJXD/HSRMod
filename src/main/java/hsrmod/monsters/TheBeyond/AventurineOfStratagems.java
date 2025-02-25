@@ -64,7 +64,7 @@ public class AventurineOfStratagems extends BaseMonster {
             addToBot(new LockToughnessAction(this, this));
             addToBot(new ApplyPowerAction(this, this, new ChargingPower(this, getLastMove())));
         });
-        addMove(Intent.ATTACK_DEBUFF, 35, mi->{
+        addMove(Intent.ATTACK_DEBUFF, 40, mi->{
             if (hasPower(ChargingPower.POWER_ID)) {
                 shout(6);
                 addToBot(new VFXAction(new RainingGoldEffect(100, true)));
@@ -77,7 +77,7 @@ public class AventurineOfStratagems extends BaseMonster {
             turnCount = 0;
         });
         
-        turnCount = specialAs ? 1 : 0;
+        turnCount = specialAs ? 2 : 1;
     }
 
     @Override

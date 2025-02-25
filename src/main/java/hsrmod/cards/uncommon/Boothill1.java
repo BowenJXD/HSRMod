@@ -37,16 +37,17 @@ public class Boothill1 extends BaseCard {
                             new ElementalDamageInfo(this),
                             AbstractGameAction.AttackEffect.SLASH_DIAGONAL,
                             ci -> {
-                                if (ci.didBreak) didBreak.set(true);
+                                if (ci.didBreak) {
+                                    didBreak.set(true);
+                                    int val = ToughnessPower.getStackLimit(m);
+                                    addToBot(new BreakDamageAction(m, new DamageInfo(p, val)));
+                                }
                             }
                     )
             );
         }
         ModHelper.addToBotAbstract(() -> {
-            if (didBreak.get()) {
-                int val = ToughnessPower.getStackLimit(m);
-                addToBot(new BreakDamageAction(m, new DamageInfo(p, val)));
-            } else {
+            if (!didBreak.get()) {
                 returnToHand = true;
                 retain = true;
                 setCostForTurn(costCache);

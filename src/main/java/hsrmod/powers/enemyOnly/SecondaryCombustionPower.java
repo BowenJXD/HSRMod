@@ -2,11 +2,9 @@ package hsrmod.powers.enemyOnly;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
-import com.megacrit.cardcrawl.actions.common.LoseHPAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -61,17 +59,24 @@ public class SecondaryCombustionPower extends StatePower implements PreElemental
     @Override
     public int onAttackToChangeDamage(DamageInfo info, int damageAmount) {
         if (!owner.isPlayer && info.type == DamageInfo.DamageType.NORMAL) {
-            damageAmount += amount;
-            addToTop(new LoseHPAction(owner, owner, amount));
+            addToTop(new DamageAction(owner, new DamageInfo(owner, amount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE));
         }
         return damageAmount;
+    }
+
+    @Override
+    public float atDamageGive(float damage, DamageInfo.DamageType type) {
+        if (!owner.isPlayer && type == DamageInfo.DamageType.NORMAL) {
+            damage += amount;
+        }
+        return damage;
     }
 
     @Override
     public void onPlayCard(AbstractCard card, AbstractMonster m) {
         super.onPlayCard(card, m);
         if (card.costForTurn > 0 || (card.cost == -1 && card.energyOnUse > 0)) {
-            addToTop(new LoseHPAction(AbstractDungeon.player, owner, amount));
+            addToTop(new DamageAction(owner, new DamageInfo(owner, amount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE));
         }
     }
 

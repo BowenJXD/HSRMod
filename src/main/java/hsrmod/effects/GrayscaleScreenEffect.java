@@ -11,22 +11,18 @@ import com.evacipated.cardcrawl.mod.stslib.util.Grayscale;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
-
-// 灰度滤镜效果：在 1 秒内先从正常画面过渡到全灰，再恢复到正常画面
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.FrameBuffer;
-import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.math.Interpolation;
 
 public class GrayscaleScreenEffect extends AbstractGameEffect {
     private final float startingDuration;
-    ScreenPostProcessor grayscalePostProcessor;
+    GrayscaleScreenPostProcessor grayscalePostProcessor;
+    float fadeInTime = 0.5F;
+    float fadeOutTime = 0.5F;
 
     public GrayscaleScreenEffect(float duration) {
         this.duration = this.startingDuration = duration;
         grayscalePostProcessor = new GrayscaleScreenPostProcessor();
+        this.color = Color.WHITE.cpy();
     }
 
     // 更新效果的持续时间
@@ -34,6 +30,14 @@ public class GrayscaleScreenEffect extends AbstractGameEffect {
         if (duration == startingDuration) {
             ScreenPostProcessorManager.addPostProcessor(grayscalePostProcessor);
         }
+        float intensity = 0;
+        if (duration > startingDuration - fadeInTime)
+            intensity = Interpolation.fade.apply(0.0F, 1.0F, (startingDuration - duration) / fadeInTime);
+        else if (duration < fadeOutTime)
+            intensity = Interpolation.fade.apply(0.0F, 1.0F, duration / fadeOutTime);
+        else
+            intensity = 1.0F;
+        grayscalePostProcessor.intensity = intensity;
         this.duration -= Gdx.graphics.getDeltaTime();
         if (this.duration < 0.0F) {
             this.isDone = true;
@@ -52,13 +56,22 @@ public class GrayscaleScreenEffect extends AbstractGameEffect {
     }
 
     public static class GrayscaleScreenPostProcessor implements ScreenPostProcessor {
+        public Color color = Color.WHITE.cpy();
+        public float intensity = 0;
+        public float hueThreshold = 15;
+        
+        public GrayscaleScreenPostProcessor() {
+        }
+        
         @Override
         public void postProcess(SpriteBatch sb, TextureRegion textureRegion, OrthographicCamera camera) {
             // 设置灰度效果的强度
-            sb.setShader(Grayscale.program);
+            sb.setShader(GrayscaleButRedShader.program);
 
             // 渲染屏幕内容
-            sb.setColor(Color.WHITE);
+            sb.setColor(color);
+            GrayscaleButRedShader.program.setUniformf("intensity", intensity);
+            GrayscaleButRedShader.program.setUniformf("hueThreshold", hueThreshold);
             sb.setBlendFunction(GL20.GL_ONE, GL20.GL_ZERO);
             sb.draw(textureRegion, 0, 0);  // 渲染当前帧的纹理
 

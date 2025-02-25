@@ -50,7 +50,7 @@ public class FortuneBananAdvisor extends BaseMonster implements IBanana {
                     }
                 });
         });
-        addMoveA(Intent.ATTACK_DEBUFF, 14, mi->{
+        addMoveA(Intent.ATTACK_DEBUFF, 15, mi->{
             attack(mi, AbstractGameAction.AttackEffect.BLUNT_LIGHT, AttackAnim.FAST);
             if (specialAs || !p.hasPower(EnergyDownPower.POWER_ID))
                 addToBot(new ApplyPowerAction(p, this, new EnergyDownPower(p, 1)));

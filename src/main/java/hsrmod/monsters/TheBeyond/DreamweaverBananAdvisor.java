@@ -45,7 +45,7 @@ public class DreamweaverBananAdvisor extends BaseMonster implements IBanana {
             else
                 addToBot(new DrawCardAction(p, drawGain));
         });
-        addMoveA(Intent.ATTACK_DEBUFF, 15, mi->{
+        addMoveA(Intent.ATTACK_DEBUFF, 20, mi->{
             attack(mi, AbstractGameAction.AttackEffect.BLUNT_LIGHT, AttackAnim.SLOW);
             addToBot(new ApplyPowerAction(p, this, new DrawReductionPower(p, drawLoss)));
         });

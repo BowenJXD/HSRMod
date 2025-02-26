@@ -11,6 +11,7 @@ import hsrmod.effects.BetterWarningSignEffect;
 import hsrmod.modcore.HSRMod;
 import hsrmod.patches.RelicTagField;
 import hsrmod.utils.DataManager;
+import hsrmod.utils.ModHelper;
 import hsrmod.utils.RelicDataCol;
 
 public abstract class BaseRelic extends CustomRelic {
@@ -113,5 +114,10 @@ public abstract class BaseRelic extends CustomRelic {
         tips.clear();
         this.tips.add(new PowerTip(this.name, this.description));
         initializeTips();
+    }
+
+    @Override
+    public boolean canSpawn() {
+        return !ModHelper.hasRelic(this.relicId);
     }
 }

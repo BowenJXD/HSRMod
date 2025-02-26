@@ -32,7 +32,7 @@ public class VoidWickTrimmer extends BaseRelic {
         Collections.shuffle(relics, AbstractDungeon.miscRng.random);
         if (!relics.isEmpty()) {
             AbstractRelic[] relicsArray = relics.subList(0, Math.min(relics.size(), magicNumber)).toArray(new AbstractRelic[0]);
-            RelicEventHelper.loseRelicsAfterwards(relicsArray);
+            ModHelper.addEffectAbstract(() -> RelicEventHelper.loseRelics(false, relicsArray));
             ModHelper.addEffectAbstract(() -> {
                 for (AbstractRelic relic : relicsArray) {
                     AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float) (Settings.WIDTH / 2), (float) (Settings.HEIGHT / 2), relic.makeCopy());

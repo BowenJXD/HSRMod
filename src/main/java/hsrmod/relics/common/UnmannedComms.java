@@ -21,7 +21,7 @@ public class UnmannedComms extends BaseRelic implements PostRelicDestroySubscrib
 
     @Override
     public void postRelicDestroy(AbstractRelic relic) {
-        if (SubscriptionManager.checkSubscriber(this) && relic != this) {
+        if (SubscriptionManager.checkSubscriber(this) && (!(relic instanceof UnmannedComms))) {
             if (usedUp) {
                 SubscriptionManager.getInstance().unsubscribeLater(this);
                 return;

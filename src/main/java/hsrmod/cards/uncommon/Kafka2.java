@@ -1,5 +1,6 @@
 package hsrmod.cards.uncommon;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
@@ -12,6 +13,7 @@ import com.megacrit.cardcrawl.vfx.combat.DieDieDieEffect;
 import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.actions.TriggerDoTAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.effects.MultiShivFreezeEffect;
 import hsrmod.effects.PortraitDisplayEffect;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.powers.breaks.ShockPower;
@@ -31,7 +33,7 @@ public class Kafka2 extends BaseCard {
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.topLevelEffects.add(new PortraitDisplayEffect("Kafka"));
         ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID));
-        addToBot(new VFXAction(new DieDieDieEffect()));
+        addToBot(new VFXAction(new MultiShivFreezeEffect(Color.MAROON, Color.MAGENTA, Color.PURPLE), 0.3F));
         
         addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
 

@@ -191,5 +191,10 @@
       "#r我为逝者哀哭……",
       "#r暮雨，终将落下。"
     ]
+  },
+  "HSRMod:Entangle": {
+    "EXTENDED_DESCRIPTION": [
+      "这张牌被 #b纠缠 了。"
+    ]
   }
 }

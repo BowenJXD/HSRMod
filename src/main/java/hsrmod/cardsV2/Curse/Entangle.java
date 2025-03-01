@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.vfx.combat.SmallLaserEffect;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
+import hsrmod.subscribers.ICheckUsableSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
@@ -20,7 +21,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Entangle extends BaseCard implements PostDrawSubscriber {
+public class Entangle extends BaseCard implements PostDrawSubscriber, ICheckUsableSubscriber {
     public static final String ID = Entangle.class.getSimpleName();
     
     int entangleCount = 2;
@@ -35,14 +36,10 @@ public class Entangle extends BaseCard implements PostDrawSubscriber {
     }
 
     @Override
-    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        return followedUp;
-    }
-
-    @Override
     public void onEnterHand() {
         super.onEnterHand();
         BaseMod.subscribe(this);
+        SubscriptionManager.subscribe(this);
         if (entangledCards.isEmpty()) {
             List<AbstractCard> tmp = AbstractDungeon.player.hand.group.stream().filter(c -> !c.hasTag(CustomEnums.ENTANGLE)).collect(Collectors.toList());
             if (!tmp.isEmpty()) {
@@ -53,24 +50,17 @@ public class Entangle extends BaseCard implements PostDrawSubscriber {
                 });
             }
         }
+        AbstractDungeon.player.hand.glowCheck();
     }
 
     @Override
     public void onLeaveHand() {
         super.onLeaveHand();
         BaseMod.unsubscribe(this);
+        SubscriptionManager.unsubscribe(this);
+        AbstractDungeon.player.hand.glowCheck();
     }
-
-    @Override
-    public void triggerOnOtherCardPlayed(AbstractCard c) {
-        super.triggerOnOtherCardPlayed(c);
-        if (entangledCards.contains(c)) {
-            entangledCards.remove(c);
-            c.tags.remove(CustomEnums.ENTANGLE);
-            addToTop(new FollowUpAction(this, null, false));
-        }
-    }
-
+    
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         entangledCards.forEach(c -> {
@@ -102,5 +92,16 @@ public class Entangle extends BaseCard implements PostDrawSubscriber {
             abstractCard.tags.add(CustomEnums.ENTANGLE);
             entangledCards.add(abstractCard);
         }
+    }
+
+    @Override
+    public boolean checkUsable(AbstractCard card) {
+        if (SubscriptionManager.checkSubscriber(this) 
+                && inHand
+                && entangledCards.contains(card)) {
+            card.cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
+            return false;
+        }
+        return true;
     }
 }

@@ -229,9 +229,9 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
      */
     public boolean checkChance(AbstractCard.CardRarity rarity) {
         float chance = 0;
-        int[] commonChance = new int[]{30, 15, 10, 5};
-        int[] uncommonChance = new int[]{40, 20, 10, 5};
-        int[] rareChance = new int[]{50, 30, 20, 10};
+        int[] commonChance      = new int[]{30, 15, 10, 5};
+        int[] uncommonChance    = new int[]{40, 20, 10, 5};
+        int[] rareChance        = new int[]{50, 30, 20, 10};
         int actIndex = Math.min(AbstractDungeon.actNum - 1, 3);
         if (actIndex < 0) actIndex = 0;
         switch (rarity) {

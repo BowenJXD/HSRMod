@@ -185,5 +185,16 @@
     "EXTENDED_DESCRIPTION": [
       "Endless riddles, but the answer... is nothing but a void."
     ]
+  },
+  "HSRMod:Acheron1": {
+    "EXTENDED_DESCRIPTION": [
+      "#rI  #rweep  #rfor  #rthe  #rdeparted. ",
+      "#rDusks  #rrain,  #rit  #rtoo  #rshall  #rfall. "
+    ]
+  },
+  "HSRMod:Entangle": {
+    "EXTENDED_DESCRIPTION": [
+      "This card is #bentangled."
+    ]
   }
 }

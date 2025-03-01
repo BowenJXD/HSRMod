@@ -1,3 +1,4 @@
+/*
 package hsrmod.cards.uncommon;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -25,3 +26,4 @@ public class TopazNumby1 extends BaseCard {
         addToBot(new ApplyPowerAction(p, p, new TopazNumbyPower(1, upgraded)));
     }
 }
+*/

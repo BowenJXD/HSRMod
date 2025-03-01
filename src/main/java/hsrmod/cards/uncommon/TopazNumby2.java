@@ -1,6 +1,7 @@
 package hsrmod.cards.uncommon;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.utility.DiscardToHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -17,16 +18,19 @@ import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
 import java.util.Comparator;
+import java.util.List;
+import java.util.Objects;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
 public class TopazNumby2 extends BaseCard implements PreFollowUpSubscriber {
     public static final String ID = TopazNumby2.class.getSimpleName();
     
+    int count = 0;
+    
     public TopazNumby2() {
         super(ID);
         tags.add(FOLLOW_UP);
-        exhaust = true;
     }
     
     @Override
@@ -59,12 +63,29 @@ public class TopazNumby2 extends BaseCard implements PreFollowUpSubscriber {
 
     @Override
     public void triggerOnOtherCardPlayed(AbstractCard c) {
-        if (!AbstractDungeon.player.hand.contains(this)) return;
         if (c instanceof BaseCard) {
-            BaseCard card = (BaseCard) c;
-            if (card.followedUp && !followedUp) {
-                followedUp = true;
-                addToBot(new FollowUpAction(this));
+            BaseCard baseCard = (BaseCard) c;
+            if (baseCard.followedUp && !followedUp) {
+                if (inHand) {
+                    followedUp = true;
+                    addToBot(new FollowUpAction(this));
+                } else {
+                    AbstractCard card = null;
+                    List<AbstractCard> discardPile = AbstractDungeon.player.hand.group;
+                    for (int i = discardPile.size() - 1; i >= 0; i--) {
+                        if (discardPile.get(i).cardID.equals(cardID)) {
+                            card = discardPile.get(i);
+                            break;
+                        }
+                    }
+                    if (card != null) {
+                        count++;
+                        if (count == 2) {
+                            count = 0;
+                            addToBot(new DiscardToHandAction(card));
+                        }
+                    }
+                }
             }
         }
     }

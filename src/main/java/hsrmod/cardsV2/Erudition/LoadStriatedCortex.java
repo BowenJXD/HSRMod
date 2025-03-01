@@ -1,3 +1,4 @@
+/*
 package hsrmod.cardsV2.Erudition;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -26,3 +27,4 @@ public class LoadStriatedCortex extends BaseCard {
         addToBot(new ApplyPowerAction(p, p, new LoadStriatedCortexPower(damageIncrement)));
     }
 }
+*/

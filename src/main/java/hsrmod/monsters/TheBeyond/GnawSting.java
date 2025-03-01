@@ -24,7 +24,7 @@ public class GnawSting extends BaseMonster {
 
         decayCount = specialAs ? 10 : 9;
 
-        addMoveA(Intent.ATTACK, 9, mi -> {
+        addMove(Intent.ATTACK, moreDamageAs ? 9 : 3, mi -> {
             addToBot(new VFXAction(new ClashEffect(p.hb.cX, p.hb.cY)));
             attack(mi, AbstractGameAction.AttackEffect.SLASH_HEAVY);
         });

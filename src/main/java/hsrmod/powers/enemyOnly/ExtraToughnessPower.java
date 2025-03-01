@@ -1,8 +1,10 @@
 package hsrmod.powers.enemyOnly;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import hsrmod.actions.ElementalDamageAction;
+import hsrmod.cardsV2.Curse.Entangle;
 import hsrmod.misc.IMultiToughness;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.HSRMod;
@@ -54,6 +56,7 @@ public class ExtraToughnessPower extends BuffPower implements PreToughnessReduce
                 power.alterPower(ToughnessPower.getStackLimit(owner));
             }
             remove(1);
+            addToBot(new MakeTempCardInHandAction(new Entangle()));
         }
         return amount;
     }

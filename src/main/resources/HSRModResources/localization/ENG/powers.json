@@ -418,6 +418,13 @@
       "Upon break, adjust toughness to #b%d, and gain [E]."
     ]
   },
+  "HSRMod:Tribbie": {
+    "NAME": "Guess Who Lives Here",
+    "DESCRIPTIONS": [
+      "After playing an attack card, for every other target hit, deal !M! damage to the target with most health.",
+      "After playing an attack card, for every target hit, deal !M! damage to the target with most health."
+    ]
+  },
   
   "HSRMod:Charging": {
     "NAME": "Charging",
@@ -764,7 +771,7 @@
   "HSRMod:ExtraToughness": {
     "NAME": "Extra Toughness",
     "DESCRIPTIONS": [
-      "Removes before being broken, removes 1 stack, if there is any stack left, recovers all #yToughness."
+      "Removes before being broken, removes 1 stack, if there is any stack left, recovers all #yToughness, and add #yEntangle to hand."
     ]
   },
   "HSRMod:ShuffleState": {

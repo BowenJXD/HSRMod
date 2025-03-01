@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cards.common.March7th2;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
@@ -54,10 +55,11 @@ public class ReinforcePower extends BuffPower implements OnPlayerDamagedSubscrib
     public int receiveOnPlayerDamaged(int i, DamageInfo damageInfo) {
         if (SubscriptionManager.checkSubscriber(this) 
                 && AbstractDungeon.player.currentBlock > 0
-                && damageInfo.type != DamageInfo.DamageType.HP_LOSS) {
+                && damageInfo.type != DamageInfo.DamageType.HP_LOSS
+                && damageInfo.owner instanceof AbstractMonster) {
             if (AbstractDungeon.player.hand.size() < BaseMod.MAX_HAND_SIZE) {
                 March7th2 card = new March7th2();
-                card.priorityTarget = damageInfo.owner;
+                card.priorityTarget = (AbstractMonster) damageInfo.owner;
                 addToTop(new MakeTempCardInHandAction(card));
             }
             if (block > 0) {

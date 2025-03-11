@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.ShopRoom;
 import hsrmod.relics.BaseRelic;
+import hsrmod.utils.CardSelectManager;
 import hsrmod.utils.ModHelper;
 import hsrmod.utils.RelicEventHelper;
 
@@ -41,19 +42,9 @@ public class AshesToAshesDustToDust extends BaseRelic implements ClickableRelic 
             setCounter(basePrice);
             beginLongPulse();
         }
-        else {
+        else if (counter >= 0) {
             setCounter(-1);
             stopPulse();
-        }
-    }
-    
-    public void update() {
-        super.update();
-        if (!this.cardSelected && AbstractDungeon.gridSelectScreen.selectedCards.size() == 1) {
-            RelicEventHelper.upgradeCards(AbstractDungeon.gridSelectScreen.selectedCards.get(0));
-            this.cardSelected = true;
-            AbstractDungeon.gridSelectScreen.selectedCards.clear();
-            AbstractDungeon.getCurrRoom().rewardPopOutTimer = 0.25F;
         }
     }
 
@@ -85,11 +76,11 @@ public class AshesToAshesDustToDust extends BaseRelic implements ClickableRelic 
             AbstractDungeon.gridSelectScreen.selectedCards.clear();
             AbstractDungeon.getCurrRoom().rewardPopOutTimer = 0.25F;
         } else if (!AbstractDungeon.isScreenUp) {
-            AbstractDungeon.gridSelectScreen.open(tmp, 1, this.DESCRIPTIONS[1] + this.name + LocalizedStrings.PERIOD, true, false, false, false);
+            CardSelectManager.getInstance().addEvent(tmp, 1, this.DESCRIPTIONS[1] + this.name + LocalizedStrings.PERIOD, false, CardSelectManager.UsagePreset.UPGRADE);
         } else {
             AbstractDungeon.dynamicBanner.hide();
             AbstractDungeon.previousScreen = AbstractDungeon.screen;
-            AbstractDungeon.gridSelectScreen.open(tmp, 1, this.DESCRIPTIONS[1] + this.name + LocalizedStrings.PERIOD, true, false, false, false);
+            CardSelectManager.getInstance().addEvent(tmp, 1, this.DESCRIPTIONS[1] + this.name + LocalizedStrings.PERIOD, false, CardSelectManager.UsagePreset.UPGRADE);
         }
         
         setCounter(counter + priceIncrement);

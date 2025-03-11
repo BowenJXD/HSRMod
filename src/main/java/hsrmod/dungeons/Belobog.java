@@ -125,6 +125,17 @@ public class Belobog extends CustomDungeon {
     }
 
     protected void initializeEventList() {
+        eventList.add("Big Fish");
+        eventList.add("The Cleric");
+        eventList.add("Dead Adventurer");
+        eventList.add("Golden Idol");
+        eventList.add("Golden Wing");
+        eventList.add("World of Goop");
+        eventList.add("Liars Game");
+        eventList.add("Living Wall");
+        eventList.add("Mushrooms");
+        eventList.add("Scrap Ooze");
+        eventList.add("Shining Light");
     }
 
     static {

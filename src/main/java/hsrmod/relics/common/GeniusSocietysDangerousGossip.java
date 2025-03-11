@@ -34,7 +34,7 @@ public class GeniusSocietysDangerousGossip extends BaseRelic implements CustomSa
     @Override
     public void onGainGold() {
         super.onGainGold();
-        if (usedUp) return;
+        if (usedUp || counter == -2) return;
         int tmp = AbstractDungeon.player.gold - cachedGold;
         goldGained += tmp;
         while (goldGained > goldRequired && counter > 0) {

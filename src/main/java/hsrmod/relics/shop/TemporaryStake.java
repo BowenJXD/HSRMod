@@ -25,7 +25,7 @@ public class TemporaryStake extends BaseRelic {
         if (!usedUp) {
             reduceCounterAndCheckDestroy();
             if (usedUp) {
-                AbstractDungeon.player.loseGold(600);
+                AbstractDungeon.player.loseGold(450);
             }
         }
     }

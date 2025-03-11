@@ -12,49 +12,38 @@ import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
 import hsrmod.modcore.HSRMod;
 import hsrmod.patches.RelicTagField;
 import hsrmod.relics.special.Pineapple;
+import hsrmod.utils.CardSelectManager;
+import hsrmod.utils.GeneralUtil;
 import hsrmod.utils.ModHelper;
 import hsrmod.utils.RelicEventHelper;
 
-public class PineappleBreadEvent extends BaseEvent {
+public class PineappleBreadEvent extends PhasedEvent {
     public static final String ID = PineappleBreadEvent.class.getSimpleName();
     private static final EventStrings eventStrings = CardCrawlGame.languagePack.getEventString(HSRMod.makePath(ID));
     private static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
     private static final String[] OPTIONS = eventStrings.OPTIONS;
-    private static final String title = eventStrings.NAME;
+    private static final String NAME = eventStrings.NAME;
 
     int purgeCount = 3;
     int relicCount = 2;
 
-    @Override
-    public void update() {
-        super.update();
-        if (!AbstractDungeon.isScreenUp && !AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()) {
-            CardCrawlGame.sound.play("CARD_EXHAUST");
-            for (int i = 0; i < AbstractDungeon.gridSelectScreen.selectedCards.size(); i++) {
-                logMetricCardRemoval("Purifier", "Purged", (AbstractCard) AbstractDungeon.gridSelectScreen.selectedCards.get(i));
-                AbstractDungeon.topLevelEffects.add(new PurgeCardEffect((AbstractCard) AbstractDungeon.gridSelectScreen.selectedCards.get(i), (float) (Settings.WIDTH / 2), (float) (Settings.HEIGHT / 2)));
-                AbstractDungeon.player.masterDeck.removeCard((AbstractCard) AbstractDungeon.gridSelectScreen.selectedCards.get(i));
-            }
-            AbstractDungeon.gridSelectScreen.selectedCards.clear();
-        }
-    }
-
     public PineappleBreadEvent() {
-        super(ID);
+        super(ID, NAME, "HSRModResources/img/events/" + ID + ".png");
+
+        purgeCount = ModHelper.eventAscension() ? 2 : 3;
+        relicCount = ModHelper.eventAscension() ? 1 : 2;
 
         registerPhase(0, new TextPhase(DESCRIPTIONS[0]).addOption(OPTIONS[0], (i) -> transitionKey(1)));
         registerPhase(1, new TextPhase(DESCRIPTIONS[1]).addOption(OPTIONS[0], (i) -> transitionKey(2)));
         registerPhase(2, new TextPhase(DESCRIPTIONS[2])
-                .addOption(OPTIONS[1], (i) -> {
-                    AbstractDungeon.gridSelectScreen.open(CardGroup.getGroupWithoutBottledCards(AbstractDungeon.player.masterDeck.getPurgeableCards()), purgeCount, OPTIONS[2], false, false, false, true);
-                    RelicEventHelper.gainRelics(HSRMod.makePath(Pineapple.ID));
-                    transitionKey(3);
-                }, new Pineapple())
+                .addOption(new TextPhase.OptionInfo(GeneralUtil.tryFormat(OPTIONS[1], purgeCount), new Pineapple())
+                        .cardRemovalOption(3, GeneralUtil.tryFormat(OPTIONS[2], purgeCount), purgeCount)
+                        .setOptionResult((i) -> RelicEventHelper.gainRelics(HSRMod.makePath(Pineapple.ID))))
                 .addOption(OPTIONS[3], (i) -> {
                     // do nothing
                     transitionKey(4);
                 })
-                .addOption(OPTIONS[4], (i) -> {
+                .addOption(GeneralUtil.tryFormat(OPTIONS[4], relicCount), (i) -> {
                     RelicEventHelper.gainRelics(relicCount, r -> RelicTagField.subtle.get(r));
                     transitionKey(5);
                 })

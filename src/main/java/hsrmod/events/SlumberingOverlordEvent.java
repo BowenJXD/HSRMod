@@ -28,10 +28,10 @@ public class SlumberingOverlordEvent extends PhasedEvent {
     private static final EventStrings eventStrings = CardCrawlGame.languagePack.getEventString(HSRMod.makePath(ID));
     private static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
     private static final String[] OPTIONS = eventStrings.OPTIONS;
-    private static final String title = eventStrings.NAME;
+    private static final String NAME = eventStrings.NAME;
 
     public SlumberingOverlordEvent() {
-        super(ID, title, "HSRModResources/img/events/" + ID + ".png");
+        super(ID, NAME, "HSRModResources/img/events/" + ID + ".png");
 
         registerPhase(0, new TextPhase(DESCRIPTIONS[0]).addOption(OPTIONS[0], (i) -> transitionKey(1)));
         registerPhase(1, new TextPhase(DESCRIPTIONS[1]).addOption(OPTIONS[0], (i) -> transitionKey(2)));

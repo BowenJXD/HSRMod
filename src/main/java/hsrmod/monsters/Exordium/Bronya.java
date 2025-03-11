@@ -19,7 +19,7 @@ public class Bronya extends BaseMonster {
     
     public Bronya() {
         super(ID, 240, 384, -100, 0);
-        setDamagesWithAscension(12, 9);
+        setDamagesWithAscension(9, 15);
         addSlot(-300, 30);
         addSlot(100, 30);
         bronyaCount = ModHelper.specialAscension(type) ? 3 : 4;

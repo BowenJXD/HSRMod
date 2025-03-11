@@ -1,7 +1,6 @@
 package hsrmod.misc;
 
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.monsters.BaseMonster;
 import hsrmod.monsters.Exordium.*;
 import hsrmod.monsters.TheBeyond.*;
@@ -12,6 +11,8 @@ public class Encounter {
     
     public static final String PARASITE_N_SLAVER = "Parasite and Red Slaver";
     public static final String THREE_LIL_PIGS = "Three Little Pigs";
+    public static final String THREE_LIL_PIGS_SLOW = "Three Little Pigs Slow";
+    public static final String THREE_LIL_PIGS_FAST = "Three Little Pigs Fast";
     public static final String RPS_1 = "Rock Paper Scissors 1";
     public static final String RPS_2 = "Rock Paper Scissors 2";
     public static final String TAVERN_1 = "Tavern 1";
@@ -22,6 +23,13 @@ public class Encounter {
     public static final String CULINARY_COLOSSEUM_1 = "CulinaryColosseum 1";
     public static final String CULINARY_COLOSSEUM_2 = "CulinaryColosseum 2";
     public static final String CULINARY_COLOSSEUM_3 = "CulinaryColosseum 3";
+    public static final String WE_ARE_COWBOYS_1 = "We Are Cowboys 1";
+    public static final String WE_ARE_COWBOYS_2 = "We Are Cowboys 2";
+    public static final String WE_ARE_COWBOYS_3 = "We Are Cowboys V";
+    public static final String APES_SUCH_AS_YOU = "Apes Such As You";
+    public static final String SELF_ANNIHILATOR = "Self Annihilator";
+    public static final String THE_RETURNING_HELIOBUS = "The Returning Heliobus";
+    public static final String CHEAT_CODE_2 = "Cheat Code 2";
     
     // ======================== BOSS ========================
     

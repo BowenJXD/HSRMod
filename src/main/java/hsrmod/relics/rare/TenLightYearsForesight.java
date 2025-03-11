@@ -21,7 +21,7 @@ public class TenLightYearsForesight extends BaseRelic {
         if (c.type == AbstractCard.CardType.ATTACK && m != null) {
             for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
                 if (mo != m && ModHelper.check(mo)) {
-                    addToBot(new DamageAction(mo, new DamageInfo(AbstractDungeon.player, 2)));
+                    addToBot(new DamageAction(mo, new DamageInfo(AbstractDungeon.player, 2, DamageInfo.DamageType.THORNS)));
                 }
             }
         }

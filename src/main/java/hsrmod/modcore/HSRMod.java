@@ -10,21 +10,27 @@ import com.badlogic.gdx.Gdx;
 import com.evacipated.cardcrawl.mod.stslib.icons.CustomIconHelper;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.RollMoveAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.colorless.SadisticNature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.dungeons.Exordium;
+import com.megacrit.cardcrawl.dungeons.TheBeyond;
+import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import com.megacrit.cardcrawl.monsters.city.ShelledParasite;
 import com.megacrit.cardcrawl.monsters.exordium.SlaverRed;
-import com.megacrit.cardcrawl.relics.LizardTail;
-import com.megacrit.cardcrawl.relics.Matryoshka;
-import com.megacrit.cardcrawl.relics.MawBank;
-import com.megacrit.cardcrawl.relics.SneckoEye;
+import com.megacrit.cardcrawl.powers.FadingPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
+import com.megacrit.cardcrawl.powers.TimeWarpPower;
+import com.megacrit.cardcrawl.relics.*;
+import com.megacrit.cardcrawl.screens.runHistory.RunHistoryPath;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import com.badlogic.gdx.graphics.Color;
 import hsrmod.characters.StellaCharacter;
@@ -39,12 +45,13 @@ import hsrmod.monsters.Exordium.*;
 import hsrmod.monsters.Bonus.SequenceTrotter;
 import hsrmod.monsters.TheBeyond.*;
 import hsrmod.monsters.TheCity.*;
+import hsrmod.patches.OtherModFixes;
 import hsrmod.patches.RelicTagField;
+import hsrmod.powers.enemyOnly.DeathExplosionPower;
+import hsrmod.powers.enemyOnly.PerformancePointPower;
 import hsrmod.relics.BaseRelic;
 import hsrmod.relics.common.AngelTypeIOUDispenser;
-import hsrmod.relics.special.Pineapple;
-import hsrmod.relics.special.ThalanToxiFlame;
-import hsrmod.relics.special.ThePinkestCollision;
+import hsrmod.relics.special.*;
 import hsrmod.utils.ModHelper;
 import hsrmod.utils.RewardEditor;
 import org.apache.logging.log4j.LogManager;
@@ -137,12 +144,25 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
                         }
                     });
         }
-        if (AbstractDungeon.isPlayerInDungeon() && AbstractDungeon.player instanceof StellaCharacter) {
-            BaseMod.removeRelic(RelicLibrary.getRelic(SneckoEye.ID));
-        }
         RelicTagField.destructible.set(RelicLibrary.getRelic(LizardTail.ID), true);
         RelicTagField.destructible.set(RelicLibrary.getRelic(MawBank.ID), true);
         RelicTagField.destructible.set(RelicLibrary.getRelic(Matryoshka.ID), true);
+
+        String[] ecoRelicIDs = new String[]{
+                MawBank.ID,
+                GoldenIdol.ID,
+                BloodyIdol.ID,
+                MembershipCard.ID,
+                OldCoin.ID,
+                SmilingMask.ID,
+                SneckoSkull.ID,
+                TinyHouse.ID,
+                Ectoplasm.ID,
+        };
+        for (String id : ecoRelicIDs) {
+            RelicTagField.economic.set(RelicLibrary.getRelic(id), true);
+        }
+        OtherModFixes.setRelics();
     }
 
     public void receiveEditStrings() {
@@ -192,79 +212,131 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
     }
 
     public void addEvents() {
-        BaseMod.addEvent(new AddEventParams.Builder(RuanMeiEvent.ID, RuanMeiEvent.class)
-                .spawnCondition(() -> AbstractDungeon.eventRng.random(99) < 10)
+        BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(RuanMeiEvent.ID), RuanMeiEvent.class)
+                .spawnCondition(() -> AbstractDungeon.eventRng.random(99) < 6)
                 .eventType(EventUtils.EventType.ONE_TIME)
                 .playerClass(STELLA_CHARACTER)
                 .create());
 
-        BaseMod.addEvent(new AddEventParams.Builder(CosmicCrescendoEvent.ID, CosmicCrescendoEvent.class)
+        BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(CosmicCrescendoEvent.ID), CosmicCrescendoEvent.class)
                 .dungeonID(Belobog.ID)
                 // .bonusCondition(() -> ModHelper.hasRelic(WaxOfElation.ID))
                 .create());
-        BaseMod.addEvent(new AddEventParams.Builder(TavernEvent.ID, TavernEvent.class)
+        BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(TavernEvent.ID), TavernEvent.class)
                 .dungeonID(Luofu.ID)
                 .spawnCondition(() -> !ModHelper.hasRelic(AngelTypeIOUDispenser.ID))
                 // .bonusCondition(() -> ModHelper.hasRelic(WaxOfDestruction.ID))
                 .endsWithRewardsUI(true)
                 .create());
-        BaseMod.addEvent(new AddEventParams.Builder(IOUDispenserEvent.ID, IOUDispenserEvent.class)
+        BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(IOUDispenserEvent.ID), IOUDispenserEvent.class)
                 .dungeonID(Luofu.ID)
                 // .bonusCondition(() -> ModHelper.hasRelic(WaxOfNihility.ID))
                 .create());
-        BaseMod.addEvent(new AddEventParams.Builder(LonelyBeautyBugsOneEvent.ID, LonelyBeautyBugsOneEvent.class)
+        BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(LonelyBeautyBugsOneEvent.ID), LonelyBeautyBugsOneEvent.class)
                 .dungeonIDs(Belobog.ID, Luofu.ID)
                 // .bonusCondition(() -> ModHelper.hasRelic(WaxOfPreservation.ID))
                 .create());
-        BaseMod.addEvent(new AddEventParams.Builder(SlumberingOverlordEvent.ID, SlumberingOverlordEvent.class)
+        BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(SlumberingOverlordEvent.ID), SlumberingOverlordEvent.class)
                 .dungeonID(Penacony.ID)
                 // .bonusCondition(() -> ModHelper.hasRelic(WaxOfPropagation.ID))
                 .create());
-        BaseMod.addEvent(new AddEventParams.Builder(RockPaperScissorsEvent.ID, RockPaperScissorsEvent.class)
+        BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(RockPaperScissorsEvent.ID), RockPaperScissorsEvent.class)
                 .dungeonID(Luofu.ID)
                 // .bonusCondition(() -> ModHelper.hasRelic(WaxOfTheHunt.ID))
                 .endsWithRewardsUI(true)
                 .create());
-        BaseMod.addEvent(new AddEventParams.Builder(DoubleLotteryEvent.ID, DoubleLotteryEvent.class)
+        BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(DoubleLotteryEvent.ID), DoubleLotteryEvent.class)
                 // .bonusCondition(() -> ModHelper.hasRelic(WaxOfErudition.ID))
                 .create());
-        BaseMod.addEvent(new AddEventParams.Builder(WaxManufacturerEvent.ID, WaxManufacturerEvent.class)
+        BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(WaxManufacturerEvent.ID), WaxManufacturerEvent.class)
                 .dungeonID(Belobog.ID)
                 // .bonusCondition(() -> WaxRelic.getSelectedPathTag(AbstractDungeon.player.relics) != WaxManufacturerEvent.getMostCommonTag(AbstractDungeon.player.masterDeck))
                 .create());
 
-        BaseMod.addEvent(new AddEventParams.Builder(ThreeLittlePigsEvent.ID, ThreeLittlePigsEvent.class)
+        BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(ThreeLittlePigsEvent.ID), ThreeLittlePigsEvent.class)
                 .endsWithRewardsUI(true)
                 .create());
-        BaseMod.addEvent(new AddEventParams.Builder(ImperialLegacyEvent.ID, ImperialLegacyEvent.class)
+        BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(ImperialLegacyEvent.ID), ImperialLegacyEvent.class)
                 .spawnCondition(() -> AbstractDungeon.eventRng.random(99) < 50)
                 .dungeonID(Penacony.ID)
                 // .eventType(EventUtils.EventType.ONE_TIME)
                 .create());
-        BaseMod.addEvent(new AddEventParams.Builder(AceTrashDiggerEvent.ID, AceTrashDiggerEvent.class)
-                .spawnCondition(() -> AbstractDungeon.eventRng.random(99) < 50)
+        BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(AceTrashDiggerEvent.ID), AceTrashDiggerEvent.class)
                 .create());
-        BaseMod.addEvent(new AddEventParams.Builder(PineappleBreadEvent.ID, PineappleBreadEvent.class)
+        BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(PineappleBreadEvent.ID), PineappleBreadEvent.class)
                 .eventType(EventUtils.EventType.ONE_TIME)
                 .spawnCondition(() -> !ModHelper.hasRelic(Pineapple.ID))
                 .create());
-        BaseMod.addEvent(new AddEventParams.Builder(YuQingtuEvent.ID, YuQingtuEvent.class)
+        BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(YuQingtuEvent.ID), YuQingtuEvent.class)
                 .spawnCondition(() -> !ModHelper.hasRelic(ThePinkestCollision.ID) && !ModHelper.hasRelic(ThalanToxiFlame.ID))
                 .endsWithRewardsUI(true)
                 .create());
-        BaseMod.addEvent(new AddEventParams.Builder(IPMBShoppingMallEvent.ID, IPMBShoppingMallEvent.class)
+        BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(IPMBShoppingMallEvent.ID), IPMBShoppingMallEvent.class)
+                .eventType(EventUtils.EventType.SHRINE)
                 .create());
-        BaseMod.addEvent(new AddEventParams.Builder(TrashSymphonyEvent.ID, TrashSymphonyEvent.class)
-                .spawnCondition(() -> AbstractDungeon.eventRng.random(99) < 25)
+        BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(TrashSymphonyEvent.ID), TrashSymphonyEvent.class)
+                .spawnCondition(() -> AbstractDungeon.eventRng.random(99) < 50)
                 .dungeonID(Penacony.ID)
                 // .eventType(EventUtils.EventType.ONE_TIME)
                 .endsWithRewardsUI(true)
                 .create());
-        BaseMod.addEvent(new AddEventParams.Builder(CulinaryColosseumEvent.ID, CulinaryColosseumEvent.class)
-                .spawnCondition(() -> AbstractDungeon.eventRng.random(99) < 25)
+        BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(CulinaryColosseumEvent.ID), CulinaryColosseumEvent.class)
+                .spawnCondition(() -> AbstractDungeon.eventRng.random(99) < 50)
                 .dungeonID(Penacony.ID)
                 // .eventType(EventUtils.EventType.ONE_TIME)
                 .endsWithRewardsUI(true)
+                .create());
+
+        BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(RobotSalesTerminalEvent.ID), RobotSalesTerminalEvent.class)
+                .eventType(EventUtils.EventType.SHRINE)
+                .create());
+        BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(TheRelicFixerEvent.ID), TheRelicFixerEvent.class)
+                .spawnCondition(() -> AbstractDungeon.player.relics.stream().anyMatch(r -> RelicTagField.destructible.get(r)))
+                .create());
+        BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(WeAreCowboysEvent.ID), WeAreCowboysEvent.class)
+                .dungeonID(Penacony.ID)
+                .endsWithRewardsUI(true)
+                .create());
+        BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(InsectNestEvent.ID), InsectNestEvent.class)
+                .dungeonID(Penacony.ID)
+                .spawnCondition(() -> !ModHelper.hasRelic(InsectWeb.ID))
+                .create());
+        BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(FleaMarketEvent.ID), FleaMarketEvent.class)
+                .dungeonID(Belobog.ID)
+                .spawnCondition(() -> AbstractDungeon.player.gold >= 50)
+                .create());
+        BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(ApesSuchAsYouEvent.ID), ApesSuchAsYouEvent.class)
+                .dungeonID(Luofu.ID)
+                .endsWithRewardsUI(true)
+                .create());
+        BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(ShoppingStreetEvent.ID), ShoppingStreetEvent.class)
+                .dungeonID(Belobog.ID)
+                .create());
+        BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(SelfAnnihilatorEvent.ID), SelfAnnihilatorEvent.class)
+                .dungeonID(Luofu.ID)
+                .endsWithRewardsUI(true)
+                .create());
+        BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(KnightsOfBeautyEvent.ID), KnightsOfBeautyEvent.class)
+                .spawnCondition(() -> AbstractDungeon.eventRng.random(99) < 50)
+                .eventType(EventUtils.EventType.ONE_TIME)
+                .create());
+        BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(TheReturningHeliobusEvent.ID), TheReturningHeliobusEvent.class)
+                .dungeonID(Penacony.ID)
+                .endsWithRewardsUI(true)
+                .create());
+        BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(FalseFutureEvent.ID), FalseFutureEvent.class)
+                .dungeonIDs(Belobog.ID, Luofu.ID, Penacony.ID, Exordium.ID, TheCity.ID, TheBeyond.ID)
+                .spawnCondition(() -> !ModHelper.hasRelic(TowatCards.ID))
+                .eventType(EventUtils.EventType.ONE_TIME)
+                .create());
+        BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(ShoppingChannelEvent.ID), ShoppingChannelEvent.class)
+                .dungeonID(Luofu.ID)
+                .create());
+        BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(GeniusSocietyEvent.ID), GeniusSocietyEvent.class)
+                .dungeonID(Belobog.ID)
+                .create());
+        BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(CheatCode1Event.ID), CheatCode1Event.class)
+                .dungeonIDs(Belobog.ID, Luofu.ID)
                 .create());
 
         // =========================== Event Monsters ===========================
@@ -275,6 +347,16 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
         }));
         BaseMod.addMonster(Encounter.THREE_LIL_PIGS, () -> new MonsterGroup(new AbstractMonster[]{
                 new SequenceTrotter(-400, AbstractDungeon.monsterRng.random(-15, 15), 0),
+                new SequenceTrotter(-100, AbstractDungeon.monsterRng.random(-15, 15), 2),
+                new SequenceTrotter(+200, AbstractDungeon.monsterRng.random(-15, 15), 1),
+        }));
+        BaseMod.addMonster(Encounter.THREE_LIL_PIGS_SLOW, () -> new MonsterGroup(new AbstractMonster[]{
+                new SequenceTrotter(-400, AbstractDungeon.monsterRng.random(-15, 15), 0),
+                new SequenceTrotter(-100, AbstractDungeon.monsterRng.random(-15, 15), 1),
+                new SequenceTrotter(+200, AbstractDungeon.monsterRng.random(-15, 15), 0),
+        }));
+        BaseMod.addMonster(Encounter.THREE_LIL_PIGS_FAST, () -> new MonsterGroup(new AbstractMonster[]{
+                new SequenceTrotter(-400, AbstractDungeon.monsterRng.random(-15, 15), 1),
                 new SequenceTrotter(-100, AbstractDungeon.monsterRng.random(-15, 15), 2),
                 new SequenceTrotter(+200, AbstractDungeon.monsterRng.random(-15, 15), 1),
         }));
@@ -319,6 +401,40 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
                 new LordlyTrashcan(-250, 0),
                 new KingTrashcan(0, 0).modifyHpByPercent(1.5f).modifyToughnessByPercent(1.5f),
                 new LordlyTrashcan(250, 0),
+        }));
+        BaseMod.addMonster(Encounter.WE_ARE_COWBOYS_1, () -> new MonsterGroup(new AbstractMonster[]{
+                new Heartbreaker(-250, 0).modifyHpByPercent(0.75f),
+                new ShellOfFadedRage(100, 0).modifyHpByPercent(0.75f)
+        }));
+        BaseMod.addMonster(Encounter.WE_ARE_COWBOYS_2, () -> new MonsterGroup(new AbstractMonster[]{
+                new MrDomescreen(-250, 0).modifyHpByPercent(0.75f),
+                new BeyondOvercooked(100, 0).modifyHpByPercent(0.75f)
+        }));
+        BaseMod.addMonster(Encounter.WE_ARE_COWBOYS_3, () -> new MonsterGroup(new AbstractMonster[]{
+                new InsatiableVanity(-250, 0).modifyHpByPercent(0.75f),
+                new PastConfinedAndCaged(100, 0).modifyHpByPercent(0.75f)
+        }));
+        BaseMod.addMonster(Encounter.APES_SUCH_AS_YOU, () -> new MonsterGroup(new AbstractMonster[]{
+                new GoldenHound(-350, 0).modifyHpByPercent(0.75f),
+                new MaleficApe(-50, 0).modifyHpByPercent(0.75f),
+                new WoodenLupus(250, 0).modifyHpByPercent(0.75f),
+        }));
+        BaseMod.addMonster(Encounter.SELF_ANNIHILATOR, () -> new MonsterGroup(new AbstractMonster[]{
+                new DecayingShadow(-250, 0),
+                new GuardianShadow(150, 0),
+        }));
+        BaseMod.addMonster(Encounter.THE_RETURNING_HELIOBUS, () -> new MonsterGroup(new AbstractMonster[]{
+                new Cirrus(true).modifyHp(400).setPreBattleAction(m -> {
+                    m.addToBot(new ApplyPowerAction(m, m, new FadingPower(m, 4)));
+                    m.addToBot(new ApplyPowerAction(m, m, new TimeWarpPower(m)));
+                })
+        }));
+        BaseMod.addMonster(Encounter.CHEAT_CODE_2, () -> new MonsterGroup(new AbstractMonster[]{
+                new TeamLeader(-200, 0).modifyHpByPercent(1.5f).modifyToughnessByPercent(1.5f).setPreBattleAction(m -> {
+                    m.addToBot(new ApplyPowerAction(m, m, new PerformancePointPower(m, 4)));
+                    m.addToBot(new RollMoveAction(m));
+                    ModHelper.addToBotAbstract(m::createIntent);
+                }),
         }));
     }
 
@@ -392,9 +508,9 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
                 new FortuneBananAdvisor(300, AbstractDungeon.monsterRng.random(50, 75), ModHelper.specialAscension(AbstractMonster.EnemyType.ELITE)),
         }));
         BaseMod.addMonster(Encounter.THE_PAST_PRESENT_AND_ETERNAL_SHOW, () -> new MonsterGroup(new AbstractMonster[]{
-                new PresentInebriatedInRevelry(-400, 0).modifyToughnessByPercent(1.5f),
-                new TomorrowInHarmoniousChords(-100, 0).modifyToughnessByPercent(1.5f),
-                new PastConfinedAndCaged(200, 0).modifyToughnessByPercent(1.5f),
+                new PresentInebriatedInRevelry(-400, 0).modifyHpByPercent(1.5f).modifyToughnessByPercent(1.5f),
+                new TomorrowInHarmoniousChords(-100, 0).modifyHpByPercent(1.5f).modifyToughnessByPercent(1.5f),
+                new PastConfinedAndCaged(200, 0).modifyHpByPercent(1.5f).modifyToughnessByPercent(1.5f),
         }));
         BaseMod.addMonster(Encounter.AVENTURINE_OF_STRATAGEMS, () -> new MonsterGroup(new AbstractMonster[]{
                 new AventurineOfStratagems()
@@ -617,12 +733,12 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
         }
     }
 
-    void addWav(String id) {
-        BaseMod.addAudio(id, "HSRModResources/localization/" + lang + "/audio/" + id + ".wav");
+    void addWav(String key) {
+        BaseMod.addAudio(key, "HSRModResources/localization/" + lang + "/audio/" + key + ".wav");
     }
 
-    void addOgg(String id) {
-        BaseMod.addAudio(id, "HSRModResources/localization/" + lang + "/audio/" + id + ".ogg");
+    void addOgg(String key) {
+        BaseMod.addAudio(key, "HSRModResources/localization/" + lang + "/audio/" + key + ".ogg");
     }
 
     public void updateLanguage() {
@@ -634,12 +750,8 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
     }
 
     public static String makePath(String name) {
-        if (name.contains("Power")) {
-            name = name.replace("Power", "");
-        } else if (name.contains("Relic")) {
-            name = name.replace("Relic", "");
-        } else if (name.contains("Event")) {
-            name = name.replace("Event", "");
+        if (name.endsWith("Power") || name.endsWith("Relic") || name.endsWith("Event")) {
+            name = name.substring(0, name.length() - 5);
         }
         return MOD_NAME + ":" + name;
     }

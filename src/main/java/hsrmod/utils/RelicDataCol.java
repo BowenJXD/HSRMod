@@ -10,4 +10,5 @@ public enum RelicDataCol {
     Destructible,
     Subtle,
     Special,
+    Economic,
 }

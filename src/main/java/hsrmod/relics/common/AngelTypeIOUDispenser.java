@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import hsrmod.relics.BaseRelic;
+import hsrmod.utils.RelicEventHelper;
 
 public class AngelTypeIOUDispenser extends BaseRelic {
     public static final String ID = AngelTypeIOUDispenser.class.getSimpleName();
@@ -33,6 +34,6 @@ public class AngelTypeIOUDispenser extends BaseRelic {
     }
     
     void doubleGold() {
-        AbstractDungeon.player.gainGold(AbstractDungeon.player.gold);
+        RelicEventHelper.gainGold(AbstractDungeon.player.gold);
     }
 }

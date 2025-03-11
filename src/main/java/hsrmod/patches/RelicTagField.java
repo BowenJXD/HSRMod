@@ -8,4 +8,5 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 public class RelicTagField {
     public static SpireField<Boolean> destructible = new SpireField<>(() -> false);
     public static SpireField<Boolean> subtle = new SpireField<>(() -> false);
+    public static SpireField<Boolean> economic = new SpireField<>(() -> false);
 }

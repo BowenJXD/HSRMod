@@ -22,7 +22,7 @@ public class GuardianShadow extends BaseMonster implements PreBreakSubscriber {
     public static final String ID = GuardianShadow.class.getSimpleName();
     
     public GuardianShadow(float x, float y) {
-        super(ID, 0F, -15.0F, 384, 384, x, y);
+        super(ID, 0F, -15.0F, 300, 384, x, y);
         setDamagesWithAscension(8);
     }
 

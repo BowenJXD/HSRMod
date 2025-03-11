@@ -30,6 +30,7 @@ public abstract class BaseRelic extends CustomRelic {
         RelicTagField.destructible.set(this, DataManager.getInstance().getRelicDataBoolean(id, RelicDataCol.Destructible));
         RelicTagField.subtle.set(this, DataManager.getInstance().getRelicDataBoolean(id, RelicDataCol.Subtle));
         hsrOnly = DataManager.getInstance().getRelicDataBoolean(id, RelicDataCol.Special);
+        RelicTagField.economic.set(this, DataManager.getInstance().getRelicDataBoolean(id, RelicDataCol.Economic));
     }
     
     // 获取遗物描述，但原版游戏只在初始化和获取遗物时调用，故该方法等于初始描述

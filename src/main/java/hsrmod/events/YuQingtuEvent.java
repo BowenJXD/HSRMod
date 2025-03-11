@@ -1,13 +1,12 @@
 package hsrmod.events;
 
+import basemod.abstracts.events.PhasedEvent;
 import basemod.abstracts.events.phases.CombatPhase;
 import basemod.abstracts.events.phases.TextPhase;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.MonsterHelper;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem;
@@ -22,12 +21,12 @@ import hsrmod.utils.ModHelper;
 import hsrmod.utils.RelicEventHelper;
 import hsrmod.utils.RewardEditor;
 
-public class YuQingtuEvent extends BaseEvent {
+public class YuQingtuEvent extends PhasedEvent {
     public static final String ID = YuQingtuEvent.class.getSimpleName();
     private static final EventStrings eventStrings = CardCrawlGame.languagePack.getEventString(HSRMod.makePath(ID));
     private static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
     private static final String[] OPTIONS = eventStrings.OPTIONS;
-    private static final String title = eventStrings.NAME;
+    private static final String NAME = eventStrings.NAME;
 
     Ingredient ingredient = Ingredient.SUGAR;
     
@@ -35,7 +34,7 @@ public class YuQingtuEvent extends BaseEvent {
     int goldLoss = 20;
 
     public YuQingtuEvent() {
-        super(ID);
+        super(ID, NAME, "HSRModResources/img/events/" + ID + ".png");
 
         registerPhase(Phase.START, new TextPhase(DESCRIPTIONS[0]).addOption(OPTIONS[0], (i) -> transitionKey(Phase.WHAT_TO_ADD)));
         registerPhase(Phase.WHAT_TO_ADD, new TextPhase(DESCRIPTIONS[1])
@@ -153,7 +152,7 @@ public class YuQingtuEvent extends BaseEvent {
                 .addRewards(true, room -> {
                     for (RewardItem r : room.rewards) {
                         if (r.type == RewardItem.RewardType.CARD) {
-                            RewardEditor.setRewardCards(r, AbstractCard.CardRarity.RARE);
+                            RewardEditor.setRewardRarity(r, AbstractCard.CardRarity.RARE);
                         }
                     }
                 }));

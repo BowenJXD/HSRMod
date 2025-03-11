@@ -14,6 +14,9 @@ import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
 import hsrmod.misc.Encounter;
 import hsrmod.modcore.HSRMod;
 import hsrmod.patches.RelicTagField;
+import hsrmod.utils.CardSelectManager;
+import hsrmod.utils.GeneralUtil;
+import hsrmod.utils.ModHelper;
 import hsrmod.utils.RelicEventHelper;
 
 public class CulinaryColosseumEvent extends PhasedEvent {
@@ -21,17 +24,19 @@ public class CulinaryColosseumEvent extends PhasedEvent {
     private static final EventStrings eventStrings = CardCrawlGame.languagePack.getEventString(HSRMod.makePath(ID));
     private static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
     private static final String[] OPTIONS = eventStrings.OPTIONS;
-    private static final String title = eventStrings.NAME;
+    private static final String NAME = eventStrings.NAME;
     
     int purgeCount = 2;
 
     public CulinaryColosseumEvent(){
-        super(ID, title, "HSRModResources/img/events/" + ID + ".png");
+        super(ID, NAME, "HSRModResources/img/events/" + ID + ".png");
+        
+        purgeCount = ModHelper.eventAscension() ? 1 : 2;
         
         registerPhase(0, new TextPhase(DESCRIPTIONS[0]).addOption(OPTIONS[0], (i)->transitionKey(1)));
         registerPhase(1, new TextPhase(DESCRIPTIONS[1])
                 .addOption(OPTIONS[1], (i)->transitionKey(2))
-                .addOption(OPTIONS[2], (i)->transitionKey(3))
+                .addOption(GeneralUtil.tryFormat(OPTIONS[2], purgeCount), (i)->transitionKey(3))
                 .addOption(OPTIONS[3], (i)->transitionKey(4))
         );
         registerPhase(2, new TextPhase(DESCRIPTIONS[2]).addOption(OPTIONS[0], (i)->transitionKey(5)));
@@ -50,26 +55,9 @@ public class CulinaryColosseumEvent extends PhasedEvent {
                 else break;
             }
         }));
-        registerPhase(8, new TextPhase(DESCRIPTIONS[5]).addOption(OPTIONS[4], (i)-> {
-            AbstractDungeon.gridSelectScreen.open(CardGroup.getGroupWithoutBottledCards(AbstractDungeon.player.masterDeck.getPurgeableCards()), purgeCount, OPTIONS[6], false, false, false, true);
-            transitionKey(9);
-        }));
+        registerPhase(8, new TextPhase(DESCRIPTIONS[5]).addOption(new TextPhase.OptionInfo(OPTIONS[4]).cardRemovalOption(9, OPTIONS[6], purgeCount)));
         registerPhase(9, new TextPhase(DESCRIPTIONS[6]).addOption(OPTIONS[5], (i)->openMap()));
         
         transitionKey(0);
-    }
-    
-    @Override
-    public void update() {
-        super.update();
-        if (!AbstractDungeon.isScreenUp && !AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()) {
-            CardCrawlGame.sound.play("CARD_EXHAUST");
-            for (int i = 0; i < AbstractDungeon.gridSelectScreen.selectedCards.size(); i++) {
-                logMetricCardRemoval("Purifier", "Purged", (AbstractCard) AbstractDungeon.gridSelectScreen.selectedCards.get(i));
-                AbstractDungeon.topLevelEffects.add(new PurgeCardEffect((AbstractCard) AbstractDungeon.gridSelectScreen.selectedCards.get(i), (float) (Settings.WIDTH / 2), (float) (Settings.HEIGHT / 2)));
-                AbstractDungeon.player.masterDeck.removeCard((AbstractCard) AbstractDungeon.gridSelectScreen.selectedCards.get(i));
-            }
-            AbstractDungeon.gridSelectScreen.selectedCards.clear();
-        }
     }
 }

@@ -115,7 +115,7 @@ public class SequenceTrotter extends BaseMonster implements PreBreakSubscriber {
         SubscriptionManager.unsubscribe(this);
         RewardEditor.addExtraRewardToTop(rewards -> {
             RewardItem rewardItem = new RewardItem();
-            RewardEditor.setRewardCards(rewardItem, AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardRarity.RARE);
+            RewardEditor.setRewardRarity(rewardItem, AbstractCard.CardRarity.UNCOMMON, AbstractCard.CardRarity.RARE);
             rewards.add(rewardItem);
         });
     }

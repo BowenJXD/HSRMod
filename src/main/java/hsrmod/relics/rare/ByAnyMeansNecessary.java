@@ -29,6 +29,12 @@ public class ByAnyMeansNecessary extends BaseRelic implements RelicGetSubscriber
     }
 
     @Override
+    public void onUnequip() {
+        super.onUnequip();
+        BaseMod.unsubscribe(this);
+    }
+
+    @Override
     public void atBattleStart() {
         super.atBattleStart();
         updateCounter();
@@ -64,6 +70,8 @@ public class ByAnyMeansNecessary extends BaseRelic implements RelicGetSubscriber
     @Override
     public void reorganizeObtain(AbstractPlayer p, int slot, boolean callOnEquip, int relicAmount) {
         super.reorganizeObtain(p, slot, callOnEquip, relicAmount);
+        BaseMod.unsubscribe(this);
+        ModHelper.addEffectAbstract(() -> BaseMod.subscribe(this));
         updateCounter();
     }
 

@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
 import hsrmod.relics.BaseRelic;
+import hsrmod.utils.CardSelectManager;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -39,21 +40,13 @@ public class JellyfishOnTheStaircase extends BaseRelic {
         if (tmp.group.isEmpty()) {
             this.cardsSelected = true;
         } else {
-            if (tmp.group.size() <= 2) {
+            if (tmp.group.size() <= 1) {
                 this.deleteCards(tmp.group);
             } else {
-                AbstractDungeon.gridSelectScreen.open(AbstractDungeon.player.masterDeck.getPurgeableCards(), 2, this.DESCRIPTIONS[1], false, false, false, true);
+                CardSelectManager.getInstance().addEvent(AbstractDungeon.player.masterDeck.getPurgeableCards(), 1, this.DESCRIPTIONS[1], false, CardSelectManager.UsagePreset.PURGE);
             }
 
         }
-    }
-
-    public void update() {
-        super.update();
-        if (!this.cardsSelected && AbstractDungeon.gridSelectScreen.selectedCards.size() == 2) {
-            this.deleteCards(AbstractDungeon.gridSelectScreen.selectedCards);
-        }
-
     }
 
     public void deleteCards(ArrayList<AbstractCard> group) {
@@ -69,8 +62,7 @@ public class JellyfishOnTheStaircase extends BaseRelic {
             displayCount += (float) Settings.WIDTH / 6.0F;
             AbstractDungeon.player.masterDeck.removeCard(card);
         }
-
-        AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.COMPLETE;
+        
         AbstractDungeon.gridSelectScreen.selectedCards.clear();
     }
 }

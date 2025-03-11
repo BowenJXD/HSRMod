@@ -1,5 +1,6 @@
 package hsrmod.events;
 
+import basemod.abstracts.events.PhasedEvent;
 import basemod.abstracts.events.phases.TextPhase;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.EventStrings;
@@ -13,15 +14,15 @@ import hsrmod.relics.uncommon.RottingFruitOfTheAlienTree;
 import hsrmod.utils.ModHelper;
 import hsrmod.utils.RelicEventHelper;
 
-public class IPMBShoppingMallEvent extends BaseEvent {
+public class IPMBShoppingMallEvent extends PhasedEvent {
     public static final String ID = IPMBShoppingMallEvent.class.getSimpleName();
     private static final EventStrings eventStrings = CardCrawlGame.languagePack.getEventString(HSRMod.makePath(ID));
     private static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
     private static final String[] OPTIONS = eventStrings.OPTIONS;
-    private static final String title = eventStrings.NAME;
+    private static final String NAME = eventStrings.NAME;
 
     public IPMBShoppingMallEvent() {
-        super(ID);
+        super(ID, NAME, "HSRModResources/img/events/" + ID + ".png");
         
         TextPhase phase1 = new TextPhase(DESCRIPTIONS[1]);
         

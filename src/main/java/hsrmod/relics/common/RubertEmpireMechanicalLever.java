@@ -30,6 +30,7 @@ public class RubertEmpireMechanicalLever extends BaseRelic implements IRubertEmp
             if (card != null && !card.upgraded) {
                 RelicEventHelper.upgradeCards(card);
             } else {
+                RelicEventHelper.purgeCards(card);
                 destroy();
             }
         }

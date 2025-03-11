@@ -19,7 +19,7 @@ public class Svarog extends BaseMonster {
 
     public Svarog() {
         super(ID, 251, 384, 0, 0);
-        setDamagesWithAscension(6, 10);
+        setDamagesWithAscension(9, 15);
         addSlot(-300, 0);
         bgm = "Godfather";
     }

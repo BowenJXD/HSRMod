@@ -2,6 +2,7 @@ package hsrmod.relics.uncommon;
 
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.relics.BaseRelic;
+import hsrmod.utils.RelicEventHelper;
 
 public class SilverCoinOfDiscord extends BaseRelic {
     public static final String ID = SilverCoinOfDiscord.class.getSimpleName();
@@ -16,7 +17,7 @@ public class SilverCoinOfDiscord extends BaseRelic {
         flash();
         int amt = AbstractDungeon.player.gold * magicNumber / 100;
         if (amt > 0) {
-            AbstractDungeon.player.gainGold(amt);
+            RelicEventHelper.gainGold(amt);
         }
     }
 }

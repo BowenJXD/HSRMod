@@ -134,6 +134,19 @@ public class Luofu extends CustomDungeon {
     }
 
     protected void initializeEventList() {
+        eventList.add("Addict");
+        eventList.add("Back to Basics");
+        eventList.add("Beggar");
+        eventList.add("Colosseum");
+        eventList.add("Cursed Tome");
+        eventList.add("Drug Dealer");
+        eventList.add("Forgotten Altar");
+        eventList.add("Ghosts");
+        eventList.add("Masked Bandits");
+        eventList.add("Nest");
+        eventList.add("The Library");
+        eventList.add("The Mausoleum");
+        // eventList.add("Vampires");
     }
 
     static {

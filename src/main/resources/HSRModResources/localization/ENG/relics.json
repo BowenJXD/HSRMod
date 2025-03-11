@@ -502,7 +502,7 @@
     "NAME": "\"Jellyfish On The Staircase\"",
     "FLAVOR": "",
     "DESCRIPTIONS": [
-      "Upon pickup, remove 2 cards from deck.",
+      "Upon pickup, remove 1 cards from deck.",
       "Jellyfish On The Staircase!"
     ]
   },
@@ -568,7 +568,7 @@
     "NAME": "Temporary Stake",
     "FLAVOR": "penniless gamblers brew their last gemstones with their tears of regret, staking everything in a gamble. These chips will quickly dissolve, becoming new debts, and the gamblers' lives are corroded completely in the digestive fluids that pour out.",
     "DESCRIPTIONS": [
-      "Immediately gain #b300 gold. #rDestroys after entering #b4 rooms, and lose #b600 #ygold."
+      "Immediately gain #b300 gold. #rDestroys after entering #b4 rooms, and lose #b450 #ygold."
     ]
   },
   "HSRMod:CavitySystemModel": {
@@ -675,6 +675,27 @@
     "FLAVOR": "Whenever he drives his prey to a set coordinates, a bullet fired ten years prior will cross the distance of ten light years to accurately collide with the prey's skull.",
     "DESCRIPTIONS": [
       "After playing an attack card, deal #b2 damage to all enemies that were not targeted by that card."
+    ]
+  },
+  "HSRMod:InsectWeb": {
+    "NAME": "Insect Web",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "At turn starts, lose #b1 HP and gain #b1 #yStrength ."
+    ]
+  },
+  "HSRMod:TowatCards": {
+    "NAME": "Towat Cards",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "#rDestroys At the start of boss fight, gain #b2 #ystrength ."
+    ]
+  },
+  "HSRMod:CarnivalsTail": {
+    "NAME": "Carvinal's Tail",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "Regain relics that aren't gained via this way."
     ]
   }
 }

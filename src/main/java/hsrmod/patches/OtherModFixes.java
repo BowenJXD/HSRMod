@@ -1,5 +1,7 @@
 package hsrmod.patches;
 
+import basemod.BaseMod;
+import com.codedisaster.steamworks.SteamAuthTicket;
 import com.evacipated.cardcrawl.modthespire.lib.ByRef;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
@@ -10,6 +12,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import hsrmod.cards.uncommon.Acheron1;
 import hsrmod.cards.uncommon.Aventurine1;
 import hsrmod.effects.PortraitDisplayEffect;
@@ -80,6 +83,38 @@ public class OtherModFixes {
                 } catch (Exception e) {
                     HSRMod.logger.log(Level.ERROR, e);
                 }
+            }
+        }
+    }
+    
+    public static void setRelics(){
+        if (BaseMod.hasModID("AventurineMod:")) {
+            String[] aEcoRelicIDs = new String[]{
+                    "_01_SplitSilverCoin",
+                    "_02_SplitGoldCoin",
+                    "_03_Chunmei",
+                    "_04_Heping",
+                    "_53_TangibleLuck",
+            };
+            for (String id : aEcoRelicIDs) {
+                RelicTagField.economic.set(RelicLibrary.getRelic(id), true);
+            }
+            String[] aSubtleRelicIDs = new String[]{
+                    "_07_Fuhua",
+                    "_15_TemporaryStake",
+                    "_43_TheShackles",
+                    "_46_Dreams0110",
+                    "_13_Aha",
+                    "_17_DignityAndPassion"
+            };
+            for (String id : aSubtleRelicIDs) {
+                RelicTagField.subtle.set(RelicLibrary.getRelic(id), true);
+            }
+            String[] aDestRelicIDs = new String[]{
+                    "_52_PaperFlower",
+            };
+            for (String id : aDestRelicIDs) {
+                RelicTagField.destructible.set(RelicLibrary.getRelic(id), true);
             }
         }
     }

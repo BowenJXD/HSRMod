@@ -2,6 +2,7 @@ package hsrmod.utils;
 
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.random.Random;
+import hsrmod.modcore.HSRMod;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -86,5 +87,14 @@ public class GeneralUtil {
         // Split the string by commas and map each element using the mapper
         String[] elements = trimmed.split(", ");
         return Arrays.stream(elements).map(mapper).collect(Collectors.toList());
+    }
+    
+    public static String tryFormat(String text, Object... args) {
+        try {
+            return String.format(text, args);
+        } catch (Exception e) {
+            HSRMod.logger.warn("Failed to format string: {}", text);
+            return text;
+        }
     }
 }

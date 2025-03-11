@@ -23,7 +23,7 @@ import hsrmod.utils.ModHelper;
 public class Gepard extends BaseMonster {
     public static final String ID = Gepard.class.getSimpleName();
     
-    int[] block = {10, 36};
+    int[] block = {5, 36};
     int strengthGain = 2;
     
     public Gepard() {
@@ -33,7 +33,7 @@ public class Gepard extends BaseMonster {
             turnCount = 1;
         }
         if (ModHelper.moreHPAscension(type)) {
-            block = new int[]{10, 40};
+            block = new int[]{5, 40};
         }
         if (ModHelper.moreDamageAscension(type)) {
             setDamages(10, 15, 0);

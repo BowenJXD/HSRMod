@@ -305,4 +305,8 @@ public class ModHelper {
         }
         return AbstractDungeon.ascensionLevel >= level;
     }
+    
+    public static boolean eventAscension() {
+        return AbstractDungeon.ascensionLevel >= 15;
+    }
 }

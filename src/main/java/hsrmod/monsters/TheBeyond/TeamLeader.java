@@ -68,7 +68,7 @@ public class TeamLeader extends BaseMonster {
         if (specialAs) {
             spawnMonsters();
             AbstractDungeon.getMonsters().monsters.stream().filter(ModHelper::check).forEach(m -> {
-                addToBot(new ApplyPowerAction(m, this, new PerformancePointPower(m, 1)));
+                addToTop(new ApplyPowerAction(m, this, new PerformancePointPower(m, 1)));
             });
             rollMove();
             createIntent();

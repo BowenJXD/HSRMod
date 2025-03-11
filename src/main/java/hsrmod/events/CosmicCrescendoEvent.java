@@ -36,13 +36,13 @@ public class CosmicCrescendoEvent extends PhasedEvent {
     private static final EventStrings eventStrings = CardCrawlGame.languagePack.getEventString(HSRMod.makePath(ID));
     private static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
     private static final String[] OPTIONS = eventStrings.OPTIONS;
-    private static final String title = eventStrings.NAME;
+    private static final String NAME = eventStrings.NAME;
 
     public int count = 0;
     public String overrideBody = null;
 
     public CosmicCrescendoEvent() {
-        super(ID, title, "HSRModResources/img/events/" + ID + ".png");
+        super(ID, NAME, "HSRModResources/img/events/" + ID + ".png");
 
         TextPhase phase0 = new TextPhase(DESCRIPTIONS[0]);
         phase0.addOption(OPTIONS[1], (i) -> {
@@ -78,7 +78,7 @@ public class CosmicCrescendoEvent extends PhasedEvent {
         super.update();
         if (overrideBody != null && !Objects.equals(body, overrideBody)) {
             body = overrideBody;
-            this.imageEventText.show(title, this.body);
+            this.imageEventText.show(NAME, this.body);
         }
     }
 
@@ -90,7 +90,7 @@ public class CosmicCrescendoEvent extends PhasedEvent {
         }
         count--;
 
-        boolean good = AbstractDungeon.eventRng.random(99) <= 66;
+        boolean good = AbstractDungeon.eventRng.random(99) <= (ModHelper.eventAscension() ? 60 : 66);
         Effect effect = Effect.values()[AbstractDungeon.eventRng.random(Effect.values().length - 1)];
         switch (effect) {
             case GOLD:

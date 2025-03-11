@@ -4,23 +4,18 @@ import basemod.BaseMod;
 import basemod.abstracts.CustomSavable;
 import basemod.interfaces.PostUpdateSubscriber;
 import basemod.interfaces.StartActSubscriber;
-import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.SpawnModificationCard;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
-import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.helpers.RelicLibrary;
-import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
 import com.megacrit.cardcrawl.saveAndContinue.SaveFile;
-import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import hsrmod.characters.StellaCharacter;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
@@ -84,7 +79,7 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
 
             for (RewardItem reward : rewards) {
                 if (reward.type == RewardItem.RewardType.CARD) {
-                    setRewardCards(reward);
+                    setRewardByPath(reward);
                 }
             }
 
@@ -130,25 +125,37 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
             }
         }
     }
+    
+    public void setRewardByPath(RewardItem reward) {
+        setRewardByPath(tag, reward, false);
+    }
+    
+    public void setRewardByPath(RewardItem reward, boolean ignoreChance) {
+        setRewardByPath(tag, reward, ignoreChance);
+    }
+    
+    public void setRewardByPath(AbstractCard.CardTags tag, RewardItem reward) {
+        setRewardByPath(tag, reward, false);
+    }
 
     /**
      * Set the reward cards to be within the specified path if chance is met.
      *
      * @param reward the reward item to modify
      */
-    public void setRewardCards(RewardItem reward) {
+    public void setRewardByPath(AbstractCard.CardTags tag, RewardItem reward, boolean ignoreChance) {
         for (int i = 0, j = 0; i < reward.cards.size() && j < 1000; i++, j++) {
             AbstractCard card = reward.cards.get(i);
 
             // skip colorless cards
             if (card.color == AbstractCard.CardColor.COLORLESS) continue;
             // skip if card path is not banned and chance is not met
-            if (checkPath(card) && !checkChance(card.rarity)) continue;
+            if (checkPath(card) && !checkChance(card.rarity) && !ignoreChance) continue;
             // skip if card path is already the selected path
             if (card.tags.contains(tag)) continue;
 
             // change card to a new card of the selected path
-            AbstractCard newCard = getCard(card.rarity, reward.cards);
+            AbstractCard newCard = getCardByPath(tag, card.rarity, reward.cards);
 
             // skip if new card is null or repeated
             if (newCard == null) continue;
@@ -170,7 +177,7 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
      * @param reward   the reward item to modify
      * @param rarities the rarities to set the cards to
      */
-    public static void setRewardCards(RewardItem reward, AbstractCard.CardRarity... rarities) {
+    public static void setRewardRarity(RewardItem reward, AbstractCard.CardRarity... rarities) {
         if (rarities.length == 0) return;
         List<AbstractCard.CardRarity> rarityList = Arrays.asList(rarities);
         for (int i = 0, j = 0; i < reward.cards.size() && j < 1000; i++, j++) {
@@ -181,6 +188,10 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
             }
         }
     }
+    
+    public AbstractCard getCardByPath(AbstractCard.CardRarity rarity, ArrayList<AbstractCard> currentRewardCards) {
+        return getCardByPath(tag, rarity, currentRewardCards);
+    }
 
     /**
      * Get a card of the specified rarity and path.
@@ -189,7 +200,7 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
      * @param currentRewardCards the current reward cards
      * @return the card to change
      */
-    public AbstractCard getCard(AbstractCard.CardRarity rarity, ArrayList<AbstractCard> currentRewardCards) {
+    public AbstractCard getCardByPath(AbstractCard.CardTags tag, AbstractCard.CardRarity rarity, ArrayList<AbstractCard> currentRewardCards) {
         CardGroup group = null;
         switch (rarity) {
             case COMMON:
@@ -212,7 +223,7 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
         List<AbstractCard> cards = group.group.stream()
                 .filter(c -> c.hasTag(tag) || (tag == CustomEnums.TRAILBLAZE && checkPath(c)))
                 .filter(c -> AbstractDungeon.player.masterDeck.group.stream().noneMatch(card -> c.uuid == card.uuid))
-                .filter(c -> c instanceof SpawnModificationCard && ((SpawnModificationCard) c).canSpawn(currentRewardCards))
+                .filter(c -> c instanceof SpawnModificationCard && ((SpawnModificationCard) c).canSpawn(currentRewardCards == null ? new ArrayList<>() : currentRewardCards))
                 .collect(Collectors.toList());
 
         if (cards.isEmpty()) return null;

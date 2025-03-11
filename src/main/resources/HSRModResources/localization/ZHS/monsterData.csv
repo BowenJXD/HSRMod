@@ -25,9 +25,9 @@ GnawSting,蚀蛰虫,NORMAL,39,39,9,10
 LesserSting,次蛰虫,NORMAL,49,49,9,10
 ,,,,,,
 Gepard,杰帕德,ELITE,80,82,6,7
-Bronya,布洛妮娅,ELITE,91,93,6,7
-Svarog,史瓦罗,ELITE,63,65,6,7
-RobotArmUnit,辅助机械臂单元,NORMAL,32,33,4,5
+Bronya,布洛妮娅,ELITE,102,106,6,7
+Svarog,史瓦罗,ELITE,68,70,6,7
+RobotArmUnit,辅助机械臂单元,NORMAL,39,42,4,5
 ,,,,,,
 Hoolay,呼雷,ELITE,180,190,12,14
 SableclawWolftrooper,玄爪狼卒,NORMAL,30,32,8,10
@@ -62,7 +62,7 @@ DecayingShadow,蚕食者之影,NORMAL,56,58,5,6
 ,外宇宙之炎,NORMAL,35,36,4,5
 ,外宇宙之冰,NORMAL,35,36,4,5
 SilvermaneLieutenant,银鬃尉官,NORMAL,40,42,5,6
-SilvermaneSoldier,银鬃近卫,NORMAL,15,16,2,2
+SilvermaneSoldier,银鬃近卫,NORMAL,18,20,2,2
 Stormbringer,兴风者,NORMAL,46,48,4,5
 Direwolf,齿狼,NORMAL,41,43,4,5
 Hound,战犬,NORMAL,20,21,3,4

@@ -39,14 +39,14 @@ public class RuanMeiEvent extends PhasedEvent {
     //This text should be set up through loading an event localization json file
     private static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
     private static final String[] OPTIONS = eventStrings.OPTIONS;
-    private static final String title = eventStrings.NAME;
+    private static final String NAME = eventStrings.NAME;
     // private CurScreen screen;
     
     int goldAmt = 1200;
     int relicAmt = 6;
 
     public RuanMeiEvent() {
-        super(ID, title, "HSRModResources/img/events/" + ID + ".png");
+        super(ID, NAME, "HSRModResources/img/events/" + ID + ".png");
         
         registerPhase(0, new TextPhase(DESCRIPTIONS[0])
                 .addOption(OPTIONS[0], (i)->transitionKey(1))
@@ -132,8 +132,7 @@ public class RuanMeiEvent extends PhasedEvent {
     }
     
     public void gainGold(Integer i){
-        AbstractDungeon.effectList.add(new RainingGoldEffect(this.goldAmt));
-        AbstractDungeon.player.gainGold(this.goldAmt);
+        RelicEventHelper.gainGold(this.goldAmt);
     }
     
     public void gainRelics(Integer i){

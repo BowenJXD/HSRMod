@@ -6,14 +6,12 @@ import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.LocalizedStrings;
-import com.megacrit.cardcrawl.relics.Astrolabe;
-import com.megacrit.cardcrawl.relics.DollysMirror;
-import com.megacrit.cardcrawl.relics.TinyHouse;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.ShopRoom;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import hsrmod.cardsV2.AstralExpress;
 import hsrmod.relics.BaseRelic;
+import hsrmod.utils.CardSelectManager;
 import hsrmod.utils.RewardEditor;
 
 import java.util.ArrayList;
@@ -33,24 +31,38 @@ public class MasterOfDreamMachinations extends BaseRelic implements ClickableRel
     @Override
     public void onEnterRoom(AbstractRoom room) {
         super.onEnterRoom(room);
-        if (room instanceof ShopRoom) {
-            beginLongPulse();
-            counter = basePrice;
-        }
-        else if (counter >= 0) {
-            counter = -1;
-            stopPulse();
-        }
+        updateCounter();
     }
 
     public void onEquip() {
         AbstractDungeon.topLevelEffectsQueue.add(new ShowCardAndObtainEffect(new AstralExpress(), (float)Settings.WIDTH / 3.0F, (float)Settings.HEIGHT / 2.0F, false));
+        updateCounter();
     }
 
-    public void update() {
-        super.update();
-        if (!this.cardSelected && AbstractDungeon.gridSelectScreen.selectedCards.size() == 1) {
-            this.giveCards(AbstractDungeon.gridSelectScreen.selectedCards.get(0));
+    void updateCounter() {
+        if (AbstractDungeon.currMapNode != null && AbstractDungeon.getCurrRoom() instanceof ShopRoom) {
+            setCounter(basePrice);
+            beginLongPulse();
+        }
+        else if (counter >= 0) {
+            setCounter(-1);
+            stopPulse();
+        }
+    }
+
+    @Override
+    public void onLoseGold() {
+        super.onLoseGold();
+        if (counter > 0 && AbstractDungeon.player.gold < counter) {
+            stopPulse();
+        }
+    }
+
+    @Override
+    public void onGainGold() {
+        super.onGainGold();
+        if (counter > 0 && AbstractDungeon.player.gold >= counter) {
+            beginLongPulse();
         }
     }
 
@@ -63,7 +75,7 @@ public class MasterOfDreamMachinations extends BaseRelic implements ClickableRel
         AbstractDungeon.player.masterDeck.removeCard(card);
         AbstractDungeon.transformCard(card, true, AbstractDungeon.miscRng);
         if (AbstractDungeon.screen != AbstractDungeon.CurrentScreen.TRANSFORM && AbstractDungeon.transformedCard != null) {
-            AbstractDungeon.transformedCard = RewardEditor.getInstance().getCard(AbstractDungeon.transformedCard.rarity, new ArrayList<>());
+            AbstractDungeon.transformedCard = RewardEditor.getInstance().getCardByPath(AbstractDungeon.transformedCard.rarity, new ArrayList<>());
             AbstractDungeon.topLevelEffectsQueue.add(new ShowCardAndObtainEffect(AbstractDungeon.getTransformedCard(), (float)Settings.WIDTH / 3.0F + displayCount, (float)Settings.HEIGHT / 2.0F, false));
         }
 
@@ -96,11 +108,11 @@ public class MasterOfDreamMachinations extends BaseRelic implements ClickableRel
         if (tmp.group.size() <= 1) {
             this.giveCards(tmp.group.get(0));
         } else if (!AbstractDungeon.isScreenUp) {
-            AbstractDungeon.gridSelectScreen.open(tmp, 1, this.DESCRIPTIONS[1] + this.name + LocalizedStrings.PERIOD, false, false, false, false);
+            CardSelectManager.getInstance().addEvent(tmp, 1, this.DESCRIPTIONS[1] + this.name + LocalizedStrings.PERIOD, false, CardSelectManager.UsagePreset.TRANSFORM);
         } else {
             AbstractDungeon.dynamicBanner.hide();
             AbstractDungeon.previousScreen = AbstractDungeon.screen;
-            AbstractDungeon.gridSelectScreen.open(tmp, 1, this.DESCRIPTIONS[1] + this.name + LocalizedStrings.PERIOD, false, false, false, false);
+            CardSelectManager.getInstance().addEvent(tmp, 1, this.DESCRIPTIONS[1] + this.name + LocalizedStrings.PERIOD, false, CardSelectManager.UsagePreset.TRANSFORM);
         }
         counter += priceIncrement;
     }

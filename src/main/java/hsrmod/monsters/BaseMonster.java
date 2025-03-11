@@ -55,6 +55,7 @@ public abstract class BaseMonster extends CustomMonster {
     public EnemyMoveInfo currMove;
     public boolean moreDamageAs, moreHPAs, specialAs;
     public float floatIndex = 0;
+    public Consumer<BaseMonster> preBattleAction;
     
     public BaseMonster(String name, String id, int maxHealth, float hb_x, float hb_y, float hb_w, float hb_h, String atlas, float x, float y) {
         super(name, HSRMod.makePath(id), maxHealth, hb_x, hb_y, hb_w, hb_h, atlas, x, y);
@@ -163,6 +164,11 @@ public abstract class BaseMonster extends CustomMonster {
         return this;
     }
     
+    public BaseMonster setPreBattleAction(Consumer<BaseMonster> action) {
+        preBattleAction = action;
+        return this;
+    }
+    
     @Override
     public void usePreBattleAction() {
         super.usePreBattleAction();
@@ -173,6 +179,9 @@ public abstract class BaseMonster extends CustomMonster {
             AbstractDungeon.scene.fadeOutAmbiance();
             CardCrawlGame.music.silenceTempBgmInstantly();
             AbstractDungeon.getCurrRoom().playBgmInstantly(bgm);
+        }
+        if (preBattleAction != null) {
+            preBattleAction.accept(this);
         }
     }
 

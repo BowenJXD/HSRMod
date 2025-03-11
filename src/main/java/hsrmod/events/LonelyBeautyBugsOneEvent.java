@@ -25,11 +25,11 @@ public class LonelyBeautyBugsOneEvent extends PhasedEvent {
     //This text should be set up through loading an event localization json file
     private static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
     private static final String[] OPTIONS = eventStrings.OPTIONS;
-    private static final String title = Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT 
+    private static final String NAME = Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT 
             ? "孤独，太空美虫（其一）" : "Loneliness, Cosmic Beauty Bugs, Simulated Universe (I)";
 
     public LonelyBeautyBugsOneEvent() {
-        super(ID, title, "HSRModResources/img/events/" + ID + ".png");
+        super(ID, NAME, "HSRModResources/img/events/" + ID + ".png");
 
         registerPhase(0, new TextPhase(DESCRIPTIONS[0]).addOption(OPTIONS[0], (i) -> transitionKey(1)));
 

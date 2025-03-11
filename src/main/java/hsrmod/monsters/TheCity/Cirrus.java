@@ -9,15 +9,17 @@ import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.enemyOnly.MultiMovePower;
 import hsrmod.powers.enemyOnly.SoulsplitPower;
 import hsrmod.powers.misc.ToughnessPower;
+import hsrmod.subscribers.PostMonsterDeathSubscriber;
+import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
-public class Cirrus extends BaseMonster {
+public class Cirrus extends BaseMonster implements PostMonsterDeathSubscriber {
     public static final String ID = Cirrus.class.getSimpleName();
     
     int soulSplitCount = 10;
     
-    public Cirrus() {
-        super(ID, 400, 410, -100, 300);
+    public Cirrus(float x, float y) {
+        super(ID, 400, 410, x, y);
         type = EnemyType.ELITE;
         floatIndex = AbstractDungeon.monsterRng.randomBoolean() ? -1 : 1;
         bgm = "Dancing Fantasms";
@@ -34,6 +36,16 @@ public class Cirrus extends BaseMonster {
             spawnMonsters();
         });
     }
+    
+    public Cirrus(boolean enhanced){
+        this(-100, 300);
+        if (enhanced)
+            SubscriptionManager.subscribe(this);
+    }
+    
+    public Cirrus() {
+        this(-100, 300);
+    }
 
     @Override
     public void usePreBattleAction() {
@@ -44,9 +56,10 @@ public class Cirrus extends BaseMonster {
     }
 
     @Override
-    public void die() {
+    public void die(boolean triggerRelics) {
         shout(1);
-        super.die();
+        SubscriptionManager.unsubscribe(this);
+        super.die(triggerRelics);
     }
 
     @Override
@@ -88,5 +101,12 @@ public class Cirrus extends BaseMonster {
         }
 
         return result;
+    }
+
+    @Override
+    public void postMonsterDeath(AbstractMonster monster) {
+        if (SubscriptionManager.checkSubscriber(this) && monster != this && ModHelper.check(this)) {
+            spawnMonsters(1);
+        }
     }
 }

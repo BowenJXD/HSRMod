@@ -10,6 +10,9 @@ import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.relics.Orrery;
 import hsrmod.modcore.HSRMod;
+import hsrmod.relics.starter.WaxOfPropagation;
+import hsrmod.utils.ModHelper;
+import hsrmod.utils.RelicEventHelper;
 
 public class LonelyBeautyBugsTwoEvent extends PhasedEvent {
     public static final String ID = LonelyBeautyBugsTwoEvent.class.getSimpleName();
@@ -17,40 +20,39 @@ public class LonelyBeautyBugsTwoEvent extends PhasedEvent {
     //This text should be set up through loading an event localization json file
     private static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
     private static final String[] OPTIONS = eventStrings.OPTIONS;
-    private static final String title = Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT 
+    private static final String NAME = Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT 
             ? "孤独，太空美虫（其二）" : "Loneliness, Cosmic Beauty Bugs, Simulated Universe (II)";
 
     public LonelyBeautyBugsTwoEvent() {
-        super(ID, title, "HSRModResources/img/events/" + ID + ".png");
+        super(ID, NAME, "HSRModResources/img/events/" + ID + ".png");
 
         registerPhase(0, new TextPhase(DESCRIPTIONS[0]).addOption(OPTIONS[0], (i) -> transitionKey(1)));
 
         TextPhase phase1 = new TextPhase(DESCRIPTIONS[1]);
         
         phase1.addOption(OPTIONS[1], (i) -> {
-            for (int i1 = 0; i1 < 3; ++i1) {
-                AbstractRelic r = AbstractDungeon.returnRandomScreenlessRelic(AbstractRelic.RelicTier.COMMON);
-                if (r != null)
-                    AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float) (Settings.WIDTH / 2), (float) (Settings.HEIGHT / 2), r);
-                else break;
-            }
+            RelicEventHelper.gainRelics(3);
             transitionKey(2);
         });
 
-        if (!AbstractDungeon.player.hasRelic(Orrery.ID)) {
-            phase1.addOption(OPTIONS[2], (i) -> {
-                AbstractRelic r = RelicLibrary.getRelic(Orrery.ID).makeCopy();
-                if (r != null)
-                    AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float) (Settings.WIDTH / 2), (float) (Settings.HEIGHT / 2), r);
-                transitionKey(2);
-            });
-        } 
+        phase1.addOption(OPTIONS[2], (i) -> {
+            RelicEventHelper.gainRelics(Orrery.ID);
+            transitionKey(2);
+        });
         
-        else {
+        /*else {
             phase1.addOption(OPTIONS[3], (i) -> {
                 AbstractRelic r = AbstractDungeon.returnRandomScreenlessRelic(AbstractRelic.RelicTier.BOSS);
                 if (r != null)
                     AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float) (Settings.WIDTH / 2), (float) (Settings.HEIGHT / 2), r);
+                transitionKey(2);
+            });
+        }*/
+        
+        if (ModHelper.hasRelic(WaxOfPropagation.ID)) {
+            phase1.addOption(OPTIONS[3], (i) -> {
+                AbstractRelic r = AbstractDungeon.returnRandomScreenlessRelic(AbstractRelic.RelicTier.BOSS);
+                RelicEventHelper.gainRelics(r.relicId);
                 transitionKey(2);
             });
         }

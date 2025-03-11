@@ -11,18 +11,18 @@ import hsrmod.patches.RelicTagField;
 import hsrmod.utils.GeneralUtil;
 import hsrmod.utils.RelicEventHelper;
 
-public class AceTrashDiggerEvent extends BaseEvent {
+public class AceTrashDiggerEvent extends PhasedEvent {
     public static final String ID = AceTrashDiggerEvent.class.getSimpleName();
     private static final EventStrings eventStrings = CardCrawlGame.languagePack.getEventString(HSRMod.makePath(ID));
     private static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
     private static final String[] OPTIONS = eventStrings.OPTIONS;
-    private static final String title = eventStrings.NAME;
+    private static final String NAME = eventStrings.NAME;
 
     int dRelicCount = 3;
     int nRelicCount = 2;
 
     public AceTrashDiggerEvent() {
-        super(ID);
+        super(ID, NAME, "HSRModResources/img/events/" + ID + ".png");
 
         registerPhase(0, new TextPhase(DESCRIPTIONS[0])
                 .addOption(OPTIONS[1], (i) -> {

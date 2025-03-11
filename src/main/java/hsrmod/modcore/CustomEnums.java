@@ -30,4 +30,8 @@ public class CustomEnums
     // @SpireEnum public static AbstractPower.PowerType STATUS;
     
     @SpireEnum public static RelicType HSR;
+    
+    public static AbstractCard.CardTags[] getPathTags() {
+        return new AbstractCard.CardTags[] {TRAILBLAZE, ELATION, DESTRUCTION, NIHILITY, PROPAGATION, PRESERVATION, THE_HUNT, ERUDITION, /*ABUNDANCE, REMEMBRANCE*/};
+    }
 }

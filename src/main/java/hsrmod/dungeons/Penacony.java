@@ -155,6 +155,13 @@ public class Penacony extends CustomDungeon {
     }
 
     protected void initializeEventList() {
+        eventList.add("Falling");
+        eventList.add("MindBloom");
+        eventList.add("The Moai Head");
+        eventList.add("Mysterious Sphere");
+        // eventList.add("SensoryStone");
+        eventList.add("Tomb of Lord Red Mask");
+        eventList.add("Winding Halls");
     }
 
     static {

@@ -36,7 +36,7 @@ public class AventurineOfStratagems extends BaseMonster {
         addSlot(-200, 100);
         monFunc = slot -> new AllOrNothing(slot.x, slot.y);
         
-        addMove(Intent.ATTACK, moreDamageAs ? 4 : 3, 5, mi->{
+        addMove(Intent.ATTACK, moreDamageAs ? 5 : 4, 5, mi->{
             shoutIf(1);
             addToBot(new AnimateSlowAttackAction(this));
             for (int i = 0; i < mi.damageTimeSupplier.get(); i++) {

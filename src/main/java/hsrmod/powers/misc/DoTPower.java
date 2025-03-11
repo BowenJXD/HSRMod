@@ -2,6 +2,7 @@ package hsrmod.powers.misc;
 
 import basemod.BaseMod;
 import basemod.interfaces.OnPlayerTurnStartSubscriber;
+import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
@@ -49,7 +50,7 @@ public abstract class DoTPower extends DebuffPower implements OnPlayerTurnStartS
     }
 
     public void playApplyPowerSfx() {
-        CardCrawlGame.sound.play("POWER_POISON", AbstractDungeon.miscRng.random(-0.05F, 0.05F));
+        CardCrawlGame.sound.play("POWER_POISON", MathUtils.random(-0.05F, 0.05F));
     }
 
     @Override

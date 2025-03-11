@@ -2,6 +2,7 @@ package hsrmod.events;
 
 import basemod.abstracts.events.PhasedEvent;
 import basemod.abstracts.events.phases.TextPhase;
+import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -30,10 +31,10 @@ public class WaxManufacturerEvent extends PhasedEvent {
     //This text should be set up through loading an event localization json file
     private static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
     private static final String[] OPTIONS = eventStrings.OPTIONS;
-    private static final String title = eventStrings.NAME;
+    private static final String NAME = eventStrings.NAME;
     
     public WaxManufacturerEvent() {
-        super(ID, title, "HSRModResources/img/events/" + ID + ".png");
+        super(ID, NAME, "HSRModResources/img/events/" + ID + ".png");
 
         TextPhase phase = new TextPhase(DESCRIPTIONS[0]);
         
@@ -107,13 +108,13 @@ public class WaxManufacturerEvent extends PhasedEvent {
             }
         }
 
-        Collections.shuffle(upgradableCards, new Random(AbstractDungeon.miscRng.randomLong()));
+        Collections.shuffle(upgradableCards, new Random(AbstractDungeon.eventRng.randomLong()));
         if (!upgradableCards.isEmpty()) {
             for (int i = 0; i < Math.min(3, upgradableCards.size()); i++) {
                 AbstractCard card = upgradableCards.get(i);
                 AbstractDungeon.player.bottledCardUpgradeCheck((AbstractCard) card);
                 AbstractDungeon.topLevelEffects.add(new ShowCardBrieflyEffect(((AbstractCard) card).makeStatEquivalentCopy(), 
-                        AbstractDungeon.miscRng.random(0.1F, 0.9F) * (float) Settings.WIDTH, AbstractDungeon.miscRng.random(0.2F, 0.8F) * (float) Settings.HEIGHT));
+                        MathUtils.random(0.1F, 0.9F) * (float) Settings.WIDTH, MathUtils.random(0.2F, 0.8F) * (float) Settings.HEIGHT));
             }
             AbstractDungeon.topLevelEffects.add(new UpgradeShineEffect((float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
         }

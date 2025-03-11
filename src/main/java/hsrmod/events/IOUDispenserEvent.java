@@ -11,17 +11,23 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import hsrmod.modcore.HSRMod;
 import hsrmod.relics.common.AngelTypeIOUDispenser;
 import hsrmod.relics.starter.WaxOfNihility;
+import hsrmod.utils.GeneralUtil;
 import hsrmod.utils.ModHelper;
+import hsrmod.utils.RelicEventHelper;
 
 public class IOUDispenserEvent extends PhasedEvent {
     public static final String ID = IOUDispenserEvent.class.getSimpleName();
     private static final EventStrings eventStrings = CardCrawlGame.languagePack.getEventString(HSRMod.makePath(ID));
     private static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
     private static final String[] OPTIONS = eventStrings.OPTIONS;
-    private static final String title = eventStrings.NAME;
+    private static final String NAME = eventStrings.NAME;
+    
+    int goldAmount = 100;
     
     public IOUDispenserEvent() {
-        super(ID, title, "HSRModResources/img/events/" + ID + ".png");
+        super(ID, NAME, "HSRModResources/img/events/" + ID + ".png");
+        
+        goldAmount = ModHelper.eventAscension() ? 75 : 100;
 
         AbstractRelic r = RelicLibrary.getRelic(HSRMod.makePath(AngelTypeIOUDispenser.ID)).makeCopy();
         TextPhase phase0 = new TextPhase(DESCRIPTIONS[0])
@@ -29,8 +35,8 @@ public class IOUDispenserEvent extends PhasedEvent {
                     AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float)(Settings.WIDTH / 2), (float)(Settings.HEIGHT / 2), r);
                     transitionKey(1);
                 }, r)
-                .addOption(OPTIONS[1], (i) -> {
-                    AbstractDungeon.player.gainGold(100);
+                .addOption(GeneralUtil.tryFormat(OPTIONS[1], goldAmount), (i) -> {
+                    RelicEventHelper.gainGold(goldAmount);
                     transitionKey(1);
                 });
         if (ModHelper.hasRelic(WaxOfNihility.ID)) {

@@ -37,9 +37,9 @@ public class Sam extends BaseMonster {
         super(ID, 300, 420);
         bgm = "Nevermore";
         
-        secondaryCombustionCount = specialAs ? 4 : 3;
+        secondaryCombustionCount = specialAs ? 5 : 4;
         
-        addMove(Intent.ATTACK_DEBUFF, 5, 3, mi->{
+        addMove(Intent.ATTACK_DEBUFF, 6, 3, mi->{
             shoutIf(0);
             addToBot(new AnimateFastAttackAction(this));
             for (int i = 0; i < mi.damageTimeSupplier.get(); i++) {

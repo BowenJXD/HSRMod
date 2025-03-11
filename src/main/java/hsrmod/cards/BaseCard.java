@@ -1,6 +1,7 @@
 package hsrmod.cards;
 
 import basemod.abstracts.CustomCard;
+import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.SpawnModificationCard;
 import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.CommonKeywordIconsField;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
@@ -240,7 +241,7 @@ public abstract class BaseCard extends CustomCard implements SpawnModificationCa
     }
 
     public void shout(int start, int end) {
-        shout(AbstractDungeon.miscRng.random(start, end));
+        shout(MathUtils.random(start, end+1));
     }
 
     boolean checkPath() {

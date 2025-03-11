@@ -71,7 +71,7 @@
     "NAME": "I.O.U. Dispenser",
     "OPTIONS": [
       "[I'll buy it] Gain Angel-type I.O.U Dispenser",
-      "[I don't need it] Gain #y100 gold",
+      "[I don't need it] Gain #y%d gold",
       "[Claim an investment] Gain Angel-type I.O.U Dispenser and destroy it.",
       "[leave]"
     ],
@@ -106,7 +106,7 @@
     ],
     "DESCRIPTIONS": [
       "The astral computer before you, with a curved screen on top and a genderless human body at the bottom, is running a calculation at a high speed. While it seems to be simulating the collapse of a massive star, only you know that you are playing a game of rock-paper-scissors with it. NL \"There is an 82.49% chance of you playing rock in the first game, and a 94.61% of you playing scissors in the second. ",
-      "If you choose to flip the table with me and battle with the monsters I created, there is a 99.37% of you losing.\" NL \"But if you leave some Cosmic Fragments behind, your chance of survival is 100%.\" It is waiting for your response.",
+      "If you choose to flip the table with me and battle with the monsters I created, there is a 99.37% of you losing.\" NL \"But if you leave some gold behind, your chance of survival is 100%.\" It is waiting for your response.",
       "You left some gold behind.",
       "You #ywon."
     ]
@@ -149,7 +149,7 @@
       "[continue]",
       "[Accept the \"Heartfelt Gift.\"] Obtain #b3 random common relic",
       "[Accept the \"Life's Favor.\"] Obtain #yOrrery",
-      "[Accept the \"Life's Favor.\"] Obtain #b1 random #rboss relic",
+      "[Accept the \"Propagation's Honor.\"] Obtain #b1 random #rboss relic",
       "[Refuse] You just want to keep giving... You don't expect anything in return at all.",
       "[leave]"
     ],
@@ -205,7 +205,8 @@
       "[continue]",
       "[Play a bit with Sequence Trotters] Enter combat with 3 #ySequence #yTrotters — Trot Prime, Trot Deuce, and Trot Tri.",
       "[Leave] A person shouldn't be on the same level as Trotters!",
-      "[leave]"
+      "[You pass on a good sense of safeguarding against Trotters] Trotters are slower.",
+      "[Excellent Trotter-catching skills] Trotters are faster, upgrade all card rewards."
     ],
     "DESCRIPTIONS": [
       "Three timid sequence creatures that resemble a pig bump into you as you wander across the wilderness where the Hithradahn people dwell. They react differently to your presence: one is trembling, one is ready to flee, and one is in a combat position.",
@@ -246,10 +247,10 @@
     "NAME": "Pineapple Bread",
     "OPTIONS": [
       "[continue]",
-      "[Choose Pineapple] Choose to remove #b3 cards, but gain negative relic: Pineapple.",
-      "remove 3 cards",
+      "[Choose Pineapple] Choose to remove #b%d cards, but gain negative relic: Pineapple.",
+      "remove %d cards",
       "[Choose Bread] Nothing happens.",
-      "[Take a drink] Obtain #b2 random subtle relic.",
+      "[Take a drink] Obtain #b%d random subtle relic.",
       "[leave]"
     ],
     "DESCRIPTIONS": [
@@ -296,7 +297,7 @@
     "OPTIONS": [
       "[continue]",
       "[Come at me all at once] Enter battle, gain #b2 random relics after victory.",
-      "[Throw trash into the opponent's can] Enter battle, remove #b2 cards after victory.",
+      "[Throw trash into the opponent's can] Enter battle, remove #b%d cards after victory.",
       "[Challenge the jury] Enter battle, gain #b3 destructible relics after victory.",
       "[Claim reward]",
       "[leave]",
@@ -335,7 +336,7 @@
       "Your cocktail explodes in front of you! NL NL You gain nothing, in addition to being blasted out of the restaurant by this strong force.",
       "You're badly injured.",
       "You receive a glass of cocktail! You gulp it down... Soon, a wave of lethargy hits you. NL NL As you are feeling drowsy, you notice a mischievous *thief* sizing you up slyly from the other end of the long table... She seems to have no qualms about openly showing her evil intentions.",
-      "You fail to resist the urge to sleep... By the time you wake up, the thief with her dazzling eyes is already gone. NL NL Your wallet is no longer stuffed, and you have lost lots of Cosmic Fragments... You hope to run into her again.",
+      "You fail to resist the urge to sleep... By the time you wake up, the thief with her dazzling eyes is already gone. NL NL Your wallet is no longer stuffed, and you have lost lots of gold... You hope to run into her again.",
       "You have finished stirring your cocktail. A lady in a sequined dress with a sensuous gaze suddenly walks over. The gems on her earrings sparkle under the lights, and you are bedazzled. She grabs the cocktail from your hands but still waves at you with a provocative smile. NL NL While you are still experiencing outrage at her action, she suddenly lets out a shrill cry, and her body curls up in a horrifying manner... You stagger a few steps backward.",
       "You are shocked by the recipe of Genius Society #55, Yu Qingtu. As it turns out, you have made a legendarily toxic cocktail...",
       "You #ywon."
@@ -356,6 +357,302 @@
       "You arrive at the docking bay of the Freon Mechanical Alliance. It is a vast harbor with mechanical attendants everywhere. NL NL A mechanical attendant leads you up a staircase, which you notice is formed by numerous mechanical arms. You keep going until you leave the harbor and see the sign of \"Interastral Peace Mechanical Branch Shopping Mall.\"",
       "The place is renovated in a style very much iconic to the IPC... You walk up to the counter. NL NL \"We sell our stuff cheaper at the port. That's it.\" The mechanical staff doesn't bother to explain too much — a signal for you to make your own choice.",
       "You gained what you want."
+    ]
+  },
+  "HSRMod:RobotSalesTerminal": {
+    "NAME": "Robot Sales Terminal",
+    "OPTIONS": [
+      "[Purchase #y%s] Cost #y%d gold.",
+      "[Remove 1 card] Cost #y%d gold.",
+      "[You recall \"bargaining technique.\"] Fix 2 destroyed relics.",
+      "[Leave] You don't want to buy anything.",
+      "[leave]",
+      "Remove 1 card"
+    ],
+    "DESCRIPTIONS": [
+      "You see an adorable robot waving at you. When you get near it, it speaks: \"This is an IPC point of sale! You can find everything you desire here!\" On the menu, you see medical, enhancement, and purchasing services offered at affordable prices...",
+      "~Thanks for your purchasing~~"
+    ]
+  },
+  "HSRMod:TheRelicFixer": {
+    "NAME": "The Relic Fixer",
+    "OPTIONS": [
+      "[Repair a damaged relic] Cost #y%d gold.",
+      "[Repair all damaged relics] Cost #y%d gold.",
+      "[Make all inorganic life fall for you] gain a destructible relic。",
+      "[Have a pleasant inorganic exchange] replace all uncommon relic to be destructible relics.",
+      "[leave] You don't need it.",
+      "[leave]"
+    ],
+    "DESCRIPTIONS": [
+      "You meet a mechanical lifeform. It seems to be skilled in repairing Curios.\nSimulated Universe: \"Click... Click...\"\nSimulated Universe: It gestures for you to let it repair your treasures.",
+      "Click... Click... NL NL It gives the relics carefully, expecting you to treat them carefully as well..."
+    ]
+  },
+  "HSRMod:WeAreCowboys": {
+    "NAME": "We Are Cowboys",
+    "OPTIONS": [
+      "[Pay] Lose #y50% of your gold.",
+      "[Protect the cowboy's final honor] Enter battle.",
+      "[Surrender immediately] Lose #y25% of your gold, gain #b2 #pNihility cards.",
+      "[Let them experience the real \"cowboy.\"] Enter battle, to seize #y100 gold.",
+      "[Make a \"trade\" with them] Lose #y50% of your gold, upgrade 4 random cards.",
+      "[leave]"
+    ],
+    "DESCRIPTIONS": [
+      "You are grazing grass on the sun-baked earth when a bunch of beefy guys comes your way. They are the street bandits who wreak havoc wherever they go. They are followed by a team of mercenaries.\nSimulated Universe: \"We're the last cowboys!\" Shouts the leader who flails his arms happily. The red ibis armbands indicate their submission to the royal family. You believe they are the royal bandits.\nSimulated Universe: \"Leave your gold coins behind. We need funds to oil the development of the city. Generosity is in line with the cowboy's spirit!\" Scowling at the shameless bandits, you bite off the grass with your mouth...",
+      "You lost some gold.",
+      "You gain what you want."
+    ]
+  },
+  "HSRMod:InsectNest": {
+    "NAME": "Insect Nest",
+    "OPTIONS": [
+      "[continue]",
+      "[Stop at the entrance] Don't bet hastily",
+      "[Go deeper]",
+      "[Hug it] Gain #yInsect #yWeb , gain 1 #bRare card.",
+      "[Wait for \"THEM\"] Lose #b20% of your current health, gain 1 #bUncommon card.",
+      "[Save a Bug Bubble] Gain #pPropagation and #yPreservation cards.",
+      "[Snuff them out!] Enter battle, gain 2 extra cards after victory.",
+      "[leave]"
+    ],
+    "DESCRIPTIONS": [
+      "You accidentally step into a ground trap made of branches and leaves — the type you believe to be used only by the most old-fashioned hunter on planet Bled. You get to your feet, and the entrance of a nest is before you.",
+      "You believe your life doesn't need adventures... More importantly, you dread to face Tay█zzy█ ██ro█n█ █th██'s █ █childre███ ████...\nSimulated Universe: You have obtained some gold.",
+      "Slowly, you make your way into the insect nest. As you brush off the eggs hanging upside down from the roof, you discover to your amazement that newborns within the translucent egg sacs are scratching their still unopened compound eyes with their antennae.\nSimulated Universe: You find an astonishing sight at the end of the nest. On a throne atop a pile of hundreds of \"egg sacs,\" \"THEY\" are sleeping soundly.",
+      "A day passes when you blink once. You feel you are looking at the sleeping form of Tayzzyronth, the Imperator Insectorum, over and over, hoping that THEY will open THEIR eyes and look at you.\nSimulated Universe: The first egg sac softly ruptures, and new life blooms.",
+      "When you lift the flat, round-shaped egg sack with your hands, its nutrients leak out like a punctured green cell. Then, it wriggles its curved body into your skin.",
+      "Soon, a voice begins to ring in your head... Tay█zzy█ ██ro█n█ █th██... The long wait destroyed you, and you flee in a hurry.",
+      "You saved a Bug Bubble."
+    ]
+  },
+  "HSRMod:FleaMarket": {
+    "NAME": "Flea Market",
+    "OPTIONS": [
+      "[continue]",
+      "[Describe a colorful journey] Submit cards.",
+      "[Describe a wondrous adventure] Submit relics.",
+      "[Describe a simple life] Submit gold.",
+      "[Bounty Hunter of the Snow Plains] Lose #y%s, gain #y%d gold.",
+      "[Aha Stuffed Toy asking to be hit] Lose #y%s, gain #b%d destructible relics.",
+      "[The library's History Fictionologist] Lose #y%s, gain 1 card from #b%d #yRare cards.",
+      "[A primordial, bloodthirsty beast] Lose #y%s, gain #y%d gold.",
+      "[A cooking Lordly Trashcan] Lose #y%s, gain #b%d cards.",
+      "[Rock, Paper, Scissors with the calculator] Lose #y%s, gain #b%d path relics.",
+      "[Last night's dream] Lose #y%s gold, remove #b%d cards.",
+      "[Pom-Pom's tail] Lose #y%s gold, gain #b%d relics.",
+      "[Himeko's coffee] Lose #y%s gold, max HP + #g%d, heal all HP.",
+      "[leave]"
+    ],
+    "DESCRIPTIONS": [
+      "You find yourself in a shattered memory bubble as the once-an-Amber Era galactic flea market reaches its peak period. Here, you don't even need to project a holographic goods shelf or use credits. If you see something you like, you can simply swap goods for other goods.\nSimulated Universe: Countless ships, their shadows numerous enough to cover the sky, don't even have a chance to dock before they find themselves under new ownership. The habitual ascetics, the Bretadens, also find themselves scouring every surface of their bodies for things that they could possibly trade.",
+      "You come across a bearded poet that shows you an ancient pouch stuffed full of the cosmos' memories.\nSimulated Universe: \"A story. Please tell me a story. Fact or fiction is fine.\" Says the poet. \"Then, I shall take your verses, and you shall receive my song.\"",
+      "Deals are mutually beneficial. The higher the price you pay, the more you should expect to receive. The poet looks at you with excitement, awaiting the story you will share.",
+      "The poet slightly closes his eyes as you sink into a lonely ocean. The notes are the drops of water, the song is its flow and the story follows the rhythm of the waves into your chest.\nSimulated Universe: You see a dance that never stops, actors weeping on a gondola, and a rain of diamonds falling from the sky. When the hustle and bustle returns to your world, the poet is nowhere to be seen. Just as he said, he had taken your verses."
+    ]
+  },
+  "HSRMod:ApesSuchAsYou": {
+    "NAME": "Apes Such As You",
+    "OPTIONS": [
+      "[continue]",
+      "[Safe and gentle caresses] Pet its head.",
+      "[You need to be able to take risks] Smooth out the fur on its hair.",
+      "[I have a dangerous idea!] Poke its belly.",
+      "[Leave wildlife alone] Leave this place.",
+      "[Gain nothing]",
+      "[Something stuck on its fur] Gain #y%d gold.",
+      "[Something hidden in its fur] Gain 1 relic.",
+      "[Found the Gray Ape's secret stash of money] Gain #y%d gold and 1 relic.",
+      "[Gray Ape's attacks are super effective] Lose #r%d%% of your current HP.",
+      "[Resistance is futile!] Battle, reward: #y%d gold and 1 relic.",
+      "[leave]",
+      "[Enter battle]"
+    ],
+    "DESCRIPTIONS": [
+      "You find a young ape lounging lazily on a rock. Its dense fur soaks in sunlight and sways in the wind like waves on a grassy plain.\nSimulated Universe: The ape leisurely rolls over, its natural muscle contours tracing an untamed silhouette with perfect curves that make even the Intelligentsia Guild mathematicians drool.\nSimulated Universe: And that tail... it is jauntily swaying in the air, soft and comfy, like it is its own entity. It moves with a mind of its own in orderless chaos, as mesmerizing as a Lodell oscillator model.",
+      "The purity of nature, the simplicity of science — evolution has generously gifted both of these traits into one creation. You silently sidle close to this ape, your wriggling fingers barely able to suppress the excitement threatening to boil over in your heart.",
+      "The ape doesn't reject your touch. The fur on its head isn't too thick, but has the suppleness of a river stream. It actively rubs against the palm of your hand, cooing in an affectionate tone. NL \"Heh-heh, my fluffy.\" You scratch its chin. The ape curls into a ball, wrapping your entire body in a world of heavy fur, its tail whimsically twirling in the air.",
+      "Your fingers lightly glide across the trail of fur and reach the ape's tail — it is soft to the touch, and its reflexive twitches in an attempt to escape your grasp evoke an inexplicable thrill within you.\nSimulated Universe: \"Heh-heh, my floofy floof.\" It stares at you, somewhat confused, but very quickly abandoning all thought. The ape turns around with its back to you, as if hinting at you to keep caressing it.",
+      "You eagerly dip your fingers into the ape's tummy. The fur there is so long and lush, as if it could swallow up all sorrow — even the black hole of Nihility pales in comparison.\nSimulated Universe: \"Heh-heh, my floofy tummy.\" The wary ape gradually throws all caution to the wind under your caress, lounging limply across the rock, allowing another primate to play with it.",
+      "Distant cries of predators startle the ape away. The ~fluffy~ sensation lingers in your palm — next time, you should go pet the Oblivion Eagle.",
+      "You sever your heart's desires with sheer resolution, in consideration of both your safety and the ape's mental health.",
+      "Perhaps you accidentally touched its wound — or it is simply agitated — the ape brusquely leaps to its feet, bares its fangs, and bellows loudly in intimidation.\nSimulated Universe: Unable to dodge in time, the ape's nails are already lunging at you at a speed that the naked eye cannot catch.",
+      "The sudden stimulus riles up the ape immensely, howling as it slaps away your hand, all its muscles tensed up. The sheer domination of nature, raw and without warning, emanates from its body.\nSimulated Universe: It furiously beats its chest, channeling a howl from its lungs, ready to mete deserved punishment on this unruly stranger.",
+      "The ape disappears in the darkness. You should take comfort in the fact that it did not file an animal rights' violation complaint against you.",
+      "You'll be caressing this fur today, whether the ape likes it or not!"
+    ]
+  },
+  "HSRMod:ShoppingStreet": {
+    "NAME": "First Battle of the Shopping Street",
+    "OPTIONS": [
+      "[continue]",
+      "For the glory of humanity!",
+      "Sorry, I didn't catch that.",
+      "[Spicy candies] Gain 1 #yRare relic, gain 1 curse.",
+      "[Numbing candies] Gain #y%s, gain 1 subtle relic.",
+      "[Mumbling candies] Gain #y%d gold, gain 1 relic related to gold.",
+      "[leave]"
+    ],
+    "DESCRIPTIONS": [
+      "You sit cross-legged on the cushion as you lock eyes with the half-human half-snake shop owner. The excitement of the 99th Staring Contest is reaching its peak. Even the water demon's two drinking buddies can't help but cover their mouths, for fear they would disturb this world-shattering showdown.\nSimulated Universe: The lion-dog officer assigned to maintain order on the scene is nervously chowing down on dog food. Even the biker gang youth they cuffed under arrest is sweating over the contest.",
+      "\"Give it up, young one. There are scant few in the Heavenly Kingdom of Eloquence — and fewer still in this Shopping Street — who can defeat me in this contest.\" The shop owner makes a threatening sound and her forked tongue almost touches your eyes.",
+      "You're stubborn but you can feel your eyes becoming the desert of Planet Mio as they part ways with all water molecules.\nSimulated Universe: You widen your eyes, trying to hurt your opponent's pupils with your gaze. Two pairs of eyes protrude in the air like the finest ornamental goldfish, almost popping out of their eye sockets to collide with each other like meteorites.",
+      "\"Gah, I surrender.\" The shop owner painfully closes her eyes. In that moment, every human and monster cheers for your victory. As this year's champion, you get the chance to be the first to taste all limited-edition products in the candy store!",
+      "\"Hiss... Don't get too cocky now. There is always a stronger opponent,\" the shop owner laughs and flicks her forked tongue. \"I am the weakest among the Four Unblinking Kings.\""
+    ]
+  },
+  "HSRMod:SelfAnnihilator": {
+    "NAME": "Kindling of the Self-Annihilator",
+    "OPTIONS": [
+      "[continue]",
+      "[Accept the flames] Gain 1 #yCurse, gain 1 #yRare relic.",
+      "[Refuse] Gain #y%d gold.",
+      "[Terminate the black box] Battle, reward: 1 #yRare card.",
+      "[Reinforce this belief] Gain 1 #yCurse, upgrade #b%d #yErudition cards.",
+      "[leave]"
+    ],
+    "DESCRIPTIONS": [
+      "You step into a natural program simulated by the recursive formula and notice a black box on the ground. You open it to reveal the holographic image of a physician — he has the body of a serpent below his waist.\nSimulated Universe: His dark green scales rustle and reflect a metallic glint as he moves its tail. \"Hiss...\" He speaks. Thanks to the Synesthesia Beacon, you can slowly understand his language.",
+      "\"Xuange was destroyed by Lan's Lux Arrow 62 light years away. Herta observed the incident and nurtured my spiritual form in the Simulated Universe.\" A kindling emerges in the physician's hands.\nSimulated Universe: \"My existence is Nihility... I do not have the authority to terminate the black box. I've tried to get out of the defensive walls, but I've only managed to send the self-extinguishing kindling outside the black box. I hope you can take it and see my belief through.\"",
+      "You got the flames.",
+      "You refused him."
+    ]
+  },
+  "HSRMod:AhaStuffedToy": {
+    "NAME": "Aha Stuffed Toy",
+    "OPTIONS": [
+    ],
+    "DESCRIPTIONS": [
+    ]
+  },
+  "HSRMod:KnightsOfBeauty": {
+    "NAME": "Knights of Beauty to the Rescue",
+    "OPTIONS": [
+      "[continue]",
+      "[Accept help from Stilott] Upgrade all #yRare cards.",
+      "[Accept help from Abomins] Gain #y%d gold.",
+      "[Accept help from Argenti] Gain #b%d #yPath cards.",
+      "[Accept help from Will Garner] Heal #g%d HP.",
+      "[Accept help from Pomaine] Gain #b%d relics.",
+      "[Accept help from Anoklay] Remove all #pCurse cards (including unremovable ones).",
+      "[Accept help from Holvisio] Gain 1 #yRare card from the current path.",
+      "[Accept help from Galahad Icahn] Gain #y%s.",
+      "[leave]"
+    ],
+    "DESCRIPTIONS": [
+      "You have been stuck in the Mourning Cave for ages... You have become unkempt, with a weary look in your eyes. If anyone were to come and help you at this moment, you would see them as your salvation.\nSimulated Universe: As you are contemplating whether to save yourself by making an eye-catching sign as bright as the *Beacon Coloring Paste*, you hear an ancient and beautiful song - The song, as refreshing as the clear rain, soothes your soul like a pot of honey tea.",
+      "\"It's our honor to meet a soul as tenacious as yours. We are the Knights of Beauty, and we'll show you our passion through our spears.\" Along with the clanking sound of armor, a burst of dazzling light envelops you... You hear the sound of a descending massive airship. While drifting in and out of consciousness, you can only vaguely hear them discussing how to rescue you...",
+      "Yet... the discussion lasts for a very long time. They shower you with praises before introducing themselves. After analyzing your predicament, they provide you with dozens of targeted solutions... You find the situation more and more confusing, and you start to wonder whether they can be trusted.",
+      "he knight offers you a flower.\nSimulated Universe: You receive it... The petals of Beauty melt your heart.",
+      "The knight extends a hand to you.\nSimulated Universe: You grab that hand... The lingering body warmth melts your heart.",
+      "The knight offers you a praise.\nSimulated Universe: You turn to him but pass out before you can see his face... When you regain consciousness, you are surrounded by the knights.",
+      "The knight's long hair hangs down slowly.\nSimulated Universe: You catch a handful of long hair... and regret doing so.",
+      "The knight gives you the round shield.\nSimulated Universe: You can feel the glory from the shields, and you are shaken by the valor of the knights.",
+      "The knight extends a spherical hand to you.\nSimulated Universe: After assessing the position of its fingers... you hold its hand in the end.",
+      "The knight calls to you fondly.\nSimulated Universe: You answer the call... The voice sounds very pious.",
+      "The knight gives you a companion.\nSimulated Universe: Wow! You're riding a companion and swooping down from the sky!",
+      "After rescuing you from danger, the Knights of Beauty are reluctant to leave. They consider you a devoted follower of the Aeons...\nSimulated Universe: A Knight of Beauty decides to teach you the spirit of Beauty.\nSimulated Universe: \"I hope you believe in Idrila,\" the Knight of Beauty says reverently.",
+      "After rescuing you from danger, the Knights of Beauty are reluctant to leave. One of the knights thinks you are a fan of Curios...\nSimulated Universe: The knight gives you his Curio.\nSimulated Universe: \"I hope you're satisfied with my help,\" the Knight of Beauty says reverently.",
+      "After rescuing you from danger, the Knights of Beauty stare at you with melancholic expressions...\nSimulated Universe: One of the knights thinks there are still \"problem\" on you, so he helps you to take away all curses.\nSimulated Universe: \"I hope you're satisfied with my help,\" the Knight of Beauty says reverently.",
+      "After rescuing you from danger, the Knights of Beauty stare at you with melancholic expressions...\nSimulated Universe: One of the knights thinks you are unable to bear the weight of the Curios, so he replaces all your Curios with Cosmic Fragments!\nSimulated Universe: \"I hope you're satisfied with my help,\" the Knight of Beauty says reverently."
+    ]
+  },
+  "HSRMod:TheReturningHeliobus": {
+    "NAME": "The Returning Heliobus",
+    "OPTIONS": [
+      "[continue]",
+      "[No crying if you lose] Enter a 4 turn battle with Cirrus, gain gold according to enemies slain",
+      "[Leave] What can you do to me?"
+    ],
+    "DESCRIPTIONS": [
+      "Dark-green flames engulf the Express. An extremely familiar, evil sneer booms out from the carriage, and the shimmering cold air makes the hairs stick up on the back of your neck.\nSimulated Universe: \"Long time no see, little bug. Didn't think I'd actually escape, did you?\" You look up to see Cirrus staring at you wide-eyed, angry and arrogant flames burning violently in those eyes.",
+      "Who knows where this data came from. You always feel as though the simulated version is worse than the original.\nSimulated Universe: \"Remember what I said? Today, you will pay double for the insults imparted on me by the Nameless and the Xianzhou!\" shrieked the great heliobus hysterically."
+    ]
+  },
+  "HSRMod:FalseFuture": {
+    "NAME": "False Future",
+    "OPTIONS": [
+      "[continue]",
+      "[Change my future] Change the boss and gain the \"#yTowat #yCards\".",
+      "[Abandon the suspicious divination] Leave and gain #y%d gold.",
+      "[leave]"
+    ],
+    "DESCRIPTIONS": [
+      "As you sit inside the dim tent, the white-haired diviner waves her hand, prompting the meandering colors to block out the clamor of the Dispo Night Market outside. Her dark eyes scrutinize you, seemingly peering into your fate.\nSimulated Universe: \"The future... Many long to behold it, but often rue the sight.\" Her breath is soft yet captivating, coiling around you like a deep-sea worm.",
+      "\"Divination is nothing but deceitful tricks, but I am different. I hold the power to shape your destiny.\" Drawing a deck of Tawot Cards from her sleeve, she pulls out a stack and places them face up before you.",
+      "\"With a subtle shift in perspective through 'riddles,' the world will alter its form around you.\" The woman offers a faint smile before vanishing into the music of the night market.",
+      "\"You seem to harbor a strong yearning for the mysteries of the future. Perhaps one day you may become one of us.\" The woman offers a faint smile before vanishing into the music of the night market."
+    ]
+  },
+  "HSRMod:ShoppingChannel": {
+    "NAME": "Shopping Channel",
+    "OPTIONS": [
+      "[continue]",
+      "Smack it.",
+      "Kick it.",
+      "[Donut] You can't verify whether the quality control is up to par.",
+      "[Lotus] You can't verify whether the quality control is up to par.",
+      "[Box] You can't verify whether the quality control is up to par.",
+      "[Smash this TV!] Lose #r%d HP, gain #b2 relics.",
+      "[Leave] You're not interested.",
+      "Heal #g%d HP.",
+      "Lose #r%d HP",
+      "Transform 1 common card",
+      "Transform 1 uncommon card",
+      "Gain 1 relic",
+      "Gain 1 curse",
+      "[leave]"
+    ],
+    "DESCRIPTIONS": [
+      "You are in a pitch-black room. The television before you is showing an infomercial channel funded by the IPC Traditional Project Department.\nSimulated Universe: \"You're watching the Capital of Passion infomercial channel. Before we start, we'd like to respond to the complaints on the Casket of Inaccuracy lodged by our viewers. As you know, if the Casket of Inaccuracy is accurate, it should be called the 'Casket of Accuracy' instead... *crackle*...\"\nSimulated Universe: Static appears on the old television as the signals get weaker. Soon, you cannot even hear the sound clearly.",
+      "You smack the television. Its screen flickers twice and returns to normal. NL \"Next, we'd like to introduce a pan-cosmic product from IPC.\"",
+      "You kick the television, and a surge of pain shoots up from your toes — a button wedges between your flesh and your toenail. The television screen flickers twice and returns to normal. NL \"Next, we'd like to introduce a pan-cosmic product from IPC.\"",
+      "\"A box of expired doughnuts. As the Capital of Passion has entered its 4th era, food can almost be preserved forever. Thus, the citizens are curious about how expired food tastes.\"\nSimulated Universe: \"A lotus that can sing the Happy Birthday song. As a feature in everyone's childhood, it appears countless times in people's dreams.\"\nSimulated Universe: \"A mechanical box. It looks like it didn't manage to get sold for over 200 years.\"\nSimulated Universe: You are lost in thought.",
+      "You take a bite of the doughnut and feel your stomach churning...",
+      "As the lotus starts singing, your childhood memories come flooding back. You seem to have traveled back in time to the previous era...",
+      "You open the box and see something odd inside...",
+      "The infomercial is addictive. You want to keep watching, but the screen suddenly turns off."
+    ]
+  },
+  "HSRMod:GeniusSociety": {
+    "NAME": "Mechanical City \"Cogito Hair Salon\" — Genius Society",
+    "OPTIONS": [
+      "[continue]",
+      "Adjust Intra-Cognition",
+      "[Pick a family element] Gain 1 random card, 1 random common relic, and #y%d gold.",
+      "[Pick a family element] Gain 1 random card, 1 random common relic.",
+      "[Pick a friendship element] Heal #g22 HP.",
+      "[leave]"
+    ],
+    "DESCRIPTIONS": [
+      "\"Alright, everyone is here.\" Herta clears her throat and says, \"We've finally gathered at the Cogito Hair Salon in the Mechanical City, though it's just a simulation! Now, let's get a haircut. Oops, sorry, we've got to talk about something while getting our hair done.\"",
+      "\"Affirmation: We need to constantly reaffirm our Intra-Cognition during our journey in the Simulated Universe,\" says Screwllum. \"(Trailblazer), we wonder whether your Intra-Cognition has changed during this wonderful trip. If your Intra-Cognition is swayed by the test, you'll see yourself as a machine, and that's not what we hope to see.\"",
+      "\"Conclusion: Some memories have resurfaced.\" Screwllum smiles and sinks deep in thought. \"Once upon a time, when the organic and inorganic lives were not at odds, they would sometimes find themselves hardly distinguishable.\" He fishes out several components from his pocket. \"These are emotional components, and some of my machine friends reside within them. You can pick one as your souvenir.\"",
+      "You gain what you want."
+    ]
+  },
+  "HSRMod:CheatCode1": {
+    "NAME": "Cheating Code (I)",
+    "OPTIONS": [
+      "[Take 100 gold] No risk.",
+      "[Take #b1 relic] Some risk.",
+      "[Want both gold and relic] The old gambler appears.",
+      "[You don't need this] This game cannot be started.",
+      "[leave]"
+    ],
+    "DESCRIPTIONS": [
+      "\"Welcome to the city of St. Domingo! We sell cheat codes here.\" The mechanical attendant explains without a care in the world. \"The kind you were definitely crazy about when you were little. What we have is slightly different, as they are the St. Domingo version.\"\nSimulated Universe: \"Use it any way you want. Just make sure you don't get caught by the mechacops,\" it giggles.",
+      "\"~Good~ ~luck!~\""
+    ]
+  },
+  "HSRMod:CheatCode2": {
+    "NAME": "Cheating Code (II)",
+    "OPTIONS": [
+      "[Forced to fight] You have no choice!"
+    ],
+    "DESCRIPTIONS": [
+      "You are taking a stroll in the city of St. Domingo... Dazzling lights are everywhere. As you are mesmerized by the brilliance, someone taps on your right shoulder. You turn around in surprise, and your left arm is clasped the next second.\nSimulated Universe: \"Hello.\" A St. Domingo mechacop bows to you and says, \"Please come with me. Evidence: Your previous usage of cheat codes have been documented.\""
     ]
   }
 }

@@ -48,6 +48,18 @@ public class SafeguardPower extends BuffPower implements OnReceivePowerPower, Pr
     }
 
     @Override
+    public void onInitialApplication() {
+        super.onInitialApplication();
+        SubscriptionManager.subscribe(this);
+    }
+
+    @Override
+    public void onRemove() {
+        super.onRemove();
+        SubscriptionManager.unsubscribe(this);
+    }
+
+    @Override
     public float atDamageReceive(float damage, DamageInfo.DamageType damageType) {
         if (ModHelper.getPowerCount(owner, ToughnessPower.POWER_ID) > 0
                 && damageType == DamageInfo.DamageType.NORMAL) {

@@ -1,5 +1,6 @@
 package hsrmod.cards.uncommon;
 
+import basemod.interfaces.OnCardUseSubscriber;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.utility.DiscardToHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -25,14 +26,14 @@ import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
 public class TopazNumby2 extends BaseCard implements PreFollowUpSubscriber {
     public static final String ID = TopazNumby2.class.getSimpleName();
-    
+
     int count = 0;
-    
+
     public TopazNumby2() {
         super(ID);
         tags.add(FOLLOW_UP);
     }
-    
+
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         addToBot(
@@ -58,33 +59,40 @@ public class TopazNumby2 extends BaseCard implements PreFollowUpSubscriber {
 
     @Override
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        return super.canUse(p,m) && followedUp;
+        return super.canUse(p, m) && followedUp;
     }
 
     @Override
     public void triggerOnOtherCardPlayed(AbstractCard c) {
         if (c instanceof BaseCard) {
             BaseCard baseCard = (BaseCard) c;
-            if (baseCard.followedUp && !followedUp) {
-                if (inHand) {
-                    followedUp = true;
-                    addToBot(new FollowUpAction(this));
-                } else {
-                    AbstractCard card = null;
-                    List<AbstractCard> discardPile = AbstractDungeon.player.hand.group;
-                    for (int i = discardPile.size() - 1; i >= 0; i--) {
-                        if (discardPile.get(i).cardID.equals(cardID)) {
-                            card = discardPile.get(i);
-                            break;
-                        }
-                    }
-                    if (card != null) {
-                        count++;
-                        if (count == 2) {
-                            count = 0;
-                            addToBot(new DiscardToHandAction(card));
-                        }
-                    }
+            if (baseCard.followedUp 
+                    && !followedUp 
+                    && !(c instanceof TopazNumby2)
+                    && AbstractDungeon.player.hand.findCardById(cardID) == this) {
+                followedUp = true;
+                addToBot(new FollowUpAction(this));
+            }
+        }
+    }
+
+    @Override
+    public void triggerOnCardPlayed(AbstractCard cardPlayed) {
+        super.triggerOnCardPlayed(cardPlayed);
+        if (cardPlayed instanceof BaseCard && cardPlayed.hasTag(FOLLOW_UP) && ((BaseCard)cardPlayed).followedUp) {
+            AbstractCard card = null;
+            List<AbstractCard> discardPile = AbstractDungeon.player.discardPile.group;
+            for (int i = discardPile.size() - 1; i >= 0; i--) {
+                if (discardPile.get(i).cardID.equals(cardID)) {
+                    card = discardPile.get(i);
+                    break;
+                }
+            }
+            if (card != null) {
+                count++;
+                if (count == 2) {
+                    count = 0;
+                    addToBot(new DiscardToHandAction(card));
                 }
             }
         }

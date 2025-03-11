@@ -57,7 +57,7 @@ Yanqing2,呼剑如影,SPECIAL,ATTACK,ENEMY,-2, 消耗 。回合开始时，若你于上回合结束后
 Clara1,因为我们是家人,UNCOMMON,SKILL,SELF,1, 保留 。回合开始时，若你于上回合结束后受到过伤害，则 hsrmod:追击 。 NL 获得 !B! 点格挡，消耗牌堆每有一张不同牌名的牌，额外获得1点。,,,3,,, 保留 。回合开始时，若你于上回合结束后受到过伤害，则 hsrmod:追击 。 NL 获得 !B! 点格挡，消耗牌堆：每有一张不同牌名的牌，额外获得1点；牌名最多的牌每有一张，额外获得1点。,,,,,欢愉,,高
 Himeko1,乘胜追击,UNCOMMON,ATTACK,ALL_ENEMY,3, hsrmod:击破 后 hsrmod:追击 。群体：造成 !D! 点伤害（火 !TR! ） !M! 次。,5,1,,2,,,,,,3,欢愉,火,中
 JingYuan1,斩勘神形,UNCOMMON,ATTACK,ENEMY,10,打出牌后，此牌费用-1，为0时 hsrmod:追击 。 NL 摸 !M! 张牌， hsrmod:弹射 !M! 次：造成 !D! 点伤害（雷 !TR! ）。,4,1,,2,,,,,,3,欢愉,雷,低
-TopazNumby2,猪市？！,UNCOMMON,ATTACK,ENEMY,1,你每 hsrmod:追击 2次，从弃牌堆获得1张此牌。 NL hsrmod:追击 后 hsrmod:追击 。造成 !D! 点伤害（火 !TR! ）。,6,1,,,,你每 hsrmod:追击 2次，从弃牌堆获得1张此牌。 NL hsrmod:追击 后 hsrmod:追击 。造成 !D! 点伤害（火 !TR! ），优先 hsrmod:追击 生命值少的目标。,8,,,,欢愉,火,无
+TopazNumby2,猪市？！,UNCOMMON,ATTACK,ENEMY,1,你每 hsrmod:追击 2次其他牌，从弃牌堆获得1张此牌。 NL hsrmod:追击 其他牌后， hsrmod:追击 1张此牌。 NL 造成 !D! 点伤害（火 !TR! ）。,5,1,,,,你每 hsrmod:追击 2次其他牌，从弃牌堆获得1张此牌。 NL hsrmod:追击 其他牌后， hsrmod:追击 1张此牌。 NL 造成 !D! 点伤害（火 !TR! ），优先 hsrmod:追击 生命值少的目标。,7,,,,欢愉,火,无
 TopazNumby3,未来市场,UNCOMMON,ATTACK,ENEMY,1,造成 !D! 点伤害（火 !TR! ），移除场上的负债证明，对其施加负债证明（受到的 hsrmod:追击 牌的伤害+ !M! 。 hsrmod:追击 选择目标时，优先选择其）。,4,1,,2,,造成 !D! 点伤害（火 !TR! ），移除场上的负债证明，对其施加负债证明（受到的 hsrmod:追击 牌的伤害+ !M!。 hsrmod:追击 选择目标时，优先选择其）。,6,,,3,欢愉,火,低
 DrRatio1,三段悖论,UNCOMMON,ATTACK,ENEMY,1, hsrmod:耗能 140，造成 !D! 点伤害（虚数 !TR! ），施加智者的短见，获得 !M! 张「我思故我在」。,5,3,,2,,,,,,3,欢愉,虚数,低
 DrRatio2,精神助产术,UNCOMMON,ATTACK,ENEMY,1,造成 !D! +X点伤害（虚数 !TR! ）（X为其负面效果数）；施加智者的短见，获得1张「我思故我在」。,5,2,,1,,造成 !D! +X点伤害（虚数 !TR! ）（X为其负面效果数）；施加智者的短见，获得1张「我思故我在+」。,7,,,,欢愉,虚数,中
@@ -188,5 +188,4 @@ TerminalNirvana,无余涅槃,RARE,SKILL,SELF,2, 消耗 。 保留 。 hsrmod:耗能 !M! ，获
 Erudition,智识,SPECIAL,SKILL,NONE,-2,,,,,,,,,,,,智识,,
 Imprison,禁锢,COMMON,STATUS,NONE,1, 虚无 。获得时，失去所有 [hsrmod:ChargeIcon] 。在手牌中时，无法获得 [hsrmod:ChargeIcon] 。失去时，回复以此法获得的 [hsrmod:ChargeIcon] 。,,,,,,,,,,,,,
 Frozen,冻结,COMMON,STATUS,NONE,-2, 保留 。无法打出。,,,,,,,,,,,,,
-Entangle,纠缠,COMMON,STATUS,NONE,2,与随机 !M! 张牌绑定，这些牌无法以其他方式打出。打出此牌会打出其他绑定牌（不消耗 [E] ）。,,,,2,3,,,,,,,,
-Entangle,纠缠,COMMON,STATUS,NONE,2,与随机 !M! 张牌绑定，打出其中一张会打出其他绑定的牌（消耗 [E] ）。,,,,2,3,,,,,,,,
+Entangle,纠缠,COMMON,STATUS,NONE,2, 消耗 。与随机 !M! 张牌绑定，这些牌无法以其他方式打出。打出此牌会打出其他绑定牌（不消耗 [E] ）。,,,,2,3,,,,,,,,

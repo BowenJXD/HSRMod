@@ -82,8 +82,8 @@ public class ElementalDamageInfo extends DamageInfo {
                 power = new ShockPower(target, owner, stackNum);
                 break;
             case Wind:
-                AbstractMonster monster = (AbstractMonster)target;
-                if (monster != null) {
+                if (target instanceof AbstractMonster) {
+                    AbstractMonster monster = (AbstractMonster) target;
                     switch (monster.type) {
                         case NORMAL:
                             break;
@@ -96,6 +96,8 @@ public class ElementalDamageInfo extends DamageInfo {
                         default:
                             break;
                     }
+                } else {
+                    stackNum = 2;
                 }
                 power = new WindShearPower(target, owner, stackNum);
                 break;

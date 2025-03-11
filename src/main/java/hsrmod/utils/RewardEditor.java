@@ -19,6 +19,7 @@ import com.megacrit.cardcrawl.saveAndContinue.SaveFile;
 import hsrmod.characters.StellaCharacter;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
+import hsrmod.modcore.HSRModConfig;
 import hsrmod.relics.common.RubertEmpireMechanicalCogwheel;
 import hsrmod.relics.common.RubertEmpireMechanicalLever;
 import hsrmod.relics.common.RubertEmpireMechanicalPiston;
@@ -84,7 +85,11 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
             }
 
             if (Objects.equals(relicId, "") && AbstractDungeon.player instanceof StellaCharacter) {
-                checkBossRelic(tag);
+                try {
+                    checkBossRelic(tag);
+                } catch (Exception e) {
+                    logger.error("Error checking boss relic: {}", e.getMessage());
+                }
             }
         }
 
@@ -371,6 +376,9 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
                 if (relic instanceof TrailblazeTimer) {
                     ((TrailblazeTimer) relic).updateDescription(relic.getUpdatedDescription());
                 }
+            }
+            if (AbstractDungeon.ascensionLevel >= 20 && AbstractDungeon.player.gold < HSRModConfig.getActiveTPCount() * 200) {
+                AbstractDungeon.player.gainGold(HSRModConfig.getActiveTPCount() * 200);
             }
         }
     }

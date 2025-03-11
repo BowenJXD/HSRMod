@@ -20,7 +20,7 @@ import hsrmod.monsters.BaseMonster;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
-public class Feixiao2 extends BaseCard implements OnCardUseSubscriber {
+public class Feixiao2 extends BaseCard {
     public static final String ID = Feixiao2.class.getSimpleName();
     
     int costCache;
@@ -29,10 +29,9 @@ public class Feixiao2 extends BaseCard implements OnCardUseSubscriber {
     public Feixiao2() {
         super(ID);
         costCache = cost;
-        BaseMod.subscribe(this);
-    }/*
+    }
 
-    @Override
+    /*@Override
     public void atTurnStart() {
         super.atTurnStart();
         if (!subscribed) {
@@ -86,10 +85,9 @@ public class Feixiao2 extends BaseCard implements OnCardUseSubscriber {
     }
 
     @Override
-    public void receiveCardUsed(AbstractCard abstractCard) {
-        if (abstractCard != this 
-                && SubscriptionManager.checkSubscriber(this) 
-                && abstractCard.type == CardType.ATTACK) {
+    public void triggerOnCardPlayed(AbstractCard cardPlayed) {
+        super.triggerOnCardPlayed(cardPlayed);
+        if (cardPlayed != this && cardPlayed.type == CardType.ATTACK) {
             baseDamage++;
         }
     }

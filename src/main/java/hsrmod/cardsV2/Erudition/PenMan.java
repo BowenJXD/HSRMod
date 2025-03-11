@@ -22,14 +22,15 @@ public class PenMan extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         returnToHand = false;
-        if (!p.hand.isEmpty() || upgraded) {
-            addToBot(new SelectCardsInHandAction(1, String.format(cardStrings.EXTENDED_DESCRIPTION[upgraded ? 1 : 0], magicNumber),
-                    false, upgraded, c -> true, list -> {
+        if (!p.hand.isEmpty()) {
+            addToBot(new SelectCardsInHandAction(1, String.format(cardStrings.EXTENDED_DESCRIPTION[0], magicNumber),
+                    false, false, c -> true, list -> {
                 ModHelper.addToTopAbstract(() -> returnToHand = ModHelper.getPowerCount(p, EnergyPower.POWER_ID) < EnergyPower.AMOUNT_LIMIT);
-                if (list.isEmpty() && energyOnUse > 0) {
+                /*if (list.isEmpty() && energyOnUse > 0) {
                     addToTop(new ApplyPowerAction(p, p, new EnergyPower(p, magicNumber * 2), magicNumber * 2));
                     addToTop(new LoseEnergyAction(1));
-                } else if (!list.isEmpty()){
+                } else */
+                if (!list.isEmpty()){
                     addToTop(new ApplyPowerAction(p, p, new EnergyPower(p, magicNumber), magicNumber));
                     addToTop(new DiscardSpecificCardAction(list.get(0)));
                 }

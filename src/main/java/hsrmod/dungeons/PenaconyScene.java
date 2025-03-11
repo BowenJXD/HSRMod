@@ -14,10 +14,12 @@ import com.megacrit.cardcrawl.rooms.*;
 import com.megacrit.cardcrawl.scenes.AbstractScene;
 import com.megacrit.cardcrawl.scenes.TheBeyondScene;
 import com.megacrit.cardcrawl.vfx.scene.BottomFogEffect;
+import hsrmod.misc.Encounter;
 import hsrmod.monsters.TheBeyond.*;
 import org.apache.logging.log4j.core.appender.db.jdbc.ColumnConfig;
 
 import java.util.Iterator;
+import java.util.Objects;
 
 public class PenaconyScene extends AbstractScene {
     private final TextureAtlas.AtlasRegion bg1;
@@ -259,8 +261,9 @@ public class PenaconyScene extends AbstractScene {
             CardCrawlGame.music.silenceTempBgmInstantly();
             room.playBGM("Full House");
         } else if (room instanceof RestRoom) {
-            // TODO: the campfire room before the boss fight should play a different music
-            if (r < 10) {
+            if (Math.abs(AbstractDungeon.floorNum - 49) <= 1 && Objects.equals(AbstractDungeon.bossKey, Encounter.SALUTATIONS_OF_ASHEN_DREAMS)) {
+                room.playBGM("Im Anfang war das Wort");
+            } else if (r < 10) {
                 room.playBGM("If I Can Stop One Heart From Breaking (Encore)");
             } else {
                 CustomDungeon.resumeMainMusic();

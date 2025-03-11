@@ -257,7 +257,7 @@ public class LuofuScene extends AbstractScene {
         this.fireFlies.clear();
         
         this.customBg = null;
-        if (room instanceof MonsterRoomBoss || room.eliteTrigger) {
+        if ((room instanceof MonsterRoomBoss || room.eliteTrigger) && room.monsters != null) {
             if (room.monsters.monsters.stream().anyMatch(m -> m instanceof Phantylia)) {
                 this.customBg = customAtlas.findRegion("mod/LuofuPhantylia");
             } else if (room.monsters.monsters.stream().anyMatch(m -> m instanceof ShadowOfFeixiao)) {

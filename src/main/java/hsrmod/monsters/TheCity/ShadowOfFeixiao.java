@@ -64,8 +64,8 @@ public class ShadowOfFeixiao extends BaseMonster implements PreBreakSubscriber {
                 else if (monster instanceof WorldpurgeTail) shout(4, 3f);
 
                 addToBot(new ApplyPowerAction(monster, this, new ResonatePower(monster, resonateCount, ResonatePower.ResonateType.FEIXIAO), 0));
-                addToBot(new RollMoveAction(monster));
                 addToBot(new UnlockToughnessAction(monster, monster));
+                addToBot(new RollMoveAction(monster));
                 if (ModHelper.getPowerCount(monster, ToughnessPower.POWER_ID) > 0)
                     addToBot(new ApplyPowerAction(monster, this, new ToughnessPower(monster, toughnessHealCount)));
                 if (specialAs)

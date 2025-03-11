@@ -30,6 +30,7 @@ public class Entangle extends BaseCard implements PostDrawSubscriber, ICheckUsab
     
     public Entangle() {
         super(ID, CardColor.COLORLESS);
+        exhaust = true;
         tags.add(CustomEnums.ENTANGLE);
         particleTimer = 0.0F;
         entangledCards = new ArrayList<>();
@@ -64,7 +65,7 @@ public class Entangle extends BaseCard implements PostDrawSubscriber, ICheckUsab
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         entangledCards.forEach(c -> {
-            addToBot(new FollowUpAction(c, null, false));
+            addToBot(new FollowUpAction(c));
             c.tags.remove(CustomEnums.ENTANGLE);
         });
         entangledCards.clear();

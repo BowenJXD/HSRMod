@@ -23,8 +23,8 @@
         <ModTheSpire.version>3.23.2</ModTheSpire.version>
         <!-- *****一定要改 ***** -->
         <!-- 改成你的steam安装路径位置，指向steamapps文件夹（该目录安装了杀戮尖塔及mod） -->
-<!--        <Steam.path>C:\Program Files (x86)\Steam\steamapps</Steam.path>-->
-        <Steam.path>D:\SteamLibrary\steamapps</Steam.path>
+        <Steam.path>C:\Program Files (x86)\Steam\steamapps</Steam.path>
+        <!--<Steam.path>D:\SteamLibrary\steamapps</Steam.path>-->
     </properties>
 
     <dependencies>
@@ -65,13 +65,13 @@
             <scope>system</scope>
             <systemPath>${Steam.path}/workshop/content/646570/1934902042/actlikeit.jar</systemPath>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>com.evacipated.cardcrawl.mod</groupId>
             <artifactId>Aventurine</artifactId>
             <version>1.8.0</version>
             <scope>system</scope>
             <systemPath>${Steam.path}/workshop/content/646570/3239087754/Aventurine_mod.jar</systemPath>
-        </dependency>
+        </dependency>-->
         <!--<dependency>
             <groupId>com.evacipated.cardcrawl.mod</groupId>
             <artifactId>VUPShion</artifactId>

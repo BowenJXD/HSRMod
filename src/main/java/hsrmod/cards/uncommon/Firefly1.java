@@ -43,7 +43,7 @@ public class Firefly1 extends BaseCard {
             ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID + "-2"));
             addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[1], 1.0F, 2.0F));
         }
-        addToBot(new VFXAction(new MultiSlashEffect(m.hb.cX, m.hb.cY, 5, Color.CHARTREUSE, Color.ORANGE), Settings.FAST_MODE ? 0.6f : 0f));
+        addToBot(new VFXAction(new MultiSlashEffect(m.hb.cX, m.hb.cY, 5, Color.CHARTREUSE, Color.ORANGE), Settings.FAST_MODE ? 0.6f : 1.2f));
 
         addToBot(
                 new ElementalDamageAction(

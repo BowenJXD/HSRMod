@@ -3,6 +3,9 @@ package hsrmod.characters;
 import basemod.abstracts.CustomPlayer;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.math.MathUtils;
+import com.esotericsoftware.spine.AnimationState;
+import com.esotericsoftware.spine.BoneData;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -11,6 +14,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.cutscenes.CutscenePanel;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.city.Vampires;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
@@ -22,6 +26,7 @@ import hsrmod.modcore.HSRMod;
 import hsrmod.modcore.HSRModConfig;
 import hsrmod.patches.PathSelectScreen;
 import hsrmod.relics.starter.*;
+import hsrmod.utils.ModHelper;
 
 import java.util.ArrayList;
 
@@ -62,7 +67,8 @@ public class StellaCharacter extends CustomPlayer {
         // 人物对话气泡的大小，如果游戏中尺寸不对在这里修改（libgdx的坐标轴左下为原点）
         this.dialogX = (this.drawX + 0.0F * Settings.scale);
         this.dialogY = (this.drawY + 150.0F * Settings.scale);
-
+        
+        this.drawY = AbstractDungeon.floorY * 2 - 100;
 
         // 初始化你的人物，如果你的人物只有一张图，那么第一个参数填写你人物图片的路径。
         this.initializeClass(
@@ -70,16 +76,37 @@ public class StellaCharacter extends CustomPlayer {
                 MY_CHARACTER_SHOULDER_2, MY_CHARACTER_SHOULDER_1,
                 CORPSE_IMAGE, // 人物死亡图像
                 this.getLoadout(),
-                0.0F, 0.0F,
-                200.0F, 220.0F, // 人物碰撞箱大小，越大的人物模型这个越大
+                50F, -280F,
+                200.0F, 300.0F, // 人物碰撞箱大小，越大的人物模型这个越大
                 new EnergyManager(3) // 初始每回合的能量
         );
         
         // 如果你的人物没有动画，那么这些不需要写
-        // this.loadAnimation("HSRModResources/img/char/character.atlas", "HSRModResources/img/char/character.json", 1.8F);
-        // AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
-        // e.setTime(e.getEndTime() * MathUtils.random());
-        // e.setTimeScale(1.2F);
+        try {
+            this.loadAnimation("HSRModResources/img/spine/nv.atlas", "HSRModResources/img/spine/nv.json", 3F);
+            AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
+            e.setTime(e.getEndTime() * MathUtils.random());
+            e.setTimeScale(0.5F);
+        } catch (Exception e) {
+            HSRMod.logger.error("Failed to load animation: {}", e.getMessage());
+        }
+    }
+
+    @Override
+    public void update() {
+        super.update();
+        if (state != null) {
+            flipHorizontal = true;
+        }
+    }
+
+    @Override
+    public void movePosition(float x, float y) {
+        if (y == AbstractDungeon.floorY && state != null) {
+            y *= 2;
+            y -= 100;
+        }
+        super.movePosition(x, y);
     }
 
     // 初始卡组的ID，可直接写或引用变量
@@ -148,7 +175,7 @@ public class StellaCharacter extends CustomPlayer {
                 73, // 当前血量
                 73, // 最大血量
                 0, // 初始充能球栏位
-                73 + HSRModConfig.getActiveTPCount() * 200, // 初始携带金币
+                73, // 初始携带金币
                 5, // 每回合抽牌数量
                 this, // 别动
                 this.getStartingRelics(), // 初始遗物

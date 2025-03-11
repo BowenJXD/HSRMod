@@ -3,6 +3,7 @@ package hsrmod.powers.enemyOnly;
 import basemod.helpers.VfxBuilder;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.CommonKeywordIconsField;
 import com.megacrit.cardcrawl.actions.common.InstantKillAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -109,6 +110,7 @@ public class FormationCorePower extends StatePower implements PreElementalDamage
                             break;
                     }
                 }
+                CommonKeywordIconsField.useIcons.set(c, true);
             });
         }
     }

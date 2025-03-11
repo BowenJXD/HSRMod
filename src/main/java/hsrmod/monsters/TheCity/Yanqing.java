@@ -1,6 +1,7 @@
 package hsrmod.monsters.TheCity;
 
 import com.badlogic.gdx.graphics.Color;
+import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.CommonKeywordIconsField;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -56,6 +57,7 @@ public class Yanqing extends BaseMonster implements PostMonsterDeathSubscriber {
             spawnMonsters();
             addToBot(new ApplyPowerAction(this, this, new SwordFormationPower(this)));
             addToBot(new LockToughnessAction(this, this));
+            AbstractDungeon.player.drawPile.group.forEach(c -> CommonKeywordIconsField.useIcons.set(c, true));
             if (!AbstractDungeon.player.drawPile.isEmpty()) {
                 AbstractDungeon.player.drawPile.getRandomCard(AbstractDungeon.aiRng).exhaust = true;
                 AbstractDungeon.player.drawPile.getRandomCard(AbstractDungeon.aiRng).isEthereal = true;

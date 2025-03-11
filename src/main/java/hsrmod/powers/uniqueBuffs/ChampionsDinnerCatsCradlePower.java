@@ -73,8 +73,8 @@ public class ChampionsDinnerCatsCradlePower extends PowerPower implements OnRece
     @Override
     public boolean onReceivePower(AbstractPower abstractPower, AbstractCreature abstractCreature, AbstractCreature abstractCreature1) {
         if (abstractPower instanceof EnergyPower) {
-            if (/*(abstractPower.amount > 0 && ModHelper.getPowerCount(owner, EnergyPower.POWER_ID) < EnergyPower.AMOUNT_LIMIT)
-                    ||*/ (abstractPower.amount < 0 && ModHelper.getPowerCount(owner, EnergyPower.POWER_ID) > 0)) {
+            if ((abstractPower.amount > 0 && ModHelper.getPowerCount(owner, EnergyPower.POWER_ID) < EnergyPower.AMOUNT_LIMIT)
+                    /*|| (abstractPower.amount < 0 && ModHelper.getPowerCount(owner, EnergyPower.POWER_ID) > 0)*/) {
                 onSpecificTrigger();
             }
         }

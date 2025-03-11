@@ -16,7 +16,7 @@ import hsrmod.subscribers.PreBreakSubscriber;
 import hsrmod.subscribers.PreElementalDamageSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 
-public class MultiplyPower extends StatePower implements PreElementalDamageSubscriber, PreBreakSubscriber {
+public class MultiplyPower extends StatePower implements PreBreakSubscriber {
     public static final String POWER_ID = HSRMod.makePath(MultiplyPower.class.getSimpleName());
     
     public MultiplyPower(AbstractCreature owner, int amount) {
@@ -45,16 +45,6 @@ public class MultiplyPower extends StatePower implements PreElementalDamageSubsc
     public void atEndOfTurn(boolean isPlayer) {
         super.atEndOfTurn(isPlayer);
         addToBot(new ApplyPowerAction(owner, owner, new InsectEggPower(owner, amount)));
-    }
-
-    @Override
-    public float preElementalDamage(ElementalDamageAction action, float dmg) {
-        if (SubscriptionManager.checkSubscriber(this) 
-                && action.target == owner 
-                && action.info.owner == AbstractDungeon.player) {
-            action.info.tr = 0;
-        }
-        return dmg;
     }
 
     @Override

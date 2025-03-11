@@ -58,6 +58,9 @@ public class SanctionRatePower extends StatePower {
             amount = stackLimit;
             AbstractMonster m = (AbstractMonster) owner;
             if (m != null) {
+                if (!AbstractDungeon.actionManager.turnHasEnded) {
+                    addToBot(new RollMoveAction(m));
+                }
                 ModHelper.addToBotAbstract(m::createIntent);
             }
             

@@ -35,7 +35,7 @@ public class OutragePower extends DebuffPower {
     public void onSpecificTrigger() {
         super.onSpecificTrigger();
         AbstractCard card = AbstractDungeon.player.hand.getRandomCard(AbstractCard.CardType.ATTACK, true);
-        if (card != null) {
+        if (card != null && card.canUse(AbstractDungeon.player, null)) {
             flash();
             addToBot(new VFXAction(new VerticalAuraEffect(Color.RED, owner.hb.cX, owner.hb.cY)));
             addToBot(new FollowUpAction(card, null, false));

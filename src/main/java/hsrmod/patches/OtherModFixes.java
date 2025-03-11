@@ -7,14 +7,17 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
 import com.megacrit.cardcrawl.actions.animations.ShoutAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import hsrmod.cards.uncommon.Acheron1;
 import hsrmod.cards.uncommon.Aventurine1;
+import hsrmod.effects.GrayscaleScreenEffect;
 import hsrmod.effects.PortraitDisplayEffect;
 import hsrmod.modcore.HSRMod;
 import hsrmod.monsters.TheBeyond.AventurineOfStratagems;
@@ -42,6 +45,7 @@ public class OtherModFixes {
             if (Objects.equals(card.cardID, "AcheronMod:CMJR")) {
                 try {
                     AbstractDungeon.topLevelEffects.add(new PortraitDisplayEffect("Acheron"));
+                    AbstractDungeon.topLevelEffects.add(new GrayscaleScreenEffect(Settings.FAST_MODE ? 2 : 3));
                     String[] extDesc = CardCrawlGame.languagePack.getCardStrings("HSRMod:Acheron1").EXTENDED_DESCRIPTION;
                     ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV("SlashedDream1", 2));
                     AbstractDungeon.actionManager.addToBottom(new TalkAction(true, extDesc[0], 1, 2));
@@ -50,6 +54,7 @@ public class OtherModFixes {
                 }
             } else if (Objects.equals(card.cardID, "AcheronMod:AcheronCard")) {
                 try {
+                    AbstractDungeon.topLevelEffects.add(new GrayscaleScreenEffect(Settings.FAST_MODE ? 2 : 3));
                     String[] extDesc = CardCrawlGame.languagePack.getCardStrings("HSRMod:Acheron1").EXTENDED_DESCRIPTION;
                     ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV("SlashedDream2", 2));
                     AbstractDungeon.actionManager.addToBottom(new TalkAction(true, extDesc[1], 1, 2));

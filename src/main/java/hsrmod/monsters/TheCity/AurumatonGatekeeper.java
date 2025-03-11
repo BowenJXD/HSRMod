@@ -18,6 +18,7 @@ import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.vfx.combat.SmallLaserEffect;
 import com.megacrit.cardcrawl.vfx.combat.SweepingBeamEffect;
 import hsrmod.cardsV2.Curse.Imprison;
+import hsrmod.effects.LinearSweepingBeamEffect;
 import hsrmod.misc.PathDefine;
 import hsrmod.modcore.HSRMod;
 import hsrmod.monsters.BaseMonster;
@@ -58,7 +59,7 @@ public class AurumatonGatekeeper extends BaseMonster {
                 break;
             case 2:
                 addToBot(new AnimateFastAttackAction(this));
-                addToBot(new VFXAction(new SweepingBeamEffect(p.hb.cX, p.hb.cY, true)));
+                addToBot(new VFXAction(new LinearSweepingBeamEffect(hb.cX, hb.cY, p.hb.cX, p.hb.cY - p.hb.height/2, true), 0.5f));
                 addToBot(new DamageAction(p, this.damage.get(0), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
                 addToBot(new ApplyPowerAction(p, this, new WeakPower(p, 1, true), 1));
                 addToBot(new ApplyPowerAction(this, this, new SanctionRatePower(this, SanctionRatePower.stackCount), SanctionRatePower.stackCount));

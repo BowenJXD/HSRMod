@@ -25,6 +25,7 @@ public class MultiSlashEffect extends AbstractGameEffect {
         this.count = count;
         this.color = color;
         this.color2 = color2;
+        this.interval = Settings.FAST_MODE ? 0.12f : 0.25f;
         this.startingDuration = interval * count;
         this.duration = this.startingDuration;
         this.angle = 0;

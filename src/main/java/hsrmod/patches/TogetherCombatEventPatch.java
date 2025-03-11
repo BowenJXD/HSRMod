@@ -17,6 +17,9 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.SlaversCollar;
 import com.megacrit.cardcrawl.ui.MultiPageFtue;
 
+/**
+ * This patch is used to fix the issue that the player's status is not shown when entering combat via event in together in spire.
+ */
 public class TogetherCombatEventPatch {
     @SpirePatch(clz = PhasedEvent.class, method = "enterCombat") 
     public static class EnterCombat {

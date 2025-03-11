@@ -142,7 +142,7 @@ public class TheGreatSeptimus extends BaseMonster implements OnCardUseSubscriber
                 }
                 for (int i = 0; i < numDamage; i++) {
                     addToBot(new DamageAction(p, this.damage.get(4)));
-                    addToBot(new ForceWaitAction(2.0f));
+                    // addToBot(new ForceWaitAction(0.3f));
                     this.addToBot(new VFXAction(new StarBounceEffect(p.hb.cX, p.hb.cY)));
                 }
                 addToBot(new ShakeScreenAction(0.3F, ScreenShake.ShakeDur.LONG, ScreenShake.ShakeIntensity.LOW));
@@ -238,8 +238,8 @@ public class TheGreatSeptimus extends BaseMonster implements OnCardUseSubscriber
         }
         else return;
         cardsCache.add(abstractCard.cardID);
-        if (phrase != null) addToBot(new TalkAction(true, phrase, duration, duration + 1));
         String finalVoice = voice;
         ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(finalVoice, 3));
+        if (phrase != null) addToBot(new TalkAction(true, phrase, duration, duration + 1));
     }
 }

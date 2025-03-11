@@ -217,7 +217,8 @@
   "HSRMod:Symbiote": {
     "NAME": "Symbiote",
     "DESCRIPTIONS": [
-      "After break, if first time on this turn, gain [E] [E] , otherwise, gain [E] . After dealing break damage, draw 1 card."
+      "After break, if first time on this turn, gain [E] [E] . NL  After dealing break damage, draw 1 card.",
+      "After break, if first time on this turn, gain [E] [E] , otherwise, gain [E] . NL After dealing break damage, draw 1 card."
     ]
   },
   "HSRMod:VoyageMonitor": {
@@ -337,7 +338,7 @@
   "HSRMod:ChampionsDinnerCatsCradle": {
     "NAME": "Champion's Dinner : Cat's Cradle",
     "DESCRIPTIONS": [
-      "Charge using cards are regarded as Follow Up cards, when using [hsrmod:ChargeIcon] , #b%d chance to Follow Up one of them without using [hsrmod:ChargeIcon] . "
+      "Charge using cards are regarded as Follow Up cards, when gaining [hsrmod:ChargeIcon] , #b%d chance to Follow Up one of them without using [hsrmod:ChargeIcon] . "
     ]
   },"HSRMod:EmpyreanImperium": {
   "NAME": "Empyrean Imperium",
@@ -425,7 +426,6 @@
       "After playing an attack card, for every target hit, deal !M! damage to the target with most health."
     ]
   },
-  
   "HSRMod:Charging": {
     "NAME": "Charging",
     "DESCRIPTIONS": [
@@ -538,7 +538,9 @@
     "NAME": "Channel",
     "DESCRIPTIONS": [
       "[ #bSurprise #bChannel ] After taking damage, switch to #rFright #rChannel.",
-      "[ #rFright #rChannel ] After taking damage, switch to #bSurprise #bChannel."
+      "[ #rFright #rChannel ] After taking damage, switch to #bSurprise #bChannel.",
+      "[ #bTutoring #bChannel ] After taking damage, switch to #rOff #rClass #rChannel.",
+      "[ #rOff #rClass #rChannel ] After taking damage, switch to #bTutoring #bChannel."
     ]
   },
   "HSRMod:SoulGladRevel": {
@@ -633,7 +635,7 @@
   "HSRMod:HardyLeafSheath": {
     "NAME": "Hardy Leaf Sheath",
     "DESCRIPTIONS": [
-      "#Toughness can not be reduced, damage received - #b50%% . Remove 1 stack at the start of the turn."
+      "#yToughness can not be reduced, damage received - #b50% . Remove 1 stack at the start of the turn."
     ]
   },
   "HSRMod:LavishFruit": {
@@ -663,7 +665,8 @@
   "HSRMod:Resonate": {
     "NAME": "Resonate",
     "DESCRIPTIONS": [
-      "Skills are upgraded. Toughness reduction + #b%d%% . After a card deals damage to a target with #yResonate , other targets with #yResonate lose the same amount of HP. After #yBreak , if the target is a minion, remove this power, lock the toughness, and prevent it from acting."
+      "Skills are upgraded. Toughness reduction + #b%d%% . After a card deals damage to a target with #yResonate , other targets with #yResonate lose the same amount of HP. After #yBreak , if the target is a minion, remove this power, lock the toughness, and prevent it from acting.",
+      "Toughness reduction + #b%d%% . After a card deals damage to a target with #yResonate , other targets with #yResonate lose the same amount of HP. After #yBreak , stun it."
     ]
   },
   "HSRMod:DeceptionsCrown": {
@@ -753,7 +756,7 @@
   "HSRMod:Multiply": {
     "NAME": "Multiply",
     "DESCRIPTIONS": [
-      "Won't take toughness reduce from normal damage. Gain #b%d #yInsect #yEgg at end of turn. After taking damage for the first time after playing a card, consume 1 #yInsect #yEgg , summon a minion. Remove after #yBreak , all monsters gain #yVulnerable and #yStun ."
+      "Gain #b%d #yInsect #yEgg at end of turn. After taking damage for the first time after playing a card, consume 1 #yInsect #yEgg , summon a minion. Remove after #yBreak , all monsters gain #yVulnerable and #yStun ."
     ]
   },
   "HSRMod:InsectEgg": {

@@ -50,7 +50,7 @@ public class LesserSting extends BaseMonster {
 
     @Override
     protected void getMove(int i) {
-        if (lastMove((byte) 0)) {
+        if (lastMove((byte) 0) && hasPower(ChargingPower.POWER_ID)) {
             setMove(1);
         } else {
             setMove(0);

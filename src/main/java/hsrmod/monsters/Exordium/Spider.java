@@ -66,6 +66,7 @@ public class Spider extends BaseMonster {
             case 3:
                 if (hasPower(ChargingPower.POWER_ID)) {
                     this.addToBot(new VFXAction(new ExplosionSmallEffect(hb.cX, hb.cY), 0.1F));
+                    addToBot(new RemoveSpecificPowerAction(this, this, DeathExplosionPower.POWER_ID));
                     addToBot(new DamageAction(p, this.damage.get(1), AbstractGameAction.AttackEffect.FIRE));
                     addToBot(new SuicideAction(this));
                 }

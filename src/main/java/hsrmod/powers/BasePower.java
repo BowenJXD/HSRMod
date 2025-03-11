@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import hsrmod.modcore.HSRMod;
 
 public abstract class BasePower extends AbstractPower {
     public String[] DESCRIPTIONS;
@@ -32,7 +33,11 @@ public abstract class BasePower extends AbstractPower {
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[upgraded && DESCRIPTIONS.length > 1 ? 1 : 0];
+        try {
+            description = DESCRIPTIONS[upgraded && DESCRIPTIONS.length > 1 ? 1 : 0];
+        } catch (Exception e) {
+            HSRMod.logger.error("Error while updating power description", e);
+        }
     }
 
     public void remove(int val) {

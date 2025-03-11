@@ -1,11 +1,15 @@
 package hsrmod.powers.enemyOnly;
 
 import basemod.BaseMod;
+import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
 import hsrmod.modcore.HSRMod;
 import hsrmod.monsters.TheBeyond.SomethingUntoDeath;
 import hsrmod.powers.BuffPower;
@@ -45,6 +49,8 @@ public class SlumberAwakeningPower extends StatePower {
             }
         } else {
             for (AbstractCard card : cards) {
+                CardCrawlGame.sound.play("CARD_EXHAUST");
+                AbstractDungeon.topLevelEffects.add(new PurgeCardEffect(card, (Settings.WIDTH * MathUtils.random(0.2f, 0.8f)), (Settings.HEIGHT * MathUtils.random(0.2f, 0.8f))));
                 AbstractDungeon.player.masterDeck.removeCard(card.cardID);
             }
         }

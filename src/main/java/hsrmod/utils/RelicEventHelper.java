@@ -26,10 +26,7 @@ import hsrmod.relics.special.*;
 import hsrmod.relics.special.TheWindSoaringValorous;
 import hsrmod.relics.uncommon.JellyfishOnTheStaircase;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -48,7 +45,7 @@ public class RelicEventHelper {
         int count = 0;
         List<String> upgradedCards = new ArrayList<>();
         List<AbstractCard> list = AbstractDungeon.player.masterDeck.group;
-        Collections.shuffle(list, AbstractDungeon.miscRng.random);
+        Collections.shuffle(list, new Random(AbstractDungeon.miscRng.randomLong()));
 
         for (AbstractCard c : list) {
             if (c.canUpgrade() && !upgradedCards.contains(c.cardID)) {

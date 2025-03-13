@@ -16,6 +16,7 @@ import hsrmod.utils.RewardEditor;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public class VoidWickTrimmer extends BaseRelic {
@@ -29,7 +30,7 @@ public class VoidWickTrimmer extends BaseRelic {
     public void onEquip() {
         super.onEquip();
         List<AbstractRelic> relics = AbstractDungeon.player.relics.stream().filter(r -> r.usedUp).collect(Collectors.toList());
-        Collections.shuffle(relics, AbstractDungeon.miscRng.random);
+        Collections.shuffle(relics, new Random(AbstractDungeon.miscRng.randomLong()));
         if (!relics.isEmpty()) {
             AbstractRelic[] relicsArray = relics.subList(0, Math.min(relics.size(), magicNumber)).toArray(new AbstractRelic[0]);
             ModHelper.addEffectAbstract(() -> RelicEventHelper.loseRelics(false, relicsArray));

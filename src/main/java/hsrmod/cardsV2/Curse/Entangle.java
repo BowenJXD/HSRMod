@@ -18,6 +18,7 @@ import hsrmod.utils.ModHelper;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -44,7 +45,7 @@ public class Entangle extends BaseCard implements PostDrawSubscriber, ICheckUsab
         if (entangledCards.isEmpty()) {
             List<AbstractCard> tmp = AbstractDungeon.player.hand.group.stream().filter(c -> !c.hasTag(CustomEnums.ENTANGLE)).collect(Collectors.toList());
             if (!tmp.isEmpty()) {
-                Collections.shuffle(tmp, AbstractDungeon.cardRandomRng.random);
+                Collections.shuffle(tmp, new Random(AbstractDungeon.cardRandomRng.randomLong()));
                 tmp.stream().limit(entangleCount).forEach(c -> {
                     c.tags.add(CustomEnums.ENTANGLE);
                     entangledCards.add(c);

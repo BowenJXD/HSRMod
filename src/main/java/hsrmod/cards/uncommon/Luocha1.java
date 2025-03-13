@@ -18,6 +18,7 @@ public class Luocha1 extends BaseCard {
         super(ID);
         selfRetain = true;
         exhaust = true;
+        tags.add(CardTags.HEALING);
     }
     
     @Override

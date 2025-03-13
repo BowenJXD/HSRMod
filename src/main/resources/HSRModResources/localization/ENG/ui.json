@@ -22,5 +22,15 @@
       "A colossal structure located in the Asdana system, with the soaring hotel \"The Reverie\" as its iconic landmark. NL Once a frontier prison belonging to the IPC, #yThe #yFamily had modeled it to serve as an interstellar transportation hub and the gateway to the #pSweetdream #pParadise.",
       "Enter the land of dreams: #pPenacony."
     ]
+  },
+  "HSRMod:RelicEventHelper": {
+    "TEXT": [
+      "Choose %d cards",
+      "Choose %d cards to upgrade",
+      "Choose %d cards to purge",
+      "Choose %d cards to gain",
+      "Choose %d cards to transform",
+      "Extra reward!"
+    ]
   }
 }

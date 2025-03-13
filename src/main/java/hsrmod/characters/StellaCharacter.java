@@ -1,8 +1,10 @@
 package hsrmod.characters;
 
 import basemod.abstracts.CustomPlayer;
+import basemod.animations.SpineAnimation;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.spine.AnimationState;
 import com.esotericsoftware.spine.BoneData;
@@ -60,6 +62,8 @@ public class StellaCharacter extends CustomPlayer {
     // 人物的本地化文本，如卡牌的本地化文本一样，如何书写见下
     private static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString("HSRMod:StellaCharacter");
 
+    float drawYAlter = 0;
+    
     public StellaCharacter(String name) {
         super(name, STELLA_CHARACTER, ORB_TEXTURES,"HSRModResources/img/UI/orb/vfx.png", LAYER_SPEED, null, null);
 
@@ -67,29 +71,41 @@ public class StellaCharacter extends CustomPlayer {
         // 人物对话气泡的大小，如果游戏中尺寸不对在这里修改（libgdx的坐标轴左下为原点）
         this.dialogX = (this.drawX + 0.0F * Settings.scale);
         this.dialogY = (this.drawY + 150.0F * Settings.scale);
-        
-        this.drawY = AbstractDungeon.floorY * 2 - 100;
 
-        // 初始化你的人物，如果你的人物只有一张图，那么第一个参数填写你人物图片的路径。
-        this.initializeClass(
-                "HSRModResources/img/char/character.png", // 人物图片
-                MY_CHARACTER_SHOULDER_2, MY_CHARACTER_SHOULDER_1,
-                CORPSE_IMAGE, // 人物死亡图像
-                this.getLoadout(),
-                50F, -280F,
-                200.0F, 300.0F, // 人物碰撞箱大小，越大的人物模型这个越大
-                new EnergyManager(3) // 初始每回合的能量
-        );
-        
+        String charImg = null;
+        float hbx = 0f, hby = 0f, hbw = 200f, hbh = 220f;
+
         // 如果你的人物没有动画，那么这些不需要写
         try {
             this.loadAnimation("HSRModResources/img/spine/nv.atlas", "HSRModResources/img/spine/nv.json", 3F);
-            AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
+            AnimationState.TrackEntry e = this.state.setAnimation(0, "idle_back", true);
             e.setTime(e.getEndTime() * MathUtils.random());
             e.setTimeScale(0.5F);
+            float ratio = (float) Settings.WIDTH / Settings.HEIGHT;
+            // ratio 1.33: -380, 400 
+            // ratio 1.77: -280, 300
+            // ratio 2.33: -380, 300
+            hbx = 50f;
+            hby = -380f + (ratio < 2f && ratio > 1.5f ? 100 : 0);
+            hbw = 200f;
+            hbh = 300f + (ratio < 1.5f ? 100 : 0);
+            drawYAlter = hbh * Settings.scale * 0.9f;
+            this.drawY = AbstractDungeon.floorY + drawYAlter;
         } catch (Exception e) {
             HSRMod.logger.error("Failed to load animation: {}", e.getMessage());
+            charImg = "HSRModResources/img/char/character.png";
         }
+        
+        // 初始化你的人物，如果你的人物只有一张图，那么第一个参数填写你人物图片的路径。
+        this.initializeClass(
+                charImg, // 人物图片
+                MY_CHARACTER_SHOULDER_2, MY_CHARACTER_SHOULDER_1,
+                CORPSE_IMAGE, // 人物死亡图像
+                this.getLoadout(),
+                hbx, hby,
+                hbw, hbh, // 人物碰撞箱大小，越大的人物模型这个越大
+                new EnergyManager(3) // 初始每回合的能量
+        );
     }
 
     @Override
@@ -101,10 +117,18 @@ public class StellaCharacter extends CustomPlayer {
     }
 
     @Override
+    public void renderPlayerImage(SpriteBatch sb) {
+        try {
+            super.renderPlayerImage(sb);
+        } catch (Exception e) {
+            HSRMod.logger.error("Failed to render player image: {}", e.getMessage());
+        }
+    }
+
+    @Override
     public void movePosition(float x, float y) {
         if (y == AbstractDungeon.floorY && state != null) {
-            y *= 2;
-            y -= 100;
+            y += drawYAlter;
         }
         super.movePosition(x, y);
     }
@@ -112,7 +136,7 @@ public class StellaCharacter extends CustomPlayer {
     // 初始卡组的ID，可直接写或引用变量
     public ArrayList<String> getStartingDeck() {
         ArrayList<String> retVal = new ArrayList<>();
-        
+
         retVal.add(HSRMod.MOD_NAME + ":" + Trailblazer1.ID);
         retVal.add(HSRMod.MOD_NAME + ":" + March7th0.ID);
         retVal.add(HSRMod.MOD_NAME + ":" + Danheng0.ID);
@@ -123,7 +147,7 @@ public class StellaCharacter extends CustomPlayer {
         retVal.add(HSRMod.MOD_NAME + ":" + Trailblazer3.ID);
         retVal.add(HSRMod.MOD_NAME + ":" + Trailblazer3.ID);
         retVal.add(HSRMod.MOD_NAME + ":" + Trailblazer3.ID);
-        
+
         return retVal;
     }
 

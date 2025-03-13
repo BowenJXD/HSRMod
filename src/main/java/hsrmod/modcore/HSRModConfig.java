@@ -60,7 +60,7 @@ public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscrib
     public static final int TP_LIMIT_LIMIT = 5;
 
     public static String[] buttonLanguage;
-    public ArrayList<AbstractGameEffect> effects = new ArrayList();
+    public ArrayList<AbstractGameEffect> effects = new ArrayList<>();
 
     private HSRModConfig() {
         if (language == Settings.GameLanguage.ZHS || language == Settings.GameLanguage.ZHT)

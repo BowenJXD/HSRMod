@@ -809,7 +809,7 @@ G_zui
   orig: 24, 16
   offset: 0, 1
   index: -1
-线性减淡
+LinearFade
   rotate: true
   xy: 880, 438
   size: 112, 158

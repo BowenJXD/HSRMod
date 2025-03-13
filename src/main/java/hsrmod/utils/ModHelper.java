@@ -106,7 +106,7 @@ public class ModHelper {
     public static List<FindResult> findCards(Predicate<AbstractCard> predicate, boolean shuffle) {
         List<FindResult> result = findCards(predicate);
         if (shuffle) {
-            Collections.shuffle(result, AbstractDungeon.cardRandomRng.random);
+            Collections.shuffle(result, new java.util.Random(AbstractDungeon.cardRandomRng.randomLong()));
         }
         return result;
     }

@@ -125,8 +125,7 @@ public class AntimatterEngine extends BaseMonster implements OnPowersModifiedSub
 
     @Override
     public void die() {
-        if ((leftHand != null && ModHelper.check(leftHand)) 
-                || (rightHand != null && ModHelper.check(rightHand))) {
+        if ((ModHelper.check(leftHand)) || (ModHelper.check(rightHand))) {
             return;
         }
         super.die();

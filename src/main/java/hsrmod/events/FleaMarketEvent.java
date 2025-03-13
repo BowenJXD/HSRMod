@@ -22,10 +22,7 @@ import hsrmod.utils.ModHelper;
 import hsrmod.utils.RelicEventHelper;
 import hsrmod.utils.RewardEditor;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
@@ -79,7 +76,7 @@ public class FleaMarketEvent extends PhasedEvent {
         Supplier<CardGroup> cardGroupSupplier = () -> {
             CardGroup group = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
             group.group.addAll(AbstractDungeon.rareCardPool.group.stream().filter(c -> !(c instanceof SpawnModificationCard) || ((SpawnModificationCard) c).canSpawn(new ArrayList<>())).collect(Collectors.toList()));
-            Collections.shuffle(group.group, AbstractDungeon.eventRng.random);
+            Collections.shuffle(group.group, new Random(AbstractDungeon.eventRng.randomLong()));
             group.group.subList(Math.min(chooseRange, group.size()), group.size()).clear();
             return group;
         };

@@ -17,10 +17,7 @@ import hsrmod.utils.ModHelper;
 import hsrmod.utils.RelicEventHelper;
 import hsrmod.utils.RewardEditor;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class KnightsOfBeautyEvent extends PhasedEvent {
     public static final String ID = KnightsOfBeautyEvent.class.getSimpleName();
@@ -110,7 +107,7 @@ public class KnightsOfBeautyEvent extends PhasedEvent {
         if (!ModHelper.hasRelic(CavitySystemModel.ID) && galahadIcahn != null)
             options.add(galahadIcahn);
         
-        Collections.shuffle(options);
+        Collections.shuffle(options, new Random(AbstractDungeon.eventRng.randomLong()));
         options.stream().limit(optionNum).forEach(choose::addOption);
         registerPhase(Phase.CHOOSE, choose);
         

@@ -13,7 +13,11 @@ public class PhasedEventPatch {
     public static class SetOptionResult {
         public static SpireReturn<TextPhase.OptionInfo> Prefix(TextPhase.OptionInfo __instance, Consumer<Integer> optionResult) {
             if (optionResult != null) {
-                __instance.optionResult = __instance.optionResult.andThen((event, i) -> optionResult.accept(i));
+                try {
+                    __instance.optionResult = __instance.optionResult.andThen((event, i) -> optionResult.accept(i));
+                } catch (Exception e) {
+                    return SpireReturn.Continue();
+                }
                 return SpireReturn.Return(__instance);
             }
             return SpireReturn.Continue();
@@ -24,7 +28,11 @@ public class PhasedEventPatch {
     public static class SetOptionResultBi {
         public static SpireReturn<TextPhase.OptionInfo> Prefix(TextPhase.OptionInfo __instance, BiConsumer<PhasedEvent, Integer> optionResult) {
             if (optionResult != null) {
-                __instance.optionResult = __instance.optionResult.andThen(optionResult);
+                try {
+                    __instance.optionResult = __instance.optionResult.andThen(optionResult);
+                } catch (Exception e) {
+                    return SpireReturn.Continue();
+                }
                 return SpireReturn.Return(__instance);
             }
             return SpireReturn.Continue();

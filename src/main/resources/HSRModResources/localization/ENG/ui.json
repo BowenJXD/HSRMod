@@ -32,5 +32,25 @@
       "Choose %d cards to transform",
       "Extra reward!"
     ]
+  },
+  "HSRModConfig": {
+    "TEXT": [
+      "Basic Settings",
+      "Some settings need to restart \nand reopen the game to apply.",
+      "Add Relic",
+      "Add Event",
+      "Add Enemy",
+      "Use Spine Skin",
+      "    Threshold Protocol",
+      "Threshold Protocol is a hard mode that is effective above A20. \nWhen Stelle passing the game with full threshold, increase the level by 1. \nTick the threshold protocol item to activate the threshold effect. \nEach item adds an extra 200 starting gold, and 20% HP & 10% toughness to monsters.",
+      "Monsters start with 1 layer of Thorns.",
+      "Monsters start with 1 layer of Malleable.",
+      "Monsters start with 1 layer of Ritual.",
+      "Elites and Bosses start with Safeguard.",
+      "Obtain a random state card upon shuffle.",
+      "Current Threshold Protocol Level: %d / %d.",
+      "Threshold Protocol has reached the limit.",
+      "Cannot modify Threshold Protocol during a run."
+    ]
   }
 }

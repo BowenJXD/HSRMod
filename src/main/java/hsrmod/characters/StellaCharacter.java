@@ -1,5 +1,6 @@
 package hsrmod.characters;
 
+import basemod.BaseMod;
 import basemod.abstracts.CustomPlayer;
 import basemod.animations.SpineAnimation;
 import com.badlogic.gdx.graphics.Color;
@@ -67,32 +68,52 @@ public class StellaCharacter extends CustomPlayer {
     public StellaCharacter(String name) {
         super(name, STELLA_CHARACTER, ORB_TEXTURES,"HSRModResources/img/UI/orb/vfx.png", LAYER_SPEED, null, null);
 
-
-        // 人物对话气泡的大小，如果游戏中尺寸不对在这里修改（libgdx的坐标轴左下为原点）
-        this.dialogX = (this.drawX + 0.0F * Settings.scale);
-        this.dialogY = (this.drawY + 150.0F * Settings.scale);
-
         String charImg = null;
         float hbx = 0f, hby = 0f, hbw = 200f, hbh = 220f;
 
         // 如果你的人物没有动画，那么这些不需要写
-        try {
-            this.loadAnimation("HSRModResources/img/spine/nv.atlas", "HSRModResources/img/spine/nv.json", 3F);
-            AnimationState.TrackEntry e = this.state.setAnimation(0, "idle_back", true);
-            e.setTime(e.getEndTime() * MathUtils.random());
-            e.setTimeScale(0.5F);
-            float ratio = (float) Settings.WIDTH / Settings.HEIGHT;
-            // ratio 1.33: -380, 400 
-            // ratio 1.77: -280, 300
-            // ratio 2.33: -380, 300
-            hbx = 50f;
-            hby = -380f + (ratio < 2f && ratio > 1.5f ? 100 : 0);
-            hbw = 200f;
-            hbh = 300f + (ratio < 1.5f ? 100 : 0);
-            drawYAlter = hbh * Settings.scale * 0.9f;
-            this.drawY = AbstractDungeon.floorY + drawYAlter;
-        } catch (Exception e) {
-            HSRMod.logger.error("Failed to load animation: {}", e.getMessage());
+        if (HSRModConfig.useSpine) {
+            try {
+                this.loadAnimation("HSRModResources/img/spine/nv.atlas", "HSRModResources/img/spine/nv.json", 3F);
+                AnimationState.TrackEntry e = this.state.setAnimation(0, "idle_back", true);
+                e.setTime(e.getEndTime() * MathUtils.random());
+                e.setTimeScale(0.5F);
+                float ratio = (float) Settings.WIDTH / Settings.HEIGHT;
+                float dy = 0;
+                hbx = 50f;
+                hbw = 200f;
+                if (ratio > 2.3f /* 2.3+ */) {
+                    hby = -380f;
+                    hbh = 300f;
+                    dy = 50f;
+                } else if (ratio > 2f /* 2.3 - 2 */) {
+                    hby = -320f;
+                    hbh = 300f;
+                } else if (ratio > 1.9f /* 2 - 1.9 */) {
+                    hby = -380f;
+                    hbh = 300f;
+                } else if (ratio > 1.5f /* 1.9 - 1.77 - 1.6 - 1.5 */) {
+                    hby = -280f;
+                    hbh = 300f;
+                } else if (ratio > 1.3f /* 1.5 - 1.33 - 1.3 */) {
+                    if ((float) Settings.M_W / Settings.M_H > 1.3f) {
+                        hby = -380f;
+                        hbh = 400f;
+                    } else {
+                        hby = -280f;
+                        hbh = 300f;
+                    }
+                } else /* 1.3- */ {
+                    hby = -280f;
+                    hbh = 300f;
+                }
+                drawYAlter = hbh * Settings.scale * 0.9f + dy;
+                this.drawY = AbstractDungeon.floorY + drawYAlter;
+            } catch (Exception e) {
+                HSRMod.logger.error("Failed to load animation: {}", e.getMessage());
+                charImg = "HSRModResources/img/char/character.png";
+            }
+        } else {
             charImg = "HSRModResources/img/char/character.png";
         }
         
@@ -106,6 +127,10 @@ public class StellaCharacter extends CustomPlayer {
                 hbw, hbh, // 人物碰撞箱大小，越大的人物模型这个越大
                 new EnergyManager(3) // 初始每回合的能量
         );
+        
+        // 人物对话气泡的大小，如果游戏中尺寸不对在这里修改（libgdx的坐标轴左下为原点）
+        this.dialogX = (this.drawX + 70.0F * Settings.scale);
+        // this.dialogY = (this.drawY + 0.0F * Settings.scale);
     }
 
     @Override
@@ -119,10 +144,19 @@ public class StellaCharacter extends CustomPlayer {
     @Override
     public void renderPlayerImage(SpriteBatch sb) {
         try {
+            if (BaseMod.hasModID("spireTogether:") && CardCrawlGame.mode == CardCrawlGame.GameMode.CHAR_SELECT) {
+                drawY = Settings.HEIGHT * 0.5f + hb_h/2f;
+            }
             super.renderPlayerImage(sb);
         } catch (Exception e) {
             HSRMod.logger.error("Failed to render player image: {}", e.getMessage());
         }
+    }
+
+    @Override
+    public void playDeathAnimation() {
+        super.playDeathAnimation();
+        drawY = AbstractDungeon.floorY;
     }
 
     @Override
@@ -137,16 +171,16 @@ public class StellaCharacter extends CustomPlayer {
     public ArrayList<String> getStartingDeck() {
         ArrayList<String> retVal = new ArrayList<>();
 
-        retVal.add(HSRMod.MOD_NAME + ":" + Trailblazer1.ID);
-        retVal.add(HSRMod.MOD_NAME + ":" + March7th0.ID);
-        retVal.add(HSRMod.MOD_NAME + ":" + Danheng0.ID);
-        retVal.add(HSRMod.MOD_NAME + ":" + Himeko0.ID);
-        retVal.add(HSRMod.MOD_NAME + ":" + Welt0.ID);
-        retVal.add(HSRMod.MOD_NAME + ":" + Trailblazer2.ID);
-        retVal.add(HSRMod.MOD_NAME + ":" + Trailblazer3.ID);
-        retVal.add(HSRMod.MOD_NAME + ":" + Trailblazer3.ID);
-        retVal.add(HSRMod.MOD_NAME + ":" + Trailblazer3.ID);
-        retVal.add(HSRMod.MOD_NAME + ":" + Trailblazer3.ID);
+        retVal.add(HSRMod.makePath(Trailblazer1.ID));
+        retVal.add(HSRMod.makePath(March7th0.ID));
+        retVal.add(HSRMod.makePath(Danheng0.ID));
+        retVal.add(HSRMod.makePath(Himeko0.ID));
+        retVal.add(HSRMod.makePath(Welt0.ID));
+        retVal.add(HSRMod.makePath(Trailblazer2.ID));
+        retVal.add(HSRMod.makePath(Trailblazer3.ID));
+        retVal.add(HSRMod.makePath(Trailblazer3.ID));
+        retVal.add(HSRMod.makePath(Trailblazer3.ID));
+        retVal.add(HSRMod.makePath(Trailblazer3.ID));
 
         return retVal;
     }

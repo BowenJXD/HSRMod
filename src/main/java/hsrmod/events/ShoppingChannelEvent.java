@@ -55,7 +55,10 @@ public class ShoppingChannelEvent extends PhasedEvent {
 
         TextPhase choosePhase = new TextPhase(DESCRIPTIONS[3]);
         choosePhase.addOption(OPTIONS[3], (i) -> transitionKey(Phase.DONUT));
-        choosePhase.addOption(OPTIONS[4], (i) -> transitionKey(Phase.LOTUS));
+        if (AbstractDungeon.player.masterDeck.group.stream().anyMatch(c -> c.rarity == AbstractCard.CardRarity.COMMON)
+                && AbstractDungeon.player.masterDeck.group.stream().anyMatch(c -> c.rarity == AbstractCard.CardRarity.UNCOMMON)) {
+            choosePhase.addOption(OPTIONS[4], (i) -> transitionKey(Phase.LOTUS));
+        }
         choosePhase.addOption(OPTIONS[5], (i) -> transitionKey(Phase.BOX));
         if (ModHelper.hasRelic(WaxOfDestruction.ID)) {
             choosePhase.addOption(GeneralUtil.tryFormat(OPTIONS[6], hpLoss2), (i) -> {
@@ -101,10 +104,7 @@ public class ShoppingChannelEvent extends PhasedEvent {
                 }
             }
         }));
-        if (AbstractDungeon.player.masterDeck.group.stream().anyMatch(c -> c.rarity == AbstractCard.CardRarity.COMMON)
-                && AbstractDungeon.player.masterDeck.group.stream().anyMatch(c -> c.rarity == AbstractCard.CardRarity.UNCOMMON)) {
-            registerPhase(Phase.LOTUS, lotusPhase);
-        }
+        registerPhase(Phase.LOTUS, lotusPhase);
         
         TextPhase boxPhase = new TextPhase(DESCRIPTIONS[6]);
         AbstractRelic relic = AbstractDungeon.returnRandomRelic(AbstractDungeon.returnRandomRelicTier());

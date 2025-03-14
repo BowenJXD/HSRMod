@@ -15,20 +15,15 @@ import com.evacipated.cardcrawl.modthespire.Patcher;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
+import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
 import com.megacrit.cardcrawl.screens.mainMenu.MenuButton;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.RestartForChangesEffect;
-import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import hsrmod.characters.StellaCharacter;
 import hsrmod.effects.TopWarningEffect;
 import hsrmod.misc.PathDefine;
@@ -39,16 +34,18 @@ import java.io.IOException;
 import java.util.*;
 import java.util.function.Consumer;
 
-import static com.megacrit.cardcrawl.core.Settings.language;
-
 public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscriber, RenderSubscriber, PreUpdateSubscriber {
     private static HSRModConfig instance;
-
+    
+    public static UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(HSRModConfig.class.getSimpleName());
+    public static String[] TEXT = uiStrings.TEXT;
     public static SpireConfig config;
     public static ModInfo info;
+    
     public static boolean addRelic = true;
     public static boolean addEvent = true;
     public static boolean addEnemy = true;
+    public static boolean useSpine = true;
 
     public static int tpLimit = 0;
     public static boolean tpThorn = false;
@@ -59,46 +56,9 @@ public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscrib
     
     public static final int TP_LIMIT_LIMIT = 5;
 
-    public static String[] buttonLanguage;
     public ArrayList<AbstractGameEffect> effects = new ArrayList<>();
 
     private HSRModConfig() {
-        if (language == Settings.GameLanguage.ZHS || language == Settings.GameLanguage.ZHT)
-            buttonLanguage = new String[]{
-                    "加入遗物",
-                    "加入事件",
-                    "加入敌人",
-                    "基础设定",
-                    "部分设定需要重启并\n重开游戏才能生效。",
-                    "  阈值协议⚠", // 5
-                    "⚠阈值协议为高难模式，A20以上解锁。\n效果作用于全局。星满阈值通关时，阈值上限+1。\n勾选阈值协议条目，以激活阈值效果。\n每项条目额外增加200初始金币，怪物20%的生命和10%的韧性。",
-                    "怪物初始拥有1层【荆棘】。",
-                    "怪物初始拥有1层【柔韧】。",
-                    "怪物初始拥有1层【仪式】。",
-                    "精英和首领初始拥有1层【守备】。", // 10
-                    "洗牌后，获得1张随机状态牌。",
-                    "⚠当前阈值协议等级：%d / %d 。",
-                    "阈值协议已达上限。",
-                    "游戏中无法修改阈值协议。",
-            };
-        else
-            buttonLanguage = new String[]{
-                    "Add Relic",
-                    "Add Event",
-                    "Add Enemy",
-                    "Basic Settings",
-                    "Some settings need to restart \nand reopen the game to apply.",
-                    "    Threshold Protocol", // 5
-                    "Threshold Protocol is a hard mode that is effective above A20. \nWhen Stelle passing the game with full threshold, increase the level by 1. \nTick the threshold protocol item to activate the threshold effect. \nEach item adds an extra 200 starting gold, and 20% HP & 10% toughness to monsters.",
-                    "Monsters start with 1 layer of Thorns.",
-                    "Monsters start with 1 layer of Malleable.",
-                    "Monsters start with 1 layer of Ritual.",
-                    "Elites and Bosses start with Safeguard.", // 10
-                    "Obtain a random state card upon shuffle.",
-                    "Current Threshold Protocol Level: %d / %d.",
-                    "Threshold Protocol has reached the limit.",
-                    "Cannot modify Threshold Protocol during a run.",
-            };
         BaseMod.subscribe(this);
     }
 
@@ -116,6 +76,7 @@ public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscrib
             defaults.setProperty("addRelic", Boolean.toString(true));
             defaults.setProperty("addEvent", Boolean.toString(true));
             defaults.setProperty("addEnemy", Boolean.toString(true));
+            defaults.setProperty("useSpine", Boolean.toString(true));
             
             defaults.setProperty("tpCount", Integer.toString(0));
             defaults.setProperty("tpLimit", Integer.toString(0));
@@ -131,6 +92,7 @@ public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscrib
             addRelic = config.getBool("addRelic");
             addEvent = config.getBool("addEvent");
             addEnemy = config.getBool("addEnemy");
+            useSpine = config.getBool("useSpine");
             
             tpLimit = config.getInt("tpLimit");
             tpThorn = config.getBool("tpThorn");
@@ -146,11 +108,11 @@ public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscrib
     public void setContents(ModPanel panel) {
         float x = 1100.0F;
         
-        panel.addUIElement(new ModLabel(buttonLanguage[3], x, 800.0F, Color.YELLOW, panel, (me) -> {
+        panel.addUIElement(new ModLabel(getText(TextContent.BASIC_SETTINGS), x, 800.0F, Color.YELLOW, panel, (me) -> {
         }));
-        panel.addUIElement(new ModLabel(buttonLanguage[4], x, 705.0F, Color.GRAY, panel, (me) -> {
+        panel.addUIElement(new ModLabel(getText(TextContent.RESTART_NOTICE), x, 705.0F, Color.GRAY, panel, (me) -> {
         }));
-        ModLabeledToggleButton addRelicButton = new ModLabeledToggleButton(buttonLanguage[0], x, 650.0F, Color.WHITE, FontHelper.buttonLabelFont, addRelic, panel, (label) -> {
+        ModLabeledToggleButton addRelicButton = new ModLabeledToggleButton(getText(TextContent.ADD_RELIC), x, 650.0F, Color.WHITE, FontHelper.buttonLabelFont, addRelic, panel, (label) -> {
         }, (button) -> {
             addRelic = button.enabled;
             displayRestartRequiredText();
@@ -163,7 +125,7 @@ public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscrib
         });
         panel.addUIElement(addRelicButton);
 
-        ModLabeledToggleButton addEventButton = new ModLabeledToggleButton(buttonLanguage[1], x, 600.0F, Color.WHITE, FontHelper.buttonLabelFont, addEvent, panel, (label) -> {
+        ModLabeledToggleButton addEventButton = new ModLabeledToggleButton(getText(TextContent.ADD_EVENT), x, 600.0F, Color.WHITE, FontHelper.buttonLabelFont, addEvent, panel, (label) -> {
         }, (button) -> {
             addEvent = button.enabled;
             displayRestartRequiredText();
@@ -176,7 +138,7 @@ public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscrib
         });
         panel.addUIElement(addEventButton);
 
-        ModLabeledToggleButton addEnemyButton = new ModLabeledToggleButton(buttonLanguage[2], x, 550.0F, Color.WHITE, FontHelper.buttonLabelFont, addEnemy, panel, (label) -> {
+        ModLabeledToggleButton addEnemyButton = new ModLabeledToggleButton(getText(TextContent.ADD_ENEMY), x, 550.0F, Color.WHITE, FontHelper.buttonLabelFont, addEnemy, panel, (label) -> {
         }, (button) -> {
             addEnemy = button.enabled;
             displayRestartRequiredText();
@@ -188,33 +150,33 @@ public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscrib
             }
         });
         panel.addUIElement(addEnemyButton);
-
-        /*ModLabeledToggleButton removeOtherEnemiesButton = new ModLabeledToggleButton(buttonLanguage[3], 400.0F, 400.0F, Color.WHITE, FontHelper.buttonLabelFont, removeOtherEnemies, panel, (label) -> {
+        
+        ModLabeledToggleButton useSpineButton = new ModLabeledToggleButton(getText(TextContent.USE_SPINE), x, 500.0F, Color.WHITE, FontHelper.buttonLabelFont, useSpine, panel, (label) -> {
         }, (button) -> {
-            removeOtherEnemies = button.enabled;
+            useSpine = button.enabled;
             try {
-                config.setBool("removeOtherEnemies", removeOtherEnemies);
+                config.setBool("useSpine", useSpine);
                 config.save();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         });
-        panel.addUIElement(removeOtherEnemiesButton);*/
+        panel.addUIElement(useSpineButton);
     }
 
     public void setThresholdProtocols(ModPanel panel) {
         float x = 400.0F;
 
         panel.addUIElement(new ModImage(390, 785, PathDefine.POWER_PATH + "ChargingPower48.png"));
-        panel.addUIElement(new ModLabel(buttonLanguage[5], x, 800.0F, Color.RED, panel, (me) -> {
+        panel.addUIElement(new ModLabel(getText(TextContent.THRERHOLD_PROTOCOLS), x, 800.0F, Color.RED, panel, (me) -> {
         }));
-        panel.addUIElement(new ModLabel(buttonLanguage[6], x, 200.0F, Color.GRAY, panel, (me) -> {
+        panel.addUIElement(new ModLabel(getText(TextContent.TP_DESCRIPTION), x, 200.0F, Color.GRAY, panel, (me) -> {
         }));
-        panel.addUIElement(new ModLabel(String.format(buttonLanguage[12], getActiveTPCount(), tpLimit), x, 755.0F, Color.ORANGE, panel, (me) -> {
-            me.text = String.format(buttonLanguage[12], getActiveTPCount(), tpLimit);
+        panel.addUIElement(new ModLabel(String.format(getText(TextContent.TP_LEVEL), getActiveTPCount(), tpLimit), x, 755.0F, Color.ORANGE, panel, (me) -> {
+            me.text = String.format(getText(TextContent.TP_LEVEL), getActiveTPCount(), tpLimit);
         }));
 
-        ModLabeledToggleButton tpTHornButton = new ModLabeledToggleButton(buttonLanguage[7], x, 700.0F, Color.WHITE, FontHelper.buttonLabelFont, tpThorn, panel, (label) -> {
+        ModLabeledToggleButton tpTHornButton = new ModLabeledToggleButton(getText(TextContent.TP_THORN), x, 700.0F, Color.WHITE, FontHelper.buttonLabelFont, tpThorn, panel, (label) -> {
         }, (button) -> {
             if (!checkButton(button, (b) -> tpThorn = b)) return;
             try {
@@ -226,7 +188,7 @@ public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscrib
         });
         panel.addUIElement(tpTHornButton);
 
-        ModLabeledToggleButton tpMalleableButton = new ModLabeledToggleButton(buttonLanguage[8], x, 650.0F, Color.WHITE, FontHelper.buttonLabelFont, tpMalleable, panel, (label) -> {
+        ModLabeledToggleButton tpMalleableButton = new ModLabeledToggleButton(getText(TextContent.TP_MALLEABLE), x, 650.0F, Color.WHITE, FontHelper.buttonLabelFont, tpMalleable, panel, (label) -> {
         }, (button) -> {
             if (!checkButton(button, (b) -> tpMalleable = b)) return;
             try {
@@ -238,7 +200,7 @@ public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscrib
         });
         panel.addUIElement(tpMalleableButton);
 
-        ModLabeledToggleButton tpRitualButton = new ModLabeledToggleButton(buttonLanguage[9], x, 600.0F, Color.WHITE, FontHelper.buttonLabelFont, tpRitual, panel, (label) -> {
+        ModLabeledToggleButton tpRitualButton = new ModLabeledToggleButton(getText(TextContent.TP_RITUAL), x, 600.0F, Color.WHITE, FontHelper.buttonLabelFont, tpRitual, panel, (label) -> {
         }, (button) -> {
             if (!checkButton(button, (b) -> tpRitual = b)) return;
             try {
@@ -250,7 +212,7 @@ public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscrib
         });
         panel.addUIElement(tpRitualButton);
 
-        ModLabeledToggleButton tpSafeguardButton = new ModLabeledToggleButton(buttonLanguage[10], x, 550.0F, Color.WHITE, FontHelper.buttonLabelFont, tpSafeguard, panel, (label) -> {
+        ModLabeledToggleButton tpSafeguardButton = new ModLabeledToggleButton(getText(TextContent.TP_SAFEGUARD), x, 550.0F, Color.WHITE, FontHelper.buttonLabelFont, tpSafeguard, panel, (label) -> {
         }, (button) -> {
             if (!checkButton(button, (b) -> tpSafeguard = b)) return;
             try {
@@ -262,7 +224,7 @@ public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscrib
         });
         panel.addUIElement(tpSafeguardButton);
 
-        ModLabeledToggleButton tpStatusButton = new ModLabeledToggleButton(buttonLanguage[11], x, 500.0F, Color.WHITE, FontHelper.buttonLabelFont, tpCurse, panel, (label) -> {
+        ModLabeledToggleButton tpStatusButton = new ModLabeledToggleButton(getText(TextContent.TP_CURSE), x, 500.0F, Color.WHITE, FontHelper.buttonLabelFont, tpCurse, panel, (label) -> {
         }, (button) -> {
             if (!checkButton(button, (b) -> tpCurse = b)) return;
             try {
@@ -280,14 +242,14 @@ public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscrib
         if (getActiveTPCount() == tpLimit && button.enabled) {
             setter.accept(false);
             button.enabled = false;
-            displayText(buttonLanguage[13]);
+            displayText(getText(TextContent.TP_LIMIT_REACHED_NOTICE));
             return false;
         }
         if (CardCrawlGame.mainMenuScreen.buttons.stream()
                 .anyMatch(b -> b.result == MenuButton.ClickResult.ABANDON_RUN || b.result == MenuButton.ClickResult.RESUME_GAME)) {
             setter.accept(false);
             button.enabled = !button.enabled;
-            displayText(buttonLanguage[14]);
+            displayText(getText(TextContent.TP_CANT_MODIFY_NOTICE));
             return false;
         }
         setter.accept(button.enabled);
@@ -415,6 +377,29 @@ public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscrib
             AbstractGameEffect e = (AbstractGameEffect)var2.next();
             e.render(spriteBatch);
         }
+    }
+    
+    String getText(TextContent content) {
+        return TEXT[content.ordinal()];
+    }
+    
+    enum TextContent {
+        BASIC_SETTINGS,
+        RESTART_NOTICE,
+        ADD_RELIC,
+        ADD_EVENT,
+        ADD_ENEMY,
+        USE_SPINE,
+        THRERHOLD_PROTOCOLS,
+        TP_DESCRIPTION,
+        TP_THORN,
+        TP_MALLEABLE,
+        TP_RITUAL,
+        TP_SAFEGUARD,
+        TP_CURSE,
+        TP_LEVEL,
+        TP_LIMIT_REACHED_NOTICE,
+        TP_CANT_MODIFY_NOTICE,
     }
 
     static {

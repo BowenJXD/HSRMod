@@ -76492,8 +76492,8 @@
           "type": "path",
           "closed": true,
           "lengths": [
-            1829.41,
-            3509.6
+            0,
+            0
           ],
           "vertexCount": 6,
           "vertices": [
@@ -76517,14 +76517,14 @@
           "type": "path",
           "closed": true,
           "lengths": [
-            2000.0,
-            1800.0,
-            2200.0,
-            1500.0,
-            2500.0,
-            1700.0,
-            2100.0,
-            1900.0
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
           ]
           "end": "B_huan2_4",
           "vertexCount": 25,
@@ -76588,9 +76588,9 @@
           "type": "path",
           "closed": true,
           "lengths": [
-            1500.0,
-            2000.0,
-            1800.0
+            0,
+            0,
+            0
           ]
           "end": "B_mao1_23",
           "vertexCount": 11,

@@ -69,7 +69,8 @@ public class SwordFormationPower extends StatePower implements PostMonsterDeathS
 
     @Override
     public void postMonsterDeath(AbstractMonster monster) {
-        if (SubscriptionManager.checkSubscriber(this) && AbstractDungeon.getMonsters().monsters.stream().noneMatch(m -> m.hasPower(FormationCorePower.POWER_ID) && m != monster)) {
+        if (SubscriptionManager.checkSubscriber(this) && AbstractDungeon.getMonsters().monsters.stream()
+                .noneMatch(m -> m.hasPower(FormationCorePower.POWER_ID) && m != monster && ModHelper.check(m))) {
             addToTop(new RemoveSpecificPowerAction(owner, owner, POWER_ID));
         }
     }

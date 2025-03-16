@@ -43,12 +43,12 @@ public class CarnivalsTail extends BaseRelic implements RelicGetSubscriber {
     @Override
     public void receiveRelicGet(AbstractRelic abstractRelic) {
         if (abstractRelic != this && SubscriptionManager.checkSubscriber(this) && !relicsCache.contains(abstractRelic)) {
-            flash();
             relicsCache.add(abstractRelic);
             AbstractDungeon.effectsQueue.add(new AbstractGameEffect() {
                 @Override
                 public void update() {
                     if (abstractRelic.currentY == abstractRelic.targetY && abstractRelic.currentX == abstractRelic.targetX) {
+                        flash();
                         ModHelper.addEffectAbstract(() -> RelicEventHelper.loseRelics(abstractRelic));
                         ModHelper.addEffectAbstract(() -> RelicEventHelper.gainRelics(abstractRelic));
                         isDone = true;

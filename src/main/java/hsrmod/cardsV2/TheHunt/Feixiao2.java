@@ -15,6 +15,7 @@ import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.effects.PortraitDisplayEffect;
+import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.monsters.BaseMonster;
 import hsrmod.subscribers.SubscriptionManager;
@@ -28,6 +29,7 @@ public class Feixiao2 extends BaseCard {
     
     public Feixiao2() {
         super(ID);
+        tags.add(CustomEnums.FOLLOW_UP);
         costCache = cost;
     }
 

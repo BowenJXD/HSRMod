@@ -425,6 +425,7 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
         }));
         BaseMod.addMonster(Encounter.THE_RETURNING_HELIOBUS, () -> new MonsterGroup(new AbstractMonster[]{
                 new Cirrus(true).modifyHp(400).setPreBattleAction(m -> {
+                    m.specialAs = true;
                     m.addToBot(new ApplyPowerAction(m, m, new FadingPower(m, 4)));
                     m.addToBot(new ApplyPowerAction(m, m, new TimeWarpPower(m)));
                 })

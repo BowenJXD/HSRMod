@@ -242,7 +242,7 @@
     "NAME": "Faith Bond",
     "FLAVOR": "",
     "DESCRIPTIONS": [
-      "Potion and relic prices in shops are reduced by #b33%."
+      "Relic prices in shops are reduced by #b33%."
     ]
   },
   "HSRMod:RecordFromBeyondTheSky": {
@@ -298,7 +298,7 @@
     "NAME": "Vile Mechanical Satellite #900",
     "FLAVOR": "",
     "DESCRIPTIONS": [
-      "All shop prices are reduced by #b20%."
+      "All shop prices are reduced by #b25% (except card removal service)."
     ]
   },
   "HSRMod:PriceOfPeace": {
@@ -340,7 +340,7 @@
     "NAME": "Genius Society's Dangerous Gossip",
     "FLAVOR": "",
     "DESCRIPTIONS": [
-      "Cannot gain #ygold. Each time you lose #b80 #ygold this way, obtain a random relic. #rDestroys after #b3 triggers."
+      "Cannot gain #ygold. Each time you lose #b100 #ygold this way, obtain a random relic. #rDestroys after #b3 triggers."
     ]
   },
   "HSRMod:PunklordianBalance": {
@@ -674,7 +674,7 @@
     "NAME": "Ten Light-Years Foresight",
     "FLAVOR": "Whenever he drives his prey to a set coordinates, a bullet fired ten years prior will cross the distance of ten light years to accurately collide with the prey's skull.",
     "DESCRIPTIONS": [
-      "After playing an attack card, deal #b2 damage to all enemies that were not targeted by that card."
+      "For every 3 #rattack cards played in a turn, deal #b10 damage to all enemies that were not targeted by these cards."
     ]
   },
   "HSRMod:InsectWeb": {

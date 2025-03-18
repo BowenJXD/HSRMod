@@ -10,7 +10,7 @@ import hsrmod.utils.RelicEventHelper;
 public class GeniusSocietysDangerousGossip extends BaseRelic implements CustomSavable<Integer> {
     public static final String ID = GeniusSocietysDangerousGossip.class.getSimpleName();
 
-    static int goldRequired = 80;
+    static int goldRequired = 100;
     int cachedGold = 0;
     int goldGained = 0;
     

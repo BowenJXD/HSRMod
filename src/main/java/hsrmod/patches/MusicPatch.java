@@ -22,6 +22,9 @@ public class MusicPatch {
             case "RobinBGM":
                 music = MainMusic.newMusic("HSRModResources/audio/music/RobinBGM.mp3");
                 break;
+            case "Ensemble Cast":
+                music = MainMusic.newMusic("HSRModResources/audio/music/Ensemble Cast.mp3");
+                break;
             case "End of the Eternal Freeze_1":
                 music = MainMusic.newMusic("HSRModResources/audio/music/Wildfire_1.mp3");
                 break;

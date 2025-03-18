@@ -10,7 +10,7 @@
   },
   "HSRMod:HertaMerchant": {
     "NAMES": [
-      "黑塔"
+      "Herta"
     ],
     "TEXT": [
       "Hey little guy, wanna ~buy~ ~something~~",
@@ -40,7 +40,38 @@
       "Heading up?"
     ]
   },
-  "HSRMod:ShopScreen": {
+  "HSRMod:SparkleMerchant": {
+  "NAMES": [
+    "Sparkle"
+  ],
+  "TEXT": [
+    "What do you want to buy? ~Gray~ ~Hair~",
+    "Are you surprised to see me? Unexpected, right?",
+    "As long as I'm interested, the price is negotiable. The key is to have #rfun , right?",
+    "Come and see, Herta Store is on sale~",
+    "Heart is made to be broken~",
+    "Having fun? That's all that matters!",
+    "Let's push the envelope further, shall we?",
+    "Don't tell #pHerta that I'm here.",
+    "Why don't you stay and play for a while?",
+    "Take your time... NL ..... NL ... or not",
+    "Gray Hair~ NL Have you ever doubted Herta?",
+    "Don't rush, things won't #rrun away.",
+    "Stay a little longer and listen to the music!",
+    "~*Yawn*~",
+    "00 11 0110 010 00 000 111 10 0 100"
+  ],
+  "OPTIONS": [
+    "Where is Herta? ~Heehee~~, I won't tell you~~",
+    "I'm the only one who comes here to see you from time to time, Gray Hair~",
+    "If you had chosen to be a #yNameless , you could have seen me in reality.",
+    "When you chose to stay, you can't imagine how cruel #pHerta will treat you, can you?",
+    "Poor little Gray hair, you won't escape #yHerta's simulation.",
+    "Forever trapped in this spire~",
+    "It's all fake~ NL #yHerta has been deceiving you all along~"
+  ]
+},
+  "HSRMod:HertaShopScreen": {
     "NAMES": [
       "~Welcome~ NL ~welcome!~",
       "Hey now, NL you need NL more #rGold.",
@@ -74,6 +105,41 @@
       "Stay awhile and listen!",
       "Buy whatever you want",
       "~*YAWN*~"
+    ]
+  },
+  "HSRMod:SparkleShopScreen": {
+    "NAMES": [
+      "I'll give you a discount while Herta is away. Say ~thanks~ to me~",
+      "Oh, NL this #rGold isn't enough.",
+      "You can't even afford a discount, Gray Hair?",
+      "Woah, Gray Hair, can't afford cheap price like that?",
+      "You can't afford this~",
+      "You're so ~poor~",
+      "Why are you even clicking on this if you're broke?",
+      "~Take~ ~it~~",
+      "Say thanks to the Great Sparkle.",
+      "The relics at the #yTavern is way better than what I have here.",
+      "You should buy more~",
+      "Try to stay out of trouble, especially... the next time we meet!",
+      "leave",
+      "Give a card from your deck to Sparkle."
+    ],
+    "TEXT": [
+      "What do you want to buy? ~Gray~ ~Hair~",
+      "Are you surprised to see me? Unexpected, right?",
+      "As long as I'm interested, the price is negotiable. The key is to have #rfun , right?",
+      "Come and see, Herta Store is on sale~",
+      "Heart is made to be broken~",
+      "Having fun? That's all that matters!",
+      "Let's push the envelope further, shall we?",
+      "Don't tell #pHerta that I'm here.",
+      "Why don't you stay and play for a while?",
+      "Take your time... NL ..... NL ... or not",
+      "Gray Hair~ NL Have you ever doubted Herta?",
+      "Don't rush, things won't #rrun away.",
+      "Stay a little longer and listen to the music!",
+      "~*Yawn*~",
+      "00 11 0110 010 00 000 111 10 0 100"
     ]
   }
 }

@@ -88,7 +88,7 @@ public class ShadowOfFeixiao extends BaseMonster implements PreBreakSubscriber {
         });
         addMoveA(Intent.ATTACK, 9, 
                 () -> {
-                    return AbstractDungeon.getMonsters().monsters.stream().mapToInt(m -> ModHelper.check(m) && ModHelper.getPowerCount(m, ToughnessPower.POWER_ID) > 0 ? 1 : 0).sum();
+                    return Math.max(1, AbstractDungeon.getMonsters().monsters.stream().mapToInt(m -> ModHelper.check(m) && ModHelper.getPowerCount(m, ToughnessPower.POWER_ID) > 0 ? 1 : 0).sum());
                 },
                 mi -> {
                     if (hasPower(ChargingPower.POWER_ID)) {

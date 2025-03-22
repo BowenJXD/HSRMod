@@ -64,6 +64,7 @@ public abstract class BaseRelic extends CustomRelic {
         AbstractRelic relic = this;
         if (!AbstractDungeon.player.relics.contains(this)) {
             relic = AbstractDungeon.player.getRelic(relicId);
+            if (relic.usedUp) relic = null;
         }
         if (relic != null) {
             relic.setCounter(relic.counter - 1);

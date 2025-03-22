@@ -93,7 +93,7 @@ public class Phantylia extends BaseMonster implements PostPowerApplySubscriber {
                 addToBot(new ApplyPowerAction(p, this, new EnergyPower(p, chargeRemove), chargeRemove));
                 addToBot(new DamageAction(p, this.damage.get(0), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
                 for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
-                    if (m != this) {
+                    if (!Objects.equals(m.id, id)) {
                         addToBot(new ApplyPowerAction(m, this, new StrengthPower(m, strengthGain), strengthGain));
                     }
                 }

@@ -21,7 +21,7 @@ BeaconColoringPaste,信标着色剂,UNCOMMON,选择奖励牌时，升级其中1�
 SuperOverlordSpinningTop,超霸王陀螺,COMMON,战斗开始时，获得1层【击破特攻】。首个回合开始时，移除所有敌方33%的【韧性】。,33,博识学会的每一条规定，都有它诞生的理由。,FLAT,FALSE,FALSE,FALSE,FALSE,,伤害
 GeniusSocietysDangerousGossip,天才俱乐部危险八卦,COMMON,无法获得金币。每因为此遗物损失80金币，获得一个随机遗物，触发3次后损毁。,3,有人认为，波尔卡只是杀死了所有看到她的人，也有人认为，她借用了「神秘」或「虚无」的力量，抹消了存在的痕迹。,FLAT,TRUE,TRUE,FALSE,TRUE,,运营
 PunklordianBalance,朋克洛德平衡,COMMON,接下来的普通战斗中的敌人将只有50%生命，触发2次后损毁。,2,但直到今天，你仍能在数据边缘看到一艘艘即将深潜的航船，载着意气风发的骇客们踏上寻宝之旅。,FLAT,TRUE,FALSE,FALSE,FALSE,,伤害
-GreenFingers,埋点土,COMMON,获得 3 / 6 / 9 场战斗胜利后，获得 50 / 100 / 150 金币。获得 9 场战斗胜利后，该遗物损毁。,9,因此，他们总会留下最光鲜亮丽的一张钞票埋进土里，希冀种出自己的信用点树。,FLAT,TRUE,FALSE,FALSE,TRUE,,经济
+GreenFingers,埋点土,UNCOMMON,获得 3 / 6 / 9 场战斗胜利后，获得 50 / 100 / 150 金币。获得 9 场战斗胜利后，该遗物损毁。,9,因此，他们总会留下最光鲜亮丽的一张钞票埋进土里，希冀种出自己的信用点树。,FLAT,TRUE,FALSE,FALSE,TRUE,,经济
 FruitOfTheAlienTree,异木果实,COMMON,受到致命伤害时，防止之，并回复20%生命。,20,这颗形似心脏的果实来自于某株被药师赐福的大树，据说已有五十琥珀纪的历史。,FLAT,FALSE,FALSE,FALSE,FALSE,,生存
 Dreams0110,有梦0110,COMMON,战斗开始时，获得3点〖力量〗。回合开始时，若〖力量〗大于0，失去1点。,3,但据患者透露，每位滴加了润滑油的智械，都在夜里梦见了张着血盆大口的电子蝴蝶。,FLAT,FALSE,TRUE,FALSE,FALSE,,伤害
 VileMechanicalSatellite900,邪恶机械卫星#900,COMMON,消费后，返还20%。,20,它们是典型的反有机文明，对待有机生命手腕狠辣，而其中尤以卫星#900最为邪恶。,FLAT,FALSE,FALSE,FALSE,TRUE,,经济

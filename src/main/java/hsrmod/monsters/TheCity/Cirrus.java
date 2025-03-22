@@ -1,5 +1,6 @@
 package hsrmod.monsters.TheCity;
 
+import basemod.BaseMod;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -12,6 +13,8 @@ import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.subscribers.PostMonsterDeathSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
+
+import java.util.Objects;
 
 public class Cirrus extends BaseMonster implements PostMonsterDeathSubscriber {
     public static final String ID = Cirrus.class.getSimpleName();
@@ -35,6 +38,10 @@ public class Cirrus extends BaseMonster implements PostMonsterDeathSubscriber {
             shoutIf(0, 33);
             spawnMonsters();
         });
+        
+        if (BaseMod.hasModID("spireTogether:")) {
+            setHp(maxHealth / 2);
+        }
     }
     
     public Cirrus(boolean enhanced){
@@ -105,7 +112,7 @@ public class Cirrus extends BaseMonster implements PostMonsterDeathSubscriber {
 
     @Override
     public void postMonsterDeath(AbstractMonster monster) {
-        if (SubscriptionManager.checkSubscriber(this) && monster != this && ModHelper.check(this)) {
+        if (SubscriptionManager.checkSubscriber(this) && !Objects.equals(monster.id, id) && ModHelper.check(this)) {
             spawnMonsters(1);
         }
     }

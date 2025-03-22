@@ -50,7 +50,7 @@ public class SwordFormationPower extends StatePower implements PostMonsterDeathS
     public void onRemove() {
         super.onRemove();
         SubscriptionManager.unsubscribe(this);
-        addToBot(new UnlockToughnessAction(owner, owner));
+        addToBot(new UnlockToughnessAction(owner, owner.name));
         int hpLossAmount = owner.currentHealth * hpLoss / 100;
         int tr = ModHelper.getPowerCount(owner, ToughnessPower.POWER_ID);
         addToBot(new ElementalDamageAction(owner, new ElementalDamageInfo(owner, hpLossAmount, DamageInfo.DamageType.HP_LOSS, ElementType.None, tr), AbstractGameAction.AttackEffect.NONE));

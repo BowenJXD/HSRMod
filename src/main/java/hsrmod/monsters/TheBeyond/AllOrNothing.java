@@ -41,7 +41,7 @@ public class AllOrNothing extends BaseMonster {
             if (aventurine != null) {
                 addToTop(new RemoveSpecificPowerAction(aventurine, aventurine, IntangiblePower.POWER_ID));
                 int tr = ModHelper.getPowerCount(aventurine, ToughnessPower.POWER_ID);
-                addToBot(new UnlockToughnessAction(aventurine, aventurine));
+                addToBot(new UnlockToughnessAction(aventurine, aventurine.name));
                 addToBot(new ElementalDamageAction(aventurine,
                         new ElementalDamageInfo(this, 0, DamageInfo.DamageType.HP_LOSS, ElementType.None, tr),
                         AbstractGameAction.AttackEffect.NONE)

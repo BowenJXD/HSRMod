@@ -30,6 +30,7 @@ import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
 import java.util.Iterator;
+import java.util.Objects;
 
 public class ShadowOfFeixiao extends BaseMonster implements PreBreakSubscriber {
     public static final String ID = ShadowOfFeixiao.class.getSimpleName();
@@ -57,14 +58,14 @@ public class ShadowOfFeixiao extends BaseMonster implements PreBreakSubscriber {
                 addToBot(new ApplyPowerAction(this, this, new ToughnessPower(this, toughnessHealCount)));
             if (specialAs)
                 addToBot(new ApplyPowerAction(this, this, new StrengthPower(this, 1)));
-            AbstractMonster monster = ModHelper.getRandomMonster(m -> m != this && !m.hasPower(ResonatePower.POWER_ID), true);
+            AbstractMonster monster = ModHelper.getRandomMonster(m -> !Objects.equals(m.id, id) && !m.hasPower(ResonatePower.POWER_ID), true);
             if (monster != null) {
                 if (monster instanceof NebulaDevourer) shout(2, 3f);
                 else if (monster instanceof PlaneshredClaws) shout(3, 3f);
                 else if (monster instanceof WorldpurgeTail) shout(4, 3f);
 
                 addToBot(new ApplyPowerAction(monster, this, new ResonatePower(monster, resonateCount, ResonatePower.ResonateType.FEIXIAO), 0));
-                addToBot(new UnlockToughnessAction(monster, monster));
+                addToBot(new UnlockToughnessAction(monster, monster.name));
                 addToBot(new RollMoveAction(monster));
                 if (ModHelper.getPowerCount(monster, ToughnessPower.POWER_ID) > 0)
                     addToBot(new ApplyPowerAction(monster, this, new ToughnessPower(monster, toughnessHealCount)));
@@ -77,12 +78,12 @@ public class ShadowOfFeixiao extends BaseMonster implements PreBreakSubscriber {
             AbstractDungeon.getMonsters().monsters.stream().filter(m -> ModHelper.check(m) && !m.hasPower(ResonatePower.POWER_ID))
                     .forEach(m -> {
                                 addToBot(new ApplyPowerAction(m, this, new ResonatePower(m, resonateCount, ResonatePower.ResonateType.FEIXIAO), 0));
-                                addToBot(new UnlockToughnessAction(m, m));
+                                addToBot(new UnlockToughnessAction(m, m.name));
                                 if (ModHelper.getPowerCount(m, ToughnessPower.POWER_ID) > 0)
                                     addToBot(new ApplyPowerAction(m, this, new ToughnessPower(m, toughnessHealCount)));
                             }
                     );
-            addToBot(new LockToughnessAction(this, this));
+            addToBot(new LockToughnessAction(this, name));
             addToBot(new ApplyPowerAction(this, this, new IntangiblePower(this, 1)));
             addToBot(new ApplyPowerAction(this, this, new ChargingPower(this, getLastMove())));
         });
@@ -99,7 +100,7 @@ public class ShadowOfFeixiao extends BaseMonster implements PreBreakSubscriber {
                             addToBot(new RemoveSpecificPowerAction(m, this, ResonatePower.POWER_ID));
                         });
                     }
-                    addToBot(new UnlockToughnessAction(this, this));
+                    addToBot(new UnlockToughnessAction(this, this.name));
                     SubscriptionManager.unsubscribe(this);
                 });
     }
@@ -109,7 +110,7 @@ public class ShadowOfFeixiao extends BaseMonster implements PreBreakSubscriber {
         super.usePreBattleAction();
         ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(this.getClass().getSimpleName() + "_" + 0, 2f));
         AbstractDungeon.getMonsters().monsters.forEach(m -> {
-            if (m != this) {
+            if (!Objects.equals(m.id, id)) {
                 addToBot(new ApplyPowerAction(m, this, new SummonedPower(m)));
             }
         });

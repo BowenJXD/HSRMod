@@ -61,7 +61,7 @@ public class AventurineOfStratagems extends BaseMonster {
             addToBot(new VFXAction(new RainingGoldEffect(100)));
             spawnMonsters();
             addToBot(new ApplyPowerAction(this, this, new IntangiblePower(this, 7), 7));
-            addToBot(new LockToughnessAction(this, this));
+            addToBot(new LockToughnessAction(this, name));
             addToBot(new ApplyPowerAction(this, this, new ChargingPower(this, getLastMove())));
         });
         addMove(Intent.ATTACK_DEBUFF, 40, mi->{

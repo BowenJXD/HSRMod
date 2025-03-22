@@ -17,8 +17,10 @@ public class ARuanPouch extends BaseRelic {
 
     public void onEquip() {
         flash();
-        if (AbstractDungeon.currMapNode != null && AbstractDungeon.getCurrRoom().phase != AbstractRoom.RoomPhase.COMBAT) {
-            for(int i = 0; i < 2; ++i) {
+        if (AbstractDungeon.currMapNode != null 
+                && AbstractDungeon.getCurrRoom().phase != AbstractRoom.RoomPhase.COMBAT 
+                && AbstractDungeon.screen != AbstractDungeon.CurrentScreen.COMBAT_REWARD) {
+            for (int i = 0; i < 2; ++i) {
                 RewardEditor.addExtraCardRewardToTop();
             }
             AbstractDungeon.combatRewardScreen.open(this.DESCRIPTIONS[1]);
@@ -27,14 +29,14 @@ public class ARuanPouch extends BaseRelic {
                 RewardEditor.addExtraCardRewardToTop();
             }
         } else {
-            ModHelper.addEffectAbstract( () ->
+            ModHelper.addEffectAbstract(() ->
             {
                 for (int i = 0; i < 3; ++i) {
                     AbstractDungeon.combatRewardScreen.rewards.add(new RewardItem());
                 }
             });
         }
-        ModHelper.addEffectAbstract(this::reduceCounterAndCheckDestroy); 
+        ModHelper.addEffectAbstract(this::reduceCounterAndCheckDestroy);
     }
 
     @Override

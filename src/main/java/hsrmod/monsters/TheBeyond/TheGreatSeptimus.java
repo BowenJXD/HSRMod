@@ -46,6 +46,7 @@ import hsrmod.utils.ModHelper;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class TheGreatSeptimus extends BaseMonster implements OnCardUseSubscriber {
     public static final String ID = TheGreatSeptimus.class.getSimpleName();
@@ -170,7 +171,7 @@ public class TheGreatSeptimus extends BaseMonster implements OnCardUseSubscriber
             case 4:
                 setMove(MOVES[4], (byte) 5, Intent.ATTACK, this.damage.get(3).base, numDamage, true);
                 for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
-                    if (m != this && !m.isDead && !m.isDying && !m.halfDead && m.currentHealth > 0 && !m.hasPower(BrokenPower.POWER_ID)) {
+                    if (!Objects.equals(m.id, id) && !m.isDead && !m.isDying && !m.halfDead && m.currentHealth > 0 && !m.hasPower(BrokenPower.POWER_ID)) {
                         addToBot(new ApplyPowerAction(m, this, new MultiMovePower(m, 1), 1));
                     }
                 }

@@ -312,8 +312,8 @@ public abstract class BaseMonster extends CustomMonster {
     }
 
     @Override
-    public void die() {
-        super.die();
+    public void die(boolean triggerRelics) {
+        super.die(triggerRelics);
         int shakeTime = 0;
         switch (type) {
             case NORMAL:

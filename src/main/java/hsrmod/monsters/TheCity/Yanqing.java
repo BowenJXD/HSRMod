@@ -56,7 +56,7 @@ public class Yanqing extends BaseMonster implements PostMonsterDeathSubscriber {
             shout(0);
             spawnMonsters();
             addToBot(new ApplyPowerAction(this, this, new SwordFormationPower(this)));
-            addToBot(new LockToughnessAction(this, this));
+            addToBot(new LockToughnessAction(this, name));
             AbstractDungeon.player.drawPile.group.forEach(c -> CommonKeywordIconsField.useIcons.set(c, true));
             if (!AbstractDungeon.player.drawPile.isEmpty()) {
                 AbstractDungeon.player.drawPile.getRandomCard(AbstractDungeon.aiRng).exhaust = true;

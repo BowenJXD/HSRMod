@@ -1,3 +1,4 @@
+/*
 package hsrmod.effects;
 
 import com.badlogic.gdx.Gdx;
@@ -40,3 +41,4 @@ public class FlashMinionIntentEffect extends AbstractGameEffect {
     public void dispose() {
     }
 }
+*/

@@ -27,7 +27,7 @@ public class MerchantPatch {
     public static Texture sparkleHand;
     public static Float scaleOverride = null;
     static MerchantChar merchantChar;
-    public static final int SPARKLE_CHANCE = 100;
+    public static final int SPARKLE_CHANCE = 1;
     
     @SpirePatch(
             clz = Merchant.class,
@@ -67,6 +67,26 @@ public class MerchantPatch {
                     ReflectionHacks.setPrivate(_inst, Merchant.class, "idleMessages", idleMessages);
                     ReflectionHacks.setPrivateStaticFinal(Merchant.class, "TEXT", merchantStrings.TEXT);
                     ReflectionHacks.setPrivateStaticFinal(Merchant.class, "ENDING_TEXT", merchantStrings.OPTIONS);
+
+                    Texture hand = merchantChar == MerchantChar.HERTA ? hertaHand : sparkleHand;
+                    ReflectionHacks.setPrivateStaticFinal(ShopScreen.class, "handImg", hand);
+                    ReflectionHacks.setPrivateStaticFinal(ShopScreen.class, "HAND_W", 512 * Settings.scale);
+                    ReflectionHacks.setPrivateStaticFinal(ShopScreen.class, "HAND_H", 1024 * Settings.scale);
+
+                    CharacterStrings shopString = CardCrawlGame.languagePack.getCharacterString(HSRMod.makePath(merchantChar == MerchantChar.HERTA ? "HertaShopScreen" : "SparkleShopScreen"));
+                    ReflectionHacks.setPrivateStaticFinal(ShopScreen.class, "WELCOME_MSG", shopString.NAMES[0]);
+                    ReflectionHacks.setPrivateStaticFinal(ShopScreen.class, "NAMES", shopString.NAMES);
+                    ReflectionHacks.setPrivateStaticFinal(ShopScreen.class, "TEXT", shopString.TEXT);
+                    if (!AbstractDungeon.id.equals("TheEnding"))
+                        ReflectionHacks.setPrivate(AbstractDungeon.shopScreen, ShopScreen.class, "idleMessages", shopString.TEXT);
+
+                    if (merchantChar == MerchantChar.SPARKLE) {
+                        ModHelper.addEffectAbstract(() -> {
+                            CardCrawlGame.music.silenceTempBgmInstantly();
+                            AbstractDungeon.getCurrRoom().playBGM("Ensemble Cast");
+                        });
+                        AbstractDungeon.shopScreen.applyDiscount(0.1F, true);
+                    }
                     
                 } catch (Exception ignored) {
                     HSRMod.logger.log(Level.WARN, "Failed to load merchant skin");
@@ -87,29 +107,8 @@ public class MerchantPatch {
 
         @SpirePostfixPatch
         public static void postfix(ShopScreen _inst, ArrayList<AbstractCard> coloredCards, ArrayList<AbstractCard> colorlessCards, ArrayList<StoreRelic> ___relics) {
-            if (AbstractDungeon.id.contains("HSRMod:") || AbstractDungeon.id.equals("TheEnding")) {
-                Texture hand = merchantChar == MerchantChar.HERTA ? hertaHand : sparkleHand;
-                ReflectionHacks.setPrivateStaticFinal(ShopScreen.class, "handImg", hand);
-                ReflectionHacks.setPrivateStaticFinal(ShopScreen.class, "HAND_W", 512 * Settings.scale);
-                ReflectionHacks.setPrivateStaticFinal(ShopScreen.class, "HAND_H", 1024 * Settings.scale);
-
-                CharacterStrings shopString = CardCrawlGame.languagePack.getCharacterString(HSRMod.makePath(merchantChar == MerchantChar.HERTA ? "HertaShopScreen" : "SparkleShopScreen"));
-                ReflectionHacks.setPrivateStaticFinal(ShopScreen.class, "WELCOME_MSG", shopString.NAMES[0]);
-                ReflectionHacks.setPrivateStaticFinal(ShopScreen.class, "NAMES", shopString.NAMES);
-                ReflectionHacks.setPrivateStaticFinal(ShopScreen.class, "TEXT", shopString.TEXT);
-                if (!AbstractDungeon.id.equals("TheEnding"))
-                    ReflectionHacks.setPrivate(AbstractDungeon.shopScreen, ShopScreen.class, "idleMessages", shopString.TEXT);
-                
-                if (merchantChar == MerchantChar.SPARKLE) {
-                    ModHelper.addEffectAbstract(() -> {
-                        CardCrawlGame.music.silenceTempBgmInstantly();
-                        AbstractDungeon.getCurrRoom().playBGM("Ensemble Cast");
-                    });
-                    _inst.applyDiscount(0.1F, true);
-                }
-                if (ModHelper.hasRelic(FaithBond.ID)) {
-                    ___relics.forEach(r -> r.price = (int)(r.price * (1f - FaithBond.DISCOUNT / 100f)));
-                }
+            if (ModHelper.hasRelic(FaithBond.ID)) {
+                ___relics.forEach(r -> r.price = (int)(r.price * (1f - FaithBond.DISCOUNT / 100f)));
             }
         }
     }
@@ -130,6 +129,7 @@ public class MerchantPatch {
         public static void prefix(SkeletonJson _inst, @ByRef float[] scale) {
             if (MerchantPatch.scaleOverride != null) {
                 scale[0] = MerchantPatch.scaleOverride;
+                MerchantPatch.scaleOverride = null;
             }
         }
     }

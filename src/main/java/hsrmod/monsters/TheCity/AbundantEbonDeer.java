@@ -19,6 +19,8 @@ import hsrmod.subscribers.PreBreakSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
+import java.util.Objects;
+
 public class AbundantEbonDeer extends BaseMonster implements PostMonsterDeathSubscriber {
     public static final String ID = AbundantEbonDeer.class.getSimpleName();
 
@@ -57,7 +59,7 @@ public class AbundantEbonDeer extends BaseMonster implements PostMonsterDeathSub
         addMove(Intent.UNKNOWN, mi -> {
             spawnMonsters(spawnCount);
             AbstractDungeon.getMonsters().monsters.stream()
-                    .filter(m -> m != this && ModHelper.check(m) && !m.hasPower(SummonedPower.POWER_ID))
+                    .filter(m -> !Objects.equals(m.id, id) && ModHelper.check(m) && !m.hasPower(SummonedPower.POWER_ID))
                     .limit(spawnCount / 2)
                     .forEach(m -> addToBot(new ApplyPowerAction(m, this, new SummonedPower(m))));
         });
@@ -65,13 +67,13 @@ public class AbundantEbonDeer extends BaseMonster implements PostMonsterDeathSub
             attack(mi, AbstractGameAction.AttackEffect.SLASH_DIAGONAL);
         });
         addMove(Intent.DEFEND_BUFF, mi -> {
-            int twigCount = AbstractDungeon.getMonsters().monsters.stream().mapToInt(m -> ModHelper.check(m) && m != this ? 1 : 0).sum();
+            int twigCount = AbstractDungeon.getMonsters().monsters.stream().mapToInt(m -> ModHelper.check(m) && !Objects.equals(m.id, id) ? 1 : 0).sum();
             addToBot(new HealAction(this, this, healPercentage * maxHealth / 100));
             addToBot(new ApplyPowerAction(this, this, new RegenerateMonsterPower(this, twigCount)));
         });
         addMove(Intent.BUFF, mi -> {
             addToBot(new ApplyPowerAction(this, this, new ChargingPower(this, getLastMove())));
-            addToBot(new LockToughnessAction(this, this));
+            addToBot(new LockToughnessAction(this, name));
             SubscriptionManager.subscribe(this);
         });
         addMoveA(Intent.ATTACK, 6,
@@ -83,7 +85,7 @@ public class AbundantEbonDeer extends BaseMonster implements PostMonsterDeathSub
                         attack(mi, AbstractGameAction.AttackEffect.BLUNT_HEAVY);
                         ModHelper.killAllMinions();
                         wintryWind = marpleLeaf = lavishFruits = gloriousBlooms = false;
-                        addToBot(new UnlockToughnessAction(this, this));
+                        addToBot(new UnlockToughnessAction(this, name));
                         addToBot(new RemoveSpecificPowerAction(this, this, LavishFruitPower.POWER_ID));
                         addToBot(new RemoveSpecificPowerAction(this, this, StrengthPower.POWER_ID));
                     }
@@ -125,7 +127,7 @@ public class AbundantEbonDeer extends BaseMonster implements PostMonsterDeathSub
     @Override
     public void postMonsterDeath(AbstractMonster monster) {
         if (SubscriptionManager.checkSubscriber(this)
-                && monster != this
+                && !Objects.equals(monster.id, id)
                 && hasPower(ChargingPower.POWER_ID)) {
             setMove(4);
             createIntent();

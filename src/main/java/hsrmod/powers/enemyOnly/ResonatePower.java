@@ -2,6 +2,7 @@ package hsrmod.powers.enemyOnly;
 
 import com.badlogic.gdx.Gdx;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.common.RollMoveAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -14,11 +15,13 @@ import com.megacrit.cardcrawl.vfx.stance.DivinityParticleEffect;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.LockToughnessAction;
 import hsrmod.characters.StellaCharacter;
+import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.StatePower;
 import hsrmod.subscribers.PreBreakSubscriber;
 import hsrmod.subscribers.PreElementalDamageSubscriber;
+import hsrmod.subscribers.PreToughnessReduceSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.GeneralUtil;
 import hsrmod.utils.ModHelper;
@@ -26,7 +29,7 @@ import hsrmod.utils.ModHelper;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ResonatePower extends StatePower implements PreElementalDamageSubscriber, PreBreakSubscriber {
+public class ResonatePower extends StatePower implements PreElementalDamageSubscriber, PreToughnessReduceSubscriber, PreBreakSubscriber {
     public static final String POWER_ID = HSRMod.makePath(ResonatePower.class.getSimpleName());
     
     AbstractCard card;
@@ -77,6 +80,20 @@ public class ResonatePower extends StatePower implements PreElementalDamageSubsc
     }
 
     @Override
+    public int onAttacked(DamageInfo info, int damageAmount) {
+        if (info.type == DamageInfo.DamageType.NORMAL 
+                && !(info.owner instanceof StellaCharacter) 
+                && AbstractDungeon.actionManager.cardsPlayedThisTurn.get(AbstractDungeon.actionManager.cardsPlayedThisTurn.size() - 1) != card) {
+            card = AbstractDungeon.actionManager.lastCard;
+            DamageInfo info2 = new DamageInfo(info.owner, damageAmount, DamageInfo.DamageType.THORNS);
+            AbstractDungeon.getMonsters().monsters.stream().filter(m -> m.hasPower(POWER_ID) && m != owner).forEach(m -> {
+               addToTop(new DamageAction(m, info2, AbstractGameAction.AttackEffect.NONE)); 
+            });
+        }
+        return damageAmount;
+    }
+
+    @Override
     public float preElementalDamage(ElementalDamageAction action, float dmg) {
         if (SubscriptionManager.checkSubscriber(this) 
                 && action.target.hasPower(POWER_ID)
@@ -97,20 +114,31 @@ public class ResonatePower extends StatePower implements PreElementalDamageSubsc
     }
 
     @Override
+    public float preToughnessReduce(float amount, AbstractCreature target, ElementType elementType) {
+        if (SubscriptionManager.checkSubscriber(this) 
+                && target == owner 
+                && amount > 0
+                && !(AbstractDungeon.player instanceof StellaCharacter) ) {
+            amount += this.amount;
+        }
+        return amount;
+    }
+
+    @Override
     public void preBreak(ElementalDamageInfo info, AbstractCreature target) {
         if (SubscriptionManager.checkSubscriber(this) && target == owner) {
             AbstractMonster monster = (AbstractMonster) owner;
             if (monster != null) {
                 if (monster.type == AbstractMonster.EnemyType.NORMAL && type == ResonateType.FEIXIAO) {
                     addToTop(new RemoveSpecificPowerAction(owner, owner, this));
-                    addToBot(new LockToughnessAction(owner, owner));
+                    addToBot(new LockToughnessAction(owner, owner.name));
                 }
                 addToBot(new RollMoveAction(monster));
                 ModHelper.addToBotAbstract(monster::createIntent);
             }
         }
     }
-    
+
     public enum ResonateType {
         FEIXIAO,
         PAST_PRESENT_AND_ETERNAL,

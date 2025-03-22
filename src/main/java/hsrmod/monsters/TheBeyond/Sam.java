@@ -62,7 +62,7 @@ public class Sam extends BaseMonster {
             shout(2);
             addToBot(new VFXAction(new ScreenOnFireEffect()));
             addToBot(new LoseHPAction(this, this, hpLoss));
-            addToBot(new UnlockToughnessAction(this, this));
+            addToBot(new UnlockToughnessAction(this, name));
             addToBot(new ApplyPowerAction(this, this, new SecondaryCombustionPower(this, secondaryCombustionCount)));
             addToBot(new ApplyPowerAction(this, this, new MoltenCorePower(this, moltenCoreCount)));
         });
@@ -102,7 +102,7 @@ public class Sam extends BaseMonster {
     @Override
     public void usePreBattleAction() {
         super.usePreBattleAction();
-        addToBot(new LockToughnessAction(this, this));
+        addToBot(new LockToughnessAction(this, name));
     }
 
     @Override

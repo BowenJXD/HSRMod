@@ -21,6 +21,7 @@ import hsrmod.powers.misc.BrokenPower;
 import hsrmod.utils.ModHelper;
 
 import java.util.Iterator;
+import java.util.Objects;
 
 public class Hoolay extends BaseMonster {
     public static final String ID = Hoolay.class.getSimpleName();
@@ -124,7 +125,7 @@ public class Hoolay extends BaseMonster {
         if (this.lastMove((byte) 5)) {
             setMove(MOVES[5], (byte) 6, Intent.ATTACK, this.damage.get(3).base, damageTimes[3], true);
             for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
-                if (m != this && !m.isDead && !m.hasPower(BrokenPower.POWER_ID)) {
+                if (!Objects.equals(m.id, id) && !m.isDead && !m.hasPower(BrokenPower.POWER_ID)) {
                     addToBot(new ApplyPowerAction(m, this, new MultiMovePower(m, 1), 1));
                 }
             }

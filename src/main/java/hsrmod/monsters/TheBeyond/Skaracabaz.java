@@ -25,6 +25,8 @@ import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
+import java.util.Objects;
+
 public class Skaracabaz extends BaseMonster implements OnCardUseSubscriber {
     public static final String ID = Skaracabaz.class.getSimpleName();
 
@@ -90,7 +92,7 @@ public class Skaracabaz extends BaseMonster implements OnCardUseSubscriber {
                         addToBot(new DamageAction(p, this.damage.get(mi.index), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
                         int insectEggCount = ModHelper.getPowerCount(this, InsectEggPower.POWER_ID);
                         for (int i = 0; i < insectEggCount; i++) {
-                            AbstractMonster monster = ModHelper.getRandomMonster(m -> m != this, true);
+                            AbstractMonster monster = ModHelper.getRandomMonster(m -> !Objects.equals(m.id, id), true);
                             addToBot(new ApplyPowerAction(monster, this, new InsectEggPower(monster, 1)));
                         }
                         addToBot(new RemoveSpecificPowerAction(this, this, InsectEggPower.POWER_ID));

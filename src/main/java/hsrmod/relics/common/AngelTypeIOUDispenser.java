@@ -20,6 +20,7 @@ public class AngelTypeIOUDispenser extends BaseRelic {
     public void update() {
         super.update();
         if (counter > 0 
+                && isObtained
                 && AbstractDungeon.currMapNode != null
                 && AbstractDungeon.getCurrRoom().isBattleOver
                 && AbstractDungeon.getCurrRoom() != currRoom

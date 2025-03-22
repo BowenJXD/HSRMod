@@ -1,3 +1,4 @@
+/*
 package hsrmod.effects;
 
 import hsrmod.minion.AbstractPlayerMinion;
@@ -55,3 +56,4 @@ public class FlashMinionIntentParticle extends AbstractGameEffect {
         START_SCALE = 5.0F * Settings.scale;
     }
 }
+*/

@@ -23,6 +23,8 @@ import hsrmod.powers.StatePower;
 import hsrmod.subscribers.PreBreakSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 
+import java.util.function.Consumer;
+
 public class ChargingPower extends StatePower implements PreBreakSubscriber {
     public static final String POWER_ID = HSRMod.makePath(ChargingPower.class.getSimpleName());
 
@@ -30,6 +32,7 @@ public class ChargingPower extends StatePower implements PreBreakSubscriber {
     public float particleTimer2;
     public String move;
     private static long sfxId = -1L;
+    public Consumer<ChargingPower> removeCallback;
 
     public ChargingPower(AbstractCreature owner, String move, int amount) {
         super(POWER_ID, owner, amount);
@@ -46,6 +49,11 @@ public class ChargingPower extends StatePower implements PreBreakSubscriber {
 
     public ChargingPower(AbstractCreature owner, String move) {
         this(owner, move, 1);
+    }
+    
+    public ChargingPower setRemoveCallback(Consumer<ChargingPower> removeCallback) {
+        this.removeCallback = removeCallback;
+        return this;
     }
 
     @Override
@@ -85,6 +93,8 @@ public class ChargingPower extends StatePower implements PreBreakSubscriber {
         super.onRemove();
         SubscriptionManager.unsubscribe(this);
         this.stopIdleSfx();
+        if (removeCallback != null)
+            removeCallback.accept(this);
     }
 
     @Override

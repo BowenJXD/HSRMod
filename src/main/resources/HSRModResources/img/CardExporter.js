@@ -9,25 +9,31 @@ function main() {
 
     var doc = app.activeDocument;
     var outputPath = Folder.selectDialog("选择导出文件夹");
-
     if (outputPath == null) {
         alert("未选择输出文件夹。");
         return;
     }
+    var folderName = outputPath.name.toLowerCase();
+
+    // Check if the folder name ends with "signature"
+    var sign = folderName.substr(folderName.length - 9) === "signature";
 
     // 复制文档
     var copiedDoc = doc.duplicate();
-    
+
     app.activeDocument = doc;
 
-    process(doc, outputPath, "_p");
-    
-    // 在复制文档中，调整图像大小
-    app.activeDocument = copiedDoc;
-    
-    copiedDoc.resizeImage(UnitValue(250, "px"), UnitValue(190, "px"), null, ResampleMethod.BICUBICSHARPER);
-
-    process(copiedDoc, outputPath, "");
+    if (sign) {
+        process(doc, outputPath, "_s_p");
+        app.activeDocument = copiedDoc;
+        copiedDoc.resizeImage(UnitValue(512, "px"), UnitValue(512, "px"), null, ResampleMethod.BICUBICSHARPER);
+        process(copiedDoc, outputPath, "_s");
+    } else {
+        process(doc, outputPath, "_p");
+        app.activeDocument = copiedDoc;
+        copiedDoc.resizeImage(UnitValue(250, "px"), UnitValue(190, "px"), null, ResampleMethod.BICUBICSHARPER);
+        process(copiedDoc, outputPath, "");
+    }
 
     // 关闭复制文档，不保存更改
     copiedDoc.close(SaveOptions.DONOTSAVECHANGES);
@@ -35,7 +41,7 @@ function main() {
     alert("导出完成！");
 }
 
-function process(doc, outputPath, postfix){
+function process(doc, outputPath, postfix) {
     var visibleLayerSets = getInitiallyVisibleLayerSets(doc);
     if (visibleLayerSets.length === 0) {
         alert("没有可见的图层组。");
@@ -92,7 +98,7 @@ function hideAllGroups(layerSets) {
 function saveAsPng(outputPath, fileName, currentDoc) {
     var file = new File(outputPath + "/" + fileName + ".png");
     var options = new PNGSaveOptions();
-    options.compression = 9; // 压缩等级，0（最大速度）到9（最小文件大小）
+    options.compression = 0; // 压缩等级，0（最大速度）到9（最小文件大小）
 
     currentDoc.saveAs(file, options, true, Extension.LOWERCASE);
 }

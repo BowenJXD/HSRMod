@@ -102,7 +102,7 @@ public class ToughnessPower extends BuffPower implements InvisiblePower {
         alterPower(-reduceAmount);
     }
     
-    public boolean getLocked() {
+    public boolean isLocked() {
         return locked;
     }
 

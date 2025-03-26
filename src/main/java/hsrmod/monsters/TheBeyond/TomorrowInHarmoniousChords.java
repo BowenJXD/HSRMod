@@ -1,6 +1,7 @@
 package hsrmod.monsters.TheBeyond;
 
 import basemod.BaseMod;
+import basemod.helpers.CardBorderGlowManager;
 import basemod.interfaces.OnCardUseSubscriber;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -9,16 +10,21 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RollMoveAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.vfx.combat.BossCrystalImpactEffect;
 import com.megacrit.cardcrawl.vfx.combat.FastingEffect;
 import com.megacrit.cardcrawl.vfx.combat.MiracleEffect;
+import hsrmod.actions.ElementalDamageAction;
+import hsrmod.modcore.ElementType;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.enemyOnly.AlienDreamPower;
 import hsrmod.powers.enemyOnly.ChargingPower;
 import hsrmod.powers.enemyOnly.ResonatePower;
 import hsrmod.powers.misc.BrokenPower;
+import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
@@ -27,6 +33,7 @@ public class TomorrowInHarmoniousChords extends BaseMonster implements OnCardUse
 
     int iniStrengthCount = 4;
     int skillStrengthCount = 3;
+    CardBorderGlowManager.GlowInfo glowInfo;
 
     public TomorrowInHarmoniousChords(float x, float y) {
         super(ID, 150, 384, x, y);
@@ -42,11 +49,10 @@ public class TomorrowInHarmoniousChords extends BaseMonster implements OnCardUse
             addToBot(new ApplyPowerAction(this, this, new StrengthPower(this, skillStrengthCount - 1)));
         });
         addMove(Intent.BUFF, mi -> {
-            addToBot(new ApplyPowerAction(this, this, new ChargingPower(this, getLastMove())));
             AbstractDungeon.getMonsters().monsters.stream().filter(ModHelper::check).forEach(m -> {
                 addToBot(new ApplyPowerAction(m, this, new StrengthPower(m, 1)));
             });
-            BaseMod.subscribe(this);
+            startSkill();
         });
         addMove(Intent.STRONG_DEBUFF, mi -> {
             if (hasPower(ChargingPower.POWER_ID)) {
@@ -58,16 +64,32 @@ public class TomorrowInHarmoniousChords extends BaseMonster implements OnCardUse
                     addToBot(new ApplyPowerAction(this, this, new StrengthPower(this, strengthCount)));
                 }
             }
-            BaseMod.unsubscribe(this);
         });
         addMove(Intent.STUN, mi->{});
+        
+        glowInfo = new CardBorderGlowManager.GlowInfo() {
+            @Override
+            public boolean test(AbstractCard abstractCard) {
+                return abstractCard.type == AbstractCard.CardType.POWER;
+            }
+
+            @Override
+            public Color getColor(AbstractCard abstractCard) {
+                return Color.GOLD;
+            }
+
+            @Override
+            public String glowID() {
+                return ID;
+            }
+        };
+        glowInfo.priority = -1;
     }
 
     @Override
     public void usePreBattleAction() {
         super.usePreBattleAction();
         addToBot(new ApplyPowerAction(this, this, new StrengthPower(this, iniStrengthCount)));
-        addToBot(new ApplyPowerAction(this, this, new ChargingPower(this, getLastMove())));
         addToBot(new RollMoveAction(this));
         ModHelper.addToBotAbstract(this::createIntent);
         if (AbstractDungeon.getCurrRoom().eliteTrigger) {
@@ -75,7 +97,7 @@ public class TomorrowInHarmoniousChords extends BaseMonster implements OnCardUse
             setHp(maxHealth * 3 / 2);
             healthBarUpdatedEvent();
         }
-        BaseMod.subscribe(this);
+        startSkill();
     }
 
     @Override
@@ -92,6 +114,19 @@ public class TomorrowInHarmoniousChords extends BaseMonster implements OnCardUse
             setMove(0);
         }
     }
+    
+    void startSkill() {
+        BaseMod.subscribe(this);
+        CardBorderGlowManager.addGlowInfo(glowInfo);
+        addToBot(new ApplyPowerAction(this, this, new ChargingPower(this, getLastMove()).setRemoveCallback(power -> {
+            endSkill();
+        })));
+    }
+    
+    void endSkill() {
+        BaseMod.unsubscribe(this);
+        CardBorderGlowManager.removeGlowInfo(glowInfo);
+    }
 
     @Override
     public void receiveCardUsed(AbstractCard abstractCard) {
@@ -100,6 +135,14 @@ public class TomorrowInHarmoniousChords extends BaseMonster implements OnCardUse
                 && abstractCard.type == AbstractCard.CardType.POWER) {
             addToBot(new ReducePowerAction(this, this, StrengthPower.POWER_ID, 1));
             addToBot(new ApplyPowerAction(p, this, new StrengthPower(p, 1)));
+            ModHelper.addToBotAbstract(() -> {
+                if (ModHelper.getPowerCount(this, StrengthPower.POWER_ID) <= 0) {
+                    int tr = ModHelper.getPowerCount(this, ToughnessPower.POWER_ID);
+                    addToTop(new ElementalDamageAction(this, new ElementalDamageInfo(this, 0, DamageInfo.DamageType.HP_LOSS, ElementType.None, tr), AbstractGameAction.AttackEffect.NONE));
+                    addToBot(new RollMoveAction(this));
+                    ModHelper.addToBotAbstract(this::createIntent);
+                }
+            });
         }
     }
 }

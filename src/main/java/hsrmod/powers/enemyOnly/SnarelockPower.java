@@ -1,5 +1,7 @@
 package hsrmod.powers.enemyOnly;
 
+import basemod.helpers.CardBorderGlowManager;
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -18,6 +20,7 @@ public class SnarelockPower extends DebuffPower {
     public static final String POWER_ID = HSRMod.makePath(SnarelockPower.class.getSimpleName());
     
     AbstractCreature source;
+    CardBorderGlowManager.GlowInfo glowInfo;
     
     public SnarelockPower(AbstractCreature owner, AbstractCreature source, int amount) {
         super(POWER_ID, owner, amount);
@@ -25,6 +28,23 @@ public class SnarelockPower extends DebuffPower {
         isTurnBased = true;
         this.source = source;
         updateDescription();
+        
+        glowInfo = new CardBorderGlowManager.GlowInfo() {
+            @Override
+            public boolean test(AbstractCard abstractCard) {
+                return (abstractCard.type == AbstractCard.CardType.ATTACK) != (SnarelockPower.this.amount == 1);
+            }
+
+            @Override
+            public Color getColor(AbstractCard abstractCard) {
+                return Color.RED;
+            }
+
+            @Override
+            public String glowID() {
+                return POWER_ID;
+            }
+        };
     }
 
     @Override
@@ -40,6 +60,18 @@ public class SnarelockPower extends DebuffPower {
                 this.description = DESCRIPTIONS[0];
                 break;
         }
+    }
+
+    @Override
+    public void onInitialApplication() {
+        super.onInitialApplication();
+        CardBorderGlowManager.addGlowInfo(glowInfo);
+    }
+
+    @Override
+    public void onRemove() {
+        super.onRemove();
+        CardBorderGlowManager.removeGlowInfo(glowInfo);
     }
 
     @Override

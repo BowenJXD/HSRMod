@@ -1,5 +1,7 @@
 package hsrmod.powers.enemyOnly;
 
+import basemod.helpers.CardBorderGlowManager;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -30,6 +32,8 @@ public class BanPower extends AbstractPower implements PreBreakSubscriber {
     BanType banType;
     int thornDamage = 2;
     
+    CardBorderGlowManager.GlowInfo glowInfo;
+    
     public BanPower(AbstractCreature owner, BanType banType) {
         this.ID = POWER_ID;
         this.name = CardCrawlGame.languagePack.getPowerStrings(POWER_ID).NAME;
@@ -51,6 +55,24 @@ public class BanPower extends AbstractPower implements PreBreakSubscriber {
                 break;
         }
         updateDescription();
+        
+        glowInfo = new CardBorderGlowManager.GlowInfo() {
+            @Override
+            public boolean test(AbstractCard abstractCard) {
+                return (abstractCard.type == AbstractCard.CardType.ATTACK && BanPower.this.banType == BanType.ATTACK)
+                        || (abstractCard.type == AbstractCard.CardType.SKILL && BanPower.this.banType == BanType.SKILL);
+            }
+
+            @Override
+            public Color getColor(AbstractCard abstractCard) {
+                return Color.RED;
+            }
+
+            @Override
+            public String glowID() {
+                return POWER_ID;
+            }
+        };
     }
     
     public BanPower(AbstractCreature owner){
@@ -76,12 +98,14 @@ public class BanPower extends AbstractPower implements PreBreakSubscriber {
     public void onInitialApplication() {
         super.onInitialApplication();
         SubscriptionManager.subscribe(this);
+        CardBorderGlowManager.addGlowInfo(glowInfo);
     }
 
     @Override
     public void onRemove() {
         super.onRemove();
         SubscriptionManager.unsubscribe(this);
+        CardBorderGlowManager.removeGlowInfo(glowInfo);
     }
 
     @Override

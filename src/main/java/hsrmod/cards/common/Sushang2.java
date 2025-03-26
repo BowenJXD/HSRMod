@@ -18,6 +18,7 @@ import hsrmod.cards.BaseCard;
 import hsrmod.powers.misc.BreakEffectPower;
 import hsrmod.powers.misc.BrokenPower;
 import hsrmod.subscribers.SubscriptionManager;
+import hsrmod.utils.CachedCondition;
 import hsrmod.utils.ModHelper;
 
 public class Sushang2 extends BaseCard implements PostPowerApplySubscriber {
@@ -55,5 +56,11 @@ public class Sushang2 extends BaseCard implements PostPowerApplySubscriber {
                 && abstractPower instanceof BrokenPower) {
             addToBot(new MoveCardsAction(AbstractDungeon.player.hand, AbstractDungeon.player.drawPile, c -> c == this));
         }
+    }
+
+    @Override
+    public void triggerOnGlowCheck() {
+        super.triggerOnGlowCheck();
+        glowColor = CachedCondition.check(CachedCondition.Key.ANY_BROKEN) ? GOLD_BORDER_GLOW_COLOR : BLUE_BORDER_GLOW_COLOR;
     }
 }

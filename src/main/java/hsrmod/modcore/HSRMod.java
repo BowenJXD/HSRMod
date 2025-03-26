@@ -27,12 +27,11 @@ import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import com.megacrit.cardcrawl.monsters.city.ShelledParasite;
 import com.megacrit.cardcrawl.monsters.exordium.SlaverRed;
 import com.megacrit.cardcrawl.powers.FadingPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.TimeWarpPower;
 import com.megacrit.cardcrawl.relics.*;
-import com.megacrit.cardcrawl.screens.runHistory.RunHistoryPath;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import com.badlogic.gdx.graphics.Color;
+import hsrmod.cards.uncommon.SilverWolf1;
 import hsrmod.characters.StellaCharacter;
 import hsrmod.dungeons.Belobog;
 import hsrmod.dungeons.Luofu;
@@ -47,7 +46,6 @@ import hsrmod.monsters.TheBeyond.*;
 import hsrmod.monsters.TheCity.*;
 import hsrmod.patches.OtherModFixes;
 import hsrmod.patches.RelicTagField;
-import hsrmod.powers.enemyOnly.DeathExplosionPower;
 import hsrmod.powers.enemyOnly.PerformancePointPower;
 import hsrmod.relics.BaseRelic;
 import hsrmod.relics.common.AngelTypeIOUDispenser;
@@ -203,6 +201,7 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
         if (HSRModConfig.addEvent) {
             addEvents();
         }
+        checkSignatureUnlock();
     }
 
     @Override
@@ -740,6 +739,10 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
 
     void addOgg(String key) {
         BaseMod.addAudio(key, "HSRModResources/localization/" + lang + "/audio/" + key + ".ogg");
+    }
+    
+    void checkSignatureUnlock() {
+        SilverWolf1.checkUnlockSign();
     }
 
     public void updateLanguage() {

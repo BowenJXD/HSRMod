@@ -1,5 +1,8 @@
 package hsrmod.monsters.TheBeyond;
 
+import basemod.BaseMod;
+import basemod.helpers.CardBorderGlowManager;
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RollMoveAction;
@@ -22,6 +25,7 @@ public class PastConfinedAndCaged extends BaseMonster implements PreElementalDam
     public static final String ID = PastConfinedAndCaged.class.getSimpleName();
 
     List<AbstractCard> cardsCache;
+    CardBorderGlowManager.GlowInfo glowInfo;
 
     public PastConfinedAndCaged(float x, float y) {
         super(ID, -30, -15, 150, 384, x, y);
@@ -31,19 +35,32 @@ public class PastConfinedAndCaged extends BaseMonster implements PreElementalDam
         });
         addMoveA(Intent.ATTACK_BUFF, 10, mi -> {
             attack(mi, AbstractGameAction.AttackEffect.BLUNT_LIGHT, AttackAnim.FAST);
-            addToBot(new ApplyPowerAction(this, this, new ChargingPower(this, getLastMove())));
-            SubscriptionManager.subscribe(this);
-            cardsCache.clear();
+            startSkill();
         });
         addMoveA(Intent.ATTACK, 40, mi -> {
                     if (hasPower(ChargingPower.POWER_ID)) {
                         attack(mi, AbstractGameAction.AttackEffect.BLUNT_HEAVY, AttackAnim.FAST);
                     }
-                    SubscriptionManager.unsubscribe(this);
-                    cardsCache.clear();
                 });
         addMove(Intent.STUN, mi->{});
         cardsCache = new ArrayList<>();
+        
+        glowInfo = new CardBorderGlowManager.GlowInfo() {
+            @Override
+            public boolean test(AbstractCard abstractCard) {
+                return abstractCard.type == AbstractCard.CardType.ATTACK;
+            }
+
+            @Override
+            public Color getColor(AbstractCard abstractCard) {
+                return Color.GOLD;
+            }
+
+            @Override
+            public String glowID() {
+                return ID;
+            }
+        };
     }
 
     @Override
@@ -67,6 +84,21 @@ public class PastConfinedAndCaged extends BaseMonster implements PreElementalDam
         } else {
             setMove(0);
         }
+    }
+    
+    void startSkill() {
+        SubscriptionManager.subscribe(this);
+        CardBorderGlowManager.addGlowInfo(glowInfo);
+        addToBot(new ApplyPowerAction(this, this, new ChargingPower(this, getLastMove()).setRemoveCallback(power ->{
+            endSkill();
+        })));
+        cardsCache.clear();
+    }
+    
+    void endSkill() {
+        SubscriptionManager.unsubscribe(this);
+        CardBorderGlowManager.removeGlowInfo(glowInfo);
+        cardsCache.clear();
     }
 
     @Override

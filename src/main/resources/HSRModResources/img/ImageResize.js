@@ -8,8 +8,9 @@ function resizeAndCenterImageOnCanvas(inputFile, outputFolder, canvasWidth, canv
     // Resize the canvas to the specified canvas size (canvasWidth x canvasHeight)
     doc.resizeCanvas(UnitValue(canvasWidth, "px"), UnitValue(canvasHeight, "px"), AnchorPosition.MIDDLECENTER);
 
+    var name = inputFile.name.replace("_p", ""); // Remove "_p" from the file name
     // Create a save file object with a .png extension
-    var saveFile = new File(outputFolder + "/" + inputFile.name.replace(/\.[^\.]+$/, ".png"));
+    var saveFile = new File(outputFolder + "/" + name.replace(/\.[^\.]+$/, ".png"));
 
     // Set save options (PNG in this case)
     var pngOptions = new PNGSaveOptions();
@@ -50,10 +51,10 @@ function main() {
 
     if (inputFolder) {
         // Set canvas and image size (change these values as needed)
-        var canvasWidth = 128;   // Set canvas width
-        var canvasHeight = 128;  // Set canvas height
-        var imageWidth = 64;     // Set image width
-        var imageHeight = 64;    // Set image height
+        var canvasWidth = 512;   // Set canvas width
+        var canvasHeight = 512;  // Set canvas height
+        var imageWidth = 512;     // Set image width
+        var imageHeight = 512;    // Set image height
 
         // Process the folder and save to OUTPUT subfolder
         processFolder(inputFolder.fsName, canvasWidth, canvasHeight, imageWidth, imageHeight);

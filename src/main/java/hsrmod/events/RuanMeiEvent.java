@@ -24,10 +24,12 @@ import com.megacrit.cardcrawl.vfx.UpgradeShineEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import hsrmod.cards.uncommon.RuanMei1;
+import hsrmod.cards.uncommon.RuanMei2;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
 import hsrmod.relics.shop.ARuanPouch;
 import hsrmod.utils.RelicEventHelper;
+import me.antileaf.signature.utils.SignatureHelper;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -104,6 +106,8 @@ public class RuanMeiEvent extends PhasedEvent {
         registerPhase(6, new TextPhase(DESCRIPTIONS[5])
                 .addOption(OPTIONS[11], (i)->openMap())
         );
+
+        SignatureHelper.unlock(HSRMod.makePath(RuanMei2.ID), true);
         
         //This sets the starting point of the event.
         transitionKey(0);

@@ -1,0 +1,24 @@
+{
+  "SignatureLib:SCVPanel": {
+    "TEXT": [
+      "Signature",
+      "Signature Locked",
+      "Hide Description",
+      "Unlock Condition:"
+    ]
+  },
+
+  "SignatureLib:ModPanel": {
+    "TEXT": [
+      "STS Signature Lib",
+      "Allows you to add cool Signature cards to your mod!"
+    ]
+  },
+
+  "SignatureLib:New": {
+    "TEXT": [
+      "New Signature!",
+      "New!"
+    ]
+  }
+}

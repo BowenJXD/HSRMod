@@ -17,30 +17,24 @@ import hsrmod.cards.BaseCard;
 import hsrmod.effects.PortraitDisplayEffect;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.modcore.HSRMod;
 import hsrmod.monsters.BaseMonster;
+import hsrmod.monsters.TheCity.ShadowOfFeixiao;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
+import me.antileaf.signature.utils.SignatureHelper;
 
 public class Feixiao2 extends BaseCard {
     public static final String ID = Feixiao2.class.getSimpleName();
-    
+
     int costCache;
     boolean subscribed = false;
-    
+
     public Feixiao2() {
         super(ID);
         tags.add(CustomEnums.FOLLOW_UP);
         costCache = cost;
     }
-
-    /*@Override
-    public void atTurnStart() {
-        super.atTurnStart();
-        if (!subscribed) {
-            BaseMod.subscribe(this);
-            subscribed = true;
-        }
-    }*/
 
     @Override
     public void updateCost(int amt) {

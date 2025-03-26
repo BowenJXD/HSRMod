@@ -21,41 +21,30 @@ import hsrmod.utils.ModHelper;
 public class Argenti1 extends BaseCard {
     public static final String ID = Argenti1.class.getSimpleName();
 
-    int energyExhaust = 90;
-    int energyGain = 10;
-
     public Argenti1() {
         super(ID);
+        setBaseEnergyCost(90);
         tags.add(CustomEnums.ENERGY_COSTING);
         selfRetain = true;
         isMultiDamage = true;
     }
 
     @Override
-    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        return super.canUse(p, m) && ModHelper.getPowerCount(p, EnergyPower.POWER_ID) >= energyExhaust;
-    }
-
-    @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.topLevelEffects.add(new PortraitDisplayEffect("Argenti"));
         ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID));
-        
         addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
+        
         ModHelper.addToBotAbstract(this::execute);
     }
 
     void execute() {
-        if (ModHelper.getPowerCount(AbstractDungeon.player, EnergyPower.POWER_ID) < energyExhaust
-                || AbstractDungeon.getMonsters().areMonstersBasicallyDead()) return;
-        ElementalDamageAllAction action = new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_VERTICAL);
-        /*if (upgraded) action.setCallback(c -> {
-            addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player,
-                    new EnergyPower(AbstractDungeon.player, energyGain), energyGain));
-        });*/
-        ModHelper.addToTopAbstract(this::execute);
-        addToTop(action);
+        if (AbstractDungeon.getMonsters().areMonstersBasicallyDead()) return;
+        if (ModHelper.getPowerCount(AbstractDungeon.player, EnergyPower.POWER_ID) >= energyCost) {
+            ModHelper.addToTopAbstract(this::execute);
+        }
+        addToTop(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_VERTICAL));
         addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player,
-                new EnergyPower(AbstractDungeon.player, -energyExhaust), -energyExhaust));
+                new EnergyPower(AbstractDungeon.player, -energyCost), -energyCost));
     }
 }

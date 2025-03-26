@@ -15,6 +15,7 @@ import hsrmod.cards.BaseCard;
 import hsrmod.powers.misc.BreakEffectPower;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.utils.ModHelper;
+import me.antileaf.signature.utils.SignatureHelper;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,6 +23,7 @@ import java.util.Map;
 public class Rappa1 extends BaseCard {
     public static final String ID = Rappa1.class.getSimpleName();
 
+    int count = 0;
     boolean canRepeat = false;
 
     public Rappa1() {
@@ -32,6 +34,7 @@ public class Rappa1 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         shout(0);
+        count = 0;
         execute();
     }
 
@@ -39,6 +42,11 @@ public class Rappa1 extends BaseCard {
         canRepeat = true;
         
         if (AbstractDungeon.getMonsters().areMonstersBasicallyDead()) return;
+        
+        count++;
+        if (count >= 4) {
+            SignatureHelper.unlock(cardID, true);
+        }
 
         addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new BreakEffectPower(AbstractDungeon.player, magicNumber), magicNumber));
         addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL).setCallback((c) -> {

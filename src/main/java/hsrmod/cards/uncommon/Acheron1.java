@@ -23,9 +23,11 @@ import hsrmod.effects.GrayscaleScreenEffect;
 import hsrmod.effects.PortraitDisplayEffect;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.modcore.HSRMod;
 import hsrmod.powers.uniqueBuffs.SlashedDreamPower;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
+import me.antileaf.signature.utils.SignatureHelper;
 
 public class Acheron1 extends BaseCard implements PostPowerApplySubscriber {
     public static final String ID = Acheron1.class.getSimpleName();

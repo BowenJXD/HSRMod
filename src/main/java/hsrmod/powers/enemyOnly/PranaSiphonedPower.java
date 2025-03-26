@@ -1,5 +1,7 @@
 package hsrmod.powers.enemyOnly;
 
+import basemod.helpers.CardBorderGlowManager;
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -13,9 +15,28 @@ import hsrmod.powers.DebuffPower;
 public class PranaSiphonedPower extends DebuffPower {
     public static final String POWER_ID = HSRMod.makePath(PranaSiphonedPower.class.getSimpleName());
 
+    CardBorderGlowManager.GlowInfo glowInfo;
+    
     public PranaSiphonedPower(AbstractCreature owner) {
         super(POWER_ID, owner, 1);
         updateDescription();
+        
+        glowInfo = new CardBorderGlowManager.GlowInfo() {
+            @Override
+            public boolean test(AbstractCard abstractCard) {
+                return abstractCard.type == AbstractCard.CardType.SKILL;
+            }
+
+            @Override
+            public Color getColor(AbstractCard abstractCard) {
+                return Color.RED;
+            }
+
+            @Override
+            public String glowID() {
+                return POWER_ID;
+            }
+        };
     }
 
     @Override
@@ -23,6 +44,18 @@ public class PranaSiphonedPower extends DebuffPower {
         description = String.format(DESCRIPTIONS[0], amount);
     }
 
+    @Override
+    public void onInitialApplication() {
+        super.onInitialApplication();
+        CardBorderGlowManager.addGlowInfo(glowInfo);
+    }
+
+    @Override
+    public void onRemove() {
+        super.onRemove();
+        CardBorderGlowManager.removeGlowInfo(glowInfo);
+    }
+    
     @Override
     public void onPlayCard(AbstractCard card, AbstractMonster m) {
         super.onPlayCard(card, m);

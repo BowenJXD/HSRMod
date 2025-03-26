@@ -49,4 +49,10 @@ public class Feixiao1 extends BaseCard {
             }
         });
     }
+
+    @Override
+    public void triggerOnGlowCheck() {
+        super.triggerOnGlowCheck();
+        glowColor = AbstractDungeon.player.drawPile.findCardById(cardID) != null ? GOLD_BORDER_GLOW_COLOR : BLUE_BORDER_GLOW_COLOR;
+    }
 }

@@ -29,10 +29,9 @@ public class Yunli1 extends BaseCard implements OnPlayerDamagedSubscriber {
     
     boolean canBeUsed = false;
     
-    int energyExhaust = 120;
-    
     public Yunli1() {
         super(ID);
+        setBaseEnergyCost(120);
         tags.add(FOLLOW_UP);
         tags.add(CustomEnums.ENERGY_COSTING);
         selfRetain = true;
@@ -45,10 +44,8 @@ public class Yunli1 extends BaseCard implements OnPlayerDamagedSubscriber {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        if (ModHelper.getPowerCount(p, EnergyPower.POWER_ID) >= energyExhaust) {
-            shout(0, 1);
-            ModHelper.addToBotAbstract(this::execute);
-        }
+        shout(0, 1);
+        ModHelper.addToBotAbstract(this::execute);
         canBeUsed = false;
     }
 
@@ -65,15 +62,17 @@ public class Yunli1 extends BaseCard implements OnPlayerDamagedSubscriber {
     }
     
     void execute(){
-        if (ModHelper.getPowerCount(AbstractDungeon.player, EnergyPower.POWER_ID) < energyExhaust) return;
-        ModHelper.addToTopAbstract(this::execute);
+        if (ModHelper.getPowerCount(AbstractDungeon.player, EnergyPower.POWER_ID) >= energyCost) {
+            ModHelper.addToTopAbstract(this::execute);
+        }
         AbstractMonster randomMonster = AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster)null, true, AbstractDungeon.cardRandomRng);
         if (randomMonster == null) return;
         ElementalDamageAction action = new ElementalDamageAction(randomMonster, ElementalDamageInfo.makeInfo(this), AbstractGameAction.AttackEffect.SLASH_VERTICAL);
         
         addToTop(new BouncingAction(randomMonster, 2, action, this));
 
-        addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new EnergyPower(AbstractDungeon.player, -energyExhaust), -energyExhaust));
+        addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, 
+                new EnergyPower(AbstractDungeon.player, -energyCost), -energyCost));
     }
 
     @Override

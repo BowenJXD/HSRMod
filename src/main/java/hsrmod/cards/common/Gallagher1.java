@@ -10,6 +10,7 @@ import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.powers.misc.BrokenPower;
+import hsrmod.utils.CachedCondition;
 
 public class Gallagher1 extends BaseCard {
     public static final String ID = Gallagher1.class.getSimpleName();
@@ -33,5 +34,11 @@ public class Gallagher1 extends BaseCard {
                         }
                 )
         );
+    }
+
+    @Override
+    public void triggerOnGlowCheck() {
+        super.triggerOnGlowCheck();
+        glowColor = upgraded && CachedCondition.check(CachedCondition.Key.ANY_BROKEN) ? GOLD_BORDER_GLOW_COLOR : BLUE_BORDER_GLOW_COLOR;
     }
 }

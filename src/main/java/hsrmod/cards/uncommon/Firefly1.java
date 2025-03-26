@@ -20,6 +20,7 @@ import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.misc.BreakEffectPower;
 import hsrmod.powers.misc.BrokenPower;
 import hsrmod.powers.misc.ToughnessPower;
+import hsrmod.utils.CachedCondition;
 import hsrmod.utils.ModHelper;
 
 public class Firefly1 extends BaseCard {
@@ -59,5 +60,11 @@ public class Firefly1 extends BaseCard {
                 setCostForTurn(costCache);
             }
         });
+    }
+
+    @Override
+    public void triggerOnGlowCheck() {
+        super.triggerOnGlowCheck();
+        glowColor = CachedCondition.check(CachedCondition.Key.ANY_BROKEN) ? GOLD_BORDER_GLOW_COLOR : BLUE_BORDER_GLOW_COLOR;
     }
 }

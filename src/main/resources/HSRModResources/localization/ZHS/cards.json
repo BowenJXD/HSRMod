@@ -2,7 +2,8 @@
   "HSRMod:Trailblazer1": {
     "EXTENDED_DESCRIPTION": [
       "群体：造成 !D! 点伤害（物理 !TR! ）。"
-    ]
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "打出此牌给予 #y心脏 最后一击。"
   },
   "HSRMod:March7th0": {
     "EXTENDED_DESCRIPTION": [
@@ -65,6 +66,9 @@
       "该说再见了……"
     ]
   },
+  "HSRMod:Robin1": {
+    "SIGNATURE_UNLOCK_CONDITION": "一次性通过此牌追击 #b10 张牌。"
+  },
   "HSRMod:Robin2": {
     "EXTENDED_DESCRIPTION": [
       "今夜，群星因我回响!"
@@ -73,19 +77,22 @@
   "HSRMod:Sparkle1": {
     "EXTENDED_DESCRIPTION": [
       "假货的命~"
-    ]
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "杀死花火。"
   },
   "HSRMod:Sparkle2": {
     "EXTENDED_DESCRIPTION": [
       "假货的命~",
       "愚者千面，游戏人间。"
-    ]
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "打出此牌让能量变少，或杀死花火。"
   },
   "HSRMod:Sparkle3": {
     "EXTENDED_DESCRIPTION": [
       "假货的命~",
       "从弃牌堆加入手牌"
-    ]
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "杀死花火。"
   },
   "HSRMod:DestinysThreadsForewoven": {
     "EXTENDED_DESCRIPTION": [
@@ -121,7 +128,8 @@
   "HSRMod:Feixiao2": {
     "EXTENDED_DESCRIPTION": [
       "大捷，已定！"
-    ]
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "打出此牌给予 #b飞霄之影 最后一击。"
   },
   "HSRMod:Gepard1": {
     "EXTENDED_DESCRIPTION": [
@@ -157,7 +165,8 @@
     "EXTENDED_DESCRIPTION": [
       "哼，就这速度？ @太慢了！@ ",
       "二倍速就这？！"
-    ]
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "尖塔游戏时长达到 #b76 h。"
   },
   "HSRMod:ImbibitorLunae1": {
     "EXTENDED_DESCRIPTION": [
@@ -174,7 +183,8 @@
   "HSRMod:Rappa1": {
     "EXTENDED_DESCRIPTION": [
       "斩！断！破！"
-    ]
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "一次性触发 #b4 次效果。"
   },
   "HSRMod:Trailblazer8": {
     "EXTENDED_DESCRIPTION": [
@@ -190,11 +200,27 @@
     "EXTENDED_DESCRIPTION": [
       "#r我为逝者哀哭……",
       "#r暮雨，终将落下。"
-    ]
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "获得时解锁，因 #p虚无 而 #r消耗 牌后锁定。"
   },
   "HSRMod:Entangle": {
     "EXTENDED_DESCRIPTION": [
       "这张牌被 #b纠缠 了。"
+    ]
+  },
+  "HSRMod:Trailblazer5": {
+    "SIGNATURE_UNLOCK_CONDITION": "通过此牌造成 #b70+ 的 #y超击破 伤害。"
+  },
+  "HSRMod:BlackSwan1": {
+    "SIGNATURE_UNLOCK_CONDITION": "单次揭露状态下触发 #b9 次 #y持续伤害 。"
+  },
+  "HSRMod:RuanMei2": {
+    "SIGNATURE_UNLOCK_CONDITION": "遇到 #b阮·梅 事件。"
+  },
+  "HSRMod:TheArchitects": {
+    "EXTENDED_DESCRIPTION": [
+      "我没有 #r反震 。",
+      "没有目标有 #r格挡 。"
     ]
   }
 }

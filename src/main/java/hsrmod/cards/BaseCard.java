@@ -15,9 +15,11 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.MiracleEffect;
+import hsrmod.cards.uncommon.Acheron1;
 import hsrmod.effects.PortraitDisplayEffect;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementType;
+import hsrmod.modcore.HSRMod;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.relics.starter.*;
 import hsrmod.subscribers.SubscriptionManager;
@@ -25,13 +27,15 @@ import hsrmod.utils.CardDataCol;
 import hsrmod.utils.DataManager;
 import hsrmod.utils.ModHelper;
 import hsrmod.utils.RewardEditor;
+import me.antileaf.signature.card.AbstractSignatureCard;
+import me.antileaf.signature.utils.SignatureHelper;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
 import static hsrmod.characters.StellaCharacter.PlayerColorEnum.HSR_PINK;
 
-public abstract class BaseCard extends CustomCard implements SpawnModificationCard {
+public abstract class BaseCard extends AbstractSignatureCard implements SpawnModificationCard {
     protected int upCost;
     protected String upDescription;
     protected int upDamage;
@@ -50,7 +54,6 @@ public abstract class BaseCard extends CustomCard implements SpawnModificationCa
     public ElementType elementType = ElementType.None;
     public float versatility = 0;
     public boolean followedUp = false;
-    public boolean inBattle = false;
     public boolean inHand = false;
     public CardTags pathTag = null;
     
@@ -157,26 +160,6 @@ public abstract class BaseCard extends CustomCard implements SpawnModificationCa
         tr = SubscriptionManager.getInstance().triggerSetToughnessReduction(null, baseTr);
         if (tr != baseTr) isTrModified = true;
     }
-
-    @Override
-    public void update() {
-        super.update();
-        if (!AbstractDungeon.isPlayerInDungeon()
-                || AbstractDungeon.player == null 
-                || AbstractDungeon.player.hand == null){
-            inHand = false;
-            inBattle = false;
-            return;
-        }
-        if (!inHand && AbstractDungeon.player.hand.contains(this)) {
-            inHand = true;
-            onEnterHand();
-        }
-        else if (inHand && !AbstractDungeon.player.hand.contains(this)) {
-            inHand = false;
-            onLeaveHand();
-        }
-    }
     
     public void onEnterHand() { }
     public void onLeaveHand() { }
@@ -273,6 +256,14 @@ public abstract class BaseCard extends CustomCard implements SpawnModificationCa
 
     public int getEnergyCost() {
         return energyCost;
+    }
+
+    @Override
+    public void triggerOnEndOfPlayerTurn() {
+        super.triggerOnEndOfPlayerTurn();
+        if (isEthereal) {
+            SignatureHelper.unlock(HSRMod.makePath(Acheron1.ID), false);
+        }
     }
 
     public void setBaseEnergyCost(int energyCost) {

@@ -1,5 +1,6 @@
 package hsrmod.cards.uncommon;
 
+import com.codedisaster.steamworks.*;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -15,10 +16,13 @@ import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.modcore.HSRMod;
+import me.antileaf.signature.utils.SignatureHelper;
 
 public class SilverWolf1 extends BaseCard {
     public static final String ID = SilverWolf1.class.getSimpleName();
-    
+    private static SteamUserStats steamUserStats;
+
     public SilverWolf1() {
         super(ID);
         setBaseEnergyCost(110);
@@ -52,5 +56,54 @@ public class SilverWolf1 extends BaseCard {
                     break;
             }
         }
+    }
+    
+    public static void checkUnlockSign(){
+        steamUserStats = new SteamUserStats(new SteamUserStatsCallback() {
+            @Override
+            public void onUserStatsReceived(long l, SteamID steamID, SteamResult steamResult) {
+                HSRMod.logger.info("onUserStatsReceived: {} {} {}", l, steamID, steamResult);
+
+                int result = steamUserStats.getStatI("total_time_played", -1);
+                if (result > 76) {
+                    SignatureHelper.unlock(HSRMod.makePath(SilverWolf1.ID), true);
+                }
+                int amt = steamUserStats.getNumAchievements();
+                HSRMod.logger.info("Achievements: {}", amt);
+            }
+
+            @Override
+            public void onUserStatsStored(long l, SteamResult steamResult) {}
+
+            @Override
+            public void onUserStatsUnloaded(SteamID steamID) {}
+
+            @Override
+            public void onUserAchievementStored(long l, boolean b, String s, int i, int i1) {}
+
+            @Override
+            public void onLeaderboardFindResult(SteamLeaderboardHandle steamLeaderboardHandle, boolean b) {}
+
+            @Override
+            public void onLeaderboardScoresDownloaded(SteamLeaderboardHandle steamLeaderboardHandle, SteamLeaderboardEntriesHandle steamLeaderboardEntriesHandle, int i) {}
+
+            @Override
+            public void onLeaderboardScoreUploaded(boolean b, SteamLeaderboardHandle steamLeaderboardHandle, int i, boolean b1, int i1, int i2) {}
+
+            @Override
+            public void onNumberOfCurrentPlayersReceived(boolean b, int i) {}
+
+            @Override
+            public void onGlobalStatsReceived(long l, SteamResult steamResult) {
+                HSRMod.logger.info("onGlobalStatsReceived: " + l + " " + steamResult);
+
+                int result = steamUserStats.getStatI("total_time_played", -1);
+                if (result > 76) {
+                    SignatureHelper.unlock(HSRMod.makePath(SilverWolf1.ID), true);
+                }
+            }
+        });
+        steamUserStats.requestCurrentStats();
+        steamUserStats.requestGlobalStats(3);
     }
 }

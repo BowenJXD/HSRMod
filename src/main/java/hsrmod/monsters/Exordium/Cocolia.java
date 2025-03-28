@@ -2,37 +2,27 @@ package hsrmod.monsters.Exordium;
 
 import basemod.helpers.VfxBuilder;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.ShoutAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
-import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
-import com.megacrit.cardcrawl.vfx.FireBurstParticleEffect;
-import com.megacrit.cardcrawl.vfx.GlowRelicParticle;
 import com.megacrit.cardcrawl.vfx.RarePotionParticleEffect;
-import com.megacrit.cardcrawl.vfx.ShineSparkleEffect;
 import com.megacrit.cardcrawl.vfx.combat.BlizzardEffect;
 import com.megacrit.cardcrawl.vfx.combat.ExplosionSmallEffect;
-import com.megacrit.cardcrawl.vfx.combat.LightFlareParticleEffect;
-import com.megacrit.cardcrawl.vfx.scene.LightFlareMEffect;
-import com.megacrit.cardcrawl.vfx.scene.LightFlareSEffect;
 import hsrmod.actions.ForceWaitAction;
 import hsrmod.cardsV2.Curse.Frozen;
 import hsrmod.misc.Encounter;
-import hsrmod.misc.PathDefine;
 import hsrmod.modcore.HSRMod;
 import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.enemyOnly.ChargingPower;
 import hsrmod.utils.ModHelper;
+import hsrmod.utils.PathDefine;
 
 public class Cocolia extends BaseMonster {
     public static final String ID = Cocolia.class.getSimpleName();

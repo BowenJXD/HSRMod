@@ -3,7 +3,6 @@ package hsrmod.powers.enemyOnly;
 import basemod.helpers.CardBorderGlowManager;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -12,9 +11,6 @@ import com.megacrit.cardcrawl.vfx.combat.VerticalAuraEffect;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.DebuffPower;
-import hsrmod.utils.ModHelper;
-
-import java.util.ArrayList;
 
 public class OutragePower extends DebuffPower {
     public static final String POWER_ID = HSRMod.makePath(OutragePower.class.getSimpleName());
@@ -46,6 +42,7 @@ public class OutragePower extends DebuffPower {
     @Override
     public void onInitialApplication() {
         super.onInitialApplication();
+        CardBorderGlowManager.removeGlowInfo(POWER_ID);
         CardBorderGlowManager.addGlowInfo(glowInfo);
     }
 

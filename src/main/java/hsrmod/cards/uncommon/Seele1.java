@@ -18,6 +18,7 @@ import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.enemyOnly.SummonedPower;
 import hsrmod.utils.CardDataCol;
 import hsrmod.utils.DataManager;
+import me.antileaf.signature.utils.SignatureHelper;
 
 import java.util.Iterator;
 
@@ -42,6 +43,10 @@ public class Seele1 extends BaseCard {
         this.name = DataManager.getInstance().getCardData(ID, CardDataCol.Name) + "+" + this.timesUpgraded;
         initializeTitle();
         this.initializeDescription();
+        
+        if (timesUpgraded == 22) {
+            SignatureHelper.unlock(cardID, true);
+        }
     }
 
     @Override

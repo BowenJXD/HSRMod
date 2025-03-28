@@ -8,7 +8,6 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DexterityPower;
-import com.megacrit.cardcrawl.powers.LoseDexterityPower;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.DebuffPower;
 
@@ -47,6 +46,7 @@ public class PranaSiphonedPower extends DebuffPower {
     @Override
     public void onInitialApplication() {
         super.onInitialApplication();
+        CardBorderGlowManager.removeGlowInfo(POWER_ID);
         CardBorderGlowManager.addGlowInfo(glowInfo);
     }
 

@@ -1,11 +1,9 @@
 package hsrmod.monsters.TheBeyond;
 
-import basemod.BaseMod;
 import basemod.helpers.CardBorderGlowManager;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.RollMoveAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.actions.ElementalDamageAction;
@@ -88,6 +86,7 @@ public class PastConfinedAndCaged extends BaseMonster implements PreElementalDam
     
     void startSkill() {
         SubscriptionManager.subscribe(this);
+        CardBorderGlowManager.removeGlowInfo(ID);
         CardBorderGlowManager.addGlowInfo(glowInfo);
         addToBot(new ApplyPowerAction(this, this, new ChargingPower(this, getLastMove()).setRemoveCallback(power ->{
             endSkill();
@@ -97,8 +96,14 @@ public class PastConfinedAndCaged extends BaseMonster implements PreElementalDam
     
     void endSkill() {
         SubscriptionManager.unsubscribe(this);
-        CardBorderGlowManager.removeGlowInfo(glowInfo);
+        CardBorderGlowManager.removeGlowInfo(ID);
         cardsCache.clear();
+    }
+
+    @Override
+    public void die(boolean triggerRelics) {
+        super.die(triggerRelics);
+        endSkill();
     }
 
     @Override

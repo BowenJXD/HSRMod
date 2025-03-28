@@ -5,6 +5,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import hsrmod.cards.BaseCard;
 
 import java.util.ArrayList;
@@ -23,19 +24,21 @@ public class HandPatch {
             for (AbstractCard card : hand) {
                 if (!handCache.contains(card) && card instanceof BaseCard) {
                     ((BaseCard) card).onEnterHand();
+                    ((BaseCard) card).inHand = true;
                 }
             }
 
             // Find cards removed from hand
             for (AbstractCard card : handCache) {
-                if (!hand.contains(card) && card instanceof BaseCard) {
+                if (!hand.contains(card) && card instanceof BaseCard 
+                        && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
                     ((BaseCard) card).onLeaveHand();
+                    ((BaseCard) card).inHand = false;
                 }
             }
 
             // Update handCache to the current hand
             handCache = hand;
-            
         }
     }
 }

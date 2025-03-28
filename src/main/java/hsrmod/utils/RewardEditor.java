@@ -1,11 +1,14 @@
 package hsrmod.utils;
 
 import basemod.BaseMod;
+import basemod.ReflectionHacks;
 import basemod.abstracts.CustomSavable;
+import basemod.helpers.CardBorderGlowManager;
 import basemod.interfaces.PostUpdateSubscriber;
 import basemod.interfaces.StartActSubscriber;
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.SpawnModificationCard;
-import com.evacipated.cardcrawl.modthespire.lib.*;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -27,7 +30,10 @@ import hsrmod.relics.starter.TrailblazeTimer;
 import hsrmod.relics.starter.WaxRelic;
 import hsrmod.subscribers.SubscriptionManager;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
@@ -377,8 +383,8 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
                     ((TrailblazeTimer) relic).updateDescription(relic.getUpdatedDescription());
                 }
             }
-            if (AbstractDungeon.ascensionLevel >= 20 && AbstractDungeon.player.gold < HSRModConfig.getActiveTPCount() * 200) {
-                AbstractDungeon.player.gainGold(HSRModConfig.getActiveTPCount() * 200);
+            if (AbstractDungeon.ascensionLevel >= 20 && AbstractDungeon.player.gold < HSRModConfig.getGoldInc()) {
+                AbstractDungeon.player.gainGold(HSRModConfig.getGoldInc());
             }
         }
     }
@@ -407,6 +413,7 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
                     // instance.savedCardRewards.clear();
                 }
             });
+            ReflectionHacks.setPrivateStatic(CardBorderGlowManager.class, "glowInfo", new ArrayList<>());
         }
     }
 }

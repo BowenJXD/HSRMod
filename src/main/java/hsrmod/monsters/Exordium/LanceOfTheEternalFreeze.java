@@ -5,21 +5,12 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.localization.MonsterStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cardsV2.Curse.Frozen;
-import hsrmod.misc.PathDefine;
-import hsrmod.modcore.HSRMod;
 import hsrmod.monsters.BaseMonster;
-import hsrmod.powers.enemyOnly.ChargingPower;
 import hsrmod.powers.enemyOnly.DeathExplosionPower;
 import hsrmod.powers.enemyOnly.SummonedPower;
 import hsrmod.utils.ModHelper;
+import hsrmod.utils.PathDefine;
 
 public class LanceOfTheEternalFreeze extends BaseMonster {
     public static final String ID = LanceOfTheEternalFreeze.class.getSimpleName();

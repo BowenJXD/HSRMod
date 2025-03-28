@@ -39,6 +39,6 @@ public class Gallagher1 extends BaseCard {
     @Override
     public void triggerOnGlowCheck() {
         super.triggerOnGlowCheck();
-        glowColor = upgraded && CachedCondition.check(CachedCondition.Key.ANY_BROKEN) ? GOLD_BORDER_GLOW_COLOR : BLUE_BORDER_GLOW_COLOR;
+        glowColor = upgraded && CachedCondition.check(CachedCondition.Key.ANY_BROKEN) ? GREEN_BORDER_GLOW_COLOR : BLUE_BORDER_GLOW_COLOR;
     }
 }

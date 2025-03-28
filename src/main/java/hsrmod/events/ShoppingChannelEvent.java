@@ -12,12 +12,13 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
-import hsrmod.misc.PathDefine;
 import hsrmod.modcore.HSRMod;
 import hsrmod.relics.starter.WaxOfDestruction;
-import hsrmod.utils.*;
+import hsrmod.utils.GeneralUtil;
+import hsrmod.utils.ModHelper;
+import hsrmod.utils.PathDefine;
+import hsrmod.utils.RelicEventHelper;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;

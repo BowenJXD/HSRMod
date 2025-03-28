@@ -50,6 +50,7 @@ public class GustoPower extends StatePower implements PreBreakSubscriber {
     public void onInitialApplication() {
         super.onInitialApplication();
         SubscriptionManager.subscribe(this);
+        CardBorderGlowManager.removeGlowInfo(POWER_ID);
         CardBorderGlowManager.addGlowInfo(glowInfo);
     }
 

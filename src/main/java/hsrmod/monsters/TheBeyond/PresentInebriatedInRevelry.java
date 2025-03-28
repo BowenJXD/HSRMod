@@ -8,7 +8,6 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.StrengthPower;
-import hsrmod.actions.CleanAction;
 import hsrmod.actions.TriggerDoTAction;
 import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.breaks.ShockPower;
@@ -99,6 +98,7 @@ public class PresentInebriatedInRevelry extends BaseMonster implements OnCardUse
     
     void startSkill() {
         BaseMod.subscribe(this);
+        CardBorderGlowManager.removeGlowInfo(ID);
         CardBorderGlowManager.addGlowInfo(glowInfo);
         addToBot(new ApplyPowerAction(this, this, new ChargingPower(this, getLastMove()).setRemoveCallback(power -> {
             endSkill();
@@ -108,7 +108,13 @@ public class PresentInebriatedInRevelry extends BaseMonster implements OnCardUse
     
     void endSkill() {
         BaseMod.unsubscribe(this);
-        CardBorderGlowManager.removeGlowInfo(glowInfo);
+        CardBorderGlowManager.removeGlowInfo(ID);
+    }
+
+    @Override
+    public void die(boolean triggerRelics) {
+        super.die(triggerRelics);
+        endSkill();
     }
 
     @Override

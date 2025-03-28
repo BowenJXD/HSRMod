@@ -2,8 +2,11 @@ package hsrmod.patches;
 
 import basemod.ReflectionHacks;
 import com.badlogic.gdx.graphics.Texture;
-import com.esotericsoftware.spine.*;
-import com.evacipated.cardcrawl.modthespire.lib.*;
+import com.esotericsoftware.spine.SkeletonJson;
+import com.evacipated.cardcrawl.modthespire.lib.ByRef;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AnimatedNpc;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -27,7 +30,7 @@ public class MerchantPatch {
     public static Texture sparkleHand;
     public static Float scaleOverride = null;
     static MerchantChar merchantChar;
-    public static final int SPARKLE_CHANCE = 100;
+    public static final int SPARKLE_CHANCE = 1;
     
     @SpirePatch(
             clz = Merchant.class,

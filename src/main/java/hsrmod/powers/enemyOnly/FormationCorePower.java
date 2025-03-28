@@ -11,7 +11,6 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import hsrmod.actions.ElementalDamageAction;
-import hsrmod.misc.PathDefine;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.StatePower;
@@ -20,12 +19,11 @@ import hsrmod.subscribers.PreElementalDamageSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.GeneralUtil;
 import hsrmod.utils.ModHelper;
+import hsrmod.utils.PathDefine;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.StringJoiner;
-import java.util.stream.Collectors;
 
 public class FormationCorePower extends StatePower implements PreElementalDamageSubscriber, PreBreakSubscriber {
     public static final String POWER_ID = HSRMod.makePath(FormationCorePower.class.getSimpleName());

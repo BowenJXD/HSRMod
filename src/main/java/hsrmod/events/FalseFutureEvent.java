@@ -2,7 +2,6 @@ package hsrmod.events;
 
 import basemod.abstracts.events.PhasedEvent;
 import basemod.abstracts.events.phases.TextPhase;
-import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
@@ -11,11 +10,11 @@ import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.map.DungeonMap;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import hsrmod.misc.Encounter;
-import hsrmod.misc.PathDefine;
 import hsrmod.modcore.HSRMod;
 import hsrmod.relics.special.TowatCards;
 import hsrmod.utils.GeneralUtil;
 import hsrmod.utils.ModHelper;
+import hsrmod.utils.PathDefine;
 import hsrmod.utils.RelicEventHelper;
 
 public class FalseFutureEvent extends PhasedEvent {

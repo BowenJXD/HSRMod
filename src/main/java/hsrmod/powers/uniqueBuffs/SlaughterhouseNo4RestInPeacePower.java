@@ -1,22 +1,13 @@
 package hsrmod.powers.uniqueBuffs;
 
-import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
-import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.DamageModApplyingPower;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.actions.ElementalDamageAction;
-import hsrmod.cards.BaseCard;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
 import hsrmod.powers.misc.BrokenPower;
 import hsrmod.subscribers.PreElementalDamageSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
-
-import java.util.Collections;
-import java.util.List;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
@@ -54,8 +45,7 @@ public class SlaughterhouseNo4RestInPeacePower extends PowerPower implements Pre
         if (SubscriptionManager.checkSubscriber(this) 
                 && action.info.card != null
                 && action.info.owner != null) {
-            if ((action.info.card.hasTag(FOLLOW_UP) && upgraded) 
-                    || (action.info.card instanceof BaseCard && ((BaseCard) action.info.card).followedUp)) {
+            if ((action.info.card.hasTag(FOLLOW_UP) && upgraded) || action.info.card.followedUp) {
                 action.info.tr++;
                 if (action.info.owner.hasPower(BrokenPower.POWER_ID)) {
                     if (AbstractDungeon.cardRandomRng.random(100) < percentage) {

@@ -1,4 +1,4 @@
-package hsrmod.misc;
+package hsrmod.utils;
 
 public class PathDefine {
     public static final String MOD_ID = "HSRMod";

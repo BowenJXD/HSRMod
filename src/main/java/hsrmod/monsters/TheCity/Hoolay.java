@@ -2,25 +2,22 @@ package hsrmod.monsters.TheCity;
 
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.*;
+import com.megacrit.cardcrawl.actions.animations.AnimateHopAction;
+import com.megacrit.cardcrawl.actions.animations.ShoutAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
-import com.megacrit.cardcrawl.actions.utility.HideHealthBarAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.combat.*;
-import hsrmod.misc.PathDefine;
-import hsrmod.modcore.HSRMod;
+import com.megacrit.cardcrawl.vfx.combat.ClawEffect;
+import com.megacrit.cardcrawl.vfx.combat.RipAndTearEffect;
+import com.megacrit.cardcrawl.vfx.combat.ScrapeEffect;
+import com.megacrit.cardcrawl.vfx.combat.ShockWaveEffect;
 import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.enemyOnly.*;
 import hsrmod.powers.misc.BrokenPower;
 import hsrmod.utils.ModHelper;
-
-import java.util.Iterator;
 
 public class Hoolay extends BaseMonster {
     public static final String ID = Hoolay.class.getSimpleName();

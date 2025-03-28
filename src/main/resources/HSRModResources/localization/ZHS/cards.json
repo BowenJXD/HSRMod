@@ -49,7 +49,8 @@
     "EXTENDED_DESCRIPTION": [
       "点燃星海！",
       "为生而战！"
-    ]
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "生命值为1时，连续打出此牌3次，并完成击杀。"
   },
   "HSRMod:Firefly2": {
     "EXTENDED_DESCRIPTION": [
@@ -77,8 +78,7 @@
   "HSRMod:Sparkle1": {
     "EXTENDED_DESCRIPTION": [
       "假货的命~"
-    ],
-    "SIGNATURE_UNLOCK_CONDITION": "杀死花火。"
+    ]
   },
   "HSRMod:Sparkle2": {
     "EXTENDED_DESCRIPTION": [
@@ -91,8 +91,7 @@
     "EXTENDED_DESCRIPTION": [
       "假货的命~",
       "从弃牌堆加入手牌"
-    ],
-    "SIGNATURE_UNLOCK_CONDITION": "杀死花火。"
+    ]
   },
   "HSRMod:DestinysThreadsForewoven": {
     "EXTENDED_DESCRIPTION": [
@@ -159,20 +158,21 @@
   "HSRMod:Seele1": {
     "EXTENDED_DESCRIPTION": [
       "随蝴蝶一起消散吧，旧日的幻影。"
-    ]
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "此牌达到 #b+22 。"
   },
   "HSRMod:SilverWolf1": {
     "EXTENDED_DESCRIPTION": [
       "哼，就这速度？ @太慢了！@ ",
       "二倍速就这？！"
-    ],
-    "SIGNATURE_UNLOCK_CONDITION": "尖塔游戏时长达到 #b76 h。"
+    ]
   },
   "HSRMod:ImbibitorLunae1": {
     "EXTENDED_DESCRIPTION": [
       "霄龙现影，破！",
       "神蛟腾云，起！"
-    ]
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "一次性通过此牌造成 #b55+ 点伤害。"
   },
   "HSRMod:Yunli1": {
     "EXTENDED_DESCRIPTION": [

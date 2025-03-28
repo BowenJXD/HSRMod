@@ -15,7 +15,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.vfx.combat.BossCrystalImpactEffect;
 import com.megacrit.cardcrawl.vfx.combat.FastingEffect;
-import com.megacrit.cardcrawl.vfx.combat.MiracleEffect;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
@@ -117,6 +116,7 @@ public class TomorrowInHarmoniousChords extends BaseMonster implements OnCardUse
     
     void startSkill() {
         BaseMod.subscribe(this);
+        CardBorderGlowManager.removeGlowInfo(ID);
         CardBorderGlowManager.addGlowInfo(glowInfo);
         addToBot(new ApplyPowerAction(this, this, new ChargingPower(this, getLastMove()).setRemoveCallback(power -> {
             endSkill();
@@ -125,7 +125,13 @@ public class TomorrowInHarmoniousChords extends BaseMonster implements OnCardUse
     
     void endSkill() {
         BaseMod.unsubscribe(this);
-        CardBorderGlowManager.removeGlowInfo(glowInfo);
+        CardBorderGlowManager.removeGlowInfo(ID);
+    }
+
+    @Override
+    public void die(boolean triggerRelics) {
+        super.die(triggerRelics);
+        endSkill();
     }
 
     @Override

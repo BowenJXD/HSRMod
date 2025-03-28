@@ -5,13 +5,9 @@ import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.StrengthPower;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.HSRMod;
-import hsrmod.monsters.BaseMonster;
-import hsrmod.powers.BasePower;
 import hsrmod.powers.DebuffPower;
 import hsrmod.powers.breaks.EntanglePower;
 import hsrmod.powers.breaks.ImprisonPower;
@@ -32,7 +28,8 @@ public class SnarelockPower extends DebuffPower {
         glowInfo = new CardBorderGlowManager.GlowInfo() {
             @Override
             public boolean test(AbstractCard abstractCard) {
-                return (abstractCard.type == AbstractCard.CardType.ATTACK) != (SnarelockPower.this.amount == 1);
+                return SnarelockPower.this.amount != 0 
+                        && (abstractCard.type == AbstractCard.CardType.ATTACK) == (SnarelockPower.this.amount == 1);
             }
 
             @Override
@@ -65,6 +62,7 @@ public class SnarelockPower extends DebuffPower {
     @Override
     public void onInitialApplication() {
         super.onInitialApplication();
+        CardBorderGlowManager.removeGlowInfo(POWER_ID);
         CardBorderGlowManager.addGlowInfo(glowInfo);
     }
 

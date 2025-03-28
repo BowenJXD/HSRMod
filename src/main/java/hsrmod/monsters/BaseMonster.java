@@ -21,16 +21,16 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.EnemyMoveInfo;
 import com.megacrit.cardcrawl.powers.MinionPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.vfx.combat.*;
+import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
 import hsrmod.effects.MoveToEffect;
-import hsrmod.modcore.HSRModConfig;
-import hsrmod.misc.PathDefine;
 import hsrmod.modcore.HSRMod;
+import hsrmod.modcore.HSRModConfig;
 import hsrmod.powers.enemyOnly.SummonedPower;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.utils.DataManager;
 import hsrmod.utils.ModHelper;
 import hsrmod.utils.MonsterDataCol;
+import hsrmod.utils.PathDefine;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -95,7 +95,7 @@ public abstract class BaseMonster extends CustomMonster {
             tv += (int) (tv * 0.5);
         }
         if (HSRModConfig.getActiveTPCount() > 0) {
-            tv += tv * HSRModConfig.getActiveTPCount() / 10;
+            tv += (int) (tv * HSRModConfig.getTVInc());
         }
         
         p = AbstractDungeon.player;

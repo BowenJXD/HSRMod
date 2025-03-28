@@ -2,7 +2,8 @@
   "HSRMod:Trailblazer1": {
     "EXTENDED_DESCRIPTION": [
       "Deal !D! physical damage to all enemies (!TR!)."
-    ]
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "Deal the final blow to #yCorrupt #yHeart with this card."
   },
   "HSRMod:March7th0": {
     "EXTENDED_DESCRIPTION": [
@@ -48,7 +49,8 @@
     "EXTENDED_DESCRIPTION": [
       "Set the seas ablaze!",
       "Life begets death!"
-    ]
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "When HP is 1, use this card 3 times consecutively to eliminate."
   },
   "HSRMod:Firefly2": {
     "EXTENDED_DESCRIPTION": [
@@ -65,6 +67,9 @@
       "Time to say bye. BOOM~"
     ]
   },
+  "HSRMod:Robin1": {
+    "SIGNATURE_UNLOCK_CONDITION": "Follow up 10 cards in once."
+  },
   "HSRMod:Robin2": {
     "EXTENDED_DESCRIPTION": [
       "Tonight, the stars echo because of me."
@@ -79,7 +84,8 @@
     "EXTENDED_DESCRIPTION": [
       "The life of a faker~",
       "A thousand faces in a thousand places..."
-    ]
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "Make [E] lesser using this card, or kill another #pSparkle."
   },
   "HSRMod:Sparkle3": {
     "EXTENDED_DESCRIPTION": [
@@ -121,7 +127,8 @@
   "HSRMod:Feixiao2": {
     "EXTENDED_DESCRIPTION": [
       "Victory is inevitable!"
-    ]
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "Deal the final blow to #yShadow #yof #yFeixiao with this card."
   },
   "HSRMod:Gepard1": {
     "EXTENDED_DESCRIPTION": [
@@ -151,7 +158,8 @@
   "HSRMod:Seele1": {
     "EXTENDED_DESCRIPTION": [
       "Disappear among the sea of butterflies, illusions of the past!"
-    ]
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "This card reaches #b+22 ."
   },
   "HSRMod:SilverWolf1": {
     "EXTENDED_DESCRIPTION": [
@@ -163,7 +171,8 @@
     "EXTENDED_DESCRIPTION": [
       "Celestial dragon... Break!",
       "Cloud-faring dragon... rise!"
-    ]
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "Use this card to deal #b55 damage in once."
   },
   "HSRMod:Yunli1": {
     "EXTENDED_DESCRIPTION": [
@@ -174,7 +183,8 @@
   "HSRMod:Rappa1": {
     "EXTENDED_DESCRIPTION": [
       "Slash! Cut! Cleave!"
-    ]
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "Trigger 4 times in once."
   },
   "HSRMod:Trailblazer8": {
     "EXTENDED_DESCRIPTION": [
@@ -190,11 +200,27 @@
     "EXTENDED_DESCRIPTION": [
       "#rI  #rweep  #rfor  #rthe  #rdeparted. ",
       "#rDusks  #rrain,  #rit  #rtoo  #rshall  #rfall. "
-    ]
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "Unlock upon gain, but lock upon exhaust via ethereal."
   },
   "HSRMod:Entangle": {
     "EXTENDED_DESCRIPTION": [
       "This card is #bentangled."
+    ]
+  },
+  "HSRMod:Trailblazer5": {
+    "SIGNATURE_UNLOCK_CONDITION": "Deal #b70+ Super Break damage via this card."
+  },
+  "HSRMod:BlackSwan1": {
+    "SIGNATURE_UNLOCK_CONDITION": "Trigger #b9 DoT during an Epiphany."
+  },
+  "HSRMod:RuanMei2": {
+    "SIGNATURE_UNLOCK_CONDITION": "Met #pRuan #pMei event."
+  },
+  "HSRMod:TheArchitects": {
+    "EXTENDED_DESCRIPTION": [
+      "I don't have Quake",
+      "No target has any block."
     ]
   }
 }

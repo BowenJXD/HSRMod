@@ -9,8 +9,6 @@ import hsrmod.cards.BaseCard;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.utils.ModHelper;
 
-import java.util.List;
-
 public class Imprison extends BaseCard {
     public static final String ID = Imprison.class.getSimpleName();
     
@@ -51,6 +49,10 @@ public class Imprison extends BaseCard {
     @Override
     public void onLeaveHand() {
         super.onLeaveHand();
+        if (AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
+            actionCache = null;
+            return;
+        }
         EnergyPower power = (EnergyPower) AbstractDungeon.player.getPower(EnergyPower.POWER_ID);
         if (actionCache != null && AbstractDungeon.actionManager.actions.contains(actionCache)) {
             AbstractDungeon.actionManager.actions.remove(actionCache);

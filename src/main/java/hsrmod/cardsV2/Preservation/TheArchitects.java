@@ -41,7 +41,17 @@ public class TheArchitects extends BaseCard {
 
     @Override
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        return super.canUse(p, m) && p.hasPower(QuakePower.POWER_ID);
+        if (!super.canUse(p, m)) {
+            return false;
+        }
+        if (!p.hasPower(QuakePower.POWER_ID)) {
+            cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
+            return false;
+        }
+        if (!upgraded && AbstractDungeon.getMonsters().monsters.stream().noneMatch(mo -> mo.currentBlock > 0)) {
+            cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[1];
+        }
+        return true;
     }
 
     @Override

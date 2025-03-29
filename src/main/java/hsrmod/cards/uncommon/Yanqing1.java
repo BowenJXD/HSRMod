@@ -44,4 +44,14 @@ public class Yanqing1 extends BaseCard {
             addToBot(action.makeCopy());
         }
     }
+
+    @Override
+    public void triggerOnGlowCheck() {
+        super.triggerOnGlowCheck();
+        if (AbstractDungeon.player.currentBlock > 0) {
+            glowColor = GOLD_BORDER_GLOW_COLOR;
+        } else {
+            glowColor = BLUE_BORDER_GLOW_COLOR;
+        }
+    }
 }

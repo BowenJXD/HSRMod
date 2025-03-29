@@ -1,20 +1,17 @@
 package hsrmod.powers.enemyOnly;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import basemod.helpers.CardBorderGlowManager;
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.RollMoveAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.actions.watcher.PressEndTurnButtonAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterQueueItem;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.TimeWarpTurnEndEffect;
-import hsrmod.actions.ElementalDamageAction;
-import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.StatePower;
 import hsrmod.powers.misc.ToughnessPower;
@@ -26,9 +23,28 @@ public class SanctionRatePower extends StatePower {
     public static int stackLimit = 100;
     public static int stackCount = 33;
     
+    CardBorderGlowManager.GlowInfo glowInfo;
+    
     public SanctionRatePower(AbstractCreature owner, int amount) {
         super(POWER_ID, owner, amount);
         this.updateDescription();
+        
+        glowInfo = new CardBorderGlowManager.GlowInfo() {
+            @Override
+            public boolean test(AbstractCard abstractCard) {
+                return abstractCard.type == AbstractCard.CardType.SKILL || abstractCard.type == AbstractCard.CardType.POWER;
+            }
+
+            @Override
+            public Color getColor(AbstractCard abstractCard) {
+                return Color.RED;
+            }
+
+            @Override
+            public String glowID() {
+                return POWER_ID;
+            }
+        };
     }
 
     @Override
@@ -37,6 +53,19 @@ public class SanctionRatePower extends StatePower {
             this.description = String.format(DESCRIPTIONS[0], stackCount);
         else
             this.description = String.format(DESCRIPTIONS[1]);
+    }
+
+    @Override
+    public void onInitialApplication() {
+        super.onInitialApplication();
+        CardBorderGlowManager.removeGlowInfo(POWER_ID);
+        CardBorderGlowManager.addGlowInfo(glowInfo);
+    }
+
+    @Override
+    public void onRemove() {
+        super.onRemove();
+        CardBorderGlowManager.removeGlowInfo(glowInfo);
     }
 
     @Override

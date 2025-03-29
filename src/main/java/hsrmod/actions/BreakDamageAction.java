@@ -12,12 +12,14 @@ import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
 import java.util.Iterator;
+import java.util.function.Consumer;
 
 public class BreakDamageAction extends AbstractGameAction {
     private DamageInfo info;
     private static final float DURATION = 0.1F;
     private static final float POST_ATTACK_WAIT_DUR = 0.1F;
     public float multiplier = 1.0F;
+    private Consumer<AbstractCreature> callback;
     
     public BreakDamageAction(AbstractCreature target, DamageInfo info, AbstractGameAction.AttackEffect effect) {
         this.info = info;
@@ -34,6 +36,11 @@ public class BreakDamageAction extends AbstractGameAction {
     public BreakDamageAction(AbstractCreature target, DamageInfo info, float multiplier) {
         this(target, info, AttackEffect.BLUNT_HEAVY);
         this.multiplier = multiplier;
+    }
+    
+    public BreakDamageAction setCallback(Consumer<AbstractCreature> callback) {
+        this.callback = callback;
+        return this;
     }
 
     @Override
@@ -54,6 +61,10 @@ public class BreakDamageAction extends AbstractGameAction {
             //
             
             addToTop(new DamageAction(this.target, this.info));
+            
+            if (this.callback != null) {
+                this.callback.accept(this.target);
+            }
 
             if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
                 AbstractDungeon.actionManager.clearPostCombatActions();

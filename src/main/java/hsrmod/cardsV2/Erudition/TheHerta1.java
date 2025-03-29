@@ -47,4 +47,23 @@ public class TheHerta1 extends BaseCard {
             }
         }
     }
+
+    @Override
+    public void triggerOnGlowCheck() {
+        super.triggerOnGlowCheck();
+        int val = 0;
+        if (AbstractDungeon.player.hand.group.stream().anyMatch(c -> c.hasTag(CustomEnums.ENERGY_COSTING) && c != this)) {
+            val++;
+        }
+        if (upgraded && AbstractDungeon.player.hand.group.stream().anyMatch(c -> (c.target == CardTarget.ALL_ENEMY || c.target == CardTarget.ALL) && c != this)) {
+            val++;
+        }
+        if (val == 0) {
+            glowColor = BLUE_BORDER_GLOW_COLOR;
+        } else if (val == 1) {
+            glowColor = GREEN_BORDER_GLOW_COLOR;
+        } else {
+            glowColor = GOLD_BORDER_GLOW_COLOR;
+        }
+    }
 }

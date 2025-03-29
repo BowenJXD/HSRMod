@@ -5,15 +5,10 @@ import basemod.abstracts.events.phases.CombatPhase;
 import basemod.abstracts.events.phases.TextPhase;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.EventStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import hsrmod.misc.Encounter;
-import hsrmod.misc.PathDefine;
 import hsrmod.modcore.HSRMod;
-import hsrmod.monsters.TheCity.Cirrus;
-import hsrmod.relics.starter.WaxOfPreservation;
-import hsrmod.relics.starter.WaxOfTheHunt;
-import hsrmod.utils.ModHelper;
+import hsrmod.utils.PathDefine;
 import hsrmod.utils.RewardEditor;
 
 public class TheReturningHeliobusEvent extends PhasedEvent {

@@ -21,20 +21,20 @@ import java.util.List;
 /**
  * Singleton class for managing all the subscribers.
  */
-public class SubscriptionManager {
+public final class SubscriptionManager {
     private static SubscriptionManager instance = null;
 
     List<IHSRSubscriber> toRemove = new ArrayList<>();
     List<PreElementalDamageSubscriber> preElementalDamageSubscribers = new ArrayList<>();
     List<PreBreakDamageSubscriber> preBreakDamageSubscribers = new ArrayList<>();
     List<PreToughnessReduceSubscriber> preToughnessReduceSubscribers = new ArrayList<>();
+    List<ISetToughnessReductionSubscriber> setToughnessReductionSubscribers = new ArrayList<>();
     List<PreBreakSubscriber> preBreakSubscribers = new ArrayList<>();
     List<PreDoTDamageSubscriber> preDoTDamageSubscribers = new ArrayList<>();
     List<PreEnergyChangeSubscriber> preEnergyChangeSubscribers = new ArrayList<>();
     List<PostBreakBlockSubscriber> postBreakBlockSubscribers = new ArrayList<>();
     List<PreBlockChangeSubscriber> preBlockGainSubscribers = new ArrayList<>();
     List<ICheckUsableSubscriber> checkUsableSubscribers = new ArrayList<>();
-    List<ISetToughnessReductionSubscriber> setToughnessReductionSubscribers = new ArrayList<>();
     List<PostUpgradeSubscriber> postUpgradeSubscribers = new ArrayList<>();
     List<PreFollowUpSubscriber> preFollowUpSubscribers = new ArrayList<>();
     List<PostRelicDestroySubscriber> postRelicDestroySubscribers = new ArrayList<>();

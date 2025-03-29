@@ -26,8 +26,8 @@ import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.RestartForChangesEffect;
 import hsrmod.characters.StellaCharacter;
 import hsrmod.effects.TopWarningEffect;
-import hsrmod.misc.PathDefine;
 import hsrmod.powers.misc.ShuffleStatePower;
+import hsrmod.utils.PathDefine;
 import org.scannotation.AnnotationDB;
 
 import java.io.IOException;
@@ -35,7 +35,12 @@ import java.util.*;
 import java.util.function.Consumer;
 
 public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscriber, RenderSubscriber, PreUpdateSubscriber {
+    
     private static HSRModConfig instance;
+    
+    static int[] HP_INCS = {5, 10, 20, 40};
+    static int[] TV_INCS = {5, 10, 15, 20};
+    static int GOLD_INC = 400;
     
     public static UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(HSRModConfig.class.getSimpleName());
     public static String[] TEXT = uiStrings.TEXT;
@@ -325,6 +330,27 @@ public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscrib
         if (tpSafeguard) result++;
         if (tpCurse) result++;
         return result;
+    }
+
+    public static float getHPInc() {
+        int count = getActiveTPCount();
+        int actIndex = AbstractDungeon.actNum - 1;
+        actIndex = Math.min(actIndex, HP_INCS.length - 1);
+        actIndex = Math.max(actIndex, 0);
+        return HP_INCS[actIndex] * count / 100f;
+    }
+
+    public static float getTVInc() {
+        int count = getActiveTPCount();
+        int actIndex = AbstractDungeon.actNum - 1;
+        actIndex = Math.min(actIndex, TV_INCS.length - 1);
+        actIndex = Math.max(actIndex, 0);
+        return TV_INCS[actIndex] * count / 100f;
+    }
+    
+    public static int getGoldInc() {
+        int count = getActiveTPCount();
+        return GOLD_INC * count;
     }
     
     public void addTPLimit() {

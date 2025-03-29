@@ -7,21 +7,15 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.HealAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
-import hsrmod.modcore.HSRMod;
-import hsrmod.powers.breaks.*;
 import hsrmod.powers.misc.BrokenPower;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.subscribers.SubscriptionManager;
-import org.apache.logging.log4j.Level;
 
 import java.util.Iterator;
 
@@ -74,7 +68,7 @@ public class ReduceToughnessAction extends AbstractGameAction {
                 && toughnessPower != null
                 && toughnessPower.amount > 0
                 && toughnessPower.amount <= tr
-                && !toughnessPower.getLocked()) {
+                && !toughnessPower.isLocked()) {
             didBreak = true;
         }
 

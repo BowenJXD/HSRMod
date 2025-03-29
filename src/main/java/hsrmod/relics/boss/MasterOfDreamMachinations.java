@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import hsrmod.cardsV2.AstralExpress;
 import hsrmod.relics.BaseRelic;
 import hsrmod.utils.CardSelectManager;
+import hsrmod.utils.ModHelper;
 import hsrmod.utils.RewardEditor;
 
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ public class MasterOfDreamMachinations extends BaseRelic implements ClickableRel
     public int basePrice = 0;
     public int priceIncrement = 25;
     private boolean cardSelected = true;
-    
+
     public MasterOfDreamMachinations() {
         super(ID);
     }
@@ -31,11 +32,11 @@ public class MasterOfDreamMachinations extends BaseRelic implements ClickableRel
     @Override
     public void onEnterRoom(AbstractRoom room) {
         super.onEnterRoom(room);
-        updateCounter();
+        ModHelper.addEffectAbstract(this::updateCounter);
     }
 
     public void onEquip() {
-        AbstractDungeon.topLevelEffectsQueue.add(new ShowCardAndObtainEffect(new AstralExpress(), (float)Settings.WIDTH / 3.0F, (float)Settings.HEIGHT / 2.0F, false));
+        AbstractDungeon.topLevelEffectsQueue.add(new ShowCardAndObtainEffect(new AstralExpress(), (float) Settings.WIDTH / 3.0F, (float) Settings.HEIGHT / 2.0F, false));
         updateCounter();
     }
 
@@ -43,8 +44,7 @@ public class MasterOfDreamMachinations extends BaseRelic implements ClickableRel
         if (AbstractDungeon.currMapNode != null && AbstractDungeon.getCurrRoom() instanceof ShopRoom) {
             setCounter(basePrice);
             beginLongPulse();
-        }
-        else if (counter >= 0) {
+        } else if (counter >= 0) {
             setCounter(-1);
             stopPulse();
         }
@@ -76,7 +76,7 @@ public class MasterOfDreamMachinations extends BaseRelic implements ClickableRel
         AbstractDungeon.transformCard(card, true, AbstractDungeon.miscRng);
         if (AbstractDungeon.screen != AbstractDungeon.CurrentScreen.TRANSFORM && AbstractDungeon.transformedCard != null) {
             AbstractDungeon.transformedCard = RewardEditor.getInstance().getCardByPath(AbstractDungeon.transformedCard.rarity, new ArrayList<>());
-            AbstractDungeon.topLevelEffectsQueue.add(new ShowCardAndObtainEffect(AbstractDungeon.getTransformedCard(), (float)Settings.WIDTH / 3.0F + displayCount, (float)Settings.HEIGHT / 2.0F, false));
+            AbstractDungeon.topLevelEffectsQueue.add(new ShowCardAndObtainEffect(AbstractDungeon.getTransformedCard(), (float) Settings.WIDTH / 3.0F + displayCount, (float) Settings.HEIGHT / 2.0F, false));
         }
 
         AbstractDungeon.gridSelectScreen.selectedCards.clear();
@@ -88,13 +88,13 @@ public class MasterOfDreamMachinations extends BaseRelic implements ClickableRel
         if (counter < 0 || counter > AbstractDungeon.player.gold) {
             return;
         }
-        
+
         this.cardSelected = false;
         CardGroup tmp = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
         Iterator var2 = AbstractDungeon.player.masterDeck.getPurgeableCards().group.iterator();
 
-        while(var2.hasNext()) {
-            AbstractCard card = (AbstractCard)var2.next();
+        while (var2.hasNext()) {
+            AbstractCard card = (AbstractCard) var2.next();
             tmp.addToTop(card);
         }
 
@@ -102,7 +102,7 @@ public class MasterOfDreamMachinations extends BaseRelic implements ClickableRel
             this.cardSelected = true;
             return;
         }
-        
+
         flash();
         AbstractDungeon.player.loseGold(counter);
         if (tmp.group.size() <= 1) {

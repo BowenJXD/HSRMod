@@ -2,7 +2,6 @@ package hsrmod.cards.common;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -102,9 +101,12 @@ public class Xueyi1 extends BaseCard implements PreToughnessReduceSubscriber {
 
     @Override
     public float preToughnessReduce(float amount, AbstractCreature target, ElementType elementType) {
-        if (!SubscriptionManager.checkSubscriber(this)
-                || !AbstractDungeon.player.hand.contains(this)) return amount;
-        updateCost((int) -amount);
+        if (SubscriptionManager.checkSubscriber(this)
+                && AbstractDungeon.player.hand.contains(this)) {
+            ToughnessPower power = (ToughnessPower) target.getPower(ToughnessPower.POWER_ID);
+            if (power != null && !power.isLocked())
+                updateCost((int) -amount);
+        }
         return amount;
     }
 }

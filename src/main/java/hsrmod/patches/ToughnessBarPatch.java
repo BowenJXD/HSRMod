@@ -57,7 +57,7 @@ public class ToughnessBarPatch {
             sb.draw(ImageMaster.HB_SHADOW_R, x + c.hb.width, y - HEALTH_BG_OFFSET_X + 3.0F * Settings.scale, HEALTH_BAR_HEIGHT, HEALTH_BAR_HEIGHT);
 
             // Draw the toughness bar from left to right
-            if (power.getLocked()) {
+            if (power.isLocked()) {
                 sb.setColor(Color.DARK_GRAY.r, Color.DARK_GRAY.g, Color.DARK_GRAY.b, Color.DARK_GRAY.a * c.hbAlpha);
             } else if (power.amount <= 0) {
                 sb.setColor(negativeColor.r, negativeColor.g, negativeColor.b, negativeColor.a * c.hbAlpha);

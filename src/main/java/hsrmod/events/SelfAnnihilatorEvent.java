@@ -9,15 +9,11 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import hsrmod.misc.Encounter;
-import hsrmod.misc.PathDefine;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
 import hsrmod.relics.starter.WaxOfErudition;
 import hsrmod.relics.starter.WaxOfTheHunt;
-import hsrmod.utils.GeneralUtil;
-import hsrmod.utils.ModHelper;
-import hsrmod.utils.RelicEventHelper;
-import hsrmod.utils.RewardEditor;
+import hsrmod.utils.*;
 
 public class SelfAnnihilatorEvent extends PhasedEvent {
     public static final String ID = SelfAnnihilatorEvent.class.getSimpleName();

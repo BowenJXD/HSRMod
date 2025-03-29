@@ -1,12 +1,14 @@
 package hsrmod.modcore;
 
-import basemod.*;
+import basemod.AutoAdd;
+import basemod.BaseMod;
 import basemod.abstracts.CustomRelic;
 import basemod.eventUtil.AddEventParams;
 import basemod.eventUtil.EventUtils;
 import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.mod.stslib.icons.CustomIconHelper;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
@@ -27,27 +29,26 @@ import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import com.megacrit.cardcrawl.monsters.city.ShelledParasite;
 import com.megacrit.cardcrawl.monsters.exordium.SlaverRed;
 import com.megacrit.cardcrawl.powers.FadingPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.TimeWarpPower;
 import com.megacrit.cardcrawl.relics.*;
-import com.megacrit.cardcrawl.screens.runHistory.RunHistoryPath;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
-import com.badlogic.gdx.graphics.Color;
 import hsrmod.characters.StellaCharacter;
 import hsrmod.dungeons.Belobog;
 import hsrmod.dungeons.Luofu;
 import hsrmod.dungeons.Penacony;
 import hsrmod.events.*;
-import hsrmod.misc.*;
+import hsrmod.misc.BonusManager;
+import hsrmod.misc.ChargeIcon;
+import hsrmod.misc.Encounter;
+import hsrmod.misc.ToughnessReductionVariable;
 import hsrmod.monsters.Bonus.KingTrashcan;
 import hsrmod.monsters.Bonus.LordlyTrashcan;
-import hsrmod.monsters.Exordium.*;
 import hsrmod.monsters.Bonus.SequenceTrotter;
+import hsrmod.monsters.Exordium.*;
 import hsrmod.monsters.TheBeyond.*;
 import hsrmod.monsters.TheCity.*;
 import hsrmod.patches.OtherModFixes;
 import hsrmod.patches.RelicTagField;
-import hsrmod.powers.enemyOnly.DeathExplosionPower;
 import hsrmod.powers.enemyOnly.PerformancePointPower;
 import hsrmod.relics.BaseRelic;
 import hsrmod.relics.common.AngelTypeIOUDispenser;
@@ -60,7 +61,8 @@ import org.apache.logging.log4j.Logger;
 import java.nio.charset.StandardCharsets;
 
 import static com.megacrit.cardcrawl.core.Settings.language;
-import static hsrmod.characters.StellaCharacter.PlayerColorEnum.*;
+import static hsrmod.characters.StellaCharacter.PlayerColorEnum.HSR_PINK;
+import static hsrmod.characters.StellaCharacter.PlayerColorEnum.STELLA_CHARACTER;
 
 @SpireInitializer // 加载mod的注解
 public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditCharactersSubscriber, EditRelicsSubscriber, EditKeywordsSubscriber, AddAudioSubscriber, PostInitializeSubscriber, StartGameSubscriber {
@@ -203,6 +205,7 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
         if (HSRModConfig.addEvent) {
             addEvents();
         }
+        checkSignatureUnlock();
     }
 
     @Override
@@ -740,6 +743,10 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
 
     void addOgg(String key) {
         BaseMod.addAudio(key, "HSRModResources/localization/" + lang + "/audio/" + key + ".ogg");
+    }
+    
+    void checkSignatureUnlock() {
+        /*SilverWolf1.checkUnlockSign();*/
     }
 
     public void updateLanguage() {

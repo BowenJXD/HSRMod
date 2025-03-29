@@ -11,9 +11,11 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.HSRMod;
 import hsrmod.powers.uniqueBuffs.HuohuoPower;
 import hsrmod.powers.uniqueBuffs.RobinPower;
 import hsrmod.utils.ModHelper;
+import me.antileaf.signature.utils.SignatureHelper;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
@@ -32,6 +34,7 @@ public class Robin1 extends BaseCard {
         ModHelper.addToBotAbstract(() ->
         {
             int amount = amt;
+            int count = 0;
 
             for (AbstractCard card : p.hand.group) {
                 if (!upgraded || !card.hasTag(FOLLOW_UP)) {
@@ -40,6 +43,10 @@ public class Robin1 extends BaseCard {
 
                 if (amount < 0) break;
                 addToBot(new FollowUpAction(card));
+                count++;
+            }
+            if (count >= 10) {
+                SignatureHelper.unlock(HSRMod.makePath(ID), true);
             }
 
             p.energy.use(EnergyPanel.totalCount);

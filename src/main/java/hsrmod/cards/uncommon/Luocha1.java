@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.common.HealAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.CleanAction;
 import hsrmod.cards.BaseCard;
@@ -34,5 +35,15 @@ public class Luocha1 extends BaseCard {
                 addToBot(new ExhaustSpecificCardAction(card, p.hand));
             }
         }));
+    }
+
+    @Override
+    public void triggerOnGlowCheck() {
+        super.triggerOnGlowCheck();
+        if (AbstractDungeon.player.currentHealth < AbstractDungeon.player.maxHealth / 2) {
+            glowColor = GOLD_BORDER_GLOW_COLOR;
+        } else {
+            glowColor = BLUE_BORDER_GLOW_COLOR;
+        }
     }
 }

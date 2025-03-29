@@ -20,13 +20,12 @@ public class HerosTriumphantReturn extends BaseRelic {
         super.atBattleStartPreDraw();
         AbstractDungeon.player.drawPile.group.stream()
                 .filter(c -> c.type == AbstractCard.CardType.POWER)
-                .filter(c -> {
-                    if (c instanceof BaseCard) {
-                        return ((BaseCard) c).checkEnergy();
-                    }
-                    return true;
-                })
                 .limit(2)
-                .forEach(c -> addToBot(new FollowUpAction(c)));
+                .forEach(c -> {
+                    if (c instanceof BaseCard) {
+                        ((BaseCard) c).energyCost = 0;
+                    }
+                    addToBot(new FollowUpAction(c));
+                });
     }
 }

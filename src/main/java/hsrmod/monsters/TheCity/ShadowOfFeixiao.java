@@ -19,7 +19,9 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.vfx.combat.WhirlwindEffect;
 import hsrmod.actions.LockToughnessAction;
 import hsrmod.actions.UnlockToughnessAction;
+import hsrmod.cardsV2.TheHunt.Feixiao2;
 import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.modcore.HSRMod;
 import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.enemyOnly.ChargingPower;
 import hsrmod.powers.enemyOnly.ResonatePower;
@@ -28,6 +30,7 @@ import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.subscribers.PreBreakSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
+import me.antileaf.signature.utils.SignatureHelper;
 
 import java.util.Iterator;
 import java.util.Objects;
@@ -139,6 +142,9 @@ public class ShadowOfFeixiao extends BaseMonster implements PreBreakSubscriber {
         ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(this.getClass().getSimpleName() + "_" + 7, 2f));
         ModHelper.killAllMinions();
         onBossVictoryLogic();
+        if (AbstractDungeon.actionManager.cardsPlayedThisTurn.get(AbstractDungeon.actionManager.cardsPlayedThisTurn.size() - 1) instanceof Feixiao2) {
+            SignatureHelper.unlock(HSRMod.makePath(Feixiao2.ID), true);
+        }
     }
 
     @Override

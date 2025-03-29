@@ -44,4 +44,10 @@ public class Trailblazer6 extends BaseCard {
             }
         }
     }
+
+    @Override
+    public void triggerOnGlowCheck() {
+        super.triggerOnGlowCheck();
+        glowColor = AbstractDungeon.player.hasPower(Trailblazer5Power.POWER_ID) ? GOLD_BORDER_GLOW_COLOR : BLUE_BORDER_GLOW_COLOR;
+    }
 }

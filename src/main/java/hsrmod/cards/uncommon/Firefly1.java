@@ -10,28 +10,29 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.combat.VerticalImpactEffect;
 import hsrmod.actions.BreakDamageAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.effects.MultiSlashEffect;
-import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
-import hsrmod.powers.misc.BreakEffectPower;
 import hsrmod.powers.misc.BrokenPower;
-import hsrmod.powers.misc.ToughnessPower;
+import hsrmod.utils.CachedCondition;
 import hsrmod.utils.ModHelper;
+import me.antileaf.signature.utils.SignatureHelper;
+
+import java.util.Objects;
 
 public class Firefly1 extends BaseCard {
     public static final String ID = Firefly1.class.getSimpleName();
-    
+
     int costCache = -1;
-    
+    boolean detectUnlock = false;
+
     public Firefly1() {
         super(ID);
         costCache = cost;
     }
-    
+
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         returnToHand = false;
@@ -49,15 +50,42 @@ public class Firefly1 extends BaseCard {
                 new ElementalDamageAction(
                         m,
                         new ElementalDamageInfo(this),
-                        AbstractGameAction.AttackEffect.SLASH_DIAGONAL
+                        AbstractGameAction.AttackEffect.SLASH_DIAGONAL,
+                        ci -> {
+                            if (ci.target.isDying && detectUnlock) {
+                                SignatureHelper.unlock(cardID, true);
+                            }
+                        }
                 )
         );
         ModHelper.addToBotAbstract(() -> {
             if (m.hasPower(BrokenPower.POWER_ID)) {
-                addToBot(new BreakDamageAction(m, new DamageInfo(p, tr), 0.5f));
+                addToBot(new BreakDamageAction(m, new DamageInfo(p, tr), 0.5f).setCallback(c -> {
+                    if (c.isDying && detectUnlock) {
+                        SignatureHelper.unlock(cardID, true);
+                    }
+                }));
                 returnToHand = true;
                 setCostForTurn(costCache);
             }
         });
+
+        if (p.currentHealth == 1) {
+            int count = 0;
+            for (int i = AbstractDungeon.actionManager.cardsPlayedThisCombat.size() - 1; i >= 0; i--) {
+                if (Objects.equals(AbstractDungeon.actionManager.cardsPlayedThisCombat.get(i).cardID, cardID)) {
+                    count++;
+                } else break;
+            }
+            if (count >= 3) {
+                detectUnlock = true;
+            }
+        }
+    }
+
+    @Override
+    public void triggerOnGlowCheck() {
+        super.triggerOnGlowCheck();
+        glowColor = CachedCondition.check(CachedCondition.Key.ANY_BROKEN) ? GREEN_BORDER_GLOW_COLOR : BLUE_BORDER_GLOW_COLOR;
     }
 }

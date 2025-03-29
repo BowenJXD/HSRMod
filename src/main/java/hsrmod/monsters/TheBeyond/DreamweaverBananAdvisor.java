@@ -6,18 +6,14 @@ import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.powers.DrawReductionPower;
 import com.megacrit.cardcrawl.powers.RegrowPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.vfx.combat.ShockWaveEffect;
-import hsrmod.misc.PathDefine;
 import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.enemyOnly.ChannelPower;
-import hsrmod.powers.misc.EnergyPower;
-import hsrmod.utils.ModHelper;
+import hsrmod.utils.PathDefine;
 
 public class DreamweaverBananAdvisor extends BaseMonster implements IBanana {
     public static final String ID = DreamweaverBananAdvisor.class.getSimpleName();

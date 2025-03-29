@@ -7,7 +7,7 @@ if (folder == null) {
     exit();
 }
 
-var layers = getAllLayers(doc);
+var layers = getInitiallyVisibleLayerSets(doc);
 var previousLayer = null; // 存储上一个可见的图层
 hideAllLayers(layers); // 隐藏所有图层
 
@@ -42,9 +42,25 @@ function getAllLayers(layerSet) {
     return layers;
 }
 
+function getInitiallyVisibleLayerSets(doc) {
+    var visibleLayerSets = [];
+    var layers = doc.layerSets;
+
+    for (var i = 0; i < layers.length; i++) {
+        if (layers[i] instanceof LayerSet) {
+            for (var j = 0; j < layers[i].layers.length; j++) {
+                if (layers[i].layers[j].visible) {
+                    visibleLayerSets.push(layers[i].layers[j]);
+                }
+            }
+        }
+    }
+    return visibleLayerSets;
+}
+
 // 隐藏所有图层
 function hideAllLayers(layers) {
-    for (var i = 0; i < layers.length; i++) {
+    for (var i = 1; i < layers.length; i++) {
         layers[i].visible = false;
     }
 }

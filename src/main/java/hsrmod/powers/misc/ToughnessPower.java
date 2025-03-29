@@ -9,10 +9,10 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ReduceToughnessAction;
 import hsrmod.characters.StellaCharacter;
-import hsrmod.modcore.HSRModConfig;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
+import hsrmod.modcore.HSRModConfig;
 import hsrmod.powers.BuffPower;
 
 import java.util.ArrayList;
@@ -69,7 +69,7 @@ public class ToughnessPower extends BuffPower implements InvisiblePower {
     public int onAttacked(DamageInfo info, int damageAmount) {
         if (!(info instanceof ElementalDamageInfo)
                 && !(AbstractDungeon.player instanceof StellaCharacter)
-                && info.type == DamageInfo.DamageType.NORMAL) {
+                && info.type != DamageInfo.DamageType.HP_LOSS) {
             addToTop(new ReduceToughnessAction(owner, info.owner, 2, ElementType.None));
         }
         return damageAmount;
@@ -102,7 +102,7 @@ public class ToughnessPower extends BuffPower implements InvisiblePower {
         alterPower(-reduceAmount);
     }
     
-    public boolean getLocked() {
+    public boolean isLocked() {
         return locked;
     }
 
@@ -142,7 +142,7 @@ public class ToughnessPower extends BuffPower implements InvisiblePower {
             }
             int count = HSRModConfig.getActiveTPCount();
             if (count > 0) {
-                result += result * count / 10;
+                result += (int) (result * HSRModConfig.getTVInc());
             }
         }
         else if (c instanceof AbstractPlayer) {

@@ -6,8 +6,8 @@ import basemod.abstracts.events.phases.TextPhase;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import hsrmod.misc.Encounter;
-import hsrmod.misc.PathDefine;
 import hsrmod.modcore.HSRMod;
+import hsrmod.utils.PathDefine;
 
 public class CheatCode2Event extends PhasedEvent {
     public static final String ID = CheatCode2Event.class.getSimpleName();

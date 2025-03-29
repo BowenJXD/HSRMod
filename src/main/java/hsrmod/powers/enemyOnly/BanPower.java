@@ -1,9 +1,13 @@
 package hsrmod.powers.enemyOnly;
 
+import basemod.helpers.CardBorderGlowManager;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.*;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.DiscardAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -13,12 +17,8 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.ThornsPower;
-import com.megacrit.cardcrawl.powers.VulnerablePower;
-import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
-import hsrmod.powers.StatePower;
 import hsrmod.subscribers.PreBreakSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 
@@ -29,6 +29,8 @@ public class BanPower extends AbstractPower implements PreBreakSubscriber {
     
     BanType banType;
     int thornDamage = 2;
+    
+    CardBorderGlowManager.GlowInfo glowInfo;
     
     public BanPower(AbstractCreature owner, BanType banType) {
         this.ID = POWER_ID;
@@ -51,6 +53,24 @@ public class BanPower extends AbstractPower implements PreBreakSubscriber {
                 break;
         }
         updateDescription();
+        
+        glowInfo = new CardBorderGlowManager.GlowInfo() {
+            @Override
+            public boolean test(AbstractCard abstractCard) {
+                return (abstractCard.type == AbstractCard.CardType.ATTACK && BanPower.this.banType == BanType.ATTACK)
+                        || (abstractCard.type == AbstractCard.CardType.SKILL && BanPower.this.banType == BanType.SKILL);
+            }
+
+            @Override
+            public Color getColor(AbstractCard abstractCard) {
+                return Color.RED;
+            }
+
+            @Override
+            public String glowID() {
+                return POWER_ID;
+            }
+        };
     }
     
     public BanPower(AbstractCreature owner){
@@ -76,12 +96,15 @@ public class BanPower extends AbstractPower implements PreBreakSubscriber {
     public void onInitialApplication() {
         super.onInitialApplication();
         SubscriptionManager.subscribe(this);
+        CardBorderGlowManager.removeGlowInfo(POWER_ID);
+        CardBorderGlowManager.addGlowInfo(glowInfo);
     }
 
     @Override
     public void onRemove() {
         super.onRemove();
         SubscriptionManager.unsubscribe(this);
+        CardBorderGlowManager.removeGlowInfo(glowInfo);
     }
 
     @Override

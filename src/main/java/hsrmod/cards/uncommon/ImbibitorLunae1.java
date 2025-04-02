@@ -10,7 +10,7 @@ import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.misc.EnergyPower;
-import me.antileaf.signature.utils.SignatureHelper;
+import hsrmod.signature.utils.SignatureHelper;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

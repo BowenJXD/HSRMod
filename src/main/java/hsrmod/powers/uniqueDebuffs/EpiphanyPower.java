@@ -2,8 +2,6 @@ package hsrmod.powers.uniqueDebuffs;
 
 import basemod.BaseMod;
 import basemod.interfaces.OnPowersModifiedSubscriber;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import hsrmod.cards.uncommon.BlackSwan1;
 import hsrmod.modcore.ElementalDamageInfo;
@@ -12,7 +10,7 @@ import hsrmod.powers.DebuffPower;
 import hsrmod.powers.misc.DoTPower;
 import hsrmod.subscribers.PreDoTDamageSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
-import me.antileaf.signature.utils.SignatureHelper;
+import hsrmod.signature.utils.SignatureHelper;
 
 public class EpiphanyPower extends DebuffPower implements OnPowersModifiedSubscriber, PreDoTDamageSubscriber {
     public static final String POWER_ID = HSRMod.makePath(EpiphanyPower.class.getSimpleName());

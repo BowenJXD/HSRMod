@@ -1,21 +1,17 @@
 package hsrmod.cardsV2.Propagation;
 
-import com.codedisaster.steamworks.SteamAPI;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.MoveCardsAction;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.StrengthPower;
 import hsrmod.cards.BaseCard;
-import hsrmod.cards.uncommon.Sparkle1;
 import hsrmod.modcore.HSRMod;
 import hsrmod.utils.ModHelper;
-import me.antileaf.signature.utils.SignatureHelper;
+import hsrmod.signature.utils.SignatureHelper;
 
 import java.util.List;
 

@@ -1,6 +1,5 @@
 package hsrmod.cards;
 
-import basemod.abstracts.CustomCard;
 import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.SpawnModificationCard;
 import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.CommonKeywordIconsField;
@@ -27,8 +26,8 @@ import hsrmod.utils.CardDataCol;
 import hsrmod.utils.DataManager;
 import hsrmod.utils.ModHelper;
 import hsrmod.utils.RewardEditor;
-import me.antileaf.signature.card.AbstractSignatureCard;
-import me.antileaf.signature.utils.SignatureHelper;
+import hsrmod.signature.card.AbstractSignatureCard;
+import hsrmod.signature.utils.SignatureHelper;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -99,6 +98,7 @@ public abstract class BaseCard extends AbstractSignatureCard implements SpawnMod
         this.isEthereal = rawDescription.contains("虚无。");*/
 
         CommonKeywordIconsField.useIcons.set(this, true);
+        assetUrl = "HSRMod/" + id + "_s_p.png";
     }
 
     @Override

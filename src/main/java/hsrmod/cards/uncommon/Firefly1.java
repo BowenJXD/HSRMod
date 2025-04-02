@@ -18,7 +18,7 @@ import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.misc.BrokenPower;
 import hsrmod.utils.CachedCondition;
 import hsrmod.utils.ModHelper;
-import me.antileaf.signature.utils.SignatureHelper;
+import hsrmod.signature.utils.SignatureHelper;
 
 import java.util.Objects;
 

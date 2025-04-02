@@ -4,21 +4,14 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import hsrmod.actions.AOEAction;
 import hsrmod.actions.BreakDamageAction;
-import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.powers.misc.BreakEffectPower;
-import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.utils.ModHelper;
-import me.antileaf.signature.utils.SignatureHelper;
-
-import java.util.HashMap;
-import java.util.Map;
+import hsrmod.signature.utils.SignatureHelper;
 
 public class Rappa1 extends BaseCard {
     public static final String ID = Rappa1.class.getSimpleName();

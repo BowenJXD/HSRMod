@@ -18,7 +18,7 @@ import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.enemyOnly.SummonedPower;
 import hsrmod.utils.CardDataCol;
 import hsrmod.utils.DataManager;
-import me.antileaf.signature.utils.SignatureHelper;
+import hsrmod.signature.utils.SignatureHelper;
 
 import java.util.Iterator;
 
@@ -80,5 +80,10 @@ public class Seele1 extends BaseCard {
                     }
                 });
         addToBot(action);
+    }
+
+    @Override
+    public void triggerOnScry() {
+        super.triggerOnScry();
     }
 }

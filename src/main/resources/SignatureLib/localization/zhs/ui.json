@@ -20,5 +20,11 @@
       "新异画解锁！",
       "新！"
     ]
+  },
+
+  "SignatureLib:SignatureOnly": {
+    "TEXT": [
+      "只看有异画"
+    ]
   }
 }

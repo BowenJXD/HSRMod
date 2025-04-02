@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cards.BaseCard;
 import hsrmod.effects.PortraitDisplayEffect;
 import hsrmod.powers.uniqueBuffs.AventurinePower;
+import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.utils.ModHelper;
 
 public class Aventurine1 extends BaseCard {
@@ -32,5 +33,8 @@ public class Aventurine1 extends BaseCard {
         
         addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
         addToBot(new ApplyPowerAction(p, p, new AventurinePower(upgraded, upgraded ? 5 : 4, 2)));
+        if (p.gold == 0) {
+            SignatureHelper.unlock(cardID, true);
+        }
     }
 }

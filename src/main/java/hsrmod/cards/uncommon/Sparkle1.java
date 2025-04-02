@@ -5,11 +5,10 @@ import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.HSRMod;
 import hsrmod.utils.ModHelper;
-import me.antileaf.signature.utils.SignatureHelper;
+import hsrmod.signature.utils.SignatureHelper;
 
 import java.util.List;
 
@@ -29,7 +28,7 @@ public class Sparkle1 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DrawCardAction(energyOnUse));
-        if (p.hand.size() >= BaseMod.MAX_HAND_SIZE - 1) {
+        if (p.hand.size() >= BaseMod.MAX_HAND_SIZE) {
             SignatureHelper.unlock(HSRMod.makePath(ID), true);
         }
 

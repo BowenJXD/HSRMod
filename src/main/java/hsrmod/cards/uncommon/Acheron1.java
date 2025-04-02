@@ -5,7 +5,6 @@ import basemod.interfaces.PostPowerApplySubscriber;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -14,20 +13,15 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import hsrmod.actions.AOEAction;
 import hsrmod.actions.BouncingAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.effects.GrayscaleScreenEffect;
 import hsrmod.effects.PortraitDisplayEffect;
-import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
-import hsrmod.modcore.HSRMod;
-import hsrmod.powers.uniqueBuffs.SlashedDreamPower;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
-import me.antileaf.signature.utils.SignatureHelper;
 
 public class Acheron1 extends BaseCard implements PostPowerApplySubscriber {
     public static final String ID = Acheron1.class.getSimpleName();
@@ -80,7 +74,7 @@ public class Acheron1 extends BaseCard implements PostPowerApplySubscriber {
                 new ElementalDamageInfo(this),
                 AbstractGameAction.AttackEffect.LIGHTNING
         ).setModifier(ci -> ci.info.output += ci.target.powers.stream().mapToInt(power -> power.type == AbstractPower.PowerType.DEBUFF ? 1 : 0).sum());
-        addToBot(new BouncingAction(target, magicNumber, action));
+        addToBot(new BouncingAction(target, magicNumber, action, this));
         
         ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play("SlashedDream2"));
         addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[1], 1.0F, 2.0F));

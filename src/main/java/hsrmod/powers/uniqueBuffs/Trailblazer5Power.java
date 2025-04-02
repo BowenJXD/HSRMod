@@ -12,7 +12,7 @@ import hsrmod.powers.PowerPower;
 import hsrmod.powers.misc.BrokenPower;
 import hsrmod.subscribers.PreToughnessReduceSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
-import me.antileaf.signature.utils.SignatureHelper;
+import hsrmod.signature.utils.SignatureHelper;
 
 public class Trailblazer5Power extends PowerPower implements PreToughnessReduceSubscriber {
     public static final String POWER_ID = HSRMod.makePath(Trailblazer5Power.class.getSimpleName());

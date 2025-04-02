@@ -34,11 +34,7 @@ public class Clara1 extends BaseCard implements OnPlayerDamagedSubscriber {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        int count = (int) p.exhaustPile.group.stream().map(c -> c.name).distinct().count();
-        if (upgraded) {
-            Map<String, Long> map = p.exhaustPile.group.stream().collect(Collectors.groupingBy(c -> c.name, Collectors.counting()));
-            count += map.values().stream().max(Long::compareTo).orElse(0L);
-        }
+        int count = p.exhaustPile.group.size();
         addToBot(new GainBlockAction(p, p, count + block));
     }
 

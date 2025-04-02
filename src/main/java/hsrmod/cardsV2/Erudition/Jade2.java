@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.vfx.combat.IntimidateEffect;
 import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
+import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.utils.ModHelper;
 
 public class Jade2 extends BaseCard {
@@ -33,6 +34,10 @@ public class Jade2 extends BaseCard {
                 addToTop(new ReduceCostForTurnAction(c, 1));
             });
             addToTop(new LoseHPAction(p, p, hpLoss[0]));
+            
+            if (hpLoss[0] == 8) {
+                SignatureHelper.unlock(cardID, true);
+            }
         });
     }
 }

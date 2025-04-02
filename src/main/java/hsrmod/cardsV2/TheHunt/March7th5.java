@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cards.BaseCard;
+import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.utils.CardDataCol;
 import hsrmod.utils.DataManager;
 
@@ -22,6 +23,15 @@ public class March7th5 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        p.hand.group.stream().filter(c -> c.canUpgrade() && c != this).forEach(c -> addToBot(new UpgradeSpecificCardAction(c)));
+        int count = 0;
+        for (AbstractCard c : p.hand.group) {
+            if (c.canUpgrade() && c != this) {
+                addToBot(new UpgradeSpecificCardAction(c));
+                count++;
+            }
+        }
+        if (count == 7) {
+            SignatureHelper.unlock(cardID, true);
+        }
     }
 }

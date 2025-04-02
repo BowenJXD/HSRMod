@@ -20,5 +20,11 @@
       "New Signature!",
       "New!"
     ]
+  },
+
+  "SignatureLib:SignatureOnly": {
+    "TEXT": [
+      "Signature Only"
+    ]
   }
 }

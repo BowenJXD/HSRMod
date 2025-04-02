@@ -28,7 +28,7 @@ public class Guinaifen1 extends BaseCard {
                 new ElementalDamageInfo(this), 
                 AbstractGameAction.AttackEffect.FIRE
         ));
-        addToBot(new ApplyPowerAction(m, p, new BurnPower(m, p, 1), 1));
+        addToBot(new ApplyPowerAction(m, p, new BurnPower(m, p, magicNumber), magicNumber));
         if (upgraded) {
             ModHelper.addToBotAbstract(() -> {
                 AbstractDungeon.getMonsters().monsters.stream()

@@ -7,33 +7,17 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.events.AbstractEvent;
-import com.megacrit.cardcrawl.events.AbstractImageEvent;
-import com.megacrit.cardcrawl.events.beyond.MindBloom;
-import com.megacrit.cardcrawl.events.exordium.BigFish;
-import com.megacrit.cardcrawl.events.shrines.Duplicator;
-import com.megacrit.cardcrawl.events.shrines.GoldShrine;
-import com.megacrit.cardcrawl.events.shrines.WomanInBlue;
-import com.megacrit.cardcrawl.helpers.CardLibrary;
-import com.megacrit.cardcrawl.helpers.EventHelper;
-import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.vfx.RainingGoldEffect;
 import com.megacrit.cardcrawl.vfx.UpgradeShineEffect;
-import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
-import hsrmod.cards.uncommon.RuanMei1;
 import hsrmod.cards.uncommon.RuanMei2;
-import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
 import hsrmod.relics.shop.ARuanPouch;
 import hsrmod.utils.RelicEventHelper;
-import me.antileaf.signature.utils.SignatureHelper;
+import hsrmod.signature.utils.SignatureHelper;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 public class RuanMeiEvent extends PhasedEvent {
     public static final String ID = RuanMeiEvent.class.getSimpleName();

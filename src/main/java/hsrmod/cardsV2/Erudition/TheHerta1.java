@@ -12,11 +12,15 @@ import hsrmod.cards.BaseCard;
 import hsrmod.effects.PortraitDisplayEffect;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.signature.utils.SignatureHelper;
+import hsrmod.utils.ModHelper;
 
 import java.util.Comparator;
 
 public class TheHerta1 extends BaseCard {
     public static final String ID = TheHerta1.class.getSimpleName();
+
+    public int totalDmg = 0;
 
     public TheHerta1() {
         super(ID);
@@ -29,8 +33,12 @@ public class TheHerta1 extends BaseCard {
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         shout(0);
 
+        totalDmg = 0;
         addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)
-                .setCallback(ci -> addToTop(new VFXAction(new WallopEffect(ci.info.base, ci.target.hb.cX, ci.target.hb.cY)))));
+                .setCallback(ci -> {
+                    totalDmg += ci.info.output;
+                    addToTop(new VFXAction(new WallopEffect(ci.info.base, ci.target.hb.cX, ci.target.hb.cY)));
+                }));
         int useCount = 0;
         if (p.hand.group.stream().anyMatch(c -> c.hasTag(CustomEnums.ENERGY_COSTING) && c != this)) useCount++;
         if (upgraded && p.hand.group.stream().anyMatch(c -> (c.target == CardTarget.ALL_ENEMY || c.target == CardTarget.ALL) && c != this))
@@ -43,9 +51,19 @@ public class TheHerta1 extends BaseCard {
         if (monsterWithMostHealth != null) {
             for (int i = 0; i < useCount; i++) {
                 addToBot(new ElementalDamageAction(monsterWithMostHealth, new ElementalDamageInfo(this), AbstractGameAction.AttackEffect.SLASH_VERTICAL)
-                        .setCallback(ci -> addToTop(new VFXAction(new WallopEffect(ci.info.base, ci.target.hb.cX, ci.target.hb.cY)))));
+                        .setCallback(ci -> {
+                            totalDmg += ci.info.output;
+                            addToTop(new VFXAction(new WallopEffect(ci.info.base, ci.target.hb.cX, ci.target.hb.cY)));
+                        }));
             }
         }
+
+        if (!SignatureHelper.isUnlocked(cardID))
+            ModHelper.addToBotAbstract(() -> {
+                if (totalDmg == 42) {
+                    SignatureHelper.unlock(cardID, true);
+                }
+            });
     }
 
     @Override

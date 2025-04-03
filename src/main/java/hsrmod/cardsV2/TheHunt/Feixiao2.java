@@ -1,7 +1,5 @@
 package hsrmod.cardsV2.TheHunt;
 
-import basemod.BaseMod;
-import basemod.interfaces.OnCardUseSubscriber;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
@@ -17,12 +15,7 @@ import hsrmod.cards.BaseCard;
 import hsrmod.effects.PortraitDisplayEffect;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementalDamageInfo;
-import hsrmod.modcore.HSRMod;
-import hsrmod.monsters.BaseMonster;
-import hsrmod.monsters.TheCity.ShadowOfFeixiao;
-import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
-import me.antileaf.signature.utils.SignatureHelper;
 
 public class Feixiao2 extends BaseCard {
     public static final String ID = Feixiao2.class.getSimpleName();

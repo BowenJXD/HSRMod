@@ -4,8 +4,10 @@ import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import hsrmod.cards.uncommon.FuXuan1;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
+import hsrmod.signature.utils.SignatureHelper;
 
 public class MatrixOfPresciencePower extends BuffPower {
     public static final String POWER_ID = HSRMod.makePath(MatrixOfPresciencePower.class.getSimpleName());
@@ -27,6 +29,9 @@ public class MatrixOfPresciencePower extends BuffPower {
     public void atStartOfTurn() {
         super.atStartOfTurn();
         remove(1);
+        if (owner.currentBlock >= 69) {
+            SignatureHelper.unlock(HSRMod.makePath(FuXuan1.ID), true);
+        }
     }
 
     @Override

@@ -5,10 +5,12 @@ import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import hsrmod.actions.ElementalDamageAction;
+import hsrmod.cardsV2.Erudition.Tribbie1;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
+import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.subscribers.PreElementalDamageSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 
@@ -20,6 +22,7 @@ public class TribbiePower extends PowerPower implements PreElementalDamageSubscr
     public static final String ID = HSRMod.makePath(TribbiePower.class.getSimpleName());
     
     HashSet<AbstractCreature> targets;
+    int totalDmgForTurn;
     
     public TribbiePower(int amount, boolean upgraded) {
         super(ID, amount, upgraded);
@@ -45,6 +48,12 @@ public class TribbiePower extends PowerPower implements PreElementalDamageSubscr
     }
 
     @Override
+    public void atStartOfTurn() {
+        super.atStartOfTurn();
+        totalDmgForTurn = 0;
+    }
+
+    @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
         super.onUseCard(card, action);
         targets.clear();
@@ -57,8 +66,13 @@ public class TribbiePower extends PowerPower implements PreElementalDamageSubscr
         AbstractCreature targetWithMaxHp = targets.stream().max((a, b) -> a.currentHealth - b.currentHealth).get();
         int dmg = amount * targets.size();
         if (!upgraded) dmg -= amount;
-        if (dmg > 0)
+        if (dmg > 0) {
             addToTop(new ElementalDamageAction(targetWithMaxHp, new ElementalDamageInfo(owner, dmg, ElementType.Quantum, 0), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+            totalDmgForTurn += dmg;
+            if (totalDmgForTurn >= 33) {
+                SignatureHelper.unlock(HSRMod.makePath(Tribbie1.ID), true);
+            }
+        }
     }
 
     @Override

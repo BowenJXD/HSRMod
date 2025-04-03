@@ -16,12 +16,18 @@ import hsrmod.cards.BaseCard;
 import hsrmod.effects.MultiShivFreezeEffect;
 import hsrmod.effects.PortraitDisplayEffect;
 import hsrmod.modcore.CustomEnums;
+import hsrmod.powers.breaks.BleedingPower;
+import hsrmod.powers.breaks.BurnPower;
 import hsrmod.powers.breaks.ShockPower;
+import hsrmod.powers.breaks.WindShearPower;
+import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.utils.ModHelper;
 
 public class Kafka2 extends BaseCard {
     public static final String ID = Kafka2.class.getSimpleName();
 
+    int count = 0;
+    
     public Kafka2() {
         super(ID);
         isMultiDamage = true;
@@ -42,6 +48,16 @@ public class Kafka2 extends BaseCard {
                     if (!ci.target.isDeadOrEscaped() && ci.target.currentHealth > 0) {
                         addToBot(new TriggerDoTAction(ci.target, p, 1, true));
                         addToBot(new ApplyPowerAction(ci.target, p, new ShockPower(ci.target, p, magicNumber), magicNumber));
+                        
+                        if (ci.target.hasPower(ShockPower.POWER_ID)
+                                && ci.target.hasPower(BurnPower.POWER_ID)
+                                && ci.target.hasPower(BleedingPower.POWER_ID)
+                                && ci.target.hasPower(WindShearPower.POWER_ID)) {
+                            count++;
+                            if (count == 2) {
+                                SignatureHelper.unlock(cardID, true);
+                            }
+                        }
                     }
                 })
         );

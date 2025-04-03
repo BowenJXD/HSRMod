@@ -4,11 +4,13 @@ import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import hsrmod.cardsV2.Fugue1;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.DebuffPower;
 import hsrmod.powers.misc.ToughnessPower;
+import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.subscribers.PreBreakSubscriber;
 import hsrmod.subscribers.PreToughnessReduceSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
@@ -52,6 +54,10 @@ public class CloudflameLusterPower extends DebuffPower implements PreBreakSubscr
             addToTop(new ApplyPowerAction(this.owner, this.owner, new ToughnessPower(this.owner, amt), amt));
 
             this.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+            
+            if (amount >= ToughnessPower.getStackLimit(owner)) {
+                SignatureHelper.unlock(HSRMod.makePath(Fugue1.ID), true);
+            }
         }
     }
 }

@@ -3,7 +3,7 @@
     "EXTENDED_DESCRIPTION": [
       "Deal !D! physical damage to all enemies (!TR!)."
     ],
-    "SIGNATURE_UNLOCK_CONDITION": "Deal the final blow to #yCorrupt #yHeart with this card."
+    "SIGNATURE_UNLOCK_CONDITION": "Deal the final blow to #yCorrupt #yHeart with this card, or #yBreak it."
   },
   "HSRMod:March7th0": {
     "EXTENDED_DESCRIPTION": [
@@ -43,7 +43,8 @@
   "HSRMod:Aventurine1": {
     "EXTENDED_DESCRIPTION": [
       "Bust, or, maybe I'll take it all!"
-    ]
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "Use this card when you have no gold."
   },
   "HSRMod:Firefly1": {
     "EXTENDED_DESCRIPTION": [
@@ -65,7 +66,8 @@
   "HSRMod:Kafka2": {
     "EXTENDED_DESCRIPTION": [
       "Time to say bye. BOOM~"
-    ]
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "In one battle, use this card to trigger all #yDoT twice."
   },
   "HSRMod:Robin1": {
     "SIGNATURE_UNLOCK_CONDITION": "Follow up 10 cards in once."
@@ -78,7 +80,8 @@
   "HSRMod:Sparkle1": {
     "EXTENDED_DESCRIPTION": [
       "The life of a faker~"
-    ]
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "Use this card when hand is full, or kill another #pSparkle."
   },
   "HSRMod:Sparkle2": {
     "EXTENDED_DESCRIPTION": [
@@ -178,13 +181,14 @@
     "EXTENDED_DESCRIPTION": [
       "Through the clouds, it cleaves a path, Hah!",
       "To earth, it descends with might, eradicate!"
-    ]
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "Trigger this card effect 4 times in once."
   },
   "HSRMod:Rappa1": {
     "EXTENDED_DESCRIPTION": [
       "Slash! Cut! Cleave!"
     ],
-    "SIGNATURE_UNLOCK_CONDITION": "Trigger 4 times in once."
+    "SIGNATURE_UNLOCK_CONDITION": "Trigger this card effect 4 times in once."
   },
   "HSRMod:Trailblazer8": {
     "EXTENDED_DESCRIPTION": [
@@ -194,7 +198,8 @@
   "HSRMod:TheHerta1": {
     "EXTENDED_DESCRIPTION": [
       "Endless riddles, but the answer... is nothing but a void."
-    ]
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "Use this card to deal exactly #b42 damage in once."
   },
   "HSRMod:Acheron1": {
     "EXTENDED_DESCRIPTION": [
@@ -222,5 +227,26 @@
       "I don't have Quake",
       "No target has any block."
     ]
+  },
+  "HSRMod:FuXuan1": {
+    "SIGNATURE_UNLOCK_CONDITION": "Retain #b69+ block."
+  },
+  "HSRMod:March7th5": {
+    "SIGNATURE_UNLOCK_CONDITION": "Upgrade exactly #b7 cards in once via this card."
+  },
+  "HSRMod:Jade2": {
+    "SIGNATURE_UNLOCK_CONDITION": "Reduce exactly #b8 hp in once via this card."
+  },
+  "HSRMod:Lingsha1": {
+    "SIGNATURE_UNLOCK_CONDITION": "#yBefog stacks to #b5+."
+  },
+  "HSRMod:Fugue1": {
+    "SIGNATURE_UNLOCK_CONDITION": "When #ybreak, refill its toughness to full through #yCloud #yFlame #yLuster."
+  },
+  "HSRMod:Qingque1": {
+    "SIGNATURE_UNLOCK_CONDITION": "After drawing with this card, the number of each type of cards in hand is equal to #b3, #b3, #b2."
+  },
+  "HSRMod:Tribbie1": {
+    "SIGNATURE_UNLOCK_CONDITION": "Using this effect to deal #b33+ damage in one turn."
   }
 }

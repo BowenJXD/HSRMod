@@ -6,12 +6,14 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import hsrmod.cards.uncommon.Lingsha1;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.DebuffPower;
 import hsrmod.powers.misc.BrokenPower;
 import hsrmod.powers.misc.ToughnessPower;
+import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.subscribers.PreBreakSubscriber;
 import hsrmod.subscribers.PreToughnessReduceSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
@@ -40,6 +42,14 @@ public class BefogPower extends DebuffPower implements PreBreakSubscriber {
     public void onInitialApplication() {
         super.onInitialApplication();
         SubscriptionManager.subscribe(this);
+    }
+
+    @Override
+    public void stackPower(int stackAmount) {
+        super.stackPower(stackAmount);
+        if (amount >= 5) {
+            SignatureHelper.unlock(HSRMod.makePath(Lingsha1.ID), true);
+        }
     }
 
     @Override

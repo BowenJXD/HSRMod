@@ -19,6 +19,8 @@ import hsrmod.utils.ModHelper;
 public class Aventurine3 extends BaseCard {
     public static final String ID = Aventurine3.class.getSimpleName();
     
+    public int dmg = 0;
+    
     public Aventurine3() {
         super(ID);
         exhaust = true;
@@ -47,7 +49,7 @@ public class Aventurine3 extends BaseCard {
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         if (m != null) addToBot(new VFXAction(new FlickCoinEffect(p.hb.cX, p.hb.cY, m.hb.cX, m.hb.cY), 0.5f));
         if (damage > 1) {
-            int dmg = AbstractDungeon.cardRandomRng.random(1, damage);
+            dmg = AbstractDungeon.cardRandomRng.random(1, damage);
             addToBot(new ElementalDamageAction(
                     m, 
                     new ElementalDamageInfo(this, dmg), 

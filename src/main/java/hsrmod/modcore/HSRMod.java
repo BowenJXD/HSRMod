@@ -32,6 +32,7 @@ import com.megacrit.cardcrawl.powers.FadingPower;
 import com.megacrit.cardcrawl.powers.TimeWarpPower;
 import com.megacrit.cardcrawl.relics.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
+import hsrmod.cardsV2.NightOnTheMilkyWay;
 import hsrmod.characters.StellaCharacter;
 import hsrmod.dungeons.Belobog;
 import hsrmod.dungeons.Luofu;
@@ -340,6 +341,9 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(CheatCode1Event.ID), CheatCode1Event.class)
                 .dungeonIDs(Belobog.ID, Luofu.ID)
+                .create());
+        BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(MilkyWayRailroadEvent.ID), MilkyWayRailroadEvent.class)
+                .eventType(EventUtils.EventType.ONE_TIME)
                 .create());
 
         // =========================== Event Monsters ===========================
@@ -747,6 +751,7 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
     
     void checkSignatureUnlock() {
         /*SilverWolf1.checkUnlockSign();*/
+        NightOnTheMilkyWay.checkUnlockSign();
     }
 
     public void updateLanguage() {

@@ -175,6 +175,10 @@ public abstract class SignatureHelperInternal {
 		return UnlockConditionPatch.Fields.unlockCondition.get(CardCrawlGame.languagePack.getCardStrings(id));
 	}
 
+	public static String getIllustrator(String id) {
+		return UnlockConditionPatch.Fields.illustrator.get(CardCrawlGame.languagePack.getCardStrings(id));
+	}
+
 	public static void addUnlockConditions(String jsonFile) {
 		Map<String, String> conditions = (new Gson()).fromJson(
 				Gdx.files.internal(jsonFile).readString(String.valueOf(StandardCharsets.UTF_8)),
@@ -182,6 +186,17 @@ public abstract class SignatureHelperInternal {
 
 		for (Map.Entry<String, String> entry : conditions.entrySet())
 			UnlockConditionPatch.Fields.unlockCondition.set(
+					CardCrawlGame.languagePack.getCardStrings(entry.getKey()),
+					entry.getValue());
+	}
+
+	public static void addIllustrators(String jsonFile) {
+		Map<String, String> illustrators = (new Gson()).fromJson(
+				Gdx.files.internal(jsonFile).readString(String.valueOf(StandardCharsets.UTF_8)),
+				(new TypeToken<Map<String, String>>() {}).getType());
+
+		for (Map.Entry<String, String> entry : illustrators.entrySet())
+			UnlockConditionPatch.Fields.illustrator.set(
 					CardCrawlGame.languagePack.getCardStrings(entry.getKey()),
 					entry.getValue());
 	}

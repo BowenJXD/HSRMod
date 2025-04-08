@@ -13,7 +13,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.*;
-import hsrmod.misc.PathDefine;
 import hsrmod.modcore.HSRMod;
 import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.enemyOnly.*;

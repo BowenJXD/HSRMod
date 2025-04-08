@@ -29,6 +29,7 @@ public class ToughnessPower extends BuffPower implements InvisiblePower {
         super(POWER_ID, owner, Amount);
         this.priority = 20;
         this.stackLimit = stackLimit;
+        this.amount = Math.min(Math.max(-stackLimit, Amount), stackLimit);
         this.canGoNegative = true;
 
         this.updateDescription();

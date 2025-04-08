@@ -88,6 +88,7 @@ public class TomorrowInHarmoniousChords extends BaseMonster implements OnCardUse
     @Override
     public void usePreBattleAction() {
         super.usePreBattleAction();
+        startSkill();
         addToBot(new ApplyPowerAction(this, this, new StrengthPower(this, iniStrengthCount)));
         addToBot(new RollMoveAction(this));
         ModHelper.addToBotAbstract(this::createIntent);
@@ -96,7 +97,6 @@ public class TomorrowInHarmoniousChords extends BaseMonster implements OnCardUse
             setHp(maxHealth * 3 / 2);
             healthBarUpdatedEvent();
         }
-        startSkill();
     }
 
     @Override

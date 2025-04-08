@@ -26,6 +26,12 @@ public class Yanqing1 extends BaseCard {
     }
 
     @Override
+    public void upgrade() {
+        super.upgrade();
+        cardsToPreview.upgrade();
+    }
+
+    @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         addToBot(new VFXAction(new MultiShivFreezeEffect(Color.CYAN, Color.ROYAL, Color.BLUE), 1f));
         if (AbstractDungeon.cardRandomRng.random(100) < 60) {

@@ -51,7 +51,7 @@
       "Set the seas ablaze!",
       "Life begets death!"
     ],
-    "SIGNATURE_UNLOCK_CONDITION": "When HP is 1, use this card 3 times consecutively to eliminate."
+    "SIGNATURE_UNLOCK_CONDITION": "When HP is 1, use this card 3 times consecutively and kill something."
   },
   "HSRMod:Firefly2": {
     "EXTENDED_DESCRIPTION": [

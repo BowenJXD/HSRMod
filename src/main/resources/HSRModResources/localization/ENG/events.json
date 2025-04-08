@@ -659,16 +659,16 @@
     "NAME": "Night on the Milky Way Railroad",
     "OPTIONS": [
       "[continue]",
-      "[Express desire for wealth] Gain #y344 gold, but be cursed with #rMediocrity.",
+      "[Express desire for wealth] Gain #y344 gold, but be cursed with #rNormality.",
       "[Regain confidence in life] Restore all HP.",
       "[Record this breathtaking view] Obtain #y「Night on the Galactic Railroad」.",
       "[leave]"
     ],
     "DESCRIPTIONS": [
       "As you turn around, you see the Weather Wheel Pillar that had somehow transformed into a hazy triangular marker, flickering like #yfireflies~. NL NL Gradually, the lights of the Weather Wheel Pillar grow distinct, standing resolute and majestic at last, then rising straight and gallantly across the sky's wilderness like freshly forged #bsteel-blue plates.",
-      "Suddenly, you hear an ethereal voice from nowhere: #b@\"Galactic Station, we've arrived at Galactic Station!\"@ NL NL At the same time, your vision floods with brilliance—as if the glow of ~hundreds of millions of bioluminescent squids~ had been crystallized into eternal fossils and cast into the #bsky; or as if someone had recklessly unearthed the #bdiamonds secretly stockpiled by mining companies to manipulate prices, scattering them across the ground with a ~clatter~.",
+      "Suddenly, you hear an ethereal voice from nowhere: #b@\"Galactic@ #b@Station@, we've arrived at #b@Galactic@ #b@Station!\"@ NL NL At the same time, your vision floods with brilliance—as if the glow of ~hundreds of millions of bioluminescent squids~ had been crystallized into eternal fossils and cast into the #bsky; or as if someone had recklessly unearthed the #bdiamonds secretly stockpiled by mining companies to manipulate prices, scattering them across the ground with a ~clatter~.",
       "When you regain your senses, you realize the small train you're on has been speeding forward all this while. NL NL Indeed, you're now riding along a #pnighttime narrow-gauge railway, seated in a carriage lit by tiny #yyellow bulbs, admiring the scenery outside. The seats are upholstered in #bblue velvet but remain empty, while two large #ybrass buttons gleam brightly on the opposite gray-painted wall.",
-      "Before your eyes, the world suddenly #p~shimmers with radiance~, forcing you to rub your eyes repeatedly in disbelief."
+      "Before your eyes, the world suddenly #p~shimmers~ #p~with~ #p~radiance~, forcing you to rub your eyes repeatedly in disbelief."
     ]
   }
 }

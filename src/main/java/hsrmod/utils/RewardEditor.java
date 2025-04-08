@@ -11,6 +11,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.RelicLibrary;
@@ -20,6 +21,7 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
 import com.megacrit.cardcrawl.saveAndContinue.SaveFile;
 import hsrmod.characters.StellaCharacter;
+import hsrmod.effects.TopWarningEffect;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
 import hsrmod.modcore.HSRModConfig;
@@ -77,11 +79,11 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
             this.tag = tag;
 
             List<RewardItem> rewards = AbstractDungeon.combatRewardScreen.rewards;
-            
+
             for (Consumer<List<RewardItem>> extraReward : extraRewards) {
                 extraReward.accept(rewards);
             }
-            
+
             if (tag == null) return;
 
             for (RewardItem reward : rewards) {
@@ -136,15 +138,15 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
             }
         }
     }
-    
+
     public void setRewardByPath(RewardItem reward) {
         setRewardByPath(tag, reward, false);
     }
-    
+
     public void setRewardByPath(RewardItem reward, boolean ignoreChance) {
         setRewardByPath(tag, reward, ignoreChance);
     }
-    
+
     public void setRewardByPath(AbstractCard.CardTags tag, RewardItem reward) {
         setRewardByPath(tag, reward, false);
     }
@@ -199,7 +201,7 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
             }
         }
     }
-    
+
     public AbstractCard getCardByPath(AbstractCard.CardRarity rarity, ArrayList<AbstractCard> currentRewardCards) {
         return getCardByPath(tag, rarity, currentRewardCards);
     }
@@ -251,9 +253,9 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
      */
     public boolean checkChance(AbstractCard.CardRarity rarity) {
         float chance = 0;
-        int[] commonChance      = new int[]{30, 15, 10, 5};
-        int[] uncommonChance    = new int[]{40, 20, 10, 5};
-        int[] rareChance        = new int[]{50, 30, 20, 10};
+        int[] commonChance = new int[]{30, 15, 10, 5};
+        int[] uncommonChance = new int[]{40, 20, 10, 5};
+        int[] rareChance = new int[]{50, 30, 20, 10};
         int actIndex = Math.min(AbstractDungeon.actNum - 1, 3);
         if (actIndex < 0) actIndex = 0;
         switch (rarity) {
@@ -385,6 +387,11 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
             }
             if (AbstractDungeon.ascensionLevel >= 20 && AbstractDungeon.player.gold < HSRModConfig.getGoldInc()) {
                 AbstractDungeon.player.gainGold(HSRModConfig.getGoldInc());
+                if (Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT) {
+                    AbstractDungeon.topLevelEffectsQueue.add(new TopWarningEffect("⚠阈值协议生效⚠"));
+                } else {
+                    AbstractDungeon.topLevelEffectsQueue.add(new TopWarningEffect("⚠THRESHOLD PROTOCOLS ACTIVATED⚠"));
+                }
             }
         }
     }
@@ -392,7 +399,7 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
     public static void addExtraRewardToTop(Consumer<List<RewardItem>> extraReward) {
         getInstance().extraRewards.add(0, extraReward);
     }
-    
+
     public static void addExtraCardRewardToTop() {
         getInstance().extraRewards.add(0, rewards -> rewards.add(new RewardItem()));
     }

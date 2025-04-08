@@ -54,7 +54,7 @@ public class CharmonyBananAdvisor extends BaseMonster implements IBanana {
         });
         
         channelCount = specialAs ? 2 : 1;
-        bgm = "Bananas";
+        bgm = "The Fool Always Rings Twice";
     }
 
     @Override

@@ -58,11 +58,6 @@ public class TopazNumby2 extends BaseCard implements PreFollowUpSubscriber {
     }
 
     @Override
-    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        return super.canUse(p, m) && followedUp;
-    }
-
-    @Override
     public void triggerOnOtherCardPlayed(AbstractCard c) {
         if (c instanceof BaseCard) {
             BaseCard baseCard = (BaseCard) c;
@@ -88,7 +83,7 @@ public class TopazNumby2 extends BaseCard implements PreFollowUpSubscriber {
                     break;
                 }
             }
-            if (card != null) {
+            if (card != null) { 
                 count++;
                 if (count == 2) {
                     count = 0;

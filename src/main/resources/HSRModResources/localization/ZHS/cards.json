@@ -67,7 +67,7 @@
     "EXTENDED_DESCRIPTION": [
       "该说再见了……"
     ],
-    "SIGNATURE_UNLOCK_CONDITION": "一局游戏内打出此牌触发所有持续伤害 #b2 次。"
+    "SIGNATURE_UNLOCK_CONDITION": "一场战斗内打出此牌触发所有持续伤害 #b2 次。"
   },
   "HSRMod:Robin1": {
     "SIGNATURE_UNLOCK_CONDITION": "一次性通过此牌追击 #b10 张牌。"

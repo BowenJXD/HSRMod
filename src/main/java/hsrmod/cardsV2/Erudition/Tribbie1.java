@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
 import hsrmod.powers.uniqueBuffs.TribbiePower;
 
 public class Tribbie1 extends BaseCard {
@@ -11,7 +12,8 @@ public class Tribbie1 extends BaseCard {
     
     public Tribbie1() {
         super(ID);
-        energyCost = 120;
+        setBaseEnergyCost(120);
+        tags.add(CustomEnums.ENERGY_COSTING);
     }
 
     @Override

@@ -27,10 +27,10 @@ import hsrmod.powers.enemyOnly.ChargingPower;
 import hsrmod.powers.enemyOnly.ResonatePower;
 import hsrmod.powers.enemyOnly.SummonedPower;
 import hsrmod.powers.misc.ToughnessPower;
+import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.subscribers.PreBreakSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
-import me.antileaf.signature.utils.SignatureHelper;
 
 import java.util.Iterator;
 import java.util.Objects;

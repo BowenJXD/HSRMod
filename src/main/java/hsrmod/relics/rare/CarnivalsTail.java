@@ -1,3 +1,4 @@
+/*
 package hsrmod.relics.rare;
 
 import basemod.BaseMod;
@@ -70,3 +71,4 @@ public class CarnivalsTail extends BaseRelic implements RelicGetSubscriber {
         }
     }
 }
+*/

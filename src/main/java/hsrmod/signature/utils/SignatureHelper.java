@@ -38,6 +38,10 @@ public abstract class SignatureHelper {
 		return SignatureHelperInternal.isUnlocked(id);
 	}
 
+	public static void addIllustrators(String jsonFile) {
+		SignatureHelperInternal.addIllustrators(jsonFile);
+	}
+	
 	public static boolean isEnabled(String id) {
 		return SignatureHelperInternal.isEnabled(id);
 	}

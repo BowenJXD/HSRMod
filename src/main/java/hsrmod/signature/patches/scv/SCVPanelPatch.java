@@ -255,6 +255,15 @@ public class SCVPanelPatch {
 							false, false);
 				}
 
+				String illustrator = SignatureHelperInternal.getIllustrator(___card.cardID);
+				if (illustrator != null) {
+					FontHelper.renderSmartText(sb, FontHelper.cardTitleFont, illustrator,
+							Fields.descHb.get(_inst).cX - 140.0F * Settings.scale,
+							Fields.descHb.get(_inst).cY - 70.0F * Settings.scale,
+							280.0F * Settings.scale, 32.0F * Settings.scale,
+							Settings.CREAM_COLOR);
+				}
+
 				Fields.descHb.get(_inst).render(sb);
 			}
 			else if (!SignatureHelperInternal.isUnlocked(___card.cardID)) {

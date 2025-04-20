@@ -1,10 +1,14 @@
 package hsrmod.actions;
 
+import basemod.BaseMod;
+import basemod.interfaces.PostDungeonUpdateSubscriber;
+import basemod.interfaces.PostUpdateSubscriber;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import hsrmod.subscribers.SubscriptionManager;
 
 import java.util.*;
 import java.util.function.Predicate;
@@ -13,7 +17,7 @@ import java.util.function.Predicate;
  * @author Kurrent Gayronld (Somdy)
  * @see <a href="https://github.com/Somdy/LazyManKitss">LazyManKits</a>
  */
-public class SimpleGridCardSelectBuilder extends AbstractGameAction {
+public class SimpleGridCardSelectBuilder extends AbstractGameAction implements PostDungeonUpdateSubscriber {
     private String msg;
     private GridCardManipulator cm;
     @Deprecated
@@ -55,6 +59,7 @@ public class SimpleGridCardSelectBuilder extends AbstractGameAction {
         gridOpened = false;
         actionType = ActionType.CARD_MANIPULATION;
         duration = startDuration = Settings.ACTION_DUR_XFAST;
+        BaseMod.subscribe(this);
     }
 
     public SimpleGridCardSelectBuilder(String msg, GridCardManipulator cm, boolean anyNumber, boolean canCancel,
@@ -78,6 +83,7 @@ public class SimpleGridCardSelectBuilder extends AbstractGameAction {
         gridOpened = false;
         actionType = ActionType.CARD_MANIPULATION;
         duration = startDuration = Settings.ACTION_DUR_XFAST;
+        BaseMod.subscribe(this);
     }
 
     @SafeVarargs
@@ -163,6 +169,7 @@ public class SimpleGridCardSelectBuilder extends AbstractGameAction {
             gridOpened = true;
             if (cardGroups == null) {
                 isDone = true;
+                BaseMod.unsubscribe(this);
                 return;
             }
             tmpGroup = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
@@ -182,6 +189,7 @@ public class SimpleGridCardSelectBuilder extends AbstractGameAction {
             }
             if (tmpGroup.isEmpty()) {
                 isDone = true;
+                BaseMod.unsubscribe(this);
                 return;
             }
             if (anyNumber) {
@@ -191,23 +199,39 @@ public class SimpleGridCardSelectBuilder extends AbstractGameAction {
             }
         }
         if (AbstractDungeon.gridSelectScreen.selectedCards.size() >= amount 
-                || AbstractDungeon.gridSelectScreen.confirmButton.hb.clicked) {
-            int index = 0;
-            for (AbstractCard card : tmpGroup.group) {
-                CardGroup group = cardGroupMap.get(card);
-                if (AbstractDungeon.gridSelectScreen.selectedCards.contains(card) && group != null && !group.isEmpty()) {
-                    if (cm.manipulate(card, index, group)) {
-                        // group.removeCard(card);
-                    }
-                    index++;
+                || AbstractDungeon.gridSelectScreen.confirmButton.hb.clickStarted) {
+            collect();
+        }
+        if (isDone) {
+            BaseMod.unsubscribe(this);
+        }
+    }
+
+    private void collect() {
+        int index = 0;
+        for (AbstractCard card : tmpGroup.group) {
+            CardGroup group = cardGroupMap.get(card);
+            if (AbstractDungeon.gridSelectScreen.selectedCards.contains(card) && group != null && !group.isEmpty()) {
+                if (cm.manipulate(card, index, group)) {
+                    // group.removeCard(card);
                 }
-                AbstractDungeon.player.hand.refreshHandLayout();
-                AbstractDungeon.player.hand.applyPowers();
+                index++;
             }
-            AbstractDungeon.gridSelectScreen.selectedCards.clear();
             AbstractDungeon.player.hand.refreshHandLayout();
-            isDone = true;
-            tmpGroup.clear();
+            AbstractDungeon.player.hand.applyPowers();
+        }
+        AbstractDungeon.gridSelectScreen.selectedCards.clear();
+        AbstractDungeon.player.hand.refreshHandLayout();
+        isDone = true;
+        tmpGroup.clear();
+    }
+
+    @Override
+    public void receivePostDungeonUpdate() {
+        if ((AbstractDungeon.actionManager.actions.contains(this) || AbstractDungeon.actionManager.currentAction == this)
+                && anyNumber && AbstractDungeon.gridSelectScreen.confirmButton.hb.clickStarted) {
+            BaseMod.unsubscribeLater(this);
+            collect();
         }
     }
 }

@@ -15,8 +15,18 @@ public class VileMechanicalSatellite900 extends BaseRelic {
     }
 
     @Override
+    public void onEquip() {
+        super.onEquip();
+        trigger(AbstractDungeon.getCurrRoom());
+    }
+
+    @Override
     public void onEnterRoom(AbstractRoom room) {
         super.onEnterRoom(room);
+        trigger(room);
+    }
+    
+    void trigger(AbstractRoom room) {
         if (room instanceof ShopRoom) {
             beginLongPulse();
             ModHelper.addEffectAbstract(()->{

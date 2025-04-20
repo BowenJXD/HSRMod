@@ -30,7 +30,8 @@
       "Choose %d cards to purge",
       "Choose %d cards to gain",
       "Choose %d cards to transform",
-      "Extra reward!"
+      "Extra reward!",
+      "Choose any cards to discard"
     ]
   },
   "HSRModConfig": {

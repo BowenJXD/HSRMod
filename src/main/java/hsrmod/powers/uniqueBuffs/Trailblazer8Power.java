@@ -45,7 +45,8 @@ public class Trailblazer8Power extends PowerPower {
     @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
         super.onUseCard(card, action);
-        if (card.baseBlock > 0 && card.block > 0) {
+        if (card.baseBlock > 0 && card.block > 0 
+                && AbstractDungeon.player.hand.size() < BaseMod.MAX_HAND_SIZE) {
             Quake quake = new Quake();
             quake.baseDamage = card.block;
             if (upgraded) quake.upgrade();

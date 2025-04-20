@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.relics.NeowsLament;
 import hsrmod.modcore.HSRMod;
 import hsrmod.patches.RelicTagField;
 import hsrmod.relics.starter.WaxOfElation;
@@ -16,6 +17,7 @@ import hsrmod.utils.RelicEventHelper;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class TheRelicFixerEvent extends PhasedEvent {
@@ -38,7 +40,9 @@ public class TheRelicFixerEvent extends PhasedEvent {
         phase0.addOption(new TextPhase.OptionInfo(GeneralUtil.tryFormat(OPTIONS[0], fix1Cost))
                 .setOptionResult((i) -> {
                     AbstractDungeon.player.loseGold(fix1Cost);
-                    List<AbstractRelic> relics = AbstractDungeon.player.relics.stream().filter(r -> r.usedUp).collect(Collectors.toList());
+                    List<AbstractRelic> relics = AbstractDungeon.player.relics.stream()
+                            .filter(r -> r.usedUp && !Objects.equals(r.relicId, NeowsLament.ID))
+                            .collect(Collectors.toList());
                     if (relics.isEmpty()) return;
                     AbstractRelic relic = GeneralUtil.getRandomElement(relics, AbstractDungeon.eventRng);
                     if (relic == null) return;
@@ -51,7 +55,9 @@ public class TheRelicFixerEvent extends PhasedEvent {
         phase0.addOption(new TextPhase.OptionInfo(GeneralUtil.tryFormat(OPTIONS[1], fixAllCost))
                 .setOptionResult((i) -> {
                     AbstractDungeon.player.loseGold(fixAllCost);
-                    AbstractRelic[] relicsArray = AbstractDungeon.player.relics.stream().filter(r -> r.usedUp).toArray(AbstractRelic[]::new);
+                    AbstractRelic[] relicsArray = AbstractDungeon.player.relics.stream()
+                            .filter(r -> r.usedUp && !Objects.equals(r.relicId, NeowsLament.ID))
+                            .toArray(AbstractRelic[]::new);
                     ModHelper.addEffectAbstract(() -> RelicEventHelper.loseRelics(false, relicsArray));
                     ModHelper.addEffectAbstract(() -> RelicEventHelper.gainRelics(Arrays.stream(relicsArray).map(r -> r.relicId).toArray(String[]::new)));
                     transitionKey(1);

@@ -76,4 +76,10 @@ public class GustoPower extends StatePower implements PreBreakSubscriber {
             addToBot(new RemoveSpecificPowerAction(owner, owner, POWER_ID));
         }
     }
+
+    @Override
+    public void onDeath() {
+        super.onDeath();
+        CardBorderGlowManager.removeGlowInfo(glowInfo);
+    }
 }

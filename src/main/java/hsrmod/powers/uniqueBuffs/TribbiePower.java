@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cardsV2.Erudition.Tribbie1;
 import hsrmod.modcore.ElementType;
@@ -13,8 +14,10 @@ import hsrmod.powers.PowerPower;
 import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.subscribers.PreElementalDamageSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
+import hsrmod.utils.ModHelper;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
@@ -62,12 +65,15 @@ public class TribbiePower extends PowerPower implements PreElementalDamageSubscr
     @Override
     public void onAfterUseCard(AbstractCard card, UseCardAction action) {
         super.onAfterUseCard(card, action);
+        if (upgraded) AbstractDungeon.getMonsters().monsters.stream().filter(ModHelper::check).forEach(targets::add);
         if (targets.isEmpty()) return;
-        AbstractCreature targetWithMaxHp = targets.stream().max((a, b) -> a.currentHealth - b.currentHealth).get();
+        AbstractCreature targetWithMaxHp = targets.stream().max(Comparator.comparingInt(a -> a.currentHealth)).get();
         int dmg = amount * targets.size();
         if (!upgraded) dmg -= amount;
         if (dmg > 0) {
-            addToTop(new ElementalDamageAction(targetWithMaxHp, new ElementalDamageInfo(owner, dmg, ElementType.Quantum, 0), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+            ElementalDamageInfo info = new ElementalDamageInfo(owner, dmg, ElementType.Quantum, 0);
+            info.applyPowers(owner, targetWithMaxHp);
+            addToTop(new ElementalDamageAction(targetWithMaxHp, info, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
             totalDmgForTurn += dmg;
             if (totalDmgForTurn >= 33) {
                 SignatureHelper.unlock(HSRMod.makePath(Tribbie1.ID), true);
@@ -78,7 +84,8 @@ public class TribbiePower extends PowerPower implements PreElementalDamageSubscr
     @Override
     public float preElementalDamage(ElementalDamageAction action, float dmg) {
         if (SubscriptionManager.checkSubscriber(this) 
-                && action.info.card != null) {
+                && action.info.card != null 
+                && !upgraded) {
             targets.add(action.target);
         }
         return dmg;

@@ -22,13 +22,13 @@ public class SanctionRatePower extends StatePower {
 
     public static int stackLimit = 100;
     public static int stackCount = 33;
-    
+
     CardBorderGlowManager.GlowInfo glowInfo;
-    
+
     public SanctionRatePower(AbstractCreature owner, int amount) {
         super(POWER_ID, owner, amount);
         this.updateDescription();
-        
+
         glowInfo = new CardBorderGlowManager.GlowInfo() {
             @Override
             public boolean test(AbstractCard abstractCard) {
@@ -82,8 +82,8 @@ public class SanctionRatePower extends StatePower {
         super.stackPower(stackAmount);
         if (amount > stackLimit) {
             amount = stackLimit;
-        }
-        else if (Math.abs(stackLimit - amount) <= 1) {
+        } else if (Math.abs(stackLimit - amount) <= 1) {
+            CardBorderGlowManager.removeGlowInfo(glowInfo);
             amount = stackLimit;
             AbstractMonster m = (AbstractMonster) owner;
             if (m != null) {
@@ -92,26 +92,30 @@ public class SanctionRatePower extends StatePower {
                 }
                 ModHelper.addToBotAbstract(m::createIntent);
             }
-            
+
             if (!AbstractDungeon.actionManager.turnHasEnded) {
                 addToBot(new VFXAction(new TimeWarpTurnEndEffect()));
                 addToBot(new PressEndTurnButtonAction());
-            }
-            else if (m != null) {
+            } else if (m != null) {
                 AbstractDungeon.actionManager.monsterQueue.add(new MonsterQueueItem(m));
             }
-            
+
             ToughnessPower power = (ToughnessPower) owner.getPower(ToughnessPower.POWER_ID);
             if (power != null) {
                 power.lock(this);
             }
-        }
-        else if (amount == 0) {
+        } else if (amount == 0) {
             ToughnessPower power = (ToughnessPower) owner.getPower(ToughnessPower.POWER_ID);
             if (power != null) {
                 power.unlock(this);
             }
         }
         updateDescription();
+    }
+
+    @Override
+    public void onDeath() {
+        super.onDeath();
+        CardBorderGlowManager.removeGlowInfo(glowInfo);
     }
 }

@@ -28,6 +28,7 @@ import hsrmod.cards.base.Danheng0;
 import hsrmod.cards.base.Himeko0;
 import hsrmod.cards.base.March7th0;
 import hsrmod.cards.base.Welt0;
+import hsrmod.cardsV2.Abundance.Castorice1;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.misc.EnergyPower;
@@ -40,6 +41,7 @@ import hsrmod.utils.ModHelper;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
@@ -134,7 +136,7 @@ public class PomPomBlessing extends CustomRelic {
                 addToTop(new SelectCardsAction(AbstractDungeon.player.masterDeck.group, 1, DESCRIPTIONS[2],
                         false, card -> card.hasTag(CustomEnums.REVIVE), cards -> {
                     AbstractCard card = cards.get(0);
-                    ModHelper.findCards(card1 -> card1.getClass().equals(card.getClass())).forEach(findResult -> {
+                    ModHelper.findCards(card1 -> Objects.equals(card1.cardID, card.cardID)).forEach(findResult -> {
                         findResult.group.removeCard(findResult.card);
                     });
                     AbstractDungeon.player.masterDeck.removeCard(card);
@@ -153,6 +155,8 @@ public class PomPomBlessing extends CustomRelic {
                     } else if (card instanceof Welt0) {
                         relicName = WeltRelic.ID;
                         text = DESCRIPTIONS[6]; // 
+                    } else if (card instanceof Castorice1) {
+                        text = DESCRIPTIONS[7]; //
                     }
 
                     if (!relicName.isEmpty())

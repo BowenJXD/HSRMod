@@ -12,6 +12,7 @@ import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.powers.BasePower;
 import hsrmod.powers.misc.DoTPower;
 
 import java.util.ArrayList;
@@ -39,6 +40,8 @@ public final class SubscriptionManager {
     List<PreFollowUpSubscriber> preFollowUpSubscribers = new ArrayList<>();
     List<PostRelicDestroySubscriber> postRelicDestroySubscribers = new ArrayList<>();
     List<PostMonsterDeathSubscriber> postMonsterDeathSubscribers = new ArrayList<>();
+    List<PostHPUpdateSubscriber> postHPUpdateSubscribers = new ArrayList<>();
+    List<PrePowerTriggerSubscriber> prePowerTriggerSubscribers = new ArrayList<>();
 
     HashMap<RunnableType, List<IRunnableSubscriber>> runnableSubscribers = new HashMap<>();
     HashMap<NumChangerType, List<INumChangerSubscriber>> numChangerSubscribers = new HashMap<>();
@@ -118,6 +121,14 @@ public final class SubscriptionManager {
             if (addToFront) postMonsterDeathSubscribers.add(0, (PostMonsterDeathSubscriber) sub);
             else postMonsterDeathSubscribers.add((PostMonsterDeathSubscriber) sub);
         }
+        if (sub instanceof PostHPUpdateSubscriber && !postHPUpdateSubscribers.contains(sub)) {
+            if (addToFront) postHPUpdateSubscribers.add(0, (PostHPUpdateSubscriber) sub);
+            else postHPUpdateSubscribers.add((PostHPUpdateSubscriber) sub);
+        }
+        if (sub instanceof PrePowerTriggerSubscriber && !prePowerTriggerSubscribers.contains(sub)) {
+            if (addToFront) prePowerTriggerSubscribers.add(0, (PrePowerTriggerSubscriber) sub);
+            else prePowerTriggerSubscribers.add((PrePowerTriggerSubscriber) sub);
+        }
 
         if (sub instanceof IRunnableSubscriber) {
             subscribeRunnableHelper((IRunnableSubscriber) sub, ((IRunnableSubscriber) sub).getSubType());
@@ -164,6 +175,8 @@ public final class SubscriptionManager {
         if (sub instanceof PreFollowUpSubscriber) preFollowUpSubscribers.remove(sub);
         if (sub instanceof PostRelicDestroySubscriber) postRelicDestroySubscribers.remove(sub);
         if (sub instanceof PostMonsterDeathSubscriber) postMonsterDeathSubscribers.remove(sub);
+        if (sub instanceof PostHPUpdateSubscriber) postHPUpdateSubscribers.remove(sub);
+        if (sub instanceof PrePowerTriggerSubscriber) prePowerTriggerSubscribers.remove(sub);
 
         if (sub instanceof IRunnableSubscriber) {
             unsubscribeRunnableHelper((IRunnableSubscriber) sub, ((IRunnableSubscriber) sub).getSubType());
@@ -342,6 +355,22 @@ public final class SubscriptionManager {
         }
 
         unsubscribeLaterHelper(PostMonsterDeathSubscriber.class);
+    }
+    
+    public void triggerPostHPUpdate(AbstractCreature creature) {
+        for (PostHPUpdateSubscriber sub : postHPUpdateSubscribers) {
+            sub.postHPUpdate(creature);
+        }
+
+        unsubscribeLaterHelper(PostHPUpdateSubscriber.class);
+    }
+    
+    public void triggerPrePowerTrigger(BasePower power) {
+        for (PrePowerTriggerSubscriber sub : prePowerTriggerSubscribers) {
+            sub.prePowerTrigger(power);
+        }
+        
+        unsubscribeLaterHelper(PrePowerTriggerSubscriber.class);
     }
 
     public void triggerRunnable(RunnableType type) {

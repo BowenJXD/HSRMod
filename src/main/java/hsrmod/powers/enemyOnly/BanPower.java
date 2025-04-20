@@ -142,6 +142,12 @@ public class BanPower extends AbstractPower implements PreBreakSubscriber {
 
         return damageAmount;
     }
+
+    @Override
+    public void onDeath() {
+        super.onDeath();
+        CardBorderGlowManager.removeGlowInfo(glowInfo);
+    }
     
     @Override
     protected void loadRegion(String fileName) {

@@ -23,6 +23,7 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
+import com.megacrit.cardcrawl.monsters.ending.SpireShield;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import hsrmod.cards.base.*;
 import hsrmod.modcore.HSRMod;
@@ -212,10 +213,10 @@ public class StellaCharacter extends CustomPlayer {
             case ERUDITION:
                 retVal.add(HSRMod.makePath(WaxOfErudition.ID));
                 break;
-            /*case ABUNDANCE:
+            case ABUNDANCE:
                 retVal.add(HSRMod.makePath(WaxOfAbundance.ID));
                 break;
-            case REMEMBRANCE:
+            /*case REMEMBRANCE:
                 retVal.add(HSRMod.makePath(WaxOfRemembrance.ID));
                 break;*/
             case TRAILBLAZE:

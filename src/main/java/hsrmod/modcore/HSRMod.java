@@ -53,6 +53,7 @@ import hsrmod.patches.RelicTagField;
 import hsrmod.powers.enemyOnly.PerformancePointPower;
 import hsrmod.relics.BaseRelic;
 import hsrmod.relics.common.AngelTypeIOUDispenser;
+import hsrmod.relics.shop.ARuanPouch;
 import hsrmod.relics.special.*;
 import hsrmod.utils.ModHelper;
 import hsrmod.utils.RewardEditor;
@@ -217,7 +218,8 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
 
     public void addEvents() {
         BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(RuanMeiEvent.ID), RuanMeiEvent.class)
-                .spawnCondition(() -> AbstractDungeon.eventRng.random(99) < 6)
+                .spawnCondition(() -> AbstractDungeon.eventRng.random(99) < 12)
+                .bonusCondition(() -> AbstractDungeon.eventRng.random(99) < (ModHelper.hasRelic(ARuanPouch.ID) ? 100 : 50))
                 .eventType(EventUtils.EventType.ONE_TIME)
                 .playerClass(STELLA_CHARACTER)
                 .create());
@@ -228,11 +230,11 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(TavernEvent.ID), TavernEvent.class)
                 .dungeonID(Luofu.ID)
-                .spawnCondition(() -> !ModHelper.hasRelic(AngelTypeIOUDispenser.ID))
                 // .bonusCondition(() -> ModHelper.hasRelic(WaxOfDestruction.ID))
                 .endsWithRewardsUI(true)
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(IOUDispenserEvent.ID), IOUDispenserEvent.class)
+                .spawnCondition(() -> !ModHelper.hasRelic(AngelTypeIOUDispenser.ID))
                 .dungeonID(Luofu.ID)
                 // .bonusCondition(() -> ModHelper.hasRelic(WaxOfNihility.ID))
                 .create());

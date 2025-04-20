@@ -782,5 +782,17 @@
     "DESCRIPTIONS": [
       "Obtain a random state card upon shuffle."
     ]
+  },
+  "HSRMod:Necrosis": {
+    "NAME": "Necrosis",
+    "DESCRIPTIONS": [
+      "At start of turn, remove 1 stack to trigger: if temporary HP >= #b%d , lose it."
+    ]
+  },
+  "HSRMod:DewDrop": {
+    "NAME": "DewDrop",
+    "DESCRIPTIONS": [
+      "At end of turn, remove all stack to trigger: deal #b%d damage to random enemy."
+    ]
   }
 }

@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.unique.LoseEnergyAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
+import com.megacrit.cardcrawl.powers.EnergizedPower;
 import com.megacrit.cardcrawl.powers.RegrowPower;
 import com.megacrit.cardcrawl.powers.watcher.EnergyDownPower;
 import com.megacrit.cardcrawl.vfx.combat.ShockWaveEffect;
@@ -38,13 +39,7 @@ public class FortuneBananAdvisor extends BaseMonster implements IBanana {
             if (p.hasPower(EnergyDownPower.POWER_ID))
                 addToBot(new ReducePowerAction(p, this, EnergyDownPower.POWER_ID, 1));
             else
-                AbstractDungeon.actionManager.addToTurnStart(new AbstractGameAction() {
-                    @Override
-                    public void update() {
-                        isDone = true;
-                        ModHelper.addEffectAbstract(()-> ModHelper.addEffectAbstract(() -> addToBot(new GainEnergyAction(1))));
-                    }
-                });
+                addToBot(new ApplyPowerAction(p, this, new EnergizedPower(p, 1)));
         });
         addMoveA(Intent.ATTACK_DEBUFF, 15, mi->{
             attack(mi, AbstractGameAction.AttackEffect.BLUNT_LIGHT, AttackAnim.FAST);

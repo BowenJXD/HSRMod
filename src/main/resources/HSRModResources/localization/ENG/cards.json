@@ -5,6 +5,11 @@
     ],
     "SIGNATURE_UNLOCK_CONDITION": "Deal the final blow to #yCorrupt #yHeart with this card, or #yBreak it."
   },
+  "HSRMod:Trailblazer3": {
+    "EXTENDED_DESCRIPTION": [
+      "Gain !B! temporary HP."
+    ]
+  },
   "HSRMod:March7th0": {
     "EXTENDED_DESCRIPTION": [
       "Deal !D! ice damage to all enemies (!TR!)."

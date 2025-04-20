@@ -5,6 +5,7 @@ import basemod.helpers.CardBorderGlowManager;
 import basemod.interfaces.OnCardUseSubscriber;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.utility.HandCheckAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.StrengthPower;
@@ -109,6 +110,7 @@ public class PresentInebriatedInRevelry extends BaseMonster implements OnCardUse
     void endSkill() {
         BaseMod.unsubscribe(this);
         CardBorderGlowManager.removeGlowInfo(ID);
+        addToBot(new HandCheckAction());
     }
 
     @Override

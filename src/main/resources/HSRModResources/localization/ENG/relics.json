@@ -9,7 +9,8 @@
       "I don't want to… be alone…",
       "This… can't be…",
       "That's… my final lesson… for you…",
-      "Live on, kid…"
+      "Live on, kid…",
+      "Finally… A life to save…"
     ]
   },
   "HSRMod:GalacticBat": {
@@ -157,6 +158,13 @@
     "FLAVOR": "She quickened her pace, barefoot and agile, with the girl closely chasing after her. Or perhaps, they were both chasing after each other.",
     "DESCRIPTIONS": [
       "All upgraded starter strike becomes AoE at start of battle. When using starter strike, gain #b40 [hsrmod:chargeIcon] ."
+    ]
+  },
+  "HSRMod:LongevousDisciple": {
+    "NAME": "Longevous Disciple",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "Starter defends would now gain temp HP instead, and its block + #b1."
     ]
   },
   "HSRMod:MasterOfDreamMachinations": {
@@ -552,7 +560,7 @@
     "NAME": "A Ruan Pouch",
     "FLAVOR": "It is said that she wished to carry the universe in her pocket, yet was forced to seal it when the dimensionality within continued to expand.",
     "DESCRIPTIONS": [
-      "Upon pickup, gain #b3 additional card rewards. Afterward, the number of cards available to choose from in rewards is reduced to #b1. #rDestroys after #b2 trigger.",
+      "Upon pickup, increase the chance to encounter #bRuan #bMei event, and gain #b3 additional card rewards. Afterward, the number of cards available to choose from in rewards is reduced to #b1. #rDestroys after #b2 trigger.",
       "A Ruan Pouch!"
     ]
   },

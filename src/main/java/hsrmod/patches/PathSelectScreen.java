@@ -39,6 +39,7 @@ public class PathSelectScreen implements ISubscriber, CustomSavable<Integer> {
             PATHS.add(new Path("HSRModResources/img/char/TheHuntLogo.png", "巡猎命途", "通过摸牌进行输出", hsrmod.modcore.Path.THE_HUNT));
             PATHS.add(new Path("HSRModResources/img/char/PropagationLogo.png", "繁育命途", "通过能量进行输出", hsrmod.modcore.Path.PROPAGATION));
             PATHS.add(new Path("HSRModResources/img/char/EruditionLogo.png", "智识命途", "通过充能进行输出", hsrmod.modcore.Path.ERUDITION));
+            PATHS.add(new Path("HSRModResources/img/char/AbundanceLogo.png", "丰饶命途", "通过临时生命进行输出", hsrmod.modcore.Path.ABUNDANCE));
         }
         else {
             PATHS.add(new Path("HSRModResources/img/char/TrailblazeLogo.png", "Trailblaze", "Trailblaze your own way", hsrmod.modcore.Path.TRAILBLAZE));
@@ -49,6 +50,7 @@ public class PathSelectScreen implements ISubscriber, CustomSavable<Integer> {
             PATHS.add(new Path("HSRModResources/img/char/TheHuntLogo.png", "The Hunt", "Damage through draw", hsrmod.modcore.Path.THE_HUNT));
             PATHS.add(new Path("HSRModResources/img/char/PropagationLogo.png", "Propagation", "Damage through energy", hsrmod.modcore.Path.PROPAGATION));
             PATHS.add(new Path("HSRModResources/img/char/EruditionLogo.png", "Erudition", "Damage through charge", hsrmod.modcore.Path.ERUDITION));
+            PATHS.add(new Path("HSRModResources/img/char/AbundanceLogo.png", "Abundance", "Damage through temporary HP", hsrmod.modcore.Path.ABUNDANCE));
         }
     }
 

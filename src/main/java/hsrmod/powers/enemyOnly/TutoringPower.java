@@ -42,4 +42,10 @@ public class TutoringPower extends BuffPower implements PreBreakSubscriber {
             addToTop(new RemoveSpecificPowerAction(owner, owner, this));
         }
     }
+
+    @Override
+    public void onDeath() {
+        super.onDeath();
+        addToTop(new RemoveSpecificPowerAction(owner, owner, this));
+    }
 }

@@ -6,6 +6,11 @@
     "SIGNATURE_UNLOCK_CONDITION": "打出此牌 #y击破 或 #y斩杀 #y心脏 。",
     "SIGNATURE_ILLUSTRATOR": "純白可憐(Pale)"
   },
+  "HSRMod:Trailblazer3": {
+    "EXTENDED_DESCRIPTION": [
+      "获得 !B! 点 临时生命 。"
+    ]
+  },
   "HSRMod:March7th0": {
     "EXTENDED_DESCRIPTION": [
       "群体：造成 !D! 点伤害（冰 !TR! ）。"

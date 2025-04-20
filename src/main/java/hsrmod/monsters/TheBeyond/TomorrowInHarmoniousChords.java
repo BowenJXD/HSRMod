@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RollMoveAction;
+import com.megacrit.cardcrawl.actions.utility.HandCheckAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -126,6 +127,7 @@ public class TomorrowInHarmoniousChords extends BaseMonster implements OnCardUse
     void endSkill() {
         BaseMod.unsubscribe(this);
         CardBorderGlowManager.removeGlowInfo(ID);
+        addToBot(new HandCheckAction());
     }
 
     @Override

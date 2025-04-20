@@ -198,6 +198,7 @@ public class DataManager {
             replacements.put("击破后", " hsrmod:击破 后");
             replacements.put("击破伤害", " hsrmod:击破伤害 ");
             replacements.put("持续伤害", " hsrmod:持续伤害 ");
+            replacements.put("临时生命", " 临时生命 ");
             replacements.put("弹射", " hsrmod:弹射 ");
             replacements.put("耗能", " hsrmod:耗能 ");
             replacements.put("消耗。", " 消耗 。");
@@ -229,6 +230,7 @@ public class DataManager {
             replacements.put("DoT", " hsrmod:DoT ");
             replacements.put("Wind Shear", "Wind-Shear");
             replacements.put("Bounce", " hsrmod:Bounce ");
+            replacements.put("temporary HP", "temporary_hp");
 
             // 读取文件并替换文本
             replaceTextInFile(CARD_CSV_ENG, replacements);

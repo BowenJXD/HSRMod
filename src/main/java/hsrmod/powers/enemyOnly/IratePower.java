@@ -106,8 +106,7 @@ public class IratePower extends StatePower implements OnPlayerDamagedSubscriber 
 
     @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
-        if (info.type == DamageInfo.DamageType.NORMAL
-                && damageAmount > 0) {
+        if (info.type == DamageInfo.DamageType.NORMAL) {
             reducePower(1);
         }
         return damageAmount;

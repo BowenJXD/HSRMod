@@ -71,4 +71,10 @@ public class PranaSiphonedPower extends DebuffPower {
         addToBot(new RemoveSpecificPowerAction(owner, owner, POWER_ID));
         addToBot(new ApplyPowerAction(owner, owner, new DexterityPower(owner, amount)));
     }
+
+    @Override
+    public void onDeath() {
+        super.onDeath();
+        CardBorderGlowManager.removeGlowInfo(glowInfo);
+    }
 }

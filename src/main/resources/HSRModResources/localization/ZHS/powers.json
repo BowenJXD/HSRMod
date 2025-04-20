@@ -702,7 +702,7 @@
   "HSRMod:Tutoring": {
     "NAME": "补课",
     "DESCRIPTIONS": [
-      "不会切换 #y频道 。 #y击破 后移除。"
+      "不会切换 #y频道 。 #y击破 或击杀后移除。"
     ]
   },
   "HSRMod:FickleFortune": {
@@ -781,6 +781,18 @@
     "NAME": "阈值诅咒",
     "DESCRIPTIONS": [
       "洗牌后，获得1张状态牌。"
+    ]
+  },
+  "HSRMod:Necrosis": {
+    "NAME": "坏死",
+    "DESCRIPTIONS": [
+      "回合开始时，移除1层并触发：若有 #b%d 点临时生命，失去之。"
+    ]
+  },
+  "HSRMod:DewDrop": {
+    "NAME": "珠露",
+    "DESCRIPTIONS": [
+      "回合结束时，移除所有层触发：对随机敌人造成 #b%d 点固定伤害。"
     ]
   }
 }

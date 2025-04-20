@@ -122,5 +122,13 @@
   {
     "NAMES": ["Plated Armor", "plated-armor"],
     "DESCRIPTION": "At the end of your turn, gain X Block. Receiving unblocked attack damage reduces Plated Armor by 1."
-  }  
+  },  
+  {
+    "NAMES": ["Necrosis", "necrosis"],
+    "DESCRIPTION": "Stacks 1 first when triggered via card (At start of turn, remove 1 stack to trigger: if temporary HP >= X, lose X HP)."
+  },
+  {
+    "NAMES": ["Dewdrop", "Dew-drop", "dewdrop"],
+    "DESCRIPTION": "At end of turn, remove all stack to trigger: deal X damage to random enemy."
+  }
 ]

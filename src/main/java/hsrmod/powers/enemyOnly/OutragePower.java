@@ -71,4 +71,10 @@ public class OutragePower extends DebuffPower {
             remove(1);
         }
     }
+
+    @Override
+    public void onDeath() {
+        super.onDeath();
+        CardBorderGlowManager.removeGlowInfo(glowInfo);
+    }
 }

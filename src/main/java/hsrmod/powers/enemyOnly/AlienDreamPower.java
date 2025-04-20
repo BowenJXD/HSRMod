@@ -12,7 +12,7 @@ public class AlienDreamPower extends DebuffPower {
 
     boolean justApplied = true;
     int dmgMultiplier = 90;
-    int healMultiplier = 30;
+    int healMultiplier = 10;
 
     public AlienDreamPower(AbstractCreature owner, int amount) {
         super(POWER_ID, owner, amount);

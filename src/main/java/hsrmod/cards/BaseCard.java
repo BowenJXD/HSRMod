@@ -235,8 +235,8 @@ public abstract class BaseCard extends AbstractSignatureCard implements SpawnMod
                 || ModHelper.hasRelic(WaxOfPreservation.ID) && tags.contains(CustomEnums.PRESERVATION) 
                 || ModHelper.hasRelic(WaxOfTheHunt.ID) && tags.contains(CustomEnums.THE_HUNT) 
                 || ModHelper.hasRelic(WaxOfErudition.ID) && tags.contains(CustomEnums.ERUDITION)
-                /*|| ModHelper.hasRelic(WaxOfAbundance.ID) && tags.contains(CustomEnums.ABUNDANCE) 
-                || ModHelper.hasRelic(WaxOfRemembrance.ID) && tags.contains(CustomEnums.REMEMBRANCE)*/) {
+                || ModHelper.hasRelic(WaxOfAbundance.ID) && tags.contains(CustomEnums.ABUNDANCE) 
+                /*|| ModHelper.hasRelic(WaxOfRemembrance.ID) && tags.contains(CustomEnums.REMEMBRANCE)*/) {
             return true;
         }
         return false;

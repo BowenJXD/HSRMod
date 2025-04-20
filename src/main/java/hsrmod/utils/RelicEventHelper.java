@@ -40,6 +40,7 @@ public class RelicEventHelper {
     public static String OBTAIN_TEXT = uiStrings.TEXT[3];
     public static String TRANSFORM_TEXT = uiStrings.TEXT[4];
     public static String REWARD_TEXT = uiStrings.TEXT[5];
+    public static String DISCARD_TEXT = uiStrings.TEXT[6];
 
     public static void upgradeCards(int amount) {
         int count = 0;
@@ -101,10 +102,9 @@ public class RelicEventHelper {
         if (cards.length == 0) {
             HSRMod.logger.error("RELIC_EVENT_HELPER: No cards to gain.");
             return;
-        }
-        else if (cards.length == 1)
+        } else if (cards.length == 1)
             AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(cards[0], (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
-        else if (cards.length <= 5){
+        else if (cards.length <= 5) {
             float x = 0;
             for (AbstractCard card : cards) {
                 AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(card, (float) Settings.WIDTH / 6.0F + x, (float) Settings.HEIGHT / 2.0F));
@@ -116,15 +116,14 @@ public class RelicEventHelper {
             }
         }
     }
-    
+
     public static void purgeCards(AbstractCard... cards) {
         if (cards.length == 0) {
             HSRMod.logger.error("RELIC_EVENT_HELPER: No cards to purge.");
             return;
-        }
-        else if (cards.length == 1)
+        } else if (cards.length == 1)
             AbstractDungeon.effectList.add(new PurgeCardEffect(cards[0], (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
-        else if (cards.length <= 5){
+        else if (cards.length <= 5) {
             float x = 0;
             for (AbstractCard card : cards) {
                 AbstractDungeon.effectList.add(new PurgeCardEffect(card, (float) Settings.WIDTH / 6.0F + x, (float) Settings.HEIGHT / 2.0F));
@@ -166,11 +165,11 @@ public class RelicEventHelper {
         }
         return relics;
     }
-    
+
     public static void rewardRelics(int amount) {
         rewardRelics(amount, r -> true);
     }
-    
+
     public static void rewardRelics(int amount, Predicate<AbstractRelic> predicate) {
         addReward(rewards -> {
             rewards.clear();
@@ -180,7 +179,7 @@ public class RelicEventHelper {
             }
         });
     }
-    
+
     public static void gainRelics(AbstractRelic... relics) {
         for (AbstractRelic relic : relics) {
             if (relic == null) {
@@ -299,26 +298,22 @@ public class RelicEventHelper {
         String relicName = "";
         if (tag == CustomEnums.ELATION) {
             relicName = TheAshblazingGrandDuke.ID;
-        }
-        if (tag == CustomEnums.DESTRUCTION) {
+        } else if (tag == CustomEnums.DESTRUCTION) {
             relicName = IronCavalryAgainstTheScourge.ID;
-        }
-        if (tag == CustomEnums.NIHILITY) {
+        } else if (tag == CustomEnums.NIHILITY) {
             relicName = PrisonerInDeepConfinement.ID;
-        }
-        if (tag == CustomEnums.PRESERVATION) {
+        } else if (tag == CustomEnums.PRESERVATION) {
             relicName = KnightOfPurityPalace.ID;
-        }
-        if (tag == CustomEnums.THE_HUNT) {
+        } else if (tag == CustomEnums.THE_HUNT) {
             relicName = MusketeerOfWildWheat.ID;
-        }
-        if (tag == CustomEnums.PROPAGATION) {
+        } else if (tag == CustomEnums.PROPAGATION) {
             relicName = PasserbyOfWanderingCloud.ID;
-        }
-        if (tag == CustomEnums.ERUDITION) {
+        } else if (tag == CustomEnums.ERUDITION) {
             relicName = TheWindSoaringValorous.ID;
+        } else if (tag == CustomEnums.ABUNDANCE) {
+            relicName = LongevousDisciple.ID;
         }
-        if (tag == CustomEnums.TRAILBLAZE) {
+        else if (tag == CustomEnums.TRAILBLAZE) {
             relicName = MasterOfDreamMachinations.ID;
         }
         if (!relicName.isEmpty()) {

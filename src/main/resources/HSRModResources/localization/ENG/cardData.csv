@@ -33,26 +33,29 @@ SwarmKingProgeny,Swarm King Progeny,COMMON,ATTACK,ENEMY,-1," hsrmod:Bounce X tim
 PhenolCompounds,Phenol Compounds,COMMON,SKILL,SELF,1,"Use 80 [hsrmod:ChargeIcon] . After playing the next card this turn, recover [E] equal to the cost of those cards.",,,,1,,"Use 80 [hsrmod:ChargeIcon] . After playing the next card this turn, recover [E] equal to its cost and apply that many layers of hsrmod:Spore to a target.",,,,,·±Óý,,ÖÐ
 Propagation,Propagation,SPECIAL,SKILL,NONE,-2,,,,,,,,,,,,·±Óý,,
 Luocha1,Prayer of Abyss Flower,UNCOMMON,SKILL,SELF,0,"Retain. Exhaust. Gain [E] and heal !M! HP (gain !M! temp HP if HP below 50%), dispel 1 random debuff, and Exhaust 1 card.",,,,2,,"Retain. Exhaust. Gain [E] and heal !M! HP (gain !M! temp HP if HP below 50%), dispel 1 random debuff, and Exhaust any number of cards.",,,,3,·áÈÄ,,¸ß
-Blade1,,UNCOMMON,ATTACK,ALL_ENEMY,5,,,,4,,4,,,,,,·áÈÄ,·ç,µÍ
-Lynx1,,COMMON,SKILL,SELF,1,,,,6,1,,,,,9,1,·áÈÄ,,µÍ
-Natasha1,,COMMON,SKILL,SELF,1,,,,8,3,,,,,12,3,·áÈÄ,,ÖÐ
-FuXuan2,,UNCOMMON,ATTACK,ALL_ENEMY,1,,0,2,9,6,,,,,12,9,·áÈÄ,Á¿×Ó,µÍ
-#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!
-Bailu1,,UNCOMMON,SKILL,SELF,2,,,,3,0,,,,,3,1,·áÈÄ,,ÖÐ
-Jingliu1,,UNCOMMON,ATTACK,ENEMY,2,,15,1,,2,,,,,,3,·áÈÄ,±ù,µÍ
-,,UNCOMMON,SKILL,SELF,1,,,,,2,0,,,,,,·áÈÄ,,µÍ
-Castorice1,,UNCOMMON,SKILL,SELF,1,,,,,2,,,,,,3,·áÈÄ,,µÍ
-MudraOfBlessing,,RARE,SKILL,SELF,-2,,,,,,,,,,,,·áÈÄ,,µÍ
-TimeWaitsForNoOne,,RARE,SKILL,SELF,-2,,,,,2,,,,,,2,·áÈÄ,,µÍ
-SinDeadGraceBorn,,RARE,SKILL,SELF,-2,,,,,,,,,,,,·áÈÄ,,µÍ
-#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!,#REF!
-PerfectTiming,,COMMON,SKILL,SELF,0,,,,,,,,,,,,·áÈÄ,,ÖÐ
+Lynx1,Salted Camping Cans,COMMON,SKILL,SELF,1,"Gain !B! temporary_hp, cleanse !M! debuffs, and exit your current Stance.",,,5,1,,,,,8,1,·áÈÄ,,µÍ
+Natasha1,Gift of Rebirth,COMMON,SKILL,SELF,1,Use 90 [hsrmod:ChargeIcon] . Discard 1 card. Gain !B! temporary_hp and trigger Necrosis. Draw !M! cards.,,,8,3,,,,,12,3,·áÈÄ,,ÖÐ
+Arlan1,Shackle Breaker,COMMON,ATTACK,ENEMY,0,Lose !M! HP. Discard 1 card. Deal !D! lightning damage ( !TR! ).,12,2,,2,,,18,,,3,·áÈÄ,À×,µÍ
+Blade1,Shuhu's Gift,UNCOMMON,ATTACK,ALL_ENEMY,5,"Whenever your HP changes during your turn, Cost -1. When Cost reaches 0, hsrmod:Follow-Up . NL Gain !B! temporary_hp and trigger hsrmod:Necrosis . AoE: Deal wind damage equal to !M!% of your temporary_hp ( !D! ).",0,1,4,50,4,,,,,,·áÈÄ,·ç,µÍ
+FuXuan2,Woes of Many Morphed to One,UNCOMMON,ATTACK,ALL_ENEMY,2,Cost 135. Gain !B! temporary_hp and trigger hsrmod:Necrosis. AoE: Deal quantum damage equal to !M!% of your HP ( !D! ) ( !TR! ).,0,2,15,15,,,,,20,20,·áÈÄ,Á¿×Ó,µÍ
+Bailu1,Gourdful of Elixir,UNCOMMON,SKILL,SELF,2,"Exhaust. Retain. When played or Retained: Gain !B! temporary_hp and trigger hsrmod:Necrosis . For each card in your hand, gain an additional !M! temporary_hp.",,,0,2,,"Exhaust. Retain. When played or Retained: Gain !B! temporary_hp and trigger hsrmod:Necrosis. For each card in your hand, gain an additional !M! temporary_hp. If played, gain 1 intangible.",,,,,·áÈÄ,,ÖÐ
+Jingliu1,Moon On Glacial River,UNCOMMON,ATTACK,ENEMY,2,"Exhaust. Repeat !M! times: Lose !M! HP, Deal !D! ice damage ( !TR! ). Add *Transcendent *Flash to your draw pile, enter Calm .",14,1,,2,,"Exhaust. Repeat !M! times: Lose !M! HP, Deal !D! ice damage ( !TR! ). Add *Transcendent *Flash+ to your draw pile, enter Calm .",,,,3,·áÈÄ,±ù,µÍ
+Jingliu2,Transcendent Flash,SPECIAL,ATTACK,ENEMY,1,Exhaust. Discard 1 card. Deal !D! ice damage ( !TR! ). Add *Moon *On *Glacial *River to your discard pile and exit your current Stance.,4,2,,,,Exhaust. Discard 1 card. Deal !D! ice damage ( !TR! ). Add *Moon *On *Glacial *River+ to your discard pile and exit your current Stance.,6,,,,·áÈÄ,±ù,µÍ
+MayRainbowsRemain,May Rainbows Remain in the Sky,UNCOMMON,SKILL,SELF,1,Innate. Exhaust. Lose !M! HP. Enter Calm . Randomly gain !M! Retain cards.,,,,2,0,Innate. Exhaust. Lose !M! HP. Enter Calm . Choose !M! Retain cards to gain.,,,,,·áÈÄ,,µÍ
+Castorice1,Sanctuary of Mooncocoon,UNCOMMON,SKILL,SELF,1,"Discard any number of cards and trigger hsrmod:Necrosis. For each discarded card, gain !M! temporary_hp. For each Retain card discarded, gain an additional !M! temporary_hp and draw 2 cards.",,,,2,,,,,,3,·áÈÄ,,µÍ
+Mydei1,Blood for Blood,UNCOMMON,ATTACK,ENEMY,-2," hsrmod:Follow-Up when lose total of 8 hp during your turn (now: !M! ). NL Retain. Exhaust. Enter Wrath . deal !D! imaginary damage ( !TR! ), and add *Kingslayer *Be *King to your draw pile.",4,2,,0,," hsrmod:Follow-Up when lose total of 8 hp during your turn (now: !M! ). NL Retain. Exhaust. Enter Wrath . deal !D! imaginary damage ( !TR! ), and add *Kingslayer *Be *King+ to your draw pile.",6,,,,·áÈÄ,ÐéÊý,µÍ
+Mydei2,Kingslayer Be King,SPECIAL,ATTACK,ENEMY,1,Exhaust. hsrmod:Follow-Up when obtained (do costs [E] ). Lose !M! HP. Deal !D! imaginary damage ( !TR! ). Add *Godslayer *Be *God to the top of your draw pile and enter Divinity .,6,3,,2,,Exhaust. hsrmod:Follow-Up when obtained (do costs [E] ). Lose !M! HP. Deal !D! imaginary damage ( !TR! ). Add *Godslayer *Be *God+ to the top of your draw pile and enter Divinity .,9,,,3,·áÈÄ,ÐéÊý,ÎÞ
+Mydei3,Godslayer Be God,SPECIAL,ATTACK,ALL_ENEMY,1,Exhaust. hsrmod:Follow-Up when obtained (do costs [E] ). Lose !M! HP. Deal !D! imaginary damage to all enemy ( !TR! ). Exit your current Stance.,10,4,,6,,,15,,,9,·áÈÄ,ÐéÊý,ÎÞ
+MudraOfBlessing,Mudra Of Blessing,RARE,SKILL,SELF,-2,"Retain. While Retained, gain hsrmod:Dewdrop equal to your temporary_hp and trigger hsrmod:Necrosis .",,,,,,"Retain. While Retained or while discarded, gain hsrmod:Dewdrop equal to your temporary_hp and trigger hsrmod:Necrosis .",,,,,·áÈÄ,,µÍ
+TimeWaitsForNoOne,Time Waits For No One,RARE,SKILL,SELF,-2,"Retain. After playing a card that restores (temporary) HP, restore !M! temporary_hp and gain !M! stacks of Obtain from draw pile upon hsrmod:Dewdrop.",,,,2,,"Retain. After playing a card that restores (temporary) HP, restore !M! temporary_hp and gain !M! stacks of hsrmod:Dewdrop. Exhaust when discarded: doubles hsrmod:Dewdrop and hsrmod:Necrosis .",,,,,·áÈÄ,,µÍ
+HerbPlucker,Herb Plucker,RARE,SKILL,SELF,-2,"Retain. When hsrmod:Necrosis is triggered, draw 1 card. When hsrmod:Dewdrop triggers, gain [E] next turn.",,,,,,"Retain. When hsrmod:Necrosis is triggered, draw 1 card. When hsrmod:Dewdrop triggers, gain [E] next turn. When discarded, trigger hsrmod:Dewdrop and hsrmod:Necrosis",,,,,·áÈÄ,,µÍ
+PerfectTiming,Perfect Timing,COMMON,SKILL,SELF,0,Triggers when a potion is consumed (without playing). NL Randomly gain 1 stack of Dexterity or Artifact.,,,,,,"Triggers when a potion is consumed (without playing). NL Randomly gain 1 stack of Dexterity or Artifact, gain 1 card from draw pile.",,,,,·áÈÄ,,ÖÐ
 Abundance,Abundance,SPECIAL,SKILL,NONE,-2,,,,,,,,,,,,·áÈÄ,,
 Qingque2,Right on the Tiles,COMMON,ATTACK,ALL_ENEMY,4,"When playing card, for every cost of the card, 50% chance: reduce cost by 1. hsrmod:Follow-Up when cost reaches 0. NL Gain [E] , Deal !D! Quantum damage (!TR!) to all enemies !M! times.",2,1,,2,,,,,,3,»¶Óä,Á¿×Ó,ÖÐ
 Herta1,"Fine, I'll Do It Myself",COMMON,ATTACK,ALL_ENEMY,1," hsrmod:Follow-Up when an enemy's HP drops below 50% during your turn. NL Deal !D! ice damage (!TR!) to all enemies. If any enemy's HP drops below 50%, repeat the process.",6,1,,,,,9,,,,»¶Óä,±ù,µÍ
 March7th1,The Power of Cuteness,COMMON,SKILL,SELF,1,"Gain !B! Block, remove 1 stack of debuff, gain ""*Reinforce"" (when taking damage, if you have Block, gain a *Girl *Power card).",,,3,,,"Gain !B! Block, remove 1 stack of debuff, gain ""*Reinforce"" (when taking damage, if you have Block, gain !B! Block, and gain a *Girl *Power card).",,,,,»¶Óä,,¸ß
 March7th2,Girl Power,SPECIAL,ATTACK,SELF_AND_ENEMY,-2,"Exhaust. hsrmod:Follow-Up at the start of your turn. NL Gain !B! Block, deal !D! ice damage (!TR!) to a random enemy.",1,1,1,,,,,,,,»¶Óä,±ù,ÎÞ
-Yanqing1,Amidst the Raining Bliss,UNCOMMON,ATTACK,ENEMY,2,"Use 140 [hsrmod:ChargeIcon] , Deal !D! ice damage (!TR!), if you have Block, deal the damage again; 60% chance to gain *One *With *the *Sword.",12,2,,3,,,15,,,,»¶Óä,±ù,µÍ
+Yanqing1,Amidst the Raining Bliss,UNCOMMON,ATTACK,ENEMY,2,"Use 140 [hsrmod:ChargeIcon] , Deal !D! ice damage (!TR!), if you have Block, deal the damage again; 60% chance to gain *One *With *the *Sword.",12,2,,3,,"Use 140 [hsrmod:ChargeIcon] , Deal !D! ice damage (!TR!), if you have Block, deal the damage again; 60% chance to gain *One *With *the *Sword+.",15,,,,»¶Óä,±ù,µÍ
 Yanqing2,One With the Sword,SPECIAL,ATTACK,ENEMY,-2,"Exhaust. At the start of the turn, hsrmod:Follow-Up if you haven't received unblocked damage since last turn. NL Deal !D! ice damage (!TR!), !M!% chance to apply 1 stack of hsrmod:Frozen.",8,1,,65,,,,,,,»¶Óä,±ù,ÎÞ
 Clara1,Because We Are Family,UNCOMMON,SKILL,SELF,1,"At the start of turn, if you took damage after the last turn ended, hsrmod:Follow-Up . NL Gain !B! block, for every card in exhaust pile, gain 1 more.",,,3,,,,,,6,,»¶Óä,,¸ß
 Himeko1,Victory Rush,UNCOMMON,ATTACK,ALL_ENEMY,3,"After breaking an enemy, hsrmod:Follow-Up . Deal !D! fire damage (!TR!) to all enemies !M! times.",5,1,,2,,,,,,3,»¶Óä,»ð,ÖÐ
@@ -103,7 +106,7 @@ StarcrusherWorker,Starcrusher Worker,COMMON,SKILL,ENEMY,0,"Remove !M! stacks of 
 CleftSingularity,Cleft Singularity,COMMON,SKILL,SELF,1,Exhaust. Gain !M! stacks of hsrmod:Break-Effect .,,,,5,,,,,,7,»ÙÃð,,µÍ
 Destruction,Destruction,SPECIAL,SKILL,NONE,-2,,,,,,,,,,,,»ÙÃð,,
 March7th3,Glacial Cascade,COMMON,ATTACK,ALL_ENEMY,2,"Use 120 [hsrmod:ChargeIcon] , deal !D! ice damage (!TR!) to all enemies, and apply !M! stack of hsrmod:Frozen.",2,2,,2,,,3,3,,3,¼ÇÒä,±ù,ÖÐ
-Remembrance,Remembrance,SPECIAL,SKILL,NONE,-2,,,,,,,,,,,,¼ÇÒä,,
+Remembrance,Remembrance,SPECIAL,SKILL,NONE,-2,,,,,,,,,,,,,,
 Trailblazer1,RIP Home Run,BASIC,ATTACK,ENEMY,1,Deal !D! physical damage (!TR!).,6,2,,,,,9,,,,¿ªÍØ,ÎïÀí,ÎÞ
 March7th0,Frigid Cold Arrow,BASIC,ATTACK,ENEMY,1,Deal !D! ice damage (!TR!).,6,2,,,,,9,,,,¿ªÍØ,±ù,ÎÞ
 Danheng0,Cloudlancer Art: North Wind,BASIC,ATTACK,ENEMY,1,Deal !D! wind damage (!TR!).,6,2,,,,,9,,,,¿ªÍØ,·ç,ÎÞ
@@ -169,21 +172,6 @@ BCI34GrayMatter,BC-I34 Gray Matter,COMMON,SKILL,SELF,1,Gain !M! layers of hsrmod
 MakeTheWorldClamor,Make The World Clamor,COMMON,SKILL,SELF,0,Exhaust. Set [hsrmod:ChargeIcon] to max.,,,,,,Set [hsrmod:ChargeIcon] to max.,,,,,ÖÇÊ¶,,ÖÐ
 Tribbie1,GuessWhoLivesHere,UNCOMMON,POWER,SELF,2,"Use 120 [hsrmod:ChargeIcon] . After playing an attack card, for every other target hit, deal !M! damage to the target with most health.",,,,3,,"Use 120 [hsrmod:ChargeIcon] . After playing an attack card, for every target hit, deal !M! damage to the target with most health.",,,,,ÖÇÊ¶,,µÍ
 TheHerta1,Told Ya! Magic Happens,UNCOMMON,ATTACK,ALL_ENEMY,2,"Use 220 [hsrmod:ChargeIcon] , Deal !D! ice damage (!TR!) to all enemies. If there¡¯s another [hsrmod:ChargeIcon] using card in hand, deal 1 more hit to the monster with most health.",14,1,,1,,"Use 220 [hsrmod:ChargeIcon] , Deal !D! ice damage (!TR!) to all enemies. If there¡¯s another [hsrmod:ChargeIcon] using card, deal 1 more hit to the monster with most health; if there¡¯s another AoE card, deal 1 more hit to it again.",,,,,ÖÇÊ¶,±ù,µÍ
-TerminalNirvana,Terminal Nirvana,RARE,SKILL,SELF,2,Exhaust. Retain. Consume !M! [hsrmod:ChargeIcon] to gain 1 layer of Intangible.,,,,120,,"Retain. Consume !M! [hsrmod:ChargeIcon] to gain 1 layer of Intangible, and this card¡¯s cost doubles for the rest of the battle.",,,,60,ÖÇÊ¶,,ÖÐ
-Erudition,Erudition,SPECIAL,SKILL,NONE,-2,,,,,,,,,,,,ÖÇÊ¶,,
-Imprison,Imprison,COMMON,STATUS,NONE,1,"When enters hand, lose all [hsrmod:ChargeIcon] . When in hand, unable to gain any [hsrmod:ChargeIcon] . When losing, obtain all [hsrmod:ChargeIcon] lost.",,,,,,,,,,,,,
-Frozen,Frozen,COMMON,STATUS,NONE,-2,Retain. Can not be played.,,,,,,,,,,,,,
-Entangle,Entangle,COMMON,STATUS,NONE,2,Binds with random !M! cards. Would play other binded cards when one of them is played (without cost). Binded cards can't be played by other way.,,,,2,3,,,,,,,,
-NightOnTheMilkyWay,Night on the MilkyWay,BASIC,SKILL,SELF,0,"Exhaust. If the next room can be: NL Treasure or Shop: Gain 20 gold, add Normality at bottom of draw pile. NL Monster: Draw 2 cards. NL ? or Rest: Gain [E] [E] .",,,,2,,"Exhaust. If the next room can be: NL Treasure or Shop: Gain 30 gold, add Normality at bottom of draw pile. NL Monster: Draw 3 cards. NL ? or Rest: Gain [E] [E] [E] .",,,,3,¿ªÍØ,,
-,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,
 TerminalNirvana,Terminal Nirvana,RARE,SKILL,SELF,2,Exhaust. Retain. Consume !M! [hsrmod:ChargeIcon] to gain 1 layer of Intangible.,,,,120,,"Retain. Consume !M! [hsrmod:ChargeIcon] to gain 1 layer of Intangible, and this card¡¯s cost doubles for the rest of the battle.",,,,60,ÖÇÊ¶,,ÖÐ
 Erudition,Erudition,SPECIAL,SKILL,NONE,-2,,,,,,,,,,,,ÖÇÊ¶,,
 Imprison,Imprison,COMMON,STATUS,NONE,1,"When enters hand, lose all [hsrmod:ChargeIcon] . When in hand, unable to gain any [hsrmod:ChargeIcon] . When losing, obtain all [hsrmod:ChargeIcon] lost.",,,,,,,,,,,,,

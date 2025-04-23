@@ -8,12 +8,12 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.IntangiblePower;
 import hsrmod.actions.ElementalDamageAction;
-import hsrmod.actions.UnlockToughnessAction;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.enemyOnly.DeathExplosionPower;
 import hsrmod.powers.misc.EnergyPower;
+import hsrmod.powers.misc.LockToughnessPower;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.utils.ModHelper;
 
@@ -41,7 +41,7 @@ public class AllOrNothing extends BaseMonster {
             if (aventurine != null) {
                 addToTop(new RemoveSpecificPowerAction(aventurine, aventurine, IntangiblePower.POWER_ID));
                 int tr = ModHelper.getPowerCount(aventurine, ToughnessPower.POWER_ID);
-                addToBot(new UnlockToughnessAction(aventurine, aventurine.name));
+                addToBot(new RemoveSpecificPowerAction(aventurine, this, LockToughnessPower.POWER_ID));
                 addToBot(new ElementalDamageAction(aventurine,
                         new ElementalDamageInfo(this, 0, DamageInfo.DamageType.HP_LOSS, ElementType.None, tr),
                         AbstractGameAction.AttackEffect.NONE)

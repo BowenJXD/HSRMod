@@ -5,13 +5,9 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.BiteEffect;
 import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.breaks.ShockPower;
-import hsrmod.powers.enemyOnly.DeathExplosionPower;
-import hsrmod.powers.enemyOnly.MultiMovePower;
-import hsrmod.utils.ModHelper;
 
 public class WoodenLupus extends BaseMonster {
     public static final String ID = WoodenLupus.class.getSimpleName();
@@ -38,7 +34,7 @@ public class WoodenLupus extends BaseMonster {
             addToBot(new ApplyPowerAction(p, this, new ShockPower(p, this, shockCount)));
         });
         addMove(Intent.UNKNOWN, mi -> {
-            spawnMonsters(1, SpawnType.NONE, true);
+            spawnMonsters(1, SpawnType.MINION, true);
         });
     }
     
@@ -50,5 +46,11 @@ public class WoodenLupus extends BaseMonster {
         } else {
             setMove(0);
         }
+    }
+
+    @Override
+    public void die(boolean triggerRelics) {
+        slots.clear();
+        super.die(triggerRelics);
     }
 }

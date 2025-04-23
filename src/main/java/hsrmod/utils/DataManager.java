@@ -187,10 +187,10 @@ public class DataManager {
             replacements.put("】", " ");
             replacements.put("〖", " ");
             replacements.put("〗", " ");
-            replacements.put("『", "");
-            replacements.put("』", "");
-            // replacements.put("「", "「 #y");
-            // replacements.put("」", " 」");
+            replacements.put("『", " *");
+            replacements.put("』", " ");
+            replacements.put("「", " *「");
+            replacements.put("」", "」 ");
             // replacements.put("能量", " [E] ");
             replacements.put("追击", " hsrmod:追击 ");
             replacements.put("充能", " [hsrmod:ChargeIcon] ");

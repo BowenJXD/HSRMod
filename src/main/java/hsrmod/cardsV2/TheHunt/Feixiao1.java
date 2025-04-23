@@ -4,7 +4,6 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -12,6 +11,7 @@ import com.megacrit.cardcrawl.vfx.combat.ThrowDaggerEffect;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.utils.ModHelper;
 
 import java.util.Objects;
@@ -35,6 +35,15 @@ public class Feixiao1 extends BaseCard {
                         AbstractGameAction.AttackEffect.SLASH_DIAGONAL
                 )
         );
+    }
+
+    @Override
+    public void onEnterHand() {
+        super.onEnterHand();
+        if (!SignatureHelper.isUnlocked(cardID) 
+                && AbstractDungeon.player.hand.group.stream().mapToInt(c -> Objects.equals(c.cardID, cardID) ? 1: 0).sum() == 6) {
+            SignatureHelper.unlock(cardID, true);
+        }
     }
 
     @Override

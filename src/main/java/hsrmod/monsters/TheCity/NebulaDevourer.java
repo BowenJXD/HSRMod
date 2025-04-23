@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.vfx.combat.GhostIgniteEffect;
 import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.enemyOnly.OutragePower;
 import hsrmod.powers.enemyOnly.ResonatePower;
+import hsrmod.powers.misc.LockToughnessPower;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.utils.ModHelper;
 
@@ -37,7 +38,7 @@ public class NebulaDevourer extends BaseMonster {
 
     @Override
     protected void getMove(int i) {
-        if (halfDead || (hasPower(ToughnessPower.POWER_ID) && ((ToughnessPower) getPower(ToughnessPower.POWER_ID)).isLocked())) {
+        if (halfDead || (hasPower(ToughnessPower.POWER_ID) && hasPower(LockToughnessPower.POWER_ID))) {
             setMove(2);
         } else if (hasPower(ResonatePower.POWER_ID)) {
             setMove(1);

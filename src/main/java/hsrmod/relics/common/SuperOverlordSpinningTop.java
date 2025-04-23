@@ -1,6 +1,7 @@
 package hsrmod.relics.common;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.powers.misc.BreakEffectPower;
 import hsrmod.powers.misc.ToughnessPower;
@@ -30,8 +31,8 @@ public class SuperOverlordSpinningTop extends BaseRelic {
             flash();
             canTrigger = false;
             AbstractDungeon.getMonsters().monsters.forEach(m -> addToBot(
-                    new ApplyPowerAction(m, AbstractDungeon.player,
-                            new ToughnessPower(m, -ToughnessPower.getStackLimit(m) / 3), -ToughnessPower.getStackLimit(m) / 3)));
+                    new ReducePowerAction(m, AbstractDungeon.player,
+                            new ToughnessPower(m, ToughnessPower.getStackLimit(m) / 3), ToughnessPower.getStackLimit(m) / 3)));
         }
     }
 }

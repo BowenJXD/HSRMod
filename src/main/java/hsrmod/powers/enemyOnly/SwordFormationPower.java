@@ -1,6 +1,5 @@
 package hsrmod.powers.enemyOnly;
 
-import com.evacipated.cardcrawl.mod.stslib.actions.common.MoveCardsAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.ExhaustToHandAction;
@@ -9,18 +8,15 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAction;
-import hsrmod.actions.UnlockToughnessAction;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
-import hsrmod.powers.BuffPower;
 import hsrmod.powers.StatePower;
+import hsrmod.powers.misc.LockToughnessPower;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.subscribers.PostMonsterDeathSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
-
-import java.time.Duration;
 
 public class SwordFormationPower extends StatePower implements PostMonsterDeathSubscriber {
     public static final String POWER_ID = HSRMod.makePath(SwordFormationPower.class.getSimpleName());
@@ -50,7 +46,7 @@ public class SwordFormationPower extends StatePower implements PostMonsterDeathS
     public void onRemove() {
         super.onRemove();
         SubscriptionManager.unsubscribe(this);
-        addToBot(new UnlockToughnessAction(owner, owner.name));
+        addToBot(new RemoveSpecificPowerAction(owner, owner, LockToughnessPower.POWER_ID));
         int hpLossAmount = owner.currentHealth * hpLoss / 100;
         int tr = ModHelper.getPowerCount(owner, ToughnessPower.POWER_ID);
         addToBot(new ElementalDamageAction(owner, new ElementalDamageInfo(owner, hpLossAmount, DamageInfo.DamageType.HP_LOSS, ElementType.None, tr), AbstractGameAction.AttackEffect.NONE));

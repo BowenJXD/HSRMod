@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.cards.status.Wound;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.enemyOnly.ResonatePower;
+import hsrmod.powers.misc.LockToughnessPower;
 import hsrmod.powers.misc.ToughnessPower;
 
 public class WorldpurgeTail extends BaseMonster {
@@ -30,7 +31,7 @@ public class WorldpurgeTail extends BaseMonster {
 
     @Override
     protected void getMove(int i) {
-        if (hasPower(ToughnessPower.POWER_ID) && ((ToughnessPower) getPower(ToughnessPower.POWER_ID)).isLocked()) {
+        if (hasPower(ToughnessPower.POWER_ID) && hasPower(LockToughnessPower.POWER_ID)) {
             setMove(2);
         } else if (hasPower(ResonatePower.POWER_ID)) {
             setMove(1);

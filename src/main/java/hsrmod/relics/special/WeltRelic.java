@@ -1,9 +1,14 @@
 package hsrmod.relics.special;
 
 import basemod.abstracts.CustomRelic;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import hsrmod.cards.base.Welt0;
 import hsrmod.modcore.HSRMod;
+import hsrmod.utils.RelicEventHelper;
 
 public class WeltRelic extends CustomRelic {
     // 遗物ID（此处的ModHelper在“04 - 本地化”中提到）
@@ -17,7 +22,17 @@ public class WeltRelic extends CustomRelic {
 
     public WeltRelic() {
         super(ID, ImageMaster.loadImage(IMG_PATH), RELIC_TIER, LANDING_SOUND);
-        setCounter(-2);
+    }
+
+    @Override
+    public void onUnequip() {
+        super.onUnequip();
+        String cardID = HSRMod.makePath(Welt0.ID);
+        if (AbstractDungeon.player.masterDeck.findCardById(cardID) == null) {
+            AbstractCard card = CardLibrary.getCard(cardID).makeCopy();
+            card.upgrade();
+            RelicEventHelper.gainCards(card);
+        }
     }
 
     // 获取遗物描述，但原版游戏只在初始化和获取遗物时调用，故该方法等于初始描述

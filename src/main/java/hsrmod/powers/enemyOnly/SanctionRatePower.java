@@ -3,6 +3,8 @@ package hsrmod.powers.enemyOnly;
 import basemod.helpers.CardBorderGlowManager;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.common.RollMoveAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.actions.watcher.PressEndTurnButtonAction;
@@ -14,7 +16,7 @@ import com.megacrit.cardcrawl.monsters.MonsterQueueItem;
 import com.megacrit.cardcrawl.vfx.combat.TimeWarpTurnEndEffect;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.StatePower;
-import hsrmod.powers.misc.ToughnessPower;
+import hsrmod.powers.misc.LockToughnessPower;
 import hsrmod.utils.ModHelper;
 
 public class SanctionRatePower extends StatePower {
@@ -99,16 +101,10 @@ public class SanctionRatePower extends StatePower {
             } else if (m != null) {
                 AbstractDungeon.actionManager.monsterQueue.add(new MonsterQueueItem(m));
             }
-
-            ToughnessPower power = (ToughnessPower) owner.getPower(ToughnessPower.POWER_ID);
-            if (power != null) {
-                power.lock(this);
-            }
+            
+            addToBot(new ApplyPowerAction(owner, owner, new LockToughnessPower(owner)));
         } else if (amount == 0) {
-            ToughnessPower power = (ToughnessPower) owner.getPower(ToughnessPower.POWER_ID);
-            if (power != null) {
-                power.unlock(this);
-            }
+            addToBot(new RemoveSpecificPowerAction(owner, owner, LockToughnessPower.POWER_ID));
         }
         updateDescription();
     }

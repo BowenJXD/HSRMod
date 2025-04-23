@@ -21,7 +21,13 @@ public class Mydei2 extends BaseCard {
         super(ID);
         exhaust = true;
         tags.add(CustomEnums.FOLLOW_UP);
-        cardsToPreview = new Mydei3();
+        cardsToPreview = new Mydei3(true);
+    }
+    
+    public Mydei2(boolean asPreview) {
+        super(ID);
+        exhaust = true;
+        tags.add(CustomEnums.FOLLOW_UP);
     }
 
     @Override
@@ -32,6 +38,7 @@ public class Mydei2 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
+        shout(0);
         addToBot(new LoseHPAction(p, p, magicNumber));
         addToBot(new ElementalDamageAction(m, new ElementalDamageInfo(this), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
         AbstractCard card = new Mydei3();

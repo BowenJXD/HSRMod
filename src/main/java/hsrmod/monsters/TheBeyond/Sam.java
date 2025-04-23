@@ -8,21 +8,20 @@ import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.vfx.combat.ScreenOnFireEffect;
 import com.megacrit.cardcrawl.vfx.combat.SearingBlowEffect;
-import com.megacrit.cardcrawl.vfx.combat.StrikeEffect;
 import com.megacrit.cardcrawl.vfx.combat.VerticalImpactEffect;
-import hsrmod.actions.LockToughnessAction;
-import hsrmod.actions.UnlockToughnessAction;
 import hsrmod.effects.MultiSlashEffect;
 import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.breaks.BurnPower;
 import hsrmod.powers.enemyOnly.ChargingPower;
 import hsrmod.powers.enemyOnly.MoltenCorePower;
 import hsrmod.powers.enemyOnly.SecondaryCombustionPower;
+import hsrmod.powers.misc.LockToughnessPower;
 import hsrmod.utils.ModHelper;
 
 public class Sam extends BaseMonster {
@@ -62,7 +61,7 @@ public class Sam extends BaseMonster {
             shout(2);
             addToBot(new VFXAction(new ScreenOnFireEffect()));
             addToBot(new LoseHPAction(this, this, hpLoss));
-            addToBot(new UnlockToughnessAction(this, name));
+            addToBot(new RemoveSpecificPowerAction(this, this, LockToughnessPower.POWER_ID));
             addToBot(new ApplyPowerAction(this, this, new SecondaryCombustionPower(this, secondaryCombustionCount)));
             addToBot(new ApplyPowerAction(this, this, new MoltenCorePower(this, moltenCoreCount)));
         });
@@ -102,7 +101,7 @@ public class Sam extends BaseMonster {
     @Override
     public void usePreBattleAction() {
         super.usePreBattleAction();
-        addToBot(new LockToughnessAction(this, name));
+        addToBot(new ApplyPowerAction(this, this, new LockToughnessPower(this)));
     }
 
     @Override

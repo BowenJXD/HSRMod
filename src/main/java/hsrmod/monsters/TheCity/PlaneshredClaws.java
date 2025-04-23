@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.combat.ClawEffect;
 import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.enemyOnly.ResonatePower;
+import hsrmod.powers.misc.LockToughnessPower;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.utils.ModHelper;
 
@@ -29,7 +30,7 @@ public class PlaneshredClaws extends BaseMonster {
 
     @Override
     protected void getMove(int i) {
-        if (hasPower(ToughnessPower.POWER_ID) && ((ToughnessPower) getPower(ToughnessPower.POWER_ID)).isLocked()) {
+        if (hasPower(ToughnessPower.POWER_ID) && hasPower(LockToughnessPower.POWER_ID)) {
             setMove(2);
         } else if (hasPower(ResonatePower.POWER_ID)) {
             setMove(1);

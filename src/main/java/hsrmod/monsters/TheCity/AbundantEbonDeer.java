@@ -4,18 +4,17 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.HealAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.RegenerateMonsterPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
-import hsrmod.actions.LockToughnessAction;
-import hsrmod.actions.UnlockToughnessAction;
-import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.monsters.BaseMonster;
-import hsrmod.powers.enemyOnly.*;
+import hsrmod.powers.enemyOnly.ChargingPower;
+import hsrmod.powers.enemyOnly.LavishFruitPower;
+import hsrmod.powers.enemyOnly.SummonedPower;
+import hsrmod.powers.enemyOnly.VigorOverflowPower;
+import hsrmod.powers.misc.LockToughnessPower;
 import hsrmod.subscribers.PostMonsterDeathSubscriber;
-import hsrmod.subscribers.PreBreakSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
@@ -73,7 +72,7 @@ public class AbundantEbonDeer extends BaseMonster implements PostMonsterDeathSub
         });
         addMove(Intent.BUFF, mi -> {
             addToBot(new ApplyPowerAction(this, this, new ChargingPower(this, getLastMove())));
-            addToBot(new LockToughnessAction(this, name));
+            addToBot(new ApplyPowerAction(this, this, new LockToughnessPower(this)));
             SubscriptionManager.subscribe(this);
         });
         addMoveA(Intent.ATTACK, 6,
@@ -85,7 +84,7 @@ public class AbundantEbonDeer extends BaseMonster implements PostMonsterDeathSub
                         attack(mi, AbstractGameAction.AttackEffect.BLUNT_HEAVY);
                         ModHelper.killAllMinions();
                         wintryWind = marpleLeaf = lavishFruits = gloriousBlooms = false;
-                        addToBot(new UnlockToughnessAction(this, name));
+                        addToBot(new RemoveSpecificPowerAction(this, this, LockToughnessPower.POWER_ID));
                         addToBot(new RemoveSpecificPowerAction(this, this, LavishFruitPower.POWER_ID));
                         addToBot(new RemoveSpecificPowerAction(this, this, StrengthPower.POWER_ID));
                     }

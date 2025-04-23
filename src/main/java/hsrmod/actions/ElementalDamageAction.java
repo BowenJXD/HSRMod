@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.HealAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -13,6 +14,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.misc.BrokenPower;
+import hsrmod.powers.misc.LockToughnessPower;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
@@ -115,7 +117,7 @@ public class ElementalDamageAction extends AbstractGameAction {
                 && toughnessPower != null
                 && toughnessPower.amount > 0
                 && toughnessPower.amount <= info.tr
-                && !toughnessPower.isLocked()) {
+                && !target.hasPower(LockToughnessPower.POWER_ID)) {
             didBreak = true;
         }
 
@@ -139,8 +141,8 @@ public class ElementalDamageAction extends AbstractGameAction {
         }
 
         // reduce toughness
-        if (toughnessPower != null) {
-            addToTop(new ApplyPowerAction(target, AbstractDungeon.player, new ToughnessPower(target, -info.tr), -info.tr));
+        if (toughnessPower != null && target != null && !target.hasPower(LockToughnessPower.POWER_ID)) {
+            addToTop(new ReducePowerAction(target, AbstractDungeon.player, ToughnessPower.POWER_ID, info.tr));
         }
 
         // Check to remove actions except HealAction, GainBlockAction, UseCardAction, TriggerCallbackAction, and DamageAction

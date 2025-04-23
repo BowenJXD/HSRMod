@@ -699,6 +699,11 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
         addWav("Rappa1");
         addWav("Trailblazer8");
         addWav("TheHerta1");
+        addWav("FuXuan2");
+        addOgg("Jingliu1");
+        addOgg("Jingliu2");
+        addOgg("Mydei2");
+        addOgg("Mydei3");
 
         for (int i = 1; i <= 10; i++) {
             addWav("TheGreatSeptimus_Day" + i);

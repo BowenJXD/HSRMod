@@ -17,9 +17,12 @@ import hsrmod.powers.uniqueDebuffs.WisemansFollyPower;
 public class DrRatio2 extends BaseCard {
     public static final String ID = DrRatio2.class.getSimpleName();
     
+    int cachedBaseDamage = 0;
+    
     public DrRatio2() {
         super(ID);
         cardsToPreview = new DrRatio3();
+        cachedBaseDamage = baseDamage;
     }
 
     @Override
@@ -29,15 +32,20 @@ public class DrRatio2 extends BaseCard {
     }
 
     @Override
+    public void calculateCardDamage(AbstractMonster mo) {
+        int debuffNum = (int) mo.powers.stream().filter(power -> power.type == AbstractPower.PowerType.DEBUFF).count();
+        baseDamage = cachedBaseDamage + debuffNum;
+        super.calculateCardDamage(mo);
+    }
+
+    @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(m, p, new WisemansFollyPower(m, 1)));
-
-        int debuffNum = (int) m.powers.stream().filter(power -> power.type == AbstractPower.PowerType.DEBUFF).count();
         
         addToBot(
                 new ElementalDamageAction(
                         m,
-                        new ElementalDamageInfo(this, damage + debuffNum * magicNumber),
+                        new ElementalDamageInfo(this, damage),
                         AbstractGameAction.AttackEffect.SLASH_HEAVY
                 )
         );

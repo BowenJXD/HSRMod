@@ -18,13 +18,13 @@ public abstract class BasePower extends AbstractPower {
     
     public BasePower(String id, AbstractCreature owner, int Amount, PowerType type, boolean upgraded){
         this.ID = id;
-        this.name = CardCrawlGame.languagePack.getPowerStrings(id).NAME;
-        this.DESCRIPTIONS = CardCrawlGame.languagePack.getPowerStrings(id).DESCRIPTIONS;
+        powerStrings = CardCrawlGame.languagePack.getPowerStrings(id);
+        this.name = powerStrings.NAME;
+        this.DESCRIPTIONS = powerStrings.DESCRIPTIONS;
         this.owner = owner;
         this.amount = Amount;
         this.type = type;
         this.upgraded = upgraded;
-        powerStrings = CardCrawlGame.languagePack.getPowerStrings(id);
         this.loadRegion(this.getClass().getSimpleName());
     }
     

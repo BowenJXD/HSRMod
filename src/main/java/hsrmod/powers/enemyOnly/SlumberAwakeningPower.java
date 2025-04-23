@@ -2,6 +2,7 @@ package hsrmod.powers.enemyOnly;
 
 import basemod.BaseMod;
 import com.badlogic.gdx.math.MathUtils;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -10,9 +11,9 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
+import hsrmod.effects.TopWarningEffect;
 import hsrmod.modcore.HSRMod;
 import hsrmod.monsters.TheBeyond.SomethingUntoDeath;
-import hsrmod.powers.BuffPower;
 import hsrmod.powers.StatePower;
 import hsrmod.utils.ModHelper;
 
@@ -28,6 +29,16 @@ public class SlumberAwakeningPower extends StatePower {
         this.cards = cards;
         amount = cards.size();
         updateDescription();
+    }
+
+    @Override
+    public void atStartOfTurn() {
+        super.atStartOfTurn();
+        addToBot(new VFXAction(new TopWarningEffect(
+                Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT ?
+                        "永眠墓碣将永久移除盗取的卡牌！！！击杀以防止之。":
+                        "Sombrous Sepulcher will permanently remove the stolen cards!!! Kill to prevent."
+        )));
     }
 
     @Override

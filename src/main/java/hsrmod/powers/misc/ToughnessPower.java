@@ -15,14 +15,9 @@ import hsrmod.modcore.HSRMod;
 import hsrmod.modcore.HSRModConfig;
 import hsrmod.powers.BuffPower;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class ToughnessPower extends BuffPower implements InvisiblePower {
+public class ToughnessPower extends BuffPower implements InvisiblePower{
     public static final String POWER_ID = HSRMod.makePath(ToughnessPower.class.getSimpleName());
 
-    List<Object> lockers;
-    boolean locked = false;
     int stackLimit = 0;
 
     public ToughnessPower(AbstractCreature owner, int Amount, int stackLimit) {
@@ -54,7 +49,7 @@ public class ToughnessPower extends BuffPower implements InvisiblePower {
     @Override
     public void atEndOfRound() {
         super.atEndOfRound();
-        if (amount <= 0 && !locked) {
+        if (amount <= 0 && !owner.hasPower(LockToughnessPower.POWER_ID)) {
             alterPower(stackLimit * 2);
         }
     }
@@ -79,11 +74,11 @@ public class ToughnessPower extends BuffPower implements InvisiblePower {
     @Override
     public void stackPower(int stackAmount) {
         if (stackAmount == stackLimit && owner != AbstractDungeon.player && BaseMod.hasModID("spireTogether:")) return;
-        if (locked) return;
         alterPower(stackAmount);
     }
 
     public void alterPower(int i) {
+        if (owner.hasPower(LockToughnessPower.POWER_ID)) return;
         this.fontScale = 8.0F;
         this.amount += i;
 
@@ -100,21 +95,6 @@ public class ToughnessPower extends BuffPower implements InvisiblePower {
     @Override
     public void reducePower(int reduceAmount) {
         alterPower(-reduceAmount);
-    }
-
-    public boolean isLocked() {
-        return locked;
-    }
-
-    public void lock(Object locker) {
-        if (lockers == null) lockers = new ArrayList<>();
-        lockers.add(locker);
-        locked = true;
-    }
-
-    public void unlock(Object locker) {
-        if (lockers != null) lockers.remove(locker);
-        if (lockers == null || lockers.isEmpty()) locked = false;
     }
 
     public static int getStackLimit(AbstractCreature c) {

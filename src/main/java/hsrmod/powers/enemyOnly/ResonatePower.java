@@ -2,6 +2,7 @@ package hsrmod.powers.enemyOnly;
 
 import com.badlogic.gdx.Gdx;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.common.RollMoveAction;
@@ -11,23 +12,18 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.SmallLaserEffect;
-import com.megacrit.cardcrawl.vfx.stance.DivinityParticleEffect;
 import hsrmod.actions.ElementalDamageAction;
-import hsrmod.actions.LockToughnessAction;
 import hsrmod.characters.StellaCharacter;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.StatePower;
+import hsrmod.powers.misc.LockToughnessPower;
 import hsrmod.subscribers.PreBreakSubscriber;
 import hsrmod.subscribers.PreElementalDamageSubscriber;
 import hsrmod.subscribers.PreToughnessReduceSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
-import hsrmod.utils.GeneralUtil;
 import hsrmod.utils.ModHelper;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class ResonatePower extends StatePower implements PreElementalDamageSubscriber, PreToughnessReduceSubscriber, PreBreakSubscriber {
     public static final String POWER_ID = HSRMod.makePath(ResonatePower.class.getSimpleName());
@@ -131,7 +127,7 @@ public class ResonatePower extends StatePower implements PreElementalDamageSubsc
             if (monster != null) {
                 if (monster.type == AbstractMonster.EnemyType.NORMAL && type == ResonateType.FEIXIAO) {
                     addToTop(new RemoveSpecificPowerAction(owner, owner, this));
-                    addToBot(new LockToughnessAction(owner, owner.name));
+                    addToBot(new ApplyPowerAction(owner, owner, new LockToughnessPower(owner)));
                 }
                 addToBot(new RollMoveAction(monster));
                 ModHelper.addToBotAbstract(monster::createIntent);

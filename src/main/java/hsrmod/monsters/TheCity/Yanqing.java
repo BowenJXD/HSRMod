@@ -7,24 +7,22 @@ import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
-import com.megacrit.cardcrawl.actions.common.RollMoveAction;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.WeightyImpactEffect;
-import hsrmod.actions.LockToughnessAction;
 import hsrmod.cardsV2.Curse.Frozen;
 import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.enemyOnly.ChargingPower;
 import hsrmod.powers.enemyOnly.FormationCorePower;
 import hsrmod.powers.enemyOnly.SwordFormationPower;
+import hsrmod.powers.misc.LockToughnessPower;
 import hsrmod.subscribers.PostMonsterDeathSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class Yanqing extends BaseMonster implements PostMonsterDeathSubscriber {
@@ -56,7 +54,7 @@ public class Yanqing extends BaseMonster implements PostMonsterDeathSubscriber {
             shout(0);
             spawnMonsters();
             addToBot(new ApplyPowerAction(this, this, new SwordFormationPower(this)));
-            addToBot(new LockToughnessAction(this, name));
+            addToBot(new ApplyPowerAction(this, this, new LockToughnessPower(this)));
             AbstractDungeon.player.drawPile.group.forEach(c -> CommonKeywordIconsField.useIcons.set(c, true));
             if (!AbstractDungeon.player.drawPile.isEmpty()) {
                 AbstractDungeon.player.drawPile.getRandomCard(AbstractDungeon.aiRng).exhaust = true;

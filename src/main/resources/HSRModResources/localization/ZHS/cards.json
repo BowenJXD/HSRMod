@@ -64,7 +64,9 @@
   "HSRMod:Firefly2": {
     "EXTENDED_DESCRIPTION": [
       "直至一切，燃烧殆尽！"
-    ]
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "打出此牌失去全部的生命，然后赢得当前战斗的胜利。",
+    "SIGNATURE_ILLUSTRATOR": "meltyrice"
   },
   "HSRMod:JingYuan1": {
     "EXTENDED_DESCRIPTION": [
@@ -85,7 +87,9 @@
   "HSRMod:Robin2": {
     "EXTENDED_DESCRIPTION": [
       "今夜，群星因我回响!"
-    ]
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "歌曲首次播放完时，状态刚好结束。",
+    "SIGNATURE_ILLUSTRATOR": "yutou75"
   },
   "HSRMod:Sparkle1": {
     "EXTENDED_DESCRIPTION": [
@@ -154,7 +158,9 @@
   "HSRMod:Argenti1": {
     "EXTENDED_DESCRIPTION": [
       "献给……伊德莉拉。"
-    ]
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "一次性触发 #b6 次此牌的效果。",
+    "SIGNATURE_ILLUSTRATOR": "zc铃玖"
   },
   "HSRMod:Sunday1": {
     "EXTENDED_DESCRIPTION": [
@@ -181,8 +187,13 @@
   "HSRMod:SilverWolf1": {
     "EXTENDED_DESCRIPTION": [
       "哼，就这速度？ @太慢了！@ ",
-      "二倍速就这？！"
-    ]
+      "二倍速就这？！",
+      "怎么还开挂呢，%s？不会玩不起吧~",
+      "把挂关了吧，%s。",
+      "（银狼）：我可不跟开挂的人一起玩。"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "通过命令行获得此牌，但再次使用命令行会 #r锁定 。",
+    "SIGNATURE_ILLUSTRATOR": "zcing"
   },
   "HSRMod:ImbibitorLunae1": {
     "EXTENDED_DESCRIPTION": [
@@ -224,7 +235,7 @@
       "#r我为逝者哀哭……",
       "#r暮雨，终将落下。"
     ],
-    "SIGNATURE_UNLOCK_CONDITION": "获得时解锁，因 #p虚无 而 #r消耗 牌后锁定。",
+    "SIGNATURE_UNLOCK_CONDITION": "获得时解锁，因 #p虚无 而消耗牌后 #r锁定 。",
     "SIGNATURE_ILLUSTRATOR": "sen jin chen"
   },
   "HSRMod:Entangle": {
@@ -254,6 +265,11 @@
     "SIGNATURE_UNLOCK_CONDITION": "保留 #b69+ 点格挡。",
     "SIGNATURE_ILLUSTRATOR": "辷"
   },
+  "HSRMod:FuXuan2": {
+    "EXTENDED_DESCRIPTION": [
+      "谋事，在人！"
+    ]
+  },
   "HSRMod:March7th5": {
     "SIGNATURE_UNLOCK_CONDITION": "一次性通过此牌恰好升级 #b7 张牌。",
     "SIGNATURE_ILLUSTRATOR": "谜溶MELT"
@@ -277,5 +293,55 @@
   "HSRMod:Tribbie1": {
     "SIGNATURE_UNLOCK_CONDITION": "一回合以此法造成 #b33+ 伤害。",
     "SIGNATURE_ILLUSTRATOR": "csyday"
+  },
+  "HSRMod:March7th1": {
+    "SIGNATURE_UNLOCK_CONDITION": "#y加护 状态结束时，手牌有恰好 #b7 张 #y「少女的特权」 。",
+    "SIGNATURE_ILLUSTRATOR": "谜溶MELT"
+  },
+  "HSRMod:Kafka1": {
+    "SIGNATURE_UNLOCK_CONDITION": "此牌结算后，目标 #y触电 层数达到 #b7+ 。",
+    "SIGNATURE_ILLUSTRATOR": "Nid_417"
+  },
+  "HSRMod:Feixiao1": {
+    "SIGNATURE_UNLOCK_CONDITION": "获得后，手牌中有 #b6 张 #y「雷狩」 。",
+    "SIGNATURE_ILLUSTRATOR": "Corvus"
+  },
+  "HSRMod:Jingliu1": {
+    "EXTENDED_DESCRIPTION": [
+      "不能停…不能停下！"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "打出此牌失去全部的生命，并完成击杀。",
+    "SIGNATURE_ILLUSTRATOR": "一akeng"
+  },
+  "HSRMod:Jingliu2": {
+    "EXTENDED_DESCRIPTION": [
+      "飞光流泻！"
+    ]
+  },
+  "HSRMod:Blade1": {
+    "SIGNATURE_UNLOCK_CONDITION": "获得此牌的回合内，以 #b0 费打出此牌。",
+    "SIGNATURE_ILLUSTRATOR": "koko"
+  },
+  "HSRMod:Castorice1": {
+    "SIGNATURE_UNLOCK_CONDITION": "触发仓库技。",
+    "SIGNATURE_ILLUSTRATOR": "三門"
+  },
+  "HSRMod:Boothill2": {
+    "SIGNATURE_UNLOCK_CONDITION": "一回合打出 #b5 次此牌。",
+    "SIGNATURE_ILLUSTRATOR": "咸DOOOOOR"
+  },
+  "HSRMod:TopazNumby2": {
+    "SIGNATURE_UNLOCK_CONDITION": "一回合打出 #b4 次此牌。",
+    "SIGNATURE_ILLUSTRATOR": "无期"
+  },
+  "HSRMod:Mydei2": {
+    "EXTENDED_DESCRIPTION": [
+      "荡平万邦！"
+    ]
+  },
+  "HSRMod:Mydei3": {
+    "EXTENDED_DESCRIPTION": [
+      "怒吼吧，吾即纷争。 "
+    ]
   }
 }

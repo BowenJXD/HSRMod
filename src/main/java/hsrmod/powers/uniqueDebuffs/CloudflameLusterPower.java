@@ -1,22 +1,18 @@
 package hsrmod.powers.uniqueDebuffs;
 
-import com.megacrit.cardcrawl.actions.common.*;
-import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.cardsV2.Fugue1;
-import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.DebuffPower;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.subscribers.PreBreakSubscriber;
-import hsrmod.subscribers.PreToughnessReduceSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
-
-import java.util.Iterator;
 
 public class CloudflameLusterPower extends DebuffPower implements PreBreakSubscriber {
     public static final String ID = HSRMod.makePath(CloudflameLusterPower.class.getSimpleName());
@@ -51,7 +47,10 @@ public class CloudflameLusterPower extends DebuffPower implements PreBreakSubscr
 
             int newToughness = ModHelper.getPowerCount(target, ToughnessPower.POWER_ID) - info.tr;
             int amt = this.amount - newToughness;
-            addToTop(new ApplyPowerAction(this.owner, this.owner, new ToughnessPower(this.owner, amt), amt));
+            if (amt > 0)
+                addToTop(new ApplyPowerAction(this.owner, this.owner, new ToughnessPower(this.owner, amt), amt));
+            else if (amt < 0)
+                addToTop(new ReducePowerAction(this.owner, this.owner, new ToughnessPower(this.owner, -amt), -amt));
 
             this.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this));
             

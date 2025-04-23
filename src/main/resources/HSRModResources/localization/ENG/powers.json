@@ -726,7 +726,13 @@
   "HSRMod:TheCansCreed": {
     "NAME": "The Can's Creed",
     "DESCRIPTIONS": [
-      "Leave the battle when #yBroken ."
+      "Leave the battle when #yBroken , and leaves a relic."
+    ]
+  },
+  "HSRMod:TrotterBlessing": {
+    "NAME": "Trotter Blessing",
+    "DESCRIPTIONS": [
+      "Add a card reward upon slaying."
     ]
   },
   "HSRMod:SwordFormation": {

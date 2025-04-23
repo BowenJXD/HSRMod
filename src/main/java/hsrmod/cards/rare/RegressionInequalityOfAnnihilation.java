@@ -1,6 +1,7 @@
 package hsrmod.cards.rare;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -24,12 +25,18 @@ public class RegressionInequalityOfAnnihilation extends BaseCard {
         int avgToughness = totalToughness / (AbstractDungeon.getMonsters().monsters.size() + magicNumber);
         
         int stackNumber = avgToughness * magicNumber - playerToughness;
-        addToBot(new ApplyPowerAction(p, p, new ToughnessPower(p, stackNumber), stackNumber));
+        if (stackNumber > 0)
+            addToTop(new ApplyPowerAction(p, p, new ToughnessPower(p, stackNumber), stackNumber));
+        else if (stackNumber < 0)
+            addToTop(new ReducePowerAction(p, p, new ToughnessPower(p, -stackNumber), -stackNumber));
         
         AbstractDungeon.getMonsters().monsters.forEach(monster -> {
             int monsterToughness = ModHelper.getPowerCount(monster, ToughnessPower.POWER_ID);
             int stackNum = avgToughness - monsterToughness;
-            addToBot(new ApplyPowerAction(monster, p, new ToughnessPower(monster, stackNum), stackNum));
+            if (stackNum > 0)
+                addToTop(new ApplyPowerAction(monster, monster, new ToughnessPower(monster, stackNum), stackNum));
+            else if (stackNum < 0)
+                addToTop(new ReducePowerAction(monster, monster, new ToughnessPower(monster, -stackNum), -stackNum));
         });
     }
 }

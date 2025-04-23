@@ -32,6 +32,7 @@ public class FuXuan2 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
+        shout(0);
         addToBot(new AddTemporaryHPAction(p, p, block));
         addToBot(new TriggerPowerAction(p.getPower(NecrosisPower.POWER_ID)));
         addToBot(new ApplyPowerAction(p, p, new NecrosisPower(p, 1)));

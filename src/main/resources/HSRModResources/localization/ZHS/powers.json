@@ -726,7 +726,13 @@
   "HSRMod:TheCansCreed": {
     "NAME": "桶的信条",
     "DESCRIPTIONS": [
-      " #y击破 后，离开战斗。"
+      " #y击破 后，离开战斗，并留下 #y遗物 。"
+    ]
+  },
+  "HSRMod:TrotterBlessing": {
+    "NAME": "扑满祝福",
+    "DESCRIPTIONS": [
+      "击杀后，增加1次 #y卡牌奖励 。"
     ]
   },
   "HSRMod:SwordFormation": {

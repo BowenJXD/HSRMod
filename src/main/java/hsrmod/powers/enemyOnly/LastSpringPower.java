@@ -28,7 +28,7 @@ public class LastSpringPower extends BuffPower {
             flash();
             for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
                 ModHelper.addToBotAbstract(() -> {
-                    if (ModHelper.check(m)) 
+                    if (ModHelper.check(m) && m.currentHealth < m.maxHealth) 
                         addToTop(new HealAction(m, owner, amount));
                 });
             }

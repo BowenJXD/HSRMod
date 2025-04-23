@@ -1,10 +1,9 @@
 package hsrmod.cards.uncommon;
 
-import basemod.interfaces.OnCardUseSubscriber;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.actions.utility.DiscardToHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -12,15 +11,14 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
-import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.subscribers.PreFollowUpSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.Objects;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
@@ -28,6 +26,8 @@ public class TopazNumby2 extends BaseCard implements PreFollowUpSubscriber {
     public static final String ID = TopazNumby2.class.getSimpleName();
 
     int count = 0;
+    int unlockCount = 0;
+    int cachedTurn = -1;
 
     public TopazNumby2() {
         super(ID);
@@ -43,12 +43,23 @@ public class TopazNumby2 extends BaseCard implements PreFollowUpSubscriber {
                         AbstractGameAction.AttackEffect.SLASH_VERTICAL
                 )
         );
+
+        if (!SignatureHelper.isUnlocked(cardID)) {
+            unlockCount++;
+            if (unlockCount >= 4) {
+                SignatureHelper.unlock(cardID, true);
+            }
+        }
     }
 
     @Override
     public void onEnterHand() {
         super.onEnterHand();
         SubscriptionManager.subscribe(this);
+        if (cachedTurn == -1 || GameActionManager.turn != cachedTurn) {
+            cachedTurn = GameActionManager.turn;
+            unlockCount = 0;
+        }
     }
 
     @Override

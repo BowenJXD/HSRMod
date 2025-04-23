@@ -14,6 +14,7 @@ import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.powers.misc.LockToughnessPower;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.subscribers.PreToughnessReduceSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
@@ -104,7 +105,7 @@ public class Xueyi1 extends BaseCard implements PreToughnessReduceSubscriber {
         if (SubscriptionManager.checkSubscriber(this)
                 && AbstractDungeon.player.hand.contains(this)) {
             ToughnessPower power = (ToughnessPower) target.getPower(ToughnessPower.POWER_ID);
-            if (power != null && !power.isLocked())
+            if (power != null && !target.hasPower(LockToughnessPower.POWER_ID))
                 updateCost((int) -amount);
         }
         return amount;

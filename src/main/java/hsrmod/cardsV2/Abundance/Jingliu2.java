@@ -34,6 +34,7 @@ public class Jingliu2 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
+        shout(0);
         addToBot(new DiscardAction(p, p, 1, false));
         addToBot(new ElementalDamageAction(m, new ElementalDamageInfo(this), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         AbstractCard card = new Jingliu1();

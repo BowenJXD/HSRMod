@@ -3,24 +3,23 @@ package hsrmod.cards.uncommon;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import hsrmod.actions.AOEAction;
-import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.effects.PortraitDisplayEffect;
 import hsrmod.modcore.CustomEnums;
-import hsrmod.modcore.ElementType;
 import hsrmod.powers.misc.EnergyPower;
+import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.utils.ModHelper;
 
 public class Argenti1 extends BaseCard {
     public static final String ID = Argenti1.class.getSimpleName();
 
+    int count = 0;
+    
     public Argenti1() {
         super(ID);
         setBaseEnergyCost(90);
@@ -34,12 +33,16 @@ public class Argenti1 extends BaseCard {
         AbstractDungeon.topLevelEffects.add(new PortraitDisplayEffect("Argenti"));
         ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID));
         addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
-        
+        count = 0;
         ModHelper.addToBotAbstract(this::execute);
     }
 
     void execute() {
         if (AbstractDungeon.getMonsters().areMonstersBasicallyDead()) return;
+        count++;
+        if (count == 6) {
+            SignatureHelper.unlock(cardID, true);
+        }
         if (ModHelper.getPowerCount(AbstractDungeon.player, EnergyPower.POWER_ID) >= energyCost) {
             ModHelper.addToTopAbstract(this::execute);
         }

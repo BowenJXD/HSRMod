@@ -9,18 +9,19 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.LoseStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+import hsrmod.cards.uncommon.Robin2;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
 import hsrmod.powers.misc.EnergyPower;
-
-import java.util.concurrent.*;
+import hsrmod.signature.utils.SignatureHelper;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
 public class RobinPower extends BuffPower {
     public static final String POWER_ID = HSRMod.makePath(RobinPower.class.getSimpleName());
+    
+    boolean canUnlock = false;
     
     public RobinPower(AbstractCreature owner, boolean upgraded) {
         super(POWER_ID, owner, upgraded);
@@ -43,6 +44,20 @@ public class RobinPower extends BuffPower {
                     CardCrawlGame.music.playTempBgmInstantly("RobinBGM");
                 }
             }, 2);
+            if (!SignatureHelper.isUnlocked(HSRMod.makePath(Robin2.ID))) {
+                Timer.schedule(new Timer.Task() {
+                    @Override
+                    public void run() {
+                        canUnlock = true;
+                    }
+                }, 75);
+                Timer.schedule(new Timer.Task() {
+                    @Override
+                    public void run() {
+                        canUnlock = false;
+                    }
+                }, 80);
+            }
         }
     }
 
@@ -53,6 +68,9 @@ public class RobinPower extends BuffPower {
                 && AbstractDungeon.getMonsters().monsters.stream().noneMatch(m -> m.type == AbstractMonster.EnemyType.BOSS)) {
             AbstractDungeon.scene.fadeInAmbiance();
             CardCrawlGame.music.fadeOutTempBGM();
+        }
+        if (canUnlock) {
+            SignatureHelper.unlock(HSRMod.makePath(Robin2.ID), true);
         }
     }
 

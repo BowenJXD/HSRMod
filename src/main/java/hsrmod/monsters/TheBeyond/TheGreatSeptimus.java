@@ -34,6 +34,7 @@ import hsrmod.cards.base.March7th0;
 import hsrmod.cards.base.Welt0;
 import hsrmod.cards.uncommon.Robin1;
 import hsrmod.misc.Encounter;
+import hsrmod.misc.VideoManager;
 import hsrmod.modcore.HSRMod;
 import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.enemyOnly.*;
@@ -63,9 +64,6 @@ public class TheGreatSeptimus extends BaseMonster implements OnCardUseSubscriber
             powerAmount++;
 
         setDamages(17, 27, 37, 7, 17);
-        if (BaseMod.hasModID("spireTogether:")) {
-            tv = 27;
-        }
         
         bgm = Encounter.SALUTATIONS_OF_ASHEN_DREAMS;
     }
@@ -91,7 +89,6 @@ public class TheGreatSeptimus extends BaseMonster implements OnCardUseSubscriber
         
         switch (this.nextMove) {
             case 1:
-                // addToBot(new VFXAction(new SimplePlayVideoEffect(PathDefine.VIDEO_PATH + ID + ".webm")));
                 addToBot(new VFXAction(new BossCrystalImpactEffect(p.hb.cX, p.hb.cY)));
                 addToBot(new DamageAction(p, this.damage.get(0), AbstractGameAction.AttackEffect.BLUNT_LIGHT, true));
                 addToBot(new ApplyPowerAction(p, this, new AlienDreamPower(p, 1), 1));
@@ -125,14 +122,15 @@ public class TheGreatSeptimus extends BaseMonster implements OnCardUseSubscriber
                 addToBot(new ApplyPowerAction(this, this, new ChargingPower(this, MOVES[6], 1), 1));
                 break;
             case 7:
-                if (AbstractDungeon.miscRng.randomBoolean()) {
-                    addToBot(new ShoutAction(this, DIALOG[7], 3.0F, 4.0F));
-                    ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_Day8", 3));
-                }
-                else {
-                    addToBot(new ShoutAction(this, DIALOG[8], 3.0F, 4.0F));
-                    ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_Day9", 3));
-                }
+                if (!VideoManager.play(ID, 3.3f))
+                    if (AbstractDungeon.miscRng.randomBoolean()) {
+                        addToBot(new ShoutAction(this, DIALOG[7], 3.0F, 4.0F));
+                        ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_Day8", 3));
+                    }
+                    else {
+                        addToBot(new ShoutAction(this, DIALOG[8], 3.0F, 4.0F));
+                        ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_Day9", 3));
+                    }
                 if (Settings.FAST_MODE) {
                     this.addToBot(new VFXAction(new ViolentAttackEffect(p.hb.cX, p.hb.cY, Color.YELLOW)));
                 } else {

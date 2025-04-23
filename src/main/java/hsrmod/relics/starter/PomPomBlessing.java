@@ -1,10 +1,6 @@
 package hsrmod.relics.starter;
 
-import basemod.BaseMod;
 import basemod.abstracts.CustomRelic;
-import basemod.abstracts.CustomSavable;
-import basemod.devcommands.energy.Energy;
-import basemod.interfaces.OnPlayerDamagedSubscriber;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsAction;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
@@ -13,8 +9,6 @@ import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardQueueItem;
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
@@ -36,7 +30,7 @@ import hsrmod.relics.special.DanhengRelic;
 import hsrmod.relics.special.HimekoRelic;
 import hsrmod.relics.special.March7thRelic;
 import hsrmod.relics.special.WeltRelic;
-import hsrmod.subscribers.SubscriptionManager;
+import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.utils.ModHelper;
 
 import java.util.ArrayList;
@@ -157,11 +151,14 @@ public class PomPomBlessing extends CustomRelic {
                         text = DESCRIPTIONS[6]; // 
                     } else if (card instanceof Castorice1) {
                         text = DESCRIPTIONS[7]; //
+                        SignatureHelper.unlock(HSRMod.makePath(Castorice1.ID), true);
                     }
 
-                    if (!relicName.isEmpty())
-                        AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float) (Settings.WIDTH / 2), (float) (Settings.HEIGHT / 2),
-                                RelicLibrary.getRelic(relicName).makeCopy());
+                    if (!relicName.isEmpty()) {
+                        AbstractRelic relic = RelicLibrary.getRelic(relicName).makeCopy();
+                        AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float) (Settings.WIDTH / 2), (float) (Settings.HEIGHT / 2), relic);
+                        ModHelper.addToTopAbstract(() -> relic.setCounter(-2));
+                    }
                     if (!text.isEmpty())
                         addToBot(new TalkAction(true, text, 1.0F, 2.0F));
                 }));

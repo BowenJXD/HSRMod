@@ -1,27 +1,26 @@
 package hsrmod.patches;
 
+import VideoTheSpire.effects.SimplePlayVideoEffect;
 import basemod.BaseMod;
-import com.codedisaster.steamworks.SteamAuthTicket;
-import com.evacipated.cardcrawl.modthespire.lib.ByRef;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
+import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.actions.animations.ShoutAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.RelicLibrary;
-import hsrmod.cards.uncommon.Acheron1;
-import hsrmod.cards.uncommon.Aventurine1;
+import hsrmod.actions.ForceWaitAction;
 import hsrmod.effects.GrayscaleScreenEffect;
 import hsrmod.effects.PortraitDisplayEffect;
+import hsrmod.misc.VideoManager;
 import hsrmod.modcore.HSRMod;
-import hsrmod.monsters.TheBeyond.AventurineOfStratagems;
 import hsrmod.utils.ModHelper;
+import hsrmod.utils.PathDefine;
 import org.apache.logging.log4j.Level;
 
 import java.util.Objects;
@@ -121,6 +120,24 @@ public class OtherModFixes {
             for (String id : aDestRelicIDs) {
                 RelicTagField.destructible.set(RelicLibrary.getRelic(id), true);
             }
+        }
+    }
+    
+    /*@SpirePatch(clz = BaseMonster.class, method = "modifyTVByTogether", requiredModId = "spireTogether")
+    public static class TogetherTVPatch {
+        @SpirePrefixPatch
+        public static SpireReturn<Integer> Prefix(int tv) {
+            return SpireReturn.Return(tv + tv * P2PManager.GetPlayerCountWithoutSelf() * 50 / 100);
+        }
+    }*/
+    
+    @SpirePatch(clz = VideoManager.class, method = "play", requiredModId = "VideoTheSpire")
+    public static class VideoPatch {
+        @SpirePrefixPatch
+        public static SpireReturn<Boolean> Prefix(String id, float duration) {
+            AbstractDungeon.actionManager.addToBottom(new VFXAction(new SimplePlayVideoEffect(PathDefine.VIDEO_PATH + id + ".webm")));
+            AbstractDungeon.actionManager.addToBottom(new ForceWaitAction(duration));
+            return SpireReturn.Return(true);
         }
     }
 }

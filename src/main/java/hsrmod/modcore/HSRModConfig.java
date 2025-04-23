@@ -46,6 +46,7 @@ public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscrib
     public static String[] TEXT = uiStrings.TEXT;
     public static SpireConfig config;
     public static ModInfo info;
+    public static Texture tpIcon;
     
     public static boolean addRelic = true;
     public static boolean addEvent = true;
@@ -105,6 +106,7 @@ public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscrib
             tpRitual = config.getBool("tpRitual");
             tpSafeguard = config.getBool("tpSafeguard");
             tpCurse = config.getBool("tpCurse");
+            tpIcon = new Texture(PathDefine.POWER_PATH + "ChargingPower48.png");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -324,6 +326,7 @@ public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscrib
     
     public static int getActiveTPCount() {
         int result = 0;
+        if (AbstractDungeon.ascensionLevel < 20) return result;
         if (tpThorn) result++;
         if (tpMalleable) result++;
         if (tpRitual) result++;
@@ -363,9 +366,24 @@ public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscrib
             e.printStackTrace();
         }
     }
+    
+    public static String getHeader() {
+        return getText(TextContent.THRERHOLD_PROTOCOLS);
+    }
+    
+    public static String getTip() {
+        StringBuilder sb = new StringBuilder();
+        if (tpThorn) sb.append(getText(TextContent.TP_THORN)).append(" NL ");
+        if (tpMalleable) sb.append(getText(TextContent.TP_MALLEABLE)).append(" NL ");
+        if (tpRitual) sb.append(getText(TextContent.TP_RITUAL)).append(" NL ");
+        if (tpSafeguard) sb.append(getText(TextContent.TP_SAFEGUARD)).append(" NL ");
+        if (tpCurse) sb.append(getText(TextContent.TP_CURSE)).append(" NL ");
+        return sb.toString();
+    }
+    
     @Override
     public void receiveOnBattleStart(AbstractRoom abstractRoom) {
-        if (tpCurse) {
+        if (tpCurse && AbstractDungeon.ascensionLevel >= 20) {
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new ShuffleStatePower(AbstractDungeon.player)));
         }
     }
@@ -405,11 +423,11 @@ public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscrib
         }
     }
     
-    String getText(TextContent content) {
+    public static String getText(TextContent content) {
         return TEXT[content.ordinal()];
     }
     
-    enum TextContent {
+    public enum TextContent {
         BASIC_SETTINGS,
         RESTART_NOTICE,
         ADD_RELIC,

@@ -1,10 +1,12 @@
 package hsrmod.powers.enemyOnly;
 
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
-import hsrmod.powers.misc.ToughnessPower;
+import hsrmod.powers.misc.LockToughnessPower;
 
 public class HardyLeafSheathPower extends BuffPower {
     public static final String POWER_ID = HSRMod.makePath(HardyLeafSheathPower.class.getSimpleName());
@@ -17,19 +19,13 @@ public class HardyLeafSheathPower extends BuffPower {
     @Override
     public void onInitialApplication() {
         super.onInitialApplication();
-        ToughnessPower toughness = (ToughnessPower) owner.getPower(ToughnessPower.POWER_ID);
-        if (toughness != null) {
-            toughness.lock(this);
-        }
+        addToBot(new ApplyPowerAction(owner, owner, new LockToughnessPower(owner)));
     }
 
     @Override
     public void onRemove() {
         super.onRemove();
-        ToughnessPower toughness = (ToughnessPower) owner.getPower(ToughnessPower.POWER_ID);
-        if (toughness != null) {
-            toughness.unlock(this);
-        }
+        addToBot(new RemoveSpecificPowerAction(owner, owner, LockToughnessPower.POWER_ID));
     }
 
     @Override

@@ -16,9 +16,9 @@ import hsrmod.effects.MultiShivFreezeEffect;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.enemyOnly.SummonedPower;
+import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.utils.CardDataCol;
 import hsrmod.utils.DataManager;
-import hsrmod.signature.utils.SignatureHelper;
 
 import java.util.Iterator;
 
@@ -80,10 +80,5 @@ public class Seele1 extends BaseCard {
                     }
                 });
         addToBot(action);
-    }
-
-    @Override
-    public void triggerOnScry() {
-        super.triggerOnScry();
     }
 }

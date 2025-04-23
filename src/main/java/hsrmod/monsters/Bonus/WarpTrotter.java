@@ -2,6 +2,7 @@ package hsrmod.monsters.Bonus;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.EscapeAction;
 import com.megacrit.cardcrawl.actions.common.RollMoveAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -12,10 +13,10 @@ import com.megacrit.cardcrawl.rewards.RewardItem;
 import hsrmod.effects.FloatingImageEffect;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.monsters.BaseMonster;
-import hsrmod.powers.misc.ToughnessPower;
+import hsrmod.powers.enemyOnly.TrotterBlessingPower;
+import hsrmod.powers.misc.LockToughnessPower;
 import hsrmod.subscribers.PreBreakSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
-import hsrmod.utils.ModHelper;
 import hsrmod.utils.RewardEditor;
 
 public class WarpTrotter extends BaseMonster implements PreBreakSubscriber {
@@ -53,13 +54,9 @@ public class WarpTrotter extends BaseMonster implements PreBreakSubscriber {
         super.usePreBattleAction();
         SubscriptionManager.subscribe(this);
         if (turnCount > 2) {
-            ModHelper.addToBotAbstract(() -> {
-                ToughnessPower power = (ToughnessPower) getPower(ToughnessPower.POWER_ID);
-                if (power != null) {
-                    power.lock(this);
-                }
-            });
+            addToBot(new ApplyPowerAction(this, this, new LockToughnessPower(this)));
         }
+        addToBot(new ApplyPowerAction(this, this, new TrotterBlessingPower(this)));
     }
 
     @Override
@@ -68,12 +65,7 @@ public class WarpTrotter extends BaseMonster implements PreBreakSubscriber {
             case 0:
                 break;
             case 1:
-                ModHelper.addToBotAbstract(() -> {
-                    ToughnessPower power = (ToughnessPower) getPower(ToughnessPower.POWER_ID);
-                    if (power != null) {
-                        power.lock(this);
-                    }
-                });
+                addToBot(new ApplyPowerAction(this, this, new LockToughnessPower(this)));
                 break;
             case 2:
                 addToBot(new EscapeAction(this));

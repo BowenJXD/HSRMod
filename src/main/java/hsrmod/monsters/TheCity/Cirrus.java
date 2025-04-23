@@ -5,11 +5,8 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.monsters.BaseMonster;
-import hsrmod.powers.enemyOnly.MultiMovePower;
 import hsrmod.powers.enemyOnly.SoulsplitPower;
-import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.subscribers.PostMonsterDeathSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
@@ -32,7 +29,7 @@ public class Cirrus extends BaseMonster implements PostMonsterDeathSubscriber {
         addSlot(-400, AbstractDungeon.monsterRng.random(-15, 15));
         addSlot(-100, AbstractDungeon.monsterRng.random(-15, 15));
         addSlot(200, AbstractDungeon.monsterRng.random(-15, 15));
-        monFunc = this::getMonster;
+        monFunc = Cirrus::getMonster;
         
         addMove(Intent.UNKNOWN, mi -> {
             shoutIf(0, 33);
@@ -74,7 +71,7 @@ public class Cirrus extends BaseMonster implements PostMonsterDeathSubscriber {
         setMove(0);
     }
     
-    AbstractMonster getMonster(MonsterSlot slot) {
+    public static AbstractMonster getMonster(MonsterSlot slot) {
         AbstractMonster result = null;
         float x = slot.x, y = slot.y;
         switch (AbstractDungeon.monsterRng.random(8)) {

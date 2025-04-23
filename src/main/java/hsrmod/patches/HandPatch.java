@@ -32,6 +32,8 @@ public class HandPatch {
             // Find cards removed from hand
             for (AbstractCard card : handCache) {
                 if (!hand.contains(card) && card instanceof BaseCard 
+                        && AbstractDungeon.currMapNode != null
+                        && AbstractDungeon.currMapNode.room != null
                         && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
                     ((BaseCard) card).onLeaveHand();
                     ((BaseCard) card).inHand = false;

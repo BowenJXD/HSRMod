@@ -15,11 +15,11 @@ import com.megacrit.cardcrawl.vfx.SpotlightEffect;
 import com.megacrit.cardcrawl.vfx.combat.ClashEffect;
 import com.megacrit.cardcrawl.vfx.combat.FlickCoinEffect;
 import com.megacrit.cardcrawl.vfx.combat.WeightyImpactEffect;
-import hsrmod.actions.LockToughnessAction;
 import hsrmod.cardsV2.Curse.Imprison;
 import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.enemyOnly.ChargingPower;
 import hsrmod.powers.misc.EnergyPower;
+import hsrmod.powers.misc.LockToughnessPower;
 import hsrmod.utils.ModHelper;
 
 public class AventurineOfStratagems extends BaseMonster {
@@ -61,7 +61,7 @@ public class AventurineOfStratagems extends BaseMonster {
             addToBot(new VFXAction(new RainingGoldEffect(100)));
             spawnMonsters();
             addToBot(new ApplyPowerAction(this, this, new IntangiblePower(this, 7), 7));
-            addToBot(new LockToughnessAction(this, name));
+            addToBot(new ApplyPowerAction(this, this, new LockToughnessPower(this)));
             addToBot(new ApplyPowerAction(this, this, new ChargingPower(this, getLastMove())));
         });
         addMove(Intent.ATTACK_DEBUFF, 40, mi->{

@@ -1,10 +1,12 @@
 package hsrmod.powers.enemyOnly;
 
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
-import hsrmod.powers.misc.ToughnessPower;
+import hsrmod.powers.misc.LockToughnessPower;
 
 public class IfWeLiveInTheLightPower extends BuffPower {
     public static final String POWER_ID = HSRMod.makePath(IfWeLiveInTheLightPower.class.getSimpleName());
@@ -26,19 +28,13 @@ public class IfWeLiveInTheLightPower extends BuffPower {
     @Override
     public void onInitialApplication() {
         super.onInitialApplication();
-        if (owner.hasPower(ToughnessPower.POWER_ID)) {
-            ToughnessPower toughnessPower = (ToughnessPower) owner.getPower(ToughnessPower.POWER_ID);
-            toughnessPower.lock(this);
-        }
+        addToTop(new ApplyPowerAction(owner, owner, new LockToughnessPower(owner)));
     }
 
     @Override
     public void onRemove() {
         super.onRemove();
-        if (owner.hasPower(ToughnessPower.POWER_ID)) {
-            ToughnessPower toughnessPower = (ToughnessPower) owner.getPower(ToughnessPower.POWER_ID);
-            toughnessPower.unlock(this);
-        }
+        addToTop(new RemoveSpecificPowerAction(owner, owner, LockToughnessPower.POWER_ID));
     }
 
     @Override

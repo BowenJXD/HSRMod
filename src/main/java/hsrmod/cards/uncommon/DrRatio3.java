@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementType;
@@ -19,12 +20,14 @@ import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 public class DrRatio3 extends BaseCard {
     public static final String ID = DrRatio3.class.getSimpleName();
     
+    int cachedBaseDamage = 0;
     public int debuffNum = 0;
     
     public DrRatio3() {
         super(ID);
         tags.add(FOLLOW_UP);
         exhaust = true;
+        cachedBaseDamage = baseDamage;
     }
 
     @Override
@@ -32,7 +35,7 @@ public class DrRatio3 extends BaseCard {
         addToBot(
                 new ElementalDamageAction(
                         m,
-                        new ElementalDamageInfo(this, damage + debuffNum * magicNumber),
+                        new ElementalDamageInfo(this, damage),
                         AbstractGameAction.AttackEffect.SLASH_HEAVY
                 )
         );
@@ -41,6 +44,13 @@ public class DrRatio3 extends BaseCard {
     @Override
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
         return super.canUse(p,m) && followedUp;
+    }
+    
+    @Override
+    public void calculateCardDamage(AbstractMonster mo) {
+        debuffNum = (int) mo.powers.stream().filter(power -> power.type == AbstractPower.PowerType.DEBUFF).count();
+        baseDamage = cachedBaseDamage + debuffNum;
+        super.calculateCardDamage(mo);
     }
 
     @Override

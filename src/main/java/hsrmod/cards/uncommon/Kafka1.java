@@ -4,19 +4,19 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.EntangleEffect;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.actions.TriggerDoTAction;
 import hsrmod.cards.BaseCard;
-import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.breaks.ShockPower;
 import hsrmod.powers.misc.DoTPower;
+import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.utils.ModHelper;
 
 import java.util.Iterator;
@@ -62,5 +62,12 @@ public class Kafka1 extends BaseCard {
         ));
         addToBot(new TriggerDoTAction(m, p, magicNumber));
         addToBot(new ApplyPowerAction(m, p, new ShockPower(m, p, magicNumber), magicNumber));
+        if (!SignatureHelper.isUnlocked(cardID) && m != null)
+            ModHelper.addToBotAbstract(() -> {
+                AbstractPower shock = m.getPower(ShockPower.POWER_ID);
+                if (shock.amount >= 7) {
+                    SignatureHelper.unlock(cardID, true);
+                }
+            });
     }
 }

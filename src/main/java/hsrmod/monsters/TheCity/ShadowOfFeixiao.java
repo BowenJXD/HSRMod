@@ -2,23 +2,20 @@ package hsrmod.monsters.TheCity;
 
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.ClearCardQueueAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.common.*;
-import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.common.RollMoveAction;
 import com.megacrit.cardcrawl.cards.status.Wound;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.IntangiblePower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.WeakPower;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.vfx.combat.WhirlwindEffect;
-import hsrmod.actions.LockToughnessAction;
-import hsrmod.actions.UnlockToughnessAction;
 import hsrmod.cardsV2.TheHunt.Feixiao2;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
@@ -26,13 +23,13 @@ import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.enemyOnly.ChargingPower;
 import hsrmod.powers.enemyOnly.ResonatePower;
 import hsrmod.powers.enemyOnly.SummonedPower;
+import hsrmod.powers.misc.LockToughnessPower;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.subscribers.PreBreakSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
-import java.util.Iterator;
 import java.util.Objects;
 
 public class ShadowOfFeixiao extends BaseMonster implements PreBreakSubscriber {
@@ -68,7 +65,7 @@ public class ShadowOfFeixiao extends BaseMonster implements PreBreakSubscriber {
                 else if (monster instanceof WorldpurgeTail) shout(4, 3f);
 
                 addToBot(new ApplyPowerAction(monster, this, new ResonatePower(monster, resonateCount, ResonatePower.ResonateType.FEIXIAO), 0));
-                addToBot(new UnlockToughnessAction(monster, monster.name));
+                addToBot(new RemoveSpecificPowerAction(monster, this, LockToughnessPower.POWER_ID));
                 addToBot(new RollMoveAction(monster));
                 if (ModHelper.getPowerCount(monster, ToughnessPower.POWER_ID) > 0)
                     addToBot(new ApplyPowerAction(monster, this, new ToughnessPower(monster, toughnessHealCount)));
@@ -81,12 +78,12 @@ public class ShadowOfFeixiao extends BaseMonster implements PreBreakSubscriber {
             AbstractDungeon.getMonsters().monsters.stream().filter(m -> ModHelper.check(m) && !m.hasPower(ResonatePower.POWER_ID))
                     .forEach(m -> {
                                 addToBot(new ApplyPowerAction(m, this, new ResonatePower(m, resonateCount, ResonatePower.ResonateType.FEIXIAO), 0));
-                                addToBot(new UnlockToughnessAction(m, m.name));
+                                addToBot(new RemoveSpecificPowerAction(m, this, LockToughnessPower.POWER_ID));
                                 if (ModHelper.getPowerCount(m, ToughnessPower.POWER_ID) > 0)
                                     addToBot(new ApplyPowerAction(m, this, new ToughnessPower(m, toughnessHealCount)));
                             }
                     );
-            addToBot(new LockToughnessAction(this, name));
+            addToBot(new ApplyPowerAction(this, this, new LockToughnessPower(this)));
             addToBot(new ApplyPowerAction(this, this, new IntangiblePower(this, 1)));
             addToBot(new ApplyPowerAction(this, this, new ChargingPower(this, getLastMove())));
         });
@@ -103,7 +100,7 @@ public class ShadowOfFeixiao extends BaseMonster implements PreBreakSubscriber {
                             addToBot(new RemoveSpecificPowerAction(m, this, ResonatePower.POWER_ID));
                         });
                     }
-                    addToBot(new UnlockToughnessAction(this, this.name));
+                    addToBot(new RemoveSpecificPowerAction(this, this, LockToughnessPower.POWER_ID));
                     SubscriptionManager.unsubscribe(this);
                 });
     }

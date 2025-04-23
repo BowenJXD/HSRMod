@@ -2,13 +2,10 @@ package hsrmod.cards.uncommon;
 
 import basemod.BaseMod;
 import basemod.interfaces.OnPlayerDamagedSubscriber;
-import com.evacipated.cardcrawl.mod.stslib.damagemods.BindingHelper;
-import com.evacipated.cardcrawl.mod.stslib.patches.BindingPatches;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.BouncingAction;
@@ -16,7 +13,6 @@ import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
-import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.signature.utils.SignatureHelper;
@@ -49,6 +45,7 @@ public class Yunli1 extends BaseCard implements OnPlayerDamagedSubscriber {
         shout(0, 1);
         ModHelper.addToBotAbstract(this::execute);
         canBeUsed = false;
+        count = 0;
     }
 
     @Override

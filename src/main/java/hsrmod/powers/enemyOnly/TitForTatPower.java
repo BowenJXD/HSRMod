@@ -1,13 +1,14 @@
 package hsrmod.powers.enemyOnly;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
-import hsrmod.powers.misc.ToughnessPower;
+import hsrmod.powers.misc.LockToughnessPower;
 import hsrmod.subscribers.PostBreakBlockSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 
@@ -32,20 +33,14 @@ public class TitForTatPower extends BuffPower implements PostBreakBlockSubscribe
     public void onInitialApplication() {
         super.onInitialApplication();
         SubscriptionManager.subscribe(this);
-        if (owner.hasPower(ToughnessPower.POWER_ID)) {
-            ToughnessPower toughnessPower = (ToughnessPower) owner.getPower(ToughnessPower.POWER_ID);
-            toughnessPower.lock(this);
-        }
+        addToTop(new ApplyPowerAction(owner, owner, new LockToughnessPower(owner)));
     }
 
     @Override
     public void onRemove() {
         super.onRemove();
         SubscriptionManager.unsubscribe(this);
-        if (owner.hasPower(ToughnessPower.POWER_ID)) {
-            ToughnessPower toughnessPower = (ToughnessPower) owner.getPower(ToughnessPower.POWER_ID);
-            toughnessPower.unlock(this);
-        }
+        addToTop(new RemoveSpecificPowerAction(owner, owner, LockToughnessPower.POWER_ID));
     }
 
     @Override

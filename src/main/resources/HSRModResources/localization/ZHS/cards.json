@@ -65,7 +65,7 @@
     "EXTENDED_DESCRIPTION": [
       "直至一切，燃烧殆尽！"
     ],
-    "SIGNATURE_UNLOCK_CONDITION": "打出此牌失去全部的生命，然后赢得当前战斗的胜利。",
+    "SIGNATURE_UNLOCK_CONDITION": "打出此牌失去全部的生命，最终赢得当前战斗的胜利。",
     "SIGNATURE_ILLUSTRATOR": "meltyrice"
   },
   "HSRMod:JingYuan1": {
@@ -190,7 +190,7 @@
       "二倍速就这？！",
       "怎么还开挂呢，%s？不会玩不起吧~",
       "把挂关了吧，%s。",
-      "（银狼）：我可不跟开挂的人一起玩。"
+      "（银狼）：不要学我开挂哦~"
     ],
     "SIGNATURE_UNLOCK_CONDITION": "通过命令行获得此牌，但再次使用命令行会 #r锁定 。",
     "SIGNATURE_ILLUSTRATOR": "zcing"

@@ -1,8 +1,12 @@
 package hsrmod.patches;
 
+import com.evacipated.cardcrawl.mod.stslib.patches.tempHp.PlayerDamage;
+import com.evacipated.cardcrawl.modthespire.lib.SpireInsertPatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import hsrmod.subscribers.SubscriptionManager;
 
@@ -15,13 +19,11 @@ public class HPPatch {
         }
     }
     
-    @SpirePatch(clz = LoseHPAction.class, method = "update")
-    public static class LoseHPPatch{
-        @SpirePostfixPatch
-        public static void Postfix(LoseHPAction __instance) {
-            if (__instance.isDone && __instance.target != null) {
-                SubscriptionManager.getInstance().triggerPostHPUpdate(__instance.target);
-            }
+    @SpirePatch(clz = PlayerDamage.class, method = "Insert", paramtypez = {AbstractCreature.class, DamageInfo.class, int[].class, boolean[].class})
+    public static class LoseTempHPPatch {
+        @SpireInsertPatch(rloc = 13)
+        public static void Insert(AbstractCreature __instance) {
+            SubscriptionManager.getInstance().triggerPostHPUpdate(__instance);
         }
     }
 }

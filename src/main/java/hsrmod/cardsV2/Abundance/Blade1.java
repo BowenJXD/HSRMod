@@ -3,11 +3,14 @@ package hsrmod.cardsV2.Abundance;
 import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
 import com.evacipated.cardcrawl.mod.stslib.patches.core.AbstractCreature.TempHPField;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.combat.CleaveEffect;
+import com.megacrit.cardcrawl.vfx.combat.GoldenSlashEffect;
 import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.actions.TriggerPowerAction;
@@ -44,6 +47,11 @@ public class Blade1 extends BaseCard implements PostHPUpdateSubscriber {
     public void onLeaveHand() {
         super.onLeaveHand();
         SubscriptionManager.unsubscribe(this);
+    }
+
+    @Override
+    public void onMoveToDiscard() {
+        super.onMoveToDiscard();
         canUnlock = false;
     }
 
@@ -54,13 +62,8 @@ public class Blade1 extends BaseCard implements PostHPUpdateSubscriber {
     }
 
     @Override
-    public void calculateCardDamage(AbstractMonster mo) {
-        baseDamage = TempHPField.tempHp.get(AbstractDungeon.player) * magicNumber / 100;
-        super.calculateCardDamage(mo);
-    }
-
-    @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new VFXAction(new CleaveEffect()));
         addToBot(new AddTemporaryHPAction(p, p, block));
         addToBot(new TriggerPowerAction(p.getPower(NecrosisPower.POWER_ID)));
         addToBot(new ApplyPowerAction(p, p, new NecrosisPower(p, 1)));
@@ -94,6 +97,12 @@ public class Blade1 extends BaseCard implements PostHPUpdateSubscriber {
             followedUp = true;
             addToBot(new FollowUpAction(this));
         }
+    }
+
+    @Override
+    public float calculateModifiedCardDamage(AbstractPlayer player, AbstractMonster mo, float tmp) {
+        baseDamage = TempHPField.tempHp.get(AbstractDungeon.player) * magicNumber / 100;
+        return super.calculateModifiedCardDamage(player, mo, tmp);
     }
 
     @Override

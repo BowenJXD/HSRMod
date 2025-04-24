@@ -2,7 +2,9 @@ package hsrmod.cardsV2.Abundance;
 
 import basemod.BaseMod;
 import basemod.interfaces.OnPlayerDamagedSubscriber;
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -11,6 +13,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.stances.WrathStance;
+import com.megacrit.cardcrawl.vfx.combat.VerticalAuraEffect;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
@@ -58,6 +61,7 @@ public class Mydei1 extends BaseCard implements OnPlayerDamagedSubscriber {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new VFXAction(new VerticalAuraEffect(Color.RED, p.hb.cX, p.hb.cY)));
         addToBot(new ChangeStanceAction(new WrathStance()));
         addToBot(new ElementalDamageAction(m, new ElementalDamageInfo(this), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
         AbstractCard card = new Mydei2();

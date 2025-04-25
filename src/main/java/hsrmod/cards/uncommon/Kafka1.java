@@ -64,8 +64,7 @@ public class Kafka1 extends BaseCard {
         addToBot(new ApplyPowerAction(m, p, new ShockPower(m, p, magicNumber), magicNumber));
         if (!SignatureHelper.isUnlocked(cardID) && m != null)
             ModHelper.addToBotAbstract(() -> {
-                AbstractPower shock = m.getPower(ShockPower.POWER_ID);
-                if (shock.amount >= 7) {
+                if (ModHelper.getPowerCount(m, ShockPower.POWER_ID) >= 7) {
                     SignatureHelper.unlock(cardID, true);
                 }
             });

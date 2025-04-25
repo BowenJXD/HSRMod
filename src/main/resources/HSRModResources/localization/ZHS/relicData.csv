@@ -14,7 +14,7 @@ BlackHoleTrap,黑洞之阱,COMMON,战斗结束后，根据你生命值大于80%�
 RubertEmpireMechanicalCogwheel,鲁珀特帝国机械齿轮,UNCOMMON,进入战斗时，获得50金币，然后若你的金币数大于750，则失去所有金币，该遗物损毁。 NL 若同时携带全部鲁珀特帝国机械系列遗物，将引发反有机方程的局域共鸣。,50,#鲁珀特二世自称继承了天才俱乐部500.07帝皇鲁珀特的记忆。,FLAT,TRUE,TRUE,FALSE,TRUE,,经济
 RubertEmpireMechanicalLever,鲁珀特帝国机械杠杆,UNCOMMON,进入？时，随机选择一张牌，若其未升级，则升级之，否则失去之，且该遗物损毁。 NL 若同时携带全部鲁珀特帝国机械系列遗物，将引发反有机方程的局域共鸣。,,#鲁珀特二世自称继承了天才俱乐部1.07帝皇鲁珀特的记忆。,FLAT,TRUE,TRUE,FALSE,FALSE,,运营
 RubertEmpireMechanicalPiston,鲁珀特帝国机械活塞,UNCOMMON,进入休息处时，获得2个遗物，随机失去1个非初始遗物，若以此法失去自身，则失去所有普通遗物。 NL 若同时携带全部鲁珀特帝国机械系列遗物，将引发反有机方程的局域共鸣。,,#鲁珀特二世自称继承了天才俱乐部2.07帝皇鲁珀特的记忆。,FLAT,FALSE,TRUE,FALSE,FALSE,,运营
-PriceOfPeace,和平的代价,COMMON,进入商店时，获得100金币。,100,人们相信这场繁荣永远不会结束——直到日后更为惨烈的星际能源战争悄然揭幕。,FLAT,FALSE,FALSE,FALSE,TRUE,,经济
+PriceOfPeace,和平的代价,UNCOMMON,进入商店时，获得100金币。,100,人们相信这场繁荣永远不会结束——直到日后更为惨烈的星际能源战争悄然揭幕。,FLAT,FALSE,FALSE,FALSE,TRUE,,经济
 MysteriousMagnetism,「神秘」磁力,COMMON,进入战斗房间时，怪物替换为精英，触发2次后损毁，获得200金币。,25,为对抗「智识」的确定性，谜语人曾在不确定领域做出诸多努力。,FLAT,TRUE,FALSE,FALSE,TRUE,,经济
 ShatterboneBlade,断骨剑,COMMON,第二章及之前，受到的生命值损失+1；第三章及之后，受到的生命值损失-1。,1,而多年以后，每每在私下讲起森林里的遭遇时，少年都会痛哭流涕，并对那人面兽心的卡耶尔大骂不止。,FLAT,FALSE,TRUE,FALSE,FALSE,,生存
 BeaconColoringPaste,信标着色剂,UNCOMMON,选择奖励牌时，升级其中1张。,1,它的发明者乃是一位画技卓绝的无名客。,FLAT,FALSE,FALSE,FALSE,FALSE,,运营

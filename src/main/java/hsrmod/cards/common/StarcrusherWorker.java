@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.cards.BaseCard;
 import hsrmod.powers.misc.ToughnessPower;
+import hsrmod.utils.ModHelper;
 
 public class StarcrusherWorker extends BaseCard {
     public static final String ID = StarcrusherWorker.class.getSimpleName();
@@ -24,9 +25,9 @@ public class StarcrusherWorker extends BaseCard {
                 && mToughness.amount > 0) {
             amt = mToughness.amount - 1;
         }
-        addToBot(new ReducePowerAction(m, p, new ToughnessPower(m, amt), amt));
+        addToBot(new ReducePowerAction(m, p, ToughnessPower.POWER_ID, amt));
         if (mToughness != null 
-                && (p.hasPower(ToughnessPower.POWER_ID) ? p.getPower(ToughnessPower.POWER_ID).amount : 0) < mToughness.amount) {
+                && ModHelper.getPowerCount(p, ToughnessPower.POWER_ID) < mToughness.amount) {
             addToBot(new ApplyPowerAction(p, p, new ToughnessPower(p, amt), amt));
         }
     }

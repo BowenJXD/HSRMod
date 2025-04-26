@@ -75,7 +75,7 @@ public class SilverWolf1 extends BaseCard {
         public static void Insert(AbstractCard c) {
             if (Objects.equals(c.cardID, HSRMod.makePath(SilverWolf1.ID))) {
                 SignatureHelper.unlock(c.cardID, true);
-                if (AbstractDungeon.actionManager != null)
+                if (AbstractDungeon.actionManager != null && AbstractDungeon.isPlayerInDungeon())
                     AbstractDungeon.actionManager.addToTop(new TalkAction(true,
                             GeneralUtil.tryFormat(
                                     CardCrawlGame.languagePack.getCardStrings(HSRMod.makePath(ID)).EXTENDED_DESCRIPTION[2],
@@ -92,7 +92,7 @@ public class SilverWolf1 extends BaseCard {
         public static void Insert(AbstractCard c) {
             if (Objects.equals(c.cardID, HSRMod.makePath(SilverWolf1.ID))) {
                 SignatureHelper.unlock(c.cardID, true);
-                if (AbstractDungeon.actionManager != null)
+                if (AbstractDungeon.actionManager != null && AbstractDungeon.isPlayerInDungeon())
                     AbstractDungeon.actionManager.addToTop(new TalkAction(true,
                             GeneralUtil.tryFormat(
                                     CardCrawlGame.languagePack.getCardStrings(HSRMod.makePath(ID)).EXTENDED_DESCRIPTION[3],
@@ -109,7 +109,7 @@ public class SilverWolf1 extends BaseCard {
         public static void Prefix() {
             if (SignatureHelper.isUnlocked(HSRMod.makePath(ID))) {
                 SignatureHelper.unlock(HSRMod.makePath(ID), false);
-                if (AbstractDungeon.actionManager != null)
+                if (AbstractDungeon.actionManager != null && AbstractDungeon.isPlayerInDungeon())
                     AbstractDungeon.actionManager.addToTop(new TalkAction(true,
                             CardCrawlGame.languagePack.getCardStrings(HSRMod.makePath(ID)).EXTENDED_DESCRIPTION[4],
                             2, 3));

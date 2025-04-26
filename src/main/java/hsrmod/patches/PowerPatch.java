@@ -1,13 +1,14 @@
 package hsrmod.patches;
 
-import com.evacipated.cardcrawl.modthespire.lib.SpireInsertPatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
+import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.powers.enemyOnly.SummonedPower;
+import hsrmod.powers.misc.ToughnessPower;
+import spireTogether.network.objects.entities.NetworkMonster;
+import spireTogether.network.objects.entities.NetworkPower;
 
 import java.util.Objects;
 
@@ -34,13 +35,34 @@ public class PowerPatch {
                 cache = __inst.amount;
                 __inst.amount = -9999;
             }
-        }
+        }   
 
         @SpireInsertPatch(rloc = 10)
         public static void Insert(ReducePowerAction __inst) {
             if (cache != null)
                 __inst.amount = cache;
             cache = null;
+        }
+    }
+    
+    @SpirePatch(clz = RemoveSpecificPowerAction.class, method = "update")
+    public static class RemoveSpecificPowerActionPatch {
+        @SpireInsertPatch(rloc = 49-36, localvars = {"removeMe"})
+        public static void Insert(RemoveSpecificPowerAction __inst, @ByRef AbstractPower[] removeMe) {
+            if (removeMe[0] != null && removeMe[0].ID.equals(ToughnessPower.POWER_ID)) {
+                removeMe[0] = null;
+            }
+        }
+    }
+    
+    @SpirePatch(clz = NetworkMonster.class, method = "LosePower", requiredModId = "spireTogether")
+    public static class NetworkMonsterLosePowerPatch {
+        @SpirePrefixPatch
+        public static SpireReturn<Void> prefix(NetworkMonster __inst, NetworkPower power) {
+            if (power != null && power.realPowerID.equals(ToughnessPower.POWER_ID)) {
+                return SpireReturn.Return(null);
+            }
+            return SpireReturn.Continue();
         }
     }
 }

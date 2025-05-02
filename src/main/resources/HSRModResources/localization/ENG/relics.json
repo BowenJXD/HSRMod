@@ -10,7 +10,10 @@
       "This… can't be…",
       "That's… my final lesson… for you…",
       "Live on, kid…",
-      "Finally… A life to save…"
+      "Finally… A life to save…",
+      "玩家初始拥有 #y充能 ，每打出一张牌恢复20点 #y充能 ，有些牌需要消耗 #y充能 才能打出。",
+      "玩家回合结束时，可以消耗 #y充能 保留手牌，通过此法可以保留关键牌蓄爆。",
+      " #y充能 会跨战斗保留。控制牌堆 #y耗能 牌的数量，以此达到 #y充能 的合理利用，可以有效提升战力。"
     ]
   },
   "HSRMod:GalacticBat": {
@@ -18,7 +21,13 @@
     "FLAVOR": "\"Rules are made to be broken!\"",
     "DESCRIPTIONS": [
       "Enemies have #yToughness, deal damage to reduce it. NL When #yToughness is reduced to 0, apply #yBroken, deal break damage and an #yeffect #yof #ybreaking depending on the element type of the damage. NL Right click in game to view more detail.",
-      "Enemies have #yhsrmod:Toughness, deal damage to reduce it. NL When #yToughness is reduced to 0, apply #yhsrmod:Broken, deal #ybreak-damage and an #yhsrmod:effect-of-breaking depending on the element type of the damage. NL Right click in game to close detailed info."
+      "Enemies have #yhsrmod:Toughness, deal damage to reduce it. NL When #yToughness is reduced to 0, apply #yhsrmod:Broken, deal #ybreak-damage and an #yhsrmod:effect-of-breaking depending on the element type of the damage. NL Right click in game to close detailed info.",
+      "怪物初始拥有 #y韧性 ，层数大于0时，按层数令受到的伤害减少。",
+      "玩家可以通过 #r攻击牌 削减怪物 #y韧性 ，削韧数量和伤害属性写在括号里。",
+      "将怪物韧性削减至0时， #y击破 怪物，按伤害属性造成不同的 #y击破伤害 ，和负面效果，最后施加 #y击破状态 。",
+      "被 #y击破 的怪物造成的伤害减少，受到的伤害增加， #y韧性 可以继续被削减，且能进一步按照层数提供增伤。",
+      "一轮结束时，怪物的 #y韧性 将恢复至上限。",
+      "附表为每种属性的 #y击破效果 ，无需死记，仅供参考，实战中影响很少。"
     ]
   },
   "HSRMod:WaxOfElation": {
@@ -27,7 +36,9 @@
     "DESCRIPTIONS": [
       "Increase the chance of appearing of \"Elation\" cards. Right click in Neow's room to ban paths.",
       "Increase the chance of appearing of \"Elation\" cards. Banned paths: %s.",
-      "Choose %d paths to ban"
+      "Choose %d paths to ban",
+      "通过追击进行输出。 NL 达成特定的追击条件可以不消耗能量打出牌。",
+      "有追击条件的牌为追击牌。通过触发追击条件打出的时点为“追击时”。"
     ]
   },
   "HSRMod:WaxOfDestruction": {
@@ -36,7 +47,9 @@
     "DESCRIPTIONS": [
       "Increase the chance of appearing of \"Destruction\" cards. Right click in Neow's room to ban paths.",
       "Increase the chance of appearing of \"Destruction\" cards. Banned paths: %s.",
-      "Choose %d paths to ban"
+      "Choose %d paths to ban",
+      "通过击破伤害进行输出。 NL 牌有较高额的削韧，且部分在击破时，或对被击破的目标有额外效果。",
+      "击破伤害仅受击破特攻和敌方效果影响，不受力量等己方效果影响。"
     ]
   },
   "HSRMod:WaxOfNihility": {
@@ -45,7 +58,9 @@
     "DESCRIPTIONS": [
       "Increase the chance of appearing of \"Nihility\" cards. Right click in Neow's room to ban paths.",
       "Increase the chance of appearing of \"Nihility\" cards. Banned paths: %s.",
-      "Choose %d paths to ban"
+      "Choose %d paths to ban",
+      "负面效果较多，通过持续伤害进行输出。 NL 有四种不同的持续伤害，分别为灼烧，触电，风化，裂伤。不同的持续伤害独立结算。",
+      "所有持续伤害会于怪物的回合开始时触发，造成对应的属性伤害。 NL 持续伤害受所有效果影响。 NL 其他方式触发持续伤害也会会减少层数。"
     ]
   },
   "HSRMod:WaxOfPropagation": {
@@ -54,7 +69,9 @@
     "DESCRIPTIONS": [
       "Increase the chance of appearing of \"Propagation\" cards. Right click in Neow's room to ban paths.",
       "Increase the chance of appearing of \"Propagation\" cards. Banned paths: %s.",
-      "Choose %d paths to ban"
+      "Choose %d paths to ban",
+      "能量较多。多段攻击。 NL 通过能量的变化叠加【孢子】并在合适的时机引爆进行输出。",
+      "部分牌可以叠加【孢子】，能按照层数造成成倍的固定伤害，不受效果影响。"
     ]
   },
   "HSRMod:WaxOfPreservation": {
@@ -63,7 +80,9 @@
     "DESCRIPTIONS": [
       "Increase the chance of appearing of \"Preservation\" cards. Right click in Neow's room to ban paths.",
       "Increase the chance of appearing of \"Preservation\" cards. Banned paths: %s.",
-      "Choose %d paths to ban"
+      "Choose %d paths to ban",
+      "格挡较多。低频高额攻击。 NL 通过叠加格挡和【反震】，在受到怪物伤害后触发【反震】反击进行输出。",
+      "【反震】为固定伤害，不受效果影响，只受格挡值影响。"
     ]
   },
   "HSRMod:WaxOfTheHunt": {
@@ -72,7 +91,9 @@
     "DESCRIPTIONS": [
       "Increase the chance of appearing of \"The Hunt\" cards. Right click in Neow's room to ban paths.",
       "Increase the chance of appearing of \"The Hunt\" cards. Banned paths: %s.",
-      "Choose %d paths to ban"
+      "Choose %d paths to ban",
+      "过牌较多。单体多段低伤攻击。 NL 通过源源不断的摸取0费牌进行输出。",
+      "可以通过摸牌和出牌获得【会心】（约等于有上限的临时力量），增加0费牌收益。"
     ]
   },
   "HSRMod:WaxOfErudition": {
@@ -81,7 +102,9 @@
     "DESCRIPTIONS": [
       "Increase the chance of appearing of \"Erudition\" cards. Right click in Neow's room to ban paths.",
       "Increase the chance of appearing of \"Erudition\" cards. Banned paths: %s.",
-      "Choose %d paths to ban"
+      "Choose %d paths to ban",
+      "充能较多。群体攻击。 NL 通过获取和消耗充能运转。",
+      "【罐中脑】可以返还一次充能的消耗，让充能资源更丰富。"
     ]
   },
   "HSRMod:WaxOfAbundance": {
@@ -90,7 +113,9 @@
     "DESCRIPTIONS": [
       "Increase the chance of appearing of \"Abundance\" cards. Right click in Neow's room to ban paths.",
       "Increase the chance of appearing of \"Abundance\" cards. Banned paths: %s.",
-      "Choose %d paths to ban"
+      "Choose %d paths to ban",
+      "临时生命较多。低频高额攻击。 NL 通过叠加临时生命获得【珠露】，和不断消耗生命输出。",
+      "【珠露】为固定伤害，不受效果影响。 NL 【坏死】为叠加临时生命带来的负面效果，但运用得当也可以加以利用。"
     ]
   },
   "HSRMod:WaxOfRemembrance": {

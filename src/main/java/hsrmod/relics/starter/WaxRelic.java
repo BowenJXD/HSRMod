@@ -1,7 +1,9 @@
 package hsrmod.relics.starter;
 
 import basemod.BaseMod;
+import basemod.abstracts.CustomMultiPageFtue;
 import basemod.abstracts.CustomSavable;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -9,6 +11,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.neow.NeowRoom;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
@@ -21,10 +24,7 @@ import hsrmod.events.StelleAwakeEvent;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
 import hsrmod.relics.BaseRelic;
-import hsrmod.utils.DataManager;
-import hsrmod.utils.ModHelper;
-import hsrmod.utils.RelicEventHelper;
-import hsrmod.utils.RewardEditor;
+import hsrmod.utils.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +36,8 @@ public abstract class WaxRelic extends BaseRelic implements ClickableRelic/*, Cu
     public AbstractCard.CardTags selectedTag;
     public CardGroup pathGroup;
     public int pathToBan = 1;
+    static Texture[] ftues;
+    static String[] tutTexts;
 
     public WaxRelic(String id, AbstractCard.CardTags tag, int weight) {
         super(id);
@@ -50,6 +52,15 @@ public abstract class WaxRelic extends BaseRelic implements ClickableRelic/*, Cu
         if (tag != CustomEnums.THE_HUNT) pathGroup.addToBottom(new TheHunt());
         if (tag != CustomEnums.ERUDITION) pathGroup.addToBottom(new Erudition());
         if (tag != CustomEnums.ABUNDANCE) pathGroup.addToBottom(new Abundance());
+        
+        ftues = new Texture[]{
+                ImageMaster.loadImage(PathDefine.UI_PATH + "tutorial/" + selectedTag + "1.png"),
+                ImageMaster.loadImage(PathDefine.UI_PATH + "tutorial/" + selectedTag + "2.png"),
+        };
+        tutTexts = new String[]{
+                DESCRIPTIONS[3],
+                DESCRIPTIONS[4],
+        };
     }
 
     public WaxRelic(String id, AbstractCard.CardTags tag) {
@@ -139,6 +150,8 @@ public abstract class WaxRelic extends BaseRelic implements ClickableRelic/*, Cu
                 public void dispose() {
                 }
             });
+        } else if (Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT){
+            AbstractDungeon.ftue = new CustomMultiPageFtue(ftues, tutTexts);
         }
     }
 

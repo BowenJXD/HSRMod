@@ -1,8 +1,11 @@
 package hsrmod.relics.starter;
 
+import basemod.abstracts.CustomMultiPageFtue;
 import basemod.abstracts.CustomRelic;
+import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsAction;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
+import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
@@ -17,6 +20,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.IntangiblePlayerPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.ui.FtueTip;
 import hsrmod.actions.ReduceChargeByHandCardNumAction;
 import hsrmod.cards.base.Danheng0;
 import hsrmod.cards.base.Himeko0;
@@ -32,6 +36,7 @@ import hsrmod.relics.special.March7thRelic;
 import hsrmod.relics.special.WeltRelic;
 import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.utils.ModHelper;
+import hsrmod.utils.PathDefine;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +44,7 @@ import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
-public class PomPomBlessing extends CustomRelic {
+public class PomPomBlessing extends CustomRelic implements ClickableRelic {
     // 遗物ID（此处的ModHelper在“04 - 本地化”中提到）
     public static final String ID = HSRMod.makePath(PomPomBlessing.class.getSimpleName());
     // 图片路径
@@ -53,9 +58,23 @@ public class PomPomBlessing extends CustomRelic {
 
     private int multiplier = 20;
 
+    static Texture[] ftues = {
+            ImageMaster.loadImage(PathDefine.UI_PATH + "tutorial/7.png"),
+            ImageMaster.loadImage(PathDefine.UI_PATH + "tutorial/8.png"),
+            ImageMaster.loadImage(PathDefine.UI_PATH + "tutorial/9.png"),
+    };
+
+    static String[] tutTexts;
+
     public PomPomBlessing() {
         super(ID, ImageMaster.loadImage(IMG_PATH), RELIC_TIER, LANDING_SOUND);
         setCounter(100);
+
+        tutTexts = new String[]{
+                DESCRIPTIONS[8],
+                DESCRIPTIONS[9],
+                DESCRIPTIONS[10],
+        };
     }
 
     // 获取遗物描述，但原版游戏只在初始化和获取遗物时调用，故该方法等于初始描述
@@ -171,5 +190,11 @@ public class PomPomBlessing extends CustomRelic {
     public void onVictory() {
         super.onVictory();
         setCounter(ModHelper.getPowerCount(AbstractDungeon.player, EnergyPower.POWER_ID));
+    }
+
+    @Override
+    public void onRightClick() {
+        if (Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT)
+            AbstractDungeon.ftue = new CustomMultiPageFtue(ftues, tutTexts);
     }
 }

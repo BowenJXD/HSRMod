@@ -10,8 +10,6 @@ import hsrmod.utils.RelicEventHelper;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 public class MusketeerOfWildWheat extends BaseRelic {
     public static final String ID = MusketeerOfWildWheat.class.getSimpleName();

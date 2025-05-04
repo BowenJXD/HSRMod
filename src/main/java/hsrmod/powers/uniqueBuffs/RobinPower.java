@@ -10,13 +10,9 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
-import hsrmod.cards.uncommon.Robin2;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
 import hsrmod.powers.misc.EnergyPower;
-import hsrmod.signature.utils.SignatureHelper;
-
-import java.util.function.Predicate;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
@@ -53,20 +49,6 @@ public class RobinPower extends BuffPower {
                         CardCrawlGame.music.playTempBgmInstantly("RobinBGM");
                     }
                 }, 2);
-                if (!SignatureHelper.isUnlocked(HSRMod.makePath(Robin2.ID))) {
-                    Timer.schedule(new Timer.Task() {
-                        @Override
-                        public void run() {
-                            canUnlock = true;
-                        }
-                    }, 75);
-                    Timer.schedule(new Timer.Task() {
-                        @Override
-                        public void run() {
-                            canUnlock = false;
-                        }
-                    }, 80);
-                }
             }
         }
     }
@@ -86,9 +68,6 @@ public class RobinPower extends BuffPower {
                 AbstractDungeon.scene.fadeInAmbiance();
                 CardCrawlGame.music.fadeOutTempBGM();
             }
-        }
-        if (canUnlock) {
-            SignatureHelper.unlock(HSRMod.makePath(Robin2.ID), true);
         }
     }
 

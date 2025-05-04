@@ -5,12 +5,10 @@ import com.megacrit.cardcrawl.random.Random;
 import hsrmod.modcore.HSRMod;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 public class GeneralUtil {
     public static <T> T getWeightedRandomElement(List<T> items, List<Integer> weights) {

@@ -13,8 +13,6 @@ import hsrmod.relics.BaseRelic;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
-import java.util.function.ToIntFunction;
-
 public class ByAnyMeansNecessary extends BaseRelic implements RelicGetSubscriber, CustomSavable<Void> {
     public static final String ID = ByAnyMeansNecessary.class.getSimpleName();
 

@@ -14,7 +14,6 @@ import hsrmod.powers.DebuffPower;
 import hsrmod.utils.ModHelper;
 
 import java.util.Iterator;
-import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public class WisemansFollyPower extends DebuffPower {

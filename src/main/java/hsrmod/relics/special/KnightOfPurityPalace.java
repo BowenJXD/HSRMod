@@ -7,7 +7,6 @@ import hsrmod.actions.MoveCardsAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.relics.BaseRelic;
 
-import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public class KnightOfPurityPalace extends BaseRelic {

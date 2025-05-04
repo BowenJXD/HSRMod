@@ -11,8 +11,6 @@ import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.uniqueDebuffs.WisemansFollyPower;
 
-import java.util.function.Predicate;
-
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
 public class DrRatio3 extends BaseCard {

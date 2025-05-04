@@ -11,11 +11,9 @@ import com.megacrit.cardcrawl.vfx.combat.ThrowDaggerEffect;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementalDamageInfo;
-import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.utils.ModHelper;
 
 import java.util.Objects;
-import java.util.function.ToIntFunction;
 
 public class Feixiao1 extends BaseCard {
     public static final String ID = Feixiao1.class.getSimpleName();
@@ -36,21 +34,6 @@ public class Feixiao1 extends BaseCard {
                         AbstractGameAction.AttackEffect.SLASH_DIAGONAL
                 )
         );
-    }
-
-    @Override
-    public void onEnterHand() {
-        super.onEnterHand();
-        if (!SignatureHelper.isUnlocked(cardID)) {
-            int sum = 0;
-            for (AbstractCard c : AbstractDungeon.player.hand.group) {
-                int i = Objects.equals(c.cardID, cardID) ? 1 : 0;
-                sum += i;
-            }
-            if (sum == 6) {
-                SignatureHelper.unlock(cardID, true);
-            }
-        }
     }
 
     @Override

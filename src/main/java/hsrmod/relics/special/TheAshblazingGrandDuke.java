@@ -1,26 +1,26 @@
 package hsrmod.relics.special;
 
-import com.evacipated.cardcrawl.mod.stslib.relics.OnApplyPowerRelic;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.actions.FollowUpAction;
-import hsrmod.powers.misc.BrokenPower;
+import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.relics.BaseRelic;
+import hsrmod.subscribers.PreBreakSubscriber;
+import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
 import java.util.Iterator;
-import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
-public class TheAshblazingGrandDuke extends BaseRelic implements OnApplyPowerRelic {
+public class TheAshblazingGrandDuke extends BaseRelic implements PreBreakSubscriber {
     public static final String ID = TheAshblazingGrandDuke.class.getSimpleName();
 
     public TheAshblazingGrandDuke() {
         super(ID);
+        SubscriptionManager.subscribe(this);
     }
 
     @Override
@@ -36,8 +36,14 @@ public class TheAshblazingGrandDuke extends BaseRelic implements OnApplyPowerRel
     }
 
     @Override
-    public boolean onApplyPower(AbstractPower abstractPower, AbstractCreature abstractCreature, AbstractCreature abstractCreature1) {
-        if (abstractPower instanceof BrokenPower) {
+    public void onUnequip() {
+        super.onUnequip();
+        SubscriptionManager.unsubscribe(this);
+    }
+
+    @Override
+    public void preBreak(ElementalDamageInfo info, AbstractCreature target) {
+        if (SubscriptionManager.checkSubscriber(this)) {
             Iterator var4 = AbstractDungeon.player.hand.group.iterator();
 
             AbstractCard c;
@@ -48,6 +54,5 @@ public class TheAshblazingGrandDuke extends BaseRelic implements OnApplyPowerRel
                 }
             }
         }
-        return true;
     }
 }

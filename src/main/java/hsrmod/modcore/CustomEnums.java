@@ -3,6 +3,7 @@ package hsrmod.modcore;
 import basemod.helpers.RelicType;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 
 public class CustomEnums
 {
@@ -26,7 +27,7 @@ public class CustomEnums
     @SpireEnum public static AbstractCard.CardTags REVIVE;
     @SpireEnum public static AbstractCard.CardTags RUAN_MEI;
     
-    // @SpireEnum public static AbstractPower.PowerType STATUS;
+    @SpireEnum public static AbstractPower.PowerType STATUS;
     
     @SpireEnum public static RelicType HSR;
     

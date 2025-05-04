@@ -8,9 +8,6 @@ import hsrmod.misc.ICanChangeToMulti;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.relics.BaseRelic;
 
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-
 public class TheWindSoaringValorous extends BaseRelic {
     public static final String ID = TheWindSoaringValorous.class.getSimpleName();
 

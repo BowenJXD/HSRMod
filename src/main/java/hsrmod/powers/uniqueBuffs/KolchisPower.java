@@ -1,11 +1,11 @@
 package hsrmod.powers.uniqueBuffs;
 
-import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
+import hsrmod.powers.interfaces.OnReceivePowerPower;
 import hsrmod.powers.misc.EnergyPower;
 
 public class KolchisPower extends PowerPower implements OnReceivePowerPower {

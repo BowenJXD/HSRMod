@@ -3,22 +3,18 @@ package hsrmod.relics.starter;
 import basemod.abstracts.CustomMultiPageFtue;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
-import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.InvinciblePower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import hsrmod.modcore.HSRMod;
-import hsrmod.powers.enemyOnly.HeartIsMeantToBeBrokenPower;
 import hsrmod.powers.misc.ToughnessPower;
+import hsrmod.relics.interfaces.ClickableRelic;
 import hsrmod.utils.PathDefine;
 
 import java.util.ArrayList;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
 
 public class GalacticBat extends CustomRelic implements ClickableRelic {
     // 遗物ID（此处的ModHelper在“04 - 本地化”中提到）
@@ -63,17 +59,6 @@ public class GalacticBat extends CustomRelic implements ClickableRelic {
 
     public AbstractRelic makeCopy() {
         return new GalacticBat();
-    }
-
-    @Override
-    public void atBattleStart() {
-        super.atBattleStart();
-        for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters) {
-            if (monster.hasPower(InvinciblePower.POWER_ID)) {
-                GalacticBat.this.addToTop(new ApplyPowerAction(monster, monster, new HeartIsMeantToBeBrokenPower(monster)));
-                break;
-            }
-        }
     }
 
     @Override

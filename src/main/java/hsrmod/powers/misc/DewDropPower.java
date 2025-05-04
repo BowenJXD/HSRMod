@@ -15,7 +15,6 @@ import hsrmod.utils.ModHelper;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.function.Predicate;
 
 public class DewDropPower extends BuffPower {
     public static final String POWER_ID = HSRMod.makePath(DewDropPower.class.getSimpleName());

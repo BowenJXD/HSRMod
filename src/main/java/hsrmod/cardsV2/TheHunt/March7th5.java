@@ -5,7 +5,6 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cards.BaseCard;
-import hsrmod.signature.utils.SignatureHelper;
 
 public class March7th5 extends BaseCard {
     public static final String ID = March7th5.class.getSimpleName();
@@ -22,9 +21,6 @@ public class March7th5 extends BaseCard {
                 addToBot(new UpgradeSpecificCardAction(c));
                 count++;
             }
-        }
-        if (count == 7) {
-            SignatureHelper.unlock(cardID, true);
         }
     }
 }

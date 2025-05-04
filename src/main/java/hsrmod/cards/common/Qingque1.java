@@ -6,11 +6,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cards.BaseCard;
-import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.utils.ModHelper;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class Qingque1 extends BaseCard {
     public static final String ID = Qingque1.class.getSimpleName();
@@ -51,19 +47,6 @@ public class Qingque1 extends BaseCard {
             @Override
             public void run() {
                 Qingque1.this.updateCost(costCache - cost);
-            }
-        });
-        ModHelper.addToBotAbstract(new ModHelper.Lambda() {
-            @Override
-            public void run() {
-                List<Integer> tmp = Arrays.asList(
-                        p.hand.getCardsOfType(CardType.ATTACK).size(),
-                        p.hand.getCardsOfType(CardType.SKILL).size() + (returnToHand ? 1 : 0),
-                        p.hand.getCardsOfType(CardType.POWER).size());
-                tmp.sort(Integer::compareTo);
-                if (tmp.equals(Arrays.asList(2, 3, 3))) {
-                    SignatureHelper.unlock(cardID, true);
-                }
             }
         });
     }

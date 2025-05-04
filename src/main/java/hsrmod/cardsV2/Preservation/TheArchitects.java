@@ -9,8 +9,6 @@ import hsrmod.powers.misc.QuakePower;
 import hsrmod.utils.ModHelper;
 
 import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.function.ToIntFunction;
 
 public class TheArchitects extends BaseCard {
     public static final String ID = TheArchitects.class.getSimpleName();

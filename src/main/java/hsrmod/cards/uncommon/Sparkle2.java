@@ -12,12 +12,9 @@ import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import hsrmod.cards.BaseCard;
 import hsrmod.effects.PortraitDisplayEffect;
 import hsrmod.modcore.CustomEnums;
-import hsrmod.modcore.HSRMod;
-import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.utils.ModHelper;
 
 import java.util.List;
-import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public class Sparkle2 extends BaseCard {
@@ -35,9 +32,6 @@ public class Sparkle2 extends BaseCard {
         AbstractDungeon.topLevelEffects.add(new PortraitDisplayEffect("Sparkle"));
         int x = energyOnUse + (p.hasRelic("Chemical X") ? 2 : 0);
         int num = Math.min(x * 2, p.energy.energy * 2 + magicNumber);
-        if (energyOnUse > num) {
-            SignatureHelper.unlock(HSRMod.makePath(ID), true);
-        }
 
         ModHelper.addToBotAbstract(new ModHelper.Lambda() {
             @Override
@@ -50,7 +44,6 @@ public class Sparkle2 extends BaseCard {
                 });
                 if (!sparkles.isEmpty()) {
                     Sparkle2.this.addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
-                    SignatureHelper.unlock(HSRMod.makePath(ID), true);
                 } else {
                     CardCrawlGame.sound.play(ID);
                     Sparkle2.this.addToTop(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[1], 1.0F, 2.0F));

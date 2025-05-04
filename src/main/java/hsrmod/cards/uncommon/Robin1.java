@@ -7,8 +7,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
-import hsrmod.modcore.HSRMod;
-import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.utils.ModHelper;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
@@ -39,9 +37,6 @@ public class Robin1 extends BaseCard {
                     if (amount < 0) break;
                     Robin1.this.addToBot(new FollowUpAction(card));
                     count++;
-                }
-                if (count >= 10) {
-                    SignatureHelper.unlock(HSRMod.makePath(ID), true);
                 }
 
                 p.energy.use(EnergyPanel.totalCount);

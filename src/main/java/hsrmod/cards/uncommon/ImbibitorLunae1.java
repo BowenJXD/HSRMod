@@ -10,10 +10,8 @@ import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.misc.EnergyPower;
-import hsrmod.signature.utils.SignatureHelper;
 
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.Consumer;
 
 public class ImbibitorLunae1 extends BaseCard {
     public static final String ID = ImbibitorLunae1.class.getSimpleName();
@@ -47,15 +45,7 @@ public class ImbibitorLunae1 extends BaseCard {
             addToBot(new ElementalDamageAction(
                     m,
                     new ElementalDamageInfo(this), 
-                    AbstractGameAction.AttackEffect.SLASH_VERTICAL,
-                    new Consumer<ElementalDamageAction.CallbackInfo>() {
-                        @Override
-                        public void accept(ElementalDamageAction.CallbackInfo ci) {
-                            if (total.addAndGet(ci.info.output) > 55) {
-                                SignatureHelper.unlock(cardID, true);
-                            }
-                        }
-                    }
+                    AbstractGameAction.AttackEffect.SLASH_VERTICAL
             ));
         }
         addToBot(new ApplyPowerAction(p, p, new EnergyPower(p, energyOnUse * 20), energyOnUse * 20));

@@ -4,18 +4,12 @@ import basemod.BaseMod;
 import basemod.interfaces.OnPowersModifiedSubscriber;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import hsrmod.cards.uncommon.BlackSwan1;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.DebuffPower;
 import hsrmod.powers.misc.DoTPower;
-import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.subscribers.PreDoTDamageSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
-
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class EpiphanyPower extends DebuffPower implements OnPowersModifiedSubscriber, PreDoTDamageSubscriber {
     public static final String POWER_ID = HSRMod.makePath(EpiphanyPower.class.getSimpleName());
@@ -73,7 +67,6 @@ public class EpiphanyPower extends DebuffPower implements OnPowersModifiedSubscr
             count++;
             if (count >= 9) {
                 count = -1;
-                SignatureHelper.unlock(HSRMod.makePath(BlackSwan1.ID), true);
             }
         }
         return info.output;

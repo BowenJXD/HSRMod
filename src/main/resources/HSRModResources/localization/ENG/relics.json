@@ -182,7 +182,7 @@
     "NAME": "The Wind Soaring Valorous",
     "FLAVOR": "She quickened her pace, barefoot and agile, with the girl closely chasing after her. Or perhaps, they were both chasing after each other.",
     "DESCRIPTIONS": [
-      "All upgraded starter strike becomes AoE at start of battle. When using starter strike, gain #b40 [hsrmod:chargeIcon] ."
+      "All upgraded starter strike becomes AoE at start of battle. When using starter strike, gain #b40 #yhsrmod:Charge ."
     ]
   },
   "HSRMod:LongevousDisciple": {
@@ -578,7 +578,7 @@
     "NAME": "Written In Water",
     "FLAVOR": "The Memokeepers had stored the entirety of this world's memories inside the Boquelet and strutted casually through the encirclement the Lord Ravager had set up around them.",
     "DESCRIPTIONS": [
-      "Restore #b3 HP and #b30 [hsrmod:ChargeIcon] upon entering a new room."
+      "Restore #b3 HP and #b30 #yhsrmod:Charge upon entering a new room."
     ]
   },
   "HSRMod:ARuanPouch": {

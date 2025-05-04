@@ -8,8 +8,6 @@ import hsrmod.powers.misc.BreakEffectPower;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.relics.BaseRelic;
 
-import java.util.function.Consumer;
-
 public class SuperOverlordSpinningTop extends BaseRelic {
     public static final String ID = SuperOverlordSpinningTop.class.getSimpleName();
 
@@ -35,8 +33,8 @@ public class SuperOverlordSpinningTop extends BaseRelic {
             canTrigger = false;
             for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
                 SuperOverlordSpinningTop.this.addToBot(
-                        new ReducePowerAction(m, AbstractDungeon.player,
-                                new ToughnessPower(m, ToughnessPower.getStackLimit(m) / 3), ToughnessPower.getStackLimit(m) / 3));
+                        new ApplyPowerAction(m, AbstractDungeon.player,
+                                new ToughnessPower(m, -ToughnessPower.getStackLimit(m) / 3), -ToughnessPower.getStackLimit(m) / 3));
             }
         }
     }

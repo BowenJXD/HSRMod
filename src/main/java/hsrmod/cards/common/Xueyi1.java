@@ -20,9 +20,6 @@ import hsrmod.subscribers.PreToughnessReduceSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
-import java.util.Comparator;
-import java.util.function.Predicate;
-
 public class Xueyi1 extends BaseCard implements PreToughnessReduceSubscriber {
     public static final String ID = Xueyi1.class.getSimpleName();
 

@@ -7,9 +7,7 @@ import hsrmod.utils.ModHelper;
 import hsrmod.utils.RelicEventHelper;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.function.Predicate;
 
 public class RubertEmpireMechanicalPiston extends BaseRelic implements IRubertEmpireRelic {
     public static final String ID = RubertEmpireMechanicalPiston.class.getSimpleName();

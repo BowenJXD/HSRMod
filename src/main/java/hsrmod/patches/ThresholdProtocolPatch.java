@@ -20,12 +20,10 @@ import com.megacrit.cardcrawl.ui.panels.TopPanel;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import hsrmod.effects.TopWarningEffect;
 import hsrmod.modcore.HSRModConfig;
-import hsrmod.powers.enemyOnly.SafeguardPower;
 
 import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.Objects;
-import java.util.function.Predicate;
 
 public class ThresholdProtocolPatch {
     public static HashSet<AbstractMonster> processed = new HashSet<>();
@@ -132,10 +130,6 @@ public class ThresholdProtocolPatch {
             }
             if (HSRModConfig.tpRitual) {
                 m.addToBot(new ApplyPowerAction(m, m, new RitualPower(m, 1, false), 1));
-            }
-            if (HSRModConfig.tpSafeguard
-                    && (m.type == AbstractMonster.EnemyType.ELITE || m.type == AbstractMonster.EnemyType.BOSS)) {
-                m.addToBot(new ApplyPowerAction(m, m, new SafeguardPower(m, 1)));
             }
             int count = HSRModConfig.getActiveTPCount();
             if (count > 0) {

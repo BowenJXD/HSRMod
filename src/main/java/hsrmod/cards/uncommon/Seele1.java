@@ -15,8 +15,6 @@ import hsrmod.cards.BaseCard;
 import hsrmod.effects.MultiShivFreezeEffect;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementalDamageInfo;
-import hsrmod.powers.enemyOnly.SummonedPower;
-import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.utils.CardDataCol;
 import hsrmod.utils.DataManager;
 
@@ -45,10 +43,6 @@ public class Seele1 extends BaseCard {
         this.name = DataManager.getInstance().getCardData(ID, CardDataCol.Name) + "+" + this.timesUpgraded;
         initializeTitle();
         this.initializeDescription();
-        
-        if (timesUpgraded == 22) {
-            SignatureHelper.unlock(cardID, true);
-        }
     }
 
     @Override
@@ -62,7 +56,7 @@ public class Seele1 extends BaseCard {
                 new Consumer<ElementalDamageAction.CallbackInfo>() {
                     @Override
                     public void accept(ElementalDamageAction.CallbackInfo info) {
-                        if ((info.target.isDying || info.target.currentHealth <= 0) && !info.target.halfDead && !info.target.hasPower("Minion") && !info.target.hasPower(SummonedPower.POWER_ID)) {
+                        if ((info.target.isDying || info.target.currentHealth <= 0) && !info.target.halfDead && !info.target.hasPower("Minion")) {
                             Iterator var1 = AbstractDungeon.player.masterDeck.group.iterator();
 
                             AbstractCard c;

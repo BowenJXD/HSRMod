@@ -9,9 +9,6 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import hsrmod.cards.BaseCard;
 import hsrmod.powers.misc.DoTPower;
 
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-
 public class OfferingsOfDeception extends BaseCard {
     public static final String ID = OfferingsOfDeception.class.getSimpleName();
 

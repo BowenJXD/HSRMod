@@ -3,18 +3,13 @@ package hsrmod.cards.base;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.monsters.ending.CorruptHeart;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.misc.ICanChangeToMulti;
 import hsrmod.modcore.ElementalDamageInfo;
-import hsrmod.modcore.HSRMod;
 import hsrmod.relics.special.TheWindSoaringValorous;
-import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.utils.ModHelper;
-
-import java.util.function.Consumer;
 
 public class Trailblazer1 extends BaseCard implements ICanChangeToMulti {
     public static final String ID = Trailblazer1.class.getSimpleName();
@@ -40,16 +35,7 @@ public class Trailblazer1 extends BaseCard implements ICanChangeToMulti {
                     new ElementalDamageAction(
                             m,
                             new ElementalDamageInfo(this),
-                            AbstractGameAction.AttackEffect.SLASH_HEAVY,
-                            new Consumer<ElementalDamageAction.CallbackInfo>() {
-                                @Override
-                                public void accept(ElementalDamageAction.CallbackInfo ci) {
-                                    if (ci.target instanceof CorruptHeart
-                                            && (ci.target.isDying || ci.didBreak)) {
-                                        SignatureHelper.unlock(HSRMod.makePath(ID), true);
-                                    }
-                                }
-                            }
+                            AbstractGameAction.AttackEffect.SLASH_HEAVY
                     )
             );
     }

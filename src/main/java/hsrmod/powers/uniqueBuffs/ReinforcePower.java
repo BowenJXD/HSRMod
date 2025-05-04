@@ -4,20 +4,14 @@ import basemod.BaseMod;
 import basemod.interfaces.OnPlayerDamagedSubscriber;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import hsrmod.cards.common.March7th1;
 import hsrmod.cards.common.March7th2;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
-import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.subscribers.SubscriptionManager;
-
-import java.util.Objects;
-import java.util.function.ToIntFunction;
 
 public class ReinforcePower extends BuffPower implements OnPlayerDamagedSubscriber {
     public static final String POWER_ID = HSRMod.makePath(ReinforcePower.class.getSimpleName());
@@ -52,16 +46,6 @@ public class ReinforcePower extends BuffPower implements OnPlayerDamagedSubscrib
     @Override
     public void onRemove() {
         BaseMod.unsubscribe(this);
-        if (!SignatureHelper.isUnlocked(HSRMod.makePath(March7th1.ID))) {
-            int count = 0;
-            for (AbstractCard c : AbstractDungeon.player.hand.group) {
-                int i = Objects.equals(c.cardID, HSRMod.makePath(March7th2.ID)) ? 1 : 0;
-                count += i;
-            }
-            if (count == 7) {
-                SignatureHelper.unlock(HSRMod.makePath(March7th1.ID), true);
-            }
-        }
     }
 
     @Override

@@ -6,8 +6,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.relics.BaseRelic;
 import hsrmod.utils.ModHelper;
 
-import java.util.function.ToIntFunction;
-
 public class PasserbyOfWanderingCloud extends BaseRelic {
     public static final String ID = PasserbyOfWanderingCloud.class.getSimpleName();
 

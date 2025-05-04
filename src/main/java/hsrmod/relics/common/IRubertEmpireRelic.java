@@ -7,8 +7,6 @@ import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import hsrmod.modcore.HSRMod;
 import hsrmod.utils.RelicEventHelper;
 
-import java.util.function.Predicate;
-
 public interface IRubertEmpireRelic {
     default void checkMerge() {
         AbstractPlayer p = AbstractDungeon.player;

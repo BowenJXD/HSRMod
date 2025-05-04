@@ -13,11 +13,9 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.MiracleEffect;
-import hsrmod.cards.uncommon.Acheron1;
 import hsrmod.effects.PortraitDisplayEffect;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementType;
-import hsrmod.modcore.HSRMod;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.relics.starter.*;
 import hsrmod.subscribers.SubscriptionManager;
@@ -26,9 +24,7 @@ import hsrmod.utils.DataManager;
 import hsrmod.utils.ModHelper;
 import hsrmod.utils.RewardEditor;
 
-import java.util.ArrayList;
 import java.util.Objects;
-import java.util.function.ToIntFunction;
 
 import static hsrmod.characters.StellaCharacter.PlayerColorEnum.HSR_PINK;
 

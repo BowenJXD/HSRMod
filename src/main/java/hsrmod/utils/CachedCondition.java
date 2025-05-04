@@ -8,9 +8,7 @@ import hsrmod.powers.misc.BrokenPower;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.BiConsumer;
 import java.util.function.BooleanSupplier;
-import java.util.function.Predicate;
 
 /**
  * Used to cache conditions within one single update, to avoid repeated calculations.

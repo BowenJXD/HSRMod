@@ -6,9 +6,6 @@ import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.relics.BaseRelic;
 
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-
 public class HerosTriumphantReturn extends BaseRelic {
     public static final String ID = HerosTriumphantReturn.class.getSimpleName();
     

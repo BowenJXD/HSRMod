@@ -14,7 +14,6 @@ import hsrmod.utils.CardDataCol;
 import hsrmod.utils.DataManager;
 
 import java.util.function.Consumer;
-import java.util.function.Predicate;
 
 public class Sushang3 extends BaseCard {
     public static final String ID = Sushang3.class.getSimpleName();

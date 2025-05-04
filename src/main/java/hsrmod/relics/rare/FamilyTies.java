@@ -12,7 +12,6 @@ import hsrmod.utils.ModHelper;
 import hsrmod.utils.RelicEventHelper;
 
 import java.util.function.Predicate;
-import java.util.function.ToIntFunction;
 
 public class FamilyTies extends BaseRelic implements PostRelicDestroySubscriber {
     public static final String ID = FamilyTies.class.getSimpleName();

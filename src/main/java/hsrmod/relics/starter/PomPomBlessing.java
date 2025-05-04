@@ -3,9 +3,6 @@ package hsrmod.relics.starter;
 import basemod.abstracts.CustomMultiPageFtue;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
-import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsAction;
-import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
-import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
@@ -21,19 +18,20 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.IntangiblePlayerPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import hsrmod.actions.ReduceChargeByHandCardNumAction;
+import hsrmod.actions.SelectCardsAction;
+import hsrmod.actions.SelectCardsInHandAction;
 import hsrmod.cards.base.Danheng0;
 import hsrmod.cards.base.Himeko0;
 import hsrmod.cards.base.March7th0;
 import hsrmod.cards.base.Welt0;
-import hsrmod.cardsV2.Abundance.Castorice1;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.misc.EnergyPower;
+import hsrmod.relics.interfaces.ClickableRelic;
 import hsrmod.relics.special.DanhengRelic;
 import hsrmod.relics.special.HimekoRelic;
 import hsrmod.relics.special.March7thRelic;
 import hsrmod.relics.special.WeltRelic;
-import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.utils.ModHelper;
 import hsrmod.utils.PathDefine;
 
@@ -173,7 +171,12 @@ public class PomPomBlessing extends CustomRelic implements ClickableRelic {
                     @Override
                     public void run() {
                         PomPomBlessing.this.addToTop(new SelectCardsAction(AbstractDungeon.player.masterDeck.group, 1, DESCRIPTIONS[2],
-                                false, card -> card.hasTag(CustomEnums.REVIVE), cards -> {
+                                false, new Predicate<AbstractCard>() {
+                            @Override
+                            public boolean test(AbstractCard card) {
+                                return card.hasTag(CustomEnums.REVIVE);
+                            }
+                        }, cards -> {
                             AbstractCard card = cards.get(0);
                             for (ModHelper.FindResult findResult : ModHelper.findCards(new Predicate<AbstractCard>() {
                                 @Override
@@ -199,9 +202,6 @@ public class PomPomBlessing extends CustomRelic implements ClickableRelic {
                             } else if (card instanceof Welt0) {
                                 relicName = WeltRelic.ID;
                                 text = DESCRIPTIONS[6]; // 
-                            } else if (card instanceof Castorice1) {
-                                text = DESCRIPTIONS[7]; //
-                                SignatureHelper.unlock(HSRMod.makePath(Castorice1.ID), true);
                             }
 
                             if (!relicName.isEmpty()) {

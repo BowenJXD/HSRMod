@@ -7,12 +7,10 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAction;
-import hsrmod.cardsV2.Erudition.Tribbie1;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
-import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.subscribers.PreElementalDamageSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
@@ -97,9 +95,6 @@ public class TribbiePower extends PowerPower implements PreElementalDamageSubscr
             info.applyPowers(owner, targetWithMaxHp);
             addToTop(new ElementalDamageAction(targetWithMaxHp, info, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
             totalDmgForTurn += dmg;
-            if (totalDmgForTurn >= 33) {
-                SignatureHelper.unlock(HSRMod.makePath(Tribbie1.ID), true);
-            }
         }
     }
 

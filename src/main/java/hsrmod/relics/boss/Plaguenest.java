@@ -7,8 +7,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.relics.BaseRelic;
 import hsrmod.utils.ModHelper;
 
-import java.util.function.Predicate;
-
 public class Plaguenest extends BaseRelic {
     public static final String ID = Plaguenest.class.getSimpleName();
 

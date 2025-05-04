@@ -12,8 +12,6 @@ import hsrmod.modcore.CustomEnums;
 import hsrmod.powers.misc.BoostPower;
 import hsrmod.utils.ModHelper;
 
-import java.util.function.Consumer;
-
 public class SolemnSnare extends BaseCard {
     public static final String ID = SolemnSnare.class.getSimpleName();
 

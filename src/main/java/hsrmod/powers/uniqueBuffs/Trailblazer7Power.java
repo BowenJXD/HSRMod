@@ -11,8 +11,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
 
-import java.util.function.ToIntFunction;
-
 public class Trailblazer7Power extends BuffPower {
     public static final String POWER_ID = HSRMod.makePath(Trailblazer7Power.class.getSimpleName());
     

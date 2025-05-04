@@ -15,7 +15,6 @@ import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.misc.EnergyPower;
-import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
@@ -68,11 +67,8 @@ public class Yunli1 extends BaseCard implements OnPlayerDamagedSubscriber {
         if (randomMonster == null) return;
         
         count++;
-        if (count == 4) {
-            SignatureHelper.unlock(cardID, true);
-        }
         
-        ElementalDamageAction action = new ElementalDamageAction(randomMonster, ElementalDamageInfo.makeInfo(this), AbstractGameAction.AttackEffect.SLASH_VERTICAL);
+        ElementalDamageAction action = new ElementalDamageAction(randomMonster, new ElementalDamageInfo(this), AbstractGameAction.AttackEffect.SLASH_VERTICAL);
         
         addToTop(new BouncingAction(randomMonster, 2, action, this));
 

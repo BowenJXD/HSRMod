@@ -3,7 +3,6 @@ package hsrmod.relics.starter;
 import basemod.abstracts.CustomMultiPageFtue;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -17,9 +16,9 @@ import hsrmod.actions.GridCardManipulator;
 import hsrmod.actions.SimpleGridCardSelectBuilder;
 import hsrmod.cards.BaseCard;
 import hsrmod.cardsV2.Paths.*;
-import hsrmod.events.StelleAwakeEvent;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.relics.BaseRelic;
+import hsrmod.relics.interfaces.ClickableRelic;
 import hsrmod.utils.PathDefine;
 import hsrmod.utils.RelicEventHelper;
 import hsrmod.utils.RewardEditor;
@@ -113,7 +112,7 @@ public abstract class WaxRelic extends BaseRelic implements ClickableRelic/*, Cu
     @Override
     public void onRightClick() {
         if (isObtained
-                && (AbstractDungeon.getCurrRoom() instanceof NeowRoom || AbstractDungeon.getCurrRoom().event instanceof StelleAwakeEvent)
+                && (AbstractDungeon.getCurrRoom() instanceof NeowRoom)
                 && (RewardEditor.getInstance().bannedTags == null || RewardEditor.getInstance().bannedTags.isEmpty())) {
             AbstractGameAction action = new SimpleGridCardSelectBuilder(new Predicate<AbstractCard>() {
                 @Override

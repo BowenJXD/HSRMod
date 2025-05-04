@@ -7,7 +7,6 @@ import hsrmod.utils.RelicEventHelper;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
 
 public class ShiningTrapezohedronDie extends BaseRelic {
     public static final String ID = ShiningTrapezohedronDie.class.getSimpleName();

@@ -12,9 +12,6 @@ import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.breaks.BurnPower;
 import hsrmod.utils.ModHelper;
 
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-
 public class Guinaifen1 extends BaseCard {
     public static final String ID = Guinaifen1.class.getSimpleName();
 

@@ -18,10 +18,8 @@ import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.relics.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
-import hsrmod.cardsV2.NightOnTheMilkyWay;
 import hsrmod.characters.StellaCharacter;
 import hsrmod.misc.ToughnessReductionVariable;
-import hsrmod.patches.OtherModFixes;
 import hsrmod.patches.RelicTagField;
 import hsrmod.relics.BaseRelic;
 import hsrmod.utils.RewardEditor;
@@ -137,7 +135,6 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
         for (String id : ecoRelicIDs) {
             RelicTagField.economic.set(RelicLibrary.getRelic(id), true);
         }
-        OtherModFixes.setRelics();
     }
 
     public void receiveEditStrings() {
@@ -171,7 +168,6 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
     public void receivePostInitialize() {
         BaseMod.addSaveField("RewardEditor", RewardEditor.getInstance());
         HSRModConfig.getInstance().addConfigPanel();
-        checkSignatureUnlock();
     }
 
     @Override
@@ -261,11 +257,6 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
 
     void addOgg(String key) {
         BaseMod.addAudio(key, "HSRModResources/localization/" + lang + "/audio/" + key + ".ogg");
-    }
-
-    void checkSignatureUnlock() {
-        /*SilverWolf1.checkUnlockSign();*/
-        NightOnTheMilkyWay.checkUnlockSign();
     }
 
     public void updateLanguage() {

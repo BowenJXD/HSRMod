@@ -1,6 +1,5 @@
 package hsrmod.powers.uniqueBuffs;
 
-import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -11,11 +10,11 @@ import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
+import hsrmod.powers.interfaces.OnReceivePowerPower;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.utils.GeneralUtil;
 import hsrmod.utils.ModHelper;
 
-import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;

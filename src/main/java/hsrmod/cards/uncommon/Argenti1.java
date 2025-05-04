@@ -12,7 +12,6 @@ import hsrmod.cards.BaseCard;
 import hsrmod.effects.PortraitDisplayEffect;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.powers.misc.EnergyPower;
-import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.utils.ModHelper;
 
 public class Argenti1 extends BaseCard {
@@ -44,10 +43,6 @@ public class Argenti1 extends BaseCard {
 
     void execute() {
         if (AbstractDungeon.getMonsters().areMonstersBasicallyDead()) return;
-        count++;
-        if (count == 6) {
-            SignatureHelper.unlock(cardID, true);
-        }
         if (ModHelper.getPowerCount(AbstractDungeon.player, EnergyPower.POWER_ID) >= energyCost) {
             ModHelper.addToTopAbstract(this::execute);
         }

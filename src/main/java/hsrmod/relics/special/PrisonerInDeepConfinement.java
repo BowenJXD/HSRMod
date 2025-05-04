@@ -11,7 +11,6 @@ import hsrmod.powers.misc.DoTPower;
 import hsrmod.relics.BaseRelic;
 import hsrmod.utils.ModHelper;
 
-import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 

@@ -8,7 +8,6 @@ import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.misc.BrokenPower;
-import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.utils.ModHelper;
 
 public class Boothill2 extends BaseCard {
@@ -47,12 +46,5 @@ public class Boothill2 extends BaseCard {
                 }
             }
         });
-        
-        if (!SignatureHelper.isUnlocked(cardID)) {
-            unlockCount++;
-            if (unlockCount >= 5) {
-                SignatureHelper.unlock(cardID, true);
-            }
-        }
     }
 }

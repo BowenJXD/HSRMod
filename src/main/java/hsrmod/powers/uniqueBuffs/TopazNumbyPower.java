@@ -9,8 +9,6 @@ import hsrmod.cards.uncommon.TopazNumby2;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
 
-import java.util.function.Predicate;
-
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
 public class TopazNumbyPower extends PowerPower {

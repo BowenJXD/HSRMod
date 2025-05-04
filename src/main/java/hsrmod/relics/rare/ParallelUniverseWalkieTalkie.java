@@ -1,11 +1,13 @@
 package hsrmod.relics.rare;
 
 import basemod.BaseMod;
-import com.evacipated.cardcrawl.mod.stslib.actions.common.MoveCardsAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import hsrmod.actions.MoveCardsAction;
 import hsrmod.relics.BaseRelic;
+
+import java.util.function.Predicate;
 
 public class ParallelUniverseWalkieTalkie extends BaseRelic {
     public static final String ID = ParallelUniverseWalkieTalkie.class.getSimpleName();
@@ -36,7 +38,12 @@ public class ParallelUniverseWalkieTalkie extends BaseRelic {
                 && card.exhaust) {
             flash();
             AbstractPlayer p = AbstractDungeon.player;
-            addToBot(new MoveCardsAction(p.hand, p.exhaustPile, c -> c == card));
+            addToBot(new MoveCardsAction(p.hand, p.exhaustPile, new Predicate<AbstractCard>() {
+                @Override
+                public boolean test(AbstractCard c) {
+                    return c == card;
+                }
+            }));
         }
     }
 }

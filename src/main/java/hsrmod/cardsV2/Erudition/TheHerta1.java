@@ -12,12 +12,9 @@ import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementalDamageInfo;
-import hsrmod.signature.utils.SignatureHelper;
-import hsrmod.utils.ModHelper;
 
 import java.util.Comparator;
 import java.util.function.Consumer;
-import java.util.function.Predicate;
 import java.util.function.ToIntFunction;
 
 public class TheHerta1 extends BaseCard {
@@ -90,16 +87,6 @@ public class TheHerta1 extends BaseCard {
                         }));
             }
         }
-
-        if (!SignatureHelper.isUnlocked(cardID))
-            ModHelper.addToBotAbstract(new ModHelper.Lambda() {
-                @Override
-                public void run() {
-                    if (totalDmg == 42) {
-                        SignatureHelper.unlock(cardID, true);
-                    }
-                }
-            });
     }
 
     @Override

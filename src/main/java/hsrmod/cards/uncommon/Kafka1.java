@@ -19,7 +19,6 @@ import hsrmod.powers.misc.DoTPower;
 import hsrmod.utils.ModHelper;
 
 import java.util.Iterator;
-import java.util.function.Predicate;
 
 public class Kafka1 extends BaseCard {
     public static final String ID = Kafka1.class.getSimpleName();
@@ -78,14 +77,5 @@ public class Kafka1 extends BaseCard {
         ));
         addToBot(new TriggerDoTAction(m, p, magicNumber));
         addToBot(new ApplyPowerAction(m, p, new ShockPower(m, p, magicNumber), magicNumber));
-        if (!SignatureHelper.isUnlocked(cardID) && m != null)
-            ModHelper.addToBotAbstract(new ModHelper.Lambda() {
-                @Override
-                public void run() {
-                    if (ModHelper.getPowerCount(m, ShockPower.POWER_ID) >= 7) {
-                        SignatureHelper.unlock(cardID, true);
-                    }
-                }
-            });
     }
 }

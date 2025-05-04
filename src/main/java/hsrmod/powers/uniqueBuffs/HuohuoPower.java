@@ -1,9 +1,7 @@
 package hsrmod.powers.uniqueBuffs;
 
-import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
-import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
-import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.HealAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -11,9 +9,10 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.actions.CleanAction;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
+import hsrmod.powers.interfaces.OnReceivePowerPower;
 import hsrmod.powers.misc.EnergyPower;
 
-public class HuohuoPower extends BuffPower implements OnReceivePowerPower, NonStackablePower {
+public class HuohuoPower extends BuffPower implements OnReceivePowerPower {
     public static final String POWER_ID = HSRMod.makePath(HuohuoPower.class.getSimpleName());
     
     public HuohuoPower(AbstractCreature owner, boolean upgraded) {
@@ -34,7 +33,7 @@ public class HuohuoPower extends BuffPower implements OnReceivePowerPower, NonSt
     
     void trigger(){
         flash();
-        addToBot(new AddTemporaryHPAction(owner, owner, 1));
+        addToBot(new HealAction(owner, owner, 1));
         addToBot(new ApplyPowerAction(owner, owner, new EnergyPower(owner, 10), 10));
         addToBot(new CleanAction(owner, 1, false));
     }

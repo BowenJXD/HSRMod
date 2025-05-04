@@ -9,7 +9,6 @@ import hsrmod.powers.PowerPower;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 

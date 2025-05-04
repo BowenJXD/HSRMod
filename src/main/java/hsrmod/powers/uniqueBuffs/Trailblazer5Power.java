@@ -5,16 +5,12 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.BreakDamageAction;
-import hsrmod.cards.uncommon.Trailblazer5;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
 import hsrmod.powers.misc.BrokenPower;
-import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.subscribers.PreToughnessReduceSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
-
-import java.util.function.Consumer;
 
 public class Trailblazer5Power extends PowerPower implements PreToughnessReduceSubscriber {
     public static final String POWER_ID = HSRMod.makePath(Trailblazer5Power.class.getSimpleName());
@@ -57,14 +53,7 @@ public class Trailblazer5Power extends PowerPower implements PreToughnessReduceS
         flash();
         cardCache = null;
         DamageInfo info = new DamageInfo(owner, (int)amount);
-        addToBot(new BreakDamageAction(target, info).setCallback(new Consumer<AbstractCreature>() {
-            @Override
-            public void accept(AbstractCreature m) {
-                if (info.output >= 70) {
-                    SignatureHelper.unlock(HSRMod.makePath(Trailblazer5.ID), true);
-                }
-            }
-        }));
+        addToBot(new BreakDamageAction(target, info));
         return amount;
     }
 }

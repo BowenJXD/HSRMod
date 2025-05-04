@@ -13,9 +13,6 @@ import hsrmod.modcore.CustomEnums;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.subscribers.SubscriptionManager;
 
-import java.util.function.Predicate;
-import java.util.function.ToIntFunction;
-
 public class Aggregator extends BaseCard implements PostBattleSubscriber {
     public static final String ID = Aggregator.class.getSimpleName();
     

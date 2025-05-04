@@ -9,8 +9,6 @@ import hsrmod.utils.ModHelper;
 import hsrmod.utils.RelicEventHelper;
 
 import java.util.*;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 public class VoidWickTrimmer extends BaseRelic {
     public static final String ID = VoidWickTrimmer.class.getSimpleName();

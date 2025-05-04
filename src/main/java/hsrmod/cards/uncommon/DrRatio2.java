@@ -12,8 +12,6 @@ import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.uniqueDebuffs.WisemansFollyPower;
 
-import java.util.function.Predicate;
-
 public class DrRatio2 extends BaseCard {
     public static final String ID = DrRatio2.class.getSimpleName();
     

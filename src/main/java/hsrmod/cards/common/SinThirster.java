@@ -8,9 +8,6 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.cards.BaseCard;
 import hsrmod.powers.misc.DoTPower;
 
-import java.util.function.Predicate;
-import java.util.function.ToIntFunction;
-
 public class SinThirster extends BaseCard {
     public static final String ID = SinThirster.class.getSimpleName();
     

@@ -1,8 +1,8 @@
 package hsrmod.powers.misc;
 
 import basemod.BaseMod;
+import basemod.interfaces.OnPlayerDamagedSubscriber;
 import basemod.interfaces.PreMonsterTurnSubscriber;
-import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnLoseBlockPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -16,7 +16,7 @@ import hsrmod.subscribers.SubscriptionManager;
 
 import java.util.function.Consumer;
 
-public class QuakePower extends BuffPower implements PreMonsterTurnSubscriber, OnLoseBlockPower {
+public class QuakePower extends BuffPower implements PreMonsterTurnSubscriber, OnPlayerDamagedSubscriber {
     public static final String POWER_ID = HSRMod.makePath(QuakePower.class.getSimpleName());
 
     AbstractCreature lastTarget;
@@ -45,16 +45,18 @@ public class QuakePower extends BuffPower implements PreMonsterTurnSubscriber, O
     }
 
     @Override
-    public int onLoseBlock(DamageInfo damageInfo, int i) {
-        if (i > 0 && damageInfo.type == DamageInfo.DamageType.NORMAL) {
+    public int receiveOnPlayerDamaged(int i, DamageInfo damageInfo) {
+        if (SubscriptionManager.checkSubscriber(this) 
+                && i > 0 
+                && damageInfo.type == DamageInfo.DamageType.NORMAL
+                && owner.currentHealth > 0) {
             AbstractCreature target = damageInfo.owner;
             if (target != null && target != lastTarget) {
                 attack(target, owner.currentBlock - i);
                 lastTarget = target;
             }
-            // attack(target, Math.min(i, owner.currentBlock));
         }
-        return i;
+        return 0;
     }
     
     public void attack(AbstractCreature target, int dmg) {

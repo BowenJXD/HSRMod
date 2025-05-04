@@ -11,7 +11,6 @@ import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.powers.misc.BreakEffectPower;
-import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.utils.ModHelper;
 
 import java.util.function.Consumer;
@@ -38,11 +37,6 @@ public class Rappa1 extends BaseCard {
         canRepeat = true;
         
         if (AbstractDungeon.getMonsters().areMonstersBasicallyDead()) return;
-        
-        count++;
-        if (count >= 4) {
-            SignatureHelper.unlock(cardID, true);
-        }
 
         addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new BreakEffectPower(AbstractDungeon.player, magicNumber), magicNumber));
         addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL).setCallback(new Consumer<ElementalDamageAction.CallbackInfo>() {

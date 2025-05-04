@@ -1,7 +1,6 @@
 package hsrmod.relics.starter;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -13,9 +12,9 @@ import hsrmod.actions.GridCardManipulator;
 import hsrmod.actions.SimpleGridCardSelectBuilder;
 import hsrmod.cards.BaseCard;
 import hsrmod.cardsV2.Paths.*;
-import hsrmod.events.StelleAwakeEvent;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.relics.BaseRelic;
+import hsrmod.relics.interfaces.ClickableRelic;
 import hsrmod.utils.RewardEditor;
 
 import java.util.ArrayList;
@@ -23,7 +22,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.Predicate;
 
-public class TrailblazeTimer extends BaseRelic implements ClickableRelic  {
+public class TrailblazeTimer extends BaseRelic implements ClickableRelic {
     public static final String ID = TrailblazeTimer.class.getSimpleName();
     AbstractCard.CardTags tag = CustomEnums.TRAILBLAZE;
     public AbstractCard.CardTags selectedTag;
@@ -85,7 +84,7 @@ public class TrailblazeTimer extends BaseRelic implements ClickableRelic  {
     @Override
     public void onRightClick() {
         if (isObtained
-                && (AbstractDungeon.getCurrRoom() instanceof NeowRoom || AbstractDungeon.getCurrRoom().event instanceof StelleAwakeEvent)
+                && (AbstractDungeon.getCurrRoom() instanceof NeowRoom)
                 && (RewardEditor.getInstance().bannedTags == null || RewardEditor.getInstance().bannedTags.isEmpty())) {
             AbstractGameAction action = new SimpleGridCardSelectBuilder(new Predicate<AbstractCard>() {
                 @Override

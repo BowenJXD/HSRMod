@@ -12,7 +12,6 @@ import hsrmod.cards.BaseCard;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
-import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public class FollowUpAction extends AbstractGameAction {

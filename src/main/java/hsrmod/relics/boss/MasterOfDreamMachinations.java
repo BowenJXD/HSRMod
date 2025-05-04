@@ -1,6 +1,5 @@
 package hsrmod.relics.boss;
 
-import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.Settings;
@@ -11,6 +10,7 @@ import com.megacrit.cardcrawl.rooms.ShopRoom;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import hsrmod.cardsV2.AstralExpress;
 import hsrmod.relics.BaseRelic;
+import hsrmod.relics.interfaces.ClickableRelic;
 import hsrmod.utils.CardSelectManager;
 import hsrmod.utils.ModHelper;
 import hsrmod.utils.RewardEditor;

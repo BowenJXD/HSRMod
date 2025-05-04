@@ -1,12 +1,12 @@
 package hsrmod.relics.uncommon;
 
-import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import hsrmod.relics.BaseRelic;
+import hsrmod.relics.interfaces.ClickableRelic;
 
 public class RottingFruitOfTheAlienTree extends BaseRelic implements ClickableRelic {
     public static final String ID = RottingFruitOfTheAlienTree.class.getSimpleName();

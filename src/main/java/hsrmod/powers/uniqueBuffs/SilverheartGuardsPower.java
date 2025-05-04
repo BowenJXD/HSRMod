@@ -1,12 +1,12 @@
 package hsrmod.powers.uniqueBuffs;
 
-import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.actions.RandomCardFromDrawPileToHandAction;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
+import hsrmod.powers.interfaces.OnReceivePowerPower;
 import hsrmod.powers.misc.EnergyPower;
 
 public class SilverheartGuardsPower extends PowerPower implements OnReceivePowerPower {

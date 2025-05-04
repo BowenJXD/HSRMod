@@ -15,8 +15,6 @@ import hsrmod.modcore.HSRMod;
 import hsrmod.powers.misc.LockToughnessPower;
 import hsrmod.powers.misc.ToughnessPower;
 
-import java.util.function.ToIntFunction;
-
 @SpirePatch(clz = AbstractCreature.class, method = "renderHealth", paramtypez = {SpriteBatch.class})
 public class ToughnessBarPatch {
 

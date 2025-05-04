@@ -24,7 +24,6 @@ import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
 import java.util.function.Consumer;
-import java.util.function.ToIntFunction;
 
 public class Acheron1 extends BaseCard implements PostPowerApplySubscriber {
     public static final String ID = Acheron1.class.getSimpleName();

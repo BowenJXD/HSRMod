@@ -113,7 +113,7 @@
   "HSRMod:BrainInAVat": {
     "NAME": "Brain in a Vat",
     "DESCRIPTIONS": [
-      "After consuming [hsrmod:ChargeIcon] , remove 1 stack and recover an equal amount of [hsrmod:ChargeIcon] ."
+      "After consuming #yhsrmod:Charge , remove 1 stack and recover an equal amount of #yhsrmod:Charge ."
     ]
   },
   "HSRMod:Reinforce": {
@@ -140,7 +140,7 @@
     "NAME": "Vox Harmonique, Opus Cosmique",
     "DESCRIPTIONS": [
       "After using an attack card, gain Strength equal to the cost of that card. At start of next turn, remove this effect and Strength gained through this effect.",
-      "After using an attack card, gain Strength equal to the cost of that card, and gain #b20 [hsrmod:ChargeIcon] if it is a Follow-Up card. At start of next turn, remove this effect and Strength gained through this effect."
+      "After using an attack card, gain Strength equal to the cost of that card, and gain #b20 #yhsrmod:Charge if it is a Follow-Up card. At start of next turn, remove this effect and Strength gained through this effect."
     ]
   },
   "HSRMod:ProofOfDebt": {
@@ -172,8 +172,8 @@
   "HSRMod:UselessScholar": {
     "NAME": "Useless Scholar",
     "DESCRIPTIONS": [
-      "After chasing, if you have any, there is a #b%d %% chance to consume #b%d [hsrmod:ChargeIcon] and Follow Up another Follow Up card.",
-      "After playing a Follow Up card, if you have any, there is a #b%d %% chance to consume #b%d [hsrmod:ChargeIcon] and Follow Up another Follow Up card."
+      "After chasing, if you have any, there is a #b%d %% chance to consume #b%d #yhsrmod:Charge and Follow Up another Follow Up card.",
+      "After playing a Follow Up card, if you have any, there is a #b%d %% chance to consume #b%d #yhsrmod:Charge and Follow Up another Follow Up card."
     ]
   },
   "HSRMod:BountyHunter": {
@@ -255,8 +255,8 @@
   "HSRMod:Huohuo": {
     "NAME": "Tail: Spiritual Domination",
     "DESCRIPTIONS": [
-      "After playing a card, recover 1 temp HP, 10 [hsrmod:ChargeIcon] , and remove 1 stack of a random negative effect.",
-      "After playing a card or exhausting [hsrmod:ChargeIcon] , recover 1 temp HP, 10 [hsrmod:ChargeIcon] , and remove 1 stack of a random negative effect."
+      "After playing a card, recover 1 temp HP, 10 #yhsrmod:Charge , and remove 1 stack of a random negative effect.",
+      "After playing a card or exhausting #yhsrmod:Charge , recover 1 temp HP, 10 #yhsrmod:Charge , and remove 1 stack of a random negative effect."
     ]
   },
   "HSRMod:Epiphany": {
@@ -304,8 +304,8 @@
   "HSRMod:CommonMortal": {
     "NAME": "Common Mortal",
     "DESCRIPTIONS": [
-      "After consuming [hsrmod:ChargeIcon] , apply 1 DoT effect to a random enemy. When you apply a DoT effect, gain #b%d [hsrmod:ChargeIcon] .",
-      "After consuming [hsrmod:ChargeIcon] , apply 1 DoT effect to a random enemy. When you apply a negative effect, gain #b%d [hsrmod:ChargeIcon] ."
+      "After consuming #yhsrmod:Charge , apply 1 DoT effect to a random enemy. When you apply a DoT effect, gain #b%d #yhsrmod:Charge .",
+      "After consuming #yhsrmod:Charge , apply 1 DoT effect to a random enemy. When you apply a negative effect, gain #b%d #yhsrmod:Charge ."
     ]
   },
   "HSRMod:MatrixOfPrescience": {
@@ -338,7 +338,7 @@
   "HSRMod:ChampionsDinnerCatsCradle": {
     "NAME": "Champion's Dinner : Cat's Cradle",
     "DESCRIPTIONS": [
-      "Charge using cards are regarded as Follow Up cards, when gaining [hsrmod:ChargeIcon] , #b%d chance to Follow Up one of them without using [hsrmod:ChargeIcon] . "
+      "Charge using cards are regarded as Follow Up cards, when gaining #yhsrmod:Charge , #b%d chance to Follow Up one of them without using #yhsrmod:Charge . "
     ]
   },"HSRMod:EmpyreanImperium": {
   "NAME": "Empyrean Imperium",

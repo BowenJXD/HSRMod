@@ -5,9 +5,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.misc.ICanChangeToTempHP;
 import hsrmod.relics.BaseRelic;
 
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-
 public class LongevousDisciple extends BaseRelic {
     public static final String ID = LongevousDisciple.class.getSimpleName();
 

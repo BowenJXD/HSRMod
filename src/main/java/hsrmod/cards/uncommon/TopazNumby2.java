@@ -12,7 +12,6 @@ import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementalDamageInfo;
-import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.subscribers.PreFollowUpSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
@@ -44,13 +43,6 @@ public class TopazNumby2 extends BaseCard implements PreFollowUpSubscriber {
                         AbstractGameAction.AttackEffect.SLASH_VERTICAL
                 )
         );
-
-        if (!SignatureHelper.isUnlocked(cardID)) {
-            unlockCount++;
-            if (unlockCount >= 4) {
-                SignatureHelper.unlock(cardID, true);
-            }
-        }
     }
 
     @Override

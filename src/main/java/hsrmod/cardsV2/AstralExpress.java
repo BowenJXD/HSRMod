@@ -7,7 +7,6 @@ import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.utils.ModHelper;
 
-import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public class AstralExpress extends BaseCard {

@@ -10,8 +10,6 @@ import com.megacrit.cardcrawl.map.MapEdge;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.rooms.*;
 import hsrmod.cards.BaseCard;
-import hsrmod.modcore.HSRMod;
-import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.utils.RelicEventHelper;
 
 public class NightOnTheMilkyWay extends BaseCard {
@@ -47,9 +45,5 @@ public class NightOnTheMilkyWay extends BaseCard {
         if (cons[2]) {
             addToBot(new GainEnergyAction(magicNumber));
         }
-    }
-    
-    public static void checkUnlockSign(){
-        SignatureHelper.unlock(HSRMod.makePath(ID), true);
     }
 }

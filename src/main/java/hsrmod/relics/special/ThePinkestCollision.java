@@ -10,7 +10,6 @@ import hsrmod.relics.BaseRelic;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.function.Function;
 
 public class ThePinkestCollision extends BaseRelic {
     public static final String ID = ThePinkestCollision.class.getSimpleName();

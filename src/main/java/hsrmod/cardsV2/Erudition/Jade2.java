@@ -11,11 +11,7 @@ import com.megacrit.cardcrawl.vfx.combat.IntimidateEffect;
 import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
-import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.utils.ModHelper;
-
-import java.util.function.Consumer;
-import java.util.function.Predicate;
 
 public class Jade2 extends BaseCard {
     public static final String ID = Jade2.class.getSimpleName();
@@ -42,10 +38,6 @@ public class Jade2 extends BaseCard {
                     }
                 }
                 Jade2.this.addToTop(new LoseHPAction(p, p, hpLoss[0]));
-
-                if (hpLoss[0] == 8) {
-                    SignatureHelper.unlock(cardID, true);
-                }
             }
         });
     }

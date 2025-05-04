@@ -1,6 +1,5 @@
 package hsrmod.relics.shop;
 
-import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -8,6 +7,7 @@ import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.ShopRoom;
 import hsrmod.relics.BaseRelic;
+import hsrmod.relics.interfaces.ClickableRelic;
 import hsrmod.utils.CardSelectManager;
 import hsrmod.utils.ModHelper;
 import hsrmod.utils.RelicEventHelper;

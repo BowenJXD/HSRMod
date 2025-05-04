@@ -9,9 +9,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
 
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-
 public class DisasterHaltingMechanism extends BaseCard {
     public static final String ID = DisasterHaltingMechanism.class.getSimpleName();
 

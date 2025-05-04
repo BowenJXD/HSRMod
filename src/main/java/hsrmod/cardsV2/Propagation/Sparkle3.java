@@ -9,8 +9,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.MoveCardsAction;
 import hsrmod.actions.SelectCardsAction;
 import hsrmod.cards.BaseCard;
-import hsrmod.modcore.HSRMod;
-import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.utils.ModHelper;
 
 import java.util.List;
@@ -46,8 +44,6 @@ public class Sparkle3 extends BaseCard {
                             return card == c;
                         }
                     }));
-                } else {
-                    SignatureHelper.unlock(HSRMod.makePath(ID), true);
                 }
             }
         }));
@@ -63,7 +59,6 @@ public class Sparkle3 extends BaseCard {
                 });
                 if (!sparkles.isEmpty()) {
                     Sparkle3.this.addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
-                    SignatureHelper.unlock(HSRMod.makePath(ID), true);
                 }
                 for (ModHelper.FindResult result : sparkles) {
                     result.group.removeCard(result.card);

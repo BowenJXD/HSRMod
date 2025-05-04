@@ -20,7 +20,6 @@ import hsrmod.utils.ModHelper;
 
 import java.util.function.Consumer;
 import java.util.function.Function;
-import java.util.function.ToIntFunction;
 
 public class SlashedDreamPower extends PowerPower {
     public static final String POWER_ID = HSRMod.makePath(SlashedDreamPower.class.getSimpleName());

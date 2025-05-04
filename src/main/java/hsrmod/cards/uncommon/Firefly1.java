@@ -6,7 +6,6 @@ import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -17,12 +16,10 @@ import hsrmod.cards.BaseCard;
 import hsrmod.effects.MultiSlashEffect;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.misc.BrokenPower;
-import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.utils.CachedCondition;
 import hsrmod.utils.ModHelper;
 
 import java.util.Objects;
-import java.util.function.Consumer;
 
 public class Firefly1 extends BaseCard {
     public static final String ID = Firefly1.class.getSimpleName();
@@ -62,29 +59,14 @@ public class Firefly1 extends BaseCard {
                 new ElementalDamageAction(
                         m,
                         new ElementalDamageInfo(this),
-                        AbstractGameAction.AttackEffect.SLASH_DIAGONAL,
-                        new Consumer<ElementalDamageAction.CallbackInfo>() {
-                            @Override
-                            public void accept(ElementalDamageAction.CallbackInfo ci) {
-                                if (ci.target.isDying && detectUnlock) {
-                                    SignatureHelper.unlock(cardID, true);
-                                }
-                            }
-                        }
+                        AbstractGameAction.AttackEffect.SLASH_DIAGONAL
                 )
         );
         ModHelper.addToBotAbstract(new ModHelper.Lambda() {
             @Override
             public void run() {
                 if (m.hasPower(BrokenPower.POWER_ID)) {
-                    Firefly1.this.addToBot(new BreakDamageAction(m, new DamageInfo(p, tr), 0.5f).setCallback(new Consumer<AbstractCreature>() {
-                        @Override
-                        public void accept(AbstractCreature c) {
-                            if (c.isDying && detectUnlock) {
-                                SignatureHelper.unlock(cardID, true);
-                            }
-                        }
-                    }));
+                    Firefly1.this.addToBot(new BreakDamageAction(m, new DamageInfo(p, tr), 0.5f));
                     returnToHand = true;
                     Firefly1.this.setCostForTurn(costCache);
                 }

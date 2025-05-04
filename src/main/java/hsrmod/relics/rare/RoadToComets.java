@@ -9,9 +9,6 @@ import hsrmod.powers.misc.EnergyPower;
 import hsrmod.relics.BaseRelic;
 import hsrmod.utils.ModHelper;
 
-import java.util.function.Predicate;
-import java.util.function.ToIntFunction;
-
 public class RoadToComets extends BaseRelic {
     public static final String ID = RoadToComets.class.getSimpleName();
 

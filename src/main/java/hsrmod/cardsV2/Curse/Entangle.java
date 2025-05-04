@@ -18,9 +18,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 public class Entangle extends BaseCard implements PostDrawSubscriber, ICheckUsableSubscriber {
     public static final String ID = Entangle.class.getSimpleName();

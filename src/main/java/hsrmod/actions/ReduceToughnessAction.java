@@ -84,7 +84,7 @@ public class ReduceToughnessAction extends AbstractGameAction {
 
         // reduce toughness
         if (toughnessPower != null) {
-            addToTop(new ReducePowerAction(target, AbstractDungeon.player, ToughnessPower.POWER_ID, tr));
+            addToTop(new ApplyPowerAction(target, AbstractDungeon.player, new ToughnessPower(target, -tr)));
         }
 
         // Check to remove actions except HealAction, GainBlockAction, UseCardAction, TriggerCallbackAction, and DamageAction

@@ -1,6 +1,5 @@
 package hsrmod.powers.misc;
 
-import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnDrawPileShufflePower;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -12,10 +11,8 @@ import hsrmod.utils.GeneralUtil;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
-public class ShuffleStatePower extends StatePower implements OnDrawPileShufflePower {
+public class ShuffleStatePower extends StatePower {
     public static final String POWER_ID = HSRMod.makePath(ShuffleStatePower.class.getSimpleName());
 
     public ShuffleStatePower(AbstractCreature owner) {
@@ -25,8 +22,7 @@ public class ShuffleStatePower extends StatePower implements OnDrawPileShufflePo
         
         updateDescription();
     }
-
-    @Override
+    
     public void onShuffle() {
         List<AbstractCard> cards = new ArrayList<>();
         for (AbstractCard c : CardLibrary.getAllCards()) {

@@ -10,8 +10,6 @@ import hsrmod.cards.BaseCard;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.utils.ModHelper;
 
-import java.util.function.Predicate;
-
 public class Imprison extends BaseCard {
     public static final String ID = Imprison.class.getSimpleName();
     

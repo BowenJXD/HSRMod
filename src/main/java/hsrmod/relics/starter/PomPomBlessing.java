@@ -20,7 +20,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.IntangiblePlayerPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.ui.FtueTip;
 import hsrmod.actions.ReduceChargeByHandCardNumAction;
 import hsrmod.cards.base.Danheng0;
 import hsrmod.cards.base.Himeko0;
@@ -93,7 +92,12 @@ public class PomPomBlessing extends CustomRelic implements ClickableRelic {
         addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new IntangiblePlayerPower(AbstractDungeon.player, 1), 1));
         addToBot(new GainEnergyAction(2));
         addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));
-        ModHelper.addToBotAbstract(() -> setCounter(-1));
+        ModHelper.addToBotAbstract(new ModHelper.Lambda() {
+            @Override
+            public void run() {
+                PomPomBlessing.this.setCounter(-1);
+            }
+        });
     }
 
     @Override
@@ -126,62 +130,96 @@ public class PomPomBlessing extends CustomRelic implements ClickableRelic {
 
         if (maxRetainNum == 0) return;
 
-        Predicate<AbstractCard> cardFilter = c -> !c.selfRetain && !c.retain && !c.isEthereal;
-        Consumer<List<AbstractCard>> callback = cards -> {
-            AbstractDungeon.actionManager.cardQueue.addAll(tempCardQueue);
-            for (AbstractCard card : cards) {
-                card.retain = true;
+        Predicate<AbstractCard> cardFilter = new Predicate<AbstractCard>() {
+            @Override
+            public boolean test(AbstractCard c) {
+                return !c.selfRetain && !c.retain && !c.isEthereal;
             }
-            addToTop(new ReduceChargeByHandCardNumAction(AbstractDungeon.player, AbstractDungeon.player));
+        };
+        Consumer<List<AbstractCard>> callback = new Consumer<List<AbstractCard>>() {
+            @Override
+            public void accept(List<AbstractCard> cards) {
+                AbstractDungeon.actionManager.cardQueue.addAll(tempCardQueue);
+                for (AbstractCard card : cards) {
+                    card.retain = true;
+                }
+                PomPomBlessing.this.addToTop(new ReduceChargeByHandCardNumAction(AbstractDungeon.player, AbstractDungeon.player));
+            }
         };
 
         addToTop(new SelectCardsInHandAction(maxRetainNum, String.format(DESCRIPTIONS[1], multiplier), true, true, cardFilter, callback));
-        ModHelper.addToTopAbstract(() -> tempCardQueue = new ArrayList<>(AbstractDungeon.actionManager.cardQueue));
+        ModHelper.addToTopAbstract(new ModHelper.Lambda() {
+            @Override
+            public void run() {
+                tempCardQueue = new ArrayList<>(AbstractDungeon.actionManager.cardQueue);
+            }
+        });
     }
 
     @Override
     public int onLoseHpLast(int damageAmount) {
-        if (AbstractDungeon.player.currentHealth - damageAmount <= 0
-                && AbstractDungeon.player.masterDeck.group.stream().anyMatch(card -> card.hasTag(CustomEnums.REVIVE))) {
-            flash();
-            damageAmount = AbstractDungeon.player.currentHealth - 1;
-            ModHelper.addToTopAbstract(() -> {
-                addToTop(new SelectCardsAction(AbstractDungeon.player.masterDeck.group, 1, DESCRIPTIONS[2],
-                        false, card -> card.hasTag(CustomEnums.REVIVE), cards -> {
-                    AbstractCard card = cards.get(0);
-                    ModHelper.findCards(card1 -> Objects.equals(card1.cardID, card.cardID)).forEach(findResult -> {
-                        findResult.group.removeCard(findResult.card);
-                    });
-                    AbstractDungeon.player.masterDeck.removeCard(card);
+        if (AbstractDungeon.player.currentHealth - damageAmount <= 0) {
+            boolean b = false;
+            for (AbstractCard abstractCard : AbstractDungeon.player.masterDeck.group) {
+                if (abstractCard.hasTag(CustomEnums.REVIVE)) {
+                    b = true;
+                    break;
+                }
+            }
+            if (b) {
+                flash();
+                damageAmount = AbstractDungeon.player.currentHealth - 1;
+                ModHelper.addToTopAbstract(new ModHelper.Lambda() {
+                    @Override
+                    public void run() {
+                        PomPomBlessing.this.addToTop(new SelectCardsAction(AbstractDungeon.player.masterDeck.group, 1, DESCRIPTIONS[2],
+                                false, card -> card.hasTag(CustomEnums.REVIVE), cards -> {
+                            AbstractCard card = cards.get(0);
+                            for (ModHelper.FindResult findResult : ModHelper.findCards(new Predicate<AbstractCard>() {
+                                @Override
+                                public boolean test(AbstractCard card1) {
+                                    return Objects.equals(card1.cardID, card.cardID);
+                                }
+                            })) {
+                                findResult.group.removeCard(findResult.card);
+                            }
+                            AbstractDungeon.player.masterDeck.removeCard(card);
 
-                    String relicName = "";
-                    String text = "";
-                    if (card instanceof March7th0) {
-                        relicName = March7thRelic.ID;
-                        text = DESCRIPTIONS[3]; // 
-                    } else if (card instanceof Danheng0) {
-                        relicName = DanhengRelic.ID;
-                        text = DESCRIPTIONS[4]; // 
-                    } else if (card instanceof Himeko0) {
-                        relicName = HimekoRelic.ID;
-                        text = DESCRIPTIONS[5]; // 
-                    } else if (card instanceof Welt0) {
-                        relicName = WeltRelic.ID;
-                        text = DESCRIPTIONS[6]; // 
-                    } else if (card instanceof Castorice1) {
-                        text = DESCRIPTIONS[7]; //
-                        SignatureHelper.unlock(HSRMod.makePath(Castorice1.ID), true);
-                    }
+                            String relicName = "";
+                            String text = "";
+                            if (card instanceof March7th0) {
+                                relicName = March7thRelic.ID;
+                                text = DESCRIPTIONS[3]; // 
+                            } else if (card instanceof Danheng0) {
+                                relicName = DanhengRelic.ID;
+                                text = DESCRIPTIONS[4]; // 
+                            } else if (card instanceof Himeko0) {
+                                relicName = HimekoRelic.ID;
+                                text = DESCRIPTIONS[5]; // 
+                            } else if (card instanceof Welt0) {
+                                relicName = WeltRelic.ID;
+                                text = DESCRIPTIONS[6]; // 
+                            } else if (card instanceof Castorice1) {
+                                text = DESCRIPTIONS[7]; //
+                                SignatureHelper.unlock(HSRMod.makePath(Castorice1.ID), true);
+                            }
 
-                    if (!relicName.isEmpty()) {
-                        AbstractRelic relic = RelicLibrary.getRelic(relicName).makeCopy();
-                        AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float) (Settings.WIDTH / 2), (float) (Settings.HEIGHT / 2), relic);
-                        ModHelper.addToTopAbstract(() -> relic.setCounter(-2));
+                            if (!relicName.isEmpty()) {
+                                AbstractRelic relic = RelicLibrary.getRelic(relicName).makeCopy();
+                                AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float) (Settings.WIDTH / 2), (float) (Settings.HEIGHT / 2), relic);
+                                ModHelper.addToTopAbstract(new ModHelper.Lambda() {
+                                    @Override
+                                    public void run() {
+                                        relic.setCounter(-2);
+                                    }
+                                });
+                            }
+                            if (!text.isEmpty())
+                                PomPomBlessing.this.addToBot(new TalkAction(true, text, 1.0F, 2.0F));
+                        }));
                     }
-                    if (!text.isEmpty())
-                        addToBot(new TalkAction(true, text, 1.0F, 2.0F));
-                }));
-            });
+                });
+            }
         }
         return damageAmount;
     }

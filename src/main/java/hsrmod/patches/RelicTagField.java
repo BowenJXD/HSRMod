@@ -6,7 +6,22 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 @SpirePatch(clz = AbstractRelic.class, method = SpirePatch.CLASS)
 public class RelicTagField {
-    public static SpireField<Boolean> destructible = new SpireField<>(() -> false);
-    public static SpireField<Boolean> subtle = new SpireField<>(() -> false);
-    public static SpireField<Boolean> economic = new SpireField<>(() -> false);
+    public static SpireField<Boolean> destructible = new SpireField<>(new SpireField.DefaultValue<Boolean>() {
+        @Override
+        public Boolean get() {
+            return false;
+        }
+    });
+    public static SpireField<Boolean> subtle = new SpireField<>(new SpireField.DefaultValue<Boolean>() {
+        @Override
+        public Boolean get() {
+            return false;
+        }
+    });
+    public static SpireField<Boolean> economic = new SpireField<>(new SpireField.DefaultValue<Boolean>() {
+        @Override
+        public Boolean get() {
+            return false;
+        }
+    });
 }

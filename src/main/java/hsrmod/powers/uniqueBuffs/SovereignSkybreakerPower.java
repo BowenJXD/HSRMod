@@ -10,6 +10,8 @@ import hsrmod.powers.PowerPower;
 import hsrmod.powers.misc.BoostPower;
 import hsrmod.utils.GeneralUtil;
 
+import java.util.function.Predicate;
+
 public class SovereignSkybreakerPower extends PowerPower {
     public static final String POWER_ID = HSRMod.makePath(SovereignSkybreakerPower.class.getSimpleName());
 
@@ -32,7 +34,12 @@ public class SovereignSkybreakerPower extends PowerPower {
         if (amount >= triggerAmount) {
             flash();
             amount -= triggerAmount;
-            AbstractCard card = GeneralUtil.getRandomElement(AbstractDungeon.player.hand.group, AbstractDungeon.cardRandomRng, c -> c.costForTurn > 0);
+            AbstractCard card = GeneralUtil.getRandomElement(AbstractDungeon.player.hand.group, AbstractDungeon.cardRandomRng, new Predicate<AbstractCard>() {
+                @Override
+                public boolean test(AbstractCard c) {
+                    return c.costForTurn > 0;
+                }
+            });
             if (card != null) addToTop(new ReduceCostForTurnAction(card, 1));
             addToTop(new ApplyPowerAction(owner, owner, new BoostPower(owner, 3), 3));
         }

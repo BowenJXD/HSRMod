@@ -1,17 +1,9 @@
 package hsrmod.powers.misc;
 
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import hsrmod.actions.ElementalDamageAction;
-import hsrmod.cards.BaseCard;
-import hsrmod.modcore.ElementType;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
 import hsrmod.subscribers.ISetToughnessReductionSubscriber;
-import hsrmod.subscribers.PreElementalDamageSubscriber;
-import hsrmod.subscribers.PreToughnessReduceSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 
 public class BreakEfficiencyPower extends BuffPower implements ISetToughnessReductionSubscriber {

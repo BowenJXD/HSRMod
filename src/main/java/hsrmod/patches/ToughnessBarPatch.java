@@ -9,10 +9,13 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.misc.IMultiToughness;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.misc.LockToughnessPower;
 import hsrmod.powers.misc.ToughnessPower;
+
+import java.util.function.ToIntFunction;
 
 @SpirePatch(clz = AbstractCreature.class, method = "renderHealth", paramtypez = {SpriteBatch.class})
 public class ToughnessBarPatch {
@@ -39,7 +42,11 @@ public class ToughnessBarPatch {
 
             renderToughnessBar(sb, _inst, x, y, ratio, tp);
             String text = tp.amount + "/" + ToughnessPower.getStackLimit(_inst);
-            int barCount = _inst.powers.stream().mapToInt(p -> p instanceof IMultiToughness ? ((IMultiToughness)p).getToughnessBarCount() : 0).sum();
+            int barCount = 0;
+            for (AbstractPower p : _inst.powers) {
+                int i = p instanceof IMultiToughness ? ((IMultiToughness) p).getToughnessBarCount() : 0;
+                barCount += i;
+            }
             if (barCount > 1) {
                 text += "×" + barCount;
             }

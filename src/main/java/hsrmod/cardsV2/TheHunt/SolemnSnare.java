@@ -3,6 +3,7 @@ package hsrmod.cardsV2.TheHunt;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.unique.LoseEnergyAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
@@ -10,6 +11,8 @@ import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.powers.misc.BoostPower;
 import hsrmod.utils.ModHelper;
+
+import java.util.function.Consumer;
 
 public class SolemnSnare extends BaseCard {
     public static final String ID = SolemnSnare.class.getSimpleName();
@@ -28,11 +31,14 @@ public class SolemnSnare extends BaseCard {
             addToBot(new ApplyPowerAction(p, p, new BoostPower(p, x), x));
             if (upgraded) addToBot(new DrawCardAction(x));
         }
-        ModHelper.addToBotAbstract(() -> {
-            p.hand.group.forEach(c -> {
-                if (c.upgraded) 
-                    c.setCostForTurn(c.costForTurn - c.timesUpgraded);
-            });
+        ModHelper.addToBotAbstract(new ModHelper.Lambda() {
+            @Override
+            public void run() {
+                for (AbstractCard c : p.hand.group) {
+                    if (c.upgraded)
+                        c.setCostForTurn(c.costForTurn - c.timesUpgraded);
+                }
+            }
         });
         addToBot(new LoseEnergyAction(EnergyPanel.totalCount));
     }

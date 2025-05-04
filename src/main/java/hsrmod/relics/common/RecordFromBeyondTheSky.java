@@ -5,7 +5,6 @@ import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
 import com.megacrit.cardcrawl.powers.BufferPower;
-import com.megacrit.cardcrawl.powers.IntangiblePlayerPower;
 import hsrmod.relics.BaseRelic;
 
 public class RecordFromBeyondTheSky extends BaseRelic {

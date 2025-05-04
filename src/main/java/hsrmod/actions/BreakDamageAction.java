@@ -11,7 +11,6 @@ import hsrmod.powers.misc.BreakEffectPower;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
-import java.util.Iterator;
 import java.util.function.Consumer;
 
 public class BreakDamageAction extends AbstractGameAction {

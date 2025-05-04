@@ -2,11 +2,15 @@ package hsrmod.utils;
 
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.misc.BrokenPower;
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.function.BiConsumer;
 import java.util.function.BooleanSupplier;
+import java.util.function.Predicate;
 
 /**
  * Used to cache conditions within one single update, to avoid repeated calculations.
@@ -15,8 +19,16 @@ import java.util.function.BooleanSupplier;
 public class CachedCondition {
     
     public static HashMap<Key, BooleanSupplier> conditions = new HashMap<Key, BooleanSupplier>() {{
-        put(Key.ANY_BROKEN, () -> {
-            return AbstractDungeon.getMonsters().monsters.stream().anyMatch(m -> m.hasPower(BrokenPower.POWER_ID));
+        put(Key.ANY_BROKEN, new BooleanSupplier() {
+            @Override
+            public boolean getAsBoolean() {
+                for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
+                    if (m.hasPower(BrokenPower.POWER_ID)) {
+                        return true;
+                    }
+                }
+                return false;
+            }
         });
     }};
     public static HashMap<Key, Boolean> cache = new HashMap<>();
@@ -29,7 +41,11 @@ public class CachedCondition {
         }
         if (CardCrawlGame.playtime != cachedPlayTime) {
             cachedPlayTime = CardCrawlGame.playtime;
-            conditions.forEach((k, v) -> cache.put(k, v.getAsBoolean()));
+            for (Map.Entry<Key, BooleanSupplier> entry : conditions.entrySet()) {
+                Key k = entry.getKey();
+                BooleanSupplier v = entry.getValue();
+                cache.put(k, v.getAsBoolean());
+            }
         }
         return cache.get(key);
     }

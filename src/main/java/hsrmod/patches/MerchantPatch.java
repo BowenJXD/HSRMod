@@ -24,6 +24,7 @@ import org.apache.logging.log4j.Level;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.function.Consumer;
 
 public class MerchantPatch {
     public static Texture hertaHand;
@@ -84,9 +85,12 @@ public class MerchantPatch {
                         ReflectionHacks.setPrivate(AbstractDungeon.shopScreen, ShopScreen.class, "idleMessages", shopString.TEXT);
 
                     if (merchantChar == MerchantChar.SPARKLE) {
-                        ModHelper.addEffectAbstract(() -> {
-                            CardCrawlGame.music.silenceTempBgmInstantly();
-                            AbstractDungeon.getCurrRoom().playBGM("Ensemble Cast");
+                        ModHelper.addEffectAbstract(new ModHelper.Lambda() {
+                            @Override
+                            public void run() {
+                                CardCrawlGame.music.silenceTempBgmInstantly();
+                                AbstractDungeon.getCurrRoom().playBGM("Ensemble Cast");
+                            }
                         });
                         AbstractDungeon.shopScreen.applyDiscount(0.1F, true);
                     }
@@ -111,7 +115,9 @@ public class MerchantPatch {
         @SpirePostfixPatch
         public static void postfix(ShopScreen _inst, ArrayList<AbstractCard> coloredCards, ArrayList<AbstractCard> colorlessCards, ArrayList<StoreRelic> ___relics) {
             if (ModHelper.hasRelic(FaithBond.ID)) {
-                ___relics.forEach(r -> r.price = (int)(r.price * (1f - FaithBond.DISCOUNT / 100f)));
+                for (StoreRelic r : ___relics) {
+                    r.price = (int) (r.price * (1f - FaithBond.DISCOUNT / 100f));
+                }
             }
         }
     }

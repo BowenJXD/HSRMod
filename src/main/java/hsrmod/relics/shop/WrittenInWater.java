@@ -3,7 +3,6 @@ package hsrmod.relics.shop;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import hsrmod.powers.misc.EnergyPower;
 import hsrmod.relics.BaseRelic;
 import hsrmod.relics.starter.PomPomBlessing;
 

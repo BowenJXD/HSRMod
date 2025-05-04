@@ -1,7 +1,5 @@
 package hsrmod.powers.uniqueBuffs;
 
-import basemod.BaseMod;
-import basemod.interfaces.PostPowerApplySubscriber;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.BetterOnApplyPowerPower;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.DamageModApplyingPower;
@@ -15,10 +13,10 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
 import hsrmod.powers.misc.SporePower;
-import hsrmod.subscribers.SubscriptionManager;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class SerfOfCalamityPower extends PowerPower implements BetterOnApplyPowerPower, DamageModApplyingPower {
     public static final String ID = HSRMod.makePath(SerfOfCalamityPower.class.getSimpleName());
@@ -63,7 +61,11 @@ public class SerfOfCalamityPower extends PowerPower implements BetterOnApplyPowe
     @Override
     public boolean shouldPushMods(DamageInfo damageInfo, Object o, List<AbstractDamageModifier> list) {
         if (!(o instanceof AbstractCard)) return false;
-        if (list.stream().anyMatch(mod -> mod instanceof SerfOfCalamityModifier)) return false;
+        for (AbstractDamageModifier mod : list) {
+            if (mod instanceof SerfOfCalamityModifier) {
+                return false;
+            }
+        }
         return true;
     }
 

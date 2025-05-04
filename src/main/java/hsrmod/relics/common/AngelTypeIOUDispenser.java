@@ -6,6 +6,8 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import hsrmod.relics.BaseRelic;
 import hsrmod.utils.RelicEventHelper;
 
+import java.util.function.Predicate;
+
 public class AngelTypeIOUDispenser extends BaseRelic {
     public static final String ID = AngelTypeIOUDispenser.class.getSimpleName();
 
@@ -19,17 +21,30 @@ public class AngelTypeIOUDispenser extends BaseRelic {
     @Override
     public void update() {
         super.update();
-        if (counter > 0 
+        if (counter > 0
                 && isObtained
                 && AbstractDungeon.currMapNode != null
                 && AbstractDungeon.getCurrRoom().isBattleOver
-                && AbstractDungeon.getCurrRoom() != currRoom
-                && AbstractDungeon.combatRewardScreen.rewards.stream().anyMatch(rewardItem -> rewardItem.type == RewardItem.RewardType.GOLD)) {
-            flash();
-            AbstractDungeon.combatRewardScreen.rewards.removeIf(rewardItem -> rewardItem.type == RewardItem.RewardType.GOLD);
-            currRoom = AbstractDungeon.getCurrRoom();
-            if (reduceCounterAndCheckDestroy()) {
-                doubleGold();
+                && AbstractDungeon.getCurrRoom() != currRoom) {
+            boolean b = false;
+            for (RewardItem reward : AbstractDungeon.combatRewardScreen.rewards) {
+                if (reward.type == RewardItem.RewardType.GOLD) {
+                    b = true;
+                    break;
+                }
+            }
+            if (b) {
+                flash();
+                AbstractDungeon.combatRewardScreen.rewards.removeIf(new Predicate<RewardItem>() {
+                    @Override
+                    public boolean test(RewardItem rewardItem) {
+                        return rewardItem.type == RewardItem.RewardType.GOLD;
+                    }
+                });
+                currRoom = AbstractDungeon.getCurrRoom();
+                if (reduceCounterAndCheckDestroy()) {
+                    doubleGold();
+                }
             }
         }
     }

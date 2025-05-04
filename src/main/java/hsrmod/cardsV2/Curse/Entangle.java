@@ -13,14 +13,14 @@ import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.subscribers.ICheckUsableSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
-import hsrmod.utils.ModHelper;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Entangle extends BaseCard implements PostDrawSubscriber, ICheckUsableSubscriber {
     public static final String ID = Entangle.class.getSimpleName();
@@ -43,13 +43,20 @@ public class Entangle extends BaseCard implements PostDrawSubscriber, ICheckUsab
         BaseMod.subscribe(this);
         SubscriptionManager.subscribe(this);
         if (entangledCards.isEmpty()) {
-            List<AbstractCard> tmp = AbstractDungeon.player.hand.group.stream().filter(c -> !c.hasTag(CustomEnums.ENTANGLE)).collect(Collectors.toList());
+            List<AbstractCard> tmp = new ArrayList<>();
+            for (AbstractCard abstractCard : AbstractDungeon.player.hand.group) {
+                if (!abstractCard.hasTag(CustomEnums.ENTANGLE)) {
+                    tmp.add(abstractCard);
+                }
+            }
             if (!tmp.isEmpty()) {
                 Collections.shuffle(tmp, new Random(AbstractDungeon.cardRandomRng.randomLong()));
-                tmp.stream().limit(entangleCount).forEach(c -> {
+                long limit = entangleCount;
+                for (AbstractCard c : tmp) {
+                    if (limit-- == 0) break;
                     c.tags.add(CustomEnums.ENTANGLE);
                     entangledCards.add(c);
-                });
+                }
             }
         }
         AbstractDungeon.player.hand.glowCheck();
@@ -65,10 +72,10 @@ public class Entangle extends BaseCard implements PostDrawSubscriber, ICheckUsab
     
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        entangledCards.forEach(c -> {
-            addToBot(new FollowUpAction(c));
+        for (AbstractCard c : entangledCards) {
+            Entangle.this.addToBot(new FollowUpAction(c));
             c.tags.remove(CustomEnums.ENTANGLE);
-        });
+        }
         entangledCards.clear();
     }
 
@@ -79,9 +86,11 @@ public class Entangle extends BaseCard implements PostDrawSubscriber, ICheckUsab
             this.particleTimer -= Gdx.graphics.getDeltaTime();
             if (this.particleTimer < 0.0F) {
                 this.particleTimer = 0.33F;
-                AbstractDungeon.player.hand.group.stream().filter(c -> entangledCards.contains(c)).forEach(c -> {
-                    AbstractDungeon.topLevelEffectsQueue.add(new SmallLaserEffect(current_x, current_y, c.current_x, c.current_y));
-                });
+                for (AbstractCard c : AbstractDungeon.player.hand.group) {
+                    if (entangledCards.contains(c)) {
+                        AbstractDungeon.topLevelEffectsQueue.add(new SmallLaserEffect(current_x, current_y, c.current_x, c.current_y));
+                    }
+                }
             }
         }
     }

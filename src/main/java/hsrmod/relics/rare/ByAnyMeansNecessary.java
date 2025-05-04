@@ -12,7 +12,8 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import hsrmod.relics.BaseRelic;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
-import hsrmod.utils.RelicEventHelper;
+
+import java.util.function.ToIntFunction;
 
 public class ByAnyMeansNecessary extends BaseRelic implements RelicGetSubscriber, CustomSavable<Void> {
     public static final String ID = ByAnyMeansNecessary.class.getSimpleName();
@@ -71,21 +72,31 @@ public class ByAnyMeansNecessary extends BaseRelic implements RelicGetSubscriber
     public void reorganizeObtain(AbstractPlayer p, int slot, boolean callOnEquip, int relicAmount) {
         super.reorganizeObtain(p, slot, callOnEquip, relicAmount);
         BaseMod.unsubscribe(this);
-        ModHelper.addEffectAbstract(() -> BaseMod.subscribe(this));
+        ModHelper.addEffectAbstract(new ModHelper.Lambda() {
+            @Override
+            public void run() {
+                BaseMod.subscribe(ByAnyMeansNecessary.this);
+            }
+        });
         updateCounter();
     }
 
     void updateCounter() {
-        setCounter(AbstractDungeon.player.relics.stream().mapToInt(r -> {
-            switch (r.tier) {
+        int counter = 0;
+        for (AbstractRelic relic : AbstractDungeon.player.relics) {
+            switch (relic.tier) {
                 case RARE:
-                    return 4;
+                    counter += 4;
+                    break;
                 case UNCOMMON:
-                    return 2;
+                    counter += 2;
+                    break;
                 default:
-                    return 1;
+                    counter += 1;
+                    break;
             }
-        }).sum());
+        }
+        setCounter(counter);
     }
 
     @Override

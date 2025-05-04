@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
@@ -16,6 +17,8 @@ import hsrmod.utils.ModHelper;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
@@ -45,12 +48,15 @@ public class Herta1 extends BaseCard {
         addToBot(new VFXAction(new BackFlipEffect(AbstractDungeon.player, false)));
         addToBot(
                 new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL).setCallback(
-                        ci -> {
-                            if (moreThanHalfMonsters.contains(ci.target) && ci.target.currentHealth <= ci.target.maxHealth / 2) {
-                                moreThanHalfMonsters.remove(ci.target);
-                                if (canRepeat) {
-                                    canRepeat = false;
-                                    ModHelper.addToTopAbstract(this::execute);
+                        new Consumer<ElementalDamageAction.CallbackInfo>() {
+                            @Override
+                            public void accept(ElementalDamageAction.CallbackInfo ci) {
+                                if (moreThanHalfMonsters.contains(ci.target) && ci.target.currentHealth <= ci.target.maxHealth / 2) {
+                                    moreThanHalfMonsters.remove(ci.target);
+                                    if (canRepeat) {
+                                        canRepeat = false;
+                                        ModHelper.addToTopAbstract(Herta1.this::execute);
+                                    }
                                 }
                             }
                         })
@@ -71,13 +77,19 @@ public class Herta1 extends BaseCard {
     public void triggerOnOtherCardPlayed(AbstractCard c) {
         if (!AbstractDungeon.player.hand.contains(this)) return;
         if (!followedUp) {
-            ModHelper.addToBotAbstract(() -> {
-                ModHelper.addToBotAbstract(() -> {
-                    if (updateMoreThanHalfMonsters()) {
-                        followedUp = true;
-                        addToBot(new FollowUpAction(this));
-                    }
-                });
+            ModHelper.addToBotAbstract(new ModHelper.Lambda() {
+                @Override
+                public void run() {
+                    ModHelper.addToBotAbstract(new ModHelper.Lambda() {
+                        @Override
+                        public void run() {
+                            if (Herta1.this.updateMoreThanHalfMonsters()) {
+                                followedUp = true;
+                                Herta1.this.addToBot(new FollowUpAction(Herta1.this));
+                            }
+                        }
+                    });
+                }
             });
         }
     }
@@ -87,7 +99,12 @@ public class Herta1 extends BaseCard {
      */
     public boolean updateMoreThanHalfMonsters() {
         boolean result = false;
-        List<AbstractCreature> temp = AbstractDungeon.getMonsters().monsters.stream().filter(monster -> monster.currentHealth > monster.maxHealth / 2).collect(Collectors.toList());
+        List<AbstractCreature> temp = new ArrayList<>();
+        for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters) {
+            if (monster.currentHealth > monster.maxHealth / 2) {
+                temp.add(monster);
+            }
+        }
         if (!new HashSet<>(temp).containsAll(moreThanHalfMonsters)) result = true;
         moreThanHalfMonsters = temp;
         return result;

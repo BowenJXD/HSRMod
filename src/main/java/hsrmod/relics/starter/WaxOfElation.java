@@ -1,6 +1,5 @@
 package hsrmod.relics.starter;
 
-import hsrmod.cardsV2.Paths.*;
 import hsrmod.modcore.CustomEnums;
 
 public class WaxOfElation extends WaxRelic {

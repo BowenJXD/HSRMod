@@ -23,6 +23,9 @@ import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
+import java.util.function.Consumer;
+import java.util.function.ToIntFunction;
+
 public class Acheron1 extends BaseCard implements PostPowerApplySubscriber {
     public static final String ID = Acheron1.class.getSimpleName();
     
@@ -73,15 +76,45 @@ public class Acheron1 extends BaseCard implements PostPowerApplySubscriber {
                 target,
                 new ElementalDamageInfo(this),
                 AbstractGameAction.AttackEffect.LIGHTNING
-        ).setModifier(ci -> ci.info.output += ci.target.powers.stream().mapToInt(power -> power.type == AbstractPower.PowerType.DEBUFF ? 1 : 0).sum());
+        ).setModifier(new Consumer<ElementalDamageAction.CallbackInfo>() {
+            @Override
+            public void accept(ElementalDamageAction.CallbackInfo ci) {
+                int sum = 0;
+                for (AbstractPower power : ci.target.powers) {
+                    int i = power.type == AbstractPower.PowerType.DEBUFF ? 1 : 0;
+                    sum += i;
+                }
+                ci.info.output += sum;
+            }
+        });
         addToBot(new BouncingAction(target, magicNumber, action, this));
         
-        ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play("SlashedDream2"));
+        ModHelper.addToBotAbstract(new ModHelper.Lambda() {
+            @Override
+            public void run() {
+                CardCrawlGame.sound.play("SlashedDream2");
+            }
+        });
         addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[1], 1.0F, 2.0F));
         addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.LIGHTNING)
-                .setModifier(ci -> ci.info.output += ci.target.powers.stream().mapToInt(power -> power.type == AbstractPower.PowerType.DEBUFF ? 1 : 0).sum()));
+                .setModifier(new Consumer<ElementalDamageAction.CallbackInfo>() {
+                    @Override
+                    public void accept(ElementalDamageAction.CallbackInfo ci) {
+                        int sum = 0;
+                        for (AbstractPower power : ci.target.powers) {
+                            int i = power.type == AbstractPower.PowerType.DEBUFF ? 1 : 0;
+                            sum += i;
+                        }
+                        ci.info.output += sum;
+                    }
+                }));
 
-        ModHelper.addToBotAbstract(() -> updateCost(costCache - cost));
+        ModHelper.addToBotAbstract(new ModHelper.Lambda() {
+            @Override
+            public void run() {
+                Acheron1.this.updateCost(costCache - cost);
+            }
+        });
     }
 
     @Override

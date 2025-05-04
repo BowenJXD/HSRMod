@@ -3,14 +3,19 @@ package hsrmod.powers.uniqueDebuffs;
 import basemod.BaseMod;
 import basemod.interfaces.OnPowersModifiedSubscriber;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.cards.uncommon.BlackSwan1;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.DebuffPower;
 import hsrmod.powers.misc.DoTPower;
+import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.subscribers.PreDoTDamageSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
-import hsrmod.signature.utils.SignatureHelper;
+
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class EpiphanyPower extends DebuffPower implements OnPowersModifiedSubscriber, PreDoTDamageSubscriber {
     public static final String POWER_ID = HSRMod.makePath(EpiphanyPower.class.getSimpleName());
@@ -25,14 +30,24 @@ public class EpiphanyPower extends DebuffPower implements OnPowersModifiedSubscr
 
     @Override
     public void onInitialApplication() {
-        owner.powers.stream().filter(power -> power instanceof DoTPower).map(power -> (DoTPower) power).forEach(p -> p.removeOnTrigger = false);
+        for (AbstractPower power : owner.powers) {
+            if (power instanceof DoTPower) {
+                DoTPower p = (DoTPower) power;
+                p.removeOnTrigger = false;
+            }
+        }
         BaseMod.subscribe(this);
         SubscriptionManager.subscribe(this);
     }
 
     @Override
     public void onRemove() {
-        owner.powers.stream().filter(power -> power instanceof DoTPower).map(power -> (DoTPower) power).forEach(p -> p.removeOnTrigger = true);
+        for (AbstractPower power : owner.powers) {
+            if (power instanceof DoTPower) {
+                DoTPower p = (DoTPower) power;
+                p.removeOnTrigger = true;
+            }
+        }
         BaseMod.unsubscribe(this);
         SubscriptionManager.unsubscribe(this);
     }
@@ -44,7 +59,12 @@ public class EpiphanyPower extends DebuffPower implements OnPowersModifiedSubscr
 
     @Override
     public void receivePowersModified() {
-        owner.powers.stream().filter(power -> power instanceof DoTPower).map(power -> (DoTPower) power).forEach(p -> p.removeOnTrigger = false);
+        for (AbstractPower power : owner.powers) {
+            if (power instanceof DoTPower) {
+                DoTPower p = (DoTPower) power;
+                p.removeOnTrigger = false;
+            }
+        }
     }
 
     @Override

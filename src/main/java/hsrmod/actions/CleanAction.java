@@ -1,14 +1,12 @@
 package hsrmod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.powers.misc.ToughnessPower;
-import hsrmod.utils.ModHelper;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,13 +26,25 @@ public class CleanAction extends AbstractGameAction {
     }
 
     public CleanAction(AbstractCreature target, int amount, boolean removeAll) {
-        this(target, amount, removeAll, p -> p.type == AbstractPower.PowerType.DEBUFF && !(p instanceof ToughnessPower));
+        this(target, amount, removeAll, new Predicate<AbstractPower>() {
+            @Override
+            public boolean test(AbstractPower p) {
+                return p.type == AbstractPower.PowerType.DEBUFF && !(p instanceof ToughnessPower);
+            }
+        });
     }
 
     @Override
     public void update() {
         isDone = true;
-        List<AbstractPower> powers = target.powers.stream().filter(filter).collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
+        ArrayList<AbstractPower> abstractPowers = new ArrayList<>();
+        Predicate<AbstractPower> predicate = filter;
+        for (AbstractPower abstractPower : target.powers) {
+            if (predicate.test(abstractPower)) {
+                abstractPowers.add(abstractPower);
+            }
+        }
+        List<AbstractPower> powers = abstractPowers;
         Collections.shuffle(powers, new Random(AbstractDungeon.cardRandomRng.randomLong()));
         for (AbstractPower power : powers) {
             int removeAmount = removeAll ? 1 : Math.min(amount, power.amount);

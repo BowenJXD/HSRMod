@@ -9,6 +9,8 @@ import hsrmod.cards.uncommon.TopazNumby2;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
 
+import java.util.function.Predicate;
+
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
 public class TopazNumbyPower extends PowerPower {
@@ -26,7 +28,14 @@ public class TopazNumbyPower extends PowerPower {
         super.stackPower(stackAmount);
         if (this.amount >= stackLimit) {
             // if player doesn't have topazNumby2, add it to hand
-            if (AbstractDungeon.player.masterDeck.group.stream().noneMatch(c -> c.cardID.equals(TopazNumby2.ID))) {
+            boolean b = true;
+            for (AbstractCard c : AbstractDungeon.player.masterDeck.group) {
+                if (c.cardID.equals(TopazNumby2.ID)) {
+                    b = false;
+                    break;
+                }
+            }
+            if (b) {
                 flash();
                 AbstractCard card = new TopazNumby2();
                 if (upgraded) card.upgrade();

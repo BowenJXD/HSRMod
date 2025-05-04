@@ -1,7 +1,6 @@
 package hsrmod.powers.misc;
 
 import basemod.BaseMod;
-import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -15,7 +14,7 @@ import hsrmod.modcore.HSRMod;
 import hsrmod.modcore.HSRModConfig;
 import hsrmod.powers.BuffPower;
 
-public class ToughnessPower extends BuffPower implements InvisiblePower{
+public class ToughnessPower extends BuffPower {
     public static final String POWER_ID = HSRMod.makePath(ToughnessPower.class.getSimpleName());
 
     int stackLimit = 0;

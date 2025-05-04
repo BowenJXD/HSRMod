@@ -1,7 +1,6 @@
 package hsrmod.cards.uncommon;
 
 import com.badlogic.gdx.graphics.Color;
-import com.evacipated.cardcrawl.mod.stslib.actions.common.MoveCardsAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
@@ -11,6 +10,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.GetAllInBattleInstances;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAction;
+import hsrmod.actions.MoveCardsAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.effects.MultiShivFreezeEffect;
 import hsrmod.modcore.CustomEnums;
@@ -21,6 +21,8 @@ import hsrmod.utils.CardDataCol;
 import hsrmod.utils.DataManager;
 
 import java.util.Iterator;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 public class Seele1 extends BaseCard {
     public static final String ID = Seele1.class.getSimpleName();
@@ -57,26 +59,34 @@ public class Seele1 extends BaseCard {
                 m,
                 new ElementalDamageInfo(this),
                 AbstractGameAction.AttackEffect.SLASH_HEAVY,
-                (info) -> {
-                    if ((info.target.isDying || info.target.currentHealth <= 0) && !info.target.halfDead && !info.target.hasPower("Minion") && !info.target.hasPower(SummonedPower.POWER_ID)) {
-                        Iterator var1 = AbstractDungeon.player.masterDeck.group.iterator();
+                new Consumer<ElementalDamageAction.CallbackInfo>() {
+                    @Override
+                    public void accept(ElementalDamageAction.CallbackInfo info) {
+                        if ((info.target.isDying || info.target.currentHealth <= 0) && !info.target.halfDead && !info.target.hasPower("Minion") && !info.target.hasPower(SummonedPower.POWER_ID)) {
+                            Iterator var1 = AbstractDungeon.player.masterDeck.group.iterator();
 
-                        AbstractCard c;
-                        while (var1.hasNext()) {
-                            c = (AbstractCard) var1.next();
-                            if (c.uuid == this.uuid) {
-                                c.upgrade();
-                                c.isDamageModified = false;
+                            AbstractCard c;
+                            while (var1.hasNext()) {
+                                c = (AbstractCard) var1.next();
+                                if (c.uuid == Seele1.this.uuid) {
+                                    c.upgrade();
+                                    c.isDamageModified = false;
+                                }
                             }
-                        }
 
-                        for (var1 = GetAllInBattleInstances.get(this.uuid).iterator(); var1.hasNext(); ) {
-                            c = (AbstractCard) var1.next();
-                            c.upgrade();
-                        }
+                            for (var1 = GetAllInBattleInstances.get(Seele1.this.uuid).iterator(); var1.hasNext(); ) {
+                                c = (AbstractCard) var1.next();
+                                c.upgrade();
+                            }
 
-                        addToBot(new GainEnergyAction(1));
-                        addToBot(new MoveCardsAction(AbstractDungeon.player.hand, AbstractDungeon.player.discardPile, card -> card.uuid == this.uuid));
+                            Seele1.this.addToBot(new GainEnergyAction(1));
+                            Seele1.this.addToBot(new MoveCardsAction(AbstractDungeon.player.hand, AbstractDungeon.player.discardPile, new Predicate<AbstractCard>() {
+                                @Override
+                                public boolean test(AbstractCard card) {
+                                    return card.uuid == Seele1.this.uuid;
+                                }
+                            }));
+                        }
                     }
                 });
         addToBot(action);

@@ -8,6 +8,9 @@ import hsrmod.relics.BaseRelic;
 import hsrmod.utils.GeneralUtil;
 import hsrmod.utils.RelicEventHelper;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class MusketeerOfWildWheat extends BaseRelic {
@@ -20,8 +23,14 @@ public class MusketeerOfWildWheat extends BaseRelic {
     @Override
     public void onEquip() {
         super.onEquip();
+        List<AbstractCard> list = new ArrayList<>();
+        for (AbstractCard c : AbstractDungeon.player.masterDeck.group) {
+            if (c.hasTag(AbstractCard.CardTags.STARTER_STRIKE) && c.canUpgrade()) {
+                list.add(c);
+            }
+        }
         AbstractCard card = GeneralUtil.getRandomElement(
-                AbstractDungeon.player.masterDeck.group.stream().filter(c -> c.hasTag(AbstractCard.CardTags.STARTER_STRIKE) && c.canUpgrade()).collect(Collectors.toList()), 
+                list, 
                 AbstractDungeon.miscRng);
         if (card != null) {
             RelicEventHelper.upgradeCards(card);

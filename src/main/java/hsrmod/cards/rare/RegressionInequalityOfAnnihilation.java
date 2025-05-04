@@ -9,6 +9,9 @@ import hsrmod.cards.BaseCard;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.utils.ModHelper;
 
+import java.util.function.Consumer;
+import java.util.function.ToIntFunction;
+
 public class RegressionInequalityOfAnnihilation extends BaseCard {
     public static final String ID = RegressionInequalityOfAnnihilation.class.getSimpleName();
     
@@ -20,8 +23,12 @@ public class RegressionInequalityOfAnnihilation extends BaseCard {
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         int playerToughness = p.hasPower(ToughnessPower.POWER_ID) ? p.getPower(ToughnessPower.POWER_ID).amount : 0;
         int totalToughness = playerToughness;
-        totalToughness += AbstractDungeon.getMonsters().monsters.stream().
-                mapToInt(mo -> ModHelper.getPowerCount(mo, ToughnessPower.POWER_ID)).sum();
+        int sum = 0;
+        for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
+            int powerCount = ModHelper.getPowerCount(mo, ToughnessPower.POWER_ID);
+            sum += powerCount;
+        }
+        totalToughness += sum;
         int avgToughness = totalToughness / (AbstractDungeon.getMonsters().monsters.size() + magicNumber);
         
         int stackNumber = avgToughness * magicNumber - playerToughness;
@@ -29,14 +36,14 @@ public class RegressionInequalityOfAnnihilation extends BaseCard {
             addToTop(new ApplyPowerAction(p, p, new ToughnessPower(p, stackNumber), stackNumber));
         else if (stackNumber < 0)
             addToTop(new ReducePowerAction(p, p, new ToughnessPower(p, -stackNumber), -stackNumber));
-        
-        AbstractDungeon.getMonsters().monsters.forEach(monster -> {
+
+        for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters) {
             int monsterToughness = ModHelper.getPowerCount(monster, ToughnessPower.POWER_ID);
             int stackNum = avgToughness - monsterToughness;
             if (stackNum > 0)
-                addToTop(new ApplyPowerAction(monster, monster, new ToughnessPower(monster, stackNum), stackNum));
+                RegressionInequalityOfAnnihilation.this.addToTop(new ApplyPowerAction(monster, monster, new ToughnessPower(monster, stackNum), stackNum));
             else if (stackNum < 0)
-                addToTop(new ReducePowerAction(monster, monster, new ToughnessPower(monster, -stackNum), -stackNum));
-        });
+                RegressionInequalityOfAnnihilation.this.addToTop(new ReducePowerAction(monster, monster, new ToughnessPower(monster, -stackNum), -stackNum));
+        }
     }
 }

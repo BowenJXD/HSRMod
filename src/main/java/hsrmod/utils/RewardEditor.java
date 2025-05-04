@@ -6,7 +6,6 @@ import basemod.abstracts.CustomSavable;
 import basemod.helpers.CardBorderGlowManager;
 import basemod.interfaces.PostUpdateSubscriber;
 import basemod.interfaces.StartActSubscriber;
-import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.SpawnModificationCard;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -20,6 +19,7 @@ import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
 import com.megacrit.cardcrawl.saveAndContinue.SaveFile;
+import hsrmod.cards.BaseCard;
 import hsrmod.characters.StellaCharacter;
 import hsrmod.effects.TopWarningEffect;
 import hsrmod.modcore.CustomEnums;
@@ -37,6 +37,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import static basemod.BaseMod.logger;
@@ -104,12 +106,28 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
         if (AbstractDungeon.player != null
                 && AbstractDungeon.player.relics != null
                 && relicId != null
-                && !Objects.equals(relicId, "")
-                && AbstractDungeon.player.relics.stream().noneMatch(r -> r.relicId.equals(relicId))
-                && currRoom instanceof MonsterRoomBoss
-                && AbstractDungeon.combatRewardScreen.rewards.stream().noneMatch(r -> r.relic != null && r.relic.relicId.equals(relicId))) {
-            RelicEventHelper.removeRelicFromPool(relicId);
-            AbstractDungeon.combatRewardScreen.rewards.add(new RewardItem(RelicLibrary.getRelic(relicId).makeCopy()));
+                && !Objects.equals(relicId, "")) {
+            boolean result = true;
+            for (AbstractRelic relic : AbstractDungeon.player.relics) {
+                if (relic.relicId.equals(relicId)) {
+                    result = false;
+                    break;
+                }
+            }
+            if (result
+                    && currRoom instanceof MonsterRoomBoss) {
+                boolean b = true;
+                for (RewardItem r : AbstractDungeon.combatRewardScreen.rewards) {
+                    if (r.relic != null && r.relic.relicId.equals(relicId)) {
+                        b = false;
+                        break;
+                    }
+                }
+                if (b) {
+                    RelicEventHelper.removeRelicFromPool(relicId);
+                    AbstractDungeon.combatRewardScreen.rewards.add(new RewardItem(RelicLibrary.getRelic(relicId).makeCopy()));
+                }
+            }
         }
     }
 
@@ -172,7 +190,14 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
 
             // skip if new card is null or repeated
             if (newCard == null) continue;
-            if (reward.cards.stream().anyMatch(c -> Objects.equals(c.cardID, newCard.cardID))) {
+            boolean b = false;
+            for (AbstractCard c : reward.cards) {
+                if (Objects.equals(c.cardID, newCard.cardID)) {
+                    b = true;
+                    break;
+                }
+            }
+            if (b) {
                 i--;
                 continue;
             }
@@ -196,7 +221,14 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
         for (int i = 0, j = 0; i < reward.cards.size() && j < 1000; i++, j++) {
             if (!rarityList.contains(reward.cards.get(i).rarity)) {
                 AbstractCard newCard = AbstractDungeon.getCard(rarities[0]);
-                if (reward.cards.stream().anyMatch(c -> Objects.equals(c.cardID, newCard.cardID))) i--;
+                boolean b = false;
+                for (AbstractCard c : reward.cards) {
+                    if (Objects.equals(c.cardID, newCard.cardID)) {
+                        b = true;
+                        break;
+                    }
+                }
+                if (b) i--;
                 else reward.cards.set(i, newCard);
             }
         }
@@ -233,11 +265,23 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
                 return null;
         }
 
-        List<AbstractCard> cards = group.group.stream()
-                .filter(c -> c.hasTag(tag) || (tag == CustomEnums.TRAILBLAZE && checkPath(c)))
-                .filter(c -> AbstractDungeon.player.masterDeck.group.stream().noneMatch(card -> c.uuid == card.uuid))
-                .filter(c -> c instanceof SpawnModificationCard && ((SpawnModificationCard) c).canSpawn(currentRewardCards == null ? new ArrayList<>() : currentRewardCards))
-                .collect(Collectors.toList());
+        List<AbstractCard> cards = new ArrayList<>();
+        for (AbstractCard c : group.group) {
+            if (c.hasTag(tag) || (tag == CustomEnums.TRAILBLAZE && RewardEditor.this.checkPath(c))) {
+                boolean isInMasterDeck = false;
+                for (AbstractCard card : AbstractDungeon.player.masterDeck.group) {
+                    if (c.uuid == card.uuid) {
+                        isInMasterDeck = true;
+                        break;
+                    }
+                }
+                if (!isInMasterDeck) {
+                    if (c instanceof BaseCard && ((BaseCard) c).checkSpawnable()) {
+                        cards.add(c);
+                    }
+                }
+            }
+        }
 
         if (cards.isEmpty()) return null;
         AbstractCard result = cards.get(AbstractDungeon.cardRng.random(cards.size() - 1));
@@ -281,7 +325,12 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
      */
     public boolean checkPath(AbstractCard card) {
         if (card.tags == null || card.tags.isEmpty() || bannedTags == null) return true;
-        return card.tags.stream().noneMatch(t -> bannedTags.contains(t));
+        for (AbstractCard.CardTags t : card.tags) {
+            if (bannedTags.contains(t)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -344,21 +393,31 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
         for (String reward : rewards) {
             List<String> cards = GeneralUtil.unpackSaveData(reward, String::valueOf);
             try {
-                ArrayList<AbstractCard> cardList = cards.stream().map(string -> {
-                    AbstractCard result;
-                    if (string.endsWith("+")) {
-                        string = string.substring(0, string.length() - 1);
-                        result = CardLibrary.getCard(string);
-                        result.upgrade();
-                    } else {
-                        result = CardLibrary.getCard(string);
+                ArrayList<AbstractCard> cardList = new ArrayList<>();
+                for (String card : cards) {
+                    AbstractCard apply = (new Function<String, AbstractCard>() {
+                        @Override
+                        public AbstractCard apply(String string) {
+                            AbstractCard result;
+                            if (string.endsWith("+")) {
+                                string = string.substring(0, string.length() - 1);
+                                result = CardLibrary.getCard(string);
+                                result.upgrade();
+                            } else {
+                                result = CardLibrary.getCard(string);
+                            }
+                            return result;
+                        }
+                    }).apply(card);
+                    cardList.add(apply);
+                }
+                ModHelper.addEffectAbstract(new ModHelper.Lambda() {
+                    @Override
+                    public void run() {
+                        RewardItem rewardItem = new RewardItem(StellaCharacter.PlayerColorEnum.HSR_PINK);
+                        rewardItem.cards = cardList;
+                        savedCardRewards.add(rewardItem);
                     }
-                    return result;
-                }).collect(Collectors.toCollection(ArrayList::new));
-                ModHelper.addEffectAbstract(() -> {
-                    RewardItem rewardItem = new RewardItem(StellaCharacter.PlayerColorEnum.HSR_PINK);
-                    rewardItem.cards = cardList;
-                    savedCardRewards.add(rewardItem);
                 });
             } catch (Exception e) {
                 logger.error("Error loading card rewards: {}", e.getMessage());
@@ -401,7 +460,12 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
     }
 
     public static void addExtraCardRewardToTop() {
-        getInstance().extraRewards.add(0, rewards -> rewards.add(new RewardItem()));
+        getInstance().extraRewards.add(0, new Consumer<List<RewardItem>>() {
+            @Override
+            public void accept(List<RewardItem> rewards) {
+                rewards.add(new RewardItem());
+            }
+        });
     }
 
     public static void addExtraRewardToBot(Consumer<List<RewardItem>> extraReward) {
@@ -412,12 +476,15 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
     public static class EnterRoomPatch {
         @SpirePostfixPatch
         public static void Postfix(AbstractDungeon __instance, SaveFile saveFile) {
-            ModHelper.addEffectAbstract(() -> {
-                if (instance != null
-                        && (AbstractDungeon.currMapNode == null || !AbstractDungeon.getCurrRoom().rewardTime)) {
-                    instance.relicId = "";
-                    instance.extraRewards.clear();
-                    // instance.savedCardRewards.clear();
+            ModHelper.addEffectAbstract(new ModHelper.Lambda() {
+                @Override
+                public void run() {
+                    if (instance != null
+                            && (AbstractDungeon.currMapNode == null || !AbstractDungeon.getCurrRoom().rewardTime)) {
+                        instance.relicId = "";
+                        instance.extraRewards.clear();
+                        // instance.savedCardRewards.clear();
+                    }
                 }
             });
             ReflectionHacks.setPrivateStatic(CardBorderGlowManager.class, "glowInfo", new ArrayList<>());

@@ -5,6 +5,9 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.misc.ICanChangeToTempHP;
 import hsrmod.relics.BaseRelic;
 
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+
 public class LongevousDisciple extends BaseRelic {
     public static final String ID = LongevousDisciple.class.getSimpleName();
 
@@ -15,13 +18,13 @@ public class LongevousDisciple extends BaseRelic {
     @Override
     public void atBattleStart() {
         super.atBattleStart();
-        AbstractDungeon.player.drawPile.group.stream()
-                .filter(c -> c.hasTag(AbstractCard.CardTags.STARTER_DEFEND) 
-                        && c instanceof ICanChangeToTempHP)
-                .forEach(c -> {
-                    c.baseBlock++;
-                    c.block++;
-                    ((ICanChangeToTempHP) c).changeToTempHP();
-                });
+        for (AbstractCard c : AbstractDungeon.player.drawPile.group) {
+            if (c.hasTag(AbstractCard.CardTags.STARTER_DEFEND)
+                    && c instanceof ICanChangeToTempHP) {
+                c.baseBlock++;
+                c.block++;
+                ((ICanChangeToTempHP) c).changeToTempHP();
+            }
+        }
     }
 }

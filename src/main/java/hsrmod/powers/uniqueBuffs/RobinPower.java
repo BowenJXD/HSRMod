@@ -16,6 +16,8 @@ import hsrmod.powers.BuffPower;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.signature.utils.SignatureHelper;
 
+import java.util.function.Predicate;
+
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
 public class RobinPower extends BuffPower {
@@ -32,31 +34,39 @@ public class RobinPower extends BuffPower {
     public void onInitialApplication() {
         super.onInitialApplication();
 
-        if (AbstractDungeon.getMonsters() != null
-                && AbstractDungeon.getMonsters().monsters.stream().noneMatch(m -> m.type == AbstractMonster.EnemyType.BOSS)) {
-            // 取消静音背景音乐
-            CardCrawlGame.music.silenceBGM();
-            CardCrawlGame.music.justFadeOutTempBGM();
-            AbstractDungeon.scene.fadeOutAmbiance();
-            Timer.schedule(new Timer.Task() {
-                @Override
-                public void run() {
-                    CardCrawlGame.music.playTempBgmInstantly("RobinBGM");
+        if (AbstractDungeon.getMonsters() != null) {
+            boolean b = true;
+            for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
+                if (m.type == AbstractMonster.EnemyType.BOSS) {
+                    b = false;
+                    break;
                 }
-            }, 2);
-            if (!SignatureHelper.isUnlocked(HSRMod.makePath(Robin2.ID))) {
+            }
+            if (b) {
+                // 取消静音背景音乐
+                CardCrawlGame.music.silenceBGM();
+                CardCrawlGame.music.justFadeOutTempBGM();
+                AbstractDungeon.scene.fadeOutAmbiance();
                 Timer.schedule(new Timer.Task() {
                     @Override
                     public void run() {
-                        canUnlock = true;
+                        CardCrawlGame.music.playTempBgmInstantly("RobinBGM");
                     }
-                }, 75);
-                Timer.schedule(new Timer.Task() {
-                    @Override
-                    public void run() {
-                        canUnlock = false;
-                    }
-                }, 80);
+                }, 2);
+                if (!SignatureHelper.isUnlocked(HSRMod.makePath(Robin2.ID))) {
+                    Timer.schedule(new Timer.Task() {
+                        @Override
+                        public void run() {
+                            canUnlock = true;
+                        }
+                    }, 75);
+                    Timer.schedule(new Timer.Task() {
+                        @Override
+                        public void run() {
+                            canUnlock = false;
+                        }
+                    }, 80);
+                }
             }
         }
     }
@@ -64,10 +74,18 @@ public class RobinPower extends BuffPower {
     @Override
     public void onRemove() {
         super.onRemove();
-        if (AbstractDungeon.getMonsters() != null
-                && AbstractDungeon.getMonsters().monsters.stream().noneMatch(m -> m.type == AbstractMonster.EnemyType.BOSS)) {
-            AbstractDungeon.scene.fadeInAmbiance();
-            CardCrawlGame.music.fadeOutTempBGM();
+        if (AbstractDungeon.getMonsters() != null) {
+            boolean b = true;
+            for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
+                if (m.type == AbstractMonster.EnemyType.BOSS) {
+                    b = false;
+                    break;
+                }
+            }
+            if (b) {
+                AbstractDungeon.scene.fadeInAmbiance();
+                CardCrawlGame.music.fadeOutTempBGM();
+            }
         }
         if (canUnlock) {
             SignatureHelper.unlock(HSRMod.makePath(Robin2.ID), true);

@@ -3,7 +3,6 @@ package hsrmod.cards.uncommon;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.BossCrystalImpactEffect;
@@ -14,6 +13,9 @@ import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.breaks.WindShearPower;
 import hsrmod.powers.uniqueDebuffs.EpiphanyPower;
+
+import java.util.function.Consumer;
+import java.util.function.Function;
 
 public class BlackSwan1 extends BaseCard {
     public static final String ID = BlackSwan1.class.getSimpleName();
@@ -32,13 +34,21 @@ public class BlackSwan1 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         if (upgraded) {
-            addToBot(new AOEAction((q) -> new VFXAction(new BossCrystalImpactEffect(q.hb.cX, q.hb.cY))));
+            addToBot(new AOEAction(new Function<AbstractMonster, AbstractGameAction>() {
+                @Override
+                public AbstractGameAction apply(AbstractMonster q) {
+                    return new VFXAction(new BossCrystalImpactEffect(q.hb.cX, q.hb.cY));
+                }
+            }));
             addToBot(new ElementalDamageAllAction(
                     this,
                     AbstractGameAction.AttackEffect.POISON)
-                    .setCallback(ci -> {
-                        addToBot(new ApplyPowerAction(ci.target, p, new WindShearPower(ci.target, p, 1), 1));
-                        addToBot(new ApplyPowerAction(ci.target, p, new EpiphanyPower(ci.target, 1), 1));
+                    .setCallback(new Consumer<ElementalDamageAction.CallbackInfo>() {
+                        @Override
+                        public void accept(ElementalDamageAction.CallbackInfo ci) {
+                            BlackSwan1.this.addToBot(new ApplyPowerAction(ci.target, p, new WindShearPower(ci.target, p, 1), 1));
+                            BlackSwan1.this.addToBot(new ApplyPowerAction(ci.target, p, new EpiphanyPower(ci.target, 1), 1));
+                        }
                     }));
         } else {
             if (m != null)
@@ -47,9 +57,12 @@ public class BlackSwan1 extends BaseCard {
                     m,
                     new ElementalDamageInfo(this),
                     AbstractGameAction.AttackEffect.POISON,
-                    ci -> {
-                        addToBot(new ApplyPowerAction(ci.target, p, new WindShearPower(ci.target, p, 1), 1));
-                        addToBot(new ApplyPowerAction(ci.target, p, new EpiphanyPower(ci.target, 1), 1));
+                    new Consumer<ElementalDamageAction.CallbackInfo>() {
+                        @Override
+                        public void accept(ElementalDamageAction.CallbackInfo ci) {
+                            BlackSwan1.this.addToBot(new ApplyPowerAction(ci.target, p, new WindShearPower(ci.target, p, 1), 1));
+                            BlackSwan1.this.addToBot(new ApplyPowerAction(ci.target, p, new EpiphanyPower(ci.target, 1), 1));
+                        }
                     }));
         }
     }

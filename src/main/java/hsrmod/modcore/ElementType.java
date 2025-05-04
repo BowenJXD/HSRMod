@@ -1,7 +1,6 @@
 package hsrmod.modcore;
 
 import com.badlogic.gdx.graphics.Color;
-import com.megacrit.cardcrawl.orbs.Lightning;
 
 public enum ElementType {
     None,

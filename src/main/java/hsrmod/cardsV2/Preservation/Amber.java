@@ -1,11 +1,14 @@
 package hsrmod.cardsV2.Preservation;
 
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.AOEAction;
 import hsrmod.cards.BaseCard;
+
+import java.util.function.Function;
 
 public class Amber extends BaseCard {
     public static final String ID = Amber.class.getSimpleName();
@@ -19,10 +22,13 @@ public class Amber extends BaseCard {
         if (p.currentBlock == 0)
             addToBot(new GainBlockAction(p, p, block));
         
-        addToBot(new AOEAction((q) -> {
-            if (q.currentBlock == 0)
-                return new GainBlockAction(q, magicNumber);
-            return null;
+        addToBot(new AOEAction(new Function<AbstractMonster, AbstractGameAction>() {
+            @Override
+            public AbstractGameAction apply(AbstractMonster q) {
+                if (q.currentBlock == 0)
+                    return new GainBlockAction(q, magicNumber);
+                return null;
+            }
         }));
     }
 

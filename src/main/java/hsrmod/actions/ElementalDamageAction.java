@@ -1,7 +1,6 @@
 package hsrmod.actions;
 
 import com.badlogic.gdx.graphics.Color;
-import com.evacipated.cardcrawl.mod.stslib.patches.ColoredDamagePatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -39,8 +38,6 @@ public class ElementalDamageAction extends AbstractGameAction {
         this.duration = 0.1F;
         this.callback = callback;
         this.modifier = modifier;
-        ColoredDamagePatch.DamageActionColorField.damageColor.set(this, info.getColor());
-        ColoredDamagePatch.DamageActionColorField.fadeSpeed.set(this, ColoredDamagePatch.FadeSpeed.SLOW);
     }
 
     public ElementalDamageAction(AbstractCreature target, ElementalDamageInfo info, AbstractGameAction.AttackEffect effect, Consumer<CallbackInfo> callback) {

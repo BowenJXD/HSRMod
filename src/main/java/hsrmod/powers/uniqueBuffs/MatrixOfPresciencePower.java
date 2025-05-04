@@ -1,7 +1,5 @@
 package hsrmod.powers.uniqueBuffs;
 
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import hsrmod.cards.uncommon.FuXuan1;

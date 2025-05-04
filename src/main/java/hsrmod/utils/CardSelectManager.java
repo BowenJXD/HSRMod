@@ -47,61 +47,70 @@ public class CardSelectManager implements PostUpdateSubscriber {
         switch (usage) {
             case UPGRADE:
                 AbstractDungeon.gridSelectScreen.open(group, numsRequired, text, true, false, canCancel, false);
-                eventQueue.add(new CardSelectEvent(() -> {
-                    if (AbstractDungeon.gridSelectScreen.selectedCards.size() >= numsRequired) {
-                        List<AbstractCard> cards = new ArrayList<>(AbstractDungeon.gridSelectScreen.selectedCards);
-                        RelicEventHelper.upgradeCards(AbstractDungeon.gridSelectScreen.selectedCards.toArray(new AbstractCard[0]));
-                        AbstractDungeon.gridSelectScreen.selectedCards.clear();
-                        AbstractDungeon.getCurrRoom().rewardPopOutTimer = 0.25F;
-                        return cards;
-                    } else if (!AbstractDungeon.isScreenUp) {
-                        return new ArrayList<>();
+                eventQueue.add(new CardSelectEvent(new Supplier<List<AbstractCard>>() {
+                    @Override
+                    public List<AbstractCard> get() {
+                        if (AbstractDungeon.gridSelectScreen.selectedCards.size() >= numsRequired) {
+                            List<AbstractCard> cards = new ArrayList<>(AbstractDungeon.gridSelectScreen.selectedCards);
+                            RelicEventHelper.upgradeCards(AbstractDungeon.gridSelectScreen.selectedCards.toArray(new AbstractCard[0]));
+                            AbstractDungeon.gridSelectScreen.selectedCards.clear();
+                            AbstractDungeon.getCurrRoom().rewardPopOutTimer = 0.25F;
+                            return cards;
+                        } else if (!AbstractDungeon.isScreenUp) {
+                            return new ArrayList<>();
+                        }
+                        return null;
                     }
-                    return null;
                 }, onConfirm));
                 break;
             case PURGE:
                 AbstractDungeon.gridSelectScreen.open(group, numsRequired, text, false, false, canCancel, true);
-                eventQueue.add(new CardSelectEvent(() -> {
-                    if (AbstractDungeon.gridSelectScreen.selectedCards.size() >= numsRequired) {
-                        List<AbstractCard> cards = new ArrayList<>(AbstractDungeon.gridSelectScreen.selectedCards);
-                        CardCrawlGame.sound.play("CARD_EXHAUST");
-                        float displayCount = 0.0F;
-                        for (AbstractCard card : AbstractDungeon.gridSelectScreen.selectedCards) {
-                            AbstractDungeon.topLevelEffectsQueue.add(new PurgeCardEffect(card, (float)Settings.WIDTH / 3.0F + displayCount, (float)Settings.HEIGHT / 2.0F));
-                            displayCount += (float) Settings.WIDTH / 6.0F;
-                            AbstractDungeon.player.masterDeck.removeCard(card);
+                eventQueue.add(new CardSelectEvent(new Supplier<List<AbstractCard>>() {
+                    @Override
+                    public List<AbstractCard> get() {
+                        if (AbstractDungeon.gridSelectScreen.selectedCards.size() >= numsRequired) {
+                            List<AbstractCard> cards = new ArrayList<>(AbstractDungeon.gridSelectScreen.selectedCards);
+                            CardCrawlGame.sound.play("CARD_EXHAUST");
+                            float displayCount = 0.0F;
+                            for (AbstractCard card : AbstractDungeon.gridSelectScreen.selectedCards) {
+                                AbstractDungeon.topLevelEffectsQueue.add(new PurgeCardEffect(card, (float) Settings.WIDTH / 3.0F + displayCount, (float) Settings.HEIGHT / 2.0F));
+                                displayCount += (float) Settings.WIDTH / 6.0F;
+                                AbstractDungeon.player.masterDeck.removeCard(card);
+                            }
+                            AbstractDungeon.gridSelectScreen.selectedCards.clear();
+                            return cards;
+                        } else if (!AbstractDungeon.isScreenUp) {
+                            return new ArrayList<>();
                         }
-                        AbstractDungeon.gridSelectScreen.selectedCards.clear();
-                        return cards;
-                    } else if (!AbstractDungeon.isScreenUp) {
-                        return new ArrayList<>();
+                        return null;
                     }
-                    return null;
                 }, onConfirm));
                 break;
             case TRANSFORM:
                 AbstractDungeon.gridSelectScreen.open(group, numsRequired, text, false, false, canCancel, true);
-                eventQueue.add(new CardSelectEvent(() -> {
-                    if (AbstractDungeon.gridSelectScreen.selectedCards.size() >= numsRequired) {
-                        List<AbstractCard> cards = new ArrayList<>(AbstractDungeon.gridSelectScreen.selectedCards);
-                        for (AbstractCard card : AbstractDungeon.gridSelectScreen.selectedCards) {
-                            card.untip();
-                            card.unhover();
-                            AbstractDungeon.player.masterDeck.removeCard(card);
-                            AbstractDungeon.transformCard(card, true, AbstractDungeon.miscRng);
-                            if (AbstractDungeon.screen != AbstractDungeon.CurrentScreen.TRANSFORM && AbstractDungeon.transformedCard != null) {
-                                AbstractDungeon.transformedCard = RewardEditor.getInstance().getCardByPath(AbstractDungeon.transformedCard.rarity, new ArrayList<>());
-                                AbstractDungeon.topLevelEffectsQueue.add(new ShowCardAndObtainEffect(AbstractDungeon.getTransformedCard(), Settings.WIDTH * MathUtils.random(0.2f, 0.8f), Settings.HEIGHT * MathUtils.random(0.2f, 0.8f), false));
+                eventQueue.add(new CardSelectEvent(new Supplier<List<AbstractCard>>() {
+                    @Override
+                    public List<AbstractCard> get() {
+                        if (AbstractDungeon.gridSelectScreen.selectedCards.size() >= numsRequired) {
+                            List<AbstractCard> cards = new ArrayList<>(AbstractDungeon.gridSelectScreen.selectedCards);
+                            for (AbstractCard card : AbstractDungeon.gridSelectScreen.selectedCards) {
+                                card.untip();
+                                card.unhover();
+                                AbstractDungeon.player.masterDeck.removeCard(card);
+                                AbstractDungeon.transformCard(card, true, AbstractDungeon.miscRng);
+                                if (AbstractDungeon.screen != AbstractDungeon.CurrentScreen.TRANSFORM && AbstractDungeon.transformedCard != null) {
+                                    AbstractDungeon.transformedCard = RewardEditor.getInstance().getCardByPath(AbstractDungeon.transformedCard.rarity, new ArrayList<>());
+                                    AbstractDungeon.topLevelEffectsQueue.add(new ShowCardAndObtainEffect(AbstractDungeon.getTransformedCard(), Settings.WIDTH * MathUtils.random(0.2f, 0.8f), Settings.HEIGHT * MathUtils.random(0.2f, 0.8f), false));
+                                }
                             }
+                            AbstractDungeon.gridSelectScreen.selectedCards.clear();
+                            AbstractDungeon.getCurrRoom().rewardPopOutTimer = 0.25F;
+                            return cards;
+                        } else if (!AbstractDungeon.isScreenUp) {
+                            return new ArrayList<>();
                         }
-                        AbstractDungeon.gridSelectScreen.selectedCards.clear();
-                        AbstractDungeon.getCurrRoom().rewardPopOutTimer = 0.25F;
-                        return cards;
-                    } else if (!AbstractDungeon.isScreenUp) {
-                        return new ArrayList<>();
+                        return null;
                     }
-                    return null;
                 }, onConfirm));
                 break;
         }

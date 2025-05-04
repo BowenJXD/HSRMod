@@ -11,6 +11,8 @@ import hsrmod.relics.BaseRelic;
 import hsrmod.utils.ModHelper;
 
 import java.util.Iterator;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
@@ -23,7 +25,14 @@ public class TheAshblazingGrandDuke extends BaseRelic implements OnApplyPowerRel
 
     @Override
     public void atBattleStart() {
-        ModHelper.findCards((c) -> c.hasTag(AbstractCard.CardTags.STARTER_STRIKE)).forEach((r) -> r.card.tags.add(FOLLOW_UP));
+        for (ModHelper.FindResult r : ModHelper.findCards(new Predicate<AbstractCard>() {
+            @Override
+            public boolean test(AbstractCard c) {
+                return c.hasTag(AbstractCard.CardTags.STARTER_STRIKE);
+            }
+        })) {
+            r.card.tags.add(FOLLOW_UP);
+        }
     }
 
     @Override

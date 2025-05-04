@@ -2,15 +2,10 @@ package hsrmod.relics.uncommon;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.rewards.RewardItem;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import com.megacrit.cardcrawl.rooms.MonsterRoom;
 import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
 import hsrmod.relics.BaseRelic;
 import hsrmod.utils.GeneralUtil;
 import hsrmod.utils.RewardEditor;
-
-import static hsrmod.characters.StellaCharacter.PlayerColorEnum.HSR_PINK;
 
 public class InterastralBigLotto extends BaseRelic {
     public static final String ID = InterastralBigLotto.class.getSimpleName();

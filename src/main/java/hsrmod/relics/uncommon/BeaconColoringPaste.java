@@ -1,6 +1,5 @@
 package hsrmod.relics.uncommon;
 
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import hsrmod.relics.BaseRelic;
 import hsrmod.utils.RewardEditor;

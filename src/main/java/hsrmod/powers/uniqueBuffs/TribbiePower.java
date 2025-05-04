@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cardsV2.Erudition.Tribbie1;
 import hsrmod.modcore.ElementType;
@@ -16,10 +17,10 @@ import hsrmod.subscribers.PreElementalDamageSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashSet;
-import java.util.List;
+import java.util.Optional;
+import java.util.function.ToIntFunction;
 
 public class TribbiePower extends PowerPower implements PreElementalDamageSubscriber {
     public static final String ID = HSRMod.makePath(TribbiePower.class.getSimpleName());
@@ -65,9 +66,30 @@ public class TribbiePower extends PowerPower implements PreElementalDamageSubscr
     @Override
     public void onAfterUseCard(AbstractCard card, UseCardAction action) {
         super.onAfterUseCard(card, action);
-        if (upgraded) AbstractDungeon.getMonsters().monsters.stream().filter(ModHelper::check).forEach(targets::add);
+        if (upgraded) {
+            HashSet<AbstractCreature> abstractCreatures = targets;
+            for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters) {
+                if (ModHelper.check(monster)) {
+                    abstractCreatures.add(monster);
+                }
+            }
+        }
         if (targets.isEmpty()) return;
-        AbstractCreature targetWithMaxHp = targets.stream().max(Comparator.comparingInt(a -> a.currentHealth)).get();
+        boolean seen = false;
+        AbstractCreature best = null;
+        Comparator<AbstractCreature> comparator = Comparator.comparingInt(new ToIntFunction<AbstractCreature>() {
+            @Override
+            public int applyAsInt(AbstractCreature a) {
+                return a.currentHealth;
+            }
+        });
+        for (AbstractCreature target : targets) {
+            if (!seen || comparator.compare(target, best) > 0) {
+                seen = true;
+                best = target;
+            }
+        }
+        AbstractCreature targetWithMaxHp = (seen ? Optional.of(best) : Optional.<AbstractCreature>empty()).get();
         int dmg = amount * targets.size();
         if (!upgraded) dmg -= amount;
         if (dmg > 0) {

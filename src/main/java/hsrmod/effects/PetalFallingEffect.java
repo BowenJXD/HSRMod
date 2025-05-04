@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.PetalEffect;
-import com.megacrit.cardcrawl.vfx.SpotlightEffect;
 
 public class PetalFallingEffect extends AbstractGameEffect {
     private float timer = 0.1F;

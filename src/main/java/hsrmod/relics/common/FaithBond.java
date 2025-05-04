@@ -1,12 +1,8 @@
 package hsrmod.relics.common;
 
-import basemod.ReflectionHacks;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.ShopRoom;
-import com.megacrit.cardcrawl.shop.ShopScreen;
 import hsrmod.relics.BaseRelic;
-import hsrmod.utils.ModHelper;
 
 public class FaithBond extends BaseRelic {
     public static final String ID = FaithBond.class.getSimpleName();

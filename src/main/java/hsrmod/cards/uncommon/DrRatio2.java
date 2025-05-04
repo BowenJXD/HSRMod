@@ -4,15 +4,15 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
-import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.uniqueDebuffs.WisemansFollyPower;
+
+import java.util.function.Predicate;
 
 public class DrRatio2 extends BaseCard {
     public static final String ID = DrRatio2.class.getSimpleName();
@@ -33,7 +33,13 @@ public class DrRatio2 extends BaseCard {
 
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
-        int debuffNum = (int) mo.powers.stream().filter(power -> power.type == AbstractPower.PowerType.DEBUFF).count();
+        long count = 0L;
+        for (AbstractPower power : mo.powers) {
+            if (power.type == AbstractPower.PowerType.DEBUFF) {
+                count++;
+            }
+        }
+        int debuffNum = (int) count;
         baseDamage = cachedBaseDamage + debuffNum;
         super.calculateCardDamage(mo);
     }

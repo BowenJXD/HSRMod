@@ -12,19 +12,19 @@ public class AOEAction extends AbstractGameAction {
     private ArrayList<AbstractGameAction> actions = new ArrayList();
 
     public AOEAction(Function<AbstractMonster, AbstractGameAction> compute) {
-        AbstractDungeon.getMonsters().monsters.stream().filter((m) -> {
-            return !m.isDeadOrEscaped();
-        }).forEach((q) -> {
-            this.actions.add(compute.apply(q));
-        });
+        for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
+            if (!m.isDeadOrEscaped()) {
+                this.actions.add(compute.apply(m));
+            }
+        }
     }
     
     public AOEAction(AbstractGameAction action){
-        AbstractDungeon.getMonsters().monsters.stream().filter((m) -> {
-            return !m.isDeadOrEscaped();
-        }).forEach((q) -> {
-            this.actions.add(action);
-        });
+        for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
+            if (!m.isDeadOrEscaped()) {
+                this.actions.add(action);
+            }
+        }
     }
 
     public void update() {

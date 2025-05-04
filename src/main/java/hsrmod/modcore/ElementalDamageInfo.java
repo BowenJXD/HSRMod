@@ -1,27 +1,14 @@
 package hsrmod.modcore;
 
 import com.badlogic.gdx.graphics.Color;
-import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
-import com.evacipated.cardcrawl.mod.stslib.patches.BindingPatches;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import hsrmod.actions.BreakDamageAction;
-import hsrmod.actions.ElementalDamageAction;
-import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.powers.breaks.*;
-import hsrmod.powers.misc.BrokenPower;
-import hsrmod.powers.misc.ToughnessPower;
-import hsrmod.powers.uniqueBuffs.Trailblazer5Power;
-import hsrmod.subscribers.SubscriptionManager;
-
-import static hsrmod.modcore.ElementType.*;
 
 public class ElementalDamageInfo extends DamageInfo {
     public int tr;
@@ -114,24 +101,6 @@ public class ElementalDamageInfo extends DamageInfo {
             return new ApplyPowerAction(target, AbstractDungeon.player, power, stackNum);
         }
         return null;
-    }
-    
-    public static ElementalDamageInfo makeInfo(AbstractCreature damageSource, int base, DamageType type, ElementType elementType, int tr, BaseCard card) {
-        BindingPatches.directlyBoundInstigator = card;
-        BindingPatches.directlyBoundDamageMods.addAll(DamageModifierManager.modifiers(card));
-        ElementalDamageInfo info = new ElementalDamageInfo(damageSource, base, type, elementType, tr, card);
-        BindingPatches.directlyBoundDamageMods.clear();
-        BindingPatches.directlyBoundInstigator = null;
-        return info;
-    }
-    
-    public static ElementalDamageInfo makeInfo(BaseCard card) {
-        BindingPatches.directlyBoundInstigator = card;
-        BindingPatches.directlyBoundDamageMods.addAll(DamageModifierManager.modifiers(card));
-        ElementalDamageInfo info = new ElementalDamageInfo(card);
-        BindingPatches.directlyBoundDamageMods.clear();
-        BindingPatches.directlyBoundInstigator = null;
-        return info;
     }
     
     public Color getColor() {

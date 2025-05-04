@@ -1,6 +1,5 @@
 package hsrmod.patches;
 
-import VideoTheSpire.effects.SimplePlayVideoEffect;
 import basemod.BaseMod;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
@@ -46,7 +45,12 @@ public class OtherModFixes {
                     AbstractDungeon.topLevelEffects.add(new PortraitDisplayEffect("Acheron"));
                     AbstractDungeon.topLevelEffects.add(new GrayscaleScreenEffect(Settings.FAST_MODE ? 2 : 3));
                     String[] extDesc = CardCrawlGame.languagePack.getCardStrings("HSRMod:Acheron1").EXTENDED_DESCRIPTION;
-                    ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV("SlashedDream1", 2));
+                    ModHelper.addToBotAbstract(new ModHelper.Lambda() {
+                        @Override
+                        public void run() {
+                            CardCrawlGame.sound.playV("SlashedDream1", 2);
+                        }
+                    });
                     AbstractDungeon.actionManager.addToBottom(new TalkAction(true, extDesc[0], 1, 2));
                 } catch (Exception e) {
                     HSRMod.logger.log(Level.ERROR, e);
@@ -55,7 +59,12 @@ public class OtherModFixes {
                 try {
                     AbstractDungeon.topLevelEffects.add(new GrayscaleScreenEffect(Settings.FAST_MODE ? 2 : 3));
                     String[] extDesc = CardCrawlGame.languagePack.getCardStrings("HSRMod:Acheron1").EXTENDED_DESCRIPTION;
-                    ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV("SlashedDream2", 2));
+                    ModHelper.addToBotAbstract(new ModHelper.Lambda() {
+                        @Override
+                        public void run() {
+                            CardCrawlGame.sound.playV("SlashedDream2", 2);
+                        }
+                    });
                     AbstractDungeon.actionManager.addToBottom(new TalkAction(true, extDesc[1], 1, 2));
                 } catch (Exception e) {
                     HSRMod.logger.log(Level.ERROR, e);
@@ -82,7 +91,12 @@ public class OtherModFixes {
             } else if (Objects.equals(card.cardID, "_52_AllOrNothing")) {
                 try {
                     AbstractDungeon.topLevelEffects.add(new PortraitDisplayEffect("Aventurine"));
-                    ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV("AventurineOfStratagems_6", 1));
+                    ModHelper.addToBotAbstract(new ModHelper.Lambda() {
+                        @Override
+                        public void run() {
+                            CardCrawlGame.sound.playV("AventurineOfStratagems_6", 1);
+                        }
+                    });
                     AbstractDungeon.actionManager.addToBottom(new ShoutAction(AbstractDungeon.player, CardCrawlGame.languagePack.getMonsterStrings("HSRMod:AventurineOfStratagems").DIALOG[6]));
                 } catch (Exception e) {
                     HSRMod.logger.log(Level.ERROR, e);
@@ -130,14 +144,4 @@ public class OtherModFixes {
             return SpireReturn.Return(tv + tv * P2PManager.GetPlayerCountWithoutSelf() * 50 / 100);
         }
     }*/
-    
-    @SpirePatch(clz = VideoManager.class, method = "play", requiredModId = "VideoTheSpire")
-    public static class VideoPatch {
-        @SpirePrefixPatch
-        public static SpireReturn<Boolean> Prefix(String id, float duration) {
-            AbstractDungeon.actionManager.addToBottom(new VFXAction(new SimplePlayVideoEffect(PathDefine.VIDEO_PATH + id + ".webm")));
-            AbstractDungeon.actionManager.addToBottom(new ForceWaitAction(duration));
-            return SpireReturn.Return(true);
-        }
-    }
 }

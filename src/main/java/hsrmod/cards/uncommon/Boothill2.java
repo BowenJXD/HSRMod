@@ -38,10 +38,13 @@ public class Boothill2 extends BaseCard {
         addToBot(new ElementalDamageAction(m,
                 new ElementalDamageInfo(this),
                 AbstractGameAction.AttackEffect.SLASH_HEAVY));
-        ModHelper.addToBotAbstract(() -> {
-            if (!m.hasPower(BrokenPower.POWER_ID)) {
-                returnToHand = true;
-                setCostForTurn(costCache);
+        ModHelper.addToBotAbstract(new ModHelper.Lambda() {
+            @Override
+            public void run() {
+                if (!m.hasPower(BrokenPower.POWER_ID)) {
+                    returnToHand = true;
+                    Boothill2.this.setCostForTurn(costCache);
+                }
             }
         });
         

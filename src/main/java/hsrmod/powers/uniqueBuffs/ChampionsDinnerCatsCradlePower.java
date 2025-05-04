@@ -1,7 +1,5 @@
 package hsrmod.powers.uniqueBuffs;
 
-import basemod.BaseMod;
-import basemod.interfaces.PostPowerApplySubscriber;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -14,13 +12,12 @@ import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
 import hsrmod.powers.misc.EnergyPower;
-import hsrmod.subscribers.ICheckUsableSubscriber;
-import hsrmod.subscribers.PreFollowUpSubscriber;
-import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.GeneralUtil;
 import hsrmod.utils.ModHelper;
 
-import static hsrmod.modcore.CustomEnums.ENERGY_COSTING;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
 public class ChampionsDinnerCatsCradlePower extends PowerPower implements OnReceivePowerPower {
@@ -42,7 +39,14 @@ public class ChampionsDinnerCatsCradlePower extends PowerPower implements OnRece
     @Override
     public void onInitialApplication() {
         super.onInitialApplication();
-        ModHelper.findCards((c) -> c.hasTag(CustomEnums.ENERGY_COSTING) && !c.hasTag(FOLLOW_UP)).forEach((r) -> processCard(r.card));
+        for (ModHelper.FindResult r : ModHelper.findCards(new Predicate<AbstractCard>() {
+            @Override
+            public boolean test(AbstractCard c) {
+                return c.hasTag(CustomEnums.ENERGY_COSTING) && !c.hasTag(FOLLOW_UP);
+            }
+        })) {
+            ChampionsDinnerCatsCradlePower.this.processCard(r.card);
+        }
     }
 
     @Override
@@ -88,7 +92,12 @@ public class ChampionsDinnerCatsCradlePower extends PowerPower implements OnRece
             BaseCard card = (BaseCard) GeneralUtil.getRandomElement(
                     AbstractDungeon.player.hand.group,
                     AbstractDungeon.cardRandomRng,
-                    (c) -> c.hasTag(CustomEnums.ENERGY_COSTING) && c instanceof BaseCard
+                    new Predicate<AbstractCard>() {
+                        @Override
+                        public boolean test(AbstractCard c) {
+                            return c.hasTag(CustomEnums.ENERGY_COSTING) && c instanceof BaseCard;
+                        }
+                    }
             );
             if (card != null) {
                 flash();

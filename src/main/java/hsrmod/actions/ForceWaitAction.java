@@ -2,7 +2,6 @@ package hsrmod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.core.Settings;
 
 public class ForceWaitAction extends AbstractGameAction {
     public ForceWaitAction(float setDuration) {

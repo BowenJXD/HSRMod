@@ -4,7 +4,6 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cards.BaseCard;
-import hsrmod.powers.uniqueBuffs.EmpyreanImperiumPower;
 import hsrmod.powers.uniqueBuffs.RadiantSupremePower;
 
 public class RadiantSupreme extends BaseCard {

@@ -1,28 +1,20 @@
 package hsrmod.powers.uniqueBuffs;
 
-import com.evacipated.cardcrawl.mod.stslib.actions.common.MoveCardsAction;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.DamageModApplyingPower;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import hsrmod.cardsV2.Preservation.ResonanceTransfer;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
 import hsrmod.powers.misc.QuakePower;
-import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.subscribers.PostBreakBlockSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
-import hsrmod.utils.ModHelper;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class ResonanceTransferPower extends PowerPower implements PostBreakBlockSubscriber, DamageModApplyingPower {
     public static final String POWER_ID = HSRMod.makePath(ResonanceTransferPower.class.getSimpleName());
@@ -71,9 +63,13 @@ public class ResonanceTransferPower extends PowerPower implements PostBreakBlock
 
     @Override
     public boolean shouldPushMods(DamageInfo damageInfo, Object o, List<AbstractDamageModifier> list) {
-        return o instanceof AbstractCard
-                && list.stream().noneMatch(mod -> mod instanceof ResonanceTransferDamageMod)
-                && upgraded;
+        if (!(o instanceof AbstractCard)) return false;
+        for (AbstractDamageModifier mod : list) {
+            if (mod instanceof ResonanceTransferDamageMod) {
+                return false;
+            }
+        }
+        return upgraded;
     }
 
     @Override

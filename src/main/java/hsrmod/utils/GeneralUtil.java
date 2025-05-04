@@ -86,7 +86,12 @@ public class GeneralUtil {
 
         // Split the string by commas and map each element using the mapper
         String[] elements = trimmed.split(", ");
-        return Arrays.stream(elements).map(mapper).collect(Collectors.toList());
+        List<T> list = new ArrayList<>();
+        for (String element : elements) {
+            T t = mapper.apply(element);
+            list.add(t);
+        }
+        return list;
     }
     
     public static String tryFormat(String text, Object... args) {

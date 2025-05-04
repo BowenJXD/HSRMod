@@ -9,6 +9,7 @@ import hsrmod.powers.PowerPower;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
@@ -35,7 +36,9 @@ public class BountyHunterPower extends PowerPower {
     @Override
     public void onRemove() {
         super.onRemove();
-        cardsCache.forEach(card -> card.returnToHand = false);
+        for (AbstractCard card : cardsCache) {
+            card.returnToHand = false;
+        }
     }
 
     @Override

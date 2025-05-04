@@ -7,18 +7,21 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.powers.enemyOnly.SummonedPower;
 import hsrmod.powers.misc.ToughnessPower;
-import spireTogether.network.objects.entities.NetworkMonster;
-import spireTogether.network.objects.entities.NetworkPower;
 
 import java.util.Objects;
+import java.util.function.Predicate;
 
 public class PowerPatch {
     @SpirePatch(clz = AbstractCreature.class, method = "hasPower")
     public static class PowerMapPatch {
         @SpirePrefixPatch
         public static SpireReturn<Boolean> prefix(AbstractCreature _inst, String targetID) {
-            if (Objects.equals(targetID, "Minion") && _inst.powers.stream().anyMatch(p -> Objects.equals(p.ID, SummonedPower.POWER_ID))) {
-                return SpireReturn.Return(true);
+            if (Objects.equals(targetID, "Minion")) {
+                for (AbstractPower p : _inst.powers) {
+                    if (Objects.equals(p.ID, SummonedPower.POWER_ID)) {
+                        return SpireReturn.Return(true);
+                    }
+                }
             }
             return SpireReturn.Continue();
         }
@@ -52,17 +55,6 @@ public class PowerPatch {
             if (removeMe[0] != null && removeMe[0].ID.equals(ToughnessPower.POWER_ID)) {
                 removeMe[0] = null;
             }
-        }
-    }
-    
-    @SpirePatch(clz = NetworkMonster.class, method = "LosePower", requiredModId = "spireTogether")
-    public static class NetworkMonsterLosePowerPatch {
-        @SpirePrefixPatch
-        public static SpireReturn<Void> prefix(NetworkMonster __inst, NetworkPower power) {
-            if (power != null && power.realPowerID.equals(ToughnessPower.POWER_ID)) {
-                return SpireReturn.Return(null);
-            }
-            return SpireReturn.Continue();
         }
     }
 }

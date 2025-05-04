@@ -13,8 +13,9 @@ import hsrmod.utils.GeneralUtil;
 import hsrmod.utils.ModHelper;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.function.Predicate;
 
 public class DewDropPower extends BuffPower {
     public static final String POWER_ID = HSRMod.makePath(DewDropPower.class.getSimpleName());
@@ -39,13 +40,23 @@ public class DewDropPower extends BuffPower {
     @Override
     public void onSpecificTrigger() {
         super.onSpecificTrigger();
-        AbstractMonster monster = AbstractDungeon.getMonsters().monsters.stream()
-                .filter(m -> ModHelper.check(m) && !m.hasPower(IntangiblePower.POWER_ID))
-                .sorted((a, b) -> {
-                    return Integer.compare(Math.abs(amount - a.currentHealth), Math.abs(amount - b.currentHealth));
-                })
-                .findAny()
-                .orElse(ModHelper.betterGetRandomMonster());
+        List<AbstractMonster> toSort = new ArrayList<>();
+        for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
+            if (ModHelper.check(m) && !m.hasPower(IntangiblePower.POWER_ID)) {
+                toSort.add(m);
+            }
+        }
+        toSort.sort(new Comparator<AbstractMonster>() {
+            @Override
+            public int compare(AbstractMonster a, AbstractMonster b) {
+                return Integer.compare(Math.abs(amount - a.currentHealth), Math.abs(amount - b.currentHealth));
+            }
+        });
+        AbstractMonster monster = ModHelper.betterGetRandomMonster();
+        for (AbstractMonster m : toSort) {
+            monster = m;
+            break;
+        }
         if (monster != null) {
             addToBot(new DamageAction(monster, new DamageInfo(owner, amount)));
         }

@@ -88,6 +88,7 @@ public class AventurinePower extends PowerPower implements OnPlayerDamagedSubscr
         BaseMod.unsubscribe(this);
     }
 
+     
     @Override
     public int receiveOnPlayerDamaged(int i, DamageInfo damageInfo) {
         if (SubscriptionManager.checkSubscriber(this)

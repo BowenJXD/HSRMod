@@ -15,6 +15,8 @@ import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.misc.EnergyPower;
 
+import java.util.function.Consumer;
+
 public class DisruptivePulse extends BaseCard {
     public static final String ID = DisruptivePulse.class.getSimpleName();
 
@@ -30,12 +32,15 @@ public class DisruptivePulse extends BaseCard {
                 m,
                 new ElementalDamageInfo(this),
                 AbstractGameAction.AttackEffect.FIRE,
-                (ci) -> {
-                    if (ci.didBreak) {
-                        addToBot(new ApplyPowerAction(p, p, new EnergyPower(p, EnergyPower.AMOUNT_LIMIT), EnergyPower.AMOUNT_LIMIT));
-                        int energyNum = AbstractDungeon.player.energy.energy - EnergyPanel.getCurrentEnergy();
-                        if (energyNum > 0) addToBot(new GainEnergyAction(energyNum));
-                        addToBot(new BreakDamageAction(ci.target, new DamageInfo(p, tr)));
+                new Consumer<ElementalDamageAction.CallbackInfo>() {
+                    @Override
+                    public void accept(ElementalDamageAction.CallbackInfo ci) {
+                        if (ci.didBreak) {
+                            DisruptivePulse.this.addToBot(new ApplyPowerAction(p, p, new EnergyPower(p, EnergyPower.AMOUNT_LIMIT), EnergyPower.AMOUNT_LIMIT));
+                            int energyNum = AbstractDungeon.player.energy.energy - EnergyPanel.getCurrentEnergy();
+                            if (energyNum > 0) DisruptivePulse.this.addToBot(new GainEnergyAction(energyNum));
+                            DisruptivePulse.this.addToBot(new BreakDamageAction(ci.target, new DamageInfo(p, tr)));
+                        }
                     }
                 })
         );

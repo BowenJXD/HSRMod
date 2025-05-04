@@ -1,12 +1,13 @@
 package hsrmod.relics.boss;
 
-import com.megacrit.cardcrawl.actions.utility.NewQueueCardAction;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.relics.BaseRelic;
+
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 public class HerosTriumphantReturn extends BaseRelic {
     public static final String ID = HerosTriumphantReturn.class.getSimpleName();
@@ -18,14 +19,15 @@ public class HerosTriumphantReturn extends BaseRelic {
     @Override
     public void atBattleStartPreDraw() {
         super.atBattleStartPreDraw();
-        AbstractDungeon.player.drawPile.group.stream()
-                .filter(c -> c.type == AbstractCard.CardType.POWER)
-                .limit(2)
-                .forEach(c -> {
-                    if (c instanceof BaseCard) {
-                        ((BaseCard) c).energyCost = 0;
-                    }
-                    addToBot(new FollowUpAction(c));
-                });
+        long limit = 2;
+        for (AbstractCard c : AbstractDungeon.player.drawPile.group) {
+            if (c.type == AbstractCard.CardType.POWER) {
+                if (limit-- == 0) break;
+                if (c instanceof BaseCard) {
+                    ((BaseCard) c).energyCost = 0;
+                }
+                HerosTriumphantReturn.this.addToBot(new FollowUpAction(c));
+            }
+        }
     }
 }

@@ -47,7 +47,12 @@ public class GeniusSocietysDangerousGossip extends BaseRelic implements CustomSa
             }
         }
         int finalTmp = tmp;
-        ModHelper.addEffectAbstract(() -> AbstractDungeon.player.loseGold(finalTmp));
+        ModHelper.addEffectAbstract(new ModHelper.Lambda() {
+            @Override
+            public void run() {
+                AbstractDungeon.player.loseGold(finalTmp);
+            }
+        });
     }
 
     @Override

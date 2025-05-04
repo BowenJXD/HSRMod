@@ -2,24 +2,25 @@ package hsrmod.powers.uniqueBuffs;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.actions.AOEAction;
 import hsrmod.actions.BouncingAction;
 import hsrmod.actions.ElementalDamageAction;
-import hsrmod.effects.GrayscaleScreenEffect;
 import hsrmod.effects.PortraitDisplayEffect;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
 import hsrmod.utils.ModHelper;
+
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.ToIntFunction;
 
 public class SlashedDreamPower extends PowerPower {
     public static final String POWER_ID = HSRMod.makePath(SlashedDreamPower.class.getSimpleName());
@@ -96,15 +97,33 @@ public class SlashedDreamPower extends PowerPower {
                 target, 
                 new ElementalDamageInfo(owner, baseDamage, ElementType.Lightning, 1), 
                 AbstractGameAction.AttackEffect.LIGHTNING, null,
-                ci -> ci.info.output += ci.target.powers.stream().mapToInt(p -> p.type == PowerType.DEBUFF ? 1 : 0).sum()
+                new Consumer<ElementalDamageAction.CallbackInfo>() {
+                    @Override
+                    public void accept(ElementalDamageAction.CallbackInfo ci) {
+                        int sum = 0;
+                        for (AbstractPower p : ci.target.powers) {
+                            int i = p.type == PowerType.DEBUFF ? 1 : 0;
+                            sum += i;
+                        }
+                        ci.info.output += sum;
+                    }
+                }
         );
         action2.doApplyPower = true;
-        ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play("SlashedDream2"));
+        ModHelper.addToBotAbstract(new ModHelper.Lambda() {
+            @Override
+            public void run() {
+                CardCrawlGame.sound.play("SlashedDream2");
+            }
+        });
         addToBot(new TalkAction(true, String.format(" #r%s ", DESCRIPTIONS[2]), 1.0F, 2.0F));
-        addToBot(new AOEAction(q -> {
-            AbstractGameAction a = action2.makeCopy();
-            a.target = q;
-            return a;
+        addToBot(new AOEAction(new Function<AbstractMonster, AbstractGameAction>() {
+            @Override
+            public AbstractGameAction apply(AbstractMonster q) {
+                AbstractGameAction a = action2.makeCopy();
+                a.target = q;
+                return a;
+            }
         }));
     }
 }

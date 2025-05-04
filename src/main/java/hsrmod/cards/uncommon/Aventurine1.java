@@ -29,7 +29,12 @@ public class Aventurine1 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.topLevelEffects.add(new PortraitDisplayEffect("Aventurine"));
-        ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID));
+        ModHelper.addToBotAbstract(new ModHelper.Lambda() {
+            @Override
+            public void run() {
+                CardCrawlGame.sound.play(ID);
+            }
+        });
         
         addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
         addToBot(new ApplyPowerAction(p, p, new AventurinePower(upgraded, upgraded ? 5 : 4, 2)));

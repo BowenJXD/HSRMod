@@ -7,11 +7,14 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.BreakDamageAction;
+import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.powers.misc.BreakEffectPower;
-import hsrmod.utils.ModHelper;
 import hsrmod.signature.utils.SignatureHelper;
+import hsrmod.utils.ModHelper;
+
+import java.util.function.Consumer;
 
 public class Rappa1 extends BaseCard {
     public static final String ID = Rappa1.class.getSimpleName();
@@ -42,12 +45,15 @@ public class Rappa1 extends BaseCard {
         }
 
         addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new BreakEffectPower(AbstractDungeon.player, magicNumber), magicNumber));
-        addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL).setCallback((c) -> {
-            if (c.didBreak) {
-                addToBot(new BreakDamageAction(c.target, new DamageInfo(AbstractDungeon.player, tr)));
-                if (canRepeat) {
-                    canRepeat = false;
-                    ModHelper.addToTopAbstract(this::execute);
+        addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL).setCallback(new Consumer<ElementalDamageAction.CallbackInfo>() {
+            @Override
+            public void accept(ElementalDamageAction.CallbackInfo c) {
+                if (c.didBreak) {
+                    Rappa1.this.addToBot(new BreakDamageAction(c.target, new DamageInfo(AbstractDungeon.player, tr)));
+                    if (canRepeat) {
+                        canRepeat = false;
+                        ModHelper.addToTopAbstract(Rappa1.this::execute);
+                    }
                 }
             }
         }));

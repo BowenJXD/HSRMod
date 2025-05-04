@@ -8,6 +8,8 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import hsrmod.relics.BaseRelic;
 import hsrmod.utils.ModHelper;
 
+import java.util.function.Consumer;
+
 public class Revitalization310 extends BaseRelic {
     public static final String ID = Revitalization310.class.getSimpleName();
 
@@ -29,9 +31,14 @@ public class Revitalization310 extends BaseRelic {
         if (!canTrigger) 
             return;
         flash();
-        ModHelper.addToBotAbstract(() -> {
-            AbstractDungeon.player.hand.group.forEach(c -> c.isEthereal = true);
-            canTrigger = false;
+        ModHelper.addToBotAbstract(new ModHelper.Lambda() {
+            @Override
+            public void run() {
+                for (AbstractCard c : AbstractDungeon.player.hand.group) {
+                    c.isEthereal = true;
+                }
+                canTrigger = false;
+            }
         });
     }
 

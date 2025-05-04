@@ -5,8 +5,9 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import hsrmod.modcore.HSRMod;
-import hsrmod.utils.ModHelper;
 import hsrmod.utils.RelicEventHelper;
+
+import java.util.function.Predicate;
 
 public interface IRubertEmpireRelic {
     default void checkMerge() {
@@ -14,8 +15,17 @@ public interface IRubertEmpireRelic {
         boolean merge = p.hasRelic(HSRMod.makePath(RubertEmpireMechanicalCogwheel.ID))
                 && p.hasRelic(HSRMod.makePath(RubertEmpireMechanicalLever.ID))
                 && p.hasRelic(HSRMod.makePath(RubertEmpireMechanicalPiston.ID));
-        if (merge && AbstractDungeon.effectList.stream().noneMatch(e -> e instanceof MergeEffect)) {
-            AbstractDungeon.effectList.add(new MergeEffect());
+        if (merge) {
+            boolean b = true;
+            for (AbstractGameEffect e : AbstractDungeon.effectList) {
+                if (e instanceof MergeEffect) {
+                    b = false;
+                    break;
+                }
+            }
+            if (b) {
+                AbstractDungeon.effectList.add(new MergeEffect());
+            }
         }
     }
     

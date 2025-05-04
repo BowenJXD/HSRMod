@@ -1,7 +1,8 @@
 package hsrmod.cards.rare;
 
-import com.evacipated.cardcrawl.mod.stslib.actions.common.AllEnemyApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.watcher.BlockReturnPower;
 import hsrmod.cards.BaseCard;
@@ -23,7 +24,9 @@ public class ThePathless extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new AllEnemyApplyPowerAction(p, 2, (q) -> new BlockReturnPower(q, 2)));
-        addToBot(new AllEnemyApplyPowerAction(p, magicNumber, (q) -> new SuspicionPower(q, magicNumber)));
+        for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters) {
+            addToBot(new ApplyPowerAction(monster, p, new BlockReturnPower(monster, 2)));
+            addToBot(new ApplyPowerAction(monster, p, new SuspicionPower(monster, magicNumber)));
+        }
     }
 }

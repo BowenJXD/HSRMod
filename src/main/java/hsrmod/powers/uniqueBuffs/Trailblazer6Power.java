@@ -16,6 +16,7 @@ import hsrmod.powers.misc.ToughnessPower;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class Trailblazer6Power extends PowerPower implements DamageModApplyingPower {
     public static final String POWER_ID = HSRMod.makePath(Trailblazer6Power.class.getSimpleName());
@@ -36,7 +37,11 @@ public class Trailblazer6Power extends PowerPower implements DamageModApplyingPo
     public boolean shouldPushMods(DamageInfo damageInfo, Object o, List<AbstractDamageModifier> list) {
         boolean result = false;
         if (!(o instanceof AbstractCard)) return result;
-        if (list.stream().anyMatch(mod -> mod instanceof Trailblazer6Modifier)) return result;
+        for (AbstractDamageModifier mod : list) {
+            if (mod instanceof Trailblazer6Modifier) {
+                return result;
+            }
+        }
         if (damageInfo == null || damageInfo.type != DamageInfo.DamageType.NORMAL) return result;
         if (cardCache == null) return result;
         cardCache = null;

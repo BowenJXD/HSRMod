@@ -3,6 +3,7 @@ package hsrmod.subscribers;
 import basemod.BaseMod;
 import basemod.interfaces.ISubscriber;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -18,6 +19,7 @@ import hsrmod.powers.misc.DoTPower;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.function.Predicate;
 
 /**
  * Singleton class for managing all the subscribers.
@@ -401,10 +403,17 @@ public final class SubscriptionManager {
         boolean result = AbstractDungeon.player.hand.contains(card)
                 || AbstractDungeon.player.drawPile.contains(card)
                 || AbstractDungeon.player.discardPile.contains(card)
-                || AbstractDungeon.player.exhaustPile.contains(card)
-                || (AbstractDungeon.actionManager != null
-                && AbstractDungeon.actionManager.cardQueue != null
-                && AbstractDungeon.actionManager.cardQueue.stream().anyMatch(cqi -> cqi != null && cqi.card != null && cqi.card.cardID.equals(card.cardID)));
+                || AbstractDungeon.player.exhaustPile.contains(card);
+        
+        if (!result && AbstractDungeon.actionManager != null && AbstractDungeon.actionManager.cardQueue != null) {
+            for (CardQueueItem cqi : AbstractDungeon.actionManager.cardQueue) {
+                if (cqi != null && cqi.card != null && cqi.card.cardID.equals(card.cardID)) {
+                    result = true;
+                    break;
+                }
+            }
+        }
+        
         if (!result) {
             if (card instanceof IHSRSubscriber) getInstance().unsubscribeLater((IHSRSubscriber) card);
             if (card instanceof ISubscriber) BaseMod.unsubscribeLater((ISubscriber) card);

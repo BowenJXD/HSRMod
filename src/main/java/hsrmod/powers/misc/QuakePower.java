@@ -1,23 +1,18 @@
 package hsrmod.powers.misc;
 
 import basemod.BaseMod;
-import basemod.interfaces.OnPlayerLoseBlockSubscriber;
 import basemod.interfaces.PreMonsterTurnSubscriber;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnLoseBlockPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAction;
-import hsrmod.cardsV2.Preservation.Quake;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
 import hsrmod.subscribers.SubscriptionManager;
-import hsrmod.utils.ModHelper;
 
 import java.util.function.Consumer;
 

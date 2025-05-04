@@ -29,8 +29,11 @@ public class VileMechanicalSatellite900 extends BaseRelic {
     void trigger(AbstractRoom room) {
         if (room instanceof ShopRoom) {
             beginLongPulse();
-            ModHelper.addEffectAbstract(()->{
-                AbstractDungeon.shopScreen.applyDiscount(1 - DISCOUNT/100f, false);
+            ModHelper.addEffectAbstract(new ModHelper.Lambda() {
+                @Override
+                public void run() {
+                    AbstractDungeon.shopScreen.applyDiscount(1 - DISCOUNT / 100f, false);
+                }
             });
         } else {
             stopPulse();

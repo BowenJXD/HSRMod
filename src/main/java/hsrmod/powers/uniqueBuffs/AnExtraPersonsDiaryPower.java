@@ -1,12 +1,11 @@
 package hsrmod.powers.uniqueBuffs;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
 import hsrmod.powers.misc.BrokenPower;
@@ -15,6 +14,8 @@ import hsrmod.powers.misc.ToughnessPower;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 public class AnExtraPersonsDiaryPower extends PowerPower {
     public static final String POWER_ID = HSRMod.makePath(AnExtraPersonsDiaryPower.class.getSimpleName());
@@ -42,13 +43,15 @@ public class AnExtraPersonsDiaryPower extends PowerPower {
     }
 
     void changePowers() {
-        AbstractDungeon.getMonsters().monsters.forEach(m -> {
-            m.powers.stream().filter(p -> p instanceof DoTPower && !changedPowers.contains(p)).forEach(p -> {
-                DoTPower power = (DoTPower) p;
-                power.toughnessReduction += 1;
-                changedPowers.add(power);
-            });
-        });
+        for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
+            for (AbstractPower p : m.powers) {
+                if (p instanceof DoTPower && !changedPowers.contains(p)) {
+                    DoTPower power = (DoTPower) p;
+                    power.toughnessReduction += 1;
+                    changedPowers.add(power);
+                }
+            }
+        }
     }
 
     @Override

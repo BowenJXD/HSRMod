@@ -9,9 +9,11 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.cards.BaseCard;
-import hsrmod.powers.uniqueDebuffs.ProofOfDebtPower;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
+
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 public class FollowUpAction extends AbstractGameAction {
     private AbstractCard card;
@@ -46,8 +48,15 @@ public class FollowUpAction extends AbstractGameAction {
                 }
                 return;
             }
-            
-            ModHelper.findCards((c) -> c.uuid.equals(card.uuid)).forEach((r) -> r.group.removeCard(r.card));
+
+            for (ModHelper.FindResult r : ModHelper.findCards(new Predicate<AbstractCard>() {
+                @Override
+                public boolean test(AbstractCard c) {
+                    return c.uuid.equals(card.uuid);
+                }
+            })) {
+                r.group.removeCard(r.card);
+            }
             AbstractDungeon.getCurrRoom().souls.remove(card); // ?
             AbstractDungeon.player.limbo.group.add(card);
             card.current_y = -200.0F * Settings.scale;

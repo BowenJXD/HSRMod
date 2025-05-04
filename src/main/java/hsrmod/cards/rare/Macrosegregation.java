@@ -1,10 +1,8 @@
 package hsrmod.cards.rare;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.DexterityPower;
 import hsrmod.cards.BaseCard;
 import hsrmod.powers.uniqueBuffs.DivinityPower;
 

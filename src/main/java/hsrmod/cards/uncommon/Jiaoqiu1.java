@@ -10,10 +10,16 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.vfx.combat.IronWaveEffect;
+import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.utils.ModHelper;
+
+import java.util.Comparator;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.Function;
 
 public class Jiaoqiu1 extends BaseCard {
     public static final String ID = Jiaoqiu1.class.getSimpleName();
@@ -28,7 +34,22 @@ public class Jiaoqiu1 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        float cX = AbstractDungeon.getMonsters().monsters.stream().filter(ModHelper::check).max((a, b) -> (int) (a.hb.cX - b.hb.cX)).map(a -> a.hb.cX).orElse(-400f);
+        boolean seen = false;
+        AbstractMonster best = null;
+        for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters) {
+            if (ModHelper.check(monster)) {
+                if (!seen || (int) (monster.hb.cX - best.hb.cX) > 0) {
+                    seen = true;
+                    best = monster;
+                }
+            }
+        }
+        float cX = (seen ? Optional.of(best) : Optional.<AbstractMonster>empty()).map(new Function<AbstractMonster, Float>() {
+            @Override
+            public Float apply(AbstractMonster a) {
+                return a.hb.cX;
+            }
+        }).orElse(-400f);
         addToBot(new VFXAction(new IronWaveEffect(p.hb.cX, p.hb.cY, cX), 0.5f));
         for (int i = 0; i < magicNumber; i++) {
             AbstractCard card = new Jiaoqiu2();
@@ -36,8 +57,11 @@ public class Jiaoqiu1 extends BaseCard {
             addToBot(new MakeTempCardInHandAction(card));
         }
         addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.FIRE)
-                .setCallback(ci -> {
-                    addToBot(new ApplyPowerAction(ci.target, p, new VulnerablePower(ci.target, 1, false), 1));
+                .setCallback(new Consumer<ElementalDamageAction.CallbackInfo>() {
+                    @Override
+                    public void accept(ElementalDamageAction.CallbackInfo ci) {
+                        Jiaoqiu1.this.addToBot(new ApplyPowerAction(ci.target, p, new VulnerablePower(ci.target, 1, false), 1));
+                    }
                 })
         );
     }

@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.RainingGoldEffect;
 import com.megacrit.cardcrawl.vfx.RelicAboveCreatureEffect;
 import com.megacrit.cardcrawl.vfx.UpgradeShineEffect;
@@ -19,15 +20,15 @@ import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import hsrmod.effects.BetterWarningSignEffect;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
-import hsrmod.relics.BaseRelic;
 import hsrmod.patches.RelicTagField;
-import hsrmod.relics.boss.*;
+import hsrmod.relics.BaseRelic;
+import hsrmod.relics.boss.MasterOfDreamMachinations;
 import hsrmod.relics.special.*;
-import hsrmod.relics.special.TheWindSoaringValorous;
 import hsrmod.relics.uncommon.JellyfishOnTheStaircase;
 
 import java.util.*;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -84,16 +85,22 @@ public class RelicEventHelper {
 
     public static void addReward(Consumer<List<RewardItem>> reward) {
         if (AbstractDungeon.currMapNode != null && AbstractDungeon.getCurrRoom().phase != AbstractRoom.RoomPhase.COMBAT) {
-            RewardEditor.addExtraRewardToTop(rewards -> {
-                rewards.clear();
-                reward.accept(rewards);
+            RewardEditor.addExtraRewardToTop(new Consumer<List<RewardItem>>() {
+                @Override
+                public void accept(List<RewardItem> rewards) {
+                    rewards.clear();
+                    reward.accept(rewards);
+                }
             });
             AbstractDungeon.combatRewardScreen.open(REWARD_TEXT);
         } else if (!AbstractDungeon.getCurrRoom().rewardTime) {
             RewardEditor.addExtraRewardToTop(reward);
         } else {
-            ModHelper.addEffectAbstract(() -> {
-                reward.accept(AbstractDungeon.combatRewardScreen.rewards);
+            ModHelper.addEffectAbstract(new ModHelper.Lambda() {
+                @Override
+                public void run() {
+                    reward.accept(AbstractDungeon.combatRewardScreen.rewards);
+                }
             });
         }
     }
@@ -138,11 +145,21 @@ public class RelicEventHelper {
     }
 
     public static void gainRelicsAfterwards(int amount) {
-        ModHelper.addEffectAbstract(() -> gainRelics(amount));
+        ModHelper.addEffectAbstract(new ModHelper.Lambda() {
+            @Override
+            public void run() {
+                gainRelics(amount);
+            }
+        });
     }
 
     public static void gainRelics(int amount) {
-        gainRelics(amount, r -> !RelicTagField.subtle.get(r));
+        gainRelics(amount, new Predicate<AbstractRelic>() {
+            @Override
+            public boolean test(AbstractRelic r) {
+                return !RelicTagField.subtle.get(r);
+            }
+        });
     }
 
     public static void gainRelics(int amount, Predicate<AbstractRelic> predicate) {
@@ -167,15 +184,23 @@ public class RelicEventHelper {
     }
 
     public static void rewardRelics(int amount) {
-        rewardRelics(amount, r -> true);
+        rewardRelics(amount, new Predicate<AbstractRelic>() {
+            @Override
+            public boolean test(AbstractRelic r) {
+                return true;
+            }
+        });
     }
 
     public static void rewardRelics(int amount, Predicate<AbstractRelic> predicate) {
-        addReward(rewards -> {
-            rewards.clear();
-            List<AbstractRelic> relics = getRelics(amount, predicate);
-            for (AbstractRelic relic : relics) {
-                rewards.add(new RewardItem(relic));
+        addReward(new Consumer<List<RewardItem>>() {
+            @Override
+            public void accept(List<RewardItem> rewards) {
+                rewards.clear();
+                List<AbstractRelic> relics = getRelics(amount, predicate);
+                for (AbstractRelic relic : relics) {
+                    rewards.add(new RewardItem(relic));
+                }
             }
         });
     }
@@ -202,11 +227,21 @@ public class RelicEventHelper {
     }*/
 
     public static void loseRelicsAfterwards(AbstractRelic... relics) {
-        ModHelper.addEffectAbstract(() -> loseRelics(true, relics));
+        ModHelper.addEffectAbstract(new ModHelper.Lambda() {
+            @Override
+            public void run() {
+                loseRelics(true, relics);
+            }
+        });
     }
 
     public static void loseRelics(String... relicIds) {
-        loseRelics(true, Arrays.stream(relicIds).map(id -> AbstractDungeon.player.getRelic(id)).toArray(AbstractRelic[]::new));
+        List<AbstractRelic> list = new ArrayList<>();
+        for (String id : relicIds) {
+            AbstractRelic relic = AbstractDungeon.player.getRelic(id);
+            list.add(relic);
+        }
+        loseRelics(true, list.toArray(new AbstractRelic[0]));
     }
 
     public static void loseRelics(AbstractRelic... relics) {
@@ -233,7 +268,14 @@ public class RelicEventHelper {
     }
 
     public static void gainGold(int amount) {
-        if (AbstractDungeon.effectList.stream().noneMatch(e -> e instanceof RainingGoldEffect))
+        boolean b = true;
+        for (AbstractGameEffect e : AbstractDungeon.effectList) {
+            if (e instanceof RainingGoldEffect) {
+                b = false;
+                break;
+            }
+        }
+        if (b)
             AbstractDungeon.effectList.add(new RainingGoldEffect(Math.min(amount, 1000)));
         AbstractDungeon.player.gainGold(amount);
     }
@@ -267,7 +309,12 @@ public class RelicEventHelper {
         if (pool.isEmpty()) {
             return "";
         }
-        List<String> relics = pool.stream().filter(r -> RelicLibrary.getRelic(r) instanceof BaseRelic).collect(Collectors.toList());
+        List<String> relics = new ArrayList<>();
+        for (String r : pool) {
+            if (RelicLibrary.getRelic(r) instanceof BaseRelic) {
+                relics.add(r);
+            }
+        }
         if (relics.isEmpty()) {
             return "";
         }

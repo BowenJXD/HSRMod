@@ -10,7 +10,6 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.FastingEffect;
 import hsrmod.actions.CleanAction;
 import hsrmod.cards.BaseCard;
-import hsrmod.powers.uniqueBuffs.HuohuoPower;
 import hsrmod.powers.uniqueBuffs.ReinforcePower;
 
 public class March7th1 extends BaseCard {

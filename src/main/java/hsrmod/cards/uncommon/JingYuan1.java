@@ -5,7 +5,6 @@ import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -18,6 +17,8 @@ import hsrmod.cards.BaseCard;
 import hsrmod.effects.PortraitDisplayEffect;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.utils.ModHelper;
+
+import java.util.function.Consumer;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
@@ -35,7 +36,12 @@ public class JingYuan1 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.topLevelEffects.add(new PortraitDisplayEffect("JingYuan"));
-        ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID));
+        ModHelper.addToBotAbstract(new ModHelper.Lambda() {
+            @Override
+            public void run() {
+                CardCrawlGame.sound.play(ID);
+            }
+        });
         
         addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
 
@@ -43,13 +49,21 @@ public class JingYuan1 extends BaseCard {
                 m,
                 new ElementalDamageInfo(this), 
                 AbstractGameAction.AttackEffect.LIGHTNING,
-                ci -> {
-                    addToTop(new DrawCardAction(1));
-                    addToTop(new VFXAction(new LightningEffect(ci.target.hb.cX, ci.target.hb.cY)));
+                new Consumer<ElementalDamageAction.CallbackInfo>() {
+                    @Override
+                    public void accept(ElementalDamageAction.CallbackInfo ci) {
+                        JingYuan1.this.addToTop(new DrawCardAction(1));
+                        JingYuan1.this.addToTop(new VFXAction(new LightningEffect(ci.target.hb.cX, ci.target.hb.cY)));
+                    }
                 });
         this.addToBot(new BouncingAction(m, magicNumber, elementalDamageAction, this));
 
-        ModHelper.addToBotAbstract(() -> updateCost(costCache - cost));
+        ModHelper.addToBotAbstract(new ModHelper.Lambda() {
+            @Override
+            public void run() {
+                JingYuan1.this.updateCost(costCache - cost);
+            }
+        });
     }
 
     @Override

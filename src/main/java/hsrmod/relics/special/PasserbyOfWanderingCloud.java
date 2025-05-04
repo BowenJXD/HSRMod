@@ -6,6 +6,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.relics.BaseRelic;
 import hsrmod.utils.ModHelper;
 
+import java.util.function.ToIntFunction;
+
 public class PasserbyOfWanderingCloud extends BaseRelic {
     public static final String ID = PasserbyOfWanderingCloud.class.getSimpleName();
 
@@ -26,9 +28,17 @@ public class PasserbyOfWanderingCloud extends BaseRelic {
     @Override
     public void atTurnStartPostDraw() {
         super.atTurnStartPostDraw();
-        ModHelper.addToBotAbstract(() -> {
-            if (AbstractDungeon.player.hand.group.stream().mapToInt(c -> c.hasTag(AbstractCard.CardTags.STARTER_STRIKE) ? 1 : 0).sum() < 2) {
-                addToTop(new LoseEnergyAction(1));
+        ModHelper.addToBotAbstract(new ModHelper.Lambda() {
+            @Override
+            public void run() {
+                int sum = 0;
+                for (AbstractCard c : AbstractDungeon.player.hand.group) {
+                    int i = c.hasTag(AbstractCard.CardTags.STARTER_STRIKE) ? 1 : 0;
+                    sum += i;
+                }
+                if (sum < 2) {
+                    PasserbyOfWanderingCloud.this.addToTop(new LoseEnergyAction(1));
+                }
             }
         });
     }

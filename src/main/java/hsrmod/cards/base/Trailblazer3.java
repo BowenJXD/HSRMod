@@ -1,6 +1,5 @@
 package hsrmod.cards.base;
 
-import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -19,11 +18,7 @@ public class Trailblazer3 extends BaseCard implements ICanChangeToTempHP {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        if (isTempHP) {
-            addToBot(new AddTemporaryHPAction(p, p, block));
-        } else {
-            addToBot(new GainBlockAction(p, p, block));
-        }
+        addToBot(new GainBlockAction(p, p, block));
     }
 
     @Override

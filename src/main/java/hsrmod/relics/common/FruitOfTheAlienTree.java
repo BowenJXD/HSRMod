@@ -2,9 +2,7 @@ package hsrmod.relics.common;
 
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import hsrmod.modcore.CustomEnums;
 import hsrmod.relics.BaseRelic;
-import hsrmod.utils.RelicEventHelper;
 
 public class FruitOfTheAlienTree extends BaseRelic {
     public static final String ID = FruitOfTheAlienTree.class.getSimpleName();

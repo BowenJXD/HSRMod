@@ -7,10 +7,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import com.megacrit.cardcrawl.neow.NeowRoom;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import com.megacrit.cardcrawl.rooms.ShopRoom;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import hsrmod.actions.GridCardManipulator;
 import hsrmod.actions.SimpleGridCardSelectBuilder;
@@ -24,6 +21,7 @@ import hsrmod.utils.RewardEditor;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Predicate;
 
 public class TrailblazeTimer extends BaseRelic implements ClickableRelic  {
     public static final String ID = TrailblazeTimer.class.getSimpleName();
@@ -89,7 +87,12 @@ public class TrailblazeTimer extends BaseRelic implements ClickableRelic  {
         if (isObtained
                 && (AbstractDungeon.getCurrRoom() instanceof NeowRoom || AbstractDungeon.getCurrRoom().event instanceof StelleAwakeEvent)
                 && (RewardEditor.getInstance().bannedTags == null || RewardEditor.getInstance().bannedTags.isEmpty())) {
-            AbstractGameAction action = new SimpleGridCardSelectBuilder(c -> true)
+            AbstractGameAction action = new SimpleGridCardSelectBuilder(new Predicate<AbstractCard>() {
+                @Override
+                public boolean test(AbstractCard c) {
+                    return true;
+                }
+            })
                     .setCardGroup(pathGroup)
                     .setAmount(pathToBan)
                     .setAnyNumber(false)

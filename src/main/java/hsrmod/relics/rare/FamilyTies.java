@@ -6,11 +6,13 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import hsrmod.patches.RelicTagField;
 import hsrmod.relics.BaseRelic;
-import hsrmod.subscribers.IRunnableSubscriber;
 import hsrmod.subscribers.PostRelicDestroySubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 import hsrmod.utils.RelicEventHelper;
+
+import java.util.function.Predicate;
+import java.util.function.ToIntFunction;
 
 public class FamilyTies extends BaseRelic implements PostRelicDestroySubscriber {
     public static final String ID = FamilyTies.class.getSimpleName();
@@ -31,20 +33,43 @@ public class FamilyTies extends BaseRelic implements PostRelicDestroySubscriber 
     @Override
     public void onEquip() {
         super.onEquip();
-        ModHelper.addEffectAbstract(() -> {
-            RelicEventHelper.gainRelics(1, r -> RelicTagField.destructible.get(r));
-            updateCounter();
+        ModHelper.addEffectAbstract(new ModHelper.Lambda() {
+            @Override
+            public void run() {
+                RelicEventHelper.gainRelics(1, new Predicate<AbstractRelic>() {
+                    @Override
+                    public boolean test(AbstractRelic r) {
+                        return RelicTagField.destructible.get(r);
+                    }
+                });
+                FamilyTies.this.updateCounter();
+            }
         });
     }
     
     void updateCounter() {
-        setCounter(AbstractDungeon.player.relics.stream().mapToInt(r -> r.counter == -2 ? 1 : 0 ).sum());
+        int sum = 0;
+        for (AbstractRelic r : AbstractDungeon.player.relics) {
+            int i = r.counter == -2 ? 1 : 0;
+            sum += i;
+        }
+        setCounter(sum);
     }
 
     @Override
     public void postRelicDestroy(AbstractRelic relic) {
         if (SubscriptionManager.checkSubscriber(this)) {
-            ModHelper.addEffectAbstract(() -> RelicEventHelper.gainRelics(1, r -> RelicTagField.destructible.get(r)));
+            ModHelper.addEffectAbstract(new ModHelper.Lambda() {
+                @Override
+                public void run() {
+                    RelicEventHelper.gainRelics(1, new Predicate<AbstractRelic>() {
+                        @Override
+                        public boolean test(AbstractRelic r) {
+                            return RelicTagField.destructible.get(r);
+                        }
+                    });
+                }
+            });
             updateCounter();
         }
     }

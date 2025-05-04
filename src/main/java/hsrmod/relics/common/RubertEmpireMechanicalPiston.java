@@ -1,17 +1,15 @@
 package hsrmod.relics.common;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import hsrmod.relics.BaseRelic;
 import hsrmod.utils.ModHelper;
 import hsrmod.utils.RelicEventHelper;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.function.Predicate;
 
 public class RubertEmpireMechanicalPiston extends BaseRelic implements IRubertEmpireRelic {
     public static final String ID = RubertEmpireMechanicalPiston.class.getSimpleName();
@@ -31,22 +29,35 @@ public class RubertEmpireMechanicalPiston extends BaseRelic implements IRubertEm
     public void onEnterRestRoom() {
         super.onEnterRestRoom();
         if (usedUp) return;
-        ModHelper.addEffectAbstract(() -> {
-            isDone = true;
+        ModHelper.addEffectAbstract(new ModHelper.Lambda() {
+            @Override
+            public void run() {
+                isDone = true;
 
-            AbstractRelic[] relics = AbstractDungeon.player.relics.stream().filter(r -> r.tier != AbstractRelic.RelicTier.STARTER).toArray(AbstractRelic[]::new);
-            if (relics.length == 0) return;
-            AbstractRelic relic = relics[AbstractDungeon.miscRng.random(relics.length - 1)];
-            if (relic == RubertEmpireMechanicalPiston.this) {
-                RelicEventHelper.loseRelics(
-                        Arrays.stream(relics)
-                                .filter(r -> r.tier == RelicTier.COMMON || r.tier == RelicTier.UNCOMMON || r.tier == RelicTier.RARE)
-                                .toArray(AbstractRelic[]::new)
-                );
-            } else {
-                RelicEventHelper.loseRelics(relic);
+                List<AbstractRelic> result = new ArrayList<>();
+                for (AbstractRelic abstractRelic : AbstractDungeon.player.relics) {
+                    if (abstractRelic.tier != RelicTier.STARTER) {
+                        result.add(abstractRelic);
+                    }
+                }
+                AbstractRelic[] relics = result.toArray(new AbstractRelic[0]);
+                if (relics.length == 0) return;
+                AbstractRelic relic = relics[AbstractDungeon.miscRng.random(relics.length - 1)];
+                if (relic == RubertEmpireMechanicalPiston.this) {
+                    List<AbstractRelic> list = new ArrayList<>();
+                    for (AbstractRelic r : relics) {
+                        if (r.tier == RelicTier.COMMON || r.tier == RelicTier.UNCOMMON || r.tier == RelicTier.RARE) {
+                            list.add(r);
+                        }
+                    }
+                    RelicEventHelper.loseRelics(
+                            list.toArray(new AbstractRelic[0])
+                    );
+                } else {
+                    RelicEventHelper.loseRelics(relic);
+                }
+                RelicEventHelper.gainRelics(relicAmt);
             }
-            RelicEventHelper.gainRelics(relicAmt);
         });
     }
 }

@@ -6,16 +6,12 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import hsrmod.actions.AOEAction;
-import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
-import hsrmod.modcore.ElementType;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
@@ -49,7 +45,12 @@ public class Jade1 extends BaseCard implements PostDrawSubscriber {
     @Override
     public void onEnterHand() {
         super.onEnterHand();
-        ModHelper.addToBotAbstract(() -> BaseMod.subscribe(this));
+        ModHelper.addToBotAbstract(new ModHelper.Lambda() {
+            @Override
+            public void run() {
+                BaseMod.subscribe(Jade1.this);
+            }
+        });
     }
 
     @Override

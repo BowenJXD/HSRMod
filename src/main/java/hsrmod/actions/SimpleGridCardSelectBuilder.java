@@ -2,15 +2,14 @@ package hsrmod.actions;
 
 import basemod.BaseMod;
 import basemod.interfaces.PostDungeonUpdateSubscriber;
-import basemod.interfaces.PostUpdateSubscriber;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import hsrmod.subscribers.SubscriptionManager;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.Predicate;
 
 /**

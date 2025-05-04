@@ -1,13 +1,13 @@
 package hsrmod.powers.breaks;
 
-import com.evacipated.cardcrawl.mod.stslib.actions.common.StunMonsterAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.GainStrengthPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.DebuffPower;
@@ -57,8 +57,10 @@ public class FrozenPower extends DebuffPower implements PreElementalDamageSubscr
     public void atStartOfTurn() {
         int frozenRes = ModHelper.getPowerCount(owner, FrozenResistancePower.POWER_ID);
         if (amount >= amountRequired + frozenRes){
-            if (monsterOwner != null && monsterOwner.intent != AbstractMonster.Intent.STUN)
-                addToBot(new StunMonsterAction((AbstractMonster) owner, AbstractDungeon.player));
+            if (monsterOwner != null && monsterOwner.intent != AbstractMonster.Intent.STUN) {
+                addToBot(new ApplyPowerAction(owner, owner, new StrengthPower(owner, 999)));
+                addToBot(new ApplyPowerAction(owner, owner, new GainStrengthPower(owner, 999)));
+            }
             addToBot(new RemoveSpecificPowerAction(owner, owner, this));
             addToBot(new ApplyPowerAction(owner, owner, new FrozenResistancePower(owner, 1), 1));
         }

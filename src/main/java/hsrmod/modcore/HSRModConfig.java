@@ -33,6 +33,7 @@ import org.scannotation.AnnotationDB;
 import java.io.IOException;
 import java.util.*;
 import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscriber, RenderSubscriber, PreUpdateSubscriber {
     
@@ -115,57 +116,87 @@ public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscrib
     public void setContents(ModPanel panel) {
         float x = 1100.0F;
         
-        panel.addUIElement(new ModLabel(getText(TextContent.BASIC_SETTINGS), x, 800.0F, Color.YELLOW, panel, (me) -> {
+        panel.addUIElement(new ModLabel(getText(TextContent.BASIC_SETTINGS), x, 800.0F, Color.YELLOW, panel, new Consumer<ModLabel>() {
+            @Override
+            public void accept(ModLabel me) {
+            }
         }));
-        panel.addUIElement(new ModLabel(getText(TextContent.RESTART_NOTICE), x, 705.0F, Color.GRAY, panel, (me) -> {
+        panel.addUIElement(new ModLabel(getText(TextContent.RESTART_NOTICE), x, 705.0F, Color.GRAY, panel, new Consumer<ModLabel>() {
+            @Override
+            public void accept(ModLabel me) {
+            }
         }));
-        ModLabeledToggleButton addRelicButton = new ModLabeledToggleButton(getText(TextContent.ADD_RELIC), x, 650.0F, Color.WHITE, FontHelper.buttonLabelFont, addRelic, panel, (label) -> {
-        }, (button) -> {
-            addRelic = button.enabled;
-            displayRestartRequiredText();
-            try {
-                config.setBool("addRelic", addRelic);
-                config.save();
-            } catch (IOException e) {
-                e.printStackTrace();
+        ModLabeledToggleButton addRelicButton = new ModLabeledToggleButton(getText(TextContent.ADD_RELIC), x, 650.0F, Color.WHITE, FontHelper.buttonLabelFont, addRelic, panel, new Consumer<ModLabel>() {
+            @Override
+            public void accept(ModLabel label) {
+            }
+        }, new Consumer<ModToggleButton>() {
+            @Override
+            public void accept(ModToggleButton button) {
+                addRelic = button.enabled;
+                HSRModConfig.this.displayRestartRequiredText();
+                try {
+                    config.setBool("addRelic", addRelic);
+                    config.save();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
         panel.addUIElement(addRelicButton);
 
-        ModLabeledToggleButton addEventButton = new ModLabeledToggleButton(getText(TextContent.ADD_EVENT), x, 600.0F, Color.WHITE, FontHelper.buttonLabelFont, addEvent, panel, (label) -> {
-        }, (button) -> {
-            addEvent = button.enabled;
-            displayRestartRequiredText();
-            try {
-                config.setBool("addEvent", addEvent);
-                config.save();
-            } catch (IOException e) {
-                e.printStackTrace();
+        ModLabeledToggleButton addEventButton = new ModLabeledToggleButton(getText(TextContent.ADD_EVENT), x, 600.0F, Color.WHITE, FontHelper.buttonLabelFont, addEvent, panel, new Consumer<ModLabel>() {
+            @Override
+            public void accept(ModLabel label) {
+            }
+        }, new Consumer<ModToggleButton>() {
+            @Override
+            public void accept(ModToggleButton button) {
+                addEvent = button.enabled;
+                HSRModConfig.this.displayRestartRequiredText();
+                try {
+                    config.setBool("addEvent", addEvent);
+                    config.save();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
         panel.addUIElement(addEventButton);
 
-        ModLabeledToggleButton addEnemyButton = new ModLabeledToggleButton(getText(TextContent.ADD_ENEMY), x, 550.0F, Color.WHITE, FontHelper.buttonLabelFont, addEnemy, panel, (label) -> {
-        }, (button) -> {
-            addEnemy = button.enabled;
-            displayRestartRequiredText();
-            try {
-                config.setBool("addEnemy", addEnemy);
-                config.save();
-            } catch (IOException e) {
-                e.printStackTrace();
+        ModLabeledToggleButton addEnemyButton = new ModLabeledToggleButton(getText(TextContent.ADD_ENEMY), x, 550.0F, Color.WHITE, FontHelper.buttonLabelFont, addEnemy, panel, new Consumer<ModLabel>() {
+            @Override
+            public void accept(ModLabel label) {
+            }
+        }, new Consumer<ModToggleButton>() {
+            @Override
+            public void accept(ModToggleButton button) {
+                addEnemy = button.enabled;
+                HSRModConfig.this.displayRestartRequiredText();
+                try {
+                    config.setBool("addEnemy", addEnemy);
+                    config.save();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
         panel.addUIElement(addEnemyButton);
         
-        ModLabeledToggleButton useSpineButton = new ModLabeledToggleButton(getText(TextContent.USE_SPINE), x, 500.0F, Color.WHITE, FontHelper.buttonLabelFont, useSpine, panel, (label) -> {
-        }, (button) -> {
-            useSpine = button.enabled;
-            try {
-                config.setBool("useSpine", useSpine);
-                config.save();
-            } catch (IOException e) {
-                e.printStackTrace();
+        ModLabeledToggleButton useSpineButton = new ModLabeledToggleButton(getText(TextContent.USE_SPINE), x, 500.0F, Color.WHITE, FontHelper.buttonLabelFont, useSpine, panel, new Consumer<ModLabel>() {
+            @Override
+            public void accept(ModLabel label) {
+            }
+        }, new Consumer<ModToggleButton>() {
+            @Override
+            public void accept(ModToggleButton button) {
+                useSpine = button.enabled;
+                try {
+                    config.setBool("useSpine", useSpine);
+                    config.save();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
         panel.addUIElement(useSpineButton);
@@ -175,70 +206,134 @@ public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscrib
         float x = 400.0F;
 
         panel.addUIElement(new ModImage(390, 785, PathDefine.POWER_PATH + "ChargingPower48.png"));
-        panel.addUIElement(new ModLabel(getText(TextContent.THRERHOLD_PROTOCOLS), x, 800.0F, Color.RED, panel, (me) -> {
+        panel.addUIElement(new ModLabel(getText(TextContent.THRERHOLD_PROTOCOLS), x, 800.0F, Color.RED, panel, new Consumer<ModLabel>() {
+            @Override
+            public void accept(ModLabel me) {
+            }
         }));
-        panel.addUIElement(new ModLabel(getText(TextContent.TP_DESCRIPTION), x, 200.0F, Color.GRAY, panel, (me) -> {
+        panel.addUIElement(new ModLabel(getText(TextContent.TP_DESCRIPTION), x, 200.0F, Color.GRAY, panel, new Consumer<ModLabel>() {
+            @Override
+            public void accept(ModLabel me) {
+            }
         }));
-        panel.addUIElement(new ModLabel(String.format(getText(TextContent.TP_LEVEL), getActiveTPCount(), tpLimit), x, 755.0F, Color.ORANGE, panel, (me) -> {
-            me.text = String.format(getText(TextContent.TP_LEVEL), getActiveTPCount(), tpLimit);
+        panel.addUIElement(new ModLabel(String.format(getText(TextContent.TP_LEVEL), getActiveTPCount(), tpLimit), x, 755.0F, Color.ORANGE, panel, new Consumer<ModLabel>() {
+            @Override
+            public void accept(ModLabel me) {
+                me.text = String.format(getText(TextContent.TP_LEVEL), getActiveTPCount(), tpLimit);
+            }
         }));
 
-        ModLabeledToggleButton tpTHornButton = new ModLabeledToggleButton(getText(TextContent.TP_THORN), x, 700.0F, Color.WHITE, FontHelper.buttonLabelFont, tpThorn, panel, (label) -> {
-        }, (button) -> {
-            if (!checkButton(button, (b) -> tpThorn = b)) return;
-            try {
-                config.setBool("tpThorn", tpThorn);
-                config.save();
-            } catch (IOException e) {
-                e.printStackTrace();
+        ModLabeledToggleButton tpTHornButton = new ModLabeledToggleButton(getText(TextContent.TP_THORN), x, 700.0F, Color.WHITE, FontHelper.buttonLabelFont, tpThorn, panel, new Consumer<ModLabel>() {
+            @Override
+            public void accept(ModLabel label) {
+            }
+        }, new Consumer<ModToggleButton>() {
+            @Override
+            public void accept(ModToggleButton button) {
+                if (!HSRModConfig.this.checkButton(button, new Consumer<Boolean>() {
+                    @Override
+                    public void accept(Boolean b) {
+                        tpThorn = b;
+                    }
+                })) return;
+                try {
+                    config.setBool("tpThorn", tpThorn);
+                    config.save();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
         panel.addUIElement(tpTHornButton);
 
-        ModLabeledToggleButton tpMalleableButton = new ModLabeledToggleButton(getText(TextContent.TP_MALLEABLE), x, 650.0F, Color.WHITE, FontHelper.buttonLabelFont, tpMalleable, panel, (label) -> {
-        }, (button) -> {
-            if (!checkButton(button, (b) -> tpMalleable = b)) return;
-            try {
-                config.setBool("tpMalleable", tpMalleable);
-                config.save();
-            } catch (IOException e) {
-                e.printStackTrace();
+        ModLabeledToggleButton tpMalleableButton = new ModLabeledToggleButton(getText(TextContent.TP_MALLEABLE), x, 650.0F, Color.WHITE, FontHelper.buttonLabelFont, tpMalleable, panel, new Consumer<ModLabel>() {
+            @Override
+            public void accept(ModLabel label) {
+            }
+        }, new Consumer<ModToggleButton>() {
+            @Override
+            public void accept(ModToggleButton button) {
+                if (!HSRModConfig.this.checkButton(button, new Consumer<Boolean>() {
+                    @Override
+                    public void accept(Boolean b) {
+                        tpMalleable = b;
+                    }
+                })) return;
+                try {
+                    config.setBool("tpMalleable", tpMalleable);
+                    config.save();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
         panel.addUIElement(tpMalleableButton);
 
-        ModLabeledToggleButton tpRitualButton = new ModLabeledToggleButton(getText(TextContent.TP_RITUAL), x, 600.0F, Color.WHITE, FontHelper.buttonLabelFont, tpRitual, panel, (label) -> {
-        }, (button) -> {
-            if (!checkButton(button, (b) -> tpRitual = b)) return;
-            try {
-                config.setBool("tpRitual", tpRitual);
-                config.save();
-            } catch (IOException e) {
-                e.printStackTrace();
+        ModLabeledToggleButton tpRitualButton = new ModLabeledToggleButton(getText(TextContent.TP_RITUAL), x, 600.0F, Color.WHITE, FontHelper.buttonLabelFont, tpRitual, panel, new Consumer<ModLabel>() {
+            @Override
+            public void accept(ModLabel label) {
+            }
+        }, new Consumer<ModToggleButton>() {
+            @Override
+            public void accept(ModToggleButton button) {
+                if (!HSRModConfig.this.checkButton(button, new Consumer<Boolean>() {
+                    @Override
+                    public void accept(Boolean b) {
+                        tpRitual = b;
+                    }
+                })) return;
+                try {
+                    config.setBool("tpRitual", tpRitual);
+                    config.save();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
         panel.addUIElement(tpRitualButton);
 
-        ModLabeledToggleButton tpSafeguardButton = new ModLabeledToggleButton(getText(TextContent.TP_SAFEGUARD), x, 550.0F, Color.WHITE, FontHelper.buttonLabelFont, tpSafeguard, panel, (label) -> {
-        }, (button) -> {
-            if (!checkButton(button, (b) -> tpSafeguard = b)) return;
-            try {
-                config.setBool("tpSafeguard", tpSafeguard);
-                config.save();
-            } catch (IOException e) {
-                e.printStackTrace();
+        ModLabeledToggleButton tpSafeguardButton = new ModLabeledToggleButton(getText(TextContent.TP_SAFEGUARD), x, 550.0F, Color.WHITE, FontHelper.buttonLabelFont, tpSafeguard, panel, new Consumer<ModLabel>() {
+            @Override
+            public void accept(ModLabel label) {
+            }
+        }, new Consumer<ModToggleButton>() {
+            @Override
+            public void accept(ModToggleButton button) {
+                if (!HSRModConfig.this.checkButton(button, new Consumer<Boolean>() {
+                    @Override
+                    public void accept(Boolean b) {
+                        tpSafeguard = b;
+                    }
+                })) return;
+                try {
+                    config.setBool("tpSafeguard", tpSafeguard);
+                    config.save();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
         panel.addUIElement(tpSafeguardButton);
 
-        ModLabeledToggleButton tpStatusButton = new ModLabeledToggleButton(getText(TextContent.TP_CURSE), x, 500.0F, Color.WHITE, FontHelper.buttonLabelFont, tpCurse, panel, (label) -> {
-        }, (button) -> {
-            if (!checkButton(button, (b) -> tpCurse = b)) return;
-            try {
-                config.setBool("tpCurse", tpCurse);
-                config.save();
-            } catch (IOException e) {
-                e.printStackTrace();
+        ModLabeledToggleButton tpStatusButton = new ModLabeledToggleButton(getText(TextContent.TP_CURSE), x, 500.0F, Color.WHITE, FontHelper.buttonLabelFont, tpCurse, panel, new Consumer<ModLabel>() {
+            @Override
+            public void accept(ModLabel label) {
+            }
+        }, new Consumer<ModToggleButton>() {
+            @Override
+            public void accept(ModToggleButton button) {
+                if (!HSRModConfig.this.checkButton(button, new Consumer<Boolean>() {
+                    @Override
+                    public void accept(Boolean b) {
+                        tpCurse = b;
+                    }
+                })) return;
+                try {
+                    config.setBool("tpCurse", tpCurse);
+                    config.save();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
         panel.addUIElement(tpStatusButton);
@@ -252,8 +347,14 @@ public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscrib
             displayText(getText(TextContent.TP_LIMIT_REACHED_NOTICE));
             return false;
         }
-        if (CardCrawlGame.mainMenuScreen.buttons.stream()
-                .anyMatch(b -> b.result == MenuButton.ClickResult.ABANDON_RUN || b.result == MenuButton.ClickResult.RESUME_GAME)) {
+        boolean result = false;
+        for (MenuButton b : CardCrawlGame.mainMenuScreen.buttons) {
+            if (b.result == MenuButton.ClickResult.ABANDON_RUN || b.result == MenuButton.ClickResult.RESUME_GAME) {
+                result = true;
+                break;
+            }
+        }
+        if (result) {
             setter.accept(false);
             button.enabled = !button.enabled;
             displayText(getText(TextContent.TP_CANT_MODIFY_NOTICE));
@@ -294,7 +395,12 @@ public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscrib
         setContents(panel);
         setThresholdProtocols(panel);
         Texture badgeTexture = ImageMaster.loadImage("HSRModResources/img/char/badge.png");
-        BaseMod.registerModBadge(badgeTexture, HSRMod.MOD_NAME, Arrays.stream(info.Authors).findFirst().orElse(""), info.Description, panel);
+        String found = "";
+        for (String Author : info.Authors) {
+            found = Author;
+            break;
+        }
+        BaseMod.registerModBadge(badgeTexture, HSRMod.MOD_NAME, found, info.Description, panel);
     }
 
     public static void loadSettings() {
@@ -307,13 +413,16 @@ public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscrib
     }
 
     private static void loadModInfo() {
-        Optional<ModInfo> infos = Arrays.stream(Loader.MODINFOS).filter((modInfo) -> {
-            AnnotationDB annotationDB = (AnnotationDB) Patcher.annotationDBMap.get(modInfo.jarURL);
-            if (annotationDB == null) {
-                return false;
-            } else {
-                Set<String> initializers = annotationDB.getAnnotationIndex().getOrDefault(SpireInitializer.class.getName(), Collections.emptySet());
-                return initializers.contains(HSRMod.class.getName());
+        Optional<ModInfo> infos = Arrays.stream(Loader.MODINFOS).filter(new Predicate<ModInfo>() {
+            @Override
+            public boolean test(ModInfo modInfo) {
+                AnnotationDB annotationDB = (AnnotationDB) Patcher.annotationDBMap.get(modInfo.jarURL);
+                if (annotationDB == null) {
+                    return false;
+                } else {
+                    Set<String> initializers = annotationDB.getAnnotationIndex().getOrDefault(SpireInitializer.class.getName(), Collections.emptySet());
+                    return initializers.contains(HSRMod.class.getName());
+                }
             }
         }).findFirst();
         if (infos.isPresent()) {

@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -16,11 +17,12 @@ import hsrmod.cards.BaseCard;
 import hsrmod.effects.MultiSlashEffect;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.misc.BrokenPower;
+import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.utils.CachedCondition;
 import hsrmod.utils.ModHelper;
-import hsrmod.signature.utils.SignatureHelper;
 
 import java.util.Objects;
+import java.util.function.Consumer;
 
 public class Firefly1 extends BaseCard {
     public static final String ID = Firefly1.class.getSimpleName();
@@ -38,10 +40,20 @@ public class Firefly1 extends BaseCard {
         returnToHand = false;
         //addToBot(new VFXAction(new VerticalImpactEffect(m.hb.cX, m.hb.cY)));
         if (AbstractDungeon.cardRandomRng.randomBoolean()) {
-            ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID + "-1"));
+            ModHelper.addToBotAbstract(new ModHelper.Lambda() {
+                @Override
+                public void run() {
+                    CardCrawlGame.sound.play(ID + "-1");
+                }
+            });
             addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
         } else {
-            ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID + "-2"));
+            ModHelper.addToBotAbstract(new ModHelper.Lambda() {
+                @Override
+                public void run() {
+                    CardCrawlGame.sound.play(ID + "-2");
+                }
+            });
             addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[1], 1.0F, 2.0F));
         }
         addToBot(new VFXAction(new MultiSlashEffect(m.hb.cX, m.hb.cY, 5, Color.CHARTREUSE, Color.ORANGE), Settings.FAST_MODE ? 0.6f : 1.2f));
@@ -51,22 +63,31 @@ public class Firefly1 extends BaseCard {
                         m,
                         new ElementalDamageInfo(this),
                         AbstractGameAction.AttackEffect.SLASH_DIAGONAL,
-                        ci -> {
-                            if (ci.target.isDying && detectUnlock) {
-                                SignatureHelper.unlock(cardID, true);
+                        new Consumer<ElementalDamageAction.CallbackInfo>() {
+                            @Override
+                            public void accept(ElementalDamageAction.CallbackInfo ci) {
+                                if (ci.target.isDying && detectUnlock) {
+                                    SignatureHelper.unlock(cardID, true);
+                                }
                             }
                         }
                 )
         );
-        ModHelper.addToBotAbstract(() -> {
-            if (m.hasPower(BrokenPower.POWER_ID)) {
-                addToBot(new BreakDamageAction(m, new DamageInfo(p, tr), 0.5f).setCallback(c -> {
-                    if (c.isDying && detectUnlock) {
-                        SignatureHelper.unlock(cardID, true);
-                    }
-                }));
-                returnToHand = true;
-                setCostForTurn(costCache);
+        ModHelper.addToBotAbstract(new ModHelper.Lambda() {
+            @Override
+            public void run() {
+                if (m.hasPower(BrokenPower.POWER_ID)) {
+                    Firefly1.this.addToBot(new BreakDamageAction(m, new DamageInfo(p, tr), 0.5f).setCallback(new Consumer<AbstractCreature>() {
+                        @Override
+                        public void accept(AbstractCreature c) {
+                            if (c.isDying && detectUnlock) {
+                                SignatureHelper.unlock(cardID, true);
+                            }
+                        }
+                    }));
+                    returnToHand = true;
+                    Firefly1.this.setCostForTurn(costCache);
+                }
             }
         });
 

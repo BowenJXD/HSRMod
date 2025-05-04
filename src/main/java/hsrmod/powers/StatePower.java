@@ -2,7 +2,6 @@ package hsrmod.powers;
 
 import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import hsrmod.modcore.CustomEnums;
 
 public abstract class StatePower extends BasePower{
     public StatePower(String id, AbstractCreature owner, int Amount, boolean upgraded){

@@ -1,6 +1,5 @@
 package hsrmod.subscribers;
 
-import basemod.interfaces.ISubscriber;
 import hsrmod.actions.ElementalDamageAction;
 
 /**

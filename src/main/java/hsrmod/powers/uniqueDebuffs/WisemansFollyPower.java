@@ -14,6 +14,8 @@ import hsrmod.powers.DebuffPower;
 import hsrmod.utils.ModHelper;
 
 import java.util.Iterator;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 public class WisemansFollyPower extends DebuffPower {
     public static final String POWER_ID = HSRMod.makePath(WisemansFollyPower.class.getSimpleName());
@@ -64,15 +66,27 @@ public class WisemansFollyPower extends DebuffPower {
 
     @Override
     public void atEndOfTurn(boolean isPlayer) {
-        if (AbstractDungeon.player.hand.group.stream().noneMatch(c -> c instanceof DrRatio3)) {
+        boolean b = true;
+        for (AbstractCard c : AbstractDungeon.player.hand.group) {
+            if (c instanceof DrRatio3) {
+                b = false;
+                break;
+            }
+        }
+        if (b) {
             addToTop(new RemoveSpecificPowerAction(owner, owner, this));
         }
     }
 
     @Override
     public void onRemove() {
-        ModHelper.findCards(c -> c instanceof DrRatio3).forEach(r -> {
-            addToBot(new ExhaustSpecificCardAction(r.card, r.group));
-        });
+        for (ModHelper.FindResult r : ModHelper.findCards(new Predicate<AbstractCard>() {
+            @Override
+            public boolean test(AbstractCard c) {
+                return c instanceof DrRatio3;
+            }
+        })) {
+            WisemansFollyPower.this.addToBot(new ExhaustSpecificCardAction(r.card, r.group));
+        }
     }
 }

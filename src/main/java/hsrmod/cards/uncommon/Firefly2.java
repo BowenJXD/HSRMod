@@ -2,7 +2,6 @@ package hsrmod.cards.uncommon;
 
 import basemod.BaseMod;
 import basemod.interfaces.PostBattleSubscriber;
-import com.evacipated.cardcrawl.mod.stslib.patches.core.AbstractCreature.TempHPField;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -43,7 +42,7 @@ public class Firefly2 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         addToBot(new LoseHPAction(p, p, magicNumber));
-        if ((p.currentHealth + TempHPField.tempHp.get(p) <= magicNumber && !p.hasPower(IntangiblePlayerPower.POWER_ID)) 
+        if ((p.currentHealth <= magicNumber && !p.hasPower(IntangiblePlayerPower.POWER_ID)) 
                 || (p.currentHealth <= 1 )) {
             if (unlockSub == null && !SignatureHelper.isUnlocked(cardID)) {
                 unlockSub = new UnlockSub();
@@ -52,7 +51,12 @@ public class Firefly2 extends BaseCard {
         }
         
         AbstractDungeon.topLevelEffects.add(new PortraitDisplayEffect("Firefly"));
-        ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID));
+        ModHelper.addToBotAbstract(new ModHelper.Lambda() {
+            @Override
+            public void run() {
+                CardCrawlGame.sound.play(ID);
+            }
+        });
         addToBot(new VFXAction(new OfferingEffect()));
         
         addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));

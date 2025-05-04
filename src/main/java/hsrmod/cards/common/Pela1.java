@@ -5,9 +5,12 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
+import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
+
+import java.util.function.Consumer;
 
 public class Pela1 extends BaseCard {
     public static final String ID = Pela1.class.getSimpleName();
@@ -22,8 +25,11 @@ public class Pela1 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)
-                .setCallback(ci -> {
-                    addToBot(new ApplyPowerAction(ci.target, p, new VulnerablePower(ci.target, magicNumber, false), magicNumber));
+                .setCallback(new Consumer<ElementalDamageAction.CallbackInfo>() {
+                    @Override
+                    public void accept(ElementalDamageAction.CallbackInfo ci) {
+                        Pela1.this.addToBot(new ApplyPowerAction(ci.target, p, new VulnerablePower(ci.target, magicNumber, false), magicNumber));
+                    }
                 })
         );
     }

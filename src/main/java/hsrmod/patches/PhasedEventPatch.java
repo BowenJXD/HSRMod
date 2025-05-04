@@ -14,7 +14,12 @@ public class PhasedEventPatch {
         public static SpireReturn<TextPhase.OptionInfo> Prefix(TextPhase.OptionInfo __instance, Consumer<Integer> optionResult) {
             if (optionResult != null) {
                 try {
-                    __instance.optionResult = __instance.optionResult.andThen((event, i) -> optionResult.accept(i));
+                    __instance.optionResult = __instance.optionResult.andThen(new BiConsumer<PhasedEvent, Integer>() {
+                        @Override
+                        public void accept(PhasedEvent event, Integer i) {
+                            optionResult.accept(i);
+                        }
+                    });
                 } catch (Exception e) {
                     return SpireReturn.Continue();
                 }

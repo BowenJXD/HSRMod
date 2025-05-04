@@ -8,7 +8,11 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.powers.misc.DoTPower;
 import hsrmod.powers.uniqueBuffs.ReignOfKeysPower;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class TriggerDoTAction extends AbstractGameAction {
@@ -43,13 +47,16 @@ public class TriggerDoTAction extends AbstractGameAction {
         this.isDone = true;
         
         if(target.isDeadOrEscaped() || target.currentHealth <= 0) return;
-        
-        List<DoTPower> dots = target.powers.stream()
-                .filter(p -> p instanceof DoTPower 
-                        && (p.ID.equals(powerID) || powerID == null))
-                .map(p -> (DoTPower) p)
-                .collect(Collectors.toList());
-        
+
+        List<DoTPower> dots = new ArrayList<>();
+        for (AbstractPower p : target.powers) {
+            if (p instanceof DoTPower
+                    && (p.ID.equals(powerID) || powerID == null)) {
+                DoTPower doTPower = (DoTPower) p;
+                dots.add(doTPower);
+            }
+        }
+
         if (dots.isEmpty()) return;
         
         if (--amount > 0)
@@ -66,7 +73,9 @@ public class TriggerDoTAction extends AbstractGameAction {
         }
 
         if (triggerAll) {
-            dots.forEach(d -> d.trigger(source, removeOnTrigger, false));
+            for (DoTPower d : dots) {
+                d.trigger(source, removeOnTrigger, false);
+            }
         } else {
             dots.get(AbstractDungeon.cardRandomRng.random(dots.size() - 1)).trigger(source, removeOnTrigger, false);
         }

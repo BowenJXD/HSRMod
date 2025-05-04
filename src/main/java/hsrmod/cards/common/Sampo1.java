@@ -1,18 +1,16 @@
 package hsrmod.cards.common;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.combat.PotionBounceEffect;
 import hsrmod.actions.BouncingAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
-import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.breaks.WindShearPower;
+
+import java.util.function.Consumer;
 
 public class Sampo1 extends BaseCard {
     public static final String ID = Sampo1.class.getSimpleName();
@@ -29,14 +27,17 @@ public class Sampo1 extends BaseCard {
                 m,
                 new ElementalDamageInfo(this),
                 AbstractGameAction.AttackEffect.POISON,
-                ci -> {
-                    if (!ci.target.isDeadOrEscaped())
-                        this.addToBot(new ApplyPowerAction(
-                                ci.target,
-                                p,
-                                new WindShearPower(ci.target, p, this.windShearStackNum),
-                                this.windShearStackNum
-                        ));
+                new Consumer<ElementalDamageAction.CallbackInfo>() {
+                    @Override
+                    public void accept(ElementalDamageAction.CallbackInfo ci) {
+                        if (!ci.target.isDeadOrEscaped())
+                            Sampo1.this.addToBot(new ApplyPowerAction(
+                                    ci.target,
+                                    p,
+                                    new WindShearPower(ci.target, p, Sampo1.this.windShearStackNum),
+                                    Sampo1.this.windShearStackNum
+                            ));
+                    }
                 }
         );
         this.addToBot(new BouncingAction(m, magicNumber, elementalDamageAction, this));

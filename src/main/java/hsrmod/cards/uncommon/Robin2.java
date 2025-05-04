@@ -32,7 +32,12 @@ public class Robin2 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.topLevelEffects.add(new PortraitDisplayEffect("Robin"));
-        ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID));
+        ModHelper.addToBotAbstract(new ModHelper.Lambda() {
+            @Override
+            public void run() {
+                CardCrawlGame.sound.play(ID);
+            }
+        });
         addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 3.0F, 4.0F));
         // addToBot(new ForceWaitAction(2.0F));
 

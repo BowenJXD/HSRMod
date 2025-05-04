@@ -3,9 +3,12 @@ package hsrmod.relics.common;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.powers.misc.BreakEffectPower;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.relics.BaseRelic;
+
+import java.util.function.Consumer;
 
 public class SuperOverlordSpinningTop extends BaseRelic {
     public static final String ID = SuperOverlordSpinningTop.class.getSimpleName();
@@ -30,9 +33,11 @@ public class SuperOverlordSpinningTop extends BaseRelic {
         if (canTrigger) {
             flash();
             canTrigger = false;
-            AbstractDungeon.getMonsters().monsters.forEach(m -> addToBot(
-                    new ReducePowerAction(m, AbstractDungeon.player,
-                            new ToughnessPower(m, ToughnessPower.getStackLimit(m) / 3), ToughnessPower.getStackLimit(m) / 3)));
+            for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
+                SuperOverlordSpinningTop.this.addToBot(
+                        new ReducePowerAction(m, AbstractDungeon.player,
+                                new ToughnessPower(m, ToughnessPower.getStackLimit(m) / 3), ToughnessPower.getStackLimit(m) / 3));
+            }
         }
     }
 }

@@ -1,7 +1,6 @@
 package hsrmod.cards.common;
 
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.common.EmptyDeckShuffleAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -48,15 +47,23 @@ public class Qingque1 extends BaseCard {
             addToBot(new DrawCardAction(p, drawAmount));
         }
 
-        ModHelper.addToBotAbstract(() -> updateCost(costCache - cost));
-        ModHelper.addToBotAbstract(() -> {
-            List<Integer> tmp = Arrays.asList(
-                    p.hand.getCardsOfType(CardType.ATTACK).size(),
-                    p.hand.getCardsOfType(CardType.SKILL).size() + (returnToHand ? 1 : 0),
-                    p.hand.getCardsOfType(CardType.POWER).size());
-            tmp.sort(Integer::compareTo);
-            if (tmp.equals(Arrays.asList(2, 3, 3))) {
-                SignatureHelper.unlock(cardID, true);
+        ModHelper.addToBotAbstract(new ModHelper.Lambda() {
+            @Override
+            public void run() {
+                Qingque1.this.updateCost(costCache - cost);
+            }
+        });
+        ModHelper.addToBotAbstract(new ModHelper.Lambda() {
+            @Override
+            public void run() {
+                List<Integer> tmp = Arrays.asList(
+                        p.hand.getCardsOfType(CardType.ATTACK).size(),
+                        p.hand.getCardsOfType(CardType.SKILL).size() + (returnToHand ? 1 : 0),
+                        p.hand.getCardsOfType(CardType.POWER).size());
+                tmp.sort(Integer::compareTo);
+                if (tmp.equals(Arrays.asList(2, 3, 3))) {
+                    SignatureHelper.unlock(cardID, true);
+                }
             }
         });
     }

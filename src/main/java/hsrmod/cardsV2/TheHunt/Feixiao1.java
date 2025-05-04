@@ -15,6 +15,7 @@ import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.utils.ModHelper;
 
 import java.util.Objects;
+import java.util.function.ToIntFunction;
 
 public class Feixiao1 extends BaseCard {
     public static final String ID = Feixiao1.class.getSimpleName();
@@ -40,21 +41,30 @@ public class Feixiao1 extends BaseCard {
     @Override
     public void onEnterHand() {
         super.onEnterHand();
-        if (!SignatureHelper.isUnlocked(cardID) 
-                && AbstractDungeon.player.hand.group.stream().mapToInt(c -> Objects.equals(c.cardID, cardID) ? 1: 0).sum() == 6) {
-            SignatureHelper.unlock(cardID, true);
+        if (!SignatureHelper.isUnlocked(cardID)) {
+            int sum = 0;
+            for (AbstractCard c : AbstractDungeon.player.hand.group) {
+                int i = Objects.equals(c.cardID, cardID) ? 1 : 0;
+                sum += i;
+            }
+            if (sum == 6) {
+                SignatureHelper.unlock(cardID, true);
+            }
         }
     }
 
     @Override
     public void triggerOnOtherCardPlayed(AbstractCard c) {
         super.triggerOnOtherCardPlayed(c);
-        ModHelper.addToBotAbstract(() -> {
-            if (c.type == CardType.ATTACK
-                    && !Objects.equals(c.cardID, cardID)
-                    && (AbstractDungeon.player.drawPile.isEmpty() || !Objects.equals(AbstractDungeon.player.drawPile.getTopCard().cardID, cardID))) {
-                flash();
-                addToTop(new MakeTempCardInDrawPileAction(new Feixiao1(), 1, false, true));
+        ModHelper.addToBotAbstract(new ModHelper.Lambda() {
+            @Override
+            public void run() {
+                if (c.type == CardType.ATTACK
+                        && !Objects.equals(c.cardID, cardID)
+                        && (AbstractDungeon.player.drawPile.isEmpty() || !Objects.equals(AbstractDungeon.player.drawPile.getTopCard().cardID, cardID))) {
+                    Feixiao1.this.flash();
+                    Feixiao1.this.addToTop(new MakeTempCardInDrawPileAction(new Feixiao1(), 1, false, true));
+                }
             }
         });
     }

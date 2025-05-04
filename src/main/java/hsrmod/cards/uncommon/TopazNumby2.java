@@ -19,6 +19,7 @@ import hsrmod.utils.ModHelper;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.ToIntFunction;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
@@ -107,7 +108,23 @@ public class TopazNumby2 extends BaseCard implements PreFollowUpSubscriber {
     @Override
     public AbstractCreature preFollowUpAction(AbstractCard card, AbstractCreature target) {
         if (SubscriptionManager.checkSubscriber(this) && card == this && upgraded && target == null) {
-            target = AbstractDungeon.getMonsters().monsters.stream().filter(ModHelper::check).min(Comparator.comparingInt(m -> m.currentHealth)).orElse(null);
+            boolean seen = false;
+            AbstractMonster best = null;
+            Comparator<AbstractMonster> comparator = Comparator.comparingInt(new ToIntFunction<AbstractMonster>() {
+                @Override
+                public int applyAsInt(AbstractMonster m) {
+                    return m.currentHealth;
+                }
+            });
+            for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters) {
+                if (ModHelper.check(monster)) {
+                    if (!seen || comparator.compare(monster, best) < 0) {
+                        seen = true;
+                        best = monster;
+                    }
+                }
+            }
+            target = seen ? best : null;
         }
         return target;
     }

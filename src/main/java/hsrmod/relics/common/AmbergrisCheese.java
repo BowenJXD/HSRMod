@@ -1,6 +1,5 @@
 package hsrmod.relics.common;
 
-import com.megacrit.cardcrawl.actions.common.HealAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.relics.BaseRelic;
 

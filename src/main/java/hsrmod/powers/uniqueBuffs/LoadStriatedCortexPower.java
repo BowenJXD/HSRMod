@@ -2,17 +2,18 @@ package hsrmod.powers.uniqueBuffs;
 
 import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.DamageModApplyingPower;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.function.ToIntFunction;
 
 public class LoadStriatedCortexPower extends PowerPower implements DamageModApplyingPower {
     public static final String POWER_ID = HSRMod.makePath(LoadStriatedCortexPower.class.getSimpleName());
@@ -28,7 +29,11 @@ public class LoadStriatedCortexPower extends PowerPower implements DamageModAppl
     @Override
     public boolean shouldPushMods(DamageInfo damageInfo, Object o, List<AbstractDamageModifier> list) {
         if (!(o instanceof AbstractCard)) return false;
-        if (list.stream().anyMatch(mod -> mod instanceof LoadStriatedCortexModifier)) return false;
+        for (AbstractDamageModifier mod : list) {
+            if (mod instanceof LoadStriatedCortexModifier) {
+                return false;
+            }
+        }
         return true;
     }
 
@@ -48,7 +53,11 @@ public class LoadStriatedCortexPower extends PowerPower implements DamageModAppl
         @Override
         public float atDamageGive(float damage, DamageInfo.DamageType type, AbstractCreature target, AbstractCard card) {
             if ((card.target == AbstractCard.CardTarget.ALL_ENEMY || card.target == AbstractCard.CardTarget.ALL)) {
-                int enemyCount = AbstractDungeon.getMonsters().monsters.stream().mapToInt(m -> m.isDeadOrEscaped() ? 0 : 1).sum();
+                int enemyCount = 0;
+                for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
+                    int i = m.isDeadOrEscaped() ? 0 : 1;
+                    enemyCount += i;
+                }
                 int increment = 0;
                 if (enemyCount <= damageIncrement.length && enemyCount > 0) {
                     increment = damageIncrement[enemyCount - 1];

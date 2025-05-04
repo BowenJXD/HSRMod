@@ -29,10 +29,12 @@ public class ARuanPouch extends BaseRelic {
                 RewardEditor.addExtraCardRewardToTop();
             }
         } else {
-            ModHelper.addEffectAbstract(() ->
-            {
-                for (int i = 0; i < 3; ++i) {
-                    AbstractDungeon.combatRewardScreen.rewards.add(new RewardItem());
+            ModHelper.addEffectAbstract(new ModHelper.Lambda() {
+                @Override
+                public void run() {
+                    for (int i = 0; i < 3; ++i) {
+                        AbstractDungeon.combatRewardScreen.rewards.add(new RewardItem());
+                    }
                 }
             });
         }

@@ -2,12 +2,15 @@ package hsrmod.relics.rare;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.relics.BaseRelic;
 import hsrmod.utils.ModHelper;
+
+import java.util.function.Predicate;
+import java.util.function.ToIntFunction;
 
 public class RoadToComets extends BaseRelic {
     public static final String ID = RoadToComets.class.getSimpleName();
@@ -25,16 +28,29 @@ public class RoadToComets extends BaseRelic {
         super.onPlayerEndTurn();
         flash();
 
-        int sum = AbstractDungeon.player.hand.group.stream().filter(c -> c.hasTag(CustomEnums.ENERGY_COSTING)).
-                mapToInt(c -> energyGain).sum();
+        int sum = 0;
+        for (AbstractCard abstractCard : AbstractDungeon.player.hand.group) {
+            if (abstractCard.hasTag(CustomEnums.ENERGY_COSTING)) {
+                int i = energyGain;
+                sum += i;
+            }
+        }
         addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player,
                 new EnergyPower(AbstractDungeon.player, sum), sum));
 
-        ModHelper.addToBotAbstract(() -> {
-                    int sum2 = AbstractDungeon.player.hand.group.stream().filter(c -> c.selfRetain || c.retain).
-                            mapToInt(c -> blockGain).sum();
-                    addToBot(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, sum2));
-                }
+        ModHelper.addToBotAbstract(new ModHelper.Lambda() {
+                                       @Override
+                                       public void run() {
+                                           int sum2 = 0;
+                                           for (AbstractCard c : AbstractDungeon.player.hand.group) {
+                                               if (c.selfRetain || c.retain) {
+                                                   int gain = blockGain;
+                                                   sum2 += gain;
+                                               }
+                                           }
+                                           RoadToComets.this.addToBot(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, sum2));
+                                       }
+                                   }
         );
     }
 }

@@ -8,6 +8,10 @@ import hsrmod.modcore.CustomEnums;
 import hsrmod.powers.misc.BreakEffectPower;
 import hsrmod.relics.BaseRelic;
 
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.Function;
+
 public class ThePinkestCollision extends BaseRelic {
     public static final String ID = ThePinkestCollision.class.getSimpleName();
 
@@ -35,9 +39,15 @@ public class ThePinkestCollision extends BaseRelic {
     }
 
     void updateCounter() {
-        setCounter((int) AbstractDungeon.player.masterDeck.group.stream()
-                .map(c -> c instanceof BaseCard ? ((BaseCard)c).pathTag : CustomEnums.TRAILBLAZE)
-                .distinct().count()
+        long count = 0L;
+        Set<AbstractCard.CardTags> uniqueValues = new HashSet<>();
+        for (AbstractCard c : AbstractDungeon.player.masterDeck.group) {
+            AbstractCard.CardTags cardTags = c instanceof BaseCard ? ((BaseCard) c).pathTag : CustomEnums.TRAILBLAZE;
+            if (uniqueValues.add(cardTags)) {
+                count++;
+            }
+        }
+        setCounter((int) count
         );
     }
 }

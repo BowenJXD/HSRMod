@@ -1,19 +1,16 @@
 package hsrmod.cardsV2.Preservation;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.common.RemoveAllBlockAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import hsrmod.actions.AOEAction;
-import hsrmod.actions.ElementalDamageAllAction;
+import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.powers.misc.QuakePower;
 import hsrmod.utils.ModHelper;
+
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.function.ToIntFunction;
 
 public class TheArchitects extends BaseCard {
     public static final String ID = TheArchitects.class.getSimpleName();
@@ -32,9 +29,11 @@ public class TheArchitects extends BaseCard {
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
         baseDamage = AbstractDungeon.player.currentBlock;
-        int count = AbstractDungeon.getMonsters().monsters.stream()
-                .mapToInt(monster -> ModHelper.check(monster) ? 1 : 0)
-                .sum();
+        int count = 0;
+        for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters) {
+            int i = ModHelper.check(monster) ? 1 : 0;
+            count += i;
+        }
         baseDamage /= count;
         super.calculateCardDamage(mo);
     }
@@ -48,8 +47,17 @@ public class TheArchitects extends BaseCard {
             cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
             return false;
         }
-        if (!upgraded && AbstractDungeon.getMonsters().monsters.stream().noneMatch(mo -> mo.currentBlock > 0)) {
-            cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[1];
+        if (!upgraded) {
+            boolean b = true;
+            for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
+                if (mo.currentBlock > 0) {
+                    b = false;
+                    break;
+                }
+            }
+            if (b) {
+                cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[1];
+            }
         }
         return true;
     }
@@ -59,9 +67,12 @@ public class TheArchitects extends BaseCard {
         QuakePower quakePower = (QuakePower) p.getPower(QuakePower.POWER_ID);
         boolean hasBlock = m.currentBlock > 0;
         if (quakePower != null && (hasBlock || upgraded)) {
-            quakePower.attack(m, p.currentBlock, ci->{
-                if (hasBlock && ci.target.currentBlock <= 0) {
-                    quakePower.attack(ci.target, (int) (p.currentBlock * magicNumber / 100f), null);
+            quakePower.attack(m, p.currentBlock, new Consumer<ElementalDamageAction.CallbackInfo>() {
+                @Override
+                public void accept(ElementalDamageAction.CallbackInfo ci) {
+                    if (hasBlock && ci.target.currentBlock <= 0) {
+                        quakePower.attack(ci.target, (int) (p.currentBlock * magicNumber / 100f), null);
+                    }
                 }
             });
         }

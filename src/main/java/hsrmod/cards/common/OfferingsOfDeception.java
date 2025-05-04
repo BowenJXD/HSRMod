@@ -9,6 +9,9 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import hsrmod.cards.BaseCard;
 import hsrmod.powers.misc.DoTPower;
 
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+
 public class OfferingsOfDeception extends BaseCard {
     public static final String ID = OfferingsOfDeception.class.getSimpleName();
 
@@ -19,10 +22,17 @@ public class OfferingsOfDeception extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, block));
-        AbstractDungeon.getMonsters().monsters.stream().filter(mo -> !DoTPower.hasAnyDoTPower(mo)).forEach(mo ->
-                addToBot(new ApplyPowerAction(mo, p, DoTPower.getRandomDoTPower(mo, p, 1), 1)));
-        if (upgraded)
-            AbstractDungeon.getMonsters().monsters.stream().filter(DoTPower::hasAllDoTPower).forEach(mo ->
-                    addToBot(new ApplyPowerAction(mo, p, new StrengthPower(mo, -1), -1)));
+        for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters) {
+            if (!DoTPower.hasAnyDoTPower(monster)) {
+                OfferingsOfDeception.this.addToBot(new ApplyPowerAction(monster, p, DoTPower.getRandomDoTPower(monster, p, 1), 1));
+            }
+        }
+        if (upgraded) {
+            for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
+                if (DoTPower.hasAllDoTPower(mo)) {
+                    OfferingsOfDeception.this.addToBot(new ApplyPowerAction(mo, p, new StrengthPower(mo, -1), -1));
+                }
+            }
+        }
     }
 }

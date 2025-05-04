@@ -1,8 +1,6 @@
 package hsrmod.cardsV2.Curse;
 
-import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cards.BaseCard;
 

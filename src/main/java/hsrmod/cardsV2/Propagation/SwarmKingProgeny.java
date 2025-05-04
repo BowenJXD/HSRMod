@@ -3,16 +3,16 @@ package hsrmod.cardsV2.Propagation;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.unique.LoseEnergyAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import hsrmod.actions.BouncingAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
-import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.misc.SporePower;
+
+import java.util.function.Consumer;
 
 public class SwarmKingProgeny extends BaseCard {
     public static final String ID = SwarmKingProgeny.class.getSimpleName();
@@ -29,8 +29,11 @@ public class SwarmKingProgeny extends BaseCard {
                 m,
                 new ElementalDamageInfo(this),
                 AbstractGameAction.AttackEffect.POISON,
-                ci -> {
-                    addToBot(new ApplyPowerAction(ci.target, p, new SporePower(ci.target, 1), 1));
+                new Consumer<ElementalDamageAction.CallbackInfo>() {
+                    @Override
+                    public void accept(ElementalDamageAction.CallbackInfo ci) {
+                        SwarmKingProgeny.this.addToBot(new ApplyPowerAction(ci.target, p, new SporePower(ci.target, 1), 1));
+                    }
                 }
         );
         addToBot(new BouncingAction(m, x, action, this));

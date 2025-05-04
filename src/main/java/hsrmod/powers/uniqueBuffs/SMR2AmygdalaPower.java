@@ -1,21 +1,14 @@
 package hsrmod.powers.uniqueBuffs;
 
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.PowerPower;
 import hsrmod.powers.misc.BrainInAVatPower;
 import hsrmod.powers.misc.EnergyPower;
-import hsrmod.subscribers.PreEnergyChangeSubscriber;
-import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
 public class SMR2AmygdalaPower extends PowerPower implements OnReceivePowerPower {

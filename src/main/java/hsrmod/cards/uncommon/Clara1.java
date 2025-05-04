@@ -11,9 +11,6 @@ import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.subscribers.SubscriptionManager;
 
-import java.util.Map;
-import java.util.stream.Collectors;
-
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
 public class Clara1 extends BaseCard implements OnPlayerDamagedSubscriber {

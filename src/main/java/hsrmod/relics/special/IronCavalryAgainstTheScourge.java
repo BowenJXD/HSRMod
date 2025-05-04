@@ -6,6 +6,9 @@ import hsrmod.cards.BaseCard;
 import hsrmod.relics.BaseRelic;
 import hsrmod.utils.ModHelper;
 
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+
 public class IronCavalryAgainstTheScourge extends BaseRelic {
     public static final String ID = IronCavalryAgainstTheScourge.class.getSimpleName();
 
@@ -16,24 +19,28 @@ public class IronCavalryAgainstTheScourge extends BaseRelic {
     @Override
     public void onEquip() {
         super.onEquip();
-        AbstractDungeon.player.masterDeck.group.forEach(c -> {
+        for (AbstractCard c : AbstractDungeon.player.masterDeck.group) {
             if (c.hasTag(AbstractCard.CardTags.STARTER_STRIKE)) {
                 c.exhaust = true;
             }
-        });
+        }
     }
 
     @Override
     public void atBattleStart() {
         super.atBattleStart();
         flash();
-        ModHelper.findCards(c -> c.hasTag(AbstractCard.CardTags.STARTER_STRIKE))
-                .forEach(r -> {
-                    if (r.card instanceof BaseCard) {
-                        BaseCard c = (BaseCard) r.card;
-                        c.exhaust = true;
-                        c.tr = c.baseTr += 3;
-                    }
-                });
+        for (ModHelper.FindResult r : ModHelper.findCards(new Predicate<AbstractCard>() {
+            @Override
+            public boolean test(AbstractCard c) {
+                return c.hasTag(AbstractCard.CardTags.STARTER_STRIKE);
+            }
+        })) {
+            if (r.card instanceof BaseCard) {
+                BaseCard c = (BaseCard) r.card;
+                c.exhaust = true;
+                c.tr = c.baseTr += 3;
+            }
+        }
     }
 }

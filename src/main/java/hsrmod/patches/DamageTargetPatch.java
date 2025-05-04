@@ -14,7 +14,12 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 public class DamageTargetPatch {
     @SpirePatch(clz = DamageInfo.class, method = SpirePatch.CLASS)
     public static class DamageTargetField {
-        public static SpireField<AbstractCreature> target = new SpireField<>(() -> null);
+        public static SpireField<AbstractCreature> target = new SpireField<>(new SpireField.DefaultValue<AbstractCreature>() {
+            @Override
+            public AbstractCreature get() {
+                return null;
+            }
+        });
     }
 
     @SpirePatch(clz = AbstractMonster.class, method = "damage")

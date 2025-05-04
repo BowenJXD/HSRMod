@@ -1,8 +1,6 @@
 package hsrmod.relics.starter;
 
-import basemod.BaseMod;
 import basemod.abstracts.CustomMultiPageFtue;
-import basemod.abstracts.CustomSavable;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
@@ -19,16 +17,17 @@ import hsrmod.actions.GridCardManipulator;
 import hsrmod.actions.SimpleGridCardSelectBuilder;
 import hsrmod.cards.BaseCard;
 import hsrmod.cardsV2.Paths.*;
-import hsrmod.characters.StellaCharacter;
 import hsrmod.events.StelleAwakeEvent;
 import hsrmod.modcore.CustomEnums;
-import hsrmod.modcore.HSRMod;
 import hsrmod.relics.BaseRelic;
-import hsrmod.utils.*;
+import hsrmod.utils.PathDefine;
+import hsrmod.utils.RelicEventHelper;
+import hsrmod.utils.RewardEditor;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Predicate;
 
 public abstract class WaxRelic extends BaseRelic implements ClickableRelic/*, CustomSavable<String>*/ {
     public static int defaultWeight = 1;
@@ -70,9 +69,11 @@ public abstract class WaxRelic extends BaseRelic implements ClickableRelic/*, Cu
     @Override
     public void onEquip() {
         super.onEquip();
-        AbstractDungeon.player.relics.stream()
-                .filter(r -> r instanceof WaxRelic && r != this)
-                .forEach(RelicEventHelper::loseRelicsAfterwards);
+        for (AbstractRelic r : AbstractDungeon.player.relics) {
+            if (r instanceof WaxRelic && r != WaxRelic.this) {
+                RelicEventHelper.loseRelicsAfterwards(r);
+            }
+        }
     }
 
     @Override
@@ -114,7 +115,12 @@ public abstract class WaxRelic extends BaseRelic implements ClickableRelic/*, Cu
         if (isObtained
                 && (AbstractDungeon.getCurrRoom() instanceof NeowRoom || AbstractDungeon.getCurrRoom().event instanceof StelleAwakeEvent)
                 && (RewardEditor.getInstance().bannedTags == null || RewardEditor.getInstance().bannedTags.isEmpty())) {
-            AbstractGameAction action = new SimpleGridCardSelectBuilder(c -> true)
+            AbstractGameAction action = new SimpleGridCardSelectBuilder(new Predicate<AbstractCard>() {
+                @Override
+                public boolean test(AbstractCard c) {
+                    return true;
+                }
+            })
                     .setCardGroup(pathGroup)
                     .setAmount(pathToBan)
                     .setAnyNumber(false)

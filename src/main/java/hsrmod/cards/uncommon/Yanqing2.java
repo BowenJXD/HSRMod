@@ -1,26 +1,18 @@
 package hsrmod.cards.uncommon;
 
-import basemod.BaseMod;
-import basemod.interfaces.OnPlayerDamagedSubscriber;
-import basemod.interfaces.OnPlayerLoseBlockSubscriber;
-import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnMyBlockBrokenPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
-import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.breaks.FrozenPower;
-import hsrmod.subscribers.PostBreakBlockSubscriber;
-import hsrmod.subscribers.SubscriptionManager;
-import hsrmod.utils.ModHelper;
+
+import java.util.function.Consumer;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
@@ -48,9 +40,12 @@ public class Yanqing2 extends BaseCard {
                         m,
                         new ElementalDamageInfo(this),
                         AbstractGameAction.AttackEffect.SLASH_HEAVY,
-                        (ci) -> {
-                            if (AbstractDungeon.cardRandomRng.random(100) <= magicNumber)
-                                addToBot(new ApplyPowerAction(ci.target, p, new FrozenPower(ci.target, 1), 1));
+                        new Consumer<ElementalDamageAction.CallbackInfo>() {
+                            @Override
+                            public void accept(ElementalDamageAction.CallbackInfo ci) {
+                                if (AbstractDungeon.cardRandomRng.random(100) <= magicNumber)
+                                    Yanqing2.this.addToBot(new ApplyPowerAction(ci.target, p, new FrozenPower(ci.target, 1), 1));
+                            }
                         }
                 )
         );

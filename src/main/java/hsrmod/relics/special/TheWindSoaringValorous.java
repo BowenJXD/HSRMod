@@ -8,6 +8,9 @@ import hsrmod.misc.ICanChangeToMulti;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.relics.BaseRelic;
 
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+
 public class TheWindSoaringValorous extends BaseRelic {
     public static final String ID = TheWindSoaringValorous.class.getSimpleName();
 
@@ -20,12 +23,14 @@ public class TheWindSoaringValorous extends BaseRelic {
     @Override
     public void atBattleStart() {
         super.atBattleStart();
-        AbstractDungeon.player.drawPile.group.stream()
-                .filter(c -> c.hasTag(AbstractCard.CardTags.STARTER_STRIKE)
-                        && c instanceof ICanChangeToMulti
-                        && c.upgraded
-                        && c.target != AbstractCard.CardTarget.ALL_ENEMY)
-                .forEach(c -> ((ICanChangeToMulti) c).changeToMulti());
+        for (AbstractCard c : AbstractDungeon.player.drawPile.group) {
+            if (c.hasTag(AbstractCard.CardTags.STARTER_STRIKE)
+                    && c instanceof ICanChangeToMulti
+                    && c.upgraded
+                    && c.target != AbstractCard.CardTarget.ALL_ENEMY) {
+                ((ICanChangeToMulti) c).changeToMulti();
+            }
+        }
     }
 
     @Override

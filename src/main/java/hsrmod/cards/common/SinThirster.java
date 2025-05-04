@@ -8,6 +8,9 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.cards.BaseCard;
 import hsrmod.powers.misc.DoTPower;
 
+import java.util.function.Predicate;
+import java.util.function.ToIntFunction;
+
 public class SinThirster extends BaseCard {
     public static final String ID = SinThirster.class.getSimpleName();
     
@@ -20,9 +23,13 @@ public class SinThirster extends BaseCard {
         int max = 0;
         for (AbstractMonster q : AbstractDungeon.getCurrRoom().monsters.monsters) {
             if (!q.isDeadOrEscaped()) {
-                int count = q.powers.stream()
-                        .filter(power -> upgraded ? power.type == AbstractPower.PowerType.DEBUFF : power instanceof DoTPower)
-                        .mapToInt(power -> 1).sum();
+                int count = 0;
+                for (AbstractPower power : q.powers) {
+                    if (upgraded ? power.type == AbstractPower.PowerType.DEBUFF : power instanceof DoTPower) {
+                        int i = 1;
+                        count += i;
+                    }
+                }
                 if (count > max) {
                     max = count;
                 }

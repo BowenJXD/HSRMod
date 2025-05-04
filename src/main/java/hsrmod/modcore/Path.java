@@ -1,14 +1,6 @@
 package hsrmod.modcore;
 
-import basemod.devcommands.relic.Relic;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
-import hsrmod.patches.PathSelectScreen;
-import hsrmod.relics.starter.WaxRelic;
-
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 public enum Path {
     ELATION,

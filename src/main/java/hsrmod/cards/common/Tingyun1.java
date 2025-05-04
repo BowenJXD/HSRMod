@@ -1,6 +1,5 @@
 package hsrmod.cards.common;
 
-import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.ExhaustiveField;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -17,7 +16,6 @@ public class Tingyun1 extends BaseCard {
         super(ID);
         setBaseEnergyCost(10);
         tags.add(CustomEnums.ENERGY_COSTING);
-        ExhaustiveField.ExhaustiveFields.baseExhaustive.set(this, 1);
     }
 
     @Override

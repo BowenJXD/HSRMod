@@ -4,19 +4,17 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.UpgradeSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
-import hsrmod.actions.BreakDamageAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementalDamageInfo;
-import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.utils.CardDataCol;
 import hsrmod.utils.DataManager;
-import hsrmod.utils.ModHelper;
+
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 public class Sushang3 extends BaseCard {
     public static final String ID = Sushang3.class.getSimpleName();
@@ -44,15 +42,23 @@ public class Sushang3 extends BaseCard {
         addToBot(new ElementalDamageAction(
                 m,
                 new ElementalDamageInfo(this),
-                AbstractGameAction.AttackEffect.SLASH_HEAVY, 
-                ci -> {
-            if (ci.didBreak) {
-                addToBot(new ExhaustSpecificCardAction(this, p.discardPile));
-                addToBot(new ExhaustSpecificCardAction(this, p.drawPile));
-                addToTop(new UpgradeSpecificCardAction(this));
-                AbstractDungeon.player.masterDeck.group.stream().filter(c -> c.uuid == uuid).findFirst().ifPresent(AbstractCard::upgrade);
-            }
-        }
+                AbstractGameAction.AttackEffect.SLASH_HEAVY,
+                new Consumer<ElementalDamageAction.CallbackInfo>() {
+                    @Override
+                    public void accept(ElementalDamageAction.CallbackInfo ci) {
+                        if (ci.didBreak) {
+                            Sushang3.this.addToBot(new ExhaustSpecificCardAction(Sushang3.this, p.discardPile));
+                            Sushang3.this.addToBot(new ExhaustSpecificCardAction(Sushang3.this, p.drawPile));
+                            Sushang3.this.addToTop(new UpgradeSpecificCardAction(Sushang3.this));
+                            for (AbstractCard c : AbstractDungeon.player.masterDeck.group) {
+                                if (c.uuid == uuid) {
+                                    c.upgrade();
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
         ));
     }
 }

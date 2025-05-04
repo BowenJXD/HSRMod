@@ -19,10 +19,10 @@ import com.megacrit.cardcrawl.random.Random;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
 import hsrmod.modcore.HSRMod;
-import hsrmod.powers.enemyOnly.SummonedPower;
 
 import java.util.*;
 import java.util.function.Predicate;
+import java.util.function.ToIntFunction;
 
 public class ModHelper {
     public static void addToBotAbstract(Lambda func) {
@@ -121,7 +121,12 @@ public class ModHelper {
     }
 
     public static AbstractMonster betterGetRandomMonster() {
-        return getRandomMonster(m -> !(m.isDying || m.isEscaping || m.halfDead || m.currentHealth <= 0), true);
+        return getRandomMonster(new Predicate<AbstractMonster>() {
+            @Override
+            public boolean test(AbstractMonster m) {
+                return !(m.isDying || m.isEscaping || m.halfDead || m.currentHealth <= 0);
+            }
+        }, true);
     }
     
     public static boolean check(AbstractCreature m) {
@@ -201,10 +206,23 @@ public class ModHelper {
                 || AbstractDungeon.getMonsters().monsters == null) {
             return null;
         }
-        return AbstractDungeon.getCurrRoom().monsters.monsters.stream()
-                .filter(ModHelper::check)
-                .max(Comparator.comparingInt(m -> m.maxHealth))
-                .orElse(null);
+        boolean seen = false;
+        AbstractMonster best = null;
+        Comparator<AbstractMonster> comparator = Comparator.comparingInt(new ToIntFunction<AbstractMonster>() {
+            @Override
+            public int applyAsInt(AbstractMonster m) {
+                return m.maxHealth;
+            }
+        });
+        for (AbstractMonster monster : AbstractDungeon.getCurrRoom().monsters.monsters) {
+            if (check(monster)) {
+                if (!seen || comparator.compare(monster, best) > 0) {
+                    seen = true;
+                    best = monster;
+                }
+            }
+        }
+        return seen ? best : null;
     }
 
     public static boolean hasRelic(String relicID) {
@@ -250,7 +268,7 @@ public class ModHelper {
 
         while (var1.hasNext()) {
             AbstractMonster m = (AbstractMonster) var1.next();
-            if (!m.isDead && !m.isDying && (m.hasPower(MinionPower.POWER_ID) || m.hasPower(SummonedPower.POWER_ID) || m.halfDead)) {
+            if (!m.isDead && !m.isDying && (m.hasPower(MinionPower.POWER_ID) || m.halfDead)) {
                 AbstractDungeon.actionManager.addToTop(new HideHealthBarAction(m));
                 AbstractDungeon.actionManager.addToTop(new SuicideAction(m));
                 AbstractDungeon.actionManager.addToTop(new VFXAction(m, new InflameEffect(m), 0.2F));

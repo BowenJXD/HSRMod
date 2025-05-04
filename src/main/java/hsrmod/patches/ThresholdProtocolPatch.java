@@ -5,11 +5,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.unique.IncreaseMaxHpAction;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -19,16 +17,15 @@ import com.megacrit.cardcrawl.powers.RitualPower;
 import com.megacrit.cardcrawl.powers.ThornsPower;
 import com.megacrit.cardcrawl.screens.charSelect.CharacterSelectScreen;
 import com.megacrit.cardcrawl.ui.panels.TopPanel;
+import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import hsrmod.effects.TopWarningEffect;
-import hsrmod.modcore.HSRMod;
 import hsrmod.modcore.HSRModConfig;
 import hsrmod.powers.enemyOnly.SafeguardPower;
 
 import java.lang.reflect.Method;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Objects;
+import java.util.function.Predicate;
 
 public class ThresholdProtocolPatch {
     public static HashSet<AbstractMonster> processed = new HashSet<>();
@@ -143,7 +140,14 @@ public class ThresholdProtocolPatch {
             int count = HSRModConfig.getActiveTPCount();
             if (count > 0) {
                 AbstractDungeon.actionManager.addToBottom(new IncreaseMaxHpAction(m, HSRModConfig.getHPInc(), true));
-                if (AbstractDungeon.topLevelEffectsQueue.stream().noneMatch(e -> e instanceof TopWarningEffect)) {
+                boolean b = true;
+                for (AbstractGameEffect e : AbstractDungeon.topLevelEffectsQueue) {
+                    if (e instanceof TopWarningEffect) {
+                        b = false;
+                        break;
+                    }
+                }
+                if (b) {
                     if (Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT) {
                         AbstractDungeon.topLevelEffectsQueue.add(new TopWarningEffect("⚠阈值协议生效⚠"));
                     } else {

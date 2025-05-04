@@ -1,8 +1,7 @@
 package hsrmod.cards;
 
+import basemod.abstracts.CustomCard;
 import com.badlogic.gdx.math.MathUtils;
-import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.SpawnModificationCard;
-import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.CommonKeywordIconsField;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -26,15 +25,14 @@ import hsrmod.utils.CardDataCol;
 import hsrmod.utils.DataManager;
 import hsrmod.utils.ModHelper;
 import hsrmod.utils.RewardEditor;
-import hsrmod.signature.card.AbstractSignatureCard;
-import hsrmod.signature.utils.SignatureHelper;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.function.ToIntFunction;
 
 import static hsrmod.characters.StellaCharacter.PlayerColorEnum.HSR_PINK;
 
-public abstract class BaseCard extends AbstractSignatureCard implements SpawnModificationCard {
+public abstract class BaseCard extends CustomCard {
     protected int upCost;
     protected String upDescription;
     protected int upDamage;
@@ -97,7 +95,6 @@ public abstract class BaseCard extends AbstractSignatureCard implements SpawnMod
         this.isInnate = rawDescription.contains("固有。");
         this.isEthereal = rawDescription.contains("虚无。");*/
 
-        CommonKeywordIconsField.useIcons.set(this, true);
         assetUrl = "HSRMod/" + id + "_s_p.png";
     }
 
@@ -177,22 +174,16 @@ public abstract class BaseCard extends AbstractSignatureCard implements SpawnMod
         return false;
     }
 
-    @Override
-    public boolean canSpawn(ArrayList<AbstractCard> currentRewardCards) {
-        return checkSpawnable();
-    }
-
-    @Override
-    public boolean canSpawnShop(ArrayList<AbstractCard> currentShopCards) {
-        return checkSpawnable();
-    }
-
-    protected boolean checkSpawnable() {
+    public boolean checkSpawnable() {
         if (!RewardEditor.getInstance().checkPath(pathTag)) {
             return false;
         }
-        
-        int count = AbstractDungeon.player.masterDeck.group.stream().mapToInt(c -> c.cardID.equals(this.cardID) ? 1 : 0).sum();
+
+        int count = 0;
+        for (AbstractCard c : AbstractDungeon.player.masterDeck.group) {
+            int i = c.cardID.equals(BaseCard.this.cardID) ? 1 : 0;
+            count += i;
+        }
 
         if (count > 0 && type == CardType.POWER) {
             return false;
@@ -209,9 +200,19 @@ public abstract class BaseCard extends AbstractSignatureCard implements SpawnMod
             AbstractDungeon.topLevelEffects.add(new PortraitDisplayEffect(portraitName.substring(0, portraitName.length() - 1)));
             String[] extDesc = cardStrings.EXTENDED_DESCRIPTION;
             if (extDesc.length == 1)
-                ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(portraitName, volume));
+                ModHelper.addToBotAbstract(new ModHelper.Lambda() {
+                    @Override
+                    public void run() {
+                        CardCrawlGame.sound.playV(portraitName, volume);
+                    }
+                });
             else {
-                ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(portraitName + "_" + index, volume));
+                ModHelper.addToBotAbstract(new ModHelper.Lambda() {
+                    @Override
+                    public void run() {
+                        CardCrawlGame.sound.playV(portraitName + "_" + index, volume);
+                    }
+                });
             }
             addToBot(new TalkAction(true, extDesc[index], duration, duration + 1));
         } catch (Exception e) {
@@ -261,14 +262,6 @@ public abstract class BaseCard extends AbstractSignatureCard implements SpawnMod
 
     public int getEnergyCost() {
         return energyCost;
-    }
-
-    @Override
-    public void triggerOnEndOfPlayerTurn() {
-        super.triggerOnEndOfPlayerTurn();
-        if (isEthereal) {
-            SignatureHelper.unlock(HSRMod.makePath(Acheron1.ID), false);
-        }
     }
 
     public void setBaseEnergyCost(int energyCost) {

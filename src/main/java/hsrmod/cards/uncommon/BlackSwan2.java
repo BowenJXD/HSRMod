@@ -1,5 +1,6 @@
 package hsrmod.cards.uncommon;
 
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -12,6 +13,8 @@ import hsrmod.powers.breaks.BleedingPower;
 import hsrmod.powers.breaks.BurnPower;
 import hsrmod.powers.breaks.ShockPower;
 import hsrmod.powers.breaks.WindShearPower;
+
+import java.util.function.Function;
 
 public class BlackSwan2 extends BaseCard {
     public static final String ID = BlackSwan2.class.getSimpleName();
@@ -29,7 +32,12 @@ public class BlackSwan2 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new AOEAction((q) -> new VFXAction(new BossCrystalImpactEffect(q.hb.cX, q.hb.cY))));
+        addToBot(new AOEAction(new Function<AbstractMonster, AbstractGameAction>() {
+            @Override
+            public AbstractGameAction apply(AbstractMonster q) {
+                return new VFXAction(new BossCrystalImpactEffect(q.hb.cX, q.hb.cY));
+            }
+        }));
         addToBot(new ApplyPowerAction(m, p, new BleedingPower(m, p, bleedStackNum), bleedStackNum));
         addToBot(new ApplyPowerAction(m, p, new BurnPower(m, p, burnStackNum), burnStackNum));
         addToBot(new ApplyPowerAction(m, p, new ShockPower(m, p, shockStackNum), shockStackNum));

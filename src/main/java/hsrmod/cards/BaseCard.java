@@ -249,7 +249,12 @@ public abstract class BaseCard extends AbstractSignatureCard implements SpawnMod
         energyCost = baseEnergyCost;
         if (type == CardType.POWER && rarity == CardRarity.RARE) addToBot(new VFXAction(new MiracleEffect()));
         onUse(p, m);
-        ModHelper.addToBotAbstract( () -> this.followedUp = false);
+        ModHelper.addToBotAbstract(new ModHelper.Lambda() {
+            @Override
+            public void run() {
+                BaseCard.this.followedUp = false;
+            }
+        });
     }
     
     public abstract void onUse(AbstractPlayer p, AbstractMonster m);

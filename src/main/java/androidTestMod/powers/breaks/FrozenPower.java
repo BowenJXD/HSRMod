@@ -1,0 +1,102 @@
+package androidTestMod.powers.breaks;
+
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.GainStrengthPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
+import androidTestMod.actions.ElementalDamageAction;
+import androidTestMod.modcore.AndroidTestMod;
+import androidTestMod.powers.DebuffPower;
+import androidTestMod.powers.misc.FrozenResistancePower;
+import androidTestMod.subscribers.PreElementalDamageSubscriber;
+import androidTestMod.subscribers.SubscriptionManager;
+import androidTestMod.utils.ModHelper;
+
+public class FrozenPower extends DebuffPower implements PreElementalDamageSubscriber {
+    public static final String POWER_ID = AndroidTestMod.makePath(FrozenPower.class.getSimpleName());
+    
+    private int amountRequired = 99;
+    
+    private boolean detecting = false;
+    
+    AbstractMonster monsterOwner;
+
+    public FrozenPower(AbstractCreature owner, int Amount) {
+        super(POWER_ID, owner, Amount);
+        if (owner instanceof AbstractMonster) {
+            monsterOwner = (AbstractMonster) owner;
+        }
+        amountRequired = getAmountRequired(monsterOwner);
+        priority = 6;
+        
+        this.updateDescription();
+    }
+
+    @Override
+    public void updateDescription() {
+        this.description = String.format(DESCRIPTIONS[0], amountRequired) + DESCRIPTIONS[1];
+    }
+
+    @Override
+    public void onInitialApplication() {
+        super.onInitialApplication();
+        SubscriptionManager.subscribe(this);
+    }
+
+    @Override
+    public void onRemove() {
+        super.onRemove();
+        SubscriptionManager.unsubscribe(this);
+    }
+
+    @Override
+    public void atStartOfTurn() {
+        int frozenRes = ModHelper.getPowerCount(owner, FrozenResistancePower.POWER_ID);
+        if (amount >= amountRequired + frozenRes){
+            if (monsterOwner != null && monsterOwner.intent != AbstractMonster.Intent.STUN) {
+                addToBot(new ApplyPowerAction(owner, owner, new StrengthPower(owner, 999)));
+                addToBot(new ApplyPowerAction(owner, owner, new GainStrengthPower(owner, 999)));
+            }
+            addToBot(new RemoveSpecificPowerAction(owner, owner, this));
+            addToBot(new ApplyPowerAction(owner, owner, new FrozenResistancePower(owner, 1), 1));
+        }
+    }
+
+    @Override
+    public void onPlayCard(AbstractCard card, AbstractMonster m) {
+        detecting = true;
+    }
+
+    public static int getAmountRequired(AbstractMonster m){
+        int result = 99;
+        if (m != null){
+            switch (m.type){
+                case NORMAL:
+                    result = 1;
+                    break;
+                case ELITE:
+                    result = 2;
+                    break;
+                case BOSS:
+                    result = 3;
+                    break;
+            }
+        }
+        return result;
+        
+    }
+
+    @Override
+    public float preElementalDamage(ElementalDamageAction action, float dmg) {
+        if (SubscriptionManager.checkSubscriber(this) 
+                && action.info.card != null
+                && action.target == owner 
+                && detecting) {
+            remove(1);
+        }
+        return dmg;
+    }
+}

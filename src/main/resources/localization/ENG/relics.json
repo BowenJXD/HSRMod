@@ -1,0 +1,734 @@
+﻿{
+  "HSRMod:PomPomBlessing": {
+    "NAME": "PomPom Blessing",
+    "FLAVOR": "\"Ta-da! Here's to the future expeditions we'll be experiencing together!\"",
+    "DESCRIPTIONS": [
+      "At battle start, gain [E] [E] , gain #yIntangible . NL After you use a card, gain #b20 #yhsrmod:Charge . #yCharge will be kept between battles. NL At the end of turn, you can choose to use 20 #yCharge per card to retain cards. NL #rWould #rsomehow #rsave #ryou #rfrom #rdanger... ",
+      "Retain (each costs 20 Charge)",
+      "Choose one crew member to sacrifice",
+      "I don't want to… be alone…",
+      "This… can't be…",
+      "That's… my final lesson… for you…",
+      "Live on, kid…",
+      "Finally… A life to save…",
+      "玩家初始拥有 #y充能 ，每打出一张牌恢复20点 #y充能 ，有些牌需要消耗 #y充能 才能打出。",
+      "玩家回合结束时，可以消耗 #y充能 保留手牌，通过此法可以保留关键牌蓄爆。",
+      " #y充能 会跨战斗保留。控制牌堆 #y耗能 牌的数量，以此达到 #y充能 的合理利用，可以有效提升战力。"
+    ]
+  },
+  "HSRMod:GalacticBat": {
+    "NAME": "Galactic Bat",
+    "FLAVOR": "\"Rules are made to be broken!\"",
+    "DESCRIPTIONS": [
+      "Enemies have #yToughness, deal damage to reduce it. NL When #yToughness is reduced to 0, apply #yBroken, deal break damage and an #yeffect #yof #ybreaking depending on the element type of the damage. NL Right click in game to view more detail.",
+      "Enemies have #yhsrmod:Toughness, deal damage to reduce it. NL When #yToughness is reduced to 0, apply #yhsrmod:Broken, deal #ybreak-damage and an #yhsrmod:effect-of-breaking depending on the element type of the damage. NL Right click in game to close detailed info.",
+      "怪物初始拥有 #y韧性 ，层数大于0时，按层数令受到的伤害减少。",
+      "玩家可以通过 #r攻击牌 削减怪物 #y韧性 ，削韧数量和伤害属性写在括号里。",
+      "将怪物韧性削减至0时， #y击破 怪物，按伤害属性造成不同的 #y击破伤害 ，和负面效果，最后施加 #y击破状态 。",
+      "被 #y击破 的怪物造成的伤害减少，受到的伤害增加， #y韧性 可以继续被削减，且能进一步按照层数提供增伤。",
+      "一轮结束时，怪物的 #y韧性 将恢复至上限。",
+      "附表为每种属性的 #y击破效果 ，无需死记，仅供参考，实战中影响很少。"
+    ]
+  },
+  "HSRMod:WaxOfElation": {
+    "NAME": "Wax Of Elation",
+    "FLAVOR": "It is said that stamping with this Sealing Wax will attract a glimpse from the corresponding Aeon from across space and time - Aha is watching you! ",
+    "DESCRIPTIONS": [
+      "Increase the chance of appearing of \"Elation\" cards. Right click in Neow's room to ban paths.",
+      "Increase the chance of appearing of \"Elation\" cards. Banned paths: %s.",
+      "Choose %d paths to ban",
+      "通过追击进行输出。 NL 达成特定的追击条件可以不消耗能量打出牌。",
+      "有追击条件的牌为追击牌。通过触发追击条件打出的时点为“追击时”。"
+    ]
+  },
+  "HSRMod:WaxOfDestruction": {
+    "NAME": "Wax Of Destruction",
+    "FLAVOR": "It is said that stamping with this Sealing Wax will attract a glimpse from the corresponding Aeon from across space and time - Nanook is watching you! ",
+    "DESCRIPTIONS": [
+      "Increase the chance of appearing of \"Destruction\" cards. Right click in Neow's room to ban paths.",
+      "Increase the chance of appearing of \"Destruction\" cards. Banned paths: %s.",
+      "Choose %d paths to ban",
+      "通过击破伤害进行输出。 NL 牌有较高额的削韧，且部分在击破时，或对被击破的目标有额外效果。",
+      "击破伤害仅受击破特攻和敌方效果影响，不受力量等己方效果影响。"
+    ]
+  },
+  "HSRMod:WaxOfNihility": {
+    "NAME": "Wax Of Nihility",
+    "FLAVOR": "It is said that stamping with this Sealing Wax will attract a glimpse from the corresponding Aeon from across space and time - IX is watching you! ",
+    "DESCRIPTIONS": [
+      "Increase the chance of appearing of \"Nihility\" cards. Right click in Neow's room to ban paths.",
+      "Increase the chance of appearing of \"Nihility\" cards. Banned paths: %s.",
+      "Choose %d paths to ban",
+      "负面效果较多，通过持续伤害进行输出。 NL 有四种不同的持续伤害，分别为灼烧，触电，风化，裂伤。不同的持续伤害独立结算。",
+      "所有持续伤害会于怪物的回合开始时触发，造成对应的属性伤害。 NL 持续伤害受所有效果影响。 NL 其他方式触发持续伤害也会会减少层数。"
+    ]
+  },
+  "HSRMod:WaxOfPropagation": {
+    "NAME": "Wax Of Propagation",
+    "FLAVOR": "It is said that stamping with this Sealing Wax will attract a glimpse from the corresponding Aeon from across space and time - IX is watching you! ",
+    "DESCRIPTIONS": [
+      "Increase the chance of appearing of \"Propagation\" cards. Right click in Neow's room to ban paths.",
+      "Increase the chance of appearing of \"Propagation\" cards. Banned paths: %s.",
+      "Choose %d paths to ban",
+      "能量较多。多段攻击。 NL 通过能量的变化叠加【孢子】并在合适的时机引爆进行输出。",
+      "部分牌可以叠加【孢子】，能按照层数造成成倍的固定伤害，不受效果影响。"
+    ]
+  },
+  "HSRMod:WaxOfPreservation": {
+    "NAME": "Wax Of Preservation",
+    "FLAVOR": "It is said that stamping with this Sealing Wax will attract a glimpse from the corresponding Aeon from across space and time - IX is watching you! ",
+    "DESCRIPTIONS": [
+      "Increase the chance of appearing of \"Preservation\" cards. Right click in Neow's room to ban paths.",
+      "Increase the chance of appearing of \"Preservation\" cards. Banned paths: %s.",
+      "Choose %d paths to ban",
+      "格挡较多。低频高额攻击。 NL 通过叠加格挡和【反震】，在受到怪物伤害后触发【反震】反击进行输出。",
+      "【反震】为固定伤害，不受效果影响，只受格挡值影响。"
+    ]
+  },
+  "HSRMod:WaxOfTheHunt": {
+    "NAME": "Wax Of The Hunt",
+    "FLAVOR": "It is said that stamping with this Sealing Wax will attract a glimpse from the corresponding Aeon from across space and time - IX is watching you! ",
+    "DESCRIPTIONS": [
+      "Increase the chance of appearing of \"The Hunt\" cards. Right click in Neow's room to ban paths.",
+      "Increase the chance of appearing of \"The Hunt\" cards. Banned paths: %s.",
+      "Choose %d paths to ban",
+      "过牌较多。单体多段低伤攻击。 NL 通过源源不断的摸取0费牌进行输出。",
+      "可以通过摸牌和出牌获得【会心】（约等于有上限的临时力量），增加0费牌收益。"
+    ]
+  },
+  "HSRMod:WaxOfErudition": {
+    "NAME": "Wax Of Erudition",
+    "FLAVOR": "It is said that stamping with this Sealing Wax will attract a glimpse from the corresponding Aeon from across space and time - IX is watching you! ",
+    "DESCRIPTIONS": [
+      "Increase the chance of appearing of \"Erudition\" cards. Right click in Neow's room to ban paths.",
+      "Increase the chance of appearing of \"Erudition\" cards. Banned paths: %s.",
+      "Choose %d paths to ban",
+      "充能较多。群体攻击。 NL 通过获取和消耗充能运转。",
+      "【罐中脑】可以返还一次充能的消耗，让充能资源更丰富。"
+    ]
+  },
+  "HSRMod:WaxOfAbundance": {
+    "NAME": "Wax Of Abundance",
+    "FLAVOR": "It is said that stamping with this Sealing Wax will attract a glimpse from the corresponding Aeon from across space and time - IX is watching you! ",
+    "DESCRIPTIONS": [
+      "Increase the chance of appearing of \"Abundance\" cards. Right click in Neow's room to ban paths.",
+      "Increase the chance of appearing of \"Abundance\" cards. Banned paths: %s.",
+      "Choose %d paths to ban",
+      "临时生命较多。低频高额攻击。 NL 通过叠加临时生命获得【珠露】，和不断消耗生命输出。",
+      "【珠露】为固定伤害，不受效果影响。 NL 【坏死】为叠加临时生命带来的负面效果，但运用得当也可以加以利用。"
+    ]
+  },
+  "HSRMod:WaxOfRemembrance": {
+    "NAME": "Wax Of Remembrance",
+    "FLAVOR": "It is said that stamping with this Sealing Wax will attract a glimpse from the corresponding Aeon from across space and time - IX is watching you! ",
+    "DESCRIPTIONS": [
+      "Increase the chance of appearing of \"Remembrance\" cards. Right click in Neow's room to ban paths.",
+      "Increase the chance of appearing of \"Remembrance\" cards. Banned paths: %s.",
+      "Choose %d paths to ban"
+    ]
+  },
+  "HSRMod:TrailblazeTimer": {
+    "NAME": "Trailblaze Timer",
+    "FLAVOR": "It broke countless times and underwent endless repairs. Its former shape was no longer discernible, and only the stilled sharp hands were pointing ever forward.",
+    "DESCRIPTIONS": [
+      "Future card rewards have #b1 more cards to choose from. NL Right click in Neow's room to ban paths.",
+      "Future card rewards have #b1 more cards to choose from. Banned paths: %s.",
+      "Choose %d paths to ban"
+    ]
+  },
+  "HSRMod:TheAshblazingGrandDuke": {
+    "NAME": "The Ashblazing GrandDuke",
+    "FLAVOR": "The elegant fire demon was born in the most fiery of all fires, and believes Destruction to be the supreme glory bestowed upon Fetora.",
+    "DESCRIPTIONS": [
+      "Your starter strike cards are considered #yhsrmod:Follow-Up cards, and will #yFollow-Up upon #yhsrmod:break. "
+    ]
+  },
+  "HSRMod:IronCavalryAgainstTheScourge": {
+    "NAME": "Iron Cavalry Against The Scourge",
+    "FLAVOR": "Until the flames are completely extinguished, until the insectoids that blot out the sky turn into ashen black earth, until no one remains alive — such a daily routine would continue...",
+    "DESCRIPTIONS": [
+      "Your starter strike cards gain #yExhaust , and their #yhsrmod:Toughness reduction value + #b3 ."
+    ]
+  },
+  "HSRMod:PrisonerInDeepConfinement": {
+    "NAME": "Prisoner In Deep Confinement",
+    "FLAVOR": "\"Borisin Brood Lord, with you come war and a scourge upon all worlds. Your sentence is to be eternally detained and imprisoned, never to be reborn.\"",
+    "DESCRIPTIONS": [
+      "Your starter strike cards gain #yEthereal , and after being exhausted, apply #b1 stack of #yhsrmod:DoT to all enemies. NL You are immune to #yThorn damage outside of your turn."
+    ]
+  },
+  "HSRMod:KnightOfPurityPalace": {
+    "NAME": "Knight of Purity Palace",
+    "FLAVOR": "\"Henceforth, I will become a witch, and you will return to being a devil.\" Safina could not deny the validity of Vanira's statement.",
+    "DESCRIPTIONS": [
+      "At battle starts, all starter defend card gain #yInnate, and its Block + #b2 . NL When shuffling your deck, gain all innate cards."
+    ]
+  },
+  "HSRMod:MusketeerOfWildWheat": {
+    "NAME": "Musketeer of WildWheat",
+    "FLAVOR": "Waking up, there would be traces of damp tears on Oakley's felt hat. As a child, she learned how to shoot a gun only because she had wanted her father's handsome and stylish hat.",
+    "DESCRIPTIONS": [
+      "Upgrade 1 starter strike upon gain. When using starter strike, draw 1."
+    ]
+  },
+  "HSRMod:PasserbyOfWanderingCloud": {
+    "NAME": "Passerby of Wandering Cloud",
+    "FLAVOR": "If life could be deemed as a continuous journey, then the unnamed wishes to step over the pool of blood made of all whom he deeply resented before reaching his own end.",
+    "DESCRIPTIONS": [
+      "Gain [E] at start of your turn, exhaust [E] if the number of start strike in your hand is less than 2."
+    ]
+  },
+  "HSRMod:TheWindSoaringValorous": {
+    "NAME": "The Wind Soaring Valorous",
+    "FLAVOR": "She quickened her pace, barefoot and agile, with the girl closely chasing after her. Or perhaps, they were both chasing after each other.",
+    "DESCRIPTIONS": [
+      "All upgraded starter strike becomes AoE at start of battle. When using starter strike, gain #b40 #yhsrmod:Charge ."
+    ]
+  },
+  "HSRMod:LongevousDisciple": {
+    "NAME": "Longevous Disciple",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "Starter defends would now gain temp HP instead, and its block + #b1."
+    ]
+  },
+  "HSRMod:MasterOfDreamMachinations": {
+    "NAME": "Master of Dream Machinations",
+    "FLAVOR": "The more people want to discover the truth, the more they will be blinded by lies... Amidst the thousands of legends and rumors, this superstar of the festivities will only leave his footprints, but never his face",
+    "DESCRIPTIONS": [
+      "Gain #yAstral #yExpress upon gain. You can right click this relic in shop to use some gold to transform a card.",
+      "Transform a card"
+    ]
+  },
+  "HSRMod:March7th": {
+    "NAME": "March 7th's last words",
+    "FLAVOR": "I don't want to… be alone…",
+    "DESCRIPTIONS": [
+      ""
+    ]
+  },
+  "HSRMod:Danheng": {
+    "NAME": "Danheng's last words",
+    "FLAVOR": "All remains as it did yesterday…",
+    "DESCRIPTIONS": [
+      ""
+    ]
+  },
+  "HSRMod:Himeko": {
+    "NAME": "Himeko's last words",
+    "FLAVOR": "She reborns from the flames, she smiles in the fire.",
+    "DESCRIPTIONS": [
+      ""
+    ]
+  },
+  "HSRMod:Welt": {
+    "NAME": "Welt's last words",
+    "FLAVOR": "Live on, kid.",
+    "DESCRIPTIONS": [
+      ""
+    ]
+  },
+  "HSRMod:WarpingCompoundEye": {
+    "NAME": "Warping Compound Eye",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "When selecting card rewards, upgrade all Common cards among them."
+    ]
+  },
+  "HSRMod:CasketOfInaccuracy": {
+    "NAME": "Casket of Inaccuracy",
+    "FLAVOR": "Each side of this casket can be opened, but the spaces that should overlap do not, and due to this unique property, you cannot be sure what will happen when you open it. It is not recommended to store anything inside.",
+    "DESCRIPTIONS": [
+      "When picked up, gain an extra card reward.",
+      "Casket of Inaccuracy!"
+    ]
+  },
+  "HSRMod:AmbergrisCheese": {
+    "NAME": "Ambergris Cheese",
+    "FLAVOR": "That one world in the cosmos is still stuffed full of delicious cheese to this day, packed so tight that not a single centimeter of space is left.",
+    "DESCRIPTIONS": [
+      "After battle, restore #b2 HP."
+    ]
+  },
+  "HSRMod:TheParchmentThatAlwaysEats": {
+    "NAME": "The Parchment That Always Eats",
+    "FLAVOR": "In Herta's Curio list, the hazard level of this parchment is marked as extremely high.",
+    "DESCRIPTIONS": [
+      "At battle starts, deal damage to all enemies equal to #b10% of their max HP."
+    ]
+  },
+  "HSRMod:TheDoctorsRobe": {
+    "NAME": "The Doctors Robe",
+    "FLAVOR": "This robe was reportedly once owned by member 4 of the Genius Society, Dr. Primitive, and supposedly had incredible powers.",
+    "DESCRIPTIONS": [
+      "At battle starts, gain #b120 #yhsrmod:Charge ."
+    ]
+  },
+  "HSRMod:SocietyTicket": {
+    "NAME": "Society Ticket",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "At the end of combat, the amount of gold gained is increased by #b20%."
+    ]
+  },
+  "HSRMod:FaithBond": {
+    "NAME": "Faith Bond",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "Relic prices in shops are reduced by #b33%."
+    ]
+  },
+  "HSRMod:RecordFromBeyondTheSky": {
+    "NAME": "Record From Beyond The Sky",
+    "FLAVOR": "The last Phonograph of Order was destroyed in the Emperor's War, and now the thick layer of dust on the records protests against that soundless era.",
+    "DESCRIPTIONS": [
+      "Prevent the first debuff and damage you receive in each combat."
+    ]
+  },
+  "HSRMod:EntropicDie": {
+    "NAME": "Entropic Die",
+    "FLAVOR": "Entropic Dice are common in the universe and cause countless tiny but malevolent disturbances.",
+    "DESCRIPTIONS": [
+      "When gaining, randomly upgrade #b2 cards."
+    ]
+  },
+  "HSRMod:AngelTypeIOUDispenser": {
+    "NAME": "Angel-Type IOU Dispenser",
+    "FLAVOR": "A debt dispenser distributed by the Business Consolidation Department of the Interastral Peace Corporation.",
+    "DESCRIPTIONS": [
+      "After battle, you cannot gain any gold. #rDestroys after #b4 trigger and doubles your gold."
+    ]
+  },
+  "HSRMod:BlackHoleTrap": {
+    "NAME": "Black Hole Trap",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "At the end of combat, gain gold equal to the percentage of your HP that is exceeding #b80%."
+    ]
+  },
+  "HSRMod:RubertEmpireMechanicalCogwheel": {
+    "NAME": "Rubert Empire Mechanical Cogwheel",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "When entering combat, gain #b50 gold. If your gold exceeds #b750, lose all gold and this relic is destroyed. NL Obtaining the relic when simultaneously carrying all Rubert Empire-series relics will trigger the Anti-Organic Equation's Regional Resonance."
+    ]
+  },
+  "HSRMod:RubertEmpireMechanicalLever": {
+    "NAME": "Rubert Empire Mechanical Lever",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "When entering a #y? room, randomly select a card. If it is not upgraded, upgrade it. Otherwise, this relic is destroyed. NL Obtaining the relic when simultaneously carrying all Rubert Empire-series relics will trigger the Anti-Organic Equation's Regional Resonance."
+    ]
+  },
+  "HSRMod:RubertEmpireMechanicalPiston": {
+    "NAME": "Rubert Empire Mechanical Piston",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "When entering Campfire room, gain #b2 relics and randomly lose #b1 relic that is not a starting relic. If this relic is lost this way, lose all relics. NL Obtaining the relic when simultaneously carrying all Rubert Empire-series relics will trigger the Anti-Organic Equation's Regional Resonance."
+    ]
+  },
+  "HSRMod:VileMechanicalSatellite900": {
+    "NAME": "Vile Mechanical Satellite #900",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "All shop prices are reduced by #b25% (except card removal service)."
+    ]
+  },
+  "HSRMod:PriceOfPeace": {
+    "NAME": "Price Of Peace",
+    "FLAVOR": "People believed this era of prosperity would never end — until the day the even more terrifying Interstellar Energy War lifted its curtains.",
+    "DESCRIPTIONS": [
+      "When entering a shop, gain #b100 gold."
+    ]
+  },
+  "HSRMod:MysteriousMagnetism": {
+    "NAME": "\"Mysterious\" Magnetism",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "When entering a combat room, replace monsters with Elites. #rDestroys after #b2 trigger, and gain #b200 gold."
+    ]
+  },
+  "HSRMod:ShatterboneBlade": {
+    "NAME": "Shatterbone Blade",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "Before Act 3, HP reduced #b+1. NL Starting from Act 3, HP reduced #b-1."
+    ]
+  },
+  "HSRMod:BeaconColoringPaste": {
+    "NAME": "Beacon Coloring Paste",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "When choosing a card as a combat reward, upgrade #b1 of the options."
+    ]
+  },
+  "HSRMod:SuperOverlordSpinningTop": {
+    "NAME": "Super Overlord Spinning Top",
+    "FLAVOR": "There is a reason behind the creation of every rule in the Intelligentsia Guild.",
+    "DESCRIPTIONS": [
+      "At battle starts, gain #b1 stack of #yhsrmod:Break-Effect. At start of the first turn, removes #b33% of enemy's #yhsrmod:Toughness."
+    ]
+  },
+  "HSRMod:GeniusSocietysDangerousGossip": {
+    "NAME": "Genius Society's Dangerous Gossip",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "Cannot gain #ygold. Each time you lose #b100 #ygold this way, obtain a random relic. #rDestroys after #b3 triggers."
+    ]
+  },
+  "HSRMod:PunklordianBalance": {
+    "NAME": "Punklordian Balance",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "For the next #b2 normal combats, all enemies will have #b50% HP. #rDestroys after #b2 triggers."
+    ]
+  },
+  "HSRMod:GreenFingers": {
+    "NAME": "Green Fingers",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "After winning #b3 / #b6 / #b9 combats, gain #b50 / #b100 / #b150 #ygold. #rDestroys after winning #b9 combats."
+    ]
+  },
+  "HSRMod:FruitOfTheAlienTree": {
+    "NAME": "Fruit Of The Alien Tree",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "Upon taking fatal damage, prevents it and heal #b20% of your max HP. #rDestroys after #b1 trigger."
+    ]
+  },
+  "HSRMod:Dreams0110": {
+    "NAME": "Dreams 0110",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "At the start of combat, gain #b3 #yStrength. At the start of each turn, if you have #yStrength, lose #b1."
+    ]
+  },
+  "HSRMod:VoidWickTrimmer": {
+    "NAME": "Void Wick Trimmer",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "Upon gain, re-obtain up to #b2 destroyed relics you have."
+    ]
+  },
+  "HSRMod:UnmannedComms": {
+    "NAME": "Unmanned Comms",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "When a relic is destroyed, re-obtain it. #rDestroys after #b2 triggers."
+    ]
+  },
+  "HSRMod:DimensionReductionDice": {
+    "NAME": "Dimension Reduction Dice",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "After winning a combat, gain an additional card reward, but the number of cards to choose from is reduced by #b1. #rDestroys after #b2 triggers."
+    ]
+  },
+  "HSRMod:FortuneGlue": {
+    "NAME": "Fortune Glue",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "After combat ends, the probability of cards being of Rare quality increases by #b100%. #rDestroys after trigger."
+    ]
+  },
+  "HSRMod:ShiningTrapezohedronDie": {
+    "NAME": "Shining Trapezohedron Die",
+    "FLAVOR": "That is how the famous Shining Trapezohedron Die Paradox came to be — You cannot prove something that cannot be proven.",
+    "DESCRIPTIONS": [
+      "When gaining, change all common, uncommon and rare relics."
+    ]
+  },
+  "HSRMod:GoldCoinOfDiscord": {
+    "NAME": "Gold Coin Of Discord",
+    "FLAVOR": "The representative of the IPC would usually shrug at these statements, then casually destroy the root of that planet's commercial system — it is usually based on gold.",
+    "DESCRIPTIONS": [
+      "When entering a new floor, gain #b3 % of your current gold."
+    ]
+  },
+  "HSRMod:SilverCoinOfDiscord": {
+    "NAME": "Silver Coin Of Discord",
+    "FLAVOR": "An ingenious plan was born: Since silver's exceptional malleability allowed it to be stretched from one gram into yards of antenna, a researcher devised a Silver Coin of Discord that split itself infinitely, dramatically increasing the quantity of silver available to meet demands.",
+    "DESCRIPTIONS": [
+      "When gaining, gain #b33% of your current gold."
+    ]
+  },
+  "HSRMod:ShatteredStarBait": {
+    "NAME": "Shattered Star Bait",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "At the start of combat, gain #b1 #yDexterity . When choosing the next room, you have #b1 chance to ignore the current path."
+    ]
+  },
+  "HSRMod:SpaceTimePrism": {
+    "NAME": "Space Time Prism",
+    "FLAVOR": "They become diagnosed with fictmemoria, and claim that they saw the enigmatic face of the Aeon Fuli in the prism.",
+    "DESCRIPTIONS": [
+      "At battle starts, upgrade all cards in hand."
+    ]
+  },
+  "HSRMod:CosmicBigLotto": {
+    "NAME": "Cosmic Big Lotto",
+    "FLAVOR": "The marketing tactics for the Cosmic Big Lotto, sold by the Interastral Peace Corporation's Marketing Development Department, is as passionate and hot-blooded as Oswaldo Schneider himself.",
+    "DESCRIPTIONS": [
+      "After battle: #b20% chance to gain an extra relic. #b10% chance to lose #b25% of your current HP and destroy this relic."
+    ]
+  },
+  "HSRMod:InterastralBigLotto": {
+    "NAME": "Interastral Big Lotto",
+    "FLAVOR": "How do you make a business model last? After getting rave reviews for their Cosmic Big Lotto, the Interastral Peace Corporation's Business Consolidation Department put the Interastral Big Lotto on the market.",
+    "DESCRIPTIONS": [
+      "After battle: #b20 % chance to gain an extra card reward. #b10 % chance to lose #b1 random card and destroy this relic."
+    ]
+  },
+  "HSRMod:IllusoryAutomaton": {
+    "NAME": "Illusory Automaton",
+    "FLAVOR": "Could the History Fictionologists themselves be fabrications as well?",
+    "DESCRIPTIONS": [
+      "At turn starts, gain #b4 #yBlock."
+    ]
+  },
+  "HSRMod:ManMadeMeteorite": {
+    "NAME": "Man-Made Meteorite",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "Upon pickup, gain an additional card reward, containing cards from your current #ypath only.",
+      "Man-Made Meteorite !"
+    ]
+  },
+  "HSRMod:RottingFruitOfTheAlienTree": {
+    "NAME": "Rotting Fruit Of The Alien Tree",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "In combat, right-click this relic to lose #b3 HP and gain #b1 layer of #yArtifact . #rDestroys after #b3 triggers."
+    ]
+  },
+  "HSRMod:IndecipherableBox": {
+    "NAME": "Indecipherable Box",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "Enhances the effect of Wax relics and Trailblaze Timer."
+    ]
+  },
+  "HSRMod:KingOfSponges": {
+    "NAME": "King Of Sponges",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "Upon entering Campfire room, lose #b10% of your current HP and increase your max HP by #b10%. #rDestroys after #b4 triggers."
+    ]
+  },
+  "HSRMod:AncientCommunications": {
+    "NAME": "Ancient Communications",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "Greatly increases the probability of encountering a Warping Trotter. #rDestroys upon entering a room containing a Trotter."
+    ]
+  },
+  "HSRMod:PunklordianRegards": {
+    "NAME": "Punklordian Regards",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "At the start of each turn, gain #b2 #yDexterity on odd-numbered turns and lose #b2 #yDexterity on even-numbered turns."
+    ]
+  },
+  "HSRMod:JellyfishOnTheStaircase": {
+    "NAME": "\"Jellyfish On The Staircase\"",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "Upon pickup, remove 1 cards from deck.",
+      "Jellyfish On The Staircase!"
+    ]
+  },
+  "HSRMod:RobeOfTheBeauty": {
+    "NAME": "Robe Of The Beauty",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "At the start of combat, gain #b1 #yStrength for every #b100 #ygold you have."
+    ]
+  },
+  "HSRMod:ByAnyMeansNecessary": {
+    "NAME": "By Any Means Necessary",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "When obtaining Common/Uncommon/Rare relics, gain #b20 / #b40 / #b80 #ygold. At the start of combat, deal damage equal to the number of relics to the enemy with the highest HP. Uncommon/Rare relics count as #b2 / #b4 ."
+    ]
+  },
+  "HSRMod:FamilyTies": {
+    "NAME": "Family Ties",
+    "FLAVOR": "The will of numerous heavenly bodies were intertwined, coiling into a single bound knot. Under Family Ties, people open their eyes wide, their faces etched with eerie smiles, staring at one another with identical expressions.",
+    "DESCRIPTIONS": [
+      "Upon pickup, or when a relic is destroyed, gain #b1 #ydestructible relic . For each #ydestroyed relic, gain #b1 [E] and draw #b1 card on the first turn."
+    ]
+  },
+  "HSRMod:HerosTriumphantReturn": {
+    "NAME": "Hero's Triumphant Return",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "At the start of combat, play up to #b2 random Power cards from your draw pile."
+    ]
+  },
+  "HSRMod:Plaguenest": {
+    "NAME": "Plaguenest",
+    "FLAVOR": "The Infinite Maze is a labyrinth that is said to be able to lead you to any place in the universe.",
+    "DESCRIPTIONS": [
+      "Gain [E] at the start of your turn, if you have Curse or Status card in your hand, draw 1, otherwise, lose 1 [E] ."
+    ]
+  },
+  "HSRMod:WrittenInWater": {
+    "NAME": "Written In Water",
+    "FLAVOR": "The Memokeepers had stored the entirety of this world's memories inside the Boquelet and strutted casually through the encirclement the Lord Ravager had set up around them.",
+    "DESCRIPTIONS": [
+      "Restore #b3 HP and #b30 #yhsrmod:Charge upon entering a new room."
+    ]
+  },
+  "HSRMod:ARuanPouch": {
+    "NAME": "A Ruan Pouch",
+    "FLAVOR": "It is said that she wished to carry the universe in her pocket, yet was forced to seal it when the dimensionality within continued to expand.",
+    "DESCRIPTIONS": [
+      "Upon pickup, increase the chance to encounter #bRuan #bMei event, and gain #b3 additional card rewards. Afterward, the number of cards available to choose from in rewards is reduced to #b1. #rDestroys after #b2 trigger.",
+      "A Ruan Pouch!"
+    ]
+  },
+  "HSRMod:AshesToAshesDustToDust": {
+    "NAME": "Ashes To Ashes, Dust To Dust",
+    "FLAVOR": "On the 100th Amber Era since the withering of Dr. Kray, the Intelligentsia Guild issued a set of commemorative stamps of it, which featured simply the words: \"Just a sentient plant.\"",
+    "DESCRIPTIONS": [
+      "Right-click this relic in the shop to upgrade a card.",
+      "Upgrade a card"
+    ]
+  },
+  "HSRMod:TemporaryStake": {
+    "NAME": "Temporary Stake",
+    "FLAVOR": "penniless gamblers brew their last gemstones with their tears of regret, staking everything in a gamble. These chips will quickly dissolve, becoming new debts, and the gamblers' lives are corroded completely in the digestive fluids that pour out.",
+    "DESCRIPTIONS": [
+      "Immediately gain #b300 gold. #rDestroys after entering #b4 rooms, and lose #b450 #ygold."
+    ]
+  },
+  "HSRMod:CavitySystemModel": {
+    "NAME": "Cavity System Model",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "Upon pickup, lose all #ygold. For every #b100 #ygold lost this way, draw #b1 additional card each turn."
+    ]
+  },
+  "HSRMod:SparkleDoll": {
+    "NAME": "Sparkle Doll",
+    "FLAVOR": "Sparkle will never give you up, never let you down, or run around and desert you...",
+    "DESCRIPTIONS": [
+      "You will never know when she will explode..."
+    ]
+  },
+  "HSRMod:FoolsMask": {
+    "NAME": "Fool's Mask",
+    "FLAVOR": "These masks are made of heavy material, are vibrant in color, and with a maniacal smile yet with surprisingly intricate brushstrokes, as if waiting for each playful prank.",
+    "DESCRIPTIONS": [
+      "Upon pickup, transform and upgrade all non-starter cards. Cards transformed this way will match the same #ypath."
+    ]
+  },
+  "HSRMod:ThePinkestCollision": {
+    "NAME": "The Pinkest Collision",
+    "FLAVOR": "The drink Yu Qingtu concocted, named the Pinkest Collision, was proven to be non-toxic, but a mixologist once spent days trying to recreate its formula, seeking to prove that the beverage was made from various insect carcasses, insect spores, carapaces, and phosphorous.",
+    "DESCRIPTIONS": [
+      "At the start of combat, gain #b1 #yhsrmod:Break-Effect for each type of #ypath card you have."
+    ]
+  },
+  "HSRMod:ThalanToxiFlame": {
+    "NAME": "Thalan Toxi Flame",
+    "FLAVOR": "Records show that in the Aterlexian System, the Thalan Toxi-Flame was once extremely popular among the locals, with each of the locals that sampled its taste no longer able to describe the flavors thereafter.",
+    "DESCRIPTIONS": [
+      "At the start of combat, lose #b2 HP and gain #b2 #yDexterity."
+    ]
+  },
+  "HSRMod:Pineapple": {
+    "NAME": "Pineapple",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "When entering a new room, lose #b15% of current health. #rDestroys after #b3 triggers."
+    ]
+  },
+  "HSRMod:RubertEmpireDifferenceMachine": {
+    "NAME": "Rubert Empire Difference Machine",
+    "FLAVOR": "\"If this is what geniuses are, then it'd be far better for the world to produce more idiots.\"",
+    "DESCRIPTIONS": [
+      "Upon obtaining, upgrade #b3 cards, gain #b300 gold, and obtain #b3 relics. NL Upon entering a new room, upgrade #b1 card, gain #b100 gold, and obtain #b1 relic."
+    ]
+  },
+  "HSRMod:ParallelUniverseWalkieTalkie": {
+    "NAME": "Parallel Universe Walkie-Talkie",
+    "FLAVOR": "Apparently, it can detect tiny divergences in space-time shifts, and establish a relationship between the two closest divergence points, allowing information to be passed between them.",
+    "DESCRIPTIONS": [
+      "When you #yExhaust a card, there is a #b20% chance it is not Exhausted and returned to your hand."
+    ]
+  },
+  "HSRMod:Revitalization310": {
+    "NAME": "Revitalization-310",
+    "FLAVOR": "These bizarre ointments start from the patient's cognition and erase the root of the emotion that may give birth to Nihility.",
+    "DESCRIPTIONS": [
+      "At the start of the first turn, add #yEthereal to all cards in hand. When you use a Ethereal card, a random enemy loses #b1 #yStrength."
+    ]
+  },
+  "HSRMod:ChanceJailbreak": {
+    "NAME": "Chance Jailbreak",
+    "FLAVOR": "THEIR greatness lies not in THEIR ability to build defenses for the universe, but in creating prisons for those outside the walls.",
+    "DESCRIPTIONS": [
+      "At battle starts, gain all #yInnate cards from deck (these do not count toward your initial hand card). When you use an Innate card, draw #b1 card."
+    ]
+  },
+  "HSRMod:RoadToComets": {
+    "NAME": "Road to Comets",
+    "FLAVOR": "A gravitational bridge built through projections on spatial structures, judged by the Intelligentsia Guild as one of the ten thousand most useless inventions in the universe.",
+    "DESCRIPTIONS": [
+      "At the end of your turn, for each card that uses #yhsrmod:Charge, gain #b20 #yCharge, and for each card that was #yretain ed, gain #b3 #yBlock."
+    ]
+  },
+  "HSRMod:DreamdiveCan": {
+    "NAME": "Dreamdive Can",
+    "FLAVOR": "The survivors fall shiveringly asleep and head into dreams to find the freedom they could not find in reality, just like how it was in yesteryear in the Land of Dreams.",
+    "DESCRIPTIONS": [
+      "At turn starts, choose a card from discard pile to move to the top of draw pile.",
+      "Choose a card to move to the top of draw pile"
+    ]
+  },
+  "HSRMod:SilentSong": {
+    "NAME": "Silent Song",
+    "FLAVOR": "They connect to form a crystal plain, as the resonance between their particles sings silent Odes of Harmony, like... ice-cold stones.",
+    "DESCRIPTIONS": [
+      "At turn starts and ends, apply #b1 stacks of #yhsrmod:Frozen to a random enemy."
+    ]
+  },
+  "HSRMod:DignityAndPassion": {
+    "NAME": "Dignity and Passion",
+    "FLAVOR": "The Interastral Peace Corporation has the final right of interpretation regarding mining work in star zones under their possession. Any illegal mining activities will be viewed as an act of blasphemy that interferes with the Amber Lord's wall construction.",
+    "DESCRIPTIONS": [
+      "At turn ends, gain temp HP equal to #b20% of your lost HP."
+    ]
+  },
+  "HSRMod:TenLightYearsForesight": {
+    "NAME": "Ten Light-Years Foresight",
+    "FLAVOR": "Whenever he drives his prey to a set coordinates, a bullet fired ten years prior will cross the distance of ten light years to accurately collide with the prey's skull.",
+    "DESCRIPTIONS": [
+      "For every 3 #rattack cards played in a turn, deal #b10 damage to all enemies that were not targeted by these cards."
+    ]
+  },
+  "HSRMod:InsectWeb": {
+    "NAME": "Insect Web",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "At turn starts, lose #b1 HP and gain #b1 #yStrength ."
+    ]
+  },
+  "HSRMod:TowatCards": {
+    "NAME": "Towat Cards",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "#rDestroys At the start of boss fight, gain #b2 #ystrength ."
+    ]
+  },
+  "HSRMod:CarnivalsTail": {
+    "NAME": "Carvinal's Tail",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "Regain relics that aren't gained via this way."
+    ]
+  }
+}

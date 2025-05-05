@@ -1,0 +1,145 @@
+﻿{
+  "HSRMod:StellaCharacter": {
+    "NAMES": [
+      "Trailblazer"
+    ],
+    "TEXT": [
+      "A girl who boarded the Astral Express. NL She chose to travel with the Astral Express to eliminate the dangers posed by the Stellaron.\n",
+      "“Hearts are made to be broken!”"
+    ]
+  },
+  "HSRMod:HertaMerchant": {
+    "NAMES": [
+      "Herta"
+    ],
+    "TEXT": [
+      "Hey little guy, wanna ~buy~ ~something~~",
+      "M.Herta is a @peerless@ @gem.@ NL M.Herta is an @unrivalled@ @genius.@ NL M.Herta is an @inimitable@ @beauty.@",
+      "Listen, go test the #ySimulated #yUniverse after this round.",
+      "You don't recognize me? I've told you who I am already — human, female, young, beautiful, attractive.",
+      " I @looove@ this hat. I like to wear it, and it makes me happy!",
+      "You have time to talk about @\"life\"@ when you don't even know the ultimate truth of the universe?",
+      "Where am I going to find another genius as mentally well-adjusted as me? In the mirror?",
+      "~Play~ like how you usually do in the #ySimulated #yUniverse~",
+      "Do you like this rug? NL 10k cosmic fragments! Oh, I should say, #y~gold~ here.",
+      "The #ySimulated #ySpire is the predecessor of the #ySimulated #yUniverse, a project I used to practice with when I was young.",
+      "Do you have the time?",
+      "Take your time... NL ..... NL ... or not",
+      "Hmm... NL ...hmm... NL Oh!",
+      "Stay awhile and listen!",
+      "Buy whatever you want",
+      "~*YAWN*~"
+    ],
+    "OPTIONS": [
+      "Oh? So we meet again. You are the #p345th person in the cosmos who's been able to meet me twice. That shall be your #pHerta Number.",
+      "Gray Hair, don't be so nervous.",
+      "The good stuff is ~further~ ~ahead~ . Don't stop now.",
+      "Why am I here? NL To watch you watching me.",
+      "Last chance to buy somethin'! NL ~*wink*~ ~*wink*~",
+      "…… NL …… NL ………",
+      "Heading up?"
+    ]
+  },
+  "HSRMod:SparkleMerchant": {
+  "NAMES": [
+    "Sparkle"
+  ],
+  "TEXT": [
+    "What do you want to buy? ~Gray~ ~Hair~",
+    "Are you surprised to see me? Unexpected, right?",
+    "As long as I'm interested, the price is negotiable. The key is to have #rfun , right?",
+    "Come and see, Herta Store is on sale~",
+    "Heart is made to be broken~",
+    "Having fun? That's all that matters!",
+    "Let's push the envelope further, shall we?",
+    "Don't tell #pHerta that I'm here.",
+    "Why don't you stay and play for a while?",
+    "Take your time... NL ..... NL ... or not",
+    "Gray Hair~ NL Have you ever doubted Herta?",
+    "Don't rush, things won't #rrun away.",
+    "Stay a little longer and listen to the music!",
+    "~*Yawn*~",
+    "00 11 0110 010 00 000 111 10 0 100"
+  ],
+  "OPTIONS": [
+    "Where is Herta? ~Heehee~~, I won't tell you~~",
+    "I'm the only one who comes here to see you from time to time, Gray Hair~",
+    "If you had chosen to be a #yNameless , you could have seen me in reality.",
+    "When you chose to stay, you can't imagine how cruel #pHerta will treat you, can you?",
+    "Poor little Gray hair, you won't escape #yHerta's simulation.",
+    "Forever trapped in this spire~",
+    "It's all fake~ NL #yHerta has been deceiving you all along~"
+  ]
+},
+  "HSRMod:HertaShopScreen": {
+    "NAMES": [
+      "~Welcome~ NL ~welcome!~",
+      "Hey now, NL you need NL more #rGold.",
+      "Hey buddy, you got no #rMoney!",
+      "You broke?",
+      "You don't got enough #rGold.",
+      "You can't afford that.",
+      "This isn't a charity.",
+      "That's for you~",
+      "Okay, take that with you.",
+      "The Curios I have in #ySimulated #yUniverse is way better than what I have here.",
+      "No Refunds.",
+      "Have a nice day.",
+      "Leave",
+      "Select a card to remove from your deck."
+    ],
+    "TEXT": [
+      "Hey little guy, wanna ~buy~ ~something~~",
+      "M.Herta is a @peerless@ @gem.@ NL M.Herta is an @unrivalled@ @genius.@ NL M.Herta is an @inimitable@ @beauty.@",
+      "Listen, go test the #ySimulated #yUniverse after this round.",
+      "You don't recognize me? I've told you who I am already — human, female, young, beautiful, attractive.",
+      " I @looove@ this hat. I like to wear it, and it makes me happy!",
+      "You have time to talk about @\"life\"@ when you don't even know the ultimate truth of the universe?",
+      "Where am I going to find another genius as mentally well-adjusted as me? In the mirror?",
+      "~Play~ like how you usually do in the #ySimulated #yUniverse~",
+      "Do you like this rug? NL 10k cosmic fragments! Oh, I should say, #y~gold~ here.",
+      "The #ySimulated #ySpire is the predecessor of the #ySimulated #yUniverse, a project I used to practice with when I was young.",
+      "Do you have the time?",
+      "Take your time... NL ..... NL ... or not",
+      "Hmm... NL ...hmm... NL Oh!",
+      "Stay awhile and listen!",
+      "Buy whatever you want",
+      "~*YAWN*~"
+    ]
+  },
+  "HSRMod:SparkleShopScreen": {
+    "NAMES": [
+      "I'll give you a discount while Herta is away. Say ~thanks~ to me~",
+      "Oh, NL this #rGold isn't enough.",
+      "You can't even afford a discount, Gray Hair?",
+      "Woah, Gray Hair, can't afford cheap price like that?",
+      "You can't afford this~",
+      "You're so ~poor~",
+      "Why are you even clicking on this if you're broke?",
+      "~Take~ ~it~~",
+      "Say thanks to the Great Sparkle.",
+      "The relics at the #yTavern is way better than what I have here.",
+      "You should buy more~",
+      "Try to stay out of trouble, especially... the next time we meet!",
+      "leave",
+      "Give a card from your deck to Sparkle."
+    ],
+    "TEXT": [
+      "What do you want to buy? ~Gray~ ~Hair~",
+      "Are you surprised to see me? Unexpected, right?",
+      "As long as I'm interested, the price is negotiable. The key is to have #rfun , right?",
+      "Come and see, Herta Store is on sale~",
+      "Heart is made to be broken~",
+      "Having fun? That's all that matters!",
+      "Let's push the envelope further, shall we?",
+      "Don't tell #pHerta that I'm here.",
+      "Why don't you stay and play for a while?",
+      "Take your time... NL ..... NL ... or not",
+      "Gray Hair~ NL Have you ever doubted Herta?",
+      "Don't rush, things won't #rrun away.",
+      "Stay a little longer and listen to the music!",
+      "~*Yawn*~",
+      "00 11 0110 010 00 000 111 10 0 100"
+    ]
+  }
+}

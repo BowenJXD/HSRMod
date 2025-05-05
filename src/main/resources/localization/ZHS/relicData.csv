@@ -1,0 +1,120 @@
+ID,名字,遗物类型,描述,特殊值,介绍,声效,可损毁,微妙,专属,经济,出现率,功能
+PomPomBlessing,帕姆的祝福,STARTER,战斗开始时，你回复 [E] [E] ，获得1层〖无实体〗。 NL 你打出牌后，回复20点充能。充能上限为240。 NL 回合结束时，你可以选择任意张手牌保留，每保留1张消耗20点充能。 NL 在危机关头，还有奇效。。。,,,FLAT,FALSE,FALSE,FALSE,FALSE,,
+GalacticBat,银河球棒,STARTER,回合开始时，对【韧性】不大于0的敌人施加【韧性】至其上限。不同单位有不同的韧性上限。 NL 对有【韧性】的目标造成属性伤害后，移除其削韧值数量的【韧性】，若其的【韧性】因此削减至0及以下，则视为击破目标。 NL 属性伤害的削韧值为后面括号里的数字。 NL 击破目标时，会对敌方施加【弱点击破】，然后依照造成的伤害属性，触发不同的击破效果。,,击破目标时，会对敌方施加【弱点击破】，然后依照造成的伤害属性，触发不同的击破效果： NL 冰：造成2点击破伤害，施加【冻结】。 NL 物理：造成4点击破伤害，施加【裂伤】。 NL 火：造成4点击破伤害，施加【灼烧】。 NL 雷：造成2点击破伤害，施加【触电】。 NL 风：造成3点击破伤害，若其为普通/精英/BOSS敌人，施加1/2/3层【风化】。 NL 量子：造成1点击破伤害，施加【纠缠】。 NL 虚数：造成1点击破伤害，施加【禁锢】。,FLAT,FALSE,FALSE,TRUE,FALSE,,
+WarpingCompoundEye,跃迁复眼,UNCOMMON,选择奖励牌时，升级其中所有普通品质的卡牌。,,它的光线能率先跃迁至前方的星系，带回新世界的信息。,FLAT,FALSE,FALSE,FALSE,FALSE,,发育
+CasketOfInaccuracy,测不准匣,COMMON,拾起时，额外获得1次卡牌奖励。,1,这只匣子的每一面都能够打开，本应重合的空间并不重合，由于这种独特的性质，你无法确定打开匣子后会发生什么，因此也并不建议在里面存放任何东西。,FLAT,FALSE,FALSE,FALSE,FALSE,,发育
+AmbergrisCheese,香涎干酪,COMMON,战斗结束后，回复2点生命。,2,直到现在，银河中仍然有一个星系被美味的干酪塞得严严实实，一丁点空隙也没留下。,FLAT,FALSE,FALSE,FALSE,FALSE,,生存
+TheParchmentThatAlwaysEats,永不停嘴的羊皮卷,COMMON,战斗开始时，对所有敌方角色造成其生命值上限10%的伤害。,10,在黑塔的奇物清单里，这张羊皮卷的危害等级被标注为极高。,FLAT,FALSE,FALSE,FALSE,FALSE,,伤害
+TheDoctorsRobe,博士之袍,COMMON,战斗开始时，回复120点充能。,120,这件长袍据称曾属于天才俱乐部4「原始博士」，拥有不可思议的力量。,FLAT,FALSE,FALSE,TRUE,FALSE,,伤害
+SocietyTicket,俱乐部券,COMMON,战斗结束后，获得的金币数提高20%。,20,事实是，6以后的每位会员都确实使用过「俱乐部券」，可时间从来没有重合过哪怕一次。,FLAT,FALSE,FALSE,FALSE,TRUE,,经济
+RecordFromBeyondTheSky,天外重声大碟,COMMON,阻止你在每场战斗中第一次受到的负面效果施加，和生命值损伤。,1,最后一台秩序唱机在帝皇战争中损坏，唱片上厚厚的积灰似在抗议那无声的时光。,FLAT,FALSE,FALSE,FALSE,FALSE,,生存
+EntropicDie,万象无常骰,COMMON,拾起时，随机升级2张牌。,2,万象无常骰曾在宇宙中极为常见，造成无数微小但邪恶的混乱。,FLAT,FALSE,FALSE,FALSE,FALSE,,运营
+AngelTypeIOUDispenser,天使型谢债发行机,COMMON,战斗结束后，无法获得金币。效果触发4次后该奇物失效，使当前的金币数量翻倍，且该遗物损毁。,4,星际和平公司业务巩固部推出的谢债发行机，本质上是个投资产品。,FLAT,TRUE,TRUE,FALSE,TRUE,,经济
+BlackHoleTrap,黑洞之阱,COMMON,战斗结束后，根据你生命值大于80%的百分比，获得等量金币。,80,星系中时空曲率最大的地方曾出现疑似「虚无」星神的巨影。,FLAT,FALSE,FALSE,FALSE,TRUE,,经济
+RubertEmpireMechanicalCogwheel,鲁珀特帝国机械齿轮,UNCOMMON,进入战斗时，获得50金币，然后若你的金币数大于750，则失去所有金币，该遗物损毁。 NL 若同时携带全部鲁珀特帝国机械系列遗物，将引发反有机方程的局域共鸣。,50,#鲁珀特二世自称继承了天才俱乐部500.07帝皇鲁珀特的记忆。,FLAT,TRUE,TRUE,FALSE,TRUE,,经济
+RubertEmpireMechanicalLever,鲁珀特帝国机械杠杆,UNCOMMON,进入？时，随机选择一张牌，若其未升级，则升级之，否则失去之，且该遗物损毁。 NL 若同时携带全部鲁珀特帝国机械系列遗物，将引发反有机方程的局域共鸣。,,#鲁珀特二世自称继承了天才俱乐部1.07帝皇鲁珀特的记忆。,FLAT,TRUE,TRUE,FALSE,FALSE,,运营
+RubertEmpireMechanicalPiston,鲁珀特帝国机械活塞,UNCOMMON,进入休息处时，获得2个遗物，随机失去1个非初始遗物，若以此法失去自身，则失去所有普通遗物。 NL 若同时携带全部鲁珀特帝国机械系列遗物，将引发反有机方程的局域共鸣。,,#鲁珀特二世自称继承了天才俱乐部2.07帝皇鲁珀特的记忆。,FLAT,FALSE,TRUE,FALSE,FALSE,,运营
+PriceOfPeace,和平的代价,UNCOMMON,进入商店时，获得100金币。,100,人们相信这场繁荣永远不会结束——直到日后更为惨烈的星际能源战争悄然揭幕。,FLAT,FALSE,FALSE,FALSE,TRUE,,经济
+MysteriousMagnetism,「神秘」磁力,COMMON,进入战斗房间时，怪物替换为精英，触发2次后损毁，获得200金币。,25,为对抗「智识」的确定性，谜语人曾在不确定领域做出诸多努力。,FLAT,TRUE,FALSE,FALSE,TRUE,,经济
+ShatterboneBlade,断骨剑,COMMON,第二章及之前，受到的生命值损失+1；第三章及之后，受到的生命值损失-1。,1,而多年以后，每每在私下讲起森林里的遭遇时，少年都会痛哭流涕，并对那人面兽心的卡耶尔大骂不止。,FLAT,FALSE,TRUE,FALSE,FALSE,,生存
+BeaconColoringPaste,信标着色剂,UNCOMMON,选择奖励牌时，升级其中1张。,1,它的发明者乃是一位画技卓绝的无名客。,FLAT,FALSE,FALSE,FALSE,FALSE,,运营
+SuperOverlordSpinningTop,超霸王陀螺,COMMON,战斗开始时，获得1层【击破特攻】。首个回合开始时，移除所有敌方33%的【韧性】。,33,博识学会的每一条规定，都有它诞生的理由。,FLAT,FALSE,FALSE,FALSE,FALSE,,伤害
+GeniusSocietysDangerousGossip,天才俱乐部危险八卦,COMMON,无法获得金币。每因为此遗物损失80金币，获得一个随机遗物，触发3次后损毁。,3,有人认为，波尔卡只是杀死了所有看到她的人，也有人认为，她借用了「神秘」或「虚无」的力量，抹消了存在的痕迹。,FLAT,TRUE,TRUE,FALSE,TRUE,,运营
+PunklordianBalance,朋克洛德平衡,COMMON,接下来的普通战斗中的敌人将只有50%生命，触发2次后损毁。,2,但直到今天，你仍能在数据边缘看到一艘艘即将深潜的航船，载着意气风发的骇客们踏上寻宝之旅。,FLAT,TRUE,FALSE,FALSE,FALSE,,伤害
+GreenFingers,埋点土,UNCOMMON,获得 3 / 6 / 9 场战斗胜利后，获得 50 / 100 / 150 金币。获得 9 场战斗胜利后，该遗物损毁。,9,因此，他们总会留下最光鲜亮丽的一张钞票埋进土里，希冀种出自己的信用点树。,FLAT,TRUE,FALSE,FALSE,TRUE,,经济
+FruitOfTheAlienTree,异木果实,COMMON,受到致命伤害时，防止之，并回复20%生命。,20,这颗形似心脏的果实来自于某株被药师赐福的大树，据说已有五十琥珀纪的历史。,FLAT,FALSE,FALSE,FALSE,FALSE,,生存
+Dreams0110,有梦0110,COMMON,战斗开始时，获得3点〖力量〗。回合开始时，若〖力量〗大于0，失去1点。,3,但据患者透露，每位滴加了润滑油的智械，都在夜里梦见了张着血盆大口的电子蝴蝶。,FLAT,FALSE,TRUE,FALSE,FALSE,,伤害
+VileMechanicalSatellite900,邪恶机械卫星#900,COMMON,消费后，返还20%。,20,它们是典型的反有机文明，对待有机生命手腕狠辣，而其中尤以卫星#900最为邪恶。,FLAT,FALSE,FALSE,FALSE,TRUE,,经济
+VoidWickTrimmer,空无烛剪,COMMON,拾起时，重新获得至多2个已有但已损毁的遗物。,2,剪刀剪断的不是物质，而是生物心中的热量——被称为热情的动力。假如空无烛剪划过你的心脏，你将感受到的不是痛楚，而是冷漠。,FLAT,FALSE,FALSE,FALSE,FALSE,,运营
+UnmannedComms,无人通讯,COMMON,遗物损毁时，重新获得之。触发2次后，此遗物损毁。,2,它的身体蠕动，迸射出孢子，仿佛随时都将破茧而出。「与其说是摩斯卡人利用了虫群，不如说，是虫群被动寄生在了他们的文明上。」,FLAT,TRUE,FALSE,FALSE,FALSE,,运营
+DimensionReductionDice,降维骰子,UNCOMMON,战斗胜利后额外获得1次卡牌奖励，但可供选择的牌数-1。触发2次后该遗物损毁。,2,九枚六面骰组成了这个奇特的三角体，它能对自身进行持续不断的降维，从而以二维平面的方式存在于立体的世界里。,FLAT,TRUE,FALSE,FALSE,FALSE,,运营
+FortuneGlue,福灵胶,UNCOMMON,战斗结束后，出现的牌是稀有品质的概率提高100%，触发1次后该遗物损毁。,100,运气是一种能力吗？也许；运气能够被改变吗？黑塔认为能。,FLAT,TRUE,FALSE,FALSE,FALSE,,运营
+ShiningTrapezohedronDie,闪耀的偏方三八面骰,UNCOMMON,拾起时，将当前持有的包含该奇物在内的所有普通、罕见和稀有奇物替换为随机奇物。,,由此产生了著名的「闪耀偏方三八面骰悖论」：你没法证明没法证明的事情。,FLAT,FALSE,TRUE,FALSE,FALSE,,运营
+GoldCoinOfDiscord,分裂金币,UNCOMMON,进入新房间时，获得当前持有的金币3%数量的金币。,3,面对如上情况时，公司的代表会耸耸肩，然后轻描淡写地摧毁该星球的金融体系根基——通常是黄金。,FLAT,FALSE,FALSE,FALSE,TRUE,,经济
+SilverCoinOfDiscord,分裂银币,UNCOMMON,拾起时，获得当前持有的金币33%数量的金币。,33,于是某位研究员研造出分裂银币，令银币不停分裂数量剧增，又被公司熔铸成天线出口各个星系，极大地推动了星系间的交流。,FLAT,FALSE,FALSE,FALSE,TRUE,,经济
+SpaceTimePrism,时空棱镜,UNCOMMON,首个回合开始时，升级所有手牌。,,他们患上虚构记忆症，并认为在棱面中看到了星神浮黎谜样的面容。,FLAT,FALSE,FALSE,FALSE,FALSE,,运营
+CosmicBigLotto,银河大乐透,UNCOMMON,战斗结束后： NL 20%的概率，额外获得一个遗物奖励； NL 10%的概率，失去当前血量的一半，且该遗物损毁。,,星际和平公司市场开拓部发售的银河大乐透，其营销方针正如奥斯瓦尔多·施耐德本人一样充满激情与热血。,FLAT,TRUE,TRUE,FALSE,FALSE,,运营
+InterastralBigLotto,星际大乐透,UNCOMMON,战斗结束后： NL 20%的概率，额外获得一个卡牌奖励； NL 10%的概率，随机失去1张牌，且该遗物损毁。,,如何令一个商业模式持续运作下去？在银河大乐透广获好评之后，星际和平公司出售了星际大乐透。,FLAT,TRUE,TRUE,FALSE,FALSE,,运营
+IllusoryAutomaton,虚构机兵,UNCOMMON,回合开始时，获得4点格挡。,4,虚构史学家本身是否也是被虚构的？,FLAT,FALSE,FALSE,FALSE,FALSE,,生存
+ManMadeMeteorite,人造陨石球,UNCOMMON,拾起时，额外获得1次卡牌奖励，且该奖励只有当前命途对应的牌。,,陨石球表面坐落着由其复刻的「博识之眼」。,FLAT,FALSE,FALSE,FALSE,FALSE,,运营
+RottingFruitOfTheAlienTree,腐化异木果实,UNCOMMON,战斗时，右键此遗物触发：失去3点生命，获得1层〖人工制品〗，触发3次后损毁。,3,他们一人拥抱蜕变，一人当场毙命。,FLAT,TRUE,FALSE,FALSE,FALSE,,生存
+IndecipherableBox,猜不透匣,UNCOMMON,火漆的权重增加。开拓进行时的效果加强。,50,一个能够预判开启者想法的匣子，在打开它的时候，匣中之物就会幻化为你头脑中的想象。,FLAT,FALSE,FALSE,TRUE,FALSE,,运营
+KingOfSponges,海绵王,UNCOMMON,进入休息处时，失去10%当前生命值，生命值上限提高10%，触发4次后损毁。,4,它最后变成了一块圆滑的海绵。现在，它正致力于帮助那些被丢弃在垃圾堆里的海绵萌生自由意志。,FLAT,TRUE,TRUE,FALSE,FALSE,,生存
+AncientCommunications,古老通讯,UNCOMMON,出现次元扑满的概率大幅提高，进入存在次元扑满的区域后，该奇物损毁。,4,在超距遥感通讯诞生以前，虫群间的信息素通讯，被视为宇宙中最高效的沟通手段。,FLAT,TRUE,FALSE,FALSE,FALSE,,运营
+PunklordianRegards,朋克洛德问候,UNCOMMON,回合开始时，若为奇数轮，获得2点〖敏捷〗，若为偶数轮，失去2点〖敏捷〗。,2,最后，他编译出一串具有单向锁定功能的以太密钥，将自身传输到对方现实中所在的位置，面对面结束了这场持续十数年的较量。,FLAT,FALSE,FALSE,FALSE,FALSE,,生存
+JellyfishOnTheStaircase,「楼梯上的水母」,UNCOMMON,拾起时，移除2张牌。,2,曾有一位无名客声称自己与「楼梯上的水母」有过接触，他疯狂地表示水母会开启大脑灰质的认知区域——那是一片凡人无法想象的广袤天地。,FLAT,FALSE,TRUE,FALSE,FALSE,,生存
+RobeOfTheBeauty,纯美之袍,RARE,战斗开始时，每拥有100金币，获得1层〖力量〗。,100,纯美骑士纵横星海的时代，全宇宙都为他们的风采所倾倒。,FLAT,FALSE,FALSE,FALSE,TRUE,,伤害
+ByAnyMeansNecessary,虚高一丈,RARE,获得普通/罕见/稀有遗物时，获得20/40/80金币。 NL 战斗开始时，对生命值最高的敌方造成遗物数量的伤害，罕见/稀有遗物算作2/4个。,20,香蕉成了两栖动物，呜呜伯被归入雀形目，据不可靠统计，随着越来越多的化石沾染上「神秘」气息，虚构史学家在生物领域的影响已呈现出指数级上升趋势。,FLAT,FALSE,FALSE,FALSE,TRUE,,伤害
+FamilyTies,家族缘结,RARE,拾起时，或遗物损毁时，获得1个可损毁遗物。每有一个损毁的遗物，首回合的 [E] 和摸牌数量便+1。,,群星意志彼此相连，拧成一股绳结。在家族缘结下，人们睁大双眼、面露微笑，他们的表情惊人一致，并互相看着彼此。,FLAT,FALSE,FALSE,FALSE,FALSE,,伤害
+CarnivalsTail,狂欢之尾,RARE,不因此法拾起遗物时，重新获得之。,,,FLAT,FALSE,FALSE,FALSE,FALSE,,运营
+HerosTriumphantReturn,英雄凯旋,BOSS,战斗开始时，打出至多2张随机能力牌。,2,但虚构总归会消散，孩子们在哭闹中呼唤亲人，在长大后蔑视幻想，于是「神秘」不复存在，举剑的少年少女在自己的床上醒来。,FLAT,FALSE,FALSE,FALSE,FALSE,,伤害
+Plaguenest,瘟疫巢都,BOSS,在每回合开始时获得 [E] ，然后若你手中有诅咒牌或状态牌，摸1张牌，否则消耗 [E] 。,,有人称这起事件背后是永火官邸在作祟，证据则是日后两股势力永无宁日的死斗。,FLAT,FALSE,FALSE,FALSE,FALSE,,伤害
+,,,,,,,FALSE,FALSE,FALSE,FALSE,,
+商店,,,,,,,FALSE,FALSE,FALSE,FALSE,,
+WrittenInWater,水上书,SHOP,进入新房间时，回复3点生命和30点充能。,3,忆者们把整个世界的记忆都装进《布科莱特》，大摇大摆地溜出了绝灭大君设置的包围圈。,FLAT,FALSE,FALSE,FALSE,FALSE,,生存
+ARuanPouch,阿阮袋,SHOP,拾起时，额外获得3次卡牌奖励，但之后的卡牌奖励画面，可供选择的牌数变为1，触发2次后，该遗物损毁。,3,据称她希望将宇宙随身携带，却最终因为口袋内的维度不断膨胀而不得不将其封印。,FLAT,TRUE,FALSE,FALSE,FALSE,,运营
+AshesToAshesDustToDust,化作尘泥,SHOP,在商店右键此牌，可以花费金币升级牌。,50,在克拉伊枯萎后的第一百个琥珀纪，博识学会为它发行了一套纪念邮票，上面留着短短的一行字：「只是一株智能植物。」,FLAT,FALSE,FALSE,FALSE,TRUE,,运营
+TemporaryStake,临时赌资,SHOP,立即获得300宇宙碎片，累计进入4个房间后，该遗物损毁，并失去450金币。,4,身无分文的赌徒们用悔恨的泪水酿造出最后一把宝石，孤注一掷。这些筹码很快就会消融，成为新的债务。,FLAT,TRUE,TRUE,FALSE,TRUE,,经济
+CavitySystemModel,龋齿星系模型,SHOP,拾起时，失去所有金币，每损失100金币，每回合的摸牌数+1。,100,「宇宙是不规则的，就像个牙齿！」,FLAT,FALSE,TRUE,FALSE,TRUE,,伤害
+,,,,,,,FALSE,FALSE,FALSE,FALSE,,
+事件,,,,,,,FALSE,FALSE,FALSE,FALSE,,
+RubertEmpireDifferenceMachine,鲁珀特帝国差分机,SPECIAL,获得时，升级3张牌，获得300金币和3个遗物。 NL 进入新房间时，升级1张牌，获得100金币和1个遗物。,,「如果这就是天才，那世上还是多些蠢人为好。」,FLAT,FALSE,FALSE,FALSE,TRUE,,运营
+SparkleDoll,花火娃娃,SPECIAL,你永远无法知道她会在什么时候爆炸……,,祂永远不会放弃你，永远不会令你沮丧。祂永远不会抛弃你，永远不会让你哭泣。,FLAT,FALSE,FALSE,FALSE,FALSE,,生存
+FoolsMask,愚者面具,SPECIAL,拾起时，变化并升级所有非初始牌，以此法变化的牌均为同一命途。,,它们质地厚重且色彩艳丽，笑容狂妄却笔触内敛，等待每份纵情的捉弄，附有假面愚者认证的虔诚,FLAT,FALSE,TRUE,FALSE,FALSE,,运营
+ThePinkestCollision,粉红冲撞,SPECIAL,战斗开始时，每有一种命途的牌，获得1层【击破特攻】。,,余清涂所调制的特饮粉红冲撞被证明无毒，但一位调酒师曾夜以继日研究它的配方，试图证明其中有数种虫类尸体。,FLAT,FALSE,FALSE,FALSE,FALSE,,伤害
+ThalanToxiFlame,塔拉毒火焰,SPECIAL,战斗开始时，失去2点生命，获得2点〖敏捷〗。,2,有记载在尔特勒克西亚星系，塔拉毒火焰曾作为最佳口味鸡尾酒一度畅销，每一位品尝过塔拉毒火焰的居民都不再有机会讲述它的口味。,FLAT,FALSE,TRUE,FALSE,FALSE,,生存
+Pineapple,菠萝,SPECIAL,进入新房间时，失去20%当前生命值，触发3次后损毁。,3,这些样貌怪异的水果，被反直觉地冠以「菠萝」的名字，他将荒诞的见闻写进歌词，呼吁人们对旧世界的语言发起进攻。,FLAT,FALSE,FALSE,FALSE,FALSE,,伤害
+TowatCards,奥塔牌,SPECIAL,首领战斗开始时损毁，获得2点〖力量〗。,,,FLAT,TRUE,FALSE,FALSE,FALSE,,运营
+InsectWeb,虫网,SPECIAL,回合开始时，失去1点生命，获得1点〖力量〗。,1,,FLAT,FALSE,TRUE,FALSE,FALSE,,伤害
+,,,,,,,FALSE,FALSE,FALSE,FALSE,,
+命途选择,,,,,,,FALSE,FALSE,FALSE,FALSE,,
+WaxOfElation,欢愉火漆,STARTER,提高「欢愉」牌出现的概率。,,据说盖下这枚火漆，就会遥遥吸引对应星神跨越时空的瞥视。,FLAT,FALSE,FALSE,FALSE,FALSE,,
+WaxOfDestruction,毁灭火漆,STARTER,提高「毁灭」牌出现的概率。,,据说盖下这枚火漆，就会遥遥吸引对应星神跨越时空的瞥视。,FLAT,FALSE,FALSE,FALSE,FALSE,,
+WaxOfNihility,虚无火漆,STARTER,提高「虚无」牌出现的概率。,,据说盖下这枚火漆，就会遥遥吸引对应星神跨越时空的瞥视。,FLAT,FALSE,FALSE,FALSE,FALSE,,
+WaxOfPropagation,繁育火漆,STARTER,提高「繁育」牌出现的概率。,,据说盖下这枚火漆，就会遥遥吸引对应星神跨越时空的瞥视。,FLAT,FALSE,FALSE,FALSE,FALSE,,
+WaxOfPreservation,存护火漆,STARTER,提高「存护」牌出现的概率。,,据说盖下这枚火漆，就会遥遥吸引对应星神跨越时空的瞥视。,FLAT,FALSE,FALSE,FALSE,FALSE,,
+WaxOfTheHunt,巡猎火漆,STARTER,提高「巡猎」牌出现的概率。,,据说盖下这枚火漆，就会遥遥吸引对应星神跨越时空的瞥视。,FLAT,FALSE,FALSE,FALSE,FALSE,,
+WaxOfErudition,智识火漆,STARTER,提高「智识」牌出现的概率。,,据说盖下这枚火漆，就会遥遥吸引对应星神跨越时空的瞥视。,FLAT,FALSE,FALSE,FALSE,FALSE,,
+WaxOfAbundance,丰饶火漆,STARTER,提高「丰饶」牌出现的概率。,,据说盖下这枚火漆，就会遥遥吸引对应星神跨越时空的瞥视。,FLAT,FALSE,FALSE,FALSE,FALSE,,
+WaxOfRemembrance,记忆火漆,STARTER,提高「记忆」牌出现的概率。,,据说盖下这枚火漆，就会遥遥吸引对应星神跨越时空的瞥视。,FLAT,FALSE,FALSE,FALSE,FALSE,,
+TrailblazeTimer,开拓进行时,STARTER,选择牌时，选项+1。,,一次次折损，一次次修补，它曾经的样子已无从辨认，只有不再转动的尖针，依旧指向不变的前方。,FLAT,FALSE,FALSE,FALSE,FALSE,,
+,,,,,,,FALSE,FALSE,FALSE,FALSE,,
+第一章节BOSS,,,,,,,FALSE,FALSE,FALSE,FALSE,,
+TheAshblazingGrandDuke,毁烬焚骨的大公,SPECIAL,你的初始攻击牌视为追击牌，且于击破时追击。,,优雅的火魔于万火之火中诞生，并笃信毁灭是赐予陀斐特的至上冠冕。,FLAT,FALSE,FALSE,FALSE,FALSE,,
+IronCavalryAgainstTheScourge,荡除蠹灾的铁骑,SPECIAL,你的初始攻击牌获得消耗，且削韧值+3。,,直到烈焰被彻底扑灭，直到遮天蔽日的虫类化为烬黑焦土，直到无人生还——如此日常还会继续下去……,FLAT,FALSE,FALSE,FALSE,FALSE,,
+PrisonerInDeepConfinement,幽锁深牢的系囚,SPECIAL,你的初始攻击牌获得虚无，且于消耗后对所有敌人施加1层随机的持续伤害。 NL 你于回合外免疫荆棘伤害。,,「步离巢父，行则战至，祸遍诸界。判其绝足禁闭，不得受生 。」,FLAT,FALSE,FALSE,FALSE,FALSE,,
+PasserbyOfWanderingCloud,云无留迹的过客,SPECIAL,在每回合开始时获得 [E] ，然后若你手中的初始攻击牌不足2张，则消耗 [E] 。,,如果人生是步伐连缀而成的路途，那末他希望抵达「终点」之前，能跨过深恨之人的血泊。,FLAT,FALSE,FALSE,FALSE,FALSE,,
+KnightOfPurityPalace,净庭教宗的圣骑士,SPECIAL,战斗开始时，所有初始防御牌获得固有，且基础格挡值+2。 NL 洗牌时，获得所有固有牌。,,「从此，我成为了魔女，你变回了恶魔。」面对瓦妮拉的说法，萨菲娜无法否认。,FLAT,FALSE,FALSE,FALSE,FALSE,,
+MusketeerOfWildWheat,野穗伴行的快枪手,SPECIAL,拾起时，升级你的所有初始攻击牌，且于打出后摸1张牌。,,从梦中醒来，毡帽上留下泪水的痕迹。小奥克莱就是想要父亲那顶帅气的帽子，才开始学枪的。,FLAT,FALSE,FALSE,FALSE,FALSE,,
+TheWindSoaringValorous,风举云飞的勇烈,SPECIAL,你升级的初始攻击牌变为群体，且打出初始攻击牌后，获得40充能。,,她迈开步伐，赤足如飞，女孩一路紧紧追赶她的身影。又或者，是她们在追赶彼此的身影。,FLAT,FALSE,FALSE,FALSE,FALSE,,
+LongevousDisciple,宝命长存的莳者,SPECIAL,初始防御牌改为获得临时生命，且基础格挡值+2。,,千顷楹树悠然摇曳，花瓣翩翩。靛蓝海浪击打着礁石，凝作逸散白玉。飞鸟展开银翼，消失在碧绿的竹林之中。,FLAT,FALSE,FALSE,FALSE,FALSE,,
+HunterOfGlacialForest,密林卧雪的猎人,SPECIAL,你的初始攻击牌获得保留，且不会移除【冻结】。【极寒的弓矢】会对目标施加2层【冻结】。,,那时开始，他们便知道该死去的猎人未能死去，而未曾预料的复仇者却因此诞生。,FLAT,FALSE,FALSE,FALSE,FALSE,,
+MasterOfDreamMachinations,机心戏梦的钟表匠,SPECIAL,拾起时，获得「星穹列车」。 NL 你可以于商店内右键此牌，消耗金币，变化1张牌。,,在千篇故事与万般传言中，这位盛会巨星只是留下足迹，不曾留下身影。,FLAT,FALSE,FALSE,FALSE,TRUE,,
+,,,,,,,FALSE,FALSE,FALSE,FALSE,,
+第二章节BOSS,,,,,,,FALSE,FALSE,FALSE,FALSE,,
+ParallelUniverseWalkieTalkie,平行宇宙对讲机,RARE,你消耗牌时，有20%概率不消耗，而是返还手牌。,,据称它能检测时空变动的微小分歧，在最近的两个分歧点间建立联系，实现二者的信息交流。,FLAT,FALSE,FALSE,FALSE,FALSE,50,
+Revitalization310,醒觉 -310,RARE,首个回合开始时，将手牌转化为虚无。你使用虚无牌后，令一名敌人失去1层〖力量〗（优先为目标）。,1,这些奇异的药膏将从患者的认知入手，将可能产生「虚无」的情绪从根源抹消。,FLAT,FALSE,TRUE,FALSE,FALSE,50,
+ChanceJailbreak,偶有越狱,RARE,战斗开始时，获得所有固有牌（不占据初始手牌数）。你使用固有牌后，摸1张牌。,1,祂的伟力并不是替宇宙修筑堤防，而是在为墙外的事物打造监狱。,FLAT,FALSE,FALSE,FALSE,FALSE,50,
+RoadToComets,通向彗星之路,RARE,回合结束时，你每有一张消耗充能的牌，则获得20充能，每有一张保留的牌，则获得2点格挡。,2,通过在空间结构上的投影架设出的引力桥梁，被博识学会评为宇宙最无用的一万个发明之一。,FLAT,FALSE,FALSE,TRUE,FALSE,50,
+DreamdiveCan,入梦罐,RARE,回合开始时，选择将弃牌堆一张牌置于摸牌堆顶。,,幸存者们颤抖着入睡，去往梦里找寻现实求不得的自由，一如梦想之地的昨天。,FLAT,FALSE,FALSE,FALSE,FALSE,50,
+SilentSong,静谧的歌声,RARE,回合开始和结束时，对随机敌人施加1层【冻结】。,,它们连接成一片水晶草原，粒子间的共鸣无声演奏着谐乐颂的曲调，就像…冰冷的石头。,FLAT,FALSE,FALSE,FALSE,FALSE,50,
+DignityAndPassion,尊严与热忱,RARE,回合结束时，将临时生命补充至已损失生命值的20%。,20,星际和平公司拥有属地星区采矿作业的最终解释权，任何非法采矿的行为都将被视作干扰琥珀王筑墙的亵渎之举。,FLAT,FALSE,FALSE,FALSE,FALSE,50,生存
+TenLightYearsForesight,十光年不晚,RARE,打出攻击牌后，对所有不为此牌目标的敌人造成2点伤害。,2,每当他将猎物驱赶向既定的坐标，十年前击发的子弹，便会跨越十光年的距离，精准地和对方的脑袋产生交集。,FLAT,FALSE,FALSE,FALSE,FALSE,50,
+,,,,,,,FALSE,FALSE,FALSE,FALSE,,
+牺牲遗物,,,,,,,FALSE,FALSE,FALSE,FALSE,,
+Himeko,姬子的遗物,SPECIAL,,,她自火中新生，她自火中微笑。,FLAT,FALSE,FALSE,FALSE,FALSE,,
+Welt,老杨的遗物,SPECIAL,,,杨卧起坐中……,FLAT,FALSE,FALSE,FALSE,FALSE,,
+Danheng,丹恒的遗物,SPECIAL,,,一切仍如昨日所见……,FLAT,FALSE,FALSE,FALSE,FALSE,,
+March7th,三月七的遗物,SPECIAL,,,我不想…一个人……,FLAT,FALSE,FALSE,FALSE,FALSE,,
+,,,,,,,FALSE,FALSE,FALSE,FALSE,,
+废稿,,,,,,,FALSE,FALSE,FALSE,FALSE,,
+ShatteredStarBait,碎星芳饵,UNCOMMON,战斗开始时，获得1层〖敏捷〗。你在选择下一层的房间时有1次机会可以无视当前的路线。,1,在黄昏战争前，混沌星云膨胀所产生的爆炸碎屑可以作为饵料，其特有的宇宙尘埃芳香能够吸引到古兽前来觅食。,FLAT,FALSE,FALSE,FALSE,FALSE,,生存
+FaithBond,信仰债券,COMMON,商店区域的药水和奇物商品价格减少33%。,33,但一代又一代的「你」汇聚起来，终将拥有守护整个宇宙的力量。,FLAT,FALSE,FALSE,FALSE,FALSE,,经济
+,,,,,,,,,,,,
+,,COMMON,,21,36,,18,18,4,18,,
+,,UNCOMMON,,21,36,,原版2,,,,,
+,,RARE,,12,34,,,,,,,
+,,BOSS,,2,30,,,,,,,
+,,SPECIAL,,22,18,,,,,,,
+,,SHOP,,5,20,,,,,,,
+,,STARTER,,10,4,,,,,,,

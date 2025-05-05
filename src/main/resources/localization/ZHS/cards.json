@@ -1,0 +1,347 @@
+{
+  "HSRMod:Trailblazer1": {
+    "EXTENDED_DESCRIPTION": [
+      "群体：造成 !D! 点伤害（物理 !TR! ）。"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "打出此牌 #y击破 或 #y斩杀 #y心脏 。",
+    "SIGNATURE_ILLUSTRATOR": "純白可憐(Pale)"
+  },
+  "HSRMod:Trailblazer3": {
+    "EXTENDED_DESCRIPTION": [
+      "获得 !B! 点 临时生命 。"
+    ]
+  },
+  "HSRMod:March7th0": {
+    "EXTENDED_DESCRIPTION": [
+      "群体：造成 !D! 点伤害（冰 !TR! ）。"
+    ]
+  },
+  "HSRMod:Danheng0": {
+    "EXTENDED_DESCRIPTION": [
+      "群体：造成 !D! 点伤害（风 !TR! ）。"
+    ]
+  },
+  "HSRMod:Himeko0": {
+    "EXTENDED_DESCRIPTION": [
+      "群体：造成 !D! 点伤害（火 !TR! ）。"
+    ]
+  },
+  "HSRMod:Welt0": {
+    "EXTENDED_DESCRIPTION": [
+      "群体：造成 !D! 点伤害（虚数 !TR! ）。"
+    ]
+  },
+  "HSRMod:Bronya1": {
+    "EXTENDED_DESCRIPTION": [
+      "从抽牌堆加入手牌"
+    ]
+  },
+  "HSRMod:Luocha1": {
+    "EXTENDED_DESCRIPTION": [
+      "消耗"
+    ]
+  },
+  "HSRMod:PhantomWorker": {
+    "EXTENDED_DESCRIPTION": [
+      "升级"
+    ]
+  },
+  "HSRMod:Aventurine1": {
+    "EXTENDED_DESCRIPTION": [
+      "一无所有，或者，赢下所有！"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "金币为 #b0 时打出此牌。",
+    "SIGNATURE_ILLUSTRATOR": "小路さこ_0"
+  },
+  "HSRMod:Firefly1": {
+    "EXTENDED_DESCRIPTION": [
+      "点燃星海！",
+      "为生而战！"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "生命值为 #r1 时，连续打出此牌 #b3 次，并完成击杀。",
+    "SIGNATURE_ILLUSTRATOR": "xUDe"
+  },
+  "HSRMod:Firefly2": {
+    "EXTENDED_DESCRIPTION": [
+      "直至一切，燃烧殆尽！"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "打出此牌失去全部的生命，最终赢得当前战斗的胜利。",
+    "SIGNATURE_ILLUSTRATOR": "meltyrice"
+  },
+  "HSRMod:JingYuan1": {
+    "EXTENDED_DESCRIPTION": [
+      "斩无赦！"
+    ]
+  },
+  "HSRMod:Kafka2": {
+    "EXTENDED_DESCRIPTION": [
+      "该说再见了……"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "一局游戏内打出此牌触发所有持续伤害 #b2 次。",
+    "SIGNATURE_ILLUSTRATOR": "Lltchi"
+  },
+  "HSRMod:Robin1": {
+    "SIGNATURE_UNLOCK_CONDITION": "一次性通过此牌追击 #b10 张牌。",
+    "SIGNATURE_ILLUSTRATOR": "yutou75"
+  },
+  "HSRMod:Robin2": {
+    "EXTENDED_DESCRIPTION": [
+      "今夜，群星因我回响!"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "歌曲首次播放完时，状态刚好结束。",
+    "SIGNATURE_ILLUSTRATOR": "yutou75"
+  },
+  "HSRMod:Sparkle1": {
+    "EXTENDED_DESCRIPTION": [
+      "假货的命~"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "手牌满时打出此牌，或杀死花火。",
+    "SIGNATURE_ILLUSTRATOR": "晚雾"
+  },
+  "HSRMod:Sparkle2": {
+    "EXTENDED_DESCRIPTION": [
+      "假货的命~",
+      "愚者千面，游戏人间。"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "打出此牌让能量变少，或杀死花火。",
+    "SIGNATURE_ILLUSTRATOR": "鸦居"
+  },
+  "HSRMod:Sparkle3": {
+    "EXTENDED_DESCRIPTION": [
+      "假货的命~",
+      "从弃牌堆加入手牌"
+    ]
+  },
+  "HSRMod:DestinysThreadsForewoven": {
+    "EXTENDED_DESCRIPTION": [
+      "消耗"
+    ]
+  },
+  "HSRMod:March7th4": {
+    "EXTENDED_DESCRIPTION": [
+      "作为师父"
+    ]
+  },
+  "HSRMod:FinalVictor": {
+    "EXTENDED_DESCRIPTION": [
+      "永久升级"
+    ]
+  },
+  "HSRMod:ImbibitorLunae2": {
+    "EXTENDED_DESCRIPTION": [
+      "消耗"
+    ]
+  },
+  "HSRMod:Lingsha2": {
+    "EXTENDED_DESCRIPTION": [
+      "打出（若为追击牌则触发追击）"
+    ]
+  },
+  "HSRMod:PenMan": {
+    "EXTENDED_DESCRIPTION": [
+      "弃置以获得 %d 充能",
+      "弃置以获得 %d 充能，若不弃置，则消耗能量并获得双倍充能。"
+    ]
+  },
+  "HSRMod:Feixiao2": {
+    "EXTENDED_DESCRIPTION": [
+      "大捷，已定！"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "打出此牌给予 #b飞霄之影 最后一击。",
+    "SIGNATURE_ILLUSTRATOR": "Vardan"
+  },
+  "HSRMod:Gepard1": {
+    "EXTENDED_DESCRIPTION": [
+      "历经冰雪，铸成此志，永不终结！"
+    ]
+  },
+  "HSRMod:Argenti1": {
+    "EXTENDED_DESCRIPTION": [
+      "献给……伊德莉拉。"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "一次性触发 #b6 次此牌的效果。",
+    "SIGNATURE_ILLUSTRATOR": "zc铃玖"
+  },
+  "HSRMod:Sunday1": {
+    "EXTENDED_DESCRIPTION": [
+      "追击"
+    ]
+  },
+  "HSRMod:Burst": {
+    "EXTENDED_DESCRIPTION": [
+      "将此回合费用变为0。"
+    ]
+  },
+  "HSRMod:Concentration": {
+    "EXTENDED_DESCRIPTION": [
+      "获得"
+    ]
+  },
+  "HSRMod:Seele1": {
+    "EXTENDED_DESCRIPTION": [
+      "随蝴蝶一起消散吧，旧日的幻影。"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "此牌达到 #b+22 。",
+    "SIGNATURE_ILLUSTRATOR": "陽葉ヨウ79点"
+  },
+  "HSRMod:SilverWolf1": {
+    "EXTENDED_DESCRIPTION": [
+      "哼，就这速度？ @太慢了！@ ",
+      "二倍速就这？！",
+      "怎么还开挂呢，%s？不会玩不起吧~",
+      "把挂关了吧，%s。",
+      "（银狼）：不要学我开挂哦~"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "通过命令行获得此牌，但再次使用命令行会 #r锁定 。",
+    "SIGNATURE_ILLUSTRATOR": "zcing"
+  },
+  "HSRMod:ImbibitorLunae1": {
+    "EXTENDED_DESCRIPTION": [
+      "霄龙现影，破！",
+      "神蛟腾云，起！"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "一次性通过此牌造成 #b55+ 点伤害。",
+    "SIGNATURE_ILLUSTRATOR": "void"
+  },
+  "HSRMod:Yunli1": {
+    "EXTENDED_DESCRIPTION": [
+      "上决浮云，喝——",
+      "下绝地纪，灭——"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "一次性触发 #b4 次此牌的效果。",
+    "SIGNATURE_ILLUSTRATOR": "谜溶MELT"
+  },
+  "HSRMod:Rappa1": {
+    "EXTENDED_DESCRIPTION": [
+      "斩！断！破！"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "一次性触发 #b4 次此牌的效果。",
+    "SIGNATURE_ILLUSTRATOR": "佐々"
+  },
+  "HSRMod:Trailblazer8": {
+    "EXTENDED_DESCRIPTION": [
+      "枪尖已经点燃。"
+    ]
+  },
+  "HSRMod:TheHerta1": {
+    "EXTENDED_DESCRIPTION": [
+      "谜底却是…乌有之物。"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "打出此牌恰好造成合计 #b42 点的最终伤害。",
+    "SIGNATURE_ILLUSTRATOR": "千千結"
+  },
+  "HSRMod:Acheron1": {
+    "EXTENDED_DESCRIPTION": [
+      "#r我为逝者哀哭……",
+      "#r暮雨，终将落下。"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "获得时解锁，因 #p虚无 而消耗牌后 #r锁定 。",
+    "SIGNATURE_ILLUSTRATOR": "sen jin chen"
+  },
+  "HSRMod:Entangle": {
+    "EXTENDED_DESCRIPTION": [
+      "这张牌被 #b纠缠 了。"
+    ]
+  },
+  "HSRMod:Trailblazer5": {
+    "SIGNATURE_UNLOCK_CONDITION": "通过此牌造成单次 #b70+ 的 #y超击破 伤害。",
+    "SIGNATURE_ILLUSTRATOR": "fractal magnolia"
+  },
+  "HSRMod:BlackSwan1": {
+    "SIGNATURE_UNLOCK_CONDITION": "单次揭露状态下触发 #b9 次 #y持续伤害 。",
+    "SIGNATURE_ILLUSTRATOR": "TioKun7"
+  },
+  "HSRMod:RuanMei2": {
+    "SIGNATURE_UNLOCK_CONDITION": "遇到 #b阮·梅 事件。",
+    "SIGNATURE_ILLUSTRATOR": "Hiroww"
+  },
+  "HSRMod:TheArchitects": {
+    "EXTENDED_DESCRIPTION": [
+      "我没有 #r反震 。",
+      "没有目标有 #r格挡 。"
+    ]
+  },
+  "HSRMod:FuXuan1": {
+    "SIGNATURE_UNLOCK_CONDITION": "保留 #b69+ 点格挡。",
+    "SIGNATURE_ILLUSTRATOR": "辷"
+  },
+  "HSRMod:FuXuan2": {
+    "EXTENDED_DESCRIPTION": [
+      "谋事，在人！"
+    ]
+  },
+  "HSRMod:March7th5": {
+    "SIGNATURE_UNLOCK_CONDITION": "一次性通过此牌恰好升级 #b7 张牌。",
+    "SIGNATURE_ILLUSTRATOR": "谜溶MELT"
+  },
+  "HSRMod:Jade2": {
+    "SIGNATURE_UNLOCK_CONDITION": "一次性通过此牌恰好扣减 #r8 点生命。",
+    "SIGNATURE_ILLUSTRATOR": "Dino"
+  },
+  "HSRMod:Lingsha1": {
+    "SIGNATURE_UNLOCK_CONDITION": "#y醇醉 叠加到 #b5+ 层。",
+    "SIGNATURE_ILLUSTRATOR": "千千結"
+  },
+  "HSRMod:Fugue1": {
+    "SIGNATURE_UNLOCK_CONDITION": "击破时，通过 #y云火昭 将其 #y韧性 回满。",
+    "SIGNATURE_ILLUSTRATOR": "眠"
+  },
+  "HSRMod:Qingque1": {
+    "SIGNATURE_UNLOCK_CONDITION": "通过此牌摸牌后，手牌每种类型的数量分别为 #b3 、 #b3 、 #b2 。",
+    "SIGNATURE_ILLUSTRATOR": "四六八"
+  },
+  "HSRMod:Tribbie1": {
+    "SIGNATURE_UNLOCK_CONDITION": "一回合以此法造成 #b33+ 伤害。",
+    "SIGNATURE_ILLUSTRATOR": "csyday"
+  },
+  "HSRMod:March7th1": {
+    "SIGNATURE_UNLOCK_CONDITION": "#y加护 状态结束时，手牌有恰好 #b7 张 #y「少女的特权」 。",
+    "SIGNATURE_ILLUSTRATOR": "谜溶MELT"
+  },
+  "HSRMod:Kafka1": {
+    "SIGNATURE_UNLOCK_CONDITION": "此牌结算后，目标 #y触电 层数达到 #b7+ 。",
+    "SIGNATURE_ILLUSTRATOR": "Nid_417"
+  },
+  "HSRMod:Feixiao1": {
+    "SIGNATURE_UNLOCK_CONDITION": "获得后，手牌中有 #b6 张 #y「雷狩」 。",
+    "SIGNATURE_ILLUSTRATOR": "Corvus"
+  },
+  "HSRMod:Jingliu1": {
+    "EXTENDED_DESCRIPTION": [
+      "不能停…不能停下！"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "打出此牌失去全部的生命，并完成击杀。",
+    "SIGNATURE_ILLUSTRATOR": "一akeng"
+  },
+  "HSRMod:Jingliu2": {
+    "EXTENDED_DESCRIPTION": [
+      "飞光流泻！"
+    ]
+  },
+  "HSRMod:Blade1": {
+    "SIGNATURE_UNLOCK_CONDITION": "获得此牌的回合内，以 #b0 费打出此牌。",
+    "SIGNATURE_ILLUSTRATOR": "koko"
+  },
+  "HSRMod:Castorice1": {
+    "SIGNATURE_UNLOCK_CONDITION": "触发仓库技。",
+    "SIGNATURE_ILLUSTRATOR": "三門"
+  },
+  "HSRMod:Boothill2": {
+    "SIGNATURE_UNLOCK_CONDITION": "一回合打出 #b5 次此牌。",
+    "SIGNATURE_ILLUSTRATOR": "咸DOOOOOR"
+  },
+  "HSRMod:TopazNumby2": {
+    "SIGNATURE_UNLOCK_CONDITION": "一回合打出 #b4 次此牌。",
+    "SIGNATURE_ILLUSTRATOR": "无期"
+  },
+  "HSRMod:Mydei2": {
+    "EXTENDED_DESCRIPTION": [
+      "荡平万邦！"
+    ]
+  },
+  "HSRMod:Mydei3": {
+    "EXTENDED_DESCRIPTION": [
+      "怒吼吧，吾即纷争。 "
+    ]
+  }
+}

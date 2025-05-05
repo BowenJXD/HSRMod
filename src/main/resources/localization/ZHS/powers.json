@@ -1,0 +1,804 @@
+﻿{
+  "HSRMod:Energy": {
+    "NAME": "充能",
+    "DESCRIPTIONS": [
+      "上限为 #b%d 。一些牌需要消耗充能以使用。"
+    ]
+  },
+  "HSRMod:Toughness": {
+    "NAME": "韧性",
+    "DESCRIPTIONS": [
+      "受到的伤害- #b%d%% 。至多叠加 #b%d 层。",
+      "受到的伤害+ #b%d%% 。至多叠加 #b%d 层。"
+    ]
+  },
+  "HSRMod:Broken": {
+    "NAME": "击破状态",
+    "DESCRIPTIONS": [
+      "受到的伤害+ #b%d%% ，造成的伤害- #b%d%% ，回合开始时移除。"
+    ]
+  },
+  "HSRMod:Frozen": {
+    "NAME": "冻结",
+    "DESCRIPTIONS": [
+      "达到 #b%d 层时（普通/精英/首领敌人为1/2/3层），",
+      "于回合开始时移除所有层，并跳过回合。 NL 受到牌的伤害后，移除1层。"
+    ]
+  },
+  "HSRMod:FrozenResistance": {
+    "NAME": "冻结抵抗",
+    "DESCRIPTIONS": [
+      "冻结所需的层数增加 #b%d 。"
+    ]
+  },
+  "HSRMod:Bleeding": {
+    "NAME": "裂伤",
+    "DESCRIPTIONS": [
+      "持续伤害。回合开始时触发：受到 #b%d （ #b%d%% 生命值上限，至多为 #b%d ）的伤害（物理1），移除1层。"
+    ]
+  },
+  "HSRMod:Burn": {
+    "NAME": "灼烧",
+    "DESCRIPTIONS": [
+      "持续伤害。回合开始时触发：受到 #b%d 点伤害（火1），移除1层。"
+    ]
+  },
+  "HSRMod:Shock": {
+    "NAME": "触电",
+    "DESCRIPTIONS": [
+      "持续伤害。回合开始时触发：受到 #b%d 点伤害（雷1），移除1层。"
+    ]
+  },
+  "HSRMod:WindShear": {
+    "NAME": "风化",
+    "DESCRIPTIONS": [
+      "持续伤害。回合开始时触发：受到 #b%d （层数 #b%d 倍，至多计入 #b%d 层）的伤害（风1），移除1层。"
+    ]
+  },
+  "HSRMod:Imprison": {
+    "NAME": "禁锢",
+    "DESCRIPTIONS": [
+      "造成的伤害- #b%d%% 。回合结束时移除1层。"
+    ]
+  },
+  "HSRMod:Entangle": {
+    "NAME": "纠缠",
+    "DESCRIPTIONS": [
+      "受到伤害时叠加 #b1 层，至多 #b%d 层。回合开始时移除所有层，受到移除层数数量 #b%d 倍的伤害（ #b%d ）。"
+    ]
+  },
+  "HSRMod:BreakEffect": {
+    "NAME": "击破特攻",
+    "DESCRIPTIONS": [
+      "造成的击破伤害+ #b%d 。对有击破状态的敌人造成的持续伤害+ #b%d 。"
+    ]
+  },
+  "HSRMod:BreakEfficiency": {
+    "NAME": "击破效率",
+    "DESCRIPTIONS": [
+      "属性伤害的削韧值+ #b%d%% 。回合结束时移除1层。",
+      "属性伤害的削韧值+ #b%d%% 。回合结束时，若大于 #b%%d 层，移除1层。"
+    ]
+  },
+  "HSRMod:Aftertaste": {
+    "NAME": "回味",
+    "DESCRIPTIONS": [
+      "打出追击牌首次造成伤害后，对目标造成 #b%d 点伤害，然后叠加1层。每回合结束时重置为1层。"
+    ]
+  },
+  "HSRMod:Suspicion": {
+    "NAME": "怀疑",
+    "DESCRIPTIONS": [
+      "受到的持续伤害+ #b%d%% 。至多叠加 #b%d 层。"
+    ]
+  },
+  "HSRMod:Quake": {
+    "NAME": "反震",
+    "DESCRIPTIONS": [
+      "受到单个怪物回合的首次伤害后，对伤害来源触发：移除 #b1 层，对目标造成 #b自身格挡值 的伤害（物理 #b%d ）。"
+    ]
+  },
+  "HSRMod:Spore": {
+    "NAME": "孢子",
+    "DESCRIPTIONS": [
+      "上限 #b%d 层，回合开始时移除 #b1 层。成为攻击牌的目标后爆裂：移除所有层，受到层数平方（ #b%d ）的固定伤害（风 #b1 ）。"
+    ]
+  },
+  "HSRMod:Boost": {
+    "NAME": "会心",
+    "DESCRIPTIONS": [
+      "上限 #b%d 层。造成的伤害+ #b%d 。受击后移除。"
+    ]
+  },
+  "HSRMod:BrainInAVat": {
+    "NAME": "罐中脑",
+    "DESCRIPTIONS": [
+      "消耗 [hsrmod:ChargeIcon] 后，移除1层，回复等量的 [hsrmod:ChargeIcon] 。"
+    ]
+  },
+  "HSRMod:Reinforce": {
+    "NAME": "加护",
+    "DESCRIPTIONS": [
+      "受到伤害时，若你有格挡，则获得一张目标为伤害来源的 #y少女的特权 。",
+      "受到伤害时，若你有格挡，则获得 #b%d 点格挡，并获得一张目标为伤害来源的 #y少女的特权 。"
+    ]
+  },
+  "HSRMod:TopazNumby": {
+    "NAME": "支付困难？",
+    "DESCRIPTIONS": [
+      "每追击 #b2 次，获得一张「猪市？！」。",
+      "每追击 #b2 次，获得一张「猪市？！+」。"
+    ]
+  },
+  "HSRMod:Aventurine": {
+    "NAME": "盲注",
+    "DESCRIPTIONS": [
+      "受到伤害时，若你有格挡，叠加 #b%d 层；追击其他牌后，获得 #b%d 层；至多 #b10 层。 NL 每叠加 #b7 层，获得 #y宾果！ 。"
+    ]
+  },
+  "HSRMod:Robin": {
+    "NAME": "千音迭奏，群星赋格",
+    "DESCRIPTIONS": [
+      "打出牌后，获得其费用数量的 #y力量 。下回合开始时，移除此效果，和以此法获得的 #y力量 。",
+      "打出牌后，获得其费用数量的 #y力量 ，若为追击牌，则回复 #b20 点 [hsrmod:ChargeIcon] 。下回合开始时，移除此效果，和以此法获得的 #y力量 。"
+    ]
+  },
+  "HSRMod:ProofOfDebt": {
+    "NAME": "负债证明",
+    "DESCRIPTIONS": [
+      "受到的追击牌的伤害+ #b%d 。追击选择目标时，优先选择其。"
+    ]
+  },
+  "HSRMod:WisemansFolly": {
+    "NAME": "智者的短见",
+    "DESCRIPTIONS": [
+      "回合结束时，若手牌中没有 #y我思故我在 ，则移除。 NL 移除时，消耗手牌中所有 #y我思故我在 。"
+    ]
+  },
+  "HSRMod:BattlefieldMagician": {
+    "NAME": "战场魔术师",
+    "DESCRIPTIONS": [
+      "追击后，获得 #b%d 点格挡。",
+      "打出追击牌后，获得 #b%d 点格挡。"
+    ]
+  },
+  "HSRMod:SlaughterhouseNo4RestInPeace": {
+    "NAME": "《四号屠场 • 众生安眠》",
+    "DESCRIPTIONS": [
+      "追击造成的削韧+ #b1 ，且造成伤害后，若其有 #y击破状态 ，则有 #b%d%% 的概率摸1张牌。",
+      "打出追击牌造成的削韧+ #b1 ，且造成伤害后，若其有/没有 #y击破状态 ，则分别有 #b%d%% / #b20%% 的概率摸1张牌。"
+    ]
+  },
+  "HSRMod:UselessScholar": {
+    "NAME": "无用学者",
+    "DESCRIPTIONS": [
+      "追击后，若你有 #b%d [hsrmod:ChargeIcon] ，则有 #b%d%% 的概率消耗之，追击一张追击牌。",
+      "打出追击牌后，若你有 #b%d [hsrmod:ChargeIcon] ，则有 #b%d%% 的概率消耗之，追击一张追击牌。"
+    ]
+  },
+  "HSRMod:BountyHunter": {
+    "NAME": "赏金猎人",
+    "DESCRIPTIONS": [
+      "追击后，有 #b%d%% 的概率将该牌返还手卡。",
+      "打出追击牌后，有 #b%d%% 的概率将该牌返还手卡。"
+    ]
+  },
+  "HSRMod:ThanatoplumRebloom": {
+    "NAME": "残梅绽",
+    "DESCRIPTIONS": [
+      "失去 #y击破状态 时，移除1层并防止之。"
+    ]
+  },
+  "HSRMod:Trailblazer5": {
+    "NAME": "喧嚣的舞灯巡游",
+    "DESCRIPTIONS": [
+      "打出的牌造成首次伤害后，若其有 #y击破状态 ，则对其造成伤害削韧值的击破伤害。"
+    ]
+  },
+  "HSRMod:Trailblazer6": {
+    "NAME": "卫我起舞",
+    "DESCRIPTIONS": [
+      "造成削韧的伤害时，若其有 #y击破状态 ，则伤害增加其 #y韧性 数绝对值的数量。"
+    ]
+  },
+  "HSRMod:Firefly": {
+    "NAME": "绽放在终竟的明天",
+    "DESCRIPTIONS": [
+      "击破后，对其造成其韧性上限的击破伤害，获得1层 #y击破效率 ，将牌堆里的 #y自破碎的天空坠落 加入手卡。"
+    ]
+  },
+  "HSRMod:Befog": {
+    "NAME": "醇醉",
+    "DESCRIPTIONS": [
+      "被击破后，你回复 #b%d [E] ，摸 #b%d 张牌。",
+      "被击破后，你回复 #b%d [E] ，摸 #b%d 张牌，然后升级所有手牌。"
+    ]
+  },
+  "HSRMod:Symbiote": {
+    "NAME": "共生体",
+    "DESCRIPTIONS": [
+      "#y击破 后，若为一回合首次，则获得 [E] [E] 。 NL 造成 #y击破伤害 后，摸 #b1 张牌。",
+      "#y击破 后，若为一回合首次，则获得 [E] [E] ，否则获得 [E] 。 NL 造成 #y击破伤害 后，摸1张牌。"
+    ]
+  },
+  "HSRMod:VoyageMonitor": {
+    "NAME": "远航监护员",
+    "DESCRIPTIONS": [
+      "每造成 #b%d 点削韧，获得1点格挡。"
+    ]
+  },
+  "HSRMod:IntersegmentalMembrane": {
+    "NAME": "节间膜",
+    "DESCRIPTIONS": [
+      "每消耗1点 [E] ，获得 #b%d 点格挡。",
+      "每消耗1点 [E] ，获得 !M! 点格挡，若你格挡少于10则额外获得1点。"
+    ]
+  },
+  "HSRMod:Kolchis": {
+    "NAME": "科尔奇人",
+    "DESCRIPTIONS": [
+      "每消耗 [hsrmod:ChargeIcon] 达到 #b%d 点，回复 [E] 。"
+    ]
+  },
+  "HSRMod:Divinity": {
+    "NAME": "神性",
+    "DESCRIPTIONS": [
+      "获得的所有格挡值+ #b%d ，且回合开始时仅损失当前格挡的 #b%d%% 。"
+    ]
+  },
+  "HSRMod:Burden": {
+    "NAME": "承负",
+    "DESCRIPTIONS": [
+      "成为牌的目标后移除1层，你回复 [E] 。回合开始时移除所有层。"
+    ]
+  },
+  "HSRMod:Huohuo": {
+    "NAME": "凭附气通天真",
+    "DESCRIPTIONS": [
+      "打出牌后，回复1点 #y临时生命 ，10点 [hsrmod:ChargeIcon] ，并净化1层随机负面效果。",
+      "打出牌后，或消耗 [hsrmod:ChargeIcon] 后，回复1点 #y临时生命 ，10点 [hsrmod:ChargeIcon] ，并净化1层随机负面效果。"
+    ]
+  },
+  "HSRMod:Epiphany": {
+    "NAME": "揭露",
+    "DESCRIPTIONS": [
+      "触发持续伤害时，不会移除持续伤害的层数，回合结束时移除1层。"
+    ]
+  },
+  "HSRMod:SlashedDream": {
+    "NAME": "残梦",
+    "DESCRIPTIONS": [
+      "打出牌后，若此牌对敌人施加了负面效果，则叠加1层，至多12层。 NL 回合结束时，若不小于9层，则消耗9层，施放 #r残梦尽染，一刀缭断 ：弹射3：造成 #b5 点伤害（雷1）；群体：造成 #b5+X 点伤害（雷1）（X为其负面效果数）。",
+      "我为逝者哀哭……",
+      "暮雨，终将落下。"
+    ]
+  },
+  "HSRMod:AllThingsArePossible": {
+    "NAME": "无根据颂歌",
+    "DESCRIPTIONS": [
+      "打出攻击牌后，对其施加1个其没有的持续伤害。",
+      "打出攻击牌后，若目标：有所有的持续伤害，则随机触发1个，否则对其施加1个其没有的持续伤害。"
+    ]
+  },
+  "HSRMod:AnExtraPersonsDiary": {
+    "NAME": "多余人的日记",
+    "DESCRIPTIONS": [
+      "持续伤害的削韧值+1。击破后，对其施加1层随机的负面效果X次，（X为其韧性上限的十位数）。",
+      "持续伤害的削韧值+1。击破后，对其施加1层随机的负面效果X次，（X为其韧性上限的十位数），并回复 [E] 。"
+    ]
+  },
+  "HSRMod:ReignOfKeys": {
+    "NAME": "钥匙的统治",
+    "DESCRIPTIONS": [
+      "敌人的持续伤害：于你回合外触发时，摸1张牌。于你回合内触发时，不会减少层数。",
+      "敌人的持续伤害触发时，摸1张牌，然后若为你回合内，则不会减少层数。"
+    ]
+  },
+  "HSRMod:FuneralOfSensoryPursuivant": {
+    "NAME": "感官追奉者的葬礼",
+    "DESCRIPTIONS": [
+      "敌人受到持续伤害后，对其施加 #b%d 层 #y怀疑 。",
+      "敌人受到持续伤害后，对其施加 #b%d 层 #y怀疑 。敌人被施加持续伤害后，对其施加 #b%d 层 #y怀疑 。"
+    ]
+  },
+  "HSRMod:CommonMortal": {
+    "NAME": "庸众凡夫",
+    "DESCRIPTIONS": [
+      "消耗 [hsrmod:ChargeIcon] 后，对随机敌人施加1个持续伤害。施加持续伤害时，获得 #b%d 点 [hsrmod:ChargeIcon] 。",
+      "消耗 [hsrmod:ChargeIcon] 后，对随机敌人施加1个持续伤害。施加负面效果时，获得 #b%d 点 [hsrmod:ChargeIcon] 。"
+    ]
+  },
+  "HSRMod:MatrixOfPrescience": {
+    "NAME": "穷观阵",
+    "DESCRIPTIONS": [
+      "受到的伤害- #b%d%% 。"
+    ]
+  },
+  "HSRMod:ResonanceTransfer": {
+    "NAME": "谐振传递",
+    "DESCRIPTIONS": [
+      "突破格挡时，获得1层 #y反震 。",
+      "对有格挡的敌人造成伤害时，获得1层 #y反震 。"
+    ]
+  },
+  "HSRMod:Trailblazer7": {
+    "NAME": "筑城者遗宝",
+    "DESCRIPTIONS": [
+      "每打出一张 #g技能 牌，获得 #b%d 点格挡，每有一个敌人有格挡，额外获得1点。回合结束时移除。"
+    ]
+  },
+  "HSRMod:Trailblazer8": {
+    "NAME": "行胜思",
+    "DESCRIPTIONS": [
+      "打出有格挡值的牌时，获得一张伤害为该牌格挡值的 #y反震 。",
+      "打出有格挡值的牌时，获得一张伤害为该牌格挡值的 #y反震+ 。"
+    ]
+  },
+  "HSRMod:ChampionsDinnerCatsCradle": {
+    "NAME": "冠军晚餐 · 猫的摇篮",
+    "DESCRIPTIONS": [
+      "耗能的牌视为追击牌，且于获得充能时， #b%d%% 概率不消耗充能追击 #b1 张。"
+    ]
+  },
+  "HSRMod:EmpyreanImperium": {
+    "NAME": "帝星君临制穹桑",
+    "DESCRIPTIONS": [
+      "每打出 #b%d 次最左侧的牌，摸 #b1 张牌。",
+      "每打出 #b%d 次最左侧的牌，摸 #b1 张牌。费用大于 #b0 的牌算作 #b2 张。"
+    ]
+  },
+  "HSRMod:RadiantSupreme": {
+    "NAME": "帝车超光所向捷",
+    "DESCRIPTIONS": [
+      "打出牌时，每满足一项，叠加1层：1.单体牌；2.攻击牌。每叠加 #b%d 层，摸1张牌，获得 #b2 层 #y会心 。",
+      "打出牌时，每满足一项，叠加1层：1.单体牌；2.攻击牌；3.升级过的牌。每叠加 #b%d 层，摸1张牌，获得 #b2 层 #y会心 。"
+    ]
+  },
+  "HSRMod:SovereignSkybreaker": {
+    "NAME": "帝弓断空彻太清",
+    "DESCRIPTIONS": [
+      "打出牌时，每满足一项，叠加1层：1.单体牌；2.技能牌。每叠加 #b%d 层，随机一张手牌于此回合费用-1，并获得 #b3 层 #y会心 。",
+      "打出牌时，每满足一项，叠加1层：1.单体牌；2.技能牌；3.升级过的牌。每叠加 #b%d 层，随机一张手牌于此回合费用-1，并获得 #b3 层 #y会心 。"
+    ]
+  },
+  "HSRMod:Prey": {
+    "NAME": "猎物",
+    "DESCRIPTIONS": [
+      "每对其打出 #b%d 张攻击牌，则移除1层，将一张 #y伸天卑飞，折翅为芒 置于牌堆顶。"
+    ]
+  },
+  "HSRMod:PhenolCompounds": {
+    "NAME": "酚类物质",
+    "DESCRIPTIONS": [
+      "于此回合打出下 #b%d 张牌后，回复该牌费用数量的 [E] 。",
+      "于此回合打出下 #b%d 张牌后，回复该牌费用数量的 [E] ，并对其的目标施加共计等量层 #y孢子 。"
+    ]
+  },
+  "HSRMod:SerfOfCalamity": {
+    "NAME": "孕灾蠧役",
+    "DESCRIPTIONS": [
+      "通过牌造成伤害后，对目标施加 #b1 层 #y孢子 。每破裂 #b%d 层 #y孢子 ，摸 #b1 张牌。"
+    ]
+  },
+  "HSRMod:ExcitatoryGland": {
+    "NAME": "兴奋腺",
+    "DESCRIPTIONS": [
+      " [E] 上限+1。每回合首次消耗完 [E] 时，回复 [E] 。"
+    ]
+  },
+  "HSRMod:SporeDischarge": {
+    "NAME": "子囊释放",
+    "DESCRIPTIONS": [
+      "每消耗 #b1 点 [E] ，对随机敌人施加 #b1 层 #y孢子 。",
+      "每消耗或回复 #b1 点 [E] ，对随机敌人施加 #b1 层 #y孢子 。"
+    ]
+  },
+  "HSRMod:SilverheartGuards": {
+    "NAME": "银河护卫队",
+    "DESCRIPTIONS": [
+      "消耗充能后，获得摸牌堆 #b%d 张牌，获得 #b%d 点格挡。"
+    ]
+  },
+  "HSRMod:SMR2Amygdala": {
+    "NAME": "SMR-2型杏仁核",
+    "DESCRIPTIONS": [
+      "每回合开始时，获得 #b1 层 #y罐中脑 。 [hsrmod:ChargeIcon] 至少为 #b%d 。"
+    ]
+  },
+  "HSRMod:LoadStriatedCortex": {
+    "NAME": "装载：纹状皮层",
+    "DESCRIPTIONS": [
+      "打出群体攻击牌时，若只有1/2/3名敌人，则伤害+ #b6/3/1 。",
+      "打出群体攻击牌时，若只有1/2/3名敌人，则伤害+ #b9/4/1 。"
+    ]
+  },
+  "HSRMod:CloudflameLuster": {
+    "NAME": "云火昭",
+    "DESCRIPTIONS": [
+      "击破后移除，将韧性恢复至 #b%d 层。",
+      "击破后移除，将韧性恢复至 #b%d 层，并获得 [E] 。"
+    ]
+  },
+  "HSRMod:Tribbie": {
+    "NAME": "猜猜这里住着谁",
+    "DESCRIPTIONS": [
+      "打出 #r攻击牌 后，每攻击到一个其他目标，对目标中生命值最高的敌人造成 #b%d 点伤害（量子0）。",
+      "打出 #r攻击牌 后，每攻击到一个目标，对目标中生命值最高的敌人造成 #b%d 点伤害（量子0）。"
+    ]
+  },
+  "HSRMod:Charging": {
+    "NAME": "蓄力",
+    "DESCRIPTIONS": [
+      "正在蓄力，下回合释放。 #y击破 以打断。 NL %s",
+      "正在蓄力，剩余回合数： #b%d 。 #y击破 以打断。 NL %s"
+    ]
+  },
+  "HSRMod:WalkInTheLight": {
+    "NAME": "在光明中行",
+    "DESCRIPTIONS": [
+      "受到的伤害减少 #b%d%% 。被 #y击破 时，或有怪物死亡时，移除1层，回复所有 #y韧性 ，并令玩家回复 #b%d 点 #y临时生命 和 #b%d 点格挡，若为前者则获得1张 #y禁锢 。0层时，受到的伤害增加 #b%d%% 。",
+      "受到的伤害减少 #b%d%% 。被 #y击破 时，或有怪物死亡时，移除1层，回复所有 #y韧性 ，并令玩家回复 #b%d 点 #y临时生命 和 #b%d 点格挡，获得1张 #y禁锢 。0层时，受到的伤害增加 #b%d%% 。",
+      "受到的伤害增加 #b%d%% 。"
+    ]
+  },
+  "HSRMod:IfWeLiveInTheLight": {
+    "NAME": "尔在光明中",
+    "DESCRIPTIONS": [
+      "受到的伤害降低 #b%d%% ， #y韧性 无法被削减。回合开始时移除1层。"
+    ]
+  },
+  "HSRMod:AlienDream": {
+    "NAME": "异梦",
+    "DESCRIPTIONS": [
+      "造成的伤害减少 #b%d%% ，且改为回复伤害量 #b%d%% 的血量。受到伤害时移除，该伤害增加 #b%d%% （意图上不显示）。"
+    ]
+  },
+  "HSRMod:Summoned": {
+    "NAME": "随从",
+    "DESCRIPTIONS": [
+      "爪牙的一种。 NL 受到致命伤害时，令首领：失去随从 #y韧性上限 的 #y韧性 ，失去随从 #r生命上限 的 #r生命 。"
+    ]
+  },
+  "HSRMod:MultiMove": {
+    "NAME": "多次行动",
+    "DESCRIPTIONS": [
+      "下回合多行动 #b%d 次， #y击破 以打断。"
+    ]
+  },
+  "HSRMod:AbundanceLotus": {
+    "NAME": "不灭",
+    "DESCRIPTIONS": [
+      "死亡时，你移除所有 #y斋戒 ，并获得2倍的 [E] 。"
+    ]
+  },
+  "HSRMod:DestructionLotus": {
+    "NAME": "玄气归身",
+    "DESCRIPTIONS": [
+      "死亡时，你移除所有 #y抽牌减少 ，并摸2倍的牌。"
+    ]
+  },
+  "HSRMod:TitForTat": {
+    "NAME": "戍卫气场",
+    "DESCRIPTIONS": [
+      "韧性无法被削减，突破格挡后移除，失去 #b%d 点生命（ #b%d ）。回合开始时移除1层。"
+    ]
+  },
+  "HSRMod:MoonRage": {
+    "NAME": "月狂",
+    "DESCRIPTIONS": [
+      "造成伤害后，失去 #b%d 点生命，获得 #b%d 层 #y力量 ，被 #y击破 时移除，并失去所有 #y力量 。"
+    ]
+  },
+  "HSRMod:Irate": {
+    "NAME": "怒意",
+    "DESCRIPTIONS": [
+      "玩家/所有者每受到1次伤害，叠加/减少1层。叠到 #b%d/0 层时移除，所有怪物/玩家立即进行一个额外的回合。",
+      "怒意触发！所有怪物立即行动！",
+      "怒意触发！玩家立即获得额外回合！"
+    ]
+  },
+  "HSRMod:Terror": {
+    "NAME": "恐惧",
+    "DESCRIPTIONS": [
+      "每摸1次牌，随机牌于此回合费用+ #b%d 。移除时，所有牌于此回合费用+ #b%d 。"
+    ]
+  },
+  "HSRMod:Sunset": {
+    "NAME": "白日西沉",
+    "DESCRIPTIONS": [
+      "再打出 #b%d 张牌后移除，结束回合，被 #r盗窃 所有手牌。"
+    ]
+  },
+  "HSRMod:Nightfall": {
+    "NAME": "夜幕将临",
+    "DESCRIPTIONS": [
+      "打出的下 #b%d 张牌将被 #r消耗 。"
+    ]
+  },
+  "HSRMod:SlumberAwakening": {
+    "NAME": "惊醒无声的长眠",
+    "DESCRIPTIONS": [
+      "死亡时，若为你击杀，所盗窃的卡牌会被放回你的手牌，否则， #r从你的卡组中移除这些牌 。 NL 盗窃的牌：%s"
+    ]
+  },
+  "HSRMod:Barrier": {
+    "NAME": "屏障",
+    "DESCRIPTIONS": [
+      "防止下 #b%d 次受到的伤害和削韧，回合开始时移除。"
+    ]
+  },
+  "HSRMod:SanctionRate": {
+    "NAME": "惩戒度",
+    "DESCRIPTIONS": [
+      "打出 #g技能牌 或 #b能力牌 时叠加 #b%d%% ，叠至 #b100%% 时结束回合，进入 #r罚恶模式 （韧性无法被削减，并开启使用技能：戒退和缚束）。",
+      "【 #r罚恶模式 】 #y韧性 无法被削减，并开启使用技能： #y戒退 和 #y缚束 。"
+    ]
+  },
+  "HSRMod:Channel": {
+    "NAME": "串台",
+    "DESCRIPTIONS": [
+      "【 #b惊喜频道 】受到 #b%d 伤害后，会切换至 #r惊吓频道 。",
+      "【 #r惊吓频道 】受到 #b%d 伤害后，会切换至 #b惊喜频道 。",
+      "【 #b课间频道 】受到 #b%d 伤害后，会切换至 #r课堂频道 。",
+      "【 #r课堂频道 】受到 #b%d 伤害后，会切换至 #b课间频道 。"
+    ]
+  },
+  "HSRMod:SoulGladRevel": {
+    "NAME": "酣畅",
+    "DESCRIPTIONS": [
+      "造成的伤害+ #b%d ；受到伤害后叠加 #b1 层；至多叠加 #b%d 层。"
+    ]
+  },
+  "HSRMod:ToughnessProtection": {
+    "NAME": "韧性保护",
+    "DESCRIPTIONS": [
+      "韧性无法被削减。"
+    ]
+  },
+  "HSRMod:HeartIsMeantToBeBroken": {
+    "NAME": "心脏？就是用来打破的！",
+    "DESCRIPTIONS": [
+      " #y坚不可摧 触发时，受到 #y韧性 上限数量的削韧。 NL #y击破 时，若来源为玩家，则移除 #y坚不可摧 和此能力，受到 #y韧性 上限数量的击破伤害。",
+      "心脏？就是用来 #r@打破@ 的！"
+    ]
+  },
+  "HSRMod:Ban": {
+    "NAME": "禁令",
+    "DESCRIPTIONS": [
+      "打出 #r攻击牌 ：随机弃置1张牌。 #y击破 后移除。",
+      "打出 #g技能牌 ：随机1张牌此回合费用+1。 #y击破 后移除。",
+      "对 #y守护者之影 造成伤害：反伤 #b%d 点。 #y击破 后移除。"
+    ]
+  },
+  "HSRMod:GaugeRecollection": {
+    "NAME": "追忆刻度",
+    "DESCRIPTIONS": [
+      "受到伤害后移除1层。 #y击破 后移除。完全移除时，获得 #y易伤 。"
+    ]
+  },
+  "HSRMod:Snarelock": {
+    "NAME": "缠禁",
+    "DESCRIPTIONS": [
+      "连续打出 #r攻击牌 时，陷入1层 #y禁锢 。 NL 连续打出 #g非攻击牌 时，陷入1层 #y纠缠 。",
+      "连续打出 #r攻击牌 时，陷入1层 #y禁锢 。 NL 连续打出 #g非攻击牌 时，陷入1层 #y纠缠 。 NL 上一张打出的牌为： #r攻击牌 。",
+      "连续打出 #r攻击牌 时，陷入1层 #y禁锢 。 NL 连续打出 #g非攻击牌 时，陷入1层 #y纠缠 。 NL 上一张打出的牌为： #g非攻击牌 。"
+    ]
+  },
+  "HSRMod:DrainingHit": {
+    "NAME": "击中回复",
+    "DESCRIPTIONS": [
+      "造成伤害后，回复 #b%d 点生命。有怪物死亡后，若没有怪物有 #y重生 ，则移除。"
+    ]
+  },
+  "HSRMod:Rebirth": {
+    "NAME": "重生",
+    "DESCRIPTIONS": [
+      "受到致命伤害时移除，将生命恢复至 #b50% 。"
+    ]
+  },
+  "HSRMod:Reverberation": {
+    "NAME": "震荡",
+    "DESCRIPTIONS": [
+      "受到未被格挡的伤害时，叠加 #b1 层。回合开始时，若大于 #b1 层，则移除，并 #y结束回合 。"
+    ]
+  },
+  "HSRMod:Gusto": {
+    "NAME": "元气",
+    "DESCRIPTIONS": [
+      "你每打出 #b1 张 #r攻击牌 ，其获得 #b%d 层 #y力量 。 #y击破 后移除。移除时，失去所有 #y力量 。"
+    ]
+  },
+  "HSRMod:PranaSiphoned": {
+    "NAME": "噬命",
+    "DESCRIPTIONS": [
+      "你每打出1张 #g技能牌 ，失去 #b1 点 #y敏捷 。回合结束时移除。移除时，回复 #b%d 层 #y敏捷 。"
+    ]
+  },
+  "HSRMod:SpurOfThunderwoe": {
+    "NAME": "丹毁",
+    "DESCRIPTIONS": [
+      " #y内丹士 死亡时，对你造成 #b%d 点伤害。"
+    ]
+  },
+  "HSRMod:Outrage": {
+    "NAME": "怒噪",
+    "DESCRIPTIONS": [
+      "打出非攻击牌后，移除 #b1 层，随机打出 #b1 张 #r攻击牌 （会消耗 [E] ）。"
+    ]
+  },
+  "HSRMod:LastSpring": {
+    "NAME": "驻春",
+    "DESCRIPTIONS": [
+      "受到伤害后，令所有怪物回复 #b%d 点生命。 #y击破 后移除。"
+    ]
+  },
+  "HSRMod:HardyLeafSheath": {
+    "NAME": "蕉覆",
+    "DESCRIPTIONS": [
+      " #y韧性 无法被削减，受到的伤害- #b50% 。回合开始时移除 #b1 层。"
+    ]
+  },
+  "HSRMod:LavishFruit": {
+    "NAME": "嘉实",
+    "DESCRIPTIONS": [
+      "2层时， #y丰饶玄鹿 将施放 #y⚠斑龙触⚠ ， #y击破 后移除 #b1 层。"
+    ]
+  },
+  "HSRMod:VigorOverflow": {
+    "NAME": "生机充盈",
+    "DESCRIPTIONS": [
+      "每获得一次 #g增益 效果，获得 #b1 点 #y力量 。每获得一次 #r负面效果，失去 #b1 点 #y力量 。"
+    ]
+  },
+  "HSRMod:Soulsplit": {
+    "NAME": "分灵",
+    "DESCRIPTIONS": [
+      "受到伤害降为 #b1 。有怪物被击杀时，失去 #b%d点 生命。"
+    ]
+  },
+  "HSRMod:Safeguard": {
+    "NAME": "守备",
+    "DESCRIPTIONS": [
+      "若未被 #y击破 ，受到的伤害 #b-%d%% ，受到的单次削韧至多为 #b%d 。 #y击破 后移除 #b1 层。"
+    ]
+  },
+  "HSRMod:Resonate": {
+    "NAME": "共鸣",
+    "DESCRIPTIONS": [
+      "技能获得强化。受到的韧性削减 #b+%d 。一张牌首次对有 #y共鸣 的目标造成元素伤害后，其他有 #y共鸣 的单位失去等量生命。 #y击破 后移除，若为小怪，则锁定韧性，且无法再行动。",
+      "受到的韧性削减 #b+%d 。一张牌首次对有 #y共鸣 的目标造成元素伤害后，其他有 #y共鸣 的单位失去等量生命。 #y击破 后眩晕。"
+    ]
+  },
+  "HSRMod:DeceptionsCrown": {
+    "NAME": "本真沉沦",
+    "DESCRIPTIONS": [
+      "受到伤害后，回复 #b%d 点生命。 #y击破 后移除。"
+    ]
+  },
+  "HSRMod:Simmer": {
+    "NAME": "文火",
+    "DESCRIPTIONS": [
+      "受到伤害后叠加 #b1 层，叠加至 #b%d 层后转至 #y急火 。"
+    ]
+  },
+  "HSRMod:Boil": {
+    "NAME": "急火",
+    "DESCRIPTIONS": [
+      "造成的伤害会施加 #y易伤 ，并将 #y灼烧 置入摸牌堆。受到伤害后移除 #b1 层，若完全移除，对自己造成伤害（火 #b%d ），获得 #y易伤 并 #y眩晕 。"
+    ]
+  },
+  "HSRMod:ObscureBlaze": {
+    "NAME": "无明火",
+    "DESCRIPTIONS": [
+      " #y痛恶如刺剔骨 的伤害段数增加， #y击破 时移除。"
+    ]
+  },
+  "HSRMod:PerformancePoint": {
+    "NAME": "绩效点",
+    "DESCRIPTIONS": [
+      "造成的伤害+ #b%d ， #y击破 或 #y击杀 后夺取。"
+    ]
+  },
+  "HSRMod:Tutoring": {
+    "NAME": "补课",
+    "DESCRIPTIONS": [
+      "不会切换 #y频道 。 #y击破 或击杀后移除。"
+    ]
+  },
+  "HSRMod:FickleFortune": {
+    "NAME": "运数莫测",
+    "DESCRIPTIONS": [
+      "受到的伤害改为随机 #b1~6 ，死亡时，移除 #y诡弈砂金 的 #y无实体 和 #y韧性保护 效果，回复全部 #y充能 。"
+    ]
+  },
+  "HSRMod:SecondaryCombustion": {
+    "NAME": "次级燃烧",
+    "DESCRIPTIONS": [
+      " #y萨姆 攻击时，或 #y玩家 打出牌消耗 [E] 后，均会受到 #b%d 点伤害，令伤害+ #b%d 。 #y击破 时移除。移除时，获得 #y易伤 ，玩家恢复所有 [E] 。"
+    ]
+  },
+  "HSRMod:MoltenCore": {
+    "NAME": "熔火能量",
+    "DESCRIPTIONS": [
+      "打出牌后，移除费用数量的层数，完全移除时， #y击破 之。"
+    ]
+  },
+  "HSRMod:TheCansCreed": {
+    "NAME": "桶的信条",
+    "DESCRIPTIONS": [
+      " #y击破 后，离开战斗，并留下 #y遗物 。"
+    ]
+  },
+  "HSRMod:TrotterBlessing": {
+    "NAME": "扑满祝福",
+    "DESCRIPTIONS": [
+      "击杀后，增加1次 #y卡牌奖励 。"
+    ]
+  },
+  "HSRMod:SwordFormation": {
+    "NAME": "剑阵",
+    "DESCRIPTIONS": [
+      "造成的伤害 #b+%d%% ，受到的伤害 #b-%d%% 。若场上没有 #y阵眼 ，则移除，移除韧性锁定，被击破，并受到 #b%d%% 生命上限的伤害，玩家获得所有消耗的牌。"
+    ]
+  },
+  "HSRMod:FormationCore": {
+    "NAME": "剑眼",
+    "DESCRIPTIONS": [
+      "只能受到 %s 牌的削韧。 #y击破 后死亡。死亡时，令所有手牌获得一个随机的其他标签，并令其他阵眼获得标签。",
+      "有一个 #y消耗/虚无/固有/保留 的标签，只能受到标签牌的削韧。 #y击破 后死亡。死亡时，令所有手牌获得一个随机的其他标签。",
+      " #r消耗 ",
+      " #p虚无 ",
+      " #y固有 ",
+      " #g保留 "
+    ]
+  },
+  "HSRMod:Defense": {
+    "NAME": "防御",
+    "DESCRIPTIONS": [
+      "受到的伤害 #b-%d%% 。",
+      "受到的伤害 #b+%d%% 。 "
+    ]
+  },
+  "HSRMod:Multiply": {
+    "NAME": "增殖",
+    "DESCRIPTIONS": [
+      "每回合结束获得 #b%d 层 #y虫卵 。用牌后首次受到攻击后，消耗1层 #y虫卵 ，召唤 #y蚀蛰虫 或 #y次蛰虫 。 #y击破 后移除，所有怪物获得 #y易伤 ，并 #y眩晕 。"
+    ]
+  },
+  "HSRMod:InsectEgg": {
+    "NAME": "虫卵",
+    "DESCRIPTIONS": [
+      "造成的伤害+%d*%d( #b%d )。"
+    ]
+  },
+  "HSRMod:DecayEulogy": {
+    "NAME": "蛰亡语",
+    "DESCRIPTIONS": [
+      "死亡时，玩家恢复 #b%d 点生命，对所有敌人造成其生命上限 #b%d%% 的伤害，造成其韧性上限 #b%d%% 的削韧，并移除 #b%d 层 #y防御 。"
+    ]
+  },
+  "HSRMod:ExtraToughness": {
+    "NAME": "额外韧性",
+    "DESCRIPTIONS": [
+      "即将被 #y击破 时，移除1层，若还有剩余层数，立即回复所有韧性，并在手牌中加入1张 #y纠缠 。"
+    ]
+  },
+  "HSRMod:ShuffleState": {
+    "NAME": "阈值诅咒",
+    "DESCRIPTIONS": [
+      "洗牌后，获得1张状态牌。"
+    ]
+  },
+  "HSRMod:Necrosis": {
+    "NAME": "坏死",
+    "DESCRIPTIONS": [
+      "回合开始时，移除1层并触发：若有 #b%d 点临时生命，失去之。"
+    ]
+  },
+  "HSRMod:DewDrop": {
+    "NAME": "珠露",
+    "DESCRIPTIONS": [
+      "回合结束时，移除所有层触发：对随机敌人造成 #b%d 点固定伤害。"
+    ]
+  }
+}

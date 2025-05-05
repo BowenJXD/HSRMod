@@ -1,0 +1,57 @@
+{
+  "HSRMod:Belobog": {
+    "TEXT": [
+      "Belobog",
+      "Act I",
+      "Traversing across the snow plains, you can get a full view of #bBelobog, the only spot on #bJarilo #bVI [sic] that barely fits the definition of \"a warm place.\" NL As the only remaining city with human civilization, #bBelobog has been given many noble titles: the last bastion of mankind against the Eternal Freeze, the land blessed by Plamya...",
+      "Enter the frozen city: #bBelobog."
+    ]
+  },
+  "HSRMod:Luofu": {
+    "TEXT": [
+      "Xianzhou \"Luofu\"",
+      "Act II",
+      "The #gXianzhou #gLuofu is one of the six flagships of the Xianzhou Alliance. NL It sails in the endless ocean of stars like a one-way arrow, shooting towards the Lord of #gThe #gHunt's destined enemy.",
+      "Enter the land of immortal: #gXianzhou #gLuofu."
+    ]
+  },
+  "HSRMod:Penacony": {
+    "TEXT": [
+      "Penacony",
+      "Act III",
+      "A colossal structure located in the Asdana system, with the soaring hotel \"The Reverie\" as its iconic landmark. NL Once a frontier prison belonging to the IPC, #yThe #yFamily had modeled it to serve as an interstellar transportation hub and the gateway to the #pSweetdream #pParadise.",
+      "Enter the land of dreams: #pPenacony."
+    ]
+  },
+  "HSRMod:RelicEventHelper": {
+    "TEXT": [
+      "Choose %d cards",
+      "Choose %d cards to upgrade",
+      "Choose %d cards to purge",
+      "Choose %d cards to gain",
+      "Choose %d cards to transform",
+      "Extra reward!",
+      "Choose any cards to discard"
+    ]
+  },
+  "HSRModConfig": {
+    "TEXT": [
+      "Basic Settings",
+      "Some settings need to restart \nand reopen the game to apply.",
+      "Add Relic",
+      "Add Event",
+      "Add Enemy",
+      "Use Spine Skin",
+      "    Threshold Protocol",
+      "Threshold Protocol is a hard mode that is effective above A20. \nWhen Stelle passing the game with full threshold, increase the level by 1. \nEach level adds 400 starting gold, but monsters have higher HP and Toughness, \nwhich will increase by act. At most 40% HP and 20% Toughness per level.",
+      "Thorns enemies.",
+      "Malleable enemies.",
+      "Ritual enemies",
+      "Safeguard elites and bosses.",
+      "Obtain a random state card upon shuffle.",
+      "Current Threshold Protocol Level: %d / %d.",
+      "Threshold Protocol has reached the limit.",
+      "Cannot modify Threshold Protocol during a run."
+    ]
+  }
+}

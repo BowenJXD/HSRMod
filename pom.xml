@@ -79,6 +79,20 @@
             <scope>system</scope>
             <systemPath>${Steam.path}/workshop/content/646570/3242483596/VUPShionMod.jar</systemPath>
         </dependency>-->
+        <dependency>
+            <groupId>com.evacipated.cardcrawl.mod</groupId>
+            <artifactId>spireTogether</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${Steam.path}/workshop/content/646570/2384072973/TogetherInSpire.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.evacipated.cardcrawl.mod</groupId>
+            <artifactId>VideoTheSpire</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${Steam.path}/workshop/content/646570/3189856464/VideoTheSpire.jar</systemPath>
+        </dependency>
         
     </dependencies>
 

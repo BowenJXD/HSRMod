@@ -142,7 +142,7 @@ public class ElementalDamageAction extends AbstractGameAction {
 
         // reduce toughness
         if (toughnessPower != null && target != null && !target.hasPower(LockToughnessPower.POWER_ID)) {
-            addToTop(new ReducePowerAction(target, AbstractDungeon.player, ToughnessPower.POWER_ID, info.tr));
+            addToTop(new ApplyPowerAction(target, AbstractDungeon.player, new ToughnessPower(target, -info.tr)));
         }
 
         // Check to remove actions except HealAction, GainBlockAction, UseCardAction, TriggerCallbackAction, and DamageAction

@@ -2,6 +2,7 @@ package hsrmod.relics.starter;
 
 import basemod.abstracts.CustomMultiPageFtue;
 import basemod.abstracts.CustomRelic;
+import basemod.abstracts.CustomSavable;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -15,15 +16,19 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.InvinciblePower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.relics.BottledFlame;
+import com.megacrit.cardcrawl.unlock.UnlockTracker;
+import hsrmod.characters.StellaCharacter;
 import hsrmod.modcore.HSRMod;
+import hsrmod.modcore.HSRModConfig;
 import hsrmod.powers.enemyOnly.HeartIsMeantToBeBrokenPower;
 import hsrmod.powers.misc.ToughnessPower;
+import hsrmod.relics.ITutorial;
 import hsrmod.utils.PathDefine;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class GalacticBat extends CustomRelic implements ClickableRelic {
+public class GalacticBat extends CustomRelic implements ClickableRelic, ITutorial {
     // 遗物ID（此处的ModHelper在“04 - 本地化”中提到）
     public static final String ID = HSRMod.makePath(GalacticBat.class.getSimpleName());
     // 图片路径
@@ -73,6 +78,11 @@ public class GalacticBat extends CustomRelic implements ClickableRelic {
         super.atBattleStart();
         AbstractDungeon.getMonsters().monsters.stream().filter(m -> m.hasPower(InvinciblePower.POWER_ID)).findFirst()
                 .ifPresent(m -> addToTop(new ApplyPowerAction(m, m, new HeartIsMeantToBeBrokenPower(m))));
+        if (!HSRMod.seenTutorials.contains(relicId) || HSRModConfig.firstTime) {
+            HSRMod.seenTutorials.add(relicId);
+            if (Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT)
+                AbstractDungeon.ftue = new CustomMultiPageFtue(ftues, tutTexts);
+        }
     }
 
     @Override
@@ -104,6 +114,5 @@ public class GalacticBat extends CustomRelic implements ClickableRelic {
         }
         initializeTips();
         tips.get(0).body = modNameCache;
-        
     }
 }

@@ -11,7 +11,7 @@ import hsrmod.utils.ModHelper;
 
 public class RegressionInequalityOfAnnihilation extends BaseCard {
     public static final String ID = RegressionInequalityOfAnnihilation.class.getSimpleName();
-    
+
     public RegressionInequalityOfAnnihilation() {
         super(ID);
     }
@@ -23,20 +23,14 @@ public class RegressionInequalityOfAnnihilation extends BaseCard {
         totalToughness += AbstractDungeon.getMonsters().monsters.stream().
                 mapToInt(mo -> ModHelper.getPowerCount(mo, ToughnessPower.POWER_ID)).sum();
         int avgToughness = totalToughness / (AbstractDungeon.getMonsters().monsters.size() + magicNumber);
-        
+
         int stackNumber = avgToughness * magicNumber - playerToughness;
-        if (stackNumber > 0)
-            addToTop(new ApplyPowerAction(p, p, new ToughnessPower(p, stackNumber), stackNumber));
-        else if (stackNumber < 0)
-            addToTop(new ReducePowerAction(p, p, new ToughnessPower(p, -stackNumber), -stackNumber));
-        
+        addToTop(new ApplyPowerAction(p, p, new ToughnessPower(p, stackNumber), stackNumber));
+
         AbstractDungeon.getMonsters().monsters.forEach(monster -> {
             int monsterToughness = ModHelper.getPowerCount(monster, ToughnessPower.POWER_ID);
             int stackNum = avgToughness - monsterToughness;
-            if (stackNum > 0)
-                addToTop(new ApplyPowerAction(monster, monster, new ToughnessPower(monster, stackNum), stackNum));
-            else if (stackNum < 0)
-                addToTop(new ReducePowerAction(monster, monster, new ToughnessPower(monster, -stackNum), -stackNum));
+            addToTop(new ApplyPowerAction(monster, monster, new ToughnessPower(monster, stackNum), stackNum));
         });
     }
 }

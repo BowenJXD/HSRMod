@@ -28,6 +28,7 @@ import hsrmod.characters.StellaCharacter;
 import hsrmod.effects.TopWarningEffect;
 import hsrmod.powers.misc.ShuffleStatePower;
 import hsrmod.utils.PathDefine;
+import org.apache.logging.log4j.Level;
 import org.scannotation.AnnotationDB;
 
 import java.io.IOException;
@@ -52,6 +53,8 @@ public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscrib
     public static boolean addEvent = true;
     public static boolean addEnemy = true;
     public static boolean useSpine = true;
+    
+    public static boolean firstTime = true;
 
     public static int tpLimit = 0;
     public static boolean tpThorn = false;
@@ -84,6 +87,8 @@ public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscrib
             defaults.setProperty("addEnemy", Boolean.toString(true));
             defaults.setProperty("useSpine", Boolean.toString(true));
             
+            defaults.setProperty("firstTime", Boolean.toString(true));
+            
             defaults.setProperty("tpCount", Integer.toString(0));
             defaults.setProperty("tpLimit", Integer.toString(0));
             defaults.setProperty("tpThorn", Boolean.toString(false));
@@ -99,6 +104,8 @@ public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscrib
             addEvent = config.getBool("addEvent");
             addEnemy = config.getBool("addEnemy");
             useSpine = config.getBool("useSpine");
+            
+            firstTime = config.getBool("firstTime");
             
             tpLimit = config.getInt("tpLimit");
             tpThorn = config.getBool("tpThorn");
@@ -425,6 +432,16 @@ public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscrib
     
     public static String getText(TextContent content) {
         return TEXT[content.ordinal()];
+    }
+    
+    public static void setFirstTime(boolean b) {
+        try {
+            config.setBool("firstTime", b);
+            config.save();
+            firstTime = b;
+        } catch (Exception e) {
+            HSRMod.logger.log(Level.DEBUG, "Failed to set first time.");
+        }
     }
     
     public enum TextContent {

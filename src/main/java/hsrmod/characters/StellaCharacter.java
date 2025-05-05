@@ -2,6 +2,7 @@ package hsrmod.characters;
 
 import basemod.BaseMod;
 import basemod.abstracts.CustomPlayer;
+import basemod.abstracts.CustomSavable;
 import basemod.animations.SpineAnimation;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -32,6 +33,7 @@ import hsrmod.patches.PathSelectScreen;
 import hsrmod.relics.starter.*;
 import hsrmod.utils.ModHelper;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import static hsrmod.characters.StellaCharacter.PlayerColorEnum.HSR_PINK;
@@ -343,6 +345,15 @@ public class StellaCharacter extends CustomPlayer {
     @Override
     public AbstractGameAction.AttackEffect[] getSpireHeartSlashEffect() {
         return new AbstractGameAction.AttackEffect[]{AbstractGameAction.AttackEffect.SLASH_HEAVY, AbstractGameAction.AttackEffect.FIRE, AbstractGameAction.AttackEffect.SLASH_DIAGONAL, AbstractGameAction.AttackEffect.SLASH_HEAVY, AbstractGameAction.AttackEffect.FIRE, AbstractGameAction.AttackEffect.SLASH_DIAGONAL};
+    }
+
+    @Override
+    public void preBattlePrep() {
+        super.preBattlePrep();
+        if (AbstractDungeon.floorNum > 1 && HSRModConfig.firstTime) {
+            HSRModConfig.setFirstTime(false);
+        }
+        // HSRModConfig.setFirstTime(true);
     }
 
     // 以下为原版人物枚举、卡牌颜色枚举扩展的枚举，需要写，接下来要用

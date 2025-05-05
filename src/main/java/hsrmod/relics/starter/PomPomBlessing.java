@@ -2,6 +2,7 @@ package hsrmod.relics.starter;
 
 import basemod.abstracts.CustomMultiPageFtue;
 import basemod.abstracts.CustomRelic;
+import basemod.abstracts.CustomSavable;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsAction;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
@@ -21,15 +22,19 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.IntangiblePlayerPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.ui.FtueTip;
+import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import hsrmod.actions.ReduceChargeByHandCardNumAction;
 import hsrmod.cards.base.Danheng0;
 import hsrmod.cards.base.Himeko0;
 import hsrmod.cards.base.March7th0;
 import hsrmod.cards.base.Welt0;
 import hsrmod.cardsV2.Abundance.Castorice1;
+import hsrmod.characters.StellaCharacter;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
+import hsrmod.modcore.HSRModConfig;
 import hsrmod.powers.misc.EnergyPower;
+import hsrmod.relics.ITutorial;
 import hsrmod.relics.special.DanhengRelic;
 import hsrmod.relics.special.HimekoRelic;
 import hsrmod.relics.special.March7thRelic;
@@ -44,7 +49,7 @@ import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
-public class PomPomBlessing extends CustomRelic implements ClickableRelic {
+public class PomPomBlessing extends CustomRelic implements ClickableRelic, ITutorial {
     // 遗物ID（此处的ModHelper在“04 - 本地化”中提到）
     public static final String ID = HSRMod.makePath(PomPomBlessing.class.getSimpleName());
     // 图片路径
@@ -57,6 +62,8 @@ public class PomPomBlessing extends CustomRelic implements ClickableRelic {
     private static int ENERGY_GAIN_PER_CARD = 20;
 
     private int multiplier = 20;
+    
+    boolean tutorialTriggered = false;
 
     static Texture[] ftues = {
             ImageMaster.loadImage(PathDefine.UI_PATH + "tutorial/7.png"),
@@ -108,6 +115,13 @@ public class PomPomBlessing extends CustomRelic implements ClickableRelic {
     public void onPlayCard(AbstractCard c, AbstractMonster m) {
         super.onPlayCard(c, m);
         addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new EnergyPower(AbstractDungeon.player, ENERGY_GAIN_PER_CARD), ENERGY_GAIN_PER_CARD));
+        
+        if (!HSRMod.seenTutorials.contains(relicId) || HSRModConfig.firstTime && !tutorialTriggered) {
+            tutorialTriggered = true;
+            HSRMod.seenTutorials.add(relicId);
+            if (Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT)
+                AbstractDungeon.ftue = new CustomMultiPageFtue(ftues, tutTexts);
+        }
     }
 
     ArrayList<CardQueueItem> tempCardQueue = new ArrayList<>();
@@ -137,6 +151,13 @@ public class PomPomBlessing extends CustomRelic implements ClickableRelic {
 
         addToTop(new SelectCardsInHandAction(maxRetainNum, String.format(DESCRIPTIONS[1], multiplier), true, true, cardFilter, callback));
         ModHelper.addToTopAbstract(() -> tempCardQueue = new ArrayList<>(AbstractDungeon.actionManager.cardQueue));
+
+        if (!HSRMod.seenTutorials.contains(relicId) || HSRModConfig.firstTime && !tutorialTriggered) {
+            tutorialTriggered = true;
+            HSRMod.seenTutorials.add(relicId);
+            if (Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT)
+                AbstractDungeon.ftue = new CustomMultiPageFtue(ftues, tutTexts);
+        }
     }
 
     @Override

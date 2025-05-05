@@ -16,7 +16,7 @@ import hsrmod.utils.ModHelper;
 
 public class CloudflameLusterPower extends DebuffPower implements PreBreakSubscriber {
     public static final String ID = HSRMod.makePath(CloudflameLusterPower.class.getSimpleName());
-    
+
     public CloudflameLusterPower(AbstractCreature owner, int amount) {
         super(ID, owner, amount);
         updateDescription();
@@ -47,13 +47,10 @@ public class CloudflameLusterPower extends DebuffPower implements PreBreakSubscr
 
             int newToughness = ModHelper.getPowerCount(target, ToughnessPower.POWER_ID) - info.tr;
             int amt = this.amount - newToughness;
-            if (amt > 0)
-                addToTop(new ApplyPowerAction(this.owner, this.owner, new ToughnessPower(this.owner, amt), amt));
-            else if (amt < 0)
-                addToTop(new ReducePowerAction(this.owner, this.owner, new ToughnessPower(this.owner, -amt), -amt));
+            addToTop(new ApplyPowerAction(this.owner, this.owner, new ToughnessPower(this.owner, amt), amt));
 
             this.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this));
-            
+
             if (amount >= ToughnessPower.getStackLimit(owner)) {
                 SignatureHelper.unlock(HSRMod.makePath(Fugue1.ID), true);
             }

@@ -53,6 +53,7 @@ import hsrmod.patches.OtherModFixes;
 import hsrmod.patches.RelicTagField;
 import hsrmod.powers.enemyOnly.PerformancePointPower;
 import hsrmod.relics.BaseRelic;
+import hsrmod.relics.ITutorial;
 import hsrmod.relics.common.AngelTypeIOUDispenser;
 import hsrmod.relics.shop.ARuanPouch;
 import hsrmod.relics.special.*;
@@ -63,6 +64,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import static com.megacrit.cardcrawl.core.Settings.language;
@@ -99,6 +102,8 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
     private static final String ENERGY_ORB = "HSRModResources/img/char/cost_orb.png";
 
     public static final Logger logger = LogManager.getLogger(MOD_NAME);
+    
+    public static List<String> seenTutorials = new ArrayList<>();
 
     String lang = "ENG";
 
@@ -148,6 +153,9 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
                         }
                         if (info.seen && relic != null) {
                             UnlockTracker.markRelicAsSeen(relic.relicId);
+                        }
+                        if (relic instanceof ITutorial && UnlockTracker.isRelicSeen(relic.relicId)) {
+                            seenTutorials.add(relic.relicId);
                         }
                     });
         }

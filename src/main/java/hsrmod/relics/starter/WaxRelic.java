@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.neow.NeowRoom;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import hsrmod.actions.GridCardManipulator;
 import hsrmod.actions.SimpleGridCardSelectBuilder;
@@ -24,13 +25,14 @@ import hsrmod.events.StelleAwakeEvent;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
 import hsrmod.relics.BaseRelic;
+import hsrmod.relics.ITutorial;
 import hsrmod.utils.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public abstract class WaxRelic extends BaseRelic implements ClickableRelic/*, CustomSavable<String>*/ {
+public abstract class WaxRelic extends BaseRelic implements ClickableRelic, ITutorial {
     public static int defaultWeight = 1;
     protected int weight;
     public AbstractCard.CardTags selectedTag;
@@ -110,6 +112,19 @@ public abstract class WaxRelic extends BaseRelic implements ClickableRelic/*, Cu
     }
 
     @Override
+    public void atTurnStart() {
+        super.atTurnStart();
+        if (!HSRMod.seenTutorials.contains(relicId)) {
+            HSRMod.seenTutorials.add(relicId);
+            if (Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT) {
+                ModHelper.addToBotAbstract(() -> {
+                    AbstractDungeon.ftue = new CustomMultiPageFtue(ftues, tutTexts);
+                });
+            }
+        }
+    }
+
+    @Override
     public void onRightClick() {
         if (isObtained
                 && (AbstractDungeon.getCurrRoom() instanceof NeowRoom || AbstractDungeon.getCurrRoom().event instanceof StelleAwakeEvent)
@@ -171,19 +186,5 @@ public abstract class WaxRelic extends BaseRelic implements ClickableRelic/*, Cu
             }
         }
         return null;
-    }/*
-
-    @Override
-    public void onLoad(String s) {
-        descriptionAddOns = s;
-        if (!s.isEmpty()) {
-            description = String.format(DESCRIPTIONS[1], descriptionAddOns);
-            updateDescription();
-        }
     }
-
-    @Override
-    public String onSave() {
-        return descriptionAddOns;
-    }*/
 }

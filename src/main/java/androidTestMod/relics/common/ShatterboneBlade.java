@@ -1,8 +1,8 @@
 package androidTestMod.relics.common;
 
+import androidTestMod.relics.BaseRelic;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import androidTestMod.relics.BaseRelic;
 
 public class ShatterboneBlade extends BaseRelic {
     public static final String ID = ShatterboneBlade.class.getSimpleName();

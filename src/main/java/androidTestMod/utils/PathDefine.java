@@ -1,8 +1,6 @@
 package androidTestMod.utils;
 
-public class PathDefine {
-    public static final String MOD_ID = "HSRMod";
-    
+public class PathDefine {    
     public static final String CARD_PATH = "img/cards/";
     public static final String CHARACTER_PATH = "img/char/";
     public static final String EVENT_PATH = "img/events/";

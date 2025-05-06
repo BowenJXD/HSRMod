@@ -1,5 +1,11 @@
 package androidTestMod.cards.uncommon;
 
+import androidTestMod.actions.ElementalDamageAllAction;
+import androidTestMod.cards.BaseCard;
+import androidTestMod.effects.MultiShivFreezeEffect;
+import androidTestMod.effects.PortraitDisplayEffect;
+import androidTestMod.modcore.CustomEnums;
+import androidTestMod.utils.ModHelper;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
@@ -8,12 +14,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import androidTestMod.actions.ElementalDamageAllAction;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.effects.MultiShivFreezeEffect;
-import androidTestMod.effects.PortraitDisplayEffect;
-import androidTestMod.modcore.CustomEnums;
-import androidTestMod.utils.ModHelper;
 
 public class Kafka2 extends BaseCard {
     public static final String ID = Kafka2.class.getSimpleName();

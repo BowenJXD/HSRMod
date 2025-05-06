@@ -1,19 +1,19 @@
 package androidTestMod.powers.uniqueBuffs;
 
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
+import androidTestMod.AndroidTestMod;
 import androidTestMod.actions.FollowUpAction;
 import androidTestMod.cards.BaseCard;
 import androidTestMod.modcore.CustomEnums;
-import androidTestMod.modcore.AndroidTestMod;
 import androidTestMod.powers.PowerPower;
 import androidTestMod.powers.interfaces.OnReceivePowerPower;
 import androidTestMod.powers.misc.EnergyPower;
 import androidTestMod.utils.GeneralUtil;
 import androidTestMod.utils.ModHelper;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import java.util.function.Predicate;
 

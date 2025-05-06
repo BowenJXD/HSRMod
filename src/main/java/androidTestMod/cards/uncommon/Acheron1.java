@@ -1,27 +1,23 @@
 package androidTestMod.cards.uncommon;
 
-import basemod.BaseMod;
-import basemod.interfaces.PostPowerApplySubscriber;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.TalkAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import androidTestMod.actions.BouncingAction;
 import androidTestMod.actions.ElementalDamageAction;
 import androidTestMod.actions.ElementalDamageAllAction;
 import androidTestMod.cards.BaseCard;
-import androidTestMod.effects.GrayscaleScreenEffect;
 import androidTestMod.effects.PortraitDisplayEffect;
 import androidTestMod.modcore.ElementalDamageInfo;
+import androidTestMod.subscribers.PostPowerApplySubscriber;
 import androidTestMod.subscribers.SubscriptionManager;
 import androidTestMod.utils.ModHelper;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.TalkAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import java.util.function.Consumer;
 
@@ -41,13 +37,13 @@ public class Acheron1 extends BaseCard implements PostPowerApplySubscriber {
     @Override
     public void onEnterHand() {
         super.onEnterHand();
-        BaseMod.subscribe(this);
+        SubscriptionManager.subscribe(this);
     }
 
     @Override
     public void onLeaveHand() {
         super.onLeaveHand();
-        BaseMod.unsubscribe(this);
+        SubscriptionManager.unsubscribe(this);
     }
 
     @Override
@@ -65,7 +61,6 @@ public class Acheron1 extends BaseCard implements PostPowerApplySubscriber {
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.topLevelEffects.add(new PortraitDisplayEffect("Acheron"));
         CardCrawlGame.sound.play("SlashedDream1");
-        addToBot(new VFXAction(new GrayscaleScreenEffect(Settings.FAST_MODE ? 3 : 5)));
         addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
 
         AbstractCreature target = ModHelper.betterGetRandomMonster();

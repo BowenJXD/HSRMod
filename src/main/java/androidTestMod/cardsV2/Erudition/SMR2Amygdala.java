@@ -1,10 +1,10 @@
 package androidTestMod.cardsV2.Erudition;
 
+import androidTestMod.cards.BaseCard;
+import androidTestMod.powers.uniqueBuffs.SMR2AmygdalaPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.powers.uniqueBuffs.SMR2AmygdalaPower;
 
 public class SMR2Amygdala extends BaseCard {
     public static final String ID = SMR2Amygdala.class.getSimpleName();

@@ -1,9 +1,9 @@
 package androidTestMod.powers.breaks;
 
-import com.megacrit.cardcrawl.core.AbstractCreature;
+import androidTestMod.AndroidTestMod;
 import androidTestMod.modcore.ElementType;
-import androidTestMod.modcore.AndroidTestMod;
 import androidTestMod.powers.misc.DoTPower;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 
 public class BleedingPower extends DoTPower {
     public static final String POWER_ID = AndroidTestMod.makePath(BleedingPower.class.getSimpleName());

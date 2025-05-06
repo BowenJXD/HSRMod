@@ -1,8 +1,8 @@
 package androidTestMod.cardsV2.Paths;
 
+import androidTestMod.cards.BaseCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import androidTestMod.cards.BaseCard;
 
 public class Nihility extends BaseCard {
     public static final String ID = Nihility.class.getSimpleName();

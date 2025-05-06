@@ -1,5 +1,7 @@
 package androidTestMod.cardsV2;
 
+import androidTestMod.cards.BaseCard;
+import androidTestMod.utils.RelicEventHelper;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
@@ -9,8 +11,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.map.MapEdge;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.rooms.*;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.utils.RelicEventHelper;
 
 public class NightOnTheMilkyWay extends BaseCard {
     public static final String ID = NightOnTheMilkyWay.class.getSimpleName();

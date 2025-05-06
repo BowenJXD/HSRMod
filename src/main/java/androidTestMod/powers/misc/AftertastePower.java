@@ -1,5 +1,14 @@
 package androidTestMod.powers.misc;
 
+import androidTestMod.AndroidTestMod;
+import androidTestMod.actions.ElementalDamageAction;
+import androidTestMod.modcore.ElementType;
+import androidTestMod.modcore.ElementalDamageInfo;
+import androidTestMod.powers.BuffPower;
+import androidTestMod.subscribers.PreElementalDamageSubscriber;
+import androidTestMod.subscribers.SubscriptionManager;
+import androidTestMod.utils.GeneralUtil;
+import androidTestMod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
@@ -7,15 +16,6 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import androidTestMod.actions.ElementalDamageAction;
-import androidTestMod.modcore.ElementType;
-import androidTestMod.modcore.ElementalDamageInfo;
-import androidTestMod.modcore.AndroidTestMod;
-import androidTestMod.powers.BuffPower;
-import androidTestMod.subscribers.PreElementalDamageSubscriber;
-import androidTestMod.subscribers.SubscriptionManager;
-import androidTestMod.utils.GeneralUtil;
-import androidTestMod.utils.ModHelper;
 
 import static androidTestMod.modcore.CustomEnums.FOLLOW_UP;
 

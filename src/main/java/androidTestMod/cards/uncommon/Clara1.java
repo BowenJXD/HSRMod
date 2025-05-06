@@ -1,13 +1,11 @@
 package androidTestMod.cards.uncommon;
 
-import basemod.BaseMod;
-import basemod.interfaces.OnPlayerDamagedSubscriber;
+import androidTestMod.actions.FollowUpAction;
+import androidTestMod.cards.BaseCard;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import androidTestMod.actions.FollowUpAction;
-import androidTestMod.cards.BaseCard;
 
 import static androidTestMod.modcore.CustomEnums.FOLLOW_UP;
 
@@ -34,18 +32,6 @@ public class Clara1 extends BaseCard {
     }
 
     @Override
-    public void onEnterHand() {
-        super.onEnterHand();
-        BaseMod.subscribe(this);
-    }
-
-    @Override
-    public void onLeaveHand() {
-        super.onLeaveHand();
-        BaseMod.unsubscribe(this);
-    }
-
-    @Override
     public void atTurnStartPreDraw() {
         if (canBeUsed) {
             addToBot(new FollowUpAction(this));
@@ -55,8 +41,9 @@ public class Clara1 extends BaseCard {
     @Override
     public void tookDamage() {
         super.tookDamage();
-        if (!AbstractDungeon.player.hand.contains(this)
-                || !AbstractDungeon.actionManager.turnHasEnded) return i;
-        canBeUsed = true;
+        if (AbstractDungeon.player.hand.contains(this)
+                && AbstractDungeon.actionManager.turnHasEnded) {
+            canBeUsed = true;
+        }
     }
 }

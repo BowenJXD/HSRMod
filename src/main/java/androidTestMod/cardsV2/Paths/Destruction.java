@@ -1,5 +1,8 @@
 package androidTestMod.cardsV2.Paths;
 
+import androidTestMod.actions.ForceWaitAction;
+import androidTestMod.cards.BaseCard;
+import androidTestMod.utils.ModHelper;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
@@ -8,9 +11,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
 import com.megacrit.cardcrawl.vfx.combat.*;
-import androidTestMod.actions.ForceWaitAction;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.utils.ModHelper;
 
 public class Destruction extends BaseCard {
     public static final String ID = Destruction.class.getSimpleName();

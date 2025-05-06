@@ -1,5 +1,9 @@
 package androidTestMod.cards.uncommon;
 
+import androidTestMod.actions.ElementalDamageAction;
+import androidTestMod.cards.BaseCard;
+import androidTestMod.modcore.ElementalDamageInfo;
+import androidTestMod.powers.uniqueDebuffs.WisemansFollyPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
@@ -7,10 +11,6 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import androidTestMod.actions.ElementalDamageAction;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.modcore.ElementalDamageInfo;
-import androidTestMod.powers.uniqueDebuffs.WisemansFollyPower;
 
 public class DrRatio2 extends BaseCard {
     public static final String ID = DrRatio2.class.getSimpleName();

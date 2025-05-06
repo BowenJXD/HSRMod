@@ -1,12 +1,12 @@
 package androidTestMod.cardsV2.Preservation;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import androidTestMod.actions.ElementalDamageAction;
 import androidTestMod.cards.BaseCard;
 import androidTestMod.powers.misc.QuakePower;
 import androidTestMod.utils.ModHelper;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import java.util.function.Consumer;
 

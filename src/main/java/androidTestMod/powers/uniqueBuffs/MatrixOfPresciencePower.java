@@ -1,9 +1,9 @@
 package androidTestMod.powers.uniqueBuffs;
 
+import androidTestMod.AndroidTestMod;
+import androidTestMod.powers.BuffPower;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import androidTestMod.modcore.AndroidTestMod;
-import androidTestMod.powers.BuffPower;
 
 public class MatrixOfPresciencePower extends BuffPower {
     public static final String POWER_ID = AndroidTestMod.makePath(MatrixOfPresciencePower.class.getSimpleName());

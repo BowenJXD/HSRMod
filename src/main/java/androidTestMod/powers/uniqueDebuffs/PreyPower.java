@@ -1,5 +1,8 @@
 package androidTestMod.powers.uniqueDebuffs;
 
+import androidTestMod.AndroidTestMod;
+import androidTestMod.cardsV2.TheHunt.Moze2;
+import androidTestMod.powers.DebuffPower;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
@@ -8,9 +11,6 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.FontHelper;
-import androidTestMod.cardsV2.TheHunt.Moze2;
-import androidTestMod.modcore.AndroidTestMod;
-import androidTestMod.powers.DebuffPower;
 
 public class PreyPower extends DebuffPower {
     public static final String POWER_ID = AndroidTestMod.makePath(PreyPower.class.getSimpleName());

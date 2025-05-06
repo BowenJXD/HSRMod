@@ -1,11 +1,11 @@
 package androidTestMod.cards.common;
 
+import androidTestMod.cards.BaseCard;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.LoseStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
-import androidTestMod.cards.BaseCard;
 
 public class Yukong1 extends BaseCard {
     public static final String ID = Yukong1.class.getSimpleName();

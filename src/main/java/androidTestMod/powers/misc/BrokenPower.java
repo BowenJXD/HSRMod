@@ -1,5 +1,8 @@
 package androidTestMod.powers.misc;
 
+import androidTestMod.AndroidTestMod;
+import androidTestMod.effects.CustomAuraEffect;
+import androidTestMod.powers.BuffPower;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
@@ -7,9 +10,6 @@ import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import androidTestMod.effects.CustomAuraEffect;
-import androidTestMod.modcore.AndroidTestMod;
-import androidTestMod.powers.BuffPower;
 
 public class BrokenPower extends BuffPower {
     public static final String POWER_ID = AndroidTestMod.makePath(BrokenPower.class.getSimpleName());

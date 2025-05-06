@@ -1,12 +1,12 @@
 package androidTestMod.relics.special;
 
+import androidTestMod.misc.ICanChangeToMulti;
+import androidTestMod.powers.misc.EnergyPower;
+import androidTestMod.relics.BaseRelic;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import androidTestMod.misc.ICanChangeToMulti;
-import androidTestMod.powers.misc.EnergyPower;
-import androidTestMod.relics.BaseRelic;
 
 public class TheWindSoaringValorous extends BaseRelic {
     public static final String ID = TheWindSoaringValorous.class.getSimpleName();

@@ -1,15 +1,15 @@
 package androidTestMod.cardsV2.TheHunt;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import androidTestMod.actions.ElementalDamageAction;
 import androidTestMod.actions.FollowUpAction;
 import androidTestMod.cards.BaseCard;
 import androidTestMod.modcore.CustomEnums;
 import androidTestMod.modcore.ElementalDamageInfo;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class Moze2 extends BaseCard {
     public static final String ID = Moze2.class.getSimpleName();

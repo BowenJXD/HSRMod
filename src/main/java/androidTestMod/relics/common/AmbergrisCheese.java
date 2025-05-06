@@ -1,7 +1,7 @@
 package androidTestMod.relics.common;
 
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import androidTestMod.relics.BaseRelic;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 public class AmbergrisCheese extends BaseRelic {
     public static final String ID = AmbergrisCheese.class.getSimpleName();

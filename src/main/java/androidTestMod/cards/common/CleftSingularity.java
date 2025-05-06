@@ -1,10 +1,10 @@
 package androidTestMod.cards.common;
 
+import androidTestMod.cards.BaseCard;
+import androidTestMod.powers.misc.BreakEffectPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.powers.misc.BreakEffectPower;
 
 public class CleftSingularity extends BaseCard {
     public static final String ID = CleftSingularity.class.getSimpleName();

@@ -1,12 +1,12 @@
 package androidTestMod.relics.common;
 
+import androidTestMod.relics.BaseRelic;
+import androidTestMod.utils.ModHelper;
+import androidTestMod.utils.RelicEventHelper;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.relics.NeowsLament;
-import androidTestMod.relics.BaseRelic;
-import androidTestMod.utils.ModHelper;
-import androidTestMod.utils.RelicEventHelper;
 
 import java.util.*;
 

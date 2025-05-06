@@ -1,8 +1,8 @@
 package androidTestMod.relics.uncommon;
 
+import androidTestMod.relics.BaseRelic;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import androidTestMod.relics.BaseRelic;
 
 public class IllusoryAutomaton extends BaseRelic {
     public static final String ID = IllusoryAutomaton.class.getSimpleName();

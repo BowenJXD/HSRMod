@@ -1,10 +1,10 @@
 package androidTestMod.cards.common;
 
+import androidTestMod.cards.BaseCard;
+import androidTestMod.powers.misc.BrainInAVatPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.powers.misc.BrainInAVatPower;
 
 public class BCI34GrayMatter extends BaseCard {
     public static final String ID = BCI34GrayMatter.class.getSimpleName();

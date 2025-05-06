@@ -1,13 +1,12 @@
 package androidTestMod.powers.uniqueBuffs;
 
-import basemod.BaseMod;
+import androidTestMod.AndroidTestMod;
+import androidTestMod.cardsV2.Preservation.Quake;
+import androidTestMod.powers.PowerPower;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import androidTestMod.cardsV2.Preservation.Quake;
-import androidTestMod.modcore.AndroidTestMod;
-import androidTestMod.powers.PowerPower;
 
 public class Trailblazer8Power extends PowerPower {
     public static final String POWER_ID = AndroidTestMod.makePath(Trailblazer8Power.class.getSimpleName());

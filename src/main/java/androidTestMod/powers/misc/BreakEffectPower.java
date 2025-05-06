@@ -1,12 +1,12 @@
 package androidTestMod.powers.misc;
 
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.core.AbstractCreature;
+import androidTestMod.AndroidTestMod;
 import androidTestMod.modcore.ElementalDamageInfo;
-import androidTestMod.modcore.AndroidTestMod;
 import androidTestMod.powers.BuffPower;
 import androidTestMod.subscribers.PreDoTDamageSubscriber;
 import androidTestMod.subscribers.SubscriptionManager;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 
 public class BreakEffectPower extends BuffPower implements PreDoTDamageSubscriber {
     public static final String POWER_ID = AndroidTestMod.makePath(BreakEffectPower.class.getSimpleName());

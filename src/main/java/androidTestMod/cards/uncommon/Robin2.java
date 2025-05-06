@@ -1,5 +1,10 @@
 package androidTestMod.cards.uncommon;
 
+import androidTestMod.cards.BaseCard;
+import androidTestMod.effects.PortraitDisplayEffect;
+import androidTestMod.modcore.CustomEnums;
+import androidTestMod.powers.uniqueBuffs.RobinPower;
+import androidTestMod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
@@ -8,11 +13,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.effects.PortraitDisplayEffect;
-import androidTestMod.modcore.CustomEnums;
-import androidTestMod.powers.uniqueBuffs.RobinPower;
-import androidTestMod.utils.ModHelper;
 
 public class Robin2 extends BaseCard {
     public static final String ID = Robin2.class.getSimpleName();

@@ -1,12 +1,13 @@
 package androidTestMod.relics.common;
 
+import androidTestMod.relics.BaseRelic;
+import androidTestMod.utils.RewardEditor;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rewards.RewardItem;
-import androidTestMod.relics.BaseRelic;
-import androidTestMod.utils.RewardEditor;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public class BlackHoleTrap extends BaseRelic {
     public static final String ID = BlackHoleTrap.class.getSimpleName();
@@ -21,7 +22,12 @@ public class BlackHoleTrap extends BaseRelic {
     @Override
     public void atBattleStart() {
         super.atBattleStart();
-        RewardEditor.addExtraRewardToBot(this::processRewards);
+        RewardEditor.addExtraRewardToBot(new Consumer<List<RewardItem>>() {
+            @Override
+            public void accept(List<RewardItem> rewardItems) {
+                processRewards(rewardItems);
+            }
+        });
     }
 
     void processRewards(List<RewardItem> rewards) {

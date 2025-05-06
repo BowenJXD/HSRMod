@@ -1,11 +1,11 @@
 package androidTestMod.actions;
 
+import androidTestMod.cards.BaseCard;
+import androidTestMod.modcore.ElementalDamageInfo;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.modcore.ElementalDamageInfo;
 
 public class BouncingAction extends AbstractGameAction {
     private int numTimes;

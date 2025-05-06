@@ -1,10 +1,10 @@
 package androidTestMod.powers.uniqueBuffs;
 
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import androidTestMod.modcore.AndroidTestMod;
+import androidTestMod.AndroidTestMod;
 import androidTestMod.powers.PowerPower;
 import androidTestMod.subscribers.PreEnergyChangeSubscriber;
 import androidTestMod.subscribers.SubscriptionManager;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 
 public class IntersegmentalMembranePower extends PowerPower implements PreEnergyChangeSubscriber {
     public static final String POWER_ID = AndroidTestMod.makePath(IntersegmentalMembranePower.class.getSimpleName());

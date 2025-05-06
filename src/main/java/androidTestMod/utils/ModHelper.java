@@ -1,5 +1,6 @@
 package androidTestMod.utils;
 
+import androidTestMod.AndroidTestMod;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -18,11 +19,12 @@ import com.megacrit.cardcrawl.powers.MinionPower;
 import com.megacrit.cardcrawl.random.Random;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
-import androidTestMod.modcore.AndroidTestMod;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 import java.util.function.Predicate;
-import java.util.function.ToIntFunction;
 
 public class ModHelper {
     public static void addToBotAbstract(Lambda func) {
@@ -208,15 +210,9 @@ public class ModHelper {
         }
         boolean seen = false;
         AbstractMonster best = null;
-        Comparator<AbstractMonster> comparator = Comparator.comparingInt(new ToIntFunction<AbstractMonster>() {
-            @Override
-            public int applyAsInt(AbstractMonster m) {
-                return m.maxHealth;
-            }
-        });
         for (AbstractMonster monster : AbstractDungeon.getCurrRoom().monsters.monsters) {
             if (check(monster)) {
-                if (!seen || comparator.compare(monster, best) > 0) {
+                if (!seen || monster.currentHealth > best.currentHealth) {
                     seen = true;
                     best = monster;
                 }

@@ -1,8 +1,5 @@
 package androidTestMod.cards.base;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import androidTestMod.actions.ElementalDamageAction;
 import androidTestMod.actions.ElementalDamageAllAction;
 import androidTestMod.cards.BaseCard;
@@ -10,6 +7,9 @@ import androidTestMod.misc.ICanChangeToMulti;
 import androidTestMod.modcore.ElementalDamageInfo;
 import androidTestMod.relics.special.TheWindSoaringValorous;
 import androidTestMod.utils.ModHelper;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class Trailblazer1 extends BaseCard implements ICanChangeToMulti {
     public static final String ID = Trailblazer1.class.getSimpleName();

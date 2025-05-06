@@ -1,22 +1,19 @@
 package androidTestMod.powers.misc;
 
-import basemod.BaseMod;
-import basemod.interfaces.OnPlayerDamagedSubscriber;
-import basemod.interfaces.PreMonsterTurnSubscriber;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import androidTestMod.AndroidTestMod;
 import androidTestMod.actions.ElementalDamageAction;
 import androidTestMod.modcore.ElementType;
 import androidTestMod.modcore.ElementalDamageInfo;
-import androidTestMod.modcore.AndroidTestMod;
 import androidTestMod.powers.BuffPower;
+import androidTestMod.subscribers.OnPlayerDamagedSubscriber;
 import androidTestMod.subscribers.SubscriptionManager;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 
 import java.util.function.Consumer;
 
-public class QuakePower extends BuffPower implements PreMonsterTurnSubscriber, OnPlayerDamagedSubscriber {
+public class QuakePower extends BuffPower implements OnPlayerDamagedSubscriber {
     public static final String POWER_ID = AndroidTestMod.makePath(QuakePower.class.getSimpleName());
 
     AbstractCreature lastTarget;
@@ -35,13 +32,13 @@ public class QuakePower extends BuffPower implements PreMonsterTurnSubscriber, O
     @Override
     public void onInitialApplication() {
         super.onInitialApplication();
-        BaseMod.subscribe(this);
+        SubscriptionManager.subscribe(this);
     }
 
     @Override
     public void onRemove() {
         super.onRemove();
-        BaseMod.unsubscribe(this);
+        SubscriptionManager.unsubscribe(this);
     }
 
     @Override
@@ -56,9 +53,15 @@ public class QuakePower extends BuffPower implements PreMonsterTurnSubscriber, O
                 lastTarget = target;
             }
         }
-        return 0;
+        return i;
     }
-    
+
+    @Override
+    public void atEndOfTurn(boolean isPlayer) {
+        super.atEndOfTurn(isPlayer);
+        lastTarget = null;
+    }
+
     public void attack(AbstractCreature target, int dmg) {
         attack(target, dmg, null);
     }
@@ -67,13 +70,5 @@ public class QuakePower extends BuffPower implements PreMonsterTurnSubscriber, O
         flash();
         remove(1);
         addToBot(new ElementalDamageAction(target, new ElementalDamageInfo(owner, dmg, DamageInfo.DamageType.THORNS, ElementType.Physical, tr), AbstractGameAction.AttackEffect.BLUNT_HEAVY).setCallback(callback));
-    }
-
-    @Override
-    public boolean receivePreMonsterTurn(AbstractMonster abstractMonster) {
-        if (SubscriptionManager.checkSubscriber(this)) {
-            lastTarget = null;
-        }
-        return true;
     }
 }

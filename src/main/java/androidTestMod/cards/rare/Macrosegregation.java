@@ -1,10 +1,10 @@
 package androidTestMod.cards.rare;
 
+import androidTestMod.cards.BaseCard;
+import androidTestMod.powers.uniqueBuffs.DivinityPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.powers.uniqueBuffs.DivinityPower;
 
 public class Macrosegregation extends BaseCard {
     public static final String ID = Macrosegregation.class.getSimpleName();

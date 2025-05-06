@@ -1,5 +1,12 @@
 package androidTestMod.cards.uncommon;
 
+import androidTestMod.actions.BouncingAction;
+import androidTestMod.actions.ElementalDamageAction;
+import androidTestMod.actions.FollowUpAction;
+import androidTestMod.cards.BaseCard;
+import androidTestMod.effects.PortraitDisplayEffect;
+import androidTestMod.modcore.ElementalDamageInfo;
+import androidTestMod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
@@ -10,13 +17,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
-import androidTestMod.actions.BouncingAction;
-import androidTestMod.actions.ElementalDamageAction;
-import androidTestMod.actions.FollowUpAction;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.effects.PortraitDisplayEffect;
-import androidTestMod.modcore.ElementalDamageInfo;
-import androidTestMod.utils.ModHelper;
 
 import java.util.function.Consumer;
 

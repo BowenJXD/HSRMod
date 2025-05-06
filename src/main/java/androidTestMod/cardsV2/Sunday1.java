@@ -1,5 +1,10 @@
 package androidTestMod.cardsV2;
 
+import androidTestMod.actions.CleanAction;
+import androidTestMod.actions.FollowUpAction;
+import androidTestMod.actions.SelectCardsInHandAction;
+import androidTestMod.cards.BaseCard;
+import androidTestMod.modcore.CustomEnums;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -7,11 +12,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.vfx.SpotlightEffect;
-import androidTestMod.actions.CleanAction;
-import androidTestMod.actions.FollowUpAction;
-import androidTestMod.actions.SelectCardsInHandAction;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.modcore.CustomEnums;
 
 import java.util.List;
 import java.util.function.Consumer;

@@ -1,5 +1,11 @@
 package androidTestMod.cards.uncommon;
 
+import androidTestMod.actions.ElementalDamageAllAction;
+import androidTestMod.actions.FollowUpAction;
+import androidTestMod.cards.BaseCard;
+import androidTestMod.modcore.ElementalDamageInfo;
+import androidTestMod.subscribers.PreBreakSubscriber;
+import androidTestMod.subscribers.SubscriptionManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -7,12 +13,6 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.CleaveEffect;
-import androidTestMod.actions.ElementalDamageAllAction;
-import androidTestMod.actions.FollowUpAction;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.modcore.ElementalDamageInfo;
-import androidTestMod.subscribers.PreBreakSubscriber;
-import androidTestMod.subscribers.SubscriptionManager;
 
 import static androidTestMod.modcore.CustomEnums.FOLLOW_UP;
 

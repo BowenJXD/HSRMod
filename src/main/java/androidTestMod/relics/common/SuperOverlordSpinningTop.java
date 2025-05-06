@@ -1,11 +1,11 @@
 package androidTestMod.relics.common;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import androidTestMod.powers.misc.BreakEffectPower;
 import androidTestMod.powers.misc.ToughnessPower;
 import androidTestMod.relics.BaseRelic;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class SuperOverlordSpinningTop extends BaseRelic {
     public static final String ID = SuperOverlordSpinningTop.class.getSimpleName();

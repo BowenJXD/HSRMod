@@ -1,8 +1,8 @@
 package androidTestMod.utils;
 
+import androidTestMod.AndroidTestMod;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.random.Random;
-import androidTestMod.modcore.AndroidTestMod;
 
 import java.util.ArrayList;
 import java.util.Collections;

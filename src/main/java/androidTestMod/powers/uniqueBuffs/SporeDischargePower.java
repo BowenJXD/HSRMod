@@ -1,13 +1,13 @@
 package androidTestMod.powers.uniqueBuffs;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.core.AbstractCreature;
-import androidTestMod.modcore.AndroidTestMod;
+import androidTestMod.AndroidTestMod;
 import androidTestMod.powers.PowerPower;
 import androidTestMod.powers.misc.SporePower;
 import androidTestMod.subscribers.PreEnergyChangeSubscriber;
 import androidTestMod.subscribers.SubscriptionManager;
 import androidTestMod.utils.ModHelper;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 
 public class SporeDischargePower extends PowerPower implements PreEnergyChangeSubscriber {
     public static final String POWER_ID = AndroidTestMod.makePath(SporeDischargePower.class.getSimpleName());

@@ -1,11 +1,11 @@
 package androidTestMod.relics.rare;
 
+import androidTestMod.actions.MoveCardsAction;
+import androidTestMod.relics.BaseRelic;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import androidTestMod.actions.MoveCardsAction;
-import androidTestMod.relics.BaseRelic;
 
 import java.util.function.Predicate;
 

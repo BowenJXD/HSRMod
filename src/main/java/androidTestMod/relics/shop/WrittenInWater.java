@@ -1,10 +1,10 @@
 package androidTestMod.relics.shop;
 
+import androidTestMod.relics.BaseRelic;
+import androidTestMod.relics.starter.PomPomBlessing;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import androidTestMod.relics.BaseRelic;
-import androidTestMod.relics.starter.PomPomBlessing;
 
 public class WrittenInWater extends BaseRelic {
     public static final String ID = WrittenInWater.class.getSimpleName();

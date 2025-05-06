@@ -1,5 +1,12 @@
 package androidTestMod.cards.uncommon;
 
+import androidTestMod.actions.ElementalDamageAction;
+import androidTestMod.actions.FollowUpAction;
+import androidTestMod.cards.BaseCard;
+import androidTestMod.modcore.ElementalDamageInfo;
+import androidTestMod.subscribers.PreFollowUpSubscriber;
+import androidTestMod.subscribers.SubscriptionManager;
+import androidTestMod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.actions.utility.DiscardToHandAction;
@@ -8,17 +15,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import androidTestMod.actions.ElementalDamageAction;
-import androidTestMod.actions.FollowUpAction;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.modcore.ElementalDamageInfo;
-import androidTestMod.subscribers.PreFollowUpSubscriber;
-import androidTestMod.subscribers.SubscriptionManager;
-import androidTestMod.utils.ModHelper;
 
-import java.util.Comparator;
 import java.util.List;
-import java.util.function.ToIntFunction;
 
 import static androidTestMod.modcore.CustomEnums.FOLLOW_UP;
 
@@ -102,15 +100,10 @@ public class TopazNumby2 extends BaseCard implements PreFollowUpSubscriber {
         if (SubscriptionManager.checkSubscriber(this) && card == this && upgraded && target == null) {
             boolean seen = false;
             AbstractMonster best = null;
-            Comparator<AbstractMonster> comparator = Comparator.comparingInt(new ToIntFunction<AbstractMonster>() {
-                @Override
-                public int applyAsInt(AbstractMonster m) {
-                    return m.currentHealth;
-                }
-            });
+
             for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters) {
                 if (ModHelper.check(monster)) {
-                    if (!seen || comparator.compare(monster, best) < 0) {
+                    if (!seen || monster.currentHealth < best.currentHealth) {
                         seen = true;
                         best = monster;
                     }

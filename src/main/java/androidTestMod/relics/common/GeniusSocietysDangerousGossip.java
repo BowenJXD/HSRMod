@@ -1,11 +1,11 @@
 package androidTestMod.relics.common;
 
-import basemod.abstracts.CustomSavable;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import androidTestMod.relics.BaseRelic;
 import androidTestMod.utils.ModHelper;
 import androidTestMod.utils.RelicEventHelper;
+import com.megacrit.cardcrawl.android.mods.abstracts.CustomSavable;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
 public class GeniusSocietysDangerousGossip extends BaseRelic implements CustomSavable<Integer> {
     public static final String ID = GeniusSocietysDangerousGossip.class.getSimpleName();

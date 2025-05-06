@@ -1,16 +1,16 @@
 package androidTestMod.cards.common;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import androidTestMod.actions.ElementalDamageAllAction;
 import androidTestMod.actions.FollowUpAction;
 import androidTestMod.cards.BaseCard;
 import androidTestMod.subscribers.PreEnergyChangeSubscriber;
 import androidTestMod.subscribers.SubscriptionManager;
 import androidTestMod.utils.ModHelper;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static androidTestMod.modcore.CustomEnums.FOLLOW_UP;
 

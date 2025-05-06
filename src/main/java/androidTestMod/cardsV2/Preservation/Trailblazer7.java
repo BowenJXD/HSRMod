@@ -1,12 +1,12 @@
 package androidTestMod.cardsV2.Preservation;
 
+import androidTestMod.cards.BaseCard;
+import androidTestMod.powers.uniqueBuffs.Trailblazer7Power;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.FlameBarrierEffect;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.powers.uniqueBuffs.Trailblazer7Power;
 
 public class Trailblazer7 extends BaseCard {
     public static final String ID = Trailblazer7.class.getSimpleName();

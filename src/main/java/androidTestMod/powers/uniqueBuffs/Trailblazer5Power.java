@@ -1,16 +1,16 @@
 package androidTestMod.powers.uniqueBuffs;
 
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import androidTestMod.AndroidTestMod;
 import androidTestMod.actions.BreakDamageAction;
 import androidTestMod.modcore.ElementType;
-import androidTestMod.modcore.AndroidTestMod;
 import androidTestMod.powers.PowerPower;
 import androidTestMod.powers.misc.BrokenPower;
 import androidTestMod.subscribers.PreToughnessReduceSubscriber;
 import androidTestMod.subscribers.SubscriptionManager;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class Trailblazer5Power extends PowerPower implements PreToughnessReduceSubscriber {
     public static final String POWER_ID = AndroidTestMod.makePath(Trailblazer5Power.class.getSimpleName());

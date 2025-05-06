@@ -1,12 +1,12 @@
 package androidTestMod.cardsV2.Preservation;
 
+import androidTestMod.cards.BaseCard;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.FastingEffect;
-import androidTestMod.cards.BaseCard;
 
 public class ConcertForTwo extends BaseCard {
     public static final String ID = ConcertForTwo.class.getSimpleName();

@@ -1,10 +1,10 @@
 package androidTestMod.relics.rare;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import androidTestMod.powers.breaks.FrozenPower;
 import androidTestMod.relics.BaseRelic;
 import androidTestMod.utils.ModHelper;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class SilentSong extends BaseRelic {
     public static final String ID = SilentSong.class.getSimpleName();

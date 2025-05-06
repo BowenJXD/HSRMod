@@ -1,13 +1,5 @@
 package androidTestMod.cards.uncommon;
 
-import basemod.BaseMod;
-import basemod.interfaces.OnPlayerDamagedSubscriber;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import androidTestMod.actions.BouncingAction;
 import androidTestMod.actions.ElementalDamageAction;
 import androidTestMod.actions.FollowUpAction;
@@ -15,8 +7,15 @@ import androidTestMod.cards.BaseCard;
 import androidTestMod.modcore.CustomEnums;
 import androidTestMod.modcore.ElementalDamageInfo;
 import androidTestMod.powers.misc.EnergyPower;
+import androidTestMod.subscribers.OnPlayerDamagedSubscriber;
 import androidTestMod.subscribers.SubscriptionManager;
 import androidTestMod.utils.ModHelper;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static androidTestMod.modcore.CustomEnums.FOLLOW_UP;
 
@@ -42,7 +41,12 @@ public class Yunli1 extends BaseCard implements OnPlayerDamagedSubscriber {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         shout(0, 1);
-        ModHelper.addToBotAbstract(this::execute);
+        ModHelper.addToBotAbstract(new ModHelper.Lambda() {
+            @Override
+            public void run() {
+                Yunli1.this.execute();
+            }
+        });
         canBeUsed = false;
         count = 0;
     }
@@ -50,18 +54,23 @@ public class Yunli1 extends BaseCard implements OnPlayerDamagedSubscriber {
     @Override
     public void onEnterHand() {
         super.onEnterHand();
-        BaseMod.subscribe(this);
+        SubscriptionManager.subscribe(this);
     }
 
     @Override
     public void onLeaveHand() {
         super.onLeaveHand();
-        BaseMod.unsubscribe(this);
+        SubscriptionManager.unsubscribe(this);
     }
     
     void execute(){
         if (ModHelper.getPowerCount(AbstractDungeon.player, EnergyPower.POWER_ID) >= energyCost) {
-            ModHelper.addToTopAbstract(this::execute);
+            ModHelper.addToTopAbstract(new ModHelper.Lambda() {
+                @Override
+                public void run() {
+                    Yunli1.this.execute();
+                }
+            });
         }
         AbstractMonster randomMonster = AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster)null, true, AbstractDungeon.cardRandomRng);
         if (randomMonster == null) return;

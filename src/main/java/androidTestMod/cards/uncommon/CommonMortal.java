@@ -1,10 +1,10 @@
 package androidTestMod.cards.uncommon;
 
+import androidTestMod.cards.BaseCard;
+import androidTestMod.powers.uniqueBuffs.CommonMortalPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.powers.uniqueBuffs.CommonMortalPower;
 
 public class CommonMortal extends BaseCard {
     public static final String ID = CommonMortal.class.getSimpleName();

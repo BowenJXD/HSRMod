@@ -1,22 +1,22 @@
 package androidTestMod.powers.uniqueBuffs;
 
-import basemod.BaseMod;
-import basemod.interfaces.OnPlayerLoseBlockSubscriber;
-import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.DexterityPower;
-import com.megacrit.cardcrawl.powers.FrailPower;
-import androidTestMod.modcore.AndroidTestMod;
+import androidTestMod.AndroidTestMod;
 import androidTestMod.powers.BuffPower;
 import androidTestMod.powers.interfaces.OnReceivePowerPower;
 import androidTestMod.subscribers.PreBlockChangeSubscriber;
 import androidTestMod.subscribers.SubscriptionManager;
+import com.megacrit.cardcrawl.actions.GameActionManager;
+import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.DexterityPower;
+import com.megacrit.cardcrawl.powers.FrailPower;
 
-public class DivinityPower extends BuffPower implements OnPlayerLoseBlockSubscriber, PreBlockChangeSubscriber, OnReceivePowerPower {
+public class DivinityPower extends BuffPower implements PreBlockChangeSubscriber, OnReceivePowerPower {
     public static final String POWER_ID = AndroidTestMod.makePath(DivinityPower.class.getSimpleName());
 
     private float loseMultiplier = 1 / 4f;
     boolean triggered = false;
+    int cachedTurn = 0;
     
     public DivinityPower(AbstractCreature owner, int amount, float loseMultiplier) {
         super(POWER_ID, owner, amount);
@@ -33,29 +33,26 @@ public class DivinityPower extends BuffPower implements OnPlayerLoseBlockSubscri
 
     @Override
     public void onInitialApplication() {
-        BaseMod.subscribe(this);
         SubscriptionManager.subscribe(this, true);
+        cachedTurn = GameActionManager.turn;
     }
 
     @Override
     public void onRemove() {
-        BaseMod.unsubscribe(this);
         SubscriptionManager.unsubscribe(this);
-    }
-
-    @Override
-    public int receiveOnPlayerLoseBlock(int i) {
-        if (!SubscriptionManager.checkSubscriber(this)) return i;
-        return Math.round(i * loseMultiplier);
     }
 
     @Override
     public int preBlockChange(AbstractCreature creature, int blockAmount) {
         if (SubscriptionManager.checkSubscriber(this) 
-                && creature == owner 
-                && blockAmount > 0) {
-            triggered = true;
-            return blockAmount + amount;
+                && creature == owner) {
+            if (blockAmount > 0) {
+                triggered = true;
+                return blockAmount + amount;
+            } else if (blockAmount < 0 && GameActionManager.turn > cachedTurn) {
+                cachedTurn = GameActionManager.turn;
+                return Math.round(blockAmount * loseMultiplier);
+            }
         }
         return blockAmount;
     }

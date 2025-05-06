@@ -1,5 +1,13 @@
 package androidTestMod.cards.uncommon;
 
+import androidTestMod.actions.BreakDamageAction;
+import androidTestMod.actions.ElementalDamageAction;
+import androidTestMod.cards.BaseCard;
+import androidTestMod.effects.MultiSlashEffect;
+import androidTestMod.modcore.ElementalDamageInfo;
+import androidTestMod.powers.misc.BrokenPower;
+import androidTestMod.utils.CachedCondition;
+import androidTestMod.utils.ModHelper;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
@@ -10,14 +18,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import androidTestMod.actions.BreakDamageAction;
-import androidTestMod.actions.ElementalDamageAction;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.effects.MultiSlashEffect;
-import androidTestMod.modcore.ElementalDamageInfo;
-import androidTestMod.powers.misc.BrokenPower;
-import androidTestMod.utils.CachedCondition;
-import androidTestMod.utils.ModHelper;
 
 import java.util.Objects;
 

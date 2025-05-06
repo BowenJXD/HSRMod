@@ -1,10 +1,10 @@
 package androidTestMod.powers.uniqueDebuffs;
 
-import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import androidTestMod.modcore.AndroidTestMod;
+import androidTestMod.AndroidTestMod;
 import androidTestMod.powers.DebuffPower;
 import androidTestMod.powers.misc.BrokenPower;
+import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 
 public class ThanatoplumRebloomPower extends DebuffPower {
     public static final String POWER_ID = AndroidTestMod.makePath(ThanatoplumRebloomPower.class.getSimpleName());

@@ -1,19 +1,16 @@
 package androidTestMod.relics.starter;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.CardGroup;
-import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
 import androidTestMod.cards.BaseCard;
 import androidTestMod.cardsV2.Paths.*;
 import androidTestMod.modcore.CustomEnums;
 import androidTestMod.relics.BaseRelic;
-import androidTestMod.utils.PathDefine;
 import androidTestMod.utils.RelicEventHelper;
 import androidTestMod.utils.RewardEditor;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import java.util.List;
 import java.util.Objects;
@@ -24,8 +21,6 @@ public abstract class WaxRelic extends BaseRelic {
     public AbstractCard.CardTags selectedTag;
     public CardGroup pathGroup;
     public int pathToBan = 1;
-    static Texture[] ftues;
-    static String[] tutTexts;
 
     public WaxRelic(String id, AbstractCard.CardTags tag, int weight) {
         super(id);
@@ -40,15 +35,6 @@ public abstract class WaxRelic extends BaseRelic {
         if (tag != CustomEnums.THE_HUNT) pathGroup.addToBottom(new TheHunt());
         if (tag != CustomEnums.ERUDITION) pathGroup.addToBottom(new Erudition());
         if (tag != CustomEnums.ABUNDANCE) pathGroup.addToBottom(new Abundance());
-        
-        ftues = new Texture[]{
-                ImageMaster.loadImage(PathDefine.UI_PATH + "tutorial/" + selectedTag + "1.png"),
-                ImageMaster.loadImage(PathDefine.UI_PATH + "tutorial/" + selectedTag + "2.png"),
-        };
-        tutTexts = new String[]{
-                DESCRIPTIONS[3],
-                DESCRIPTIONS[4],
-        };
     }
 
     public WaxRelic(String id, AbstractCard.CardTags tag) {

@@ -1,16 +1,16 @@
 package androidTestMod.powers.uniqueBuffs;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import androidTestMod.modcore.AndroidTestMod;
+import androidTestMod.AndroidTestMod;
 import androidTestMod.powers.PowerPower;
 import androidTestMod.powers.interfaces.OnReceivePowerPower;
 import androidTestMod.powers.misc.DoTPower;
 import androidTestMod.powers.misc.EnergyPower;
 import androidTestMod.utils.ModHelper;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 
 public class CommonMortalPower extends PowerPower implements OnReceivePowerPower {
     public static final String POWER_ID = AndroidTestMod.makePath(CommonMortalPower.class.getSimpleName());

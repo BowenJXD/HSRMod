@@ -1,15 +1,15 @@
 package androidTestMod.cards.uncommon;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import androidTestMod.actions.AOEAction;
 import androidTestMod.actions.ElementalDamageAction;
 import androidTestMod.cards.BaseCard;
 import androidTestMod.modcore.ElementalDamageInfo;
 import androidTestMod.powers.uniqueDebuffs.ProofOfDebtPower;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import java.util.function.Function;
 

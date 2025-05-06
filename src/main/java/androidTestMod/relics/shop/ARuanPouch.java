@@ -1,11 +1,11 @@
 package androidTestMod.relics.shop;
 
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.rewards.RewardItem;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import androidTestMod.relics.BaseRelic;
 import androidTestMod.utils.ModHelper;
 import androidTestMod.utils.RewardEditor;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.rewards.RewardItem;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
 public class ARuanPouch extends BaseRelic {
     public static final String ID = ARuanPouch.class.getSimpleName();
@@ -38,7 +38,12 @@ public class ARuanPouch extends BaseRelic {
                 }
             });
         }
-        ModHelper.addEffectAbstract(this::reduceCounterAndCheckDestroy);
+        ModHelper.addEffectAbstract(new ModHelper.Lambda() {
+            @Override
+            public void run() {
+                ARuanPouch.this.reduceCounterAndCheckDestroy();
+            }
+        });
     }
 
     @Override

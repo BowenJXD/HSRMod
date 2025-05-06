@@ -1,15 +1,15 @@
 package androidTestMod.cards.uncommon;
 
+import androidTestMod.cards.BaseCard;
+import androidTestMod.effects.PortraitDisplayEffect;
+import androidTestMod.modcore.CustomEnums;
+import androidTestMod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.effects.PortraitDisplayEffect;
-import androidTestMod.modcore.CustomEnums;
-import androidTestMod.utils.ModHelper;
 
 public class Gepard1 extends BaseCard {
     public static final String ID = Gepard1.class.getSimpleName();

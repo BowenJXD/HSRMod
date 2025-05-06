@@ -1,11 +1,11 @@
 package androidTestMod.cards.uncommon;
 
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import androidTestMod.cards.BaseCard;
 import androidTestMod.powers.misc.ToughnessPower;
 import androidTestMod.utils.ModHelper;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class PreBattleCaregiver extends BaseCard {
     public static final String ID = PreBattleCaregiver.class.getSimpleName();

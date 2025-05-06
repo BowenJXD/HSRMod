@@ -1,12 +1,12 @@
 package androidTestMod.relics.special;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import androidTestMod.cards.BaseCard;
 import androidTestMod.modcore.CustomEnums;
 import androidTestMod.powers.misc.BreakEffectPower;
 import androidTestMod.relics.BaseRelic;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 import java.util.HashSet;
 import java.util.Set;

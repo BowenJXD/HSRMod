@@ -1,10 +1,10 @@
 package androidTestMod.relics.special;
 
+import androidTestMod.relics.BaseRelic;
+import androidTestMod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.unique.LoseEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import androidTestMod.relics.BaseRelic;
-import androidTestMod.utils.ModHelper;
 
 public class PasserbyOfWanderingCloud extends BaseRelic {
     public static final String ID = PasserbyOfWanderingCloud.class.getSimpleName();

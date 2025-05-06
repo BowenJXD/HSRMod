@@ -1,13 +1,13 @@
 package androidTestMod.powers.uniqueBuffs;
 
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import androidTestMod.AndroidTestMod;
 import androidTestMod.actions.ElementalDamageAction;
-import androidTestMod.modcore.AndroidTestMod;
 import androidTestMod.powers.PowerPower;
 import androidTestMod.powers.misc.BrokenPower;
 import androidTestMod.subscribers.PreElementalDamageSubscriber;
 import androidTestMod.subscribers.SubscriptionManager;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 import static androidTestMod.modcore.CustomEnums.FOLLOW_UP;
 

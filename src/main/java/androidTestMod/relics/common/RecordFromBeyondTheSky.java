@@ -1,11 +1,11 @@
 package androidTestMod.relics.common;
 
+import androidTestMod.relics.BaseRelic;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
 import com.megacrit.cardcrawl.powers.BufferPower;
-import androidTestMod.relics.BaseRelic;
 
 public class RecordFromBeyondTheSky extends BaseRelic {
     public static final String ID = RecordFromBeyondTheSky.class.getSimpleName();

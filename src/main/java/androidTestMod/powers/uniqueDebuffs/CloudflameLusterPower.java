@@ -1,15 +1,15 @@
 package androidTestMod.powers.uniqueDebuffs;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.core.AbstractCreature;
+import androidTestMod.AndroidTestMod;
 import androidTestMod.modcore.ElementalDamageInfo;
-import androidTestMod.modcore.AndroidTestMod;
 import androidTestMod.powers.DebuffPower;
 import androidTestMod.powers.misc.ToughnessPower;
 import androidTestMod.subscribers.PreBreakSubscriber;
 import androidTestMod.subscribers.SubscriptionManager;
 import androidTestMod.utils.ModHelper;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 
 public class CloudflameLusterPower extends DebuffPower implements PreBreakSubscriber {
     public static final String ID = AndroidTestMod.makePath(CloudflameLusterPower.class.getSimpleName());

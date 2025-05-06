@@ -1,5 +1,11 @@
 package androidTestMod.cards.common;
 
+import androidTestMod.actions.ElementalDamageAction;
+import androidTestMod.actions.ElementalDamageAllAction;
+import androidTestMod.actions.FollowUpAction;
+import androidTestMod.cards.BaseCard;
+import androidTestMod.effects.BackFlipEffect;
+import androidTestMod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -7,12 +13,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import androidTestMod.actions.ElementalDamageAction;
-import androidTestMod.actions.ElementalDamageAllAction;
-import androidTestMod.actions.FollowUpAction;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.effects.BackFlipEffect;
-import androidTestMod.utils.ModHelper;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -53,7 +53,12 @@ public class Herta1 extends BaseCard {
                                     moreThanHalfMonsters.remove(ci.target);
                                     if (canRepeat) {
                                         canRepeat = false;
-                                        ModHelper.addToTopAbstract(Herta1.this::execute);
+                                        ModHelper.addToTopAbstract(new ModHelper.Lambda() {
+                                            @Override
+                                            public void run() {
+                                                Herta1.this.execute();
+                                            }
+                                        });
                                     }
                                 }
                             }

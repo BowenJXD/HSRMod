@@ -1,17 +1,13 @@
 package androidTestMod.relics.starter;
 
-import basemod.abstracts.CustomRelic;
-import com.badlogic.gdx.graphics.Texture;
+import androidTestMod.AndroidTestMod;
+import androidTestMod.powers.misc.ToughnessPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import androidTestMod.modcore.AndroidTestMod;
-import androidTestMod.powers.misc.ToughnessPower;
-import androidTestMod.utils.PathDefine;
 
-public class GalacticBat extends CustomRelic {
+public class GalacticBat extends AbstractRelic {
     // 遗物ID（此处的ModHelper在“04 - 本地化”中提到）
     public static final String ID = AndroidTestMod.makePath(GalacticBat.class.getSimpleName());
     // 图片路径
@@ -25,26 +21,8 @@ public class GalacticBat extends CustomRelic {
 
     String modNameCache = null;
     
-    static Texture[] ftues = {
-            ImageMaster.loadImage(PathDefine.UI_PATH + "tutorial/1.png"),
-            ImageMaster.loadImage(PathDefine.UI_PATH + "tutorial/2.png"),
-            ImageMaster.loadImage(PathDefine.UI_PATH + "tutorial/3.png"),
-            ImageMaster.loadImage(PathDefine.UI_PATH + "tutorial/4.png"),
-            ImageMaster.loadImage(PathDefine.UI_PATH + "tutorial/5.png"),
-            ImageMaster.loadImage(PathDefine.UI_PATH + "tutorial/6.png"),
-    };
-    
-    String[] tutTexts = {
-            DESCRIPTIONS[2],
-            DESCRIPTIONS[3],
-            DESCRIPTIONS[4],
-            DESCRIPTIONS[5],
-            DESCRIPTIONS[6],
-            DESCRIPTIONS[7],
-    };
-    
     public GalacticBat() {
-        super(ID, ImageMaster.loadImage(IMG_PATH), RELIC_TIER, LANDING_SOUND);
+        super(ID, IMG_PATH, RELIC_TIER, LANDING_SOUND);
     }
 
     // 获取遗物描述，但原版游戏只在初始化和获取遗物时调用，故该方法等于初始描述

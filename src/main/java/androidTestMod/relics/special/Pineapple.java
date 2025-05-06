@@ -1,9 +1,9 @@
 package androidTestMod.relics.special;
 
+import androidTestMod.relics.BaseRelic;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import androidTestMod.relics.BaseRelic;
 
 public class Pineapple extends BaseRelic {
     public static final String ID = Pineapple.class.getSimpleName();

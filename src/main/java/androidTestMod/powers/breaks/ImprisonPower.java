@@ -1,9 +1,9 @@
 package androidTestMod.powers.breaks;
 
+import androidTestMod.AndroidTestMod;
+import androidTestMod.powers.DebuffPower;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import androidTestMod.modcore.AndroidTestMod;
-import androidTestMod.powers.DebuffPower;
 
 public class ImprisonPower extends DebuffPower {
     public static final String POWER_ID = AndroidTestMod.makePath(ImprisonPower.class.getSimpleName());

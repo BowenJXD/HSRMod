@@ -1,5 +1,7 @@
 package androidTestMod.powers.uniqueBuffs;
 
+import androidTestMod.AndroidTestMod;
+import androidTestMod.powers.BuffPower;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
@@ -8,8 +10,6 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import androidTestMod.modcore.AndroidTestMod;
-import androidTestMod.powers.BuffPower;
 
 public class Trailblazer7Power extends BuffPower {
     public static final String POWER_ID = AndroidTestMod.makePath(Trailblazer7Power.class.getSimpleName());

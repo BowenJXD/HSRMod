@@ -1,20 +1,23 @@
 package androidTestMod.relics.rare;
 
-import basemod.BaseMod;
-import basemod.abstracts.CustomSavable;
-import basemod.interfaces.RelicGetSubscriber;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
 import androidTestMod.relics.BaseRelic;
 import androidTestMod.subscribers.SubscriptionManager;
 import androidTestMod.utils.ModHelper;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 
-public class ByAnyMeansNecessary extends BaseRelic implements RelicGetSubscriber, CustomSavable<Void> {
+import java.util.ArrayList;
+import java.util.List;
+
+public class ByAnyMeansNecessary extends BaseRelic {
     public static final String ID = ByAnyMeansNecessary.class.getSimpleName();
+    
+    public List<AbstractRelic> cachedRelics = new ArrayList<>();
+    
+    boolean isEquipped = false;
 
     public ByAnyMeansNecessary() {
         super(ID);
@@ -23,14 +26,15 @@ public class ByAnyMeansNecessary extends BaseRelic implements RelicGetSubscriber
     @Override
     public void onEquip() {
         super.onEquip();
-        BaseMod.subscribe(this);
+        cachedRelics = new ArrayList<>(AbstractDungeon.player.relics);
+        isEquipped = true;
         updateCounter();
     }
 
     @Override
     public void onUnequip() {
         super.onUnequip();
-        BaseMod.unsubscribe(this);
+        isEquipped = false;
     }
 
     @Override
@@ -44,6 +48,17 @@ public class ByAnyMeansNecessary extends BaseRelic implements RelicGetSubscriber
     }
 
     @Override
+    public void update() {
+        super.update();
+        if (!isEquipped) return;
+        for (int i = AbstractDungeon.player.relics.size() - 1; i >= cachedRelics.size(); i--) {
+            if (!cachedRelics.contains(AbstractDungeon.player.relics.get(i))) {
+                receiveRelicGet(AbstractDungeon.player.relics.get(i));
+            }
+        }
+        cachedRelics = new ArrayList<>(AbstractDungeon.player.relics);
+    }
+
     public void receiveRelicGet(AbstractRelic abstractRelic) {
         if (SubscriptionManager.checkSubscriber(this)) {
             int goldGain = 0;
@@ -62,21 +77,13 @@ public class ByAnyMeansNecessary extends BaseRelic implements RelicGetSubscriber
                 flash();
                 AbstractDungeon.player.gainGold(goldGain);
             }
-            ModHelper.addEffectAbstract(this::updateCounter);
+            ModHelper.addEffectAbstract(new ModHelper.Lambda() {
+                @Override
+                public void run() {
+                    ByAnyMeansNecessary.this.updateCounter();
+                }
+            });
         }
-    }
-
-    @Override
-    public void reorganizeObtain(AbstractPlayer p, int slot, boolean callOnEquip, int relicAmount) {
-        super.reorganizeObtain(p, slot, callOnEquip, relicAmount);
-        BaseMod.unsubscribe(this);
-        ModHelper.addEffectAbstract(new ModHelper.Lambda() {
-            @Override
-            public void run() {
-                BaseMod.subscribe(ByAnyMeansNecessary.this);
-            }
-        });
-        updateCounter();
     }
 
     void updateCounter() {
@@ -95,15 +102,5 @@ public class ByAnyMeansNecessary extends BaseRelic implements RelicGetSubscriber
             }
         }
         setCounter(counter);
-    }
-
-    @Override
-    public Void onSave() {
-        return null;
-    }
-
-    @Override
-    public void onLoad(Void unused) {
-        BaseMod.subscribe(this);
     }
 }

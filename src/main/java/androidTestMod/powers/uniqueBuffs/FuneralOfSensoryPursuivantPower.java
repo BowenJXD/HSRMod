@@ -1,15 +1,15 @@
 package androidTestMod.powers.uniqueBuffs;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.powers.AbstractPower;
+import androidTestMod.AndroidTestMod;
 import androidTestMod.modcore.ElementalDamageInfo;
-import androidTestMod.modcore.AndroidTestMod;
 import androidTestMod.powers.PowerPower;
 import androidTestMod.powers.misc.DoTPower;
 import androidTestMod.powers.misc.SuspicionPower;
 import androidTestMod.subscribers.PreDoTDamageSubscriber;
 import androidTestMod.subscribers.SubscriptionManager;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 
 public class FuneralOfSensoryPursuivantPower extends PowerPower implements PreDoTDamageSubscriber {
     public static final String POWER_ID = AndroidTestMod.makePath(FuneralOfSensoryPursuivantPower.class.getSimpleName());

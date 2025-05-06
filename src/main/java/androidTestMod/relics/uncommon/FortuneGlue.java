@@ -1,11 +1,12 @@
 package androidTestMod.relics.uncommon;
 
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.rewards.RewardItem;
 import androidTestMod.relics.BaseRelic;
 import androidTestMod.utils.RewardEditor;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.rewards.RewardItem;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public class FortuneGlue extends BaseRelic {
     public static final String ID = FortuneGlue.class.getSimpleName();
@@ -18,7 +19,12 @@ public class FortuneGlue extends BaseRelic {
     public void atBattleStart() {
         super.atBattleStart();
         if (!usedUp)
-            RewardEditor.addExtraRewardToBot(this::processRewards);
+            RewardEditor.addExtraRewardToBot(new Consumer<List<RewardItem>>() {
+                @Override
+                public void accept(List<RewardItem> rewards) {
+                    FortuneGlue.this.processRewards(rewards);
+                }
+            });
     }
     
     public void processRewards(List<RewardItem> rewards) {

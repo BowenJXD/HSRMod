@@ -1,16 +1,16 @@
 package androidTestMod.powers.uniqueBuffs;
 
+import androidTestMod.AndroidTestMod;
+import androidTestMod.actions.CleanAction;
+import androidTestMod.powers.BuffPower;
+import androidTestMod.powers.interfaces.OnReceivePowerPower;
+import androidTestMod.powers.misc.EnergyPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.HealAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import androidTestMod.actions.CleanAction;
-import androidTestMod.modcore.AndroidTestMod;
-import androidTestMod.powers.BuffPower;
-import androidTestMod.powers.interfaces.OnReceivePowerPower;
-import androidTestMod.powers.misc.EnergyPower;
 
 public class HuohuoPower extends BuffPower implements OnReceivePowerPower {
     public static final String POWER_ID = AndroidTestMod.makePath(HuohuoPower.class.getSimpleName());

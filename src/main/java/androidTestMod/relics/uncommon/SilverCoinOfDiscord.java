@@ -1,8 +1,8 @@
 package androidTestMod.relics.uncommon;
 
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import androidTestMod.relics.BaseRelic;
 import androidTestMod.utils.RelicEventHelper;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 public class SilverCoinOfDiscord extends BaseRelic {
     public static final String ID = SilverCoinOfDiscord.class.getSimpleName();

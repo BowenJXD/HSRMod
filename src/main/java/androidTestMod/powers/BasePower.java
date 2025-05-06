@@ -1,15 +1,14 @@
 package androidTestMod.powers;
 
+import androidTestMod.AndroidTestMod;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.android.mods.AssetLoader;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import androidTestMod.modcore.AndroidTestMod;
-import androidTestMod.subscribers.SubscriptionManager;
 
 public abstract class BasePower extends AbstractPower {
     public String[] DESCRIPTIONS;
@@ -53,13 +52,7 @@ public abstract class BasePower extends AbstractPower {
     protected void loadRegion(String fileName) {
         String path128 = String.format("img/powers/%s128.png", fileName);
         String path48 = String.format("img/powers/%s48.png", fileName);
-        this.region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage(path128), 0, 0, 128, 128);
-        this.region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage(path48), 0, 0, 48, 48);
-    }
-
-    @Override
-    public void onSpecificTrigger() {
-        super.onSpecificTrigger();
-        SubscriptionManager.getInstance().triggerPrePowerTrigger(this);
+        this.region128 = new TextureAtlas.AtlasRegion(AssetLoader.getTexture(AndroidTestMod.MOD_NAME, path128), 0, 0, 128, 128);
+        this.region48 = new TextureAtlas.AtlasRegion(AssetLoader.getTexture(AndroidTestMod.MOD_NAME, path48), 0, 0, 48, 48);
     }
 }

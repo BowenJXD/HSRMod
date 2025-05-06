@@ -1,10 +1,11 @@
 package androidTestMod.relics.common;
 
-import com.megacrit.cardcrawl.rewards.RewardItem;
 import androidTestMod.relics.BaseRelic;
 import androidTestMod.utils.RewardEditor;
+import com.megacrit.cardcrawl.rewards.RewardItem;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public class SocietyTicket extends BaseRelic {
     public static final String ID = SocietyTicket.class.getSimpleName();
@@ -19,7 +20,12 @@ public class SocietyTicket extends BaseRelic {
     @Override
     public void atBattleStart() {
         super.atBattleStart();
-        RewardEditor.addExtraRewardToBot(this::processRewards);
+        RewardEditor.addExtraRewardToBot(new Consumer<List<RewardItem>>() {
+            @Override
+            public void accept(List<RewardItem> rewards) {
+                SocietyTicket.this.processRewards(rewards);
+            }
+        });
     }
 
     public void processRewards(List<RewardItem> rewards) {

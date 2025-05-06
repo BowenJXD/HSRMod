@@ -1,5 +1,12 @@
 package androidTestMod.utils;
 
+import androidTestMod.AndroidTestMod;
+import androidTestMod.effects.BetterWarningSignEffect;
+import androidTestMod.modcore.CustomEnums;
+import androidTestMod.relics.BaseRelic;
+import androidTestMod.relics.boss.MasterOfDreamMachinations;
+import androidTestMod.relics.special.*;
+import androidTestMod.relics.uncommon.JellyfishOnTheStaircase;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -17,13 +24,6 @@ import com.megacrit.cardcrawl.vfx.UpgradeShineEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
-import androidTestMod.effects.BetterWarningSignEffect;
-import androidTestMod.modcore.CustomEnums;
-import androidTestMod.modcore.AndroidTestMod;
-import androidTestMod.relics.BaseRelic;
-import androidTestMod.relics.boss.MasterOfDreamMachinations;
-import androidTestMod.relics.special.*;
-import androidTestMod.relics.uncommon.JellyfishOnTheStaircase;
 
 import java.util.*;
 import java.util.function.Consumer;

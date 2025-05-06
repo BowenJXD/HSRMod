@@ -1,11 +1,5 @@
 package androidTestMod.cardsV2.Preservation;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.CardGroup;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import androidTestMod.actions.ElementalDamageAction;
 import androidTestMod.actions.GridCardManipulator;
 import androidTestMod.actions.MoveCardsAction;
@@ -13,6 +7,12 @@ import androidTestMod.actions.SimpleGridCardSelectBuilder;
 import androidTestMod.cards.BaseCard;
 import androidTestMod.modcore.ElementalDamageInfo;
 import androidTestMod.utils.ModHelper;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import java.util.function.Consumer;
 import java.util.function.Predicate;

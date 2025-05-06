@@ -1,7 +1,12 @@
 package androidTestMod.cards.common;
 
-import basemod.BaseMod;
-import basemod.interfaces.PostPowerApplySubscriber;
+import androidTestMod.actions.MoveCardsAction;
+import androidTestMod.cards.BaseCard;
+import androidTestMod.powers.misc.BreakEffectPower;
+import androidTestMod.powers.misc.BrokenPower;
+import androidTestMod.subscribers.PostPowerApplySubscriber;
+import androidTestMod.subscribers.SubscriptionManager;
+import androidTestMod.utils.CachedCondition;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
@@ -11,12 +16,6 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import androidTestMod.actions.MoveCardsAction;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.powers.misc.BreakEffectPower;
-import androidTestMod.powers.misc.BrokenPower;
-import androidTestMod.subscribers.SubscriptionManager;
-import androidTestMod.utils.CachedCondition;
 
 import java.util.function.Predicate;
 
@@ -25,7 +24,7 @@ public class Sushang2 extends BaseCard implements PostPowerApplySubscriber {
 
     public Sushang2() {
         super(ID);
-        BaseMod.subscribe(this);
+        SubscriptionManager.subscribe(this);
         exhaust = true;
     }
 

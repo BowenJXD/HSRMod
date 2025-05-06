@@ -1,13 +1,13 @@
 package androidTestMod.cards.uncommon;
 
+import androidTestMod.cards.BaseCard;
+import androidTestMod.powers.uniqueBuffs.MatrixOfPresciencePower;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.BlurPower;
 import com.megacrit.cardcrawl.vfx.combat.ThirdEyeEffect;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.powers.uniqueBuffs.MatrixOfPresciencePower;
 
 public class FuXuan1 extends BaseCard {
     public static final String ID = FuXuan1.class.getSimpleName();

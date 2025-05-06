@@ -1,11 +1,11 @@
 package androidTestMod.cardsV2.Preservation;
 
+import androidTestMod.cards.BaseCard;
+import androidTestMod.powers.misc.QuakePower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.powers.misc.QuakePower;
 
 public class MetastaticField extends BaseCard {
     public static final String ID = MetastaticField.class.getSimpleName();

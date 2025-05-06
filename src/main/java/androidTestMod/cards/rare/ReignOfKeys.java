@@ -1,10 +1,10 @@
 package androidTestMod.cards.rare;
 
+import androidTestMod.cards.BaseCard;
+import androidTestMod.powers.uniqueBuffs.ReignOfKeysPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.powers.uniqueBuffs.ReignOfKeysPower;
 
 public class ReignOfKeys extends BaseCard {
     public static final String ID = ReignOfKeys.class.getSimpleName();

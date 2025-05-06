@@ -1,12 +1,12 @@
 package androidTestMod.powers.uniqueBuffs;
 
+import androidTestMod.AndroidTestMod;
+import androidTestMod.powers.PowerPower;
+import androidTestMod.powers.misc.BoostPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import androidTestMod.modcore.AndroidTestMod;
-import androidTestMod.powers.PowerPower;
-import androidTestMod.powers.misc.BoostPower;
 
 public class RadiantSupremePower extends PowerPower {
     public static final String POWER_ID = AndroidTestMod.makePath(RadiantSupremePower.class.getSimpleName());

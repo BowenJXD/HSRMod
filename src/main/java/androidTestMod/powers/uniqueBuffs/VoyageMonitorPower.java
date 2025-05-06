@@ -1,12 +1,12 @@
 package androidTestMod.powers.uniqueBuffs;
 
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.core.AbstractCreature;
+import androidTestMod.AndroidTestMod;
 import androidTestMod.modcore.ElementType;
-import androidTestMod.modcore.AndroidTestMod;
 import androidTestMod.powers.PowerPower;
 import androidTestMod.subscribers.PreToughnessReduceSubscriber;
 import androidTestMod.subscribers.SubscriptionManager;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 
 public class VoyageMonitorPower extends PowerPower implements PreToughnessReduceSubscriber {
     public static final String POWER_ID = AndroidTestMod.makePath(VoyageMonitorPower.class.getSimpleName());

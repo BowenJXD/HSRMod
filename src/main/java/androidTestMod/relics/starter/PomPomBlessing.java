@@ -1,21 +1,6 @@
 package androidTestMod.relics.starter;
 
-import basemod.abstracts.CustomRelic;
-import com.badlogic.gdx.graphics.Texture;
-import com.megacrit.cardcrawl.actions.animations.TalkAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
-import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.CardQueueItem;
-import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
-import com.megacrit.cardcrawl.helpers.RelicLibrary;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.IntangiblePlayerPower;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
+import androidTestMod.AndroidTestMod;
 import androidTestMod.actions.ReduceChargeByHandCardNumAction;
 import androidTestMod.actions.SelectCardsAction;
 import androidTestMod.actions.SelectCardsInHandAction;
@@ -24,14 +9,25 @@ import androidTestMod.cards.base.Himeko0;
 import androidTestMod.cards.base.March7th0;
 import androidTestMod.cards.base.Welt0;
 import androidTestMod.modcore.CustomEnums;
-import androidTestMod.modcore.AndroidTestMod;
 import androidTestMod.powers.misc.EnergyPower;
 import androidTestMod.relics.special.DanhengRelic;
 import androidTestMod.relics.special.HimekoRelic;
 import androidTestMod.relics.special.March7thRelic;
 import androidTestMod.relics.special.WeltRelic;
 import androidTestMod.utils.ModHelper;
-import androidTestMod.utils.PathDefine;
+import com.megacrit.cardcrawl.actions.animations.TalkAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
+import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardQueueItem;
+import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.RelicLibrary;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.IntangiblePlayerPower;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +35,7 @@ import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
-public class PomPomBlessing extends CustomRelic{
+public class PomPomBlessing extends AbstractRelic {
     // 遗物ID（此处的ModHelper在“04 - 本地化”中提到）
     public static final String ID = AndroidTestMod.makePath(PomPomBlessing.class.getSimpleName());
     // 图片路径
@@ -53,23 +49,9 @@ public class PomPomBlessing extends CustomRelic{
 
     private int multiplier = 20;
 
-    static Texture[] ftues = {
-            ImageMaster.loadImage(PathDefine.UI_PATH + "tutorial/7.png"),
-            ImageMaster.loadImage(PathDefine.UI_PATH + "tutorial/8.png"),
-            ImageMaster.loadImage(PathDefine.UI_PATH + "tutorial/9.png"),
-    };
-
-    static String[] tutTexts;
-
     public PomPomBlessing() {
-        super(ID, ImageMaster.loadImage(IMG_PATH), RELIC_TIER, LANDING_SOUND);
+        super(ID, IMG_PATH, RELIC_TIER, LANDING_SOUND);
         setCounter(100);
-
-        tutTexts = new String[]{
-                DESCRIPTIONS[8],
-                DESCRIPTIONS[9],
-                DESCRIPTIONS[10],
-        };
     }
 
     // 获取遗物描述，但原版游戏只在初始化和获取遗物时调用，故该方法等于初始描述
@@ -174,46 +156,49 @@ public class PomPomBlessing extends CustomRelic{
                             public boolean test(AbstractCard card) {
                                 return card.hasTag(CustomEnums.REVIVE);
                             }
-                        }, cards -> {
-                            AbstractCard card = cards.get(0);
-                            for (ModHelper.FindResult findResult : ModHelper.findCards(new Predicate<AbstractCard>() {
-                                @Override
-                                public boolean test(AbstractCard card1) {
-                                    return Objects.equals(card1.cardID, card.cardID);
-                                }
-                            })) {
-                                findResult.group.removeCard(findResult.card);
-                            }
-                            AbstractDungeon.player.masterDeck.removeCard(card);
-
-                            String relicName = "";
-                            String text = "";
-                            if (card instanceof March7th0) {
-                                relicName = March7thRelic.ID;
-                                text = DESCRIPTIONS[3]; // 
-                            } else if (card instanceof Danheng0) {
-                                relicName = DanhengRelic.ID;
-                                text = DESCRIPTIONS[4]; // 
-                            } else if (card instanceof Himeko0) {
-                                relicName = HimekoRelic.ID;
-                                text = DESCRIPTIONS[5]; // 
-                            } else if (card instanceof Welt0) {
-                                relicName = WeltRelic.ID;
-                                text = DESCRIPTIONS[6]; // 
-                            }
-
-                            if (!relicName.isEmpty()) {
-                                AbstractRelic relic = RelicLibrary.getRelic(relicName).makeCopy();
-                                AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float) (Settings.WIDTH / 2), (float) (Settings.HEIGHT / 2), relic);
-                                ModHelper.addToTopAbstract(new ModHelper.Lambda() {
+                        }, new Consumer<List<AbstractCard>>() {
+                            @Override
+                            public void accept(List<AbstractCard> cards) {
+                                AbstractCard card = cards.get(0);
+                                for (ModHelper.FindResult findResult : ModHelper.findCards(new Predicate<AbstractCard>() {
                                     @Override
-                                    public void run() {
-                                        relic.setCounter(-2);
+                                    public boolean test(AbstractCard card1) {
+                                        return Objects.equals(card1.cardID, card.cardID);
                                     }
-                                });
+                                })) {
+                                    findResult.group.removeCard(findResult.card);
+                                }
+                                AbstractDungeon.player.masterDeck.removeCard(card);
+
+                                String relicName = "";
+                                String text = "";
+                                if (card instanceof March7th0) {
+                                    relicName = March7thRelic.ID;
+                                    text = DESCRIPTIONS[3];
+                                } else if (card instanceof Danheng0) {
+                                    relicName = DanhengRelic.ID;
+                                    text = DESCRIPTIONS[4];
+                                } else if (card instanceof Himeko0) {
+                                    relicName = HimekoRelic.ID;
+                                    text = DESCRIPTIONS[5];
+                                } else if (card instanceof Welt0) {
+                                    relicName = WeltRelic.ID;
+                                    text = DESCRIPTIONS[6];
+                                }
+
+                                if (!relicName.isEmpty()) {
+                                    AbstractRelic relic = RelicLibrary.getRelic(relicName).makeCopy();
+                                    AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float) (Settings.WIDTH / 2), (float) (Settings.HEIGHT / 2), relic);
+                                    ModHelper.addToTopAbstract(new ModHelper.Lambda() {
+                                        @Override
+                                        public void run() {
+                                            relic.setCounter(-2);
+                                        }
+                                    });
+                                }
+                                if (!text.isEmpty())
+                                    PomPomBlessing.this.addToBot(new TalkAction(true, text, 1.0F, 2.0F));
                             }
-                            if (!text.isEmpty())
-                                PomPomBlessing.this.addToBot(new TalkAction(true, text, 1.0F, 2.0F));
                         }));
                     }
                 });

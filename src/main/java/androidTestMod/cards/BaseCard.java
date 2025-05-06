@@ -1,5 +1,16 @@
 package androidTestMod.cards;
 
+import androidTestMod.AndroidTestMod;
+import androidTestMod.effects.PortraitDisplayEffect;
+import androidTestMod.modcore.CustomEnums;
+import androidTestMod.modcore.ElementType;
+import androidTestMod.powers.misc.EnergyPower;
+import androidTestMod.relics.starter.*;
+import androidTestMod.subscribers.SubscriptionManager;
+import androidTestMod.utils.CardDataCol;
+import androidTestMod.utils.DataManager;
+import androidTestMod.utils.ModHelper;
+import androidTestMod.utils.RewardEditor;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
@@ -13,16 +24,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.MiracleEffect;
-import androidTestMod.effects.PortraitDisplayEffect;
-import androidTestMod.modcore.CustomEnums;
-import androidTestMod.modcore.ElementType;
-import androidTestMod.powers.misc.EnergyPower;
-import androidTestMod.relics.starter.*;
-import androidTestMod.subscribers.SubscriptionManager;
-import androidTestMod.utils.CardDataCol;
-import androidTestMod.utils.DataManager;
-import androidTestMod.utils.ModHelper;
-import androidTestMod.utils.RewardEditor;
 
 import java.util.Objects;
 
@@ -57,7 +58,7 @@ public abstract class BaseCard extends CustomCard {
     }
 
     public BaseCard(String id, CardColor color) {
-        super("HSRMod:" + id,
+        super(AndroidTestMod.makePath(id),
                 DataManager.getInstance().getCardData(id, CardDataCol.Name),
                 "img/cards/" + id + ".png",
                 DataManager.getInstance().getCardDataInt(id, CardDataCol.Cost),
@@ -76,6 +77,8 @@ public abstract class BaseCard extends CustomCard {
 
         this.upCost = DataManager.getInstance().getCardDataInt(id, CardDataCol.UpgradeCost);
         this.upDescription = DataManager.getInstance().getCardData(id, CardDataCol.UpgradeDescription);
+        this.rawDescription = this.rawDescription.replaceAll(" !TR! ", String.valueOf(baseTr));
+        this.upDescription = this.upDescription.replaceAll(" !TR! ", String.valueOf(upTr));
         this.upDamage = DataManager.getInstance().getCardDataInt(id, CardDataCol.UpgradeDamage);
         this.upTr = DataManager.getInstance().getCardDataInt(id, CardDataCol.UpgradeToughnessReduction);
         this.upBlock = DataManager.getInstance().getCardDataInt(id, CardDataCol.UpgradeBlock);
@@ -91,7 +94,7 @@ public abstract class BaseCard extends CustomCard {
         this.isInnate = rawDescription.contains("固有。");
         this.isEthereal = rawDescription.contains("虚无。");*/
 
-        assetUrl = "HSRMod/" + id + "_s_p.png";
+        assetUrl = id + "_s_p.png";
     }
 
     @Override
@@ -180,7 +183,7 @@ public abstract class BaseCard extends CustomCard {
 
     @Override
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        return super.canUse(p, m) && checkEnergy() && SubscriptionManager.getInstance().triggerCheckUsable(this);
+        return super.canUse(p, m) && checkEnergy();
     }
 
     public boolean checkEnergy() {

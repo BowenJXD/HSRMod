@@ -1,10 +1,10 @@
 package androidTestMod.relics.special;
 
+import androidTestMod.relics.BaseRelic;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.StrengthPower;
-import androidTestMod.relics.BaseRelic;
 
 public class InsectWeb extends BaseRelic {
     public static final String ID = InsectWeb.class.getSimpleName();

@@ -1,10 +1,10 @@
 package androidTestMod.cards.base;
 
+import androidTestMod.cards.BaseCard;
+import androidTestMod.misc.ICanChangeToTempHP;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.misc.ICanChangeToTempHP;
 
 public class Trailblazer3 extends BaseCard implements ICanChangeToTempHP {
     public static final String ID = Trailblazer3.class.getSimpleName();

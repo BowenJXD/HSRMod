@@ -1,15 +1,15 @@
 package androidTestMod.relics.special;
 
+import androidTestMod.actions.AOEAction;
+import androidTestMod.powers.misc.DoTPower;
+import androidTestMod.relics.BaseRelic;
+import androidTestMod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import androidTestMod.actions.AOEAction;
-import androidTestMod.powers.misc.DoTPower;
-import androidTestMod.relics.BaseRelic;
-import androidTestMod.utils.ModHelper;
 
 import java.util.function.Function;
 import java.util.function.Predicate;

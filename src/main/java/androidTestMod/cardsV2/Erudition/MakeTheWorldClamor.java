@@ -1,11 +1,11 @@
 package androidTestMod.cardsV2.Erudition;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import androidTestMod.cards.BaseCard;
 import androidTestMod.powers.misc.EnergyPower;
 import androidTestMod.utils.ModHelper;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class MakeTheWorldClamor extends BaseCard {
     public static final String ID = MakeTheWorldClamor.class.getSimpleName();

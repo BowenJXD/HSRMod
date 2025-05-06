@@ -1,11 +1,11 @@
 package androidTestMod.relics.common;
 
+import androidTestMod.relics.BaseRelic;
+import androidTestMod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.StrengthPower;
-import androidTestMod.relics.BaseRelic;
-import androidTestMod.utils.ModHelper;
 
 public class Dreams0110 extends BaseRelic {
     public static final String ID = Dreams0110.class.getSimpleName();

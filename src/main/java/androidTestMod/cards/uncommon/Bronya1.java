@@ -1,14 +1,14 @@
 package androidTestMod.cards.uncommon;
 
+import androidTestMod.actions.MoveCardsAction;
+import androidTestMod.actions.SelectCardsAction;
+import androidTestMod.cards.BaseCard;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
-import androidTestMod.actions.MoveCardsAction;
-import androidTestMod.actions.SelectCardsAction;
-import androidTestMod.cards.BaseCard;
 
 import java.util.List;
 import java.util.function.Consumer;

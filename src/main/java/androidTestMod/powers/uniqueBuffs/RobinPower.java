@@ -1,5 +1,8 @@
 package androidTestMod.powers.uniqueBuffs;
 
+import androidTestMod.AndroidTestMod;
+import androidTestMod.powers.BuffPower;
+import androidTestMod.powers.misc.EnergyPower;
 import com.badlogic.gdx.utils.Timer;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
@@ -10,9 +13,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
-import androidTestMod.modcore.AndroidTestMod;
-import androidTestMod.powers.BuffPower;
-import androidTestMod.powers.misc.EnergyPower;
 
 import static androidTestMod.modcore.CustomEnums.FOLLOW_UP;
 

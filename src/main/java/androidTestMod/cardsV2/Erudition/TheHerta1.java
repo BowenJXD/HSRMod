@@ -1,5 +1,10 @@
 package androidTestMod.cardsV2.Erudition;
 
+import androidTestMod.actions.ElementalDamageAction;
+import androidTestMod.actions.ElementalDamageAllAction;
+import androidTestMod.cards.BaseCard;
+import androidTestMod.modcore.CustomEnums;
+import androidTestMod.modcore.ElementalDamageInfo;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -7,15 +12,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.WallopEffect;
-import androidTestMod.actions.ElementalDamageAction;
-import androidTestMod.actions.ElementalDamageAllAction;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.modcore.CustomEnums;
-import androidTestMod.modcore.ElementalDamageInfo;
 
-import java.util.Comparator;
 import java.util.function.Consumer;
-import java.util.function.ToIntFunction;
 
 public class TheHerta1 extends BaseCard {
     public static final String ID = TheHerta1.class.getSimpleName();
@@ -60,15 +58,9 @@ public class TheHerta1 extends BaseCard {
 
         boolean seen = false;
         AbstractMonster best = null;
-        Comparator<AbstractMonster> comparator = Comparator.comparingInt(new ToIntFunction<AbstractMonster>() {
-            @Override
-            public int applyAsInt(AbstractMonster m2) {
-                return m2.currentHealth;
-            }
-        });
         for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
             if (!mo.isDeadOrEscaped() && mo.currentHealth > 0 && !mo.halfDead) {
-                if (!seen || comparator.compare(mo, best) > 0) {
+                if (!seen || mo.currentHealth > best.currentHealth) {
                     seen = true;
                     best = mo;
                 }

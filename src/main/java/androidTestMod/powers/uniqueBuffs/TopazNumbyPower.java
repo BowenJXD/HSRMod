@@ -1,13 +1,13 @@
 package androidTestMod.powers.uniqueBuffs;
 
+import androidTestMod.AndroidTestMod;
+import androidTestMod.cards.BaseCard;
+import androidTestMod.cards.uncommon.TopazNumby2;
+import androidTestMod.powers.PowerPower;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.cards.uncommon.TopazNumby2;
-import androidTestMod.modcore.AndroidTestMod;
-import androidTestMod.powers.PowerPower;
 
 import static androidTestMod.modcore.CustomEnums.FOLLOW_UP;
 

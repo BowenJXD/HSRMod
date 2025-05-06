@@ -1,14 +1,14 @@
 package androidTestMod.relics.special;
 
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import androidTestMod.actions.FollowUpAction;
 import androidTestMod.modcore.ElementalDamageInfo;
 import androidTestMod.relics.BaseRelic;
 import androidTestMod.subscribers.PreBreakSubscriber;
 import androidTestMod.subscribers.SubscriptionManager;
 import androidTestMod.utils.ModHelper;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 import java.util.Iterator;
 import java.util.function.Predicate;

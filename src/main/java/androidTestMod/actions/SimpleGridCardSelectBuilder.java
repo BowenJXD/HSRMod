@@ -1,7 +1,5 @@
 package androidTestMod.actions;
 
-import basemod.BaseMod;
-import basemod.interfaces.PostDungeonUpdateSubscriber;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;

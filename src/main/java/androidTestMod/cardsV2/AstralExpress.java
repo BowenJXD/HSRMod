@@ -1,11 +1,11 @@
 package androidTestMod.cardsV2;
 
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import androidTestMod.actions.FollowUpAction;
 import androidTestMod.cards.BaseCard;
 import androidTestMod.utils.ModHelper;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import java.util.function.Predicate;
 

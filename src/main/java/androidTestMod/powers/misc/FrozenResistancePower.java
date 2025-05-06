@@ -1,8 +1,8 @@
 package androidTestMod.powers.misc;
 
-import com.megacrit.cardcrawl.core.AbstractCreature;
-import androidTestMod.modcore.AndroidTestMod;
+import androidTestMod.AndroidTestMod;
 import androidTestMod.powers.BuffPower;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 
 public class FrozenResistancePower extends BuffPower {
     public static final String POWER_ID = AndroidTestMod.makePath(FrozenResistancePower.class.getSimpleName());

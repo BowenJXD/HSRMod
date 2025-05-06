@@ -1,10 +1,10 @@
 package androidTestMod.relics.boss;
 
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import androidTestMod.actions.FollowUpAction;
 import androidTestMod.cards.BaseCard;
 import androidTestMod.relics.BaseRelic;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 public class HerosTriumphantReturn extends BaseRelic {
     public static final String ID = HerosTriumphantReturn.class.getSimpleName();

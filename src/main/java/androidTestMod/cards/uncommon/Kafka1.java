@@ -1,5 +1,13 @@
 package androidTestMod.cards.uncommon;
 
+import androidTestMod.actions.ElementalDamageAction;
+import androidTestMod.actions.FollowUpAction;
+import androidTestMod.actions.TriggerDoTAction;
+import androidTestMod.cards.BaseCard;
+import androidTestMod.modcore.ElementalDamageInfo;
+import androidTestMod.powers.breaks.ShockPower;
+import androidTestMod.powers.misc.DoTPower;
+import androidTestMod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -9,14 +17,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.EntangleEffect;
-import androidTestMod.actions.ElementalDamageAction;
-import androidTestMod.actions.FollowUpAction;
-import androidTestMod.actions.TriggerDoTAction;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.modcore.ElementalDamageInfo;
-import androidTestMod.powers.breaks.ShockPower;
-import androidTestMod.powers.misc.DoTPower;
-import androidTestMod.utils.ModHelper;
 
 import java.util.Iterator;
 

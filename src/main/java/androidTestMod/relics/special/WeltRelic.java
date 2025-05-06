@@ -1,16 +1,14 @@
 package androidTestMod.relics.special;
 
-import basemod.abstracts.CustomRelic;
+import androidTestMod.AndroidTestMod;
+import androidTestMod.cards.base.Welt0;
+import androidTestMod.utils.RelicEventHelper;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import androidTestMod.cards.base.Welt0;
-import androidTestMod.modcore.AndroidTestMod;
-import androidTestMod.utils.RelicEventHelper;
 
-public class WeltRelic extends CustomRelic {
+public class WeltRelic extends AbstractRelic {
     // 遗物ID（此处的ModHelper在“04 - 本地化”中提到）
     public static final String ID = AndroidTestMod.makePath(WeltRelic.class.getSimpleName());
     // 图片路径
@@ -21,7 +19,7 @@ public class WeltRelic extends CustomRelic {
     private static final LandingSound LANDING_SOUND = LandingSound.FLAT;
 
     public WeltRelic() {
-        super(ID, ImageMaster.loadImage(IMG_PATH), RELIC_TIER, LANDING_SOUND);
+        super(ID, IMG_PATH, RELIC_TIER, LANDING_SOUND);
     }
 
     @Override

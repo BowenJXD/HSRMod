@@ -1,17 +1,16 @@
 package androidTestMod.powers.uniqueDebuffs;
 
-import basemod.BaseMod;
-import basemod.interfaces.OnPowersModifiedSubscriber;
-import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.powers.AbstractPower;
+import androidTestMod.AndroidTestMod;
 import androidTestMod.modcore.ElementalDamageInfo;
-import androidTestMod.modcore.AndroidTestMod;
 import androidTestMod.powers.DebuffPower;
+import androidTestMod.powers.interfaces.OnReceivePowerPower;
 import androidTestMod.powers.misc.DoTPower;
 import androidTestMod.subscribers.PreDoTDamageSubscriber;
 import androidTestMod.subscribers.SubscriptionManager;
+import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 
-public class EpiphanyPower extends DebuffPower implements OnPowersModifiedSubscriber, PreDoTDamageSubscriber {
+public class EpiphanyPower extends DebuffPower implements OnReceivePowerPower, PreDoTDamageSubscriber {
     public static final String POWER_ID = AndroidTestMod.makePath(EpiphanyPower.class.getSimpleName());
 
     int count = 0;
@@ -30,7 +29,6 @@ public class EpiphanyPower extends DebuffPower implements OnPowersModifiedSubscr
                 p.removeOnTrigger = false;
             }
         }
-        BaseMod.subscribe(this);
         SubscriptionManager.subscribe(this);
     }
 
@@ -42,7 +40,6 @@ public class EpiphanyPower extends DebuffPower implements OnPowersModifiedSubscr
                 p.removeOnTrigger = true;
             }
         }
-        BaseMod.unsubscribe(this);
         SubscriptionManager.unsubscribe(this);
     }
 
@@ -50,17 +47,7 @@ public class EpiphanyPower extends DebuffPower implements OnPowersModifiedSubscr
     public void atEndOfTurn(boolean isPlayer) {
         remove(1);
     }
-
-    @Override
-    public void receivePowersModified() {
-        for (AbstractPower power : owner.powers) {
-            if (power instanceof DoTPower) {
-                DoTPower p = (DoTPower) power;
-                p.removeOnTrigger = false;
-            }
-        }
-    }
-
+    
     @Override
     public float preDoTDamage(ElementalDamageInfo info, AbstractCreature target, DoTPower power) {
         if (SubscriptionManager.checkSubscriber(this) && count >= 0) {
@@ -70,5 +57,13 @@ public class EpiphanyPower extends DebuffPower implements OnPowersModifiedSubscr
             }
         }
         return info.output;
+    }
+
+    @Override
+    public boolean onReceivePower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
+        if (target == owner && power instanceof DoTPower) {
+            ((DoTPower)power).removeOnTrigger = false;
+        }
+        return true;
     }
 }

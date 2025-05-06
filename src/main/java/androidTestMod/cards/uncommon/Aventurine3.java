@@ -1,5 +1,10 @@
 package androidTestMod.cards.uncommon;
 
+import androidTestMod.actions.ElementalDamageAction;
+import androidTestMod.actions.FollowUpAction;
+import androidTestMod.cards.BaseCard;
+import androidTestMod.modcore.CustomEnums;
+import androidTestMod.modcore.ElementalDamageInfo;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -7,11 +12,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.FlickCoinEffect;
-import androidTestMod.actions.ElementalDamageAction;
-import androidTestMod.actions.FollowUpAction;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.modcore.CustomEnums;
-import androidTestMod.modcore.ElementalDamageInfo;
 
 public class Aventurine3 extends BaseCard {
     public static final String ID = Aventurine3.class.getSimpleName();

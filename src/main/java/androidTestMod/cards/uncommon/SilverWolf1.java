@@ -1,5 +1,9 @@
 package androidTestMod.cards.uncommon;
 
+import androidTestMod.actions.ElementalDamageAction;
+import androidTestMod.cards.BaseCard;
+import androidTestMod.modcore.CustomEnums;
+import androidTestMod.modcore.ElementalDamageInfo;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -11,10 +15,6 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.vfx.combat.InversionBeamEffect;
-import androidTestMod.actions.ElementalDamageAction;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.modcore.CustomEnums;
-import androidTestMod.modcore.ElementalDamageInfo;
 
 public class SilverWolf1 extends BaseCard {
     public static final String ID = SilverWolf1.class.getSimpleName();

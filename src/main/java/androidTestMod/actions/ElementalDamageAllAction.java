@@ -1,5 +1,9 @@
 package androidTestMod.actions;
 
+import androidTestMod.cards.BaseCard;
+import androidTestMod.modcore.ElementType;
+import androidTestMod.modcore.ElementalDamageInfo;
+import androidTestMod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -8,10 +12,6 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.modcore.ElementType;
-import androidTestMod.modcore.ElementalDamageInfo;
-import androidTestMod.utils.ModHelper;
 
 import java.util.function.Consumer;
 

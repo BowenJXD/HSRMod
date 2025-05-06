@@ -1,14 +1,14 @@
 package androidTestMod.cardsV2.Erudition;
 
+import androidTestMod.cards.BaseCard;
+import androidTestMod.modcore.CustomEnums;
+import androidTestMod.powers.misc.EnergyPower;
+import androidTestMod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.modcore.CustomEnums;
-import androidTestMod.powers.misc.EnergyPower;
-import androidTestMod.utils.ModHelper;
 
 public class CivilizationCorrespondent extends BaseCard {
     public static final String ID = CivilizationCorrespondent.class.getSimpleName();

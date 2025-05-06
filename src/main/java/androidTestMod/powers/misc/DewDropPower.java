@@ -1,5 +1,9 @@
 package androidTestMod.powers.misc;
 
+import androidTestMod.AndroidTestMod;
+import androidTestMod.powers.BuffPower;
+import androidTestMod.utils.GeneralUtil;
+import androidTestMod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -7,10 +11,6 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.IntangiblePower;
-import androidTestMod.modcore.AndroidTestMod;
-import androidTestMod.powers.BuffPower;
-import androidTestMod.utils.GeneralUtil;
-import androidTestMod.utils.ModHelper;
 
 import java.util.ArrayList;
 import java.util.Comparator;

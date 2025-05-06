@@ -1,10 +1,10 @@
 package androidTestMod.relics.common;
 
+import androidTestMod.relics.BaseRelic;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
-import androidTestMod.relics.BaseRelic;
 
 public class PunklordianBalance extends BaseRelic {
     public static final String ID = PunklordianBalance.class.getSimpleName();

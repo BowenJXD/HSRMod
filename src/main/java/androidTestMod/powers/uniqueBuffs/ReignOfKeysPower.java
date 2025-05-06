@@ -1,13 +1,13 @@
 package androidTestMod.powers.uniqueBuffs;
 
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.core.AbstractCreature;
+import androidTestMod.AndroidTestMod;
 import androidTestMod.modcore.ElementalDamageInfo;
-import androidTestMod.modcore.AndroidTestMod;
 import androidTestMod.powers.PowerPower;
 import androidTestMod.powers.misc.DoTPower;
 import androidTestMod.subscribers.PreDoTDamageSubscriber;
 import androidTestMod.subscribers.SubscriptionManager;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 
 public class ReignOfKeysPower extends PowerPower implements PreDoTDamageSubscriber {
     public static final String POWER_ID = AndroidTestMod.makePath(ReignOfKeysPower.class.getSimpleName());

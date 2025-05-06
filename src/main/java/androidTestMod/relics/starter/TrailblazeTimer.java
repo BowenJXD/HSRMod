@@ -1,13 +1,13 @@
 package androidTestMod.relics.starter;
 
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.CardGroup;
-import com.megacrit.cardcrawl.core.Settings;
 import androidTestMod.cards.BaseCard;
 import androidTestMod.cardsV2.Paths.*;
 import androidTestMod.modcore.CustomEnums;
 import androidTestMod.relics.BaseRelic;
 import androidTestMod.utils.RewardEditor;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.core.Settings;
 
 import java.util.List;
 import java.util.Objects;

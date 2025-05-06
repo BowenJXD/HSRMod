@@ -1,11 +1,11 @@
 package androidTestMod.relics.common;
 
+import androidTestMod.relics.BaseRelic;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.UpgradeShineEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
-import androidTestMod.relics.BaseRelic;
 
 import java.util.ArrayList;
 import java.util.Collections;

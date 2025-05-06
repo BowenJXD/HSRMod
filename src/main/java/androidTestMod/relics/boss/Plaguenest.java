@@ -1,11 +1,11 @@
 package androidTestMod.relics.boss;
 
+import androidTestMod.relics.BaseRelic;
+import androidTestMod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.unique.LoseEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import androidTestMod.relics.BaseRelic;
-import androidTestMod.utils.ModHelper;
 
 public class Plaguenest extends BaseRelic {
     public static final String ID = Plaguenest.class.getSimpleName();

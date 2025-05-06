@@ -1,9 +1,9 @@
 package androidTestMod.powers.misc;
 
+import androidTestMod.AndroidTestMod;
+import androidTestMod.modcore.CustomEnums;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import androidTestMod.modcore.CustomEnums;
-import androidTestMod.modcore.AndroidTestMod;
 
 public class LockToughnessPower extends AbstractPower {
     public static final String POWER_ID = AndroidTestMod.makePath(LockToughnessPower.class.getSimpleName());

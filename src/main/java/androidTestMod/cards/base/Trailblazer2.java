@@ -1,11 +1,11 @@
 package androidTestMod.cards.base;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import androidTestMod.actions.ElementalDamageAllAction;
 import androidTestMod.cards.BaseCard;
 import androidTestMod.modcore.CustomEnums;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class Trailblazer2 extends BaseCard {
     public static final String ID = Trailblazer2.class.getSimpleName();

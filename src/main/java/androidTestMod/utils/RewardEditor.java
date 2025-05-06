@@ -1,32 +1,27 @@
 package androidTestMod.utils;
 
-import com.megacrit.cardcrawl.android.mods.BaseMod;
-import com.megacrit.cardcrawl.android.mods.abstracts.CustomSavable;
-import com.megacrit.cardcrawl.android.mods.interfaces.PostUpdateSubscriber;
-import com.megacrit.cardcrawl.android.mods.interfaces.StartActSubscriber;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.CardGroup;
-import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.CardLibrary;
-import com.megacrit.cardcrawl.helpers.RelicLibrary;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.rewards.RewardItem;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
-import com.megacrit.cardcrawl.saveAndContinue.SaveFile;
+import androidTestMod.AndroidTestMod;
 import androidTestMod.cards.BaseCard;
 import androidTestMod.characters.StellaCharacter;
-import androidTestMod.effects.TopWarningEffect;
 import androidTestMod.modcore.CustomEnums;
-import androidTestMod.modcore.AndroidTestMod;
-import androidTestMod.modcore.HSRModConfig;
 import androidTestMod.relics.common.RubertEmpireMechanicalCogwheel;
 import androidTestMod.relics.common.RubertEmpireMechanicalLever;
 import androidTestMod.relics.common.RubertEmpireMechanicalPiston;
 import androidTestMod.relics.starter.TrailblazeTimer;
 import androidTestMod.relics.starter.WaxRelic;
 import androidTestMod.subscribers.SubscriptionManager;
+import com.megacrit.cardcrawl.android.mods.BaseMod;
+import com.megacrit.cardcrawl.android.mods.abstracts.CustomSavable;
+import com.megacrit.cardcrawl.android.mods.interfaces.PostUpdateSubscriber;
+import com.megacrit.cardcrawl.android.mods.interfaces.StartActSubscriber;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.RelicLibrary;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.rewards.RewardItem;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -50,13 +45,12 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
     public List<AbstractCard.CardTags> bannedTags;
 
     private List<Consumer<List<RewardItem>>> extraRewards;
-    @Deprecated
-    private List<RewardItem> savedCardRewards;
+    
+    int cachedFloorNum;
 
     private RewardEditor() {
         bannedTags = new ArrayList<>();
         extraRewards = new ArrayList<>();
-        savedCardRewards = new ArrayList<>();
         BaseMod.subscribe(this);
     }
 
@@ -342,24 +336,6 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
         return result;
     }
 
-    @Deprecated
-    String saveCardRewards() {
-        StringBuilder result = new StringBuilder();
-        if (AbstractDungeon.currMapNode == null) return "";
-        for (RewardItem reward : AbstractDungeon.currMapNode.room.rewards) {
-            if (reward.type == RewardItem.RewardType.CARD) {
-                result.append("[");
-                for (int i = 0; i < reward.cards.size(); i++) {
-                    result.append(reward.cards.get(i).cardID);
-                    if (reward.cards.get(i).upgraded) result.append("+");
-                    if (i < reward.cards.size() - 1) result.append(", ");
-                }
-                result.append("];");
-            }
-        }
-        return result.toString();
-    }
-
     @Override
     public void onLoad(String[] data) {
         if (data == null) return;
@@ -368,56 +344,28 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
         if (bannedTags == null) {
             bannedTags = new ArrayList<>();
         } else {
-            bannedTags = GeneralUtil.unpackSaveData(cardTags, AbstractCard.CardTags::valueOf);
+            bannedTags = GeneralUtil.unpackSaveData(cardTags, new Function<String, AbstractCard.CardTags>() {
+                @Override
+                public AbstractCard.CardTags apply(String name) {
+                    return AbstractCard.CardTags.valueOf(name);
+                }
+            });
         }
 
         // String cardRewards = data[1];
         // loadCardRewards(cardRewards);
     }
 
-    @Deprecated
-    void loadCardRewards(String data) {
-        if (data == null || data.isEmpty()) return;
-        String[] rewards = data.split(";");
-        savedCardRewards.clear();
-        for (String reward : rewards) {
-            List<String> cards = GeneralUtil.unpackSaveData(reward, String::valueOf);
-            try {
-                ArrayList<AbstractCard> cardList = new ArrayList<>();
-                for (String card : cards) {
-                    AbstractCard apply = (new Function<String, AbstractCard>() {
-                        @Override
-                        public AbstractCard apply(String string) {
-                            AbstractCard result;
-                            if (string.endsWith("+")) {
-                                string = string.substring(0, string.length() - 1);
-                                result = CardLibrary.getCard(string);
-                                result.upgrade();
-                            } else {
-                                result = CardLibrary.getCard(string);
-                            }
-                            return result;
-                        }
-                    }).apply(card);
-                    cardList.add(apply);
-                }
-                ModHelper.addEffectAbstract(new ModHelper.Lambda() {
-                    @Override
-                    public void run() {
-                        RewardItem rewardItem = new RewardItem(StellaCharacter.PlayerColorEnum.HSR_PINK);
-                        rewardItem.cards = cardList;
-                        savedCardRewards.add(rewardItem);
-                    }
-                });
-            } catch (Exception e) {
-            }
-        }
-    }
-
     @Override
     public void receivePostUpdate() {
         if (AbstractDungeon.currMapNode == null) return;
         this.update(AbstractDungeon.getCurrRoom(), tag);
+        if (AbstractDungeon.floorNum > cachedFloorNum) {
+            if ((AbstractDungeon.currMapNode == null || !AbstractDungeon.getCurrRoom().rewardTime)) {
+                instance.relicId = "";
+                instance.extraRewards.clear();
+            }
+        }
     }
 
     @Override
@@ -425,20 +373,13 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
         if (AbstractDungeon.actNum <= 1) {
             relicId = "";
             bannedTags = null;
+            cachedFloorNum = AbstractDungeon.floorNum;
             for (AbstractRelic relic : AbstractDungeon.player.relics) {
                 if (relic instanceof WaxRelic) {
                     ((WaxRelic) relic).updateDescription(relic.getUpdatedDescription());
                 }
                 if (relic instanceof TrailblazeTimer) {
                     ((TrailblazeTimer) relic).updateDescription(relic.getUpdatedDescription());
-                }
-            }
-            if (AbstractDungeon.ascensionLevel >= 20 && AbstractDungeon.player.gold < HSRModConfig.getGoldInc()) {
-                AbstractDungeon.player.gainGold(HSRModConfig.getGoldInc());
-                if (Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT) {
-                    AbstractDungeon.topLevelEffectsQueue.add(new TopWarningEffect("⚠阈值协议生效⚠"));
-                } else {
-                    AbstractDungeon.topLevelEffectsQueue.add(new TopWarningEffect("⚠THRESHOLD PROTOCOLS ACTIVATED⚠"));
                 }
             }
         }
@@ -459,23 +400,5 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
 
     public static void addExtraRewardToBot(Consumer<List<RewardItem>> extraReward) {
         getInstance().extraRewards.add(extraReward);
-    }
-
-    @SpirePatch(clz = AbstractDungeon.class, method = "nextRoomTransition", paramtypez = {SaveFile.class})
-    public static class EnterRoomPatch {
-        @SpirePostfixPatch
-        public static void Postfix(AbstractDungeon __instance, SaveFile saveFile) {
-            ModHelper.addEffectAbstract(new ModHelper.Lambda() {
-                @Override
-                public void run() {
-                    if (instance != null
-                            && (AbstractDungeon.currMapNode == null || !AbstractDungeon.getCurrRoom().rewardTime)) {
-                        instance.relicId = "";
-                        instance.extraRewards.clear();
-                        // instance.savedCardRewards.clear();
-                    }
-                }
-            });
-        }
     }
 }

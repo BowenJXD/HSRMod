@@ -1,15 +1,15 @@
 package androidTestMod.relics.boss;
 
+import androidTestMod.cardsV2.AstralExpress;
+import androidTestMod.relics.BaseRelic;
+import androidTestMod.utils.ModHelper;
+import androidTestMod.utils.RewardEditor;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.ShopRoom;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
-import androidTestMod.cardsV2.AstralExpress;
-import androidTestMod.relics.BaseRelic;
-import androidTestMod.utils.ModHelper;
-import androidTestMod.utils.RewardEditor;
 
 import java.util.ArrayList;
 
@@ -27,7 +27,12 @@ public class MasterOfDreamMachinations extends BaseRelic {
     @Override
     public void onEnterRoom(AbstractRoom room) {
         super.onEnterRoom(room);
-        ModHelper.addEffectAbstract(this::updateCounter);
+        ModHelper.addEffectAbstract(new ModHelper.Lambda() {
+            @Override
+            public void run() {
+                MasterOfDreamMachinations.this.updateCounter();
+            }
+        });
     }
 
     public void onEquip() {

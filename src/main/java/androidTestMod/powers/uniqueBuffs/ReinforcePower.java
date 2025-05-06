@@ -1,17 +1,16 @@
 package androidTestMod.powers.uniqueBuffs;
 
-import basemod.BaseMod;
-import basemod.interfaces.OnPlayerDamagedSubscriber;
+import androidTestMod.AndroidTestMod;
+import androidTestMod.cards.common.March7th2;
+import androidTestMod.powers.BuffPower;
+import androidTestMod.subscribers.OnPlayerDamagedSubscriber;
+import androidTestMod.subscribers.SubscriptionManager;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import androidTestMod.cards.common.March7th2;
-import androidTestMod.modcore.AndroidTestMod;
-import androidTestMod.powers.BuffPower;
-import androidTestMod.subscribers.SubscriptionManager;
 
 public class ReinforcePower extends BuffPower implements OnPlayerDamagedSubscriber {
     public static final String POWER_ID = AndroidTestMod.makePath(ReinforcePower.class.getSimpleName());
@@ -40,12 +39,12 @@ public class ReinforcePower extends BuffPower implements OnPlayerDamagedSubscrib
 
     @Override
     public void onInitialApplication() {
-        BaseMod.subscribe(this);
+        SubscriptionManager.subscribe(this);
     }
 
     @Override
     public void onRemove() {
-        BaseMod.unsubscribe(this);
+        SubscriptionManager.unsubscribe(this);
     }
 
     @Override

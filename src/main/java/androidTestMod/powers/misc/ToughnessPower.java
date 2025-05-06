@@ -1,6 +1,12 @@
 package androidTestMod.powers.misc;
 
-import basemod.BaseMod;
+import androidTestMod.AndroidTestMod;
+import androidTestMod.actions.ReduceToughnessAction;
+import androidTestMod.characters.StellaCharacter;
+import androidTestMod.misc.IMultiToughness;
+import androidTestMod.modcore.ElementType;
+import androidTestMod.modcore.ElementalDamageInfo;
+import androidTestMod.powers.BuffPower;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -12,14 +18,6 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import androidTestMod.actions.ReduceToughnessAction;
-import androidTestMod.characters.StellaCharacter;
-import androidTestMod.misc.IMultiToughness;
-import androidTestMod.modcore.ElementType;
-import androidTestMod.modcore.ElementalDamageInfo;
-import androidTestMod.modcore.AndroidTestMod;
-import androidTestMod.modcore.HSRModConfig;
-import androidTestMod.powers.BuffPower;
 
 public class ToughnessPower extends BuffPower {
     public static final String POWER_ID = AndroidTestMod.makePath(ToughnessPower.class.getSimpleName());
@@ -88,7 +86,6 @@ public class ToughnessPower extends BuffPower {
 
     @Override
     public void stackPower(int stackAmount) {
-        if (stackAmount == stackLimit && owner != AbstractDungeon.player && BaseMod.hasModID("spireTogether:")) return;
         alterPower(stackAmount);
     }
 
@@ -131,13 +128,6 @@ public class ToughnessPower extends BuffPower {
                     break;
             }
             result *= Math.min(AbstractDungeon.actNum, 4);
-            if (BaseMod.hasModID("spireTogether:")) {
-                result += result / 2;
-            }
-            int count = HSRModConfig.getActiveTPCount();
-            if (count > 0) {
-                result += (int) (result * HSRModConfig.getTVInc());
-            }
         } else if (c instanceof AbstractPlayer) {
             result = 50;
         }

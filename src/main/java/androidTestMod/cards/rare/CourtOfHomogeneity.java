@@ -1,5 +1,11 @@
 package androidTestMod.cards.rare;
 
+import androidTestMod.actions.BreakDamageAction;
+import androidTestMod.actions.ElementalDamageAction;
+import androidTestMod.cards.BaseCard;
+import androidTestMod.modcore.ElementalDamageInfo;
+import androidTestMod.powers.misc.ToughnessPower;
+import androidTestMod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.actions.unique.LoseEnergyAction;
@@ -7,12 +13,6 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
-import androidTestMod.actions.BreakDamageAction;
-import androidTestMod.actions.ElementalDamageAction;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.modcore.ElementalDamageInfo;
-import androidTestMod.powers.misc.ToughnessPower;
-import androidTestMod.utils.ModHelper;
 
 public class CourtOfHomogeneity extends BaseCard {
     public static final String ID = CourtOfHomogeneity.class.getSimpleName();

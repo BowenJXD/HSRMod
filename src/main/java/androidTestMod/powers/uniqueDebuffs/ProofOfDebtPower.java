@@ -1,15 +1,15 @@
 package androidTestMod.powers.uniqueDebuffs;
 
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.core.AbstractCreature;
+import androidTestMod.AndroidTestMod;
 import androidTestMod.actions.ElementalDamageAction;
 import androidTestMod.modcore.CustomEnums;
-import androidTestMod.modcore.AndroidTestMod;
 import androidTestMod.powers.DebuffPower;
 import androidTestMod.subscribers.PreElementalDamageSubscriber;
 import androidTestMod.subscribers.PreFollowUpSubscriber;
 import androidTestMod.subscribers.SubscriptionManager;
 import androidTestMod.utils.ModHelper;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 
 public class ProofOfDebtPower extends DebuffPower implements PreFollowUpSubscriber, PreElementalDamageSubscriber {
     public static final String POWER_ID = AndroidTestMod.makePath(ProofOfDebtPower.class.getSimpleName());

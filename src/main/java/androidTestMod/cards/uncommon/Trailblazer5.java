@@ -1,11 +1,11 @@
 package androidTestMod.cards.uncommon;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import androidTestMod.cards.BaseCard;
 import androidTestMod.modcore.CustomEnums;
 import androidTestMod.powers.uniqueBuffs.Trailblazer5Power;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class Trailblazer5 extends BaseCard {
     public static final String ID = Trailblazer5.class.getSimpleName();

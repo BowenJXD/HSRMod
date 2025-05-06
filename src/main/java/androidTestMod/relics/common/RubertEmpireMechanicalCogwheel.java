@@ -1,8 +1,8 @@
 package androidTestMod.relics.common;
 
+import androidTestMod.relics.BaseRelic;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.RainingGoldEffect;
-import androidTestMod.relics.BaseRelic;
 
 public class RubertEmpireMechanicalCogwheel extends BaseRelic implements IRubertEmpireRelic{
     public static final String ID = RubertEmpireMechanicalCogwheel.class.getSimpleName();

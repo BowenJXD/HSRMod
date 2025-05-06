@@ -1,10 +1,10 @@
 package androidTestMod.relics.special;
 
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import androidTestMod.cards.BaseCard;
 import androidTestMod.relics.BaseRelic;
 import androidTestMod.utils.ModHelper;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 import java.util.function.Predicate;
 

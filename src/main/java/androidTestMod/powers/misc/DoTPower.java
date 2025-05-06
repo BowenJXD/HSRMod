@@ -1,13 +1,5 @@
 package androidTestMod.powers.misc;
 
-import basemod.BaseMod;
-import basemod.interfaces.OnPlayerTurnStartSubscriber;
-import com.badlogic.gdx.math.MathUtils;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import androidTestMod.actions.ElementalDamageAction;
 import androidTestMod.modcore.ElementType;
 import androidTestMod.modcore.ElementalDamageInfo;
@@ -17,8 +9,14 @@ import androidTestMod.powers.breaks.BurnPower;
 import androidTestMod.powers.breaks.ShockPower;
 import androidTestMod.powers.breaks.WindShearPower;
 import androidTestMod.subscribers.SubscriptionManager;
+import com.badlogic.gdx.math.MathUtils;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
-public abstract class DoTPower extends DebuffPower implements OnPlayerTurnStartSubscriber {
+public abstract class DoTPower extends DebuffPower {
     private AbstractCreature source;
 
     public boolean removeOnTrigger = true;
@@ -33,27 +31,8 @@ public abstract class DoTPower extends DebuffPower implements OnPlayerTurnStartS
         this.updateDescription();
     }
 
-    @Override
-    public void onInitialApplication() {
-        super.onInitialApplication();
-        if (owner.isPlayer) BaseMod.subscribe(this);
-    }
-
-    @Override
-    public void onRemove() {
-        super.onRemove();
-        BaseMod.unsubscribe(this);
-    }
-
     public void playApplyPowerSfx() {
         CardCrawlGame.sound.play("POWER_POISON", MathUtils.random(-0.05F, 0.05F));
-    }
-
-    @Override
-    public void receiveOnPlayerTurnStart() {
-        if (SubscriptionManager.checkSubscriber(this) && owner.isPlayer) {
-            trigger(source, removeOnTrigger, true);
-        }
     }
 
     public void atStartOfTurn() {

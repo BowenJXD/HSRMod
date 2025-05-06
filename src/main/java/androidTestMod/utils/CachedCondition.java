@@ -1,10 +1,10 @@
 package androidTestMod.utils;
 
+import androidTestMod.AndroidTestMod;
+import androidTestMod.powers.misc.BrokenPower;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import androidTestMod.modcore.AndroidTestMod;
-import androidTestMod.powers.misc.BrokenPower;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,13 +1,13 @@
 package androidTestMod.powers.misc;
 
+import androidTestMod.AndroidTestMod;
+import androidTestMod.powers.StatePower;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
-import androidTestMod.modcore.AndroidTestMod;
-import androidTestMod.powers.StatePower;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,8 +1,8 @@
 package androidTestMod.utils;
 
-import basemod.BaseMod;
-import basemod.interfaces.PostUpdateSubscriber;
 import com.badlogic.gdx.math.MathUtils;
+import com.megacrit.cardcrawl.android.mods.BaseMod;
+import com.megacrit.cardcrawl.android.mods.interfaces.PostUpdateSubscriber;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.CardCrawlGame;

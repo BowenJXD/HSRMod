@@ -1,12 +1,12 @@
 package androidTestMod.powers.uniqueBuffs;
 
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
-import androidTestMod.modcore.AndroidTestMod;
+import androidTestMod.AndroidTestMod;
 import androidTestMod.powers.PowerPower;
 import androidTestMod.subscribers.PreEnergyChangeSubscriber;
 import androidTestMod.subscribers.SubscriptionManager;
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 public class ExcitatoryGlandPower extends PowerPower implements PreEnergyChangeSubscriber {
     public static final String POWER_ID = AndroidTestMod.makePath(ExcitatoryGlandPower.class.getSimpleName());

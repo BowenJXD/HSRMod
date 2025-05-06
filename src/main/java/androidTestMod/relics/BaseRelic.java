@@ -1,17 +1,17 @@
 package androidTestMod.relics;
 
-import com.megacrit.cardcrawl.android.mods.abstracts.CustomRelic;
-import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
-import com.megacrit.cardcrawl.helpers.PowerTip;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.vfx.RelicAboveCreatureEffect;
+import androidTestMod.AndroidTestMod;
 import androidTestMod.effects.BetterWarningSignEffect;
-import androidTestMod.modcore.AndroidTestMod;
 import androidTestMod.utils.DataManager;
 import androidTestMod.utils.ModHelper;
 import androidTestMod.utils.RelicDataCol;
+import com.megacrit.cardcrawl.android.mods.AssetLoader;
+import com.megacrit.cardcrawl.android.mods.abstracts.CustomRelic;
+import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.PowerTip;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.vfx.RelicAboveCreatureEffect;
 
 public abstract class BaseRelic extends CustomRelic {
     public int magicNumber;
@@ -20,8 +20,8 @@ public abstract class BaseRelic extends CustomRelic {
     
     public BaseRelic(String id){
         super(AndroidTestMod.makePath(id),
-                ImageMaster.loadImage("img/relics/" + id + ".png"),
-                ImageMaster.loadImage("img/relics/outline/" + id + ".png"),
+                AssetLoader.getTexture(AndroidTestMod.MOD_NAME, "img/relics/" + id + ".png"),
+                AssetLoader.getTexture(AndroidTestMod.MOD_NAME, "img/relics/outline/" + id + ".png"),
                 AbstractRelic.RelicTier.valueOf(DataManager.getInstance().getRelicData(id, RelicDataCol.Tier)),
                 AbstractRelic.LandingSound.valueOf(DataManager.getInstance().getRelicData(id, RelicDataCol.Sound))
                 );

@@ -1,14 +1,14 @@
 package androidTestMod.powers.uniqueBuffs;
 
+import androidTestMod.AndroidTestMod;
+import androidTestMod.powers.PowerPower;
+import androidTestMod.powers.misc.SporePower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import androidTestMod.modcore.AndroidTestMod;
-import androidTestMod.powers.PowerPower;
-import androidTestMod.powers.misc.SporePower;
 
 public class SerfOfCalamityPower extends PowerPower {
     public static final String ID = AndroidTestMod.makePath(SerfOfCalamityPower.class.getSimpleName());

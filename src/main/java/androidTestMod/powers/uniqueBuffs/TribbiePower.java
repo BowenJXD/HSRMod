@@ -1,24 +1,22 @@
 package androidTestMod.powers.uniqueBuffs;
 
+import androidTestMod.AndroidTestMod;
+import androidTestMod.actions.ElementalDamageAction;
+import androidTestMod.modcore.ElementType;
+import androidTestMod.modcore.ElementalDamageInfo;
+import androidTestMod.powers.PowerPower;
+import androidTestMod.subscribers.PreElementalDamageSubscriber;
+import androidTestMod.subscribers.SubscriptionManager;
+import androidTestMod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import androidTestMod.actions.ElementalDamageAction;
-import androidTestMod.modcore.ElementType;
-import androidTestMod.modcore.ElementalDamageInfo;
-import androidTestMod.modcore.AndroidTestMod;
-import androidTestMod.powers.PowerPower;
-import androidTestMod.subscribers.PreElementalDamageSubscriber;
-import androidTestMod.subscribers.SubscriptionManager;
-import androidTestMod.utils.ModHelper;
 
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Optional;
-import java.util.function.ToIntFunction;
 
 public class TribbiePower extends PowerPower implements PreElementalDamageSubscriber {
     public static final String ID = AndroidTestMod.makePath(TribbiePower.class.getSimpleName());
@@ -75,14 +73,8 @@ public class TribbiePower extends PowerPower implements PreElementalDamageSubscr
         if (targets.isEmpty()) return;
         boolean seen = false;
         AbstractCreature best = null;
-        Comparator<AbstractCreature> comparator = Comparator.comparingInt(new ToIntFunction<AbstractCreature>() {
-            @Override
-            public int applyAsInt(AbstractCreature a) {
-                return a.currentHealth;
-            }
-        });
         for (AbstractCreature target : targets) {
-            if (!seen || comparator.compare(target, best) > 0) {
+            if (!seen || target.currentHealth > best.currentHealth) {
                 seen = true;
                 best = target;
             }

@@ -1,20 +1,20 @@
 package androidTestMod.subscribers;
 
-import basemod.BaseMod;
-import basemod.interfaces.ISubscriber;
+import androidTestMod.actions.ElementalDamageAction;
+import androidTestMod.cards.BaseCard;
+import androidTestMod.modcore.ElementType;
+import androidTestMod.modcore.ElementalDamageInfo;
+import androidTestMod.powers.misc.DoTPower;
+import com.megacrit.cardcrawl.android.mods.BaseMod;
+import com.megacrit.cardcrawl.android.mods.interfaces.ISubscriber;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardQueueItem;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import androidTestMod.actions.ElementalDamageAction;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.modcore.ElementType;
-import androidTestMod.modcore.ElementalDamageInfo;
-import androidTestMod.powers.BasePower;
-import androidTestMod.powers.misc.DoTPower;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,15 +36,10 @@ public final class SubscriptionManager {
     List<PreEnergyChangeSubscriber> preEnergyChangeSubscribers = new ArrayList<>();
     List<PostBreakBlockSubscriber> postBreakBlockSubscribers = new ArrayList<>();
     List<PreBlockChangeSubscriber> preBlockGainSubscribers = new ArrayList<>();
-    List<ICheckUsableSubscriber> checkUsableSubscribers = new ArrayList<>();
-    List<PostUpgradeSubscriber> postUpgradeSubscribers = new ArrayList<>();
     List<PreFollowUpSubscriber> preFollowUpSubscribers = new ArrayList<>();
-    List<PostRelicDestroySubscriber> postRelicDestroySubscribers = new ArrayList<>();
-    List<PostMonsterDeathSubscriber> postMonsterDeathSubscribers = new ArrayList<>();
-    List<PostHPUpdateSubscriber> postHPUpdateSubscribers = new ArrayList<>();
-    List<PrePowerTriggerSubscriber> prePowerTriggerSubscribers = new ArrayList<>();
+    List<PostPowerApplySubscriber> postPowerApplySubscribers = new ArrayList<>();
+    List<OnPlayerDamagedSubscriber> onPlayerDamagedSubscribers = new ArrayList<>();
 
-    HashMap<RunnableType, List<IRunnableSubscriber>> runnableSubscribers = new HashMap<>();
     HashMap<NumChangerType, List<INumChangerSubscriber>> numChangerSubscribers = new HashMap<>();
 
     SubscriptionManager() {
@@ -98,53 +93,24 @@ public final class SubscriptionManager {
             if (addToFront) preBlockGainSubscribers.add(0, (PreBlockChangeSubscriber) sub);
             else preBlockGainSubscribers.add((PreBlockChangeSubscriber) sub);
         }
-        if (sub instanceof ICheckUsableSubscriber && !checkUsableSubscribers.contains(sub)) {
-            if (addToFront) checkUsableSubscribers.add(0, (ICheckUsableSubscriber) sub);
-            else checkUsableSubscribers.add((ICheckUsableSubscriber) sub);
-        }
         if (sub instanceof ISetToughnessReductionSubscriber && !setToughnessReductionSubscribers.contains(sub)) {
             if (addToFront) setToughnessReductionSubscribers.add(0, (ISetToughnessReductionSubscriber) sub);
             else setToughnessReductionSubscribers.add((ISetToughnessReductionSubscriber) sub);
-        }
-        if (sub instanceof PostUpgradeSubscriber && !postUpgradeSubscribers.contains(sub)) {
-            if (addToFront) postUpgradeSubscribers.add(0, (PostUpgradeSubscriber) sub);
-            else postUpgradeSubscribers.add((PostUpgradeSubscriber) sub);
         }
         if (sub instanceof PreFollowUpSubscriber && !preFollowUpSubscribers.contains(sub)) {
             if (addToFront) preFollowUpSubscribers.add(0, (PreFollowUpSubscriber) sub);
             else preFollowUpSubscribers.add((PreFollowUpSubscriber) sub);
         }
-        if (sub instanceof PostRelicDestroySubscriber && !postRelicDestroySubscribers.contains(sub)) {
-            if (addToFront) postRelicDestroySubscribers.add(0, (PostRelicDestroySubscriber) sub);
-            else postRelicDestroySubscribers.add((PostRelicDestroySubscriber) sub);
+        if (sub instanceof PostPowerApplySubscriber && !postPowerApplySubscribers.contains(sub)) {
+            if (addToFront) postPowerApplySubscribers.add(0, (PostPowerApplySubscriber) sub);
+            else postPowerApplySubscribers.add((PostPowerApplySubscriber) sub);
         }
-        if (sub instanceof PostMonsterDeathSubscriber && !postMonsterDeathSubscribers.contains(sub)) {
-            if (addToFront) postMonsterDeathSubscribers.add(0, (PostMonsterDeathSubscriber) sub);
-            else postMonsterDeathSubscribers.add((PostMonsterDeathSubscriber) sub);
-        }
-        if (sub instanceof PostHPUpdateSubscriber && !postHPUpdateSubscribers.contains(sub)) {
-            if (addToFront) postHPUpdateSubscribers.add(0, (PostHPUpdateSubscriber) sub);
-            else postHPUpdateSubscribers.add((PostHPUpdateSubscriber) sub);
-        }
-        if (sub instanceof PrePowerTriggerSubscriber && !prePowerTriggerSubscribers.contains(sub)) {
-            if (addToFront) prePowerTriggerSubscribers.add(0, (PrePowerTriggerSubscriber) sub);
-            else prePowerTriggerSubscribers.add((PrePowerTriggerSubscriber) sub);
-        }
-
-        if (sub instanceof IRunnableSubscriber) {
-            subscribeRunnableHelper((IRunnableSubscriber) sub, ((IRunnableSubscriber) sub).getSubType());
+        if (sub instanceof OnPlayerDamagedSubscriber && !onPlayerDamagedSubscribers.contains(sub)) {
+            if (addToFront) onPlayerDamagedSubscribers.add(0, (OnPlayerDamagedSubscriber) sub);
+            else onPlayerDamagedSubscribers.add((OnPlayerDamagedSubscriber) sub);
         }
         if (sub instanceof INumChangerSubscriber) {
             subscribeNumHelper((INumChangerSubscriber) sub, ((INumChangerSubscriber) sub).getSubType());
-        }
-    }
-
-    void subscribeRunnableHelper(IRunnableSubscriber sub, RunnableType type) {
-        if (!runnableSubscribers.containsKey(type)) {
-            runnableSubscribers.put(type, new ArrayList<>());
-        }
-        if (!runnableSubscribers.get(type).contains(sub)) {
-            runnableSubscribers.get(type).add(sub);
         }
     }
 
@@ -170,26 +136,13 @@ public final class SubscriptionManager {
         if (sub instanceof PreEnergyChangeSubscriber) preEnergyChangeSubscribers.remove(sub);
         if (sub instanceof PostBreakBlockSubscriber) postBreakBlockSubscribers.remove(sub);
         if (sub instanceof PreBlockChangeSubscriber) preBlockGainSubscribers.remove(sub);
-        if (sub instanceof ICheckUsableSubscriber) checkUsableSubscribers.remove(sub);
         if (sub instanceof ISetToughnessReductionSubscriber) setToughnessReductionSubscribers.remove(sub);
-        if (sub instanceof PostUpgradeSubscriber) postUpgradeSubscribers.remove(sub);
         if (sub instanceof PreFollowUpSubscriber) preFollowUpSubscribers.remove(sub);
-        if (sub instanceof PostRelicDestroySubscriber) postRelicDestroySubscribers.remove(sub);
-        if (sub instanceof PostMonsterDeathSubscriber) postMonsterDeathSubscribers.remove(sub);
-        if (sub instanceof PostHPUpdateSubscriber) postHPUpdateSubscribers.remove(sub);
-        if (sub instanceof PrePowerTriggerSubscriber) prePowerTriggerSubscribers.remove(sub);
-
-        if (sub instanceof IRunnableSubscriber) {
-            unsubscribeRunnableHelper((IRunnableSubscriber) sub, ((IRunnableSubscriber) sub).getSubType());
-        }
+        if (sub instanceof PostPowerApplySubscriber) postPowerApplySubscribers.remove(sub);
+        if (sub instanceof OnPlayerDamagedSubscriber) onPlayerDamagedSubscribers.remove(sub);
         if (sub instanceof INumChangerSubscriber) {
             unsubscribeNumHelper((INumChangerSubscriber) sub, ((INumChangerSubscriber) sub).getSubType());
         }
-    }
-
-    void unsubscribeRunnableHelper(IRunnableSubscriber sub, RunnableType type) {
-        if (!runnableSubscribers.containsKey(type)) return;
-        runnableSubscribers.get(type).remove(sub);
     }
 
     void unsubscribeNumHelper(INumChangerSubscriber sub, NumChangerType type) {
@@ -298,18 +251,6 @@ public final class SubscriptionManager {
         return result;
     }
 
-    public boolean triggerCheckUsable(BaseCard card) {
-        boolean result = true;
-
-        for (ICheckUsableSubscriber sub : checkUsableSubscribers) {
-            result &= sub.checkUsable(card);
-        }
-
-        unsubscribeLaterHelper(ICheckUsableSubscriber.class);
-
-        return result;
-    }
-
     public int triggerSetToughnessReduction(AbstractCreature target, int amount) {
         int result = amount;
 
@@ -320,14 +261,6 @@ public final class SubscriptionManager {
         unsubscribeLaterHelper(ISetToughnessReductionSubscriber.class);
 
         return result;
-    }
-
-    public void triggerPostUpgrade(AbstractCard card) {
-        for (PostUpgradeSubscriber sub : postUpgradeSubscribers) {
-            sub.postUpgrade(card);
-        }
-
-        unsubscribeLaterHelper(PostUpgradeSubscriber.class);
     }
 
     public AbstractCreature triggerPreFollowUp(AbstractCard card, AbstractCreature target) {
@@ -341,47 +274,23 @@ public final class SubscriptionManager {
 
         return result;
     }
-
-    public void triggerPostRelicDestroy(AbstractRelic relic) {
-        for (PostRelicDestroySubscriber sub : postRelicDestroySubscribers) {
-            sub.postRelicDestroy(relic);
+    
+    public void triggerPostPowerApply(AbstractPower power, AbstractCreature target, AbstractCreature source) {
+        for (PostPowerApplySubscriber sub : postPowerApplySubscribers) {
+            sub.receivePostPowerApplySubscriber(power, target, source);
         }
 
-        unsubscribeLaterHelper(PostRelicDestroySubscriber.class);
-    }
-
-    public void triggerPostMonsterDeath(AbstractMonster monster) {
-        for (PostMonsterDeathSubscriber sub : postMonsterDeathSubscribers) {
-            sub.postMonsterDeath(monster);
-        }
-
-        unsubscribeLaterHelper(PostMonsterDeathSubscriber.class);
+        unsubscribeLaterHelper(PostPowerApplySubscriber.class);
     }
     
-    public void triggerPostHPUpdate(AbstractCreature creature) {
-        for (PostHPUpdateSubscriber sub : postHPUpdateSubscribers) {
-            sub.postHPUpdate(creature);
-        }
-
-        unsubscribeLaterHelper(PostHPUpdateSubscriber.class);
-    }
-    
-    public void triggerPrePowerTrigger(BasePower power) {
-        for (PrePowerTriggerSubscriber sub : prePowerTriggerSubscribers) {
-            sub.prePowerTrigger(power);
+    public int triggerOnPlayerDamaged(int amount, DamageInfo info) {
+        int result = amount;
+        for (OnPlayerDamagedSubscriber sub : onPlayerDamagedSubscribers) {
+            result = sub.receiveOnPlayerDamaged(result, info);
         }
         
-        unsubscribeLaterHelper(PrePowerTriggerSubscriber.class);
-    }
-
-    public void triggerRunnable(RunnableType type) {
-        if (!runnableSubscribers.containsKey(type)) return;
-
-        for (IRunnableSubscriber sub : runnableSubscribers.get(type)) {
-            sub.run();
-        }
-
-        unsubscribeLaterHelper(IRunnableSubscriber.class);
+        unsubscribeLaterHelper(OnPlayerDamagedSubscriber.class);
+        return result;
     }
 
     public float triggerNumChanger(NumChangerType type, float baseNum) {

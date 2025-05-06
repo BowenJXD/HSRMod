@@ -1,10 +1,10 @@
 package androidTestMod.cards.rare;
 
+import androidTestMod.cards.BaseCard;
+import androidTestMod.powers.uniqueBuffs.AllThingsArePossiblePower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.powers.uniqueBuffs.AllThingsArePossiblePower;
 
 public class AllThingsArePossible extends BaseCard {
     public static final String ID = AllThingsArePossible.class.getSimpleName();

@@ -1,10 +1,10 @@
 package androidTestMod.relics.special;
 
+import androidTestMod.relics.BaseRelic;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.DexterityPower;
-import androidTestMod.relics.BaseRelic;
 
 public class ThalanToxiFlame extends BaseRelic {
     public static final String ID = ThalanToxiFlame.class.getSimpleName();

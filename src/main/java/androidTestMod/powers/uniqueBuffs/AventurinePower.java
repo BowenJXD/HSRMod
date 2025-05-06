@@ -1,17 +1,16 @@
 package androidTestMod.powers.uniqueBuffs;
 
-import basemod.BaseMod;
-import basemod.interfaces.OnPlayerDamagedSubscriber;
+import androidTestMod.AndroidTestMod;
+import androidTestMod.cards.BaseCard;
+import androidTestMod.cards.uncommon.Aventurine3;
+import androidTestMod.powers.PowerPower;
+import androidTestMod.subscribers.OnPlayerDamagedSubscriber;
+import androidTestMod.subscribers.SubscriptionManager;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.cards.uncommon.Aventurine3;
-import androidTestMod.modcore.AndroidTestMod;
-import androidTestMod.powers.PowerPower;
-import androidTestMod.subscribers.SubscriptionManager;
 
 import static androidTestMod.modcore.CustomEnums.FOLLOW_UP;
 
@@ -80,12 +79,12 @@ public class AventurinePower extends PowerPower implements OnPlayerDamagedSubscr
 
     @Override
     public void onInitialApplication() {
-        BaseMod.subscribe(this);
+        SubscriptionManager.subscribe(this);
     }
 
     @Override
     public void onRemove() {
-        BaseMod.unsubscribe(this);
+        SubscriptionManager.unsubscribe(this);
     }
 
      

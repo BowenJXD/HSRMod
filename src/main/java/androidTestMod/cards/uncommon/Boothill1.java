@@ -1,15 +1,15 @@
 package androidTestMod.cards.uncommon;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import androidTestMod.actions.BreakDamageAction;
 import androidTestMod.actions.ElementalDamageAction;
 import androidTestMod.cards.BaseCard;
 import androidTestMod.modcore.ElementalDamageInfo;
 import androidTestMod.powers.misc.ToughnessPower;
 import androidTestMod.utils.ModHelper;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Consumer;

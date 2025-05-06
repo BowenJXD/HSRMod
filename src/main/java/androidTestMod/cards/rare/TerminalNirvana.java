@@ -1,12 +1,11 @@
 package androidTestMod.cards.rare;
 
-import basemod.interfaces.PostBattleSubscriber;
+import androidTestMod.cards.BaseCard;
+import androidTestMod.modcore.CustomEnums;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.IntangiblePlayerPower;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.modcore.CustomEnums;
 
 public class TerminalNirvana extends BaseCard {
     public static final String ID = TerminalNirvana.class.getSimpleName();

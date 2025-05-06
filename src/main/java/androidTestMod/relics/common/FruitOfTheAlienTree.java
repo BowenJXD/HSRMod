@@ -1,8 +1,8 @@
 package androidTestMod.relics.common;
 
+import androidTestMod.relics.BaseRelic;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import androidTestMod.relics.BaseRelic;
 
 public class FruitOfTheAlienTree extends BaseRelic {
     public static final String ID = FruitOfTheAlienTree.class.getSimpleName();

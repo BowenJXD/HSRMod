@@ -1,10 +1,10 @@
 package androidTestMod.powers.misc;
 
-import com.megacrit.cardcrawl.core.AbstractCreature;
-import androidTestMod.modcore.AndroidTestMod;
+import androidTestMod.AndroidTestMod;
 import androidTestMod.powers.BuffPower;
 import androidTestMod.subscribers.ISetToughnessReductionSubscriber;
 import androidTestMod.subscribers.SubscriptionManager;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 
 public class BreakEfficiencyPower extends BuffPower implements ISetToughnessReductionSubscriber {
     public static final String POWER_ID = AndroidTestMod.makePath(BreakEfficiencyPower.class.getSimpleName());

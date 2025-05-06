@@ -1,10 +1,10 @@
 package androidTestMod.cardsV2.TheHunt;
 
+import androidTestMod.cards.BaseCard;
+import androidTestMod.powers.uniqueBuffs.EmpyreanImperiumPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.powers.uniqueBuffs.EmpyreanImperiumPower;
 
 public class EmpyreanImperium extends BaseCard {
     public static final String ID = EmpyreanImperium.class.getSimpleName();

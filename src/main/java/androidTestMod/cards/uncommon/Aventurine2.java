@@ -1,5 +1,7 @@
 package androidTestMod.cards.uncommon;
 
+import androidTestMod.actions.FollowUpAction;
+import androidTestMod.cards.BaseCard;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -10,8 +12,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
 import com.megacrit.cardcrawl.vfx.combat.FastingEffect;
-import androidTestMod.actions.FollowUpAction;
-import androidTestMod.cards.BaseCard;
 
 import static androidTestMod.modcore.CustomEnums.FOLLOW_UP;
 

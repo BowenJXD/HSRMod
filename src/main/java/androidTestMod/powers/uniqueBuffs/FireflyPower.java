@@ -1,5 +1,16 @@
 package androidTestMod.powers.uniqueBuffs;
 
+import androidTestMod.AndroidTestMod;
+import androidTestMod.actions.BreakDamageAction;
+import androidTestMod.actions.MoveCardsAction;
+import androidTestMod.cards.uncommon.Firefly1;
+import androidTestMod.modcore.ElementalDamageInfo;
+import androidTestMod.powers.PowerPower;
+import androidTestMod.powers.misc.BreakEfficiencyPower;
+import androidTestMod.powers.misc.ToughnessPower;
+import androidTestMod.subscribers.PreBreakSubscriber;
+import androidTestMod.subscribers.SubscriptionManager;
+import androidTestMod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
@@ -9,17 +20,6 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.combat.FlameBarrierEffect;
-import androidTestMod.actions.BreakDamageAction;
-import androidTestMod.actions.MoveCardsAction;
-import androidTestMod.cards.uncommon.Firefly1;
-import androidTestMod.modcore.ElementalDamageInfo;
-import androidTestMod.modcore.AndroidTestMod;
-import androidTestMod.powers.PowerPower;
-import androidTestMod.powers.misc.BreakEfficiencyPower;
-import androidTestMod.powers.misc.ToughnessPower;
-import androidTestMod.subscribers.PreBreakSubscriber;
-import androidTestMod.subscribers.SubscriptionManager;
-import androidTestMod.utils.ModHelper;
 
 import java.util.List;
 import java.util.function.Predicate;

@@ -1,11 +1,11 @@
 package androidTestMod.powers.misc;
 
+import androidTestMod.AndroidTestMod;
+import androidTestMod.powers.BuffPower;
+import androidTestMod.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import androidTestMod.modcore.AndroidTestMod;
-import androidTestMod.powers.BuffPower;
-import androidTestMod.powers.interfaces.OnReceivePowerPower;
 
 public class BrainInAVatPower extends BuffPower implements OnReceivePowerPower {
     public static final String POWER_ID = AndroidTestMod.makePath(BrainInAVatPower.class.getSimpleName());

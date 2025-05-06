@@ -1,5 +1,8 @@
 package androidTestMod.cards.uncommon;
 
+import androidTestMod.actions.AOEAction;
+import androidTestMod.cards.BaseCard;
+import androidTestMod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -9,9 +12,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.vfx.combat.BossCrystalImpactEffect;
-import androidTestMod.actions.AOEAction;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.utils.ModHelper;
 
 import java.util.function.Function;
 

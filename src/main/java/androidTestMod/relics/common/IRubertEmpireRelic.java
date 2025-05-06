@@ -1,11 +1,11 @@
 package androidTestMod.relics.common;
 
+import androidTestMod.AndroidTestMod;
+import androidTestMod.utils.RelicEventHelper;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
-import androidTestMod.modcore.AndroidTestMod;
-import androidTestMod.utils.RelicEventHelper;
 
 public interface IRubertEmpireRelic {
     default void checkMerge() {

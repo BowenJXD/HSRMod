@@ -1,5 +1,9 @@
 package androidTestMod.characters;
 
+import androidTestMod.AndroidTestMod;
+import androidTestMod.cards.base.*;
+import androidTestMod.relics.starter.*;
+import androidTestMod.utils.PathSelectScreen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -22,11 +26,6 @@ import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
-import androidTestMod.cards.base.*;
-import androidTestMod.modcore.AndroidTestMod;
-import androidTestMod.modcore.HSRModConfig;
-import androidTestMod.relics.starter.*;
-import androidTestMod.utils.PathSelectScreen;
 
 import java.util.ArrayList;
 
@@ -58,7 +57,7 @@ public class StellaCharacter extends CustomPlayer {
     // 每个图层的旋转速度
     private static final float[] LAYER_SPEED = new float[]{-40.0F, -32.0F, 20.0F, -20.0F, 0.0F, -10.0F, -8.0F, 5.0F, -5.0F, 0.0F};
     // 人物的本地化文本，如卡牌的本地化文本一样，如何书写见下
-    private static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString("HSRMod:StellaCharacter");
+    private static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString(AndroidTestMod.makePath("StellaCharacter"));
 
     float drawYAlter = 0;
     
@@ -69,7 +68,6 @@ public class StellaCharacter extends CustomPlayer {
         float hbx = 0f, hby = 0f, hbw = 200f, hbh = 220f;
 
         // 如果你的人物没有动画，那么这些不需要写
-        if (HSRModConfig.useSpine) {
             try {
                 this.loadAnimation("img/spine/nv.atlas", "img/spine/nv.json", 3F);
                 AnimationState.TrackEntry e = this.state.setAnimation(0, "idle_back", true);
@@ -110,9 +108,9 @@ public class StellaCharacter extends CustomPlayer {
                 AndroidTestMod.logger.error("Failed to load animation: {}", e.getMessage());
                 charImg = "img/char/character.png";
             }
-        } else {
+        /*else {
             charImg = "img/char/character.png";
-        }
+        }*/
         
         // 初始化你的人物，如果你的人物只有一张图，那么第一个参数填写你人物图片的路径。
         this.initializeClass(
@@ -132,16 +130,16 @@ public class StellaCharacter extends CustomPlayer {
 
     protected void initializeClass(String imgUrl, String shoulder2ImgUrl, String shouldImgUrl, String corpseImgUrl, CharSelectInfo info, float hb_x, float hb_y, float hb_w, float hb_h, EnergyManager energy) {
         if (imgUrl != null) {
-            this.img = AssetLoader.getTexture(AndroidTestMod.MOD_ID,imgUrl);
+            this.img = AssetLoader.getTexture(AndroidTestMod.MOD_NAME,imgUrl);
         }
 
         if (this.img != null) {
             this.atlas = null;
         }
 
-        this.shoulderImg = AssetLoader.getTexture(AndroidTestMod.MOD_ID,shouldImgUrl);
-        this.shoulder2Img = AssetLoader.getTexture(AndroidTestMod.MOD_ID,shoulder2ImgUrl);
-        this.corpseImg = AssetLoader.getTexture(AndroidTestMod.MOD_ID,corpseImgUrl);
+        this.shoulderImg = AssetLoader.getTexture(AndroidTestMod.MOD_NAME,shouldImgUrl);
+        this.shoulder2Img = AssetLoader.getTexture(AndroidTestMod.MOD_NAME,shoulder2ImgUrl);
+        this.corpseImg = AssetLoader.getTexture(AndroidTestMod.MOD_NAME,corpseImgUrl);
 
 
         if (Settings.isMobile) {

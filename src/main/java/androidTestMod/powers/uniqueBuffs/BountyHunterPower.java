@@ -1,11 +1,11 @@
 package androidTestMod.powers.uniqueBuffs;
 
+import androidTestMod.AndroidTestMod;
+import androidTestMod.cards.BaseCard;
+import androidTestMod.powers.PowerPower;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.modcore.AndroidTestMod;
-import androidTestMod.powers.PowerPower;
 
 import java.util.ArrayList;
 import java.util.List;

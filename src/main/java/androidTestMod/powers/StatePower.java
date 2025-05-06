@@ -1,7 +1,7 @@
 package androidTestMod.powers;
 
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import androidTestMod.modcore.CustomEnums;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 
 public abstract class StatePower extends BasePower{
     public StatePower(String id, AbstractCreature owner, int Amount, boolean upgraded){

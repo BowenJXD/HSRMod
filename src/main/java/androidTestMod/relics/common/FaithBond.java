@@ -1,8 +1,8 @@
 package androidTestMod.relics.common;
 
+import androidTestMod.relics.BaseRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.ShopRoom;
-import androidTestMod.relics.BaseRelic;
 
 public class FaithBond extends BaseRelic {
     public static final String ID = FaithBond.class.getSimpleName();

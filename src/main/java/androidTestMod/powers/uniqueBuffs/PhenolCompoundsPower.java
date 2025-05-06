@@ -1,15 +1,15 @@
 package androidTestMod.powers.uniqueBuffs;
 
+import androidTestMod.AndroidTestMod;
+import androidTestMod.powers.BuffPower;
+import androidTestMod.powers.misc.SporePower;
+import androidTestMod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import androidTestMod.modcore.AndroidTestMod;
-import androidTestMod.powers.BuffPower;
-import androidTestMod.powers.misc.SporePower;
-import androidTestMod.utils.ModHelper;
 
 public class PhenolCompoundsPower extends BuffPower {
     public static final String POWER_ID = AndroidTestMod.makePath(PhenolCompoundsPower.class.getSimpleName());

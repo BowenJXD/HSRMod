@@ -1,15 +1,15 @@
 package androidTestMod.powers.uniqueBuffs;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import androidTestMod.modcore.AndroidTestMod;
+import androidTestMod.AndroidTestMod;
 import androidTestMod.powers.PowerPower;
 import androidTestMod.powers.interfaces.OnReceivePowerPower;
 import androidTestMod.powers.misc.BrainInAVatPower;
 import androidTestMod.powers.misc.EnergyPower;
 import androidTestMod.utils.ModHelper;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 
 public class SMR2AmygdalaPower extends PowerPower implements OnReceivePowerPower {
     public static final String POWER_ID = AndroidTestMod.makePath(SMR2AmygdalaPower.class.getSimpleName());

@@ -1,12 +1,12 @@
 package androidTestMod.powers.uniqueBuffs;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.core.AbstractCreature;
-import androidTestMod.modcore.AndroidTestMod;
+import androidTestMod.AndroidTestMod;
 import androidTestMod.powers.PowerPower;
 import androidTestMod.powers.misc.QuakePower;
 import androidTestMod.subscribers.PostBreakBlockSubscriber;
 import androidTestMod.subscribers.SubscriptionManager;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 
 public class ResonanceTransferPower extends PowerPower implements PostBreakBlockSubscriber {
     public static final String POWER_ID = AndroidTestMod.makePath(ResonanceTransferPower.class.getSimpleName());

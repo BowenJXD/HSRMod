@@ -1,13 +1,13 @@
 package androidTestMod.powers.uniqueBuffs;
 
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.powers.AbstractPower;
+import androidTestMod.AndroidTestMod;
 import androidTestMod.actions.RandomCardFromDrawPileToHandAction;
-import androidTestMod.modcore.AndroidTestMod;
 import androidTestMod.powers.PowerPower;
 import androidTestMod.powers.interfaces.OnReceivePowerPower;
 import androidTestMod.powers.misc.EnergyPower;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 
 public class SilverheartGuardsPower extends PowerPower implements OnReceivePowerPower {
     public static final String POWER_ID = AndroidTestMod.makePath(SilverheartGuardsPower.class.getSimpleName());

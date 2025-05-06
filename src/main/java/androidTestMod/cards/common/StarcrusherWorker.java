@@ -1,13 +1,13 @@
 package androidTestMod.cards.common;
 
+import androidTestMod.cards.BaseCard;
+import androidTestMod.powers.misc.ToughnessPower;
+import androidTestMod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.powers.misc.ToughnessPower;
-import androidTestMod.utils.ModHelper;
 
 public class StarcrusherWorker extends BaseCard {
     public static final String ID = StarcrusherWorker.class.getSimpleName();

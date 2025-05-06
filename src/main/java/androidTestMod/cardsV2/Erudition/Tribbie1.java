@@ -1,11 +1,11 @@
 package androidTestMod.cardsV2.Erudition;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import androidTestMod.cards.BaseCard;
 import androidTestMod.modcore.CustomEnums;
 import androidTestMod.powers.uniqueBuffs.TribbiePower;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class Tribbie1 extends BaseCard {
     public static final String ID = Tribbie1.class.getSimpleName();

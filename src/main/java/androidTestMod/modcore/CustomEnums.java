@@ -1,35 +1,31 @@
 package androidTestMod.modcore;
 
-import basemod.helpers.RelicType;
-import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 public class CustomEnums
 {
     // Paths
-    @SpireEnum public static AbstractCard.CardTags TRAILBLAZE;
-    @SpireEnum public static AbstractCard.CardTags ELATION;
-    @SpireEnum public static AbstractCard.CardTags DESTRUCTION;
-    @SpireEnum public static AbstractCard.CardTags NIHILITY;
-    @SpireEnum public static AbstractCard.CardTags PROPAGATION;
-    @SpireEnum public static AbstractCard.CardTags PRESERVATION;
-    @SpireEnum public static AbstractCard.CardTags THE_HUNT;
-    @SpireEnum public static AbstractCard.CardTags ERUDITION;
-    @SpireEnum public static AbstractCard.CardTags ABUNDANCE;
-    @SpireEnum public static AbstractCard.CardTags REMEMBRANCE;
+    public static AbstractCard.CardTags TRAILBLAZE;
+    public static AbstractCard.CardTags ELATION;
+    public static AbstractCard.CardTags DESTRUCTION;
+    public static AbstractCard.CardTags NIHILITY;
+    public static AbstractCard.CardTags PROPAGATION;
+    public static AbstractCard.CardTags PRESERVATION;
+    public static AbstractCard.CardTags THE_HUNT;
+    public static AbstractCard.CardTags ERUDITION;
+    public static AbstractCard.CardTags ABUNDANCE;
+    public static AbstractCard.CardTags REMEMBRANCE;
     
-    @SpireEnum public static AbstractCard.CardTags FOLLOW_UP;
-    @SpireEnum public static AbstractCard.CardTags ENERGY_COSTING;
-    @SpireEnum public static AbstractCard.CardTags DEBUFF;
-    @SpireEnum public static AbstractCard.CardTags ENTANGLE;
+    public static AbstractCard.CardTags FOLLOW_UP;
+    public static AbstractCard.CardTags ENERGY_COSTING;
+    public static AbstractCard.CardTags DEBUFF;
+    public static AbstractCard.CardTags ENTANGLE;
     
-    @SpireEnum public static AbstractCard.CardTags REVIVE;
-    @SpireEnum public static AbstractCard.CardTags RUAN_MEI;
+    public static AbstractCard.CardTags REVIVE;
+    public static AbstractCard.CardTags RUAN_MEI;
     
-    @SpireEnum public static AbstractPower.PowerType STATUS;
-    
-    @SpireEnum public static RelicType HSR;
+    public static AbstractPower.PowerType STATUS;
     
     public static AbstractCard.CardTags[] getPathTags() {
         return new AbstractCard.CardTags[] {TRAILBLAZE, ELATION, DESTRUCTION, NIHILITY, PROPAGATION, PRESERVATION, THE_HUNT, ERUDITION, ABUNDANCE, /*REMEMBRANCE*/};

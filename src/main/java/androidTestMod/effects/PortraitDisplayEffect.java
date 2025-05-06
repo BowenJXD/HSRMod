@@ -1,12 +1,13 @@
 package androidTestMod.effects;
 
+import androidTestMod.AndroidTestMod;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
+import com.megacrit.cardcrawl.android.mods.AssetLoader;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 
 public class PortraitDisplayEffect extends AbstractGameEffect {
@@ -26,7 +27,7 @@ public class PortraitDisplayEffect extends AbstractGameEffect {
 
     // Constructor
     public PortraitDisplayEffect(String charName) {
-        Texture texture = ImageMaster.loadImage(String.format("img/effects/portraits/%s.png", charName));  // Load the image
+        Texture texture = AssetLoader.getTexture(AndroidTestMod.MOD_NAME,String.format("img/effects/portraits/%s.png", charName));  // Load the image
         if (texture == null) {
             isDone = true;
             return;

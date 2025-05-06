@@ -1,12 +1,12 @@
 package androidTestMod.cards.uncommon;
 
+import androidTestMod.cards.BaseCard;
+import androidTestMod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.utils.ModHelper;
 
 import java.util.List;
 import java.util.function.Predicate;

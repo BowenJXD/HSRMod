@@ -1,11 +1,11 @@
 package androidTestMod.powers.misc;
 
-import com.megacrit.cardcrawl.core.AbstractCreature;
+import androidTestMod.AndroidTestMod;
 import androidTestMod.modcore.ElementalDamageInfo;
-import androidTestMod.modcore.AndroidTestMod;
 import androidTestMod.powers.DebuffPower;
 import androidTestMod.subscribers.PreDoTDamageSubscriber;
 import androidTestMod.subscribers.SubscriptionManager;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 
 public class SuspicionPower extends DebuffPower implements PreDoTDamageSubscriber {
     public static final String POWER_ID = AndroidTestMod.makePath(SuspicionPower.class.getSimpleName());

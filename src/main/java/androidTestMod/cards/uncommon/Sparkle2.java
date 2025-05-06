@@ -1,5 +1,9 @@
 package androidTestMod.cards.uncommon;
 
+import androidTestMod.cards.BaseCard;
+import androidTestMod.effects.PortraitDisplayEffect;
+import androidTestMod.modcore.CustomEnums;
+import androidTestMod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.unique.LoseEnergyAction;
@@ -9,10 +13,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.effects.PortraitDisplayEffect;
-import androidTestMod.modcore.CustomEnums;
-import androidTestMod.utils.ModHelper;
 
 import java.util.List;
 import java.util.function.Predicate;

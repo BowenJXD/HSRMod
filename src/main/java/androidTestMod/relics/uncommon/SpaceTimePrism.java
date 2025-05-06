@@ -1,10 +1,10 @@
 package androidTestMod.relics.uncommon;
 
+import androidTestMod.relics.BaseRelic;
+import androidTestMod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.common.UpgradeSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import androidTestMod.relics.BaseRelic;
-import androidTestMod.utils.ModHelper;
 
 import java.util.Iterator;
 

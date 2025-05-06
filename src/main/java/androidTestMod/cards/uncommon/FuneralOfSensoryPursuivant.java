@@ -1,10 +1,10 @@
 package androidTestMod.cards.uncommon;
 
+import androidTestMod.cards.BaseCard;
+import androidTestMod.powers.uniqueBuffs.FuneralOfSensoryPursuivantPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.powers.uniqueBuffs.FuneralOfSensoryPursuivantPower;
 
 public class FuneralOfSensoryPursuivant extends BaseCard {
     public static final String ID = FuneralOfSensoryPursuivant.class.getSimpleName();

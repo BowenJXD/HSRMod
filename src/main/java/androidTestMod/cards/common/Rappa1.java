@@ -1,17 +1,17 @@
 package androidTestMod.cards.common;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import androidTestMod.actions.BreakDamageAction;
 import androidTestMod.actions.ElementalDamageAction;
 import androidTestMod.actions.ElementalDamageAllAction;
 import androidTestMod.cards.BaseCard;
 import androidTestMod.powers.misc.BreakEffectPower;
 import androidTestMod.utils.ModHelper;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import java.util.function.Consumer;
 
@@ -46,7 +46,12 @@ public class Rappa1 extends BaseCard {
                     Rappa1.this.addToBot(new BreakDamageAction(c.target, new DamageInfo(AbstractDungeon.player, tr)));
                     if (canRepeat) {
                         canRepeat = false;
-                        ModHelper.addToTopAbstract(Rappa1.this::execute);
+                        ModHelper.addToTopAbstract(new ModHelper.Lambda() {
+                            @Override
+                            public void run() {
+                                Rappa1.this.execute();
+                            }
+                        });
                     }
                 }
             }

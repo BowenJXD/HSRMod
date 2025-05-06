@@ -1,13 +1,13 @@
 package androidTestMod.utils;
 
-import basemod.ReflectionHacks;
+import androidTestMod.characters.StellaCharacter;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.android.mods.interfaces.PostRenderSubscriber;
 import com.megacrit.cardcrawl.android.mods.interfaces.PostUpdateSubscriber;
+import com.megacrit.cardcrawl.android.mods.utils.ReflectionHacks;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.screens.charSelect.CharacterSelectScreen;
 import com.megacrit.cardcrawl.screens.mainMenu.MainMenuScreen;
-import androidTestMod.characters.StellaCharacter;
 
 public class PathSelectManager implements PostUpdateSubscriber, PostRenderSubscriber {
     private PathSelectManager() {

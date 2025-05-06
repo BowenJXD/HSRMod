@@ -1,13 +1,13 @@
 package androidTestMod.relics.rare;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import androidTestMod.modcore.CustomEnums;
 import androidTestMod.powers.misc.EnergyPower;
 import androidTestMod.relics.BaseRelic;
 import androidTestMod.utils.ModHelper;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 public class RoadToComets extends BaseRelic {
     public static final String ID = RoadToComets.class.getSimpleName();

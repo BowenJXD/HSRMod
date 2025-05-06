@@ -1,5 +1,8 @@
 package androidTestMod.cardsV2.Paths;
 
+import androidTestMod.actions.ForceWaitAction;
+import androidTestMod.cards.BaseCard;
+import androidTestMod.utils.ModHelper;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
@@ -10,9 +13,6 @@ import com.megacrit.cardcrawl.vfx.RainbowCardEffect;
 import com.megacrit.cardcrawl.vfx.WallopEffect;
 import com.megacrit.cardcrawl.vfx.combat.*;
 import com.megacrit.cardcrawl.vfx.stance.DivinityParticleEffect;
-import androidTestMod.actions.ForceWaitAction;
-import androidTestMod.cards.BaseCard;
-import androidTestMod.utils.ModHelper;
 
 public class Elation extends BaseCard {
     public static final String ID = Elation.class.getSimpleName();

@@ -1,10 +1,10 @@
 package androidTestMod.powers.misc;
 
+import androidTestMod.AndroidTestMod;
+import androidTestMod.powers.BuffPower;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import androidTestMod.modcore.AndroidTestMod;
-import androidTestMod.powers.BuffPower;
 
 public class BoostPower extends BuffPower {
     public static final String POWER_ID = AndroidTestMod.makePath(BoostPower.class.getSimpleName());

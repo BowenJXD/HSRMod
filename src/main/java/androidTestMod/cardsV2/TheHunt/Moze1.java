@@ -1,11 +1,11 @@
 package androidTestMod.cardsV2.TheHunt;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import androidTestMod.cards.BaseCard;
 import androidTestMod.powers.uniqueDebuffs.PreyPower;
 import androidTestMod.utils.ModHelper;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class Moze1 extends BaseCard {
     public static final String ID = Moze1.class.getSimpleName();

@@ -1,11 +1,11 @@
 package androidTestMod.powers.uniqueBuffs;
 
+import androidTestMod.AndroidTestMod;
+import androidTestMod.powers.PowerPower;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import androidTestMod.modcore.AndroidTestMod;
-import androidTestMod.powers.PowerPower;
 
 public class EmpyreanImperiumPower extends PowerPower {
     public static final String POWER_ID = AndroidTestMod.makePath(EmpyreanImperiumPower.class.getSimpleName());

@@ -1,5 +1,11 @@
 package androidTestMod.actions;
 
+import androidTestMod.modcore.ElementalDamageInfo;
+import androidTestMod.powers.misc.BrokenPower;
+import androidTestMod.powers.misc.LockToughnessPower;
+import androidTestMod.powers.misc.ToughnessPower;
+import androidTestMod.subscribers.SubscriptionManager;
+import androidTestMod.utils.ModHelper;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -10,12 +16,6 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
-import androidTestMod.modcore.ElementalDamageInfo;
-import androidTestMod.powers.misc.BrokenPower;
-import androidTestMod.powers.misc.LockToughnessPower;
-import androidTestMod.powers.misc.ToughnessPower;
-import androidTestMod.subscribers.SubscriptionManager;
-import androidTestMod.utils.ModHelper;
 
 import java.util.Iterator;
 import java.util.function.Consumer;

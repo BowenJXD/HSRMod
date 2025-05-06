@@ -1,7 +1,7 @@
 package androidTestMod.relics.shop;
 
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import androidTestMod.relics.BaseRelic;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 public class CavitySystemModel extends BaseRelic {
     public static final String ID = CavitySystemModel.class.getSimpleName();

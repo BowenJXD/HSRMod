@@ -1,5 +1,11 @@
 package androidTestMod.powers.uniqueDebuffs;
 
+import androidTestMod.AndroidTestMod;
+import androidTestMod.modcore.ElementalDamageInfo;
+import androidTestMod.powers.DebuffPower;
+import androidTestMod.subscribers.PreBreakSubscriber;
+import androidTestMod.subscribers.SubscriptionManager;
+import androidTestMod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
@@ -7,12 +13,6 @@ import com.megacrit.cardcrawl.actions.common.UpgradeSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import androidTestMod.modcore.ElementalDamageInfo;
-import androidTestMod.modcore.AndroidTestMod;
-import androidTestMod.powers.DebuffPower;
-import androidTestMod.subscribers.PreBreakSubscriber;
-import androidTestMod.subscribers.SubscriptionManager;
-import androidTestMod.utils.ModHelper;
 
 import java.util.Iterator;
 

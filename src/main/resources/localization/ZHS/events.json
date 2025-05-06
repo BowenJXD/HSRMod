@@ -1,5 +1,5 @@
 {
-  "HSRMod:StelleAwake": {
+  "AndroidTestMod:StelleAwake": {
     "NAME": "选择命途",
     "OPTIONS": [
       "[欢愉] 参与 #y阿哈 的计划。",
@@ -19,7 +19,7 @@
       "~准备好了吗~ 。"
     ]
   },
-  "HSRMod:RuanMei": {
+  "AndroidTestMod:RuanMei": {
     "NAME": "阮·梅",
     "OPTIONS": [
       "你是谁？",
@@ -44,7 +44,7 @@
       "「闯进我的切片概率 #r极小 ，高兴一些吧，我会给你些东西。」她说。「 #r厉害 的东西，但不免费。」"
     ]
   },
-  "HSRMod:CosmicCrescendo": {
+  "AndroidTestMod:CosmicCrescendo": {
     "NAME": "天外大合唱",
     "OPTIONS": [
       "[继续]",
@@ -67,7 +67,7 @@
       "曲子结束了。"
     ]
   },
-  "HSRMod:IOUDispenser": {
+  "AndroidTestMod:IOUDispenser": {
     "NAME": "谢债发行机",
     "OPTIONS": [
       "[我买了] 获得【 #b天使型谢债发行机 】。",
@@ -80,7 +80,7 @@
       "~谢谢惠顾~~"
     ]
   },
-  "HSRMod:Tavern": {
+  "AndroidTestMod:Tavern": {
     "NAME": "酒馆",
     "OPTIONS": [
       "[继续]",
@@ -95,7 +95,7 @@
       "你获得了 #y胜利 。"
     ]
   },
-  "HSRMod:RockPaperScissors": {
+  "AndroidTestMod:RockPaperScissors": {
     "NAME": "猜拳游戏",
     "OPTIONS": [
       "[继续]",
@@ -111,7 +111,7 @@
       "你获得了 #y胜利 。"
     ]
   },
-  "HSRMod:WaxManufacturer": {
+  "AndroidTestMod:WaxManufacturer": {
     "NAME": "火漆制造机",
     "OPTIONS": [
       "[火漆祝福] 从当前火漆命途的 #b所有罕见牌 中选择1张获得。",
@@ -126,7 +126,7 @@
       "选择获得一张牌"
     ]
   },
-  "HSRMod:LonelyBeautyBugsOne": {
+  "AndroidTestMod:LonelyBeautyBugsOne": {
     "NAME:": "孤独·太空美虫（其一）",
     "OPTIONS": [
       "[继续]",
@@ -143,7 +143,7 @@
       "你的 #y太空美虫 ~蠕动着~，你等待着它对着你的脸蛋「 ~啪嗒~ 」一口… NL NL 但它却一跃而起，用尾巴 @扫了下你的脸@ ！你被打得 #r~好痛~ ！ NL NL …看来它似乎 #r并不喜欢 被这么对待。"
     ]
   },
-  "HSRMod:LonelyBeautyBugsTwo": {
+  "AndroidTestMod:LonelyBeautyBugsTwo": {
     "NAME:": "孤独·太空美虫（其二）",
     "OPTIONS": [
       "[继续]",
@@ -159,7 +159,7 @@
       "你露出了 ~宽慰的、悲怀~ 的 #y笑容 。"
     ]
   },
-  "HSRMod:SlumberingOverlord": {
+  "AndroidTestMod:SlumberingOverlord": {
     "NAME": "沉眠领主",
     "OPTIONS": [
       "[继续]",
@@ -180,7 +180,7 @@
       "你获得了你的 #y战利品 "
     ]
   },
-  "HSRMod:DoubleLottery": {
+  "AndroidTestMod:DoubleLottery": {
     "NAME": "双乐透体验",
     "OPTIONS": [
       "[继续]",
@@ -199,7 +199,7 @@
       "你拆解了 #y大乐透系列 遗物的* #g代码 *。"
     ]
   },
-  "HSRMod:ThreeLittlePigs": {
+  "AndroidTestMod:ThreeLittlePigs": {
     "NAME": "三只小猪",
     "OPTIONS": [
       "[继续]",
@@ -214,7 +214,7 @@
       "你结束了 #y扑满 的抓捕。"
     ]
   },
-  "HSRMod:ImperialLegacy": {
+  "AndroidTestMod:ImperialLegacy": {
     "NAME": "帝国遗产",
     "OPTIONS": [
       "[继续]",
@@ -243,7 +243,7 @@
       " #y老翁 呆滞地望着你，老旧的逻辑芯片无法理解你的行为，他颤抖着接过你手中的 #y差分机 ，就像一个普通的、落寞的故国遗民。"
     ]
   },
-  "HSRMod:PineappleBread": {
+  "AndroidTestMod:PineappleBread": {
     "NAME": "菠萝面包",
     "OPTIONS": [
       "[继续]",
@@ -262,7 +262,7 @@
       "本节目由星际和平公司赞助播出，正宗 #y菠萝气泡水 ，为您带来难忘的味觉盛宴。"
     ]
   },
-  "HSRMod:TrashSymphony": {
+  "AndroidTestMod:TrashSymphony": {
     "NAME": "垃圾交响曲",
     "OPTIONS": [
       "[继续]",
@@ -278,7 +278,7 @@
       "你获得了 #y胜利 。"
     ]
   },
-  "HSRMod:AceTrashDigger": {
+  "AndroidTestMod:AceTrashDigger": {
     "NAME": "掏垃圾桶大师",
     "OPTIONS": [
       "[继续]",
@@ -292,7 +292,7 @@
       "谁能拒绝一份 ~全新~ 的垃圾呢。"
     ]
   },
-  "HSRMod:CulinaryColosseum": {
+  "AndroidTestMod:CulinaryColosseum": {
     "NAME": "厨王争霸",
     "OPTIONS": [
       "[继续]",
@@ -313,7 +313,7 @@
       "你获得了你应得的。"
     ]
   },
-  "HSRMod:YuQingtu": {
+  "AndroidTestMod:YuQingtu": {
     "NAME": "天才俱乐部#55余清涂",
     "OPTIONS": [
       "[继续]",
@@ -342,7 +342,7 @@
       "你获得了 #y胜利 。"
     ]
   },
-  "HSRMod:IPMBShoppingMall": {
+  "AndroidTestMod:IPMBShoppingMall": {
     "NAME": "星际和平机械分部商城",
     "OPTIONS": [
       "[继续]",
@@ -359,7 +359,7 @@
       "你获得了你想要的。"
     ]
   },
-  "HSRMod:RobotSalesTerminal": {
+  "AndroidTestMod:RobotSalesTerminal": {
     "NAME": "机器人销售终端",
     "OPTIONS": [
       "[购买 #y%s ] 花费 #y%d 金币。",
@@ -374,7 +374,7 @@
       "~感谢您的惠顾~~"
     ]
   },
-  "HSRMod:TheRelicFixer": {
+  "AndroidTestMod:TheRelicFixer": {
     "NAME": "遗物修理专家",
     "OPTIONS": [
       "[修理一个损毁的遗物] 花费 #y%d 金币。",
@@ -389,7 +389,7 @@
       "「 ~咔嚓…咔嚓…~ 」 NL NL 它 ~小心翼翼~ 的将遗物递给了你，仿佛在暗示你不要再随意 #r损毁 遗物了。"
     ]
   },
-  "HSRMod:WeAreCowboys": {
+  "AndroidTestMod:WeAreCowboys": {
     "NAME": "我们是牛仔",
     "OPTIONS": [
       "[付钱] 失去 #y50% 的金币。",
@@ -405,7 +405,7 @@
       "你获得了你想要的。"
     ]
   },
-  "HSRMod:InsectNest": {
+  "AndroidTestMod:InsectNest": {
     "NAME": "虫巢",
     "OPTIONS": [
       "[继续]",
@@ -427,7 +427,7 @@
       "你保存了一枚「 #g虫泡 」。"
     ]
   },
-  "HSRMod:FleaMarket": {
+  "AndroidTestMod:FleaMarket": {
     "NAME": "跳蚤市场",
     "OPTIONS": [
       "[继续]",
@@ -452,7 +452,7 @@
       "诗人微微阖眼，你沉没在一片 #b~寂静的海洋~ 。音符是它的 #b水滴 ，歌声是它的 #b流向 ，故事沿着 #b水流 ~浸入~ 你的胸膛。 NL NL 你看见万年不息的舞蹈， #b伶人们 在贡多拉哭泣， #b钻石雨 从天幕落下。当喧嚣重新回到你的世界，吟游诗人已不见踪影。正如他所言，带走了你的 #b诗句 。"
     ]
   },
-  "HSRMod:ApesSuchAsYou": {
+  "AndroidTestMod:ApesSuchAsYou": {
     "NAME": "像你这样的苍猿",
     "OPTIONS": [
       "[继续]",
@@ -483,7 +483,7 @@
       "今天，这个毛，你是摸定了！"
     ]
   },
-  "HSRMod:ShoppingStreet": {
+  "AndroidTestMod:ShoppingStreet": {
     "NAME": "商店街一番战",
     "OPTIONS": [
       "[继续]",
@@ -502,7 +502,7 @@
       "「 ~嘶嘶~ ，可不要太得意， ~一妖更比一妖高。~ 」店长笑着吐出信子，「妾身只是 #y不眨眼四天王 里最弱的那个。」"
     ]
   },
-  "HSRMod:SelfAnnihilator": {
+  "AndroidTestMod:SelfAnnihilator": {
     "NAME": "自灭者的火种",
     "OPTIONS": [
       "[继续]",
@@ -519,14 +519,14 @@
       "你拒绝了他。"
     ]
   },
-  "HSRMod:AhaStuffedToy": {
+  "AndroidTestMod:AhaStuffedToy": {
     "NAME": "阿哈玩偶",
     "OPTIONS": [
     ],
     "DESCRIPTIONS": [
     ]
   },
-  "HSRMod:KnightsOfBeauty": {
+  "AndroidTestMod:KnightsOfBeauty": {
     "NAME": "纯美骑士的帮助",
     "OPTIONS": [
       "[继续]",
@@ -558,7 +558,7 @@
       "将你从危机中解救后， #r纯美骑士们 仍然不愿离去。他们忧虑的担心你缺少金币… NL NL #r纯美骑士 把身上所剩无几的金币给了你。 NL NL 「希望我的帮助令你满意。」 #r纯美骑士 虔诚地说。"
     ]
   },
-  "HSRMod:TheReturningHeliobus": {
+  "AndroidTestMod:TheReturningHeliobus": {
     "NAME": "归来的岁阳",
     "OPTIONS": [
       "[继续]",
@@ -570,7 +570,7 @@
       "也不知道这段数据是上哪儿找来的，你总感觉模拟出来的版本比本体还要欠揍。 NL NL 「还记得我说过的吗？无名客和仙舟对我的侮辱，今天就要你们 #b@加倍偿还！@ 」大岁阳狂妄地叫嚣道。"
     ]
   },
-  "HSRMod:FalseFuture": {
+  "AndroidTestMod:FalseFuture": {
     "NAME": "假未来",
     "OPTIONS": [
       "[继续]",
@@ -585,7 +585,7 @@
       "「如此追求未来的 #p『神秘』 感，或许有一天，你也会成为我们的一员。」 #p女人 微微一笑， #p~消散~ 在夜市的琴声里。"
     ]
   },
-  "HSRMod:ShoppingChannel": {
+  "AndroidTestMod:ShoppingChannel": {
     "NAME": "电视购物频道",
     "OPTIONS": [
       "[继续]",
@@ -615,7 +615,7 @@
       "购物节目令你 ~如痴如醉~ 。你还想接着看，但屏幕「咻」地关闭了。"
     ]
   },
-  "HSRMod:GeniusSociety": {
+  "AndroidTestMod:GeniusSociety": {
     "NAME": "机械城「认知理发馆」- 天才俱乐部",
     "OPTIONS": [
       "[继续]",
@@ -632,7 +632,7 @@
       "你获得了你想要的。"
     ]
   },
-  "HSRMod:CheatCode1": {
+  "AndroidTestMod:CheatCode1": {
     "NAME": "作弊代码（其一）",
     "OPTIONS": [
       "[拿 #y%d 块钱] 没有风险。",
@@ -646,7 +646,7 @@
       "「 ~祝你好运~~ 」"
     ]
   },
-  "HSRMod:CheatCode2": {
+  "AndroidTestMod:CheatCode2": {
     "NAME": "作弊代码（其二）",
     "OPTIONS": [
       "[被迫战斗] 你没得选择。"
@@ -655,7 +655,7 @@
       "你漫步在 #b圣多明戈城 …这里的灯光璀璨夺目。正当你沉浸其中时，你的右肩被拍了一下——你诧异地回头，接着左臂就立刻被擒住。 NL NL 「你好。」一位 #b圣多明戈机械警察 向你鞠了个躬，「走一趟吧。证据：您之前的 #b『作弊代码』 已被记录在案。」"
     ]
   },
-  "HSRMod:MilkyWayRailroad": {
+  "AndroidTestMod:MilkyWayRailroad": {
     "NAME": "银河铁道之夜",
     "OPTIONS": [
       "[继续]",

@@ -1,5 +1,5 @@
 {
-  "HSRMod:StellaCharacter": {
+  "AndroidTestMod:StellaCharacter": {
     "NAMES": [
       "开拓者"
     ],
@@ -8,7 +8,7 @@
       "“心脏，就是用来打破的！”"
     ]
   },
-  "HSRMod:HertaMerchant": {
+  "AndroidTestMod:HertaMerchant": {
     "NAMES": [
       "黑塔"
     ],
@@ -40,7 +40,7 @@
       "唷，还往上爬呢？"
     ]
   },
-  "HSRMod:SparkleMerchant": {
+  "AndroidTestMod:SparkleMerchant": {
     "NAMES": [
       "花火"
     ],
@@ -71,7 +71,7 @@
       "都是假的哦~ NL 黑塔一直在骗你哦~"
     ]
   },
-  "HSRMod:HertaShopScreen": {
+  "AndroidTestMod:HertaShopScreen": {
     "NAMES": [
       "~欢迎~ NL ~欢迎！~",
       "哎呀呀， NL 这点 #r金币 可不够啊。",
@@ -107,7 +107,7 @@
       "~哈~  ~欠~"
     ]
   },
-  "HSRMod:SparkleShopScreen": {
+  "AndroidTestMod:SparkleShopScreen": {
     "NAMES": [
       "趁黑塔不在，我给你打个折，怎么样，感谢我吧~",
       "哎呀呀， NL 这点 #r金币 可不够啊。",

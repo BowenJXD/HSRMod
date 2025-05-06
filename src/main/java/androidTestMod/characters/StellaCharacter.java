@@ -3,16 +3,17 @@ package androidTestMod.characters;
 import androidTestMod.AndroidTestMod;
 import androidTestMod.cards.base.*;
 import androidTestMod.relics.starter.*;
+import androidTestMod.subscribers.SubscriptionManager;
 import androidTestMod.utils.PathSelectScreen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.MathUtils;
-import com.esotericsoftware.spine.AnimationState;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.android.mods.AssetLoader;
 import com.megacrit.cardcrawl.android.mods.abstracts.CustomPlayer;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
@@ -25,8 +26,19 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
+import com.megacrit.cardcrawl.potions.AbstractPotion;
+import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.relics.LizardTail;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
+import com.megacrit.cardcrawl.screens.DeathScreen;
+import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
+import com.megacrit.cardcrawl.vfx.combat.BlockedWordEffect;
+import com.megacrit.cardcrawl.vfx.combat.HbBlockBrokenEffect;
+import com.megacrit.cardcrawl.vfx.combat.StrikeEffect;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 import static androidTestMod.characters.StellaCharacter.PlayerColorEnum.HSR_PINK;
@@ -60,7 +72,7 @@ public class StellaCharacter extends CustomPlayer {
     private static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString(AndroidTestMod.makePath("StellaCharacter"));
 
     float drawYAlter = 0;
-    
+
     public StellaCharacter(String name) {
         super(AndroidTestMod.MOD_NAME, name, STELLA_CHARACTER, ORB_TEXTURES, "img/UI/orb/vfx.png", LAYER_SPEED, null, null);
 
@@ -68,50 +80,50 @@ public class StellaCharacter extends CustomPlayer {
         float hbx = 0f, hby = 0f, hbw = 200f, hbh = 220f;
 
         // 如果你的人物没有动画，那么这些不需要写
-            try {
-                this.loadAnimation("img/spine/nv.atlas", "img/spine/nv.json", 3F);
-                AnimationState.TrackEntry e = this.state.setAnimation(0, "idle_back", true);
-                e.setTime(e.getEndTime() * MathUtils.random());
-                e.setTimeScale(0.5F);
-                float ratio = (float) Settings.WIDTH / Settings.HEIGHT;
-                float dy = 0;
-                hbx = 50f;
-                hbw = 200f;
-                if (ratio > 2.3f /* 2.3+ */) {
+        /*try {
+            this.loadAnimation("img/spine/nv.atlas", "img/spine/nv.json", 3F);
+            AnimationState.TrackEntry e = this.state.setAnimation(0, "idle_back", true);
+            e.setTime(e.getEndTime() * MathUtils.random());
+            e.setTimeScale(0.5F);
+            float ratio = (float) Settings.WIDTH / Settings.HEIGHT;
+            float dy = 0;
+            hbx = 50f;
+            hbw = 200f;
+            if (ratio > 2.3f *//* 2.3+ *//*) {
+                hby = -380f;
+                hbh = 300f;
+                dy = 50f;
+            } else if (ratio > 2f *//* 2.3 - 2 *//*) {
+                hby = -320f;
+                hbh = 300f;
+            } else if (ratio > 1.9f *//* 2 - 1.9 *//*) {
+                hby = -380f;
+                hbh = 300f;
+            } else if (ratio > 1.5f *//* 1.9 - 1.77 - 1.6 - 1.5 *//*) {
+                hby = -280f;
+                hbh = 300f;
+            } else if (ratio > 1.3f *//* 1.5 - 1.33 - 1.3 *//*) {
+                if ((float) Settings.M_W / Settings.M_H > 1.3f) {
                     hby = -380f;
-                    hbh = 300f;
-                    dy = 50f;
-                } else if (ratio > 2f /* 2.3 - 2 */) {
-                    hby = -320f;
-                    hbh = 300f;
-                } else if (ratio > 1.9f /* 2 - 1.9 */) {
-                    hby = -380f;
-                    hbh = 300f;
-                } else if (ratio > 1.5f /* 1.9 - 1.77 - 1.6 - 1.5 */) {
-                    hby = -280f;
-                    hbh = 300f;
-                } else if (ratio > 1.3f /* 1.5 - 1.33 - 1.3 */) {
-                    if ((float) Settings.M_W / Settings.M_H > 1.3f) {
-                        hby = -380f;
-                        hbh = 400f;
-                    } else {
-                        hby = -280f;
-                        hbh = 300f;
-                    }
-                } else /* 1.3- */ {
+                    hbh = 400f;
+                } else {
                     hby = -280f;
                     hbh = 300f;
                 }
-                drawYAlter = hbh * Settings.scale * 0.9f + dy;
-                this.drawY = AbstractDungeon.floorY + drawYAlter;
-            } catch (Exception e) {
-                AndroidTestMod.logger.error("Failed to load animation: {}", e.getMessage());
-                charImg = "img/char/character.png";
+            } else *//* 1.3- *//* {
+                hby = -280f;
+                hbh = 300f;
             }
-        /*else {
+            drawYAlter = hbh * Settings.scale * 0.9f + dy;
+            this.drawY = AbstractDungeon.floorY + drawYAlter;
+        } catch (Exception e) {
+            AndroidTestMod.logger.error("Failed to load animation: {}", e.getMessage());
             charImg = "img/char/character.png";
         }*/
-        
+        /*else {
+        }*/
+        charImg = "img/char/character.png";
+
         // 初始化你的人物，如果你的人物只有一张图，那么第一个参数填写你人物图片的路径。
         this.initializeClass(
                 charImg, // 人物图片
@@ -122,7 +134,7 @@ public class StellaCharacter extends CustomPlayer {
                 hbw, hbh, // 人物碰撞箱大小，越大的人物模型这个越大
                 new EnergyManager(3) // 初始每回合的能量
         );
-        
+
         // 人物对话气泡的大小，如果游戏中尺寸不对在这里修改（libgdx的坐标轴左下为原点）
         this.dialogX = (this.drawX + 70.0F * Settings.scale);
         // this.dialogY = (this.drawY + 0.0F * Settings.scale);
@@ -130,16 +142,16 @@ public class StellaCharacter extends CustomPlayer {
 
     protected void initializeClass(String imgUrl, String shoulder2ImgUrl, String shouldImgUrl, String corpseImgUrl, CharSelectInfo info, float hb_x, float hb_y, float hb_w, float hb_h, EnergyManager energy) {
         if (imgUrl != null) {
-            this.img = AssetLoader.getTexture(AndroidTestMod.MOD_NAME,imgUrl);
+            this.img = AssetLoader.getTexture(AndroidTestMod.MOD_NAME, imgUrl);
         }
 
         if (this.img != null) {
             this.atlas = null;
         }
 
-        this.shoulderImg = AssetLoader.getTexture(AndroidTestMod.MOD_NAME,shouldImgUrl);
-        this.shoulder2Img = AssetLoader.getTexture(AndroidTestMod.MOD_NAME,shoulder2ImgUrl);
-        this.corpseImg = AssetLoader.getTexture(AndroidTestMod.MOD_NAME,corpseImgUrl);
+        this.shoulderImg = AssetLoader.getTexture(AndroidTestMod.MOD_NAME, shouldImgUrl);
+        this.shoulder2Img = AssetLoader.getTexture(AndroidTestMod.MOD_NAME, shoulder2ImgUrl);
+        this.corpseImg = AssetLoader.getTexture(AndroidTestMod.MOD_NAME, corpseImgUrl);
 
 
         if (Settings.isMobile) {
@@ -372,16 +384,180 @@ public class StellaCharacter extends CustomPlayer {
         return new AbstractGameAction.AttackEffect[]{AbstractGameAction.AttackEffect.SLASH_HEAVY, AbstractGameAction.AttackEffect.FIRE, AbstractGameAction.AttackEffect.SLASH_DIAGONAL, AbstractGameAction.AttackEffect.SLASH_HEAVY, AbstractGameAction.AttackEffect.FIRE, AbstractGameAction.AttackEffect.SLASH_DIAGONAL};
     }
 
+    @Override
+    public void damage(DamageInfo info) {
+        int damageAmount = info.output;
+        boolean hadBlock = true;
+        if (this.currentBlock == 0) {
+            hadBlock = false;
+        }
+
+        if (damageAmount < 0) {
+            damageAmount = 0;
+        }
+
+        if (damageAmount > 1 && this.hasPower("IntangiblePlayer")) {
+            damageAmount = 1;
+        }
+
+        damageAmount = SubscriptionManager.getInstance().triggerOnPlayerDamaged(damageAmount, info);
+        damageAmount = this.decrementBlock(info, damageAmount);
+        if (info.owner == this) {
+            for (AbstractRelic r : this.relics) {
+                damageAmount = r.onAttackToChangeDamage(info, damageAmount);
+            }
+        }
+
+        if (info.owner != null) {
+            for (AbstractPower power : info.owner.powers) {
+                damageAmount = power.onAttackToChangeDamage(info, damageAmount);
+            }
+        }
+
+        for (AbstractRelic r : this.relics) {
+            damageAmount = r.onAttackedToChangeDamage(info, damageAmount);
+        }
+
+        for (AbstractPower power : this.powers) {
+            damageAmount = power.onAttackedToChangeDamage(info, damageAmount);
+        }
+
+        if (info.owner == this) {
+            for (AbstractRelic r : this.relics) {
+                r.onAttack(info, damageAmount, this);
+            }
+        }
+
+        if (info.owner != null) {
+            for (AbstractPower power : info.owner.powers) {
+                power.onAttack(info, damageAmount, this);
+            }
+
+            for (AbstractPower power : this.powers) {
+                damageAmount = power.onAttacked(info, damageAmount);
+            }
+
+            for (AbstractRelic r : this.relics) {
+                damageAmount = r.onAttacked(info, damageAmount);
+            }
+        }
+
+        for (AbstractRelic r : this.relics) {
+            damageAmount = r.onLoseHpLast(damageAmount);
+        }
+
+        this.lastDamageTaken = Math.min(damageAmount, this.currentHealth);
+        if (damageAmount > 0) {
+            for (AbstractPower power : this.powers) {
+                damageAmount = power.onLoseHp(damageAmount);
+            }
+
+            for (AbstractRelic r : this.relics) {
+                r.onLoseHp(damageAmount);
+            }
+
+            for (AbstractPower power : this.powers) {
+                power.wasHPLost(info, damageAmount);
+            }
+
+            for (AbstractRelic r : this.relics) {
+                r.wasHPLost(damageAmount);
+            }
+
+            if (info.owner != null) {
+                for (AbstractPower power : info.owner.powers) {
+                    power.onInflictDamage(info, damageAmount, this);
+                }
+            }
+
+            if (info.owner != this) {
+                this.useStaggerAnimation();
+            }
+
+            if (info.type == DamageInfo.DamageType.HP_LOSS) {
+                GameActionManager.hpLossThisCombat += damageAmount;
+            }
+
+            GameActionManager.damageReceivedThisTurn += damageAmount;
+            GameActionManager.damageReceivedThisCombat += damageAmount;
+            this.currentHealth -= damageAmount;
+            if (damageAmount > 0 && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
+                try {
+                    Method method = AbstractPlayer.class.getDeclaredMethod("updateCardsOnDamage");
+                    method.setAccessible(true);
+                    method.invoke(this);
+                } catch (Exception e) {
+                    AndroidTestMod.logger.error("Failed to invoke updateCardsOnDamage: {}", e.getMessage());
+                }
+
+                ++this.damagedThisCombat;
+            }
+
+            AbstractDungeon.effectList.add(new StrikeEffect(this, this.hb.cX, this.hb.cY, damageAmount));
+            if (this.currentHealth < 0) {
+                this.currentHealth = 0;
+            } else if (this.currentHealth < this.maxHealth / 4) {
+                AbstractDungeon.topLevelEffects.add(new BorderFlashEffect(new Color(1.0F, 0.1F, 0.05F, 0.0F)));
+            }
+
+            this.healthBarUpdatedEvent();
+            if ((float) this.currentHealth <= (float) this.maxHealth / 2.0F && !this.isBloodied) {
+                this.isBloodied = true;
+
+                for (AbstractRelic r : this.relics) {
+                    if (r != null) {
+                        r.onBloodied();
+                    }
+                }
+            }
+
+            if (this.currentHealth < 1) {
+                if (!this.hasRelic("Mark of the Bloom")) {
+                    if (this.hasPotion("FairyPotion")) {
+                        for (AbstractPotion p : this.potions) {
+                            if (p.ID.equals("FairyPotion")) {
+                                p.flash();
+                                this.currentHealth = 0;
+                                p.use(this);
+                                AbstractDungeon.topPanel.destroyPotion(p.slot);
+                                return;
+                            }
+                        }
+                    } else if (this.hasRelic("Lizard Tail") && ((LizardTail) this.getRelic("Lizard Tail")).counter == -1) {
+                        this.currentHealth = 0;
+                        this.getRelic("Lizard Tail").onTrigger();
+                        return;
+                    }
+                }
+
+                this.isDead = true;
+                AbstractDungeon.deathScreen = new DeathScreen(AbstractDungeon.getMonsters());
+                this.currentHealth = 0;
+                if (this.currentBlock > 0) {
+                    this.loseBlock();
+                    AbstractDungeon.effectList.add(new HbBlockBrokenEffect(this.hb.cX - this.hb.width / 2.0F + BLOCK_ICON_X, this.hb.cY - this.hb.height / 2.0F + BLOCK_ICON_Y));
+                }
+            }
+        } else if (this.currentBlock > 0) {
+            AbstractDungeon.effectList.add(new BlockedWordEffect(this, this.hb.cX, this.hb.cY, uiStrings.TEXT[0]));
+        } else if (hadBlock) {
+            AbstractDungeon.effectList.add(new BlockedWordEffect(this, this.hb.cX, this.hb.cY, uiStrings.TEXT[0]));
+            AbstractDungeon.effectList.add(new HbBlockBrokenEffect(this.hb.cX - this.hb.width / 2.0F + BLOCK_ICON_X, this.hb.cY - this.hb.height / 2.0F + BLOCK_ICON_Y));
+        } else {
+            AbstractDungeon.effectList.add(new StrikeEffect(this, this.hb.cX, this.hb.cY, 0));
+        }
+    }
+
     // 以下为原版人物枚举、卡牌颜色枚举扩展的枚举，需要写，接下来要用
 
     // 注意此处是在 MyCharacter 类内部的静态嵌套类中定义的新枚举值
     // 不可将该定义放在外部的 MyCharacter 类中，具体原因见《高级技巧 / 01 - Patch / SpireEnum》
     public static class PlayerColorEnum {
-        public static PlayerClass STELLA_CHARACTER;
+        public static PlayerClass STELLA_CHARACTER = AbstractPlayer.PlayerClass.add("STELLA_CHARACTER");
 
         // ***将CardColor和LibraryType的变量名改为你的角色的颜色名称，确保不会与其他mod冲突***
         // ***并且名称需要一致！***
-        public static AbstractCard.CardColor HSR_PINK;
+        public static final AbstractCard.CardColor HSR_PINK = AbstractCard.CardColor.add("HSR_PINK");
     }
 
     public static class PlayerLibraryEnum {
@@ -389,6 +565,6 @@ public class StellaCharacter extends CustomPlayer {
         // ***并且名称需要一致！***
 
         // 这个变量未被使用（呈现灰色）是正常的
-        public static CardLibrary.LibraryType HSR_PINK;
+        public static CardLibrary.LibraryType HSR_PINK = CardLibrary.LibraryType.add("HSR_PINK");
     }
 }

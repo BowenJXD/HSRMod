@@ -108,7 +108,7 @@ public abstract class AbstractCreature {
     public float animY;
     protected float vX;
     protected float vY;
-    protected AbstractCreature.CreatureAnimation animation;
+    protected CreatureAnimation animation;
     protected float animationTimer;
     protected static final float SLOW_ATTACK_ANIM_DUR = 1.0F;
     protected static final float STAGGER_ANIM_DUR = 0.3F;

@@ -1,7 +1,11 @@
 package androidTestMod.relics.common;
 
+import androidTestMod.AndroidTestMod;
+import androidTestMod.effects.MergeEffect;
 import androidTestMod.relics.BaseRelic;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.RainingGoldEffect;
 
 public class RubertEmpireMechanicalCogwheel extends BaseRelic implements IRubertEmpireRelic{
@@ -30,6 +34,25 @@ public class RubertEmpireMechanicalCogwheel extends BaseRelic implements IRubert
             destroy();
         } else {
             AbstractDungeon.effectList.add(new RainingGoldEffect(goldGain));
+        }
+    }
+    
+    public void checkMerge() {
+        AbstractPlayer p = AbstractDungeon.player;
+        boolean merge = p.hasRelic(AndroidTestMod.makePath(RubertEmpireMechanicalCogwheel.ID))
+                && p.hasRelic(AndroidTestMod.makePath(RubertEmpireMechanicalLever.ID))
+                && p.hasRelic(AndroidTestMod.makePath(RubertEmpireMechanicalPiston.ID));
+        if (merge) {
+            boolean b = true;
+            for (AbstractGameEffect e : AbstractDungeon.effectList) {
+                if (e instanceof MergeEffect) {
+                    b = false;
+                    break;
+                }
+            }
+            if (b) {
+                AbstractDungeon.effectList.add(new MergeEffect());
+            }
         }
     }
 }

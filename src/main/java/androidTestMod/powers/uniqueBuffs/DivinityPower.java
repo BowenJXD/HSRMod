@@ -65,4 +65,9 @@ public class DivinityPower extends BuffPower implements PreBlockChangeSubscriber
         }
         return true;
     }
+
+    @Override
+    public int onReceivePowerStacks(AbstractPower power, AbstractCreature target, AbstractCreature source, int stackAmount) {
+        return stackAmount;
+    }
 }

@@ -27,7 +27,6 @@ import androidTestMod.relics.starter.*;
 import androidTestMod.relics.uncommon.*;
 import androidTestMod.utils.PathSelectManager;
 import androidTestMod.utils.RewardEditor;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.android.mods.BaseMod;
@@ -38,8 +37,6 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.localization.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.nio.charset.StandardCharsets;
 
 import static androidTestMod.characters.StellaCharacter.PlayerColorEnum.HSR_PINK;
 import static androidTestMod.characters.StellaCharacter.PlayerColorEnum.STELLA_CHARACTER;
@@ -385,14 +382,50 @@ public final class AndroidTestMod implements EditCardsSubscriber, EditStringsSub
         Gson gson = new Gson();
         updateLanguage();
 
-        String json = Gdx.files.internal("localization/" + lang + "/keywords.json").readString(String.valueOf(StandardCharsets.UTF_8));
+        /*String json = AssetLoader.getString(MOD_NAME, "localization/" + lang + "/keywords.json");
         Keyword[] keywords = gson.fromJson(json, Keyword[].class);
         if (keywords != null) {
             for (Keyword keyword : keywords) {
                 // 这个id要全小写
                 BaseMod.addKeyword(MOD_NAME.toLowerCase(), keyword.NAMES[0], keyword.NAMES, keyword.DESCRIPTION);
             }
-        }
+        }*/
+        BaseMod.addKeyword(AndroidTestMod.MOD_NAME, new String[] { "弹射X", "弹射" }, "执行X次：对随机敌人触发效果。");
+        BaseMod.addKeyword(AndroidTestMod.MOD_NAME, new String[] { "耗能X", "耗能" }, "消耗X充能才能打出。");
+        BaseMod.addKeyword(AndroidTestMod.MOD_NAME, new String[] { "充能" }, "有一些牌需要消耗一定充能才能发动。");
+        BaseMod.addKeyword(AndroidTestMod.MOD_NAME, new String[] { "追击" }, "有 #y追击 关键词的牌为追击牌。追击牌在达成特定条件后，将不消耗费用自动打出（随机选择目标）。");
+        BaseMod.addKeyword(AndroidTestMod.MOD_NAME, new String[] { "持续伤害" }, "包括裂伤，灼烧，触电，风化。受效果增益。");
+        BaseMod.addKeyword(AndroidTestMod.MOD_NAME, new String[] { "击破" }, "通过削韧的伤害将韧性从正数削减至 #b0 及以下的动作视为击破。");
+        BaseMod.addKeyword(AndroidTestMod.MOD_NAME, new String[] { "韧性" }, "受到的伤害-X%。受到属性伤害后，移除削韧值数量的韧性，属性伤害的削韧值为后面括号里的数字（如：物理 #b2 ）。");
+        BaseMod.addKeyword(AndroidTestMod.MOD_NAME, new String[] { "击破状态" }, "将韧性削减至 #b0 及以下时施加的状态。受到的伤害+ #b50% ，造成的伤害- #b25% 。");
+        BaseMod.addKeyword(AndroidTestMod.MOD_NAME, new String[] { "击破效果" }, "冰： #b2 击破伤害，施加 #y冻结 。 NL 物理： #b4 击破伤害，施加 #y裂伤 。 NL 火： #b4 击破伤害，施加 #y灼烧 。 NL 雷： #b2 击破伤害，施加 #y触电 。 NL 风： #b3 击破伤害，施加 #y风化 。 NL 量子： #b1 击破伤害，施加 #y纠缠 。 NL 虚数： #b1 击破伤害，施加 #y禁锢 。");
+        BaseMod.addKeyword(AndroidTestMod.MOD_NAME, new String[] { "冻结" }, "回合开始时，若为普通/精英/首领敌人，且层数不小于 #b1 / #b2 / #b3 层，则移除所有层，并跳过回合。 NL 受到伤害后，移除 #b1 层。");
+        BaseMod.addKeyword(AndroidTestMod.MOD_NAME, new String[] { "裂伤" }, "持续伤害。回合开始时触发：受到生命值上限 #b5% （至多为 #b10 ）的伤害（物理 #b1 ），移除 #b1 层。");
+        BaseMod.addKeyword(AndroidTestMod.MOD_NAME, new String[] { "灼烧" }, "持续伤害。回合开始时触发：受到 #b6 点伤害（火 #b1 ），移除 #b1 层。");
+        BaseMod.addKeyword(AndroidTestMod.MOD_NAME, new String[] { "触电" }, "持续伤害。回合开始时触发：受到 #b7 点伤害（雷 #b1 ），移除 #b1 层。");
+        BaseMod.addKeyword(AndroidTestMod.MOD_NAME, new String[] { "风化" }, "持续伤害。回合开始时触发：受到 #b2X 点伤害（风 #b1 ）（X为层数，至多计入 #b5 层），移除 #b1 层。");
+        BaseMod.addKeyword(AndroidTestMod.MOD_NAME, new String[] { "禁锢" }, "造成的伤害- #b33% ，回合结束时移除 #b1 层。");
+        BaseMod.addKeyword(AndroidTestMod.MOD_NAME, new String[] { "纠缠" }, "受到伤害时叠加 #b1 层，至多 #b5 层。回合开始时移除所有层，受到移除层数数量* #b3 点伤害。");
+        BaseMod.addKeyword(AndroidTestMod.MOD_NAME, new String[] { "击破特攻" }, "造成的击破伤害增加X。对有击破状态的敌人造成的持续伤害+X。");
+        BaseMod.addKeyword(AndroidTestMod.MOD_NAME, new String[] { "击破效率" }, "属性伤害的削韧值增加 #b50% 。回合结束时移除 #b1 层。");
+        BaseMod.addKeyword(AndroidTestMod.MOD_NAME, new String[] { "击破伤害" }, "受 #y击破特攻 增幅，不受 #y力量 增幅。");
+        BaseMod.addKeyword(AndroidTestMod.MOD_NAME, new String[] { "超击破伤害" }, "基数为削韧值的 #y击破伤害 。");
+        BaseMod.addKeyword(AndroidTestMod.MOD_NAME, new String[] { "临时生命" }, "于战斗中临时存在的生命（不受上限限制）。可以作为生命失去。");
+        BaseMod.addKeyword(AndroidTestMod.MOD_NAME, new String[] { "回味" }, "打出追击牌造成伤害后，对目标造成X点伤害，然后叠加 #b1 层。");
+        BaseMod.addKeyword(AndroidTestMod.MOD_NAME, new String[] { "怀疑" }, "受到的持续伤害+X%。至多叠加 #b99 层。");
+        BaseMod.addKeyword(AndroidTestMod.MOD_NAME, new String[] { "反震" }, "一次性失去一半及以上的格挡时，移除 #b1 层，获得 #b1 张伤害值为X的「反震」（X为失去的格挡数）。");
+        BaseMod.addKeyword(AndroidTestMod.MOD_NAME, new String[] { "孢子" }, "至多 #b6 层，回合开始时移除 #b1 层。成为攻击牌的目标后爆裂：移除所有层，受到X*X的伤害（风 #b1 ）。");
+        BaseMod.addKeyword(AndroidTestMod.MOD_NAME, new String[] { "会心" }, "至多叠加 #b8 层。造成的伤害+X。被攻击后移除所有层。");
+        BaseMod.addKeyword(AndroidTestMod.MOD_NAME, new String[] { "罐中脑" }, "消耗充能后，移除 #b1 层，回复等量的充能。");
+        BaseMod.addKeyword(AndroidTestMod.MOD_NAME, new String[] { "格挡返还" }, "对其造成伤害后，获得X层格挡。");
+        BaseMod.addKeyword(AndroidTestMod.MOD_NAME, new String[] { "残梦" }, "回合结束时，若不小于 #b9 层，则消耗 #b9 层，施放 #r残梦尽染，一刀缭断 ：弹射 #b3 次：造成 #b5 点伤害（雷 #b1 ）；最后对所有敌人造成 #b5+X 点伤害（雷 #b1 ）（X为其负面效果数）。");
+        BaseMod.addKeyword(AndroidTestMod.MOD_NAME, new String[] { "盲注" }, "叠加后，若不小于 #b7 层，则消耗 #b7 层，获得 #y宾果！ 。");
+        BaseMod.addKeyword(AndroidTestMod.MOD_NAME, new String[] { "格挡返还" }, "每当受到攻击时，你获得X点格挡。");
+        BaseMod.addKeyword(AndroidTestMod.MOD_NAME, new String[] { "柔韧" }, "受到攻击时，获得X点格挡。每触发一次，获得的格挡值都会增加。在你的回合开始时重新变回X点。");
+        BaseMod.addKeyword(AndroidTestMod.MOD_NAME, new String[] { "余像" }, "你每打出一张牌，得到X点格挡。");
+        BaseMod.addKeyword(AndroidTestMod.MOD_NAME, new String[] { "多重护甲" }, "在你的回合结束时获得X点格挡。受到攻击伤害而失去生命时，层数- #b1 。");
+        BaseMod.addKeyword(AndroidTestMod.MOD_NAME, new String[] { "坏死" }, "触发并叠加1层坏死（回合开始时，移除1层并触发：若有X点临时生命，失去之。）。");
+        BaseMod.addKeyword(AndroidTestMod.MOD_NAME, new String[] { "珠露" }, "回合结束时，移除所有层触发：对随机敌人造成X点固定伤害。");
     }
 
     @Override

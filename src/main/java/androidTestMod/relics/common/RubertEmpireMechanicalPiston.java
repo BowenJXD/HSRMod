@@ -1,10 +1,14 @@
 package androidTestMod.relics.common;
 
+import androidTestMod.AndroidTestMod;
+import androidTestMod.effects.MergeEffect;
 import androidTestMod.relics.BaseRelic;
 import androidTestMod.utils.ModHelper;
 import androidTestMod.utils.RelicEventHelper;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,5 +61,24 @@ public class RubertEmpireMechanicalPiston extends BaseRelic implements IRubertEm
                 RelicEventHelper.gainRelics(relicAmt);
             }
         });
+    }
+
+    public void checkMerge() {
+        AbstractPlayer p = AbstractDungeon.player;
+        boolean merge = p.hasRelic(AndroidTestMod.makePath(RubertEmpireMechanicalCogwheel.ID))
+                && p.hasRelic(AndroidTestMod.makePath(RubertEmpireMechanicalLever.ID))
+                && p.hasRelic(AndroidTestMod.makePath(RubertEmpireMechanicalPiston.ID));
+        if (merge) {
+            boolean b = true;
+            for (AbstractGameEffect e : AbstractDungeon.effectList) {
+                if (e instanceof MergeEffect) {
+                    b = false;
+                    break;
+                }
+            }
+            if (b) {
+                AbstractDungeon.effectList.add(new MergeEffect());
+            }
+        }
     }
 }

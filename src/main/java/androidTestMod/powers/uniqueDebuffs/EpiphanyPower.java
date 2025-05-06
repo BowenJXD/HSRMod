@@ -66,4 +66,9 @@ public class EpiphanyPower extends DebuffPower implements OnReceivePowerPower, P
         }
         return true;
     }
+
+    @Override
+    public int onReceivePowerStacks(AbstractPower power, AbstractCreature target, AbstractCreature source, int stackAmount) {
+        return stackAmount;
+    }
 }

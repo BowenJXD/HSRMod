@@ -1,13 +1,10 @@
 package androidTestMod.utils;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
+import androidTestMod.AndroidTestMod;
+import com.megacrit.cardcrawl.android.mods.AssetLoader;
 import com.megacrit.cardcrawl.core.Settings;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -52,8 +49,9 @@ public class DataManager {
 
     public static Map<String, String[]> parseCSV(String filePath) {
         Map<String, String[]> resultMap = new HashMap<>();
-        FileHandle fileHandle = Gdx.files.internal(filePath);
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(fileHandle.read(), charset))) {
+        // FileHandle fileHandle = Gdx.files.internal(filePath);
+        String file = AssetLoader.getString(AndroidTestMod.MOD_NAME, filePath);
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(file.getBytes(charset)), charset))) {
             String line;
             while ((line = br.readLine()) != null) {
                 // 使用自定义的解析方法

@@ -1,5 +1,5 @@
 {
-  "HSRMod:TheGreatSeptimus": {
+  "AndroidTestMod:TheGreatSeptimus": {
     "NAME": "「齐响诗班」神主日",
     "MOVES": [
       "在梦中的",
@@ -29,7 +29,7 @@
       "今宵…梦短……"
     ]
   },
-  "HSRMod:EchoOfFadedDreams": {
+  "AndroidTestMod:EchoOfFadedDreams": {
     "NAME": "旧梦的回音",
     "MOVES": [
       "受折磨的",
@@ -39,7 +39,7 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:Skaracabaz": {
+  "AndroidTestMod:Skaracabaz": {
     "NAME": "碎星王虫 · 斯喀拉卡巴兹",
     "MOVES": [
       "辐裂蛰毒",
@@ -49,14 +49,14 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:GnawSting": {
+  "AndroidTestMod:GnawSting": {
     "NAME": "蚀蛰虫",
     "MOVES": [
       "角击"
     ],
     "DIALOG": []
   },
-  "HSRMod:LesserSting": {
+  "AndroidTestMod:LesserSting": {
     "NAME": "次蛰虫",
     "MOVES": [
       "预备兵器",
@@ -65,7 +65,7 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:Phantylia": {
+  "AndroidTestMod:Phantylia": {
     "NAME": "不死神实·幻胧",
     "MOVES": [
       "扫尽尘云",
@@ -88,7 +88,7 @@
       "#r朝生暮死"
     ]
   },
-  "HSRMod:AbundanceLotus": {
+  "AndroidTestMod:AbundanceLotus": {
     "NAME": "丰饶玄莲",
     "MOVES": [
       "不生",
@@ -96,7 +96,7 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:DestructionLotus": {
+  "AndroidTestMod:DestructionLotus": {
     "NAME": "破灭玄莲",
     "MOVES": [
       "玄气噬身",
@@ -104,7 +104,7 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:ShadowOfFeixiao": {
+  "AndroidTestMod:ShadowOfFeixiao": {
     "NAME": "飞霄之影",
     "MOVES": [
       "巨钺 · 铁爪",
@@ -124,7 +124,7 @@
       "狩猎...失败了..."
     ]
   },
-  "HSRMod:NebulaDevourer": {
+  "AndroidTestMod:NebulaDevourer": {
     "NAME": "喰云之首",
     "MOVES": [
       "喰云",
@@ -134,7 +134,7 @@
     "DIALOG": [
     ]
   },
-  "HSRMod:PlaneshredClaws": {
+  "AndroidTestMod:PlaneshredClaws": {
     "NAME": "裂维之爪",
     "MOVES": [
       "裂维",
@@ -144,7 +144,7 @@
     "DIALOG": [
     ]
   },
-  "HSRMod:WorldpurgeTail": {
+  "AndroidTestMod:WorldpurgeTail": {
     "NAME": "辟尘之尾",
     "MOVES": [
       "辟尘",
@@ -154,7 +154,7 @@
     "DIALOG": [
     ]
   },
-  "HSRMod:Cocolia": {
+  "AndroidTestMod:Cocolia": {
     "NAME": "可可莉亚，虚妄之母",
     "MOVES": [
       "冷酷灭世者之唤",
@@ -176,7 +176,7 @@
       "#r@崭新的未来！@"
     ]
   },
-  "HSRMod:LanceOfTheEternalFreeze": {
+  "AndroidTestMod:LanceOfTheEternalFreeze": {
     "NAME": "无尽寒冬之槊",
     "MOVES": [
       "永冬余响",
@@ -185,7 +185,7 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:DawnsLeftHand": {
+  "AndroidTestMod:DawnsLeftHand": {
     "NAME": "黎明的左手",
     "MOVES": [
       "陨落的锤锻",
@@ -194,7 +194,7 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:AntimatterEngine": {
+  "AndroidTestMod:AntimatterEngine": {
     "NAME": "反物质引擎",
     "MOVES": [
       "顺逆湮灭",
@@ -207,7 +207,7 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:DisastersRightHand": {
+  "AndroidTestMod:DisastersRightHand": {
     "NAME": "灾厄的右手",
     "MOVES": [
       "灾殃的撕裂",
@@ -216,7 +216,7 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:SomethingUntoDeath": {
+  "AndroidTestMod:SomethingUntoDeath": {
     "NAME": "何物朝向死亡",
     "MOVES": [
       "步入良夜",
@@ -227,14 +227,14 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:SombrousSepulcher": {
+  "AndroidTestMod:SombrousSepulcher": {
     "NAME": "永眠墓碣",
     "MOVES": [
       "一切逝去的时间"
     ],
     "DIALOG": []
   },
-  "HSRMod:AventurineOfStratagems": {
+  "AndroidTestMod:AventurineOfStratagems": {
     "NAME": "「石心十人」诡弈砂金   ",
     "MOVES": [
       "分散投资",
@@ -254,7 +254,7 @@
       ""
     ]
   },
-  "HSRMod:AllOrNothing": {
+  "AndroidTestMod:AllOrNothing": {
     "NAME": "「所有或一无所有」",
     "MOVES": [
       "",
@@ -263,7 +263,7 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:Sam": {
+  "AndroidTestMod:Sam": {
     "NAME": "「星核猎手」萨姆  ",
     "MOVES": [
       "BHF-天火",
@@ -283,7 +283,7 @@
       "任务…失败。"
     ]
   },
-  "HSRMod:Hoolay": {
+  "AndroidTestMod:Hoolay": {
     "NAME": "步离战首 · 呼雷",
     "MOVES": [
       "斩铁成爪",
@@ -303,21 +303,21 @@
       "#r@你们，无处可退！@"
     ]
   },
-  "HSRMod:SableclawWolftrooper": {
+  "AndroidTestMod:SableclawWolftrooper": {
     "NAME": "玄爪狼卒",
     "MOVES": [
       "啃噬"
     ],
     "DIALOG": []
   },
-  "HSRMod:EclipseWolftrooper": {
+  "AndroidTestMod:EclipseWolftrooper": {
     "NAME": "蚀月狼卒",
     "MOVES": [
       "厮杀"
     ],
     "DIALOG": []
   },
-  "HSRMod:AbundantEbonDeer": {
+  "AndroidTestMod:AbundantEbonDeer": {
     "NAME": "丰饶玄鹿",
     "MOVES": [
       "衔枝",
@@ -329,14 +329,14 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:TwigOfWintryWind": {
+  "AndroidTestMod:TwigOfWintryWind": {
     "NAME": "肃风之杪",
     "MOVES": [
       "怒噪"
     ],
     "DIALOG": []
   },
-  "HSRMod:TwigOfMarpleLeaf": {
+  "AndroidTestMod:TwigOfMarpleLeaf": {
     "NAME": "缃叶之杪",
     "MOVES": [
       "繁生",
@@ -344,14 +344,14 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:TwigOfGloriousBlooms": {
+  "AndroidTestMod:TwigOfGloriousBlooms": {
     "NAME": "繁花之杪",
     "MOVES": [
       "驻春"
     ],
     "DIALOG": []
   },
-  "HSRMod:TwigOfLavishFruits": {
+  "AndroidTestMod:TwigOfLavishFruits": {
     "NAME": "嘉实之杪",
     "MOVES": [
       "初实",
@@ -359,7 +359,7 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:Cirrus": {
+  "AndroidTestMod:Cirrus": {
     "NAME": "浮烟",
     "MOVES": [
       "棋快一着"
@@ -369,7 +369,7 @@
       "我还…没输…"
     ]
   },
-  "HSRMod:Yanqing": {
+  "AndroidTestMod:Yanqing": {
     "NAME": "云骑骁卫 · 彦卿",
     "MOVES": [
       "燕归来",
@@ -390,14 +390,14 @@
       "有负所托…"
     ]
   },
-  "HSRMod:FlyingSword": {
+  "AndroidTestMod:FlyingSword": {
     "NAME": "飞剑",
     "MOVES": [
       "琢玉击"
     ],
     "DIALOG": []
   },
-  "HSRMod:Gepard": {
+  "AndroidTestMod:Gepard": {
     "NAME": "杰帕德",
     "MOVES": [
       "霜之惩击",
@@ -411,7 +411,7 @@
       "@就此终结！@"
     ]
   },
-  "HSRMod:Bronya": {
+  "AndroidTestMod:Bronya": {
     "NAME": "布洛妮娅",
     "MOVES": [
       "增援协同",
@@ -422,7 +422,7 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:Svarog": {
+  "AndroidTestMod:Svarog": {
     "NAME": "史瓦罗",
     "MOVES": [
       "延烧光束",
@@ -431,7 +431,7 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:RobotArmUnit": {
+  "AndroidTestMod:RobotArmUnit": {
     "NAME": "辅助机械臂单元",
     "MOVES": [
       "巨掌之间",
@@ -441,7 +441,7 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:SweetGorilla": {
+  "AndroidTestMod:SweetGorilla": {
     "NAME": "甜猿泰山",
     "MOVES": [
       "苏乐达派对",
@@ -452,7 +452,7 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:BeyondOvercooked": {
+  "AndroidTestMod:BeyondOvercooked": {
     "NAME": "十七分熟",
     "MOVES": [
       "猛火炉灶",
@@ -463,7 +463,7 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:ShellOfFadedRage": {
+  "AndroidTestMod:ShellOfFadedRage": {
     "NAME": "狂怒褪去之壳",
     "MOVES": [
       "宿怨如浪翻涌",
@@ -473,7 +473,7 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:PastConfinedAndCaged": {
+  "AndroidTestMod:PastConfinedAndCaged": {
     "NAME": "「身陷樊笼的往昔」",
     "MOVES": [
       "责打入人心",
@@ -484,7 +484,7 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:PresentInebriatedInRevelry": {
+  "AndroidTestMod:PresentInebriatedInRevelry": {
     "NAME": "「醉于盛会的此刻」",
     "MOVES": [
       "为你摆设筵席",
@@ -495,7 +495,7 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:TomorrowInHarmoniousChords": {
+  "AndroidTestMod:TomorrowInHarmoniousChords": {
     "NAME": "「同音共律的来日」",
     "MOVES": [
       "光华射",
@@ -507,7 +507,7 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:TeamLeader": {
+  "AndroidTestMod:TeamLeader": {
     "NAME": "资深员工 · 组长",
     "MOVES": [
       "团建",
@@ -518,14 +518,14 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:FieldPersonnel": {
+  "AndroidTestMod:FieldPersonnel": {
     "NAME": "基层员工 · 安保",
     "MOVES": [
       "提升业绩"
     ],
     "DIALOG": []
   },
-  "HSRMod:CharmonyBananAdvisor": {
+  "AndroidTestMod:CharmonyBananAdvisor": {
     "NAME": "谐乐蕉师",
     "MOVES": [
       "体罚，尝尝蕉训！",
@@ -536,7 +536,7 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:BubbleHound": {
+  "AndroidTestMod:BubbleHound": {
     "NAME": "气泡锂犬",
     "MOVES": [
       "邀饮",
@@ -545,7 +545,7 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:MrDomescreen": {
+  "AndroidTestMod:MrDomescreen": {
     "NAME": "圆幕先生",
     "MOVES": [
       "惊喜综艺",
@@ -554,7 +554,7 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:Assistanana": {
+  "AndroidTestMod:Assistanana": {
     "NAME": "助蕉",
     "MOVES": [
       "蕉喜假期",
@@ -564,7 +564,7 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:DreamweaverBananAdvisor": {
+  "AndroidTestMod:DreamweaverBananAdvisor": {
     "NAME": "筑梦蕉师",
     "MOVES": [
       "下课铃，冲冲冲！",
@@ -574,7 +574,7 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:FortuneBananAdvisor": {
+  "AndroidTestMod:FortuneBananAdvisor": {
     "NAME": "财富蕉师",
     "MOVES": [
       "好猴来了有学分",
@@ -584,49 +584,49 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:SpringLoader": {
+  "AndroidTestMod:SpringLoader": {
     "NAME": "弹簧荷官",
     "MOVES": [
       "掷点"
     ],
     "DIALOG": []
   },
-  "HSRMod:Birdskull": {
+  "AndroidTestMod:Birdskull": {
     "NAME": "舞鸫假面",
     "MOVES": [
       "邀舞"
     ],
     "DIALOG": []
   },
-  "HSRMod:Heartbreaker": {
+  "AndroidTestMod:Heartbreaker": {
     "NAME": "我心支离破碎",
     "MOVES": [
       "排异"
     ],
     "DIALOG": []
   },
-  "HSRMod:InsatiableVanity": {
+  "AndroidTestMod:InsatiableVanity": {
     "NAME": "虚荣永无餍足",
     "MOVES": [
       "浮名加封"
     ],
     "DIALOG": []
   },
-  "HSRMod:SomethingInTheMirror": {
+  "AndroidTestMod:SomethingInTheMirror": {
     "NAME": "何物藏于镜中",
     "MOVES": [
       "镜像认同"
     ],
     "DIALOG": []
   },
-  "HSRMod:Allseer": {
+  "AndroidTestMod:Allseer": {
     "NAME": "视线无处不在",
     "MOVES": [
       "他者凝视"
     ],
     "DIALOG": []
   },
-  "HSRMod:AurumatonGatekeeper": {
+  "AndroidTestMod:AurumatonGatekeeper": {
     "NAME": "金人司阍",
     "MOVES": [
       "奉辞罚罪",
@@ -640,7 +640,7 @@
       "@违令必惩@"
     ]
   },
-  "HSRMod:IlluminationDragonfish": {
+  "AndroidTestMod:IlluminationDragonfish": {
     "NAME": "灯昼龙鱼",
     "MOVES": [
       "宵明",
@@ -649,14 +649,14 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:ObedientDracolion": {
+  "AndroidTestMod:ObedientDracolion": {
     "NAME": "率从狻猊",
     "MOVES": [
       "狮子吼"
     ],
     "DIALOG": []
   },
-  "HSRMod:ShapeShifter": {
+  "AndroidTestMod:ShapeShifter": {
     "NAME": "炼形者",
     "MOVES": [
       "震击",
@@ -668,14 +668,14 @@
       "@仙迹长存！@"
     ]
   },
-  "HSRMod:MaraStruckSoldier": {
+  "AndroidTestMod:MaraStruckSoldier": {
     "NAME": "魔阴身士卒",
     "MOVES": [
       "梢杀"
     ],
     "DIALOG": []
   },
-  "HSRMod:HowlingCasket": {
+  "AndroidTestMod:HowlingCasket": {
     "NAME": "咆哮灵柩",
     "MOVES": [
       "电震咆哮",
@@ -689,7 +689,7 @@
       "@野兽形态！@"
     ]
   },
-  "HSRMod:AurumatonSpectralEnvoy": {
+  "AndroidTestMod:AurumatonSpectralEnvoy": {
     "NAME": "金人勾魂使",
     "MOVES": [
       "剖判",
@@ -703,14 +703,14 @@
       "@不得反抗！@"
     ]
   },
-  "HSRMod:WraithWarden": {
+  "AndroidTestMod:WraithWarden": {
     "NAME": "幽府武弁",
     "MOVES": [
       "锯恶"
     ],
     "DIALOG": []
   },
-  "HSRMod:MaleficApe": {
+  "AndroidTestMod:MaleficApe": {
     "NAME": "长右",
     "MOVES": [
       "奋威",
@@ -719,7 +719,7 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:TheAscended": {
+  "AndroidTestMod:TheAscended": {
     "NAME": "承露天人",
     "MOVES": [
       "玄气噬身",
@@ -731,7 +731,7 @@
       "仙道已成！"
     ]
   },
-  "HSRMod:InternalAlchemist": {
+  "AndroidTestMod:InternalAlchemist": {
     "NAME": "内丹士",
     "MOVES": [
       "种丹",
@@ -739,7 +739,7 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:GoldenHound": {
+  "AndroidTestMod:GoldenHound": {
     "NAME": "娄金",
     "MOVES": [
       "角牴",
@@ -748,7 +748,7 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:WoodenLupus": {
+  "AndroidTestMod:WoodenLupus": {
     "NAME": "奎木",
     "MOVES": [
       "狼餐",
@@ -756,14 +756,14 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:ShadowJackhyena": {
+  "AndroidTestMod:ShadowJackhyena": {
     "NAME": "狈影",
     "MOVES": [
       "狼餐"
     ],
     "DIALOG": []
   },
-  "HSRMod:CloudKnightsPatroller": {
+  "AndroidTestMod:CloudKnightsPatroller": {
     "NAME": "云骑巡防士卒",
     "MOVES": [
       "云刃",
@@ -778,28 +778,28 @@
       "@不！@"
     ]
   },
-  "HSRMod:MaraStruckWarden": {
+  "AndroidTestMod:MaraStruckWarden": {
     "NAME": "魔阴武弁",
     "MOVES": [
       "锯恶"
     ],
     "DIALOG": []
   },
-  "HSRMod:Ballistarius": {
+  "AndroidTestMod:Ballistarius": {
     "NAME": "器元士",
     "MOVES": [
       "犀弩"
     ],
     "DIALOG": []
   },
-  "HSRMod:GoldenCloudToad": {
+  "AndroidTestMod:GoldenCloudToad": {
     "NAME": "浓云金蟾",
     "MOVES": [
       "霏雾"
     ],
     "DIALOG": []
   },
-  "HSRMod:Grizzly": {
+  "AndroidTestMod:Grizzly": {
     "NAME": "灰熊",
     "MOVES": [
       "爆裂指令",
@@ -810,7 +810,7 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:Spider": {
+  "AndroidTestMod:Spider": {
     "NAME": "蜘蛛",
     "MOVES": [
       "冲撞",
@@ -822,14 +822,14 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:Beetle": {
+  "AndroidTestMod:Beetle": {
     "NAME": "甲虫",
     "MOVES": [
       "不稳定力场"
     ],
     "DIALOG": []
   },
-  "HSRMod:GuardianShadow": {
+  "AndroidTestMod:GuardianShadow": {
     "NAME": "守护者之影",
     "MOVES": [
       "追忆闪电",
@@ -837,7 +837,7 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:FrigidProwler": {
+  "AndroidTestMod:FrigidProwler": {
     "NAME": "深寒徘徊者",
     "MOVES": [
       "召来衍生物",
@@ -849,21 +849,21 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:EverwinterShadewalker": {
+  "AndroidTestMod:EverwinterShadewalker": {
     "NAME": "永冬灾影",
     "MOVES": [
       "霜冻重击"
     ],
     "DIALOG": []
   },
-  "HSRMod:IncinerationShadewalker": {
+  "AndroidTestMod:IncinerationShadewalker": {
     "NAME": "火焚灾影",
     "MOVES": [
       "灼炎重击"
     ],
     "DIALOG": []
   },
-  "HSRMod:DecayingShadow": {
+  "AndroidTestMod:DecayingShadow": {
     "NAME": "蚕食者之影",
     "MOVES": [
       "流年谴罚",
@@ -874,7 +874,7 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:SilvermaneLieutenant": {
+  "AndroidTestMod:SilvermaneLieutenant": {
     "NAME": "银鬃尉官",
     "MOVES": [
       "突击",
@@ -884,7 +884,7 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:Stormbringer": {
+  "AndroidTestMod:Stormbringer": {
     "NAME": "兴风者",
     "MOVES": [
       "踏风而行",
@@ -895,7 +895,7 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:Direwolf": {
+  "AndroidTestMod:Direwolf": {
     "NAME": "齿狼",
     "MOVES": [
       "解体指令",
@@ -905,7 +905,7 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:Hound": {
+  "AndroidTestMod:Hound": {
     "NAME": "战犬",
     "MOVES": [
       "垂直打击",
@@ -913,7 +913,7 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:Vagrant": {
+  "AndroidTestMod:Vagrant": {
     "NAME": "流浪者",
     "MOVES": [
       "铲击",
@@ -928,14 +928,14 @@
       "@不！@"
     ]
   },
-  "HSRMod:SilvermaneSoldier": {
+  "AndroidTestMod:SilvermaneSoldier": {
     "NAME": "银鬃近卫",
     "MOVES": [
       "奔袭"
     ],
     "DIALOG": []
   },
-  "HSRMod:MaskOfNoThought": {
+  "AndroidTestMod:MaskOfNoThought": {
     "NAME": "无想面具",
     "MOVES": [
       "虹彩光束",
@@ -945,35 +945,35 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:Thunderspawn": {
+  "AndroidTestMod:Thunderspawn": {
     "NAME": "鸣雷造物",
     "MOVES": [
       "雷腾"
     ],
     "DIALOG": []
   },
-  "HSRMod:Windspawn": {
+  "AndroidTestMod:Windspawn": {
     "NAME": "巽风造物",
     "MOVES": [
       "风色"
     ],
     "DIALOG": []
   },
-  "HSRMod:Flamespawn": {
+  "AndroidTestMod:Flamespawn": {
     "NAME": "炎华造物",
     "MOVES": [
       "烈袭"
     ],
     "DIALOG": []
   },
-  "HSRMod:Frostspawn": {
+  "AndroidTestMod:Frostspawn": {
     "NAME": "霜晶造物",
     "MOVES": [
       "冰封"
     ],
     "DIALOG": []
   },
-  "HSRMod:SequenceTrotter": {
+  "AndroidTestMod:SequenceTrotter": {
     "NAME": "序列扑满",
     "MOVES": [
       "害…害怕",
@@ -982,7 +982,7 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:WarpTrotter": {
+  "AndroidTestMod:WarpTrotter": {
     "NAME": "次元扑满",
     "MOVES": [
       "害…害怕",
@@ -991,14 +991,14 @@
     ],
     "DIALOG": []
   },
-  "HSRMod:LordlyTrashcan": {
+  "AndroidTestMod:LordlyTrashcan": {
     "NAME": "王下一桶",
     "MOVES": [
       "桶的锤炼"
     ],
     "DIALOG": []
   },
-  "HSRMod:KingTrashcan": {
+  "AndroidTestMod:KingTrashcan": {
     "NAME": "王下一桶·玫瑰金",
     "MOVES": [
       "桶的锤炼"

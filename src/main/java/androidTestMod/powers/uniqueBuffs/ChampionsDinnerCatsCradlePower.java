@@ -85,6 +85,11 @@ public class ChampionsDinnerCatsCradlePower extends PowerPower implements OnRece
     }
 
     @Override
+    public int onReceivePowerStacks(AbstractPower power, AbstractCreature target, AbstractCreature source, int stackAmount) {
+        return stackAmount;
+    }
+
+    @Override
     public void onSpecificTrigger() {
         super.onSpecificTrigger();
         if (AbstractDungeon.cardRandomRng.random(99) < chance) {

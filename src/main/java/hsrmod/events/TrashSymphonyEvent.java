@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import hsrmod.misc.Encounter;
 import hsrmod.modcore.HSRMod;
 import hsrmod.patches.RelicTagField;
+import hsrmod.utils.PathDefine;
 import hsrmod.utils.RelicEventHelper;
 
 public class TrashSymphonyEvent extends PhasedEvent {
@@ -20,7 +21,7 @@ public class TrashSymphonyEvent extends PhasedEvent {
     private static final String NAME = eventStrings.NAME;
     
     public TrashSymphonyEvent(){
-        super(ID, NAME, "HSRModResources/img/events/" + ID + ".png");
+        super(ID, NAME, PathDefine.EVENT_PATH + ID + ".png");
         
         registerPhase(0, new TextPhase(DESCRIPTIONS[0]).addOption(OPTIONS[0], (i)->transitionKey(1)));
         registerPhase(1, new TextPhase(DESCRIPTIONS[1])

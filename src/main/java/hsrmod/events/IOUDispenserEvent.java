@@ -13,6 +13,7 @@ import hsrmod.relics.common.AngelTypeIOUDispenser;
 import hsrmod.relics.starter.WaxOfNihility;
 import hsrmod.utils.GeneralUtil;
 import hsrmod.utils.ModHelper;
+import hsrmod.utils.PathDefine;
 import hsrmod.utils.RelicEventHelper;
 
 public class IOUDispenserEvent extends PhasedEvent {
@@ -25,7 +26,7 @@ public class IOUDispenserEvent extends PhasedEvent {
     int goldAmount = 100;
     
     public IOUDispenserEvent() {
-        super(ID, NAME, "HSRModResources/img/events/" + ID + ".png");
+        super(ID, NAME, PathDefine.EVENT_PATH + ID + ".png");
         
         goldAmount = ModHelper.eventAscension() ? 75 : 100;
 

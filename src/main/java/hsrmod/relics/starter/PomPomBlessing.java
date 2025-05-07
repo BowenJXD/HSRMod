@@ -2,7 +2,6 @@ package hsrmod.relics.starter;
 
 import basemod.abstracts.CustomMultiPageFtue;
 import basemod.abstracts.CustomRelic;
-import basemod.abstracts.CustomSavable;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsAction;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
@@ -21,15 +20,12 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.IntangiblePlayerPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.ui.FtueTip;
-import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import hsrmod.actions.ReduceChargeByHandCardNumAction;
 import hsrmod.cards.base.Danheng0;
 import hsrmod.cards.base.Himeko0;
 import hsrmod.cards.base.March7th0;
 import hsrmod.cards.base.Welt0;
 import hsrmod.cardsV2.Abundance.Castorice1;
-import hsrmod.characters.StellaCharacter;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
 import hsrmod.modcore.HSRModConfig;
@@ -53,7 +49,7 @@ public class PomPomBlessing extends CustomRelic implements ClickableRelic, ITuto
     // 遗物ID（此处的ModHelper在“04 - 本地化”中提到）
     public static final String ID = HSRMod.makePath(PomPomBlessing.class.getSimpleName());
     // 图片路径
-    private static final String IMG_PATH = "HSRModResources/img/relics/PomPomBlessing.png";
+    private static final String IMG_PATH = PathDefine.RELIC_PATH + "PomPomBlessing.png";
     // 遗物类型
     private static final RelicTier RELIC_TIER = RelicTier.STARTER;
     // 点击音效

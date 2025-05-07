@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ReduceToughnessAction;
-import hsrmod.characters.StellaCharacter;
+import hsrmod.misc.IHSRCharacter;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
@@ -64,7 +64,7 @@ public class ToughnessPower extends BuffPower implements InvisiblePower{
     @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
         if (!(info instanceof ElementalDamageInfo)
-                && !(AbstractDungeon.player instanceof StellaCharacter)
+                && !(AbstractDungeon.player instanceof IHSRCharacter)
                 && info.type != DamageInfo.DamageType.HP_LOSS) {
             addToTop(new ReduceToughnessAction(owner, info.owner, 2, ElementType.None));
         }

@@ -4,14 +4,13 @@ import basemod.abstracts.events.PhasedEvent;
 import basemod.abstracts.events.phases.CombatPhase;
 import basemod.abstracts.events.phases.TextPhase;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.MonsterHelper;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import hsrmod.misc.Encounter;
 import hsrmod.modcore.HSRMod;
 import hsrmod.relics.starter.WaxOfDestruction;
 import hsrmod.utils.ModHelper;
+import hsrmod.utils.PathDefine;
 
 public class TavernEvent extends PhasedEvent {
     public static final String ID = TavernEvent.class.getSimpleName();
@@ -21,7 +20,7 @@ public class TavernEvent extends PhasedEvent {
     private static final String NAME = eventStrings.NAME;
 
     public TavernEvent() {
-        super(ID, NAME, "HSRModResources/img/events/" + ID + ".png");
+        super(ID, NAME, PathDefine.EVENT_PATH + ID + ".png");
 
         registerPhase(0, new TextPhase(DESCRIPTIONS[0]).addOption(OPTIONS[0], (i) -> transitionKey(1)));
 

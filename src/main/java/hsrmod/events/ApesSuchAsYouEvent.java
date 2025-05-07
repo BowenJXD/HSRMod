@@ -6,13 +6,13 @@ import basemod.abstracts.events.phases.TextPhase;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import hsrmod.misc.Encounter;
 import hsrmod.modcore.HSRMod;
 import hsrmod.utils.GeneralUtil;
 import hsrmod.utils.ModHelper;
+import hsrmod.utils.PathDefine;
 import hsrmod.utils.RelicEventHelper;
 
 public class ApesSuchAsYouEvent extends PhasedEvent {
@@ -29,7 +29,7 @@ public class ApesSuchAsYouEvent extends PhasedEvent {
     int[] tummyChances = new int[]{40, 60};
 
     public ApesSuchAsYouEvent() {
-        super(ID, NAME, "HSRModResources/img/events/" + ID + ".png");
+        super(ID, NAME, PathDefine.EVENT_PATH + ID + ".png");
         
         goldGain = ModHelper.eventAscension() ? 75 : 100;
         hpLoss = ModHelper.eventAscension() ? 25 : 20;

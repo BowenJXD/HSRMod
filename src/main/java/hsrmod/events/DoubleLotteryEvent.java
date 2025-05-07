@@ -14,6 +14,7 @@ import hsrmod.relics.starter.WaxOfErudition;
 import hsrmod.relics.uncommon.CosmicBigLotto;
 import hsrmod.relics.uncommon.InterastralBigLotto;
 import hsrmod.utils.ModHelper;
+import hsrmod.utils.PathDefine;
 import hsrmod.utils.RelicEventHelper;
 
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class DoubleLotteryEvent extends PhasedEvent {
     private static final String NAME = eventStrings.NAME;
 
     public DoubleLotteryEvent() {
-        super(ID, NAME, "HSRModResources/img/events/" + ID + ".png");
+        super(ID, NAME, PathDefine.EVENT_PATH + ID + ".png");
 
         registerPhase(0, new TextPhase(DESCRIPTIONS[0]).addOption(OPTIONS[0], (i) -> transitionKey(1)));
 

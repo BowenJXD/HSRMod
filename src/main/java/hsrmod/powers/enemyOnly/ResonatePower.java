@@ -13,7 +13,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.SmallLaserEffect;
 import hsrmod.actions.ElementalDamageAction;
-import hsrmod.characters.StellaCharacter;
+import hsrmod.misc.IHSRCharacter;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
@@ -78,7 +78,7 @@ public class ResonatePower extends StatePower implements PreElementalDamageSubsc
     @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
         if (info.type == DamageInfo.DamageType.NORMAL 
-                && !(info.owner instanceof StellaCharacter) 
+                && !(info.owner instanceof IHSRCharacter) 
                 && AbstractDungeon.actionManager.cardsPlayedThisTurn.get(AbstractDungeon.actionManager.cardsPlayedThisTurn.size() - 1) != card) {
             card = AbstractDungeon.actionManager.lastCard;
             DamageInfo info2 = new DamageInfo(info.owner, damageAmount, DamageInfo.DamageType.THORNS);
@@ -114,7 +114,7 @@ public class ResonatePower extends StatePower implements PreElementalDamageSubsc
         if (SubscriptionManager.checkSubscriber(this) 
                 && target == owner 
                 && amount > 0
-                && !(AbstractDungeon.player instanceof StellaCharacter) ) {
+                && !(AbstractDungeon.player instanceof IHSRCharacter) ) {
             amount += this.amount;
         }
         return amount;

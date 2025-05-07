@@ -3,7 +3,6 @@ package hsrmod.events;
 import basemod.abstracts.events.PhasedEvent;
 import basemod.abstracts.events.phases.CombatPhase;
 import basemod.abstracts.events.phases.TextPhase;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.EventStrings;
@@ -15,6 +14,7 @@ import hsrmod.relics.starter.WaxOfDestruction;
 import hsrmod.relics.starter.WaxOfErudition;
 import hsrmod.relics.starter.WaxOfNihility;
 import hsrmod.utils.ModHelper;
+import hsrmod.utils.PathDefine;
 import hsrmod.utils.RelicEventHelper;
 import hsrmod.utils.RewardEditor;
 
@@ -29,7 +29,7 @@ public class WeAreCowboysEvent extends PhasedEvent {
     int upgradeCount = 4;
 
     public WeAreCowboysEvent() {
-        super(ID, NAME, "HSRModResources/img/events/" + ID + ".png");
+        super(ID, NAME, PathDefine.EVENT_PATH + ID + ".png");
 
         TextPhase phase0 = new TextPhase(DESCRIPTIONS[0]);
         phase0.addOption(new TextPhase.OptionInfo(OPTIONS[0])

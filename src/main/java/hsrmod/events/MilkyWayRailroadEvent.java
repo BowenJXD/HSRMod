@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import hsrmod.cardsV2.NightOnTheMilkyWay;
 import hsrmod.modcore.HSRMod;
+import hsrmod.utils.PathDefine;
 import hsrmod.utils.RelicEventHelper;
 
 public class MilkyWayRailroadEvent extends PhasedEvent {
@@ -18,7 +19,7 @@ public class MilkyWayRailroadEvent extends PhasedEvent {
     private static final String NAME = eventStrings.NAME;
     
     public MilkyWayRailroadEvent() {
-        super(ID, NAME, "HSRModResources/img/events/" + ID + ".png");
+        super(ID, NAME, PathDefine.EVENT_PATH + ID + ".png");
         
         registerPhase(0, new TextPhase(DESCRIPTIONS[0]).addOption(OPTIONS[0], (i) -> transitionKey(1)));
         registerPhase(1, new TextPhase(DESCRIPTIONS[1]).addOption(OPTIONS[0], (i) -> transitionKey(2)));

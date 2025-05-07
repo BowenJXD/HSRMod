@@ -18,6 +18,7 @@ import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
 import hsrmod.modcore.Path;
 import hsrmod.relics.starter.WaxRelic;
+import hsrmod.utils.PathDefine;
 import hsrmod.utils.RelicEventHelper;
 
 import java.util.*;
@@ -34,7 +35,7 @@ public class WaxManufacturerEvent extends PhasedEvent {
     private static final String NAME = eventStrings.NAME;
     
     public WaxManufacturerEvent() {
-        super(ID, NAME, "HSRModResources/img/events/" + ID + ".png");
+        super(ID, NAME, PathDefine.EVENT_PATH + ID + ".png");
 
         TextPhase phase = new TextPhase(DESCRIPTIONS[0]);
         

@@ -14,8 +14,9 @@ import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import hsrmod.cards.uncommon.RuanMei2;
 import hsrmod.modcore.HSRMod;
 import hsrmod.relics.shop.ARuanPouch;
-import hsrmod.utils.RelicEventHelper;
 import hsrmod.signature.utils.SignatureHelper;
+import hsrmod.utils.PathDefine;
+import hsrmod.utils.RelicEventHelper;
 
 import java.util.Iterator;
 
@@ -32,7 +33,7 @@ public class RuanMeiEvent extends PhasedEvent {
     int relicAmt = 6;
 
     public RuanMeiEvent() {
-        super(ID, NAME, "HSRModResources/img/events/" + ID + ".png");
+        super(ID, NAME, PathDefine.EVENT_PATH + ID + ".png");
         
         registerPhase(0, new TextPhase(DESCRIPTIONS[0])
                 .addOption(OPTIONS[0], (i)->transitionKey(1))

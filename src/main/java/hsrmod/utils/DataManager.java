@@ -34,13 +34,16 @@ public class DataManager {
     public static final String RELIC_JSON = "HSRModResources/localization/ZHS/relics.json";
     
     private DataManager() {
+        cardData = new HashMap<>();
+        relicData = new HashMap<>();
+        monsterData = new HashMap<>();
         if (Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT) {
-            cardData = parseCSV(CARD_CSV_ZHS);
+            parseCSV(cardData, CARD_CSV_ZHS);
         } else {
-            cardData = parseCSV(CARD_CSV_ENG);
+            parseCSV(cardData, CARD_CSV_ENG);
         }
-        relicData = parseCSV(RELIC_CSV);
-        monsterData = parseCSV(MONSTER_CSV);
+        parseCSV(relicData, RELIC_CSV);
+        parseCSV(monsterData, MONSTER_CSV);
     }
 
     public static DataManager getInstance() {
@@ -50,8 +53,7 @@ public class DataManager {
         return instance;
     }
 
-    public static Map<String, String[]> parseCSV(String filePath) {
-        Map<String, String[]> resultMap = new HashMap<>();
+    public static void parseCSV(Map<String, String[]> data, String filePath) {
         FileHandle fileHandle = Gdx.files.internal(filePath);
         try (BufferedReader br = new BufferedReader(new InputStreamReader(fileHandle.read(), charset))) {
             String line;
@@ -63,13 +65,36 @@ public class DataManager {
                     if (primaryKey.isEmpty()) continue;
                     String[] values = new String[columns.length - 1];
                     System.arraycopy(columns, 1, values, 0, columns.length - 1);
-                    resultMap.put(primaryKey, values);
+                    data.put(primaryKey, values);
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return resultMap;
+    }
+
+    /**
+     * 格式参照 {@link hsrmod.utils.CardDataCol} 和cardData.csv
+     * @param filePath 文件路径
+     */
+    public static void addCards(String filePath) {
+        parseCSV(getInstance().cardData, filePath);
+    }
+
+    /**
+     * 格式参照 {@link hsrmod.utils.RelicDataCol} 和relicData.csv
+     * @param filePath 文件路径
+     */
+    public static void addRelics(String filePath) {
+        parseCSV(getInstance().relicData, filePath);
+    }
+
+    /**
+     * 格式参照 {@link hsrmod.utils.MonsterDataCol} 和monsterData.csv
+     * @param filePath 文件路径
+     */
+    public static void addMonsters(String filePath) {
+        parseCSV(getInstance().monsterData, filePath);
     }
 
     private static String[] parseCSVLine(String line) {

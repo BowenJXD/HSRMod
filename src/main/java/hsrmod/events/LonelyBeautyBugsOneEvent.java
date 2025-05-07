@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
 import hsrmod.modcore.HSRMod;
 import hsrmod.relics.starter.WaxOfPreservation;
 import hsrmod.utils.ModHelper;
+import hsrmod.utils.PathDefine;
 import hsrmod.utils.RelicEventHelper;
 
 import java.util.List;
@@ -29,7 +30,7 @@ public class LonelyBeautyBugsOneEvent extends PhasedEvent {
             ? "孤独，太空美虫（其一）" : "Loneliness, Cosmic Beauty Bugs, Simulated Universe (I)";
 
     public LonelyBeautyBugsOneEvent() {
-        super(ID, NAME, "HSRModResources/img/events/" + ID + ".png");
+        super(ID, NAME, PathDefine.EVENT_PATH + ID + ".png");
 
         registerPhase(0, new TextPhase(DESCRIPTIONS[0]).addOption(OPTIONS[0], (i) -> transitionKey(1)));
 

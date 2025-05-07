@@ -12,13 +12,11 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import hsrmod.modcore.HSRMod;
 import hsrmod.modcore.Path;
 import hsrmod.relics.starter.TrailblazeTimer;
-import hsrmod.relics.starter.WaxOfDestruction;
-import hsrmod.relics.starter.WaxOfElation;
 import hsrmod.relics.starter.WaxRelic;
+import hsrmod.utils.PathDefine;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class StelleAwakeEvent extends PhasedEvent {
     public static final String ID = StelleAwakeEvent.class.getSimpleName();
@@ -28,7 +26,7 @@ public class StelleAwakeEvent extends PhasedEvent {
     private static final String NAME = eventStrings.NAME;
 
     public StelleAwakeEvent() {
-        super(ID, NAME, "HSRModResources/img/events/" + ID + ".png");
+        super(ID, NAME, PathDefine.EVENT_PATH + ID + ".png");
         List<TextPhase.OptionInfo> options = new ArrayList<>();
 
         for (int i = 0; i < Path.values().length; i++) {
@@ -40,7 +38,7 @@ public class StelleAwakeEvent extends PhasedEvent {
             TextPhase.OptionInfo option = new TextPhase.OptionInfo(OPTIONS[i], relic);
             option.setOptionResult((j) -> {
                 AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float) (Settings.WIDTH / 2), (float) (Settings.HEIGHT / 2), relic);
-                // imageEventText.loadImage("HSRModResources/img/events/" + ID + "_" + path.name() + ".png");
+                // imageEventText.loadImage(PathDefine.EVENT_PATH + ID + "_" + path.name() + ".png");
                 transitionKey(1);
             });
             options.add(option);

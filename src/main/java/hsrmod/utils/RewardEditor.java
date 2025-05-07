@@ -22,6 +22,7 @@ import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
 import com.megacrit.cardcrawl.saveAndContinue.SaveFile;
 import hsrmod.characters.StellaCharacter;
 import hsrmod.effects.TopWarningEffect;
+import hsrmod.misc.IHSRCharacter;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
 import hsrmod.modcore.HSRModConfig;
@@ -92,7 +93,7 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
                 }
             }
 
-            if (Objects.equals(relicId, "") && AbstractDungeon.player instanceof StellaCharacter) {
+            if (Objects.equals(relicId, "") && AbstractDungeon.player instanceof IHSRCharacter) {
                 try {
                     checkBossRelic(tag);
                 } catch (Exception e) {

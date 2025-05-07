@@ -1,13 +1,9 @@
 package hsrmod.signature.devcommands;
 
-import basemod.devcommands.ConsoleCommand;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
-import hsrmod.signature.SignatureLibCore;
-import hsrmod.signature.patches.library.CardLibraryScreenPatch;
 import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.signature.utils.internal.SignatureHelperInternal;
-import jdk.internal.joptsimple.util.KeyValuePair;
 
 import java.util.ArrayList;
 import java.util.Map;

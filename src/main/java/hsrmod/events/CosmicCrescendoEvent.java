@@ -2,7 +2,6 @@ package hsrmod.events;
 
 import basemod.abstracts.events.PhasedEvent;
 import basemod.abstracts.events.phases.TextPhase;
-import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -10,8 +9,6 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.events.shrines.Lab;
-import com.megacrit.cardcrawl.events.shrines.Transmogrifier;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.potions.PotionSlot;
@@ -21,14 +18,14 @@ import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import hsrmod.modcore.HSRMod;
-import hsrmod.modcore.Path;
 import hsrmod.relics.starter.WaxOfElation;
 import hsrmod.relics.starter.WaxRelic;
 import hsrmod.utils.ModHelper;
+import hsrmod.utils.PathDefine;
 import hsrmod.utils.RelicEventHelper;
 
-import java.lang.reflect.Field;
-import java.util.*;
+import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class CosmicCrescendoEvent extends PhasedEvent {
@@ -42,7 +39,7 @@ public class CosmicCrescendoEvent extends PhasedEvent {
     public String overrideBody = null;
 
     public CosmicCrescendoEvent() {
-        super(ID, NAME, "HSRModResources/img/events/" + ID + ".png");
+        super(ID, NAME, PathDefine.EVENT_PATH + ID + ".png");
 
         TextPhase phase0 = new TextPhase(DESCRIPTIONS[0]);
         phase0.addOption(OPTIONS[1], (i) -> {

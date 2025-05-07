@@ -18,6 +18,7 @@ import hsrmod.relics.starter.PomPomBlessing;
 import hsrmod.relics.starter.WaxOfElation;
 import hsrmod.relics.starter.WaxOfNihility;
 import hsrmod.utils.ModHelper;
+import hsrmod.utils.PathDefine;
 import hsrmod.utils.RelicEventHelper;
 import hsrmod.utils.RewardEditor;
 
@@ -34,7 +35,7 @@ public class YuQingtuEvent extends PhasedEvent {
     int goldLoss = 20;
 
     public YuQingtuEvent() {
-        super(ID, NAME, "HSRModResources/img/events/" + ID + ".png");
+        super(ID, NAME, PathDefine.EVENT_PATH + ID + ".png");
 
         registerPhase(Phase.START, new TextPhase(DESCRIPTIONS[0]).addOption(OPTIONS[0], (i) -> transitionKey(Phase.WHAT_TO_ADD)));
         registerPhase(Phase.WHAT_TO_ADD, new TextPhase(DESCRIPTIONS[1])

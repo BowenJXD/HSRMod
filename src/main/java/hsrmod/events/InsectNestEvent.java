@@ -14,6 +14,7 @@ import hsrmod.relics.special.InsectWeb;
 import hsrmod.relics.starter.WaxOfPreservation;
 import hsrmod.relics.starter.WaxOfPropagation;
 import hsrmod.utils.ModHelper;
+import hsrmod.utils.PathDefine;
 import hsrmod.utils.RelicEventHelper;
 import hsrmod.utils.RewardEditor;
 
@@ -28,7 +29,7 @@ public class InsectNestEvent extends PhasedEvent {
     int goldGain = 50;
     
     public InsectNestEvent() {
-        super(ID, NAME, "HSRModResources/img/events/" + ID + ".png");
+        super(ID, NAME, PathDefine.EVENT_PATH + ID + ".png");
         
         goldGain = ModHelper.eventAscension() ? 25 : 50;
         

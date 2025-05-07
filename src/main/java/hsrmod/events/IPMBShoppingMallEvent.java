@@ -12,6 +12,7 @@ import hsrmod.relics.uncommon.IndecipherableBox;
 import hsrmod.relics.uncommon.KingOfSponges;
 import hsrmod.relics.uncommon.RottingFruitOfTheAlienTree;
 import hsrmod.utils.ModHelper;
+import hsrmod.utils.PathDefine;
 import hsrmod.utils.RelicEventHelper;
 
 public class IPMBShoppingMallEvent extends PhasedEvent {
@@ -22,7 +23,7 @@ public class IPMBShoppingMallEvent extends PhasedEvent {
     private static final String NAME = eventStrings.NAME;
 
     public IPMBShoppingMallEvent() {
-        super(ID, NAME, "HSRModResources/img/events/" + ID + ".png");
+        super(ID, NAME, PathDefine.EVENT_PATH + ID + ".png");
         
         TextPhase phase1 = new TextPhase(DESCRIPTIONS[1]);
         

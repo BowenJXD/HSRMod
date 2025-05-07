@@ -1,6 +1,7 @@
 package hsrmod.relics;
 
 import basemod.abstracts.CustomRelic;
+import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
@@ -12,27 +13,42 @@ import hsrmod.modcore.HSRMod;
 import hsrmod.patches.RelicTagField;
 import hsrmod.utils.DataManager;
 import hsrmod.utils.ModHelper;
+import hsrmod.utils.PathDefine;
 import hsrmod.utils.RelicDataCol;
+
+import java.util.Objects;
 
 public abstract class BaseRelic extends CustomRelic {
     public int magicNumber;
     public String modNameCache = null;
     public boolean hsrOnly = false;
     
-    public BaseRelic(String id){
-        super(HSRMod.makePath(id),
-                ImageMaster.loadImage("HSRModResources/img/relics/" + id + ".png"),
-                ImageMaster.loadImage("HSRModResources/img/relics/outline/" + id + ".png"),
+    public BaseRelic(String id, String resourcePath) {
+        super(Objects.equals(resourcePath, PathDefine.RELIC_PATH) ? HSRMod.makePath(id) : id,
+                ImageMaster.loadImage(resourcePath + id + ".png"),
+                ImageMaster.loadImage(resourcePath + "outline/" + id + ".png"),
                 AbstractRelic.RelicTier.valueOf(DataManager.getInstance().getRelicData(id, RelicDataCol.Tier)),
                 AbstractRelic.LandingSound.valueOf(DataManager.getInstance().getRelicData(id, RelicDataCol.Sound))
-                );
+        );
         magicNumber = DataManager.getInstance().getRelicDataInt(id, RelicDataCol.MagicNumber);
         RelicTagField.destructible.set(this, DataManager.getInstance().getRelicDataBoolean(id, RelicDataCol.Destructible));
         RelicTagField.subtle.set(this, DataManager.getInstance().getRelicDataBoolean(id, RelicDataCol.Subtle));
         hsrOnly = DataManager.getInstance().getRelicDataBoolean(id, RelicDataCol.Special);
         RelicTagField.economic.set(this, DataManager.getInstance().getRelicDataBoolean(id, RelicDataCol.Economic));
     }
-    
+
+    public BaseRelic(String id, Texture texture, Texture outline, AbstractRelic.RelicTier tier, AbstractRelic.LandingSound sfx) {
+        super(id, texture, outline, tier, sfx);
+    }
+
+    public BaseRelic(String id, String imgName, AbstractRelic.RelicTier tier, AbstractRelic.LandingSound sfx) {
+        super(id, imgName, tier, sfx);
+    }
+        
+    public BaseRelic(String id){
+        this(id, PathDefine.RELIC_PATH);
+    }
+
     // 获取遗物描述，但原版游戏只在初始化和获取遗物时调用，故该方法等于初始描述
     @Override
     public String getUpdatedDescription() {

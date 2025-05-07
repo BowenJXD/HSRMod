@@ -3,14 +3,12 @@ package hsrmod.events;
 import basemod.abstracts.events.PhasedEvent;
 import basemod.abstracts.events.phases.CombatPhase;
 import basemod.abstracts.events.phases.TextPhase;
-import basemod.patches.com.megacrit.cardcrawl.helpers.MonsterHelper.GetEncounter;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.events.city.CursedTome;
 import com.megacrit.cardcrawl.helpers.MonsterHelper;
 import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.localization.EventStrings;
@@ -22,6 +20,7 @@ import hsrmod.modcore.HSRMod;
 import hsrmod.relics.boss.Plaguenest;
 import hsrmod.relics.starter.WaxOfPropagation;
 import hsrmod.utils.ModHelper;
+import hsrmod.utils.PathDefine;
 
 public class SlumberingOverlordEvent extends PhasedEvent {
     public static final String ID = SlumberingOverlordEvent.class.getSimpleName();
@@ -31,7 +30,7 @@ public class SlumberingOverlordEvent extends PhasedEvent {
     private static final String NAME = eventStrings.NAME;
 
     public SlumberingOverlordEvent() {
-        super(ID, NAME, "HSRModResources/img/events/" + ID + ".png");
+        super(ID, NAME, PathDefine.EVENT_PATH + ID + ".png");
 
         registerPhase(0, new TextPhase(DESCRIPTIONS[0]).addOption(OPTIONS[0], (i) -> transitionKey(1)));
         registerPhase(1, new TextPhase(DESCRIPTIONS[1]).addOption(OPTIONS[0], (i) -> transitionKey(2)));

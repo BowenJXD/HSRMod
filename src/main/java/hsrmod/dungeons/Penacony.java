@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.saveAndContinue.SaveFile;
 import com.megacrit.cardcrawl.scenes.AbstractScene;
 import hsrmod.misc.Encounter;
 import hsrmod.modcore.HSRMod;
+import hsrmod.utils.PathDefine;
 
 import java.util.ArrayList;
 
@@ -22,33 +23,33 @@ public class Penacony extends CustomDungeon {
 
     public Penacony() {
         super(NAME, ID, "HSRModResources/img/UI/panel.png", true, 2, 12, 10);
-        setMainMusic("HSRModResources/audio/music/The Big Sleep.mp3");
+        setMainMusic(PathDefine.MUSIC_PATH + "The Big Sleep.mp3");
         // fight 1
-        addTempMusic("The Player on The Other Side", "HSRModResources/audio/music/The Player on The Other Side.mp3");
+        addTempMusic("The Player on The Other Side", PathDefine.MUSIC_PATH + "The Player on The Other Side.mp3");
         // fight 2
-        addTempMusic("Fair Play", "HSRModResources/audio/music/Fair Play.mp3");
+        addTempMusic("Fair Play", PathDefine.MUSIC_PATH + "Fair Play.mp3");
         // fight 3
-        addTempMusic("Against the Day", "HSRModResources/audio/music/Against the Day.mp3");
+        addTempMusic("Against the Day", PathDefine.MUSIC_PATH + "Against the Day.mp3");
         // shop
-        addTempMusic("Full House", "HSRModResources/audio/music/Full House.mp3");
+        addTempMusic("Full House", PathDefine.MUSIC_PATH + "Full House.mp3");
         // Something Unto Death
-        addTempMusic("Return of None", "HSRModResources/audio/music/Return of None.mp3");
+        addTempMusic("Return of None", PathDefine.MUSIC_PATH + "Return of None.mp3");
         // Sam
-        addTempMusic("Nevermore", "HSRModResources/audio/music/Nevermore.mp3");
+        addTempMusic("Nevermore", PathDefine.MUSIC_PATH + "Nevermore.mp3");
         // Aventurine
-        addTempMusic("Hell Is Preferable to Nihility", "HSRModResources/audio/music/Hell Is Preferable to Nihility.mp3");
+        addTempMusic("Hell Is Preferable to Nihility", PathDefine.MUSIC_PATH + "Hell Is Preferable to Nihility.mp3");
         // past, present and future
-        addTempMusic("The Past, Present, and Eternal Show", "HSRModResources/audio/music/The Past, Present, and Eternal Show.mp3");
+        addTempMusic("The Past, Present, and Eternal Show", PathDefine.MUSIC_PATH + "The Past, Present, and Eternal Show.mp3");
         // bananas
-        addTempMusic("Bananas", "HSRModResources/audio/music/Bananas.mp3");
+        addTempMusic("Bananas", PathDefine.MUSIC_PATH + "Bananas.mp3");
         // ???
-        addTempMusic("The Fool Always Rings Twice", "HSRModResources/audio/music/The Fool Always Rings Twice.mp3");
+        addTempMusic("The Fool Always Rings Twice", PathDefine.MUSIC_PATH + "The Fool Always Rings Twice.mp3");
         // campfire 1
-        addTempMusic("If I Can Stop One Heart From Breaking (Encore)", "HSRModResources/audio/music/If I Can Stop One Heart From Breaking (Encore).mp3");
+        addTempMusic("If I Can Stop One Heart From Breaking (Encore)", PathDefine.MUSIC_PATH + "If I Can Stop One Heart From Breaking (Encore).mp3");
         // campfire 2
-        addTempMusic("Im Anfang war das Wort", "HSRModResources/audio/music/Im Anfang war das Wort.mp3");
+        addTempMusic("Im Anfang war das Wort", PathDefine.MUSIC_PATH + "Im Anfang war das Wort.mp3");
         // Skaracabaz
-        addTempMusic("Aberrant Receptacle", "HSRModResources/audio/music/Aberrant Receptacle.mp3");
+        addTempMusic("Aberrant Receptacle", PathDefine.MUSIC_PATH + "Aberrant Receptacle.mp3");
         
         allowFinalActRewards();
     }

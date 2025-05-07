@@ -8,13 +8,14 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import hsrmod.cards.base.March7th0;
 import hsrmod.modcore.HSRMod;
+import hsrmod.utils.PathDefine;
 import hsrmod.utils.RelicEventHelper;
 
 public class March7thRelic extends CustomRelic {
     // 遗物ID（此处的ModHelper在“04 - 本地化”中提到）
     public static final String ID = HSRMod.makePath(March7thRelic.class.getSimpleName());
     // 图片路径
-    private static final String IMG_PATH = "HSRModResources/img/relics/March7thRelic.png";
+    private static final String IMG_PATH = PathDefine.RELIC_PATH + "March7thRelic.png";
     // 遗物类型
     private static final RelicTier RELIC_TIER = RelicTier.SPECIAL;
     // 点击音效

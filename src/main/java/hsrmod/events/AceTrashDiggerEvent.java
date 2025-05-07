@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import hsrmod.modcore.HSRMod;
 import hsrmod.patches.RelicTagField;
 import hsrmod.utils.GeneralUtil;
+import hsrmod.utils.PathDefine;
 import hsrmod.utils.RelicEventHelper;
 
 public class AceTrashDiggerEvent extends PhasedEvent {
@@ -22,7 +23,7 @@ public class AceTrashDiggerEvent extends PhasedEvent {
     int nRelicCount = 2;
 
     public AceTrashDiggerEvent() {
-        super(ID, NAME, "HSRModResources/img/events/" + ID + ".png");
+        super(ID, NAME, PathDefine.EVENT_PATH + ID + ".png");
 
         registerPhase(0, new TextPhase(DESCRIPTIONS[0])
                 .addOption(OPTIONS[1], (i) -> {

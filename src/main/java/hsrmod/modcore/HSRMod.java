@@ -39,10 +39,7 @@ import hsrmod.dungeons.Belobog;
 import hsrmod.dungeons.Luofu;
 import hsrmod.dungeons.Penacony;
 import hsrmod.events.*;
-import hsrmod.misc.BonusManager;
-import hsrmod.misc.ChargeIcon;
-import hsrmod.misc.Encounter;
-import hsrmod.misc.ToughnessReductionVariable;
+import hsrmod.misc.*;
 import hsrmod.monsters.Bonus.KingTrashcan;
 import hsrmod.monsters.Bonus.LordlyTrashcan;
 import hsrmod.monsters.Bonus.SequenceTrotter;
@@ -129,7 +126,7 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
                 .packageFilter("hsrmod.cards")
                 .setDefaultSeen(true)
                 .cards();
-        if (AbstractDungeon.player instanceof StellaCharacter) {
+        if (AbstractDungeon.player instanceof IHSRCharacter) {
             BaseMod.removeCard(SadisticNature.ID, AbstractCard.CardColor.COLORLESS);
         }
     }

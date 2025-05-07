@@ -22,10 +22,7 @@ import hsrmod.modcore.HSRMod;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.relics.starter.*;
 import hsrmod.subscribers.SubscriptionManager;
-import hsrmod.utils.CardDataCol;
-import hsrmod.utils.DataManager;
-import hsrmod.utils.ModHelper;
-import hsrmod.utils.RewardEditor;
+import hsrmod.utils.*;
 import hsrmod.signature.card.AbstractSignatureCard;
 import hsrmod.signature.utils.SignatureHelper;
 
@@ -58,14 +55,10 @@ public abstract class BaseCard extends AbstractSignatureCard implements SpawnMod
     
     public CardStrings cardStrings;
     
-    public BaseCard(String id) {
-        this(id, HSR_PINK);
-    }
-    
-    public BaseCard(String id, CardColor color){
-        super("HSRMod:" + id,
+    public BaseCard(String id, String resourcePath, CardColor color){
+        super(Objects.equals(resourcePath, PathDefine.CARD_PATH) ? HSRMod.makePath(id) : id,
                 DataManager.getInstance().getCardData(id, CardDataCol.Name),
-                "HSRModResources/img/cards/" + id + ".png",
+                resourcePath + id + ".png",
                 DataManager.getInstance().getCardDataInt(id, CardDataCol.Cost),
                 DataManager.getInstance().getCardData(id, CardDataCol.Description),
                 CardType.valueOf(DataManager.getInstance().getCardData(id, CardDataCol.Type)),
@@ -100,6 +93,28 @@ public abstract class BaseCard extends AbstractSignatureCard implements SpawnMod
         CommonKeywordIconsField.useIcons.set(this, true);
         assetUrl = "HSRMod/" + id + "_s_p.png";
     }
+    
+    public BaseCard(String id, String name, String imgPath, int cost, String description, CardType type, CardColor color, CardRarity rarity, CardTarget target) {
+        super(id,
+                name,
+                imgPath,
+                cost,
+                description,
+                type,
+                color,
+                rarity,
+                target);
+        cardStrings = CardCrawlGame.languagePack.getCardStrings(cardID);
+    }
+
+    public BaseCard(String id, CardColor color) {
+        this(id, PathDefine.CARD_PATH, color);
+    }
+
+    public BaseCard(String id) {
+        this(id, PathDefine.CARD_PATH, HSR_PINK);
+    }
+
 
     @Override
     public void upgrade() {

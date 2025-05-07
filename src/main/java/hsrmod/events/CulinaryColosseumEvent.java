@@ -3,20 +3,15 @@ package hsrmod.events;
 import basemod.abstracts.events.PhasedEvent;
 import basemod.abstracts.events.phases.CombatPhase;
 import basemod.abstracts.events.phases.TextPhase;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
 import hsrmod.misc.Encounter;
 import hsrmod.modcore.HSRMod;
 import hsrmod.patches.RelicTagField;
-import hsrmod.utils.CardSelectManager;
 import hsrmod.utils.GeneralUtil;
 import hsrmod.utils.ModHelper;
+import hsrmod.utils.PathDefine;
 import hsrmod.utils.RelicEventHelper;
 
 public class CulinaryColosseumEvent extends PhasedEvent {
@@ -29,7 +24,7 @@ public class CulinaryColosseumEvent extends PhasedEvent {
     int purgeCount = 2;
 
     public CulinaryColosseumEvent(){
-        super(ID, NAME, "HSRModResources/img/events/" + ID + ".png");
+        super(ID, NAME, PathDefine.EVENT_PATH + ID + ".png");
         
         purgeCount = ModHelper.eventAscension() ? 1 : 2;
         

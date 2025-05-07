@@ -23,8 +23,8 @@
         <ModTheSpire.version>3.23.2</ModTheSpire.version>
         <!-- *****一定要改 ***** -->
         <!-- 改成你的steam安装路径位置，指向steamapps文件夹（该目录安装了杀戮尖塔及mod） -->
-        <Steam.path>C:\Program Files (x86)\Steam\steamapps</Steam.path>
-        <!--<Steam.path>D:\SteamLibrary\steamapps</Steam.path>-->
+        <!--<Steam.path>C:\Program Files (x86)\Steam\steamapps</Steam.path>-->
+        <Steam.path>D:\SteamLibrary\steamapps</Steam.path>
     </properties>
 
     <dependencies>

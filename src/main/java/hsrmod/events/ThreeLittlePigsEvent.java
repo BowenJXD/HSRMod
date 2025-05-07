@@ -11,6 +11,7 @@ import hsrmod.modcore.HSRMod;
 import hsrmod.relics.starter.WaxOfPreservation;
 import hsrmod.relics.starter.WaxOfTheHunt;
 import hsrmod.utils.ModHelper;
+import hsrmod.utils.PathDefine;
 import hsrmod.utils.RewardEditor;
 
 public class ThreeLittlePigsEvent extends PhasedEvent {
@@ -21,7 +22,7 @@ public class ThreeLittlePigsEvent extends PhasedEvent {
     private static final String NAME = eventStrings.NAME;
     
     public ThreeLittlePigsEvent() {
-        super(ID, NAME, "HSRModResources/img/events/" + ID + ".png");
+        super(ID, NAME, PathDefine.EVENT_PATH + ID + ".png");
         
         registerPhase(0, new TextPhase(DESCRIPTIONS[0]).addOption(OPTIONS[0], (i)->transitionKey(1)));
         TextPhase phase1 = new TextPhase(DESCRIPTIONS[1])

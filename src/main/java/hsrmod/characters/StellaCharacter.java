@@ -2,14 +2,11 @@ package hsrmod.characters;
 
 import basemod.BaseMod;
 import basemod.abstracts.CustomPlayer;
-import basemod.abstracts.CustomSavable;
-import basemod.animations.SpineAnimation;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.spine.AnimationState;
-import com.esotericsoftware.spine.BoneData;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -24,42 +21,41 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
-import com.megacrit.cardcrawl.monsters.ending.SpireShield;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import hsrmod.cards.base.*;
+import hsrmod.misc.IHSRCharacter;
 import hsrmod.modcore.HSRMod;
 import hsrmod.modcore.HSRModConfig;
 import hsrmod.patches.PathSelectScreen;
 import hsrmod.relics.starter.*;
-import hsrmod.utils.ModHelper;
+import hsrmod.utils.PathDefine;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import static hsrmod.characters.StellaCharacter.PlayerColorEnum.HSR_PINK;
 import static hsrmod.characters.StellaCharacter.PlayerColorEnum.STELLA_CHARACTER;
 
 // 继承CustomPlayer类
-public class StellaCharacter extends CustomPlayer {
+public class StellaCharacter extends CustomPlayer implements IHSRCharacter {
     // 火堆的人物立绘（行动前）
-    private static final String MY_CHARACTER_SHOULDER_1 = "HSRModResources/img/char/shoulder1.png";
+    private static final String MY_CHARACTER_SHOULDER_1 = PathDefine.CHARACTER_PATH + "shoulder1.png";
     // 火堆的人物立绘（行动后）
-    private static final String MY_CHARACTER_SHOULDER_2 = "HSRModResources/img/char/shoulder2.png";
+    private static final String MY_CHARACTER_SHOULDER_2 = PathDefine.CHARACTER_PATH + "shoulder2.png";
     // 人物死亡图像
-    private static final String CORPSE_IMAGE = "HSRModResources/img/char/corpse.png";
+    private static final String CORPSE_IMAGE = PathDefine.CHARACTER_PATH + "corpse.png";
     // 战斗界面左下角能量图标的每个图层
     private static final String[] ORB_TEXTURES = new String[]{
-            "HSRModResources/img/UI/orb/layer1.png",
-            "HSRModResources/img/UI/orb/layer2.png",
-            "HSRModResources/img/UI/orb/layer3.png",
-            "HSRModResources/img/UI/orb/layer4.png",
-            "HSRModResources/img/UI/orb/layer5.png",
-            "HSRModResources/img/UI/orb/layer6.png",
-            "HSRModResources/img/UI/orb/layer1d.png",
-            "HSRModResources/img/UI/orb/layer2d.png",
-            "HSRModResources/img/UI/orb/layer3d.png",
-            "HSRModResources/img/UI/orb/layer4d.png",
-            "HSRModResources/img/UI/orb/layer5d.png",
+            PathDefine.UI_PATH + "orb/layer1.png",
+            PathDefine.UI_PATH + "orb/layer2.png",
+            PathDefine.UI_PATH + "orb/layer3.png",
+            PathDefine.UI_PATH + "orb/layer4.png",
+            PathDefine.UI_PATH + "orb/layer5.png",
+            PathDefine.UI_PATH + "orb/layer6.png",
+            PathDefine.UI_PATH + "orb/layer1d.png",
+            PathDefine.UI_PATH + "orb/layer2d.png",
+            PathDefine.UI_PATH + "orb/layer3d.png",
+            PathDefine.UI_PATH + "orb/layer4d.png",
+            PathDefine.UI_PATH + "orb/layer5d.png",
     };
     // 每个图层的旋转速度
     private static final float[] LAYER_SPEED = new float[]{-40.0F, -32.0F, 20.0F, -20.0F, 0.0F, -10.0F, -8.0F, 5.0F, -5.0F, 0.0F};
@@ -69,7 +65,7 @@ public class StellaCharacter extends CustomPlayer {
     float drawYAlter = 0;
     
     public StellaCharacter(String name) {
-        super(name, STELLA_CHARACTER, ORB_TEXTURES,"HSRModResources/img/UI/orb/vfx.png", LAYER_SPEED, null, null);
+        super(name, STELLA_CHARACTER, ORB_TEXTURES,PathDefine.UI_PATH + "orb/vfx.png", LAYER_SPEED, null, null);
 
         String charImg = null;
         float hbx = 0f, hby = 0f, hbw = 200f, hbh = 220f;
@@ -114,10 +110,10 @@ public class StellaCharacter extends CustomPlayer {
                 this.drawY = AbstractDungeon.floorY + drawYAlter;
             } catch (Exception e) {
                 HSRMod.logger.error("Failed to load animation: {}", e.getMessage());
-                charImg = "HSRModResources/img/char/character.png";
+                charImg = PathDefine.CHARACTER_PATH + "character.png";
             }
         } else {
-            charImg = "HSRModResources/img/char/character.png";
+            charImg = PathDefine.CHARACTER_PATH + "character.png";
         }
         
         // 初始化你的人物，如果你的人物只有一张图，那么第一个参数填写你人物图片的路径。
@@ -293,9 +289,9 @@ public class StellaCharacter extends CustomPlayer {
     public ArrayList<CutscenePanel> getCutscenePanels() {
         ArrayList<CutscenePanel> panels = new ArrayList<>();
         // 有两个参数的，第二个参数表示出现图片时播放的音效
-        panels.add(new CutscenePanel("HSRModResources/img/char/Victory1.png", "ATTACK_MAGIC_FAST_1"));
-        panels.add(new CutscenePanel("HSRModResources/img/char/Victory2.png"));
-        panels.add(new CutscenePanel("HSRModResources/img/char/Victory3.png"));
+        panels.add(new CutscenePanel(PathDefine.CHARACTER_PATH + "Victory1.png", "ATTACK_MAGIC_FAST_1"));
+        panels.add(new CutscenePanel(PathDefine.CHARACTER_PATH + "Victory2.png"));
+        panels.add(new CutscenePanel(PathDefine.CHARACTER_PATH + "Victory3.png"));
         return panels;
     }
 

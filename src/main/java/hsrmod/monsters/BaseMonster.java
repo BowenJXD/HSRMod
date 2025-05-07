@@ -58,8 +58,8 @@ public abstract class BaseMonster extends CustomMonster {
     public float floatIndex = 0;
     public Consumer<BaseMonster> preBattleAction;
 
-    public BaseMonster(String name, String id, int maxHealth, float hb_x, float hb_y, float hb_w, float hb_h, String atlas, float x, float y) {
-        super(name, HSRMod.makePath(id), maxHealth, hb_x, hb_y, hb_w, hb_h, atlas, x, y);
+    public BaseMonster(String name, String id, int maxHealth, float hb_x, float hb_y, float hb_w, float hb_h, String imgUrl, float x, float y) {
+        super(name, HSRMod.makePath(id), maxHealth, hb_x, hb_y, hb_w, hb_h, imgUrl, x, y);
         monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(HSRMod.makePath(id));
         NAME = monsterStrings.NAME;
         MOVES = monsterStrings.MOVES;
@@ -105,6 +105,10 @@ public abstract class BaseMonster extends CustomMonster {
         moreDamageAs = ModHelper.moreDamageAscension(type);
         moreHPAs = ModHelper.moreHPAscension(type);
         specialAs = ModHelper.specialAscension(type);
+    }
+    
+    public BaseMonster(String name, String id, int maxHealth, float hb_x, float hb_y, float hb_w, float hb_h, String imgUrl, float x, float y, boolean ignoreBlights) {
+        super(name, id, maxHealth, hb_x, hb_y, hb_w, hb_h, imgUrl, x, y, ignoreBlights);
     }
 
     public BaseMonster(String id, String imgUrl, float hb_x, float hb_y, float hb_w, float hb_h, float x, float y) {

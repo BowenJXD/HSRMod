@@ -11,6 +11,7 @@ import hsrmod.relics.common.RubertEmpireMechanicalCogwheel;
 import hsrmod.relics.common.RubertEmpireMechanicalLever;
 import hsrmod.relics.common.RubertEmpireMechanicalPiston;
 import hsrmod.utils.ModHelper;
+import hsrmod.utils.PathDefine;
 import hsrmod.utils.RelicEventHelper;
 
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class ImperialLegacyEvent extends PhasedEvent {
     private static final String NAME = eventStrings.NAME;
 
     public ImperialLegacyEvent() {
-        super(ID, NAME, "HSRModResources/img/events/" + ID + ".png");
+        super(ID, NAME, PathDefine.EVENT_PATH + ID + ".png");
 
         registerPhase(0, new TextPhase(DESCRIPTIONS[0]).addOption(OPTIONS[0], (i) -> transitionKey(1)));
         registerPhase(1, new TextPhase(DESCRIPTIONS[1]).addOption(OPTIONS[0], (i) -> transitionKey(2)));

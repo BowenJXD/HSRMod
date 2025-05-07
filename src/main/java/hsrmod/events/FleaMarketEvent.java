@@ -17,10 +17,7 @@ import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
 import hsrmod.patches.RelicTagField;
-import hsrmod.utils.GeneralUtil;
-import hsrmod.utils.ModHelper;
-import hsrmod.utils.RelicEventHelper;
-import hsrmod.utils.RewardEditor;
+import hsrmod.utils.*;
 
 import java.util.*;
 import java.util.function.Supplier;
@@ -45,7 +42,7 @@ public class FleaMarketEvent extends PhasedEvent {
     int healAmt = 13;
 
     public FleaMarketEvent() {
-        super(ID, NAME, "HSRModResources/img/events/" + ID + ".png");
+        super(ID, NAME, PathDefine.EVENT_PATH + ID + ".png");
 
         chooseRange = ModHelper.eventAscension() ? 8 : 10;
         goldGain2 = ModHelper.eventAscension() ? 150 : 200;

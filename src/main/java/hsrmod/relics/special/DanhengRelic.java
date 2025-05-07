@@ -8,13 +8,14 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import hsrmod.cards.base.Danheng0;
 import hsrmod.modcore.HSRMod;
+import hsrmod.utils.PathDefine;
 import hsrmod.utils.RelicEventHelper;
 
 public class DanhengRelic extends CustomRelic {
     // 遗物ID（此处的ModHelper在“04 - 本地化”中提到）
     public static final String ID = HSRMod.makePath(DanhengRelic.class.getSimpleName());
     // 图片路径
-    private static final String IMG_PATH = "HSRModResources/img/relics/DanhengRelic.png";
+    private static final String IMG_PATH = PathDefine.RELIC_PATH + "DanhengRelic.png";
     // 遗物类型
     private static final RelicTier RELIC_TIER = RelicTier.SPECIAL;
     // 点击音效

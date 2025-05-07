@@ -10,7 +10,7 @@ public class TrailblazerRelic extends CustomRelic {
     // 遗物ID（此处的ModHelper在“04 - 本地化”中提到）
     public static final String ID = HSRMod.makePath(TrailblazerRelic.class.getSimpleName());
     // 图片路径
-    private static final String IMG_PATH = "HSRModResources/img/relics/TrailblazerRelic.png";
+    private static final String IMG_PATH = PathDefine.RELIC_PATHTrailblazerRelic.png";
     // 遗物类型
     private static final RelicTier RELIC_TIER = RelicTier.SPECIAL;
     // 点击音效

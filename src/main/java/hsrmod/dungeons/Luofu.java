@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.saveAndContinue.SaveFile;
 import com.megacrit.cardcrawl.scenes.AbstractScene;
 import hsrmod.misc.Encounter;
 import hsrmod.modcore.HSRMod;
+import hsrmod.utils.PathDefine;
 
 import java.util.ArrayList;
 
@@ -22,23 +23,23 @@ public class Luofu extends CustomDungeon {
     
     public Luofu() {
         super(NAME, ID, "HSRModResources/img/UI/panel.png", true, 3, 12, 10);
-        setMainMusic("HSRModResources/audio/music/Lustrous Moonlight.mp3");
+        setMainMusic(PathDefine.MUSIC_PATH + "Lustrous Moonlight.mp3");
         // fight 1
-        addTempMusic("Thundering Chariot", "HSRModResources/audio/music/Thundering Chariot.mp3");
+        addTempMusic("Thundering Chariot", PathDefine.MUSIC_PATH + "Thundering Chariot.mp3");
         // fight 2
-        addTempMusic("Into the Desolate", "HSRModResources/audio/music/Into the Desolate.mp3");
+        addTempMusic("Into the Desolate", PathDefine.MUSIC_PATH + "Into the Desolate.mp3");
         // hoolay
-        addTempMusic("Fatal Clash of Swordgraves", "HSRModResources/audio/music/Fatal Clash of Swordgraves.mp3");
+        addTempMusic("Fatal Clash of Swordgraves", PathDefine.MUSIC_PATH + "Fatal Clash of Swordgraves.mp3");
         // deer
-        addTempMusic("Deerstalker", "HSRModResources/audio/music/Deerstalker.mp3");
+        addTempMusic("Deerstalker", PathDefine.MUSIC_PATH + "Deerstalker.mp3");
         // cirrus
-        addTempMusic("Dancing Fantasms", "HSRModResources/audio/music/Dancing Fantasms.mp3");
+        addTempMusic("Dancing Fantasms", PathDefine.MUSIC_PATH + "Dancing Fantasms.mp3");
         // yanqing
-        addTempMusic("Gleaming Clash", "HSRModResources/audio/music/Gleaming Clash.mp3");
+        addTempMusic("Gleaming Clash", PathDefine.MUSIC_PATH + "Gleaming Clash.mp3");
         // shop
-        addTempMusic("Paean of Indulgence", "HSRModResources/audio/music/Paean of Indulgence.mp3");
+        addTempMusic("Paean of Indulgence", PathDefine.MUSIC_PATH + "Paean of Indulgence.mp3");
         // feixiao
-        addTempMusic("Inner Beast Vanquished", "HSRModResources/audio/music/Inner Beast Vanquished.mp3");
+        addTempMusic("Inner Beast Vanquished", PathDefine.MUSIC_PATH + "Inner Beast Vanquished.mp3");
     }
 
     public Luofu(CustomDungeon cd, AbstractPlayer p, ArrayList<String> emptyList) {

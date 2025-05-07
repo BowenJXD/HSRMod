@@ -2,22 +2,15 @@ package hsrmod.relics.starter;
 
 import basemod.abstracts.CustomMultiPageFtue;
 import basemod.abstracts.CustomRelic;
-import basemod.abstracts.CustomSavable;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
-import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.InvinciblePower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.relics.BottledFlame;
-import com.megacrit.cardcrawl.unlock.UnlockTracker;
-import hsrmod.characters.StellaCharacter;
 import hsrmod.modcore.HSRMod;
 import hsrmod.modcore.HSRModConfig;
 import hsrmod.powers.enemyOnly.HeartIsMeantToBeBrokenPower;
@@ -26,13 +19,12 @@ import hsrmod.relics.ITutorial;
 import hsrmod.utils.PathDefine;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class GalacticBat extends CustomRelic implements ClickableRelic, ITutorial {
     // 遗物ID（此处的ModHelper在“04 - 本地化”中提到）
     public static final String ID = HSRMod.makePath(GalacticBat.class.getSimpleName());
     // 图片路径
-    private static final String IMG_PATH = "HSRModResources/img/relics/Trailblazer.png";
+    private static final String IMG_PATH = PathDefine.RELIC_PATH + "Trailblazer.png";
     // 遗物类型
     private static final RelicTier RELIC_TIER = RelicTier.STARTER;
     // 点击音效

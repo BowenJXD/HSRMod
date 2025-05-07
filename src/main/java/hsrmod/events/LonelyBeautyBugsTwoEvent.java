@@ -5,13 +5,13 @@ import basemod.abstracts.events.phases.TextPhase;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.relics.Orrery;
 import hsrmod.modcore.HSRMod;
 import hsrmod.relics.starter.WaxOfPropagation;
 import hsrmod.utils.ModHelper;
+import hsrmod.utils.PathDefine;
 import hsrmod.utils.RelicEventHelper;
 
 public class LonelyBeautyBugsTwoEvent extends PhasedEvent {
@@ -24,7 +24,7 @@ public class LonelyBeautyBugsTwoEvent extends PhasedEvent {
             ? "孤独，太空美虫（其二）" : "Loneliness, Cosmic Beauty Bugs, Simulated Universe (II)";
 
     public LonelyBeautyBugsTwoEvent() {
-        super(ID, NAME, "HSRModResources/img/events/" + ID + ".png");
+        super(ID, NAME, PathDefine.EVENT_PATH + ID + ".png");
 
         registerPhase(0, new TextPhase(DESCRIPTIONS[0]).addOption(OPTIONS[0], (i) -> transitionKey(1)));
 

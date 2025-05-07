@@ -3,7 +3,6 @@ package hsrmod.events;
 import basemod.abstracts.events.PhasedEvent;
 import basemod.abstracts.events.phases.TextPhase;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -13,6 +12,7 @@ import hsrmod.patches.RelicTagField;
 import hsrmod.relics.starter.WaxOfElation;
 import hsrmod.utils.GeneralUtil;
 import hsrmod.utils.ModHelper;
+import hsrmod.utils.PathDefine;
 import hsrmod.utils.RelicEventHelper;
 
 import java.util.Arrays;
@@ -31,7 +31,7 @@ public class TheRelicFixerEvent extends PhasedEvent {
     int fixAllCost = 75;
     
     public TheRelicFixerEvent() {
-        super(ID, NAME, "HSRModResources/img/events/" + ID + ".png");
+        super(ID, NAME, PathDefine.EVENT_PATH + ID + ".png");
 
         fix1Cost = ModHelper.eventAscension() ? 25 : 10;
         fixAllCost = ModHelper.eventAscension() ? 100 : 75;

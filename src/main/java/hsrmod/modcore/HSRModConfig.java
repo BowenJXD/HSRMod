@@ -24,8 +24,8 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.screens.mainMenu.MenuButton;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.RestartForChangesEffect;
-import hsrmod.characters.StellaCharacter;
 import hsrmod.effects.TopWarningEffect;
+import hsrmod.misc.IHSRCharacter;
 import hsrmod.powers.misc.ShuffleStatePower;
 import hsrmod.utils.PathDefine;
 import org.apache.logging.log4j.Level;
@@ -399,7 +399,7 @@ public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscrib
     public void receivePostBattle(AbstractRoom abstractRoom) {
         if (CardCrawlGame.stopClock 
                 && AbstractDungeon.ascensionLevel >= 20
-                && AbstractDungeon.player instanceof StellaCharacter) {   
+                && AbstractDungeon.player instanceof IHSRCharacter) {   
             if (tpLimit == 0 || getActiveTPCount() == tpLimit) {
                 addTPLimit();
             }

@@ -8,7 +8,6 @@ import com.megacrit.cardcrawl.actions.common.SpawnMonsterAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import hsrmod.characters.StellaCharacter;
 import hsrmod.modcore.HSRMod;
 import hsrmod.monsters.Bonus.KingTrashcan;
 import hsrmod.monsters.Bonus.LordlyTrashcan;
@@ -44,7 +43,7 @@ public class BonusManager implements OnStartBattleSubscriber, StartActSubscriber
                         || m instanceof LordlyTrashcan
                         || m.type == AbstractMonster.EnemyType.BOSS
                         || m.type == AbstractMonster.EnemyType.ELITE)
-                && (AbstractDungeon.id.contains(HSRMod.MOD_NAME) || AbstractDungeon.player instanceof StellaCharacter)) {
+                && (AbstractDungeon.id.contains(HSRMod.MOD_NAME) || AbstractDungeon.player instanceof IHSRCharacter)) {
             float aChance = SubscriptionManager.getInstance().triggerNumChanger(SubscriptionManager.NumChangerType.TROTTER_WEIGHT, appearChance);
             float wChance = SubscriptionManager.getInstance().triggerNumChanger(SubscriptionManager.NumChangerType.TROTTER_WEIGHT, warpChance);
             if (AbstractDungeon.monsterRng.random(99) < aChance) {

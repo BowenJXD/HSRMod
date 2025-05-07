@@ -6,7 +6,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.events.AbstractEvent;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.MonsterInfo;
 import com.megacrit.cardcrawl.saveAndContinue.SaveFile;
@@ -15,6 +14,7 @@ import hsrmod.events.StelleAwakeEvent;
 import hsrmod.misc.Encounter;
 import hsrmod.modcore.HSRMod;
 import hsrmod.modcore.HSRModConfig;
+import hsrmod.utils.PathDefine;
 
 import java.util.ArrayList;
 
@@ -26,11 +26,11 @@ public class Belobog extends CustomDungeon {
     
     public Belobog() {
         super(NAME, ID, "HSRModResources/img/UI/panel.png", true, 4, 12, 10);
-        setMainMusic("HSRModResources/audio/music/Embers.mp3");
-        addTempMusic("Braving the Cold", "HSRModResources/audio/music/Braving the Cold.mp3");
-        addTempMusic("Kindling", "HSRModResources/audio/music/Kindling.mp3");
-        addTempMusic("Godfather", "HSRModResources/audio/music/Godfather.mp3");
-        addTempMusic("Tempered Cord", "HSRModResources/audio/music/Tempered Cord.mp3");
+        setMainMusic(PathDefine.MUSIC_PATH + "Embers.mp3");
+        addTempMusic("Braving the Cold", PathDefine.MUSIC_PATH + "Braving the Cold.mp3");
+        addTempMusic("Kindling", PathDefine.MUSIC_PATH + "Kindling.mp3");
+        addTempMusic("Godfather", PathDefine.MUSIC_PATH + "Godfather.mp3");
+        addTempMusic("Tempered Cord", PathDefine.MUSIC_PATH + "Tempered Cord.mp3");
         if ((BaseMod.hasModID("spireTogether:") || Settings.isTrial)) {
             onEnterEvent(StelleAwakeEvent.class);
         }

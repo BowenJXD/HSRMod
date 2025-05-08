@@ -1,14 +1,14 @@
 package hsrmod.relics.common;
 
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import hsrmod.Hsrmod;
 import hsrmod.effects.MergeEffect;
 import hsrmod.relics.BaseRelic;
 import hsrmod.utils.ModHelper;
 import hsrmod.utils.RelicEventHelper;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 
 import java.util.ArrayList;
 import java.util.List;

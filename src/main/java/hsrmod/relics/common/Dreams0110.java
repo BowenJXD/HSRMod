@@ -1,11 +1,11 @@
 package hsrmod.relics.common;
 
-import hsrmod.relics.BaseRelic;
-import hsrmod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+import hsrmod.relics.BaseRelic;
+import hsrmod.utils.ModHelper;
 
 public class Dreams0110 extends BaseRelic {
     public static final String ID = Dreams0110.class.getSimpleName();

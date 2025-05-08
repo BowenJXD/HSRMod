@@ -1,11 +1,5 @@
 package hsrmod.cards.uncommon;
 
-import hsrmod.actions.ElementalDamageAllAction;
-import hsrmod.cards.BaseCard;
-import hsrmod.effects.PortraitDisplayEffect;
-import hsrmod.modcore.CustomEnums;
-import hsrmod.powers.misc.EnergyPower;
-import hsrmod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -13,6 +7,12 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.actions.ElementalDamageAllAction;
+import hsrmod.cards.BaseCard;
+import hsrmod.effects.PortraitDisplayEffect;
+import hsrmod.modcore.CustomEnums;
+import hsrmod.powers.misc.EnergyPower;
+import hsrmod.utils.ModHelper;
 
 public class Argenti1 extends BaseCard {
     public static final String ID = Argenti1.class.getSimpleName();

@@ -1,7 +1,5 @@
 package hsrmod.utils;
 
-import hsrmod.Hsrmod;
-import hsrmod.characters.StellaCharacter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
@@ -20,6 +18,8 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
+import hsrmod.Hsrmod;
+import hsrmod.modcore.PlayerColorEnum;
 
 import java.util.ArrayList;
 
@@ -106,7 +106,7 @@ public class PathSelectScreen implements ISubscriber {
     }
 
     private void updateInput() {
-        if (CardCrawlGame.chosenCharacter == StellaCharacter.PlayerColorEnum.STELLA_CHARACTER) {
+        if (CardCrawlGame.chosenCharacter == PlayerColorEnum.STELLA_CHARACTER) {
             this.leftHb.update();
             this.rightHb.update();
             if (this.leftHb.clicked) {

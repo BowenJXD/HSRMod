@@ -1,8 +1,8 @@
 package hsrmod.cardsV2.Curse;
 
-import hsrmod.cards.BaseCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.cards.BaseCard;
 
 public class Frozen extends BaseCard {
     public static final String ID = Frozen.class.getSimpleName();

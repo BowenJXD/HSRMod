@@ -1,12 +1,5 @@
 package hsrmod.cardsV2.TheHunt;
 
-import hsrmod.actions.ElementalDamageAction;
-import hsrmod.actions.FollowUpAction;
-import hsrmod.cards.BaseCard;
-import hsrmod.effects.PortraitDisplayEffect;
-import hsrmod.modcore.CustomEnums;
-import hsrmod.modcore.ElementalDamageInfo;
-import hsrmod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
@@ -16,6 +9,13 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.WhirlwindEffect;
+import hsrmod.actions.ElementalDamageAction;
+import hsrmod.actions.FollowUpAction;
+import hsrmod.cards.BaseCard;
+import hsrmod.effects.PortraitDisplayEffect;
+import hsrmod.modcore.CustomEnums;
+import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.utils.ModHelper;
 
 public class Feixiao2 extends BaseCard {
     public static final String ID = Feixiao2.class.getSimpleName();

@@ -1,13 +1,13 @@
 package hsrmod.powers.uniqueBuffs;
 
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import hsrmod.Hsrmod;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.PowerPower;
 import hsrmod.powers.misc.DoTPower;
 import hsrmod.subscribers.PreDoTDamageSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 
 public class ReignOfKeysPower extends PowerPower implements PreDoTDamageSubscriber {
     public static final String POWER_ID = Hsrmod.makePath(ReignOfKeysPower.class.getSimpleName());

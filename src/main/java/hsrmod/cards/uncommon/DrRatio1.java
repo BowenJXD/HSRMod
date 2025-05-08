@@ -1,16 +1,16 @@
 package hsrmod.cards.uncommon;
 
-import hsrmod.actions.ElementalDamageAction;
-import hsrmod.cards.BaseCard;
-import hsrmod.modcore.CustomEnums;
-import hsrmod.modcore.ElementalDamageInfo;
-import hsrmod.powers.uniqueDebuffs.WisemansFollyPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.actions.ElementalDamageAction;
+import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
+import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.powers.uniqueDebuffs.WisemansFollyPower;
 
 public class DrRatio1 extends BaseCard {
     public static final String ID = DrRatio1.class.getSimpleName();

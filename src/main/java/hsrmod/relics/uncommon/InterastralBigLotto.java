@@ -1,11 +1,11 @@
 package hsrmod.relics.uncommon;
 
-import hsrmod.relics.BaseRelic;
-import hsrmod.utils.GeneralUtil;
-import hsrmod.utils.RewardEditor;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
+import hsrmod.relics.BaseRelic;
+import hsrmod.utils.GeneralUtil;
+import hsrmod.utils.RewardEditor;
 
 public class InterastralBigLotto extends BaseRelic {
     public static final String ID = InterastralBigLotto.class.getSimpleName();

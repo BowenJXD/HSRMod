@@ -1,13 +1,13 @@
 package hsrmod.relics.rare;
 
-import hsrmod.relics.BaseRelic;
-import hsrmod.subscribers.SubscriptionManager;
-import hsrmod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import hsrmod.relics.BaseRelic;
+import hsrmod.subscribers.SubscriptionManager;
+import hsrmod.utils.ModHelper;
 
 import java.util.ArrayList;
 import java.util.List;

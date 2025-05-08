@@ -1,10 +1,10 @@
 package hsrmod.cardsV2.TheHunt;
 
-import hsrmod.cards.BaseCard;
-import hsrmod.powers.uniqueBuffs.EmpyreanImperiumPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.cards.BaseCard;
+import hsrmod.powers.uniqueBuffs.EmpyreanImperiumPower;
 
 public class EmpyreanImperium extends BaseCard {
     public static final String ID = EmpyreanImperium.class.getSimpleName();

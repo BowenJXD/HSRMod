@@ -1,12 +1,5 @@
 package hsrmod.utils;
 
-import hsrmod.Hsrmod;
-import hsrmod.effects.BetterWarningSignEffect;
-import hsrmod.modcore.CustomEnums;
-import hsrmod.relics.BaseRelic;
-import hsrmod.relics.boss.MasterOfDreamMachinations;
-import hsrmod.relics.special.*;
-import hsrmod.relics.uncommon.JellyfishOnTheStaircase;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -24,6 +17,13 @@ import com.megacrit.cardcrawl.vfx.UpgradeShineEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
+import hsrmod.Hsrmod;
+import hsrmod.effects.BetterWarningSignEffect;
+import hsrmod.modcore.CustomEnums;
+import hsrmod.relics.BaseRelic;
+import hsrmod.relics.boss.MasterOfDreamMachinations;
+import hsrmod.relics.special.*;
+import hsrmod.relics.uncommon.JellyfishOnTheStaircase;
 
 import java.util.*;
 import java.util.function.Consumer;

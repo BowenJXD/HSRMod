@@ -1,5 +1,7 @@
 package hsrmod.powers.uniqueDebuffs;
 
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import hsrmod.Hsrmod;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.modcore.CustomEnums;
@@ -8,8 +10,6 @@ import hsrmod.subscribers.PreElementalDamageSubscriber;
 import hsrmod.subscribers.PreFollowUpSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 
 public class ProofOfDebtPower extends DebuffPower implements PreFollowUpSubscriber, PreElementalDamageSubscriber {
     public static final String POWER_ID = Hsrmod.makePath(ProofOfDebtPower.class.getSimpleName());

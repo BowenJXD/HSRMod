@@ -1,10 +1,10 @@
 package hsrmod.powers.uniqueDebuffs;
 
+import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.Hsrmod;
 import hsrmod.powers.DebuffPower;
 import hsrmod.powers.misc.BrokenPower;
-import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 
 public class ThanatoplumRebloomPower extends DebuffPower {
     public static final String POWER_ID = Hsrmod.makePath(ThanatoplumRebloomPower.class.getSimpleName());

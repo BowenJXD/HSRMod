@@ -1,12 +1,5 @@
 package hsrmod.cards.uncommon;
 
-import hsrmod.actions.ElementalDamageAction;
-import hsrmod.actions.FollowUpAction;
-import hsrmod.cards.BaseCard;
-import hsrmod.modcore.ElementalDamageInfo;
-import hsrmod.subscribers.PreFollowUpSubscriber;
-import hsrmod.subscribers.SubscriptionManager;
-import hsrmod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.actions.utility.DiscardToHandAction;
@@ -15,6 +8,13 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.actions.ElementalDamageAction;
+import hsrmod.actions.FollowUpAction;
+import hsrmod.cards.BaseCard;
+import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.subscribers.PreFollowUpSubscriber;
+import hsrmod.subscribers.SubscriptionManager;
+import hsrmod.utils.ModHelper;
 
 import java.util.List;
 

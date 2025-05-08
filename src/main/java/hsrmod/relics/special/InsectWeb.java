@@ -1,10 +1,10 @@
 package hsrmod.relics.special;
 
-import hsrmod.relics.BaseRelic;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+import hsrmod.relics.BaseRelic;
 
 public class InsectWeb extends BaseRelic {
     public static final String ID = InsectWeb.class.getSimpleName();

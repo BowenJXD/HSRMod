@@ -1,12 +1,5 @@
 package hsrmod.powers.misc;
 
-import hsrmod.Hsrmod;
-import hsrmod.actions.ReduceToughnessAction;
-import hsrmod.characters.StellaCharacter;
-import hsrmod.misc.IMultiToughness;
-import hsrmod.modcore.ElementType;
-import hsrmod.modcore.ElementalDamageInfo;
-import hsrmod.powers.BuffPower;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -18,6 +11,13 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import hsrmod.Hsrmod;
+import hsrmod.actions.ReduceToughnessAction;
+import hsrmod.characters.StellaCharacter;
+import hsrmod.misc.IMultiToughness;
+import hsrmod.modcore.ElementType;
+import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.powers.BuffPower;
 
 public class ToughnessPower extends BuffPower {
     public static final String POWER_ID = Hsrmod.makePath(ToughnessPower.class.getSimpleName());

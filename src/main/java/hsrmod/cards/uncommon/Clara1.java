@@ -1,11 +1,11 @@
 package hsrmod.cards.uncommon;
 
-import hsrmod.actions.FollowUpAction;
-import hsrmod.cards.BaseCard;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.actions.FollowUpAction;
+import hsrmod.cards.BaseCard;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 

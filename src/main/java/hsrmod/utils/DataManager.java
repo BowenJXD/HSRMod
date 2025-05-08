@@ -1,8 +1,8 @@
 package hsrmod.utils;
 
-import hsrmod.Hsrmod;
 import com.megacrit.cardcrawl.android.mods.AssetLoader;
 import com.megacrit.cardcrawl.core.Settings;
+import hsrmod.Hsrmod;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -63,6 +63,7 @@ public class DataManager {
                     if (primaryKey.isEmpty()) continue;
                     String[] values = new String[columns.length - 1];
                     System.arraycopy(columns, 1, values, 0, columns.length - 1);
+                    System.out.println("key: " + primaryKey + ", values: " + Arrays.toString(values));
                     resultMap.put(primaryKey, values);
                 }
             }

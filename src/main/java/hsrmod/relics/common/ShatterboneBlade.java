@@ -1,8 +1,8 @@
 package hsrmod.relics.common;
 
-import hsrmod.relics.BaseRelic;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import hsrmod.relics.BaseRelic;
 
 public class ShatterboneBlade extends BaseRelic {
     public static final String ID = ShatterboneBlade.class.getSimpleName();

@@ -1,12 +1,12 @@
 package hsrmod.relics.common;
 
-import hsrmod.Hsrmod;
-import hsrmod.effects.MergeEffect;
-import hsrmod.relics.BaseRelic;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.RainingGoldEffect;
+import hsrmod.Hsrmod;
+import hsrmod.effects.MergeEffect;
+import hsrmod.relics.BaseRelic;
 
 public class RubertEmpireMechanicalCogwheel extends BaseRelic implements IRubertEmpireRelic{
     public static final String ID = RubertEmpireMechanicalCogwheel.class.getSimpleName();

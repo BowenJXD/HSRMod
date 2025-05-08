@@ -1,11 +1,11 @@
 package hsrmod.cards.rare;
 
-import hsrmod.cards.BaseCard;
-import hsrmod.modcore.CustomEnums;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.IntangiblePlayerPower;
+import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
 
 public class TerminalNirvana extends BaseCard {
     public static final String ID = TerminalNirvana.class.getSimpleName();

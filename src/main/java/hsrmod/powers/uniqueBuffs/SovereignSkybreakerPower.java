@@ -1,14 +1,14 @@
 package hsrmod.powers.uniqueBuffs;
 
-import hsrmod.Hsrmod;
-import hsrmod.powers.PowerPower;
-import hsrmod.powers.misc.BoostPower;
-import hsrmod.utils.GeneralUtil;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ReduceCostForTurnAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import hsrmod.Hsrmod;
+import hsrmod.powers.PowerPower;
+import hsrmod.powers.misc.BoostPower;
+import hsrmod.utils.GeneralUtil;
 
 import java.util.function.Predicate;
 

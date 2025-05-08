@@ -1,7 +1,7 @@
 package hsrmod.relics.shop;
 
-import hsrmod.relics.BaseRelic;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import hsrmod.relics.BaseRelic;
 
 public class CavitySystemModel extends BaseRelic {
     public static final String ID = CavitySystemModel.class.getSimpleName();

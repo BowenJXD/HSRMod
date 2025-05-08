@@ -1,15 +1,15 @@
 package hsrmod.cardsV2.Propagation;
 
-import hsrmod.actions.MoveCardsAction;
-import hsrmod.actions.SelectCardsAction;
-import hsrmod.cards.BaseCard;
-import hsrmod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.actions.MoveCardsAction;
+import hsrmod.actions.SelectCardsAction;
+import hsrmod.cards.BaseCard;
+import hsrmod.utils.ModHelper;
 
 import java.util.List;
 import java.util.function.Consumer;

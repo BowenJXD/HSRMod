@@ -1,12 +1,12 @@
 package hsrmod.powers.misc;
 
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import hsrmod.Hsrmod;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.BuffPower;
 import hsrmod.subscribers.PreDoTDamageSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 
 public class BreakEffectPower extends BuffPower implements PreDoTDamageSubscriber {
     public static final String POWER_ID = Hsrmod.makePath(BreakEffectPower.class.getSimpleName());

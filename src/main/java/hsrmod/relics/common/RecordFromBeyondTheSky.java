@@ -1,11 +1,11 @@
 package hsrmod.relics.common;
 
-import hsrmod.relics.BaseRelic;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
 import com.megacrit.cardcrawl.powers.BufferPower;
+import hsrmod.relics.BaseRelic;
 
 public class RecordFromBeyondTheSky extends BaseRelic {
     public static final String ID = RecordFromBeyondTheSky.class.getSimpleName();

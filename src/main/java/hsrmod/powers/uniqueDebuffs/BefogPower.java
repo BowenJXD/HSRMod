@@ -1,11 +1,5 @@
 package hsrmod.powers.uniqueDebuffs;
 
-import hsrmod.Hsrmod;
-import hsrmod.modcore.ElementalDamageInfo;
-import hsrmod.powers.DebuffPower;
-import hsrmod.subscribers.PreBreakSubscriber;
-import hsrmod.subscribers.SubscriptionManager;
-import hsrmod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
@@ -13,6 +7,12 @@ import com.megacrit.cardcrawl.actions.common.UpgradeSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import hsrmod.Hsrmod;
+import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.powers.DebuffPower;
+import hsrmod.subscribers.PreBreakSubscriber;
+import hsrmod.subscribers.SubscriptionManager;
+import hsrmod.utils.ModHelper;
 
 import java.util.Iterator;
 

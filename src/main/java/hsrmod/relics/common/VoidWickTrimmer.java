@@ -1,12 +1,12 @@
 package hsrmod.relics.common;
 
-import hsrmod.relics.BaseRelic;
-import hsrmod.utils.ModHelper;
-import hsrmod.utils.RelicEventHelper;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.relics.NeowsLament;
+import hsrmod.relics.BaseRelic;
+import hsrmod.utils.ModHelper;
+import hsrmod.utils.RelicEventHelper;
 
 import java.util.*;
 

@@ -32,7 +32,7 @@ ImbibitorLunae2,苍龙傲睨，劫水濯世,UNCOMMON,ATTACK,ALL_ENEMY,1, Hsrmod:
 SwarmKingProgeny,孳孽王虫,COMMON,ATTACK,ENEMY,-1, Hsrmod:弹射 X次：造成 !D! 点伤害（风 !TR! ），施加1层 Hsrmod:孢子 。,4,1,,,,,6,,,,繁育,风,低
 PhenolCompounds,酚类物质,COMMON,SKILL,SELF,1, 消耗 。 Hsrmod:耗能 80，于此回合打出下一张牌后，回复该牌费用数量的 [E] 。,,,,1,, 消耗 。 Hsrmod:耗能 80，于此回合打出下一张牌后，回复该牌费用数量的 [E] ，并对一名敌人施加等量层 Hsrmod:孢子 。,,,,,繁育,,中
 Propagation,繁育,SPECIAL,SKILL,NONE,-2,,,,,,,,,,,,繁育,,
-Luocha1,白花的祈望,UNCOMMON,SKILL,SELF,0, 保留 。 消耗 。回复 [E] 和 !M! 点生命（若生命值小于50%则额外回复 !M! 点 临时生命 ），净化1个负面效果，消耗1张牌。,,,,2,, 保留 。 消耗 。回复 [E] 和 !M! 点生命（若生命值小于50%则额外回复 !M! 点 临时生命 ），净化1个负面效果，消耗任意张牌。,,,,3,丰饶,,高
+Luocha1,白花的祈望,UNCOMMON,SKILL,SELF,0, 保留 。 消耗 。回复 [E] 和 !M! 点生命（若生命值小于50%则额外回复 !M! 点生命），净化1个负面效果，消耗1张牌。,,,,2,, 保留 。 消耗 。回复 [E] 和 !M! 点生命（若生命值小于50%则额外回复 !M! 点 临时生命 ），净化1个负面效果，消耗任意张牌。,,,,3,丰饶,,高
 Lynx1,盐渍野营罐头,COMMON,SKILL,SELF,1,回复 !B! 点 临时生命 ，净化 !M! 层负面效果，退出当前姿态。,,,5,1,,,,,8,1,丰饶,,低
 Natasha1,新生之礼,COMMON,SKILL,SELF,1, Hsrmod:耗能 90，弃置1张牌，回复 !B! 点 临时生命 并 Hsrmod:坏死 ，摸 !M! 张牌。,,,8,3,,,,,12,3,丰饶,,中
 Arlan1,禁锢解除,COMMON,ATTACK,ENEMY,0,失去 !M! 点生命，弃置1张牌，造成 !D! 点伤害（雷 !TR! ）。,12,2,,2,,,18,,,3,丰饶,雷,低
@@ -159,7 +159,7 @@ GalaxyRanger,巡海游侠,UNCOMMON,SKILL,SELF,1,弃置任意张手牌，摸两�
 DisasterHaltingMechanism,天灾遏止机关,COMMON,SKILL,SELF,1, Hsrmod:耗能 40，获得手牌数数量的格挡，并随机升级1张手牌。,,,,1,0,,,,,,巡猎,,中
 TheHunt,巡猎,SPECIAL,SKILL,NONE,-2,,,,,,,,,,,,巡猎,,
 Tingyun1,庆云光覆仪祷,COMMON,SKILL,SELF,0, Hsrmod:耗能 10，获得 !M! 点 Hsrmod:充能 和1层 力量 。,,,,50,, Hsrmod:耗能 10，获得 !M! 点 Hsrmod:充能 和1层 力量 ，获得摸牌堆1张牌。,,,,60,智识,,高
-Huohuo1,凭附气通天真,UNCOMMON,SKILL,SELF,0, 消耗 。 Hsrmod:耗能 140，获得 [E] ，获得以下效果直到回合结束： NL 打出牌后，回复1点 临时生命 ，10点 Hsrmod:充能 ，并净化1层负面效果。,,,,,, 消耗 。 Hsrmod:耗能 140，获得 [E] ，获得以下效果直到回合结束： NL 打出牌后，或消耗 Hsrmod:充能 后，回复1点 临时生命 ，10点 Hsrmod:充能 ，并净化1层负面效果。,,,,,智识,,中
+Huohuo1,凭附气通天真,UNCOMMON,SKILL,SELF,0, 消耗 。 Hsrmod:耗能 140，获得 [E] ，获得以下效果直到回合结束： NL 打出牌后，回复1点生命，10点 Hsrmod:充能 ，并净化1层负面效果。,,,,,, 消耗 。 Hsrmod:耗能 140，获得 [E] ，获得以下效果直到回合结束： NL 打出牌后，或消耗 Hsrmod:充能 后，回复1点 临时生命 ，10点 Hsrmod:充能 ，并净化1层负面效果。,,,,,智识,,中
 Argenti1,驻于花庭，赐与尽美,UNCOMMON,ATTACK,ALL_ENEMY,1, 保留 。重复执行，直到 Hsrmod:充能 不足： NL Hsrmod:耗能 90，群体：造成 !D! 点伤害（物理 !TR! ）。 ,8,1,,,,,12,,,,智识,物理,中
 CivilizationCorrespondent,文明函授员,COMMON,SKILL,SELF,1,消耗所有 Hsrmod:充能 ，每消耗10 Hsrmod:充能 ，获得1点格挡。,,,,,,消耗所有 Hsrmod:充能 ，每消耗10 Hsrmod:充能 ，获得1点格挡；每消耗100 Hsrmod:充能 ，摸1张牌。,,,,,智识,,中
 PenMan,执笔人,COMMON,SKILL,SELF,0, 保留 。弃置1张牌，获得 !M! 点 Hsrmod:充能 ，然后若 Hsrmod:充能 未满，将此牌返还手牌。,,,,20,,,,,,30,智识,,中

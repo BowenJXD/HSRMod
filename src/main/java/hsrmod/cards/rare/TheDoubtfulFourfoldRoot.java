@@ -1,14 +1,14 @@
 package hsrmod.cards.rare;
 
-import hsrmod.cards.BaseCard;
-import hsrmod.powers.misc.DoTPower;
-import hsrmod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.BossCrystalImpactEffect;
+import hsrmod.cards.BaseCard;
+import hsrmod.powers.misc.DoTPower;
+import hsrmod.utils.ModHelper;
 
 import java.util.Iterator;
 

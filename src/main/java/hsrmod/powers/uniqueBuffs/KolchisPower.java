@@ -1,12 +1,12 @@
 package hsrmod.powers.uniqueBuffs;
 
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
+import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.Hsrmod;
 import hsrmod.powers.PowerPower;
 import hsrmod.powers.interfaces.OnReceivePowerPower;
 import hsrmod.powers.misc.EnergyPower;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
-import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 
 public class KolchisPower extends PowerPower implements OnReceivePowerPower {
     public static final String POWER_ID = Hsrmod.makePath(KolchisPower.class.getSimpleName());

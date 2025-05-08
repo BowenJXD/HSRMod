@@ -1,10 +1,10 @@
 package hsrmod.relics.rare;
 
-import hsrmod.actions.MoveCardsAction;
-import hsrmod.relics.BaseRelic;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import hsrmod.actions.MoveCardsAction;
+import hsrmod.relics.BaseRelic;
 
 import java.util.function.Predicate;
 

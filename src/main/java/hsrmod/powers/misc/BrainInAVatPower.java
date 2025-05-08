@@ -1,11 +1,11 @@
 package hsrmod.powers.misc;
 
-import hsrmod.Hsrmod;
-import hsrmod.powers.BuffPower;
-import hsrmod.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import hsrmod.Hsrmod;
+import hsrmod.powers.BuffPower;
+import hsrmod.powers.interfaces.OnReceivePowerPower;
 
 public class BrainInAVatPower extends BuffPower implements OnReceivePowerPower {
     public static final String POWER_ID = Hsrmod.makePath(BrainInAVatPower.class.getSimpleName());

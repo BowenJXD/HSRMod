@@ -1,9 +1,9 @@
 package hsrmod.relics.uncommon;
 
-import hsrmod.relics.BaseRelic;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.DexterityPower;
+import hsrmod.relics.BaseRelic;
 
 public class PunklordianRegards extends BaseRelic {
     public static final String ID = PunklordianRegards.class.getSimpleName();

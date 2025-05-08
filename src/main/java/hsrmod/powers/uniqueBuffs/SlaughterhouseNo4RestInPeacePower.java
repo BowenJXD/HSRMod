@@ -1,13 +1,13 @@
 package hsrmod.powers.uniqueBuffs;
 
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.Hsrmod;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.powers.PowerPower;
 import hsrmod.powers.misc.BrokenPower;
 import hsrmod.subscribers.PreElementalDamageSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 

@@ -1,12 +1,12 @@
 package hsrmod.powers.uniqueBuffs;
 
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import hsrmod.Hsrmod;
 import hsrmod.modcore.ElementType;
 import hsrmod.powers.PowerPower;
 import hsrmod.subscribers.PreToughnessReduceSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 
 public class VoyageMonitorPower extends PowerPower implements PreToughnessReduceSubscriber {
     public static final String POWER_ID = Hsrmod.makePath(VoyageMonitorPower.class.getSimpleName());

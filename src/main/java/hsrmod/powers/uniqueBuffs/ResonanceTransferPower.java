@@ -1,12 +1,12 @@
 package hsrmod.powers.uniqueBuffs;
 
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import hsrmod.Hsrmod;
 import hsrmod.powers.PowerPower;
 import hsrmod.powers.misc.QuakePower;
 import hsrmod.subscribers.PostBreakBlockSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 
 public class ResonanceTransferPower extends PowerPower implements PostBreakBlockSubscriber {
     public static final String POWER_ID = Hsrmod.makePath(ResonanceTransferPower.class.getSimpleName());

@@ -1,12 +1,12 @@
 package hsrmod.cards.common;
 
-import hsrmod.cards.BaseCard;
-import hsrmod.powers.misc.DoTPower;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import hsrmod.cards.BaseCard;
+import hsrmod.powers.misc.DoTPower;
 
 public class SinThirster extends BaseCard {
     public static final String ID = SinThirster.class.getSimpleName();

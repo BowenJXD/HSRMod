@@ -1,10 +1,10 @@
 package hsrmod.relics.shop;
 
-import hsrmod.relics.BaseRelic;
-import hsrmod.relics.starter.PomPomBlessing;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import hsrmod.relics.BaseRelic;
+import hsrmod.relics.starter.PomPomBlessing;
 
 public class WrittenInWater extends BaseRelic {
     public static final String ID = WrittenInWater.class.getSimpleName();

@@ -1,9 +1,9 @@
 package hsrmod.powers.breaks;
 
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import hsrmod.Hsrmod;
 import hsrmod.modcore.ElementType;
 import hsrmod.powers.misc.DoTPower;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 
 public class BurnPower extends DoTPower {
     public static final String POWER_ID = Hsrmod.makePath(BurnPower.class.getSimpleName());

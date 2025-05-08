@@ -1,16 +1,16 @@
 package hsrmod.relics.common;
 
-import hsrmod.Hsrmod;
-import hsrmod.effects.MergeEffect;
-import hsrmod.relics.BaseRelic;
-import hsrmod.utils.GeneralUtil;
-import hsrmod.utils.RelicEventHelper;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.EventRoom;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
+import hsrmod.Hsrmod;
+import hsrmod.effects.MergeEffect;
+import hsrmod.relics.BaseRelic;
+import hsrmod.utils.GeneralUtil;
+import hsrmod.utils.RelicEventHelper;
 
 public class RubertEmpireMechanicalLever extends BaseRelic implements IRubertEmpireRelic {
     public static final String ID = RubertEmpireMechanicalLever.class.getSimpleName();

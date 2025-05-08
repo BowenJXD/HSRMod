@@ -1,14 +1,5 @@
 package hsrmod.cards.uncommon;
 
-import hsrmod.actions.BouncingAction;
-import hsrmod.actions.ElementalDamageAction;
-import hsrmod.actions.ElementalDamageAllAction;
-import hsrmod.cards.BaseCard;
-import hsrmod.effects.PortraitDisplayEffect;
-import hsrmod.modcore.ElementalDamageInfo;
-import hsrmod.subscribers.PostPowerApplySubscriber;
-import hsrmod.subscribers.SubscriptionManager;
-import hsrmod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -18,6 +9,15 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import hsrmod.actions.BouncingAction;
+import hsrmod.actions.ElementalDamageAction;
+import hsrmod.actions.ElementalDamageAllAction;
+import hsrmod.cards.BaseCard;
+import hsrmod.effects.PortraitDisplayEffect;
+import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.subscribers.PostPowerApplySubscriber;
+import hsrmod.subscribers.SubscriptionManager;
+import hsrmod.utils.ModHelper;
 
 import java.util.function.Consumer;
 

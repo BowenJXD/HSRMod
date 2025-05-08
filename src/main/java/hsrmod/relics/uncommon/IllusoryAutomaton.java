@@ -1,8 +1,8 @@
 package hsrmod.relics.uncommon;
 
-import hsrmod.relics.BaseRelic;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import hsrmod.relics.BaseRelic;
 
 public class IllusoryAutomaton extends BaseRelic {
     public static final String ID = IllusoryAutomaton.class.getSimpleName();

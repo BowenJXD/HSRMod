@@ -1,13 +1,5 @@
 package hsrmod.cards.uncommon;
 
-import hsrmod.actions.BreakDamageAction;
-import hsrmod.actions.ElementalDamageAction;
-import hsrmod.cards.BaseCard;
-import hsrmod.effects.MultiSlashEffect;
-import hsrmod.modcore.ElementalDamageInfo;
-import hsrmod.powers.misc.BrokenPower;
-import hsrmod.utils.CachedCondition;
-import hsrmod.utils.ModHelper;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
@@ -18,6 +10,14 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.actions.BreakDamageAction;
+import hsrmod.actions.ElementalDamageAction;
+import hsrmod.cards.BaseCard;
+import hsrmod.effects.MultiSlashEffect;
+import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.powers.misc.BrokenPower;
+import hsrmod.utils.CachedCondition;
+import hsrmod.utils.ModHelper;
 
 import java.util.Objects;
 

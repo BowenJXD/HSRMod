@@ -1,14 +1,14 @@
 package hsrmod.cards.rare;
 
-import hsrmod.cards.BaseCard;
-import hsrmod.modcore.CustomEnums;
-import hsrmod.powers.misc.EnergyPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
+import hsrmod.powers.misc.EnergyPower;
 
 public class Aggregator extends BaseCard {
     public static final String ID = Aggregator.class.getSimpleName();

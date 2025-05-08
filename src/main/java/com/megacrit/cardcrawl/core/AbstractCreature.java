@@ -1,6 +1,5 @@
 package com.megacrit.cardcrawl.core;
 
-import hsrmod.subscribers.SubscriptionManager;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -23,6 +22,7 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import com.megacrit.cardcrawl.vfx.TextAboveCreatureEffect;
 import com.megacrit.cardcrawl.vfx.TintEffect;
 import com.megacrit.cardcrawl.vfx.combat.*;
+import hsrmod.subscribers.SubscriptionManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

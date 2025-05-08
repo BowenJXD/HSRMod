@@ -1,15 +1,15 @@
 package hsrmod.relics.special;
 
-import hsrmod.actions.AOEAction;
-import hsrmod.powers.misc.DoTPower;
-import hsrmod.relics.BaseRelic;
-import hsrmod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.actions.AOEAction;
+import hsrmod.powers.misc.DoTPower;
+import hsrmod.relics.BaseRelic;
+import hsrmod.utils.ModHelper;
 
 import java.util.function.Function;
 import java.util.function.Predicate;

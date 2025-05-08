@@ -1,12 +1,12 @@
 package hsrmod.relics.special;
 
-import hsrmod.misc.ICanChangeToMulti;
-import hsrmod.powers.misc.EnergyPower;
-import hsrmod.relics.BaseRelic;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import hsrmod.misc.ICanChangeToMulti;
+import hsrmod.powers.misc.EnergyPower;
+import hsrmod.relics.BaseRelic;
 
 public class TheWindSoaringValorous extends BaseRelic {
     public static final String ID = TheWindSoaringValorous.class.getSimpleName();

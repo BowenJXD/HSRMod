@@ -1,12 +1,12 @@
 package hsrmod.relics.rare;
 
-import hsrmod.relics.BaseRelic;
-import hsrmod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+import hsrmod.relics.BaseRelic;
+import hsrmod.utils.ModHelper;
 
 public class Revitalization310 extends BaseRelic {
     public static final String ID = Revitalization310.class.getSimpleName();

@@ -1,15 +1,15 @@
 package hsrmod.powers.uniqueBuffs;
 
-import hsrmod.Hsrmod;
-import hsrmod.powers.BuffPower;
-import hsrmod.powers.interfaces.OnReceivePowerPower;
-import hsrmod.subscribers.PreBlockChangeSubscriber;
-import hsrmod.subscribers.SubscriptionManager;
 import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.FrailPower;
+import hsrmod.Hsrmod;
+import hsrmod.powers.BuffPower;
+import hsrmod.powers.interfaces.OnReceivePowerPower;
+import hsrmod.subscribers.PreBlockChangeSubscriber;
+import hsrmod.subscribers.SubscriptionManager;
 
 public class DivinityPower extends BuffPower implements PreBlockChangeSubscriber, OnReceivePowerPower {
     public static final String POWER_ID = Hsrmod.makePath(DivinityPower.class.getSimpleName());

@@ -1,12 +1,12 @@
 package hsrmod.relics.starter;
 
-import hsrmod.Hsrmod;
-import hsrmod.powers.misc.ToughnessPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.android.mods.abstracts.CustomRelic;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import hsrmod.Hsrmod;
+import hsrmod.powers.misc.ToughnessPower;
 
 public class GalacticBat extends CustomRelic {
     // 遗物ID（此处的ModHelper在“04 - 本地化”中提到）

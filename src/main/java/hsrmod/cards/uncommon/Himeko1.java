@@ -1,11 +1,5 @@
 package hsrmod.cards.uncommon;
 
-import hsrmod.actions.ElementalDamageAllAction;
-import hsrmod.actions.FollowUpAction;
-import hsrmod.cards.BaseCard;
-import hsrmod.modcore.ElementalDamageInfo;
-import hsrmod.subscribers.PreBreakSubscriber;
-import hsrmod.subscribers.SubscriptionManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -13,6 +7,12 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.CleaveEffect;
+import hsrmod.actions.ElementalDamageAllAction;
+import hsrmod.actions.FollowUpAction;
+import hsrmod.cards.BaseCard;
+import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.subscribers.PreBreakSubscriber;
+import hsrmod.subscribers.SubscriptionManager;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 

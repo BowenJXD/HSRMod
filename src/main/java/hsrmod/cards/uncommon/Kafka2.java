@@ -1,11 +1,5 @@
 package hsrmod.cards.uncommon;
 
-import hsrmod.actions.ElementalDamageAllAction;
-import hsrmod.cards.BaseCard;
-import hsrmod.effects.MultiShivFreezeEffect;
-import hsrmod.effects.PortraitDisplayEffect;
-import hsrmod.modcore.CustomEnums;
-import hsrmod.utils.ModHelper;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
@@ -14,6 +8,12 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.actions.ElementalDamageAllAction;
+import hsrmod.cards.BaseCard;
+import hsrmod.effects.MultiShivFreezeEffect;
+import hsrmod.effects.PortraitDisplayEffect;
+import hsrmod.modcore.CustomEnums;
+import hsrmod.utils.ModHelper;
 
 public class Kafka2 extends BaseCard {
     public static final String ID = Kafka2.class.getSimpleName();

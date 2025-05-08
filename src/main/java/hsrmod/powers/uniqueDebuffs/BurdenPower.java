@@ -1,12 +1,12 @@
 package hsrmod.powers.uniqueDebuffs;
 
-import hsrmod.Hsrmod;
-import hsrmod.powers.DebuffPower;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.Hsrmod;
+import hsrmod.powers.DebuffPower;
 
 public class BurdenPower extends DebuffPower {
     public static final String POWER_ID = Hsrmod.makePath(BurdenPower.class.getSimpleName());

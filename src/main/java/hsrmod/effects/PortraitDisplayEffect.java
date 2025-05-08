@@ -1,6 +1,5 @@
 package hsrmod.effects;
 
-import hsrmod.Hsrmod;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
@@ -9,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.android.mods.AssetLoader;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
+import hsrmod.Hsrmod;
 
 public class PortraitDisplayEffect extends AbstractGameEffect {
     private float x;

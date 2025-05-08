@@ -1,15 +1,15 @@
 package hsrmod.cardsV2.TheHunt;
 
-import hsrmod.actions.ElementalDamageAction;
-import hsrmod.actions.FollowUpAction;
-import hsrmod.cards.BaseCard;
-import hsrmod.modcore.CustomEnums;
-import hsrmod.modcore.ElementalDamageInfo;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.actions.ElementalDamageAction;
+import hsrmod.actions.FollowUpAction;
+import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
+import hsrmod.modcore.ElementalDamageInfo;
 
 public class Moze2 extends BaseCard {
     public static final String ID = Moze2.class.getSimpleName();

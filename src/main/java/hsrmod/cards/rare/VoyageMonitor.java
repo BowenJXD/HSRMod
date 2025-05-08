@@ -1,10 +1,10 @@
 package hsrmod.cards.rare;
 
-import hsrmod.cards.BaseCard;
-import hsrmod.powers.uniqueBuffs.VoyageMonitorPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.cards.BaseCard;
+import hsrmod.powers.uniqueBuffs.VoyageMonitorPower;
 
 public class VoyageMonitor extends BaseCard {
     public static final String ID = VoyageMonitor.class.getSimpleName();

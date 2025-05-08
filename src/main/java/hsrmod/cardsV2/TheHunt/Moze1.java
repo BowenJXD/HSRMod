@@ -1,11 +1,11 @@
 package hsrmod.cardsV2.TheHunt;
 
-import hsrmod.cards.BaseCard;
-import hsrmod.powers.uniqueDebuffs.PreyPower;
-import hsrmod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.cards.BaseCard;
+import hsrmod.powers.uniqueDebuffs.PreyPower;
+import hsrmod.utils.ModHelper;
 
 public class Moze1 extends BaseCard {
     public static final String ID = Moze1.class.getSimpleName();

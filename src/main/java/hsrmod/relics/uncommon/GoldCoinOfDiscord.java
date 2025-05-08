@@ -1,8 +1,8 @@
 package hsrmod.relics.uncommon;
 
-import hsrmod.relics.BaseRelic;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import hsrmod.relics.BaseRelic;
 
 public class GoldCoinOfDiscord extends BaseRelic {
     public static final String ID = GoldCoinOfDiscord.class.getSimpleName();

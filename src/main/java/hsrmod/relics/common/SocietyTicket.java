@@ -1,8 +1,8 @@
 package hsrmod.relics.common;
 
+import com.megacrit.cardcrawl.rewards.RewardItem;
 import hsrmod.relics.BaseRelic;
 import hsrmod.utils.RewardEditor;
-import com.megacrit.cardcrawl.rewards.RewardItem;
 
 import java.util.List;
 import java.util.function.Consumer;

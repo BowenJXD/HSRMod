@@ -1,9 +1,9 @@
 package hsrmod.relics.rare;
 
-import hsrmod.relics.BaseRelic;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+import hsrmod.relics.BaseRelic;
 
 public class RobeOfTheBeauty extends BaseRelic {
     public static final String ID = RobeOfTheBeauty.class.getSimpleName();

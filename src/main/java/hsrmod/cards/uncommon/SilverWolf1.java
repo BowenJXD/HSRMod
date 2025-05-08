@@ -1,9 +1,5 @@
 package hsrmod.cards.uncommon;
 
-import hsrmod.actions.ElementalDamageAction;
-import hsrmod.cards.BaseCard;
-import hsrmod.modcore.CustomEnums;
-import hsrmod.modcore.ElementalDamageInfo;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -15,6 +11,10 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.vfx.combat.InversionBeamEffect;
+import hsrmod.actions.ElementalDamageAction;
+import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
+import hsrmod.modcore.ElementalDamageInfo;
 
 public class SilverWolf1 extends BaseCard {
     public static final String ID = SilverWolf1.class.getSimpleName();

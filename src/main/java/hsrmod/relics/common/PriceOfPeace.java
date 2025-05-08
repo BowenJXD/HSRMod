@@ -1,11 +1,11 @@
 package hsrmod.relics.common;
 
-import hsrmod.relics.BaseRelic;
-import hsrmod.utils.RelicEventHelper;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.ShopRoom;
+import hsrmod.relics.BaseRelic;
+import hsrmod.utils.RelicEventHelper;
 
 public class PriceOfPeace extends BaseRelic {
     public static final String ID = PriceOfPeace.class.getSimpleName();

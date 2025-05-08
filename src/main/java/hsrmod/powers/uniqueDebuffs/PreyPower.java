@@ -1,8 +1,5 @@
 package hsrmod.powers.uniqueDebuffs;
 
-import hsrmod.Hsrmod;
-import hsrmod.cardsV2.TheHunt.Moze2;
-import hsrmod.powers.DebuffPower;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
@@ -11,6 +8,9 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.FontHelper;
+import hsrmod.Hsrmod;
+import hsrmod.cardsV2.TheHunt.Moze2;
+import hsrmod.powers.DebuffPower;
 
 public class PreyPower extends DebuffPower {
     public static final String POWER_ID = Hsrmod.makePath(PreyPower.class.getSimpleName());

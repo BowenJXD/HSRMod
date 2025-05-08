@@ -1,15 +1,15 @@
 package hsrmod.powers.uniqueBuffs;
 
-import hsrmod.Hsrmod;
-import hsrmod.powers.BuffPower;
-import hsrmod.powers.misc.SporePower;
-import hsrmod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import hsrmod.Hsrmod;
+import hsrmod.powers.BuffPower;
+import hsrmod.powers.misc.SporePower;
+import hsrmod.utils.ModHelper;
 
 public class PhenolCompoundsPower extends BuffPower {
     public static final String POWER_ID = Hsrmod.makePath(PhenolCompoundsPower.class.getSimpleName());

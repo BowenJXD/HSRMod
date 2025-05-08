@@ -1,8 +1,8 @@
 package hsrmod.powers.misc;
 
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import hsrmod.Hsrmod;
 import hsrmod.powers.BuffPower;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 
 public class FrozenResistancePower extends BuffPower {
     public static final String POWER_ID = Hsrmod.makePath(FrozenResistancePower.class.getSimpleName());

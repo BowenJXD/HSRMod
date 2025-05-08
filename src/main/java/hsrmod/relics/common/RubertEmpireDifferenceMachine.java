@@ -1,10 +1,10 @@
 package hsrmod.relics.common;
 
-import hsrmod.relics.BaseRelic;
-import hsrmod.utils.RelicEventHelper;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.ShineSparkleEffect;
+import hsrmod.relics.BaseRelic;
+import hsrmod.utils.RelicEventHelper;
 
 public class RubertEmpireDifferenceMachine extends BaseRelic {
     public static final String ID = RubertEmpireDifferenceMachine.class.getSimpleName();

@@ -1,12 +1,12 @@
 package hsrmod.cards.uncommon;
 
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.powers.misc.BreakEffectPower;
 import hsrmod.powers.misc.BreakEfficiencyPower;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class RuanMei1 extends BaseCard {
     public static final String ID = RuanMei1.class.getSimpleName();

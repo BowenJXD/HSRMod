@@ -1,10 +1,10 @@
 package hsrmod.cards.base;
 
-import hsrmod.cards.BaseCard;
-import hsrmod.misc.ICanChangeToTempHP;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.cards.BaseCard;
+import hsrmod.misc.ICanChangeToTempHP;
 
 public class Trailblazer3 extends BaseCard implements ICanChangeToTempHP {
     public static final String ID = Trailblazer3.class.getSimpleName();

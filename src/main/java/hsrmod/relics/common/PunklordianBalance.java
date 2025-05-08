@@ -1,10 +1,10 @@
 package hsrmod.relics.common;
 
-import hsrmod.relics.BaseRelic;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
+import hsrmod.relics.BaseRelic;
 
 public class PunklordianBalance extends BaseRelic {
     public static final String ID = PunklordianBalance.class.getSimpleName();

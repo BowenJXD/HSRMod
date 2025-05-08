@@ -1,11 +1,11 @@
 package hsrmod.relics.common;
 
-import hsrmod.powers.misc.BreakEffectPower;
-import hsrmod.powers.misc.ToughnessPower;
-import hsrmod.relics.BaseRelic;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.powers.misc.BreakEffectPower;
+import hsrmod.powers.misc.ToughnessPower;
+import hsrmod.relics.BaseRelic;
 
 public class SuperOverlordSpinningTop extends BaseRelic {
     public static final String ID = SuperOverlordSpinningTop.class.getSimpleName();

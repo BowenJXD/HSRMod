@@ -1,13 +1,13 @@
 package hsrmod.relics.rare;
 
-import hsrmod.modcore.CustomEnums;
-import hsrmod.powers.misc.EnergyPower;
-import hsrmod.relics.BaseRelic;
-import hsrmod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import hsrmod.modcore.CustomEnums;
+import hsrmod.powers.misc.EnergyPower;
+import hsrmod.relics.BaseRelic;
+import hsrmod.utils.ModHelper;
 
 public class RoadToComets extends BaseRelic {
     public static final String ID = RoadToComets.class.getSimpleName();

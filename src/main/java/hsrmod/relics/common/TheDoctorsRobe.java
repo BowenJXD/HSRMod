@@ -1,10 +1,10 @@
 package hsrmod.relics.common;
 
-import hsrmod.powers.misc.EnergyPower;
-import hsrmod.relics.BaseRelic;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import hsrmod.powers.misc.EnergyPower;
+import hsrmod.relics.BaseRelic;
 
 public class TheDoctorsRobe extends BaseRelic {
     public static final String ID = TheDoctorsRobe.class.getSimpleName();

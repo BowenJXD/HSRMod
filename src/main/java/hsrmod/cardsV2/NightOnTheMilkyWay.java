@@ -1,7 +1,5 @@
 package hsrmod.cardsV2;
 
-import hsrmod.cards.BaseCard;
-import hsrmod.utils.RelicEventHelper;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
@@ -11,6 +9,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.map.MapEdge;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.rooms.*;
+import hsrmod.cards.BaseCard;
+import hsrmod.utils.RelicEventHelper;
 
 public class NightOnTheMilkyWay extends BaseCard {
     public static final String ID = NightOnTheMilkyWay.class.getSimpleName();

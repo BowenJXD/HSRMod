@@ -1,5 +1,7 @@
 package hsrmod.powers.uniqueDebuffs;
 
+import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.Hsrmod;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.DebuffPower;
@@ -7,8 +9,6 @@ import hsrmod.powers.interfaces.OnReceivePowerPower;
 import hsrmod.powers.misc.DoTPower;
 import hsrmod.subscribers.PreDoTDamageSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
-import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 
 public class EpiphanyPower extends DebuffPower implements OnReceivePowerPower, PreDoTDamageSubscriber {
     public static final String POWER_ID = Hsrmod.makePath(EpiphanyPower.class.getSimpleName());

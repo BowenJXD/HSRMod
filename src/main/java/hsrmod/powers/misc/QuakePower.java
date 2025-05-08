@@ -1,5 +1,8 @@
 package hsrmod.powers.misc;
 
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import hsrmod.Hsrmod;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.modcore.ElementType;
@@ -7,9 +10,6 @@ import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.BuffPower;
 import hsrmod.subscribers.OnPlayerDamagedSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 
 import java.util.function.Consumer;
 

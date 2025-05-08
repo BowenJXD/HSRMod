@@ -1,10 +1,10 @@
 package hsrmod.relics.uncommon;
 
-import hsrmod.relics.BaseRelic;
-import hsrmod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.common.UpgradeSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import hsrmod.relics.BaseRelic;
+import hsrmod.utils.ModHelper;
 
 import java.util.Iterator;
 

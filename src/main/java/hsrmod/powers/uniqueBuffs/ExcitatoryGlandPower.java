@@ -1,12 +1,12 @@
 package hsrmod.powers.uniqueBuffs;
 
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import hsrmod.Hsrmod;
 import hsrmod.powers.PowerPower;
 import hsrmod.subscribers.PreEnergyChangeSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 public class ExcitatoryGlandPower extends PowerPower implements PreEnergyChangeSubscriber {
     public static final String POWER_ID = Hsrmod.makePath(ExcitatoryGlandPower.class.getSimpleName());

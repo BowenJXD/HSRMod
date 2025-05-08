@@ -1,10 +1,10 @@
 package hsrmod.relics.common;
 
-import hsrmod.relics.BaseRelic;
-import hsrmod.utils.RelicEventHelper;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import hsrmod.relics.BaseRelic;
+import hsrmod.utils.RelicEventHelper;
 
 import java.util.function.Predicate;
 

@@ -1,8 +1,5 @@
 package hsrmod.powers.misc;
 
-import hsrmod.Hsrmod;
-import hsrmod.effects.CustomAuraEffect;
-import hsrmod.powers.BuffPower;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
@@ -10,6 +7,9 @@ import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import hsrmod.Hsrmod;
+import hsrmod.effects.CustomAuraEffect;
+import hsrmod.powers.BuffPower;
 
 public class BrokenPower extends BuffPower {
     public static final String POWER_ID = Hsrmod.makePath(BrokenPower.class.getSimpleName());

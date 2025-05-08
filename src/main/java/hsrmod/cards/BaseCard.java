@@ -1,16 +1,5 @@
 package hsrmod.cards;
 
-import hsrmod.Hsrmod;
-import hsrmod.effects.PortraitDisplayEffect;
-import hsrmod.modcore.CustomEnums;
-import hsrmod.modcore.ElementType;
-import hsrmod.powers.misc.EnergyPower;
-import hsrmod.relics.starter.*;
-import hsrmod.subscribers.SubscriptionManager;
-import hsrmod.utils.CardDataCol;
-import hsrmod.utils.DataManager;
-import hsrmod.utils.ModHelper;
-import hsrmod.utils.RewardEditor;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
@@ -24,10 +13,20 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.MiracleEffect;
+import hsrmod.Hsrmod;
+import hsrmod.effects.PortraitDisplayEffect;
+import hsrmod.modcore.CustomEnums;
+import hsrmod.modcore.ElementType;
+import hsrmod.modcore.PlayerColorEnum;
+import hsrmod.powers.misc.EnergyPower;
+import hsrmod.relics.starter.*;
+import hsrmod.subscribers.SubscriptionManager;
+import hsrmod.utils.CardDataCol;
+import hsrmod.utils.DataManager;
+import hsrmod.utils.ModHelper;
+import hsrmod.utils.RewardEditor;
 
 import java.util.Objects;
-
-import static hsrmod.characters.StellaCharacter.PlayerColorEnum.HSR_PINK;
 
 public abstract class BaseCard extends CustomCard {
     protected int upCost;
@@ -54,7 +53,7 @@ public abstract class BaseCard extends CustomCard {
     public CardStrings cardStrings;
 
     public BaseCard(String id) {
-        this(id, HSR_PINK);
+        this(id, PlayerColorEnum.HSR_PINK);
     }
 
     public BaseCard(String id, CardColor color) {

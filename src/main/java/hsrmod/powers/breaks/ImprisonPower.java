@@ -1,9 +1,9 @@
 package hsrmod.powers.breaks;
 
-import hsrmod.Hsrmod;
-import hsrmod.powers.DebuffPower;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import hsrmod.Hsrmod;
+import hsrmod.powers.DebuffPower;
 
 public class ImprisonPower extends DebuffPower {
     public static final String POWER_ID = Hsrmod.makePath(ImprisonPower.class.getSimpleName());

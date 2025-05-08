@@ -1,12 +1,12 @@
 package hsrmod.cardsV2.Preservation;
 
-import hsrmod.cards.BaseCard;
-import hsrmod.powers.uniqueBuffs.Trailblazer8Power;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.FlameBarrierEffect;
+import hsrmod.cards.BaseCard;
+import hsrmod.powers.uniqueBuffs.Trailblazer8Power;
 
 public class Trailblazer8 extends BaseCard {
     public static final String ID = Trailblazer8.class.getSimpleName();

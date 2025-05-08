@@ -1,5 +1,10 @@
 package hsrmod.powers.uniqueBuffs;
 
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.Hsrmod;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
@@ -9,11 +14,6 @@ import hsrmod.powers.interfaces.OnReceivePowerPower;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.utils.GeneralUtil;
 import hsrmod.utils.ModHelper;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import java.util.function.Predicate;
 

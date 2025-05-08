@@ -1,13 +1,13 @@
 package hsrmod.cards.common;
 
-import hsrmod.cards.BaseCard;
-import hsrmod.powers.misc.ToughnessPower;
-import hsrmod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import hsrmod.cards.BaseCard;
+import hsrmod.powers.misc.ToughnessPower;
+import hsrmod.utils.ModHelper;
 
 public class StarcrusherWorker extends BaseCard {
     public static final String ID = StarcrusherWorker.class.getSimpleName();

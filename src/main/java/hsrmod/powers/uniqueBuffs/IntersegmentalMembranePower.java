@@ -1,10 +1,10 @@
 package hsrmod.powers.uniqueBuffs;
 
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import hsrmod.Hsrmod;
 import hsrmod.powers.PowerPower;
 import hsrmod.subscribers.PreEnergyChangeSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 
 public class IntersegmentalMembranePower extends PowerPower implements PreEnergyChangeSubscriber {
     public static final String POWER_ID = Hsrmod.makePath(IntersegmentalMembranePower.class.getSimpleName());

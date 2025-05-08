@@ -1,9 +1,9 @@
 package hsrmod.powers.uniqueBuffs;
 
-import hsrmod.Hsrmod;
-import hsrmod.powers.BuffPower;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import hsrmod.Hsrmod;
+import hsrmod.powers.BuffPower;
 
 public class MatrixOfPresciencePower extends BuffPower {
     public static final String POWER_ID = Hsrmod.makePath(MatrixOfPresciencePower.class.getSimpleName());

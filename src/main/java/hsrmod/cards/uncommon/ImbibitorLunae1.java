@@ -1,15 +1,15 @@
 package hsrmod.cards.uncommon;
 
-import hsrmod.actions.ElementalDamageAction;
-import hsrmod.cards.BaseCard;
-import hsrmod.modcore.ElementalDamageInfo;
-import hsrmod.powers.misc.EnergyPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.unique.LoseEnergyAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
+import hsrmod.actions.ElementalDamageAction;
+import hsrmod.cards.BaseCard;
+import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.powers.misc.EnergyPower;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

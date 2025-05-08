@@ -1,9 +1,5 @@
 package hsrmod.actions;
 
-import hsrmod.cards.BaseCard;
-import hsrmod.modcore.ElementType;
-import hsrmod.modcore.ElementalDamageInfo;
-import hsrmod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -12,6 +8,10 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import hsrmod.cards.BaseCard;
+import hsrmod.modcore.ElementType;
+import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.utils.ModHelper;
 
 import java.util.function.Consumer;
 

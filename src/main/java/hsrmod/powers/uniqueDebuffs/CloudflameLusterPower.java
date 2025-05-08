@@ -1,5 +1,8 @@
 package hsrmod.powers.uniqueDebuffs;
 
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import hsrmod.Hsrmod;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.DebuffPower;
@@ -7,9 +10,6 @@ import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.subscribers.PreBreakSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 
 public class CloudflameLusterPower extends DebuffPower implements PreBreakSubscriber {
     public static final String ID = Hsrmod.makePath(CloudflameLusterPower.class.getSimpleName());

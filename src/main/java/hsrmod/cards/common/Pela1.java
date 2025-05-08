@@ -1,14 +1,14 @@
 package hsrmod.cards.common;
 
-import hsrmod.actions.ElementalDamageAction;
-import hsrmod.actions.ElementalDamageAllAction;
-import hsrmod.cards.BaseCard;
-import hsrmod.modcore.CustomEnums;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
+import hsrmod.actions.ElementalDamageAction;
+import hsrmod.actions.ElementalDamageAllAction;
+import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
 
 import java.util.function.Consumer;
 

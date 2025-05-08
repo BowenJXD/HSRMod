@@ -1,16 +1,5 @@
 package hsrmod.utils;
 
-import hsrmod.Hsrmod;
-import hsrmod.cards.BaseCard;
-import hsrmod.characters.StellaCharacter;
-import hsrmod.modcore.CustomEnums;
-import hsrmod.relics.common.RubertEmpireMechanicalCogwheel;
-import hsrmod.relics.common.RubertEmpireMechanicalLever;
-import hsrmod.relics.common.RubertEmpireMechanicalPiston;
-import hsrmod.relics.starter.TrailblazeTimer;
-import hsrmod.relics.starter.WaxRelic;
-import hsrmod.subscribers.SubscriptionManager;
-import com.megacrit.cardcrawl.android.mods.BaseMod;
 import com.megacrit.cardcrawl.android.mods.interfaces.PostUpdateSubscriber;
 import com.megacrit.cardcrawl.android.mods.interfaces.StartActSubscriber;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -21,6 +10,16 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
+import hsrmod.Hsrmod;
+import hsrmod.cards.BaseCard;
+import hsrmod.characters.StellaCharacter;
+import hsrmod.modcore.CustomEnums;
+import hsrmod.relics.common.RubertEmpireMechanicalCogwheel;
+import hsrmod.relics.common.RubertEmpireMechanicalLever;
+import hsrmod.relics.common.RubertEmpireMechanicalPiston;
+import hsrmod.relics.starter.TrailblazeTimer;
+import hsrmod.relics.starter.WaxRelic;
+import hsrmod.subscribers.SubscriptionManager;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -49,7 +48,6 @@ public class RewardEditor implements StartActSubscriber, PostUpdateSubscriber {
     private RewardEditor() {
         bannedTags = new ArrayList<>();
         extraRewards = new ArrayList<>();
-        BaseMod.subscribe(this);
     }
 
     public static RewardEditor getInstance() {
@@ -73,14 +71,17 @@ public class RewardEditor implements StartActSubscriber, PostUpdateSubscriber {
             if (tag == null) return;
 
             for (RewardItem reward : rewards) {
+                System.out.println("RewardEditor card reward: " + reward);
                 if (reward.type == RewardItem.RewardType.CARD) {
                     setRewardByPath(reward);
                 }
+                System.out.println("RewardEditor changed reward:" + reward);
             }
 
             if (Objects.equals(relicId, "") && AbstractDungeon.player instanceof StellaCharacter) {
                 try {
                     checkBossRelic(tag);
+                    System.out.println("RewardEditor relicId: " + relicId);
                 } catch (Exception e) {
                 }
             }

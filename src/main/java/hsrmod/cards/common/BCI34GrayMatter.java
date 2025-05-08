@@ -1,10 +1,10 @@
 package hsrmod.cards.common;
 
-import hsrmod.cards.BaseCard;
-import hsrmod.powers.misc.BrainInAVatPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.cards.BaseCard;
+import hsrmod.powers.misc.BrainInAVatPower;
 
 public class BCI34GrayMatter extends BaseCard {
     public static final String ID = BCI34GrayMatter.class.getSimpleName();

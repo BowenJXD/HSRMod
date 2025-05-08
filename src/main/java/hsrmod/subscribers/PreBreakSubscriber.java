@@ -1,7 +1,7 @@
 package hsrmod.subscribers;
 
-import hsrmod.modcore.ElementalDamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import hsrmod.modcore.ElementalDamageInfo;
 
 public interface PreBreakSubscriber extends IHSRSubscriber{
     void preBreak(ElementalDamageInfo info, AbstractCreature target);

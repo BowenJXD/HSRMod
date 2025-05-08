@@ -1,12 +1,12 @@
 package hsrmod.cardsV2.Preservation;
 
-import hsrmod.cards.BaseCard;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.FastingEffect;
+import hsrmod.cards.BaseCard;
 
 public class ConcertForTwo extends BaseCard {
     public static final String ID = ConcertForTwo.class.getSimpleName();

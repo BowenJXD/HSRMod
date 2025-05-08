@@ -1,11 +1,11 @@
 package hsrmod.relics.common;
 
-import hsrmod.relics.BaseRelic;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.UpgradeShineEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
+import hsrmod.relics.BaseRelic;
 
 import java.util.ArrayList;
 import java.util.Collections;

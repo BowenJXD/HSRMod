@@ -1,7 +1,5 @@
 package hsrmod.modcore;
 
-import hsrmod.cards.BaseCard;
-import hsrmod.powers.breaks.*;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -9,6 +7,8 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import hsrmod.cards.BaseCard;
+import hsrmod.powers.breaks.*;
 
 public class ElementalDamageInfo extends DamageInfo {
     public int tr;

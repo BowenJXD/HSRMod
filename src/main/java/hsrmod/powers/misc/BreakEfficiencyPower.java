@@ -1,10 +1,10 @@
 package hsrmod.powers.misc;
 
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import hsrmod.Hsrmod;
 import hsrmod.powers.BuffPower;
 import hsrmod.subscribers.ISetToughnessReductionSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 
 public class BreakEfficiencyPower extends BuffPower implements ISetToughnessReductionSubscriber {
     public static final String POWER_ID = Hsrmod.makePath(BreakEfficiencyPower.class.getSimpleName());

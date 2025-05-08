@@ -1,9 +1,9 @@
 package hsrmod.relics.uncommon;
 
-import hsrmod.relics.BaseRelic;
-import hsrmod.utils.RewardEditor;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.rewards.RewardItem;
+import hsrmod.relics.BaseRelic;
+import hsrmod.utils.RewardEditor;
 
 import java.util.List;
 import java.util.function.Consumer;

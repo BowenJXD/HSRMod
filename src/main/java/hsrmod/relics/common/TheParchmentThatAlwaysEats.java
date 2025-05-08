@@ -1,12 +1,12 @@
 package hsrmod.relics.common;
 
-import hsrmod.relics.BaseRelic;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.BiteEffect;
+import hsrmod.relics.BaseRelic;
 
 import java.util.Iterator;
 

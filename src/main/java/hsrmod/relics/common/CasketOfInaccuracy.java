@@ -1,12 +1,12 @@
 package hsrmod.relics.common;
 
-import hsrmod.relics.BaseRelic;
-import hsrmod.utils.ModHelper;
-import hsrmod.utils.RewardEditor;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.ShopRoom;
+import hsrmod.relics.BaseRelic;
+import hsrmod.utils.ModHelper;
+import hsrmod.utils.RewardEditor;
 
 public class CasketOfInaccuracy extends BaseRelic {
     public static final String ID = CasketOfInaccuracy.class.getSimpleName();

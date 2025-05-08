@@ -1,13 +1,13 @@
 package hsrmod.powers.uniqueBuffs;
 
-import hsrmod.Hsrmod;
-import hsrmod.cards.BaseCard;
-import hsrmod.cards.uncommon.TopazNumby2;
-import hsrmod.powers.PowerPower;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.Hsrmod;
+import hsrmod.cards.BaseCard;
+import hsrmod.cards.uncommon.TopazNumby2;
+import hsrmod.powers.PowerPower;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 

@@ -1,16 +1,16 @@
 package hsrmod.relics.starter;
 
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import hsrmod.cards.BaseCard;
 import hsrmod.cardsV2.Paths.*;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.relics.BaseRelic;
 import hsrmod.utils.RelicEventHelper;
 import hsrmod.utils.RewardEditor;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.CardGroup;
-import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import java.util.List;
 import java.util.Objects;

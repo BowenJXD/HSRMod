@@ -1,11 +1,5 @@
 package hsrmod.characters;
 
-import com.badlogic.gdx.graphics.Texture;
-import hsrmod.Hsrmod;
-import hsrmod.cards.base.*;
-import hsrmod.relics.starter.*;
-import hsrmod.subscribers.SubscriptionManager;
-import hsrmod.utils.PathSelectScreen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -23,7 +17,6 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.cutscenes.CutscenePanel;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.city.Vampires;
-import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
@@ -39,12 +32,15 @@ import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
 import com.megacrit.cardcrawl.vfx.combat.BlockedWordEffect;
 import com.megacrit.cardcrawl.vfx.combat.HbBlockBrokenEffect;
 import com.megacrit.cardcrawl.vfx.combat.StrikeEffect;
+import hsrmod.Hsrmod;
+import hsrmod.cards.base.*;
+import hsrmod.modcore.PlayerColorEnum;
+import hsrmod.relics.starter.*;
+import hsrmod.subscribers.SubscriptionManager;
+import hsrmod.utils.PathSelectScreen;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-
-import static hsrmod.characters.StellaCharacter.PlayerColorEnum.HSR_PINK;
-import static hsrmod.characters.StellaCharacter.PlayerColorEnum.STELLA_CHARACTER;
 
 // 继承CustomPlayer类
 public class StellaCharacter extends CustomPlayer {
@@ -73,10 +69,12 @@ public class StellaCharacter extends CustomPlayer {
     // 人物的本地化文本，如卡牌的本地化文本一样，如何书写见下
     private static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString(Hsrmod.makePath("StellaCharacter"));
 
+    TextureAtlas.AtlasRegion smallOrb = new TextureAtlas.AtlasRegion(AssetLoader.getTexture(Hsrmod.MOD_NAME, Hsrmod.SMALL_ORB), 0, 0, 22, 22);
+    
     float drawYAlter = 0;
 
     public StellaCharacter(String name) {
-        super(Hsrmod.MOD_NAME, name, STELLA_CHARACTER, null, "HSRModResources/img/UI/orb/vfx.png", null, null, null);
+        super(Hsrmod.MOD_NAME, name, PlayerColorEnum.STELLA_CHARACTER, null, "HSRModResources/img/UI/orb/vfx.png", null, null, null);
 
         float hbx = 0f, hby = 0f, hbw = 200f, hbh = 220f;
         String charImg = "HSRModResources/img/char/character.png";
@@ -93,8 +91,8 @@ public class StellaCharacter extends CustomPlayer {
         );
 
         // 人物对话气泡的大小，如果游戏中尺寸不对在这里修改（libgdx的坐标轴左下为原点）
-        this.dialogX = (this.drawX + 70.0F * Settings.scale);
-        // this.dialogY = (this.drawY + 0.0F * Settings.scale);
+        this.dialogX = (this.drawX + 0.0F * Settings.scale);
+        this.dialogY = (this.drawY + 150.0F * Settings.scale);
     }
 
     protected void initializeClass(String imgUrl, String shoulder2ImgUrl, String shouldImgUrl, String corpseImgUrl, CharSelectInfo info, float hb_x, float hb_y, float hb_w, float hb_h, EnergyManager energy) {
@@ -232,7 +230,7 @@ public class StellaCharacter extends CustomPlayer {
     // 你的卡牌颜色（这个枚举在最下方创建）
     @Override
     public AbstractCard.CardColor getCardColor() {
-        return HSR_PINK;
+        return PlayerColorEnum.HSR_PINK;
     }
 
     // 翻牌事件出现的你的职业牌（一般设为打击）
@@ -244,7 +242,7 @@ public class StellaCharacter extends CustomPlayer {
     // 卡牌轨迹颜色
     @Override
     public Color getCardTrailColor() {
-        return Hsrmod.MY_COLOR;
+        return Hsrmod.HSR_COLOR;
     }
 
     // 高进阶带来的生命值损失
@@ -304,7 +302,7 @@ public class StellaCharacter extends CustomPlayer {
     // 打心脏的颜色，不是很明显
     @Override
     public Color getSlashAttackColor() {
-        return Hsrmod.MY_COLOR;
+        return Hsrmod.HSR_COLOR;
     }
 
     // 吸血鬼事件文本，主要是他（索引为0）和她（索引为1）的区别（机器人另外）
@@ -316,7 +314,7 @@ public class StellaCharacter extends CustomPlayer {
     // 卡牌选择界面选择该牌的颜色
     @Override
     public Color getCardRenderColor() {
-        return Hsrmod.MY_COLOR;
+        return Hsrmod.HSR_COLOR;
     }
 
     // 第三章面对心脏造成伤害时的特效
@@ -329,7 +327,7 @@ public class StellaCharacter extends CustomPlayer {
     public TextureAtlas.AtlasRegion getOrb() {
         TextureAtlas.AtlasRegion orb = super.getOrb();
         if (orb == null)
-            return new TextureAtlas.AtlasRegion(new Texture(Hsrmod.SMALL_ORB), 0, 0, 22, 22);
+            return smallOrb;
         return orb;
     }
 
@@ -495,25 +493,5 @@ public class StellaCharacter extends CustomPlayer {
         } else {
             AbstractDungeon.effectList.add(new StrikeEffect(this, this.hb.cX, this.hb.cY, 0));
         }
-    }
-
-    // 以下为原版人物枚举、卡牌颜色枚举扩展的枚举，需要写，接下来要用
-
-    // 注意此处是在 MyCharacter 类内部的静态嵌套类中定义的新枚举值
-    // 不可将该定义放在外部的 MyCharacter 类中，具体原因见《高级技巧 / 01 - Patch / SpireEnum》
-    public static class PlayerColorEnum {
-        public static PlayerClass STELLA_CHARACTER = AbstractPlayer.PlayerClass.add("STELLA_CHARACTER");
-
-        // ***将CardColor和LibraryType的变量名改为你的角色的颜色名称，确保不会与其他mod冲突***
-        // ***并且名称需要一致！***
-        public static final AbstractCard.CardColor HSR_PINK = AbstractCard.CardColor.add("HSR_PINK");
-    }
-
-    public static class PlayerLibraryEnum {
-        // ***将CardColor和LibraryType的变量名改为你的角色的颜色名称，确保不会与其他mod冲突***
-        // ***并且名称需要一致！***
-
-        // 这个变量未被使用（呈现灰色）是正常的
-        public static CardLibrary.LibraryType HSR_PINK = CardLibrary.LibraryType.add("HSR_PINK");
-    }
+    }    
 }

@@ -1,10 +1,5 @@
 package hsrmod.powers.misc;
 
-import hsrmod.Hsrmod;
-import hsrmod.actions.ElementalDamageAction;
-import hsrmod.modcore.ElementType;
-import hsrmod.modcore.ElementalDamageInfo;
-import hsrmod.powers.DebuffPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
@@ -13,6 +8,11 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.Hsrmod;
+import hsrmod.actions.ElementalDamageAction;
+import hsrmod.modcore.ElementType;
+import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.powers.DebuffPower;
 
 public class SporePower extends DebuffPower {
     public static final String POWER_ID = Hsrmod.makePath(SporePower.class.getSimpleName());

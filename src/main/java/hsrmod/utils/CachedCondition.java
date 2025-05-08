@@ -1,10 +1,10 @@
 package hsrmod.utils;
 
-import hsrmod.Hsrmod;
-import hsrmod.powers.misc.BrokenPower;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.Hsrmod;
+import hsrmod.powers.misc.BrokenPower;
 
 import java.util.HashMap;
 import java.util.Map;

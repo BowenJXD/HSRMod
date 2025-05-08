@@ -1,10 +1,5 @@
 package hsrmod.relics;
 
-import hsrmod.Hsrmod;
-import hsrmod.effects.BetterWarningSignEffect;
-import hsrmod.utils.DataManager;
-import hsrmod.utils.ModHelper;
-import hsrmod.utils.RelicDataCol;
 import com.megacrit.cardcrawl.android.mods.AssetLoader;
 import com.megacrit.cardcrawl.android.mods.abstracts.CustomRelic;
 import com.megacrit.cardcrawl.core.Settings;
@@ -12,6 +7,11 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.vfx.RelicAboveCreatureEffect;
+import hsrmod.Hsrmod;
+import hsrmod.effects.BetterWarningSignEffect;
+import hsrmod.utils.DataManager;
+import hsrmod.utils.ModHelper;
+import hsrmod.utils.RelicDataCol;
 
 public abstract class BaseRelic extends CustomRelic {
     public int magicNumber;

@@ -1,15 +1,15 @@
 package hsrmod.cards.uncommon;
 
-import hsrmod.cards.BaseCard;
-import hsrmod.effects.PortraitDisplayEffect;
-import hsrmod.modcore.CustomEnums;
-import hsrmod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.cards.BaseCard;
+import hsrmod.effects.PortraitDisplayEffect;
+import hsrmod.modcore.CustomEnums;
+import hsrmod.utils.ModHelper;
 
 public class Gepard1 extends BaseCard {
     public static final String ID = Gepard1.class.getSimpleName();

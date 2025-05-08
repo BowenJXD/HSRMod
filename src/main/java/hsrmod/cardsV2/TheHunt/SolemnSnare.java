@@ -1,9 +1,5 @@
 package hsrmod.cardsV2.TheHunt;
 
-import hsrmod.cards.BaseCard;
-import hsrmod.modcore.CustomEnums;
-import hsrmod.powers.misc.BoostPower;
-import hsrmod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.unique.LoseEnergyAction;
@@ -11,6 +7,10 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
+import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
+import hsrmod.powers.misc.BoostPower;
+import hsrmod.utils.ModHelper;
 
 public class SolemnSnare extends BaseCard {
     public static final String ID = SolemnSnare.class.getSimpleName();

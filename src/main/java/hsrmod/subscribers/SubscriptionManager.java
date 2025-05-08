@@ -1,10 +1,5 @@
 package hsrmod.subscribers;
 
-import hsrmod.actions.ElementalDamageAction;
-import hsrmod.cards.BaseCard;
-import hsrmod.modcore.ElementType;
-import hsrmod.modcore.ElementalDamageInfo;
-import hsrmod.powers.misc.DoTPower;
 import com.megacrit.cardcrawl.android.mods.BaseMod;
 import com.megacrit.cardcrawl.android.mods.interfaces.ISubscriber;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -15,6 +10,11 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import hsrmod.actions.ElementalDamageAction;
+import hsrmod.cards.BaseCard;
+import hsrmod.modcore.ElementType;
+import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.powers.misc.DoTPower;
 
 import java.util.ArrayList;
 import java.util.HashMap;

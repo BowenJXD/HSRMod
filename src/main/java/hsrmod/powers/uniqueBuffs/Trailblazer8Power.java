@@ -1,12 +1,12 @@
 package hsrmod.powers.uniqueBuffs;
 
-import hsrmod.Hsrmod;
-import hsrmod.cardsV2.Preservation.Quake;
-import hsrmod.powers.PowerPower;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import hsrmod.Hsrmod;
+import hsrmod.cardsV2.Preservation.Quake;
+import hsrmod.powers.PowerPower;
 
 public class Trailblazer8Power extends PowerPower {
     public static final String POWER_ID = Hsrmod.makePath(Trailblazer8Power.class.getSimpleName());

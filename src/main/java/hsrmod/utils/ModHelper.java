@@ -1,6 +1,5 @@
 package hsrmod.utils;
 
-import hsrmod.Hsrmod;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -19,6 +18,7 @@ import com.megacrit.cardcrawl.powers.MinionPower;
 import com.megacrit.cardcrawl.random.Random;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
+import hsrmod.Hsrmod;
 
 import java.util.ArrayList;
 import java.util.Collections;

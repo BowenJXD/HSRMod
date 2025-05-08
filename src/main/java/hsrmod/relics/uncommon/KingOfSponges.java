@@ -1,6 +1,5 @@
 package hsrmod.relics.uncommon;
 
-import hsrmod.relics.BaseRelic;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -8,6 +7,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.RelicAboveCreatureEffect;
 import com.megacrit.cardcrawl.vfx.TextAboveCreatureEffect;
+import hsrmod.relics.BaseRelic;
 
 public class KingOfSponges extends BaseRelic {
     public static final String ID = KingOfSponges.class.getSimpleName();

@@ -1,10 +1,5 @@
 package hsrmod.powers.uniqueDebuffs;
 
-import hsrmod.Hsrmod;
-import hsrmod.actions.FollowUpAction;
-import hsrmod.cards.uncommon.DrRatio3;
-import hsrmod.powers.DebuffPower;
-import hsrmod.utils.ModHelper;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -12,6 +7,11 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import hsrmod.Hsrmod;
+import hsrmod.actions.FollowUpAction;
+import hsrmod.cards.uncommon.DrRatio3;
+import hsrmod.powers.DebuffPower;
+import hsrmod.utils.ModHelper;
 
 import java.util.Iterator;
 import java.util.function.Predicate;

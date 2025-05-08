@@ -1,8 +1,5 @@
 package hsrmod.powers.uniqueBuffs;
 
-import hsrmod.Hsrmod;
-import hsrmod.powers.BuffPower;
-import hsrmod.powers.misc.EnergyPower;
 import com.badlogic.gdx.utils.Timer;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
@@ -13,6 +10,9 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+import hsrmod.Hsrmod;
+import hsrmod.powers.BuffPower;
+import hsrmod.powers.misc.EnergyPower;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 

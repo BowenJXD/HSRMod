@@ -1,10 +1,10 @@
 package hsrmod.powers.misc;
 
-import hsrmod.Hsrmod;
-import hsrmod.powers.BuffPower;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import hsrmod.Hsrmod;
+import hsrmod.powers.BuffPower;
 
 public class BoostPower extends BuffPower {
     public static final String POWER_ID = Hsrmod.makePath(BoostPower.class.getSimpleName());

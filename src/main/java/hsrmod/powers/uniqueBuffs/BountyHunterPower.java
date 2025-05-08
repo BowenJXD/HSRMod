@@ -1,11 +1,11 @@
 package hsrmod.powers.uniqueBuffs;
 
-import hsrmod.Hsrmod;
-import hsrmod.cards.BaseCard;
-import hsrmod.powers.PowerPower;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.Hsrmod;
+import hsrmod.cards.BaseCard;
+import hsrmod.powers.PowerPower;
 
 import java.util.ArrayList;
 import java.util.List;

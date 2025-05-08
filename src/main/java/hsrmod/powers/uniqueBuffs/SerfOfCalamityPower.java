@@ -1,14 +1,14 @@
 package hsrmod.powers.uniqueBuffs;
 
-import hsrmod.Hsrmod;
-import hsrmod.powers.PowerPower;
-import hsrmod.powers.misc.SporePower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import hsrmod.Hsrmod;
+import hsrmod.powers.PowerPower;
+import hsrmod.powers.misc.SporePower;
 
 public class SerfOfCalamityPower extends PowerPower {
     public static final String ID = Hsrmod.makePath(SerfOfCalamityPower.class.getSimpleName());

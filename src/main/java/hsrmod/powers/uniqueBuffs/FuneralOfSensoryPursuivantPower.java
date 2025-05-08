@@ -1,5 +1,8 @@
 package hsrmod.powers.uniqueBuffs;
 
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.Hsrmod;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.PowerPower;
@@ -7,9 +10,6 @@ import hsrmod.powers.misc.DoTPower;
 import hsrmod.powers.misc.SuspicionPower;
 import hsrmod.subscribers.PreDoTDamageSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 
 public class FuneralOfSensoryPursuivantPower extends PowerPower implements PreDoTDamageSubscriber {
     public static final String POWER_ID = Hsrmod.makePath(FuneralOfSensoryPursuivantPower.class.getSimpleName());

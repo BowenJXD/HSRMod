@@ -1,8 +1,8 @@
 package hsrmod.relics.uncommon;
 
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.relics.BaseRelic;
 import hsrmod.utils.RelicEventHelper;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 public class SilverCoinOfDiscord extends BaseRelic {
     public static final String ID = SilverCoinOfDiscord.class.getSimpleName();

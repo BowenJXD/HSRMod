@@ -1,6 +1,5 @@
 package com.megacrit.cardcrawl.ui.panels;
 
-import hsrmod.subscribers.SubscriptionManager;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
@@ -18,6 +17,7 @@ import com.megacrit.cardcrawl.localization.TutorialStrings;
 import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import com.megacrit.cardcrawl.vfx.RefreshEnergyEffect;
+import hsrmod.subscribers.SubscriptionManager;
 
 public class EnergyPanel extends AbstractPanel {
     private static final TutorialStrings tutorialStrings;

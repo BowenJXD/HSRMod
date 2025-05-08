@@ -1,15 +1,15 @@
 package hsrmod.cards.uncommon;
 
-import hsrmod.actions.AOEAction;
-import hsrmod.actions.ElementalDamageAction;
-import hsrmod.cards.BaseCard;
-import hsrmod.modcore.ElementalDamageInfo;
-import hsrmod.powers.uniqueDebuffs.ProofOfDebtPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.actions.AOEAction;
+import hsrmod.actions.ElementalDamageAction;
+import hsrmod.cards.BaseCard;
+import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.powers.uniqueDebuffs.ProofOfDebtPower;
 
 import java.util.function.Function;
 

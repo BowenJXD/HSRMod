@@ -1,10 +1,10 @@
 package hsrmod.relics.boss;
 
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.relics.BaseRelic;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 public class HerosTriumphantReturn extends BaseRelic {
     public static final String ID = HerosTriumphantReturn.class.getSimpleName();

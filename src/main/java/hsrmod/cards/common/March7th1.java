@@ -1,8 +1,5 @@
 package hsrmod.cards.common;
 
-import hsrmod.actions.CleanAction;
-import hsrmod.cards.BaseCard;
-import hsrmod.powers.uniqueBuffs.ReinforcePower;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -11,6 +8,9 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.FastingEffect;
+import hsrmod.actions.CleanAction;
+import hsrmod.cards.BaseCard;
+import hsrmod.powers.uniqueBuffs.ReinforcePower;
 
 public class March7th1 extends BaseCard {
     public static final String ID = March7th1.class.getSimpleName();

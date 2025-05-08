@@ -1,8 +1,8 @@
 package hsrmod.relics.uncommon;
 
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.relics.BaseRelic;
 import hsrmod.utils.CardSelectManager;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 public class JellyfishOnTheStaircase extends BaseRelic {
     public static final String ID = JellyfishOnTheStaircase.class.getSimpleName();

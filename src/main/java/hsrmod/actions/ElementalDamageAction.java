@@ -1,11 +1,5 @@
 package hsrmod.actions;
 
-import hsrmod.modcore.ElementalDamageInfo;
-import hsrmod.powers.misc.BrokenPower;
-import hsrmod.powers.misc.LockToughnessPower;
-import hsrmod.powers.misc.ToughnessPower;
-import hsrmod.subscribers.SubscriptionManager;
-import hsrmod.utils.ModHelper;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -16,6 +10,12 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
+import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.powers.misc.BrokenPower;
+import hsrmod.powers.misc.LockToughnessPower;
+import hsrmod.powers.misc.ToughnessPower;
+import hsrmod.subscribers.SubscriptionManager;
+import hsrmod.utils.ModHelper;
 
 import java.util.Iterator;
 import java.util.function.Consumer;

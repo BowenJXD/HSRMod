@@ -1,5 +1,9 @@
 package hsrmod.powers.uniqueBuffs;
 
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.Hsrmod;
 import hsrmod.actions.BreakDamageAction;
 import hsrmod.modcore.ElementType;
@@ -7,10 +11,6 @@ import hsrmod.powers.PowerPower;
 import hsrmod.powers.misc.BrokenPower;
 import hsrmod.subscribers.PreToughnessReduceSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class Trailblazer5Power extends PowerPower implements PreToughnessReduceSubscriber {
     public static final String POWER_ID = Hsrmod.makePath(Trailblazer5Power.class.getSimpleName());

@@ -1,10 +1,5 @@
 package hsrmod.cardsV2;
 
-import hsrmod.actions.ElementalDamageAction;
-import hsrmod.cards.BaseCard;
-import hsrmod.modcore.ElementalDamageInfo;
-import hsrmod.utils.CardDataCol;
-import hsrmod.utils.DataManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.UpgradeSpecificCardAction;
@@ -12,6 +7,11 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.actions.ElementalDamageAction;
+import hsrmod.cards.BaseCard;
+import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.utils.CardDataCol;
+import hsrmod.utils.DataManager;
 
 import java.util.function.Consumer;
 

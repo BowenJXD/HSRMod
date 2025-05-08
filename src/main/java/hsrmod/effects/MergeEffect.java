@@ -1,14 +1,14 @@
 package hsrmod.effects;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import hsrmod.Hsrmod;
 import hsrmod.relics.common.RubertEmpireDifferenceMachine;
 import hsrmod.relics.common.RubertEmpireMechanicalCogwheel;
 import hsrmod.relics.common.RubertEmpireMechanicalLever;
 import hsrmod.relics.common.RubertEmpireMechanicalPiston;
 import hsrmod.utils.RelicEventHelper;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 
 
 public class MergeEffect extends AbstractGameEffect {

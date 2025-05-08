@@ -1,13 +1,13 @@
 package hsrmod.powers.uniqueBuffs;
 
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import hsrmod.Hsrmod;
 import hsrmod.powers.PowerPower;
 import hsrmod.powers.misc.SporePower;
 import hsrmod.subscribers.PreEnergyChangeSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 
 public class SporeDischargePower extends PowerPower implements PreEnergyChangeSubscriber {
     public static final String POWER_ID = Hsrmod.makePath(SporeDischargePower.class.getSimpleName());

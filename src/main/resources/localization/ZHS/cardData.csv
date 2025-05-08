@@ -1,16 +1,16 @@
 ID,牌名,稀有度,类型,目标,费用,描述,伤害值,削韧值,格挡值,特殊值,费用+,强化版描述,伤害值+,削韧值+,格挡值+,特殊值+,命途,属性,泛用性
-Gepard1,永屹之壁,UNCOMMON,SKILL,SELF,0, AndroidTestMod:耗能 100，获得 !B! 点格挡。,,,8,,,,,,12,,存护,,中
+Gepard1,永屹之壁,UNCOMMON,SKILL,SELF,0, Hsrmod:耗能 100，获得 !B! 点格挡。,,,8,,,,,,12,,存护,,中
 FuXuan1,太微行棋，灵台示影,UNCOMMON,SKILL,ALL_ENEMY,2, 消耗 。获得 !M! 层 *穷观阵 （受到的伤害减少50%，回合开始时移除1层），并保留格挡 !M! 回合。,,,,2,,,,,,3,存护,,中
 Macrosegregation,宏观偏析,RARE,POWER,SELF,3, 固有 。你无法获得 敏捷 或 脆弱 。获得的格挡值+2，且回合开始时仅损失 !M! %的格挡。,,,,66,,,,,,50,存护,,高
-ResonanceTransfer,谐振传递,RARE,POWER,SELF,2,突破格挡时，获得1层 AndroidTestMod:反震 。,,,,2,, 固有 。对有格挡的敌人造成伤害时，获得1层 AndroidTestMod:反震 。,,,,3,存护,,低
-TheArchitects,筑城者,RARE,ATTACK,ENEMY,2,若其有格挡，对其触发1次 AndroidTestMod:反震 ，以此法突破格挡时，再造成一次 !M! %的伤害。,,2,,50,, 固有 。对其触发1次 AndroidTestMod:反震 ，以此法突破格挡时，再造成一次 !M! %的伤害。,,2,,100,存护,物理,低
+ResonanceTransfer,谐振传递,RARE,POWER,SELF,2,突破格挡时，获得1层 Hsrmod:反震 。,,,,2,, 固有 。对有格挡的敌人造成伤害时，获得1层 Hsrmod:反震 。,,,,3,存护,,低
+TheArchitects,筑城者,RARE,ATTACK,ENEMY,2,若其有格挡，对其触发1次 Hsrmod:反震 ，以此法突破格挡时，再造成一次 !M! %的伤害。,,2,,50,, 固有 。对其触发1次 Hsrmod:反震 ，以此法突破格挡时，再造成一次 !M! %的伤害。,,2,,100,存护,物理,低
 Trailblazer7,筑城者遗宝,UNCOMMON,SKILL,SELF,0,打出后，此回合每打出一张技能牌，获得 !M! 点格挡。,,,,2,, 固有 。打出后，此回合每打出一张技能牌，获得 !M! 点格挡，每有一个敌人有格挡，额外获得1点。,,,,,存护,,高
 Trailblazer8,行胜思,UNCOMMON,POWER,SELF,2,打出有格挡值的牌时，获得一张伤害为该牌格挡值的 *「反震」 。,,,,,, 固有 。打出有格挡值的牌时，获得一张伤害为该牌格挡值的 *「反震+」 。,,,,,存护,,低
-MetastaticField,超静定场,COMMON,SKILL,SELF_AND_ENEMY,1,获得1层 AndroidTestMod:反震 ，你获得 !B! 点格挡，其获得4点格挡。,,,4,,, 固有 。获得1层 AndroidTestMod:反震 ，你获得 !B! 点格挡，其获得4点格挡。,,,6,,存护,,中
+MetastaticField,超静定场,COMMON,SKILL,SELF_AND_ENEMY,1,获得1层 Hsrmod:反震 ，你获得 !B! 点格挡，其获得4点格挡。,,,4,,, 固有 。获得1层 Hsrmod:反震 ，你获得 !B! 点格挡，其获得4点格挡。,,,6,,存护,,中
 ThisIsMe,这就是我啦！,UNCOMMON,SKILL,SELF_AND_ENEMY,1,将 敏捷 补充至 !M! ，你获得 !B! 点格挡，其获得4点格挡。,,,10,2,, 固有 。获得 !M! 点 敏捷 ，你获得 !B! 点格挡，其获得4点格挡。,,,10,,存护,,中
 ConcertForTwo,两个人的演唱会,UNCOMMON,SKILL,SELF_AND_ENEMY,2, 消耗 。将你的格挡补充至 !B! ，将其的格挡补充至 !M! 。,,,30,3,, 固有 。 消耗 。将你的格挡调整至 !B! ，将其的格挡调整至 !M! 。,,,40,4,存护,,高
-DayOneOfMyNewLife,余生的第一天,UNCOMMON,SKILL,SELF_AND_ENEMY,2, 固有 。 消耗 。将 AndroidTestMod:多重护甲 补充至 !M! ，你获得 !B! 点格挡，其获得4点格挡。,,,10,4,,,,,15,6,存护,,中
-DestinysThreadsForewoven,织造命运之线,COMMON,SKILL,SELF_AND_ENEMY,1, AndroidTestMod:耗能 80，消耗至多 !M! 张手牌，你获得 !B! 倍的格挡，其获得1倍的格挡。,,,10,1,, 固有 。 AndroidTestMod:耗能 80，消耗至多 !M! 张手牌，你获得 !B! 倍的格挡，其获得1倍的格挡。,,,,2,存护,,中
+DayOneOfMyNewLife,余生的第一天,UNCOMMON,SKILL,SELF_AND_ENEMY,2, 固有 。 消耗 。将 Hsrmod:多重护甲 补充至 !M! ，你获得 !B! 点格挡，其获得4点格挡。,,,10,4,,,,,15,6,存护,,中
+DestinysThreadsForewoven,织造命运之线,COMMON,SKILL,SELF_AND_ENEMY,1, Hsrmod:耗能 80，消耗至多 !M! 张手牌，你获得 !B! 倍的格挡，其获得1倍的格挡。,,,10,1,, 固有 。 Hsrmod:耗能 80，消耗至多 !M! 张手牌，你获得 !B! 倍的格挡，其获得1倍的格挡。,,,,2,存护,,中
 Amber,琥珀,COMMON,SKILL,ALL,0,若你没有格挡，获得 !B! 点。群体：若其没有格挡，获得 !M! 点。,,,10,2,,,,,15,,存护,,中
 Burst,迸发,COMMON,ATTACK,ENEMY,1,造成 !D! 点伤害（物理 !TR! ），若突破了格挡，随机1张固有手牌此回合费用变为0。,5,2,,,,造成 !D! 点伤害（物理 !TR! ），若突破了格挡，选择1张固有手牌此回合费用变为0。,6,,,,存护,物理,中
 Concentration,专注,COMMON,ATTACK,ENEMY,1,造成 !D! 点伤害（物理 !TR! ），若突破了格挡，获得随机1张固有牌。,5,2,,1,,造成 !D! 点伤害（物理 !TR! ），若突破了格挡，选择获得1张固有牌。,6,,,,存护,物理,中
@@ -19,162 +19,162 @@ Preservation,存护,SPECIAL,SKILL,NONE,-2,,,,,,,,,,,,存护,,
 Qingque1,海底捞月,COMMON,SKILL,SELF,1, 消耗 。摸1张牌， !M! %概率回复消耗的 [E] ， !M! %概率将此牌返还手牌， !M! %概率不 消耗 。,,,,66,,,,,,75,繁育,,高
 Yukong1,天阙鸣弦,COMMON,SKILL,SELF,0,获得当前 [E] （至多为上限）数量的临时 力量 。,,,,0,,获得当前 [E] （至多为上限+1）数量的临时 力量 。,,,,1,繁育,,中
 Hanya1,生灭系缚,COMMON,ATTACK,ENEMY,1, 消耗 。造成 !D! 点伤害（物理 !TR! ），施加 !M! 层 *承负 （成为牌的目标后移除1层，回复 [E] ，回合开始时移除所有层）。,4,2,,2,,,,,,3,繁育,物理,中
-ImbibitorLunae1,龙力自在,UNCOMMON,ATTACK,ENEMY,-1,若X为0/1/2/3及以上，造成 !D! 点伤害（虚数 !TR! ）2/3/5/7次。获得20X点 AndroidTestMod:充能 。,3,1,,,,,5,,,,繁育,虚数,低
+ImbibitorLunae1,龙力自在,UNCOMMON,ATTACK,ENEMY,-1,若X为0/1/2/3及以上，造成 !D! 点伤害（虚数 !TR! ）2/3/5/7次。获得20X点 Hsrmod:充能 。,3,1,,,,,5,,,,繁育,虚数,低
 Sparkle1,叙述性诡计,UNCOMMON,SKILL,SELF,1,摸 [E] 数量的牌，然后杀死其他 *「叙述性诡计」 。,,,,,, 固有 。摸 [E] 数量的牌，然后杀死其他 *「叙述性诡计」 。,,,,,繁育,,高
-Sparkle2,一人千役,UNCOMMON,SKILL,SELF,-1, 消耗 。 AndroidTestMod:耗能 110，获得2X（至多为上限的2倍）的 [E] ，然后杀死其他 *「一人千役」 。,,,,0,, 消耗 。 AndroidTestMod:耗能 110，获得2X（至多为上限的2倍+1）的 [E] ，然后杀死其他 *「一人千役」 。,,,,1,繁育,,中
+Sparkle2,一人千役,UNCOMMON,SKILL,SELF,-1, 消耗 。 Hsrmod:耗能 110，获得2X（至多为上限的2倍）的 [E] ，然后杀死其他 *「一人千役」 。,,,,0,, 消耗 。 Hsrmod:耗能 110，获得2X（至多为上限的2倍+1）的 [E] ，然后杀死其他 *「一人千役」 。,,,,1,繁育,,中
 IntersegmentalMembrane,节间膜,RARE,POWER,SELF,2,每消耗1点 [E] ，获得 !M! 点格挡。,,,,2,,,,,,3,繁育,,高
-SporeDischarge,子囊释放,RARE,POWER,SELF,2,每消耗1点 [E] ，对随机敌人施加1层 AndroidTestMod:孢子 。,,,,,,每消耗或回复1点 [E] ，对随机敌人施加1层 AndroidTestMod:孢子 。,,,,,繁育,,低
+SporeDischarge,子囊释放,RARE,POWER,SELF,2,每消耗1点 [E] ，对随机敌人施加1层 Hsrmod:孢子 。,,,,,,每消耗或回复1点 [E] ，对随机敌人施加1层 Hsrmod:孢子 。,,,,,繁育,,低
 ExcitatoryGland,兴奋腺,RARE,POWER,SELF,3, [E] 上限+1。每回合首次消耗完 [E] 时，回复 [E] 。,,,,,, 固有 。 [E] 上限+1。每回合首次消耗完 [E] 时，回复 [E] 。,,,,,繁育,,中
-SerfOfCalamity,孕灾蠧役,UNCOMMON,POWER,SELF,3,通过牌造成伤害后，对目标施加1层 AndroidTestMod:孢子 。每破裂 !M! 层 AndroidTestMod:孢子 ，摸1张牌。,,,,3,2,,,,,,繁育,,中
-FungalPustule,菌种脓疱,UNCOMMON,SKILL,SELF,1, 消耗 。 AndroidTestMod:耗能 60。回复 !M! 点 [E] ，获得牌堆1张牌。,,,,2,, AndroidTestMod:耗能 60。回复 !M! 点 [E] ，获得牌堆1张牌，然后此牌于此次战斗的费用和回能量均+1。,,,,,繁育,,中
+SerfOfCalamity,孕灾蠧役,UNCOMMON,POWER,SELF,3,通过牌造成伤害后，对目标施加1层 Hsrmod:孢子 。每破裂 !M! 层 Hsrmod:孢子 ，摸1张牌。,,,,3,2,,,,,,繁育,,中
+FungalPustule,菌种脓疱,UNCOMMON,SKILL,SELF,1, 消耗 。 Hsrmod:耗能 60。回复 !M! 点 [E] ，获得牌堆1张牌。,,,,2,, Hsrmod:耗能 60。回复 !M! 点 [E] ，获得牌堆1张牌，然后此牌于此次战斗的费用和回能量均+1。,,,,,繁育,,中
 Sparkle3,梦游鱼,UNCOMMON,SKILL,SELF,1, 消耗 。获得 [E] ，从弃牌堆选择1张牌获得，然后杀死其他 *「梦游鱼」 。,,,,,,获得 [E] ，从弃牌堆选择1张牌获得，然后杀死其他 *「梦游鱼」 。,,,,,繁育,,中
-ImbibitorLunae2,苍龙傲睨，劫水濯世,UNCOMMON,ATTACK,ALL_ENEMY,1, AndroidTestMod:耗能 140，群体：造成 !D! 点伤害（虚数 !TR! ） !M! 次；然后回复 [E] [E] 。,1,1,,3,,,3,,,,繁育,虚数,中
-SwarmKingProgeny,孳孽王虫,COMMON,ATTACK,ENEMY,-1, AndroidTestMod:弹射 X次：造成 !D! 点伤害（风 !TR! ），施加1层 AndroidTestMod:孢子 。,4,1,,,,,6,,,,繁育,风,低
-PhenolCompounds,酚类物质,COMMON,SKILL,SELF,1, 消耗 。 AndroidTestMod:耗能 80，于此回合打出下一张牌后，回复该牌费用数量的 [E] 。,,,,1,, 消耗 。 AndroidTestMod:耗能 80，于此回合打出下一张牌后，回复该牌费用数量的 [E] ，并对一名敌人施加等量层 AndroidTestMod:孢子 。,,,,,繁育,,中
+ImbibitorLunae2,苍龙傲睨，劫水濯世,UNCOMMON,ATTACK,ALL_ENEMY,1, Hsrmod:耗能 140，群体：造成 !D! 点伤害（虚数 !TR! ） !M! 次；然后回复 [E] [E] 。,1,1,,3,,,3,,,,繁育,虚数,中
+SwarmKingProgeny,孳孽王虫,COMMON,ATTACK,ENEMY,-1, Hsrmod:弹射 X次：造成 !D! 点伤害（风 !TR! ），施加1层 Hsrmod:孢子 。,4,1,,,,,6,,,,繁育,风,低
+PhenolCompounds,酚类物质,COMMON,SKILL,SELF,1, 消耗 。 Hsrmod:耗能 80，于此回合打出下一张牌后，回复该牌费用数量的 [E] 。,,,,1,, 消耗 。 Hsrmod:耗能 80，于此回合打出下一张牌后，回复该牌费用数量的 [E] ，并对一名敌人施加等量层 Hsrmod:孢子 。,,,,,繁育,,中
 Propagation,繁育,SPECIAL,SKILL,NONE,-2,,,,,,,,,,,,繁育,,
 Luocha1,白花的祈望,UNCOMMON,SKILL,SELF,0, 保留 。 消耗 。回复 [E] 和 !M! 点生命（若生命值小于50%则额外回复 !M! 点 临时生命 ），净化1个负面效果，消耗1张牌。,,,,2,, 保留 。 消耗 。回复 [E] 和 !M! 点生命（若生命值小于50%则额外回复 !M! 点 临时生命 ），净化1个负面效果，消耗任意张牌。,,,,3,丰饶,,高
 Lynx1,盐渍野营罐头,COMMON,SKILL,SELF,1,回复 !B! 点 临时生命 ，净化 !M! 层负面效果，退出当前姿态。,,,5,1,,,,,8,1,丰饶,,低
-Natasha1,新生之礼,COMMON,SKILL,SELF,1, AndroidTestMod:耗能 90，弃置1张牌，回复 !B! 点 临时生命 并 AndroidTestMod:坏死 ，摸 !M! 张牌。,,,8,3,,,,,12,3,丰饶,,中
+Natasha1,新生之礼,COMMON,SKILL,SELF,1, Hsrmod:耗能 90，弃置1张牌，回复 !B! 点 临时生命 并 Hsrmod:坏死 ，摸 !M! 张牌。,,,8,3,,,,,12,3,丰饶,,中
 Arlan1,禁锢解除,COMMON,ATTACK,ENEMY,0,失去 !M! 点生命，弃置1张牌，造成 !D! 点伤害（雷 !TR! ）。,12,2,,2,,,18,,,3,丰饶,雷,低
-Blade1,倏忽恩赐,UNCOMMON,ATTACK,ALL_ENEMY,5,回合内生命值每变动1次，费用-1。至0时 AndroidTestMod:追击 。 NL 回复 !B! 点 临时生命 并 AndroidTestMod:坏死 ，群体：造成 临时生命 !M! %的伤害（ !D! ）（风 !TR! ）。,0,1,4,50,4,,,,8,,丰饶,风,低
-FuXuan2,天律大衍，历劫归一,UNCOMMON,ATTACK,ALL_ENEMY,2, AndroidTestMod:耗能 135，回复 !B! 点 临时生命 并 AndroidTestMod:坏死 ，群体：造成生命值（包含临时） !M! %（ !D! ）的伤害（量子 !TR! ）。,0,2,15,15,,,,,20,20,丰饶,量子,低
-Bailu1,云吟乍涌坠珠露,UNCOMMON,SKILL,SELF,2, 消耗 。 保留 。打出时，或保留此牌时，回复 !B! 点 临时生命 并 AndroidTestMod:坏死 ，每有1张手牌额外回复 !M! 点。,,,0,2,, 消耗 。 保留 。打出时，或保留此牌时，回复 !B! 点 临时生命 并 AndroidTestMod:坏死 ，每有1张手牌额外回复 !M! 点，若为打出则获得1层 无实体 。,,,,,丰饶,,中
+Blade1,倏忽恩赐,UNCOMMON,ATTACK,ALL_ENEMY,5,回合内生命值每变动1次，费用-1。至0时 Hsrmod:追击 。 NL 回复 !B! 点 临时生命 并 Hsrmod:坏死 ，群体：造成 临时生命 !M! %的伤害（ !D! ）（风 !TR! ）。,0,1,4,50,4,,,,8,,丰饶,风,低
+FuXuan2,天律大衍，历劫归一,UNCOMMON,ATTACK,ALL_ENEMY,2, Hsrmod:耗能 135，回复 !B! 点 临时生命 并 Hsrmod:坏死 ，群体：造成生命值（包含临时） !M! %（ !D! ）的伤害（量子 !TR! ）。,0,2,15,15,,,,,20,20,丰饶,量子,低
+Bailu1,云吟乍涌坠珠露,UNCOMMON,SKILL,SELF,2, 消耗 。 保留 。打出时，或保留此牌时，回复 !B! 点 临时生命 并 Hsrmod:坏死 ，每有1张手牌额外回复 !M! 点。,,,0,2,, 消耗 。 保留 。打出时，或保留此牌时，回复 !B! 点 临时生命 并 Hsrmod:坏死 ，每有1张手牌额外回复 !M! 点，若为打出则获得1层 无实体 。,,,,,丰饶,,中
 Jingliu1,寒川映月,UNCOMMON,ATTACK,ENEMY,2, 消耗 。重复 !M! 次：失去 !M! 点生命，造成 !D! 点伤害（冰 !TR! ）。将 *「无罅飞光」 加入摸牌堆，进入 平静 。,14,1,,2,, 消耗 。重复 !M! 次：失去 !M! 点生命，造成 !D! 点伤害（冰 !TR! ）。将 *「无罅飞光+」 加入摸牌堆，进入 平静 。,,,,3,丰饶,冰,低
 Jingliu2,无罅飞光,SPECIAL,ATTACK,ENEMY,1, 消耗 。弃置1张牌，造成 !D! 点伤害（冰 !TR! ），将 *「寒川映月」 加入弃牌堆，退出当前姿态。,4,2,,,, 消耗 。弃置1张牌，造成 !D! 点伤害（冰 !TR! ），将 *「寒川映月+」 加入弃牌堆，退出当前姿态。,6,,,,丰饶,冰,低
 MayRainbowsRemain,愿虹光永驻天空,UNCOMMON,SKILL,SELF,1, 固有 。 消耗 。失去 !M! 点生命，进入 平静 ，随机获得 !M! 张保留牌。,,,,2,0, 固有 。 消耗 。失去 !M! 点生命，进入 平静 ，获得 !M! 张保留牌。,,,,,丰饶,,低
-Castorice1,月茧荫蔽的身躯,UNCOMMON,SKILL,SELF,1,弃置任意张牌并 AndroidTestMod:坏死 ，每弃置一张牌回复 !M! 点 临时生命 ，每弃置一张保留牌，则额外回复 !M! 点并摸2张牌。,,,,2,,,,,,3,丰饶,,低
-Mydei1,以血还血,UNCOMMON,ATTACK,ENEMY,2,回合内生命值损失值累计到5时 AndroidTestMod:追击 （当前为 !M! ）。 NL 保留 。 消耗 。进入 愤怒 ，造成 !D! 点伤害（虚数 !TR! ），将 *「弑王成王」 加入摸牌堆。,3,2,,0,,回合内生命值损失值累计到5时 AndroidTestMod:追击 （当前为 !M! ）。 NL 保留 。 消耗 。进入 愤怒 ，造成 !D! 点伤害（虚数 !TR! ），将 *「弑王成王+」 加入摸牌堆。,6,,,,丰饶,虚数,低
-Mydei2,弑王成王,SPECIAL,ATTACK,ENEMY,1, 消耗 。获得时 AndroidTestMod:追击 （消耗费用）。失去 !M! 点生命，造成 !D! 点伤害（虚数 !TR! ），将 *「弑神登神」 置于摸牌堆顶，进入 神格 。,6,3,,2,, 消耗 。获得时 AndroidTestMod:追击 （消耗费用）。失去 !M! 点生命，造成 !D! 点伤害（虚数 !TR! ），将 *「弑神登神+」 置于摸牌堆顶，进入 神格 。,9,,,3,丰饶,虚数,无
-Mydei3,弑神登神,SPECIAL,ATTACK,ALL_ENEMY,1, 消耗 。获得时 AndroidTestMod:追击 （消耗费用）。失去 !M! 点生命，群体：造成 !D! 点伤害（虚数 !TR! ）。退出当前姿态，将 *「以血还血」 加入弃牌堆。,12,4,,6,,,18,,,9,丰饶,虚数,无
-MudraOfBlessing,若罪若福，施诸愿印,RARE,SKILL,SELF,-2, 保留 。保留此牌时，获得 临时生命 数量的 AndroidTestMod:珠露 并 AndroidTestMod:坏死 。,,,,,, 保留 。保留此牌时，或失去此牌时，获得 临时生命 数量的 AndroidTestMod:珠露 并 AndroidTestMod:坏死 。,,,,,丰饶,,低
-TimeWaitsForNoOne,时节不居,RARE,SKILL,SELF,-2, 保留 。打出牌回复（临时）生命值后，回复 !M! 点 临时生命 ，并获得 !M! 层 AndroidTestMod:珠露 。,,,,2,, 保留 。打出牌回复（临时）生命值后，回复 !M! 点 临时生命 ，并获得 !M! 层 AndroidTestMod:珠露 。失去此牌时消耗，令 临时生命 和 AndroidTestMod:珠露 翻倍。,,,,,丰饶,,低
-HerbPlucker,采药人,RARE,SKILL,SELF,-2, 保留 。 AndroidTestMod:坏死 触发时，摸1张牌。 AndroidTestMod:珠露 触发时，下回合获得 [E] 。,,,,,, 保留 。 AndroidTestMod:坏死 触发时，摸1张牌。 AndroidTestMod:珠露 破裂时，下回合获得 [E] 。失去此牌时，触发 AndroidTestMod:坏死 和 AndroidTestMod:珠露 。,,,,,丰饶,,低
+Castorice1,月茧荫蔽的身躯,UNCOMMON,SKILL,SELF,1,弃置任意张牌并 Hsrmod:坏死 ，每弃置一张牌回复 !M! 点 临时生命 ，每弃置一张保留牌，则额外回复 !M! 点并摸2张牌。,,,,2,,,,,,3,丰饶,,低
+Mydei1,以血还血,UNCOMMON,ATTACK,ENEMY,2,回合内生命值损失值累计到5时 Hsrmod:追击 （当前为 !M! ）。 NL 保留 。 消耗 。进入 愤怒 ，造成 !D! 点伤害（虚数 !TR! ），将 *「弑王成王」 加入摸牌堆。,3,2,,0,,回合内生命值损失值累计到5时 Hsrmod:追击 （当前为 !M! ）。 NL 保留 。 消耗 。进入 愤怒 ，造成 !D! 点伤害（虚数 !TR! ），将 *「弑王成王+」 加入摸牌堆。,6,,,,丰饶,虚数,低
+Mydei2,弑王成王,SPECIAL,ATTACK,ENEMY,1, 消耗 。获得时 Hsrmod:追击 （消耗费用）。失去 !M! 点生命，造成 !D! 点伤害（虚数 !TR! ），将 *「弑神登神」 置于摸牌堆顶，进入 神格 。,6,3,,2,, 消耗 。获得时 Hsrmod:追击 （消耗费用）。失去 !M! 点生命，造成 !D! 点伤害（虚数 !TR! ），将 *「弑神登神+」 置于摸牌堆顶，进入 神格 。,9,,,3,丰饶,虚数,无
+Mydei3,弑神登神,SPECIAL,ATTACK,ALL_ENEMY,1, 消耗 。获得时 Hsrmod:追击 （消耗费用）。失去 !M! 点生命，群体：造成 !D! 点伤害（虚数 !TR! ）。退出当前姿态，将 *「以血还血」 加入弃牌堆。,12,4,,6,,,18,,,9,丰饶,虚数,无
+MudraOfBlessing,若罪若福，施诸愿印,RARE,SKILL,SELF,-2, 保留 。保留此牌时，获得 临时生命 数量的 Hsrmod:珠露 并 Hsrmod:坏死 。,,,,,, 保留 。保留此牌时，或失去此牌时，获得 临时生命 数量的 Hsrmod:珠露 并 Hsrmod:坏死 。,,,,,丰饶,,低
+TimeWaitsForNoOne,时节不居,RARE,SKILL,SELF,-2, 保留 。打出牌回复（临时）生命值后，回复 !M! 点 临时生命 ，并获得 !M! 层 Hsrmod:珠露 。,,,,2,, 保留 。打出牌回复（临时）生命值后，回复 !M! 点 临时生命 ，并获得 !M! 层 Hsrmod:珠露 。失去此牌时消耗，令 临时生命 和 Hsrmod:珠露 翻倍。,,,,,丰饶,,低
+HerbPlucker,采药人,RARE,SKILL,SELF,-2, 保留 。 Hsrmod:坏死 触发时，摸1张牌。 Hsrmod:珠露 触发时，下回合获得 [E] 。,,,,,, 保留 。 Hsrmod:坏死 触发时，摸1张牌。 Hsrmod:珠露 破裂时，下回合获得 [E] 。失去此牌时，触发 Hsrmod:坏死 和 Hsrmod:珠露 。,,,,,丰饶,,低
 PerfectTiming,此时恰好,COMMON,SKILL,SELF,0,饮用药水时自动触发效果（不打出）。 NL 随机获得1层 敏捷 或 人工制品 。,,,,,,饮用药水时自动触发效果（不打出）。 NL 随机获得1层 敏捷 或 人工制品 ，获得摸牌堆1张牌。,,,,,丰饶,,中
 Abundance,丰饶,SPECIAL,SKILL,NONE,-2,,,,,,,,,,,,丰饶,,
-Qingque2,帝垣翔鳞和绝张,COMMON,ATTACK,ALL_ENEMY,4,每消耗1点 [E] ，此牌便有50%概率费用-1，为0时 AndroidTestMod:追击 。 NL 获得 [E] ，群体：造成 !D! 点伤害（量子 !TR! ） !M! 次。,2,1,,2,,,,,,3,欢愉,量子,中
-Herta1,还是我来吧,COMMON,ATTACK,ALL_ENEMY,1,回合内，若有敌人的生命值降至50%以下，则 AndroidTestMod:追击 。 NL 群体：造成 !D! 点伤害（冰 !TR! ）；若以此法将敌人的生命值降低至50%以下，重复此流程。,6,1,,,,,9,,,,欢愉,冰,低
+Qingque2,帝垣翔鳞和绝张,COMMON,ATTACK,ALL_ENEMY,4,每消耗1点 [E] ，此牌便有50%概率费用-1，为0时 Hsrmod:追击 。 NL 获得 [E] ，群体：造成 !D! 点伤害（量子 !TR! ） !M! 次。,2,1,,2,,,,,,3,欢愉,量子,中
+Herta1,还是我来吧,COMMON,ATTACK,ALL_ENEMY,1,回合内，若有敌人的生命值降至50%以下，则 Hsrmod:追击 。 NL 群体：造成 !D! 点伤害（冰 !TR! ）；若以此法将敌人的生命值降低至50%以下，重复此流程。,6,1,,,,,9,,,,欢愉,冰,低
 March7th1,可爱即是正义,COMMON,SKILL,SELF,1,获得 !B! 点格挡，净化1层负面效果，获得 *加护 （受到伤害时，若有格挡，则获得一张目标为伤害来源的 *「少女的特权」 ）。,,,3,,,获得 !B! 点格挡，净化1层负面效果，获得 *加护 （受到伤害时，若有格挡，则获得 !B! 点格挡，并获得一张目标为伤害来源的 *「少女的特权」 ）。,,,,,欢愉,,高
-March7th2,少女的特权,SPECIAL,ATTACK,SELF_AND_ENEMY,-2, 消耗 。回合开始时 AndroidTestMod:追击 。 NL 获得 !B! 点格挡，造成 !D! 点伤害（冰 !TR! ）。,1,1,1,,,,,,,,欢愉,冰,无
-Yanqing1,快雨燕相逐,UNCOMMON,ATTACK,ENEMY,2, AndroidTestMod:耗能 140，造成 !D! 点伤害（冰 !TR! ），若你有格挡，则额外造成一次伤害；60%概率获得 *「呼剑如影」 。,12,2,,60,, AndroidTestMod:耗能 140，造成 !D! 点伤害（冰 !TR! ），若你有格挡，则额外造成一次伤害；60%概率获得 *「呼剑如影+」 。,18,3,,,欢愉,冰,低
-Yanqing2,呼剑如影,SPECIAL,ATTACK,ENEMY,-2, 消耗 。回合开始时，若你于上回合结束后未受到过未被格挡的伤害，则 AndroidTestMod:追击 。 NL 造成 !D! 点伤害（冰 !TR! ）， !M! %概率施加1层 AndroidTestMod:冻结 。,8,1,,65,,,10,,,,欢愉,冰,无
-Clara1,因为我们是家人,UNCOMMON,SKILL,SELF,1, 保留 。回合开始时，若你于上回合结束后受到过伤害，则 AndroidTestMod:追击 。 NL 获得 !B! +X点格挡，X为消耗牌堆牌数。,,,3,,,,,,6,,欢愉,,高
-Himeko1,乘胜追击,UNCOMMON,ATTACK,ALL_ENEMY,3, AndroidTestMod:击破 后 AndroidTestMod:追击 。群体：造成 !D! 点伤害（火 !TR! ） !M! 次。,5,1,,2,,,,,,3,欢愉,火,中
-JingYuan1,斩勘神形,UNCOMMON,ATTACK,ENEMY,10,打出牌后，此牌费用-1，为0时 AndroidTestMod:追击 。 NL 摸 !M! 张牌， AndroidTestMod:弹射 !M! 次：造成 !D! 点伤害（雷 !TR! ）。,4,1,,2,,,,,,3,欢愉,雷,低
-TopazNumby2,猪市？！,UNCOMMON,ATTACK,ENEMY,1,你每 AndroidTestMod:追击 2次其他牌，从弃牌堆获得1张此牌。 NL AndroidTestMod:追击 其他牌后， AndroidTestMod:追击 1张此牌。 NL 造成 !D! 点伤害（火 !TR! ）。,5,1,,,,你每 AndroidTestMod:追击 2次其他牌，从弃牌堆获得1张此牌。 NL AndroidTestMod:追击 其他牌后， AndroidTestMod:追击 1张此牌。 NL 造成 !D! 点伤害（火 !TR! ），优先 AndroidTestMod:追击 生命值少的目标。,7,,,,欢愉,火,低
-TopazNumby3,未来市场,UNCOMMON,ATTACK,ENEMY,1,造成 !D! 点伤害（火 !TR! ），移除场上的 *负债证明 ，对其施加 *负债证明 （受到的 AndroidTestMod:追击 牌的伤害+ !M! 。 AndroidTestMod:追击 选择目标时，优先选择其）。,4,1,,2,,造成 !D! 点伤害（火 !TR! ），移除场上的 *负债证明 ，对其施加 *负债证明 （受到的 AndroidTestMod:追击 牌的伤害+ !M!。 AndroidTestMod:追击 选择目标时，优先选择其）。,6,,,3,欢愉,火,低
-DrRatio1,三段悖论,UNCOMMON,ATTACK,ENEMY,1, AndroidTestMod:耗能 140，造成 !D! 点伤害（虚数 !TR! ），施加 *智者的短见 ，获得 !M! 张 *「我思故我在」 。,5,3,,2,,,,,,3,欢愉,虚数,低
+March7th2,少女的特权,SPECIAL,ATTACK,SELF_AND_ENEMY,-2, 消耗 。回合开始时 Hsrmod:追击 。 NL 获得 !B! 点格挡，造成 !D! 点伤害（冰 !TR! ）。,1,1,1,,,,,,,,欢愉,冰,无
+Yanqing1,快雨燕相逐,UNCOMMON,ATTACK,ENEMY,2, Hsrmod:耗能 140，造成 !D! 点伤害（冰 !TR! ），若你有格挡，则额外造成一次伤害；60%概率获得 *「呼剑如影」 。,12,2,,60,, Hsrmod:耗能 140，造成 !D! 点伤害（冰 !TR! ），若你有格挡，则额外造成一次伤害；60%概率获得 *「呼剑如影+」 。,18,3,,,欢愉,冰,低
+Yanqing2,呼剑如影,SPECIAL,ATTACK,ENEMY,-2, 消耗 。回合开始时，若你于上回合结束后未受到过未被格挡的伤害，则 Hsrmod:追击 。 NL 造成 !D! 点伤害（冰 !TR! ）， !M! %概率施加1层 Hsrmod:冻结 。,8,1,,65,,,10,,,,欢愉,冰,无
+Clara1,因为我们是家人,UNCOMMON,SKILL,SELF,1, 保留 。回合开始时，若你于上回合结束后受到过伤害，则 Hsrmod:追击 。 NL 获得 !B! +X点格挡，X为消耗牌堆牌数。,,,3,,,,,,6,,欢愉,,高
+Himeko1,乘胜追击,UNCOMMON,ATTACK,ALL_ENEMY,3, Hsrmod:击破 后 Hsrmod:追击 。群体：造成 !D! 点伤害（火 !TR! ） !M! 次。,5,1,,2,,,,,,3,欢愉,火,中
+JingYuan1,斩勘神形,UNCOMMON,ATTACK,ENEMY,10,打出牌后，此牌费用-1，为0时 Hsrmod:追击 。 NL 摸 !M! 张牌， Hsrmod:弹射 !M! 次：造成 !D! 点伤害（雷 !TR! ）。,4,1,,2,,,,,,3,欢愉,雷,低
+TopazNumby2,猪市？！,UNCOMMON,ATTACK,ENEMY,1,你每 Hsrmod:追击 2次其他牌，从弃牌堆获得1张此牌。 NL Hsrmod:追击 其他牌后， Hsrmod:追击 1张此牌。 NL 造成 !D! 点伤害（火 !TR! ）。,5,1,,,,你每 Hsrmod:追击 2次其他牌，从弃牌堆获得1张此牌。 NL Hsrmod:追击 其他牌后， Hsrmod:追击 1张此牌。 NL 造成 !D! 点伤害（火 !TR! ），优先 Hsrmod:追击 生命值少的目标。,7,,,,欢愉,火,低
+TopazNumby3,未来市场,UNCOMMON,ATTACK,ENEMY,1,造成 !D! 点伤害（火 !TR! ），移除场上的 *负债证明 ，对其施加 *负债证明 （受到的 Hsrmod:追击 牌的伤害+ !M! 。 Hsrmod:追击 选择目标时，优先选择其）。,4,1,,2,,造成 !D! 点伤害（火 !TR! ），移除场上的 *负债证明 ，对其施加 *负债证明 （受到的 Hsrmod:追击 牌的伤害+ !M!。 Hsrmod:追击 选择目标时，优先选择其）。,6,,,3,欢愉,火,低
+DrRatio1,三段悖论,UNCOMMON,ATTACK,ENEMY,1, Hsrmod:耗能 140，造成 !D! 点伤害（虚数 !TR! ），施加 *智者的短见 ，获得 !M! 张 *「我思故我在」 。,5,3,,2,,,,,,3,欢愉,虚数,低
 DrRatio2,精神助产术,UNCOMMON,ATTACK,ENEMY,1,造成 !D! +X点伤害（虚数 !TR! ）（X为其负面效果数）；施加 *智者的短见 ，获得1张 *「我思故我在」 。,5,2,,1,,造成 !D! +X点伤害（虚数 !TR! ）（X为其负面效果数）；施加 *智者的短见 ，获得1张 *「我思故我在+」 。,7,,,,欢愉,虚数,中
-DrRatio3,我思故我在,SPECIAL,ATTACK,ENEMY,-2, 消耗 。对有 *智者的短见 的目标造成伤害后，有40%+X*20%概率 AndroidTestMod:追击 （X为其负面效果数）。 NL 造成 !D! 点伤害（虚数 !TR! ）。,5,1,,1,, 消耗 。对有 *智者的短见 的目标造成伤害后，有40%+X*20%概率 AndroidTestMod:追击 （X为其负面效果数）。 NL 造成 !D! +X点伤害（虚数 !TR! ）。,,,,,欢愉,虚数,无
-Aventurine1,枪口以右,UNCOMMON,POWER,SELF,2,受到通常伤害后，若你有格挡，获得4层 AndroidTestMod:盲注 ； AndroidTestMod:追击 其他牌后，获得2层 AndroidTestMod:盲注 ；至多10层。,,,,,, 固有 。受到通常伤害后，若你有格挡，获得5层 AndroidTestMod:盲注 ； AndroidTestMod:追击 其他牌后，获得2层 AndroidTestMod:盲注 ；至多10层。,,,,,欢愉,,中
-Aventurine2,繁荣基石,UNCOMMON,SKILL,SELF,1,通过牌获得格挡后 AndroidTestMod:追击 。获得1~ !B! 点格挡 !M! 次。然后获得1层 人工制品 。,,,7,1,,,,,,2,欢愉,,低
-Aventurine3,宾果！,SPECIAL,ATTACK,SELF_AND_ENEMY,1, 消耗 。回合开始或结束时 AndroidTestMod:追击 ：造成1~ !D! 点伤害（虚数 !TR! ），获得1~ !B! 点格挡。,7,1,7,,0,,,,,,欢愉,虚数,无
-Robin1,即兴装饰,UNCOMMON,SKILL,SELF,-1,摸X张牌，从左依次打出X张手牌（若为 AndroidTestMod:追击 牌则触发 AndroidTestMod:追击 ）。,,,,,,摸X张牌，从左依次打出X张手牌（若为 AndroidTestMod:追击 牌则触发 AndroidTestMod:追击 ，且不消耗X）。,,,,,欢愉,,中
-Robin2,千音迭奏，群星赋格,UNCOMMON,SKILL,SELF,1, AndroidTestMod:耗能 140，摸 !M! 张牌，获得以下效果：打出攻击牌后，获得其费用数量的 力量 。下回合开始时，移除此效果，和以此法获得的 力量 。,,,,3,, AndroidTestMod:耗能 140，摸 !M! 张牌，获得以下效果：打出攻击牌后，获得其费用数量的 力量 ，若为 AndroidTestMod:追击 牌，则回复20点 AndroidTestMod:充能 。下回合开始时，移除此效果，和以此法获得的 力量 。,,,,4,欢愉,,高
-Jade1,剔烁之牙,UNCOMMON,ATTACK,ALL_ENEMY,1,摸牌时 AndroidTestMod:追击 。失去2点生命，摸 !M! 张牌，群体：造成手牌数量（ !D! ）的伤害（量子 !TR! ）。,0,1,,2,,,,,,3,欢愉,量子,中
-Yunli1,剑为地纪，刃惊天宗,UNCOMMON,ATTACK,ALL_ENEMY,-2, 保留 。手牌效果：受到伤害时，伤害- !M! ，且回复10 AndroidTestMod:充能 。回合开始时，若你于上回合结束后受到过伤害，则 AndroidTestMod:追击 。 NL 重复执行，直到 AndroidTestMod:充能 不足： NL AndroidTestMod:耗能 120， AndroidTestMod:弹射 2次：造成 !D! 点伤害（物理 !TR! ）。,5,1,,2,,,,,,4,欢愉,物理,中
-Sunday1,纸与仪典的恩赐,UNCOMMON,SKILL,SELF_AND_ENEMY,1,获得 !M! 层 力量 ，选择对目标 AndroidTestMod:追击 手牌中1张 AndroidTestMod:追击 牌。,,,,2,,获得 !M! 层 力量 ，净化1个负面效果，选择对目标 AndroidTestMod:追击 手牌中1张 AndroidTestMod:追击 牌。,,,,3,欢愉,,中
-BattlefieldMagician,战场魔术师,RARE,POWER,SELF,2, AndroidTestMod:追击 后，获得 !M! 点格挡。,,,,3,,打出 AndroidTestMod:追击 牌后，获得 !M! 点格挡。,,,,4,欢愉,,低
-SlaughterhouseNo4RestInPeace,《四号屠场 · 众生安眠》,RARE,POWER,SELF,2, AndroidTestMod:追击 造成的削韧+1，且造成伤害后，若其有 AndroidTestMod:击破状态 ，则有 !M! %的概率摸1张牌。,,,,80,,打出 AndroidTestMod:追击 牌造成的削韧+1，且造成伤害后，若其有 / 没有 AndroidTestMod:击破状态 ，则分别有 !M! % / 20%的概率摸1张牌。,,,,,欢愉,,低
-UselessScholar,无用学者,RARE,POWER,SELF,3, AndroidTestMod:追击 后，若有50 AndroidTestMod:充能 ，则有 !M! %的概率消耗之， AndroidTestMod:追击 一张 AndroidTestMod:追击 牌。,,,,66,, 固有 。打出 AndroidTestMod:追击 牌后，若有50 AndroidTestMod:充能 ，则有 !M! %的概率消耗之， AndroidTestMod:追击 一张 AndroidTestMod:追击 牌。,,,,,欢愉,,低
-BountyHunter,赏金猎人,RARE,POWER,SELF,1, AndroidTestMod:追击 后，有 !M! %的概率将该牌返还手牌。,,,,25,,打出 AndroidTestMod:追击 牌后，有 !M! %的概率将该牌返还手牌。,,,,,欢愉,,低
-ChampionsDinnerCatsCradle,《冠军晚餐 · 猫的摇篮》,RARE,POWER,SELF,2, AndroidTestMod:耗能 的牌视为 AndroidTestMod:追击 牌，且于获得 AndroidTestMod:充能 时， !M! %概率不消耗 AndroidTestMod:充能 AndroidTestMod:追击 1张。,,,,75,, 固有 。 AndroidTestMod:耗能 的牌视为 AndroidTestMod:追击 牌，且于获得 AndroidTestMod:充能 时， !M! %概率不消耗 AndroidTestMod:充能 AndroidTestMod:追击 1张。,,,,,欢愉,,中
-VineyardAgainstTheNight,《葡萄庄园 · 抵抗黑夜》,UNCOMMON,SKILL,SELF,1,获得1层 AndroidTestMod:回味 。,,,,,, 固有 。 消耗 。获得1层 AndroidTestMod:回味 。,,,,,欢愉,,低
+DrRatio3,我思故我在,SPECIAL,ATTACK,ENEMY,-2, 消耗 。对有 *智者的短见 的目标造成伤害后，有40%+X*20%概率 Hsrmod:追击 （X为其负面效果数）。 NL 造成 !D! 点伤害（虚数 !TR! ）。,5,1,,1,, 消耗 。对有 *智者的短见 的目标造成伤害后，有40%+X*20%概率 Hsrmod:追击 （X为其负面效果数）。 NL 造成 !D! +X点伤害（虚数 !TR! ）。,,,,,欢愉,虚数,无
+Aventurine1,枪口以右,UNCOMMON,POWER,SELF,2,受到通常伤害后，若你有格挡，获得4层 Hsrmod:盲注 ； Hsrmod:追击 其他牌后，获得2层 Hsrmod:盲注 ；至多10层。,,,,,, 固有 。受到通常伤害后，若你有格挡，获得5层 Hsrmod:盲注 ； Hsrmod:追击 其他牌后，获得2层 Hsrmod:盲注 ；至多10层。,,,,,欢愉,,中
+Aventurine2,繁荣基石,UNCOMMON,SKILL,SELF,1,通过牌获得格挡后 Hsrmod:追击 。获得1~ !B! 点格挡 !M! 次。然后获得1层 人工制品 。,,,7,1,,,,,,2,欢愉,,低
+Aventurine3,宾果！,SPECIAL,ATTACK,SELF_AND_ENEMY,1, 消耗 。回合开始或结束时 Hsrmod:追击 ：造成1~ !D! 点伤害（虚数 !TR! ），获得1~ !B! 点格挡。,7,1,7,,0,,,,,,欢愉,虚数,无
+Robin1,即兴装饰,UNCOMMON,SKILL,SELF,-1,摸X张牌，从左依次打出X张手牌（若为 Hsrmod:追击 牌则触发 Hsrmod:追击 ）。,,,,,,摸X张牌，从左依次打出X张手牌（若为 Hsrmod:追击 牌则触发 Hsrmod:追击 ，且不消耗X）。,,,,,欢愉,,中
+Robin2,千音迭奏，群星赋格,UNCOMMON,SKILL,SELF,1, Hsrmod:耗能 140，摸 !M! 张牌，获得以下效果：打出攻击牌后，获得其费用数量的 力量 。下回合开始时，移除此效果，和以此法获得的 力量 。,,,,3,, Hsrmod:耗能 140，摸 !M! 张牌，获得以下效果：打出攻击牌后，获得其费用数量的 力量 ，若为 Hsrmod:追击 牌，则回复20点 Hsrmod:充能 。下回合开始时，移除此效果，和以此法获得的 力量 。,,,,4,欢愉,,高
+Jade1,剔烁之牙,UNCOMMON,ATTACK,ALL_ENEMY,1,摸牌时 Hsrmod:追击 。失去2点生命，摸 !M! 张牌，群体：造成手牌数量（ !D! ）的伤害（量子 !TR! ）。,0,1,,2,,,,,,3,欢愉,量子,中
+Yunli1,剑为地纪，刃惊天宗,UNCOMMON,ATTACK,ALL_ENEMY,-2, 保留 。手牌效果：受到伤害时，伤害- !M! ，且回复10 Hsrmod:充能 。回合开始时，若你于上回合结束后受到过伤害，则 Hsrmod:追击 。 NL 重复执行，直到 Hsrmod:充能 不足： NL Hsrmod:耗能 120， Hsrmod:弹射 2次：造成 !D! 点伤害（物理 !TR! ）。,5,1,,2,,,,,,4,欢愉,物理,中
+Sunday1,纸与仪典的恩赐,UNCOMMON,SKILL,SELF_AND_ENEMY,1,获得 !M! 层 力量 ，选择对目标 Hsrmod:追击 手牌中1张 Hsrmod:追击 牌。,,,,2,,获得 !M! 层 力量 ，净化1个负面效果，选择对目标 Hsrmod:追击 手牌中1张 Hsrmod:追击 牌。,,,,3,欢愉,,中
+BattlefieldMagician,战场魔术师,RARE,POWER,SELF,2, Hsrmod:追击 后，获得 !M! 点格挡。,,,,3,,打出 Hsrmod:追击 牌后，获得 !M! 点格挡。,,,,4,欢愉,,低
+SlaughterhouseNo4RestInPeace,《四号屠场 · 众生安眠》,RARE,POWER,SELF,2, Hsrmod:追击 造成的削韧+1，且造成伤害后，若其有 Hsrmod:击破状态 ，则有 !M! %的概率摸1张牌。,,,,80,,打出 Hsrmod:追击 牌造成的削韧+1，且造成伤害后，若其有 / 没有 Hsrmod:击破状态 ，则分别有 !M! % / 20%的概率摸1张牌。,,,,,欢愉,,低
+UselessScholar,无用学者,RARE,POWER,SELF,3, Hsrmod:追击 后，若有50 Hsrmod:充能 ，则有 !M! %的概率消耗之， Hsrmod:追击 一张 Hsrmod:追击 牌。,,,,66,, 固有 。打出 Hsrmod:追击 牌后，若有50 Hsrmod:充能 ，则有 !M! %的概率消耗之， Hsrmod:追击 一张 Hsrmod:追击 牌。,,,,,欢愉,,低
+BountyHunter,赏金猎人,RARE,POWER,SELF,1, Hsrmod:追击 后，有 !M! %的概率将该牌返还手牌。,,,,25,,打出 Hsrmod:追击 牌后，有 !M! %的概率将该牌返还手牌。,,,,,欢愉,,低
+ChampionsDinnerCatsCradle,《冠军晚餐 · 猫的摇篮》,RARE,POWER,SELF,2, Hsrmod:耗能 的牌视为 Hsrmod:追击 牌，且于获得 Hsrmod:充能 时， !M! %概率不消耗 Hsrmod:充能 Hsrmod:追击 1张。,,,,75,, 固有 。 Hsrmod:耗能 的牌视为 Hsrmod:追击 牌，且于获得 Hsrmod:充能 时， !M! %概率不消耗 Hsrmod:充能 Hsrmod:追击 1张。,,,,,欢愉,,中
+VineyardAgainstTheNight,《葡萄庄园 · 抵抗黑夜》,UNCOMMON,SKILL,SELF,1,获得1层 Hsrmod:回味 。,,,,,, 固有 。 消耗 。获得1层 Hsrmod:回味 。,,,,,欢愉,,低
 Elation,欢愉,SPECIAL,SKILL,NONE,-2,,,,,,,,,,,,欢愉,,
-Sushang2,游刃有余,COMMON,SKILL,SELF,1, AndroidTestMod:击破 后，从摸牌堆加入手牌。 NL 消耗 。获得 !M! 层 AndroidTestMod:击破特攻 ，若有敌人有 AndroidTestMod:击破状态 ，回复 [E] [E] 。,,,,2,, AndroidTestMod:击破 后，从摸牌堆加入手牌。 NL 消耗 。获得 !M! 层 AndroidTestMod:击破特攻 ，若有敌人有 AndroidTestMod:击破状态 ，回复 [E] [E] ，摸 !M! 张牌。,,,,,毁灭,,高
-Sushang3,破敌,COMMON,ATTACK,ENEMY,1,无限升级，升级时，削韧值+1。 NL 造成 !D! 点伤害（物理 !TR! ），若 AndroidTestMod:击破 ，则消耗，并永久升级此牌。,5,2,,,,,,,,,毁灭,物理,中
-Xueyi1,十王圣断，业报恒常,COMMON,ATTACK,ENEMY,8,削韧后，此牌减少削韧值数量的费用。费用为0时 AndroidTestMod:追击 。 NL 对 AndroidTestMod:韧性 最多的敌人造成其 AndroidTestMod:韧性 绝对值数量的伤害（量子 !TR! ）。,,3,,,,,,6,,,毁灭,量子,中
-Gallagher1,香槟仪礼,COMMON,ATTACK,ALL_ENEMY,1, AndroidTestMod:耗能 110，群体：造成 !D! 点伤害（火 !TR! ），若 AndroidTestMod:击破 ，摸1张牌，并施加 AndroidTestMod:格挡返还 。,3,3,,,, AndroidTestMod:耗能 110，群体：造成 !D! 点伤害（火 !TR! ），然后若其有 AndroidTestMod:击破状态 ，摸1张牌，并施加 AndroidTestMod:格挡返还 。,4,4,,,毁灭,火,高
-RuanMei1,慢捻抹复挑,UNCOMMON,SKILL,SELF,1,获得 !M! 层 AndroidTestMod:击破效率 ，获得 !M! 层 AndroidTestMod:击破特攻 。,,,,2,,,,,,3,毁灭,,中
-RuanMei2,摇花缎水，沾衣不摘,UNCOMMON,SKILL,SELF,1, AndroidTestMod:耗能 130，群体：施加1层 *残梅绽 （失去 AndroidTestMod:击破状态 时，移除1层并防止之）。,,,,1,0,,,,,,毁灭,,中
-Trailblazer5,喧嚣的舞灯巡游,UNCOMMON,POWER,SELF,2, AndroidTestMod:耗能 140。打出的牌造成首次伤害后，若其有 AndroidTestMod:击破状态 ，则造成 AndroidTestMod:超击破伤害 。,,,,2,, 固有 。 AndroidTestMod:耗能 140。打出的牌造成首次伤害后，若其有 AndroidTestMod:击破状态 ，则造成 AndroidTestMod:超击破伤害 。,,,,3,毁灭,,低
-Trailblazer6,卫我起舞,UNCOMMON,SKILL,SELF,1,获得 !M! 层 AndroidTestMod:击破特攻 ，若你没有打出过 *喧嚣的舞灯巡游 ，则获得之，否则再获得 !M! 层 AndroidTestMod:击破特攻 。,,,,2,, 固有 。获得 !M! 层 AndroidTestMod:击破特攻 ，若你没有打出过 *喧嚣的舞灯巡游 ，则获得之，否则再获得 !M! 层 AndroidTestMod:击破特攻 。,,,,3,毁灭,,低
-Boothill1,炽砾舞者的探戈,UNCOMMON,ATTACK,ENEMY,2,造成 !D! 点伤害（物理 !TR! ） !M! 次，若 AndroidTestMod:击破 ，造成其 AndroidTestMod:韧性 上限的 AndroidTestMod:击破伤害 ；否则将此牌返还手牌，并于此回合 保留 。,4,4,,2,,,,,,3,毁灭,物理,低
-Boothill2,击锤连弩,UNCOMMON,ATTACK,ENEMY,1,造成 !D! 点伤害（物理 !TR! ），然后若其没有 AndroidTestMod:击破状态 ，则将此牌返还手牌。,4,7,,,,,5,10,,,毁灭,物理,中
-Firefly1,自破碎的天空坠落,UNCOMMON,ATTACK,ENEMY,1,造成 !D! 点伤害（火 !TR! ），然后若其有 AndroidTestMod:击破状态 ，则造成50%的 AndroidTestMod:超击破伤害 ，并将此牌返还手牌。,3,3,,,,,4,4,,,毁灭,火,低
-Firefly2,绽放在终竟的明天,UNCOMMON,POWER,SELF,0, AndroidTestMod:耗能 240，消耗 !M! 点生命。 AndroidTestMod:击破 后，对其造成其 AndroidTestMod:韧性 上限的 AndroidTestMod:击破伤害 ，获得1层 AndroidTestMod:击破效率 ，获得 *「自破碎的天空坠落」 。,,,,3,,获得此牌时，将 AndroidTestMod:充能 补充至120。 AndroidTestMod:耗能 240，消耗 !M! 点生命。 AndroidTestMod:击破 后，对其造成其 AndroidTestMod:韧性 上限的 AndroidTestMod:击破伤害 ，获得1层 AndroidTestMod:击破效率 ，获得 *自破碎的天空坠落 。,,,,,毁灭,,低
-Lingsha1,幔亭缭霞,UNCOMMON,ATTACK,ENEMY,1, AndroidTestMod:耗能 110，造成 !D! 点伤害（火 !TR! ），施加 *醇醉 （被 AndroidTestMod:击破 后移除，回复 [E] [E] ，摸 !M! 张牌）。,3,3,,2,, AndroidTestMod:耗能 110，造成 !D! 点伤害（火 !TR! ），施加 *醇醉 （被 AndroidTestMod:击破 后移除，回复 [E] [E] ，摸 !M! 张牌，然后升级所有手牌）。,,,,,毁灭,火,中
-Rappa1,忍 · 科学 · 堪忍袋,UNCOMMON,ATTACK,ALL_ENEMY,1,获得 !M! 层 AndroidTestMod:击破特攻 ，群体：造成 !D! 点伤害（虚数 !TR! ），若 AndroidTestMod:击破 ，则造成 AndroidTestMod:超击破伤害 ，并重复此流程。,2,2,,1,,,3,3,,2,毁灭,虚数,低
-Fugue1,善盈后福，德气流布,UNCOMMON,SKILL,ENEMY,1, 虚无 。将其韧性值向 !M! 调整至多 !M! 点，并施加 !M! 层 *云火昭 （ AndroidTestMod:击破 后移除，将韧性恢复至 !M! ）。,,,,4,,群体：将其韧性值向 !M! 调整至多 !M! 点，并施加 !M! 层 *云火昭 （ AndroidTestMod:击破 后移除，将韧性恢复至 !M! ）。,,,,,毁灭,,低
-Symbiote,共生体,RARE,POWER,SELF,2, AndroidTestMod:击破 后，若为一回合首次，则获得 [E] [E] 。 NL 造成 AndroidTestMod:击破伤害 后，摸1张牌。,,,,,, AndroidTestMod:击破 后，若为一回合首次，则获得 [E] [E] ，否则获得 [E] 。 NL 造成 AndroidTestMod:击破伤害 后，摸1张牌。,,,,,毁灭,,低
-RegressionInequalityOfAnnihilation,湮灭回归不等式,RARE,SKILL,ALL,1,令所有单位平均分配 AndroidTestMod:韧性 （不会击破）。,,,,1,,令所有单位平均分配 AndroidTestMod:韧性 （不会击破），且你的权重为 !M! 。,,,,2,毁灭,,中
-CourtOfHomogeneity,同态法庭,RARE,ATTACK,ENEMY,-1, 消耗 。弃置所有手牌，造成 !D! 点伤害（火 !TR! ），然后若其 AndroidTestMod:韧性 数少于你，造成你与其 AndroidTestMod:韧性 数之差的 AndroidTestMod:击破伤害 。,8,8,,,,弃置所有手牌，造成 !D! 点伤害（火 !TR! ），然后若其 AndroidTestMod:韧性 数少于你，造成你与其 AndroidTestMod:韧性 数之差的 AndroidTestMod:击破伤害 。,12,12,,,毁灭,火,低
+Sushang2,游刃有余,COMMON,SKILL,SELF,1, Hsrmod:击破 后，从摸牌堆加入手牌。 NL 消耗 。获得 !M! 层 Hsrmod:击破特攻 ，若有敌人有 Hsrmod:击破状态 ，回复 [E] [E] 。,,,,2,, Hsrmod:击破 后，从摸牌堆加入手牌。 NL 消耗 。获得 !M! 层 Hsrmod:击破特攻 ，若有敌人有 Hsrmod:击破状态 ，回复 [E] [E] ，摸 !M! 张牌。,,,,,毁灭,,高
+Sushang3,破敌,COMMON,ATTACK,ENEMY,1,无限升级，升级时，削韧值+1。 NL 造成 !D! 点伤害（物理 !TR! ），若 Hsrmod:击破 ，则消耗，并永久升级此牌。,5,2,,,,,,,,,毁灭,物理,中
+Xueyi1,十王圣断，业报恒常,COMMON,ATTACK,ENEMY,8,削韧后，此牌减少削韧值数量的费用。费用为0时 Hsrmod:追击 。 NL 对 Hsrmod:韧性 最多的敌人造成其 Hsrmod:韧性 绝对值数量的伤害（量子 !TR! ）。,,3,,,,,,6,,,毁灭,量子,中
+Gallagher1,香槟仪礼,COMMON,ATTACK,ALL_ENEMY,1, Hsrmod:耗能 110，群体：造成 !D! 点伤害（火 !TR! ），若 Hsrmod:击破 ，摸1张牌，并施加 Hsrmod:格挡返还 。,3,3,,,, Hsrmod:耗能 110，群体：造成 !D! 点伤害（火 !TR! ），然后若其有 Hsrmod:击破状态 ，摸1张牌，并施加 Hsrmod:格挡返还 。,4,4,,,毁灭,火,高
+RuanMei1,慢捻抹复挑,UNCOMMON,SKILL,SELF,1,获得 !M! 层 Hsrmod:击破效率 ，获得 !M! 层 Hsrmod:击破特攻 。,,,,2,,,,,,3,毁灭,,中
+RuanMei2,摇花缎水，沾衣不摘,UNCOMMON,SKILL,SELF,1, Hsrmod:耗能 130，群体：施加1层 *残梅绽 （失去 Hsrmod:击破状态 时，移除1层并防止之）。,,,,1,0,,,,,,毁灭,,中
+Trailblazer5,喧嚣的舞灯巡游,UNCOMMON,POWER,SELF,2, Hsrmod:耗能 140。打出的牌造成首次伤害后，若其有 Hsrmod:击破状态 ，则造成 Hsrmod:超击破伤害 。,,,,2,, 固有 。 Hsrmod:耗能 140。打出的牌造成首次伤害后，若其有 Hsrmod:击破状态 ，则造成 Hsrmod:超击破伤害 。,,,,3,毁灭,,低
+Trailblazer6,卫我起舞,UNCOMMON,SKILL,SELF,1,获得 !M! 层 Hsrmod:击破特攻 ，若你没有打出过 *喧嚣的舞灯巡游 ，则获得之，否则再获得 !M! 层 Hsrmod:击破特攻 。,,,,2,, 固有 。获得 !M! 层 Hsrmod:击破特攻 ，若你没有打出过 *喧嚣的舞灯巡游 ，则获得之，否则再获得 !M! 层 Hsrmod:击破特攻 。,,,,3,毁灭,,低
+Boothill1,炽砾舞者的探戈,UNCOMMON,ATTACK,ENEMY,2,造成 !D! 点伤害（物理 !TR! ） !M! 次，若 Hsrmod:击破 ，造成其 Hsrmod:韧性 上限的 Hsrmod:击破伤害 ；否则将此牌返还手牌，并于此回合 保留 。,4,4,,2,,,,,,3,毁灭,物理,低
+Boothill2,击锤连弩,UNCOMMON,ATTACK,ENEMY,1,造成 !D! 点伤害（物理 !TR! ），然后若其没有 Hsrmod:击破状态 ，则将此牌返还手牌。,4,7,,,,,5,10,,,毁灭,物理,中
+Firefly1,自破碎的天空坠落,UNCOMMON,ATTACK,ENEMY,1,造成 !D! 点伤害（火 !TR! ），然后若其有 Hsrmod:击破状态 ，则造成50%的 Hsrmod:超击破伤害 ，并将此牌返还手牌。,3,3,,,,,4,4,,,毁灭,火,低
+Firefly2,绽放在终竟的明天,UNCOMMON,POWER,SELF,0, Hsrmod:耗能 240，消耗 !M! 点生命。 Hsrmod:击破 后，对其造成其 Hsrmod:韧性 上限的 Hsrmod:击破伤害 ，获得1层 Hsrmod:击破效率 ，获得 *「自破碎的天空坠落」 。,,,,3,,获得此牌时，将 Hsrmod:充能 补充至120。 Hsrmod:耗能 240，消耗 !M! 点生命。 Hsrmod:击破 后，对其造成其 Hsrmod:韧性 上限的 Hsrmod:击破伤害 ，获得1层 Hsrmod:击破效率 ，获得 *自破碎的天空坠落 。,,,,,毁灭,,低
+Lingsha1,幔亭缭霞,UNCOMMON,ATTACK,ENEMY,1, Hsrmod:耗能 110，造成 !D! 点伤害（火 !TR! ），施加 *醇醉 （被 Hsrmod:击破 后移除，回复 [E] [E] ，摸 !M! 张牌）。,3,3,,2,, Hsrmod:耗能 110，造成 !D! 点伤害（火 !TR! ），施加 *醇醉 （被 Hsrmod:击破 后移除，回复 [E] [E] ，摸 !M! 张牌，然后升级所有手牌）。,,,,,毁灭,火,中
+Rappa1,忍 · 科学 · 堪忍袋,UNCOMMON,ATTACK,ALL_ENEMY,1,获得 !M! 层 Hsrmod:击破特攻 ，群体：造成 !D! 点伤害（虚数 !TR! ），若 Hsrmod:击破 ，则造成 Hsrmod:超击破伤害 ，并重复此流程。,2,2,,1,,,3,3,,2,毁灭,虚数,低
+Fugue1,善盈后福，德气流布,UNCOMMON,SKILL,ENEMY,1, 虚无 。将其韧性值向 !M! 调整至多 !M! 点，并施加 !M! 层 *云火昭 （ Hsrmod:击破 后移除，将韧性恢复至 !M! ）。,,,,4,,群体：将其韧性值向 !M! 调整至多 !M! 点，并施加 !M! 层 *云火昭 （ Hsrmod:击破 后移除，将韧性恢复至 !M! ）。,,,,,毁灭,,低
+Symbiote,共生体,RARE,POWER,SELF,2, Hsrmod:击破 后，若为一回合首次，则获得 [E] [E] 。 NL 造成 Hsrmod:击破伤害 后，摸1张牌。,,,,,, Hsrmod:击破 后，若为一回合首次，则获得 [E] [E] ，否则获得 [E] 。 NL 造成 Hsrmod:击破伤害 后，摸1张牌。,,,,,毁灭,,低
+RegressionInequalityOfAnnihilation,湮灭回归不等式,RARE,SKILL,ALL,1,令所有单位平均分配 Hsrmod:韧性 （不会击破）。,,,,1,,令所有单位平均分配 Hsrmod:韧性 （不会击破），且你的权重为 !M! 。,,,,2,毁灭,,中
+CourtOfHomogeneity,同态法庭,RARE,ATTACK,ENEMY,-1, 消耗 。弃置所有手牌，造成 !D! 点伤害（火 !TR! ），然后若其 Hsrmod:韧性 数少于你，造成你与其 Hsrmod:韧性 数之差的 Hsrmod:击破伤害 。,8,8,,,,弃置所有手牌，造成 !D! 点伤害（火 !TR! ），然后若其 Hsrmod:韧性 数少于你，造成你与其 Hsrmod:韧性 数之差的 Hsrmod:击破伤害 。,12,12,,,毁灭,火,低
 VoyageMonitor,远航监护员,RARE,POWER,SELF,2,每造成 !M! 点削韧，获得1点格挡。,,,,2,, 固有 。每造成 !M! 点削韧，获得1点格挡。,,,,,毁灭,,高
-DisruptivePulse,扰乱性脉冲,RARE,ATTACK,ENEMY,2, AndroidTestMod:耗能 80，造成 !D! 点伤害（火 !TR! ），若 AndroidTestMod:击破 ，则造成 AndroidTestMod:超击破伤害 ，并将 AndroidTestMod:充能 和 [E] 回复至上限。,6,6,,,,,9,9,,,毁灭,火,低
+DisruptivePulse,扰乱性脉冲,RARE,ATTACK,ENEMY,2, Hsrmod:耗能 80，造成 !D! 点伤害（火 !TR! ），若 Hsrmod:击破 ，则造成 Hsrmod:超击破伤害 ，并将 Hsrmod:充能 和 [E] 回复至上限。,6,6,,,,,9,9,,,毁灭,火,低
 PreBattleCaregiver,战前关怀员,UNCOMMON,SKILL,SELF_AND_ENEMY,1, 消耗 。你与其各将格挡值补充至X（X为其韧性值）。,,,,,, 消耗 。你与其各将格挡值补充至X（X为你与其韧性值之和）。,,,,,毁灭,,中
-NightBeyondPyre,火堆外的夜,COMMON,SKILL,SELF,0, 消耗 。若没有 AndroidTestMod:击破效率 ，获得 !M! 层；若没有手牌，将手牌摸至 !M! 张。,,,,2,, 固有 。若没有 AndroidTestMod:击破效率 ，获得 !M! 层；若没有手牌，将手牌摸至 !M! 张。,,,,,毁灭,,中
-StarcrusherWorker,碎星蠧役,COMMON,SKILL,ENEMY,0,移除 !M! 层 AndroidTestMod:韧性 （至少保留1层），若你的 AndroidTestMod:韧性 少于其，则你获得等量的 AndroidTestMod:韧性 。,,,,5,,,,,,8,毁灭,,低
-CleftSingularity,突裂奇点,COMMON,SKILL,SELF,1, 消耗 。获得 !M! 层 AndroidTestMod:击破特攻 。,,,,5,,,,,,7,毁灭,,低
+NightBeyondPyre,火堆外的夜,COMMON,SKILL,SELF,0, 消耗 。若没有 Hsrmod:击破效率 ，获得 !M! 层；若没有手牌，将手牌摸至 !M! 张。,,,,2,, 固有 。若没有 Hsrmod:击破效率 ，获得 !M! 层；若没有手牌，将手牌摸至 !M! 张。,,,,,毁灭,,中
+StarcrusherWorker,碎星蠧役,COMMON,SKILL,ENEMY,0,移除 !M! 层 Hsrmod:韧性 （至少保留1层），若你的 Hsrmod:韧性 少于其，则你获得等量的 Hsrmod:韧性 。,,,,5,,,,,,8,毁灭,,低
+CleftSingularity,突裂奇点,COMMON,SKILL,SELF,1, 消耗 。获得 !M! 层 Hsrmod:击破特攻 。,,,,5,,,,,,7,毁灭,,低
 Destruction,毁灭,SPECIAL,SKILL,NONE,-2,,,,,,,,,,,,毁灭,,
-March7th3,冰刻箭雨之时,COMMON,ATTACK,ALL_ENEMY,2, AndroidTestMod:耗能 120，群体：造成 !D! 点伤害（冰 !TR! ），施加 !M! 层 AndroidTestMod:冻结 。,2,2,,2,,,3,3,,3,记忆,冰,中
+March7th3,冰刻箭雨之时,COMMON,ATTACK,ALL_ENEMY,2, Hsrmod:耗能 120，群体：造成 !D! 点伤害（冰 !TR! ），施加 !M! 层 Hsrmod:冻结 。,2,2,,2,,,3,3,,3,记忆,冰,中
 Remembrance,记忆,SPECIAL,SKILL,NONE,-2,,,,,,,,,,,,,,
 Trailblazer1,再见安打,BASIC,ATTACK,ENEMY,1,造成 !D! 点伤害（物理 !TR! ）。,6,2,,,,,9,,,,开拓,物理,无
 March7th0,极寒的弓矢,BASIC,ATTACK,ENEMY,1,造成 !D! 点伤害（冰 !TR! ）。,6,2,,,,,9,,,,开拓,冰,无
 Danheng0,云骑枪术·朔风,BASIC,ATTACK,ENEMY,1,造成 !D! 点伤害（风 !TR! ）。,6,2,,,,,9,,,,开拓,风,无
 Himeko0,武装调律,BASIC,ATTACK,ENEMY,1,造成 !D! 点伤害（火 !TR! ）。,6,2,,,,,9,,,,开拓,火,无
 Welt0,重力压制,BASIC,ATTACK,ENEMY,1,造成 !D! 点伤害（虚数 !TR! ）。,6,2,,,,,9,,,,开拓,虚数,无
-Trailblazer2,全胜·安息全垒打,BASIC,ATTACK,ALL_ENEMY,0, AndroidTestMod:耗能 120，群体：造成 !D! 点伤害（物理 !TR! ）。,4,2,,,,,6,,,,开拓,物理,无
+Trailblazer2,全胜·安息全垒打,BASIC,ATTACK,ALL_ENEMY,0, Hsrmod:耗能 120，群体：造成 !D! 点伤害（物理 !TR! ）。,4,2,,,,,6,,,,开拓,物理,无
 Trailblazer3,炽燃不灭的琥珀,BASIC,SKILL,SELF,1,获得 !B! 点格挡。,,,5,,,,,,8,,开拓,,无
 AstralExpress,星穹列车,BASIC,SKILL,SELF,2, 消耗 。打出所有初始攻击牌。,,,,,,打出所有初始攻击牌。,,,,,开拓,,无
-Sampo1,反复横跳的爱,COMMON,ATTACK,ENEMY,1, AndroidTestMod:弹射 !M! 次：造成 !D! 点伤害（风 !TR! ），施加1层 AndroidTestMod:风化 。,1,1,,3,,,,,,4,虚无,风,中
-Pela1,领域压制,COMMON,ATTACK,ALL_ENEMY,1, AndroidTestMod:耗能 100，群体：造成 !D! 点伤害（冰 !TR! ），施加 !M! 层 易伤 。,5,2,,1,0,,,,,,虚无,冰,高
-Serval1,电光石火间,COMMON,ATTACK,ALL_ENEMY,1,群体：造成 !D! 点伤害（雷 !TR! ），施加 !M! 层 AndroidTestMod:触电 。,1,1,,2,,,2,,,3,虚无,雷,低
-Luka1,裂伤拳,COMMON,ATTACK,ENEMY,1,执行 !M! 次：造成 !D! 点伤害（物理 !TR! ），施加1层 AndroidTestMod:裂伤 。,1,1,,3,,,,,,4,虚无,物理,低
-Guinaifen1,迎面开门红,COMMON,ATTACK,ENEMY,1,造成 !D! 点伤害（火 !TR! ），施加 !M! 层 AndroidTestMod:灼烧 和1层 易伤 。,4,2,,1,,造成 !D! 点伤害（火 !TR! ），施加 !M! 层 AndroidTestMod:灼烧 ，然后对有 AndroidTestMod:灼烧 的敌人依次施加1层 易伤 。,,,,1,虚无,火,中
-Welt1,虚空断界,UNCOMMON,ATTACK,ENEMY,1, AndroidTestMod:弹射 !M! 次：造成 !D! 点伤害（虚数 !TR! ），施加1层 AndroidTestMod:禁锢 。,4,1,,2,,,,,,3,虚无,虚数,中
-SilverWolf1,|账号已封禁|,UNCOMMON,ATTACK,ENEMY,1, AndroidTestMod:耗能 110。造成 !D! 点伤害（量子 !TR! ），触发 !M! 次以下的随机项： NL 1. 施加1层 易伤 ； NL 2. 施加1层 虚弱 。,6,4,,3,, AndroidTestMod:耗能 110。造成 !D! 点伤害（量子 !TR! ），触发 !M! 次以下的随机项： NL 1. 施加1层 易伤 ； NL 2. 施加1层 虚弱 ； NL 3. 其失去1层 力量 。,,,,4,虚无,量子,中
-Kafka1,温柔亦同残酷,UNCOMMON,ATTACK,ENEMY,1,对有 AndroidTestMod:持续伤害 的敌人打出牌后 AndroidTestMod:追击 。造成 !D! 点伤害（雷 !TR! ），触发其随机1个 AndroidTestMod:持续伤害 !M! 次，然后施加 !M! 层 AndroidTestMod:触电 。,1,2,,2,,,,,,3,虚无,雷,低
-Kafka2,悲剧尽头的颤音,UNCOMMON,ATTACK,ALL_ENEMY,1, AndroidTestMod:耗能 120，群体：造成 !D! 点伤害（雷 !TR! ），触发其所有 AndroidTestMod:持续伤害 1次，然后施加 !M! 层 AndroidTestMod:触电 。,2,2,,1,,,,,,2,虚无,雷,低
-BlackSwan1,无端命运的机杼,UNCOMMON,ATTACK,ENEMY,1,造成 !D! 点伤害（风 !TR! ），施加 !M! 层 AndroidTestMod:风化 和1层 *揭露 （触发 AndroidTestMod:持续伤害 时，不会移除 AndroidTestMod:持续伤害 的层数，回合结束时移除1层）。,2,2,,2,,群体：造成 !D! 点伤害（风 !TR! ），施加 !M! 层 AndroidTestMod:风化 和1层 *揭露 （触发 AndroidTestMod:持续伤害 时，不会移除 AndroidTestMod:持续伤害 的层数，回合结束时移除1层）。,,,,2,虚无,风,低
-BlackSwan2,沉醉于彼界的臂湾,UNCOMMON,SKILL,ENEMY,2, AndroidTestMod:耗能 120，依次施加1层 AndroidTestMod:触电 ，1层 AndroidTestMod:灼烧 ，1层 AndroidTestMod:裂伤 和 !M! 层 AndroidTestMod:风化 。,,,,1,,,,,,5,虚无,,低
-Acheron1,红叶时雨，万倾一空,UNCOMMON,ATTACK,ALL_ENEMY,9, 虚无 。打出牌后，若施加了负面效果，此牌费用-1，且于此回合 保留 。 NL AndroidTestMod:弹射 !M! 次：造成 !D! +X点伤害（雷1）；群体：造成 !D! +X点伤害（雷1）（X为其负面效果数）。,4,1,,3,, 虚无 。打出牌后，若为虚无，或施加了负面效果，此牌费用-1，且于此回合 保留 。 NL AndroidTestMod:弹射 3次：造成 !D! +X点伤害（雷1）；群体：造成 !D! +X点伤害（雷1）（X为其负面效果数）。,,,,,虚无,雷,低
-Jiaoqiu1,鼎阵妙法，奇正相生,UNCOMMON,ATTACK,ALL_ENEMY,2, AndroidTestMod:耗能 100，获得 !M! 张 *「烬煨」 ，群体：造成 !D! 点伤害（火 !TR! ），施加1层 易伤 。,2,3,,3,,,,,,4,虚无,火,中
-Jiaoqiu2,烬煨,SPECIAL,ATTACK,ENEMY,0, 消耗 。造成 !D! 点伤害（火 !TR! ），施加1层 AndroidTestMod:灼烧 。,2,1,,,,,,,,,虚无,火,无
-TheDoubtfulFourfoldRoot,怀疑的四重根,RARE,SKILL,ALL_ENEMY,1,令所有敌人的 AndroidTestMod:持续伤害 层数+1。,,,,,,令所有敌人的负面效果层数+1。,,,,,虚无,,低
-AllThingsArePossible,无根据颂歌,RARE,POWER,SELF,3,打出攻击牌后，对其施加1个其没有的 AndroidTestMod:持续伤害 。,,,,,,打出攻击牌后，若目标：有所有的 AndroidTestMod:持续伤害 ，则随机触发1个，否则对其施加1个其没有的 AndroidTestMod:持续伤害 。,,,,,虚无,,高
-AnExtraPersonsDiary,多余人的日记,RARE,POWER,SELF,1, AndroidTestMod:持续伤害 的削韧值+1。 AndroidTestMod:击破 后，对其施加X个随机的 AndroidTestMod:持续伤害 （X为其 AndroidTestMod:韧性 上限的十位数+1）。,,,,,, AndroidTestMod:持续伤害 的削韧值+1。 AndroidTestMod:击破 后，对其施加X个随机的 AndroidTestMod:持续伤害 （X为其 AndroidTestMod:韧性 上限的十位数+1），并回复 [E] 。,,,,,虚无,,中
-ThePathless,无神论者,RARE,SKILL,ALL_ENEMY,1, 消耗 。群体：施加2层 AndroidTestMod:格挡返还 和 !M! 层 AndroidTestMod:怀疑 。,,,,10,, 固有 。 消耗 。群体：施加2层 AndroidTestMod:格挡返还 和 !M! 层 AndroidTestMod:怀疑 。,,,,15,虚无,,高
-ReignOfKeys,钥匙的统治,RARE,POWER,SELF,2,敌人的 AndroidTestMod:持续伤害 ：于你回合外触发时，你摸1张牌；于你回合内触发时，不会减少层数。,,,,,,敌人的 AndroidTestMod:持续伤害 触发时，你摸1张牌，然后若为你回合内，则不会减少层数。,,,,,虚无,,低
-FuneralOfSensoryPursuivant,感官追奉者的葬礼,UNCOMMON,POWER,SELF,1,敌人受到 AndroidTestMod:持续伤害 后，对其施加3层 AndroidTestMod:怀疑 。,,,,,, 固有 。敌人受到 AndroidTestMod:持续伤害 后，对其施加3层 AndroidTestMod:怀疑 。敌人被施加 AndroidTestMod:持续伤害 后，对其施加1层 AndroidTestMod:怀疑 。,,,,,虚无,,低
+Sampo1,反复横跳的爱,COMMON,ATTACK,ENEMY,1, Hsrmod:弹射 !M! 次：造成 !D! 点伤害（风 !TR! ），施加1层 Hsrmod:风化 。,1,1,,3,,,,,,4,虚无,风,中
+Pela1,领域压制,COMMON,ATTACK,ALL_ENEMY,1, Hsrmod:耗能 100，群体：造成 !D! 点伤害（冰 !TR! ），施加 !M! 层 易伤 。,5,2,,1,0,,,,,,虚无,冰,高
+Serval1,电光石火间,COMMON,ATTACK,ALL_ENEMY,1,群体：造成 !D! 点伤害（雷 !TR! ），施加 !M! 层 Hsrmod:触电 。,1,1,,2,,,2,,,3,虚无,雷,低
+Luka1,裂伤拳,COMMON,ATTACK,ENEMY,1,执行 !M! 次：造成 !D! 点伤害（物理 !TR! ），施加1层 Hsrmod:裂伤 。,1,1,,3,,,,,,4,虚无,物理,低
+Guinaifen1,迎面开门红,COMMON,ATTACK,ENEMY,1,造成 !D! 点伤害（火 !TR! ），施加 !M! 层 Hsrmod:灼烧 和1层 易伤 。,4,2,,1,,造成 !D! 点伤害（火 !TR! ），施加 !M! 层 Hsrmod:灼烧 ，然后对有 Hsrmod:灼烧 的敌人依次施加1层 易伤 。,,,,1,虚无,火,中
+Welt1,虚空断界,UNCOMMON,ATTACK,ENEMY,1, Hsrmod:弹射 !M! 次：造成 !D! 点伤害（虚数 !TR! ），施加1层 Hsrmod:禁锢 。,4,1,,2,,,,,,3,虚无,虚数,中
+SilverWolf1,|账号已封禁|,UNCOMMON,ATTACK,ENEMY,1, Hsrmod:耗能 110。造成 !D! 点伤害（量子 !TR! ），触发 !M! 次以下的随机项： NL 1. 施加1层 易伤 ； NL 2. 施加1层 虚弱 。,6,4,,3,, Hsrmod:耗能 110。造成 !D! 点伤害（量子 !TR! ），触发 !M! 次以下的随机项： NL 1. 施加1层 易伤 ； NL 2. 施加1层 虚弱 ； NL 3. 其失去1层 力量 。,,,,4,虚无,量子,中
+Kafka1,温柔亦同残酷,UNCOMMON,ATTACK,ENEMY,1,对有 Hsrmod:持续伤害 的敌人打出牌后 Hsrmod:追击 。造成 !D! 点伤害（雷 !TR! ），触发其随机1个 Hsrmod:持续伤害 !M! 次，然后施加 !M! 层 Hsrmod:触电 。,1,2,,2,,,,,,3,虚无,雷,低
+Kafka2,悲剧尽头的颤音,UNCOMMON,ATTACK,ALL_ENEMY,1, Hsrmod:耗能 120，群体：造成 !D! 点伤害（雷 !TR! ），触发其所有 Hsrmod:持续伤害 1次，然后施加 !M! 层 Hsrmod:触电 。,2,2,,1,,,,,,2,虚无,雷,低
+BlackSwan1,无端命运的机杼,UNCOMMON,ATTACK,ENEMY,1,造成 !D! 点伤害（风 !TR! ），施加 !M! 层 Hsrmod:风化 和1层 *揭露 （触发 Hsrmod:持续伤害 时，不会移除 Hsrmod:持续伤害 的层数，回合结束时移除1层）。,2,2,,2,,群体：造成 !D! 点伤害（风 !TR! ），施加 !M! 层 Hsrmod:风化 和1层 *揭露 （触发 Hsrmod:持续伤害 时，不会移除 Hsrmod:持续伤害 的层数，回合结束时移除1层）。,,,,2,虚无,风,低
+BlackSwan2,沉醉于彼界的臂湾,UNCOMMON,SKILL,ENEMY,2, Hsrmod:耗能 120，依次施加1层 Hsrmod:触电 ，1层 Hsrmod:灼烧 ，1层 Hsrmod:裂伤 和 !M! 层 Hsrmod:风化 。,,,,1,,,,,,5,虚无,,低
+Acheron1,红叶时雨，万倾一空,UNCOMMON,ATTACK,ALL_ENEMY,9, 虚无 。打出牌后，若施加了负面效果，此牌费用-1，且于此回合 保留 。 NL Hsrmod:弹射 !M! 次：造成 !D! +X点伤害（雷1）；群体：造成 !D! +X点伤害（雷1）（X为其负面效果数）。,4,1,,3,, 虚无 。打出牌后，若为虚无，或施加了负面效果，此牌费用-1，且于此回合 保留 。 NL Hsrmod:弹射 3次：造成 !D! +X点伤害（雷1）；群体：造成 !D! +X点伤害（雷1）（X为其负面效果数）。,,,,,虚无,雷,低
+Jiaoqiu1,鼎阵妙法，奇正相生,UNCOMMON,ATTACK,ALL_ENEMY,2, Hsrmod:耗能 100，获得 !M! 张 *「烬煨」 ，群体：造成 !D! 点伤害（火 !TR! ），施加1层 易伤 。,2,3,,3,,,,,,4,虚无,火,中
+Jiaoqiu2,烬煨,SPECIAL,ATTACK,ENEMY,0, 消耗 。造成 !D! 点伤害（火 !TR! ），施加1层 Hsrmod:灼烧 。,2,1,,,,,,,,,虚无,火,无
+TheDoubtfulFourfoldRoot,怀疑的四重根,RARE,SKILL,ALL_ENEMY,1,令所有敌人的 Hsrmod:持续伤害 层数+1。,,,,,,令所有敌人的负面效果层数+1。,,,,,虚无,,低
+AllThingsArePossible,无根据颂歌,RARE,POWER,SELF,3,打出攻击牌后，对其施加1个其没有的 Hsrmod:持续伤害 。,,,,,,打出攻击牌后，若目标：有所有的 Hsrmod:持续伤害 ，则随机触发1个，否则对其施加1个其没有的 Hsrmod:持续伤害 。,,,,,虚无,,高
+AnExtraPersonsDiary,多余人的日记,RARE,POWER,SELF,1, Hsrmod:持续伤害 的削韧值+1。 Hsrmod:击破 后，对其施加X个随机的 Hsrmod:持续伤害 （X为其 Hsrmod:韧性 上限的十位数+1）。,,,,,, Hsrmod:持续伤害 的削韧值+1。 Hsrmod:击破 后，对其施加X个随机的 Hsrmod:持续伤害 （X为其 Hsrmod:韧性 上限的十位数+1），并回复 [E] 。,,,,,虚无,,中
+ThePathless,无神论者,RARE,SKILL,ALL_ENEMY,1, 消耗 。群体：施加2层 Hsrmod:格挡返还 和 !M! 层 Hsrmod:怀疑 。,,,,10,, 固有 。 消耗 。群体：施加2层 Hsrmod:格挡返还 和 !M! 层 Hsrmod:怀疑 。,,,,15,虚无,,高
+ReignOfKeys,钥匙的统治,RARE,POWER,SELF,2,敌人的 Hsrmod:持续伤害 ：于你回合外触发时，你摸1张牌；于你回合内触发时，不会减少层数。,,,,,,敌人的 Hsrmod:持续伤害 触发时，你摸1张牌，然后若为你回合内，则不会减少层数。,,,,,虚无,,低
+FuneralOfSensoryPursuivant,感官追奉者的葬礼,UNCOMMON,POWER,SELF,1,敌人受到 Hsrmod:持续伤害 后，对其施加3层 Hsrmod:怀疑 。,,,,,, 固有 。敌人受到 Hsrmod:持续伤害 后，对其施加3层 Hsrmod:怀疑 。敌人被施加 Hsrmod:持续伤害 后，对其施加1层 Hsrmod:怀疑 。,,,,,虚无,,低
 CallOfTheWilderness,旷野的呼告,UNCOMMON,SKILL,ALL_ENEMY,1,群体：施加 !M! 层 虚弱 。,,,,2,,群体：施加 !M! 层 虚弱 ，若其 力量 绝对值不大于你，其失去 !M! 层 力量 。,,,,,虚无,,中
-CommonMortal,庸众凡夫,UNCOMMON,POWER,SELF,2,消耗 AndroidTestMod:充能 后，对随机敌人施加1个 AndroidTestMod:持续伤害 。施加 AndroidTestMod:持续伤害 时，获得 !M! 点 AndroidTestMod:充能 。,,,,20,,消耗 AndroidTestMod:充能 后，对随机敌人施加1个 AndroidTestMod:持续伤害 。施加负面效果时，获得 !M! 点 AndroidTestMod:充能 。,,,,30,虚无,,中
-NightWatch,守夜人,COMMON,SKILL,SELF,1, AndroidTestMod:持续伤害 最多的敌人每有一种，获得3点格挡。,,,0,,,负面效果最多的敌人每有一种，获得3点格挡。,,,,,虚无,,低
-SinThirster,血罪灵,COMMON,SKILL,SELF,1, AndroidTestMod:持续伤害 最多的敌人每有一种，便摸1张牌。,,,,,,负面效果最多的敌人每有一种，摸1张牌。,,,,,虚无,,低
-OfferingsOfDeception,虚妄供品,COMMON,SKILL,ALL_ENEMY,1,获得 !B! 点格挡，对所有没有 AndroidTestMod:持续伤害 的敌人施加1个 AndroidTestMod:持续伤害 。,,,3,,,获得 !B! 点格挡，对所有没有 AndroidTestMod:持续伤害 的敌人施加1个 AndroidTestMod:持续伤害 ，所有有全部 AndroidTestMod:持续伤害 的敌人减少1层 力量 。,,,5,,虚无,,中
+CommonMortal,庸众凡夫,UNCOMMON,POWER,SELF,2,消耗 Hsrmod:充能 后，对随机敌人施加1个 Hsrmod:持续伤害 。施加 Hsrmod:持续伤害 时，获得 !M! 点 Hsrmod:充能 。,,,,20,,消耗 Hsrmod:充能 后，对随机敌人施加1个 Hsrmod:持续伤害 。施加负面效果时，获得 !M! 点 Hsrmod:充能 。,,,,30,虚无,,中
+NightWatch,守夜人,COMMON,SKILL,SELF,1, Hsrmod:持续伤害 最多的敌人每有一种，获得3点格挡。,,,0,,,负面效果最多的敌人每有一种，获得3点格挡。,,,,,虚无,,低
+SinThirster,血罪灵,COMMON,SKILL,SELF,1, Hsrmod:持续伤害 最多的敌人每有一种，便摸1张牌。,,,,,,负面效果最多的敌人每有一种，摸1张牌。,,,,,虚无,,低
+OfferingsOfDeception,虚妄供品,COMMON,SKILL,ALL_ENEMY,1,获得 !B! 点格挡，对所有没有 Hsrmod:持续伤害 的敌人施加1个 Hsrmod:持续伤害 。,,,3,,,获得 !B! 点格挡，对所有没有 Hsrmod:持续伤害 的敌人施加1个 Hsrmod:持续伤害 ，所有有全部 Hsrmod:持续伤害 的敌人减少1层 力量 。,,,5,,虚无,,中
 Nihility,虚无,SPECIAL,SKILL,NONE,-2,,,,,,,,,,,,虚无,,
-March7th4,师父，我悟了！,COMMON,SKILL,SELF,1,打出其他牌后，若为升级过的牌，此牌摸牌数+1，然后若不小于7，则 AndroidTestMod:追击 。 NL 消耗 。摸 !M! 张牌。,,,,1,,打出其他牌后，若为升级过的牌，此牌摸牌数+1，然后若不小于7，则 AndroidTestMod:追击 。 NL 摸 !M! 张牌。,,,,,巡猎,,中
+March7th4,师父，我悟了！,COMMON,SKILL,SELF,1,打出其他牌后，若为升级过的牌，此牌摸牌数+1，然后若不小于7，则 Hsrmod:追击 。 NL 消耗 。摸 !M! 张牌。,,,,1,,打出其他牌后，若为升级过的牌，此牌摸牌数+1，然后若不小于7，则 Hsrmod:追击 。 NL 摸 !M! 张牌。,,,,,巡猎,,中
 Bronya1,作战再部署,UNCOMMON,SKILL,SELF,1,获得 !M! 层 力量 ，从摸牌堆选择1张牌获得。,,,,1,, 固有 。获得 !M! 层 力量 ，从摸牌堆选择1张牌获得。,,,,,巡猎,,高
-Seele1,乱蝶,UNCOMMON,ATTACK,ENEMY,2,无限升级，升级时，伤害+ !M! 。 NL AndroidTestMod:耗能 120，造成 !D! 点伤害（量子 !TR! ），若 斩杀 ，则返还手牌，回复 [E] ，并永久升级此牌。,12,3,,3,,,,,,,巡猎,量子,中
+Seele1,乱蝶,UNCOMMON,ATTACK,ENEMY,2,无限升级，升级时，伤害+ !M! 。 NL Hsrmod:耗能 120，造成 !D! 点伤害（量子 !TR! ），若 斩杀 ，则返还手牌，回复 [E] ，并永久升级此牌。,12,3,,3,,,,,,,巡猎,量子,中
 Danheng1,寸长寸强,COMMON,ATTACK,ENEMY,0,获得时，获得摸牌堆1张牌。 NL 造成 !D! 点伤害（风 !TR! ），将此牌置入摸牌堆。,2,1,,1,,,5,,,,巡猎,风,中
 Moze1,迅羽掠袭,COMMON,SKILL,ENEMY,1,施加 !M! 层 *猎物 （每对其打出3张其他攻击牌，移除1层，并将 *「伸天卑飞，折翅为芒」 NL 置于牌堆顶）。,,,,3,0,,,,,,巡猎,,中
-Moze2,伸天卑飞，折翅为芒,SPECIAL,ATTACK,ENEMY,0,从摸牌堆获得此牌后，对 *猎物 AndroidTestMod:追击 。 NL 消耗 。造成 !D! 点伤害（雷 !TR! ），摸 !M! 张牌。,1,1,,1,,,3,,,,巡猎,雷,无
+Moze2,伸天卑飞，折翅为芒,SPECIAL,ATTACK,ENEMY,0,从摸牌堆获得此牌后，对 *猎物 Hsrmod:追击 。 NL 消耗 。造成 !D! 点伤害（雷 !TR! ），摸 !M! 张牌。,1,1,,1,,,3,,,,巡猎,雷,无
 March7th5,一气化三餐,COMMON,SKILL,SELF,1,升级所有手牌。,,,,,0,,,,,,巡猎,,中
 Feixiao1,雷狩,UNCOMMON,ATTACK,ENEMY,0,打出攻击牌后，若之和牌堆顶的牌均不为 *「雷狩」 ，则将一张 *「雷狩」 置于牌堆顶。 NL 消耗 。造成 !D! 点伤害（风 !TR! ）。,1,1,,,,,3,,,,巡猎,风,低
-Feixiao2,凿破大荒,UNCOMMON,ATTACK,ENEMY,6,打出攻击牌后，此牌费用-1，为0时 AndroidTestMod:追击 。 NL 造成此次战斗累计打出的攻击牌数量的伤害（ !D! ）（风 !TR! ）。,0,1,,,,,,6,,,巡猎,风,中
-RadiantSupreme,帝车超光所向捷,RARE,POWER,SELF,1,打出牌时，每满足一项，叠加1层：1. 单体牌；2. 攻击牌。每叠加 !M! 层，摸1张牌，获得2层 AndroidTestMod:会心 。,,,,8,,打出牌时，每满足一项，叠加1层：1. 单体牌；2. 攻击牌；3. 升级过的牌。每叠加 !M! 层，摸1张牌，获得2层 AndroidTestMod:会心 。,,,,,巡猎,,高
-SovereignSkybreaker,帝弓断空彻太清,RARE,POWER,SELF,1,打出牌时，每满足一项，叠加1层：1. 单体牌；2. 技能牌。每叠加 !M! 层，随机一张手牌于此回合费用-1，并获得3层 AndroidTestMod:会心 。,,,,12,,打出牌时，每满足一项，叠加1层：1. 单体牌；2. 技能牌；3. 升级过的牌。每叠加 !M! 层，随机一张手牌于此回合费用-1，并获得3层 AndroidTestMod:会心 。,,,,,巡猎,,中
-SolemnSnare,肃肃罝罗,UNCOMMON,SKILL,SELF,-1, 消耗 。 AndroidTestMod:耗能 100，获得X层 AndroidTestMod:会心 ，令当前所有升级过的手牌于此回合费用-1，每多1级额外-1。,,,,,, 消耗 。 AndroidTestMod:耗能 100，摸X张牌，获得X层 AndroidTestMod:会心 ，令当前所有升级过的手牌于此回合费用-1，每多1级额外-1。,,,,,巡猎,,低
+Feixiao2,凿破大荒,UNCOMMON,ATTACK,ENEMY,6,打出攻击牌后，此牌费用-1，为0时 Hsrmod:追击 。 NL 造成此次战斗累计打出的攻击牌数量的伤害（ !D! ）（风 !TR! ）。,0,1,,,,,,6,,,巡猎,风,中
+RadiantSupreme,帝车超光所向捷,RARE,POWER,SELF,1,打出牌时，每满足一项，叠加1层：1. 单体牌；2. 攻击牌。每叠加 !M! 层，摸1张牌，获得2层 Hsrmod:会心 。,,,,8,,打出牌时，每满足一项，叠加1层：1. 单体牌；2. 攻击牌；3. 升级过的牌。每叠加 !M! 层，摸1张牌，获得2层 Hsrmod:会心 。,,,,,巡猎,,高
+SovereignSkybreaker,帝弓断空彻太清,RARE,POWER,SELF,1,打出牌时，每满足一项，叠加1层：1. 单体牌；2. 技能牌。每叠加 !M! 层，随机一张手牌于此回合费用-1，并获得3层 Hsrmod:会心 。,,,,12,,打出牌时，每满足一项，叠加1层：1. 单体牌；2. 技能牌；3. 升级过的牌。每叠加 !M! 层，随机一张手牌于此回合费用-1，并获得3层 Hsrmod:会心 。,,,,,巡猎,,中
+SolemnSnare,肃肃罝罗,UNCOMMON,SKILL,SELF,-1, 消耗 。 Hsrmod:耗能 100，获得X层 Hsrmod:会心 ，令当前所有升级过的手牌于此回合费用-1，每多1级额外-1。,,,,,, 消耗 。 Hsrmod:耗能 100，摸X张牌，获得X层 Hsrmod:会心 ，令当前所有升级过的手牌于此回合费用-1，每多1级额外-1。,,,,,巡猎,,低
 EmpyreanImperium,帝星君临制穹桑,RARE,POWER,SELF,1,每打出 !M! 次最左侧的牌，摸1张牌。,,,,2,,每打出 !M! 次最左侧的牌，摸1张牌。费用大于0的牌算作2张。,,,,,巡猎,,高
-BorderstarGunslinger,边星快枪手,UNCOMMON,SKILL,SELF,0, AndroidTestMod:耗能 80，弃置任意张牌，获得 !M! 倍的格挡。,,,,3,, AndroidTestMod:耗能 80，弃置任意张牌，获得 !M! 倍的格挡，并升级以此法弃置的牌。,,,,,巡猎,,低
+BorderstarGunslinger,边星快枪手,UNCOMMON,SKILL,SELF,0, Hsrmod:耗能 80，弃置任意张牌，获得 !M! 倍的格挡。,,,,3,, Hsrmod:耗能 80，弃置任意张牌，获得 !M! 倍的格挡，并升级以此法弃置的牌。,,,,,巡猎,,低
 GalaxyRanger,巡海游侠,UNCOMMON,SKILL,SELF,1,弃置任意张手牌，摸两倍的牌。,,,,,,弃置任意张手牌，摸两倍的牌，并升级以此法弃置的牌。,,,,,巡猎,,中
-DisasterHaltingMechanism,天灾遏止机关,COMMON,SKILL,SELF,1, AndroidTestMod:耗能 40，获得手牌数数量的格挡，并随机升级1张手牌。,,,,1,0,,,,,,巡猎,,中
+DisasterHaltingMechanism,天灾遏止机关,COMMON,SKILL,SELF,1, Hsrmod:耗能 40，获得手牌数数量的格挡，并随机升级1张手牌。,,,,1,0,,,,,,巡猎,,中
 TheHunt,巡猎,SPECIAL,SKILL,NONE,-2,,,,,,,,,,,,巡猎,,
-Tingyun1,庆云光覆仪祷,COMMON,SKILL,SELF,0, AndroidTestMod:耗能 10，获得 !M! 点 AndroidTestMod:充能 和1层 力量 。,,,,50,, AndroidTestMod:耗能 10，获得 !M! 点 AndroidTestMod:充能 和1层 力量 ，获得摸牌堆1张牌。,,,,60,智识,,高
-Huohuo1,凭附气通天真,UNCOMMON,SKILL,SELF,0, 消耗 。 AndroidTestMod:耗能 140，获得 [E] ，获得以下效果直到回合结束： NL 打出牌后，回复1点 临时生命 ，10点 AndroidTestMod:充能 ，并净化1层负面效果。,,,,,, 消耗 。 AndroidTestMod:耗能 140，获得 [E] ，获得以下效果直到回合结束： NL 打出牌后，或消耗 AndroidTestMod:充能 后，回复1点 临时生命 ，10点 AndroidTestMod:充能 ，并净化1层负面效果。,,,,,智识,,中
-Argenti1,驻于花庭，赐与尽美,UNCOMMON,ATTACK,ALL_ENEMY,1, 保留 。重复执行，直到 AndroidTestMod:充能 不足： NL AndroidTestMod:耗能 90，群体：造成 !D! 点伤害（物理 !TR! ）。 ,8,1,,,,,12,,,,智识,物理,中
-CivilizationCorrespondent,文明函授员,COMMON,SKILL,SELF,1,消耗所有 AndroidTestMod:充能 ，每消耗10 AndroidTestMod:充能 ，获得1点格挡。,,,,,,消耗所有 AndroidTestMod:充能 ，每消耗10 AndroidTestMod:充能 ，获得1点格挡；每消耗100 AndroidTestMod:充能 ，摸1张牌。,,,,,智识,,中
-PenMan,执笔人,COMMON,SKILL,SELF,0, 保留 。弃置1张牌，获得 !M! 点 AndroidTestMod:充能 ，然后若 AndroidTestMod:充能 未满，将此牌返还手牌。,,,,20,,,,,,30,智识,,中
-Jade2,堕此欲渊，立此狱契,UNCOMMON,ATTACK,ALL_ENEMY,1, AndroidTestMod:耗能 140，群体：造成 !D! 点伤害（量子 !TR! ），手牌中每有一张群体牌，则失去2点生命，令之此回合费用-1。,8,2,,,,,12,,,,智识,量子,低
-SilverheartGuards,银河护卫队,UNCOMMON,POWER,SELF,2,消耗 AndroidTestMod:充能 后，获得摸牌堆1张牌，获得 !M! 点格挡。,,,,2,, 固有 。消耗 AndroidTestMod:充能 后，获得摸牌堆1张牌，获得 !M! 点格挡。,,,,,智识,,中
-SMR2Amygdala,SMR-2型杏仁核,RARE,POWER,SELF,2,每回合开始时，获得1层 AndroidTestMod:罐中脑 。 AndroidTestMod:充能 至少为 !M! 。,,,,50,1,,,,,,智识,,中
-Kolchis,科尔奇人,RARE,POWER,SELF,3,每消耗 AndroidTestMod:充能 达到 !M! 点，回复 [E] 。,,,,100,, 固有 。每消耗 AndroidTestMod:充能 达到 !M! 点，回复 [E] 。,,,,,智识,,高
-Aggregator,聚合者,UNCOMMON,SKILL,SELF,1, 消耗 。 AndroidTestMod:耗能 !M! ，手牌中每有一张其他 AndroidTestMod:耗能 的牌，便摸1张牌，并回复 [E] 和40点 AndroidTestMod:充能 。,,,,120,, AndroidTestMod:耗能 !M! ，手牌中每有一张其他 AndroidTestMod:耗能 的牌，便摸1张牌，并回复 [E] 和40点 AndroidTestMod:充能 ，然后此牌于此次战斗内 AndroidTestMod:耗能 翻倍。,,,,60,智识,,中
-BCI34GrayMatter,BCI -34 型灰质,COMMON,SKILL,SELF,1,获得 !M! 层 AndroidTestMod:罐中脑 。,,,,2,, 固有 。获得 !M! 层 AndroidTestMod:罐中脑 。,,,,3,智识,,高
-MakeTheWorldClamor,别让世界静下来,COMMON,SKILL,SELF,0, 消耗 。将 AndroidTestMod:充能 调整至上限。,,,,,,将 AndroidTestMod:充能 调整至上限。,,,,,智识,,中
-Tribbie1,猜猜这里住着谁,UNCOMMON,POWER,SELF,2, AndroidTestMod:耗能 120。打出攻击牌后，每攻击到一个目标，则对目标中生命值最高的敌人造成 !M! 点附加伤害（量子0）。,,,,3,, AndroidTestMod:耗能 120。打出攻击牌后，场上每有一个目标，则对目标中生命值最高的敌人造成 !M! 点附加伤害（量子0）。,,,,,智识,,低
-TheHerta1,早说了是魔法吧,UNCOMMON,ATTACK,ALL_ENEMY,2, AndroidTestMod:耗能 220，群体：造成 !D! 点伤害（冰 !TR! ）；若手牌中有其他 AndroidTestMod:耗能 的牌，则对生命值最高的敌人再造成1次伤害。,14,1,,1,, AndroidTestMod:耗能 220，群体：造成 !D! 点伤害（冰 !TR! ）；手牌每满足一项，对生命值最高的敌人再造成1次伤害：1. 包含其他 AndroidTestMod:耗能 的牌；2. 包含其他群体牌。,,,,,智识,冰,低
-TerminalNirvana,无余涅槃,RARE,SKILL,SELF,2, 消耗 。 保留 。 AndroidTestMod:耗能 !M! ，获得1层 无实体 。,,,,120,, 保留 。 AndroidTestMod:耗能 !M! ，获得1层 无实体 ，然后此牌于此次战斗内 AndroidTestMod:耗能 翻倍。,,,,60,智识,,中
+Tingyun1,庆云光覆仪祷,COMMON,SKILL,SELF,0, Hsrmod:耗能 10，获得 !M! 点 Hsrmod:充能 和1层 力量 。,,,,50,, Hsrmod:耗能 10，获得 !M! 点 Hsrmod:充能 和1层 力量 ，获得摸牌堆1张牌。,,,,60,智识,,高
+Huohuo1,凭附气通天真,UNCOMMON,SKILL,SELF,0, 消耗 。 Hsrmod:耗能 140，获得 [E] ，获得以下效果直到回合结束： NL 打出牌后，回复1点 临时生命 ，10点 Hsrmod:充能 ，并净化1层负面效果。,,,,,, 消耗 。 Hsrmod:耗能 140，获得 [E] ，获得以下效果直到回合结束： NL 打出牌后，或消耗 Hsrmod:充能 后，回复1点 临时生命 ，10点 Hsrmod:充能 ，并净化1层负面效果。,,,,,智识,,中
+Argenti1,驻于花庭，赐与尽美,UNCOMMON,ATTACK,ALL_ENEMY,1, 保留 。重复执行，直到 Hsrmod:充能 不足： NL Hsrmod:耗能 90，群体：造成 !D! 点伤害（物理 !TR! ）。 ,8,1,,,,,12,,,,智识,物理,中
+CivilizationCorrespondent,文明函授员,COMMON,SKILL,SELF,1,消耗所有 Hsrmod:充能 ，每消耗10 Hsrmod:充能 ，获得1点格挡。,,,,,,消耗所有 Hsrmod:充能 ，每消耗10 Hsrmod:充能 ，获得1点格挡；每消耗100 Hsrmod:充能 ，摸1张牌。,,,,,智识,,中
+PenMan,执笔人,COMMON,SKILL,SELF,0, 保留 。弃置1张牌，获得 !M! 点 Hsrmod:充能 ，然后若 Hsrmod:充能 未满，将此牌返还手牌。,,,,20,,,,,,30,智识,,中
+Jade2,堕此欲渊，立此狱契,UNCOMMON,ATTACK,ALL_ENEMY,1, Hsrmod:耗能 140，群体：造成 !D! 点伤害（量子 !TR! ），手牌中每有一张群体牌，则失去2点生命，令之此回合费用-1。,8,2,,,,,12,,,,智识,量子,低
+SilverheartGuards,银河护卫队,UNCOMMON,POWER,SELF,2,消耗 Hsrmod:充能 后，获得摸牌堆1张牌，获得 !M! 点格挡。,,,,2,, 固有 。消耗 Hsrmod:充能 后，获得摸牌堆1张牌，获得 !M! 点格挡。,,,,,智识,,中
+SMR2Amygdala,SMR-2型杏仁核,RARE,POWER,SELF,2,每回合开始时，获得1层 Hsrmod:罐中脑 。 Hsrmod:充能 至少为 !M! 。,,,,50,1,,,,,,智识,,中
+Kolchis,科尔奇人,RARE,POWER,SELF,3,每消耗 Hsrmod:充能 达到 !M! 点，回复 [E] 。,,,,100,, 固有 。每消耗 Hsrmod:充能 达到 !M! 点，回复 [E] 。,,,,,智识,,高
+Aggregator,聚合者,UNCOMMON,SKILL,SELF,1, 消耗 。 Hsrmod:耗能 !M! ，手牌中每有一张其他 Hsrmod:耗能 的牌，便摸1张牌，并回复 [E] 和40点 Hsrmod:充能 。,,,,120,, Hsrmod:耗能 !M! ，手牌中每有一张其他 Hsrmod:耗能 的牌，便摸1张牌，并回复 [E] 和40点 Hsrmod:充能 ，然后此牌于此次战斗内 Hsrmod:耗能 翻倍。,,,,60,智识,,中
+BCI34GrayMatter,BCI -34 型灰质,COMMON,SKILL,SELF,1,获得 !M! 层 Hsrmod:罐中脑 。,,,,2,, 固有 。获得 !M! 层 Hsrmod:罐中脑 。,,,,3,智识,,高
+MakeTheWorldClamor,别让世界静下来,COMMON,SKILL,SELF,0, 消耗 。将 Hsrmod:充能 调整至上限。,,,,,,将 Hsrmod:充能 调整至上限。,,,,,智识,,中
+Tribbie1,猜猜这里住着谁,UNCOMMON,POWER,SELF,2, Hsrmod:耗能 120。打出攻击牌后，每攻击到一个目标，则对目标中生命值最高的敌人造成 !M! 点附加伤害（量子0）。,,,,3,, Hsrmod:耗能 120。打出攻击牌后，场上每有一个目标，则对目标中生命值最高的敌人造成 !M! 点附加伤害（量子0）。,,,,,智识,,低
+TheHerta1,早说了是魔法吧,UNCOMMON,ATTACK,ALL_ENEMY,2, Hsrmod:耗能 220，群体：造成 !D! 点伤害（冰 !TR! ）；若手牌中有其他 Hsrmod:耗能 的牌，则对生命值最高的敌人再造成1次伤害。,14,1,,1,, Hsrmod:耗能 220，群体：造成 !D! 点伤害（冰 !TR! ）；手牌每满足一项，对生命值最高的敌人再造成1次伤害：1. 包含其他 Hsrmod:耗能 的牌；2. 包含其他群体牌。,,,,,智识,冰,低
+TerminalNirvana,无余涅槃,RARE,SKILL,SELF,2, 消耗 。 保留 。 Hsrmod:耗能 !M! ，获得1层 无实体 。,,,,120,, 保留 。 Hsrmod:耗能 !M! ，获得1层 无实体 ，然后此牌于此次战斗内 Hsrmod:耗能 翻倍。,,,,60,智识,,中
 Erudition,智识,SPECIAL,SKILL,NONE,-2,,,,,,,,,,,,智识,,
-Imprison,禁锢,COMMON,STATUS,NONE,1, 虚无 。获得时，失去所有 AndroidTestMod:充能 。在手牌中时，无法获得 AndroidTestMod:充能 。失去时，回复以此法获得的 AndroidTestMod:充能 。,,,,,,,,,,,,,
+Imprison,禁锢,COMMON,STATUS,NONE,1, 虚无 。获得时，失去所有 Hsrmod:充能 。在手牌中时，无法获得 Hsrmod:充能 。失去时，回复以此法获得的 Hsrmod:充能 。,,,,,,,,,,,,,
 Frozen,冻结,COMMON,STATUS,NONE,-2, 保留 。不能被打出。,,,,,,,,,,,,,
 Entangle,纠缠,COMMON,STATUS,NONE,2, 消耗 。与随机 !M! 张牌绑定，这些牌无法以其他方式打出。打出此牌会打出其他绑定牌（不消耗 [E] ）。,,,,2,3,,,,,,,,
 NightOnTheMilkyWay,银河铁道之夜,BASIC,SKILL,SELF,0, 消耗 。若下一房间可选： NL 宝箱或商店：获得20金币，在牌堆底加入 *「凡庸」 ； NL 怪物或精英：你摸2张牌； NL 问号或篝火：你获得 [E] [E] 。,,,,2,, 消耗 。若下一房间可选： NL 宝箱或商店：获得30金币，在牌堆底加入 *「凡庸」 ； NL 怪物或精英：你摸3张牌； NL 问号或篝火：你获得 [E] [E] [E] 。,,,,3,开拓,,

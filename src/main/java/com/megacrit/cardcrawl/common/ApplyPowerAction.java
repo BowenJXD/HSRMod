@@ -1,7 +1,7 @@
 package com.megacrit.cardcrawl.common;
 
-import androidTestMod.powers.interfaces.OnReceivePowerPower;
-import androidTestMod.subscribers.SubscriptionManager;
+import hsrmod.powers.interfaces.OnReceivePowerPower;
+import hsrmod.subscribers.SubscriptionManager;
 import com.badlogic.gdx.Gdx;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.utility.TextAboveCreatureAction;

@@ -1,5 +1,5 @@
 {
-  "AndroidTestMod:Belobog": {
+  "Hsrmod:Belobog": {
     "TEXT": [
       "贝洛伯格",
       "第一位面",
@@ -7,7 +7,7 @@
       "进入被冰雪覆盖之地—— #b贝洛伯格。 "
     ]
   },
-  "AndroidTestMod:Luofu": {
+  "Hsrmod:Luofu": {
     "TEXT": [
       "仙舟「罗浮」",
       "第二位面",
@@ -15,7 +15,7 @@
       "进入无量寿数之地—— #g仙舟「罗浮」 。"
     ]
   },
-  "AndroidTestMod:Penacony": {
+  "Hsrmod:Penacony": {
     "TEXT": [
       "匹诺康尼",
       "第三位面",
@@ -23,7 +23,7 @@
       "进入梦想之地—— #p匹诺康尼 。"
     ]
   },
-  "AndroidTestMod:RelicEventHelper": {
+  "Hsrmod:RelicEventHelper": {
     "TEXT": [
       "选择%d张牌",
       "选择%d张牌升级",
@@ -66,7 +66,7 @@
       "洗牌后，随机获得易伤、虚弱或脆弱。"
     ]
   },
-  "AndroidTestMod:API": {
+  "Hsrmod:API": {
     "TEXT": [
       "https://steamcommunity.com/profiles/76561199157402065/",
       "8D7ECC0106C13F1EF5F34FD2CF409535"

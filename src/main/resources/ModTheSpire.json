@@ -1,7 +1,7 @@
 ﻿{
-  "modId": "AndroidTestMod",
-  "modName": "HSRMod",
-  "modVersion": "1.0",
+  "modId": "Hsrmod",
+  "modName": "Honkai Star Rail Mod",
+  "modVersion": "0.1.1",
   "descriptions": {
     "zhs": ["以崩坏：星穹铁道为主题的MOD。"],
     "eng": ["A mod themed after Honkai: Star Rail."]

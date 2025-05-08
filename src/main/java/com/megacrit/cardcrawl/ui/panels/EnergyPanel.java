@@ -1,6 +1,6 @@
 package com.megacrit.cardcrawl.ui.panels;
 
-import androidTestMod.subscribers.SubscriptionManager;
+import hsrmod.subscribers.SubscriptionManager;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;

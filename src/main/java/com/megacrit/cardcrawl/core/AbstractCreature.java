@@ -502,7 +502,7 @@ public abstract class AbstractCreature {
     }
 
     public void loseBlock(int amount, boolean noAnimation) {
-        amount = -SubscriptionManager.getInstance().triggerPreBlockChange(this, amount);
+        amount = -SubscriptionManager.getInstance().triggerPreBlockChange(this, -amount);
         boolean effect = false;
         if (this.currentBlock != 0) {
             effect = true;

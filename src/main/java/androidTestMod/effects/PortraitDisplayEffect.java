@@ -27,7 +27,7 @@ public class PortraitDisplayEffect extends AbstractGameEffect {
 
     // Constructor
     public PortraitDisplayEffect(String charName) {
-        Texture texture = AssetLoader.getTexture(AndroidTestMod.MOD_NAME,String.format("img/effects/portraits/%s.png", charName));  // Load the image
+        Texture texture = AssetLoader.getTexture(AndroidTestMod.MOD_NAME,String.format("HSRModResources/img/effects/portraits/%s.png", charName));  // Load the image
         if (texture == null) {
             isDone = true;
             return;

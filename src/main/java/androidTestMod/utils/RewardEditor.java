@@ -11,7 +11,6 @@ import androidTestMod.relics.starter.TrailblazeTimer;
 import androidTestMod.relics.starter.WaxRelic;
 import androidTestMod.subscribers.SubscriptionManager;
 import com.megacrit.cardcrawl.android.mods.BaseMod;
-import com.megacrit.cardcrawl.android.mods.abstracts.CustomSavable;
 import com.megacrit.cardcrawl.android.mods.interfaces.PostUpdateSubscriber;
 import com.megacrit.cardcrawl.android.mods.interfaces.StartActSubscriber;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -28,12 +27,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Consumer;
-import java.util.function.Function;
 
 /**
  * Singleton class for editing the card reward pool.
  */
-public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>, PostUpdateSubscriber {
+public class RewardEditor implements StartActSubscriber, PostUpdateSubscriber {
     private static RewardEditor instance;
 
     AbstractRoom currRoom;
@@ -298,6 +296,7 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
                 break;
         }
         chance = SubscriptionManager.getInstance().triggerNumChanger(SubscriptionManager.NumChangerType.WAX_WEIGHT, chance);
+        chance *= 1.5f;
         return AbstractDungeon.cardRandomRng.random(99) < chance;
     }
 
@@ -325,35 +324,6 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
     public boolean checkPath(AbstractCard.CardTags tag) {
         if (bannedTags == null) return true;
         else return !bannedTags.contains(tag);
-    }
-
-    @Override
-    public String[] onSave() {
-        String[] result = new String[2];
-        if (bannedTags == null) result[0] = "";
-        else result[0] = bannedTags.toString();
-        // result[1] = saveCardRewards();
-        return result;
-    }
-
-    @Override
-    public void onLoad(String[] data) {
-        if (data == null) return;
-
-        String cardTags = data[0];
-        if (bannedTags == null) {
-            bannedTags = new ArrayList<>();
-        } else {
-            bannedTags = GeneralUtil.unpackSaveData(cardTags, new Function<String, AbstractCard.CardTags>() {
-                @Override
-                public AbstractCard.CardTags apply(String name) {
-                    return AbstractCard.CardTags.valueOf(name);
-                }
-            });
-        }
-
-        // String cardRewards = data[1];
-        // loadCardRewards(cardRewards);
     }
 
     @Override

@@ -26,7 +26,6 @@ import androidTestMod.relics.special.*;
 import androidTestMod.relics.starter.*;
 import androidTestMod.relics.uncommon.*;
 import androidTestMod.utils.PathSelectManager;
-import androidTestMod.utils.RewardEditor;
 import com.badlogic.gdx.graphics.Color;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.android.mods.BaseMod;
@@ -48,27 +47,27 @@ public final class AndroidTestMod implements EditCardsSubscriber, EditStringsSub
     public static final Color MY_COLOR = new Color(255.0F / 255.0F, 141.0F / 255.0F, 227.0F / 255.0F, 1.0F);
 
     // 人物选择界面按钮的图片
-    private static final String MY_CHARACTER_BUTTON = "img/char/Character_Button.png";
+    private static final String MY_CHARACTER_BUTTON = "HSRModResources/img/char/Character_Button.png";
     // 人物选择界面的立绘
-    private static final String MY_CHARACTER_PORTRAIT = "img/char/Character_Portrait.png";
+    private static final String MY_CHARACTER_PORTRAIT = "HSRModResources/img/char/Character_Portrait.png";
     // 攻击牌的背景（小尺寸）
-    private static final String BG_ATTACK_512 = "img/512/bg_attack_512.png";
+    private static final String BG_ATTACK_512 = "HSRModResources/img/512/bg_attack_512.png";
     // 能力牌的背景（小尺寸）
-    private static final String BG_POWER_512 = "img/512/bg_power_512.png";
+    private static final String BG_POWER_512 = "HSRModResources/img/512/bg_power_512.png";
     // 技能牌的背景（小尺寸）
-    private static final String BG_SKILL_512 = "img/512/bg_skill_512.png";
+    private static final String BG_SKILL_512 = "HSRModResources/img/512/bg_skill_512.png";
     // 在卡牌和遗物描述中的能量图标
-    private static final String SMALL_ORB = "img/char/small_orb.png";
+    private static final String SMALL_ORB = "HSRModResources/img/char/small_orb.png";
     // 攻击牌的背景（大尺寸）
-    private static final String BG_ATTACK_1024 = "img/1024/bg_attack.png";
+    private static final String BG_ATTACK_1024 = "HSRModResources/img/1024/bg_attack.png";
     // 能力牌的背景（大尺寸）
-    private static final String BG_POWER_1024 = "img/1024/bg_power.png";
+    private static final String BG_POWER_1024 = "HSRModResources/img/1024/bg_power.png";
     // 技能牌的背景（大尺寸）
-    private static final String BG_SKILL_1024 = "img/1024/bg_skill.png";
+    private static final String BG_SKILL_1024 = "HSRModResources/img/1024/bg_skill.png";
     // 在卡牌预览界面的能量图标
-    private static final String BIG_ORB = "img/char/card_orb.png";
+    private static final String BIG_ORB = "HSRModResources/img/char/card_orb.png";
     // 小尺寸的能量图标（战斗中，牌堆预览）
-    private static final String ENERGY_ORB = "img/char/cost_orb.png";
+    private static final String ENERGY_ORB = "HSRModResources/img/char/cost_orb.png";
 
     public static final Logger logger = LogManager.getLogger(MOD_NAME);
 
@@ -300,7 +299,6 @@ public final class AndroidTestMod implements EditCardsSubscriber, EditStringsSub
             BaseMod.addRelic(new ShatterboneBlade());
             BaseMod.addRelic(new BeaconColoringPaste());
             BaseMod.addRelic(new SuperOverlordSpinningTop());
-            BaseMod.addRelic(new GeniusSocietysDangerousGossip());
             BaseMod.addRelic(new PunklordianBalance());
             BaseMod.addRelic(new GreenFingers());
             BaseMod.addRelic(new FruitOfTheAlienTree());
@@ -430,7 +428,6 @@ public final class AndroidTestMod implements EditCardsSubscriber, EditStringsSub
 
     @Override
     public void receivePostInitialize() {
-        BaseMod.addSaveField("RewardEditor", RewardEditor.getInstance());
         BaseMod.subscribe(PathSelectManager.Inst);
     }
 

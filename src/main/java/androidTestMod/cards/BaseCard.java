@@ -60,7 +60,7 @@ public abstract class BaseCard extends CustomCard {
     public BaseCard(String id, CardColor color) {
         super(AndroidTestMod.makePath(id),
                 DataManager.getInstance().getCardData(id, CardDataCol.Name),
-                "img/cards/" + id + ".png",
+                "HSRModResources/img/cards/" + id + ".png",
                 DataManager.getInstance().getCardDataInt(id, CardDataCol.Cost),
                 DataManager.getInstance().getCardData(id, CardDataCol.Description),
                 CardType.valueOf(DataManager.getInstance().getCardData(id, CardDataCol.Type)),
@@ -77,8 +77,9 @@ public abstract class BaseCard extends CustomCard {
 
         this.upCost = DataManager.getInstance().getCardDataInt(id, CardDataCol.UpgradeCost);
         this.upDescription = DataManager.getInstance().getCardData(id, CardDataCol.UpgradeDescription);
-        this.rawDescription = this.rawDescription.replaceAll(" !TR! ", String.valueOf(baseTr));
-        this.upDescription = this.upDescription.replaceAll(" !TR! ", String.valueOf(upTr));
+        this.rawDescription = this.rawDescription.replaceAll("TR", String.valueOf(baseTr));
+        this.upDescription = this.upDescription.replaceAll("TR", String.valueOf(upTr));
+        System.out.println("rawDescription: " + this.rawDescription);
         this.upDamage = DataManager.getInstance().getCardDataInt(id, CardDataCol.UpgradeDamage);
         this.upTr = DataManager.getInstance().getCardDataInt(id, CardDataCol.UpgradeToughnessReduction);
         this.upBlock = DataManager.getInstance().getCardDataInt(id, CardDataCol.UpgradeBlock);

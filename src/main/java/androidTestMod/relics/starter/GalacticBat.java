@@ -3,15 +3,16 @@ package androidTestMod.relics.starter;
 import androidTestMod.AndroidTestMod;
 import androidTestMod.powers.misc.ToughnessPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.android.mods.abstracts.CustomRelic;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
-public class GalacticBat extends AbstractRelic {
+public class GalacticBat extends CustomRelic {
     // 遗物ID（此处的ModHelper在“04 - 本地化”中提到）
     public static final String ID = AndroidTestMod.makePath(GalacticBat.class.getSimpleName());
     // 图片路径
-    private static final String IMG_PATH = "img/relics/Trailblazer.png";
+    private static final String IMG_PATH = "HSRModResources/img/relics/Trailblazer.png";
     // 遗物类型
     private static final RelicTier RELIC_TIER = RelicTier.STARTER;
     // 点击音效
@@ -22,7 +23,7 @@ public class GalacticBat extends AbstractRelic {
     String modNameCache = null;
     
     public GalacticBat() {
-        super(ID, IMG_PATH, RELIC_TIER, LANDING_SOUND);
+        super(AndroidTestMod.MOD_NAME, ID, IMG_PATH, RELIC_TIER, LANDING_SOUND);
     }
 
     // 获取遗物描述，但原版游戏只在初始化和获取遗物时调用，故该方法等于初始描述

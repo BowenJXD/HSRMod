@@ -4,7 +4,9 @@ import androidTestMod.AndroidTestMod;
 import com.megacrit.cardcrawl.android.mods.AssetLoader;
 import com.megacrit.cardcrawl.core.Settings;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -51,9 +53,9 @@ public class DataManager {
         Map<String, String[]> resultMap = new HashMap<>();
         // FileHandle fileHandle = Gdx.files.internal(filePath);
         String file = AssetLoader.getString(AndroidTestMod.MOD_NAME, filePath);
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(file.getBytes(charset)), charset))) {
-            String line;
-            while ((line = br.readLine()) != null) {
+        try {
+            String[] lines = file.split("\n");
+            for (String line : lines) {
                 // 使用自定义的解析方法
                 String[] columns = parseCSVLine(line);
                 if (columns.length > 1) { // 确保至少有两列数据
@@ -61,11 +63,12 @@ public class DataManager {
                     if (primaryKey.isEmpty()) continue;
                     String[] values = new String[columns.length - 1];
                     System.arraycopy(columns, 1, values, 0, columns.length - 1);
+                    System.out.println("key: " + primaryKey + " values " + Arrays.toString(values));
                     resultMap.put(primaryKey, values);
                 }
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println("Error reading CSV file: " + e.getMessage());
         }
         return resultMap;
     }

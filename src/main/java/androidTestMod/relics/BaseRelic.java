@@ -20,8 +20,8 @@ public abstract class BaseRelic extends CustomRelic {
     
     public BaseRelic(String id){
         super(AndroidTestMod.makePath(id),
-                AssetLoader.getTexture(AndroidTestMod.MOD_NAME, "img/relics/" + id + ".png"),
-                AssetLoader.getTexture(AndroidTestMod.MOD_NAME, "img/relics/outline/" + id + ".png"),
+                AssetLoader.getTexture(AndroidTestMod.MOD_NAME, "HSRModResources/img/relics/" + id + ".png"),
+                AssetLoader.getTexture(AndroidTestMod.MOD_NAME, "HSRModResources/img/relics/outline/" + id + ".png"),
                 AbstractRelic.RelicTier.valueOf(DataManager.getInstance().getRelicData(id, RelicDataCol.Tier)),
                 AbstractRelic.LandingSound.valueOf(DataManager.getInstance().getRelicData(id, RelicDataCol.Sound))
                 );

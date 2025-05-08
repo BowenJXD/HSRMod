@@ -19,6 +19,7 @@ import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
+import com.megacrit.cardcrawl.android.mods.abstracts.CustomRelic;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.core.Settings;
@@ -35,11 +36,11 @@ import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
-public class PomPomBlessing extends AbstractRelic {
+public class PomPomBlessing extends CustomRelic {
     // 遗物ID（此处的ModHelper在“04 - 本地化”中提到）
     public static final String ID = AndroidTestMod.makePath(PomPomBlessing.class.getSimpleName());
     // 图片路径
-    private static final String IMG_PATH = "img/relics/PomPomBlessing.png";
+    private static final String IMG_PATH = "HSRModResources/img/relics/PomPomBlessing.png";
     // 遗物类型
     private static final RelicTier RELIC_TIER = RelicTier.STARTER;
     // 点击音效
@@ -50,7 +51,7 @@ public class PomPomBlessing extends AbstractRelic {
     private int multiplier = 20;
 
     public PomPomBlessing() {
-        super(ID, IMG_PATH, RELIC_TIER, LANDING_SOUND);
+        super(AndroidTestMod.MOD_NAME, ID, IMG_PATH, RELIC_TIER, LANDING_SOUND);
         setCounter(100);
     }
 

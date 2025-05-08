@@ -1,5 +1,6 @@
 package androidTestMod.utils;
 
+import androidTestMod.AndroidTestMod;
 import androidTestMod.characters.StellaCharacter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -9,8 +10,8 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.esotericsoftware.spine.AnimationState;
 import com.esotericsoftware.spine.AnimationStateData;
 import com.esotericsoftware.spine.Skeleton;
+import com.megacrit.cardcrawl.android.mods.AssetLoader;
 import com.megacrit.cardcrawl.android.mods.BaseMod;
-import com.megacrit.cardcrawl.android.mods.abstracts.CustomSavable;
 import com.megacrit.cardcrawl.android.mods.interfaces.ISubscriber;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -22,7 +23,7 @@ import com.megacrit.cardcrawl.helpers.input.InputHelper;
 
 import java.util.ArrayList;
 
-public class PathSelectScreen implements ISubscriber, CustomSavable<Integer> {
+public class PathSelectScreen implements ISubscriber {
     private static final ArrayList<Path> PATHS = new ArrayList<>();
 
     public String curName = "";
@@ -31,26 +32,26 @@ public class PathSelectScreen implements ISubscriber, CustomSavable<Integer> {
 
     static {
         if (Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT) {
-            PATHS.add(new Path("img/char/TrailblazeLogo.png", "开拓命途", "开拓属于你的道路", androidTestMod.modcore.Path.TRAILBLAZE));
-            PATHS.add(new Path("img/char/ElationLogo.png", "欢愉命途", "通过追击进行输出", androidTestMod.modcore.Path.ELATION));
-            PATHS.add(new Path("img/char/DestructionLogo.png", "毁灭命途", "通过击破进行输出", androidTestMod.modcore.Path.DESTRUCTION));
-            PATHS.add(new Path("img/char/NihilityLogo.png", "虚无命途", "通过持续伤害进行输出", androidTestMod.modcore.Path.NIHILITY));
-            PATHS.add(new Path("img/char/PreservationLogo.png", "存护命途", "通过格挡进行输出", androidTestMod.modcore.Path.PRESERVATION));
-            PATHS.add(new Path("img/char/TheHuntLogo.png", "巡猎命途", "通过摸牌进行输出", androidTestMod.modcore.Path.THE_HUNT));
-            PATHS.add(new Path("img/char/PropagationLogo.png", "繁育命途", "通过能量进行输出", androidTestMod.modcore.Path.PROPAGATION));
-            PATHS.add(new Path("img/char/EruditionLogo.png", "智识命途", "通过充能进行输出", androidTestMod.modcore.Path.ERUDITION));
-            PATHS.add(new Path("img/char/AbundanceLogo.png", "丰饶命途", "通过临时生命进行输出", androidTestMod.modcore.Path.ABUNDANCE));
+            PATHS.add(new Path("HSRModResources/img/char/TrailblazeLogo.png", "开拓命途", "开拓属于你的道路", androidTestMod.modcore.Path.TRAILBLAZE));
+            PATHS.add(new Path("HSRModResources/img/char/ElationLogo.png", "欢愉命途", "通过追击进行输出", androidTestMod.modcore.Path.ELATION));
+            PATHS.add(new Path("HSRModResources/img/char/DestructionLogo.png", "毁灭命途", "通过击破进行输出", androidTestMod.modcore.Path.DESTRUCTION));
+            PATHS.add(new Path("HSRModResources/img/char/NihilityLogo.png", "虚无命途", "通过持续伤害进行输出", androidTestMod.modcore.Path.NIHILITY));
+            PATHS.add(new Path("HSRModResources/img/char/PreservationLogo.png", "存护命途", "通过格挡进行输出", androidTestMod.modcore.Path.PRESERVATION));
+            PATHS.add(new Path("HSRModResources/img/char/TheHuntLogo.png", "巡猎命途", "通过摸牌进行输出", androidTestMod.modcore.Path.THE_HUNT));
+            PATHS.add(new Path("HSRModResources/img/char/PropagationLogo.png", "繁育命途", "通过能量进行输出", androidTestMod.modcore.Path.PROPAGATION));
+            PATHS.add(new Path("HSRModResources/img/char/EruditionLogo.png", "智识命途", "通过充能进行输出", androidTestMod.modcore.Path.ERUDITION));
+            PATHS.add(new Path("HSRModResources/img/char/AbundanceLogo.png", "丰饶命途", "通过临时生命进行输出", androidTestMod.modcore.Path.ABUNDANCE));
         }
         else {
-            PATHS.add(new Path("img/char/TrailblazeLogo.png", "Trailblaze", "Trailblaze your own way", androidTestMod.modcore.Path.TRAILBLAZE));
-            PATHS.add(new Path("img/char/ElationLogo.png", "Elation", "Damage through Follow-Up", androidTestMod.modcore.Path.ELATION));
-            PATHS.add(new Path("img/char/DestructionLogo.png", "Destruction", "Damage through break", androidTestMod.modcore.Path.DESTRUCTION));
-            PATHS.add(new Path("img/char/NihilityLogo.png", "Nihility", "Damage through DoT", androidTestMod.modcore.Path.NIHILITY));
-            PATHS.add(new Path("img/char/PreservationLogo.png", "Preservation", "Damage through block", androidTestMod.modcore.Path.PRESERVATION));
-            PATHS.add(new Path("img/char/TheHuntLogo.png", "The Hunt", "Damage through draw", androidTestMod.modcore.Path.THE_HUNT));
-            PATHS.add(new Path("img/char/PropagationLogo.png", "Propagation", "Damage through energy", androidTestMod.modcore.Path.PROPAGATION));
-            PATHS.add(new Path("img/char/EruditionLogo.png", "Erudition", "Damage through charge", androidTestMod.modcore.Path.ERUDITION));
-            PATHS.add(new Path("img/char/AbundanceLogo.png", "Abundance", "Damage through temporary HP", androidTestMod.modcore.Path.ABUNDANCE));
+            PATHS.add(new Path("HSRModResources/img/char/TrailblazeLogo.png", "Trailblaze", "Trailblaze your own way", androidTestMod.modcore.Path.TRAILBLAZE));
+            PATHS.add(new Path("HSRModResources/img/char/ElationLogo.png", "Elation", "Damage through Follow-Up", androidTestMod.modcore.Path.ELATION));
+            PATHS.add(new Path("HSRModResources/img/char/DestructionLogo.png", "Destruction", "Damage through break", androidTestMod.modcore.Path.DESTRUCTION));
+            PATHS.add(new Path("HSRModResources/img/char/NihilityLogo.png", "Nihility", "Damage through DoT", androidTestMod.modcore.Path.NIHILITY));
+            PATHS.add(new Path("HSRModResources/img/char/PreservationLogo.png", "Preservation", "Damage through block", androidTestMod.modcore.Path.PRESERVATION));
+            PATHS.add(new Path("HSRModResources/img/char/TheHuntLogo.png", "The Hunt", "Damage through draw", androidTestMod.modcore.Path.THE_HUNT));
+            PATHS.add(new Path("HSRModResources/img/char/PropagationLogo.png", "Propagation", "Damage through energy", androidTestMod.modcore.Path.PROPAGATION));
+            PATHS.add(new Path("HSRModResources/img/char/EruditionLogo.png", "Erudition", "Damage through charge", androidTestMod.modcore.Path.ERUDITION));
+            PATHS.add(new Path("HSRModResources/img/char/AbundanceLogo.png", "Abundance", "Damage through temporary HP", androidTestMod.modcore.Path.ABUNDANCE));
         }
     }
 
@@ -185,21 +186,11 @@ public class PathSelectScreen implements ISubscriber, CustomSavable<Integer> {
 
         public Path(String img, String name, String effect, androidTestMod.modcore.Path path) {
             this.img = img;
-            this.t = ImageMaster.loadImage(img);
+            this.t = AssetLoader.getTexture(AndroidTestMod.MOD_NAME, img);
             this.name = name;
             this.effect = effect;
             this.path = path;
         }
-    }
-
-    public void onLoad(Integer arg0) {
-        if (arg0 == null) return;
-        this.index = arg0;
-        refresh();
-    }
-
-    public Integer onSave() {
-        return this.index;
     }
 }
 

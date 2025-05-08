@@ -8,6 +8,7 @@ import androidTestMod.utils.PathSelectScreen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.android.mods.AssetLoader;
@@ -47,24 +48,24 @@ import static androidTestMod.characters.StellaCharacter.PlayerColorEnum.STELLA_C
 // 继承CustomPlayer类
 public class StellaCharacter extends CustomPlayer {
     // 火堆的人物立绘（行动前）
-    private static final String MY_CHARACTER_SHOULDER_1 = "img/char/shoulder1.png";
+    private static final String MY_CHARACTER_SHOULDER_1 = "HSRModResources/img/char/shoulder1.png";
     // 火堆的人物立绘（行动后）
-    private static final String MY_CHARACTER_SHOULDER_2 = "img/char/shoulder2.png";
+    private static final String MY_CHARACTER_SHOULDER_2 = "HSRModResources/img/char/shoulder2.png";
     // 人物死亡图像
-    private static final String CORPSE_IMAGE = "img/char/corpse.png";
+    private static final String CORPSE_IMAGE = "HSRModResources/img/char/corpse.png";
     // 战斗界面左下角能量图标的每个图层
     private static final String[] ORB_TEXTURES = new String[]{
-            "img/UI/orb/layer1.png",
-            "img/UI/orb/layer2.png",
-            "img/UI/orb/layer3.png",
-            "img/UI/orb/layer4.png",
-            "img/UI/orb/layer5.png",
-            "img/UI/orb/layer6.png",
-            "img/UI/orb/layer1d.png",
-            "img/UI/orb/layer2d.png",
-            "img/UI/orb/layer3d.png",
-            "img/UI/orb/layer4d.png",
-            "img/UI/orb/layer5d.png",
+            "HSRModResources/img/UI/orb/layer1.png",
+            "HSRModResources/img/UI/orb/layer2.png",
+            "HSRModResources/img/UI/orb/layer3.png",
+            "HSRModResources/img/UI/orb/layer4.png",
+            "HSRModResources/img/UI/orb/layer5.png",
+            "HSRModResources/img/UI/orb/layer6.png",
+            "HSRModResources/img/UI/orb/layer1d.png",
+            "HSRModResources/img/UI/orb/layer2d.png",
+            "HSRModResources/img/UI/orb/layer3d.png",
+            "HSRModResources/img/UI/orb/layer4d.png",
+            "HSRModResources/img/UI/orb/layer5d.png",
     };
     // 每个图层的旋转速度
     private static final float[] LAYER_SPEED = new float[]{-40.0F, -32.0F, 20.0F, -20.0F, 0.0F, -10.0F, -8.0F, 5.0F, -5.0F, 0.0F};
@@ -74,55 +75,10 @@ public class StellaCharacter extends CustomPlayer {
     float drawYAlter = 0;
 
     public StellaCharacter(String name) {
-        super(AndroidTestMod.MOD_NAME, name, STELLA_CHARACTER, ORB_TEXTURES, "img/UI/orb/vfx.png", LAYER_SPEED, null, null);
+        super(AndroidTestMod.MOD_NAME, name, STELLA_CHARACTER, null, "HSRModResources/img/UI/orb/vfx.png", null, null, null);
 
-        String charImg = null;
         float hbx = 0f, hby = 0f, hbw = 200f, hbh = 220f;
-
-        // 如果你的人物没有动画，那么这些不需要写
-        /*try {
-            this.loadAnimation("img/spine/nv.atlas", "img/spine/nv.json", 3F);
-            AnimationState.TrackEntry e = this.state.setAnimation(0, "idle_back", true);
-            e.setTime(e.getEndTime() * MathUtils.random());
-            e.setTimeScale(0.5F);
-            float ratio = (float) Settings.WIDTH / Settings.HEIGHT;
-            float dy = 0;
-            hbx = 50f;
-            hbw = 200f;
-            if (ratio > 2.3f *//* 2.3+ *//*) {
-                hby = -380f;
-                hbh = 300f;
-                dy = 50f;
-            } else if (ratio > 2f *//* 2.3 - 2 *//*) {
-                hby = -320f;
-                hbh = 300f;
-            } else if (ratio > 1.9f *//* 2 - 1.9 *//*) {
-                hby = -380f;
-                hbh = 300f;
-            } else if (ratio > 1.5f *//* 1.9 - 1.77 - 1.6 - 1.5 *//*) {
-                hby = -280f;
-                hbh = 300f;
-            } else if (ratio > 1.3f *//* 1.5 - 1.33 - 1.3 *//*) {
-                if ((float) Settings.M_W / Settings.M_H > 1.3f) {
-                    hby = -380f;
-                    hbh = 400f;
-                } else {
-                    hby = -280f;
-                    hbh = 300f;
-                }
-            } else *//* 1.3- *//* {
-                hby = -280f;
-                hbh = 300f;
-            }
-            drawYAlter = hbh * Settings.scale * 0.9f + dy;
-            this.drawY = AbstractDungeon.floorY + drawYAlter;
-        } catch (Exception e) {
-            AndroidTestMod.logger.error("Failed to load animation: {}", e.getMessage());
-            charImg = "img/char/character.png";
-        }*/
-        /*else {
-        }*/
-        charImg = "img/char/character.png";
+        String charImg = "HSRModResources/img/char/character.png";
 
         // 初始化你的人物，如果你的人物只有一张图，那么第一个参数填写你人物图片的路径。
         this.initializeClass(
@@ -175,15 +131,7 @@ public class StellaCharacter extends CustomPlayer {
         this.healthHb = new Hitbox(this.hb.width, 72.0F * Settings.scale);
         this.refreshHitboxLocation();
     }
-
-    @Override
-    public void update() {
-        super.update();
-        if (state != null) {
-            flipHorizontal = true;
-        }
-    }
-
+    
     @Override
     public void renderPlayerImage(SpriteBatch sb) {
         try {
@@ -197,14 +145,6 @@ public class StellaCharacter extends CustomPlayer {
     public void playDeathAnimation() {
         super.playDeathAnimation();
         drawY = AbstractDungeon.floorY;
-    }
-
-    @Override
-    public void movePosition(float x, float y) {
-        if (y == AbstractDungeon.floorY && state != null) {
-            y += drawYAlter;
-        }
-        super.movePosition(x, y);
     }
 
     // 初始卡组的ID，可直接写或引用变量
@@ -330,9 +270,9 @@ public class StellaCharacter extends CustomPlayer {
     public ArrayList<CutscenePanel> getCutscenePanels() {
         ArrayList<CutscenePanel> panels = new ArrayList<>();
         // 有两个参数的，第二个参数表示出现图片时播放的音效
-        panels.add(new CutscenePanel("img/char/Victory1.png", "ATTACK_MAGIC_FAST_1"));
-        panels.add(new CutscenePanel("img/char/Victory2.png"));
-        panels.add(new CutscenePanel("img/char/Victory3.png"));
+        panels.add(new CutscenePanel("HSRModResources/img/char/Victory1.png", "ATTACK_MAGIC_FAST_1"));
+        panels.add(new CutscenePanel("HSRModResources/img/char/Victory2.png"));
+        panels.add(new CutscenePanel("HSRModResources/img/char/Victory3.png"));
         return panels;
     }
 
@@ -382,6 +322,11 @@ public class StellaCharacter extends CustomPlayer {
     @Override
     public AbstractGameAction.AttackEffect[] getSpireHeartSlashEffect() {
         return new AbstractGameAction.AttackEffect[]{AbstractGameAction.AttackEffect.SLASH_HEAVY, AbstractGameAction.AttackEffect.FIRE, AbstractGameAction.AttackEffect.SLASH_DIAGONAL, AbstractGameAction.AttackEffect.SLASH_HEAVY, AbstractGameAction.AttackEffect.FIRE, AbstractGameAction.AttackEffect.SLASH_DIAGONAL};
+    }
+
+    @Override
+    public TextureAtlas.AtlasRegion getOrb() {
+        return super.getOrb();
     }
 
     @Override

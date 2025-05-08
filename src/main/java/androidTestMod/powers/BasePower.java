@@ -50,8 +50,8 @@ public abstract class BasePower extends AbstractPower {
 
     @Override
     protected void loadRegion(String fileName) {
-        String path128 = String.format("img/powers/%s128.png", fileName);
-        String path48 = String.format("img/powers/%s48.png", fileName);
+        String path128 = String.format("HSRModResources/img/powers/%s128.png", fileName);
+        String path48 = String.format("HSRModResources/img/powers/%s48.png", fileName);
         this.region128 = new TextureAtlas.AtlasRegion(AssetLoader.getTexture(AndroidTestMod.MOD_NAME, path128), 0, 0, 128, 128);
         this.region48 = new TextureAtlas.AtlasRegion(AssetLoader.getTexture(AndroidTestMod.MOD_NAME, path48), 0, 0, 48, 48);
     }

@@ -142,7 +142,7 @@ public class PathSelectScreen implements ISubscriber {
         float dist = 100.0F * Settings.scale;
         FontHelper.renderFontCentered(sb, FontHelper.cardTitleFont, this.curName, centerX, centerY, RC);
         FontHelper.renderFontCentered(sb, FontHelper.cardTitleFont, (getPath()).effect, centerX, centerY - Settings.HEIGHT * 0.05F, RC);
-        sb.draw((getPath()).t, centerX - Settings.WIDTH * 0.185F, centerY - Settings.HEIGHT * 0.035F);
+        sb.draw((getPath()).t, centerX - Settings.WIDTH * 0.15F, centerY - Settings.HEIGHT * 0.035F);
         // sb.draw((getPath()).t, centerX - Settings.WIDTH * 0.085F, centerY + Settings.HEIGHT * 0.035F);
         if (this.leftHb.hovered) {
             sb.setColor(Color.LIGHT_GRAY);

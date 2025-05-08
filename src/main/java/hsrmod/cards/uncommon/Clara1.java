@@ -1,15 +1,18 @@
 package hsrmod.cards.uncommon;
 
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.subscribers.OnPlayerDamagedSubscriber;
+import hsrmod.subscribers.SubscriptionManager;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
-public class Clara1 extends BaseCard {
+public class Clara1 extends BaseCard implements OnPlayerDamagedSubscriber {
     public static final String ID = Clara1.class.getSimpleName();
 
     boolean canBeUsed = false;
@@ -20,10 +23,17 @@ public class Clara1 extends BaseCard {
         selfRetain = true;
     }
 
-    /*@Override
-    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        return super.canUse(p, m) && (canBeUsed || followedUp);
-    }*/
+    @Override
+    public void onEnterHand() {
+        super.onEnterHand();
+        SubscriptionManager.subscribe(this);
+    }
+
+    @Override
+    public void onLeaveHand() {
+        super.onLeaveHand();
+        SubscriptionManager.unsubscribe(this);
+    }
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
@@ -39,11 +49,11 @@ public class Clara1 extends BaseCard {
     }
 
     @Override
-    public void tookDamage() {
-        super.tookDamage();
+    public int receiveOnPlayerDamaged(int var1, DamageInfo var2) {
         if (AbstractDungeon.player.hand.contains(this)
                 && AbstractDungeon.actionManager.turnHasEnded) {
             canBeUsed = true;
         }
+        return var1;
     }
 }

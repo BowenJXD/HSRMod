@@ -165,14 +165,6 @@ public abstract class BaseCard extends CustomCard {
                 || AbstractDungeon.player == null
                 || AbstractDungeon.player.hand == null) {
             inHand = false;
-            return;
-        }
-        if (!inHand && AbstractDungeon.player.hand.contains(this)) {
-            inHand = true;
-            onEnterHand();
-        } else if (inHand && !AbstractDungeon.player.hand.contains(this)) {
-            inHand = false;
-            onLeaveHand();
         }
     }
 

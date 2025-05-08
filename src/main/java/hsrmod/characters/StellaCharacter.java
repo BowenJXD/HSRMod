@@ -3,7 +3,6 @@ package hsrmod.characters;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.android.mods.AssetLoader;
@@ -68,10 +67,6 @@ public class StellaCharacter extends CustomPlayer {
     private static final float[] LAYER_SPEED = new float[]{-40.0F, -32.0F, 20.0F, -20.0F, 0.0F, -10.0F, -8.0F, 5.0F, -5.0F, 0.0F};
     // 人物的本地化文本，如卡牌的本地化文本一样，如何书写见下
     private static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString(Hsrmod.makePath("StellaCharacter"));
-
-    TextureAtlas.AtlasRegion smallOrb = new TextureAtlas.AtlasRegion(AssetLoader.getTexture(Hsrmod.MOD_NAME, Hsrmod.SMALL_ORB), 0, 0, 22, 22);
-    
-    float drawYAlter = 0;
 
     public StellaCharacter(String name) {
         super(Hsrmod.MOD_NAME, name, PlayerColorEnum.STELLA_CHARACTER, null, "HSRModResources/img/UI/orb/vfx.png", null, null, null);
@@ -322,15 +317,7 @@ public class StellaCharacter extends CustomPlayer {
     public AbstractGameAction.AttackEffect[] getSpireHeartSlashEffect() {
         return new AbstractGameAction.AttackEffect[]{AbstractGameAction.AttackEffect.SLASH_HEAVY, AbstractGameAction.AttackEffect.FIRE, AbstractGameAction.AttackEffect.SLASH_DIAGONAL, AbstractGameAction.AttackEffect.SLASH_HEAVY, AbstractGameAction.AttackEffect.FIRE, AbstractGameAction.AttackEffect.SLASH_DIAGONAL};
     }
-
-    @Override
-    public TextureAtlas.AtlasRegion getOrb() {
-        TextureAtlas.AtlasRegion orb = super.getOrb();
-        if (orb == null)
-            return smallOrb;
-        return orb;
-    }
-
+    
     @Override
     public void damage(DamageInfo info) {
         int damageAmount = info.output;

@@ -61,6 +61,7 @@ public abstract class WaxRelic extends BaseRelic {
                 && !RewardEditor.getInstance().bannedTags.isEmpty()) {
             updateDescription(getUpdatedDescription());
         }
+        RewardEditor.getInstance().update(AbstractDungeon.getCurrRoom(), selectedTag);
     }
 
     @Override

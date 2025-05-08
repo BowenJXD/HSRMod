@@ -67,15 +67,15 @@ public class RewardEditor implements StartActSubscriber, PostUpdateSubscriber {
             for (Consumer<List<RewardItem>> extraReward : extraRewards) {
                 extraReward.accept(rewards);
             }
-
+    
             if (tag == null) return;
 
             for (RewardItem reward : rewards) {
-                System.out.println("RewardEditor card reward: " + reward);
                 if (reward.type == RewardItem.RewardType.CARD) {
+                    System.out.println("RewardEditor card reward: " + reward);
                     setRewardByPath(reward);
+                    System.out.println("RewardEditor changed reward:" + reward);
                 }
-                System.out.println("RewardEditor changed reward:" + reward);
             }
 
             if (Objects.equals(relicId, "") && AbstractDungeon.player instanceof StellaCharacter) {
@@ -330,9 +330,8 @@ public class RewardEditor implements StartActSubscriber, PostUpdateSubscriber {
     @Override
     public void receivePostUpdate() {
         if (AbstractDungeon.currMapNode == null) return;
-        this.update(AbstractDungeon.getCurrRoom(), tag);
         if (AbstractDungeon.floorNum > cachedFloorNum) {
-            if ((AbstractDungeon.currMapNode == null || !AbstractDungeon.getCurrRoom().rewardTime)) {
+            if (!AbstractDungeon.getCurrRoom().rewardTime) {
                 instance.relicId = "";
                 instance.extraRewards.clear();
             }

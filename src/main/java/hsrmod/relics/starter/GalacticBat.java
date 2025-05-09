@@ -1,12 +1,16 @@
 package hsrmod.relics.starter;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.android.mods.AssetLoader;
 import com.megacrit.cardcrawl.android.mods.abstracts.CustomRelic;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import hsrmod.Hsrmod;
 import hsrmod.powers.misc.ToughnessPower;
+import hsrmod.utils.CustomMultiPageFtue;
 
 public class GalacticBat extends CustomRelic {
     // 遗物ID（此处的ModHelper在“04 - 本地化”中提到）
@@ -22,6 +26,24 @@ public class GalacticBat extends CustomRelic {
 
     String modNameCache = null;
     
+    static Texture[] ftues = {
+            AssetLoader.getTexture(Hsrmod.MOD_NAME, "HSRModResources/img/UI/tutorial/1.png"),
+            AssetLoader.getTexture(Hsrmod.MOD_NAME, "HSRModResources/img/UI/tutorial/2.png"),
+            AssetLoader.getTexture(Hsrmod.MOD_NAME, "HSRModResources/img/UI/tutorial/3.png"),
+            AssetLoader.getTexture(Hsrmod.MOD_NAME, "HSRModResources/img/UI/tutorial/4.png"),
+            AssetLoader.getTexture(Hsrmod.MOD_NAME, "HSRModResources/img/UI/tutorial/5.png"),
+            AssetLoader.getTexture(Hsrmod.MOD_NAME, "HSRModResources/img/UI/tutorial/6.png"),
+    };
+
+    String[] tutTexts = {
+            DESCRIPTIONS[2],
+            DESCRIPTIONS[3],
+            DESCRIPTIONS[4],
+            DESCRIPTIONS[5],
+            DESCRIPTIONS[6],
+            DESCRIPTIONS[7],
+    };
+    
     public GalacticBat() {
         super(Hsrmod.MOD_NAME, ID, IMG_PATH, RELIC_TIER, LANDING_SOUND);
     }
@@ -33,6 +55,16 @@ public class GalacticBat extends CustomRelic {
 
     public AbstractRelic makeCopy() {
         return new GalacticBat();
+    }
+
+    @Override
+    public void atBattleStart() {
+        super.atBattleStart();
+        if (AbstractDungeon.floorNum == 1 && !AbstractDungeon.isAscensionMode) {
+            if (Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT) {
+                AbstractDungeon.ftue = new CustomMultiPageFtue(ftues, tutTexts);
+            }
+        }
     }
 
     @Override

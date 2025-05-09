@@ -1,14 +1,19 @@
 package hsrmod.relics.starter;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.megacrit.cardcrawl.android.mods.AssetLoader;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import hsrmod.Hsrmod;
 import hsrmod.cards.BaseCard;
 import hsrmod.cardsV2.Paths.*;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.relics.BaseRelic;
+import hsrmod.utils.CustomMultiPageFtue;
+import hsrmod.utils.ModHelper;
 import hsrmod.utils.RelicEventHelper;
 import hsrmod.utils.RewardEditor;
 
@@ -21,6 +26,8 @@ public abstract class WaxRelic extends BaseRelic {
     public AbstractCard.CardTags selectedTag;
     public CardGroup pathGroup;
     public int pathToBan = 1;
+    static Texture[] ftues;
+    static String[] tutTexts;
 
     public WaxRelic(String id, AbstractCard.CardTags tag, int weight) {
         super(id);
@@ -34,6 +41,15 @@ public abstract class WaxRelic extends BaseRelic {
         if (tag != CustomEnums.PROPAGATION) pathGroup.addToBottom(new Propagation());
         if (tag != CustomEnums.THE_HUNT) pathGroup.addToBottom(new TheHunt());
         if (tag != CustomEnums.ERUDITION) pathGroup.addToBottom(new Erudition());
+        
+        ftues = new Texture[]{
+                AssetLoader.getTexture(Hsrmod.MOD_NAME, "HSRModResources/img/UI/tutorial/" + selectedTag + "1.png"),
+                AssetLoader.getTexture(Hsrmod.MOD_NAME, "HSRModResources/img/UI/tutorial/" + selectedTag + "2.png"),
+        };
+        tutTexts = new String[]{
+                DESCRIPTIONS[3],
+                DESCRIPTIONS[4],
+        };
     }
 
     public WaxRelic(String id, AbstractCard.CardTags tag) {
@@ -83,6 +99,24 @@ public abstract class WaxRelic extends BaseRelic {
             description = String.format(DESCRIPTIONS[1], stringBuilder);
         }
         return description;
+    }
+    
+    boolean tutorialTriggered = false;
+    
+    @Override
+    public void atTurnStart() {
+        super.atTurnStart();
+        if (AbstractDungeon.floorNum == 1 && !AbstractDungeon.isAscensionMode && !tutorialTriggered) {
+            tutorialTriggered = true;
+            if (Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT) {
+                ModHelper.addToBotAbstract(new ModHelper.Lambda() {
+                    @Override
+                    public void run() {
+                        AbstractDungeon.ftue = new CustomMultiPageFtue(ftues, tutTexts);
+                    }
+                });
+            }
+        }
     }
 
     public static AbstractCard.CardTags getSelectedPathTag(List<AbstractRelic> relics) {

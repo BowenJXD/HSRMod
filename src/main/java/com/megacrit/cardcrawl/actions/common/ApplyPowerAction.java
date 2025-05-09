@@ -1,4 +1,4 @@
-package com.megacrit.cardcrawl.common;
+package com.megacrit.cardcrawl.actions.common;
 
 import com.badlogic.gdx.Gdx;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -115,6 +115,7 @@ public class ApplyPowerAction extends AbstractGameAction {
                         pow.onApplyPower(this.powerToApply, this.target, this.source);
                     }
                 }
+                //
                 if (target != null) {
                     for(AbstractPower power : target.powers) {
                         if (power instanceof OnReceivePowerPower) {
@@ -231,26 +232,6 @@ public class ApplyPowerAction extends AbstractGameAction {
         } else {
             this.isDone = true;
         }
-    }
-
-    static boolean CheckPower(AbstractGameAction action, AbstractCreature target, AbstractCreature source, float[] duration, AbstractPower powerToApply) {
-        if (target != null) {
-
-            for(AbstractPower power : target.powers) {
-                if (power instanceof OnReceivePowerPower) {
-                    action.amount = ((OnReceivePowerPower)power).onReceivePowerStacks(powerToApply, target, source, action.amount);
-                    boolean apply = ((OnReceivePowerPower)power).onReceivePower(powerToApply, target, source);
-                    if (!apply) {
-                        AbstractDungeon.actionManager.addToTop(new TextAboveCreatureAction(target, ApplyPowerAction.TEXT[0]));
-                        duration[0] -= Gdx.graphics.getDeltaTime();
-                        CardCrawlGame.sound.play("NULLIFY_SFX");
-                        return false;
-                    }
-                }
-            }
-        }
-
-        return true;
     }
 
     static {

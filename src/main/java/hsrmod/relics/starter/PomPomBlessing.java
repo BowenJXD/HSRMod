@@ -1,9 +1,11 @@
 package hsrmod.relics.starter;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
+import com.megacrit.cardcrawl.android.mods.AssetLoader;
 import com.megacrit.cardcrawl.android.mods.abstracts.CustomRelic;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardQueueItem;
@@ -28,6 +30,7 @@ import hsrmod.relics.special.DanhengRelic;
 import hsrmod.relics.special.HimekoRelic;
 import hsrmod.relics.special.March7thRelic;
 import hsrmod.relics.special.WeltRelic;
+import hsrmod.utils.CustomMultiPageFtue;
 import hsrmod.utils.ModHelper;
 
 import java.util.ArrayList;
@@ -50,9 +53,23 @@ public class PomPomBlessing extends CustomRelic {
 
     private int multiplier = 20;
 
+    static Texture[] ftues = {
+            AssetLoader.getTexture(Hsrmod.MOD_NAME, "HSRModResources/img/UI/tutorial/7.png"),
+            AssetLoader.getTexture(Hsrmod.MOD_NAME, "HSRModResources/img/UI/tutorial/8.png"),
+            AssetLoader.getTexture(Hsrmod.MOD_NAME, "HSRModResources/img/UI/tutorial/9.png"),
+    };
+
+    static String[] tutTexts;
+
     public PomPomBlessing() {
         super(Hsrmod.MOD_NAME, ID, IMG_PATH, RELIC_TIER, LANDING_SOUND);
         setCounter(100);
+
+        tutTexts = new String[]{
+                DESCRIPTIONS[8],
+                DESCRIPTIONS[9],
+                DESCRIPTIONS[10],
+        };
     }
 
     // 获取遗物描述，但原版游戏只在初始化和获取遗物时调用，故该方法等于初始描述
@@ -86,11 +103,20 @@ public class PomPomBlessing extends CustomRelic {
             this.counter = EnergyPower.AMOUNT_LIMIT;
         }
     }
+    
+    boolean tutorialTriggered = false;
 
     @Override
     public void onPlayCard(AbstractCard c, AbstractMonster m) {
         super.onPlayCard(c, m);
         addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new EnergyPower(AbstractDungeon.player, ENERGY_GAIN_PER_CARD), ENERGY_GAIN_PER_CARD));
+
+        if (AbstractDungeon.floorNum == 1 && !AbstractDungeon.isAscensionMode && !tutorialTriggered) {
+            tutorialTriggered = true;
+            if (Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT) {
+                AbstractDungeon.ftue = new CustomMultiPageFtue(ftues, tutTexts);
+            }
+        }
     }
 
     ArrayList<CardQueueItem> tempCardQueue = new ArrayList<>();

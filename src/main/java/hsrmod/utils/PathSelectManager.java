@@ -5,10 +5,11 @@ import com.megacrit.cardcrawl.android.mods.interfaces.PostRenderSubscriber;
 import com.megacrit.cardcrawl.android.mods.interfaces.PostUpdateSubscriber;
 import com.megacrit.cardcrawl.android.mods.utils.ReflectionHacks;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.screens.charSelect.CharacterSelectScreen;
 import com.megacrit.cardcrawl.screens.mainMenu.MainMenuScreen;
 import hsrmod.modcore.PlayerColorEnum;
+
+import java.util.Objects;
 
 public class PathSelectManager implements PostUpdateSubscriber, PostRenderSubscriber {
     private PathSelectManager() {
@@ -23,7 +24,7 @@ public class PathSelectManager implements PostUpdateSubscriber, PostRenderSubscr
                 && CardCrawlGame.mainMenuScreen.charSelectScreen != null
                 && CardCrawlGame.mainMenuScreen.screen == MainMenuScreen.CurScreen.CHAR_SELECT
                 && CardCrawlGame.chosenCharacter == PlayerColorEnum.STELLA_CHARACTER
-                && !AbstractDungeon.isPlayerInDungeon()
+                && Objects.equals(CardCrawlGame.mode.name, CardCrawlGame.GameMode.CHAR_SELECT.name)
                 && (Boolean) ReflectionHacks.getPrivate(CardCrawlGame.mainMenuScreen.charSelectScreen, CharacterSelectScreen.class, "anySelected")) {
             PathSelectScreen.Inst.render(spriteBatch);
         }
@@ -35,7 +36,7 @@ public class PathSelectManager implements PostUpdateSubscriber, PostRenderSubscr
                 && CardCrawlGame.mainMenuScreen.charSelectScreen != null
                 && CardCrawlGame.mainMenuScreen.screen == MainMenuScreen.CurScreen.CHAR_SELECT
                 && CardCrawlGame.chosenCharacter == PlayerColorEnum.STELLA_CHARACTER
-                && !AbstractDungeon.isPlayerInDungeon()
+                && Objects.equals(CardCrawlGame.mode.name, CardCrawlGame.GameMode.CHAR_SELECT.name)
                 && (Boolean) ReflectionHacks.getPrivate(CardCrawlGame.mainMenuScreen.charSelectScreen, CharacterSelectScreen.class, "anySelected")) {
             PathSelectScreen.Inst.update();
         }

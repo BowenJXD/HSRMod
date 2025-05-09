@@ -20,6 +20,7 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 import com.megacrit.cardcrawl.vfx.combat.PowerBuffEffect;
 import com.megacrit.cardcrawl.vfx.combat.PowerDebuffEffect;
+import hsrmod.powers.interfaces.NonStackablePower;
 import hsrmod.powers.interfaces.OnReceivePowerPower;
 import hsrmod.subscribers.SubscriptionManager;
 
@@ -115,6 +116,7 @@ public class ApplyPowerAction extends AbstractGameAction {
                         pow.onApplyPower(this.powerToApply, this.target, this.source);
                     }
                 }
+                
                 //
                 if (target != null) {
                     for(AbstractPower power : target.powers) {
@@ -131,6 +133,7 @@ public class ApplyPowerAction extends AbstractGameAction {
                         }
                     }
                 }
+                //
 
                 if (AbstractDungeon.player.hasRelic("Champion Belt") && this.source != null && this.source.isPlayer && this.target != this.source && this.powerToApply.ID.equals("Vulnerable") && !this.target.hasPower("Artifact")) {
                     AbstractDungeon.player.getRelic("Champion Belt").onTrigger(this.target);
@@ -167,8 +170,14 @@ public class ApplyPowerAction extends AbstractGameAction {
 
                 AbstractDungeon.effectList.add(new FlashAtkImgEffect(this.target.hb.cX, this.target.hb.cY, this.attackEffect));
                 boolean hasBuffAlready = false;
-
+                String savedID = null;
                 for(AbstractPower p : this.target.powers) {
+                    //
+                    if (p.ID.equals(powerToApply.ID) && p instanceof NonStackablePower) {
+                        savedID = powerToApply.ID;
+                        powerToApply.ID = "Night Terror";
+                    }
+                    //
                     if (p.ID.equals(this.powerToApply.ID) && !p.ID.equals("Night Terror")) {
                         p.stackPower(this.amount);
                         p.flash();
@@ -192,6 +201,12 @@ public class ApplyPowerAction extends AbstractGameAction {
                     }
                 }
 
+                //
+                if (savedID != null) {
+                    powerToApply.ID = savedID;
+                }
+                //
+                
                 if (this.powerToApply.type == PowerType.DEBUFF) {
                     this.target.useFastShakeAnimation(0.5F);
                 }

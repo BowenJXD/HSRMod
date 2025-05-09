@@ -9,10 +9,11 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.Hsrmod;
 import hsrmod.actions.CleanAction;
 import hsrmod.powers.BuffPower;
+import hsrmod.powers.interfaces.NonStackablePower;
 import hsrmod.powers.interfaces.OnReceivePowerPower;
 import hsrmod.powers.misc.EnergyPower;
 
-public class HuohuoPower extends BuffPower implements OnReceivePowerPower {
+public class HuohuoPower extends BuffPower implements OnReceivePowerPower, NonStackablePower {
     public static final String POWER_ID = Hsrmod.makePath(HuohuoPower.class.getSimpleName());
     
     public HuohuoPower(AbstractCreature owner, boolean upgraded) {

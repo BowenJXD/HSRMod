@@ -4,16 +4,22 @@ import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.ElementalDamageAllAction;
+import hsrmod.actions.TriggerDoTAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.effects.MultiShivFreezeEffect;
 import hsrmod.effects.PortraitDisplayEffect;
 import hsrmod.modcore.CustomEnums;
+import hsrmod.powers.breaks.ShockPower;
 import hsrmod.utils.ModHelper;
+
+import java.util.function.Consumer;
 
 public class Kafka2 extends BaseCard {
     public static final String ID = Kafka2.class.getSimpleName();
@@ -41,6 +47,15 @@ public class Kafka2 extends BaseCard {
         addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
 
         addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.LIGHTNING)
+                .setCallback(new Consumer<ElementalDamageAction.CallbackInfo>() {
+                    @Override
+                    public void accept(ElementalDamageAction.CallbackInfo ci) {
+                        if (!ci.target.isDeadOrEscaped() && ci.target.currentHealth > 0) {
+                            Kafka2.this.addToBot(new TriggerDoTAction(ci.target, p, 1, true));
+                            Kafka2.this.addToBot(new ApplyPowerAction(ci.target, p, new ShockPower(ci.target, p, magicNumber), magicNumber));
+                        }
+                    }
+                })
         );
     }
 }

@@ -95,7 +95,7 @@
   "Hsrmod:Quake": {
     "NAME": "反震",
     "DESCRIPTIONS": [
-      "受到单个怪物回合的首次伤害后，对伤害来源触发：移除 #b1 层，对目标造成 #b自身格挡值 的伤害（物理 #b%d ）。"
+      "受到单个怪物回合的首次伤害后，若有格挡，对伤害来源触发：移除 #b1 层，对目标造成 #b剩余格挡值 的伤害（物理 #b%d ）。"
     ]
   },
   "Hsrmod:Spore": {
@@ -113,7 +113,7 @@
   "Hsrmod:BrainInAVat": {
     "NAME": "罐中脑",
     "DESCRIPTIONS": [
-      "消耗 [Hsrmod:ChargeIcon] 后，移除1层，回复等量的 [Hsrmod:ChargeIcon] 。"
+      "消耗 充能 后，移除1层，回复等量的 充能 。"
     ]
   },
   "Hsrmod:Reinforce": {
@@ -140,7 +140,7 @@
     "NAME": "千音迭奏，群星赋格",
     "DESCRIPTIONS": [
       "打出牌后，获得其费用数量的 #y力量 。下回合开始时，移除此效果，和以此法获得的 #y力量 。",
-      "打出牌后，获得其费用数量的 #y力量 ，若为追击牌，则回复 #b20 点 [Hsrmod:ChargeIcon] 。下回合开始时，移除此效果，和以此法获得的 #y力量 。"
+      "打出牌后，获得其费用数量的 #y力量 ，若为追击牌，则回复 #b20 点 充能 。下回合开始时，移除此效果，和以此法获得的 #y力量 。"
     ]
   },
   "Hsrmod:ProofOfDebt": {
@@ -172,8 +172,8 @@
   "Hsrmod:UselessScholar": {
     "NAME": "无用学者",
     "DESCRIPTIONS": [
-      "追击后，若你有 #b%d [Hsrmod:ChargeIcon] ，则有 #b%d%% 的概率消耗之，追击一张追击牌。",
-      "打出追击牌后，若你有 #b%d [Hsrmod:ChargeIcon] ，则有 #b%d%% 的概率消耗之，追击一张追击牌。"
+      "追击后，若你有 #b%d 充能 ，则有 #b%d%% 的概率消耗之，追击一张追击牌。",
+      "打出追击牌后，若你有 #b%d 充能 ，则有 #b%d%% 的概率消耗之，追击一张追击牌。"
     ]
   },
   "Hsrmod:BountyHunter": {
@@ -237,7 +237,7 @@
   "Hsrmod:Kolchis": {
     "NAME": "科尔奇人",
     "DESCRIPTIONS": [
-      "每消耗 [Hsrmod:ChargeIcon] 达到 #b%d 点，回复 [E] 。"
+      "每消耗 充能 达到 #b%d 点，回复 [E] 。"
     ]
   },
   "Hsrmod:Divinity": {
@@ -255,8 +255,8 @@
   "Hsrmod:Huohuo": {
     "NAME": "凭附气通天真",
     "DESCRIPTIONS": [
-      "打出牌后，回复1点 #y临时生命 ，10点 [Hsrmod:ChargeIcon] ，并净化1层随机负面效果。",
-      "打出牌后，或消耗 [Hsrmod:ChargeIcon] 后，回复1点 #y临时生命 ，10点 [Hsrmod:ChargeIcon] ，并净化1层随机负面效果。"
+      "打出牌后，回复1点 #y临时生命 ，10点 充能 ，并净化1层随机负面效果。",
+      "打出牌后，或消耗 充能 后，回复1点 #y临时生命 ，10点 充能 ，并净化1层随机负面效果。"
     ]
   },
   "Hsrmod:Epiphany": {
@@ -304,8 +304,8 @@
   "Hsrmod:CommonMortal": {
     "NAME": "庸众凡夫",
     "DESCRIPTIONS": [
-      "消耗 [Hsrmod:ChargeIcon] 后，对随机敌人施加1个持续伤害。施加持续伤害时，获得 #b%d 点 [Hsrmod:ChargeIcon] 。",
-      "消耗 [Hsrmod:ChargeIcon] 后，对随机敌人施加1个持续伤害。施加负面效果时，获得 #b%d 点 [Hsrmod:ChargeIcon] 。"
+      "消耗 充能 后，对随机敌人施加1个持续伤害。施加持续伤害时，获得 #b%d 点 充能 。",
+      "消耗 充能 后，对随机敌人施加1个持续伤害。施加负面效果时，获得 #b%d 点 充能 。"
     ]
   },
   "Hsrmod:MatrixOfPrescience": {
@@ -402,7 +402,7 @@
   "Hsrmod:SMR2Amygdala": {
     "NAME": "SMR-2型杏仁核",
     "DESCRIPTIONS": [
-      "每回合开始时，获得 #b1 层 #y罐中脑 。 [Hsrmod:ChargeIcon] 至少为 #b%d 。"
+      "每回合开始时，获得 #b1 层 #y罐中脑 。 充能 至少为 #b%d 。"
     ]
   },
   "Hsrmod:LoadStriatedCortex": {

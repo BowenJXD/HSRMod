@@ -338,6 +338,7 @@ public class RewardEditor implements StartActSubscriber, PostUpdateSubscriber {
     public void receivePostUpdate() {
         if (AbstractDungeon.currMapNode == null) return;
         if (AbstractDungeon.floorNum > cachedFloorNum) {
+            cachedFloorNum = AbstractDungeon.floorNum;
             if (!AbstractDungeon.getCurrRoom().rewardTime) {
                 instance.relicId = "";
                 instance.extraRewards.clear();

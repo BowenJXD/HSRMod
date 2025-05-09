@@ -64,10 +64,6 @@ public class RewardEditor implements StartActSubscriber, PostUpdateSubscriber {
 
             List<RewardItem> rewards = AbstractDungeon.combatRewardScreen.rewards;
 
-            for (Consumer<List<RewardItem>> extraReward : extraRewards) {
-                extraReward.accept(rewards);
-            }
-    
             if (tag == null) return;
 
             for (RewardItem reward : rewards) {
@@ -98,8 +94,7 @@ public class RewardEditor implements StartActSubscriber, PostUpdateSubscriber {
                     break;
                 }
             }
-            if (result
-                    && currRoom instanceof MonsterRoomBoss) {
+            if (result && currRoom instanceof MonsterRoomBoss) {
                 boolean b = true;
                 for (RewardItem r : AbstractDungeon.combatRewardScreen.rewards) {
                     if (r.relic != null && r.relic.relicId.equals(relicId)) {
@@ -114,14 +109,25 @@ public class RewardEditor implements StartActSubscriber, PostUpdateSubscriber {
             }
         }
     }
+    
+    public void triggerExtraRewards(List<RewardItem> rewards) {
+        for (Consumer<List<RewardItem>> extraReward : extraRewards) {
+            extraReward.accept(rewards);
+        }
+        System.out.println(extraRewards.size() + " extra rewards executed.");
+    }
+    
+    public String checkBossRelic() {
+        return checkBossRelic(tag);
+    }
 
     /**
      * Check for extra relic reward to give in boss room.
      *
      * @param tag the path tag
      */
-    private void checkBossRelic(AbstractCard.CardTags tag) {
-        if (AbstractDungeon.getMonsters() != null && currRoom instanceof MonsterRoomBoss) {
+    public String checkBossRelic(AbstractCard.CardTags tag) {
+        if (AbstractDungeon.getMonsters() != null && AbstractDungeon.getCurrRoom() instanceof MonsterRoomBoss) {
             if (AbstractDungeon.actNum == 1)
                 relicId = RelicEventHelper.getRelicByPath(tag);
             else if (AbstractDungeon.actNum == 2)
@@ -139,10 +145,11 @@ public class RewardEditor implements StartActSubscriber, PostUpdateSubscriber {
                 }
             }
         }
+        return relicId;
     }
 
     public void setRewardByPath(RewardItem reward) {
-        setRewardByPath(tag, reward, false);
+        setRewardByPath(tag == null ? WaxRelic.getSelectedPathTag(AbstractDungeon.player.relics) : tag, reward, false);
     }
 
     public void setRewardByPath(RewardItem reward, boolean ignoreChance) {
@@ -370,5 +377,15 @@ public class RewardEditor implements StartActSubscriber, PostUpdateSubscriber {
 
     public static void addExtraRewardToBot(Consumer<List<RewardItem>> extraReward) {
         getInstance().extraRewards.add(extraReward);
+    }
+    
+    public static String riToString(RewardItem ri) {
+        StringBuilder sb = new StringBuilder();
+        if (ri.cards != null)
+            for (AbstractCard card : ri.cards) {
+                sb.append(card.name).append(" ");
+            }
+        if (ri.relic != null) sb.append(ri.relic.name);
+        return sb.toString();
     }
 }

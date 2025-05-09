@@ -22,12 +22,6 @@ public class Robin2 extends BaseCard {
         setBaseEnergyCost(140);
         tags.add(CustomEnums.ENERGY_COSTING);
     }
-    
-    @Override
-    public void onEnterHand() {
-        super.onEnterHand();
-        CardCrawlGame.music.precacheTempBgm("RobinBGM");
-    }
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {

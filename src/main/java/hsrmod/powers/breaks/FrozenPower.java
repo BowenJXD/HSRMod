@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.LoseStrengthPower;
+import com.megacrit.cardcrawl.powers.GainStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import hsrmod.Hsrmod;
 import hsrmod.actions.ElementalDamageAction;
@@ -57,8 +57,8 @@ public class FrozenPower extends DebuffPower implements PreElementalDamageSubscr
         int frozenRes = ModHelper.getPowerCount(owner, FrozenResistancePower.POWER_ID);
         if (amount >= amountRequired + frozenRes){
             if (monsterOwner != null && monsterOwner.intent != AbstractMonster.Intent.STUN) {
-                addToBot(new ApplyPowerAction(owner, owner, new StrengthPower(owner, 999)));
-                addToBot(new ApplyPowerAction(owner, owner, new LoseStrengthPower(owner, 999)));
+                addToBot(new ApplyPowerAction(owner, owner, new StrengthPower(owner, -900)));
+                addToBot(new ApplyPowerAction(owner, owner, new GainStrengthPower(owner, 900)));
             }
             addToBot(new RemoveSpecificPowerAction(owner, owner, this));
             addToBot(new ApplyPowerAction(owner, owner, new FrozenResistancePower(owner, 1), 1));

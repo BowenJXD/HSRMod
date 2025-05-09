@@ -34,7 +34,6 @@ public abstract class WaxRelic extends BaseRelic {
         if (tag != CustomEnums.PROPAGATION) pathGroup.addToBottom(new Propagation());
         if (tag != CustomEnums.THE_HUNT) pathGroup.addToBottom(new TheHunt());
         if (tag != CustomEnums.ERUDITION) pathGroup.addToBottom(new Erudition());
-        if (tag != CustomEnums.ABUNDANCE) pathGroup.addToBottom(new Abundance());
     }
 
     public WaxRelic(String id, AbstractCard.CardTags tag) {

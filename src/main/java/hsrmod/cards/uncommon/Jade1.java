@@ -40,8 +40,8 @@ public class Jade1 extends BaseCard {
     }
 
     @Override
-    public void triggerAtStartOfTurn() {
-        super.triggerAtStartOfTurn();
+    public void atTurnStart() {
+        super.atTurnStart();
         if (!AbstractDungeon.player.hasPower(NoDrawPower.POWER_ID) && !this.followedUp) {
             this.followedUp = true;
             addToBot(new FollowUpAction(this));

@@ -354,15 +354,13 @@ public class RelicEventHelper {
             relicName = PasserbyOfWanderingCloud.ID;
         } else if (tag == CustomEnums.ERUDITION) {
             relicName = TheWindSoaringValorous.ID;
-        } else if (tag == CustomEnums.ABUNDANCE) {
-            relicName = LongevousDisciple.ID;
-        }
-        else if (tag == CustomEnums.TRAILBLAZE) {
+        } else if (tag == CustomEnums.TRAILBLAZE) {
             relicName = MasterOfDreamMachinations.ID;
         }
         if (!relicName.isEmpty()) {
             relicName = Hsrmod.makePath(relicName);
         }
+        System.out.println("RelicEventHelper relic name" + relicName + ", path : " + tag);
         return relicName;
     }
 

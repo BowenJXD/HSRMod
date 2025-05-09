@@ -79,7 +79,6 @@ public abstract class BaseCard extends CustomCard {
         this.rawDescription = this.rawDescription.replaceAll("TR", String.valueOf(baseTr));
         this.upDescription = this.upDescription.replaceAll("TR", String.valueOf(upTr));
         this.initializeDescription();
-        System.out.println("rawDescription: " + this.rawDescription);
         this.upDamage = DataManager.getInstance().getCardDataInt(id, CardDataCol.UpgradeDamage);
         this.upTr = DataManager.getInstance().getCardDataInt(id, CardDataCol.UpgradeToughnessReduction);
         this.upBlock = DataManager.getInstance().getCardDataInt(id, CardDataCol.UpgradeBlock);
@@ -283,18 +282,13 @@ public abstract class BaseCard extends CustomCard {
     }
 
     public static CardTags getPathTag(String path) {
-        CardTags result = null;
-        if (path.contains("开拓")) result = CustomEnums.TRAILBLAZE;
-        else if (path.contains("欢愉")) result = CustomEnums.ELATION;
-        else if (path.contains("毁灭")) result = CustomEnums.DESTRUCTION;
-        else if (path.contains("虚无")) result = CustomEnums.NIHILITY;
-        else if (path.contains("繁育")) result = CustomEnums.PROPAGATION;
-        else if (path.contains("存护")) result = CustomEnums.PRESERVATION;
-        else if (path.contains("巡猎")) result = CustomEnums.THE_HUNT;
-        else if (path.contains("智识")) result = CustomEnums.ERUDITION;
-        else if (path.contains("丰饶")) result = CustomEnums.ABUNDANCE;
-        else if (path.contains("记忆")) result = CustomEnums.REMEMBRANCE;
-        return result;
+        try {
+            int i = Integer.parseInt(path);
+            return CustomEnums.getPathTags()[i];
+        } catch (Exception e) {
+            System.out.println("Path not found: " + path);
+        }
+        return null;
     }
 
     public static String getPathStringZH(AbstractCard.CardTags tag) {

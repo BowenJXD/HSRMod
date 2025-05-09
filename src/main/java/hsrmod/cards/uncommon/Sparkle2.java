@@ -51,6 +51,7 @@ public class Sparkle2 extends BaseCard {
             }
         });
         addToBot(new GainEnergyAction(num));
-        addToBot(new LoseEnergyAction(EnergyPanel.totalCount));
+        if (!freeToPlayOnce)
+            addToBot(new LoseEnergyAction(EnergyPanel.totalCount));
     }
 }

@@ -42,8 +42,9 @@ public class Robin1 extends BaseCard {
             if (count >= 10) {
                 SignatureHelper.unlock(HSRMod.makePath(ID), true);
             }
-
-            p.energy.use(EnergyPanel.totalCount);
+            
+            if (!freeToPlayOnce)
+                p.energy.use(EnergyPanel.totalCount);
         });
     }
 }

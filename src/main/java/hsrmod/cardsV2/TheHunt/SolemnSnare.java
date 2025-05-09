@@ -34,6 +34,7 @@ public class SolemnSnare extends BaseCard {
                     c.setCostForTurn(c.costForTurn - c.timesUpgraded);
             });
         });
-        addToBot(new LoseEnergyAction(EnergyPanel.totalCount));
+        if (!freeToPlayOnce)
+            addToBot(new LoseEnergyAction(EnergyPanel.totalCount));
     }
 }

@@ -5,7 +5,7 @@ import com.evacipated.cardcrawl.mod.stslib.patches.core.AbstractCreature.TempHPF
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -13,7 +13,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.IntangiblePlayerPower;
 import com.megacrit.cardcrawl.stances.CalmStance;
 import com.megacrit.cardcrawl.vfx.combat.BlizzardEffect;
-import com.megacrit.cardcrawl.vfx.combat.IceShatterEffect;
 import com.megacrit.cardcrawl.vfx.combat.RoomTintEffect;
 import com.megacrit.cardcrawl.vfx.combat.WaterDropEffect;
 import hsrmod.actions.ElementalDamageAction;
@@ -61,7 +60,7 @@ public class Jingliu1 extends BaseCard {
         shout(0);
         AbstractCard card = new Jingliu2();
         if (upgraded) card.upgrade();
-        addToBot(new MakeTempCardInDrawPileAction(card, 1, true, true));
+        addToBot(new MakeTempCardInDiscardAction(card, 1));
         addToBot(new ChangeStanceAction(new CalmStance()));
 
         if ((p.currentHealth + TempHPField.tempHp.get(p) <= magicNumber * magicNumber && !p.hasPower(IntangiblePlayerPower.POWER_ID))

@@ -2,6 +2,7 @@ package hsrmod.cards.uncommon;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.unique.LoseEnergyAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -55,6 +56,11 @@ public class ImbibitorLunae1 extends BaseCard {
             ));
         }
         addToBot(new ApplyPowerAction(p, p, new EnergyPower(p, energyOnUse * 20), energyOnUse * 20));
-        addToBot(new LoseEnergyAction(EnergyPanel.totalCount));
+        if (!freeToPlayOnce) {
+            addToBot(new LoseEnergyAction(EnergyPanel.totalCount));
+            int wastedEnergy = EnergyPanel.totalCount - 3;
+            if (wastedEnergy > 0)
+                addToBot(new GainEnergyAction(wastedEnergy));
+        }
     }
 }

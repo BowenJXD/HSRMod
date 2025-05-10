@@ -453,12 +453,14 @@ public final class Hsrmod implements EditCardsSubscriber, EditStringsSubscriber,
         BaseMod.getColorBundleMap().get(PlayerColorEnum.HSR_PINK).loadRegion();
         BaseMod.subscribe(PathSelectManager.Inst);
         BaseMod.subscribe(RewardEditor.getInstance());
+        Settings.isBeta = false;
     }
 
     @Override
     public void receiveStartGame() {
         /*if (AbstractDungeon.player instanceof StellaCharacter) {
         }*/
+        Settings.isBeta = false;
     }
 
     public void updateLanguage() {

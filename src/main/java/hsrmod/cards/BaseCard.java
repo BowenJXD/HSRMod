@@ -76,9 +76,6 @@ public abstract class BaseCard extends CustomCard {
 
         this.upCost = DataManager.getInstance().getCardDataInt(id, CardDataCol.UpgradeCost);
         this.upDescription = DataManager.getInstance().getCardData(id, CardDataCol.UpgradeDescription);
-        this.rawDescription = this.rawDescription.replaceAll("TR", String.valueOf(baseTr));
-        this.upDescription = this.upDescription.replaceAll("TR", String.valueOf(upTr));
-        this.initializeDescription();
         this.upDamage = DataManager.getInstance().getCardDataInt(id, CardDataCol.UpgradeDamage);
         this.upTr = DataManager.getInstance().getCardDataInt(id, CardDataCol.UpgradeToughnessReduction);
         this.upBlock = DataManager.getInstance().getCardDataInt(id, CardDataCol.UpgradeBlock);

@@ -341,6 +341,7 @@ public class RewardEditor implements StartActSubscriber, PostUpdateSubscriber {
             cachedFloorNum = AbstractDungeon.floorNum;
             if (!AbstractDungeon.getCurrRoom().rewardTime) {
                 instance.relicId = "";
+                System.out.println(extraRewards.size() + " extra rewards cleared at floor" + cachedFloorNum);
                 instance.extraRewards.clear();
             }
         }
@@ -364,20 +365,43 @@ public class RewardEditor implements StartActSubscriber, PostUpdateSubscriber {
     }
 
     public static void addExtraRewardToTop(Consumer<List<RewardItem>> extraReward) {
-        getInstance().extraRewards.add(0, extraReward);
+        System.out.println("Adding extra reward at floor " + AbstractDungeon.floorNum);
+        ModHelper.addEffectAbstract(new ModHelper.Lambda() {
+            @Override
+            public void run() {
+                getInstance().extraRewards.add(0, extraReward);
+                System.out.println("Extra reward added at floor " + AbstractDungeon.floorNum);
+            }
+        });
+        // getInstance().extraRewards.add(0, extraReward);
     }
 
     public static void addExtraCardRewardToTop() {
-        getInstance().extraRewards.add(0, new Consumer<List<RewardItem>>() {
+        System.out.println("Adding extra card reward at floor " + AbstractDungeon.floorNum);
+        ModHelper.addEffectAbstract(new ModHelper.Lambda() {
             @Override
-            public void accept(List<RewardItem> rewards) {
-                rewards.add(new RewardItem());
+            public void run() {
+                getInstance().extraRewards.add(0, new Consumer<List<RewardItem>>() {
+                    @Override
+                    public void accept(List<RewardItem> rewards) {
+                        rewards.add(new RewardItem());
+                    }
+                });
+                System.out.println("Extra card reward added at floor " + AbstractDungeon.floorNum);
             }
         });
     }
 
     public static void addExtraRewardToBot(Consumer<List<RewardItem>> extraReward) {
-        getInstance().extraRewards.add(extraReward);
+        System.out.println("Adding extra reward at floor " + AbstractDungeon.floorNum);
+        ModHelper.addEffectAbstract(new ModHelper.Lambda() {
+            @Override
+            public void run() {
+                getInstance().extraRewards.add(extraReward);
+                System.out.println("Extra reward added at floor " + AbstractDungeon.floorNum);
+            }
+        });
+        // getInstance().extraRewards.add(extraReward);
     }
     
     public static String riToString(RewardItem ri) {

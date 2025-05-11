@@ -115,8 +115,10 @@ public class PomPomBlessing extends CustomRelic implements ClickableRelic, ITuto
         if (!HSRMod.seenTutorials.contains(relicId) || HSRModConfig.firstTime && !tutorialTriggered) {
             tutorialTriggered = true;
             HSRMod.seenTutorials.add(relicId);
-            if (Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT)
+            if ((Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT )
+                    && AbstractDungeon.getCurrRoom().monsters != null){
                 AbstractDungeon.ftue = new CustomMultiPageFtue(ftues, tutTexts);
+            }
         }
     }
 
@@ -151,8 +153,10 @@ public class PomPomBlessing extends CustomRelic implements ClickableRelic, ITuto
         if (!HSRMod.seenTutorials.contains(relicId) || HSRModConfig.firstTime && !tutorialTriggered) {
             tutorialTriggered = true;
             HSRMod.seenTutorials.add(relicId);
-            if (Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT)
+            if ((Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT )
+                    && AbstractDungeon.getCurrRoom().monsters != null){
                 AbstractDungeon.ftue = new CustomMultiPageFtue(ftues, tutTexts);
+            }
         }
     }
 
@@ -211,7 +215,9 @@ public class PomPomBlessing extends CustomRelic implements ClickableRelic, ITuto
 
     @Override
     public void onRightClick() {
-        if (Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT)
+        if ((Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT )
+                && AbstractDungeon.getCurrRoom().monsters != null){
             AbstractDungeon.ftue = new CustomMultiPageFtue(ftues, tutTexts);
+        }
     }
 }

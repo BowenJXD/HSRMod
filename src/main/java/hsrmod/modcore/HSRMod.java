@@ -47,6 +47,7 @@ import hsrmod.monsters.Exordium.*;
 import hsrmod.monsters.TheBeyond.*;
 import hsrmod.monsters.TheCity.*;
 import hsrmod.patches.OtherModFixes;
+import hsrmod.patches.PathSelectScreen;
 import hsrmod.patches.RelicTagField;
 import hsrmod.powers.enemyOnly.PerformancePointPower;
 import hsrmod.relics.BaseRelic;
@@ -61,9 +62,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 import static com.megacrit.cardcrawl.core.Settings.language;
 import static hsrmod.characters.StellaCharacter.PlayerColorEnum.HSR_PINK;
@@ -100,7 +99,7 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
 
     public static final Logger logger = LogManager.getLogger(MOD_NAME);
     
-    public static List<String> seenTutorials = new ArrayList<>();
+    public static HashSet<String> seenTutorials = new HashSet<>();
 
     String lang = "ENG";
 
@@ -216,6 +215,7 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
             addEvents();
         }
         checkSignatureUnlock();
+        PathSelectScreen.Inst.setPathUnlocked();
     }
 
     @Override
@@ -531,9 +531,9 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
                 new FortuneBananAdvisor(300, AbstractDungeon.monsterRng.random(50, 75), ModHelper.specialAscension(AbstractMonster.EnemyType.ELITE)),
         }));
         BaseMod.addMonster(Encounter.THE_PAST_PRESENT_AND_ETERNAL_SHOW, () -> new MonsterGroup(new AbstractMonster[]{
-                new PresentInebriatedInRevelry(-400, 0).modifyHpByPercent(1.5f).modifyToughnessByPercent(1.5f),
-                new TomorrowInHarmoniousChords(-100, 0).modifyHpByPercent(1.5f).modifyToughnessByPercent(1.5f),
-                new PastConfinedAndCaged(200, 0).modifyHpByPercent(1.5f).modifyToughnessByPercent(1.5f),
+                new PresentInebriatedInRevelry(-400, 0).modifyHpByPercent(1.5f).modifyToughnessByPercent(2f),
+                new TomorrowInHarmoniousChords(-100, 0).modifyHpByPercent(1.5f).modifyToughnessByPercent(2f),
+                new PastConfinedAndCaged(200, 0).modifyHpByPercent(1.5f).modifyToughnessByPercent(2f),
         }));
         BaseMod.addMonster(Encounter.AVENTURINE_OF_STRATAGEMS, () -> new MonsterGroup(new AbstractMonster[]{
                 new AventurineOfStratagems()

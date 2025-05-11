@@ -186,7 +186,7 @@
   "HSRMod:ThanatoplumRebloom": {
     "NAME": "Thanatoplum Rebloom",
     "DESCRIPTIONS": [
-      "When losing #yBroken, remove 1 stack and prevent it."
+      "When recovering #ytoughness, remove 1 stack and prevent it."
     ]
   },
   "HSRMod:Trailblazer5": {

@@ -1,5 +1,6 @@
 package hsrmod.cardsV2.Paths;
 
+import basemod.AutoAdd;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
@@ -15,6 +16,7 @@ import hsrmod.actions.ForceWaitAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.utils.ModHelper;
 
+@AutoAdd.Ignore
 public class Elation extends BaseCard {
     public static final String ID = Elation.class.getSimpleName();
 

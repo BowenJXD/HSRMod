@@ -66,6 +66,13 @@
       "洗牌后，随机获得易伤、虚弱或脆弱。"
     ]
   },
+  "HSRMod:VictoryPatch" : {
+    "TEXT": [
+      "新命途解锁！",
+      "阈值模式解锁！（MOD设置里启用）",
+      "阈值模式等级 %d 解锁！"
+    ]
+  },
   "HSRMod:API": {
     "TEXT": [
       "https://steamcommunity.com/profiles/76561199157402065/",

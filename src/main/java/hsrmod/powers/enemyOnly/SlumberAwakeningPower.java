@@ -34,11 +34,11 @@ public class SlumberAwakeningPower extends StatePower {
     @Override
     public void atStartOfTurn() {
         super.atStartOfTurn();
-        addToBot(new VFXAction(new TopWarningEffect(
+        addToBot(new VFXAction(owner, new TopWarningEffect(
                 Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT ?
                         "永眠墓碣将永久移除盗取的卡牌！！！击杀以防止之。":
                         "Sombrous Sepulcher will permanently remove the stolen cards!!! Kill to prevent."
-        )));
+        ), 2, true));
     }
 
     @Override

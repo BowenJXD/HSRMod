@@ -30,13 +30,13 @@ public class Sam extends BaseMonster {
     int hpLoss = 10;
     int secondaryCombustionCount = 2;
     int moltenCoreCount = 10;
-    int ultCount = 2;
+    int ultCount = 3;
     
     public Sam(){
         super(ID, 300, 420);
         bgm = "Nevermore";
         
-        secondaryCombustionCount = specialAs ? 4 : 3;
+        secondaryCombustionCount = specialAs ? 5 : 4;
         
         addMove(Intent.ATTACK_DEBUFF, 6, 3, mi->{
             shoutIf(0);
@@ -52,7 +52,7 @@ public class Sam extends BaseMonster {
                 }));
             }
         });
-        addMove(Intent.ATTACK_BUFF, 20, mi->{
+        addMove(Intent.ATTACK_BUFF, 25, mi->{
             shoutIf(1);
             addToBot(new VFXAction(new VerticalImpactEffect(p.hb.cX, p.hb.cY), 0.6f));
             attack(mi, AbstractGameAction.AttackEffect.BLUNT_HEAVY);
@@ -65,14 +65,14 @@ public class Sam extends BaseMonster {
             addToBot(new ApplyPowerAction(this, this, new SecondaryCombustionPower(this, secondaryCombustionCount)));
             addToBot(new ApplyPowerAction(this, this, new MoltenCorePower(this, moltenCoreCount)));
         });
-        addMove(Intent.ATTACK_DEBUFF, 24, mi->{
+        addMove(Intent.ATTACK_DEBUFF, 30, mi->{
             addToBot(new VFXAction(new VerticalImpactEffect(p.hb.cX, p.hb.cY), 0.6f));
             attack(mi, AbstractGameAction.AttackEffect.FIRE);
             Burn burn = new Burn();
             if (moreDamageAs) burn.upgrade();
             addToBot(new MakeTempCardInDrawPileAction(burn, 1, true, true));
             addToBot(new ApplyPowerAction(this, this, new ChargingPower(this, specialAs ? MOVES[6] : MOVES[5])));
-            ultCount = 2;
+            ultCount = 3;
         });
         addMoveA(Intent.ATTACK, 10, () -> ultCount, mi->{
             if (hasPower(ChargingPower.POWER_ID)) {

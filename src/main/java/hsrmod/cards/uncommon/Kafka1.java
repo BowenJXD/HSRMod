@@ -40,7 +40,7 @@ public class Kafka1 extends BaseCard {
                 
                 while (mons.hasNext()) {
                     AbstractMonster mon = mons.next();
-                    if (ModHelper.check(m)
+                    if (ModHelper.check(mon)
                             && mon.powers.stream().anyMatch(power -> power instanceof DoTPower)) {
                         followedUp = true;
                         addToBot(new FollowUpAction(this, mon));

@@ -35,7 +35,7 @@ import java.io.IOException;
 import java.util.*;
 import java.util.function.Consumer;
 
-public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscriber, RenderSubscriber, PreUpdateSubscriber {
+public class HSRModConfig implements OnStartBattleSubscriber, RenderSubscriber, PreUpdateSubscriber {
     
     private static HSRModConfig instance;
     
@@ -363,8 +363,7 @@ public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscrib
         return GOLD_INC * count;
     }
     
-    public void addTPLimit() {
-        if (tpLimit == TP_LIMIT_LIMIT) return;
+    public static void addTPLimit() {
         tpLimit++;
         try {
             config.setInt("tpLimit", tpLimit);
@@ -395,17 +394,6 @@ public class HSRModConfig implements OnStartBattleSubscriber, PostBattleSubscrib
         }
     }
     
-    @Override
-    public void receivePostBattle(AbstractRoom abstractRoom) {
-        if (CardCrawlGame.stopClock 
-                && AbstractDungeon.ascensionLevel >= 20
-                && AbstractDungeon.player instanceof IHSRCharacter) {   
-            if (tpLimit == 0 || getActiveTPCount() == tpLimit) {
-                addTPLimit();
-            }
-        }
-    }
-
     @Override
     public void receivePreUpdate() {
         Iterator<AbstractGameEffect> c = this.effects.iterator();

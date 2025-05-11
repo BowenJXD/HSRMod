@@ -25,7 +25,7 @@ import hsrmod.utils.ModHelper;
 public class SomethingUntoDeath extends BaseMonster {
     public static final String ID = SomethingUntoDeath.class.getSimpleName();
     
-    int[] damages = {9, 9, 49};
+    int[] damages = {9, 9, 59};
     int[] damageTimes = {3, 2, 1};
     int sunsetCount = 3;
     int ssHp = 5;
@@ -40,10 +40,16 @@ public class SomethingUntoDeath extends BaseMonster {
     public SomethingUntoDeath() {
         super(ID, 410F, 430F, -150, 50);
 
-        setDamages(9, 9, 49);
+        setDamages(9, 9, moreDamageAs ? 59 : 49);
         strengthGain = ModHelper.moreDamageAscension(type) ? 3 : 2;
         ssHp = ModHelper.specialAscension(type) ? 5 : 4;
         bgm = "Return of None";
+    }
+
+    @Override
+    public void usePreBattleAction() {
+        super.usePreBattleAction();
+        addToBot(new ApplyPowerAction(p, this, new NightfallPower(p, 1)));
     }
 
     @Override
@@ -87,6 +93,8 @@ public class SomethingUntoDeath extends BaseMonster {
                     }
                 break;
         }
+        if (specialAs)
+            addToBot(new ApplyPowerAction(p, this, new NightfallPower(p, 1)));
         addToBot(new RollMoveAction(this));
     }
 

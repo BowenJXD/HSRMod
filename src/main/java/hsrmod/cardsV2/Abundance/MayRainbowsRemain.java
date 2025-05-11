@@ -31,7 +31,7 @@ public class MayRainbowsRemain extends BaseCard {
         addToBot(new ChangeStanceAction(new CalmStance()));
         if (upgraded)
             addToBot(new SimpleGridCardSelectBuilder(c -> c.selfRetain)
-                    .setCardGroup(p.drawPile, p.discardPile, p.exhaustPile)
+                    .setCardGroup(p.drawPile, p.discardPile/*, p.exhaustPile*/)
                     .setAmount(magicNumber)
                     .setAnyNumber(true)
                     .setCanCancel(true)

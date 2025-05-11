@@ -29,11 +29,11 @@ public class GalacticBat extends CustomRelic implements ClickableRelic, ITutoria
     private static final RelicTier RELIC_TIER = RelicTier.STARTER;
     // 点击音效
     private static final LandingSound LANDING_SOUND = LandingSound.FLAT;
-    
+
     public boolean detailDescription = false;
 
     String modNameCache = null;
-    
+
     static Texture[] ftues = {
             ImageMaster.loadImage(PathDefine.UI_PATH + "tutorial/1.png"),
             ImageMaster.loadImage(PathDefine.UI_PATH + "tutorial/2.png"),
@@ -42,7 +42,7 @@ public class GalacticBat extends CustomRelic implements ClickableRelic, ITutoria
             ImageMaster.loadImage(PathDefine.UI_PATH + "tutorial/5.png"),
             ImageMaster.loadImage(PathDefine.UI_PATH + "tutorial/6.png"),
     };
-    
+
     String[] tutTexts = {
             DESCRIPTIONS[2],
             DESCRIPTIONS[3],
@@ -51,7 +51,7 @@ public class GalacticBat extends CustomRelic implements ClickableRelic, ITutoria
             DESCRIPTIONS[6],
             DESCRIPTIONS[7],
     };
-    
+
     public GalacticBat() {
         super(ID, ImageMaster.loadImage(IMG_PATH), RELIC_TIER, LANDING_SOUND);
     }
@@ -72,8 +72,10 @@ public class GalacticBat extends CustomRelic implements ClickableRelic, ITutoria
                 .ifPresent(m -> addToTop(new ApplyPowerAction(m, m, new HeartIsMeantToBeBrokenPower(m))));
         if (!HSRMod.seenTutorials.contains(relicId) || HSRModConfig.firstTime) {
             HSRMod.seenTutorials.add(relicId);
-            if (Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT)
+            if ((Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT)
+                    && AbstractDungeon.getCurrRoom().monsters != null) {
                 AbstractDungeon.ftue = new CustomMultiPageFtue(ftues, tutTexts);
+            }
         }
     }
 
@@ -101,7 +103,8 @@ public class GalacticBat extends CustomRelic implements ClickableRelic, ITutoria
         description = getUpdatedDescription();
         if (!detailDescription) {
             tips = new ArrayList<>(tips.subList(0, 1));
-        } else if (Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT){
+        } else if ((Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT)
+                && AbstractDungeon.getCurrRoom().monsters != null) {
             AbstractDungeon.ftue = new CustomMultiPageFtue(ftues, tutTexts);
         }
         initializeTips();

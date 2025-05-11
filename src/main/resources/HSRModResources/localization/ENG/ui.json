@@ -53,5 +53,12 @@
       "Threshold Protocol has reached the limit.",
       "Cannot modify Threshold Protocol during a run."
     ]
+  },
+  "HSRMod:VictoryPatch" : {
+    "TEXT": [
+      "New Path Unlocked!",
+      "Threshold Protocol Unlocked! (Open in Mod Config)",
+      "Threshold Protocol %d Unlocked!"
+    ]
   }
 }

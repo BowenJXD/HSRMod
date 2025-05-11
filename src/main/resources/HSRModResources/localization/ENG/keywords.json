@@ -81,7 +81,7 @@
   },
   {
     "NAMES": ["Quake", "quake"],
-    "DESCRIPTION": "When losing half of your block, remove 1 stack and gain #yQuake with damage equal to the block lost."
+    "DESCRIPTION": "Trigger when taking the first damage in a monster's turn: remove 1 layer to deal physical damage to it (4) with damage equal to your block left."
   },
   {
     "NAMES": ["Spore", "spore", "spores"],

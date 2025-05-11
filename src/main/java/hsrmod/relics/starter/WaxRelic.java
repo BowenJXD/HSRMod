@@ -24,6 +24,7 @@ import hsrmod.characters.StellaCharacter;
 import hsrmod.events.StelleAwakeEvent;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
+import hsrmod.patches.PathSelectScreen;
 import hsrmod.relics.BaseRelic;
 import hsrmod.relics.ITutorial;
 import hsrmod.utils.*;
@@ -60,8 +61,8 @@ public abstract class WaxRelic extends BaseRelic implements ClickableRelic, ITut
                 ImageMaster.loadImage(PathDefine.UI_PATH + "tutorial/" + selectedTag + "2.png"),
         };
         tutTexts = new String[]{
-                DESCRIPTIONS[3],
                 DESCRIPTIONS[4],
+                DESCRIPTIONS[5],
         };
     }
 
@@ -83,6 +84,7 @@ public abstract class WaxRelic extends BaseRelic implements ClickableRelic, ITut
         if (!isObtained) return;
         RewardEditor.getInstance().tag = selectedTag;
         if (Objects.equals(description, DESCRIPTIONS[0]) 
+                && PathSelectScreen.Inst.unlockedAll()
                 && RewardEditor.getInstance().bannedTags != null 
                 && !RewardEditor.getInstance().bannedTags.isEmpty()) {
             updateDescription(getUpdatedDescription());
@@ -92,8 +94,10 @@ public abstract class WaxRelic extends BaseRelic implements ClickableRelic, ITut
     @Override
     public String getUpdatedDescription() {
         List<AbstractCard.CardTags> tags = RewardEditor.getInstance().bannedTags;
-        if (tags == null || tags.isEmpty()) {
+        if (!PathSelectScreen.Inst.unlockedAll()) {
             description = DESCRIPTIONS[0];
+        } else if (tags == null || tags.isEmpty()) {
+            description = DESCRIPTIONS[1];
         } else {
             StringBuilder stringBuilder = new StringBuilder();
             for (int i = 0; i < tags.size(); i++) {
@@ -106,7 +110,7 @@ public abstract class WaxRelic extends BaseRelic implements ClickableRelic, ITut
                     stringBuilder.append("&");
                 }
             }
-            description = String.format(DESCRIPTIONS[1], stringBuilder);
+            description = String.format(DESCRIPTIONS[2], stringBuilder);
         }
         return description;
     }
@@ -127,6 +131,7 @@ public abstract class WaxRelic extends BaseRelic implements ClickableRelic, ITut
     @Override
     public void onRightClick() {
         if (isObtained
+                && PathSelectScreen.Inst.unlockedAll()
                 && (AbstractDungeon.getCurrRoom() instanceof NeowRoom || AbstractDungeon.getCurrRoom().event instanceof StelleAwakeEvent)
                 && (RewardEditor.getInstance().bannedTags == null || RewardEditor.getInstance().bannedTags.isEmpty())) {
             AbstractGameAction action = new SimpleGridCardSelectBuilder(c -> true)
@@ -165,7 +170,8 @@ public abstract class WaxRelic extends BaseRelic implements ClickableRelic, ITut
                 public void dispose() {
                 }
             });
-        } else if (Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT){
+        } else if ((Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT )
+                && AbstractDungeon.getCurrRoom().monsters != null){
             AbstractDungeon.ftue = new CustomMultiPageFtue(ftues, tutTexts);
         }
     }

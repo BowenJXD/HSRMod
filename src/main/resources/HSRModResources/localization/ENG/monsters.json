@@ -241,7 +241,7 @@
       "Points Fountain",
       "Time For A Bet",
       "⚠The Loser's Time Is Over⚠",
-      "The Loser's Time Is Over: deal damage, put #yImprison into draw pile, charge #yThe #yLoser's #yTime #yIs #yOver."
+      "The Loser's Time Is Over: deal damage, for every #y100 gold player has, reduce damage by #g-1. Put #yImprison into draw pile, charge #yThe #yLoser's #yTime #yIs #yOver."
     ],
     "DIALOG": [
       "",

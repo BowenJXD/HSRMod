@@ -186,7 +186,7 @@
   "HSRMod:ThanatoplumRebloom": {
     "NAME": "残梅绽",
     "DESCRIPTIONS": [
-      "失去 #y击破状态 时，移除1层并防止之。"
+      "#y韧性 恢复时，移除1层并防止之。"
     ]
   },
   "HSRMod:Trailblazer5": {
@@ -243,7 +243,7 @@
   "HSRMod:Divinity": {
     "NAME": "神性",
     "DESCRIPTIONS": [
-      "获得的所有格挡值+ #b%d ，且回合开始时仅损失当前格挡的 #b%d%% 。"
+      "你无法获得 #y敏捷 或 #y脆弱 。获得的所有格挡值+ #b%d ，且回合开始时仅损失当前格挡的 #b%d%% 。"
     ]
   },
   "HSRMod:Burden": {

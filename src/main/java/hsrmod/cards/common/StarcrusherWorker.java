@@ -25,7 +25,7 @@ public class StarcrusherWorker extends BaseCard {
                 && mToughness.amount > 0) {
             amt = mToughness.amount - 1;
         }
-        addToBot(new ReducePowerAction(m, p, ToughnessPower.POWER_ID, amt));
+        addToBot(new ApplyPowerAction(m, p, new ToughnessPower(m, -amt)));
         if (mToughness != null 
                 && ModHelper.getPowerCount(p, ToughnessPower.POWER_ID) < mToughness.amount) {
             addToBot(new ApplyPowerAction(p, p, new ToughnessPower(p, amt), amt));

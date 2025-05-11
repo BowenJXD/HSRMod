@@ -6,6 +6,7 @@ import basemod.abstracts.CustomSavable;
 import basemod.helpers.CardBorderGlowManager;
 import basemod.interfaces.PostUpdateSubscriber;
 import basemod.interfaces.StartActSubscriber;
+import basemod.interfaces.StartGameSubscriber;
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.SpawnModificationCard;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
@@ -26,6 +27,8 @@ import hsrmod.misc.IHSRCharacter;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
 import hsrmod.modcore.HSRModConfig;
+import hsrmod.modcore.Path;
+import hsrmod.patches.PathSelectScreen;
 import hsrmod.relics.common.RubertEmpireMechanicalCogwheel;
 import hsrmod.relics.common.RubertEmpireMechanicalLever;
 import hsrmod.relics.common.RubertEmpireMechanicalPiston;
@@ -45,7 +48,7 @@ import static basemod.BaseMod.logger;
 /**
  * Singleton class for editing the card reward pool.
  */
-public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>, PostUpdateSubscriber {
+public class RewardEditor implements StartGameSubscriber, CustomSavable<String[]>, PostUpdateSubscriber {
     private static RewardEditor instance;
 
     AbstractRoom currRoom;
@@ -271,7 +274,8 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
                 break;
         }
         chance = SubscriptionManager.getInstance().triggerNumChanger(SubscriptionManager.NumChangerType.WAX_WEIGHT, chance);
-        return AbstractDungeon.cardRandomRng.random(99) < chance;
+        int chanceFactor = PathSelectScreen.Inst.getChanceFactor() * 20;
+        return AbstractDungeon.cardRandomRng.random(99 + chanceFactor) < chance;
     }
 
     /**
@@ -374,29 +378,27 @@ public class RewardEditor implements StartActSubscriber, CustomSavable<String[]>
     }
 
     @Override
-    public void receiveStartAct() {
-        if (AbstractDungeon.actNum <= 1) {
-            relicId = "";
-            bannedTags = null;
-            for (AbstractRelic relic : AbstractDungeon.player.relics) {
-                if (relic instanceof WaxRelic) {
-                    ((WaxRelic) relic).updateDescription(relic.getUpdatedDescription());
-                }
-                if (relic instanceof TrailblazeTimer) {
-                    ((TrailblazeTimer) relic).updateDescription(relic.getUpdatedDescription());
-                }
+    public void receiveStartGame() {
+        relicId = "";
+        bannedTags = PathSelectScreen.Inst.addBannedTags();
+        for (AbstractRelic relic : AbstractDungeon.player.relics) {
+            if (relic instanceof WaxRelic) {
+                ((WaxRelic) relic).updateDescription(relic.getUpdatedDescription());
             }
-            if (AbstractDungeon.ascensionLevel >= 20 && AbstractDungeon.player.gold < HSRModConfig.getGoldInc()) {
-                AbstractDungeon.player.gainGold(HSRModConfig.getGoldInc());
-                if (Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT) {
-                    AbstractDungeon.topLevelEffectsQueue.add(new TopWarningEffect("⚠阈值协议生效⚠"));
-                } else {
-                    AbstractDungeon.topLevelEffectsQueue.add(new TopWarningEffect("⚠THRESHOLD PROTOCOLS ACTIVATED⚠"));
-                }
+            if (relic instanceof TrailblazeTimer) {
+                ((TrailblazeTimer) relic).updateDescription(relic.getUpdatedDescription());
+            }
+        }
+        if (AbstractDungeon.ascensionLevel >= 20 && AbstractDungeon.player.gold < HSRModConfig.getGoldInc()) {
+            AbstractDungeon.player.gainGold(HSRModConfig.getGoldInc());
+            if (Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT) {
+                AbstractDungeon.topLevelEffectsQueue.add(new TopWarningEffect("⚠阈值协议生效⚠"));
+            } else {
+                AbstractDungeon.topLevelEffectsQueue.add(new TopWarningEffect("⚠THRESHOLD PROTOCOLS ACTIVATED⚠"));
             }
         }
     }
-
+    
     public static void addExtraRewardToTop(Consumer<List<RewardItem>> extraReward) {
         getInstance().extraRewards.add(0, extraReward);
     }

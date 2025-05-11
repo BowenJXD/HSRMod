@@ -1,9 +1,11 @@
 package hsrmod.cardsV2.Paths;
 
+import basemod.AutoAdd;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cards.BaseCard;
 
+@AutoAdd.Ignore
 public class Nihility extends BaseCard {
     public static final String ID = Nihility.class.getSimpleName();
     

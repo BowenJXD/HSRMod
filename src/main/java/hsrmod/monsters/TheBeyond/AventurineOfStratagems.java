@@ -21,11 +21,13 @@ import hsrmod.powers.enemyOnly.ChargingPower;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.powers.misc.LockToughnessPower;
 import hsrmod.utils.ModHelper;
+import hsrmod.utils.RelicEventHelper;
 
 public class AventurineOfStratagems extends BaseMonster {
     public static final String ID = AventurineOfStratagems.class.getSimpleName();
     
     int chargeLoss = 80;
+    boolean goldGiven = false;
     
     public AventurineOfStratagems(){
         super(ID, 300, 410, 100, 0);
@@ -44,32 +46,34 @@ public class AventurineOfStratagems extends BaseMonster {
                     addToBot(new VFXAction(new FlickCoinEffect(this.hb.cX, this.hb.cY, p.hb.cX, p.hb.cY), 0.5f));
                 else
                     addToBot(new VFXAction(new FlickCoinEffect(p.hb.cX, p.hb.cY, p.hb.cX, p.hb.cY), 0.5f));
-                addToBot(new DamageAction(p, this.damage.get(mi.index), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+                addToBot(new DamageAction(p, this.damage.get(mi.index), 5));
             }
         });
-        addMove(Intent.ATTACK_DEBUFF, 25, mi->{
+        addMove(Intent.ATTACK_DEBUFF, 30, mi->{
             shout(2, 3);
             addToBot(new AnimateSlowAttackAction(this));
             addToBot(new VFXAction(new FlickCoinEffect(this.hb.cX, this.hb.cY, p.hb.cX, p.hb.cY), 0.5f));
             addToBot(new VFXAction(new ClashEffect(p.hb.cX, p.hb.cY)));
-            attack(mi, AbstractGameAction.AttackEffect.SLASH_HEAVY);
             addToBot(new ApplyPowerAction(p, this, new EnergyPower(p, -chargeLoss), -chargeLoss));
         });
         addMove(Intent.UNKNOWN, mi->{
-            shout(4, 5);
             addToBot(new VFXAction(new SpotlightEffect()));
-            addToBot(new VFXAction(new RainingGoldEffect(100)));
+            if (!goldGiven) {
+                goldGiven = true;
+                RelicEventHelper.gainGold(100);
+            }
+            shout(4, 5);
             spawnMonsters();
             addToBot(new ApplyPowerAction(this, this, new IntangiblePower(this, 7), 7));
             addToBot(new ApplyPowerAction(this, this, new LockToughnessPower(this)));
             addToBot(new ApplyPowerAction(this, this, new ChargingPower(this, getLastMove())));
         });
-        addMove(Intent.ATTACK_DEBUFF, 40, mi->{
+        addMoveA(Intent.ATTACK_DEBUFF, 50, mi->{
             if (hasPower(ChargingPower.POWER_ID)) {
+                // addToBot(new VFXAction(new RainingGoldEffect(100, true)));
                 shout(6);
-                addToBot(new VFXAction(new RainingGoldEffect(100, true)));
                 addToBot(new VFXAction(new WeightyImpactEffect(p.hb.cX, p.hb.cY), 1));
-                attack(mi, AbstractGameAction.AttackEffect.BLUNT_HEAVY, AttackAnim.SLOW);
+                addToBot(new DamageAction(p, this.damage.get(mi.index), 50));
                 addToBot(new MakeTempCardInDrawPileAction(new Imprison(), 1, true, true));
                 addToBot(new ApplyPowerAction(this, this, new StrengthPower(this, 1), 1));
                 addToBot(new ApplyPowerAction(this, this, new ChargingPower(this, getLastMove())));
@@ -78,6 +82,19 @@ public class AventurineOfStratagems extends BaseMonster {
         });
         
         turnCount = specialAs ? 2 : 1;
+    }
+    
+    int goldCache = 0;
+
+    @Override
+    public void update() {
+        super.update();
+        if (p != null && goldCache != p.gold && hasPower(ChargingPower.POWER_ID)) {
+            goldCache = p.gold;
+            damage.get(3).base = Math.max(0, 50 - p.gold / 100);
+            setMove(3);
+            ModHelper.addToTopAbstract(this::createIntent);
+        }
     }
 
     @Override

@@ -19,8 +19,15 @@ public class HeyOverHere extends BaseCard {
     public HeyOverHere() {
         super(ID);
         isInnate = true;
+        exhaust = true;
     }
-    
+
+    @Override
+    public void upgrade() {
+        super.upgrade();
+        exhaust = false;
+    }
+
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         int amt = energyOnUse + (p.hasRelic(ChemicalX.ID) ? 2 : 0);

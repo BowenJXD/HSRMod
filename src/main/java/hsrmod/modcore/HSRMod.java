@@ -158,6 +158,7 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
         RelicTagField.destructible.set(RelicLibrary.getRelic(LizardTail.ID), true);
         RelicTagField.destructible.set(RelicLibrary.getRelic(MawBank.ID), true);
         RelicTagField.destructible.set(RelicLibrary.getRelic(Matryoshka.ID), true);
+        RelicTagField.destructible.set(RelicLibrary.getRelic(Omamori.ID), true);
 
         String[] ecoRelicIDs = new String[]{
                 MawBank.ID,

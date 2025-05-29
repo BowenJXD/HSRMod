@@ -78,7 +78,8 @@ public class ResonatePower extends StatePower implements PreElementalDamageSubsc
     @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
         if (info.type == DamageInfo.DamageType.NORMAL 
-                && !(info.owner instanceof IHSRCharacter) 
+                && !(info.owner instanceof IHSRCharacter)
+                && !AbstractDungeon.actionManager.cardsPlayedThisTurn.isEmpty()
                 && AbstractDungeon.actionManager.cardsPlayedThisTurn.get(AbstractDungeon.actionManager.cardsPlayedThisTurn.size() - 1) != card) {
             card = AbstractDungeon.actionManager.lastCard;
             DamageInfo info2 = new DamageInfo(info.owner, damageAmount, DamageInfo.DamageType.THORNS);

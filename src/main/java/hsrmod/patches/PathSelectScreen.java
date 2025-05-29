@@ -2,7 +2,6 @@ package hsrmod.patches;
 
 import basemod.BaseMod;
 import basemod.abstracts.CustomSavable;
-import basemod.helpers.CardTags;
 import basemod.interfaces.ISubscriber;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -23,8 +22,8 @@ import com.megacrit.cardcrawl.helpers.Prefs;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import hsrmod.characters.StellaCharacter;
 import hsrmod.modcore.HSRMod;
+import hsrmod.modcore.HSRModConfig;
 import hsrmod.modcore.Path;
-import hsrmod.utils.RewardEditor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -134,7 +133,10 @@ public class PathSelectScreen implements ISubscriber, CustomSavable<Integer> {
     }
 
     public int nextIndex() {
-        return (this.index + 1 > pathUnlocked - 1) ? 0 : (this.index + 1);
+        if (this.index + 1 > pathUnlocked - 1) {
+            return 0;
+        }
+        return this.index + 1;
     }
 
     public void update() {
@@ -158,6 +160,8 @@ public class PathSelectScreen implements ISubscriber, CustomSavable<Integer> {
                 CardCrawlGame.sound.play("UI_CLICK_1");
                 this.index = prevIndex();
                 // CardCrawlGame.sound.play((getSkin()).word);
+                if (!unlockedAll() && index == pathUnlocked - 1)
+                    HSRModConfig.getInstance().displayText((Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT) ? "通关以解锁新命途" : "Win a game to unlock new path.");
                 refresh();
             }
             if (this.rightHb.clicked) {
@@ -165,6 +169,8 @@ public class PathSelectScreen implements ISubscriber, CustomSavable<Integer> {
                 CardCrawlGame.sound.play("UI_CLICK_1");
                 this.index = nextIndex();
                 // CardCrawlGame.sound.play((getSkin()).word);
+                if (!unlockedAll() && index == 0)
+                    HSRModConfig.getInstance().displayText((Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT) ? "通关以解锁新命途" : "Win a game to unlock new path.");
                 refresh();
             }
             if (InputHelper.justClickedLeft) {

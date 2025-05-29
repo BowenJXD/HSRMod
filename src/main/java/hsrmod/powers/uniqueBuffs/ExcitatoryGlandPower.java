@@ -10,8 +10,8 @@ import hsrmod.subscribers.SubscriptionManager;
 
 public class ExcitatoryGlandPower extends PowerPower implements PreEnergyChangeSubscriber {
     public static final String POWER_ID = HSRMod.makePath(ExcitatoryGlandPower.class.getSimpleName());
-    
-    public boolean canTrigger = false;
+
+    public boolean canTrigger = true;
     
     public ExcitatoryGlandPower() {
         super(POWER_ID);

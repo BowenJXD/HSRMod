@@ -210,8 +210,8 @@
   "HSRMod:Befog": {
     "NAME": "醇醉",
     "DESCRIPTIONS": [
-      "被击破后，你回复 #b%d [E] ，摸 #b%d 张牌。",
-      "被击破后，你回复 #b%d [E] ，摸 #b%d 张牌，然后升级所有手牌。"
+      "被击破后，你获得 #b%d [E] ，摸 #b%d 张牌。",
+      "被击破后，你获得 #b%d [E] ，摸 #b%d 张牌，然后升级所有手牌。"
     ]
   },
   "HSRMod:Symbiote": {
@@ -237,7 +237,7 @@
   "HSRMod:Kolchis": {
     "NAME": "科尔奇人",
     "DESCRIPTIONS": [
-      "每消耗 [hsrmod:ChargeIcon] 达到 #b%d 点，回复 [E] 。"
+      "每消耗 [hsrmod:ChargeIcon] 达到 #b%d 点，获得 [E] 。"
     ]
   },
   "HSRMod:Divinity": {
@@ -249,7 +249,7 @@
   "HSRMod:Burden": {
     "NAME": "承负",
     "DESCRIPTIONS": [
-      "成为牌的目标后移除1层，你回复 [E] 。回合开始时移除所有层。"
+      "成为牌的目标后移除1层，你获得 [E] 。回合开始时移除所有层。"
     ]
   },
   "HSRMod:Huohuo": {
@@ -284,7 +284,7 @@
     "NAME": "多余人的日记",
     "DESCRIPTIONS": [
       "持续伤害的削韧值+1。击破后，对其施加1层随机的负面效果X次，（X为其韧性上限的十位数）。",
-      "持续伤害的削韧值+1。击破后，对其施加1层随机的负面效果X次，（X为其韧性上限的十位数），并回复 [E] 。"
+      "持续伤害的削韧值+1。击破后，对其施加1层随机的负面效果X次，（X为其韧性上限的十位数），并获得 [E] 。"
     ]
   },
   "HSRMod:ReignOfKeys": {
@@ -370,8 +370,8 @@
   "HSRMod:PhenolCompounds": {
     "NAME": "酚类物质",
     "DESCRIPTIONS": [
-      "于此回合打出下 #b%d 张牌后，回复该牌费用数量的 [E] 。",
-      "于此回合打出下 #b%d 张牌后，回复该牌费用数量的 [E] ，并对其的目标施加共计等量层 #y孢子 。"
+      "于此回合打出下 #b%d 张牌后，获得该牌费用数量的 [E] 。",
+      "于此回合打出下 #b%d 张牌后，获得该牌费用数量的 [E] ，并对其的目标施加共计等量层 #y孢子 。"
     ]
   },
   "HSRMod:SerfOfCalamity": {
@@ -383,14 +383,14 @@
   "HSRMod:ExcitatoryGland": {
     "NAME": "兴奋腺",
     "DESCRIPTIONS": [
-      " [E] 上限+1。每回合首次消耗完 [E] 时，回复 [E] 。"
+      " [E] 上限+1。每回合首次消耗完 [E] 时，获得 [E] 。"
     ]
   },
   "HSRMod:SporeDischarge": {
     "NAME": "子囊释放",
     "DESCRIPTIONS": [
       "每消耗 #b1 点 [E] ，对随机敌人施加 #b1 层 #y孢子 。",
-      "每消耗或回复 #b1 点 [E] ，对随机敌人施加 #b1 层 #y孢子 。"
+      "每消耗或获得 #b1 点 [E] ，对随机敌人施加 #b1 层 #y孢子 。"
     ]
   },
   "HSRMod:SilverheartGuards": {

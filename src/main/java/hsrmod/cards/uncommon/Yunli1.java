@@ -61,11 +61,12 @@ public class Yunli1 extends BaseCard implements OnPlayerDamagedSubscriber {
     }
     
     void execute(){
+        AbstractMonster randomMonster = AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster)null, true, AbstractDungeon.cardRandomRng);
+        if (randomMonster == null) return;
+
         if (ModHelper.getPowerCount(AbstractDungeon.player, EnergyPower.POWER_ID) >= energyCost) {
             ModHelper.addToTopAbstract(this::execute);
         }
-        AbstractMonster randomMonster = AbstractDungeon.getMonsters().getRandomMonster((AbstractMonster)null, true, AbstractDungeon.cardRandomRng);
-        if (randomMonster == null) return;
         
         count++;
         if (count == 4) {

@@ -72,11 +72,5 @@
       "阈值模式解锁！（MOD设置里启用）",
       "阈值模式等级 %d 解锁！"
     ]
-  },
-  "HSRMod:API": {
-    "TEXT": [
-      "https://steamcommunity.com/profiles/76561199157402065/",
-      "8D7ECC0106C13F1EF5F34FD2CF409535"
-    ]
   }
 }

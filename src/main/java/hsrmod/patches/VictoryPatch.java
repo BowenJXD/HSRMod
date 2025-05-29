@@ -23,7 +23,7 @@ public class VictoryPatch {
     public static class VictoryScreenPatch {
         @SpirePostfixPatch
         public static void Postfix(VictoryScreen _inst) {
-            if (!PathSelectScreen.Inst.unlockedAll()) {
+            if (!PathSelectScreen.Inst.unlockedAll() && AbstractDungeon.player instanceof IHSRCharacter) {
                 AbstractDungeon.topLevelEffects.add(new UnlockEffect(TEXT[0]));
                 PathSelectScreen.Inst.setPathUnlocked();
             } else if (AbstractDungeon.ascensionLevel == Settings.MAX_ASCENSION_LEVEL
@@ -44,7 +44,7 @@ public class VictoryPatch {
     public static class DeathScreenPatch {
         @SpirePostfixPatch
         public static void Postfix(DeathScreen _inst) {
-            if (!PathSelectScreen.Inst.unlockedAll() && GameOverScreen.isVictory) {
+            if (!PathSelectScreen.Inst.unlockedAll() && GameOverScreen.isVictory && AbstractDungeon.player instanceof IHSRCharacter) {
                 AbstractDungeon.topLevelEffects.add(new UnlockEffect(TEXT[0]));
                 PathSelectScreen.Inst.setPathUnlocked();
             }

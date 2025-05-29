@@ -11,18 +11,15 @@ import com.megacrit.cardcrawl.vfx.combat.SmallLaserEffect;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
-import hsrmod.subscribers.ICheckUsableSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
-import hsrmod.utils.ModHelper;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class Entangle extends BaseCard implements PostDrawSubscriber, ICheckUsableSubscriber {
+public class Entangle extends BaseCard implements PostDrawSubscriber {
     public static final String ID = Entangle.class.getSimpleName();
     
     int entangleCount = 2;
@@ -41,7 +38,6 @@ public class Entangle extends BaseCard implements PostDrawSubscriber, ICheckUsab
     public void onEnterHand() {
         super.onEnterHand();
         BaseMod.subscribe(this);
-        SubscriptionManager.subscribe(this);
         if (entangledCards.isEmpty()) {
             List<AbstractCard> tmp = AbstractDungeon.player.hand.group.stream().filter(c -> !c.hasTag(CustomEnums.ENTANGLE)).collect(Collectors.toList());
             if (!tmp.isEmpty()) {
@@ -59,7 +55,6 @@ public class Entangle extends BaseCard implements PostDrawSubscriber, ICheckUsab
     public void onLeaveHand() {
         super.onLeaveHand();
         BaseMod.unsubscribe(this);
-        SubscriptionManager.unsubscribe(this);
         AbstractDungeon.player.hand.glowCheck();
     }
     
@@ -97,10 +92,8 @@ public class Entangle extends BaseCard implements PostDrawSubscriber, ICheckUsab
     }
 
     @Override
-    public boolean checkUsable(AbstractCard card) {
-        if (SubscriptionManager.checkSubscriber(this) 
-                && inHand
-                && entangledCards.contains(card)) {
+    public boolean canPlay(AbstractCard card) {
+        if (inHand && entangledCards.contains(card)) {
             card.cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
             return false;
         }

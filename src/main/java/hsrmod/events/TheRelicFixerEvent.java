@@ -43,11 +43,13 @@ public class TheRelicFixerEvent extends PhasedEvent {
                     List<AbstractRelic> relics = AbstractDungeon.player.relics.stream()
                             .filter(r -> r.usedUp && !Objects.equals(r.relicId, NeowsLament.ID))
                             .collect(Collectors.toList());
-                    if (relics.isEmpty()) return;
-                    AbstractRelic relic = GeneralUtil.getRandomElement(relics, AbstractDungeon.eventRng);
-                    if (relic == null) return;
-                    ModHelper.addEffectAbstract(() -> RelicEventHelper.loseRelics(false, relic));
-                    ModHelper.addEffectAbstract(() -> RelicEventHelper.gainRelics(relic.relicId));
+                    if (!relics.isEmpty()) {
+                        AbstractRelic relic = GeneralUtil.getRandomElement(relics, AbstractDungeon.eventRng);
+                        if (relic != null) {
+                            ModHelper.addEffectAbstract(() -> RelicEventHelper.loseRelics(false, relic));
+                            ModHelper.addEffectAbstract(() -> RelicEventHelper.gainRelics(relic.relicId));
+                        }
+                    }
                     transitionKey(1);
                 })
                 .enabledCondition(() -> AbstractDungeon.player.gold >= fix1Cost)

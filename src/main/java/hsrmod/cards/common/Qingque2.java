@@ -33,7 +33,7 @@ public class Qingque2 extends BaseCard implements PreEnergyChangeSubscriber{
     }
 
     @Override
-    public void triggerAtStartOfTurn() {
+    public void onLeaveHand() {
         SubscriptionManager.unsubscribe(this);
     }
 
@@ -74,7 +74,9 @@ public class Qingque2 extends BaseCard implements PreEnergyChangeSubscriber{
 
     @Override
     public int preEnergyChange(int changeAmount) {
-        if (SubscriptionManager.checkSubscriber(this) && changeAmount < 0) {
+        if (SubscriptionManager.checkSubscriber(this) 
+                && changeAmount < 0 
+                && inHand) {
             for (int i = 0; i < -changeAmount; i++) {
                 if (AbstractDungeon.cardRandomRng.random(100) <= reduceCostProbability) {
                     updateCost(-1);

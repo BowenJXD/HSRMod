@@ -65,6 +65,7 @@ public class TribbiePower extends PowerPower implements PreElementalDamageSubscr
     @Override
     public void onAfterUseCard(AbstractCard card, UseCardAction action) {
         super.onAfterUseCard(card, action);
+        if (card.type != AbstractCard.CardType.ATTACK) return;
         if (upgraded) AbstractDungeon.getMonsters().monsters.stream().filter(ModHelper::check).forEach(targets::add);
         if (targets.isEmpty()) return;
         AbstractCreature targetWithMaxHp = targets.stream().max(Comparator.comparingInt(a -> a.currentHealth)).get();

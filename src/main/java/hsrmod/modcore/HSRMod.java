@@ -3,6 +3,7 @@ package hsrmod.modcore;
 import basemod.AutoAdd;
 import basemod.BaseMod;
 import basemod.abstracts.CustomRelic;
+import basemod.devcommands.ConsoleCommand;
 import basemod.eventUtil.AddEventParams;
 import basemod.eventUtil.EventUtils;
 import basemod.helpers.RelicType;
@@ -55,6 +56,7 @@ import hsrmod.relics.ITutorial;
 import hsrmod.relics.common.AngelTypeIOUDispenser;
 import hsrmod.relics.shop.ARuanPouch;
 import hsrmod.relics.special.*;
+import hsrmod.signature.devcommands.SignatureCommand;
 import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.utils.ModHelper;
 import hsrmod.utils.RewardEditor;
@@ -217,6 +219,7 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
         }
         checkSignatureUnlock();
         PathSelectScreen.Inst.setPathUnlocked();
+        ConsoleCommand.addCommand("path", PathCommand.class);
     }
 
     @Override
@@ -311,7 +314,7 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
                 .eventType(EventUtils.EventType.SHRINE)
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(TheRelicFixerEvent.ID), TheRelicFixerEvent.class)
-                .spawnCondition(() -> AbstractDungeon.player.relics.stream().anyMatch(r -> RelicTagField.destructible.get(r)))
+                .spawnCondition(() -> AbstractDungeon.player.relics.stream().anyMatch(r -> r.usedUp))
                 .create());
         BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(WeAreCowboysEvent.ID), WeAreCowboysEvent.class)
                 .dungeonID(Penacony.ID)

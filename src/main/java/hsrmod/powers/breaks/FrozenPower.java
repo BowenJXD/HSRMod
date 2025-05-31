@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAction;
+import hsrmod.misc.IHSRCharacter;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.DebuffPower;
 import hsrmod.powers.misc.FrozenResistancePower;
@@ -62,6 +63,16 @@ public class FrozenPower extends DebuffPower implements PreElementalDamageSubscr
             addToBot(new RemoveSpecificPowerAction(owner, owner, this));
             addToBot(new ApplyPowerAction(owner, owner, new FrozenResistancePower(owner, 1), 1));
         }
+    }
+
+    @Override
+    public int onAttacked(DamageInfo info, int damageAmount) {
+        if (!(AbstractDungeon.player instanceof IHSRCharacter)
+                && info.type == DamageInfo.DamageType.NORMAL
+                && detecting) {
+            remove(1);
+        }
+        return super.onAttacked(info, damageAmount);
     }
 
     @Override

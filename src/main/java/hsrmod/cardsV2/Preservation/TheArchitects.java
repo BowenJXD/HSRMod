@@ -41,7 +41,8 @@ public class TheArchitects extends BaseCard {
             }
         } else {
             int amt = (p.currentBlock > 0 ? 1 : 0) + AbstractDungeon.getMonsters().monsters.stream().mapToInt(mo -> mo.currentBlock > 0 ? 1 : 0).sum();
-            addToBot(new ApplyPowerAction(p, p, new QuakePower(p, amt)));
+            if (amt > 0)
+                addToBot(new ApplyPowerAction(p, p, new QuakePower(p, amt)));
         }
     }
 

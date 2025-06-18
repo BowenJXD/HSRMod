@@ -1,8 +1,6 @@
 package hsrmod.relics.starter;
 
-import basemod.BaseMod;
 import basemod.abstracts.CustomMultiPageFtue;
-import basemod.abstracts.CustomSavable;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
@@ -14,20 +12,21 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.neow.NeowRoom;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import hsrmod.actions.GridCardManipulator;
 import hsrmod.actions.SimpleGridCardSelectBuilder;
 import hsrmod.cards.BaseCard;
 import hsrmod.cardsV2.Paths.*;
-import hsrmod.characters.StellaCharacter;
 import hsrmod.events.StelleAwakeEvent;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
 import hsrmod.patches.PathSelectScreen;
 import hsrmod.relics.BaseRelic;
 import hsrmod.relics.ITutorial;
-import hsrmod.utils.*;
+import hsrmod.utils.ModHelper;
+import hsrmod.utils.PathDefine;
+import hsrmod.utils.RelicEventHelper;
+import hsrmod.utils.RewardEditor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,8 +38,8 @@ public abstract class WaxRelic extends BaseRelic implements ClickableRelic, ITut
     public AbstractCard.CardTags selectedTag;
     public CardGroup pathGroup;
     public int pathToBan = 1;
-    static Texture[] ftues;
-    static String[] tutTexts;
+    Texture[] ftues;
+    String[] tutTexts;
 
     public WaxRelic(String id, AbstractCard.CardTags tag, int weight) {
         super(id);

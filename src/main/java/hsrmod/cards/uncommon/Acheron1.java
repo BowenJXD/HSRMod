@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.actions.BouncingAction;
@@ -20,6 +21,9 @@ import hsrmod.cards.BaseCard;
 import hsrmod.effects.GrayscaleScreenEffect;
 import hsrmod.effects.PortraitDisplayEffect;
 import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.modcore.HSRMod;
+import hsrmod.signature.utils.SignatureHelper;
+import hsrmod.signature.utils.internal.SignatureHelperInternal;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
@@ -93,6 +97,15 @@ public class Acheron1 extends BaseCard implements PostPowerApplySubscriber {
             canTrigger = false;
             updateCost(-1);
             retain = true;
+        }
+    }
+
+    @Override
+    public void triggerOnExhaust() {
+        super.triggerOnExhaust();
+        if (isEthereal && AbstractDungeon.actionManager.turnHasEnded) {
+            SignatureHelper.unlock(HSRMod.makePath(Acheron1.ID), false);
+            SignatureHelperInternal.setSignatureNotice(CardLibrary.getCard(HSRMod.makePath(ID)), false);
         }
     }
 }

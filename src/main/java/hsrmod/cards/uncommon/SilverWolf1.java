@@ -15,18 +15,19 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.vfx.combat.InversionBeamEffect;
-import com.sun.jna.StringArray;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.signature.utils.SignatureHelper;
+import hsrmod.signature.utils.internal.SignatureHelperInternal;
 import hsrmod.utils.GeneralUtil;
 
 import java.util.Objects;
@@ -109,6 +110,7 @@ public class SilverWolf1 extends BaseCard {
         public static void Prefix() {
             if (SignatureHelper.isUnlocked(HSRMod.makePath(ID))) {
                 SignatureHelper.unlock(HSRMod.makePath(ID), false);
+                SignatureHelperInternal.setSignatureNotice(CardLibrary.getCard(HSRMod.makePath(ID)), false);
                 if (AbstractDungeon.actionManager != null && AbstractDungeon.isPlayerInDungeon())
                     AbstractDungeon.actionManager.addToTop(new TalkAction(true,
                             CardCrawlGame.languagePack.getCardStrings(HSRMod.makePath(ID)).EXTENDED_DESCRIPTION[4],

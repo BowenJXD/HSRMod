@@ -14,17 +14,15 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.MiracleEffect;
-import hsrmod.cards.uncommon.Acheron1;
 import hsrmod.effects.PortraitDisplayEffect;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.relics.starter.*;
+import hsrmod.signature.card.AbstractSignatureCard;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.*;
-import hsrmod.signature.card.AbstractSignatureCard;
-import hsrmod.signature.utils.SignatureHelper;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -271,14 +269,6 @@ public abstract class BaseCard extends AbstractSignatureCard implements SpawnMod
 
     public int getEnergyCost() {
         return energyCost;
-    }
-
-    @Override
-    public void triggerOnEndOfPlayerTurn() {
-        super.triggerOnEndOfPlayerTurn();
-        if (isEthereal) {
-            SignatureHelper.unlock(HSRMod.makePath(Acheron1.ID), false);
-        }
     }
 
     public void setBaseEnergyCost(int energyCost) {

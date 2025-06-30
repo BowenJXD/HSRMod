@@ -11,7 +11,6 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.actions.BouncingAction;
@@ -21,15 +20,13 @@ import hsrmod.cards.BaseCard;
 import hsrmod.effects.GrayscaleScreenEffect;
 import hsrmod.effects.PortraitDisplayEffect;
 import hsrmod.modcore.ElementalDamageInfo;
-import hsrmod.modcore.HSRMod;
-import hsrmod.signature.utils.SignatureHelper;
-import hsrmod.signature.utils.internal.SignatureHelperInternal;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
-public class Acheron1 extends BaseCard implements PostPowerApplySubscriber {
+public class Acheron1 extends BaseCard {
     public static final String ID = Acheron1.class.getSimpleName();
     
+    PostPowerApplySubscriber subscriber;
     boolean canTrigger;
     int costCache;
     
@@ -43,13 +40,28 @@ public class Acheron1 extends BaseCard implements PostPowerApplySubscriber {
     @Override
     public void onEnterHand() {
         super.onEnterHand();
-        BaseMod.subscribe(this);
+        subscriber = new PostPowerApplySubscriber() {
+
+            @Override
+            public void receivePostPowerApplySubscriber(AbstractPower abstractPower, AbstractCreature target, AbstractCreature source) {
+
+                if (SubscriptionManager.checkSubscriber(Acheron1.this)
+                        && canTrigger
+                        && abstractPower.type == AbstractPower.PowerType.DEBUFF
+                        && target != AbstractDungeon.player) {
+                    canTrigger = false;
+                    updateCost(-1);
+                    retain = true;
+                }
+            }
+        };
+        BaseMod.subscribe(subscriber);
     }
 
     @Override
     public void onLeaveHand() {
         super.onLeaveHand();
-        BaseMod.unsubscribe(this);
+        BaseMod.unsubscribe(subscriber);
     }
 
     @Override
@@ -86,26 +98,5 @@ public class Acheron1 extends BaseCard implements PostPowerApplySubscriber {
                 .setModifier(ci -> ci.info.output += ci.target.powers.stream().mapToInt(power -> power.type == AbstractPower.PowerType.DEBUFF ? 1 : 0).sum()));
 
         ModHelper.addToBotAbstract(() -> updateCost(costCache - cost));
-    }
-
-    @Override
-    public void receivePostPowerApplySubscriber(AbstractPower abstractPower, AbstractCreature target, AbstractCreature source) {
-        if (SubscriptionManager.checkSubscriber(this)
-                && canTrigger 
-                && abstractPower.type == AbstractPower.PowerType.DEBUFF
-                && target != AbstractDungeon.player) {
-            canTrigger = false;
-            updateCost(-1);
-            retain = true;
-        }
-    }
-
-    @Override
-    public void triggerOnExhaust() {
-        super.triggerOnExhaust();
-        if (isEthereal && AbstractDungeon.actionManager.turnHasEnded) {
-            SignatureHelper.unlock(HSRMod.makePath(Acheron1.ID), false);
-            SignatureHelperInternal.setSignatureNotice(CardLibrary.getCard(HSRMod.makePath(ID)), false);
-        }
     }
 }

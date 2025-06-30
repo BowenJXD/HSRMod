@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import hsrmod.misc.Encounter;
+import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
 import hsrmod.relics.special.ThalanToxiFlame;
 import hsrmod.relics.special.ThePinkestCollision;
@@ -150,12 +151,10 @@ public class YuQingtuEvent extends PhasedEvent {
         registerPhase(Phase.PROVOKE_2, new TextPhase(DESCRIPTIONS[9]).addOption(OPTIONS[9], (i) -> transitionKey(Phase.PROVOKE_BATTLE)));
         
         registerPhase(Phase.PROVOKE_BATTLE, new CombatPhase(Encounter.GUARDIAN_SHADOW)
-                .addRewards(true, room -> {
-                    for (RewardItem r : room.rewards) {
-                        if (r.type == RewardItem.RewardType.CARD) {
-                            RewardEditor.setRewardRarity(r, AbstractCard.CardRarity.RARE);
-                        }
-                    }
+                .addRewards(false, room -> {
+                    RewardItem reward = new RewardItem();
+                    RewardEditor.setRewardRarity(reward, AbstractCard.CardRarity.RARE);
+                    room.rewards.add(reward);
                 }));
         
         registerPhase(Phase.BATTLE_WON, new TextPhase(DESCRIPTIONS[10]).addOption(OPTIONS[10], (i) -> openMap()));

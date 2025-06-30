@@ -21,6 +21,7 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
+import com.megacrit.cardcrawl.powers.BackAttackPower;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import hsrmod.cards.base.*;
 import hsrmod.misc.IHSRCharacter;
@@ -135,8 +136,13 @@ public class StellaCharacter extends CustomPlayer implements IHSRCharacter {
     @Override
     public void update() {
         super.update();
-        if (state != null) {
-            flipHorizontal = true;
+        if (state != null && !flipHorizontal) {
+            if (AbstractDungeon.currMapNode == null 
+                    || AbstractDungeon.currMapNode.room == null 
+                    || AbstractDungeon.currMapNode.room.monsters == null 
+                    || AbstractDungeon.currMapNode.room.monsters.monsters == null 
+                    || AbstractDungeon.currMapNode.room.monsters.monsters.stream().noneMatch(m -> m.hasPower(BackAttackPower.POWER_ID)))
+                flipHorizontal = true;
         }
     }
 

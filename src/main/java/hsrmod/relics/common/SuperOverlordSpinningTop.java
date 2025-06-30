@@ -30,9 +30,11 @@ public class SuperOverlordSpinningTop extends BaseRelic {
         if (canTrigger) {
             flash();
             canTrigger = false;
-            AbstractDungeon.getMonsters().monsters.forEach(m -> addToBot(
-                    new ReducePowerAction(m, AbstractDungeon.player,
-                            new ToughnessPower(m, ToughnessPower.getStackLimit(m) / 3), ToughnessPower.getStackLimit(m) / 3)));
+            AbstractDungeon.getMonsters().monsters.forEach(m -> {
+                if (m.hasPower(ToughnessPower.POWER_ID))
+                    addToBot(new ReducePowerAction(m, AbstractDungeon.player,
+                            new ToughnessPower(m, ToughnessPower.getStackLimit(m) / 3), ToughnessPower.getStackLimit(m) / 3));
+            });
         }
     }
 }

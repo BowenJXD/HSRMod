@@ -18,8 +18,6 @@ import hsrmod.signature.utils.internal.MiscHelper;
 import hsrmod.signature.utils.internal.SignatureHelperInternal;
 
 public abstract class AbstractSignatureCard extends CustomCard {
-	@Deprecated
-	private TextureAtlas.AtlasRegion signaturePortrait = null;
 	public boolean hasSignature = false;
 
 	public SignatureHelper.Style style = SignatureHelper.DEFAULT_STYLE;
@@ -29,7 +27,7 @@ public abstract class AbstractSignatureCard extends CustomCard {
 	public boolean hideSCVPanel = false;
 	public boolean dontAvoidSCVPanel = false;
 
-	private boolean signatureHovered = false; // 矢野你诗人？
+	private boolean signatureHovered = false;
 	public float signatureHoveredTimer = 0.0F;
 	public float forcedTimer = 0.0F;
 

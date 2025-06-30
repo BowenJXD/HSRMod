@@ -6,9 +6,9 @@ import basemod.abstracts.events.phases.TextPhase;
 import basemod.eventUtil.AddEventParams;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import hsrmod.dungeons.Penacony;
 import hsrmod.modcore.HSRMod;
 import hsrmod.utils.GeneralUtil;
 import hsrmod.utils.ModHelper;
@@ -57,7 +57,7 @@ public class CheatCode1Event extends PhasedEvent {
     public void addCode2(int chance) {
         if (AbstractDungeon.eventRng.random(99) < chance) {
             BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(CheatCode2Event.ID), CheatCode2Event.class)
-                    .dungeonID(Penacony.ID)
+                    .dungeonID(TheBeyond.ID)
                     .endsWithRewardsUI(true)
                     .create());
         }

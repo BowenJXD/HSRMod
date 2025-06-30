@@ -118,8 +118,6 @@ public class Phantylia extends BaseMonster implements PostPowerApplySubscriber {
                 this.phase = 2;
                 addToBot(new ShoutAction(this, DIALOG[4]));
                 ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_5", 3.0F));
-                CardCrawlGame.music.dispose();
-                CardCrawlGame.music.playTempBGM(Encounter.DIVINE_SEED + "_2");
                 addToBot(new SFXAction("VO_AWAKENEDONE_1"));
                 addToBot(new VFXAction(this, new IntenseZoomEffect(this.hb.cX, this.hb.cY, true), 0.05F, true));
                 

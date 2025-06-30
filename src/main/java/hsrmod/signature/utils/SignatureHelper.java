@@ -55,7 +55,6 @@ public abstract class SignatureHelper {
 	}
 
 	public static class Info {
-//		public final String img, portrait;
 		public final Function<AbstractCard, String> img, portrait;
 		public final Predicate<AbstractCard> shouldUseSignature;
 		public final String parentID;

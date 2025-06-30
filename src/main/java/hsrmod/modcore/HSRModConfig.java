@@ -2,7 +2,6 @@ package hsrmod.modcore;
 
 import basemod.*;
 import basemod.interfaces.OnStartBattleSubscriber;
-import basemod.interfaces.PostBattleSubscriber;
 import basemod.interfaces.PreUpdateSubscriber;
 import basemod.interfaces.RenderSubscriber;
 import com.badlogic.gdx.graphics.Color;
@@ -25,7 +24,6 @@ import com.megacrit.cardcrawl.screens.mainMenu.MenuButton;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.RestartForChangesEffect;
 import hsrmod.effects.TopWarningEffect;
-import hsrmod.misc.IHSRCharacter;
 import hsrmod.powers.misc.ShuffleStatePower;
 import hsrmod.utils.PathDefine;
 import org.apache.logging.log4j.Level;
@@ -52,6 +50,7 @@ public class HSRModConfig implements OnStartBattleSubscriber, RenderSubscriber, 
     public static boolean addRelic = true;
     public static boolean addEvent = true;
     public static boolean addEnemy = true;
+    public static boolean hsrEnemyOnly = true;
     public static boolean useSpine = true;
     
     public static boolean firstTime = true;
@@ -85,6 +84,7 @@ public class HSRModConfig implements OnStartBattleSubscriber, RenderSubscriber, 
             defaults.setProperty("addRelic", Boolean.toString(true));
             defaults.setProperty("addEvent", Boolean.toString(true));
             defaults.setProperty("addEnemy", Boolean.toString(true));
+            defaults.setProperty("hsrEnemyOnly", Boolean.toString(true));
             defaults.setProperty("useSpine", Boolean.toString(true));
             
             defaults.setProperty("firstTime", Boolean.toString(true));
@@ -103,6 +103,7 @@ public class HSRModConfig implements OnStartBattleSubscriber, RenderSubscriber, 
             addRelic = config.getBool("addRelic");
             addEvent = config.getBool("addEvent");
             addEnemy = config.getBool("addEnemy");
+            hsrEnemyOnly = config.getBool("hsrEnemyOnly");
             useSpine = config.getBool("useSpine");
             
             firstTime = config.getBool("firstTime");
@@ -164,6 +165,17 @@ public class HSRModConfig implements OnStartBattleSubscriber, RenderSubscriber, 
             }
         });
         panel.addUIElement(addEnemyButton);
+
+        ModLabeledToggleButton hsrEnemyOnlyButton = new ModLabeledToggleButton(getText(TextContent.HSR_ENEMY_ONLY), x, 500.0F, Color.WHITE, FontHelper.buttonLabelFont, hsrEnemyOnly, panel, (label) -> {
+        }, (button) -> {
+            hsrEnemyOnly = button.enabled;
+            try {
+                config.setBool("hsrEnemyOnly", hsrEnemyOnly);
+                config.save();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
         
         ModLabeledToggleButton useSpineButton = new ModLabeledToggleButton(getText(TextContent.USE_SPINE), x, 500.0F, Color.WHITE, FontHelper.buttonLabelFont, useSpine, panel, (label) -> {
         }, (button) -> {
@@ -438,6 +450,7 @@ public class HSRModConfig implements OnStartBattleSubscriber, RenderSubscriber, 
         ADD_RELIC,
         ADD_EVENT,
         ADD_ENEMY,
+        HSR_ENEMY_ONLY,
         USE_SPINE,
         THRERHOLD_PROTOCOLS,
         TP_DESCRIPTION,

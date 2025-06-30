@@ -1,14 +1,11 @@
 package hsrmod.signature;
 
 import basemod.BaseMod;
-import basemod.devcommands.ConsoleCommand;
 import basemod.interfaces.EditStringsSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.UIStrings;
-import hsrmod.signature.devcommands.SignatureCommand;
 import hsrmod.signature.utils.internal.ConfigHelper;
 import hsrmod.signature.utils.internal.MiscHelper;
 import hsrmod.signature.utils.internal.SignatureHelperInternal;
@@ -28,7 +25,7 @@ public class SignatureLibCore implements EditStringsSubscriber, PostInitializeSu
 	public static void initialize() {
 		new SignatureLibCore();
 		ConfigHelper.loadConfig();
-		ConsoleCommand.addCommand("signature", SignatureCommand.class);
+		// ConsoleCommand.addCommand("signature", SignatureCommand.class);
 	}
 
 	@Override
@@ -43,13 +40,13 @@ public class SignatureLibCore implements EditStringsSubscriber, PostInitializeSu
 	public void receivePostInitialize() {
 		UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("SignatureLib:ModPanel");
 
-		BaseMod.registerModBadge(
+		/*BaseMod.registerModBadge(
 				ImageMaster.loadImage("SignatureLib/badge.png"),
 				uiStrings.TEXT[0],
 				"antileaf",
 				uiStrings.TEXT[1],
 				ConfigHelper.createConfigPanel()
-		);
+		);*/
 	}
 
 	public static void postPostInitialize() {

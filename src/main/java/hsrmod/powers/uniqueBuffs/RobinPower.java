@@ -6,7 +6,6 @@ import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
@@ -34,16 +33,6 @@ public class RobinPower extends BuffPower {
 
         if (AbstractDungeon.getMonsters() != null
                 && AbstractDungeon.getMonsters().monsters.stream().noneMatch(m -> m.type == AbstractMonster.EnemyType.BOSS)) {
-            // 取消静音背景音乐
-            CardCrawlGame.music.silenceBGM();
-            CardCrawlGame.music.justFadeOutTempBGM();
-            AbstractDungeon.scene.fadeOutAmbiance();
-            Timer.schedule(new Timer.Task() {
-                @Override
-                public void run() {
-                    CardCrawlGame.music.playTempBgmInstantly("RobinBGM");
-                }
-            }, 2);
             if (!SignatureHelper.isUnlocked(HSRMod.makePath(Robin2.ID))) {
                 Timer.schedule(new Timer.Task() {
                     @Override
@@ -66,8 +55,6 @@ public class RobinPower extends BuffPower {
         super.onRemove();
         if (AbstractDungeon.getMonsters() != null
                 && AbstractDungeon.getMonsters().monsters.stream().noneMatch(m -> m.type == AbstractMonster.EnemyType.BOSS)) {
-            AbstractDungeon.scene.fadeInAmbiance();
-            CardCrawlGame.music.fadeOutTempBGM();
         }
         if (canUnlock) {
             SignatureHelper.unlock(HSRMod.makePath(Robin2.ID), true);

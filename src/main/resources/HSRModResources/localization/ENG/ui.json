@@ -41,6 +41,7 @@
       "Add Relic",
       "Add Event",
       "Add Enemy",
+      "HSR Enemy Only",
       "Use Spine Skin",
       "    Threshold Protocol",
       "Threshold Protocol is a hard mode that is effective above A20. \nWhen Stelle passing the game with full threshold, increase the level by 1. \nEach level adds 400 starting gold, but monsters have higher HP and Toughness, \nwhich will increase by act. At most 40% HP and 20% Toughness per level.",

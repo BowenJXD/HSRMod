@@ -33,10 +33,13 @@ import com.megacrit.cardcrawl.monsters.exordium.SlaverRed;
 import com.megacrit.cardcrawl.powers.FadingPower;
 import com.megacrit.cardcrawl.powers.TimeWarpPower;
 import com.megacrit.cardcrawl.relics.*;
+import com.megacrit.cardcrawl.screens.custom.CustomMod;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import hsrmod.cards.uncommon.RuanMei2;
 import hsrmod.cardsV2.NightOnTheMilkyWay;
 import hsrmod.characters.StellaCharacter;
+import hsrmod.custommods.InfoMod;
+import hsrmod.custommods.TPMod;
 import hsrmod.events.*;
 import hsrmod.misc.*;
 import hsrmod.monsters.Bonus.KingTrashcan;
@@ -55,6 +58,7 @@ import hsrmod.relics.common.AngelTypeIOUDispenser;
 import hsrmod.relics.shop.ARuanPouch;
 import hsrmod.relics.special.*;
 import hsrmod.signature.utils.SignatureHelper;
+import hsrmod.utils.GeneralUtil;
 import hsrmod.utils.ModHelper;
 import hsrmod.utils.RewardEditor;
 import org.apache.logging.log4j.LogManager;
@@ -62,6 +66,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.nio.charset.StandardCharsets;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 
 import static com.megacrit.cardcrawl.core.Settings.language;
@@ -69,7 +74,7 @@ import static hsrmod.characters.StellaCharacter.PlayerColorEnum.HSR_PINK;
 import static hsrmod.characters.StellaCharacter.PlayerColorEnum.STELLA_CHARACTER;
 
 @SpireInitializer // 加载mod的注解
-public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditCharactersSubscriber, EditRelicsSubscriber, EditKeywordsSubscriber, AddAudioSubscriber, PostInitializeSubscriber, StartGameSubscriber {
+public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber, EditCharactersSubscriber, EditRelicsSubscriber, EditKeywordsSubscriber, AddAudioSubscriber, AddCustomModeModsSubscriber, PostInitializeSubscriber, StartGameSubscriber {
     public static String MOD_NAME = "HSRMod";
 
     public static final Color MY_COLOR = new Color(255.0F / 255.0F, 141.0F / 255.0F, 227.0F / 255.0F, 1.0F);
@@ -187,6 +192,7 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
         BaseMod.loadCustomStringsFile(EventStrings.class, "HSRModResources/localization/" + lang + "/events.json");
         BaseMod.loadCustomStringsFile(MonsterStrings.class, "HSRModResources/localization/" + lang + "/monsters.json");
         BaseMod.loadCustomStringsFile(UIStrings.class, "HSRModResources/localization/" + lang + "/ui.json");
+        BaseMod.loadCustomStringsFile(RunModStrings.class, "HSRModResources/localization/" + lang + "/runMods.json");
     }
 
     @Override
@@ -819,6 +825,17 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
 
     void addOgg(String key) {
         BaseMod.addAudio(key, "HSRModResources/localization/" + lang + "/audio/" + key + ".ogg");
+    }
+
+    @Override
+    public void receiveCustomModeMods(List<CustomMod> list) {
+        list.add(new InfoMod("1", s -> GeneralUtil.tryFormat(s, HSRModConfig.getActiveTPCount(), HSRModConfig.tpLimit)));
+        list.add(new InfoMod("2"));
+        list.add(new TPMod(HSRModConfig.TextContent.TP_THORN.name(), b -> HSRModConfig.tpThorn = b));
+        list.add(new TPMod(HSRModConfig.TextContent.TP_MALLEABLE.name(), b -> HSRModConfig.tpMalleable = b));
+        list.add(new TPMod(HSRModConfig.TextContent.TP_RITUAL.name(), b -> HSRModConfig.tpRitual = b));
+        list.add(new TPMod(HSRModConfig.TextContent.TP_SAFEGUARD.name(), b -> HSRModConfig.tpSafeguard = b));
+        list.add(new TPMod(HSRModConfig.TextContent.TP_CURSE.name(), b -> HSRModConfig.tpCurse = b));
     }
 
     void checkSignatureUnlock() {

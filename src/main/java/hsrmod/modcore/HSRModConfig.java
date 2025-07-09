@@ -20,6 +20,7 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import com.megacrit.cardcrawl.screens.custom.CustomMod;
 import com.megacrit.cardcrawl.screens.mainMenu.MenuButton;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.RestartForChangesEffect;
@@ -280,6 +281,27 @@ public class HSRModConfig implements OnStartBattleSubscriber, RenderSubscriber, 
         }
         setter.accept(button.enabled);
         if (button.enabled) {
+            CardCrawlGame.sound.playA("STANCE_ENTER_WRATH", MathUtils.random(0.0F, 0.6F));
+        }
+        return true;
+    }
+
+    public boolean checkMod(CustomMod mod, Consumer<Boolean> setter) {
+        if (getActiveTPCount() == tpLimit && mod.selected) {
+            setter.accept(false);
+            mod.selected = false;
+            displayText(getText(TextContent.TP_LIMIT_REACHED_NOTICE));
+            return false;
+        }
+        if (CardCrawlGame.mainMenuScreen.buttons.stream()
+                .anyMatch(b -> b.result == MenuButton.ClickResult.ABANDON_RUN || b.result == MenuButton.ClickResult.RESUME_GAME)) {
+            setter.accept(false);
+            mod.selected = !mod.selected;
+            displayText(getText(TextContent.TP_CANT_MODIFY_NOTICE));
+            return false;
+        }
+        setter.accept(mod.selected);
+        if (mod.selected) {
             CardCrawlGame.sound.playA("STANCE_ENTER_WRATH", MathUtils.random(0.0F, 0.6F));
         }
         return true;

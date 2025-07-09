@@ -1,0 +1,30 @@
+{
+  "HSRMod:InfoMod1": {
+    "NAME": "阈值协议",
+    "DESCRIPTION": "⚠阈值协议为高难模式，A20以上生效。星满阈值通关时，阈值上限+1。当前阈值协议等级：%d / %d 。"
+  },
+  "HSRMod:InfoMod2": {
+    "NAME": "阈值协议",
+    "DESCRIPTION": "下列条目每选择一项，额外增加400初始金币，且怪物的生命/韧性会随章节增加，每级至多增加40%/20%。"
+  },
+  "HSRMod:TP_THORN": {
+    "NAME": "荆棘",
+    "DESCRIPTION": "怪物初始拥有荆棘。"
+  },
+  "HSRMod:TP_MALLEABLE": {
+    "NAME": "柔韧",
+    "DESCRIPTION": "怪物初始拥有柔韧。"
+  },
+  "HSRMod:TP_RITUAL": {
+    "NAME": "仪式",
+    "DESCRIPTION": "怪物初始拥有仪式。"
+  },
+  "HSRMod:TP_SAFEGUARD": {
+    "NAME": "守备",
+    "DESCRIPTION": "精英和首领初始拥有守备。"
+  },
+  "HSRMod:TP_CURSE": {
+    "NAME": "状态",
+    "DESCRIPTION": "洗牌后，随机获得1张状态牌。"
+  }
+}

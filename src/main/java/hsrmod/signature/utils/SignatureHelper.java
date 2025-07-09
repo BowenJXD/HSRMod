@@ -16,6 +16,7 @@ public abstract class SignatureHelper {
 
 	public static void unlock(String id, boolean unlock) {
 		SignatureHelperInternal.unlock(id, unlock);
+        SignatureHelperInternal.enable(id, unlock); // Automatically enable when unlocking
 	}
 
 	public static void enable(String id, boolean enable) {

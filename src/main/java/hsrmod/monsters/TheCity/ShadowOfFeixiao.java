@@ -139,7 +139,9 @@ public class ShadowOfFeixiao extends BaseMonster implements PreBreakSubscriber {
         ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(this.getClass().getSimpleName() + "_" + 7, 2f));
         ModHelper.killAllMinions();
         onBossVictoryLogic();
-        if (AbstractDungeon.actionManager.cardsPlayedThisTurn.get(AbstractDungeon.actionManager.cardsPlayedThisTurn.size() - 1) instanceof Feixiao2) {
+        if (AbstractDungeon.actionManager.cardsPlayedThisTurn != null 
+                && !AbstractDungeon.actionManager.cardsPlayedThisTurn.isEmpty() 
+                && AbstractDungeon.actionManager.cardsPlayedThisTurn.get(AbstractDungeon.actionManager.cardsPlayedThisTurn.size() - 1) instanceof Feixiao2) {
             SignatureHelper.unlock(HSRMod.makePath(Feixiao2.ID), true);
         }
     }

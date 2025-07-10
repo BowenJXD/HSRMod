@@ -6,6 +6,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.audio.MainMusic;
 import com.megacrit.cardcrawl.audio.TempMusic;
+import hsrmod.modcore.HSRMod;
 import hsrmod.utils.PathDefine;
 
 @SpirePatch(
@@ -43,6 +44,13 @@ public class MusicPatch {
                 break;
             case "Destruction's Beginning":
                 music = MainMusic.newMusic(PathDefine.MUSIC_PATH + "DawnOfDisaster.mp3");
+                break;
+            default:
+                try {
+                    music = MainMusic.newMusic(PathDefine.MUSIC_PATH + key + ".mp3");
+                } catch (Exception e) {
+                    HSRMod.logger.warn("Error while loading path", e);
+                }   
                 break;
         }
         if (music == null)

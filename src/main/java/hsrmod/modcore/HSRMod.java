@@ -61,6 +61,7 @@ import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.utils.GeneralUtil;
 import hsrmod.utils.ModHelper;
 import hsrmod.utils.RewardEditor;
+import org.apache.commons.codec.language.bm.Lang;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -185,14 +186,27 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
     public void receiveEditStrings() {
         updateLanguage();
         // 这里添加注册本地化文本
-        BaseMod.loadCustomStringsFile(CardStrings.class, "HSRModResources/localization/" + lang + "/cards.json");
-        BaseMod.loadCustomStringsFile(CharacterStrings.class, "HSRModResources/localization/" + lang + "/characters.json");
-        BaseMod.loadCustomStringsFile(RelicStrings.class, "HSRModResources/localization/" + lang + "/relics.json");
-        BaseMod.loadCustomStringsFile(PowerStrings.class, "HSRModResources/localization/" + lang + "/powers.json");
-        BaseMod.loadCustomStringsFile(EventStrings.class, "HSRModResources/localization/" + lang + "/events.json");
-        BaseMod.loadCustomStringsFile(MonsterStrings.class, "HSRModResources/localization/" + lang + "/monsters.json");
-        BaseMod.loadCustomStringsFile(UIStrings.class, "HSRModResources/localization/" + lang + "/ui.json");
-        BaseMod.loadCustomStringsFile(RunModStrings.class, "HSRModResources/localization/" + lang + "/runMods.json");
+        try {
+            BaseMod.loadCustomStringsFile(CardStrings.class, "HSRModResources/localization/" + lang + "/cards.json");
+            BaseMod.loadCustomStringsFile(CharacterStrings.class, "HSRModResources/localization/" + lang + "/characters.json");
+            BaseMod.loadCustomStringsFile(RelicStrings.class, "HSRModResources/localization/" + lang + "/relics.json");
+            BaseMod.loadCustomStringsFile(PowerStrings.class, "HSRModResources/localization/" + lang + "/powers.json");
+            BaseMod.loadCustomStringsFile(EventStrings.class, "HSRModResources/localization/" + lang + "/events.json");
+            BaseMod.loadCustomStringsFile(MonsterStrings.class, "HSRModResources/localization/" + lang + "/monsters.json");
+            BaseMod.loadCustomStringsFile(UIStrings.class, "HSRModResources/localization/" + lang + "/ui.json");
+            BaseMod.loadCustomStringsFile(RunModStrings.class, "HSRModResources/localization/" + lang + "/runMods.json");
+        } catch (Exception e) {
+            logger.warn(e);
+            lang = "ZHS";
+            BaseMod.loadCustomStringsFile(CardStrings.class, "HSRModResources/localization/" + lang + "/cards.json");
+            BaseMod.loadCustomStringsFile(CharacterStrings.class, "HSRModResources/localization/" + lang + "/characters.json");
+            BaseMod.loadCustomStringsFile(RelicStrings.class, "HSRModResources/localization/" + lang + "/relics.json");
+            BaseMod.loadCustomStringsFile(PowerStrings.class, "HSRModResources/localization/" + lang + "/powers.json");
+            BaseMod.loadCustomStringsFile(EventStrings.class, "HSRModResources/localization/" + lang + "/events.json");
+            BaseMod.loadCustomStringsFile(MonsterStrings.class, "HSRModResources/localization/" + lang + "/monsters.json");
+            BaseMod.loadCustomStringsFile(UIStrings.class, "HSRModResources/localization/" + lang + "/ui.json");
+            BaseMod.loadCustomStringsFile(RunModStrings.class, "HSRModResources/localization/" + lang + "/runMods.json");
+        }
     }
 
     @Override

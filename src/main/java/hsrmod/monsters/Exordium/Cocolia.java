@@ -105,6 +105,8 @@ public class Cocolia extends BaseMonster {
                                     .fadeOut(0.1f)
                                     .triggerVfxAt(Settings.FAST_MODE ? 1.5f : 2f, 1, ExplosionSmallEffect::new)
                                     .build(), Settings.FAST_MODE ? 2f : 3f));
+                    CardCrawlGame.music.dispose();
+                    CardCrawlGame.music.playTempBGM(Encounter.END_OF_THE_ETERNAL_FREEZE + "_2");
 
                     int handCount = p.hand.size();
                     addToBot(new ExhaustAction(handCount, true, false, false));

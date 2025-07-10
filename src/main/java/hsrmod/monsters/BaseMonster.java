@@ -182,6 +182,11 @@ public abstract class BaseMonster extends CustomMonster {
         if (tv > 0) {
             addToBot(new ApplyPowerAction(this, this, new ToughnessPower(this, tv, tv), 0));
         }
+        if (bgm != null) {
+            AbstractDungeon.scene.fadeOutAmbiance();
+            CardCrawlGame.music.silenceTempBgmInstantly();
+            AbstractDungeon.getCurrRoom().playBgmInstantly(bgm);
+        }
         if (preBattleAction != null) {
             preBattleAction.accept(this);
         }

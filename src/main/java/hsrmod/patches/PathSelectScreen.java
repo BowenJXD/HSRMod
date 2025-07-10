@@ -101,7 +101,7 @@ public class PathSelectScreen implements ISubscriber, CustomSavable<Integer> {
         } catch (Exception e) {
             HSRMod.logger.error("Error while loading path", e);
         }
-        index = pathUnlocked - 1;
+        index = pathUnlocked == 3 ? 0 : pathUnlocked - 1;
         refresh();
     }
     

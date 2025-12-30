@@ -45,7 +45,7 @@ public class PowerPatch {
         }
     }
     
-    @SpirePatch(clz = RemoveSpecificPowerAction.class, method = "update")
+    @SpirePatch(clz = RemoveSpecificPowerAction.class, method = "update", requiredModId = "spireTogether")
     public static class RemoveSpecificPowerActionPatch {
         @SpireInsertPatch(rloc = 49-36, localvars = {"removeMe"})
         public static void Insert(RemoveSpecificPowerAction __inst, @ByRef AbstractPower[] removeMe) {

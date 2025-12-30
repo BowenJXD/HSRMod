@@ -77,7 +77,7 @@ public class ModHelper {
     }
 
     public static int getPowerCount(AbstractCreature creature, String powerID) {
-        return creature.hasPower(powerID) ? creature.getPower(powerID).amount : 0;
+        return creature != null && creature.hasPower(powerID) ? creature.getPower(powerID).amount : 0;
     }
 
     public static List<FindResult> findCardsInGroup(Predicate<AbstractCard> predicate, CardGroup group) {

@@ -535,9 +535,9 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
                 new FortuneBananAdvisor(300, AbstractDungeon.monsterRng.random(50, 75), ModHelper.specialAscension(AbstractMonster.EnemyType.ELITE)),
         }));
         BaseMod.addMonster(Encounter.THE_PAST_PRESENT_AND_ETERNAL_SHOW, () -> new MonsterGroup(new AbstractMonster[]{
-                new PresentInebriatedInRevelry(-400, 0).modifyHpByPercent(1.5f).modifyToughnessByPercent(2f),
-                new TomorrowInHarmoniousChords(-100, 0).modifyHpByPercent(1.5f).modifyToughnessByPercent(2f),
-                new PastConfinedAndCaged(200, 0).modifyHpByPercent(1.5f).modifyToughnessByPercent(2f),
+                new PresentInebriatedInRevelry(-400, 0).modifyHpByPercent(2f).modifyToughnessByPercent(2f),
+                new TomorrowInHarmoniousChords(-100, 0).modifyHpByPercent(2f).modifyToughnessByPercent(2f),
+                new PastConfinedAndCaged(200, 0).modifyHpByPercent(2f).modifyToughnessByPercent(2f),
         }));
         BaseMod.addMonster(Encounter.AVENTURINE_OF_STRATAGEMS, () -> new MonsterGroup(new AbstractMonster[]{
                 new AventurineOfStratagems()

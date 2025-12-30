@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
+import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -56,11 +57,14 @@ public class Yanqing extends BaseMonster implements PostMonsterDeathSubscriber {
             addToBot(new ApplyPowerAction(this, this, new SwordFormationPower(this)));
             addToBot(new ApplyPowerAction(this, this, new LockToughnessPower(this)));
             AbstractDungeon.player.drawPile.group.forEach(c -> CommonKeywordIconsField.useIcons.set(c, true));
-            if (!AbstractDungeon.player.drawPile.isEmpty()) {
-                AbstractDungeon.player.drawPile.getRandomCard(AbstractDungeon.aiRng).exhaust = true;
-                AbstractDungeon.player.drawPile.getRandomCard(AbstractDungeon.aiRng).isEthereal = true;
-                AbstractDungeon.player.drawPile.getRandomCard(AbstractDungeon.aiRng).isInnate = true;
-                AbstractDungeon.player.drawPile.getRandomCard(AbstractDungeon.aiRng).selfRetain = true;
+            CardGroup tmp = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+            tmp.group.addAll(AbstractDungeon.player.drawPile.group);
+            tmp.group.addAll(AbstractDungeon.player.hand.group);
+            if (!tmp.isEmpty()) {
+                tmp.getRandomCard(AbstractDungeon.aiRng).exhaust = true;
+                tmp.getRandomCard(AbstractDungeon.aiRng).isEthereal = true;
+                tmp.getRandomCard(AbstractDungeon.aiRng).isInnate = true;
+                tmp.getRandomCard(AbstractDungeon.aiRng).selfRetain = true;
             }
         });
         addMove(Intent.ATTACK_DEBUFF, 3, 4, mi -> {

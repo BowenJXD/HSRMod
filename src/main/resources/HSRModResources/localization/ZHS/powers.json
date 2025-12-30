@@ -430,7 +430,7 @@
     "NAME": "蓄力",
     "DESCRIPTIONS": [
       "正在蓄力，下回合释放。 #y击破 以打断。 NL %s",
-      "正在蓄力，剩余回合数： #b%d 。 #y击破 以打断。 NL %s"
+      "正在蓄力，剩余回合数： #b%s 。 #y击破 以打断。 NL %s"
     ]
   },
   "HSRMod:WalkInTheLight": {

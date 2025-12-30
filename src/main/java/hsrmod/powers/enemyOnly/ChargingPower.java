@@ -58,10 +58,14 @@ public class ChargingPower extends StatePower implements PreBreakSubscriber {
 
     @Override
     public void updateDescription() {
-        if (amount > 1)
-            description = String.format(DESCRIPTIONS[1], " #r" + move, amount);
-        else
-            description = String.format(DESCRIPTIONS[0], " #r" + move);
+        try{
+            if (amount > 1)
+                description = String.format(DESCRIPTIONS[1], amount, " #r" + move);
+            else
+                description = String.format(DESCRIPTIONS[0], " #r" + move);
+        } catch (Exception ignore) {
+            
+        }
     }
 
     @Override

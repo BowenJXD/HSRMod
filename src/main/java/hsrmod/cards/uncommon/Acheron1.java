@@ -58,6 +58,7 @@ public class Acheron1 extends BaseCard {
                 }
             }
         };
+        BaseMod.unsubscribe(subscriber);
         BaseMod.subscribe(subscriber);
     }
 

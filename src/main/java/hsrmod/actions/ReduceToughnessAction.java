@@ -39,8 +39,13 @@ public class ReduceToughnessAction extends AbstractGameAction {
         String playerName = AbstractDungeon.player.chosenClass.name();
         if (playerName.equals("Aventurine_CLASS")) {
             this.tr = MathUtils.random(1, 6);
+            this.elementType = ElementType.Imaginary;
         } else if (playerName.equals("ACHERON_CHAR")) {
             this.tr = target.hasPower("AcheronMod:Flow") ? 3 : 2;
+            this.elementType = ElementType.Lightning;
+        } else if (playerName.equals("HuTao")) {
+            this.tr = AbstractDungeon.player.currentHealth <= AbstractDungeon.player.maxHealth / 2 ? 4 : 2;
+            this.elementType = ElementType.Fire;
         }
     }
 

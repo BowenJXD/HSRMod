@@ -27,8 +27,7 @@ public class March7th3 extends BaseCard {
         addToBot(new VFXAction(new BlizzardEffect(7, false)));
         addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)
                 .setCallback(ci -> {
-                    if (AbstractDungeon.cardRng.random(99) < 50)
-                        addToBot(new ApplyPowerAction(ci.target, p, new FrozenPower(ci.target, magicNumber), magicNumber));
+                    addToBot(new ApplyPowerAction(ci.target, p, new FrozenPower(ci.target, magicNumber), magicNumber));
                 })
         );
     }

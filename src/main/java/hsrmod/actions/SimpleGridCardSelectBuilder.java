@@ -15,7 +15,7 @@ import java.util.function.Predicate;
 
 /**
  * @author Kurrent Gayronld (Somdy)
- * @see <a href="https://github.com/Somdy/LazyManKitss">LazyManKits</a>
+ * @see <a href="https://github.com/Somdy/LazyManKits">LazyManKits</a>
  */
 public class SimpleGridCardSelectBuilder extends AbstractGameAction implements PostDungeonUpdateSubscriber {
     private String msg;

@@ -286,6 +286,7 @@ public class RewardEditor implements StartGameSubscriber, CustomSavable<String[]
      */
     public boolean checkPath(AbstractCard card) {
         if (card.tags == null || card.tags.isEmpty() || bannedTags == null) return true;
+        else if (card.tags.stream().anyMatch(t -> t == tag)) return true;
         return card.tags.stream().noneMatch(t -> bannedTags.contains(t));
     }
 
@@ -295,7 +296,7 @@ public class RewardEditor implements StartGameSubscriber, CustomSavable<String[]
      * @param tag the path tag
      */
     public boolean checkPath(AbstractCard.CardTags tag) {
-        if (bannedTags == null) return true;
+        if (bannedTags == null || tag == this.tag) return true;
         else return !bannedTags.contains(tag);
     }
 

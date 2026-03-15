@@ -1,5 +1,6 @@
 package hsrmod.relics.rare;
 
+import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.CommonKeywordIconsField;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -30,7 +31,10 @@ public class Revitalization310 extends BaseRelic {
             return;
         flash();
         ModHelper.addToBotAbstract(() -> {
-            AbstractDungeon.player.hand.group.forEach(c -> c.isEthereal = true);
+            AbstractDungeon.player.hand.group.forEach(c -> {
+                CommonKeywordIconsField.useIcons.set(c, true);
+                c.isEthereal = true;
+            });
             canTrigger = false;
         });
     }

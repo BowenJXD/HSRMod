@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import hsrmod.modcore.HSRMod;
 import hsrmod.modcore.Path;
+import hsrmod.patches.PathSelectScreen;
 import hsrmod.relics.starter.TrailblazeTimer;
 import hsrmod.relics.starter.WaxRelic;
 import hsrmod.utils.PathDefine;
@@ -28,10 +29,12 @@ public class StelleAwakeEvent extends PhasedEvent {
     public StelleAwakeEvent() {
         super(ID, NAME, PathDefine.EVENT_PATH + ID + ".png");
         List<TextPhase.OptionInfo> options = new ArrayList<>();
-
-        for (int i = 0; i < Path.values().length; i++) {
+        
+        for (int i = 0; i < PathSelectScreen.Inst.pathUnlocked; i++) {
             if (i >= OPTIONS.length - 1) continue;
-            Path path = Path.values()[i];
+            PathSelectScreen.PathInfo pathInfo = PathSelectScreen.PATHS.get(i);
+            if (pathInfo == null) continue;
+            Path path = pathInfo.path;
             AbstractRelic relic = path == Path.TRAILBLAZE ? new TrailblazeTimer() : WaxRelic.getWaxRelic(RelicLibrary.starterList, Path.toTag(path));
             if (relic == null) continue;
             AbstractDungeon.player.loseRelic(relic.relicId);

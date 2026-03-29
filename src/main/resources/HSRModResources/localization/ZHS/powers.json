@@ -800,5 +800,41 @@
     "DESCRIPTIONS": [
       "回合结束时，移除所有层触发：对随机敌人造成 #b%d 点固定伤害。"
     ]
+  },
+  "HSRMod:MilitaryMerit": {
+    "NAME": "军功",
+    "DESCRIPTIONS": [
+      "打出攻击牌时，若层数小于 #b6 ，则叠加 #b1 层，否则消耗 #b6 层，获得 #b4 点 #y活力 ，额外打出一次。"
+    ]
+  },
+  "HSRMod:Newbud": {
+    "NAME": "新蕊",
+    "DESCRIPTIONS": [
+      "#y「灼掠幽墟的晦翼」 造成的基础伤害为 #b%d 。"
+    ]
+  },
+  "HSRMod:Recollection": {
+    "NAME": "追忆",
+    "DESCRIPTIONS": [
+      "打出牌后，叠加 #b1 层，若为 #y黄金裔 牌，则额外叠加 #b1 层。达到 #b24 层时，转化为 #b0 层 #y未来 ，获得 #y「你好，世界♪」 。"
+    ]
+  },
+  "HSRMod:Future": {
+    "NAME": "未来",
+    "DESCRIPTIONS": [
+      "打出牌后，叠加 #b1 层，若为 #y黄金裔 牌，则额外叠加 #b1 层，至多 #b24 层。回合结束时，若不小于 #b12 层，则移除 #b12 层，打出 #y「花与箭的舞曲」 。"
+    ]
+  },
+  "HSRMod:Trailblazer10": {
+    "NAME": "无所不能的伙伴",
+    "DESCRIPTIONS": [
+      "每次激发 #y充能球 后，摸 #b%d 张牌。"
+    ]
+  },
+  "HSRMod:Hyacine2": {
+    "NAME": "飞入晨昏的我们",
+    "DESCRIPTIONS": [
+      "通过 #y冰霜充能球 获得格挡时，获得 #b%d 倍的 #y临时生命 。"
+    ]
   }
 }

@@ -230,6 +230,7 @@ public class DataManager {
             replacements.put("虚无。", " 虚无 。");
             replacements.put("固有。", " 固有 。");
             replacements.put("保留。", " 保留 。");
+            replacements.put("激发", " 激发 ");
 
             // 读取文件并替换文本
             replaceTextInFile(CARD_CSV_ZHS, replacements);
@@ -237,6 +238,7 @@ public class DataManager {
             replacements.clear();
             replacements.put("乘胜 hsrmod:追击 ", "乘胜追击");
             replacements.put("hsrmod:超 hsrmod:击破伤害 ", "hsrmod:超击破伤害 ");
+            replacements.put("[hsrmod:ChargeIcon] 球", "充能球 ");
             replacements.put("  ", " ");
 
             replaceTextInFile(CARD_CSV_ZHS, replacements);

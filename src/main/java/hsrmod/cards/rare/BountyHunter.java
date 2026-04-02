@@ -1,3 +1,4 @@
+/*
 package hsrmod.cards.rare;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -18,3 +19,4 @@ public class BountyHunter extends BaseCard {
         addToBot(new ApplyPowerAction(p, p, new BountyHunterPower(upgraded, magicNumber)));
     }
 }
+*/

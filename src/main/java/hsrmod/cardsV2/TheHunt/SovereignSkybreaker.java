@@ -1,3 +1,4 @@
+/*
 package hsrmod.cardsV2.TheHunt;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -19,3 +20,4 @@ public class SovereignSkybreaker extends BaseCard {
         addToBot(new ApplyPowerAction(p, p, new SovereignSkybreakerPower(magicNumber, upgraded), 0));
     }
 }
+*/

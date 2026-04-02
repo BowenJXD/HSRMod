@@ -1,3 +1,4 @@
+/*
 package hsrmod.cards.uncommon;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -18,3 +19,4 @@ public class CommonMortal extends BaseCard {
         addToBot(new ApplyPowerAction(p, p, new CommonMortalPower(magicNumber, upgraded)));
     }
 }
+*/

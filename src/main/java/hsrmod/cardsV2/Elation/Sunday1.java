@@ -1,4 +1,4 @@
-package hsrmod.cardsV2;
+package hsrmod.cardsV2.Elation;
 
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;

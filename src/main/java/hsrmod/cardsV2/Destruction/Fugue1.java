@@ -1,6 +1,5 @@
-package hsrmod.cardsV2;
+package hsrmod.cardsV2.Destruction;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -8,16 +7,10 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.SearingBlowEffect;
-import hsrmod.actions.AOEAction;
-import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
-import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.powers.uniqueDebuffs.CloudflameLusterPower;
 import hsrmod.utils.ModHelper;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class Fugue1 extends BaseCard {
     public static final String ID = Fugue1.class.getSimpleName();

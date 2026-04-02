@@ -1,3 +1,4 @@
+/*
 package hsrmod.cards.uncommon;
 
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
@@ -35,3 +36,4 @@ public class RuanMei2 extends BaseCard {
         }
     }
 }
+*/

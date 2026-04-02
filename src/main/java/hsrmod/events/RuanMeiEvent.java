@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.vfx.UpgradeShineEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
-import hsrmod.cards.uncommon.RuanMei2;
+import hsrmod.cards.uncommon.RuanMei1;
 import hsrmod.modcore.HSRMod;
 import hsrmod.relics.shop.ARuanPouch;
 import hsrmod.signature.utils.SignatureHelper;
@@ -92,7 +92,7 @@ public class RuanMeiEvent extends PhasedEvent {
                 .addOption(OPTIONS[11], (i)->openMap())
         );
 
-        SignatureHelper.unlock(HSRMod.makePath(RuanMei2.ID), true);
+        SignatureHelper.unlock(HSRMod.makePath(RuanMei1.ID), true);
         
         //This sets the starting point of the event.
         transitionKey(0);

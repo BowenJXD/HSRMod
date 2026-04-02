@@ -1,3 +1,4 @@
+/*
 package hsrmod.cardsV2.Preservation;
 
 import com.badlogic.gdx.graphics.Color;
@@ -35,3 +36,4 @@ public class DayOneOfMyNewLife extends BaseCard {
         addToBot(new GainBlockAction(m, 4));
     }
 }
+*/

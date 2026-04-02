@@ -1,3 +1,4 @@
+/*
 package hsrmod.cardsV2.Propagation;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -36,3 +37,4 @@ public class SwarmKingProgeny extends BaseCard {
             addToBot(new LoseEnergyAction(EnergyPanel.totalCount));
     }
 }
+*/

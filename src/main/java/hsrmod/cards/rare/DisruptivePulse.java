@@ -1,3 +1,4 @@
+/*
 package hsrmod.cards.rare;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -41,3 +42,4 @@ public class DisruptivePulse extends BaseCard {
         );
     }
 }
+*/

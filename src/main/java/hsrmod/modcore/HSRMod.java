@@ -33,7 +33,7 @@ import com.megacrit.cardcrawl.powers.FadingPower;
 import com.megacrit.cardcrawl.powers.TimeWarpPower;
 import com.megacrit.cardcrawl.relics.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
-import hsrmod.cards.uncommon.RuanMei2;
+import hsrmod.cards.uncommon.RuanMei1;
 import hsrmod.cardsV2.NightOnTheMilkyWay;
 import hsrmod.characters.StellaCharacter;
 import hsrmod.dungeons.Belobog;
@@ -58,6 +58,7 @@ import hsrmod.relics.shop.ARuanPouch;
 import hsrmod.relics.special.*;
 import hsrmod.signature.devcommands.SignatureCommand;
 import hsrmod.signature.utils.SignatureHelper;
+import hsrmod.utils.GAMManager;
 import hsrmod.utils.ModHelper;
 import hsrmod.utils.RewardEditor;
 import org.apache.logging.log4j.LogManager;
@@ -208,6 +209,7 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
 
     @Override
     public void receivePostInitialize() {
+        BaseMod.subscribe(GAMManager.getInstance());
         BaseMod.addSaveField("RewardEditor", RewardEditor.getInstance());
         HSRModConfig.getInstance().addConfigPanel();
         addMonsters();
@@ -233,7 +235,7 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
                 .spawnCondition(() -> AbstractDungeon.eventRng.random(99) <
                         8
                                 + AbstractDungeon.floorNum / 10
-                                + (SignatureHelper.isUnlocked(HSRMod.makePath(RuanMei2.ID)) ? 0 : 2)
+                                + (SignatureHelper.isUnlocked(HSRMod.makePath(RuanMei1.ID)) ? 0 : 2)
                                 + (Objects.equals(AbstractDungeon.player.name, "星野") ? 2 : 0)
                         )
                 .bonusCondition(() -> AbstractDungeon.eventRng.random(99) < (ModHelper.hasRelic(ARuanPouch.ID) ? 100 : 50))

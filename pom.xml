@@ -8,7 +8,7 @@
     <groupId>hsr-mod</groupId>
     <!-- 改成你需要的名称 -->
     <artifactId>hsr-mod</artifactId>
-    <version>2.7</version>
+    <version>3.0</version>
     <packaging>jar</packaging>
 
     <!-- 改成你需要的名称 -->

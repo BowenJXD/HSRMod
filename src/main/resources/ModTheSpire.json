@@ -2,8 +2,8 @@
   "modid": "HSRMod", 
   "name": "HSR【崩坏：星穹铁道】", 
   "author_list": ["Aaron喏"], 
-  "description": "以崩坏：星穹铁道为主题的MOD。 A mod themed after Honkai: Star Rail.", 
-  "version": "2.7.9", 
+  "description": "以崩坏：星穹铁道为主题的MOD。 \nA mod themed after Honkai: Star Rail.\n\n!!!!!!!!!!!!!!!!注意事项!!!!!!!!!!!!!!!!\n!!!!!!!!!!!!!!!!注意事项!!!!!!!!!!!!!!!!\n!!!!!!!!!!!!!!!!注意事项!!!!!!!!!!!!!!!!\n\n启动器左侧的MOD列表中需要勾选所有前置MOD\n若没有前置MOD的选项，需要在STEAM创意工坊下载对应MOD。\n若仍旧无法启动，请确认所有前置MOD是否为最新版本！！！\n\n前置MOD包括：\nAct Like It!\nBaseMod\nStSLib", 
+  "version": "3.0.0", 
   "sts_version": "12-18-2022", 
   "mts_version": "3.23.3", 
   "dependencies": ["basemod", "stslib", "actlikeit"] 

@@ -22,6 +22,7 @@ public class Castorice1 extends BaseCard {
         super(ID);
         tags.add(CustomEnums.REVIVE);
         tags.add(CardTags.HEALING);
+        tags.add(CustomEnums.CHRYSOS_HEIR);
     }
 
     @Override
@@ -33,7 +34,7 @@ public class Castorice1 extends BaseCard {
                 heal += magicNumber;
                 if (card.selfRetain || card.retain) {
                     heal += magicNumber;
-                    draw += 2;
+                    if (upgraded) draw += 2;
                 }
             }
             addToTop(new ApplyPowerAction(p, p, new NecrosisPower(p, 1)));

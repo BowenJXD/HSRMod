@@ -1,10 +1,9 @@
 package hsrmod.powers.uniqueDebuffs;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import hsrmod.cardsV2.Fugue1;
+import hsrmod.cardsV2.Destruction.Fugue1;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.DebuffPower;

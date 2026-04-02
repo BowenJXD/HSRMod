@@ -14,6 +14,7 @@ public class Tribbie1 extends BaseCard {
         super(ID);
         setBaseEnergyCost(120);
         tags.add(CustomEnums.ENERGY_COSTING);
+        tags.add(CustomEnums.CHRYSOS_HEIR);
     }
 
     @Override

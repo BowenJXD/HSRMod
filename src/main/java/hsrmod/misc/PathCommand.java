@@ -33,7 +33,7 @@ public class PathCommand extends ConsoleCommand {
 
     public static class PathLockCommand extends ConsoleCommand {
         public PathLockCommand() {
-            this.minExtraTokens = 1;
+            this.minExtraTokens = 0;
             this.maxExtraTokens = 1;
             this.simpleCheck = true;
         }
@@ -49,7 +49,7 @@ public class PathCommand extends ConsoleCommand {
 
     public static class PathUnlockCommand extends ConsoleCommand {
         public PathUnlockCommand() {
-            this.minExtraTokens = 1;
+            this.minExtraTokens = 0;
             this.maxExtraTokens = 1;
             this.simpleCheck = true;
         }

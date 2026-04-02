@@ -63,6 +63,7 @@ public class Clara1 extends BaseCard implements OnPlayerDamagedSubscriber {
                 || !AbstractDungeon.player.hand.contains(this)
                 || !AbstractDungeon.actionManager.turnHasEnded) return i;
         canBeUsed = true;
+        addToBot(new FollowUpAction(this));
         return i;
     }
 }

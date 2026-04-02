@@ -27,9 +27,9 @@ public class March7th1 extends BaseCard {
         addToBot(new GainBlockAction(p, p, block));
         AbstractPower power = p.getPower(ReinforcePower.POWER_ID);
         if (power != null)
-            ((ReinforcePower) power).block = upgraded ? block : 0;
+            ((ReinforcePower) power).upgraded = upgraded;
         else
-            addToBot(new ApplyPowerAction(p, p, new ReinforcePower(p, upgraded ? block : 0)));
+            addToBot(new ApplyPowerAction(p, p, new ReinforcePower(p, magicNumber, upgraded), magicNumber));
         addToBot(new CleanAction(p, 1, false));
     }
 }

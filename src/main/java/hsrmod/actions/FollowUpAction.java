@@ -39,13 +39,13 @@ public class FollowUpAction extends AbstractGameAction {
 
     public void update() {
         if (this.duration == Settings.ACTION_DUR_FAST) {
-            if (AbstractDungeon.actionManager.turnHasEnded) {
+            /*if (AbstractDungeon.actionManager.turnHasEnded) {
                 this.isDone = true;
                 if (card instanceof BaseCard){
                     ((BaseCard) card).followedUp = false;
                 }
                 return;
-            }
+            }*/
             
             ModHelper.findCards((c) -> c.uuid.equals(card.uuid)).forEach((r) -> r.group.removeCard(r.card));
             AbstractDungeon.getCurrRoom().souls.remove(card); // ?

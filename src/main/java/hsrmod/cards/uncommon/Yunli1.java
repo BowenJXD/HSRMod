@@ -4,6 +4,7 @@ import basemod.BaseMod;
 import basemod.interfaces.OnPlayerDamagedSubscriber;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -96,7 +97,8 @@ public class Yunli1 extends BaseCard implements OnPlayerDamagedSubscriber {
                 || damageInfo.owner == AbstractDungeon.player) 
             return i;
         canBeUsed = true;
-        addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new EnergyPower(AbstractDungeon.player, 10), 10));
+        addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new EnergyPower(AbstractDungeon.player, 20), 20));
+        addToTop(new FollowUpAction(this, damageInfo.owner));
         return Math.max(0, i - magicNumber);
     }
 

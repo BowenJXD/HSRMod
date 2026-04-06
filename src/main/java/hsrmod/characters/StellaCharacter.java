@@ -21,6 +21,7 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
+import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.powers.BackAttackPower;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import hsrmod.cards.base.*;
@@ -356,6 +357,12 @@ public class StellaCharacter extends CustomPlayer implements IHSRCharacter {
             HSRModConfig.setFirstTime(false);
         }
         // HSRModConfig.setFirstTime(true);
+    }
+
+    @Override
+    public void channelOrb(AbstractOrb orbToSet) {
+        super.channelOrb(orbToSet);
+        // orbToSet.cY -= Settings.HEIGHT / 3f;
     }
 
     // 以下为原版人物枚举、卡牌颜色枚举扩展的枚举，需要写，接下来要用

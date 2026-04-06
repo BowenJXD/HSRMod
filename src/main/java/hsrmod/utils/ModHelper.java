@@ -2,9 +2,11 @@ package hsrmod.utils;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
+import com.evacipated.cardcrawl.mod.stslib.actions.defect.TriggerPassiveAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.SuicideAction;
+import com.megacrit.cardcrawl.actions.defect.EvokeOrbAction;
 import com.megacrit.cardcrawl.actions.utility.HideHealthBarAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -13,11 +15,17 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
+import com.megacrit.cardcrawl.orbs.AbstractOrb;
+import com.megacrit.cardcrawl.orbs.Dark;
+import com.megacrit.cardcrawl.orbs.Lightning;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.MinionPower;
 import com.megacrit.cardcrawl.random.Random;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
+import hsrmod.actions.DarkEvokeToAction;
+import hsrmod.actions.LightningEvokeToAction;
+import hsrmod.actions.TriggerLightningPassiveToAction;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.enemyOnly.SummonedPower;
 
@@ -308,5 +316,33 @@ public class ModHelper {
     
     public static boolean eventAscension() {
         return AbstractDungeon.ascensionLevel >= 15;
+    }
+    
+    public static void triggerPassiveTo(AbstractOrb orb, AbstractCreature target) {
+        triggerPassiveTo(orb, target, 1);
+    }
+    
+    public static void triggerPassiveTo(AbstractOrb orb, AbstractCreature target, int amount) {
+        if (orb.ID.equals(Lightning.ORB_ID)) {
+            AbstractDungeon.actionManager.addToBottom(new TriggerLightningPassiveToAction(orb, target, amount));
+        } else {
+            AbstractDungeon.actionManager.addToBottom(new TriggerPassiveAction(orb, amount));
+        }
+    }
+    
+    public static void evokeTo(AbstractOrb orb, AbstractCreature target) {
+        evokeTo(orb, target, 1);
+    }
+    
+    public static void evokeTo(AbstractOrb orb, AbstractCreature target, int amount) {
+        if (orb.ID.equals(Lightning.ORB_ID)) {
+            AbstractDungeon.actionManager.addToBottom(new LightningEvokeToAction(orb, target, amount));
+        } else if (orb.ID.equals(Dark.ORB_ID)){
+            for (int i = amount; i > 0; i--) {
+                AbstractDungeon.actionManager.addToBottom(new DarkEvokeToAction(orb, target));
+            }
+        } else {
+            AbstractDungeon.actionManager.addToBottom(new EvokeOrbAction(amount));
+        }
     }
 }

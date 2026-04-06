@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import hsrmod.actions.ElementalDamageAction;
@@ -42,6 +43,7 @@ public final class SubscriptionManager {
     List<PostMonsterDeathSubscriber> postMonsterDeathSubscribers = new ArrayList<>();
     List<PostHPUpdateSubscriber> postHPUpdateSubscribers = new ArrayList<>();
     List<PrePowerTriggerSubscriber> prePowerTriggerSubscribers = new ArrayList<>();
+    List<PreOrbPassiveOrEvokeSubscriber> preOrbPassiveOrEvokeSubscribers = new ArrayList<>();
 
     HashMap<RunnableType, List<IRunnableSubscriber>> runnableSubscribers = new HashMap<>();
     HashMap<NumChangerType, List<INumChangerSubscriber>> numChangerSubscribers = new HashMap<>();
@@ -129,6 +131,10 @@ public final class SubscriptionManager {
             if (addToFront) prePowerTriggerSubscribers.add(0, (PrePowerTriggerSubscriber) sub);
             else prePowerTriggerSubscribers.add((PrePowerTriggerSubscriber) sub);
         }
+        if (sub instanceof PreOrbPassiveOrEvokeSubscriber && !preOrbPassiveOrEvokeSubscribers.contains(sub)) {
+            if (addToFront) preOrbPassiveOrEvokeSubscribers.add(0, (PreOrbPassiveOrEvokeSubscriber) sub);
+            else preOrbPassiveOrEvokeSubscribers.add((PreOrbPassiveOrEvokeSubscriber) sub);
+        }
 
         if (sub instanceof IRunnableSubscriber) {
             subscribeRunnableHelper((IRunnableSubscriber) sub, ((IRunnableSubscriber) sub).getSubType());
@@ -177,6 +183,7 @@ public final class SubscriptionManager {
         if (sub instanceof PostMonsterDeathSubscriber) postMonsterDeathSubscribers.remove(sub);
         if (sub instanceof PostHPUpdateSubscriber) postHPUpdateSubscribers.remove(sub);
         if (sub instanceof PrePowerTriggerSubscriber) prePowerTriggerSubscribers.remove(sub);
+        if (sub instanceof PreOrbPassiveOrEvokeSubscriber) preOrbPassiveOrEvokeSubscribers.remove(sub);
 
         if (sub instanceof IRunnableSubscriber) {
             unsubscribeRunnableHelper((IRunnableSubscriber) sub, ((IRunnableSubscriber) sub).getSubType());
@@ -371,6 +378,30 @@ public final class SubscriptionManager {
         }
         
         unsubscribeLaterHelper(PrePowerTriggerSubscriber.class);
+    }
+    
+    public int triggerPreOrbPassive(AbstractOrb orb, int amount) {
+        int result = amount;
+
+        for (PreOrbPassiveOrEvokeSubscriber sub : preOrbPassiveOrEvokeSubscribers) {
+            result = sub.preOrbPassive(orb, result);
+        }
+
+        unsubscribeLaterHelper(PreOrbPassiveOrEvokeSubscriber.class);
+
+        return result;
+    }
+
+    public int triggerPreOrbEvoke(AbstractOrb orb, int amount) {
+        int result = amount;
+
+        for (PreOrbPassiveOrEvokeSubscriber sub : preOrbPassiveOrEvokeSubscribers) {
+            result = sub.preOrbEvoke(orb, result);
+        }
+
+        unsubscribeLaterHelper(PreOrbPassiveOrEvokeSubscriber.class);
+
+        return result;
     }
 
     public void triggerRunnable(RunnableType type) {

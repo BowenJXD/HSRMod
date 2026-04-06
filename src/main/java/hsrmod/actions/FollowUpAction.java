@@ -27,6 +27,10 @@ public class FollowUpAction extends AbstractGameAction {
         this.card = card;
         this.target = target;
         this.autoPlay = autoPlay;
+
+        if (card instanceof BaseCard){
+            ((BaseCard) card).followedUp = true;
+        }
     }
     
     public FollowUpAction(AbstractCard card, AbstractCreature target) {
@@ -60,10 +64,6 @@ public class FollowUpAction extends AbstractGameAction {
             card.applyPowers();
 
             target = SubscriptionManager.getInstance().triggerPreFollowUp(card, target);
-            
-            if (card instanceof BaseCard){
-                ((BaseCard) card).followedUp = true;
-            }
             
             if (target == null)
                 this.addToTop(new NewQueueCardAction(card, true, false, autoPlay));

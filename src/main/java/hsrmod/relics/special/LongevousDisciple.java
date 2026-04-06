@@ -19,8 +19,8 @@ public class LongevousDisciple extends BaseRelic {
                 .filter(c -> c.hasTag(AbstractCard.CardTags.STARTER_DEFEND) 
                         && c instanceof ICanChangeToTempHP)
                 .forEach(c -> {
-                    c.baseBlock++;
-                    c.block++;
+                    /*c.baseBlock++;
+                    c.block++;*/
                     ((ICanChangeToTempHP) c).changeToTempHP();
                 });
     }

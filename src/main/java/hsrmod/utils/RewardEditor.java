@@ -114,6 +114,9 @@ public class RewardEditor implements StartGameSubscriber, CustomSavable<String[]
                 && AbstractDungeon.combatRewardScreen.rewards.stream().noneMatch(r -> r.relic != null && r.relic.relicId.equals(relicId))) {
             RelicEventHelper.removeRelicFromPool(relicId);
             AbstractDungeon.combatRewardScreen.rewards.add(new RewardItem(RelicLibrary.getRelic(relicId).makeCopy()));
+            AbstractDungeon.combatRewardScreen.rewards.stream().filter(r -> r.type == RewardItem.RewardType.CARD).findFirst().ifPresent(r -> {
+                setRewardByPath(r, true);
+            });
         }
     }
 
@@ -158,7 +161,9 @@ public class RewardEditor implements StartGameSubscriber, CustomSavable<String[]
     /**
      * Set the reward cards to be within the specified path if chance is met.
      *
-     * @param reward the reward item to modify
+     * @param tag          the path tag
+     * @param reward       the reward item to modify
+     * @param ignoreChance if true, skip chance check and change all cards that are not in the path;
      */
     public void setRewardByPath(AbstractCard.CardTags tag, RewardItem reward, boolean ignoreChance) {
         for (int i = 0, j = 0; i < reward.cards.size() && j < 1000; i++, j++) {
@@ -257,9 +262,12 @@ public class RewardEditor implements StartGameSubscriber, CustomSavable<String[]
      */
     public boolean checkChance(AbstractCard.CardRarity rarity) {
         float chance = 0;
-        int[] commonChance = new int[]{30, 15, 10, 5};
-        int[] uncommonChance = new int[]{40, 20, 10, 5};
-        int[] rareChance = new int[]{50, 30, 20, 10};
+        // int[] commonChance = new int[]{30, 15, 10, 5};
+        // int[] uncommonChance = new int[]{40, 20, 10, 5};
+        // int[] rareChance = new int[]{50, 30, 20, 10};
+        int[] commonChance = new int[]{20, 15, 10, 10};
+        int[] uncommonChance = new int[]{30, 20, 10, 10};
+        int[] rareChance = new int[]{20, 30, 10, 20};
         int actIndex = Math.min(AbstractDungeon.actNum - 1, 3);
         if (actIndex < 0) actIndex = 0;
         switch (rarity) {
@@ -274,7 +282,7 @@ public class RewardEditor implements StartGameSubscriber, CustomSavable<String[]
                 break;
         }
         chance = SubscriptionManager.getInstance().triggerNumChanger(SubscriptionManager.NumChangerType.WAX_WEIGHT, chance);
-        int chanceFactor = PathSelectScreen.Inst.getChanceFactor() * 20;
+        int chanceFactor = PathSelectScreen.Inst.getChanceFactor() * 20; // each locked path decrease change by 20
         return AbstractDungeon.cardRandomRng.random(99 + chanceFactor) < chance;
     }
 
@@ -399,7 +407,7 @@ public class RewardEditor implements StartGameSubscriber, CustomSavable<String[]
             }
         }
     }
-    
+
     public static void addExtraRewardToTop(Consumer<List<RewardItem>> extraReward) {
         getInstance().extraRewards.add(0, extraReward);
     }

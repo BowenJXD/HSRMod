@@ -21,8 +21,12 @@ public class MayRainbowsRemain extends BaseCard {
 
     public MayRainbowsRemain() {
         super(ID);
+    }
+
+    @Override
+    public void upgrade() {
+        super.upgrade();
         isInnate = true;
-        exhaust = true;
     }
 
     @Override

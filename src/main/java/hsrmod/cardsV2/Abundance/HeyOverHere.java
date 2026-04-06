@@ -18,14 +18,12 @@ public class HeyOverHere extends BaseCard {
 
     public HeyOverHere() {
         super(ID);
-        isInnate = true;
-        exhaust = true;
     }
 
     @Override
     public void upgrade() {
         super.upgrade();
-        exhaust = false;
+        selfRetain = true;
     }
 
     @Override

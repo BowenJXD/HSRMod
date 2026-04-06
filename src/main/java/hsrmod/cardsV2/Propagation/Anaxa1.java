@@ -68,7 +68,7 @@ public class Anaxa1 extends BaseCard {
                     GAMManager.stopCurrentAction();
                 }
             } 
-            return true;
+            return false;
         });
         
         ElementalDamageAction action = new ElementalDamageAction(

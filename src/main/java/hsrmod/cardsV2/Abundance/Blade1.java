@@ -101,15 +101,14 @@ public class Blade1 extends BaseCard implements PostHPUpdateSubscriber {
 
     @Override
     public float calculateModifiedCardDamage(AbstractPlayer player, AbstractMonster mo, float tmp) {
-        baseDamage = TempHPField.tempHp.get(AbstractDungeon.player) * magicNumber / 100;
+        baseDamage = magicNumber + ModHelper.getPowerCount(player, NecrosisPower.POWER_ID);
         return super.calculateModifiedCardDamage(player, mo, tmp);
     }
 
     @Override
     public void postHPUpdate(AbstractCreature creature) {
         if (SubscriptionManager.checkSubscriber(this)
-                && creature == AbstractDungeon.player
-                && !AbstractDungeon.actionManager.turnHasEnded) {
+                && creature == AbstractDungeon.player) {
             updateCost(-1);
         }
     }

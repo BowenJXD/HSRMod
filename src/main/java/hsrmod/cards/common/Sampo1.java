@@ -21,6 +21,7 @@ public class Sampo1 extends BaseCard {
 
     public Sampo1() {
         super(ID);
+        isEthereal = true;
     }
 
     @Override

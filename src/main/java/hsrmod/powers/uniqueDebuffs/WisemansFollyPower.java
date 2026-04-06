@@ -31,8 +31,7 @@ public class WisemansFollyPower extends DebuffPower {
     public int onAttacked(DamageInfo info, int damageAmount) {
         if (info.type != DamageInfo.DamageType.NORMAL
                 || info.owner != AbstractDungeon.player
-                || !(info instanceof ElementalDamageInfo)
-                || AbstractDungeon.actionManager.turnHasEnded) {
+                || !(info instanceof ElementalDamageInfo)) {
             return damageAmount;
         }
         BaseCard card1 = ((ElementalDamageInfo)info).card;

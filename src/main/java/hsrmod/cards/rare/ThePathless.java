@@ -12,6 +12,7 @@ public class ThePathless extends BaseCard {
     
     public ThePathless() {
         super(ID);
+        isEthereal = true;
         exhaust = true;
     }
 

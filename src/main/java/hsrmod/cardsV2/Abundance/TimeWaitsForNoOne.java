@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cards.BaseCard;
 import hsrmod.powers.misc.DewDropPower;
+import hsrmod.powers.misc.NecrosisPower;
 import hsrmod.utils.ModHelper;
 
 public class TimeWaitsForNoOne extends BaseCard {
@@ -47,7 +48,8 @@ public class TimeWaitsForNoOne extends BaseCard {
         addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new DewDropPower(AbstractDungeon.player, dewDrop)));
         int tempHp = TempHPField.tempHp.get(AbstractDungeon.player);
         addToBot(new AddTemporaryHPAction(AbstractDungeon.player, AbstractDungeon.player, tempHp));
-        addToTop(new ExhaustSpecificCardAction(this, AbstractDungeon.player.discardPile));
+        int necrosis = ModHelper.getPowerCount(AbstractDungeon.player, NecrosisPower.POWER_ID);
+        addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new NecrosisPower(AbstractDungeon.player, necrosis)));
     }
 
     @Override

@@ -19,6 +19,7 @@ public class Guinaifen1 extends BaseCard {
 
     public Guinaifen1() {
         super(ID);
+        isEthereal = true;
     }
 
     @Override

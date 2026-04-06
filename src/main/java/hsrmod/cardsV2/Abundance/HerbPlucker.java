@@ -46,8 +46,8 @@ public class HerbPlucker extends BaseCard implements PrePowerTriggerSubscriber {
     }
 
     @Override
-    public void onMoveToDiscard() {
-        super.onMoveToDiscard();
+    public void triggerOnManualDiscard() {
+        super.triggerOnManualDiscard();
         if (!upgraded) return;
         addToBot(new TriggerPowerAction(AbstractDungeon.player.getPower(NecrosisPower.POWER_ID)));
         addToBot(new TriggerPowerAction(AbstractDungeon.player.getPower(DewDropPower.POWER_ID)));

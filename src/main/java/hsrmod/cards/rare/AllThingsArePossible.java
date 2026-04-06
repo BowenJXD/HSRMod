@@ -13,10 +13,13 @@ public class AllThingsArePossible extends BaseCard {
     
     public AllThingsArePossible() {
         super(ID);
+        isEthereal = true;
+        exhaust = true;
     }
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new AllThingsArePossiblePower(upgraded)));
+        int debuffCount = (int)m.powers.stream().filter(po -> po.type == AbstractPower.PowerType.DEBUFF).count();
+        addToBot(new ApplyPowerAction(m, p, new AllThingsArePossiblePower(m, debuffCount), debuffCount));
     }
 }

@@ -36,8 +36,8 @@ public class MudraOfBlessing extends BaseCard {
     }
 
     @Override
-    public void onMoveToDiscard() {
-        super.onMoveToDiscard();
+    public void triggerOnManualDiscard() {
+        super.triggerOnManualDiscard();
         if (upgraded) trigger();
     }
 

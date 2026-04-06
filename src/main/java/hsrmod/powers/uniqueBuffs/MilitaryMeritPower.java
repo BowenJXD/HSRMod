@@ -5,23 +5,26 @@ import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardQueueItem;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 import hsrmod.modcore.HSRMod;
+import hsrmod.powers.BuffPower;
 import hsrmod.powers.PowerPower;
 
-public class MilitaryMeritPower extends PowerPower {
+public class MilitaryMeritPower extends BuffPower {
     public static final String POWER_ID = HSRMod.makePath(MilitaryMeritPower.class.getSimpleName());
     
     final int stackLimit = 8;
     final int triggerAmount = 6;
     int vigorAmount;
     
-    public MilitaryMeritPower(int Amount, int vigorAmount) {
-        super(POWER_ID, Amount);
+    public MilitaryMeritPower(AbstractCreature target, int Amount, int vigorAmount) {
+        super(POWER_ID, target, Amount);
         this.vigorAmount = vigorAmount;
+        updateDescription();
     }
 
     @Override
@@ -63,9 +66,9 @@ public class MilitaryMeritPower extends PowerPower {
 
                 tmp.purgeOnUse = true;
                 AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(tmp, m, card.energyOnUse, true, true), true);
-                reducePower(triggerAmount);
+                reducePower(triggerAmount - 1);
             } else {
-                addToBot(new ApplyPowerAction(owner, owner, new MilitaryMeritPower(1, vigorAmount), 1));
+                stackPower(1);
             }
         }
 

@@ -12,7 +12,7 @@ import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.uniqueBuffs.MilitaryMeritPower;
 
 public class Cerydra1 extends BaseCard {
-    public static final String ID = hsrmod.modcore.HSRMod.makePath(Cerydra1.class.getSimpleName());
+    public static final String ID = Cerydra1.class.getSimpleName();
 
     public Cerydra1() {
         super(ID);
@@ -35,6 +35,6 @@ public class Cerydra1 extends BaseCard {
         } else {
             addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         }
-        addToBot(new ApplyPowerAction(p, p, new MilitaryMeritPower(2, magicNumber), 2));
+        addToBot(new ApplyPowerAction(p, p, new MilitaryMeritPower(p, 2, magicNumber), 2));
     }
 }

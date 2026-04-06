@@ -3,14 +3,10 @@ package hsrmod.powers.misc;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
-import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.vfx.stance.WrathParticleEffect;
 import hsrmod.effects.CustomAuraEffect;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
@@ -18,9 +14,9 @@ import hsrmod.powers.BuffPower;
 public class BrokenPower extends BuffPower {
     public static final String POWER_ID = HSRMod.makePath(BrokenPower.class.getSimpleName());
 
-    private float damageIncrementPercentage = 1f / 2f; 
-    
-    private float damageDecrementPercentage = 1f / 4f;
+    public static final float DMG_INC_PERCENT = 1f / 2f;
+
+    public static final float DMG_DEC_PERCENT = 1f / 4f;
     
     public boolean doReduce = false;
     private float particleTimer;
@@ -38,8 +34,8 @@ public class BrokenPower extends BuffPower {
 
     @Override
     public void updateDescription() {
-        this.description = String.format(DESCRIPTIONS[0], Math.round(damageIncrementPercentage * 100),
-                Math.round(damageDecrementPercentage * 100));
+        this.description = String.format(DESCRIPTIONS[0], Math.round(DMG_INC_PERCENT * 100),
+                Math.round(DMG_DEC_PERCENT * 100));
     }
     
     @Override
@@ -70,7 +66,7 @@ public class BrokenPower extends BuffPower {
     @Override
     public float atDamageReceive(float damage, DamageInfo.DamageType damageType) {
         if (damageType == DamageInfo.DamageType.NORMAL) {
-            return Math.round(damage * (1 + damageIncrementPercentage));
+            return Math.round(damage * (1 + DMG_INC_PERCENT));
         }
         return damage;
     }
@@ -78,7 +74,7 @@ public class BrokenPower extends BuffPower {
     @Override
     public float atDamageGive(float damage, DamageInfo.DamageType type) {
         if (type == DamageInfo.DamageType.NORMAL) {
-            return Math.round(damage * (1 - damageDecrementPercentage));
+            return Math.round(damage * (1 - DMG_DEC_PERCENT));
         }
         return damage;
     }

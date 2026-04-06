@@ -42,27 +42,27 @@ public class TheDahlia2 extends BaseCard implements PreBreakDamageSubscriber {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        if (upgraded)
-            addToBot(new DrawCardAction(p, 1));
+        /*if (upgraded)
+            addToBot(new DrawCardAction(p, 1));*/
         addToBot(new ApplyPowerAction(p, p, new BreakEfficiencyPower(p, 1), 1));
         ElementalDamageAction elementalDamageAction = new ElementalDamageAction(
                 m,
                 new ElementalDamageInfo(this),
                 AbstractGameAction.AttackEffect.SLASH_HORIZONTAL,
                 ci -> {
-                    if (ci.didBreak || (ci.target.hasPower(BrokenPower.POWER_ID) && upgraded)) {
+                    if (ci.target.hasPower(BrokenPower.POWER_ID) || upgraded) {
                         addToTop(new BreakDamageAction(ci.target, new DamageInfo(p, tr), AbstractGameAction.AttackEffect.FIRE));
                     }
                 }
         );
-        addToBot(new BouncingAction(m, magicNumber, elementalDamageAction, this));
+        addToBot(elementalDamageAction);
     }
 
     @Override
     public float preBreakDamage(float amount, AbstractCreature target) {
         if (SubscriptionManager.checkSubscriber(this)) {
             followedUp = true;
-            addToBot(new FollowUpAction(this));
+            addToBot(new FollowUpAction(this, target));
         }
         return amount;
     }

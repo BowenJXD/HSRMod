@@ -3,30 +3,54 @@ package hsrmod.powers.uniqueBuffs;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.TriggerDoTAction;
 import hsrmod.modcore.HSRMod;
+import hsrmod.powers.DebuffPower;
 import hsrmod.powers.PowerPower;
 import hsrmod.powers.breaks.BleedingPower;
 import hsrmod.powers.breaks.BurnPower;
 import hsrmod.powers.breaks.ShockPower;
 import hsrmod.powers.breaks.WindShearPower;
 import hsrmod.powers.misc.DoTPower;
+import hsrmod.utils.GeneralUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AllThingsArePossiblePower extends PowerPower {
+public class AllThingsArePossiblePower extends DebuffPower {
     public static final String POWER_ID = HSRMod.makePath(AllThingsArePossiblePower.class.getSimpleName());
     
-    public AllThingsArePossiblePower(boolean upgraded) {
-        super(POWER_ID, upgraded);
+    public AllThingsArePossiblePower(AbstractCreature creature, int amount) {
+        super(POWER_ID, creature, amount);
         this.updateDescription();
     }
 
     @Override
+    public void updateDescription() {
+        description = GeneralUtil.tryFormat(DESCRIPTIONS[0], amount, amount);
+    }
+
+    @Override
+    public float atDamageGive(float damage, DamageInfo.DamageType type) {
+        if (type == DamageInfo.DamageType.NORMAL) {
+            return damage - amount;
+        }
+        return damage;
+    }
+
+    @Override
+    public float atDamageReceive(float damage, DamageInfo.DamageType damageType) {
+        if (damageType == DamageInfo.DamageType.NORMAL) {
+            return damage + amount;
+        }
+        return damage;
+    }
+    
+    /*    @Override
     public void onAfterUseCard(AbstractCard card, UseCardAction action) {
         if (card.type != AbstractCard.CardType.ATTACK) return;
         if (card.target == AbstractCard.CardTarget.ALL_ENEMY 
@@ -60,5 +84,5 @@ public class AllThingsArePossiblePower extends PowerPower {
             flash();
             addToBot(new TriggerDoTAction(c, AbstractDungeon.player));
         }
-    }
+    }*/
 }

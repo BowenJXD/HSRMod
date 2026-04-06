@@ -22,7 +22,7 @@ public class ReinforcePower extends BuffPower implements OnPlayerDamagedSubscrib
     public static final String POWER_ID = HSRMod.makePath(ReinforcePower.class.getSimpleName());
 
     public ReinforcePower(AbstractCreature owner, int amount, boolean upgraded) {
-        super(POWER_ID, owner);
+        super(POWER_ID, owner, amount);
         this.isTurnBased = true;
         this.updateDescription();
     }
@@ -72,7 +72,7 @@ public class ReinforcePower extends BuffPower implements OnPlayerDamagedSubscrib
                 card.priorityTarget = (AbstractMonster) damageInfo.owner;
                 if (upgraded) card.upgrade();
                 remove(1);
-                addToBot(new FollowUpAction(card));
+                addToBot(new FollowUpAction(card, damageInfo.owner));
                 // addToTop(new MakeTempCardInHandAction(card));
             }
         }

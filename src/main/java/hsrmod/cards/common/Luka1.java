@@ -15,6 +15,7 @@ public class Luka1 extends BaseCard {
     
     public Luka1() {
         super(ID);
+        isEthereal = true;
     }
 
     @Override

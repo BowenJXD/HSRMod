@@ -30,6 +30,7 @@ public class Tribbie2 extends BaseCard implements PostPowerApplySubscriber {
     public Tribbie2() {
         super(ID);
         isMultiDamage = true;
+        retain = true;
         tags.add(CustomEnums.CHRYSOS_HEIR);
         tags.add(CustomEnums.FOLLOW_UP);
     }

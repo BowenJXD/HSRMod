@@ -12,6 +12,13 @@ public class RadiantSupreme extends BaseCard {
     
     public RadiantSupreme(){
         super(ID);
+        cardsToPreview = new Arrows();
+    }
+
+    @Override
+    public void upgrade() {
+        super.upgrade();
+        cardsToPreview.upgrade();
     }
 
     @Override

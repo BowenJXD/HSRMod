@@ -23,7 +23,11 @@ public class TheDahlia1 extends BaseCard {
         if (upgraded) {
             addToBot(new ApplyPowerAction(p, p, new BreakEffectPower(p, magicNumber), magicNumber));
         }
-        addToBot(new SelectCardsInHandAction(RelicEventHelper.SELECT_TEXT, cards -> {
+        addToBot(new SelectCardsInHandAction(cardStrings.EXTENDED_DESCRIPTION[1],
+                card -> {
+                    return !CardModifierManager.hasModifier(card, DancePartnersModifier.ID);
+                },
+                cards -> {
                 if (!cards.isEmpty()) {
                     cards.forEach(c -> CardModifierManager.addModifier(c, new DancePartnersModifier(1, 50, cardStrings.EXTENDED_DESCRIPTION[0])));
                 }

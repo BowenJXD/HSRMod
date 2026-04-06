@@ -23,6 +23,7 @@ public class Serval1 extends BaseCard {
     public Serval1() {
         super(ID);
         isMultiDamage = true;
+        isEthereal = true;
     }
 
     @Override

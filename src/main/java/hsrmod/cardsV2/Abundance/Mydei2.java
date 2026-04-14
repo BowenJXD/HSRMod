@@ -23,6 +23,7 @@ public class Mydei2 extends BaseCard {
         super(ID);
         exhaust = true;
         tags.add(CustomEnums.FOLLOW_UP);
+        tags.add(CustomEnums.CHRYSOS_HEIR);
         cardsToPreview = new Mydei3(true);
     }
     

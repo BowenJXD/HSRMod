@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.cards.curses.Normality;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.EventStrings;
-import hsrmod.cardsV2.NightOnTheMilkyWay;
+import hsrmod.cardsV2.Trailblaze.NightOnTheMilkyWay;
 import hsrmod.modcore.HSRMod;
 import hsrmod.utils.PathDefine;
 import hsrmod.utils.RelicEventHelper;

@@ -138,7 +138,7 @@ public abstract class WaxRelic extends BaseRelic implements ClickableRelic, ITut
                     .setAmount(pathToBan)
                     .setAnyNumber(false)
                     .setCanCancel(true)
-                    .setMsg(String.format(DESCRIPTIONS[2], pathToBan))
+                    .setMsg(String.format(DESCRIPTIONS[3], pathToBan))
                     .setManipulator(new GridCardManipulator() {
                                         @Override
                                         public boolean manipulate(AbstractCard card, int index, CardGroup group) {

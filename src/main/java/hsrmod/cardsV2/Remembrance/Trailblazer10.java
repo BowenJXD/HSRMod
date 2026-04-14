@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.FocusPower;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
+import hsrmod.powers.uniqueBuffs.Trailblazer10Power;
 
 public class Trailblazer10 extends BaseCard {
     public static final String ID = Trailblazer10.class.getSimpleName();
@@ -23,6 +24,6 @@ public class Trailblazer10 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new FocusPower(p, magicNumber)));
+        addToBot(new ApplyPowerAction(p, p, new Trailblazer10Power(p, 1)));
     }
 }

@@ -1,16 +1,19 @@
 package hsrmod.powers.uniqueBuffs;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import hsrmod.cardsV2.Remembrance.Cyrene4;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
 import hsrmod.powers.PowerPower;
+import hsrmod.powers.TerritoryPower;
 import hsrmod.utils.GeneralUtil;
 
 public class RecollectionPower extends BuffPower {
@@ -42,9 +45,17 @@ public class RecollectionPower extends BuffPower {
     public void stackPower(int stackAmount) {
         super.stackPower(stackAmount);
         if (amount >= TRIGGER_THRESHOLD) {
-            addToTop(new RemoveSpecificPowerAction(owner, owner, this));
-            // addToTop(new ApplyPowerAction());
-            onSpecificTrigger();
+            amount = TRIGGER_THRESHOLD;
+            if (!TerritoryPower.isInTerritory()) {
+                onSpecificTrigger();
+            }
         }
+    }
+
+    @Override
+    public void onSpecificTrigger() {
+        super.onSpecificTrigger();
+        addToTop(new RemoveSpecificPowerAction(owner, owner, this));
+        addToBot(new MakeTempCardInHandAction(new Cyrene4()));
     }
 }

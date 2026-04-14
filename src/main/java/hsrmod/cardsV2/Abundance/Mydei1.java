@@ -2,6 +2,7 @@ package hsrmod.cardsV2.Abundance;
 
 import basemod.BaseMod;
 import basemod.interfaces.OnPlayerDamagedSubscriber;
+import basemod.patches.com.megacrit.cardcrawl.cards.AbstractCard.MultiCardPreview;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
@@ -31,7 +32,8 @@ public class Mydei1 extends BaseCard implements OnPlayerDamagedSubscriber {
         selfRetain = true;
         exhaust = true;
         tags.add(CustomEnums.FOLLOW_UP);
-        cardsToPreview = new Mydei2(true);
+        tags.add(CustomEnums.CHRYSOS_HEIR);
+        MultiCardPreview.add(this, new Mydei2(true), new Mydei3(true));
     }
     
     public Mydei1(boolean asPreview) {
@@ -44,7 +46,12 @@ public class Mydei1 extends BaseCard implements OnPlayerDamagedSubscriber {
     @Override
     public void upgrade() {
         super.upgrade();
-        cardsToPreview.upgrade();
+        AbstractCard c1 = new Mydei2(true);
+        c1.upgrade();
+        AbstractCard c2 = new Mydei3(true);
+        c2.upgrade();
+        MultiCardPreview.clear(this);
+        MultiCardPreview.add(this, c1, c2);
     }
 
     @Override

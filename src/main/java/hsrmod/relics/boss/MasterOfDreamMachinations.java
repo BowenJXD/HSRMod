@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.ShopRoom;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
-import hsrmod.cardsV2.AstralExpress;
+import hsrmod.cardsV2.Trailblaze.AstralExpress;
 import hsrmod.relics.BaseRelic;
 import hsrmod.utils.CardSelectManager;
 import hsrmod.utils.ModHelper;

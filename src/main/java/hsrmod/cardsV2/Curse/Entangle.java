@@ -38,15 +38,20 @@ public class Entangle extends BaseCard implements PostDrawSubscriber {
     public void onEnterHand() {
         super.onEnterHand();
         BaseMod.subscribe(this);
-        if (entangledCards.isEmpty()) {
-            List<AbstractCard> tmp = AbstractDungeon.player.hand.group.stream().filter(c -> !c.hasTag(CustomEnums.ENTANGLE)).collect(Collectors.toList());
-            if (!tmp.isEmpty()) {
-                Collections.shuffle(tmp, new Random(AbstractDungeon.cardRandomRng.randomLong()));
-                tmp.stream().limit(entangleCount).forEach(c -> {
-                    c.tags.add(CustomEnums.ENTANGLE);
-                    entangledCards.add(c);
-                });
-            }
+        if (!entangledCards.isEmpty()) {
+            entangledCards.forEach(c -> {
+                addToBot(new FollowUpAction(c));
+                c.tags.remove(CustomEnums.ENTANGLE);
+            });
+            entangledCards.clear();
+        }
+        List<AbstractCard> tmp = AbstractDungeon.player.hand.group.stream().filter(c -> !c.hasTag(CustomEnums.ENTANGLE)).collect(Collectors.toList());
+        if (!tmp.isEmpty()) {
+            Collections.shuffle(tmp, new Random(AbstractDungeon.cardRandomRng.randomLong()));
+            tmp.stream().limit(entangleCount).forEach(c -> {
+                c.tags.add(CustomEnums.ENTANGLE);
+                entangledCards.add(c);
+            });
         }
         AbstractDungeon.player.hand.glowCheck();
     }

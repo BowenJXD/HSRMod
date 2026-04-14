@@ -1,11 +1,15 @@
 package hsrmod.cardsV2.Remembrance;
 
+import com.evacipated.cardcrawl.mod.stslib.actions.defect.TriggerPassiveAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.actions.defect.EvokeOrbAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.*;
+import com.megacrit.cardcrawl.powers.EquilibriumPower;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.HSRMod;
 import hsrmod.utils.ModHelper;
@@ -26,15 +30,9 @@ public class ThisLoveForever extends BaseCard {
             if (!AbstractDungeon.player.orbs.isEmpty()) {
                 orb = AbstractDungeon.player.orbs.get(0);
                 if (!(orb instanceof EmptyOrbSlot)) {
-                    if (upgraded) {
-                        this.addToTop(new ChannelAction(orb, false));
-                    } else {
-                        AbstractOrb newOrb = getOrbWithSameClass(orb);
-                        if (newOrb != null) {
-                            this.addToTop(new ChannelAction(newOrb, false));
-                        }
-                    }
+                    this.addToTop(new ChannelAction(orb, false));
                     this.addToTop(new EvokeOrbAction(1));
+                    if (upgraded) addToTop(new TriggerPassiveAction(orb));
                 }
             }
         });

@@ -161,6 +161,11 @@ public class PomPomBlessing extends CustomRelic implements ClickableRelic, ITuto
     }
 
     @Override
+    public void onLoseHp(int damageAmount) {
+        super.onLoseHp(damageAmount);
+    }
+
+    @Override
     public int onLoseHpLast(int damageAmount) {
         if (AbstractDungeon.player.currentHealth - damageAmount <= 0
                 && AbstractDungeon.player.masterDeck.group.stream().anyMatch(card -> card.hasTag(CustomEnums.REVIVE))) {

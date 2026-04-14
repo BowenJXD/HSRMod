@@ -23,6 +23,7 @@ public class Demiurge1 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
+        shout(0, 1);
         addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
         if (upgraded) {
             for (AbstractOrb orb : p.orbs) {

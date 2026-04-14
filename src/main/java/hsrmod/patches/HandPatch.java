@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HandPatch {
-    @SpirePatch(clz = CardGroup.class, method = "refreshHandLayout")
+    /*@SpirePatch(clz = CardGroup.class, method = "refreshHandLayout")
     public static class RefreshHandLayoutPatch {
         public static List<AbstractCard> handCache = new ArrayList<>();
         
@@ -43,7 +43,7 @@ public class HandPatch {
             // Update handCache to the current hand
             handCache = hand;
         }
-    }
+    }*/
     
     @SpirePatch(clz = HandCheckAction.class, method = "update")
     public static class HandCheckPatch {

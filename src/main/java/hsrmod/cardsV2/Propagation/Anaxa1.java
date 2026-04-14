@@ -1,6 +1,7 @@
 package hsrmod.cardsV2.Propagation;
 
 import basemod.ReflectionHacks;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
@@ -14,6 +15,7 @@ import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import hsrmod.actions.BouncingAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.misc.SporePower;
 import hsrmod.utils.GAMManager;
@@ -29,12 +31,15 @@ public class Anaxa1 extends BaseCard {
     
     public Anaxa1() {
         super(ID);
+        tags.add(CustomEnums.CHRYSOS_HEIR);
     }
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         int x = energyOnUse + (p.hasRelic("Chemical X") ? 2 : 0);
+        x += magicNumber;
         if (x <= 0) return;
+        shout(0, 1);
 
         GAMManager.addParallelAction(ID, action -> {
             if (action instanceof ApplyPowerAction) {

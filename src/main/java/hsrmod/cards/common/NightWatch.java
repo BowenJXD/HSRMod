@@ -16,7 +16,17 @@ public class NightWatch extends BaseCard {
     }
 
     @Override
+    protected void applyPowersToBlock() {
+        super.applyPowersToBlock();
+        block += getBlockAlt();
+    }
+
+    @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new GainBlockAction(p, block));
+    }
+    
+    int getBlockAlt() {
         int max = 0;
         for (AbstractMonster q : AbstractDungeon.getCurrRoom().monsters.monsters) {
             if (!q.isDeadOrEscaped()) {
@@ -28,7 +38,6 @@ public class NightWatch extends BaseCard {
                 }
             }
         }
-        
-        addToBot(new GainBlockAction(p, max * 3 + block));
+        return max * magicNumber;
     }
 }

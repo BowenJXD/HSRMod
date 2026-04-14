@@ -18,9 +18,9 @@ public class EnergyPower extends StatePower implements InvisiblePower {
 
     public EnergyPower(AbstractCreature owner, int Amount) {
         super(POWER_ID, owner, Amount);
-        if (amount > AMOUNT_LIMIT) {
+        /*if (amount > AMOUNT_LIMIT) {
             amount = AMOUNT_LIMIT;
-        }
+        }*/
         this.updateDescription();
     }
 

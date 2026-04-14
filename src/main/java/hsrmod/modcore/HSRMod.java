@@ -15,8 +15,6 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RollMoveAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.colorless.SadisticNature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -34,7 +32,7 @@ import com.megacrit.cardcrawl.powers.TimeWarpPower;
 import com.megacrit.cardcrawl.relics.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import hsrmod.cards.uncommon.RuanMei1;
-import hsrmod.cardsV2.NightOnTheMilkyWay;
+import hsrmod.cardsV2.Trailblaze.NightOnTheMilkyWay;
 import hsrmod.characters.StellaCharacter;
 import hsrmod.dungeons.Belobog;
 import hsrmod.dungeons.Luofu;
@@ -56,7 +54,6 @@ import hsrmod.relics.ITutorial;
 import hsrmod.relics.common.AngelTypeIOUDispenser;
 import hsrmod.relics.shop.ARuanPouch;
 import hsrmod.relics.special.*;
-import hsrmod.signature.devcommands.SignatureCommand;
 import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.utils.GAMManager;
 import hsrmod.utils.ModHelper;
@@ -64,8 +61,13 @@ import hsrmod.utils.RewardEditor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.File;
+import java.net.JarURLConnection;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
 
 import static com.megacrit.cardcrawl.core.Settings.language;
 import static hsrmod.characters.StellaCharacter.PlayerColorEnum.HSR_PINK;
@@ -128,9 +130,6 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
                 .packageFilter("hsrmod.cards")
                 .setDefaultSeen(true)
                 .cards();
-        if (AbstractDungeon.player instanceof IHSRCharacter) {
-            BaseMod.removeCard(SadisticNature.ID, AbstractCard.CardColor.COLORLESS);
-        }
     }
 
     @Override
@@ -390,7 +389,7 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
         }));
         BaseMod.addMonster(Encounter.RPS_1, () -> new MonsterGroup(new AbstractMonster[]{
                 Encounter.getRandomFloating(-300, AbstractDungeon.monsterRng.random(15, 30)),
-                new IlluminationDragonfish(-100, AbstractDungeon.monsterRng.random(0, 15)),
+                new IlluminationDragonfish(-100, AbstractDungeon.monsterRng.random(0, 15)).modifyHpByPercent(2f),
                 Encounter.getRandomFloating(100, AbstractDungeon.monsterRng.random(15, 30)),
         }));
         BaseMod.addMonster(Encounter.RPS_2, () -> new MonsterGroup(new AbstractMonster[]{
@@ -694,85 +693,44 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
 
     @Override
     public void receiveAddAudio() {
-        addWav("Stelle1");
-        addWav("Aventurine1");
-        addWav("Firefly1-1");
-        addWav("Firefly1-2");
-        addWav("Firefly2");
-        addWav("JingYuan1");
-        addWav("Kafka2");
-        addWav("Robin2");
-        addWav("SlashedDream1");
-        addWav("SlashedDream2");
-        addWav("Feixiao2");
-        addWav("Sparkle2");
-        addWav("Gepard1");
-        addWav("Argenti1");
-        addWav("Seele1");
-        addWav("SilverWolf1_0");
-        addWav("SilverWolf1_1");
-        addWav("ImbibitorLunae1_0");
-        addWav("ImbibitorLunae1_1");
-        addWav("Yunli1_0");
-        addWav("Yunli1_1");
-        addWav("Rappa1");
-        addWav("Trailblazer8");
-        addWav("TheHerta1");
-        addWav("FuXuan2");
-        addOgg("Jingliu1");
-        addOgg("Jingliu2");
-        addOgg("Mydei2");
-        addOgg("Mydei3");
-
-        for (int i = 1; i <= 10; i++) {
-            addWav("TheGreatSeptimus_Day" + i);
+        String audioDir = "HSRModResources/localization/" + lang + "/audio/";
+        try {
+            URL dirUrl = HSRMod.class.getClassLoader().getResource(audioDir);
+            if (dirUrl == null) {
+                logger.warn("Audio directory not found: " + audioDir);
+                return;
+            }
+            if (dirUrl.getProtocol().equals("jar")) {
+                JarURLConnection jarConnection = (JarURLConnection) dirUrl.openConnection();
+                JarFile jarFile = jarConnection.getJarFile();
+                Enumeration<JarEntry> entries = jarFile.entries();
+                while (entries.hasMoreElements()) {
+                    JarEntry entry = entries.nextElement();
+                    String name = entry.getName();
+                    if (name.startsWith(audioDir) && !entry.isDirectory()) {
+                        String filename = name.substring(audioDir.length());
+                        if (filename.endsWith(".wav") || filename.endsWith(".ogg")) {
+                            String key = filename.substring(0, filename.lastIndexOf('.'));
+                            BaseMod.addAudio(key, name);
+                        }
+                    }
+                }
+            } else if (dirUrl.getProtocol().equals("file")) {
+                File dir = new File(dirUrl.toURI());
+                File[] files = dir.listFiles();
+                if (files != null) {
+                    for (File file : files) {
+                        String filename = file.getName();
+                        if (filename.endsWith(".wav") || filename.endsWith(".ogg")) {
+                            String key = filename.substring(0, filename.lastIndexOf('.'));
+                            BaseMod.addAudio(key, audioDir + filename);
+                        }
+                    }
+                }
+            }
+        } catch (Exception e) {
+            logger.error("Failed to load audio files from " + audioDir, e);
         }
-        for (int i = 1; i <= 5; i++) {
-            addWav("TheGreatSeptimus_Crew" + i);
-        }
-        for (int i = 1; i <= 8; i++) {
-            addWav("Phantylia_" + i);
-        }
-        for (int i = 0; i <= 8; i++) {
-            addWav("Cocolia_" + i);
-        }
-        addWav("Gepard_0");
-        addWav("Gepard_1");
-        for (int i = 1; i <= 5; i++) {
-            addWav("Hoolay" + i);
-        }
-        addWav("AurumatonGatekeeper_0");
-        addWav("AurumatonGatekeeper_1");
-        addOgg("ShapeShifter_0");
-        addOgg("ShapeShifter_1");
-        addOgg("HowlingCasket_0");
-        addOgg("HowlingCasket_1");
-        addOgg("AurumatonSpectralEnvoy_0");
-        addOgg("AurumatonSpectralEnvoy_1");
-        addOgg("TheAscended_0");
-        addOgg("TheAscended_1");
-        addOgg("Cirrus_0");
-        addOgg("Cirrus_1");
-        for (int i = 0; i <= 7; i++) {
-            addOgg("ShadowOfFeixiao_" + i);
-        }
-        for (int i = 0; i <= 7; i++) {
-            addOgg("AventurineOfStratagems_" + i);
-        }
-        for (int i = 0; i <= 5; i++) {
-            addOgg("Sam_" + i);
-        }
-        for (int i = 0; i <= 5; i++) {
-            addOgg("Yanqing_" + i);
-        }
-    }
-
-    void addWav(String key) {
-        BaseMod.addAudio(key, "HSRModResources/localization/" + lang + "/audio/" + key + ".wav");
-    }
-
-    void addOgg(String key) {
-        BaseMod.addAudio(key, "HSRModResources/localization/" + lang + "/audio/" + key + ".ogg");
     }
 
     void checkSignatureUnlock() {

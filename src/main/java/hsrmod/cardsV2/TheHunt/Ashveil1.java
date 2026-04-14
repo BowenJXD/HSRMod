@@ -9,6 +9,7 @@ import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.utils.ModHelper;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,13 +32,15 @@ public class Ashveil1 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        List<Integer> cardIndexes = p.hand.group.stream().filter(c -> c.type == CardType.STATUS)
-                .map(c -> p.hand.group.indexOf(c)).collect(Collectors.toList());
-
         addToBot(new ElementalDamageAction(m, new ElementalDamageInfo(this), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-        for (Integer card : cardIndexes) {
-            addToBot(new TransformCardInHandAction(card, new Arrows()));
-            addToBot(new ElementalDamageAction(m, new ElementalDamageInfo(this), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-        }
+        
+        ModHelper.addToBotAbstract(() -> {
+            List<Integer> cardIndexes = p.hand.group.stream().filter(c -> c.type == CardType.STATUS)
+                    .map(c -> p.hand.group.indexOf(c)).collect(Collectors.toList());
+            for (Integer card : cardIndexes) {
+                addToTop(new TransformCardInHandAction(card, new Arrows()));
+                addToBot(new ElementalDamageAction(m, new ElementalDamageInfo(this), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+            }
+        });
     }
 }

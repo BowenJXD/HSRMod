@@ -18,7 +18,9 @@ public class Hyacine1 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ChannelAction(new Frost()));
+        for (int i = 0; i < magicNumber; i++) {
+            addToBot(new ChannelAction(new Frost()));
+        }
         addToBot(new AddTemporaryHPAction(p, p, block));
     }
 }

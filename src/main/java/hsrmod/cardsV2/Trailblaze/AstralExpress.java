@@ -1,7 +1,5 @@
-package hsrmod.cardsV2;
+package hsrmod.cardsV2.Trailblaze;
 
-import com.megacrit.cardcrawl.actions.common.UpgradeSpecificCardAction;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;

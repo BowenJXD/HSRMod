@@ -38,10 +38,10 @@ public class Firefly1 extends BaseCard {
         returnToHand = false;
         //addToBot(new VFXAction(new VerticalImpactEffect(m.hb.cX, m.hb.cY)));
         if (AbstractDungeon.cardRandomRng.randomBoolean()) {
-            ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID + "-1"));
+            ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID + "_1"));
             addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 1.0F, 2.0F));
         } else {
-            ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID + "-2"));
+            ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.play(ID + "_2"));
             addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[1], 1.0F, 2.0F));
         }
         addToBot(new VFXAction(new MultiSlashEffect(m.hb.cX, m.hb.cY, 5, Color.CHARTREUSE, Color.ORANGE), Settings.FAST_MODE ? 0.6f : 1.2f));

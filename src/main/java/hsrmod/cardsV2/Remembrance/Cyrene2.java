@@ -5,8 +5,11 @@ import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
+import com.megacrit.cardcrawl.orbs.Plasma;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
+
+import java.util.Objects;
 
 public class Cyrene2 extends BaseCard {
     public static final String ID = Cyrene2.class.getSimpleName();
@@ -27,5 +30,6 @@ public class Cyrene2 extends BaseCard {
         addToBot(new ChannelAction(orb));
         if (upgraded) addToBot(new TriggerPassiveAction(orb));
         setCostForTurn(costCache);
+        returnToHand = !Objects.equals(orb.ID, Plasma.ORB_ID);
     }
 }

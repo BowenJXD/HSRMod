@@ -29,6 +29,7 @@ public class Aglaea2 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
+        shout(0, 1);
         if (m != null)
             addToBot(new VFXAction(new ClashEffect(m.hb.cX, m.hb.cY)));
         addToBot(new ElementalDamageAction(m, new ElementalDamageInfo(this), AbstractGameAction.AttackEffect.NONE));

@@ -49,6 +49,7 @@ public class Tribbie2 extends BaseCard implements PostPowerApplySubscriber {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
+        shout(0, 1);
         addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.FIRE));
         addToBot(new AllEnemyApplyPowerAction(p, 1, (q) -> new VulnerablePower(q, 1, false)));
         if (upgraded) {

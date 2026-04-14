@@ -14,10 +14,10 @@ import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.subscribers.PreElementalDamageSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 
-public class Cypher1 extends BaseCard implements PreElementalDamageSubscriber {
-    public static final String ID = Cypher1.class.getSimpleName();
+public class Cipher1 extends BaseCard implements PreElementalDamageSubscriber {
+    public static final String ID = Cipher1.class.getSimpleName();
 
-    public Cypher1() {
+    public Cipher1() {
         super(ID);
         tags.add(CustomEnums.CHRYSOS_HEIR);
         tags.add(CustomEnums.FOLLOW_UP);
@@ -37,6 +37,7 @@ public class Cypher1 extends BaseCard implements PreElementalDamageSubscriber {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
+        shout(0, 1);
         addToBot(new ElementalDamageAction(m, new ElementalDamageInfo(this), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
         addToBot(new ApplyPowerAction(m, p, new WeakPower(m, magicNumber, false), magicNumber));
         if (upgraded) {

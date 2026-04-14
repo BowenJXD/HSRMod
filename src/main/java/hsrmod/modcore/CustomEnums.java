@@ -24,6 +24,7 @@ public class CustomEnums
     @SpireEnum public static AbstractCard.CardTags DEBUFF;
     @SpireEnum public static AbstractCard.CardTags ENTANGLE;
     @SpireEnum public static AbstractCard.CardTags CHRYSOS_HEIR;
+    @SpireEnum public static AbstractCard.CardTags TERRITORY;
     
     @SpireEnum public static AbstractCard.CardTags REVIVE;
     @SpireEnum public static AbstractCard.CardTags RUAN_MEI;

@@ -47,6 +47,7 @@ public class PathSelectScreen implements ISubscriber, CustomSavable<Integer> {
             PATHS.add(new PathInfo("HSRModResources/img/char/TheHuntLogo.png", "巡猎命途", "通过摸牌进行输出", Path.THE_HUNT));
             PATHS.add(new PathInfo("HSRModResources/img/char/EruditionLogo.png", "智识命途", "通过充能进行输出", Path.ERUDITION));
             PATHS.add(new PathInfo("HSRModResources/img/char/AbundanceLogo.png", "丰饶命途", "通过临时生命进行输出", Path.ABUNDANCE));
+            PATHS.add(new PathInfo("HSRModResources/img/char/RemembranceLogo.png", "记忆命途", "通过充能球进行输出", Path.REMEMBRANCE));
             PATHS.add(new PathInfo("HSRModResources/img/char/TrailblazeLogo.png", "开拓命途", "开拓属于你的道路", Path.TRAILBLAZE));
         }
         else {
@@ -58,6 +59,7 @@ public class PathSelectScreen implements ISubscriber, CustomSavable<Integer> {
             PATHS.add(new PathInfo("HSRModResources/img/char/TheHuntLogo.png", "The Hunt", "Damage through draw", Path.THE_HUNT));
             PATHS.add(new PathInfo("HSRModResources/img/char/EruditionLogo.png", "Erudition", "Damage through charge", Path.ERUDITION));
             PATHS.add(new PathInfo("HSRModResources/img/char/AbundanceLogo.png", "Abundance", "Damage through temporary HP", Path.ABUNDANCE));
+            PATHS.add(new PathInfo("HSRModResources/img/char/RemembranceLogo.png", "Remembrance", "Damage through orbs", Path.REMEMBRANCE));
             PATHS.add(new PathInfo("HSRModResources/img/char/TrailblazeLogo.png", "Trailblaze", "Trailblaze your own way", Path.TRAILBLAZE));
         }
     }

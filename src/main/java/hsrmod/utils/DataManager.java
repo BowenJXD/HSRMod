@@ -240,6 +240,8 @@ public class DataManager {
             replacements.put("hsrmod:超 hsrmod:击破伤害 ", "hsrmod:超击破伤害 ");
             replacements.put("[hsrmod:ChargeIcon] 球", "充能球 ");
             replacements.put("  ", " ");
+            replacements.put("*「你好，世界」", "「你好，世界」");
+            replacements.put("诗的 *「。」 誓约的 *「∞」", "诗的「。」誓约的「∞」");
 
             replaceTextInFile(CARD_CSV_ZHS, replacements);
         }
@@ -288,7 +290,7 @@ public class DataManager {
             // 进行文本替换
             String text = content.toString();
             for (Map.Entry<String, String> entry : replacements.entrySet()) {
-                text = text.replaceAll(entry.getKey(), entry.getValue());
+                text = text.replace(entry.getKey(), entry.getValue());
             }
 
             // 将替换后的内容写回文件，使用 UTF-8 编码

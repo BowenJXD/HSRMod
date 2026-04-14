@@ -17,7 +17,6 @@ public class PreBattleCaregiver extends BaseCard {
     
     public PreBattleCaregiver() {
         super(ID);
-        exhaust = true;
     }
 
     @Override

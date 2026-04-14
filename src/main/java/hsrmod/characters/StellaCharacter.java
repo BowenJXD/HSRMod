@@ -221,9 +221,9 @@ public class StellaCharacter extends CustomPlayer implements IHSRCharacter {
             case ABUNDANCE:
                 retVal.add(HSRMod.makePath(WaxOfAbundance.ID));
                 break;
-            /*case REMEMBRANCE:
+            case REMEMBRANCE:
                 retVal.add(HSRMod.makePath(WaxOfRemembrance.ID));
-                break;*/
+                break;
             case TRAILBLAZE:
             default:
                 retVal.add(HSRMod.makePath(TrailblazeTimer.ID));

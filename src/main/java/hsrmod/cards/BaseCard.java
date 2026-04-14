@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
@@ -173,6 +174,18 @@ public abstract class BaseCard extends AbstractSignatureCard implements SpawnMod
         tr = SubscriptionManager.getInstance().triggerSetToughnessReduction(null, baseTr);
         if (tr != baseTr) isTrModified = true;
     }
+
+    public void onMove(CardGroup group, boolean in) {
+        if (group.type == CardGroup.CardGroupType.HAND) {
+            if (in) {
+                inHand = true;
+                onEnterHand();
+            } else {
+                inHand = false;
+                onLeaveHand();
+            }
+        }
+    }
     
     public void onEnterHand() { }
     public void onLeaveHand() { }
@@ -237,7 +250,7 @@ public abstract class BaseCard extends AbstractSignatureCard implements SpawnMod
     }
 
     public void shout(int start, int end) {
-        shout(MathUtils.random(start, end+1));
+        shout(MathUtils.random(start, end));
     }
 
     boolean checkPath() {
@@ -249,7 +262,7 @@ public abstract class BaseCard extends AbstractSignatureCard implements SpawnMod
                 || ModHelper.hasRelic(WaxOfTheHunt.ID) && tags.contains(CustomEnums.THE_HUNT) 
                 || ModHelper.hasRelic(WaxOfErudition.ID) && tags.contains(CustomEnums.ERUDITION)
                 || ModHelper.hasRelic(WaxOfAbundance.ID) && tags.contains(CustomEnums.ABUNDANCE) 
-                /*|| ModHelper.hasRelic(WaxOfRemembrance.ID) && tags.contains(CustomEnums.REMEMBRANCE)*/) {
+                || ModHelper.hasRelic(WaxOfRemembrance.ID) && tags.contains(CustomEnums.REMEMBRANCE)) {
             return true;
         }
         return false;

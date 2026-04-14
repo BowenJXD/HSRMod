@@ -1,15 +1,20 @@
 package hsrmod.powers.uniqueBuffs;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import hsrmod.actions.FollowUpAction;
+import hsrmod.cardsV2.Remembrance.Demiurge1;
 import hsrmod.modcore.CustomEnums;
+import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
 import hsrmod.utils.GeneralUtil;
 
 public class FuturePower extends BuffPower {
-    public static final String POWER_ID = FuturePower.class.getSimpleName();
+    public static final String POWER_ID = HSRMod.makePath(FuturePower.class.getSimpleName());
 
     static final int STACK_LIMIT = 24;
     static final int TRIGGER_THRESHOLD = 12;
@@ -21,7 +26,7 @@ public class FuturePower extends BuffPower {
 
     @Override
     public void updateDescription() {
-        description = GeneralUtil.tryFormat(DESCRIPTIONS[0], STACK_LIMIT, TRIGGER_THRESHOLD);
+        description = GeneralUtil.tryFormat(DESCRIPTIONS[0], STACK_LIMIT, TRIGGER_THRESHOLD, TRIGGER_THRESHOLD);
     }
 
     @Override
@@ -43,11 +48,19 @@ public class FuturePower extends BuffPower {
     }
 
     @Override
-    public void atEndOfTurn(boolean isPlayer) {
-        super.atEndOfTurn(isPlayer);
+    public void atEndOfTurnPreEndTurnCards(boolean isPlayer) {
+        super.atEndOfTurnPreEndTurnCards(isPlayer);
         if (amount >= TRIGGER_THRESHOLD) {
-            remove(TRIGGER_THRESHOLD);
             onSpecificTrigger();
         }
+    }
+
+    @Override
+    public void onSpecificTrigger() {
+        super.onSpecificTrigger();
+        addToBot(new ReducePowerAction(owner, owner, this, TRIGGER_THRESHOLD));
+        AbstractCard card = new Demiurge1();
+        addToBot(new MakeTempCardInHandAction(card, false, true));
+        addToBot(new FollowUpAction(card));
     }
 }

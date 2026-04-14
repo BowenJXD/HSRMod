@@ -123,7 +123,7 @@ public class PresentInebriatedInRevelry extends BaseMonster implements OnCardUse
         if (SubscriptionManager.checkSubscriber(this)
                 && hasPower(ChargingPower.POWER_ID)
                 && abstractCard.type == AbstractCard.CardType.SKILL
-                && ultCount > 0) {
+                && ultCount > 1) {
             ultCount--;
             rollMove();
             createIntent();

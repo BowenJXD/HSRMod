@@ -43,8 +43,11 @@ public class OrbPatch {
             __inst.passiveAmount = amountCache;
         }
     }
-    
-    @SpirePatch(clz = AbstractOrb.class, method = "onEvoke")
+
+    @SpirePatch(clz = Frost.class, method = "onEvoke")
+    @SpirePatch(clz = Lightning.class, method = "onEvoke")
+    @SpirePatch(clz = Dark.class, method = "onEvoke")
+    @SpirePatch(clz = Plasma.class, method = "onEvoke")
     public static class OrbEvokePatch {
         static Integer amountCache = null;
 
@@ -89,7 +92,7 @@ public class OrbPatch {
             AbstractGameAction action = AbstractDungeon.actionManager.actions.get(AbstractDungeon.actionManager.actions.size() - 1 - i);
             if (action instanceof DamageAction) {
                 DamageAction damageAction = (DamageAction) action;
-                AbstractDungeon.actionManager.actions.set(i, new ElementalDamageAction(
+                AbstractDungeon.actionManager.actions.set(AbstractDungeon.actionManager.actions.size() - 1 - i, new ElementalDamageAction(
                         damageAction.target,
                         new ElementalDamageInfo(
                                 ___info.owner,

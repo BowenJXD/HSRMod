@@ -5,8 +5,10 @@ import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.mod.stslib.actions.defect.TriggerPassiveAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.common.DarkOrbEvokeAction;
 import com.megacrit.cardcrawl.actions.common.SuicideAction;
 import com.megacrit.cardcrawl.actions.defect.EvokeOrbAction;
+import com.megacrit.cardcrawl.actions.defect.LightningOrbPassiveAction;
 import com.megacrit.cardcrawl.actions.utility.HideHealthBarAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -30,6 +32,7 @@ import hsrmod.modcore.HSRMod;
 import hsrmod.powers.enemyOnly.SummonedPower;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Predicate;
 
 public class ModHelper {
@@ -323,26 +326,45 @@ public class ModHelper {
     }
     
     public static void triggerPassiveTo(AbstractOrb orb, AbstractCreature target, int amount) {
-        if (orb.ID.equals(Lightning.ORB_ID)) {
-            AbstractDungeon.actionManager.addToBottom(new TriggerLightningPassiveToAction(orb, target, amount));
-        } else {
-            AbstractDungeon.actionManager.addToBottom(new TriggerPassiveAction(orb, amount));
+        if (Objects.equals(orb.ID, Lightning.ORB_ID)) {
+            AtomicInteger count = new AtomicInteger(amount);
+            GAMManager.addParallelAction("passiveTo_LIGHTNING", action -> {
+                if (action instanceof LightningOrbPassiveAction && check(target)) {
+                    GAMManager.stopCurrentAction();
+                    AbstractDungeon.actionManager.addToTop(new TriggerLightningPassiveToAction(orb, target, 1));
+                    return count.decrementAndGet() == 0;
+                }
+                return false;
+            });
         }
+        AbstractDungeon.actionManager.addToBottom(new TriggerPassiveAction(orb, amount));
     }
     
     public static void evokeTo(AbstractOrb orb, AbstractCreature target) {
-        evokeTo(orb, target, 1);
+        if (Objects.equals(orb.ID, Lightning.ORB_ID)) {
+            GAMManager.addParallelAction("evokeTo_LIGHTNING", action -> {
+                if (action instanceof LightningEvokeToAction && check(target)) {
+                    action.target = target;
+                    return true;
+                }
+                return false;
+            });
+        } else if (Objects.equals(orb.ID, Dark.ORB_ID)){
+            GAMManager.addParallelAction("evokeTo_DARK", action -> {
+                if (action instanceof DarkOrbEvokeAction && check(target)) {
+                    action.target = target;
+                    return true;
+                }
+                return false;
+            });
+        }
+        AbstractDungeon.actionManager.addToBottom(new EvokeOrbAction(1));
     }
     
-    public static void evokeTo(AbstractOrb orb, AbstractCreature target, int amount) {
-        if (orb.ID.equals(Lightning.ORB_ID)) {
-            AbstractDungeon.actionManager.addToBottom(new LightningEvokeToAction(orb, target, amount));
-        } else if (orb.ID.equals(Dark.ORB_ID)){
-            for (int i = amount; i > 0; i--) {
-                AbstractDungeon.actionManager.addToBottom(new DarkEvokeToAction(orb, target));
-            }
-        } else {
-            AbstractDungeon.actionManager.addToBottom(new EvokeOrbAction(amount));
+    public static AbstractOrb getRandomOrb() {
+        if (AbstractDungeon.player.orbs.isEmpty()) {
+            return null;
         }
+        return AbstractDungeon.player.orbs.get(AbstractDungeon.cardRandomRng.random(AbstractDungeon.player.filledOrbCount()));
     }
 }

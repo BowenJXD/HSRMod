@@ -12,6 +12,8 @@ public class BleedingPower extends DoTPower {
     
     private int damageLimit = 10;
     
+    boolean removeLimit = false;
+    
     public BleedingPower(AbstractCreature owner, AbstractCreature source, int Amount) {
         super(POWER_ID, owner, source, Amount);
         this.updateDescription();
@@ -19,16 +21,29 @@ public class BleedingPower extends DoTPower {
 
     @Override
     public void updateDescription() {
-        this.description = String.format(DESCRIPTIONS[0], getDamage(), damagePercentage, damageLimit);
+        if (removeLimit) {
+            this.description = String.format(DESCRIPTIONS[1], getDamage(), damagePercentage);
+        } else {
+            this.description = String.format(DESCRIPTIONS[0], getDamage(), damagePercentage, damageLimit);
+        }
     }
 
     @Override
     public int getDamage() {
+        if (removeLimit) {
+            return Math.round(owner.maxHealth * damagePercentage / 100f);
+        }
         return Math.min(Math.round(owner.maxHealth * damagePercentage / 100f), damageLimit);
     }
     
     @Override
     public ElementType getElementType() {
         return ElementType.Physical;
+    }
+
+    @Override
+    public void onSpecificTrigger() {
+        super.onSpecificTrigger();
+        removeLimit = true;
     }
 }

@@ -312,6 +312,8 @@ public class RelicEventHelper {
             relicName = TheWindSoaringValorous.ID;
         } else if (tag == CustomEnums.ABUNDANCE) {
             relicName = LongevousDisciple.ID;
+        } else if (tag == CustomEnums.REMEMBRANCE) {
+            relicName = WorldRemakingDeliverer.ID;
         }
         else if (tag == CustomEnums.TRAILBLAZE) {
             relicName = MasterOfDreamMachinations.ID;

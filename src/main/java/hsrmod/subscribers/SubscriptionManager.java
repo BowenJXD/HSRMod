@@ -3,6 +3,7 @@ package hsrmod.subscribers;
 import basemod.BaseMod;
 import basemod.interfaces.ISubscriber;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -25,6 +26,8 @@ import java.util.List;
  */
 public final class SubscriptionManager {
     private static SubscriptionManager instance = null;
+    
+    public List<AbstractCard> extraChecks = new ArrayList<>();
 
     List<IHSRSubscriber> toRemove = new ArrayList<>();
     List<PreElementalDamageSubscriber> preElementalDamageSubscribers = new ArrayList<>();
@@ -44,6 +47,7 @@ public final class SubscriptionManager {
     List<PostHPUpdateSubscriber> postHPUpdateSubscribers = new ArrayList<>();
     List<PrePowerTriggerSubscriber> prePowerTriggerSubscribers = new ArrayList<>();
     List<PreOrbPassiveOrEvokeSubscriber> preOrbPassiveOrEvokeSubscribers = new ArrayList<>();
+    List<PostCardMoveSubscriber> postCardMoveSubscribers = new ArrayList<>();
 
     HashMap<RunnableType, List<IRunnableSubscriber>> runnableSubscribers = new HashMap<>();
     HashMap<NumChangerType, List<INumChangerSubscriber>> numChangerSubscribers = new HashMap<>();
@@ -135,6 +139,10 @@ public final class SubscriptionManager {
             if (addToFront) preOrbPassiveOrEvokeSubscribers.add(0, (PreOrbPassiveOrEvokeSubscriber) sub);
             else preOrbPassiveOrEvokeSubscribers.add((PreOrbPassiveOrEvokeSubscriber) sub);
         }
+        if (sub instanceof PostCardMoveSubscriber && !postCardMoveSubscribers.contains(sub)) {
+            if (addToFront) postCardMoveSubscribers.add(0, (PostCardMoveSubscriber) sub);
+            else postCardMoveSubscribers.add((PostCardMoveSubscriber) sub);
+        }
 
         if (sub instanceof IRunnableSubscriber) {
             subscribeRunnableHelper((IRunnableSubscriber) sub, ((IRunnableSubscriber) sub).getSubType());
@@ -161,7 +169,7 @@ public final class SubscriptionManager {
             numChangerSubscribers.get(type).add(sub);
         }
     }
-    
+
     public static void unsubscribe(IHSRSubscriber sub) {
         getInstance().unsubscribeHelper(sub);
     }
@@ -184,6 +192,7 @@ public final class SubscriptionManager {
         if (sub instanceof PostHPUpdateSubscriber) postHPUpdateSubscribers.remove(sub);
         if (sub instanceof PrePowerTriggerSubscriber) prePowerTriggerSubscribers.remove(sub);
         if (sub instanceof PreOrbPassiveOrEvokeSubscriber) preOrbPassiveOrEvokeSubscribers.remove(sub);
+        if (sub instanceof PostCardMoveSubscriber) postCardMoveSubscribers.remove(sub);
 
         if (sub instanceof IRunnableSubscriber) {
             unsubscribeRunnableHelper((IRunnableSubscriber) sub, ((IRunnableSubscriber) sub).getSubType());
@@ -363,7 +372,7 @@ public final class SubscriptionManager {
 
         unsubscribeLaterHelper(PostMonsterDeathSubscriber.class);
     }
-    
+
     public void triggerPostHPUpdate(AbstractCreature creature) {
         for (PostHPUpdateSubscriber sub : postHPUpdateSubscribers) {
             sub.postHPUpdate(creature);
@@ -371,15 +380,15 @@ public final class SubscriptionManager {
 
         unsubscribeLaterHelper(PostHPUpdateSubscriber.class);
     }
-    
+
     public void triggerPrePowerTrigger(BasePower power) {
         for (PrePowerTriggerSubscriber sub : prePowerTriggerSubscribers) {
             sub.prePowerTrigger(power);
         }
-        
+
         unsubscribeLaterHelper(PrePowerTriggerSubscriber.class);
     }
-    
+
     public int triggerPreOrbPassive(AbstractOrb orb, int amount) {
         int result = amount;
 
@@ -402,6 +411,14 @@ public final class SubscriptionManager {
         unsubscribeLaterHelper(PreOrbPassiveOrEvokeSubscriber.class);
 
         return result;
+    }
+
+    public void triggerPostCardMove(CardGroup group, AbstractCard card, boolean in) {
+        for (PostCardMoveSubscriber sub : postCardMoveSubscribers) {
+            sub.postCardMove(group, card, in);
+        }
+
+        unsubscribeLaterHelper(PostCardMoveSubscriber.class);
     }
 
     public void triggerRunnable(RunnableType type) {
@@ -433,6 +450,7 @@ public final class SubscriptionManager {
                 || AbstractDungeon.player.drawPile.contains(card)
                 || AbstractDungeon.player.discardPile.contains(card)
                 || AbstractDungeon.player.exhaustPile.contains(card)
+                || getInstance().extraChecks.contains(card)
                 || (AbstractDungeon.actionManager != null
                 && AbstractDungeon.actionManager.cardQueue != null
                 && AbstractDungeon.actionManager.cardQueue.stream().anyMatch(cqi -> cqi != null && cqi.card != null && cqi.card.cardID.equals(card.cardID)));
@@ -444,13 +462,13 @@ public final class SubscriptionManager {
     }
 
     public static boolean checkSubscriber(AbstractPower power) {
-        boolean result = (
-                power.owner == AbstractDungeon.player
-                        && AbstractDungeon.player.powers.contains(power))
-                || (
-                AbstractDungeon.getMonsters() != null
-                        && AbstractDungeon.getMonsters().monsters != null
-                        && AbstractDungeon.getMonsters().monsters.contains(power.owner)
+        boolean result = (power.owner == AbstractDungeon.player
+                && AbstractDungeon.player.powers.contains(power))
+                || (AbstractDungeon.currMapNode != null
+                && AbstractDungeon.getCurrRoom() != null
+                && AbstractDungeon.getMonsters() != null
+                && AbstractDungeon.getMonsters().monsters != null
+                && AbstractDungeon.getMonsters().monsters.contains(power.owner)
         );
         if (!result) {
             if (power instanceof IHSRSubscriber) getInstance().unsubscribeLater((IHSRSubscriber) power);

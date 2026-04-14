@@ -22,6 +22,7 @@ public class Hysilens1 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
+        shout(0, 1);
         addToBot(new ElementalDamageAction(m, new ElementalDamageInfo(this), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         if (upgraded) {
             addToBot(new ApplyPowerAction(m, p, new BleedingPower(m, p, magicNumber), magicNumber));

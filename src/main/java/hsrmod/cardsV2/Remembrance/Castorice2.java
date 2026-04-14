@@ -12,6 +12,9 @@ import com.megacrit.cardcrawl.orbs.Dark;
 import hsrmod.actions.AddToDarkAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
+import hsrmod.utils.ModHelper;
+
+import java.util.Objects;
 
 public class Castorice2 extends BaseCard{
     public static final String ID = Castorice2.class.getSimpleName();
@@ -23,7 +26,8 @@ public class Castorice2 extends BaseCard{
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ChannelAction(new Dark()));
+        Dark dark = new Dark();
+        addToBot(new ChannelAction(dark));
         int blockToLose = p.currentBlock * magicNumber / 100;
         if (blockToLose > 0)
             addToBot(new LoseBlockAction(p, p, blockToLose));
@@ -34,7 +38,11 @@ public class Castorice2 extends BaseCard{
             addToBot(new AddToDarkAction(blockToLose + hpToLose));
         }
         if (upgraded) {
-            p.orbs.stream().filter(orb -> orb.ID.equals(Dark.ORB_ID)).forEach(orb -> addToBot(new TriggerPassiveAction(orb)));
+            ModHelper.addToBotAbstract(() -> {
+                p.orbs.stream().filter(orb -> Objects.equals(orb.ID, Dark.ORB_ID)).forEach(orb -> addToBot(new TriggerPassiveAction(orb)));
+            });
+        } else {
+            addToBot(new TriggerPassiveAction(dark));
         }
     }
 }

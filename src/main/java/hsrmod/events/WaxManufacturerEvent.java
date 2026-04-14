@@ -125,8 +125,6 @@ public class WaxManufacturerEvent extends PhasedEvent {
         Map<AbstractCard.CardTags, Integer> tagCount = Stream.of(Path.values())
                 .collect(Collectors.toMap(Path::toTag, p -> group.group.stream().mapToInt(card -> card.hasTag(Path.toTag(p)) ? 1 : 0).sum()));
         tagCount.remove(CustomEnums.TRAILBLAZE);
-        tagCount.remove(CustomEnums.ABUNDANCE);
-        tagCount.remove(CustomEnums.REMEMBRANCE);
         return tagCount.entrySet().stream().max(Map.Entry.comparingByValue()).map(Map.Entry::getKey).orElse(null);
     }
 }

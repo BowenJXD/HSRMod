@@ -19,6 +19,7 @@ public class MilitaryMeritPower extends BuffPower {
     
     final int stackLimit = 8;
     final int triggerAmount = 6;
+    int removeAmount = 6;
     int vigorAmount;
     
     public MilitaryMeritPower(AbstractCreature target, int Amount, int vigorAmount) {
@@ -29,7 +30,7 @@ public class MilitaryMeritPower extends BuffPower {
 
     @Override
     public void updateDescription() {
-        this.description = String.format(DESCRIPTIONS[0], triggerAmount, vigorAmount, triggerAmount);
+        this.description = String.format(DESCRIPTIONS[0], triggerAmount, removeAmount, vigorAmount);
     }
     
     @Override
@@ -40,7 +41,7 @@ public class MilitaryMeritPower extends BuffPower {
             this.amount = stackLimit;
         }
         if (!triggered && this.amount >= triggerAmount) {
-            onSpecificTrigger();
+            addToBot(new ApplyPowerAction(owner, owner, new VigorPower(owner, vigorAmount), vigorAmount));
         }
     }
 
@@ -66,7 +67,7 @@ public class MilitaryMeritPower extends BuffPower {
 
                 tmp.purgeOnUse = true;
                 AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(tmp, m, card.energyOnUse, true, true), true);
-                reducePower(triggerAmount - 1);
+                reducePower(removeAmount);
             } else {
                 stackPower(1);
             }
@@ -77,6 +78,6 @@ public class MilitaryMeritPower extends BuffPower {
     @Override
     public void onSpecificTrigger() {
         super.onSpecificTrigger();
-        addToBot(new ApplyPowerAction(owner, owner, new VigorPower(owner, vigorAmount), vigorAmount));
+        removeAmount = 5;
     }
 }

@@ -19,7 +19,7 @@ public class RecordFromBeyondTheSky extends BaseRelic {
     public void atBattleStart() {
         flash();
         addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new ArtifactPower(AbstractDungeon.player, magicNumber), magicNumber));
-        this.addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new BufferPower(AbstractDungeon.player, magicNumber), magicNumber));
+        // this.addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new BufferPower(AbstractDungeon.player, magicNumber), magicNumber));
         addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
     }
 }

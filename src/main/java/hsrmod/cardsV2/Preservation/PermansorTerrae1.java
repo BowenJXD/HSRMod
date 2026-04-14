@@ -18,6 +18,7 @@ public class PermansorTerrae1 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
+        shout(0, 1);
         for (int i = 0; i < magicNumber; i++)
             addToBot(new ChannelAction(new Frost()));
         addToBot(new GainBlockAction(p, p, block));

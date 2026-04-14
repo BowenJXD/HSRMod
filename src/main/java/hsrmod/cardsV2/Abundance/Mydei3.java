@@ -25,6 +25,7 @@ public class Mydei3 extends BaseCard {
         super(ID);
         exhaust = true;
         tags.add(CustomEnums.FOLLOW_UP);
+        tags.add(CustomEnums.CHRYSOS_HEIR);
         isMultiDamage = true;
         cardsToPreview = new Mydei1(true);
     }

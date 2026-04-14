@@ -6,9 +6,11 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.orbs.Dark;
+import com.megacrit.cardcrawl.orbs.EmptyOrbSlot;
 import com.megacrit.cardcrawl.vfx.combat.OrbFlareEffect;
 
 import java.util.List;
+import java.util.Objects;
 
 public class AddToDarkAction extends AbstractGameAction {
     List<AbstractOrb> orbs;
@@ -26,11 +28,12 @@ public class AddToDarkAction extends AbstractGameAction {
     public void update() {
         isDone = true;
         for (AbstractOrb orb : orbs) {
-            if (orb.ID.equals(Dark.ORB_ID)) {
-                AbstractDungeon.actionManager.addToBottom(new VFXAction(new OrbFlareEffect(orb, OrbFlareEffect.OrbFlareColor.DARK), Settings.FAST_MODE ? 0.0F : 0.6F / orbs.size()));
-                orb.evokeAmount += orb.passiveAmount;
-                orb.updateDescription();
+            if (orb == null || orb instanceof EmptyOrbSlot || !Objects.equals(orb.ID, Dark.ORB_ID)) {
+                continue;
             }
+            AbstractDungeon.actionManager.addToBottom(new VFXAction(new OrbFlareEffect(orb, OrbFlareEffect.OrbFlareColor.DARK), Settings.FAST_MODE ? 0.0F : 0.6F / orbs.size()));
+            orb.evokeAmount += amount;
+            orb.updateDescription();
         }
     }
 }

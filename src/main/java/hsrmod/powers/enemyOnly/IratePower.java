@@ -118,5 +118,7 @@ public class IratePower extends StatePower implements OnPlayerDamagedSubscriber 
         if (!AbstractDungeon.actionManager.turnHasEnded)
             addToBot(new EndTurnAction());
         AbstractDungeon.getCurrRoom().monsters.queueMonsters();
+        ModHelper.addToBotAbstract(() -> AbstractDungeon.getMonsters().monsters.stream()
+                .filter(ModHelper::check).forEach(AbstractMonster::createIntent));
     }
 }

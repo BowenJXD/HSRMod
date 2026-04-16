@@ -13,10 +13,13 @@ import hsrmod.cards.BaseCard;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.utils.ModHelper;
 
+import java.util.function.Consumer;
+
 public class BouncingAction extends AbstractGameAction {
     private int numTimes;
     private ElementalDamageAction damageAction;
     BaseCard card;
+    Consumer<AbstractCreature> preAction;
     
     public BouncingAction(AbstractCreature target, int numTimes, ElementalDamageAction damageAction, BaseCard card){
         this.target = target;
@@ -33,6 +36,11 @@ public class BouncingAction extends AbstractGameAction {
     
     public BouncingAction(int numTimes, ElementalDamageAction damageAction, BaseCard card){
         this(null, numTimes, damageAction, card);
+    }
+    
+    public BouncingAction setPreAction(Consumer<AbstractCreature> preAction) {
+        this.preAction = preAction;
+        return this;
     }
     
     public void update() {
@@ -52,10 +60,10 @@ public class BouncingAction extends AbstractGameAction {
         
         if (this.numTimes > 1 && !AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
             --this.numTimes;
-            this.addToTop(new BouncingAction(this.numTimes, this.damageAction.makeCopy(), card));
+            this.addToTop(new BouncingAction(this.numTimes, this.damageAction.makeCopy(), card).setPreAction(preAction));
         }
 
-        if (this.target.currentHealth > 0) {
+        if (ModHelper.check(target)) {
             ElementalDamageAction damageAction = this.damageAction;
             damageAction.target = this.target;
             if (card != null) {
@@ -63,6 +71,7 @@ public class BouncingAction extends AbstractGameAction {
                 damageAction.info = new ElementalDamageInfo(this.card);
             }
             this.addToTop(damageAction);
+            if (preAction != null) preAction.accept(target);
         }
         this.isDone = true;
     }

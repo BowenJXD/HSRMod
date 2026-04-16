@@ -44,6 +44,12 @@ public class MusicPatch {
             case "Destruction's Beginning":
                 music = MainMusic.newMusic(PathDefine.MUSIC_PATH + "DawnOfDisaster.mp3");
                 break;
+            case "Past Ripples":
+                music = MainMusic.newMusic(PathDefine.MUSIC_PATH + "Past Ripples.mp3");
+                break;
+            case "Flares of the Blazing Sun":
+                music = MainMusic.newMusic(PathDefine.MUSIC_PATH + "Flares of the Blazing Sun.mp3");
+                break;
         }
         if (music == null)
             return SpireReturn.Continue();

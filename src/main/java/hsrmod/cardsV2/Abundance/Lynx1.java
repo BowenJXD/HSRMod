@@ -19,7 +19,7 @@ public class Lynx1 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         addToBot(new AddTemporaryHPAction(p, p, block));
-        addToBot(new CleanAction(p, 1, false));
+        addToBot(new CleanAction(p, magicNumber, false));
         addToBot(new ChangeStanceAction(new NeutralStance()));
     }
 }

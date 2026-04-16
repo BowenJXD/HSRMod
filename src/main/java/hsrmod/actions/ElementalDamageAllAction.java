@@ -72,6 +72,11 @@ public class ElementalDamageAllAction extends AbstractGameAction {
         return this;
     }
 
+    public ElementalDamageAllAction setBaseCard(BaseCard card) {
+        this.card = card;
+        return this;
+    }
+
     public void update() {
         if (this.firstFrame) {
             if (this.utilizeBaseDamage) {

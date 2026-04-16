@@ -111,7 +111,7 @@ public class SilverWolf1 extends BaseCard {
             if (SignatureHelper.isUnlocked(HSRMod.makePath(ID))) {
                 SignatureHelper.unlock(HSRMod.makePath(ID), false);
                 SignatureHelperInternal.setSignatureNotice(CardLibrary.getCard(HSRMod.makePath(ID)), false);
-                if (AbstractDungeon.actionManager != null && AbstractDungeon.isPlayerInDungeon())
+                if (AbstractDungeon.actionManager != null && AbstractDungeon.isPlayerInDungeon() && AbstractDungeon.currMapNode != null)
                     AbstractDungeon.actionManager.addToTop(new TalkAction(true,
                             CardCrawlGame.languagePack.getCardStrings(HSRMod.makePath(ID)).EXTENDED_DESCRIPTION[4],
                             2, 3));

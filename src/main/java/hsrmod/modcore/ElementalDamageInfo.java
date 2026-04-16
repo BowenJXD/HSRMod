@@ -63,6 +63,11 @@ public class ElementalDamageInfo extends DamageInfo {
         this.elementType = card.elementType;
         this.card = card;
     }
+    
+    public ElementalDamageInfo setBaseCard(BaseCard card) {
+        this.card = card;
+        return this;
+    }
 
     public ApplyPowerAction applyBreakingPower(AbstractCreature target){
         if (elementType == null) return null;

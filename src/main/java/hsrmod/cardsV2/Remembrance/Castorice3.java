@@ -43,6 +43,7 @@ public class Castorice3 extends BaseCard implements PostHPUpdateSubscriber {
         super(ID);
         exhaust = true;
         MultiCardPreview.add(this, new Pollux1(), new Pollux3());
+        MultiCardPreview.horizontalOnly(this);
         tags.add(CustomEnums.CHRYSOS_HEIR);
     }
 

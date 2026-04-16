@@ -45,6 +45,10 @@ public class BreakDamageAction extends AbstractGameAction {
 
     @Override
     public void update() {
+        if (source == null || info.owner == null) {
+            isDone = true;
+            return;
+        }
         if (this.duration == 0.1F && this.target != null) {
             AbstractDungeon.effectList.add(new FlashAtkImgEffect(this.target.hb.cX, this.target.hb.cY, AttackEffect.NONE));
             

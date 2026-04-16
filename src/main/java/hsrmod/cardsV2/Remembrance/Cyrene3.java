@@ -1,8 +1,10 @@
 package hsrmod.cardsV2.Remembrance;
 
 import basemod.patches.com.megacrit.cardcrawl.cards.AbstractCard.MultiCardPreview;
+import com.badlogic.gdx.utils.Timer;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.cards.BaseCard;
@@ -17,6 +19,7 @@ public class Cyrene3 extends BaseCard {
         super(ID);
         selfRetain = true;
         MultiCardPreview.add(this, new Cyrene4(), new Demiurge1());
+        MultiCardPreview.horizontalOnly(this);
         tags.add(CustomEnums.CHRYSOS_HEIR);
     }
 

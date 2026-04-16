@@ -42,8 +42,8 @@ public class Bailu1 extends BaseCard {
 
     void trigger() {
         int handSize = AbstractDungeon.player.hand.size();
-        addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new NecrosisPower(AbstractDungeon.player, 1)));
-        addToTop(new TriggerPowerAction(AbstractDungeon.player.getPower(NecrosisPower.POWER_ID)));
+        // addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new NecrosisPower(AbstractDungeon.player, 1)));
+        // addToTop(new TriggerPowerAction(AbstractDungeon.player.getPower(NecrosisPower.POWER_ID)));
         addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new DewDropPower(AbstractDungeon.player, handSize * magicNumber)));
         addToTop(new AddTemporaryHPAction(AbstractDungeon.player, AbstractDungeon.player, handSize * magicNumber + block));
     }

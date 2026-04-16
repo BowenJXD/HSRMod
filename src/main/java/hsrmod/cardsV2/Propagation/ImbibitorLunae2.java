@@ -7,6 +7,8 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
+import hsrmod.modcore.HSRMod;
+import hsrmod.signature.utils.SignatureHelper;
 
 public class ImbibitorLunae2 extends BaseCard {
     public static final String ID = ImbibitorLunae2.class.getSimpleName();
@@ -16,6 +18,9 @@ public class ImbibitorLunae2 extends BaseCard {
         setBaseEnergyCost(140);
         tags.add(CustomEnums.ENERGY_COSTING);
         isMultiDamage = true;
+        if (SignatureHelper.isUnlocked(HSRMod.makePath("ImbibitorLunae1"))) {
+            SignatureHelper.unlock(HSRMod.makePath(ID), true);
+        }
     }
 
     @Override

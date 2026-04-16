@@ -91,7 +91,7 @@ public class CosmicCrescendoEvent extends PhasedEvent {
         Effect effect = Effect.values()[AbstractDungeon.eventRng.random(Effect.values().length - 1)];
         switch (effect) {
             case GOLD:
-                int amount1 = AbstractDungeon.eventRng.random(50, 100);
+                int amount1 = AbstractDungeon.eventRng.random(1, 100);
                 if (good) {
                     // Gain gold in fixed amount
                     AbstractDungeon.player.gainGold(amount1);

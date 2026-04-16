@@ -16,7 +16,7 @@ import hsrmod.subscribers.PreBreakSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
-public class TwigOfGloriousBlooms extends BaseMonster implements PreBreakSubscriber {
+public class TwigOfGloriousBlooms extends BaseMonster {
     public static final String ID = TwigOfGloriousBlooms.class.getSimpleName();
     
     int healAmount = 10;
@@ -43,18 +43,10 @@ public class TwigOfGloriousBlooms extends BaseMonster implements PreBreakSubscri
     public void usePreBattleAction() {
         super.usePreBattleAction();
         addToBot(new ApplyPowerAction(this, this, new LastSpringPower(this, lastSpringCount)));
-        SubscriptionManager.subscribe(this);
     }
 
     @Override
     protected void getMove(int i) {
         setMove(0);
-    }
-    
-    @Override
-    public void preBreak(ElementalDamageInfo info, AbstractCreature target) {
-        if (SubscriptionManager.checkSubscriber(this) && target == this) {
-            addToTop(new RemoveSpecificPowerAction(this, this, LastSpringPower.POWER_ID));
-        }
     }
 }

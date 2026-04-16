@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -60,6 +61,7 @@ public class Yanqing extends BaseMonster implements PostMonsterDeathSubscriber {
             CardGroup tmp = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
             tmp.group.addAll(AbstractDungeon.player.drawPile.group);
             tmp.group.addAll(AbstractDungeon.player.hand.group);
+            tmp.group.removeIf(c -> c.type != AbstractCard.CardType.ATTACK);
             if (!tmp.isEmpty()) {
                 tmp.getRandomCard(AbstractDungeon.aiRng).exhaust = true;
                 tmp.getRandomCard(AbstractDungeon.aiRng).isEthereal = true;

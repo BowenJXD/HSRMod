@@ -49,7 +49,7 @@ public class MayRainbowsRemain extends BaseCard {
                     })
             );
         else
-            ModHelper.findCards(card -> card.selfRetain, true)
+            ModHelper.findCards(card -> card.selfRetain, false, true, true, false, false)
                     .stream()
                     .filter(r -> r.group != AbstractDungeon.player.hand)
                     .limit(magicNumber)

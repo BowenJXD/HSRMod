@@ -46,14 +46,11 @@ public class MilitaryMeritPower extends BuffPower {
     }
 
     @Override
-    public void onUseCard(AbstractCard card, UseCardAction action) {
+    public void onPlayCard(AbstractCard card, AbstractMonster m) {
+        super.onPlayCard(card, m);
         if (!card.purgeOnUse && card.type == AbstractCard.CardType.ATTACK) {
             if (this.amount >= triggerAmount && !(card.costForTurn == 0 || card.energyOnUse == 0 || card.freeToPlayOnce)) {
                 this.flash();
-                AbstractMonster m = null;
-                if (action.target != null) {
-                    m = (AbstractMonster)action.target;
-                }
 
                 AbstractCard tmp = card.makeSameInstanceOf();
                 AbstractDungeon.player.limbo.addToBottom(tmp);
@@ -72,7 +69,6 @@ public class MilitaryMeritPower extends BuffPower {
                 stackPower(1);
             }
         }
-
     }
 
     @Override

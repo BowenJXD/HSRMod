@@ -1,12 +1,18 @@
 package hsrmod.cardsV2.Remembrance;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.BorderLongFlashEffect;
 import hsrmod.actions.AddToDarkAction;
 import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.effects.CustomCleaveEffect;
 import hsrmod.modcore.CustomEnums;
 
 public class Pollux2 extends BaseCard {
@@ -21,9 +27,14 @@ public class Pollux2 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
+        AbstractDungeon.topLevelEffects.add(new BorderLongFlashEffect(Color.PURPLE));
+        AbstractDungeon.topLevelEffects.add(new CustomCleaveEffect(Color.PURPLE, -100.0F * Settings.scale, 200.0F * Settings.scale, -10));
+        AbstractDungeon.topLevelEffects.add(new CustomCleaveEffect(Color.PURPLE, -100.0F * Settings.scale, 0, 0));
+        AbstractDungeon.topLevelEffects.add(new CustomCleaveEffect(Color.PURPLE, -100.0F * Settings.scale, -200.0F * Settings.scale, 10));
+        
         addToBot(new LoseHPAction(p, p, magicNumber));
         addToBot(new AddToDarkAction(p.orbs, magicNumber));
         
-        addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.FIRE));
+        addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
     }
 }

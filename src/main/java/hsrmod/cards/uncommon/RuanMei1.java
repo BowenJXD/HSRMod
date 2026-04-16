@@ -6,9 +6,11 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
+import hsrmod.modcore.HSRMod;
 import hsrmod.powers.misc.BreakEffectPower;
 import hsrmod.powers.misc.BreakEfficiencyPower;
 import hsrmod.powers.uniqueDebuffs.ThanatoplumRebloomPower;
+import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.utils.ModHelper;
 
 public class RuanMei1 extends BaseCard {
@@ -17,6 +19,9 @@ public class RuanMei1 extends BaseCard {
     public RuanMei1() {
         super(ID);
         tags.add(CustomEnums.RUAN_MEI);
+        if (SignatureHelper.isUnlocked(HSRMod.makePath("RuanMei2"))) {
+            SignatureHelper.unlock(HSRMod.makePath(ID), true);
+        }
     }
 
     @Override

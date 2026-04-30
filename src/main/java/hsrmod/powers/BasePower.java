@@ -26,7 +26,7 @@ public abstract class BasePower extends AbstractPower {
         this.amount = Amount;
         this.type = type;
         this.upgraded = upgraded;
-        this.loadRegion(this.getClass().getSimpleName());
+        this.loadCustomRegion(this.getClass().getSimpleName());
     }
     
     public BasePower(String id, AbstractCreature owner, int Amount, PowerType type){
@@ -50,22 +50,10 @@ public abstract class BasePower extends AbstractPower {
         }
     }
 
-    @Override
-    protected void loadRegion(String fileName) {
+    protected void loadCustomRegion(String fileName) {
         try {
             String path128 = String.format(PathDefine.POWER_PATH + "%s128.png", fileName);
             String path48 = String.format(PathDefine.POWER_PATH + "%s48.png", fileName);
-            this.region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage(path128), 0, 0, 128, 128);
-            this.region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage(path48), 0, 0, 48, 48);
-        } catch (Exception e) {
-            HSRMod.logger.error("Error while loading power region", e);
-        }
-    }
-
-    protected void loadRegion(String resourcePath, String fileName) {
-        try {
-            String path128 = String.format(resourcePath + "%s128.png", fileName);
-            String path48 = String.format(resourcePath + "%s48.png", fileName);
             this.region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage(path128), 0, 0, 128, 128);
             this.region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage(path48), 0, 0, 48, 48);
         } catch (Exception e) {

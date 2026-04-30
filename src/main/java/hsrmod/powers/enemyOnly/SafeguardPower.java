@@ -3,17 +3,12 @@ package hsrmod.powers.enemyOnly;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
-import com.evacipated.cardcrawl.modthespire.lib.ByRef;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.modcore.ElementalDamageInfo;
@@ -22,7 +17,6 @@ import hsrmod.powers.BuffPower;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.subscribers.PreBreakSubscriber;
 import hsrmod.subscribers.PreElementalDamageSubscriber;
-import hsrmod.subscribers.PreToughnessReduceSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
 
@@ -78,8 +72,8 @@ public class SafeguardPower extends BuffPower implements OnReceivePowerPower, Pr
         if (power instanceof ToughnessPower) {
             int count = ModHelper.getPowerCount(target, ToughnessPower.POWER_ID);
             if (count > 0 != count + stackAmount > 0) {
-                if (count > 0) loadRegion(brokenImgUrl);
-                else loadRegion(normalImgUrl);
+                if (count > 0) loadCustomRegion(brokenImgUrl);
+                else loadCustomRegion(normalImgUrl);
             }
         }
         return stackAmount;

@@ -57,7 +57,7 @@ public class DecayEulogyPower extends StatePower {
     }
 
     @Override
-    protected void loadRegion(String fileName) {
+    protected void loadCustomRegion(String fileName) {
         fileName = "explosive";
         this.region48 = atlas.findRegion("48/" + fileName);
         this.region128 = atlas.findRegion("128/" + fileName);

@@ -82,6 +82,11 @@ public class Luofu extends CustomDungeon {
     public String getOptionText() {
         return TEXT[3];
     }
+   
+    @Override
+    public String getActNumberText() {
+        return TEXT[1];
+    }
 
     protected void generateMonsters() {
         this.generateWeakEnemies(this.weakpreset);

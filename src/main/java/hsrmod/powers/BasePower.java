@@ -57,7 +57,7 @@ public abstract class BasePower extends AbstractPower {
             this.region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage(path128), 0, 0, 128, 128);
             this.region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage(path48), 0, 0, 48, 48);
         } catch (Exception e) {
-            HSRMod.logger.error("Error while loading power region", e);
+            HSRMod.logger.error("Error while loading power region: " + fileName, e);
         }
     }
 

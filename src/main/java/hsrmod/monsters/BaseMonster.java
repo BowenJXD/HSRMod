@@ -290,16 +290,28 @@ public abstract class BaseMonster extends CustomMonster {
                     if (isDead || isDying) return;
                     MonsterSlot slot = getEmptySlot(inOrder);
                     if (slot == null) return;
-                    AbstractMonster monster = monFunc.apply(slot);
-                    if (monster == null) return;
-                    addToTop(new SpawnMonsterAction(monster, spawnType == SpawnType.MINION));
-                    monster.usePreBattleAction();
-                    if (spawnType == SpawnType.SUMMONED) {
-                        addToTop(new ApplyPowerAction(monster, monster, new SummonedPower(this)));
-                    }
-                    slot.setMonster(monster);
+                    spawnMonsterOnSlot(slot, spawnType, false);
                 });
             }
+    }
+
+    /**
+     * May fail if slot not empty
+     * @param slot
+     * @param spawnType
+     * @param createIntent
+     */
+    public void spawnMonsterOnSlot(MonsterSlot slot, SpawnType spawnType, boolean createIntent) {
+        if (!slot.isEmpty()) return;
+        AbstractMonster monster = monFunc.apply(slot);
+        if (monster == null) return;
+        addToTop(new SpawnMonsterAction(monster, spawnType == SpawnType.MINION));
+        monster.usePreBattleAction();
+        if (createIntent) ModHelper.addToBotAbstract(monster::createIntent);
+        if (spawnType == SpawnType.SUMMONED) {
+            addToTop(new ApplyPowerAction(monster, monster, new SummonedPower(this)));
+        }
+        slot.setMonster(monster);
     }
 
     public void respawn() {

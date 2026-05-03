@@ -11,50 +11,28 @@ import hsrmod.subscribers.PostMonsterDeathSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.GeneralUtil;
 
-public class DisputationModePower extends StatePower implements PostMonsterDeathSubscriber {
+public class DisputationModePower extends StatePower {
     public static final String POWER_ID = HSRMod.makePath(DisputationModePower.class.getSimpleName());
 
-    int monsterCount = 1;
     int evolutionCount;
     int disputationCount = 3;
 
     public DisputationModePower(AbstractCreature owner, int amount, int evolutionCount) {
         super(POWER_ID, owner, amount);
         disputationCount = amount;
-        this.evolutionCount = evolutionCount; 
+        this.evolutionCount = evolutionCount;
+        priority = 1;
         updateDescription();
     }
 
     @Override
     public void updateDescription() {
-        description = GeneralUtil.tryFormat(DESCRIPTIONS[0], evolutionCount);
+        description = GeneralUtil.tryFormat(DESCRIPTIONS[0], 2, 1, evolutionCount);
     }
 
     @Override
-    public void onInitialApplication() {
-        super.onInitialApplication();
-        SubscriptionManager.subscribe(this);
-    }
-
-    @Override
-    public void onRemove() {
-        super.onRemove();
-        SubscriptionManager.unsubscribe(this);
-    }
-
-    @Override
-    public void reducePower(int reduceAmount) {
-        super.reducePower(reduceAmount);
-        if (amount == 0) {
-            addToTop(new ApplyPowerAction(owner, owner, new EvolutionModePower(owner, disputationCount, evolutionCount)));
-            addToTop(new PressEndTurnButtonAction());
-        }
-    }
-
-    @Override
-    public void postMonsterDeath(AbstractMonster monster) {
-        if (SubscriptionManager.checkSubscriber(this)) {
-            this.addToTop(new ReducePowerAction(this.owner, this.owner, this, 1));
-        }
+    public void atEndOfTurn(boolean isPlayer) {
+        super.atEndOfTurn(isPlayer);
+        addToBot(new ApplyPowerAction(owner, owner, new StrengthenPower(owner, 1)));
     }
 }

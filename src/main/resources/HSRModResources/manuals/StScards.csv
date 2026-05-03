@@ -1,0 +1,370 @@
+﻿page,name,card_id,name_en,color,type,rarity,cost,description,ability,upgrade_cost,upgrade_desc,upgrade_ability,image,test_image,main_category
+字符串,字符串,字符串,字符串,字符串,字符串,字符串,数值,字符串,字符串,数值,字符串,字符串,字符串,字符串,字符串
+page,name,card_id,name_en,color,type,rarity,cost,description,ability,upgrade_cost,upgrade_desc,upgrade_ability,image,test_image,main_category
+凌迟,凌迟,A Thousand Cuts,A Thousand Cuts,绿色,能力,稀有,2,你每打出一张牌，就对所有敌人造成1点伤害。,,2,你每打出一张牌，就对所有敌人造成2点伤害。,,aThousandCuts.png,Old_card_green_power_a_thousand_cuts.png,cards
+汇集,汇集,Aggregate,Aggregate,蓝色,技能,罕见,1,你的抽牌堆中每有4张牌，获得一点[B]。,,1,你的抽牌堆中每有3张牌，获得一点[B]。,,aggregate.png,aggregate_test.png,cards
+杂技,杂技,Acrobatics,Acrobatics,绿色,技能,普通,1,抽3张牌。<br>丢弃1张牌。,,1,抽4张牌。<br>丢弃1张牌。,,acrobatics.png,acrobatics_test.png,cards
+余像,余像,After Image,After Image,绿色,能力,稀有,1,你每打出一张牌，都获得1点{{KW|格挡}}。,,1,{{KW|固有}}。<br>你每打出一张牌，都获得1点{{KW|格挡}}。,,after_image.png,after_image_test.png,cards
+全力攻击,全力攻击,All Out Attack,All Out Attack,绿色,攻击,罕见,1,对所有敌人造成10点伤害。<br>丢弃一张随机手牌。,,1,对所有敌人造成14点伤害。<br>丢弃一张随机手牌。,,allOutAttack.png,all_out_attack_test.png,cards
+精准,精准,Accuracy,Accuracy,绿色,能力,罕见,1,{{Card_show|小刀}}造成的伤害增加4。,,1,{{Card_show|小刀}}造成的伤害增加6。,,accuracy.png,accuracy_test.png,cards
+万物一心,万物一心,All For One,All For One,蓝色,攻击,稀有,2,造成10点伤害。<br>将弃牌堆中所有0耗能的牌放入你的手牌。,,2,造成14点伤害。<br>将弃牌堆中所有0耗能的牌放入你的手牌。,,allForOne.png,all_for_one_test.png,cards
+肾上腺素,肾上腺素,Adrenaline,Adrenaline,绿色,技能,稀有,0,获得[G]。<br>抽2张牌。<br>{{KW|消耗}}。,,0,获得[G][G]。<br>抽2张牌。<br>{{KW|消耗}}。,,adrenaline.png,adrenaline_test.png,cards
+增幅,增幅,Amplify,Amplify,蓝色,技能,稀有,1,在这个回合，你的下一张能力牌会打出两次。,,1,在这个回合，你的下2张能力牌会打出两次。,,amplify.png,amplify_test.png,cards
+阿尔法,阿尔法,Alpha,Alpha,紫色,技能,稀有,1,将一张{{Card_show|贝塔}}放入你的抽牌堆中。<br>{{KW|消耗}}。,,1,{{KW|固有}}。<br>将一张{{Card_show|贝塔}}放入你的抽牌堆中。<br>{{KW|消耗}}。,,alpha.png,alpha_test.png,cards
+愤怒,愤怒,Anger,Anger,红色,攻击,普通,0,造成6点伤害。<br>在弃牌堆放入一张此牌的复制品。,,0,造成8点伤害。<br>在弃牌堆放入一张此牌的复制品。,,anger.png,anger_test.png,cards
+武装,武装,Armaments,Armaments,红色,技能,普通,1,获得5点{{KW|格挡}}。<br>在本场战斗中{{KW|升级}}手牌中的一张牌。,,1,获得5点{{KW|格挡}}。<br>在本场战斗中{{KW|升级}}手牌中的所有牌。,,armaments.png,armaments_test.png,cards
+神化,神化,Apotheosis,Apotheosis,无色,技能,稀有,2,在本场战斗中{{KW|升级}}你的所有牌。<br>{{KW|消耗}}。,"升级,消耗",1,在本场战斗中{{KW|升级}}你的所有牌。<br>{{KW|消耗}}。,"升级,消耗",apotheosis.png,apotheosis_test.png,cards
+进阶之灾,进阶之灾,Ascenders Bane,Ascenders Bane,诅咒,诅咒,特殊,-2,{{KW|不能被打出}}。<br>{{KW|虚无}}。<br>不能从牌组中移除。,"不能被打出,虚无,不能被移除",0,,,ascension.png,ascenders_bane_test.png,cards
+后空翻,后空翻,Backflip,Backflip,绿色,技能,普通,1,获得5点{{KW|格挡}}。<br>抽2张牌。,,1,获得8点{{KW|格挡}}。<br>抽2张牌。,,backflip.png,backflip_test.png,cards
+背刺,背刺,Backstab,Backstab,绿色,攻击,罕见,0,造成11点伤害。<br>{{KW|固有}}。<br>{{KW|消耗}}。,,0,造成15点伤害。<br>{{KW|固有}}。<br>{{KW|消耗}}。,,backstab.png,backstab_test.png,cards
+自动护盾,自动护盾,Auto Shields,Auto Shields,蓝色,技能,罕见,1,如果你没有格挡，获得 11 点{{KW|格挡}}。,,1,如果你没有格挡，获得15点{{KW|格挡}}。,,autoShields.png,auto_shields_test.png,cards
+包扎,包扎,Bandage Up,Bandage Up,无色,技能,罕见,0,回复4生命。<br>{{KW|消耗}}。,"恢复生命,消耗",0,恢复6生命。<br>{{KW|消耗}}。,"恢复生命,消耗",bandageUp.png,bandage_up_test.png,cards
+灾祸,灾祸,Bane,Bane,绿色,攻击,普通,1,造成7点伤害。<br>如果敌人有{{KW|中毒}}状态 ，则再次造成7点伤害。,,1,造成10点伤害。<br>如果敌人有{{KW|中毒}}状态 ，则再次造成10点伤害。,,bane.png,bane_test.png,cards
+球状闪电,球状闪电,Ball Lightning,Ball Lightning,蓝色,攻击,普通,1,造成7点伤害。<br>{{KW|生成}}1个{{KW|闪电}}充能球。,,1,造成10点伤害。<br>{{KW|生成}}1个{{KW|闪电}}充能球。,,ballLightning.png,ball_lightning_test.png,cards
+弹幕齐射,弹幕齐射,Barrage,Barrage,蓝色,攻击,普通,1,你每拥有一个充能球，造成4点伤害。,,1,你每拥有一个充能球，造成6点伤害。,,barrage.png,barrage_test.png,cards
+壁垒,壁垒,Barricade,Barricade,红色,能力,稀有,3,{{KW|格挡}}不再在你的回合开始时消失。,{{Power_link|壁垒（能力）|壁垒}},2,{{KW|格挡}}不再在你的回合开始时消失。,,barricade.png,barricade_test.png,cards
+痛击,痛击,Bash,Bash,红色,攻击,初始,2,造成8点伤害。<br>给予2层{{KW|易伤}}。,,2,造成10点伤害。<br>给予3层{{KW|易伤}}。,,bash.png,bash_test.png,cards
+战歌,战歌,Battle Hymn,Battle Hymn,紫色,能力,罕见,1,在每回合开始时，将一张{{Card_show|惩恶}}加入你的手牌。,,1,{{KW|固有}}。<br>在每回合开始时，将一张{{Card_show|惩恶}}加入你的手牌。,,battle_hymn.png,battle_hymn_test.png,cards
+狂暴,狂暴,Berserk,Berserk,红色,能力,稀有,0,获得2层{{KW|易伤}}。<br>每回合开始时获得[R]。,{{Power_link|狂暴（能力）|狂暴}},0,获得1层{{KW|易伤}}。<br>每回合开始时获得[R]。,,berserk.png,berserk_test.png,cards
+战斗专注,战斗专注,Battle Trance,Battle Trance,红色,技能,罕见,0,抽3张牌。<br>你在这个回合内不能再抽任何牌。,{{Power_link|不能抽牌}},0,抽4张牌。<br>你在这个回合内不能再抽任何牌。,,battleTrance.png,battle_trance_test.png,cards
+光束射线,光束射线,Beam Cell,Beam Cell,蓝色,攻击,普通,0,造成3点伤害。<br>给予1层{{KW|易伤}}。,,0,造成4点伤害。<br>给予2层{{KW|易伤}}。,,beamCell.png,beam_cell_test.png,cards
+偏差认知,偏差认知,Biased Cognition,Biased Cognition,蓝色,能力,稀有,1,获得4点{{KW|集中}}。<br>在每回合开始时，失去1点{{KW|集中}}。,,1,获得5点{{KW|集中}}。<br>在每回合开始时，失去1点{{KW|集中}}。,,biasedCognition.png,biased_cognition_test.png,cards
+噬咬,噬咬,Bite,Bite,无色,攻击,特殊,1,造成7点伤害。<br>回复2点生命。,"造成伤害,恢复生命",1,造成8点伤害。<br>回复3点生命。,"造成伤害,恢复生命",bite.png,bite_test.png,cards
+贝塔,贝塔,Beta,Beta,无色,技能,特殊,2,将一张{{Card_show|欧米伽}}放入你的抽牌堆中。<br>{{KW|消耗}}。,,1,将一张{{Card_show|欧米伽}}放入你的抽牌堆中。<br>{{KW|消耗}}。,,beta.png,beta_test.png,cards
+刀刃之舞,刀刃之舞,Blade Dance,Blade Dance,绿色,技能,普通,1,增加3张{{Card_show|小刀}}到你的手牌。,,1,增加4张{{Card_show|小刀}}到你的手牌。,,bladeDance.png,blade_dance_test.png,cards
+渎神,渎神,Blasphemy,Blasphemy,紫色,技能,稀有,1,进入{{KW|神格}}。<br>在下回合死亡。<br>{{KW|消耗}}。,,1,{{KW|保留}}。<br>进入{{KW|神格}}。<br>在下回合死亡。<br>{{KW|消耗}}。,,blasphemy_1024.png,blasphemy_test.png,cards
+启动流程,启动流程,Boot Sequence,Boot Sequence,蓝色,技能,罕见,0,获得10点{{KW|格挡}}。<br>{{KW|固有}}。<br>{{KW|消耗}}。,,0,获得13点{{KW|格挡}}。<br>{{KW|固有}}。<br>{{KW|消耗}}。,,bootSequence.png,boot_sequence_test.png,cards
+致盲,致盲,Blind,Blind,无色,技能,罕见,0,给予2层{{KW|虚弱}}。,虚弱,0,给予所有敌人2层{{KW|虚弱}}。,虚弱,blind.png,blind_test.png,cards
+以血还血,以血还血,Blood for Blood,Blood for Blood,红色,攻击,罕见,4,你每在战斗中失去生命一次，这张牌的耗能就减少1[R]。<br>造成18点伤害。,,3,你每在战斗中失去生命一次，这张牌的耗能就减少1[R]。<br>造成22点伤害。,,bloodForBlood.png,blood_for_blood_test.png,cards
+放血,放血,Bloodletting,Bloodletting,红色,技能,罕见,0,获得[R][R]。<br>失去3点生命。,,0,获得[R][R][R]。<br>失去3点生命。,,bloodLetting.png,bloodletting_test.png,cards
+暴雪,暴雪,Blizzard,Blizzard,蓝色,攻击,罕见,1,对所有敌人造成你在本场战斗中{{KW|生成}}过的{{KW|冰霜}}充能球总数2倍的伤害。,,1,对所有敌人造成你在本场战斗中{{KW|生成}}过的{{KW|冰霜}}充能球总数3倍的伤害。,,blizzard.png,blizzard_test.png,cards
+残影,残影,Blur,Blur,绿色,技能,罕见,1,获得5点{{KW|格挡}}。<br>你的下一回合开始时{{KW|格挡}}不会消失。,,1,获得8点{{KW|格挡}}。<br>你的下一回合开始时{{KW|格挡}}不会消失。,,blur.png,blur_test.png,cards
+重锤,重锤,Bludgeon,Bludgeon,红色,攻击,稀有,3,造成32点伤害。,,3,造成42点伤害。,,bludgeon.png,bludgeon_test.png,cards
+全身撞击,全身撞击,Body Slam,Body Slam,红色,攻击,普通,1,造成你当前{{KW|格挡}}值的伤害。,,0,造成你当前{{KW|格挡}}值的伤害。,,bodySlam.png,body_slam_test.png,cards
+碰撞连击,碰撞连击,Bowling Bash,Bowling Bash,紫色,攻击,普通,1,当前每有一名敌人，造成7点伤害。,,1,当前每有一名敌人，造成10点伤害。,,bowling_bash.png,bowling_bash_test.png,cards
+弹跳药瓶,弹跳药瓶,Bouncing Flask,Bouncing Flask,绿色,技能,罕见,2,随机给予敌人3层{{KW|中毒}}3次。,,2,随机给予敌人3层{{KW|中毒}}4次。,,bouncingFlask.png,bouncing_flask_test.png,cards
+灼伤,灼伤,Burn,Burn,无色,状态,特殊,-2,{{KW|不能被打出}}。<br>在你的回合结束时，你受到2点伤害。,"不能被打出,受到伤害",-2,{{KW|不能被打出}}。<br>在你的回合结束时，你受到4点伤害。,"不能被打出,受到伤害",burn.png,burn_test.png,cards
+子弹时间,子弹时间,Bullet Time,Bullet Time,绿色,技能,稀有,3,你在本回合内不能再抽牌。<br>你手牌中的所有牌在本回合的耗能变为0点。,,2,你在本回合内不能再抽牌。<br>你手牌中的所有牌在本回合的耗能变为0点。,,bulletTime.png,bullet_time_test.png,cards
+光辉,光辉,Brilliance,Brilliance,紫色,攻击,稀有,1,造成12点伤害。<br>额外造成本场战斗中获得的{{KW|真言}}总层数的伤害。,,1,造成16点伤害。<br>额外造成本场战斗中获得的{{KW|真言}}总层数的伤害。,,brilliance_1024.png,brilliance_test.png,cards
+燃烧契约,燃烧契约,Burning Pact,Burning Pact,红色,技能,罕见,1,{{KW|消耗}}1张牌。<br>抽2张牌。,,1,{{KW|消耗}}1张牌。<br>抽3张牌。,,burningPact.png,burning_pact_test.png,cards
+缓冲,缓冲,Buffer,Buffer,蓝色,能力,稀有,2,阻止下一次你受到的生命值损伤。,,2,阻止下2次你受到的生命值损伤。,,buffer.png,buffer_test.png,cards
+残暴,残暴,Brutality,Brutality,红色,能力,稀有,0,在你的回合开始时，你失去1点生命，抽1张牌。,{{Power_link|残暴（能力）|残暴}},0,{{KW|固有}}。<br>在你的回合开始时，你失去1点生命，抽1张牌。,,brutality.png,brutality_test.png,cards
+爆发,爆发,Burst,Burst,绿色,技能,稀有,1,在这个回合，你打出的下一张技能牌会打出两次。,,1,在这个回合，你打出的下2张技能牌会打出两次。,,burst.png,burst_test.png,cards
+计算下注,计算下注,Calculated Gamble,Calculated Gamble,绿色,技能,罕见,0,丢弃所有手牌。<br>然后抽相同数量张牌。<br>{{KW|消耗}}。,,0,丢弃所有手牌。 <br>然后抽相同数量张牌。,,calculatedGamble.png,calculated_gamble_test.png,cards
+扩容,扩容,Capacitor,Capacitor,蓝色,能力,罕见,1,获得2个充能球栏位。,,1,获得3个充能球栏位。,,capacitor.png,capacitor_test.png,cards
+铁蒺藜,铁蒺藜,Caltrops,Caltrops,绿色,能力,罕见,1,每当你被攻击时，对攻击者造成3点伤害。,,1,每当你被攻击时，对攻击者造成5点伤害。,,caltrops.png,caltrops_test.png,cards
+残杀,残杀,Carnage,Carnage,红色,攻击,罕见,2,{{KW|虚无}}。<br>造成20点伤害。,,2,{{KW|虚无}}。<br>造成28点伤害。,,carnage.png,carnage_test.png,cards
+催化剂,催化剂,Catalyst,Catalyst,绿色,技能,罕见,1,将一名敌人的{{KW|中毒}}层数翻倍。<br>{{KW|消耗}}。,,1,将一名敌人的{{KW|中毒}}层数变为三倍。<br>{{KW|消耗}}。,,catalyst.png,catalyst_test.png,cards
+改造现实,改造现实,Carve Reality,Carve Reality,紫色,攻击,罕见,1,造成6点伤害。<br>将一张{{Card_show|惩恶}}加入你的手牌。,,1,造成10点伤害。<br>将一张{{Card_show|惩恶}}加入你的手牌。,,carve_reality.png,carve_reality_test.png,cards
+勒脖,勒脖,Choke,Choke,绿色,攻击,罕见,2,造成12点伤害。<br>你在这个回合内每打出一张牌，该名敌人都会失去3点生命。,,2,造成12点伤害。<br>你在这个回合内每打出一张牌，该名敌人都会失去5点生命。,,choke.png,choke_test.png,cards
+冰寒,冰寒,Chill,Chill,蓝色,技能,罕见,0,当前每有一名敌人，生成1个{{KW|冰霜}}充能球。<br>{{KW|消耗}}。,,0,{{KW|固有}}。<br>当前每有一名敌人，生成1个{{KW|冰霜}}充能球。<br>{{KW|消耗}}。,,chill.png,chill_test.png,cards
+混沌,混沌,Chaos,Chaos,蓝色,技能,罕见,1,{{KW|生成}}1个随机充能球。,,1,{{KW|生成}}2个随机充能球。,,chaos.png,chaos_test.png,cards
+结茧,结茧,Chrysalis,Chrysalis,无色,技能,稀有,2,在你的抽牌堆中加入3张随机技能牌。<br>它们在本场战斗中耗能为0。<br>{{KW|消耗}}。,"产生卡牌,耗能,消耗",2,在你的抽牌堆中加入5张随机技能牌。<br>它们在本场战斗中耗能为0。<br>{{KW|消耗}}。,"产生卡牌,耗能,消耗",chrysalis.png,chrysalis_test.png,cards
+交锋,交锋,Clash,Clash,红色,攻击,普通,0,只有在手牌每一张牌都是攻击牌时才能被打出。<br>造成14点伤害。,,0,只有在手牌每一张牌都是攻击牌时才能被打出。<br>造成18点伤害。,,clash.png,clash_test.png,cards
+斗篷与匕首,斗篷与匕首,Cloak And Dagger,Cloak And Dagger,绿色,技能,普通,1,获得6点{{KW|格挡}}。<br>增加1张{{Card_show|小刀}}到你的手牌。,,1,获得6点{{KW|格挡}}。<br>增加2张{{Card_show|小刀}}到你的手牌。,,cloakAndDagger.png,cloak_and_dagger_test.png,cards
+顺劈斩,顺劈斩,Cleave,Cleave,红色,攻击,普通,1,对所有敌人造成8点伤害。,,1,对所有敌人造成11点伤害。,,cleave.png,cleave_test.png,cards
+笨拙,笨拙,Clumsy,Clumsy,诅咒,诅咒,诅咒,-2,{{KW|不能被打出}}。<br>{{KW|虚无}}。,"不能被打出,虚无",-2,,,clumsy.png,clumsy_test.png,cards
+金刚臂,金刚臂,Clothesline,Clothesline,红色,攻击,普通,2,造成12点伤害。<br>给予2层{{KW|虚弱}}。,,2,造成14点伤害。<br>给予3层{{KW|虚弱}}。,,clothesline.png,clothesline_test.png,cards
+寒流,寒流,Cold Snap,Cold Snap,蓝色,攻击,普通,1,造成6点伤害。<br>{{KW|生成}}1个{{KW|冰霜}}充能球。,,1,造成9点伤害。<br>{{KW|生成}}1个{{KW|冰霜}}充能球。,,coldSnap.png,cold_snap_test.png,cards
+收集,收集,Collect,Collect,紫色,技能,罕见,-1,在你的下X个回合开始时，增加一张{{Card_show|奇迹|奇迹+}}到你的手牌。<br>{{KW|消耗}}。,,-1,在你的下X+1个回合开始时，增加一张{{Card_show|奇迹|奇迹+}}到你的手牌。<br>{{KW|消耗}}。,,collect_1024.png,collect_test.png,cards
+自燃,自燃,Combust,Combust,红色,能力,罕见,1,在你的回合结束时，你失去1点生命，对所有敌人造成5点伤害。,{{Power_link|自燃（能力）|自燃}},1,在你的回合结束时，你失去1点生命，对所有敌人造成7点伤害。,,combust.png,combust_test.png,cards
+编译冲击,编译冲击,Compile Driver,Compile Driver,蓝色,攻击,普通,1,造成7点伤害。<br>你每有一种不同的充能球，抽1张牌。,,1,造成10点伤害。<br>你每有一种不同的充能球，抽1张牌。,,compileDriver.png,compile_driver_test.png,cards
+结末,结末,Conclude,Conclude,紫色,攻击,罕见,1,对所有敌人造成12点伤害。<br>结束你的回合。,,1,对所有敌人造成16点伤害。<br>结束你的回合。,,conclude_1024.png,conclude_test.png,cards
+全神贯注,全神贯注,Concentrate,Concentrate,绿色,技能,罕见,0,丢弃3张牌。<br>获得[G][G]。,,0,丢弃2张牌。<br>获得[G][G]。,,concentrate.png,concentrate_test.png,cards
+聚能成刃,聚能成刃,Conjure Blade,Conjure Blade,紫色,技能,稀有,-1,将1张 {{Card_show|灭除之刃}}放入你的抽牌堆中。<br>{{KW|消耗}}。,,-1,将1张X数值+1的{{Card_show|灭除之刃}}放入你的抽牌堆中。<br>{{KW|消耗}}。,,conjure_blade.png,conjure_blade_test.png,cards
+供奉,供奉,Consecrate,Consecrate,紫色,攻击,普通,0,对所有敌人造成5点伤害。,,0,对所有敌人造成8点伤害。,,consecrate_1024.png,consecrate_test.png,cards
+耗尽,耗尽,Consume,Consume,蓝色,技能,罕见,2,获得2点{{KW|集中}}。<br>失去1个充能球栏位。,,2,获得3点{{KW|集中}}。<br>失去1个充能球栏位。,,consume.png,consume_test.png,cards
+充电,充电,Charge Battery,Charge Battery,蓝色,技能,普通,1,获得7点{{KW|格挡}}。<br>在下一回合获得[B]。,,1,获得10点{{KW|格挡}}。<br>在下一回合获得[B]。,,conserveBattery.png,charge_battery_test.png,cards
+核心电涌,核心电涌,Core Surge,Core Surge,蓝色,攻击,稀有,1,造成11点伤害。<br>获得1层{{KW|人工制品}}。<br>{{KW|消耗}}。,,1,造成15点伤害。<br>获得1层{{KW|人工制品}}。<br>{{KW|消耗}}。,,coreSurge.png,core_surge_test.png,cards
+冷静头脑,冷静头脑,Coolheaded,Coolheaded,蓝色,技能,普通,1,{{KW|生成}}1个{{KW|冰霜}}充能球。<br>抽1张牌。,,1,{{KW|生成}}1个{{KW|冰霜}}充能球。<br>抽2张牌。,,coolheaded.png,coolheaded_test.png,cards
+腐化,腐化,Corruption,Corruption,红色,能力,稀有,3,所有技能牌耗能变为0。<br>所有技能牌在被打出时被{{KW|消耗}}。,{{Power_link|腐化（能力）|腐化}},2,所有技能牌耗能变为0。<br>所有技能牌在被打出时被{{KW|消耗}}。,,corruption.png,corruption_test.png,cards
+创造性AI,创造性AI,Creative AI,Creative AI,蓝色,能力,稀有,3,在每回合开始时，增加一张随机能力牌到你的手牌。,,2,在每回合开始时，增加一张随机能力牌到你的手牌。,,creativeAi.png,creative_ai_test.png,cards
+渐强,渐强,Crescendo,Crescendo,紫色,技能,普通,1,{{KW|保留}}。<br>进入{{KW|愤怒（姿态）|愤怒}}。<br>{{KW|消耗}}。,,0,{{KW|保留}}。<br>进入{{KW|愤怒（姿态）|愤怒}}。<br>{{KW|消耗}}。,,crescendo_1024.png,crescendo_test.png,cards
+尸爆术,尸爆术,Corpse Explosion,Corpse Explosion,绿色,技能,稀有,2,给予6层{{KW|中毒}}。<br> 当这名敌人死亡时，对所有敌人造成等于其最大生命值的伤害。,,2,给予9层{{KW|中毒}}。<br>当这名敌人死亡时，对所有敌人造成等于其最大生命值的伤害。,,corpseExplosion.png,corpse_explosion_test.png,cards
+粉碎关节,粉碎关节,Crush Joints,Crush Joints,紫色,攻击,普通,1,造成8点伤害。<br>如果本场战斗打出的上一张牌是技能牌，给予1层{{KW|易伤}}。,,1,造成10点伤害。<br>如果本场战斗打出的上一张牌是技能牌，给予2层{{KW|易伤}}。,,crush_joints_1024.png,crush_joints_test.png,cards
+致残毒云,致残毒云,Crippling Poison,Crippling Poison,绿色,技能,罕见,2,给予所有敌人4层{{KW|中毒}}和2层{{KW|虚弱}}。<br>{{KW|消耗}}。,,2,给予所有敌人7层{{KW|中毒}}和2层{{KW|虚弱}}。<br>{{KW|消耗}}。,,cripplingPoison.png,crippling_poison_test.png,cards
+斩破命运,斩破命运,Cut Through Fate,Cut Through Fate,紫色,攻击,普通,1,造成7点伤害。<br>{{KW|预见}}2。<br>抽1张牌。,,1,造成9点伤害。<br>{{KW|预见}}3。<br>抽1张牌。,,cut_through_fate_1024.png,cut_through_fate_test.png,cards
+铃铛的诅咒,铃铛的诅咒,Curse of the Bell,Curse of the Bell,诅咒,诅咒,特殊,-2,{{KW|不能被打出}}。<br>无法从牌组中移除。,不能被打出，无法从牌组中移除,-2,,,CurseoftheBell 1.png,curse_of_the_bell_test.png,cards
+匕首雨,匕首雨,Dagger Spray,Dagger Spray,绿色,攻击,普通,1,对所有敌人造成4点伤害两次。,,1,对所有敌人造成6点伤害两次。,,daggerSpray.png,dagger_spray_test.png,cards
+投掷匕首,投掷匕首,Dagger Throw,Dagger Throw,绿色,攻击,普通,1,造成9点伤害。<br> 抽一张牌。<br>丢弃一张牌。,,1,造成12点伤害。<br> 抽一张牌。<br>丢弃一张牌。,,daggerThrow.png,dagger_throw_test.png,cards
+黑暗之拥,黑暗之拥,Dark Embrace,Dark Embrace,红色,能力,罕见,2,每当有一张牌被{{KW|消耗}}时，抽1张牌。,{{Power_link|黑暗之拥（能力）|黑暗之拥}},1,每当有一张牌被{{KW|消耗}}时，抽1张牌。,,darkEmbrace.png,dark_embrace_test.png,cards
+漆黑,漆黑,Darkness,Darkness,蓝色,技能,罕见,1,{{KW|生成}}1个{{KW|黑暗}}充能球。,,1,{{KW|生成}}1个{{KW|黑暗}}充能球。<br>使用所有{{KW|黑暗}}充能球的被动能力。,,darkness.png,darkness_test.png,cards
+冲刺,冲刺,Dash,Dash,绿色,攻击,罕见,2,获得10点{{KW|格挡}}。<br>造成 10点伤害。,,2,获得13点{{KW|格挡}}。<br>造成13点伤害。,,dash.png,dash_test.png,cards
+黑暗镣铐,黑暗镣铐,Dark Shackles,Dark Shackles,无色,技能,罕见,0,让一名敌人在本回合内失去9点{{KW|力量}}。<br>{{KW|消耗}}。,"使失去力量,消耗",0,让一名敌人在本回合内失去15点{{KW|力量}}。<br>{{KW|消耗}}。,"使失去力量,消耗",darkShackles.png,dark_shackles_test.png,cards
+致命毒药,致命毒药,Deadly Poison,Deadly Poison,绿色,技能,普通,1,给予5层{{KW|中毒}}。,,1,给予7层{{KW|中毒}}。,,deadlyPoison.png,deadly_poison_test.png,cards
+晕眩,晕眩,Dazed,Dazed,无色,状态,特殊,-2,{{KW|不能被打出}}。<br>{{KW|虚无}}。,"不能被打出,虚无",-2,,,dazed.png,dazed_test.png,cards
+深呼吸,深呼吸,Deep Breath,Deep Breath,无色,技能,罕见,0,将你的弃牌堆洗牌后放入你的抽牌堆。<br>抽1张牌。,抽牌,0,将你的弃牌堆洗牌后放入你的抽牌堆。<br>抽2张牌。,抽牌,deepBreath.png,deep_breath_test.png,cards
+腐朽,腐朽,Decay,Decay,诅咒,诅咒,诅咒,-2,{{KW|不能被打出}}。<br>在你的回合结束时，受到2点伤害。,"不能被打出,受到伤害",-2,,,decay.png,decay_test.png,cards
+防御（蓝）,防御（蓝）,Defend_B,Defend,蓝色,技能,初始,1,获得5点{{KW|格挡}}。,,1,获得8点{{KW|格挡}}。,,defend_blue.png,blue_skill_defend_test.png,cards
+防御（紫）,防御（紫）,Defend_P,Defend,紫色,技能,初始,1,获得5点{{KW|格挡}}。,,1,获得8点{{KW|格挡}}。,,defend.png,purple_skill_defend_test.png,cards
+防御（绿）,防御（绿）,Defend_G,Defend,绿色,技能,初始,1,获得5点{{KW|格挡}}。,,1,获得8点{{KW|格挡}}。,,defend_green.png,green_skill_defend_test.png,cards
+防御（红）,防御（红）,Defend_R,Defend,红色,技能,初始,1,获得5点{{KW|格挡}}。,,1,获得8点{{KW|格挡}}。,,defend_red.png,red_skill_defend_test.png,cards
+碎片整理,碎片整理,Defragment,Defragment,蓝色,能力,罕见,1,获得1点{{KW|集中}}。,,1,获得2点{{KW|集中}}。,,defragment.png,defragment_test.png,cards
+偏折,偏折,Deflect,Deflect,绿色,技能,普通,0,获得4点{{KW|格挡}}。,,0,获得7点{{KW|格挡}}。,,deflect.png,deflect_test.png,cards
+恶魔形态,恶魔形态,Demon Form,Demon Form,红色,能力,稀有,3,在每回合开始时获得2点{{KW|力量}}。,{{Power_link|恶魔形态（能力）|恶魔形态}},3,在每回合开始时获得3点{{KW|力量}}。,,demonForm.png,demon_form_test.png,cards
+机械降神,机械降神,Deus Ex Machina,Deus Ex Machina,紫色,技能,稀有,-2,{{KW|不能被打出}}。<br>当你抽到这张牌时，在你的手牌中加入2张{{Card_show|奇迹}}，然后{{KW|消耗}}。,,-2,{{KW|不能被打出}}。<br>当你抽到这张牌时，在你的手牌中加入3张{{Card_show|奇迹}}，然后{{KW|消耗}}。,,deus_ex_machina.png,deus_ex_machina_test.png,cards
+天人形态,天人形态,Deva Form,Deva Form,紫色,能力,稀有,3,{{KW|虚无}}。<br>在你的回合开始时获得[P]，每回合增加1。,,3,在你的回合开始时获得[P]，每回合增加1。,,deva_form.png,deva_form_test.png,cards
+虔信,虔信,Devotion,Devotion,紫色,能力,稀有,1,在你的回合开始时，获得2层{{KW|真言}}。,,1,在你的回合开始时，获得3层{{KW|真言}}。,,devotion.png,devotion_test.png,cards
+死吧死吧死吧,死吧死吧死吧,Die Die Die,Die Die Die,绿色,攻击,稀有,1,对所有敌人造成13点伤害。<br>{{KW|消耗}}。,,1,对所有敌人造成17点伤害。<br>{{KW|消耗}}。,,dieDieDie.png,die_die_die_test.png,cards
+闪躲翻滚,闪躲翻滚,Dodge and Roll,Dodge and Roll,绿色,技能,普通,1,获得4点{{KW|格挡}}。<br>在下一回合获得4点{{KW|格挡}}。,,1,获得6点{{KW|格挡}}。<br>在下一回合获得6点{{KW|格挡}}。,,dodgeAndRoll.png,dodge_and_roll_test.png,cards
+发现,发现,Discovery,Discovery,无色,技能,罕见,1,从3张随机牌中选择1张加入你的手牌。<br>这张牌在本回合耗能变为0。<br>{{KW|消耗}}。,"产生卡牌,耗能,消耗",1,从3张随机牌中选择1张加入你的手牌。<br>这张牌在本回合耗能变为0。,"产生卡牌,耗能",discovery.png,discovery_test.png,cards
+缴械,缴械,Disarm,Disarm,红色,技能,罕见,1,使敌人失去2点{{KW|力量}}。<br>{{KW|消耗}}。,,1,使敌人失去3点{{KW|力量}}。<br>{{KW|消耗}}。,,opening.png,disarm_test.png,cards
+声东击西,声东击西,Distraction,Distraction,绿色,技能,罕见,1,增加一张随机技能牌到你的手牌。<br>这张牌在本回合耗能变为0。<br>{{KW|消耗}}。,,0,增加一张随机技能牌到你的手牌。<br>这张牌在本回合耗能变为0。<br>{{KW|消耗}}。,,distractions.png,distraction_test.png,cards
+愁云惨淡,愁云惨淡,Doom and Gloom,Doom and Gloom,蓝色,攻击,罕见,2,对所有敌人造成10点伤害。<br>{{KW|生成}}1个{{KW|黑暗}}充能球。,,2,对所有敌人造成14点伤害。<br>{{KW|生成}}1个{{KW|黑暗}}充能球。,,doomAndGloom.png,doom_and_gloom_test.png,cards
+双重存在,双重存在,Doppelganger,Doppelganger,绿色,技能,稀有,-1,下一回合，抽X张牌，获得X[G]。<br>{{KW|消耗}}。,,-1,下一回合，抽X+1张牌，获得X+1 [G] 。<br>{{KW|消耗}}。,,doppelganger.png,doppelganger_test.png,cards
+双倍能量,双倍能量,Double Energy,Double Energy,蓝色,技能,罕见,1,将你的能量翻倍。<br>{{KW|消耗}}。,,0,将你的能量翻倍。<br>{{KW|消耗}}。,,doubleEnergy.png,double_energy_test.png,cards
+双发,双发,Double Tap,Double Tap,红色,技能,稀有,1,在这个回合，你打出的下一张攻击牌会打出两次。,{{Power_link|双发（能力）|双发}},1,在这个回合，你打出的下2张攻击牌会打出两次。,,doubleTap.png,double_tap_test.png,cards
+闪亮登场,闪亮登场,Dramatic Entrance,Dramatic Entrance,无色,攻击,罕见,0,{{KW|固有}}。<br>对所有敌人造成8点伤害。<br>{{KW|消耗}}。,"固有,造成伤害,消耗",0,{{KW|固有}}。<br>对所有敌人造成12点伤害。<br>{{KW|消耗}}。,"固有,造成伤害,消耗",dramaticEntrance.png,dramatic_entrance_test.png,cards
+疑虑,疑虑,Doubt,Doubt,诅咒,诅咒,诅咒,-2,{{KW|不能被打出}}。<br>在你的回合结束时，获得1层{{KW|虚弱}}。,"不能被打出,虚弱",-2,,,doubt.png,doubt_test.png,cards
+飞身踢,飞身踢,Dropkick,Dropkick,红色,攻击,罕见,1,造成5点伤害。<br>如果敌人有{{KW|易伤}}状态，获得[R]并且抽1张牌。,,1,造成8点伤害。<br>如果敌人有{{KW|易伤}}状态 ，获得[R]并且抽1张牌。,,drop_kick.png,drop_kick_test.png,cards
+回响形态,回响形态,Echo Form,Echo Form,蓝色,能力,稀有,3,你每回合打出的第一张牌会打出两次。<br>{{KW|虚无}}。,,3,你每回合打出的第一张牌会打出两次。,,echoForm.png,echo_form_test.png,cards
+双持,双持,Dual Wield,Dual Wield,红色,技能,罕见,1,将你手牌中的一张攻击或能力牌复制一张。,,1,将你手牌中的一张攻击或能力牌复制两张。,,dualWield.png,dual_wield_test.png,cards
+双重释放,双重释放,Dualcast,Dualcast,蓝色,技能,初始,1,{{KW|激发}}你最右侧的充能球2次。,,0,{{KW|激发}}你最右侧的充能球2次。,,dualcast.png,dualcast_test.png,cards
+电动力学,电动力学,Electrodynamics,Electrodynamics,蓝色,能力,稀有,2,{{KW|闪电}}充能球现在会击中所有敌人。{{KW|生成}}2个{{KW|闪电}}充能球。,,2,{{KW|闪电}}充能球现在会击中所有敌人。{{KW|生成}}3个{{KW|闪电}}充能球。,,electrodynamics.png,electrodynamics_test.png,cards
+化体为空,化体为空,Empty Body,Empty Body,紫色,技能,普通,1,获得7点{{KW|格挡}}。<br>退出当前{{KW|姿态}}。,,1,获得10点{{KW|格挡}}。<br>退出当前{{KW|姿态}}。,,empty_body.png,empty_body_test.png,cards
+化拳为空,化拳为空,Empty Fist,Empty Fist,紫色,攻击,普通,1,造成9点伤害。<br>退出当前{{KW|姿态}}。,,1,造成14点伤害。<br>退出当前{{KW|姿态}}。,,empty_fist_1024.png,empty_fist_test.png,cards
+化智为空,化智为空,Empty Mind,Empty Mind,紫色,技能,罕见,1,抽2张牌。<br>退出当前{{KW|姿态}}。,,1,抽3张牌。<br>退出当前{{KW|姿态}}。,,empty_mind.png,empty_mind_test.png,cards
+无尽苦痛,无尽苦痛,Endless Agony,Endless Agony,绿色,攻击,罕见,0,造成4点伤害。<br>每当你抽到这张牌，都增加一张其复制品到你的手牌。<br>{{KW|消耗}}。,,0,造成6点伤害。<br>每当你抽到这张牌，都增加一张其复制品到你的手牌。<br>{{KW|消耗}}。,,endlessAgony.png,endless_agony_test.png,cards
+开悟,开悟,Enlightenment,Enlightenment,无色,技能,罕见,0,在这个回合，你当前手牌中所有牌的耗能降低到1。,耗能,0,在本场战斗，你当前手牌中所有牌的耗能降低到1.,耗能,enlightenment.png,enlightenment_test.png,cards
+巩固,巩固,Entrench,Entrench,红色,技能,罕见,2,将你当前的{{KW|格挡}}翻倍。,,1,将你当前的{{KW|格挡}}翻倍。,,entrench.png,entrench_test.png,cards
+暴怒,暴怒,Eruption,Eruption,紫色,攻击,初始,2,造成9点伤害。<br>进入{{KW|愤怒（姿态）|愤怒}}。,,1,造成9点伤害。<br>进入{{KW|愤怒（姿态）|愤怒}}。,,eruption_1024.png,eruption_test.png,cards
+涂毒,涂毒,Envenom,Envenom,绿色,能力,稀有,2,每有一次攻击造成未被格挡的伤害，就给予1层{{KW|中毒}}。,,1,每有一次攻击造成未被格挡的伤害，就给予1层{{KW|中毒}}。,,envenom.png,envenom_test.png,cards
+确立基础,确立基础,Establishment,Establishment,紫色,能力,稀有,1,每当有卡牌被{{KW|保留}}时，将其在本场战斗的耗能减少1。,,1,{{KW|固有}}。<br>每当有卡牌被{{KW|保留}}时，将其在本场战斗的耗能减少1。,,establishment.png,establishment_test.png,cards
+逃脱计划,逃脱计划,Escape Plan,Escape Plan,绿色,技能,罕见,0,抽1张牌。<br>如果抽到的是技能牌，获得3点{{KW|格挡}}。,,0,抽1张牌。<br>如果抽到的是技能牌，获得5点{{KW|格挡}}。,,escapePlan.png,escape_plan_test.png,cards
+内脏切除,内脏切除,Eviscerate,Eviscerate,绿色,攻击,罕见,3,你在这个回合内每丢弃一张牌，耗能就减少1[G]。<br>造成7点伤害三次。,,3,你在这个回合内每丢弃一张牌，耗能就减少1[G]。<br>造成9点伤害三次。,,eviscerate.png,eviscerate_test.png,cards
+评估,评估,Evaluate,Evaluate,紫色,技能,普通,1,获得6点{{KW|格挡}}。<br>在你的抽牌堆中加入一张{{Card_show|洞见}}。,,1,获得10点{{KW|格挡}}。<br>在你的抽牌堆中加入一张{{Card_show|洞见}}。,,evaluate_1024.png,evaluate_test.png,cards
+发掘,发掘,Exhume,Exhume,红色,技能,稀有,1,选择一张已{{KW|消耗}}的牌，将其放入你的手牌。<br>{{KW|消耗}}。,,0,选择一张已{{KW|消耗}}的牌，将其放入你的手牌。<br>{{KW|消耗}}。,,exhume.png,exhume_test.png,cards
+进化,进化,Evolve,Evolve,红色,能力,罕见,1,每当你抽到一张{{KW|状态牌}}时，抽1张牌。,{{Power_link|进化（能力）|进化}},1,每当你抽到一张{{KW|状态牌}}时，抽2张牌。,,evolve.png,evolve_test.png,cards
+灭除之刃,灭除之刃,Expunger,Expunger,无色,攻击,特殊,1,造成9点伤害X次。,,1,造成15点伤害X次。,,expunger_1024.png,expunger_test.png,cards
+独门技术,独门技术,Expertise,Expertise,绿色,技能,罕见,1,抽牌直到你的手牌有6张牌。,,1,抽牌直到你的手牌有7张牌。,,expertise.png,expertise_test.png,cards
+斋戒,斋戒,Fasting,Fasting,紫色,能力,罕见,2,获得3点{{KW|力量}}。<br>获得3{{KW|敏捷}}。<br>每回合开始时少获得1[P]。,,2,获得4点{{KW|力量}}。<br>获得4{{KW|敏捷}}。<br>每回合开始时少获得1[P]。,,fasting.png,fasting_test.png,cards
+不惧妖邪,不惧妖邪,Fear No Evil,Fear No Evil,紫色,攻击,罕见,1,"造成8点伤害。<br>如果目标敌人的意图是攻击,则进入{{KW|平静}}。",,1,"造成11点伤害。<br>如果目标敌人的意图是攻击,则进入{{KW|平静}}。",,fear_no_evil.png,fear_no_evil_test.png,cards
+狂宴,狂宴,Feed,Feed,红色,攻击,稀有,1,造成10点伤害。<br>若{{KW|斩杀}}，则永久获得3点最大生命。<br>{{KW|消耗}}。,,1,造成12点伤害。<br>若{{KW|斩杀}}，则永久获得4点最大生命。<br>{{KW|消耗}}。,,feed.png,feed_test.png,cards
+无惧疼痛,无惧疼痛,Feel No Pain,Feel No Pain,红色,能力,罕见,1,每当有一张牌被{{KW|消耗}}，获得3点{{KW|格挡}}。,{{Power_link|无惧疼痛（能力）|无惧疼痛}},1,每当有一张牌被{{KW|消耗}}，获得4点{{KW|格挡}}。,,feelNoPain.png,feel_no_pain_test.png,cards
+妙计,妙计,Finesse,Finesse,无色,技能,罕见,0,获得2点{{KW|格挡}}。<br>抽1张牌。,"格挡,抽牌",0,获得4点{{KW|格挡}}。<br>抽1张牌。,"格挡,抽牌",finesse.png,finesse_test.png,cards
+恶魔之焰,恶魔之焰,Fiend Fire,Fiend Fire,红色,攻击,稀有,2,{{KW|消耗}}所有手牌。<br>每张被消耗的牌造成7点伤害。<br>{{KW|消耗}}。,,2,{{KW|消耗}}所有手牌。<br>每张被消耗的牌造成10点伤害。<br>{{KW|消耗}}。,,fiendFire.png,fiend_fire_test.png,cards
+火焰吐息,火焰吐息,Fire Breathing,Fire Breathing,红色,能力,罕见,1,当你抽到一张{{KW|状态牌}}或{{KW|诅咒}}牌时，对所有敌人造成6点伤害。,{{Power_link|火焰吐息（能力）|火焰吐息}},1,当你抽到一张{{KW|状态牌}}或{{KW|诅咒}}牌时，对所有敌人造成10点伤害。,,fire_breathing.png,fire_breathing_test.png,cards
+终结技,终结技,Finisher,Finisher,绿色,攻击,罕见,1,你在这个回合内每打出过一张攻击牌，就造成一次6点伤害。,,1,你在这个回合内每打出过一张攻击牌，就造成一次8点伤害。,,finisher.png,finisher_test.png,cards
+裂变,裂变,Fission,Fission,蓝色,技能,稀有,0,移除所有充能球，每移除一个充能球获得[B]并抽1张牌。<br>{{KW|消耗}} 。,,0,{{KW|激发}}所有充能球，每激发一个充能球获得[B]并抽1张牌。<br>{{KW|消耗}} 。,,fission.png,fission_test.png,cards
+火焰屏障,火焰屏障,Flame Barrier,Flame Barrier,红色,技能,罕见,2,获得12点{{KW|格挡}}。<br>你在这个回合每受到一次攻击，都对攻击者造成4点伤害。,{{Power_link|火焰屏障（能力）|火焰屏障}},2,获得16点{{KW|格挡}}。<br>你在这个回合每受到一次攻击，都对攻击者造成6点伤害。,,flameBarrier.png,flame_barrier_test.png,cards
+亮剑,亮剑,Flash of Steel,Flash of Steel,无色,攻击,罕见,0,造成3点伤害。<br>抽1张牌。,"造成伤害,抽牌",0,造成6点伤害。<br>抽1张牌。,"造成伤害,抽牌",flashOfSteel.png,flash_of_steel_test.png,cards
+飞镖,飞镖,Flechettes,Flechettes,绿色,攻击,罕见,1,手牌中每有一张技能牌，造成4点伤害。,,1,手牌中每有一张技能牌，造成6点伤害。,,flechettes.png,flechettes_test.png,cards
+活动肌肉,活动肌肉,Flex,Flex,红色,技能,普通,0,获得2点{{KW|力量}}。<br>你的回合结束时，失去2点{{KW|力量}}。,{{Power_link|活动肌肉（能力）|活动肌肉}},0,获得4点{{KW|力量}}。<br>你的回合结束时，失去4点{{KW|力量}}。,,flex.png,flex_test.png,cards
+疾风连击,疾风连击,Flurry of Blows,Flurry of Blows,紫色,攻击,普通,0,造成4点伤害。<br>你每次转换{{KW|姿态}}时，将这张牌从弃牌堆放回你的手牌。,,0,造成6点伤害。<br>你每次转换{{KW|姿态}}时，将这张牌从弃牌堆放回你的手牌。,,flurry_of_blows.png,flurry_of_blows_test.png,cards
+飞膝,飞膝,Flying Knee,Flying Knee,绿色,攻击,普通,1,造成8点伤害。<br>在下一回合获得[G]。,,1,造成11点伤害。<br>在下一回合获得[G]。,,flyingKnee.png,flying_knee_test.png,cards
+流云飞袖,流云飞袖,Flying Sleeves,Flying Sleeves,紫色,攻击,普通,1,{{KW|保留}}。<br>造成4点伤害两次。,,1,{{KW|保留}}。<br>造成6点伤害两次。,,flying_sleeves.png,flying_sleeves_test.png,cards
+灵动步法,灵动步法,Footwork,Footwork,绿色,能力,罕见,1,获得2点{{KW|敏捷}}。,,1,获得3点{{KW|敏捷}}。,,footwork.png,footwork_test.png,cards
+力场,力场,Force Field,Force Field,蓝色,技能,罕见,4,你在本场战斗中每打出一张能力牌，耗能就减少1[B]。<br>获得12点{{KW|格挡}}。,,4,你在本场战斗中每打出一张能力牌，耗能就减少1[B]。<br>获得16点{{KW|格挡}}。,,forcefield.png,forcefield_test.png,cards
+追击,追击,Follow-Up,Follow-Up,紫色,攻击,普通,1,造成7点伤害。<br>如果本场战斗中打出的上一张牌是攻击牌，获得{{能量|紫}}。,,1,造成11点伤害。<br>如果本场战斗中打出的上一张牌是攻击牌，获得{{能量|紫}}。,,follow_up.png,follow_up_test.png,cards
+他山之石,他山之石,Foreign Influence,Foreign Influence,紫色,技能,罕见,0,从3张任意颜色的攻击牌中选择1张加入你的手牌。<br>{{KW|消耗}}。,,0,从3张任意颜色的攻击牌中选择1张加入你的手牌。<br>这张牌在本回合耗能变为0。<br>{{KW|消耗}}。,,foreign_influence.png,foreign_influence_test.png,cards
+先见之明,先见之明,Foresight,Foresight,紫色,能力,罕见,1,在你的回合开始时，{{KW|预见}}3。,,1,在你的回合开始时，{{KW|预见}}4。,,foresight.png,foresight_test.png,cards
+预谋,预谋,Forethought,Forethought,无色,技能,罕见,0,将手牌中的一张牌放到抽牌堆的底部。<br>并且这张牌在被打出之前，耗能变为0。,"放回,耗能",0,将手牌中的任意张牌放到抽牌堆的底部。<br>并且它们被打出之前，耗能变为0。,"放回,耗能",forethought.png,forethought_test.png,cards
+聚变,聚变,Fusion,Fusion,蓝色,技能,罕见,2,{{KW|生成}}1个{{KW|等离子}}充能球。,,1,{{KW|生成}}1个{{KW|等离子}}充能球。,,fusion.png,fusion_test.png,cards
+超越光速,超越光速,FTL,FTL,蓝色,攻击,罕见,0,造成5点伤害。<br>如果你在这回合打出的牌数少于3张，抽一张牌。,,0,造成6点伤害。<br>如果你在这回合打出的牌数少于4张，抽一张牌。,,ftl.png,ftl_test.png,cards
+爪击,爪击,Gash,Gash,蓝色,攻击,普通,0,造成3点伤害。<br>在本场战斗中所有爪击牌的伤害增加2。,,0,造成5点伤害。<br>在本场战斗中所有爪击牌的伤害增加2。,,gash.png,gash_test.png,cards
+遗传算法,遗传算法,Genetic Algorithm,Genetic Algorithm,蓝色,技能,罕见,1,获得1点{{KW|格挡}}。<br>每打出一次，这张牌在本局游戏中的格挡值永久性增加2。<br>{{KW|消耗}}。,,1,获得1点{{KW|格挡}}。<br>每打出一次，这张牌在本局游戏中的格挡值永久性增加3。<br>{{KW|消耗}}。,,geneticAlgorithm.png,genetic_algorithm_test.png,cards
+灵体,灵体,Ghostly,Ghostly,无色,技能,特殊,1,获得1层无实体。<br>{{KW|消耗}}。<br>{{KW|虚无}}。,"无实体,虚无,消耗",1,获得1层无实体。<br>{{KW|消耗}}。,"无实体,消耗",ghostly.png,ghostly_test.png,cards
+幽灵铠甲,幽灵铠甲,Ghostly Armor,Ghostly Armor,红色,技能,罕见,1,{{KW|虚无}}。<br>获得10点{{KW|格挡}}。,,1,{{KW|虚无}}。<br>获得13点{{KW|格挡}}。,,ghostlyArmor.png,ghostly_armor_test.png,cards
+玻璃刀刃,玻璃刀刃,Glass Knife,Glass Knife,绿色,攻击,稀有,1,造成8点伤害两次。<br>这张牌每被打出一次，在本场战斗中其基础伤害减少2。,,1,造成12点伤害两次。<br>这张牌每被打出一次，在本场战斗中其基础伤害减少2。,,glassKnife.png,glass_knife_test.png,cards
+冰川,冰川,Glacier,Glacier,蓝色,技能,罕见,2,获得7点{{KW|格挡}}。<br>{{KW|生成}}2个{{KW|冰霜}}充能球。,,2,获得10点{{KW|格挡}}。<br>{{KW|生成}}2个{{KW|冰霜}}充能球。,,glacier.png,glacier_test.png,cards
+眼部攻击,眼部攻击,Go for the Eyes,Go for the Eyes,蓝色,攻击,普通,0,造成3点伤害。<br>如果目标敌人的意图是攻击，则给予其1层{{KW|虚弱}}。,,0,造成4点伤害。<br>如果目标敌人的意图是攻击，则给予其2层{{KW|虚弱}}。,,goForTheEyes.png,go_for_the_eyes_test.png,cards
+优秀直觉,优秀直觉,Good Instincts,Good Instincts,无色,技能,罕见,0,获得6点{{KW|格挡}}。,格挡,0,获得9点{{KW|格挡}}。,格挡,goodInstincts.png,good_instincts_test.png,cards
+华丽收场,华丽收场,Grand Finale,Grand Finale,绿色,攻击,稀有,0,只有当抽牌堆中没有牌时才能打出。<br>对所有敌人造成50点伤害。,,0,只有当抽牌堆中没有牌时才能打出。<br>对所有敌人造成60点伤害。,,grandFinale.png,grand_finale_test.png,cards
+停顿,停顿,Halt,Halt,紫色,技能,普通,0,获得3点{{KW|格挡}}。<br>{{KW|愤怒（姿态）|愤怒}}：获得9点额外格挡。,,0,获得4点{{KW|格挡}}。<br>{{KW|愤怒（姿态）|愤怒}}：获得14点额外格挡。,,halt_1024.png,halt_test.png,cards
+贪婪之手,贪婪之手,Hand Of Greed,Hand Of Greed,无色,攻击,稀有,2,造成20点伤害。<br>{{KW|斩杀}}时，获得20金币。,"造成伤害,金币",2,造成25点伤害。<br>{{KW|斩杀}}时，获得25金币。,"造成伤害,金币",handOfGreed.png,hand_of_greed_test.png,cards
+破灭,破灭,Havoc,Havoc,红色,技能,普通,1,打出抽牌堆顶部的牌，将其{{KW|消耗}}。,,0,打出抽牌堆顶部的牌，将其{{KW|消耗}}。,,havoc.png,havoc_test.png,cards
+散热片,散热片,Heatsinks,Heatsinks,蓝色,能力,罕见,1,你每打出一张能力牌，抽1张牌。,,1,你每打出一张能力牌，抽2张牌。,,heatsinks.png,heatsinks_test.png,cards
+头槌,头槌,Head butt,Head butt,红色,攻击,普通,1,造成9点伤害。<br>将弃牌堆中的一张牌放到抽牌堆的顶部。,,1,造成12点伤害。<br>将弃牌堆中的一张牌放到抽牌堆的顶部。,,headbutt.png,headbutt_test.png,cards
+重刃,重刃,Heavy Blade,Heavy Blade,红色,攻击,普通,2,造成14点伤害。<br>{{KW|力量}}在重刃上发挥3倍效果。,,2,造成14点伤害。<br>{{KW|力量}}在重刃上发挥5倍效果。,,heavyBlade.png,heavy_blade_test.png,cards
+足跟勾,足跟勾,Heel Hook,Heel Hook,绿色,攻击,罕见,1,造成5点伤害。<br>如果敌人有{{KW|虚弱}}状态，获得[G]并且抽1张牌。,,1,造成8点伤害。<br>如果敌人有{{KW|虚弱}}状态，获得[G]并且抽1张牌。,,heelHook.png,heel_hook_test.png,cards
+你好，世界,你好，世界,Hello World,Hello World,蓝色,能力,罕见,1,在你的回合开始时，增加一张随机普通牌到你的手牌。,,1,{{KW|固有}}。<br>在你的回合开始时，增加一张随机普通牌到你的手牌。,,helloWorld.png,hello_world_test.png,cards
+御血术,御血术,Hemokinesis,Hemokinesis,红色,攻击,罕见,1,失去2点生命。<br>造成15点伤害。,,1,失去2点生命。<br>造成20点伤害。,,hemokinesis.png,hemokinesis_test.png,cards
+全息影像,全息影像,Hologram,Hologram,蓝色,技能,普通,1,获得3点{{KW|格挡}}。<br>将弃牌堆中的一张牌放入你的手牌。<br>{{KW|消耗}}。,,1,获得5点{{KW|格挡}}。<br>将弃牌堆中的一张牌放入你的手牌。,,hologram.png,hologram_test.png,cards
+超能光束,超能光束,Hyperbeam,Hyperbeam,蓝色,攻击,稀有,2,对所有敌人造成26点伤害。<br>失去3点{{KW|集中}}。,,2,对所有敌人造成34点伤害。<br>失去3点{{KW|集中}}。,,hyperBeam.png,hyper_beam_test.png,cards
+燔祭,燔祭,Immolate,Immolate,红色,攻击,稀有,2,对所有敌人造成21点伤害。<br>将一张{{Card_show|灼伤}}放入你的弃牌堆中。,,2,对所有敌人造成28点伤害。<br>将一张{{Card_show|灼伤}}放入你的弃牌堆中。,,immolate.png,immolate_test.png,cards
+急躁,急躁,Impatience,Impatience,无色,技能,罕见,0,如果你的手牌中没有攻击牌，抽2张牌。,抽牌,0,如果你的手牌中没有攻击牌，抽3张牌。,抽牌,impatience.png,impatience_test.png,cards
+岿然不动,岿然不动,Impervious,Impervious,红色,技能,稀有,2,获得30点{{KW|格挡}}。<br>{{KW|消耗}}。,,2,获得40点{{KW|格挡}}。<br>{{KW|消耗}}。,,impervious.png,impervious_test.png,cards
+地狱之刃,地狱之刃,Infernal Blade,Infernal Blade,红色,技能,罕见,1,增加一张随机攻击牌到你的手牌。<br>这张牌在本回合耗能变为0。<br>{{KW|消耗}}。,,0,增加一张随机攻击牌到你的手牌。<br>这张牌在本回合耗能变为0。<br>{{KW|消耗}}。,,infernalBlade.png,infernal_blade_test.png,cards
+义愤填膺,义愤填膺,Indignation,Indignation,紫色,技能,罕见,1,{{KW|愤怒（姿态）|愤怒}}：给予所有敌人3层{{KW|易伤}}。<br>否则，进入{{KW|愤怒（姿态）|愤怒}}。,,1,{{KW|愤怒（姿态）|愤怒}}：给予所有敌人5层{{KW|易伤}}。<br>否则，进入{{KW|愤怒（姿态）|愤怒}}。,,indignation_1024.png,indignation_test.png,cards
+无限刀刃,无限刀刃,Infinite Blades,Infinite Blades,绿色,能力,罕见,1,在你的回合开始时，增加一张{{Card_show|小刀}}到你的手牌。,,1,{{KW|固有}}。<br>在你的回合开始时，增加一张{{Card_show|小刀}}到你的手牌。,,infiniteBlades.png,infinite_blades_test.png,cards
+燃烧,燃烧,Inflame,Inflame,红色,能力,罕见,1,获得2点{{KW|力量}}。,,1,获得3点{{KW|力量}}。,,inflame.png,inflame_test.png,cards
+受伤,受伤,Injury,Injury,诅咒,诅咒,诅咒,-2,{{KW|不能被打出}}。,不能被打出,-2,,,injury.png,injury_test.png,cards
+内心宁静,内心宁静,Inner Peace,Inner Peace,紫色,技能,罕见,1,{{KW|平静}}：抽3张牌。<br>否则，进入{{KW|平静}}。,,1,{{KW|平静}}：抽4张牌。<br>否则，进入{{KW|平静}}。,,inner_peace.png,inner_peace_test.png,cards
+洞见,洞见,Insight,Insight,无色,技能,特殊,0,{{KW|保留}}。<br>抽2张牌。<br>{{KW|消耗}}。,,0,{{KW|保留}}。<br>抽3张牌。<br>{{KW|消耗}}。,,insight_1024.png,insight_test.png,cards
+威吓,威吓,Intimidate,Intimidate,红色,技能,罕见,0,给予所有敌人1层{{KW|虚弱}}。<br>{{KW|消耗}}。,,0,给予所有敌人2层{{KW|虚弱}}。<br>{{KW|消耗}}。,,intimidate.png,intimidate_test.png,cards
+铁斩波,铁斩波,Iron Wave,Iron Wave,红色,攻击,普通,1,获得5点{{KW|格挡}}。<br>造成5点伤害。,,1,获得7点{{KW|格挡}}。<br>造成7点伤害。,,ironWave.png,iron_wave_test.png,cards
+审判,审判,Judgment,Judgment,紫色,技能,稀有,1,如果目标敌人的生命值小于等于30点，则将其生命值变为0。,,1,如果目标敌人的生命值小于等于40点，则将其生命值变为0。,,judgment_1024.png,judgment_test.png,cards
+J.A.X.,J.A.X.,J.A.X.,J.A.X.,无色,技能,特殊,0,失去3点生命。<br>获得2点{{KW|力量}}。,"失去生命,力量",0,失去3点生命。<br>获得3点{{KW|力量}}。,"失去生命,力量",jax.png,jax_test.png,cards
+势不可当,势不可当,Juggernaut,Juggernaut,红色,能力,稀有,2,每当你获得{{KW|格挡}}时，对随机一名敌人造成5点伤害。,,2,每当你获得{{KW|格挡}}时，对随机一名敌人造成7点伤害。,,juggernaut.png,juggernaut_test.png,cards
+花样百出,花样百出,Jack Of All Trades,Jack Of All Trades,无色,技能,罕见,0,增加1张随机无色牌到你的手牌。<br>{{KW|消耗}}。,"产生卡牌,消耗",0,增加2张随机无色牌到你的手牌。<br>{{KW|消耗}}。,"产生卡牌,消耗",jackOfAllTrades.png,jack_of_all_trades_test.png,cards
+飞跃,飞跃,Leap,Leap,蓝色,技能,普通,1,获得9点{{KW|格挡}}。,,1,获得12点{{KW|格挡}}。,,leap.png,leap_test.png,cards
+幸运一击,幸运一击,Just Luck,Just Luck,紫色,攻击,普通,0,{{KW|预见}}1。<br>获得2点{{KW|格挡}}。<br>造成3点伤害。,,0,{{KW|预见}}2。<br>获得3点{{KW|格挡}}。<br>造成4点伤害。,,just_lucky.png,just_lucky_test.png,cards
+扫腿,扫腿,Leg Sweep,Leg Sweep,绿色,技能,罕见,2,给予2层虚弱。<br>获得11点{{KW|格挡}}。,,2,给予3层虚弱。<br>获得14点{{KW|格挡}}。,,legSweep.png,leg_sweep_test.png,cards
+勤学精进,勤学精进,Lesson Learned,Lesson Learned,紫色,攻击,稀有,2,造成10点伤害。<br>{{KW|斩杀}}时，{{KW|升级}}你牌组中的一张随机牌。<br>{{KW|消耗}}。,,2,造成13点伤害。<br>{{KW|斩杀}}时，{{KW|升级}}你牌组中的一张随机牌。<br>{{KW|消耗}}。,,lessons_learned.png,lessons_learned_test.png,cards
+如水,如水,Like Water,Like Water,紫色,能力,罕见,1,在你的回合结束时，如果你处于{{KW|平静}}，则获得5点{{KW|格挡}}。,,1,在你的回合结束时，如果你处于{{KW|平静}}，则获得7点{{KW|格挡}}。,,like_water.png,like_water_test.png,cards
+瞄准靶心,瞄准靶心,Bullseye,Bullseye,蓝色,攻击,罕见,1,造成8点伤害。<br>给予敌人2回合{{KW|跟踪锁定}}效果。,跟踪锁定,1,造成11点伤害。<br>给予敌人3回合{{KW|跟踪锁定}}效果。,,lockon.png,lock_on_test.png,cards
+突破极限,突破极限,Limit Break,Limit Break,红色,技能,稀有,1,将你的{{KW|力量}}翻倍。<br>{{KW|消耗}}。,,1,将你的{{KW|力量}}翻倍。,,limitBreak.png,limit_break_test.png,cards
+机器学习,机器学习,Machine Learning,Machine Learning,蓝色,能力,稀有,1,在每回合开始时额外抽1张牌。,,1,{{KW|固有}}。<br>在每回合开始时额外抽1张牌。,,machineLearning.png,machine_learning_test.png,cards
+循环,循环,Loop,Loop,蓝色,能力,罕见,1,在你的回合开始时，使用你最右侧的1个充能球的被动能力。,,1,在你的回合开始时，使用你最右侧的1个充能球的被动能力 2 次。,,loop.png,loop_test.png,cards
+疯狂,疯狂,Madness,Madness,无色,技能,罕见,1,你手牌中一张随机牌在本场战斗中耗能变为0。<br>{{KW|消耗}}。,"耗能,消耗",0,你手牌中一张随机牌在本场战斗中耗能变为0。<br>{{KW|消耗}}。,"耗能,消耗",madness.png,madness_test.png,cards
+磁力,磁力,Magnetism,Magnetism,无色,能力,稀有,2,在每回合开始时，增加一张随机无色牌到你的手牌。,产生卡牌,1,在每回合开始时，增加一张随机无色牌到你的手牌。,产生卡牌,magnetism.png,magnetism_test.png,cards
+萎靡,萎靡,Malaise,Malaise,绿色,技能,稀有,-1,敌人失去X点{{KW|力量}}，给予X层{{KW|虚弱}}。<br>{{KW|消耗}}。,,-1,敌人失去X+1点{{KW|力量}}，给予X+1层{{KW|虚弱}}。<br>{{KW|消耗}}。,,malaise.png,malaise_test.png,cards
+战略大师,战略大师,Master of Strategy,Master of Strategy,无色,技能,稀有,0,抽3张牌。<br>{{KW|消耗}}。,"抽牌,消耗",0,抽4张牌。<br>{{KW|消耗}}。,"抽牌,消耗",masterOfStrategy.png,master_of_strategy_test.png,cards
+操控现实,操控现实,Master Reality,Master Reality,紫色,能力,稀有,1,所有在战斗中临时增加的牌将被{{KW|升级}}。,,0,所有在战斗中临时增加的牌将被{{KW|升级}}。,,master_reality.png,master_reality_test.png,cards
+精巧刺击,精巧刺击,Masterful Stab,Masterful Stab,绿色,攻击,罕见,0,造成12点伤害。<br>你每次受到伤害，这张牌的耗能增加1。,,0,造成16点伤害。<br>你每次受到伤害，这张牌的耗能增加1。,,masterful_stab.png,masterful_stab_test.png,cards
+熔化,熔化,Melter,Melter,蓝色,攻击,罕见,1,去除一名敌人的所有{{KW|格挡}}值。<br>造成10点伤害。,,1,去除一名敌人的所有{{KW|格挡}}值。<br>造成14点伤害。,,melter.png,melter_test.png,cards
+心灵堡垒,心灵堡垒,Mental Fortress,Mental Fortress,紫色,能力,罕见,1,每当你转换{{KW|姿态}}时，获得4点{{KW|格挡}}。,,1,每当你转换{{KW|姿态}}时，获得6点{{KW|格挡}}。,,mental_fortress.png,mental_fortress_test.png,cards
+冥想,冥想,Meditate,Meditate,紫色,技能,罕见,1,将弃牌堆中的1张牌放入你的手牌，并将其{{KW|保留}}。<br>进入{{KW|平静}}。<br>结束你的回合。,,1,将弃牌堆中的2张牌放入你的手牌，并将它们{{KW|保留}}。<br>进入{{KW|平静}}。<br>结束你的回合。,,meditate_1024.png,meditate_test.png,cards
+乱战,乱战,Mayhem,Mayhem,无色,能力,稀有,2,在你的回合开始时，打出你抽牌堆顶部的牌。,打出卡牌,1,在你的回合开始时，打出你抽牌堆顶部的牌。,打出卡牌,Mayhem_Card.png,mayhem_test.png,cards
+金属化,金属化,Metallicize,Metallicize,红色,能力,罕见,1,在你的回合结束时，获得3点{{KW|格挡}}。,{{Power_link|金属化（能力）|金属化}},1,在你的回合结束时，获得4点{{KW|格挡}}。,,metallicize.png,metallicize_test.png,cards
+羽化,羽化,Metamorphosis,Metamorphosis,无色,技能,稀有,2,在你的抽牌堆中加入3张随机攻击牌。<br>它们在本场战斗中耗能为0。<br>{{KW|消耗}}。,"产生卡牌,耗能,消耗",2,在你的抽牌堆中加入5张随机攻击牌。<br>它们在本场战斗中耗能为0。<br>{{KW|消耗}}。,"产生卡牌,耗能,消耗",metamorphosis.png,metamorphosis_test.png,cards
+陨石打击,陨石打击,Meteor Strike,Meteor Strike,蓝色,攻击,稀有,5,造成24点伤害。<br>{{KW|生成}}3个{{KW|等离子}}充能球。,,5,造成30点伤害。<br>{{KW|生成}}3个{{KW|等离子}}充能球。,,meteorStrike.png,meteor_strike_test.png,cards
+奇迹,奇迹,Miracle,Miracle,无色,技能,特殊,0,{{KW|保留}}。<br>获得[P]。<br>{{KW|消耗}}。,,0,{{KW|保留}}。<br>获得[P][P]。<br>{{KW|消耗}}。,,miracle_1024.png,miracle_test.png,cards
+心灵震慑,心灵震慑,Mind Blast,Mind Blast,无色,攻击,罕见,2,{{KW|固有}}。<br>造成你抽牌堆中剩余牌数的伤害。,,1,{{KW|固有}}。<br>造成你抽牌堆中剩余牌数的伤害。,,mindBlast.png,mind_blast_test.png,cards
+多重释放,多重释放,Multi-Cast,Multi-Cast,蓝色,技能,稀有,-1,{{KW|激发}}你最右侧的充能球X次。,,-1,{{KW|激发}}你最右侧的充能球X+1次。,,multicast.png,multicast_test.png,cards
+死灵诅咒,死灵诅咒,Necronomicurse,Necronomicurse,诅咒,诅咒,特殊,-2,{{KW|不能被打出}}。<br/>这个{{KW|诅咒}}无法逃脱。,不能被打出,-2,,,necronomicurse.png,necronomicurse_test.png,cards
+涅槃,涅槃,Nirvana,Nirvana,紫色,能力,罕见,1,你每次{{KW|预见}}时，获得3点{{KW|格挡}}。,,1,你每次{{KW|预见}}时，获得4点{{KW|格挡}}。,,nirvana.png,nirvana_test.png,cards
+夜魇,夜魇,Night Terror,Night Terror,绿色,技能,稀有,3,选择一张牌， 在下一回合，将 3 份这张牌的复制品放入你的手牌中。<br>{{KW|消耗}}。,,2,选择一张牌， 在下一回合，将 3 份这张牌的复制品放入你的手牌中。<br>{{KW|消耗}}。,,nightmare.png,nightmare_test.png,cards
+凡庸,凡庸,Normality,Normality,诅咒,诅咒,诅咒,-2,{{KW|不能被打出}}。<br>在手牌中时，你在此回合无法打出3张以上牌。,不能被打出,-2,,,normality.png,normality_test.png,cards
+中和,中和,Neutralize,Neutralize,绿色,攻击,初始,0,造成3点伤害。<br>给予1层{{KW|虚弱}}。,,0,造成4点伤害。<br>给予2层{{KW|虚弱}}。,,neutralize.png,neutralize_test.png,cards
+毒雾,毒雾,Noxious Fumes,Noxious Fumes,绿色,能力,罕见,1,在你的回合开始时，给予所有敌人2层{{KW|中毒}}。,,1,在你的回合开始时，给予所有敌人3层{{KW|中毒}}。,,noxiousFumes.png,noxious_fumes_test.png,cards
+祭品,祭品,Offering,Offering,红色,技能,稀有,0,失去6点生命。<br>获得[R][R]。<br>抽3张牌。<br>{{KW|消耗}}。,,0,失去6点生命。<br>获得[R][R]。<br>抽5张牌。<br>{{KW|消耗}}。,,offering.png,offering_test.png,cards
+通晓万物,通晓万物,Omniscience,Omniscience,紫色,技能,稀有,4,选择你抽牌堆中的一张牌。将这张牌打出两次然后将其{{KW|消耗}}。<br>{{KW|消耗}}。,,3,选择你抽牌堆中的一张牌。将这张牌打出两次然后将其{{KW|消耗}}。<br>{{KW|消耗}}。,,omniscience.png,omniscience_test.png,cards
+欧米伽,欧米伽,Omega,Omega,无色,能力,特殊,3,在你的回合结束时，对所有敌人造成50点伤害。,,3,在你的回合结束时，对所有敌人造成60点伤害。,,omega.png,omega_test.png,cards
+疼痛,疼痛,Pain,Pain,诅咒,诅咒,诅咒,-2,{{KW|不能被打出}}。<br>当在手牌中时，每打出一张其他牌，失去1生命。,"不能被打出,失去生命",-2,,,pain.png,pain_test.png,cards
+抢占先机,抢占先机,Outmaneuver,Outmaneuver,绿色,技能,普通,1,下一回合<br>获得[G][G]。,,1,下一回合<br>获得[G][G][G]。,,outmaneuver.png,outmaneuver_test.png,cards
+万能药,万能药,Panacea,Panacea,无色,技能,罕见,0,获得1层{{KW|人工制品}}。<br>{{KW|消耗}}。,"人工制品,消耗",0,获得2层{{KW|人工制品}}。<br>{{KW|消耗}}。,"人工制品,消耗",panacea.png,panacea_test.png,cards
+神气制胜,神气制胜,Panache,Panache,无色,能力,稀有,0,你每在同个回合内打出5张牌，就对所有敌人造成10点伤害。,造成伤害,0,你每在同个回合内打出5张牌，就对所有敌人造成14点伤害。,造成伤害,panache.png,panache_test.png,cards
+寄生,寄生,Parasite,Parasite,诅咒,诅咒,诅咒,-2,{{KW|不能被打出}}。<br>如果这张牌在你的牌组中被转化或移除，你失去3点最大生命。,"不能被打出,失去最大生命",-2,,,parasite.png,parasite_test.png,cards
+完美打击,完美打击,Perfected Strike,Perfected Strike,红色,攻击,普通,2,造成6点伤害。<br>你每有一张名字中有{{KW|打击}}的牌，伤害+2。,,2,造成6点伤害。<br>你每有一张名字中有{{KW|打击}}的牌，伤害+3。,,perfectedStrike.png,perfected_strike_test.png,cards
+应急按钮,应急按钮,Panic Button,Panic Button,无色,技能,罕见,0,获得30点{{KW|格挡}}。<br>你在接下来2回合内无法再从卡牌中获得格挡。<br>{{KW|消耗}}。,"格挡,消耗",0,获得40点{{KW|格挡}}。<br>你在接下来2回合内无法再从卡牌中获得格挡。<br>{{KW|消耗}}。,"格挡,消耗",panicButton.png,panic_button_test.png,cards
+坚韧,坚韧,Perseverance,Perseverance,紫色,技能,罕见,1,{{KW|保留}}。<br>获得5点{{KW|格挡}}。<br>每当这张牌被{{KW|保留}}时，将其在本场战斗的格挡增加2点。,,1,{{KW|保留}}。<br>获得7点{{KW|格挡}}。<br>每当这张牌被{{KW|保留}}时，将其在本场战斗的格挡增加3点。,,Perseverance_1024.png,perseverance_test.png,cards
+幻影杀手,幻影杀手,Phantasmal Killer,Phantasmal Killer,绿色,技能,稀有,1,在你的下个回合，你所有的攻击伤害翻倍。,,0,在你的下个回合，你所有的攻击伤害翻倍。,,phantasmalKiller.png,phantasmal_killer_test.png,cards
+尖啸,尖啸,Piercing Wail,Piercing Wail,绿色,技能,普通,1,所有敌人失去6力量1回合。<br>{{KW|消耗}}。,,1,所有敌人失去8力量1回合。<br>{{KW|消耗}}。,,piercingWail.png,piercing_wail_test.png,cards
+带毒刺击,带毒刺击,Poisoned Stab,Poisoned Stab,绿色,攻击,普通,1,造成6点伤害。<br>给予3层{{KW|中毒}}。,,1,造成8点伤害。<br>给予4层{{KW|中毒}}。,,poisonedStab.png,poisoned_stab_test.png,cards
+剑柄打击,剑柄打击,Pommel Strike,Pommel Strike,红色,攻击,普通,1,造成9点伤害。<br>抽1张牌。,,1,造成10点伤害。<br>抽2张牌。,,pommelStrike.png,pommel_strike_test.png,cards
+祈祷,祈祷,Pray,Pray,紫色,技能,罕见,1,获得3层{{KW|真言}}。<br>在你的抽牌堆中加入1张{{Card_show|洞见}}。,,1,获得4层{{KW|真言}}。<br>在你的抽牌堆中加入1张{{Card_show|洞见}}。,,pray_1024.png,pray_test.png,cards
+硬撑,硬撑,Power Through,Power Through,红色,技能,罕见,1,增加2张{{Card_show|伤口}}到你的手牌。<br>获得15点{{KW|格挡}}。,,1,增加2张{{Card_show|伤口}}到你的手牌。<br>获得20点{{KW|格挡}}。,,powerThrough.png,power_through_test.png,cards
+早有准备,早有准备,Prepared,Prepared,绿色,技能,普通,0,抽1张牌。<br>丢弃1张牌。,,0,抽2张牌。<br>丢弃2张牌。,,prepared.png,prepared_test.png,cards
+猎杀者,猎杀者,Predator,Predator,绿色,攻击,罕见,2,造成15点伤害。<br>在下一回合多抽2张牌。,,2,造成20点伤害。<br>在下一回合多抽2张牌。,,predator.png,predator_test.png,cards
+点穴,点穴,Pressure Points,Pressure Points,紫色,技能,普通,1,给予8层[[印记]]。<br>所有拥有[[印记]]的敌人失去与层数相等的生命。,,1,给予11层[[印记]]。<br>所有拥有[[印记]]的敌人失去与层数相等的生命。,,pressure_points.png,pressure_points_test.png,cards
+傲慢,傲慢,Pride,Pride,诅咒,诅咒,特殊,1,{{KW|固有}}。<br>{{KW|消耗}}。<br>你的回合结束时，在抽牌堆顶部加入一张这张牌的复制品。,"固有,消耗,产生卡牌",0,,,pride.png,pride_test.png,cards
+五体投地,五体投地,Prostrate,Prostrate,紫色,技能,普通,0,获得2层{{KW|真言}}。<br>获得4点{{KW|格挡}}。,,0,获得3层{{KW|真言}}。<br>获得4点{{KW|格挡}}。,,prostrate_1024.png,prostrate_test.png,cards
+护身,护身,Protect,Protect,紫色,技能,普通,2,{{KW|保留}}。<br>获得12点{{KW|格挡}}。,,2,{{KW|保留}}。<br>获得16点{{KW|格挡}}。,,Protect_1024.png,protect_test.png,cards
+连续拳,连续拳,Pummel,Pummel,红色,攻击,罕见,1,造成2点伤害4次。<br>{{KW|消耗}}。,,1,造成2点伤害5次。<br>{{KW|消耗}}。,,pummel.png,pummel_test.png,cards
+净化,净化,Purity,Purity,无色,技能,罕见,0,从手牌中选择最多3张牌{{KW|消耗}}。<br>{{KW|消耗}}。,"消耗卡牌,消耗",0,从手牌中选择最多5张牌{{KW|消耗}}。<br>{{KW|消耗}}。,"消耗卡牌,消耗",purity.png,purity_test.png,cards
+快斩,快斩,Quick Slash,Quick Slash,绿色,攻击,普通,1,造成8点伤害。<br> 抽1张牌。,,1,造成12点伤害。<br> 抽1张牌。,,quickSlash.png,quick_slash_test.png,cards
+狂怒,狂怒,Rage,Rage,红色,技能,罕见,0,打出此牌后，你在这个回合内每打出一张攻击牌，获得3{{KW|格挡}}。,{{Power_link|愤怒（能力）|愤怒}},0,打出此牌后，你在这个回合内每打出一张攻击牌，获得5{{KW|格挡}}。,,rage.png,rage_test.png,cards
+诸神之黄昏,诸神之黄昏,Ragnarok,Ragnarok,紫色,攻击,稀有,3,随机对敌人造成5点伤害5次。,,3,随机对敌人造成6点伤害6次。,,ragnarok_1024.png,ragnarok_test.png,cards
+暴走,暴走,Rampage,Rampage,红色,攻击,罕见,1,造成8点伤害。<br>这张牌每被打出一次，在本场战斗中其伤害增加5。,,1,造成8点伤害。<br>这张牌每被打出一次，在本场战斗中其伤害增加8。,,rampage.png,rampage_test.png,cards
+立地升天,立地升天,Reach Heaven,Reach Heaven,紫色,攻击,罕见,2,造成10点伤害。<br>在你的抽牌堆中加入1张{{Card_show|以暴易暴}}。,,2,造成15点伤害。<br>在你的抽牌堆中加入1张{{Card_show|以暴易暴}}。,,reach_heaven.png,reach_heaven_test.png,cards
+彩虹,彩虹,Rainbow,Rainbow,蓝色,技能,稀有,2,{{KW|生成}}{{KW|闪电}}、{{KW|冰霜}}、{{KW|黑暗}}充能球各一个。<br>{{KW|消耗}}。,,2,{{KW|生成}}{{KW|闪电}}、{{KW|冰霜}}、{{KW|黑暗}}充能球各一个。,,rainbow.png,rainbow_test.png,cards
+死亡收割,死亡收割,Reaper,Reaper,红色,攻击,稀有,2,对所有敌人造成4点伤害。<br>未被{{KW|格挡}}的伤害将回复你的生命。<br>{{KW|消耗}}。,,2,对所有敌人造成5点伤害。<br>未被{{KW|格挡}}的伤害将回复你的生命。<br>{{KW|消耗}}。,,reaper.png,reaper_test.png,cards
+重启,重启,Reboot,Reboot,蓝色,技能,稀有,0,将你所有未消耗的牌重新洗牌放入抽牌堆。<br>抽4张牌。<br>{{KW|消耗}}。,,0,将你所有未消耗的牌重新洗牌放入抽牌堆。<br>抽6张牌。<br>{{KW|消耗}}。,,reboot.png,reboot_test.png,cards
+弹回,弹回,Rebound,Rebound,蓝色,攻击,普通,1,造成9点伤害。<br>你在这个回合打出的下一张牌将会被放置到抽牌堆的顶部。（只限会移入弃牌堆的牌）,,1,造成12点伤害。<br>你在这个回合打出的下一张牌将会被放置到抽牌堆的顶部。（只限会移入弃牌堆的牌）,,rebound.png,rebound_test.png,cards
+无谋冲锋,无谋冲锋,Reckless Charge,Reckless Charge,红色,攻击,罕见,0,造成7点伤害。<br>将一张{{Card_show|晕眩}}放入你的抽牌堆中。,,0,造成10点伤害。<br>将一张{{Card_show|晕眩}}放入你的抽牌堆中。,,recklessCharge.png,reckless_charge_test.png,cards
+回收,回收,Recycle,Recycle,蓝色,技能,罕见,1,{{KW|消耗}}一张牌。<br>获得与其耗能相等的[B]。,,0,{{KW|消耗}}一张牌。<br>获得与其耗能相等的[B]。,,recycle.png,recycle_test.png,cards
+递归,递归,Recursion,Recursion,蓝色,技能,普通,1,{{KW|激发}}你最右侧的充能球。<br>然后{{KW|生成}}一个刚才被{{KW|激发}}的充能球。,,0,{{KW|激发}}你最右侧的充能球。<br>然后{{KW|生成}}一个刚才被{{KW|激发}}的充能球。,,recursion.png,recursion_test.png,cards
+本能反应,本能反应,Reflex,Reflex,绿色,技能,罕见,0,{{KW|不能被打出}}。<br>如果这张牌从你的手牌中被丢弃，抽2张牌。,,0,{{KW|不能被打出}}。<br>如果这张牌从你的手牌中被丢弃，抽3张牌。,,reflex.png,reflex_test.png,cards
+硬化机体,硬化机体,Reinforced Body,Reinforced Body,蓝色,技能,罕见,-1,获得7点{{KW|格挡}}X次。,,-1,获得9点{{KW|格挡}}X次。,,reinforcedBody.png,reinforced_body_test.png,cards
+悔恨,悔恨,Regret,Regret,诅咒,诅咒,诅咒,-2,{{KW|不能被打出}}。<br>在你的回合结束时，每有一张手牌就失去1点生命。,"不能被打出,失去生命",-2,,,regret.png,regret_test.png,cards
+重编程,重编程,Reprogram,Reprogram,蓝色,技能,罕见,1,失去1点{{KW|集中}}。<br>获得1点{{KW|力量}}。<br>获得1点{{KW|敏捷}}。,,1,失去2点{{KW|集中}}。<br>获得2点{{KW|力量}}。<br>获得2点{{KW|敏捷}}。,,reprogram.png,reprogram_test.png,cards
+千穿百刺,千穿百刺,Riddle with Holes,Riddle with Holes,绿色,攻击,罕见,2,造成3点伤害5次。,,2,造成4点伤害5次。,,riddleWithHoles.png,riddle_with_holes_test.png,cards
+狂乱撕扯,狂乱撕扯,Rip and Tear,Rip and Tear,蓝色,攻击,罕见,1,随机对敌人造成7点伤害2次。,,1,随机对敌人造成9点伤害2次。,,ripAndTear.png,rip_and_tear_test.png,cards
+仪式匕首,仪式匕首,Ritual Dagger,Ritual Dagger,无色,攻击,特殊,1,造成15点伤害。<br>{{KW|斩杀}}时，它在本局游戏中的伤害永久性增加3。<br>{{KW|消耗}}。,"造成伤害,消耗",1,造成15点伤害。<br>{{KW|斩杀}}时，它在本局游戏中的伤害永久性增加5。<br>{{KW|消耗}}。,"造成伤害,消耗",ritualDagger.png,ritual_dagger_test.png,cards
+撕裂,撕裂,Rupture,Rupture,红色,能力,罕见,1,每当你从一张牌中失去生命时，获得1点{{KW|力量}}。,{{Power_link|撕裂（能力）|撕裂}},1,每当你从一张牌中失去生命时，获得2点{{KW|力量}}。,,rupture.png,rupture_test.png,cards
+猛虎下山,猛虎下山,Rushdown,Rushdown,紫色,能力,罕见,1,每当你进入{{KW|愤怒（姿态）|愤怒}}时，抽2张牌。,,0,每当你进入{{KW|愤怒（姿态）|愤怒}}时，抽2张牌。,,rushdown.png,rushdown_test.png,cards
+残虐天性,残虐天性,Sadistic Nature,Sadistic Nature,无色,能力,稀有,0,每当你对一名敌人造成负面状态，使对方受到5点伤害。,造成伤害,0,每当你对一名敌人造成负面状态，使对方受到7点伤害。,造成伤害,sadisticNature.png,sadistic_nature_test.png,cards
+平安,平安,Safety,Safety,无色,技能,特殊,1,{{KW|保留}}。<br>获得12点{{KW|格挡}}。<br>{{KW|消耗}}。,,1,{{KW|保留}}。<br>获得16点{{KW|格挡}}。<br>{{KW|消耗}}。,,safety_1024.png,safety_test.png,cards
+腰带抽打,腰带抽打,Sash Whip,Sash Whip,紫色,攻击,普通,1,造成8点伤害。<br>如果本场战斗中打出的上一张牌是攻击牌，给予1层{{KW|虚弱}}。,,1,造成10点伤害。<br>如果本场战斗中打出的上一张牌是攻击牌，给予2层{{KW|虚弱}}。,,sash_whip.png,sash_whip_test.png,cards
+圣洁,圣洁,Sanctity,Sanctity,紫色,技能,罕见,1,获得6点{{KW|格挡}}。<br>如果本场战斗中打出的上一张牌是技能牌，抽2张牌。,,1,获得9点{{KW|格挡}}。<br>如果本场战斗中打出的上一张牌是技能牌，抽2张牌。,,sanctity_1024.png,sanctity_test.png,cards
+时之沙,时之沙,Sands of Time,Sands of Time,紫色,攻击,罕见,4,{{KW|保留}}。<br>造成20点伤害。<br>每当这张牌被{{KW|保留}}时，将其在本场战斗的耗能减少1。,,4,{{KW|保留}}。<br>造成26点伤害。<br>每当这张牌被{{KW|保留}}时，将其在本场战斗的耗能减少1。,,sands_of_time.png,sands_of_time_test.png,cards
+刮削,刮削,Scrape,Scrape,蓝色,攻击,罕见,1,造成7点伤害。<br>抽4张牌。<br>丢弃抽到的牌中耗能不为0的牌。,,1,造成10点伤害。<br>抽5张牌。<br>丢弃抽到的牌中耗能不为0的牌。,,scrape.png,scrape_test.png,cards
+潦草急就,潦草急就,Scrawl,Scrawl,紫色,技能,稀有,1,抽牌直到将手牌抽满。<br>{{KW|消耗}}。,,0,抽牌直到将手牌抽满。<br>{{KW|消耗}}。,,scrawl.png,scrawl_test.png,cards
+欺瞒现实,欺瞒现实,Deceive Reality,Deceive Reality,紫色,技能,罕见,1,获得4点{{KW|格挡}}。<br>将一张{{Card_show|平安}}加入你的手牌。,,1,获得7点{{KW|格挡}}。<br>将一张{{Card_show|平安}}加入你的手牌。,,deceive_reality.png,deceive_reality_test.png,cards
+灼热攻击,灼热攻击,Searing Blow,Searing Blow,红色,攻击,罕见,2,造成12点伤害。<br>能被多次{{KW|升级}}。,,2,造成16点伤害。<br>能被多次{{KW|升级}}。,,searingBlow.png,searing_blow_test.png,cards
+重振精神,重振精神,Second Wind,Second Wind,红色,技能,罕见,1,{{KW|消耗}}手牌中所有非攻击牌，每张获得5点{{KW|格挡}}。,,1,{{KW|消耗}}手牌中所有非攻击牌，每张获得7点{{KW|格挡}}。,,secondWind.png,second_wind_test.png,cards
+秘密技法,秘密技法,Secret Technique,Secret Technique,无色,技能,稀有,0,从抽牌堆中选择一张技能牌放入你的手牌。<br>{{KW|消耗}}。,"抽牌,消耗",0,从抽牌堆中选择一张技能牌放入你的手牌。,抽牌,secretTechnique.png,secret_technique_test.png,cards
+秘密武器,秘密武器,Secret Weapon,Secret Weapon,无色,技能,稀有,0,从抽牌堆中选择一张攻击牌放入你的手牌。<br>{{KW|消耗}}。,"抽牌,消耗",0,从抽牌堆中选择一张攻击牌放入你的手牌。,抽牌,secretWeapon.png,secret_weapon_test.png,cards
+盛怒,盛怒,Seeing Red,Seeing Red,红色,技能,罕见,1,获得[R][R]。<br>{{KW|消耗}}。,,0,获得[R][R]。<br>{{KW|消耗}}。,,seeingRed.png,seeing_red_test.png,cards
+自我修复,自我修复,Self Repair,Self Repair,蓝色,能力,罕见,1,在战斗结束时，回复 7 点生命。,,1,在战斗结束时，回复 10 点生命。,,selfRepair.png,self_repair_test.png,cards
+搜寻,搜寻,Seek,Seek,蓝色,技能,稀有,0,从抽牌堆中选择1张牌放入你的手牌。<br>{{KW|消耗}}。,,0,从抽牌堆中选择2张牌放入你的手牌。<br>{{KW|消耗}}。,,seek.png,seek_test.png,cards
+哨卫,哨卫,Sentinel,Sentinel,红色,技能,罕见,1,获得5点{{KW|格挡}}。<br>如果这张牌被{{KW|消耗}}，获得[R][R]。,,1,获得8点{{KW|格挡}}。<br>如果这张牌被{{KW|消耗}}，获得[R][R][R]。,,sentinel.png,sentinel_test.png,cards
+部署,部署,Setup,Setup,绿色,技能,罕见,1,将手牌中的一张牌放到抽牌堆的顶部。<br>并且在其被打出之前，其耗能变为0。,,0,将手牌中的一张牌放到抽牌堆的顶部。<br>并且在其被打出之前，其耗能变为0。,,setup.png,setup_test.png,cards
+断魂斩,断魂斩,Sever Soul,Sever Soul,红色,攻击,罕见,2,{{KW|消耗}}手牌中所有非攻击牌。<br>造成16点伤害。,,2,{{KW|消耗}}手牌中所有非攻击牌。<br>造成22点伤害。,,severSoul.png,sever_soul_test.png,cards
+羞耻,羞耻,Shame,Shame,诅咒,诅咒,诅咒,-2,{{KW|不能被打出}}。<br>在你的回合结束时，获得1层{{KW|脆弱}}。,"不能被打出,脆弱",-2,,,shame.png,shame_test.png,cards
+小刀,小刀,Shiv,Shiv,无色,攻击,特殊,0,造成4点伤害。<br>{{KW|消耗}}。,"造成伤害,消耗",0,造成6点伤害。<br>{{KW|消耗}},"造成伤害,消耗",shiv.png,shiv_test.png,cards
+耸肩无视,耸肩无视,Shrug It Off,Shrug It Off,红色,技能,普通,1,获得8点{{KW|格挡}}。<br>抽1张牌。,,1,获得11点{{KW|格挡}}。<br>抽1张牌。,,shrugItOff.png,shrug_it_off_test.png,cards
+震荡波,震荡波,Shockwave,Shockwave,红色,技能,罕见,2,给予所有敌人3层{{KW|虚弱}}和{{KW|易伤}}。<br>{{KW|消耗}}。,,2,给予所有敌人5层{{KW|虚弱}}和{{KW|易伤}}。<br>{{KW|消耗}}。,,shock_wave.png,shockwave_test.png,cards
+怒火中烧,怒火中烧,Simmering Fury,Simmering Fury,紫色,技能,罕见,1,在你的下一回合开始时，进入{{KW|愤怒（姿态）|愤怒}}并抽2张牌。,,1,在你的下一回合开始时，进入{{KW|愤怒（姿态）|愤怒}}并抽3张牌。,,simmering_fury.png,simmering_fury_test.png,cards
+招牌技,招牌技,Signature Move,Signature Move,紫色,攻击,罕见,2,只有当这张牌是你手中唯一的一张攻击牌时才可以被打出。<br>造成30点伤害。,,2,只有当这张牌是你手中唯一的一张攻击牌时才可以被打出。<br>造成40点伤害。,,signature_move.png,signature_move_test.png,cards
+串刺,串刺,Skewer,Skewer,绿色,攻击,罕见,-1,造成7点伤害X次。,,-1,造成10点伤害X次。,,skewer.png,skewer_test.png,cards
+快速检索,快速检索,Skim,Skim,蓝色,技能,罕见,1,抽3张牌。,,1,抽4张牌。,,skim.png,skim_test.png,cards
+切割,切割,Slice,Slice,绿色,攻击,普通,0,造成6点伤害。,,0,造成9点伤害。,,slice.png,slice_test.png,cards
+黏液,黏液,Slimed,Slimed,无色,状态,特殊,1,{{KW|消耗}}。,消耗,0,,,slimed.png,slimed_test.png,cards
+惩恶,惩恶,Smite,Smite,无色,攻击,特殊,1,{{KW|保留}}。<br>造成12点伤害。<br>{{KW|消耗}}。,,1,{{KW|保留}}。<br>造成16点伤害。<br>{{KW|消耗}}。,,smite_1024.png,smite_test.png,cards
+精神护盾,精神护盾,Spirit Shield,Spirit Shield,紫色,技能,稀有,2,你每有一张手牌，获得3点{{KW|格挡}}。,,2,你每有一张手牌，获得4点{{KW|格挡}}。,,spirit_shield.png,spirit_shield_test.png,cards
+堆栈,堆栈,Stack,Stack,蓝色,技能,普通,1,获得与你当前弃牌堆中牌数相等的{{KW|格挡}}值。,,1,获得你当前弃牌堆中牌数+3的{{KW|格挡}}值。,,stack.png,stack_test.png,cards
+观察弱点,观察弱点,Spot Weakness,Spot Weakness,红色,技能,罕见,1,如果一名敌人的意图是攻击，你获得3点{{KW|力量}}。,,1,如果一名敌人的意图是攻击，你获得4点{{KW|力量}}。,,spotWeakness.png,spot_weakness_test.png,cards
+静电释放,静电释放,Static Discharge,Static Discharge,蓝色,能力,罕见,1,每当你受到攻击伤害时，{{KW|生成}}1个{{KW|闪电}}充能球。,,1,每当你受到攻击伤害时，{{KW|生成}}2个{{KW|闪电}}充能球。,,staticDischarge.png,static_discharge_test.png,cards
+超频,超频,Steam Power,Steam Power,蓝色,技能,罕见,0,抽2张牌。<br>将一张{{Card_show|灼伤}}放入你的弃牌堆中。,,0,抽3张牌。<br>将一张{{Card_show|灼伤}}放入你的弃牌堆中。,,overclock.png,overclock_test.png,cards
+蒸汽护壁,蒸汽护壁,Steam,Steam,蓝色,技能,普通,0,获得6点{{KW|格挡}}。<br>这张牌每被打出一次，它在本场战斗中的基础格挡下降1。,,0,获得8点{{KW|格挡}}。<br>这张牌每被打出一次，它在本场战斗中的基础格挡下降1。,,steam.png,steam_barrier_test.png,cards
+钢铁风暴,钢铁风暴,Storm of Steel,Storm of Steel,绿色,技能,稀有,1,丢弃所有手牌。<br>每丢弃一张牌，在你的手牌中增加一张{{Card_show|小刀}}。,,1,丢弃所有手牌。<br>每丢弃一张牌，在你的手牌中增加一张{{Card_show|小刀|小刀+}}。,,stormOfSteel.png,storm_of_steel_test.png,cards
+雷暴,雷暴,Storm,Storm,蓝色,能力,罕见,1,你每打出一张能力牌，{{KW|生成}}1个{{KW|闪电}}充能球。,,1,{{KW|固有}}。<br>你每打出一张能力牌，{{KW|生成}}1个{{KW|闪电}}充能球。,,storm.png,storm_test.png,cards
+精简改良,精简改良,Streamline,Streamline,蓝色,攻击,普通,2,造成15点伤害。<br>这张牌每被打出一次，它在本场战斗中的耗能减少1。,,2,造成20点伤害。<br>这张牌每被打出一次，它在本场战斗中的耗能减少1。,,streamline.png,streamline_test.png,cards
+打击（紫）,打击（紫）,Strike_P,Strike,紫色,攻击,初始,1,造成6点伤害。,,1,造成9点伤害。,,Strike_purple.png,purple_attack_strike_test.png,cards
+打击（蓝）,打击（蓝）,Strike_B,Strike,蓝色,攻击,初始,1,造成6点伤害。,,1,造成9点伤害。,,strike_blue.png,blue_attack_strike_test.png,cards
+打击（绿）,打击（绿）,Strike_G,Strike,绿色,攻击,初始,1,造成6点伤害。,,1,造成9点伤害。,,strike_green.png,green_attack_strike_test.png,cards
+打击（红）,打击（红）,Strike_R,Strike,红色,攻击,初始,1,造成6点伤害。,,1,造成9点伤害。,,strike_red.png,red_attack_strike_test.png,cards
+突然一拳,突然一拳,Sucker Punch,Sucker Punch,绿色,攻击,普通,1,造成7点伤害。<br>给予1层{{KW|虚弱}}。,,1,造成9点伤害。<br> 给予2层{{KW|虚弱}}。,,suckerPunch.png,sucker_punch_test.png,cards
+研习,研习,Study,Study,紫色,能力,罕见,2,在你的回合结束时，在你的抽牌堆中加入一张{{Card_show|洞见}}。,,1,在你的回合结束时，在你的抽牌堆中加入一张{{Card_show|洞见}}。,,study.png,study_test.png,cards
+生存者,生存者,Survivor,Survivor,绿色,技能,初始,1,获得8点{{KW|格挡}}。<br>丢弃一张牌。,,1,获得11点{{KW|格挡}}。<br>丢弃一张牌。,,survivor.png,survivor_test.png,cards
+分离,分离,Sunder,Sunder,蓝色,攻击,罕见,3,造成24点伤害。<br>如果这张牌杀死了敌人，则获得[B][B][B]。,,3,造成32点伤害。<br>如果这张牌杀死了敌人，则获得[B][B][B] 。,,sunder.png,sunder_test.png,cards
+扫荡射线,扫荡射线,Sweeping Beam,Sweeping Beam,蓝色,攻击,普通,1,对所有敌人造成6点伤害。<br>抽1张牌。,,1,对所有敌人造成9点伤害。<br>抽1张牌。,,sweepingBeam.png,sweeping_beam_test.png,cards
+迅捷打击,迅捷打击,Swift Strike,Swift Strike,无色,攻击,罕见,0,造成7点伤害。,造成伤害,0,造成10点伤害。,造成伤害,swiftStrike.png,swift_strike_test.png,cards
+飞剑回旋镖,飞剑回旋镖,Sword Boomerang,Sword Boomerang,红色,攻击,普通,1,随机对敌人造成3点伤害3次。,,1,随机对敌人造成3点伤害4次。,,swordBoomerang.png,sword_boomerang_test.png,cards
+旋身,旋身,Swivel,Swivel,紫色,技能,罕见,2,获得8点{{KW|格挡}}。<br>你打出的下一张攻击牌耗能变为0。,,2,获得11点{{KW|格挡}}。<br>你打出的下一张攻击牌耗能变为0。,,Swivel_1024.png,swivel_test.png,cards
+战术大师,战术大师,Tactician,Tactician,绿色,技能,罕见,0,{{KW|不能被打出}}。<br>如果这张牌从你的手牌中被丢弃，获得[G]。,,0,{{KW|不能被打出}}。<br>如果这张牌从你的手牌中被丢弃，获得[G][G]。,,tactician.png,tactician_test.png,cards
+以手拒之,以手拒之,Talk to the Hand,Talk to the Hand,紫色,攻击,罕见,1,造成5点伤害。<br>每当目标敌人受到攻击时，你获得2点{{KW|格挡}}。,,1,造成7点伤害。<br>每当目标敌人受到攻击时，你获得3点{{KW|格挡}}。,,talk_to_the_hand.png,talk_to_the_hand_test.png,cards
+发泄,发泄,Tantrum,Tantrum,紫色,攻击,罕见,1,造成3点伤害3次。<br>进入{{KW|愤怒（姿态）|愤怒}}。<br>将这张牌放入你的抽牌堆。,,1,造成3点伤害4次。<br>进入{{KW|愤怒（姿态）|愤怒}}。<br>将这张牌放入你的抽牌堆。,,tantrum_1024.png,tantrum_test.png,cards
+暴风雨,暴风雨,Tempest,Tempest,蓝色,技能,罕见,-1,{{KW|生成}}X个{{KW|闪电}}充能球。<br>{{KW|消耗}}。,,-1,{{KW|生成}}X+1个{{KW|闪电}}充能球。<br>{{KW|消耗}}。,,tempest.png,tempest_test.png,cards
+恐怖,恐怖,Terror,Terror,绿色,技能,罕见,1,给予99层{{KW|易伤}}。<br>{{KW|消耗}}。,,0,给予99层{{KW|易伤}}。<br>{{KW|消耗}}。,,terror.png,terror_test.png,cards
+炸弹,炸弹,The Bomb,The Bomb,无色,技能,稀有,2,在3回合结束后，对所有敌人造成40点伤害。,造成伤害,2,在3回合结束后，对所有敌人造成50点伤害。,造成伤害,theBomb.png,the_bomb_test.png,cards
+深谋远虑,深谋远虑,Thinking Ahead,Thinking Ahead,无色,技能,稀有,0,抽2张牌，然后将手牌中的一张牌放到你抽牌堆的顶端。<br>{{KW|消耗}}。,"抽牌,放回,消耗",0,抽2张牌，然后将手牌中的一张牌放到你抽牌堆的顶端。,"抽牌,放回",thinkingAhead.png,thinking_ahead_test.png,cards
+天眼,天眼,Third Eye,Third Eye,紫色,技能,普通,1,获得7点{{KW|格挡}}。<br>{{KW|预见}}3 。,,1,获得9点{{KW|格挡}}。<br>{{KW|预见}}5 。,,third_eye.png,third_eye_test.png,cards
+雷霆打击,雷霆打击,Thunder Strike,Thunder Strike,蓝色,攻击,稀有,3,你在本场战斗中每{{KW|生成}}过一个{{KW|闪电}}充能球，随机造成一次7点伤害。,,3,你在本场战斗中每{{KW|生成}}过一个{{KW|闪电}}充能球，随机造成一次9点伤害。,,thunderStrike.png,thunder_strike_test.png,cards
+以暴易暴,以暴易暴,Through Violence,Through Violence,无色,攻击,特殊,0,{{KW|保留}}。<br>造成20点伤害。<br>{{KW|消耗}}。,,0,{{KW|保留}}。<br>造成30点伤害。<br>{{KW|消耗}}。,,through_violence.png,through_violence_test.png,cards
+闪电霹雳,闪电霹雳,Thunderclap,Thunderclap,红色,攻击,普通,1,对所有敌人造成4点伤害，给予1层{{KW|易伤}}。,,1,对所有敌人造成7点伤害，给予1层{{KW|易伤}}。,,thunderClap.png,thunder_clap_test.png,cards
+必备工具,必备工具,Tools of the Trade,Tools of the Trade,绿色,能力,稀有,1,在你的回合开始时，抽1张牌，丢弃1张牌。,,0,在你的回合开始时，抽1张牌，丢弃1张牌。,,toolsOfTheTrade.png,tools_of_the_trade_test.png,cards
+安宁,安宁,Tranquility,Tranquility,紫色,技能,普通,1,{{KW|保留}}。<br>进入{{KW|平静}}。<br>{{KW|消耗}}。,,0,{{KW|保留}}。<br>进入{{KW|平静}}。<br>{{KW|消耗}}。,,Tranquility_1024.png,tranquility_test.png,cards
+转化,转化,Transmutation,Transmutation,无色,技能,稀有,-1,在你的手牌中加入X张随机无色牌。<br>它们在本回合的耗能变为0。<br>{{KW|消耗}}。,"产生卡牌,耗能,消耗",-1,在你的手牌中放入X张{{KW|升级}}过的随机无色牌。<br>它们在本回合的耗能变为0。<br>{{KW|消耗}}。,"产生卡牌,升级,耗能,消耗",transmutation.png,transmutation_test.png,cards
+绊倒,绊倒,Trip,Trip,无色,技能,罕见,0,给予2层{{KW|易伤}} 。,易伤,0,给予所有敌人2层{{KW|易伤}}。,易伤,trip.png,trip_test.png,cards
+坚毅,坚毅,True Grit,True Grit,红色,技能,普通,1,获得7点{{KW|格挡}}。<br>{{KW|消耗}}一张随机手牌。,,1,获得9点{{KW|格挡}}。<br>{{KW|消耗}}一张手牌。,,trueGrit.png,true_grit_test.png,cards
+双重打击,双重打击,Twin Strike,Twin Strike,红色,攻击,普通,1,造成5点伤害两次。,,1,造成7点伤害两次。,,twinSlash.png,twin_strike_test.png,cards
+内核加速,内核加速,Turbo,Turbo,蓝色,技能,普通,0,获得[B][B]。<br>将一张{{Card_show|虚空}}放入你的弃牌堆中。,,0,获得[B][B][B]。<br>将一张{{Card_show|虚空}}放入你的弃牌堆中。,,turbo.png,turbo_test.png,cards
+隐秘打击,隐秘打击,Sneaky Strike,Sneaky Strike,绿色,攻击,普通,2,造成12点伤害。<br>如果你在这回合丢弃过牌，获得[G][G]。,,2,造成16点伤害。<br>如果你在这回合丢弃过牌，获得[G][G]。,,underhandedStrike.png,sneaky_strike_test.png,cards
+均衡,均衡,Undo,Undo,蓝色,技能,罕见,2,获得13点{{KW|格挡}}。<br>在本回合{{KW|保留}}你的手牌。,,2,获得16点{{KW|格挡}}。<br>在本回合{{KW|保留}}你的手牌。,,undo.png,undo_test.png,cards
+乾坤一掷,乾坤一掷,Unload,Unload,绿色,攻击,稀有,1,造成14点伤害。<br>丢弃所有非攻击牌。,,1,造成18点伤害。<br>丢弃所有非攻击牌。,,unload.png,unload_test.png,cards
+上勾拳,上勾拳,Uppercut,Uppercut,红色,攻击,罕见,2,造成13点伤害。<br>给予1层{{KW|虚弱}}。<br>给予1层{{KW|易伤}}。,,2,造成13点伤害。<br>给予2层{{KW|虚弱}}。<br>给予2层{{KW|易伤}}。,,uppercut.png,uppercut_test.png,cards
+腾跃,腾跃,Vault,Vault,紫色,技能,稀有,3,在本回合结束后，额外获得一回合。<br>结束你的回合。<br>{{KW|消耗}}。,,2,在本回合结束后，额外获得一回合。<br>结束你的回合。<br>{{KW|消耗}}。,,vault.png,vault_test.png,cards
+炼制药水,炼制药水,Venomology,Venomology,绿色,技能,稀有,1,获得一瓶随机药水。<br>{{KW|消耗}}。,,0,获得一瓶随机药水。<br>{{KW|消耗}}。,,Alchemize.png,venomology_test.png,cards
+警惕,警惕,Vigilance,Vigilance,紫色,技能,初始,2,获得8点{{KW|格挡}}。<br>进入{{KW|平静}}。,,2,获得12点{{KW|格挡}}。<br>进入{{KW|平静}}。,,vigilance.png,vigilance_test.png,cards
+暴力,暴力,Violence,Violence,无色,技能,稀有,0,随机将你抽牌堆中3张攻击牌加入你的手牌。<br>{{KW|消耗}}。,"抽牌,消耗",0,随机将你抽牌堆中4张攻击牌加入你的手牌。<br>{{KW|消耗}}。,"抽牌,消耗",violence.png,violence_test.png,cards
+虚空,虚空,Void,Void,无色,状态,特殊,-2,{{KW|不能被打出}}。<br>抽到这张牌时失去1点能量。<br>{{KW|虚无}}。,"不能被打出,能量",-2,,,void_1024.png,void_test.png,cards
+当头棒喝,当头棒喝,Wallop,Wallop,紫色,攻击,罕见,2,造成9点伤害。<br>获得与所造成的未被格挡的伤害相等的{{KW|格挡}}。,,2,造成12点伤害。<br>获得与所造成的未被格挡的伤害相等的{{KW|格挡}}。,,wallop_1024.png,wallop_test.png,cards
+战吼,战吼,Warcry,Warcry,红色,技能,普通,0,抽1张牌。<br>将手牌中的一张牌放到你的抽牌堆顶部。<br>{{KW|消耗}}。,,0,抽2张牌。<br>将手牌中的一张牌放到你的抽牌堆顶部。<br>{{KW|消耗}}。,,warCry.png,warcry_test.png,cards
+摆手,摆手,Wave of the Hand,Wave of the Hand,紫色,技能,罕见,1,在本回合，你每次获得{{KW|格挡}}时，给予所有敌人1层{{KW|虚弱}}。,,1,在本回合，你每次获得{{KW|格挡}}时，给予所有敌人2层{{KW|虚弱}}。,,wave_of_the_hand.png,wave_of_the_hand_test.png,cards
+迂回,迂回,Weave,Weave,紫色,攻击,罕见,0,造成4点伤害。<br>你每次{{KW|预见}}时，将这张牌从弃牌堆放回你的手牌。,,0,造成6点伤害。<br>你每次{{KW|预见}}时，将这张牌从弃牌堆放回你的手牌。,,weave_1024.png,weave_test.png,cards
+计划妥当,计划妥当,Well Laid Plans,Well Laid Plans,绿色,能力,罕见,1,在你的回合结束时，{{KW|保留}}最多1张牌。,,1,在你的回合结束时，{{KW|保留}}最多2张牌。,,wellLaidPlans.png,well_laid_plans_test.png,cards
+回环踢,回环踢,Wheel Kick,Wheel Kick,紫色,攻击,罕见,2,造成15点伤害。<br>抽2张牌。,,2,造成20点伤害。<br>抽2张牌。,,wheel_kick.png,wheel_kick_test.png,cards
+旋风斩,旋风斩,Whirlwind,Whirlwind,红色,攻击,罕见,-1,对所有敌人造成5点伤害X次。,,-1,对所有敌人造成8点伤害X次。,,whirlWind.png,whirlwind_test.png,cards
+白噪声,白噪声,White Noise,White Noise,蓝色,技能,罕见,1,增加一张随机能力牌到你的手牌。<br>这张牌在本回合耗能变为0。<br>{{KW|消耗}}。,,0,增加一张随机能力牌到你的手牌。<br>这张牌在本回合耗能变为0。<br>{{KW|消耗}}。,,whiteNoise.png,white_noise_test.png,cards
+狂野打击,狂野打击,Wild Strike,Wild Strike,红色,攻击,普通,1,造成12点伤害。<br>将一张{{Card_show|伤口}}放入你的抽牌堆中。,,1,造成17点伤害。<br>将一张{{Card_show|伤口}}放入你的抽牌堆中。,,wildStrike.png,wild_strike_test.png,cards
+旋转打击,旋转打击,Windmill Strike,Windmill Strike,紫色,攻击,罕见,2,{{KW|保留}}。<br>造成7点伤害。<br>每当这张牌被{{KW|保留}}时，将其在本场战斗的伤害增加4点。,,2,{{KW|保留}}。<br>造成10点伤害。<br>每当这张牌被{{KW|保留}}时，将其在本场战斗的伤害增加5点。,,windmill_strike.png,windmill_strike_test.png,cards
+许愿,许愿,Wish,Wish,紫色,技能,稀有,3,选择：获得6层多层护甲，3点{{KW|力量}}或25金币。<br>{{KW|消耗}}。,,3,选择：获得8层多层护甲，4点{{KW|力量}}或30金币。<br>{{KW|消耗}}。,,wish.png,wish_test.png,cards
+敬拜,敬拜,Worship,Worship,紫色,技能,罕见,2,获得5层{{KW|真言}}。,,2,{{KW|保留}}。<br>获得5层{{KW|真言}}。,,worship_1024.png,worship_test.png,cards
+幽魂形态,幽魂形态,Wraith Form v2,Wraith Form,绿色,能力,稀有,3,获得2层{{KW|无实体}}。<br>在每回合结束时失去1点{{KW|敏捷}}。,,3,获得3层{{KW|无实体}}。<br>在每回合结束时失去1点{{KW|敏捷}}。,,wraithForm.png,wraith_form_test.png,cards
+伤口,伤口,Wound,Wound,无色,状态,特殊,-2,{{KW|不能被打出}}。,不能被打出,-2,,,wound.png,wound_test.png,cards
+火焰纹,火焰纹,Wreath of Flame,Wreath of Flame,紫色,技能,罕见,1,你的下一张攻击牌造成5点额外伤害。,,1,你的下一张攻击牌造成8点额外伤害。,,wreathe_of_flame.png,wreathe_of_flame_test.png,cards
+苦恼,苦恼,Writhe,Writhe,诅咒,诅咒,诅咒,-2,{{KW|不能被打出}}。<br>{{KW|固有}}。,"不能被打出,固有",-2,,,writhe.png,writhe_test.png,cards
+电击,电击,Zap,Zap,蓝色,技能,初始,1,{{KW|生成}}1个{{KW|闪电}}充能球。,,0,{{KW|生成}}1个{{KW|闪电}}充能球。,,zap.png,zap_test.png,cards

@@ -121,3 +121,42 @@ mod/PenaconyTheGreatSeptimus
   orig: 1920, 1136
   offset: 0, 0
   index: -1
+
+AmphoreusZandar.png
+size: 2048, 2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+mod/AmphoreusZandar
+  rotate: false
+  xy: 2, 2
+  size: 1920, 1136
+  orig: 1920, 1136
+  offset: 0, 0
+  index: -1
+
+AmphoreusIrontomb.png
+size: 2048, 2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+mod/AmphoreusIrontomb
+  rotate: false
+  xy: 2, 2
+  size: 1920, 1136
+  orig: 1920, 1136
+  offset: 0, 0
+  index: -1
+  
+AmphoreusCampfire.png
+size: 2048, 2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+mod/AmphoreusCampfire
+  rotate: false
+  xy: 2, 2
+  size: 1920, 1136
+  orig: 1920, 1136
+  offset: 0, 0
+  index: -1

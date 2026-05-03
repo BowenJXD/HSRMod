@@ -13,6 +13,7 @@ import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.modcore.HSRModConfig;
+import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.BuffPower;
 
 public class ToughnessPower extends BuffPower implements InvisiblePower{
@@ -102,7 +103,7 @@ public class ToughnessPower extends BuffPower implements InvisiblePower{
         if (c.hasPower(ToughnessPower.POWER_ID)) {
             ToughnessPower power = (ToughnessPower) c.getPower(ToughnessPower.POWER_ID);
             if (power != null) result = power.stackLimit;
-        } else if (c instanceof AbstractMonster) {
+        } else if (c instanceof AbstractMonster && !(c instanceof BaseMonster)) {
             AbstractMonster m = (AbstractMonster) c;
             switch (m.type) {
                 case NORMAL:

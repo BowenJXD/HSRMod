@@ -8,6 +8,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.actions.animations.ShoutAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.common.InstantKillAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -138,6 +139,18 @@ public class OtherModFixes {
             AbstractDungeon.actionManager.addToBottom(new VFXAction(new SimplePlayVideoEffect(PathDefine.VIDEO_PATH + id + ".webm")));
             AbstractDungeon.actionManager.addToBottom(new ForceWaitAction(duration));
             return SpireReturn.Return(true);
+        }
+    }
+    
+    @SpirePatch(clz = InstantKillAction.class, method = "update")
+    public static class InstantKillPatch {
+        @SpirePrefixPatch
+        public static SpireReturn<Void> Prefix(InstantKillAction action) {
+            if (ModHelper.check(action.target)) {
+                return SpireReturn.Continue();
+            }
+            action.isDone = true;
+            return SpireReturn.Return();
         }
     }
 }

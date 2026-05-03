@@ -39,6 +39,7 @@ public class Encounter {
     public static final String INNER_BEASTS_BATTLEFIELD = "Inner Beast's Battlefield";
     public static final String SALUTATIONS_OF_ASHEN_DREAMS = "Salutations of Ashen Dreams";
     public static final String BOREHOLE_PLANETS_OLD_CRATER = "Borehole Planet's Old Crater";
+    public static final String RUSTED_CRYPT_OF_THE_IRON_CARCASS = "Rusted Crypt of the Iron Carcass";
     
     // ======================== ELITE ========================
     
@@ -56,6 +57,8 @@ public class Encounter {
     public static final String SAM = "Sam";
     public static final String THE_PAST_PRESENT_AND_ETERNAL_SHOW = "The Past, Present, and Eternal Show";
     public static final String BLAZNANA_MONKEY_TRICK = "Blaznana Monkey Trick";
+    
+    public static final String ZANDAR = "Zandar";
     
     // ======================== STRONGER ======================
     

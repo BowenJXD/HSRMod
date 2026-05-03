@@ -30,10 +30,13 @@ import hsrmod.actions.LightningEvokeToAction;
 import hsrmod.actions.TriggerLightningPassiveToAction;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.enemyOnly.SummonedPower;
+import hsrmod.subscribers.IHSRSubscriber;
+import hsrmod.subscribers.SubscriptionManager;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class ModHelper {
     public static void addToBotAbstract(Lambda func) {
@@ -366,5 +369,22 @@ public class ModHelper {
             return null;
         }
         return AbstractDungeon.player.orbs.get(AbstractDungeon.cardRandomRng.random(AbstractDungeon.player.filledOrbCount()));
+    }
+    
+    public static void downgradePile(CardGroup group) {
+        List<AbstractCard> temp = group.group.stream().map(ModHelper::downgrade).collect(Collectors.toList());
+        group.clear();
+        for (AbstractCard c : temp) {
+            group.addToTop(c);
+        }
+    }
+    
+    public static AbstractCard downgrade(AbstractCard card) {
+        AbstractCard result = card.makeCopy();
+        for (int i = 0; i < card.timesUpgraded-1; i++) {
+            result.upgrade();
+        }
+        result.uuid = card.uuid;
+        return result;
     }
 }

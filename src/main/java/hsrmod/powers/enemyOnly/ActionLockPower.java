@@ -1,9 +1,13 @@
 package hsrmod.powers.enemyOnly;
 
 import com.badlogic.gdx.Gdx;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.watcher.PressEndTurnButtonAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.vfx.combat.TimeWarpTurnEndEffect;
+import hsrmod.effects.TopWarningEffect;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.DebuffPower;
 import hsrmod.powers.StatePower;
@@ -27,7 +31,7 @@ public class ActionLockPower extends DebuffPower {
     @Override
     public void update(int slot) {
         super.update(slot);
-        if (AbstractDungeon.isScreenUp) return;
+        if (AbstractDungeon.isScreenUp || AbstractDungeon.actionManager.turnHasEnded) return;
         timer += Gdx.graphics.getDeltaTime();
         if (timer >  1) {
             timer -= 1;
@@ -36,8 +40,30 @@ public class ActionLockPower extends DebuffPower {
     }
 
     @Override
+    public void onInitialApplication() {
+        super.onInitialApplication();
+        addToBot(new VFXAction(new TopWarningEffect(GeneralUtil.tryFormat(DESCRIPTIONS[1], amount))));
+    }
+
+    @Override
     public void onRemove() {
         super.onRemove();
-        addToBot(new PressEndTurnButtonAction());
+        if (AbstractDungeon.overlayMenu.endTurnButton.enabled) {
+            addToBot(new VFXAction(new TimeWarpTurnEndEffect()));
+            addToBot(new PressEndTurnButtonAction());
+        }
+    }
+
+    @Override
+    public void atStartOfTurn() {
+        super.atStartOfTurn();
+        addToBot(new VFXAction(new TimeWarpTurnEndEffect()));
+        addToBot(new VFXAction(new TopWarningEffect(GeneralUtil.tryFormat(DESCRIPTIONS[1], amount))));
+    }
+
+    @Override
+    public void atEndOfTurn(boolean isPlayer) {
+        super.atEndOfTurn(isPlayer);
+        addToBot(new RemoveSpecificPowerAction(owner, owner, this));
     }
 }

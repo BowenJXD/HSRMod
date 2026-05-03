@@ -196,7 +196,7 @@ public abstract class BaseCard extends AbstractSignatureCard implements SpawnMod
     }
 
     public boolean checkEnergy() {
-        if (Math.max(0, ModHelper.getPowerCount(AbstractDungeon.player, EnergyPower.POWER_ID)) >= energyCost) {
+        if (freeToPlayOnce || Math.max(0, ModHelper.getPowerCount(AbstractDungeon.player, EnergyPower.POWER_ID)) >= energyCost) {
             return true;
         }
         cantUseMessage = Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT ? "我没有足够的 #b充能 。" : "I don't have enough #bcharge .";
@@ -271,7 +271,7 @@ public abstract class BaseCard extends AbstractSignatureCard implements SpawnMod
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (!checkEnergy()) return;
-        if (energyCost != 0) addToTop(new ApplyPowerAction(p, p, new EnergyPower(p, -energyCost), -energyCost));
+        if (energyCost != 0 && !freeToPlayOnce) addToTop(new ApplyPowerAction(p, p, new EnergyPower(p, -energyCost), -energyCost));
         energyCost = baseEnergyCost;
         if (type == CardType.POWER && rarity == CardRarity.RARE) addToBot(new VFXAction(new MiracleEffect()));
         onUse(p, m);

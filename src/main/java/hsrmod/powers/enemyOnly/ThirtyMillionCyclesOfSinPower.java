@@ -12,7 +12,7 @@ import hsrmod.utils.GeneralUtil;
 import hsrmod.utils.ModHelper;
 
 public class ThirtyMillionCyclesOfSinPower extends StatePower {
-    public static final String POWER_ID = HSRMod.makePath(DescentIntoChaosPower.class.getSimpleName());
+    public static final String POWER_ID = HSRMod.makePath(ThirtyMillionCyclesOfSinPower.class.getSimpleName());
 
     int[] perfectNums = {6, 28, 496, 8128, 33550336};
     int index = 0;
@@ -21,6 +21,7 @@ public class ThirtyMillionCyclesOfSinPower extends StatePower {
     
     public ThirtyMillionCyclesOfSinPower(AbstractCreature owner, int amount, AbstractCreature target) {
         super(POWER_ID, owner, amount);
+        this.priority = 0;
         this.target = target;
         updateDescription();
         loadRegion("heartDef");
@@ -34,9 +35,11 @@ public class ThirtyMillionCyclesOfSinPower extends StatePower {
     @Override
     public void onDeath() {
         super.onDeath();
-        addToBot(new DamageAction(target, new DamageInfo(owner, amount, DamageInfo.DamageType.NORMAL)));
+        if (target != null) {
+            addToBot(new DamageAction(target, new DamageInfo(target, amount, DamageInfo.DamageType.HP_LOSS)));
+        }
         ModHelper.addToBotAbstract(() -> addToTop(new ExhaustToHandAction(GeneralUtil.getRandomElement(AbstractDungeon.player.exhaustPile.group, AbstractDungeon.cardRandomRng))));
-        addToBot(new ApplyPowerAction(owner, owner, new ThirtyMillionCyclesOfSinPower(owner, 
-                -perfectNums[Math.min(index++, perfectNums.length-1)] + perfectNums[Math.min(index, perfectNums.length-1)], target)));
+        stackPower(-perfectNums[Math.min(index++, perfectNums.length-1)] + perfectNums[Math.min(index, perfectNums.length-1)]);
+        updateDescription();
     }
 }

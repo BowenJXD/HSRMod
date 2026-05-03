@@ -30,7 +30,7 @@ public class CorrosionPower extends DebuffPower {
         super.onAttack(info, damageAmount, target);
         if (info.type != DamageInfo.DamageType.HP_LOSS && damageAmount > 0) {
             flash();
-            addToBot(new HealAction(AbstractDungeon.player, AbstractDungeon.player, 1));
+            addToTop(new HealAction(AbstractDungeon.player, AbstractDungeon.player, 1));
             remove(1);
         }
     }

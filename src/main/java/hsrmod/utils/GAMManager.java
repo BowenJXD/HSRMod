@@ -94,8 +94,8 @@ public class GAMManager implements PostDungeonUpdateSubscriber, PostBattleSubscr
 
     @Override
     public void receiveOnBattleStart(AbstractRoom abstractRoom) {
-        parallelActions.clear();
-        currentCard = null;
+        // parallelActions.clear();
+        // currentCard = null;
     }
 }
 

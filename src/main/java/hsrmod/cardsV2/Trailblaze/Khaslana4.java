@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.combat.ScreenOnFireEffect;
 import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.effects.TopWarningEffect;
@@ -35,6 +36,7 @@ public class Khaslana4 extends BaseCard {
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         shout(0);
         ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(this.getClass().getSimpleName(), 3.0f));
+        addToBot(new VFXAction(new ScreenOnFireEffect()));
 
         int monsterCount = (int) AbstractDungeon.getMonsters().monsters.stream().filter(ModHelper::check).count();
         int[] damageMatrix = DamageInfo.createDamageMatrix(damage / monsterCount, true);

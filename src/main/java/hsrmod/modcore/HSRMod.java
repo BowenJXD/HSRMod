@@ -34,6 +34,7 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import hsrmod.cards.uncommon.RuanMei1;
 import hsrmod.cardsV2.Trailblaze.NightOnTheMilkyWay;
 import hsrmod.characters.StellaCharacter;
+import hsrmod.dungeons.Amphoreus;
 import hsrmod.dungeons.Belobog;
 import hsrmod.dungeons.Luofu;
 import hsrmod.dungeons.Penacony;
@@ -45,6 +46,7 @@ import hsrmod.monsters.Bonus.SequenceTrotter;
 import hsrmod.monsters.Exordium.*;
 import hsrmod.monsters.TheBeyond.*;
 import hsrmod.monsters.TheCity.*;
+import hsrmod.monsters.TheEnding.*;
 import hsrmod.patches.OtherModFixes;
 import hsrmod.patches.PathSelectScreen;
 import hsrmod.patches.RelicTagField;
@@ -470,6 +472,7 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
         Belobog belobog = new Belobog();
         Luofu luofu = new Luofu();
         Penacony penacony = new Penacony();
+        Amphoreus amphoreus = new Amphoreus();
 
         // =========================== Boss ===========================
 
@@ -500,6 +503,11 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
         penacony.addBoss(Encounter.BOREHOLE_PLANETS_OLD_CRATER, () -> new MonsterGroup(new AbstractMonster[]{
                 new Skaracabaz(),
         }), "HSRModResources/img/monsters/BoreholePlanetsOldCrater.png", "HSRModResources/img/monsters/BossOutline.png");
+        
+        amphoreus.addBoss(Encounter.RUSTED_CRYPT_OF_THE_IRON_CARCASS, () -> new MonsterGroup(new AbstractMonster[]{
+                new Irontomb(),
+                new AntiCreator(),
+        }), "HSRModResources/img/monsters/RustedCryptOfTheIronCarcass.png", "HSRModResources/img/monsters/BossOutline.png");
 
         // =========================== Elite ===========================
 
@@ -545,6 +553,10 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
         }));
         BaseMod.addMonster(Encounter.SAM, () -> new MonsterGroup(new AbstractMonster[]{
                 new Sam()
+        }));
+        
+        BaseMod.addMonster(Encounter.ZANDAR, () -> new MonsterGroup(new AbstractMonster[]{
+                new Zandar()
         }));
 
         // =========================== Stronger ===========================
@@ -629,6 +641,9 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
         BaseMod.addMonster(Encounter.COMPANY, () -> new MonsterGroup(new AbstractMonster[]{
                 new TeamLeader(-200, AbstractDungeon.monsterRng.random(-15, 15)),
         }));
+        BaseMod.addMonster(Encounter.COMPANY, () -> new MonsterGroup(new AbstractMonster[]{
+                new TeamLeader(-200, AbstractDungeon.monsterRng.random(-15, 15)),
+        }));
 
         // =========================== Normal ===========================
 
@@ -689,6 +704,7 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
         belobog.addAct("Exordium");
         luofu.addAct("TheCity");
         penacony.addAct("TheBeyond");
+        amphoreus.addAct("TheEnding");
     }
 
     @Override

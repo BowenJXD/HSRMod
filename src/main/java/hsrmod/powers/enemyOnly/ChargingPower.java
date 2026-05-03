@@ -22,6 +22,7 @@ import hsrmod.modcore.HSRMod;
 import hsrmod.powers.StatePower;
 import hsrmod.subscribers.PreBreakSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
+import hsrmod.utils.GeneralUtil;
 
 import java.util.function.Consumer;
 
@@ -33,18 +34,20 @@ public class ChargingPower extends StatePower implements PreBreakSubscriber {
     public String move;
     private static long sfxId = -1L;
     public Consumer<ChargingPower> removeCallback;
+    boolean informative = false;
 
-    public ChargingPower(AbstractCreature owner, String move, int amount) {
+    public ChargingPower(AbstractCreature owner, String move, int amount, boolean informative) {
         super(POWER_ID, owner, amount);
+        this.informative = informative; 
         priority = 1;
         this.move = move;
-        if (amount > 1)
-            description = String.format(DESCRIPTIONS[1], move, amount);
-        else
-            description = String.format(DESCRIPTIONS[0], move);
         this.updateDescription();
         particleTimer = 0.0F;
         particleTimer2 = 0.0F;
+    }
+    
+    public ChargingPower(AbstractCreature owner, String move, int amount) {
+        this(owner, move, amount, false);
     }
 
     public ChargingPower(AbstractCreature owner, String move) {
@@ -58,14 +61,12 @@ public class ChargingPower extends StatePower implements PreBreakSubscriber {
 
     @Override
     public void updateDescription() {
-        try{
-            if (amount > 1)
-                description = String.format(DESCRIPTIONS[1], amount, " #r" + move);
-            else
-                description = String.format(DESCRIPTIONS[0], " #r" + move);
-        } catch (Exception ignore) {
-            
-        }
+        if (informative)
+            description = GeneralUtil.tryFormat(DESCRIPTIONS[2], move);
+        else if (amount > 1)
+            description = GeneralUtil.tryFormat(DESCRIPTIONS[1], amount, " #r" + move);
+        else
+            description = GeneralUtil.tryFormat(DESCRIPTIONS[0], " #r" + move);
     }
 
     @Override
@@ -135,7 +136,7 @@ public class ChargingPower extends StatePower implements PreBreakSubscriber {
     @Override
     public void preBreak(ElementalDamageInfo info, AbstractCreature target) {
         if (SubscriptionManager.checkSubscriber(this)
-                && target == this.owner) {
+                && target == this.owner && !informative) {
             addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this));
             if (owner instanceof AbstractMonster)
                 ((AbstractMonster) owner).intent = AbstractMonster.Intent.STUN;

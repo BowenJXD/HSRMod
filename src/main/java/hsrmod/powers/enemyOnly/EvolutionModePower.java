@@ -11,10 +11,9 @@ import hsrmod.subscribers.PostMonsterDeathSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.GeneralUtil;
 
-public class EvolutionModePower extends StatePower implements PostMonsterDeathSubscriber {
+public class EvolutionModePower extends StatePower {
     public static final String POWER_ID = HSRMod.makePath(EvolutionModePower.class.getSimpleName());
     
-    int monsterCount = 1;
     int evolutionCount;
     int disputationCount = 3;
     
@@ -22,39 +21,12 @@ public class EvolutionModePower extends StatePower implements PostMonsterDeathSu
         super(POWER_ID, owner, amount);
         evolutionCount = amount;
         this.disputationCount = disputationCount;
+        priority = 1;
         updateDescription();
     }
 
     @Override
     public void updateDescription() {
-        description = GeneralUtil.tryFormat(DESCRIPTIONS[0], disputationCount);
-    }
-
-    @Override
-    public void onInitialApplication() {
-        super.onInitialApplication();
-        SubscriptionManager.subscribe(this);
-    }
-
-    @Override
-    public void onRemove() {
-        super.onRemove();
-        SubscriptionManager.unsubscribe(this);
-    }
-
-    @Override
-    public void reducePower(int reduceAmount) {
-        super.reducePower(reduceAmount);
-        if (amount == 0) {
-            addToTop(new ApplyPowerAction(owner, owner, new DisputationModePower(owner, disputationCount, evolutionCount)));
-            addToTop(new PressEndTurnButtonAction());
-        }
-    }
-
-    @Override
-    public void postMonsterDeath(AbstractMonster monster) {
-        if (SubscriptionManager.checkSubscriber(this)) {
-            this.addToTop(new ReducePowerAction(this.owner, this.owner, this, 1));
-        }
+        description = GeneralUtil.tryFormat(DESCRIPTIONS[0], 1, disputationCount);
     }
 }

@@ -73,6 +73,11 @@ public class Belobog extends CustomDungeon {
         return TEXT[3];
     }
 
+    @Override
+    public String getActNumberText() {
+        return TEXT[1];
+    }
+
     protected void generateMonsters() {
         this.generateWeakEnemies(this.weakpreset);
         this.generateStrongEnemies(this.strongpreset);

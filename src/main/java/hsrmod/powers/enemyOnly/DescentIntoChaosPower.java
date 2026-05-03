@@ -13,6 +13,8 @@ import hsrmod.utils.ModHelper;
 public class DescentIntoChaosPower extends DebuffPower {
     public static final String POWER_ID = HSRMod.makePath(DescentIntoChaosPower.class.getSimpleName());
 
+    int count;
+    
     public DescentIntoChaosPower(AbstractCreature owner, int amount) {
         super(POWER_ID, owner, amount);
         updateDescription();
@@ -24,8 +26,18 @@ public class DescentIntoChaosPower extends DebuffPower {
     }
 
     @Override
+    public void atStartOfTurn() {
+        super.atStartOfTurn();
+        count = amount;
+    }
+
+    @Override
     public void onPlayCard(AbstractCard card, AbstractMonster m) {
         super.onPlayCard(card, m);
+        if (count > 0) {
+            count--;
+            card.exhaustOnUseOnce = true;
+        }
         ModHelper.addToBotAbstract(() -> {
             ModHelper.findCards(c -> c == card, true, true, true, false, true)
                     .forEach(r -> addToTop(new ExhaustSpecificCardAction(r.card, r.group)));

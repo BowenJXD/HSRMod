@@ -1,12 +1,14 @@
 package hsrmod.cardsV2.Trailblaze;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.evacipated.cardcrawl.mod.stslib.actions.common.MoveCardsAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MonsterStartTurnAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -39,6 +41,14 @@ public class Khaslana2 extends BaseCard {
         tags.add(CustomEnums.TERRITORY);
         isMultiDamage = true;
         returnToHand = true;
+    }
+
+    @Override
+    public void onMove(CardGroup group, boolean in) {
+        super.onMove(group, in);
+        if (in && group == AbstractDungeon.player.exhaustPile) {
+            addToTop(new MoveCardsAction(AbstractDungeon.player.hand, group, c -> c == this));
+        }
     }
 
     @Override

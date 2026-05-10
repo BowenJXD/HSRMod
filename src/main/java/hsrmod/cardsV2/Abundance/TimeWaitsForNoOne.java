@@ -46,8 +46,8 @@ public class TimeWaitsForNoOne extends BaseCard {
         if (!upgraded) return;
         int dewDrop = ModHelper.getPowerCount(AbstractDungeon.player, DewDropPower.POWER_ID);
         addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new DewDropPower(AbstractDungeon.player, dewDrop)));
-        int tempHp = TempHPField.tempHp.get(AbstractDungeon.player);
-        addToBot(new AddTemporaryHPAction(AbstractDungeon.player, AbstractDungeon.player, tempHp));
+        /*int tempHp = TempHPField.tempHp.get(AbstractDungeon.player);
+        addToBot(new AddTemporaryHPAction(AbstractDungeon.player, AbstractDungeon.player, tempHp));*/
         int necrosis = ModHelper.getPowerCount(AbstractDungeon.player, NecrosisPower.POWER_ID);
         addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new NecrosisPower(AbstractDungeon.player, necrosis)));
     }

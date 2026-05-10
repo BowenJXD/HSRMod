@@ -1,6 +1,5 @@
 package hsrmod.effects;
 
-import KhaslanaMod.vfx.AbstractShaderEffect;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
@@ -18,7 +17,6 @@ public class ChangeSceneEffect extends AbstractGameEffect {
     private boolean right = true;
     private float timer;
     public Color color;
-    private AbstractShaderEffect effect;
     private boolean useShader;
 
     public ChangeSceneEffect(Texture img) {
@@ -29,11 +27,6 @@ public class ChangeSceneEffect extends AbstractGameEffect {
         this.img3 = ImageMaster.loadImage("HSRModResources/img/effects/Territory/Mask2.png");
         this.x = (float) (-Settings.WIDTH) * 1.7F;
         this.timer = 0.0F;
-    }
-
-    public void setShader(AbstractShaderEffect effect) {
-        this.effect = effect;
-        this.useShader = true;
     }
 
     public void update() {
@@ -48,7 +41,6 @@ public class ChangeSceneEffect extends AbstractGameEffect {
                 this.x = 0.0F;
                 if (this.useShader) {
                     this.useShader = false;
-                    AbstractDungeon.effectsQueue.add(this.effect);
                 }
             }
         } else if (this.x < (float) Settings.WIDTH * 1.4F) {
@@ -64,10 +56,6 @@ public class ChangeSceneEffect extends AbstractGameEffect {
     }
 
     public void end() {
-        if (this.effect != null) {
-            this.effect.end();
-        }
-
         this.right = false;
         this.x = (float) Settings.WIDTH - (float) Settings.WIDTH / 0.8F;
     }

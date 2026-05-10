@@ -244,6 +244,19 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
                 .playerClass(STELLA_CHARACTER)
                 .create());
 
+        BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(CyreneEvent.ID), CyreneEvent.class)
+                .spawnCondition(() -> AbstractDungeon.eventRng.random(99) <= 24)
+                .dungeonIDs(Penacony.ID, Amphoreus.ID)
+                .eventType(EventUtils.EventType.ONE_TIME)
+                .playerClass(STELLA_CHARACTER)
+                .create());
+        
+        BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(ReincarnatorEvent.ID), ReincarnatorEvent.class)
+                .spawnCondition(() -> !AbstractDungeon.player.hasRelic(HSRMod.makePath(CoreflameOfWorldbearing.ID)))
+                .dungeonIDs(Penacony.ID, Amphoreus.ID)
+                .playerClass(STELLA_CHARACTER)
+                .create());
+
         BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(CosmicCrescendoEvent.ID), CosmicCrescendoEvent.class)
                 .dungeonID(Belobog.ID)
                 // .bonusCondition(() -> ModHelper.hasRelic(WaxOfElation.ID))
@@ -367,6 +380,7 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
         BaseMod.addEvent(new AddEventParams.Builder(HSRMod.makePath(MilkyWayRailroadEvent.ID), MilkyWayRailroadEvent.class)
                 .eventType(EventUtils.EventType.ONE_TIME)
                 .create());
+        
 
         // =========================== Event Monsters ===========================
 

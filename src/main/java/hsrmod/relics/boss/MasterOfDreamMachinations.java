@@ -1,6 +1,7 @@
 package hsrmod.relics.boss;
 
 import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.Settings;
@@ -21,8 +22,8 @@ import java.util.Iterator;
 public class MasterOfDreamMachinations extends BaseRelic implements ClickableRelic {
     public static final String ID = MasterOfDreamMachinations.class.getSimpleName();
 
-    public int basePrice = 0;
-    public int priceIncrement = 25;
+    public int basePrice = 10;
+    public int priceIncrement = 10;
     private boolean cardSelected = true;
 
     public MasterOfDreamMachinations() {
@@ -64,6 +65,19 @@ public class MasterOfDreamMachinations extends BaseRelic implements ClickableRel
         if (counter > 0 && AbstractDungeon.player.gold >= counter) {
             beginLongPulse();
         }
+    }
+
+    @Override
+    public void atTurnStartPostDraw() {
+        super.atTurnStartPostDraw();
+        ModHelper.addToBotAbstract(() -> {
+            AbstractCard card = AbstractDungeon.returnTrulyRandomCardInCombat();
+            if (card != null) {
+                card = card.makeCopy();
+                card.freeToPlayOnce = true;
+                addToTop(new MakeTempCardInHandAction(card));
+            }
+        });
     }
 
     public void giveCards(AbstractCard card) {

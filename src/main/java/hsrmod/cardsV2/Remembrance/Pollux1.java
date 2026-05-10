@@ -1,11 +1,13 @@
 package hsrmod.cardsV2.Remembrance;
 
 import com.badlogic.gdx.graphics.Color;
+import com.evacipated.cardcrawl.mod.stslib.actions.common.MoveCardsAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.TransformCardInHandAction;
 import com.megacrit.cardcrawl.actions.defect.EvokeOrbAction;
+import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -28,6 +30,14 @@ public class Pollux1 extends BaseCard {
         super(ID);
         returnToHand = true;
         tags.add(CustomEnums.TERRITORY);
+    }
+
+    @Override
+    public void onMove(CardGroup group, boolean in) {
+        super.onMove(group, in);
+        if (in && group == AbstractDungeon.player.exhaustPile) {
+            addToTop(new MoveCardsAction(AbstractDungeon.player.hand, group, c -> c == this));
+        }
     }
 
     @Override

@@ -175,7 +175,7 @@ public class Zandar extends BaseMonster implements PostMonsterDeathSubscriber {
             ModHelper.addToTopAbstract(() -> {
                 if (hasPower(EvolutionModePower.POWER_ID)) {
                     spawnMonsterOnSlot(slots.get(0), SpawnType.MINION, true);
-                } else {
+                } else if (!hasPower(DisputationModePower.POWER_ID)) {
                     addToTop(new ApplyPowerAction(this, this, new DisputationModePower(this, disputationModeAmt, evolutionModeAmt)));
                     addToBot(new ApplyPowerAction(this, this, new CorporealFormulaPower(this, 1)));
 
@@ -202,7 +202,7 @@ public class Zandar extends BaseMonster implements PostMonsterDeathSubscriber {
                     } else if (Objects.equals(monster.id, HSRMod.makePath(CorrodedAxe.ID))) {
                         spawnMonsterOnSlot(slots.get(2), SpawnType.MINION, true);
                     }
-                } else {
+                } else if (!hasPower(EvolutionModePower.POWER_ID)) {
                     addToTop(new ApplyPowerAction(this, this, new EvolutionModePower(this, evolutionModeAmt, disputationModeAmt)));
                     addToBot(new ApplyPowerAction(this, this, new CorporealFormulaPower(this, 1)));
 

@@ -1,6 +1,8 @@
 package hsrmod.powers.uniqueBuffs;
 
+import basemod.BaseMod;
 import basemod.ReflectionHacks;
+import basemod.interfaces.PostBattleSubscriber;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
@@ -12,18 +14,26 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterQueueItem;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.BeatOfDeathPower;
 import com.megacrit.cardcrawl.powers.IntangiblePlayerPower;
 import com.megacrit.cardcrawl.powers.IntangiblePower;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cardsV2.Remembrance.Pollux3;
 import hsrmod.cardsV2.Trailblaze.Khaslana2;
 import hsrmod.cardsV2.Trailblaze.Khaslana4;
+import hsrmod.cardsV2.Trailblaze.Phainon1;
+import hsrmod.cardsV2.Trailblaze.Phainon2;
 import hsrmod.modcore.HSRMod;
+import hsrmod.monsters.TheEnding.Irontomb;
 import hsrmod.powers.PowerPower;
 import hsrmod.powers.TerritoryPower;
+import hsrmod.signature.utils.SignatureHelper;
+import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.GAMManager;
 import hsrmod.utils.GeneralUtil;
 import hsrmod.utils.ModHelper;
+import hsrmod.utils.MusicStack;
 import org.apache.logging.log4j.Level;
 
 import java.util.ArrayList;
@@ -54,6 +64,7 @@ public class RuinousIrontombPower extends TerritoryPower implements OnReceivePow
     @Override
     public void onInitialApplication() {
         super.onInitialApplication();
+        BaseMod.subscribe(this);
         
         for (AbstractPower power : owner.powers) {
             if (power.type == PowerType.DEBUFF || Objects.equals(power.ID, IntangiblePlayerPower.POWER_ID) || Objects.equals(power.ID, IntangiblePower.POWER_ID)) {
@@ -70,10 +81,7 @@ public class RuinousIrontombPower extends TerritoryPower implements OnReceivePow
         }
         addToBot(new ApplyPowerAction(owner, owner, new ScourgePower(owner, SCOURGE_COUNT)));
 
-        CardCrawlGame.music.silenceBGM();
-        CardCrawlGame.music.justFadeOutTempBGM();
-        AbstractDungeon.scene.fadeOutAmbiance();
-        CardCrawlGame.music.playTempBgmInstantly("Flares of the Blazing Sun");
+        MusicStack.getInstance().push("Flares of the Blazing Sun");
 
         queuedMonsters = new ArrayList<>();
         GAMManager.addParallelAction(POWER_ID, action -> {
@@ -95,13 +103,14 @@ public class RuinousIrontombPower extends TerritoryPower implements OnReceivePow
     @Override
     public void onRemove() {
         super.onRemove();
+        BaseMod.unsubscribe(this);
 
-        AbstractDungeon.scene.fadeInAmbiance();
-        CardCrawlGame.music.fadeOutTempBGM();
+        MusicStack.getInstance().remove("Flares of the Blazing Sun");
         
         GAMManager.removeParallelAction(POWER_ID);
         
         addToBot(new RemoveSpecificPowerAction(owner, owner, ScourgePower.POWER_ID));
+        addToBot(new RemoveSpecificPowerAction(owner, owner, BeatOfDeathPower.POWER_ID));
     }
 
     @Override
@@ -125,13 +134,13 @@ public class RuinousIrontombPower extends TerritoryPower implements OnReceivePow
             AbstractDungeon.actionManager.monsterQueue.add(new MonsterQueueItem(monster));
             queuedMonsters.add(monster);
         });
+        reducePower(1);
+        cardsPlayed++;
     }
 
     @Override
     public void onAfterUseCard(AbstractCard card, UseCardAction action) {
         super.onAfterUseCard(card, action);
-        reducePower(1);
-        cardsPlayed++;
     }
 
     @Override
@@ -140,8 +149,10 @@ public class RuinousIrontombPower extends TerritoryPower implements OnReceivePow
         if (amount <= 0) {
             amount = 0;
             AbstractCard c = new Khaslana4();
+            c.baseDamage += cardsPlayed;
             addToBot(new MakeTempCardInHandAction(c, false, true));
             addToBot(new FollowUpAction(c));
+            cardsPlayed = 0;
         }
     }
 
@@ -153,6 +164,7 @@ public class RuinousIrontombPower extends TerritoryPower implements OnReceivePow
             card.baseDamage += cardsPlayed;
             addToBot(new MakeTempCardInHandAction(card, false, true));
             addToBot(new FollowUpAction(card));
+            cardsPlayed = 0;
             return 0;
         }
         return damageAmount;

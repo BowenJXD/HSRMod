@@ -1,9 +1,12 @@
 package hsrmod.cardsV2.Trailblaze;
 
+import com.evacipated.cardcrawl.mod.stslib.actions.common.MoveCardsAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.ThirdEyeEffect;
 import hsrmod.actions.ElementalDamageAction;
@@ -20,6 +23,14 @@ public class Khaslana1 extends BaseCard {
         tags.add(CustomEnums.CHRYSOS_HEIR);
         tags.add(CustomEnums.TERRITORY);
         returnToHand = true;
+    }
+
+    @Override
+    public void onMove(CardGroup group, boolean in) {
+        super.onMove(group, in);
+        if (in && group == AbstractDungeon.player.exhaustPile) {
+            addToTop(new MoveCardsAction(AbstractDungeon.player.hand, group, c -> c == this));
+        }
     }
 
     @Override

@@ -20,6 +20,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.UIStrings;
+import com.megacrit.cardcrawl.random.Random;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.screens.mainMenu.MenuButton;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
@@ -429,6 +430,48 @@ public class HSRModConfig implements OnStartBattleSubscriber, RenderSubscriber, 
             firstTime = b;
         } catch (Exception e) {
             HSRMod.logger.log(Level.DEBUG, "Failed to set first time.");
+        }
+    }
+    
+    public static void setRandomTP(Random seed) {
+        if (HSRModConfig.getActiveTPCount() >= HSRModConfig.TP_LIMIT_LIMIT) return;
+        
+        int r;
+        boolean done = false;
+        while (!done) {
+            r = seed.random(1, 5);
+            switch (r) {
+                case 1:
+                    if (!tpThorn) {
+                        tpThorn = true;
+                        done = true;
+                    }
+                    break;
+                case 2:
+                    if (!tpMalleable) {
+                        tpMalleable = true;
+                        done = true;
+                    }
+                    break;
+                case 3:
+                    if (!tpRitual) {
+                        tpRitual = true;
+                        done = true;
+                    }
+                    break;
+                case 4:
+                    if (!tpSafeguard) {
+                        tpSafeguard = true;
+                        done = true;
+                    }
+                    break;
+                case 5:
+                    if (!tpCurse) {
+                        tpCurse = true;
+                        done = true;
+                    }
+                    break;
+            }
         }
     }
     

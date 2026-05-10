@@ -51,6 +51,7 @@ public class Castorice3 extends BaseCard implements PostHPUpdateSubscriber {
     public void upgrade() {
         super.upgrade();
         MultiCardPreview.add(this, new Pollux2());
+        MultiCardPreview.horizontalOnly(this);
     }
 
     @Override

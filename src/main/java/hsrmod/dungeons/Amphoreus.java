@@ -32,8 +32,9 @@ public class Amphoreus extends CustomDungeon {
         super(NAME, ID);
         setMainMusic(PathDefine.MUSIC_PATH + "Homeland.mp3");
         addTempMusic("Maze", PathDefine.MUSIC_PATH + "Maze.mp3");
-        addTempMusic("Shatter the God's Crown", PathDefine.MUSIC_PATH + "Shatter the God's Crown.mp3");
         addTempMusic("Agony Converging into River", PathDefine.MUSIC_PATH + "Agony Converging into River.mp3");
+        addTempMusic("Immolation of the Heavens", PathDefine.MUSIC_PATH + "Immolation of the Heavens.mp3");
+        addTempMusic("Shatter the God's Crown", PathDefine.MUSIC_PATH + "Shatter the God's Crown.mp3");
         addTempMusic("NAME == Entelechy", PathDefine.MUSIC_PATH + "NAME == Entelechy.mp3");
         finalAct = true;
     }

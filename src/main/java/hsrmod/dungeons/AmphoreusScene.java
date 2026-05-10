@@ -72,9 +72,9 @@ public class AmphoreusScene extends AbstractScene {
     public void nextRoom(AbstractRoom room) {
         super.nextRoom(room);
         this.randomizeScene();
-        if (room instanceof MonsterRoomBoss) {
+        /*if (room instanceof MonsterRoomBoss) {
             CardCrawlGame.music.silenceBGM();
-        }
+        }*/
 
         //
         this.customBg = null;
@@ -88,14 +88,13 @@ public class AmphoreusScene extends AbstractScene {
                 this.customBg = customAtlas.findRegion("mod/AmphoreusIrontomb");
             } else if (room instanceof RestRoom) {
                 room.playBGM("Maze");
-            } else if (!(room instanceof MonsterRoomBoss)) {
+            } else {
                 room.playBGM("Homeland");
             }
         } else {
             CustomDungeon.resumeMainMusic();
         }
         //
-
         this.fadeInAmbiance();
     }
 

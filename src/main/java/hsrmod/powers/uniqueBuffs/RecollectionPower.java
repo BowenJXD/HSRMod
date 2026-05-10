@@ -20,6 +20,7 @@ import hsrmod.powers.PowerPower;
 import hsrmod.powers.TerritoryPower;
 import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.utils.GeneralUtil;
+import hsrmod.utils.MusicStack;
 
 public class RecollectionPower extends BuffPower {
     public static final String POWER_ID = HSRMod.makePath(RecollectionPower.class.getSimpleName());
@@ -42,10 +43,7 @@ public class RecollectionPower extends BuffPower {
         if (AbstractDungeon.getMonsters() != null
                 && AbstractDungeon.getMonsters().monsters.stream().noneMatch(m -> m.type == AbstractMonster.EnemyType.BOSS)) {
             // 取消静音背景音乐
-            CardCrawlGame.music.silenceBGM();
-            CardCrawlGame.music.justFadeOutTempBGM();
-            AbstractDungeon.scene.fadeOutAmbiance();
-            CardCrawlGame.music.playTempBgmInstantly("Past Ripples");
+            MusicStack.getInstance().push("Past Ripples");
         }
     }
 
@@ -55,8 +53,7 @@ public class RecollectionPower extends BuffPower {
 
         if (AbstractDungeon.getMonsters() != null
                 && AbstractDungeon.getMonsters().monsters.stream().noneMatch(m -> m.type == AbstractMonster.EnemyType.BOSS)) {
-            AbstractDungeon.scene.fadeInAmbiance();
-            CardCrawlGame.music.fadeOutTempBGM();
+            MusicStack.getInstance().remove("Past Ripples");
         }
     }
 

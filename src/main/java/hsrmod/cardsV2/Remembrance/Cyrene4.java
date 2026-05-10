@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.vfx.SpotlightEffect;
@@ -36,16 +37,21 @@ import hsrmod.modifiers.*;
 import hsrmod.powers.misc.BrokenPower;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.powers.uniqueBuffs.FuturePower;
+import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.utils.CachedCondition;
 import hsrmod.utils.ModHelper;
 
 import javax.crypto.Cipher;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Supplier;
 
 public class Cyrene4 extends BaseCard {
     public static final String ID = Cyrene4.class.getSimpleName();
+    public static CardStrings staticString;
 
     public Cyrene4() {
         super(ID);
@@ -82,7 +88,7 @@ public class Cyrene4 extends BaseCard {
                 addToBot(new ChannelAction(AbstractOrb.getRandomOrb(true)));
             }
         });
-        ModHelper.addToBotAbstract(this::ChrysosHeirBuff);
+        ModHelper.addToBotAbstract(Cyrene4::ChrysosHeirBuff);
         ModHelper.addToBotAbstract(() -> {
             ModHelper.addToBotAbstract(() -> {
                 ModHelper.findCards(c -> c==this).forEach(r -> {
@@ -92,35 +98,41 @@ public class Cyrene4 extends BaseCard {
         });
     }
     
-    HashMap<String, Supplier<AbstractCardModifier>> cardModMap = new HashMap<String, Supplier<AbstractCardModifier>>(){{
-        put(Aglaea2.ID, () -> new OdeToRomanceModifier(cardStrings.EXTENDED_DESCRIPTION[Ode.ROMANCE.ordinal()]));
-        put(Tribbie2.ID, () -> new OdeToPassageModifier(cardStrings.EXTENDED_DESCRIPTION[Ode.PASSAGE.ordinal()]));
-        put(Mydei1.ID, () -> new OdeToStrifeModifier(cardStrings.EXTENDED_DESCRIPTION[Ode.STRIFE.ordinal()]));
-        put(Castorice3.ID, () -> new OdeToLifeAndDeathModifier(cardStrings.EXTENDED_DESCRIPTION[Ode.LIFE_AND_DEATH.ordinal()]));
-        put(Hyacine1.ID, () -> new OdeToSkyModifier(cardStrings.EXTENDED_DESCRIPTION[Ode.SKY.ordinal()]));
-        put(Anaxa1.ID, () -> new OdeToReasonModifier(cardStrings.EXTENDED_DESCRIPTION[Ode.REASON.ordinal()]));
-        put(Cipher1.ID, () -> new OdeToTrickeryModifier(cardStrings.EXTENDED_DESCRIPTION[Ode.TRICKERY.ordinal()]));
-        put(Phainon2.ID, () -> new OdeToWorldbearing1Modifier(cardStrings.EXTENDED_DESCRIPTION[Ode.WORLD_BEARING_1.ordinal()]));
-        put(Khaslana4.ID, () -> new OdeToWorldbearing2Modifier(cardStrings.EXTENDED_DESCRIPTION[Ode.WORLD_BEARING_2.ordinal()]));
-        put(Hysilens1.ID, () -> new OdeToOceanModifier(cardStrings.EXTENDED_DESCRIPTION[Ode.OCEAN.ordinal()]));
-        put(Cerydra1.ID, () -> new OdeToLawModifier(cardStrings.EXTENDED_DESCRIPTION[Ode.LAW.ordinal()]));
-        put(Evernight1.ID, () -> new OdeToTimeModifier(cardStrings.EXTENDED_DESCRIPTION[Ode.TIME.ordinal()]));
-        put(PermansorTerrae1.ID, () -> new OdeToEarthModifier(cardStrings.EXTENDED_DESCRIPTION[Ode.EARTH.ordinal()]));
-        put(Cyrene2.ID, () -> new OdeToEgoModifier(cardStrings.EXTENDED_DESCRIPTION[Ode.EGO.ordinal()]));
-        put(Trailblazer9.ID, () -> new OdeToGenesisModifier(cardStrings.EXTENDED_DESCRIPTION[Ode.GENESIS.ordinal()]));
+    public static HashMap<String, Supplier<AbstractCardModifier>> cardModMap = new HashMap<String, Supplier<AbstractCardModifier>>(){{
+        put(Aglaea2.ID, () -> new OdeToRomanceModifier(staticString.EXTENDED_DESCRIPTION[Ode.ROMANCE.ordinal()]));
+        put(Tribbie2.ID, () -> new OdeToPassageModifier(staticString.EXTENDED_DESCRIPTION[Ode.PASSAGE.ordinal()]));
+        put(Mydei1.ID, () -> new OdeToStrifeModifier(staticString.EXTENDED_DESCRIPTION[Ode.STRIFE.ordinal()]));
+        put(Castorice3.ID, () -> new OdeToLifeAndDeathModifier(staticString.EXTENDED_DESCRIPTION[Ode.LIFE_AND_DEATH.ordinal()]));
+        put(Hyacine1.ID, () -> new OdeToSkyModifier(staticString.EXTENDED_DESCRIPTION[Ode.SKY.ordinal()]));
+        put(Anaxa1.ID, () -> new OdeToReasonModifier(staticString.EXTENDED_DESCRIPTION[Ode.REASON.ordinal()]));
+        put(Cipher1.ID, () -> new OdeToTrickeryModifier(staticString.EXTENDED_DESCRIPTION[Ode.TRICKERY.ordinal()]));
+        put(Phainon2.ID, () -> new OdeToWorldbearing1Modifier(staticString.EXTENDED_DESCRIPTION[Ode.WORLD_BEARING_1.ordinal()]));
+        put(Hysilens1.ID, () -> new OdeToOceanModifier(staticString.EXTENDED_DESCRIPTION[Ode.OCEAN.ordinal()]));
+        put(Cerydra1.ID, () -> new OdeToLawModifier(staticString.EXTENDED_DESCRIPTION[Ode.LAW.ordinal()]));
+        put(Evernight1.ID, () -> new OdeToTimeModifier(staticString.EXTENDED_DESCRIPTION[Ode.TIME.ordinal()]));
+        put(PermansorTerrae1.ID, () -> new OdeToEarthModifier(staticString.EXTENDED_DESCRIPTION[Ode.EARTH.ordinal()]));
+        put(Cyrene2.ID, () -> new OdeToEgoModifier(staticString.EXTENDED_DESCRIPTION[Ode.EGO.ordinal()]));
+        put(Trailblazer9.ID, () -> new OdeToGenesisModifier(staticString.EXTENDED_DESCRIPTION[Ode.GENESIS.ordinal()]));
     }};
     
-    void ChrysosHeirBuff() {
+    public static void ChrysosHeirBuff() {
         ModHelper.findCards(c -> {
             return c.hasTag(CustomEnums.CHRYSOS_HEIR);
-        }).forEach(r -> {
-            AbstractCard c = r.card;
-            cardModMap.forEach((id, mod) -> {
-                if (Objects.equals(c.cardID, HSRMod.makePath(id))) {
-                    CardModifierManager.addModifier(c, mod.get());
-                }
-            });
+        }).forEach(r -> ChrysosHeirBuff(r.card));
+    }
+    
+    public static void ChrysosHeirBuff(AbstractCard c) {
+        List<String> modIDs = new ArrayList<>(cardModMap.keySet());
+        cardModMap.forEach((id, mod) -> {
+            if (Objects.equals(c.cardID, HSRMod.makePath(id))) {
+                CardModifierManager.addModifier(c, mod.get());
+                modIDs.remove(id);
+            }
         });
+        if (modIDs.isEmpty()) {
+            SignatureHelper.unlock(HSRMod.makePath(ID), true);
+            SignatureHelper.unlock(HSRMod.makePath(Cyrene3.ID), true);
+        }
     }
     
     enum Ode {
@@ -133,12 +145,15 @@ public class Cyrene4 extends BaseCard {
         REASON,
         TRICKERY,
         WORLD_BEARING_1,
-        WORLD_BEARING_2,
         OCEAN,
         LAW,
         TIME,
         EARTH,
         EGO,
         GENESIS,
+    }
+    
+    static {
+        staticString = CardCrawlGame.languagePack.getCardStrings(HSRMod.makePath(ID));
     }
 }

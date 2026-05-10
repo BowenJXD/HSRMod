@@ -17,7 +17,9 @@ import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.modcore.HSRMod;
 import hsrmod.powers.misc.SporePower;
+import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.utils.GAMManager;
 import hsrmod.utils.ModHelper;
 
@@ -87,5 +89,9 @@ public class Anaxa1 extends BaseCard {
         
         if (!freeToPlayOnce)
             addToBot(new LoseEnergyAction(EnergyPanel.totalCount));
+        
+        if (x >= 7) {
+            SignatureHelper.unlock(HSRMod.makePath(ID), true);
+        }
     }
 }

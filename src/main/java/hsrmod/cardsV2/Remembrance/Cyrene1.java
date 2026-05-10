@@ -7,8 +7,10 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.FocusPower;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
+import hsrmod.modcore.HSRMod;
 import hsrmod.powers.uniqueBuffs.ObsessionPower;
 import hsrmod.powers.uniqueDebuffs.LoseFocusPower;
+import hsrmod.signature.utils.SignatureHelper;
 
 public class Cyrene1 extends BaseCard {
     public static final String ID = Cyrene1.class.getSimpleName();
@@ -29,6 +31,10 @@ public class Cyrene1 extends BaseCard {
         }
         if (draw > 0) {
             addToBot(new DrawCardAction(p, draw));
+        }
+        
+        if (focus >= 4) {
+            SignatureHelper.unlock(HSRMod.makePath(ID), true);
         }
     }
 }

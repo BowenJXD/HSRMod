@@ -13,7 +13,7 @@ import hsrmod.powers.DebuffPower;
 import hsrmod.powers.StatePower;
 import hsrmod.utils.GeneralUtil;
 
-public class ActionLockPower extends DebuffPower {
+public class ActionLockPower extends StatePower {
     public static final String POWER_ID = HSRMod.makePath(ActionLockPower.class.getSimpleName());
     
     float timer;
@@ -42,7 +42,7 @@ public class ActionLockPower extends DebuffPower {
     @Override
     public void onInitialApplication() {
         super.onInitialApplication();
-        addToBot(new VFXAction(new TopWarningEffect(GeneralUtil.tryFormat(DESCRIPTIONS[1], amount))));
+        AbstractDungeon.topLevelEffects.add(new TopWarningEffect(GeneralUtil.tryFormat(DESCRIPTIONS[1], amount)));
     }
 
     @Override
@@ -58,7 +58,7 @@ public class ActionLockPower extends DebuffPower {
     public void atStartOfTurn() {
         super.atStartOfTurn();
         addToBot(new VFXAction(new TimeWarpTurnEndEffect()));
-        addToBot(new VFXAction(new TopWarningEffect(GeneralUtil.tryFormat(DESCRIPTIONS[1], amount))));
+        AbstractDungeon.topLevelEffects.add(new TopWarningEffect(GeneralUtil.tryFormat(DESCRIPTIONS[1], amount)));
     }
 
     @Override

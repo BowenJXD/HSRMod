@@ -10,6 +10,7 @@ import hsrmod.modcore.HSRMod;
 import hsrmod.powers.StatePower;
 import hsrmod.utils.GeneralUtil;
 import hsrmod.utils.ModHelper;
+import hsrmod.utils.MusicStack;
 
 public class ThirtyMillionCyclesOfSinPower extends StatePower {
     public static final String POWER_ID = HSRMod.makePath(ThirtyMillionCyclesOfSinPower.class.getSimpleName());
@@ -38,8 +39,13 @@ public class ThirtyMillionCyclesOfSinPower extends StatePower {
         if (target != null) {
             addToBot(new DamageAction(target, new DamageInfo(target, amount, DamageInfo.DamageType.HP_LOSS)));
         }
-        ModHelper.addToBotAbstract(() -> addToTop(new ExhaustToHandAction(GeneralUtil.getRandomElement(AbstractDungeon.player.exhaustPile.group, AbstractDungeon.cardRandomRng))));
+        // ModHelper.addToBotAbstract(() -> addToTop(new ExhaustToHandAction(GeneralUtil.getRandomElement(AbstractDungeon.player.exhaustPile.group, AbstractDungeon.cardRandomRng))));
         stackPower(-perfectNums[Math.min(index++, perfectNums.length-1)] + perfectNums[Math.min(index, perfectNums.length-1)]);
         updateDescription();
+        if (index == 2) {
+            MusicStack.getInstance().push("Immolation of the Heavens");
+        } else if (index == 4) {
+            MusicStack.getInstance().push("Shatter the God's Crown");
+        }
     }
 }

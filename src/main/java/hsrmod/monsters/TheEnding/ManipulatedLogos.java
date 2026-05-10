@@ -21,12 +21,12 @@ public class ManipulatedLogos extends BaseMonster {
         super(ID, 256, 256, x, y);
         floatIndex = 1;
 
-        addMoveA(Intent.ATTACK_DEBUFF, 5, 3, mi -> {
+        addMove(Intent.ATTACK_DEBUFF, 5, 3, mi -> {
             attack(mi, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, AttackAnim.SLOW);
             addToBot(new ApplyPowerAction(p, this, new EntanglePower(p, this, 1), 1));
         });
 
-        addMoveA(Intent.ATTACK_DEBUFF, 5, mi -> {
+        addMove(Intent.ATTACK_DEBUFF, 5, mi -> {
             attack(mi, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, AttackAnim.SLOW);
             addToBot(new MakeTempCardInDiscardAction(new Entangle(), 1));
         });

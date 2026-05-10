@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import hsrmod.actions.ElementalDamageAction;
@@ -11,6 +12,8 @@ import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.modcore.HSRMod;
+import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.subscribers.PreElementalDamageSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 
@@ -42,6 +45,10 @@ public class Cipher1 extends BaseCard implements PreElementalDamageSubscriber {
         addToBot(new ApplyPowerAction(m, p, new WeakPower(m, magicNumber, false), magicNumber));
         if (upgraded) {
             addToBot(new DrawCardAction(magicNumber));
+        }
+        
+        if (p.gold >= 999) {
+            SignatureHelper.unlock(HSRMod.makePath(ID), true);
         }
     }
 

@@ -2,21 +2,26 @@ package hsrmod.powers.enemyOnly;
 
 import basemod.BaseMod;
 import basemod.ReflectionHacks;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.screens.DeathScreen;
+import com.megacrit.cardcrawl.vfx.combat.ScreenOnFireEffect;
 import hsrmod.actions.ElementalDamageAction;
+import hsrmod.cardsV2.Trailblaze.Demiurge2;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.DebuffPower;
+import hsrmod.subscribers.PreElementalDamageSubscriber;
+import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.GAMManager;
 import hsrmod.utils.GeneralUtil;
 import hsrmod.utils.ModHelper;
 
-public class AmphoreanHatredPower extends DebuffPower {
+public class AmphoreanHatredPower extends DebuffPower implements PreElementalDamageSubscriber {
     public static final String POWER_ID = HSRMod.makePath(AmphoreanHatredPower.class.getSimpleName());
 
     public static final int HAND_THRESHOLD = 50;
@@ -42,18 +47,11 @@ public class AmphoreanHatredPower extends DebuffPower {
     @Override
     public void onInitialApplication() {
         super.onInitialApplication();
+        SubscriptionManager.subscribe(this);
         GAMManager.addParallelAction(POWER_ID, action -> {
             if (action instanceof DamageAction) {
                 try {
                     DamageInfo info = ReflectionHacks.getPrivate(action, DamageAction.class, "info");
-                    if (info.type == DamageInfo.DamageType.NORMAL)  {
-                        stackPower(1);
-                    }
-                } catch (Exception _ignored) {
-                }
-            } else if (action instanceof ElementalDamageAction) {
-                try {
-                    ElementalDamageInfo info = ReflectionHacks.getPrivate(action, ElementalDamageAction.class, "info");
                     if (info.type == DamageInfo.DamageType.NORMAL)  {
                         stackPower(1);
                     }
@@ -67,6 +65,7 @@ public class AmphoreanHatredPower extends DebuffPower {
     @Override
     public void onRemove() {
         super.onRemove();
+        SubscriptionManager.unsubscribe(this);
         GAMManager.removeParallelAction(POWER_ID);
         if (amount >= HAND_THRESHOLD) {
             BaseMod.MAX_HAND_SIZE++;
@@ -114,6 +113,7 @@ public class AmphoreanHatredPower extends DebuffPower {
             AbstractDungeon.player.decreaseMaxHealth(hpLoss);
         }
         if (curr >= FAIL_THRESHOLD) {
+            addToBot(new VFXAction(new ScreenOnFireEffect()));
             ModHelper.addToBotAbstract(() -> {
                 AbstractDungeon.player.isDead = true;
                 AbstractDungeon.deathScreen = new DeathScreen(AbstractDungeon.getMonsters());
@@ -123,7 +123,7 @@ public class AmphoreanHatredPower extends DebuffPower {
 
     private void reverseThresholdEffects(int prev, int curr) {
         if (prev >= HAND_THRESHOLD && curr < HAND_THRESHOLD) {
-            AbstractDungeon.player.masterHandSize++;
+            BaseMod.MAX_HAND_SIZE++;
         }
         if (prev >= DRAW_THRESHOLD && curr < DRAW_THRESHOLD) {
             AbstractDungeon.player.gameHandSize++;
@@ -139,5 +139,15 @@ public class AmphoreanHatredPower extends DebuffPower {
         if (curse != null) {
             addToBot(new MakeTempCardInHandAction(curse.makeCopy(), false));
         }
+    }
+
+    @Override
+    public float preElementalDamage(ElementalDamageAction action, float dmg) {
+        if (SubscriptionManager.checkSubscriber(this)) {
+            if (action.info.type == DamageInfo.DamageType.NORMAL && !(action.info.card instanceof Demiurge2))  {
+                stackPower(1);
+            }
+        }
+        return dmg;
     }
 }

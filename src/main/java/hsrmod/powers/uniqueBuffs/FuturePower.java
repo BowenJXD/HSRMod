@@ -58,7 +58,7 @@ public class FuturePower extends BuffPower {
     @Override
     public void onSpecificTrigger() {
         super.onSpecificTrigger();
-        addToBot(new ReducePowerAction(owner, owner, this, TRIGGER_THRESHOLD));
+        addToBot(new ApplyPowerAction(owner, owner, new FuturePower(owner, -TRIGGER_THRESHOLD), -TRIGGER_THRESHOLD));
         AbstractCard card = new Demiurge1();
         addToBot(new MakeTempCardInHandAction(card, false, true));
         addToBot(new FollowUpAction(card));

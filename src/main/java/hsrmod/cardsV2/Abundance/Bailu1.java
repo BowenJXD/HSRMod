@@ -2,6 +2,8 @@ package hsrmod.cardsV2.Abundance;
 
 import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -22,29 +24,23 @@ public class Bailu1 extends BaseCard {
     }
 
     @Override
-    public void onLeaveHand() {
-        super.onLeaveHand();
-        if (!AbstractDungeon.player.hand.isEmpty() && upgraded) {
+    public void onMove(CardGroup group, boolean in) {
+        super.onMove(group, in);
+        if  (in && group == AbstractDungeon.player.discardPile) {
             ModHelper.addToBotAbstract(this::trigger);
         }
     }
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        ModHelper.addToBotAbstract(this::trigger);
-    }
-
-    @Override
-    public void onRetained() {
-        super.onRetained();
-        ModHelper.addToBotAbstract(this::trigger);
+        
     }
 
     void trigger() {
-        int handSize = AbstractDungeon.player.hand.size();
-        // addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new NecrosisPower(AbstractDungeon.player, 1)));
-        // addToTop(new TriggerPowerAction(AbstractDungeon.player.getPower(NecrosisPower.POWER_ID)));
-        addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new DewDropPower(AbstractDungeon.player, handSize * magicNumber)));
-        addToTop(new AddTemporaryHPAction(AbstractDungeon.player, AbstractDungeon.player, handSize * magicNumber + block));
+        addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new NecrosisPower(AbstractDungeon.player, 1)));
+        addToTop(new TriggerPowerAction(AbstractDungeon.player.getPower(NecrosisPower.POWER_ID)));
+        addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new DewDropPower(AbstractDungeon.player, block)));
+        addToTop(new AddTemporaryHPAction(AbstractDungeon.player, AbstractDungeon.player, block));
+        addToTop(new DrawCardAction(AbstractDungeon.player, magicNumber));
     }
 }

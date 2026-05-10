@@ -25,17 +25,16 @@ public class Demiurge2 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
+        shout(0,1);
         addToBot(new GainBlockAction(p, p, block));
-        addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_DIAGONAL).setCallback(ci -> {
-            if (ci.target != null) {
-                AbstractPower hatred = ci.target.getPower(AmphoreanHatredPower.POWER_ID);
-                if (hatred != null && hatred.amount > 0) {
-                    int reduction = hatred.amount * 24 / 100;
-                    addToTop(new ReducePowerAction(ci.target, p, AmphoreanHatredPower.POWER_ID, reduction));
+        addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+        ModHelper.addToBotAbstract(() -> {
+            for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters) {
+                if (monster.hasPower(AmphoreanHatredPower.POWER_ID)) {
+                    int reduction = monster.getPower(AmphoreanHatredPower.POWER_ID).amount * 24 / 100;
+                    addToTop(new ReducePowerAction(monster, p, AmphoreanHatredPower.POWER_ID, reduction));
                 }
             }
-        }));
-        ModHelper.addToBotAbstract(() -> {
             GeneralUtil.getRandomElements(p.exhaustPile.group, AbstractDungeon.cardRandomRng, magicNumber)
                     .forEach(c -> addToTop(new ExhaustToHandAction(c)));
         });

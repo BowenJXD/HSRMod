@@ -32,8 +32,6 @@ public class OdeToWorldbearing2Modifier extends AbstractCardModifier {
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
         super.onUse(card, target, action);
-        addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new StrengthPower(AbstractDungeon.player, 1)));
-        addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new BeatOfDeathPower(AbstractDungeon.player, 1)));
     }
 
     @Override

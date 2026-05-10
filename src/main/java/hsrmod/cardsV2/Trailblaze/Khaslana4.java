@@ -6,18 +6,25 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
 import com.megacrit.cardcrawl.actions.watcher.PressEndTurnButtonAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.BeatOfDeathPower;
+import com.megacrit.cardcrawl.powers.LoseStrengthPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
+import com.megacrit.cardcrawl.stances.NeutralStance;
 import com.megacrit.cardcrawl.vfx.combat.ScreenOnFireEffect;
 import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.effects.TopWarningEffect;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modifiers.OdeToWorldbearing2Modifier;
+import hsrmod.powers.uniqueBuffs.FuturePower;
 import hsrmod.powers.uniqueBuffs.RuinousIrontombPower;
 import hsrmod.powers.uniqueBuffs.ScourgePower;
 import hsrmod.utils.ModHelper;
@@ -33,6 +40,11 @@ public class Khaslana4 extends BaseCard {
     }
 
     @Override
+    public void onPlayCard(AbstractCard c, AbstractMonster m) {
+        super.onPlayCard(c, m);
+    }
+
+    @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         shout(0);
         ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(this.getClass().getSimpleName(), 3.0f));
@@ -43,13 +55,19 @@ public class Khaslana4 extends BaseCard {
         addToBot(new ElementalDamageAllAction(p, damageMatrix, damageTypeForTurn, elementType, tr, 
                 AbstractGameAction.AttackEffect.SMASH).setBaseCard(this));
         
-        if (!CardModifierManager.hasModifier(this, OdeToWorldbearing2Modifier.ID)) {
-            addToBot(new RemoveSpecificPowerAction(p, p,RuinousIrontombPower.POWER_ID));
+        if (!p.hasPower(FuturePower.POWER_ID)) {
+            addToBot(new RemoveSpecificPowerAction(p, p, RuinousIrontombPower.POWER_ID));
             // addToBot(new PressEndTurnButtonAction());
         } else {
-            if (p.hasPower(RuinousIrontombPower.POWER_ID)) 
-                addToBot(new ApplyPowerAction(p, p, new ScourgePower(p, 8)));
-            addToBot(new VFXAction(new TopWarningEffect(cardStrings.EXTENDED_DESCRIPTION[MathUtils.randomBoolean() ? 1:2])));
+            if (p.hasPower(RuinousIrontombPower.POWER_ID)) {
+                addToBot(new ApplyPowerAction(p, p, new RuinousIrontombPower(p, 8)));
+                addToBot(new ApplyPowerAction(p, p, new ScourgePower(p, 7)));
+                addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, 2)));
+                addToBot(new ApplyPowerAction(p, p, new LoseStrengthPower(p, 2)));
+                addToBot(new ApplyPowerAction(p, p, new BeatOfDeathPower(p, 2)));
+            }
+            AbstractDungeon.topLevelEffects.add(new TopWarningEffect(cardStrings.EXTENDED_DESCRIPTION[MathUtils.randomBoolean() ? 1:2]));
         }
+        addToBot(new ChangeStanceAction(new NeutralStance()));
     }
 }

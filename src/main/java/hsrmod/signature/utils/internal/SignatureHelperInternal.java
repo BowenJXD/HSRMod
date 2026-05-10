@@ -128,6 +128,10 @@ public abstract class SignatureHelperInternal {
 
 		return unlocked.get(id);
 	}
+	
+	public static boolean isInUnlocked(String id) {
+		return unlocked.containsKey(id);
+	}
 
 	public static boolean isRegistered(String id) {
 		return registered.containsKey(id);
@@ -347,5 +351,10 @@ public abstract class SignatureHelperInternal {
 				setSignatureNotice(card, true);
 
 		initLibraryTypeNotice();
+	}
+	
+	//
+	public static int getNumUnlockedSignatures() {
+		return (int) unlocked.values().stream().filter(unlock -> unlock).count();
 	}
 }

@@ -17,6 +17,8 @@ import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.modcore.HSRMod;
+import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.subscribers.PostHPUpdateSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.GeneralUtil;
@@ -27,9 +29,17 @@ import java.util.stream.Collectors;
 public class Evernight1 extends BaseCard implements PostHPUpdateSubscriber {
     public static final String ID = Evernight1.class.getSimpleName();
 
+    int count = 0;
+    
     public Evernight1() {
         super(ID);
         tags.add(CustomEnums.CHRYSOS_HEIR);
+    }
+
+    @Override
+    public void atTurnStart() {
+        super.atTurnStart();
+        count = 0;
     }
 
     @Override
@@ -56,6 +66,11 @@ public class Evernight1 extends BaseCard implements PostHPUpdateSubscriber {
             /*GeneralUtil.getRandomElements(AbstractDungeon.player.orbs.stream().filter(o -> !(o instanceof EmptyOrbSlot || o == null)).collect(Collectors.toList()), 
                     AbstractDungeon.cardRandomRng, magicNumber).forEach(o -> ModHelper.triggerPassiveTo(o, m));*/
         });
+        
+        if (++count >= 3) {
+            count = 0;
+            SignatureHelper.unlock(HSRMod.makePath(ID), true);
+        }
     }
     
     int cacheHP;

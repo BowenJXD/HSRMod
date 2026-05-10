@@ -15,6 +15,7 @@ import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.signature.utils.SignatureHelper;
+import hsrmod.utils.MusicStack;
 
 import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 
@@ -35,9 +36,10 @@ public class RobinPower extends BuffPower {
         if (AbstractDungeon.getMonsters() != null
                 && AbstractDungeon.getMonsters().monsters.stream().noneMatch(m -> m.type == AbstractMonster.EnemyType.BOSS)) {
             // 取消静音背景音乐
+            MusicStack.getInstance().justPush("RobinBGM");
+            AbstractDungeon.scene.fadeOutAmbiance();
             CardCrawlGame.music.silenceBGM();
             CardCrawlGame.music.justFadeOutTempBGM();
-            AbstractDungeon.scene.fadeOutAmbiance();
             Timer.schedule(new Timer.Task() {
                 @Override
                 public void run() {
@@ -66,8 +68,7 @@ public class RobinPower extends BuffPower {
         super.onRemove();
         if (AbstractDungeon.getMonsters() != null
                 && AbstractDungeon.getMonsters().monsters.stream().noneMatch(m -> m.type == AbstractMonster.EnemyType.BOSS)) {
-            AbstractDungeon.scene.fadeInAmbiance();
-            CardCrawlGame.music.fadeOutTempBGM();
+            MusicStack.getInstance().remove("RobinBGM");
         }
         if (canUnlock) {
             SignatureHelper.unlock(HSRMod.makePath(Robin2.ID), true);

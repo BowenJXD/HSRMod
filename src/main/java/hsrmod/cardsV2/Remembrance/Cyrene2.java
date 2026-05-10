@@ -3,11 +3,15 @@ package hsrmod.cardsV2.Remembrance;
 import com.evacipated.cardcrawl.mod.stslib.actions.defect.TriggerPassiveAction;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.orbs.Plasma;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
+import hsrmod.modcore.HSRMod;
+import hsrmod.signature.utils.SignatureHelper;
+import hsrmod.utils.ModHelper;
 
 import java.util.Objects;
 
@@ -31,5 +35,11 @@ public class Cyrene2 extends BaseCard {
         if (upgraded) addToBot(new TriggerPassiveAction(orb));
         setCostForTurn(costCache);
         returnToHand = !Objects.equals(orb.ID, Plasma.ORB_ID);
+
+        ModHelper.addToBotAbstract(() -> {
+            if (AbstractDungeon.actionManager.cardsPlayedThisTurn.stream().filter(c -> c.cardID.equals(ID)).count() >= 4) {;
+                SignatureHelper.unlock(HSRMod.makePath(ID), true);
+            }
+        });
     }
 }

@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
@@ -43,7 +44,7 @@ public class WarArmorPower extends BuffPower implements PreBreakSubscriber {
         SubscriptionManager.unsubscribe(this);
         addToBot(new LoseHPAction(owner, owner, hpLoss));
         addToBot(new GainEnergyAction(1));
-        addToBot(new ApplyPowerAction(owner, owner, new EnergyPower(owner, chargeGain), chargeGain));
+        addToBot(new ApplyPowerAction(AbstractDungeon.player, owner, new EnergyPower(AbstractDungeon.player, chargeGain), chargeGain));
     }
 
     @Override

@@ -21,12 +21,12 @@ public class ImprisonedMythos extends BaseMonster {
         super(ID, 256, 256, x, y);
         floatIndex = 1;
 
-        addMoveA(Intent.ATTACK_DEBUFF, 5, 3, mi -> {
+        addMove(Intent.ATTACK_DEBUFF, 5, 3, mi -> {
             attack(mi, AbstractGameAction.AttackEffect.SLASH_VERTICAL, AttackAnim.SLOW);
             addToBot(new ApplyPowerAction(p, this, new ImprisonPower(p, 1), 1));
         });
 
-        addMoveA(Intent.ATTACK_DEBUFF, 5, mi -> {
+        addMove(Intent.ATTACK_DEBUFF, 5, mi -> {
             attack(mi, AbstractGameAction.AttackEffect.SLASH_VERTICAL, AttackAnim.SLOW);
             addToBot(new MakeTempCardInDrawPileAction(new Imprison(), 1, false, false));
         });
@@ -44,6 +44,12 @@ public class ImprisonedMythos extends BaseMonster {
         /*if (specialAs) {
             addToBot(new ApplyPowerAction(this, this, new AngryPower(this, 1), 1));
         }*/
+    }
+
+    @Override
+    public void takeTurn() {
+        super.takeTurn();
+        
     }
 
     @Override

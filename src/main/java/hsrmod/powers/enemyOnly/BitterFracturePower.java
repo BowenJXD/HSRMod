@@ -17,8 +17,11 @@ import org.apache.logging.log4j.Level;
 public class BitterFracturePower extends BuffPower implements PostMonsterDeathSubscriber {
     public static final String POWER_ID = HSRMod.makePath(BitterFracturePower.class.getSimpleName());
 
-    public BitterFracturePower(AbstractCreature owner) {
+    Runnable onDeath;
+    
+    public BitterFracturePower(AbstractCreature owner, Runnable onDeath) {
         super(POWER_ID, owner);
+        this.onDeath = onDeath;
         this.amount = -1;
         this.updateDescription();
     }
@@ -44,6 +47,7 @@ public class BitterFracturePower extends BuffPower implements PostMonsterDeathSu
         flash();
         ModHelper.addToBotAbstract(() -> {
             if (!ModHelper.check(m)) return;
+            if (onDeath != null) onDeath.run();
             if (!m.hasPower("Barricade")) {
                 m.loseBlock();
             }

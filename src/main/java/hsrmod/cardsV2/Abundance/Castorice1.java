@@ -1,5 +1,6 @@
 package hsrmod.cardsV2.Abundance;
 
+import com.evacipated.cardcrawl.mod.stslib.actions.common.MoveCardsAction;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
 import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -7,7 +8,9 @@ import com.megacrit.cardcrawl.actions.common.DiscardSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.utility.DiscardToHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.DiscardCardsAction;
 import hsrmod.actions.TriggerPowerAction;
@@ -36,9 +39,9 @@ public class Castorice1 extends BaseCard {
 
             for (int i = timesToTrigger; i > 0; i--) {
                 if (magicNumber > 0) {
-                    addToTop(new DrawCardAction(1));
+                    addToTop(new DrawCardAction(magicNumber));
                 }
-                addToTop(new ApplyPowerAction(p, p, new DewDropPower(p, block)));
+                // addToTop(new ApplyPowerAction(p, p, new DewDropPower(p, block)));
                 addToTop(new AddTemporaryHPAction(p, p, block));
             }
             addToTop(new DiscardCardsAction(cards));

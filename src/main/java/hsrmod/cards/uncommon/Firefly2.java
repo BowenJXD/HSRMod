@@ -84,7 +84,6 @@ public class Firefly2 extends BaseCard {
     }
 
     public static class UnlockSub implements PostBattleSubscriber {
-
         @Override
         public void receivePostBattle(AbstractRoom abstractRoom) {
             SignatureHelper.unlock(HSRMod.makePath(ID), true);

@@ -20,6 +20,8 @@ import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.modcore.HSRMod;
+import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.subscribers.SubscriptionManager;
 
 public class Mydei1 extends BaseCard implements OnPlayerDamagedSubscriber {
@@ -34,6 +36,8 @@ public class Mydei1 extends BaseCard implements OnPlayerDamagedSubscriber {
         tags.add(CustomEnums.FOLLOW_UP);
         tags.add(CustomEnums.CHRYSOS_HEIR);
         MultiCardPreview.add(this, new Mydei2(true), new Mydei3(true));
+        MultiCardPreview.horizontalOnly(this);
+        BaseMod.subscribe(this);
     }
     
     public Mydei1(boolean asPreview) {
@@ -52,18 +56,7 @@ public class Mydei1 extends BaseCard implements OnPlayerDamagedSubscriber {
         c2.upgrade();
         MultiCardPreview.clear(this);
         MultiCardPreview.add(this, c1, c2);
-    }
-
-    @Override
-    public void onEnterHand() {
-        super.onEnterHand();
-        BaseMod.subscribe(this);
-    }
-
-    @Override
-    public void onLeaveHand() {
-        super.onLeaveHand();
-        BaseMod.unsubscribe(this);
+        MultiCardPreview.horizontalOnly(this);
     }
 
     @Override
@@ -80,13 +73,17 @@ public class Mydei1 extends BaseCard implements OnPlayerDamagedSubscriber {
     @Override
     public int receiveOnPlayerDamaged(int i, DamageInfo damageInfo) {
         if (SubscriptionManager.checkSubscriber(this) 
-                && i > 0 
-                && !AbstractDungeon.actionManager.turnHasEnded) {
-            baseMagicNumber = magicNumber += i;
-            initializeDescription();
-            if (magicNumber >= threshold && !followedUp) {
-                addToBot(new FollowUpAction(this));
-                followedUp = true;
+                && i > 0 ) {
+            if (inHand && !AbstractDungeon.actionManager.turnHasEnded) {
+                baseMagicNumber = magicNumber += i;
+                initializeDescription();
+                if (magicNumber >= threshold && !followedUp) {
+                    addToBot(new FollowUpAction(this));
+                    followedUp = true;
+                }
+            }
+            if (AbstractDungeon.player.stance instanceof WrathStance && i >= 40) {
+                SignatureHelper.unlock(HSRMod.makePath(ID), true);
             }
         }
         return i;

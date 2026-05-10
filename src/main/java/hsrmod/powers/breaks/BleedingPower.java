@@ -45,5 +45,6 @@ public class BleedingPower extends DoTPower {
     public void onSpecificTrigger() {
         super.onSpecificTrigger();
         removeLimit = true;
+        updateDescription();
     }
 }

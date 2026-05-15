@@ -20,6 +20,7 @@ public class FootstepOfGods extends BaseRelic {
     public void atTurnStart() {
         super.atTurnStart();
         triggeredThisTurn = false;
+        beginLongPulse();
     }
 
     @Override
@@ -29,6 +30,7 @@ public class FootstepOfGods extends BaseRelic {
             triggeredThisTurn = true;
             flash();
             addToBot(new ChannelAction(AbstractOrb.getRandomOrb(true)));
+            stopPulse();
         }
     }
 }

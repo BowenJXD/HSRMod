@@ -38,13 +38,13 @@ public class Tribbie2 extends BaseCard implements PostPowerApplySubscriber {
     @Override
     public void onEnterHand() {
         super.onEnterHand();
+        BaseMod.unsubscribe(this);
         BaseMod.subscribe(this);
     }
 
     @Override
     public void onLeaveHand() {
         super.onLeaveHand();
-        BaseMod.unsubscribe(this);
     }
 
     @Override
@@ -59,7 +59,8 @@ public class Tribbie2 extends BaseCard implements PostPowerApplySubscriber {
 
     @Override
     public void receivePostPowerApplySubscriber(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        if (SubscriptionManager.checkSubscriber(this) 
+        if (SubscriptionManager.checkSubscriber(this)
+                && AbstractDungeon.player.hand.contains(this)
                 && Objects.equals(power.ID, EnergyPower.POWER_ID) 
                 && source == AbstractDungeon.player 
                 && power.amount < 0) {

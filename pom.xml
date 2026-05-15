@@ -93,6 +93,13 @@
             <scope>system</scope>
             <systemPath>${Steam.path}/workshop/content/646570/3189856464/VideoTheSpire.jar</systemPath>
         </dependency>
+        <!--<dependency>
+            <groupId>com.evacipated.cardcrawl.mod</groupId>
+            <artifactId>KhaslanaMod</artifactId>
+            <version>33550336</version>
+            <scope>system</scope>
+            <systemPath>${Steam.path}/workshop/content/646570/3531666514/KhaslanaMod.jar</systemPath>
+        </dependency>-->
         
     </dependencies>
 

@@ -41,7 +41,9 @@ public class RecollectionPower extends BuffPower {
     public void onInitialApplication() {
         super.onInitialApplication();
         if (AbstractDungeon.getMonsters() != null
-                && AbstractDungeon.getMonsters().monsters.stream().noneMatch(m -> m.type == AbstractMonster.EnemyType.BOSS)) {
+                && AbstractDungeon.getMonsters().monsters.stream().noneMatch(m -> m.type == AbstractMonster.EnemyType.BOSS)
+                && AbstractDungeon.miscRng.random(100) < 12
+        ) {
             // 取消静音背景音乐
             MusicStack.getInstance().push("Past Ripples");
         }

@@ -37,6 +37,7 @@ public class Entangle extends BaseCard implements PostDrawSubscriber {
     @Override
     public void onEnterHand() {
         super.onEnterHand();
+        BaseMod.unsubscribe(this);
         BaseMod.subscribe(this);
         if (!entangledCards.isEmpty()) {
             entangledCards.forEach(c -> {
@@ -59,7 +60,6 @@ public class Entangle extends BaseCard implements PostDrawSubscriber {
     @Override
     public void onLeaveHand() {
         super.onLeaveHand();
-        BaseMod.unsubscribe(this);
         AbstractDungeon.player.hand.glowCheck();
     }
     
@@ -88,7 +88,8 @@ public class Entangle extends BaseCard implements PostDrawSubscriber {
 
     @Override
     public void receivePostDraw(AbstractCard abstractCard) {
-        if (SubscriptionManager.checkSubscriber(this) 
+        if (SubscriptionManager.checkSubscriber(this)
+                && AbstractDungeon.player.hand.contains(this)
                 && !abstractCard.hasTag(CustomEnums.ENTANGLE) 
                 && entangledCards.size() < entangleCount) {
             abstractCard.tags.add(CustomEnums.ENTANGLE);

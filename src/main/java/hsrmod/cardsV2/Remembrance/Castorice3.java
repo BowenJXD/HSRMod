@@ -59,24 +59,15 @@ public class Castorice3 extends BaseCard implements PostHPUpdateSubscriber {
         super.onMove(group, in);
         if (group.type == CardGroup.CardGroupType.DRAW_PILE && in && !moved) {
             addToTop(new ExhaustSpecificCardAction(this, group));
-            moved = true;
-        }
-    }
-
-    @Override
-    public void triggerOnExhaust() {
-        super.triggerOnExhaust();
-        ModHelper.addToBotAbstract(() -> {
             SubscriptionManager.subscribe(this);
-            hpCache = AbstractDungeon.player.currentHealth + TempHPField.tempHp.get(AbstractDungeon.player);
-        });
-    }
-
-    @Override
-    public void onEnterHand() {
-        super.onEnterHand();
-        baseMagicNumber = magicNumber;
-        SubscriptionManager.unsubscribe(Castorice3.this);
+            moved = true;
+        } else if (group.type == CardGroup.CardGroupType.EXHAUST_PILE && in) {
+            ModHelper.addToBotAbstract(() -> {
+                hpCache = AbstractDungeon.player.currentHealth + TempHPField.tempHp.get(AbstractDungeon.player);
+            });
+        } else if (group.type == CardGroup.CardGroupType.HAND && in) {
+            baseMagicNumber = magicNumber;
+        }
     }
 
     @Override
@@ -120,7 +111,7 @@ public class Castorice3 extends BaseCard implements PostHPUpdateSubscriber {
 
     @Override
     public void postHPUpdate(AbstractCreature creature) {
-        if (!SubscriptionManager.checkSubscriber(this)) {
+        if (!SubscriptionManager.checkSubscriber(this) || !AbstractDungeon.player.exhaustPile.contains(this)) {
             return;
         }
         int change = hpCache - (AbstractDungeon.player.currentHealth + TempHPField.tempHp.get(AbstractDungeon.player));
@@ -134,12 +125,11 @@ public class Castorice3 extends BaseCard implements PostHPUpdateSubscriber {
             return;
         }
         baseMagicNumber = 0;
-        AbstractDungeon.actionManager.preTurnActions.add(new AbstractGameAction() {
+        AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
             @Override
             public void update() {
                 addToTop(new ExhaustToHandAction(Castorice3.this));
                 baseMagicNumber = magicNumber;
-                SubscriptionManager.unsubscribe(Castorice3.this);
                 isDone = true;
             }
         });

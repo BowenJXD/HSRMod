@@ -131,13 +131,16 @@ public class OtherModFixes {
             return SpireReturn.Return(tv + tv * P2PManager.GetPlayerCountWithoutSelf() * 50 / 100);
         }
     }*/
-    
+
+    /**
+     * Only supports videos in webm.
+     */
     @SpirePatch(clz = VideoManager.class, method = "play", requiredModId = "VideoTheSpire")
     public static class VideoPatch {
         @SpirePrefixPatch
-        public static SpireReturn<Boolean> Prefix(String id, float duration) {
-            AbstractDungeon.actionManager.addToBottom(new VFXAction(new SimplePlayVideoEffect(PathDefine.VIDEO_PATH + id + ".webm")));
-            AbstractDungeon.actionManager.addToBottom(new ForceWaitAction(duration));
+        public static SpireReturn<Boolean> Prefix(String id, float duration, boolean top) {
+            // AbstractDungeon.actionManager.addToTop(new ForceWaitAction(duration));
+            AbstractDungeon.actionManager.addToTop(new VFXAction(AbstractDungeon.player, new SimplePlayVideoEffect(PathDefine.VIDEO_PATH + id + ".webm"), duration, top));
             return SpireReturn.Return(true);
         }
     }

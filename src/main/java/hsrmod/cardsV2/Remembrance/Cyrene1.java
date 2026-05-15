@@ -33,7 +33,7 @@ public class Cyrene1 extends BaseCard {
             addToBot(new DrawCardAction(p, draw));
         }
         
-        if (focus >= 4) {
+        if (draw >= 4) {
             SignatureHelper.unlock(HSRMod.makePath(ID), true);
         }
     }

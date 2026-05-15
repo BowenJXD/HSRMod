@@ -34,10 +34,6 @@ public class PersistentImageEffect extends AbstractGameEffect {
         this.floatIndex = floatIndex;
     }
 
-    public void stop() {
-        isDone = true;
-    }
-
     @Override
     public void update() {
         // Persists indefinitely; call stop() to remove
@@ -45,7 +41,7 @@ public class PersistentImageEffect extends AbstractGameEffect {
 
     @Override
     public void render(SpriteBatch sb) {
-        if (img == null) return;
+        if (img == null || isDone) return;
         float floatY = floatIndex != 0f
                 ? floatIndex * MathUtils.cosDeg((float) (System.currentTimeMillis() / 6L % 360L)) * 6.0F * Settings.scale
                 : 0f;

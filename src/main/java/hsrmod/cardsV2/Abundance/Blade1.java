@@ -39,6 +39,7 @@ public class Blade1 extends BaseCard implements PostHPUpdateSubscriber {
     @Override
     public void onEnterHand() {
         super.onEnterHand();
+        SubscriptionManager.unsubscribe(this);
         SubscriptionManager.subscribe(this);
         canUnlock = !SignatureHelper.isUnlocked(cardID);
     }
@@ -46,7 +47,6 @@ public class Blade1 extends BaseCard implements PostHPUpdateSubscriber {
     @Override
     public void onLeaveHand() {
         super.onLeaveHand();
-        SubscriptionManager.unsubscribe(this);
     }
 
     @Override
@@ -108,6 +108,7 @@ public class Blade1 extends BaseCard implements PostHPUpdateSubscriber {
     @Override
     public void postHPUpdate(AbstractCreature creature) {
         if (SubscriptionManager.checkSubscriber(this)
+                && AbstractDungeon.player.hand.contains(this)
                 && creature == AbstractDungeon.player) {
             updateCost(-1);
         }

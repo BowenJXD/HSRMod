@@ -37,7 +37,7 @@ public class Cyrene2 extends BaseCard {
         returnToHand = !Objects.equals(orb.ID, Plasma.ORB_ID);
 
         ModHelper.addToBotAbstract(() -> {
-            if (AbstractDungeon.actionManager.cardsPlayedThisTurn.stream().filter(c -> c.cardID.equals(ID)).count() >= 4) {;
+            if (AbstractDungeon.actionManager.cardsPlayedThisTurn.stream().filter(c -> c.cardID.equals(HSRMod.makePath(ID))).count() >= 7) {;
                 SignatureHelper.unlock(HSRMod.makePath(ID), true);
             }
         });

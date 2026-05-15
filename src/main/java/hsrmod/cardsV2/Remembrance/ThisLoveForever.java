@@ -1,5 +1,6 @@
 package hsrmod.cardsV2.Remembrance;
 
+import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.mod.stslib.actions.defect.TriggerPassiveAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
@@ -14,6 +15,8 @@ import hsrmod.cards.BaseCard;
 import hsrmod.modcore.HSRMod;
 import hsrmod.utils.ModHelper;
 import org.apache.logging.log4j.Level;
+
+import java.awt.*;
 
 public class ThisLoveForever extends BaseCard {
     public static final String ID = ThisLoveForever.class.getSimpleName();
@@ -45,6 +48,16 @@ public class ThisLoveForever extends BaseCard {
         } catch (Exception e) {
             HSRMod.logger.log(Level.ERROR, "Failed to instantiate orb of class: " + orb.getClass().getName(), e);
             return null; // Return null if instantiation fails
+        }
+    }
+
+    @Override
+    public void triggerOnGlowCheck() {
+        super.triggerOnGlowCheck();
+        if (AbstractDungeon.player.filledOrbCount() == 0) {
+            glowColor = Color.RED.cpy();
+        } else {
+            glowColor = BLUE_BORDER_GLOW_COLOR;
         }
     }
 }

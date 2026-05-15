@@ -55,6 +55,7 @@ public class TopazNumby2 extends BaseCard implements PreFollowUpSubscriber {
     @Override
     public void onEnterHand() {
         super.onEnterHand();
+        SubscriptionManager.unsubscribe(this);
         SubscriptionManager.subscribe(this);
         if (cachedTurn == -1 || GameActionManager.turn != cachedTurn) {
             cachedTurn = GameActionManager.turn;
@@ -65,7 +66,6 @@ public class TopazNumby2 extends BaseCard implements PreFollowUpSubscriber {
     @Override
     public void onLeaveHand() {
         super.onLeaveHand();
-        SubscriptionManager.unsubscribe(this);
     }
 
     @Override
@@ -106,7 +106,11 @@ public class TopazNumby2 extends BaseCard implements PreFollowUpSubscriber {
 
     @Override
     public AbstractCreature preFollowUpAction(AbstractCard card, AbstractCreature target) {
-        if (SubscriptionManager.checkSubscriber(this) && card == this && upgraded && target == null) {
+        if (SubscriptionManager.checkSubscriber(this) 
+                && card == this
+                && AbstractDungeon.player.hand.contains(this)
+                && upgraded 
+                && target == null) {
             target = AbstractDungeon.getMonsters().monsters.stream().filter(ModHelper::check).min(Comparator.comparingInt(m -> m.currentHealth)).orElse(null);
         }
         return target;

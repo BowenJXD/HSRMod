@@ -3,6 +3,7 @@ package hsrmod.cards.uncommon;
 import basemod.BaseMod;
 import basemod.interfaces.PostDrawSubscriber;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -10,6 +11,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.PoisonPower;
 import hsrmod.actions.AOEAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.ElementalDamageAllAction;
@@ -37,8 +39,8 @@ public class Jade1 extends BaseCard implements PostDrawSubscriber {
     }
 
     @Override
-    public void onUse(AbstractPlayer p, AbstractMonster m) {        
-        addToBot(new LoseHPAction(p, p, 2));
+    public void onUse(AbstractPlayer p, AbstractMonster m) {      
+        addToBot(new ApplyPowerAction(p, p, new PoisonPower(p, p, 1)));
         addToBot(new DrawCardAction(p, magicNumber));
 
         addToBot(
@@ -49,13 +51,13 @@ public class Jade1 extends BaseCard implements PostDrawSubscriber {
     @Override
     public void onEnterHand() {
         super.onEnterHand();
+        BaseMod.unsubscribe(this);
         ModHelper.addToBotAbstract(() -> BaseMod.subscribe(this));
     }
 
     @Override
     public void onLeaveHand() {
         super.onLeaveHand();
-        BaseMod.unsubscribe(this);
     }
 
     @Override

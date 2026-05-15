@@ -29,13 +29,13 @@ public class Cipher1 extends BaseCard implements PreElementalDamageSubscriber {
     @Override
     public void onEnterHand() {
         super.onEnterHand();
+        SubscriptionManager.unsubscribe(this);
         SubscriptionManager.subscribe(this);
     }
 
     @Override
     public void onLeaveHand() {
         super.onLeaveHand();
-        SubscriptionManager.unsubscribe(this);
     }
 
     @Override
@@ -54,7 +54,8 @@ public class Cipher1 extends BaseCard implements PreElementalDamageSubscriber {
 
     @Override
     public float preElementalDamage(ElementalDamageAction action, float dmg) {
-        if (SubscriptionManager.checkSubscriber(this) 
+        if (SubscriptionManager.checkSubscriber(this)
+                && AbstractDungeon.player.hand.contains(this)
                 && action.info != null 
                 && action.info.card == null 
                 && action.target != null 

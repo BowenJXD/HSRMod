@@ -79,22 +79,22 @@ public class ElementalDamageAllAction extends AbstractGameAction {
 
     public void update() {
         if (this.firstFrame) {
-            if (this.utilizeBaseDamage) {
-                this.damage = DamageInfo.createDamageMatrix(this.baseDamage);
-            }
-
             this.firstFrame = false;
         }
 
         this.tickDuration();
         if (this.isDone) {
+            if (this.utilizeBaseDamage) {
+                this.damage = DamageInfo.createDamageMatrix(this.baseDamage);
+            }
+
             for (AbstractPower p : AbstractDungeon.player.powers) {
                 p.onDamageAllEnemies(this.damage);
             }
 
             for (int i = 0; i < AbstractDungeon.getCurrRoom().monsters.monsters.size(); i++) {
                 AbstractMonster m = AbstractDungeon.getCurrRoom().monsters.monsters.get(i);
-                if (ModHelper.check(m)) {
+                if (ModHelper.check(m) && i < damage.length) {
                     ElementalDamageAction action = new ElementalDamageAction(
                             m,
                             new ElementalDamageInfo(
@@ -112,10 +112,6 @@ public class ElementalDamageAllAction extends AbstractGameAction {
 
                     action.update();
                 }
-            }
-
-            if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
-                AbstractDungeon.actionManager.clearPostCombatActions();
             }
 
             if (!Settings.FAST_MODE) {

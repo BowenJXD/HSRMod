@@ -1,9 +1,11 @@
 package hsrmod.powers.uniqueDebuffs;
 
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnDrawPileShufflePower;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.modcore.HSRMod;
@@ -29,7 +31,7 @@ public class DestructionFirstPower extends DebuffPower implements OnDrawPileShuf
     @Override
     public void onShuffle() {
         flash();
-        addToBot(new LoseHPAction(owner, owner, amount * dmgMultiplier));
+        addToBot(new DamageAction(owner, new DamageInfo(owner, amount * dmgMultiplier)));
         ModHelper.addToBotAbstract(() -> {
             GeneralUtil.getRandomElements(AbstractDungeon.player.drawPile.group, AbstractDungeon.cardRandomRng, amount).forEach(c -> {
                 addToTop(new ExhaustSpecificCardAction(c, AbstractDungeon.player.drawPile));

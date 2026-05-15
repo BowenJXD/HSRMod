@@ -5,6 +5,7 @@ import basemod.abstracts.events.PhasedEvent;
 import basemod.abstracts.events.phases.TextPhase;
 import basemod.eventUtil.AddEventParams;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -12,6 +13,7 @@ import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
 import hsrmod.modcore.HSRMod;
+import hsrmod.relics.starter.WaxOfAbundance;
 import hsrmod.relics.starter.WaxOfPreservation;
 import hsrmod.utils.ModHelper;
 import hsrmod.utils.PathDefine;
@@ -63,16 +65,22 @@ public class LonelyBeautyBugsOneEvent extends PhasedEvent {
         phase1.addOption(opt2);
         phase1.addOption(opt3);
         
-        if (ModHelper.hasRelic(WaxOfPreservation.ID)) {
+        if (ModHelper.hasRelic(WaxOfPreservation.ID) && AbstractDungeon.player.gold > 1) {
             phase1.addOption(OPTIONS[4], (i) -> {
-                // AbstractDungeon.player.gainGold(100);
+                AbstractDungeon.player.loseGold(1);
+                transition(true);
+            });
+        }
+        if (ModHelper.hasRelic(WaxOfAbundance.ID) && AbstractDungeon.player.currentHealth > 1) {
+            phase1.addOption(OPTIONS[5],  (i) -> {
+                AbstractDungeon.player.damage(new DamageInfo(null, 1, DamageInfo.DamageType.HP_LOSS));
                 transition(true);
             });
         }
         
         registerPhase(1, phase1);
-        registerPhase(2, new TextPhase(DESCRIPTIONS[2]).addOption(OPTIONS[5], (i) -> openMap()));
-        registerPhase(3, new TextPhase(DESCRIPTIONS[3]).addOption(OPTIONS[5], (i) -> openMap()));
+        registerPhase(2, new TextPhase(DESCRIPTIONS[2]).addOption(OPTIONS[6], (i) -> openMap()));
+        registerPhase(3, new TextPhase(DESCRIPTIONS[3]).addOption(OPTIONS[6], (i) -> openMap()));
         
         transitionKey(0);
     }

@@ -15,22 +15,22 @@ import hsrmod.powers.misc.BrainInAVatPower;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.subscribers.PreEnergyChangeSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
+import hsrmod.utils.ModHelper;
 
 public class KolchisPower extends PowerPower implements OnReceivePowerPower {
     public static final String POWER_ID = HSRMod.makePath(KolchisPower.class.getSimpleName());
 
-    int chargeThreshold = 100;
+    // int chargeThreshold = 100;
     
-    public KolchisPower(int chargeThreshold) {
-        super(POWER_ID);
-        this.chargeThreshold = chargeThreshold;
+    public KolchisPower(boolean upgraded) {
+        super(POWER_ID, upgraded);
         
         this.updateDescription();
     }
 
     @Override
     public void updateDescription() {
-        this.description = String.format(DESCRIPTIONS[0], chargeThreshold);
+        this.description = String.format(DESCRIPTIONS[upgraded ? 1 : 0]);
     }
     
     @Override
@@ -40,13 +40,12 @@ public class KolchisPower extends PowerPower implements OnReceivePowerPower {
 
     @Override
     public int onReceivePowerStacks(AbstractPower power, AbstractCreature target, AbstractCreature source, int stackAmount) {
-        if (power instanceof EnergyPower 
-                && stackAmount < 0) {
+        if (power instanceof EnergyPower) {
             flash();
-
-            amount += -stackAmount;
-            if (amount >= chargeThreshold) {
-                amount = 0;
+            
+            int curr = ModHelper.getPowerCount(target, EnergyPower.POWER_ID);
+            if ((curr < EnergyPower.AMOUNT_LIMIT && curr + stackAmount >= EnergyPower.AMOUNT_LIMIT)
+                || (curr > 0 && curr + stackAmount <= 0 && upgraded)) {
                 addToBot(new GainEnergyAction(1));
             }
         }

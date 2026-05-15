@@ -15,6 +15,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.MiracleEffect;
+import hsrmod.actions.ShoutVoiceAction;
 import hsrmod.effects.PortraitDisplayEffect;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementType;
@@ -228,17 +229,14 @@ public abstract class BaseCard extends AbstractSignatureCard implements SpawnMod
         }
         return false;
     }
-    
+
     public void shout(int index, float volume, float duration) {
         try {
             String portraitName = this.getClass().getSimpleName();
             AbstractDungeon.topLevelEffects.add(new PortraitDisplayEffect(portraitName.substring(0, portraitName.length() - 1)));
             String[] extDesc = cardStrings.EXTENDED_DESCRIPTION;
-            if (extDesc.length == 1)
-                ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(portraitName, volume));
-            else {
-                ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(portraitName + "_" + index, volume));
-            }
+            String soundKey = extDesc.length == 1 ? portraitName : portraitName + "_" + index;
+            addToBot(new ShoutVoiceAction(soundKey, volume));
             addToBot(new TalkAction(true, extDesc[index], duration, duration + 1));
         } catch (Exception e) {
             e.printStackTrace();

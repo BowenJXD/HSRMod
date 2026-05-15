@@ -16,8 +16,10 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.*;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.actions.ElementalDamageAllAction;
+import hsrmod.characters.StellaCharacter;
 import hsrmod.modcore.ElementType;
 import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.modcore.HSRMod;
 import hsrmod.subscribers.SubscriptionManager;
 import javassist.CtBehavior;
 
@@ -144,6 +146,16 @@ public class OrbPatch {
                         AbstractCreature.class, "damage"
                 );
                 return LineFinder.findInOrder(ctBehavior, new ArrayList<>(), matcher);
+            }
+        }
+    }
+    
+    @SpirePatch(clz = AbstractOrb.class, method = "setSlot")
+    public static class OrbSetSlotPatch {
+        public static void Postfix(AbstractOrb __inst) {
+            if (AbstractDungeon.player.chosenClass == StellaCharacter.PlayerColorEnum.STELLA_CHARACTER) {
+                __inst.tX += 30.0F * Settings.scale;
+                __inst.tY -= 200.0F * Settings.scale;
             }
         }
     }

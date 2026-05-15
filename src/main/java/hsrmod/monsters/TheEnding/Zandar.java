@@ -3,12 +3,14 @@ package hsrmod.monsters.TheEnding;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.AnimateSlowAttackAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.actions.watcher.PressEndTurnButtonAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
+import com.megacrit.cardcrawl.vfx.combat.TimeWarpTurnEndEffect;
 import hsrmod.modcore.HSRMod;
 import hsrmod.modifiers.AntinomyModifier;
 import hsrmod.monsters.BaseMonster;
@@ -57,6 +59,7 @@ public class Zandar extends BaseMonster implements PostMonsterDeathSubscriber {
 
         // Move 0: 天球偏移论 — deal 10×2, add 1 Entangle to each of draw/hand/discard
         addMoveA(Intent.ATTACK_DEBUFF, 10, 2, mi -> {
+            shout(1, 2, 5.0f);
             attack(mi, AbstractGameAction.AttackEffect.SLASH_DIAGONAL, AttackAnim.SLOW);
             addToBot(new MakeTempCardInDrawPileAction(new Entangle(), 1, true, true));
             addToBot(new MakeTempCardInHandAction(new Entangle()));
@@ -65,6 +68,7 @@ public class Zandar extends BaseMonster implements PostMonsterDeathSubscriber {
 
         // Move 1: 潜能实现猜想 — give each summon 5 LastSpring + 1 MultiMove
         addMove(Intent.BUFF, mi -> {
+            shout(3, 4, 5.0f);
             for (MonsterSlot slot : slots) {
                 if (!slot.isEmpty()) {
                     AbstractMonster summon = slot.monster;
@@ -76,12 +80,14 @@ public class Zandar extends BaseMonster implements PostMonsterDeathSubscriber {
 
         // Move 2: 智识的二律背反 — deal 35, replace top draw pile card with SolvePrimeCauseConsequence
         addMoveA(Intent.ATTACK_DEBUFF, 35, mi -> {
+            shout(5, 6, 5.0f);
             attack(mi, AbstractGameAction.AttackEffect.SLASH_HEAVY, AttackAnim.SLOW);
             applyAntinomy(1);
         });
 
         // Move 3: 虚数几何演绎法 — repeat 5×: deal 3 damage, random ImprisonPower or Imprison card to discard
         addMoveA(Intent.ATTACK_DEBUFF, 3, 5, mi -> {
+            shout(7, 8, 5.0f);
             addToBot(new AnimateSlowAttackAction(this));
             for (int i = 0; i < 5; i++) {
                 addToBot(new DamageAction(p, damage.get(mi.index), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
@@ -95,12 +101,14 @@ public class Zandar extends BaseMonster implements PostMonsterDeathSubscriber {
 
         // Move 4: DEL 入侵变量 — deal 10×3, apply 1 ImprisonPower
         addMoveA(Intent.ATTACK_DEBUFF, 10, 3, mi -> {
+            shout(11, 12, 5.0f);
             attack(mi, AbstractGameAction.AttackEffect.SLASH_DIAGONAL, AttackAnim.SLOW);
             addToBot(new ApplyPowerAction(p, this, new ImprisonPower(p, 1), 1));
         });
 
         // Move 5: DEFRAG 生命优化 — each summon loses 10 HP and gains 1 MultiMove
         addMove(Intent.BUFF, mi -> {
+            shout(13, 14, 5.0f);
             for (MonsterSlot slot : slots) {
                 if (!slot.isEmpty()) {
                     AbstractMonster summon = slot.monster;
@@ -111,13 +119,15 @@ public class Zandar extends BaseMonster implements PostMonsterDeathSubscriber {
         });
 
         // Move 6: 创生&&毁灭 — deal 25×2, replace top 2 draw pile cards
-        addMoveA(Intent.ATTACK, 20, 2, mi -> {
+        addMoveA(Intent.ATTACK, 25, 2, mi -> {
+            shout(15, 16, 5.0f);
             attack(mi, AbstractGameAction.AttackEffect.SLASH_HEAVY, AttackAnim.SLOW);
             applyAntinomy(2);
         });
 
         // Move 7: FORMAT 故障空间 — repeat 5×: deal 6 damage, random EntanglePower or Entangle card to discard
         addMoveA(Intent.ATTACK_DEBUFF, 6, 5, mi -> {
+            shout(17, 18, 5.0f);
             addToBot(new AnimateSlowAttackAction(this));
             for (int i = 0; i < 5; i++) {
                 addToBot(new DamageAction(p, damage.get(mi.index), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
@@ -130,6 +140,7 @@ public class Zandar extends BaseMonster implements PostMonsterDeathSubscriber {
         });
         
         addMoveA(Intent.ATTACK, 10, ()-> ModHelper.getPowerCount(this, StrengthenPower.POWER_ID), mi -> {
+            shout(19, 7.0f);
             attack(mi, AbstractGameAction.AttackEffect.SMASH);
             addToBot(new RemoveSpecificPowerAction(this, this, StrengthenPower.POWER_ID));
             shouldUseUlt = false;
@@ -139,6 +150,8 @@ public class Zandar extends BaseMonster implements PostMonsterDeathSubscriber {
     @Override
     public void usePreBattleAction() {
         super.usePreBattleAction();
+        shout(0, 5.0f);
+        
         SubscriptionManager.subscribe(this);
         addToBot(new ApplyPowerAction(p, this, new DestructionFirstPower(p, 1)));
         addToBot(new ApplyPowerAction(this, this, new ArtifactPower(this, artifactAmt)));
@@ -167,6 +180,12 @@ public class Zandar extends BaseMonster implements PostMonsterDeathSubscriber {
     }
 
     @Override
+    public void die() {
+        super.die();
+        shout(20, 5.0f);
+    }
+    
+    @Override
     public void postMonsterDeath(AbstractMonster monster) {
         if (!SubscriptionManager.checkSubscriber(this) || !ModHelper.check(this)) {
             return;
@@ -188,7 +207,10 @@ public class Zandar extends BaseMonster implements PostMonsterDeathSubscriber {
                     spawnMonsterOnSlot(slots.get(1), SpawnType.MINION, true);
                     spawnMonsterOnSlot(slots.get(2), SpawnType.MINION, true);
 
-                    if (AbstractDungeon.overlayMenu.endTurnButton.enabled) addToBot(new PressEndTurnButtonAction());
+                    if (AbstractDungeon.overlayMenu.endTurnButton.enabled) {
+                        addToBot(new PressEndTurnButtonAction());
+                        addToBot(new VFXAction(new TimeWarpTurnEndEffect()));
+                    }
                 }
             });
 

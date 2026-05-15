@@ -33,7 +33,6 @@ public class Trailblazer9 extends BaseCard {
     public static final String ID = Trailblazer9.class.getSimpleName();
     
     PostPowerApplySubscriber subscriber;
-    boolean subscribed = false;
 
     public Trailblazer9() {
         super(ID);
@@ -61,27 +60,6 @@ public class Trailblazer9 extends BaseCard {
             addToBot(new ElementalDamageAction(m, new ElementalDamageInfo(this), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
         }
         addToBot(new ChannelAction(new Plasma()));
-
-
-        if (!subscribed) {
-            subscribed = true;
-            BaseMod.subscribe(new PostBattleSubscriber() {
-                @Override
-                public void receivePostBattle(AbstractRoom abstractRoom) {
-                    if (SubscriptionManager.checkSubscriber(Trailblazer9.this)) {
-                        List<AbstractCard> cards = AbstractDungeon.actionManager.cardsPlayedThisCombat;
-                        if (cards != null 
-                                && !cards.isEmpty() 
-                                && cards.get(cards.size() - 2) instanceof Trailblazer11 
-                                && cards.get(cards.size() - 1) instanceof Demiurge1) {
-                            SignatureHelper.unlock(HSRMod.makePath(Trailblazer9.ID), true);
-                            SignatureHelper.unlock(HSRMod.makePath(Trailblazer11.ID), true);
-                        }
-                        BaseMod.unsubscribeLater(this);
-                    }
-                }
-            });
-        }
     }
 
     @Override

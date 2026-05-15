@@ -30,7 +30,7 @@ public class TrailblazeTimer extends BaseRelic implements ClickableRelic  {
     AbstractCard.CardTags tag = CustomEnums.TRAILBLAZE;
     public AbstractCard.CardTags selectedTag;
     public CardGroup pathGroup;
-    public int pathToBan = 1;
+    public int pathToBan = 2;
 
     public TrailblazeTimer() {
         super(ID);
@@ -130,6 +130,6 @@ public class TrailblazeTimer extends BaseRelic implements ClickableRelic  {
 
     @Override
     public int changeNumberOfCardsInReward(int numberOfCards) {
-        return numberOfCards + 1;
+        return numberOfCards + 2;
     }
 }

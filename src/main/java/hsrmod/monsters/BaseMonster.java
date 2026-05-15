@@ -436,9 +436,10 @@ public abstract class BaseMonster extends CustomMonster {
     }
 
     public void shout(int index, float volume) {
-        if (index >= DIALOG.length) return;
         ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(this.getClass().getSimpleName() + "_" + index, volume));
-        addToBot(new ShoutAction(this, DIALOG[index]));
+        if (index < DIALOG.length) {
+            addToBot(new ShoutAction(this, DIALOG[index]));
+        }
     }
 
     public void shout(int index) {
@@ -451,6 +452,14 @@ public abstract class BaseMonster extends CustomMonster {
 
     public void shout(int start, int end) {
         shout(AbstractDungeon.miscRng.random(start, end), 3.0F);
+    }
+    
+    public void shoutOnly(int start, int end, float volume) {
+        shoutOnly(AbstractDungeon.miscRng.random(start, end), volume);
+    }
+    
+    public void shoutOnly(int index, float volume) {
+        ModHelper.addToTopAbstract(() -> CardCrawlGame.sound.playV(this.getClass().getSimpleName() + "_" + index, volume));
     }
 
     public void shoutIf(int index) {

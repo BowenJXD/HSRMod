@@ -2,19 +2,26 @@ package hsrmod.powers.uniqueBuffs;
 
 import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.orbs.Frost;
+import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
+import hsrmod.effects.PersistentImageEffect;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
 import hsrmod.powers.PowerPower;
 import hsrmod.subscribers.PreOrbPassiveOrEvokeSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.GeneralUtil;
+import hsrmod.utils.PathDefine;
 
 import java.util.Objects;
 
 public class Hyacine2Power extends BuffPower implements PreOrbPassiveOrEvokeSubscriber {
     public static final String POWER_ID = HSRMod.makePath(Hyacine2Power.class.getSimpleName());
+    
+    AbstractGameEffect imgEffect;
     
     public Hyacine2Power(AbstractCreature owner, int amount) {
         super(POWER_ID, owner, amount);
@@ -30,12 +37,15 @@ public class Hyacine2Power extends BuffPower implements PreOrbPassiveOrEvokeSubs
     public void onInitialApplication() {
         super.onInitialApplication();
         SubscriptionManager.subscribe(this);
+        imgEffect = new PersistentImageEffect(PathDefine.EFFECT_PATH + "Memosprite/Ika.png", 0.15f * Settings.WIDTH, 0.75f * Settings.HEIGHT, 1);
+        AbstractDungeon.effectList.add(imgEffect);
     }
 
     @Override
     public void onRemove() {
         super.onRemove();
         SubscriptionManager.unsubscribe(this);
+        imgEffect.dispose();
     }
 
     @Override

@@ -11,9 +11,15 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import hsrmod.misc.Encounter;
 import hsrmod.modcore.HSRMod;
+import hsrmod.relics.starter.WaxOfAbundance;
+import hsrmod.relics.starter.WaxOfRemembrance;
 import hsrmod.relics.starter.WaxOfTheHunt;
 import hsrmod.utils.ModHelper;
 import hsrmod.utils.PathDefine;
+import hsrmod.utils.RelicEventHelper;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class RockPaperScissorsEvent extends PhasedEvent {
     public static final String ID = RockPaperScissorsEvent.class.getSimpleName();
@@ -35,8 +41,18 @@ public class RockPaperScissorsEvent extends PhasedEvent {
                             transitionKey(4);
                         })
                         .enabledCondition(() -> AbstractDungeon.player.gold >= 100));
-        if (ModHelper.hasRelic(WaxOfTheHunt.ID)) {
+        if (ModHelper.hasRelic(WaxOfRemembrance.ID)) {
             phase1.addOption(new TextPhase.OptionInfo(OPTIONS[3])
+                    .setOptionResult((i) -> {
+                        AbstractCard[] curses = AbstractDungeon.player.masterDeck.group.stream()
+                                .filter(c -> c.type == AbstractCard.CardType.CURSE).toArray(AbstractCard[]::new);
+                        RelicEventHelper.purgeCards(curses);
+                        transitionKey(5);
+                    })
+                    .enabledCondition(() -> ModHelper.hasRelic(WaxOfAbundance.ID)));
+        }
+        if (ModHelper.hasRelic(WaxOfTheHunt.ID)) {
+            phase1.addOption(new TextPhase.OptionInfo(OPTIONS[4])
                     .setOptionResult((i) -> transitionKey(3))
                     .enabledCondition(() -> ModHelper.hasRelic(WaxOfTheHunt.ID)));
         }
@@ -55,8 +71,8 @@ public class RockPaperScissorsEvent extends PhasedEvent {
                 })
                 .setType(AbstractMonster.EnemyType.ELITE)
         );
-        registerPhase(4, new TextPhase(DESCRIPTIONS[2]).addOption(OPTIONS[4], (i) -> openMap()));
-        registerPhase(5, new TextPhase(DESCRIPTIONS[3]).addOption(OPTIONS[4], (i) -> openMap()));
+        registerPhase(4, new TextPhase(DESCRIPTIONS[2]).addOption(OPTIONS[5], (i) -> openMap()));
+        registerPhase(5, new TextPhase(DESCRIPTIONS[3]).addOption(OPTIONS[5], (i) -> openMap()));
 
         transitionKey(0);
     }

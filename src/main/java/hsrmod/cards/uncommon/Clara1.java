@@ -41,13 +41,13 @@ public class Clara1 extends BaseCard implements OnPlayerDamagedSubscriber {
     @Override
     public void onEnterHand() {
         super.onEnterHand();
+        BaseMod.unsubscribe(this);
         BaseMod.subscribe(this);
     }
 
     @Override
     public void onLeaveHand() {
         super.onLeaveHand();
-        BaseMod.unsubscribe(this);
     }
 
     @Override

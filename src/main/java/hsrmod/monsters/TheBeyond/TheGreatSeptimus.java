@@ -122,7 +122,7 @@ public class TheGreatSeptimus extends BaseMonster implements OnCardUseSubscriber
                 addToBot(new ApplyPowerAction(this, this, new ChargingPower(this, MOVES[6], 1), 1));
                 break;
             case 7:
-                if (!VideoManager.play(ID, 3.3f))
+                if (!VideoManager.play(ID, 3.3f,  true))
                     if (AbstractDungeon.miscRng.randomBoolean()) {
                         addToBot(new ShoutAction(this, DIALOG[7], 3.0F, 4.0F));
                         ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_Day8", 3));

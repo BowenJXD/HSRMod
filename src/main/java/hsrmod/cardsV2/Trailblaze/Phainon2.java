@@ -22,6 +22,8 @@ public class Phainon2 extends BaseCard {
         tags.add(CustomEnums.CHRYSOS_HEIR);
         MultiCardPreview.add(this, new Khaslana1(), new Khaslana2(), new Khaslana3(), new Khaslana4());
         MultiCardPreview.horizontalOnly(this);
+
+        purgeOnUse = true;
     }
 
     @Override
@@ -29,13 +31,6 @@ public class Phainon2 extends BaseCard {
         shout(0);
         
         addToBot(new ApplyPowerAction(p, p, new RuinousIrontombPower(p, 8)));
-        ModHelper.addToBotAbstract(() -> {
-            ModHelper.addToBotAbstract(() -> {
-                ModHelper.findCards(c -> c==this).forEach(r -> {
-                    r.group.removeCard(r.card);
-                });
-            });
-        });
         addToBot(new MakeTempCardInHandAction(new Khaslana1()));
         addToBot(new MakeTempCardInHandAction(new Khaslana2()));
         addToBot(new MakeTempCardInHandAction(new Khaslana3()));

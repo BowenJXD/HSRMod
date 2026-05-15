@@ -51,7 +51,9 @@ public class Acheron1 extends BaseCard {
                 if (SubscriptionManager.checkSubscriber(Acheron1.this)
                         && canTrigger
                         && abstractPower.type == AbstractPower.PowerType.DEBUFF
-                        && target != AbstractDungeon.player) {
+                        && target != AbstractDungeon.player
+                        && AbstractDungeon.player.hand.contains(Acheron1.this)
+                ) {
                     canTrigger = false;
                     updateCost(-1);
                     retain = true;
@@ -65,7 +67,7 @@ public class Acheron1 extends BaseCard {
     @Override
     public void onLeaveHand() {
         super.onLeaveHand();
-        BaseMod.unsubscribe(subscriber);
+        //BaseMod.unsubscribe(subscriber);
     }
 
     @Override

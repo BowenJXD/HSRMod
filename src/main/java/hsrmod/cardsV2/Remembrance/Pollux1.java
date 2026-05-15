@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.TransformCardInHandAction;
+import com.megacrit.cardcrawl.actions.common.UpgradeSpecificCardAction;
 import com.megacrit.cardcrawl.actions.defect.EvokeOrbAction;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -19,6 +20,9 @@ import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.powers.uniqueBuffs.NewbudPower;
+import hsrmod.signature.utils.SignatureHelper;
+import hsrmod.utils.CardDataCol;
+import hsrmod.utils.DataManager;
 import hsrmod.utils.ModHelper;
 
 import java.awt.*;
@@ -30,6 +34,21 @@ public class Pollux1 extends BaseCard {
         super(ID);
         returnToHand = true;
         tags.add(CustomEnums.TERRITORY);
+    }
+
+    @Override
+    public boolean canUpgrade() {
+        return timesUpgraded < 2;
+    }
+    
+    @Override
+    public void upgrade() {
+        upgradeDamage(magicNumber);
+        this.timesUpgraded++;
+        this.upgraded = true;
+        this.name += "+";
+        initializeTitle();
+        this.initializeDescription();
     }
 
     @Override
@@ -71,5 +90,6 @@ public class Pollux1 extends BaseCard {
                 }
             });
         });
+        addToBot(new UpgradeSpecificCardAction(this));
     }
 }

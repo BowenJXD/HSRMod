@@ -39,7 +39,7 @@ public class Hysilens1 extends BaseCard implements PreDoTDamageSubscriber {
 
     @Override
     public float preDoTDamage(ElementalDamageInfo info, AbstractCreature target, DoTPower power) {
-        if (SubscriptionManager.checkSubscriber(this) && power instanceof BleedingPower && info.output >= 55) {
+        if (SubscriptionManager.checkSubscriber(this) && power instanceof BleedingPower && info.output >= 40) {
             SignatureHelper.unlock(HSRMod.makePath(ID), true);
         }
         return info.output;

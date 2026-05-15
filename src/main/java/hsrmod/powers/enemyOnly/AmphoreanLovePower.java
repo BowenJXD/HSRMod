@@ -1,9 +1,14 @@
 package hsrmod.powers.enemyOnly;
 
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.FollowUpAction;
+import hsrmod.cardsV2.Remembrance.Demiurge1;
 import hsrmod.cardsV2.Trailblaze.Demiurge2;
+import hsrmod.cardsV2.Trailblaze.Demiurge3;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
 import hsrmod.utils.GeneralUtil;
@@ -20,13 +25,20 @@ public class AmphoreanLovePower extends BuffPower {
 
     @Override
     public void updateDescription() {
-        this.description = GeneralUtil.tryFormat(DESCRIPTIONS[0], TRIGGER_THRESHOLD);
+        this.description = GeneralUtil.tryFormat(DESCRIPTIONS[upgraded ? 1 : 0], TRIGGER_THRESHOLD);
     }
 
     @Override
     public void onExhaust(AbstractCard card) {
         flash();
         stackPower(1);
+        if (upgraded) {
+            for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
+                if (m != owner && m.hasPower(AmphoreanHatredPower.POWER_ID)) {
+                    addToBot(new ApplyPowerAction(m, owner, new AmphoreanHatredPower(m, -1)));
+                }
+            }
+        }
     }
 
     @Override
@@ -36,8 +48,20 @@ public class AmphoreanLovePower extends BuffPower {
                 flash();
                 amount = 0;
                 updateDescription();
-                addToBot(new FollowUpAction(new Demiurge2()));
+                AbstractCard demiurge = new Demiurge2();
+                if (upgraded) {
+                    demiurge.upgrade();
+                    addToBot(new FollowUpAction(demiurge));
+                    addToBot(new FollowUpAction(new Demiurge3()));
+                } else {
+                    addToBot(new FollowUpAction(demiurge));
+                }
             }
         });
+    }
+    
+    public void upgrade() {
+        upgraded = true;
+        updateDescription();
     }
 }

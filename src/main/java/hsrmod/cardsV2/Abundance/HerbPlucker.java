@@ -26,13 +26,13 @@ public class HerbPlucker extends BaseCard implements PrePowerTriggerSubscriber {
     @Override
     public void onEnterHand() {
         super.onEnterHand();
+        SubscriptionManager.unsubscribe(this);
         SubscriptionManager.subscribe(this);
     }
 
     @Override
     public void onLeaveHand() {
         super.onLeaveHand();
-        SubscriptionManager.unsubscribe(this);
     }
 
     @Override
@@ -55,7 +55,8 @@ public class HerbPlucker extends BaseCard implements PrePowerTriggerSubscriber {
 
     @Override
     public void prePowerTrigger(BasePower power) {
-        if (SubscriptionManager.checkSubscriber(this)) {
+        if (SubscriptionManager.checkSubscriber(this)
+                && AbstractDungeon.player.hand.contains(this)) {
             if (power instanceof DewDropPower) {
                 addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new EnergizedPower(AbstractDungeon.player, 1)));
             }

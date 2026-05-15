@@ -24,6 +24,7 @@ import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.powers.BackAttackPower;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
+import com.megacrit.cardcrawl.screens.DeathScreen;
 import hsrmod.cards.base.*;
 import hsrmod.misc.IHSRCharacter;
 import hsrmod.modcore.HSRMod;

@@ -19,8 +19,8 @@ public class Demiurge2 extends BaseCard {
 
     public Demiurge2() {
         super(ID);
-        exhaust = true;
         isMultiDamage = true;
+        purgeOnUse = true;
     }
 
     @Override

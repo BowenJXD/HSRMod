@@ -212,6 +212,7 @@ public final class HSRMod implements EditCardsSubscriber, EditStringsSubscriber,
     public void receivePostInitialize() {
         BaseMod.subscribe(GAMManager.getInstance());
         BaseMod.addSaveField("RewardEditor", RewardEditor.getInstance());
+        BaseMod.subscribe(RestartRunHelper.getInstance());
         HSRModConfig.getInstance().addConfigPanel();
         addMonsters();
         if (HSRModConfig.addEnemy) {

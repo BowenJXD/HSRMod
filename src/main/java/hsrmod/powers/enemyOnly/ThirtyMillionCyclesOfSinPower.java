@@ -1,5 +1,6 @@
 package hsrmod.powers.enemyOnly;
 
+import com.evacipated.cardcrawl.mod.stslib.actions.common.MoveCardsAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.utility.ExhaustToHandAction;
@@ -42,10 +43,5 @@ public class ThirtyMillionCyclesOfSinPower extends StatePower {
         // ModHelper.addToBotAbstract(() -> addToTop(new ExhaustToHandAction(GeneralUtil.getRandomElement(AbstractDungeon.player.exhaustPile.group, AbstractDungeon.cardRandomRng))));
         stackPower(-perfectNums[Math.min(index++, perfectNums.length-1)] + perfectNums[Math.min(index, perfectNums.length-1)]);
         updateDescription();
-        if (index == 2) {
-            MusicStack.getInstance().push("Immolation of the Heavens");
-        } else if (index == 4) {
-            MusicStack.getInstance().push("Shatter the God's Crown");
-        }
     }
 }

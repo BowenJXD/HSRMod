@@ -16,17 +16,19 @@ import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
 import hsrmod.signature.utils.SignatureHelper;
+import hsrmod.subscribers.SubscriptionManager;
 
 public class PermansorTerrae1 extends BaseCard implements PostBattleSubscriber, OnPlayerDamagedSubscriber, OnObtainCard {
     public static final String ID = PermansorTerrae1.class.getSimpleName();
 
-    int floorToPersist = 3;
+    int floorToPersist = 5;
     int count;
     boolean failed = false;
     
     public PermansorTerrae1() {
         super(ID);
         tags.add(CustomEnums.CHRYSOS_HEIR);
+        BaseMod.subscribe(this);
     }
 
     @Override
@@ -40,13 +42,14 @@ public class PermansorTerrae1 extends BaseCard implements PostBattleSubscriber, 
 
     @Override
     public void onObtainCard() {
-        BaseMod.subscribe(this);
     }
 
     @Override
     public int receiveOnPlayerDamaged(int i, DamageInfo damageInfo) {
-        if (AbstractDungeon.player.masterDeck.contains(this) && i > 0) {
-            failed = true;
+        if (AbstractDungeon.player.masterDeck.contains(this)) {
+            if (i > 0) failed = true;
+        } else {
+            BaseMod.unsubscribeLater(this);
         }
         return i;
     }
@@ -59,6 +62,9 @@ public class PermansorTerrae1 extends BaseCard implements PostBattleSubscriber, 
             if (count >= floorToPersist) {
                 SignatureHelper.unlock(HSRMod.makePath(ID), true);
             }
+            failed = false;
+        } else {
+            BaseMod.unsubscribeLater(this);
         }
     }
 }

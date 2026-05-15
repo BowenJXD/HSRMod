@@ -4,21 +4,32 @@ import basemod.abstracts.CustomMultiPageFtue;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.HealAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.InvinciblePower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import hsrmod.actions.ElementalDamageAction;
+import hsrmod.misc.RestartRunHelper;
+import hsrmod.misc.VideoManager;
 import hsrmod.modcore.HSRMod;
 import hsrmod.modcore.HSRModConfig;
+import hsrmod.monsters.TheEnding.Irontomb;
 import hsrmod.powers.enemyOnly.HeartIsMeantToBeBrokenPower;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.relics.ITutorial;
+import hsrmod.utils.ModHelper;
 import hsrmod.utils.PathDefine;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class GalacticBat extends CustomRelic implements ClickableRelic, ITutorial {
     // 遗物ID（此处的ModHelper在“04 - 本地化”中提到）
@@ -109,5 +120,30 @@ public class GalacticBat extends CustomRelic implements ClickableRelic, ITutoria
         }
         initializeTips();
         tips.get(0).body = modNameCache;
+    }
+
+    @Override
+    public int onLoseHpLast(int damageAmount) {
+        if (damageAmount >= AbstractDungeon.player.currentHealth 
+                && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT 
+                && AbstractDungeon.getMonsters() != null
+                && AbstractDungeon.getMonsters().monsters.stream().anyMatch(m -> m instanceof Irontomb)) {
+            Iterator<AbstractGameAction> i = AbstractDungeon.actionManager.actions.iterator();
+
+            while (i.hasNext()) {
+                AbstractGameAction e = (AbstractGameAction) i.next();
+                if (!(e instanceof HealAction)
+                        && !(e instanceof GainBlockAction)
+                        && !(e instanceof UseCardAction)
+                        && !(e instanceof ElementalDamageAction.TriggerCallbackAction)
+                        && e.actionType != AbstractGameAction.ActionType.DAMAGE) {
+                    i.remove();
+                }
+            }
+            ModHelper.addToTopAbstract(() -> RestartRunHelper.queuedRoomRestart = true);
+            VideoManager.play("ChasingFlame", 24f, false);
+            return 0;
+        }
+        return damageAmount;
     }
 }

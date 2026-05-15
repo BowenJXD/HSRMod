@@ -3,6 +3,7 @@ package hsrmod.cardsV2.Remembrance;
 import basemod.BaseMod;
 import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
+import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.PurgeField;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
@@ -19,6 +20,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.vfx.SpotlightEffect;
 import com.megacrit.cardcrawl.vfx.stance.DivinityParticleEffect;
+import hsrmod.actions.ShoutVoiceAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.cardsV2.Abundance.Mydei1;
 import hsrmod.cardsV2.Elation.Tribbie2;
@@ -42,10 +44,7 @@ import hsrmod.utils.CachedCondition;
 import hsrmod.utils.ModHelper;
 
 import javax.crypto.Cipher;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Supplier;
 
@@ -58,6 +57,7 @@ public class Cyrene4 extends BaseCard {
         exhaust = true;
         cardsToPreview = new Demiurge1();
         tags.add(CustomEnums.CHRYSOS_HEIR);
+        purgeOnUse = true;
     }
 
     @Override
@@ -69,7 +69,7 @@ public class Cyrene4 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         shout(0);
-        ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(this.getClass().getSimpleName(), 3.0f));
+        addToBot(new ShoutVoiceAction(this.getClass().getSimpleName(), 3.0f));
         addToBot(new VFXAction(new SpotlightEffect()));
         addToBot(new VFXAction(new PetalFallingEffect()));
         addToBot(new ApplyPowerAction(p, p, new FuturePower(p, 1)));
@@ -89,13 +89,6 @@ public class Cyrene4 extends BaseCard {
             }
         });
         ModHelper.addToBotAbstract(Cyrene4::ChrysosHeirBuff);
-        ModHelper.addToBotAbstract(() -> {
-            ModHelper.addToBotAbstract(() -> {
-                ModHelper.findCards(c -> c==this).forEach(r -> {
-                    r.group.removeCard(r.card);
-                });
-            });
-        });
     }
     
     public static HashMap<String, Supplier<AbstractCardModifier>> cardModMap = new HashMap<String, Supplier<AbstractCardModifier>>(){{
@@ -116,22 +109,32 @@ public class Cyrene4 extends BaseCard {
     }};
     
     public static void ChrysosHeirBuff() {
-        ModHelper.findCards(c -> {
-            return c.hasTag(CustomEnums.CHRYSOS_HEIR);
-        }).forEach(r -> ChrysosHeirBuff(r.card));
-    }
-    
-    public static void ChrysosHeirBuff(AbstractCard c) {
         List<String> modIDs = new ArrayList<>(cardModMap.keySet());
-        cardModMap.forEach((id, mod) -> {
-            if (Objects.equals(c.cardID, HSRMod.makePath(id))) {
-                CardModifierManager.addModifier(c, mod.get());
-                modIDs.remove(id);
+        for (ModHelper.FindResult r : ModHelper.findCards(c -> {
+            return c.hasTag(CustomEnums.CHRYSOS_HEIR);
+        })) {
+            for (Map.Entry<String, Supplier<AbstractCardModifier>> entry : cardModMap.entrySet()) {
+                String id = entry.getKey();
+                Supplier<AbstractCardModifier> mod = entry.getValue();
+                if (Objects.equals(r.card.cardID, HSRMod.makePath(id))) {
+                    CardModifierManager.addModifier(r.card, mod.get());
+                    modIDs.remove(id);
+                }
             }
-        });
+        }
         if (modIDs.isEmpty()) {
             SignatureHelper.unlock(HSRMod.makePath(ID), true);
             SignatureHelper.unlock(HSRMod.makePath(Cyrene3.ID), true);
+        }
+    }
+    
+    public static void ChrysosHeirBuff(AbstractCard c) {
+        for (Map.Entry<String, Supplier<AbstractCardModifier>> entry : cardModMap.entrySet()) {
+            String id = entry.getKey();
+            Supplier<AbstractCardModifier> mod = entry.getValue();
+            if (Objects.equals(c.cardID, HSRMod.makePath(id))) {
+                CardModifierManager.addModifier(c, mod.get());
+            }
         }
     }
     

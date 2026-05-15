@@ -5,19 +5,26 @@ import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cardsV2.Remembrance.Demiurge1;
+import hsrmod.effects.PersistentImageEffect;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.BuffPower;
 import hsrmod.utils.GeneralUtil;
+import hsrmod.utils.PathDefine;
 
 public class FuturePower extends BuffPower {
     public static final String POWER_ID = HSRMod.makePath(FuturePower.class.getSimpleName());
 
     static final int STACK_LIMIT = 24;
     static final int TRIGGER_THRESHOLD = 12;
+
+    AbstractGameEffect imgEffect;
     
     public FuturePower(AbstractCreature owner, int amount) {
         super(POWER_ID, owner, amount);
@@ -27,6 +34,19 @@ public class FuturePower extends BuffPower {
     @Override
     public void updateDescription() {
         description = GeneralUtil.tryFormat(DESCRIPTIONS[0], STACK_LIMIT, TRIGGER_THRESHOLD, TRIGGER_THRESHOLD);
+    }
+
+    @Override
+    public void onInitialApplication() {
+        super.onInitialApplication();
+        imgEffect = new PersistentImageEffect(PathDefine.EFFECT_PATH + "Memosprite/Demiurge.png", 0.1f * Settings.WIDTH, 0.44f * Settings.HEIGHT);
+        AbstractDungeon.effectList.add(imgEffect);
+    }
+
+    @Override
+    public void onRemove() {
+        super.onRemove();
+        imgEffect.dispose();
     }
 
     @Override

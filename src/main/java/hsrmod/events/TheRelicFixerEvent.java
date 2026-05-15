@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.relics.NeowsLament;
 import hsrmod.modcore.HSRMod;
 import hsrmod.patches.RelicTagField;
+import hsrmod.relics.starter.WaxOfAbundance;
 import hsrmod.relics.starter.WaxOfElation;
 import hsrmod.utils.GeneralUtil;
 import hsrmod.utils.ModHelper;
@@ -66,6 +67,12 @@ public class TheRelicFixerEvent extends PhasedEvent {
                 })
                 .enabledCondition(() -> AbstractDungeon.player.gold >= fixAllCost)
         );
+        
+        if (ModHelper.hasRelic(WaxOfAbundance.ID)) {
+            phase0.addOption(OPTIONS[2], (i) -> {
+                RelicEventHelper.gainRelics(1, r -> RelicTagField.destructible.get(r));
+            });
+        }
         
         if (ModHelper.hasRelic(WaxOfElation.ID)) {
             phase0.addOption(OPTIONS[3], (i) -> {

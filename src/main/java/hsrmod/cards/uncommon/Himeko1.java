@@ -48,19 +48,20 @@ public class Himeko1 extends BaseCard implements PreBreakSubscriber {
     @Override
     public void onEnterHand() {
         super.onEnterHand();
+        SubscriptionManager.unsubscribe(this);
         SubscriptionManager.subscribe(this);
     }
 
     @Override
     public void onLeaveHand() {
         super.onLeaveHand();
-        SubscriptionManager.unsubscribe(this);
     }
 
     @Override
     public void preBreak(ElementalDamageInfo info, AbstractCreature target) {
         if (SubscriptionManager.checkSubscriber(this) 
                 && info.elementType != null 
+                && AbstractDungeon.player.hand.contains(this)
                 && info.owner == AbstractDungeon.player) {
             followedUp = true;
             addToBot(new FollowUpAction(this));

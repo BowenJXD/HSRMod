@@ -37,7 +37,7 @@ public abstract class WaxRelic extends BaseRelic implements ClickableRelic, ITut
     protected int weight;
     public AbstractCard.CardTags selectedTag;
     public CardGroup pathGroup;
-    public int pathToBan = 1;
+    public int pathToBan = 2;
     Texture[] ftues;
     String[] tutTexts;
 

@@ -1,14 +1,18 @@
 package hsrmod.monsters.TheEnding;
 
+import basemod.abstracts.CustomSavable;
 import com.evacipated.cardcrawl.modthespire.lib.SpireOverride;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.SuicideAction;
 import com.megacrit.cardcrawl.actions.unique.CanLoseAction;
 import com.megacrit.cardcrawl.actions.unique.CannotLoseAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import hsrmod.cardsV2.Trailblaze.Phainon1;
 import hsrmod.cardsV2.Trailblaze.Phainon2;
+import hsrmod.misc.VideoManager;
 import hsrmod.modcore.HSRMod;
 import hsrmod.monsters.BaseMonster;
 import hsrmod.powers.uniqueBuffs.RuinousIrontombPower;
@@ -16,8 +20,10 @@ import hsrmod.relics.special.CoreflameOfWorldbearing;
 import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.utils.ModHelper;
 
-public class Irontomb extends BaseMonster {
+public class Irontomb extends BaseMonster implements CustomSavable<Integer>{
     public static final String ID = Irontomb.class.getSimpleName();
+    
+    public static int reincarnationCount = 0;
     
     public Irontomb() {
         super(ID, 444, 50, 200, -160);
@@ -29,6 +35,10 @@ public class Irontomb extends BaseMonster {
     public void usePreBattleAction() {
         super.usePreBattleAction();
         addToBot(new CannotLoseAction());
+        if (reincarnationCount > 0) {
+            addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, reincarnationCount)));
+        }
+        reincarnationCount++;
     }
 
     @Override
@@ -72,5 +82,18 @@ public class Irontomb extends BaseMonster {
             SignatureHelper.unlock(HSRMod.makePath(Phainon2.ID), true);
         }
         CoreflameOfWorldbearing.addFlame(1);
+        VideoManager.play("Ending", 33, true);
+    }
+
+    @Override
+    public Integer onSave() {
+        return reincarnationCount;
+    }
+
+    @Override
+    public void onLoad(Integer integer) {
+        if (reincarnationCount == 0) {
+            reincarnationCount = integer;
+        }
     }
 }

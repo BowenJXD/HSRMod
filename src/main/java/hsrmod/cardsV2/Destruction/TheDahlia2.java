@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.BouncingAction;
 import hsrmod.actions.BreakDamageAction;
@@ -31,13 +32,13 @@ public class TheDahlia2 extends BaseCard implements PreBreakDamageSubscriber {
     @Override
     public void onEnterHand() {
         super.onEnterHand();
+        SubscriptionManager.unsubscribe(this);
         SubscriptionManager.subscribe(this);
     }
 
     @Override
     public void onLeaveHand() {
         super.onLeaveHand();
-        SubscriptionManager.unsubscribe(this);
     }
 
     @Override
@@ -60,7 +61,8 @@ public class TheDahlia2 extends BaseCard implements PreBreakDamageSubscriber {
 
     @Override
     public float preBreakDamage(float amount, AbstractCreature target) {
-        if (SubscriptionManager.checkSubscriber(this)) {
+        if (SubscriptionManager.checkSubscriber(this)
+                && AbstractDungeon.player.hand.contains(this)) {
             followedUp = true;
             addToBot(new FollowUpAction(this, target));
         }

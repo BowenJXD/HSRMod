@@ -46,4 +46,10 @@ public class March7th4 extends BaseCard {
         addToBot(new DrawCardAction(magicNumber));
         upgradeMagicNumber(magicNumberCache - magicNumber);
     }
+
+    @Override
+    public void triggerOnGlowCheck() {
+        super.triggerOnGlowCheck();
+        followedUp = false;
+    }
 }

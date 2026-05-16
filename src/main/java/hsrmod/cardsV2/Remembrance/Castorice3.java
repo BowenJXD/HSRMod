@@ -104,6 +104,7 @@ public class Castorice3 extends BaseCard implements PostHPUpdateSubscriber {
                 
                 p.orbs.set(i, dark);
             }
+            SubscriptionManager.getInstance().extraChecks.add(this);
         });
     }
     

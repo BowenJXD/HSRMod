@@ -10,6 +10,8 @@ import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
 import hsrmod.signature.utils.SignatureHelper;
 
+import java.time.LocalTime;
+
 public class Hyacine1 extends BaseCard {
     public static final String ID = Hyacine1.class.getSimpleName();
 
@@ -24,13 +26,19 @@ public class Hyacine1 extends BaseCard {
             addToBot(new ChannelAction(new Frost()));
         }
         addToBot(new AddTemporaryHPAction(p, p, block));
-        
+
         // if the system time is within 4-7 a.m., unlock the signature
-         long currentTime = System.currentTimeMillis();
-         long startTime = currentTime - (currentTime % 86400000) + 4 * 3600000; // 4 a.m. today
-         long endTime = startTime + 3 * 3600000; // 7 a.m. today
-         if (currentTime >= startTime && currentTime < endTime) {
-             SignatureHelper.unlock(HSRMod.makePath(ID), true);
-         }
+        LocalTime now = LocalTime.now();
+
+        LocalTime start = LocalTime.of(4, 0); // 4:00 AM
+        LocalTime end = LocalTime.of(7, 0);   // 7:00 AM
+
+        boolean isBetween = !now.isBefore(start) && now.isBefore(end);
+
+        if (isBetween) {
+            SignatureHelper.unlock(HSRMod.makePath(ID), true);
+        } else {
+            System.out.println("Outside the range");
+        }
     }
 }

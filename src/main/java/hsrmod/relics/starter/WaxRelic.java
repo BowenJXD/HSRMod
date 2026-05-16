@@ -54,6 +54,7 @@ public abstract class WaxRelic extends BaseRelic implements ClickableRelic, ITut
         if (tag != CustomEnums.THE_HUNT) pathGroup.addToBottom(new TheHunt());
         if (tag != CustomEnums.ERUDITION) pathGroup.addToBottom(new Erudition());
         if (tag != CustomEnums.ABUNDANCE) pathGroup.addToBottom(new Abundance());
+        if (tag != CustomEnums.REMEMBRANCE) pathGroup.addToBottom(new Remembrance());
         
         ftues = new Texture[]{
                 ImageMaster.loadImage(PathDefine.UI_PATH + "tutorial/" + selectedTag + "1.png"),

@@ -47,11 +47,14 @@ public class Zandar extends BaseMonster implements PostMonsterDeathSubscriber {
         monFunc = slot -> {
             switch (slots.indexOf(slot)) {
                 case 0: 
-                    return new FuriaeWarrior(slot.x, slot.y);
+                    if (ModHelper.noMonster(FuriaeWarrior.ID))
+                        return new FuriaeWarrior(slot.x, slot.y);
                 case 1:
-                    return new TideErodedBlade(slot.x, slot.y);
+                    if (ModHelper.noMonster(TideErodedBlade.ID))
+                        return new TideErodedBlade(slot.x, slot.y);
                 case 2:
-                    return new CorrodedAxe(slot.x, slot.y);
+                    if (ModHelper.noMonster(CorrodedAxe.ID))
+                        return new CorrodedAxe(slot.x, slot.y);
                 default:
                     return null;
             }
@@ -153,10 +156,10 @@ public class Zandar extends BaseMonster implements PostMonsterDeathSubscriber {
         shout(0, 5.0f);
         
         SubscriptionManager.subscribe(this);
-        addToBot(new ApplyPowerAction(p, this, new DestructionFirstPower(p, 1)));
-        addToBot(new ApplyPowerAction(this, this, new ArtifactPower(this, artifactAmt)));
-        addToBot(new ApplyPowerAction(this, this, new CorporealFormulaPower(this, 1)));
-        addToBot(new ApplyPowerAction(this, this, new EvolutionModePower(this, evolutionModeAmt, disputationModeAmt)));
+        addToBot(new ApplyPowerAction(p, this, new DestructionFirstPower(p, 1), 0));
+        addToBot(new ApplyPowerAction(this, this, new ArtifactPower(this, artifactAmt), 0));
+        addToBot(new ApplyPowerAction(this, this, new CorporealFormulaPower(this, 1), 0));
+        addToBot(new ApplyPowerAction(this, this, new EvolutionModePower(this, evolutionModeAmt, disputationModeAmt), 0));
         spawnMonsterOnSlot(slots.get(0), SpawnType.MINION, false);
     }
 
@@ -195,7 +198,7 @@ public class Zandar extends BaseMonster implements PostMonsterDeathSubscriber {
                 if (hasPower(EvolutionModePower.POWER_ID)) {
                     spawnMonsterOnSlot(slots.get(0), SpawnType.MINION, true);
                 } else if (!hasPower(DisputationModePower.POWER_ID)) {
-                    addToTop(new ApplyPowerAction(this, this, new DisputationModePower(this, disputationModeAmt, evolutionModeAmt)));
+                    addToTop(new ApplyPowerAction(this, this, new DisputationModePower(this, disputationModeAmt, evolutionModeAmt), 0));
                     addToBot(new ApplyPowerAction(this, this, new CorporealFormulaPower(this, 1)));
 
                     for (AbstractMonster mon : AbstractDungeon.getMonsters().monsters) {
@@ -225,7 +228,7 @@ public class Zandar extends BaseMonster implements PostMonsterDeathSubscriber {
                         spawnMonsterOnSlot(slots.get(2), SpawnType.MINION, true);
                     }
                 } else if (!hasPower(EvolutionModePower.POWER_ID)) {
-                    addToTop(new ApplyPowerAction(this, this, new EvolutionModePower(this, evolutionModeAmt, disputationModeAmt)));
+                    addToTop(new ApplyPowerAction(this, this, new EvolutionModePower(this, evolutionModeAmt, disputationModeAmt), 0));
                     addToBot(new ApplyPowerAction(this, this, new CorporealFormulaPower(this, 1)));
 
                     for (AbstractMonster mon : AbstractDungeon.getMonsters().monsters) {

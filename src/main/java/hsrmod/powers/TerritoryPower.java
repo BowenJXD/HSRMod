@@ -117,6 +117,7 @@ public abstract class TerritoryPower extends StatePower implements PostCardMoveS
     public void postCardMove(CardGroup group, AbstractCard card, boolean in) {
         if (SubscriptionManager.checkSubscriber(this)
                 && !card.hasTag(CustomEnums.TERRITORY)
+                && group.type != CardGroup.CardGroupType.MASTER_DECK
                 && in
         ) {
             group.removeCard(card);

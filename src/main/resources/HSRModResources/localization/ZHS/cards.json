@@ -326,6 +326,10 @@
     "SIGNATURE_UNLOCK_CONDITION": "一回合打出 #b4 次此牌。",
     "SIGNATURE_ILLUSTRATOR": "无期"
   },
+  "HSRMod:Mydei1": {
+    "SIGNATURE_UNLOCK_CONDITION": "在愤怒状态下，一次性受到至少 #b40 点伤害。",
+    "SIGNATURE_ILLUSTRATOR": "tomanattsu"
+  },
   "HSRMod:Mydei2": {
     "EXTENDED_DESCRIPTION": [
       "荡平万邦！"
@@ -338,7 +342,213 @@
   },
   "HSRMod:TheDahlia1": {
     "EXTENDED_DESCRIPTION": [
-      "（基础削韧值+1。造成伤害后，造成 #b50% 的 #y超击破伤害 ）"
+      "（基础削韧值+1。造成伤害后，造成50%的超击破伤害）",
+      "附魔「共舞」"
+    ]
+  },
+  "HSRMod:PermansorTerrae1": {
+    "EXTENDED_DESCRIPTION": [
+      "山鸣，龙啸！",
+      "掣地，擎天！"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "连续 #b5 场战斗不SL，且未受到任何伤害。",
+    "SIGNATURE_ILLUSTRATOR": "-萬事皆虛-"
+  },
+  "HSRMod:Cerydra1": {
+    "EXTENDED_DESCRIPTION": [
+      "汝等，满盘皆输！"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "四步结束战斗。",
+    "SIGNATURE_ILLUSTRATOR": "纽扣扣子"
+  },
+  "HSRMod:Anaxa1": {
+    "EXTENDED_DESCRIPTION": [
+      "直击灵魂！",
+      "彻底疯狂！"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "打出此牌造成 #b7 段伤害。",
+    "SIGNATURE_ILLUSTRATOR": "aamoooon e"
+  },
+  "HSRMod:Tribbie2": {
+    "EXTENDED_DESCRIPTION": [
+      "起飞——",
+      "冲啊——"
+    ]
+  },
+  "HSRMod:Hysilens1": {
+    "EXTENDED_DESCRIPTION": [
+      "不醉不归。",
+      "与我沉沦。"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "裂伤造成 #b50 点伤害。",
+    "SIGNATURE_ILLUSTRATOR": "OrzMizu"
+  },
+  "HSRMod:Cipher1": {
+    "EXTENDED_DESCRIPTION": [
+      "跑不掉咯~",
+      "发现我啦？"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "打出此牌时，拥有至少 #b999 金币。",
+    "SIGNATURE_ILLUSTRATOR": "南渣渣子"
+  },
+  "HSRMod:Aglaea2": {
+    "EXTENDED_DESCRIPTION": [
+      "谎言，纤毫毕现。",
+      "生命，脆若游丝。"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "打出时，当前战斗牌组中的所有牌均已解锁异画（若有）。",
+    "SIGNATURE_ILLUSTRATOR": "Saclia"
+  },
+  "HSRMod:Castorice3": {
+    "EXTENDED_DESCRIPTION": [
+      "拥抱新生吧！",
+      "我没有充能球"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "打出「灼掠幽墟的晦翼」葬送所有敌人。",
+    "SIGNATURE_ILLUSTRATOR": "Oro9999"
+  },
+  "HSRMod:Pollux1": {
+    "EXTENDED_DESCRIPTION": [
+      "我没有充能球"
+    ]
+  },
+  "HSRMod:Pollux3": {
+    "EXTENDED_DESCRIPTION": [
+      "愿死亡，捍卫你我。"
+    ]
+  },
+  "HSRMod:Hyacine1": {
+    "SIGNATURE_UNLOCK_CONDITION": "在拂晓时分（4：00-7：00）打出此牌。",
+    "SIGNATURE_ILLUSTRATOR": "-Likeer-"
+  },
+  "HSRMod:Hyacine2": {
+    "EXTENDED_DESCRIPTION": [
+      "拨开云雾，重见晴空！"
+    ]
+  },
+  "HSRMod:Evernight1": {
+    "SIGNATURE_UNLOCK_CONDITION": "一回合打出 #b3 次此牌。",
+    "SIGNATURE_ILLUSTRATOR": "乐格不是食物"
+  },
+  "HSRMod:Evernight2": {
+    "EXTENDED_DESCRIPTION": [
+      "夜色落幕…嘘，晚安。"
+    ]
+  },
+  "HSRMod:Trailblazer9": {
+    "EXTENDED_DESCRIPTION": [
+      "我们，无所不能！"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "通过「明天，一同写下！」打出「花与箭的舞曲」击杀所有敌人。",
+    "SIGNATURE_ILLUSTRATOR": "ひとはﾁｬﾝ"
+  },
+  "HSRMod:Trailblazer11": {
+    "EXTENDED_DESCRIPTION": [
+      "如我们所书！",
+      "写下新的结局！"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "通过「明天，一同写下！」打出「花与箭的舞曲」击杀所有敌人。",
+    "SIGNATURE_ILLUSTRATOR": "Jelmul"
+  },
+  "HSRMod:Cyrene1": {
+    "SIGNATURE_UNLOCK_CONDITION": "打出时，有 #b4 种不同的充能球。",
+    "SIGNATURE_ILLUSTRATOR": "qosic"
+  },
+  "HSRMod:Cyrene2": {
+    "SIGNATURE_UNLOCK_CONDITION": "一回合打出 #b7 次此牌。",
+    "SIGNATURE_ILLUSTRATOR": "knmoca"
+  },
+  "HSRMod:Cyrene3": {
+    "EXTENDED_DESCRIPTION": [
+      "记忆，等待被流星唤醒。"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "一次性获得所有的诗篇。",
+    "SIGNATURE_ILLUSTRATOR": "人间失联"
+  },
+  "HSRMod:Cyrene4": {
+    "EXTENDED_DESCRIPTION": [
+      "要用「爱」铭记我。",
+      " *【献予「浪漫」之诗】 战斗中每生成过一个 闪电 充能球，额外触发1次被动。",
+      " *【献予「门径」之诗】 额外摸2张牌。",
+      " *【献予「纷争」之诗】 获得2层临时 力量 。",
+      " *【献予「生死」之诗】 累计值会转化成 hsrmod:新蕊 。",
+      " *【献予「天空」之诗】 激发 冰霜 充能球后，从弃牌堆获得此牌。",
+      " *【献予「理性」之诗】 X+2。", 
+      " *【献予「诡计」之诗】 下次打出时，偷窃10金币。",
+      " *【献予「负世」之诗】 进入境界时，和每次打出「命运 · 此躯即神」后，获得2层 力量 和 死亡律动 。境界不再会自然结束。",
+      " *【献予「海洋」之诗】 令其 hsrmod:裂伤 伤害不再有上限。",
+      " *【献予「律法」之诗】  hsrmod:军功 触发时，保留1层。",
+      " *【献予「岁月」之诗】 改为触发所有充能球的被动。",
+      " *【献予「大地」之诗】 触发所有 冰霜 充能球的被动。",
+      " *【献予「真我」之诗】 若为 等离子 ，依旧返还，且获得 hsrmod:执念 。",
+      " *【献予「创世」之诗】 将 *「明天，一同写下！」 加入摸牌堆。"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "一次性获得所有的诗篇。",
+    "SIGNATURE_ILLUSTRATOR": "kirabunni"
+  },
+  "HSRMod:Demiurge1": {
+    "EXTENDED_DESCRIPTION": [
+      "收下答案~",
+      "此为永恒~"
+    ]
+  },
+  "HSRMod:Demiurge2": {
+    "EXTENDED_DESCRIPTION": [
+      "蒙 #r爱 的世界，绝不会毁灭！",
+      "将这光明，泼洒向黑暗！"
+    ]
+  },
+  "HSRMod:Demiurge3": {
+    "EXTENDED_DESCRIPTION": [
+      "四亿史诗——以我成篇！",
+      "#r逐火 的命路——由我们改写！",
+      "亿万缕「记忆」——化作繁星照彻银河！",
+      "以 #r爱 汇成长河——席卷 #r恨 的坟茔！",
+      "浪漫的结局—— @由每一颗心书写！@",
+      "选择1张牌强化：若为状态或诅咒，移除之，否则获得并升级之，并移除消耗词条"
+    ]
+  },
+  "HSRMod:Phainon1": {
+    "EXTENDED_DESCRIPTION": [
+      "未來將至！",
+      "为了明天！"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "在【时墟铁墓】内葬送【铁墓】。",
+    "SIGNATURE_ILLUSTRATOR": "Fylus"
+  },
+  "HSRMod:Phainon2": {
+    "EXTENDED_DESCRIPTION": [
+      "亿万火种之怒，燃尽此身！"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "在【时墟铁墓】内葬送【铁墓】。",
+    "SIGNATURE_ILLUSTRATOR": "三門"
+  },
+  "HSRMod:Khaslana1": {
+    "EXTENDED_DESCRIPTION": [
+      "空壳而已。",
+      "徒有灵魂。"
+    ]
+  },
+  "HSRMod:Khaslana2": {
+    "EXTENDED_DESCRIPTION": [
+      "以血淬火！",
+      "铭记这道痛楚！",
+      "烙印纷争之名！"
+    ]
+  },
+  "HSRMod:Khaslana3": {
+    "EXTENDED_DESCRIPTION": [
+      "熔毁长夜！",
+      "挣脱囚笼！",
+      "以新生的烈阳，撕裂长空！",
+      "以旧日余烬，为来世破晓！"
+    ]
+  },
+  "HSRMod:Khaslana4": {
+    "EXTENDED_DESCRIPTION": [
+      "赐你，众星俱焚的曙光。",
+      "「记忆」令骄阳绽放耀眼的金色，照亮长夜…",
+      "「毁灭」的骄阳不会落下，直至燃烧殆尽…"
     ]
   }
 }

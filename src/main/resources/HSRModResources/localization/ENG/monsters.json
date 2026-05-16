@@ -216,6 +216,95 @@
     ],
     "DIALOG": []
   },
+  "HSRMod:Irontomb": {
+    "NAME": "Irontomb · Anti-Nous · Funeral of Gnosis",
+    "MOVES": [
+      ""
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:AntiCreator": {
+    "NAME": "Anti-Creator · Hatred Inundate",
+    "MOVES": [
+      "The Spirit's Prison Shall Burn⚠",
+      "The Crown of Divinity Shall Shatter⚠",
+      "Yield not to tyranny⚠",
+      "Mire Not Within Caves⚠",
+      "Ashes of All Begets Genesis⚠",
+      "Resist and Destroy",
+      "⚠Immolate the Heavens, Abandon the World⚠"
+    ],
+    "DIALOG": [
+      "Deal damage, reduce your max HP by #b%d%%.",
+      "Deal damage. If #yMythos is alive, downgrade all cards in draw pile. If #bLogos is alive, downgrade all cards in discard pile.",
+      "Gain Strength, inflict #yDescent #yinto #yChaos. If #yMythos is alive, add #b%d status cards to the draw pile. If #bLogos is alive, add #b%d status cards to the discard pile.",
+      "Deal damage. Inflict #b%d stacks of #yAction #yLock and 1 stack of #yDescent #yinto #yChaos.",
+      "Deal damage based on player's block and temp HP. Steals strength.",
+      "Gain Block, lock Toughness, charge up #r⚠Incinerate the Divine Kingdom, Forsake the World⚠.",
+      "Incinerate the Divine Kingdom, Forsake the World: NL Deal damage. If #yMythos is alive, Exhaust the draw pile. If #bLogos is alive, Exhaust the discard pile.",
+      "Anti-Creator is about to downgrade your deck!!!",
+      "Anti-Creator is about to unleash 【Incinerate the Divine Kingdom, Forsake the World】 and Exhaust the entire deck!!!",
+      "Anti-Creator gets into its final phase, gain all exhausted cards!"
+    ]
+  },
+  "HSRMod:ImprisonedMythos": {
+    "NAME": "Imprisoned Mythos",
+    "MOVES": [
+      "Induce Frenzy",
+      "Echoes of Tragedy",
+      "Eternal Recurrence"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:ManipulatedLogos": {
+    "NAME": "Manipulated Logos",
+    "MOVES": [
+      "Hail Chaos",
+      "Eradication of Falsehood",
+      "Immortal"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:Zandar": {
+    "NAME": "First Genius, Entelechy, Zandar",
+    "MOVES": [
+      "Celestial Displacement Theory",
+      "Potential Realization Conjecture",
+      "Antinomy of Erudition",
+      "Imaginary Geometry Inference Method",
+      "DEL Invasion_Variable",
+      "DEFRAG Life_Optimization",
+      "Origination && Destruction",
+      "FORMAT Malfunction_Zone",
+      "⚠Query: Prime Mover's Outcome⚠",
+      "Query: Prime Mover's Outcome: Deal damage, remove all #yStrengthen stacks, deal 1 additional hit per stack removed.",
+      "Played for free. After playing, take %d damage and remove this effect."
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:FuriaeWarrior": {
+    "NAME": "Furiae Warrior",
+    "MOVES": [
+      "Collision of the Third Orbit"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:TideErodedBlade": {
+    "NAME": "Tide-Eroded Blade",
+    "MOVES": [
+      "Tip of Destruction"
+    ],
+    "DIALOG": []
+  },
+  "HSRMod:CorrodedAxe": {
+    "NAME": "Corroded Axe",
+    "MOVES": [
+      "Wrathful Blazing Axe"
+    ],
+    "DIALOG": [
+      "Corroded Axe senses an ally has been slain and triggers 【Vengeful Fury】!"
+    ]
+  },
   "HSRMod:SomethingUntoDeath": {
     "NAME": "Something Unto Death",
     "MOVES": [

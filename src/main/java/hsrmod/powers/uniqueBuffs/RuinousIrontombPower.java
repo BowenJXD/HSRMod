@@ -2,14 +2,12 @@ package hsrmod.powers.uniqueBuffs;
 
 import basemod.BaseMod;
 import basemod.ReflectionHacks;
-import basemod.interfaces.PostBattleSubscriber;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterQueueItem;
@@ -17,19 +15,11 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.BeatOfDeathPower;
 import com.megacrit.cardcrawl.powers.IntangiblePlayerPower;
 import com.megacrit.cardcrawl.powers.IntangiblePower;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import hsrmod.actions.FollowUpAction;
-import hsrmod.cardsV2.Remembrance.Pollux3;
 import hsrmod.cardsV2.Trailblaze.Khaslana2;
 import hsrmod.cardsV2.Trailblaze.Khaslana4;
-import hsrmod.cardsV2.Trailblaze.Phainon1;
-import hsrmod.cardsV2.Trailblaze.Phainon2;
 import hsrmod.modcore.HSRMod;
-import hsrmod.monsters.TheEnding.Irontomb;
-import hsrmod.powers.PowerPower;
 import hsrmod.powers.TerritoryPower;
-import hsrmod.signature.utils.SignatureHelper;
-import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.GAMManager;
 import hsrmod.utils.GeneralUtil;
 import hsrmod.utils.ModHelper;
@@ -44,7 +34,7 @@ public class RuinousIrontombPower extends TerritoryPower implements OnReceivePow
     public static final String POWER_ID = HSRMod.makePath(RuinousIrontombPower.class.getSimpleName());
     
     static final int SCOURGE_COUNT = 7;
-    static final int HEAL = 10;
+    static final int BLOCK_AMT = 15;
     int cardsPlayed = 0;
     
     boolean triggered = false;
@@ -58,7 +48,7 @@ public class RuinousIrontombPower extends TerritoryPower implements OnReceivePow
 
     @Override
     public void updateDescription() {
-        description = GeneralUtil.tryFormat(DESCRIPTIONS[0], SCOURGE_COUNT, HEAL, amount);
+        description = GeneralUtil.tryFormat(DESCRIPTIONS[0], SCOURGE_COUNT, BLOCK_AMT, BLOCK_AMT, amount);
     }
 
     @Override
@@ -80,6 +70,7 @@ public class RuinousIrontombPower extends TerritoryPower implements OnReceivePow
             }
         }
         addToBot(new ApplyPowerAction(owner, owner, new ScourgePower(owner, SCOURGE_COUNT)));
+        addToBot(new GainBlockAction(owner, owner, BLOCK_AMT));
 
         MusicStack.getInstance().push("Flares of the Blazing Sun");
 
@@ -116,7 +107,7 @@ public class RuinousIrontombPower extends TerritoryPower implements OnReceivePow
     @Override
     public void onPlayCard(AbstractCard card, AbstractMonster m) {
         super.onPlayCard(card, m);
-        addToBot(new GainBlockAction(owner, owner, HEAL));
+        addToBot(new GainBlockAction(owner, owner, BLOCK_AMT));
     }
 
     @Override
@@ -161,7 +152,7 @@ public class RuinousIrontombPower extends TerritoryPower implements OnReceivePow
         if (damageAmount >= owner.currentBlock && !triggered) {
             triggered = true;
             AbstractCard card = new Khaslana4();
-            card.baseDamage += cardsPlayed;
+            card.baseDamage += cardsPlayed * 2;
             addToBot(new MakeTempCardInHandAction(card, false, true));
             addToBot(new FollowUpAction(card));
             cardsPlayed = 0;

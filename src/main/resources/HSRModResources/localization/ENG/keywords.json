@@ -130,5 +130,49 @@
   {
     "NAMES": ["Dewdrop", "Dew-drop", "dewdrop"],
     "DESCRIPTION": "At end of turn, remove all stack to trigger: deal X damage to random enemy."
+  },
+  {
+    "NAMES": ["Military Merit", "Military-Merit"],
+    "DESCRIPTION": "When playing an Attack card, if stacks < #b6 or [E] spent = 0, stack 1. Otherwise consume #b6 stacks, gain #b4 #yVigor, and play an extra time."
+  },
+  {
+    "NAMES": ["Territory", "territory"],
+    "DESCRIPTION": "Unique across the entire field. A Territory cannot be deployed while another Territory is active. When deployed, record the current state of the deck, then remove all non-Territory cards. While active, any non-Territory cards obtained are removed. When the Territory ends, remove all Territory cards and restore the deck to its recorded state."
+  },
+  {
+    "NAMES": ["Territory Card", "territory-card"],
+    "DESCRIPTION": "Cards that only appear within their corresponding Territory. After being played, if they are not consumed, they are returned to the hand."
+  },
+  {
+    "NAMES": ["Lost Netherland", "lost-netherland"],
+    "DESCRIPTION": "While active, when you would receive #rfatal damage, prevent it and play \" #yWings #ySweep #ythe #yRuins \"."
+  },
+  {
+    "NAMES": ["Obsession", "obsession"],
+    "DESCRIPTION": "Maximum is #b8. Non-Plasma Orb effects +X. At the end of the turn, gain equal #yTemp #yHP, then remove all stacks."
+  },
+  {
+    "NAMES": ["Recollection", "recollection"],
+    "DESCRIPTION": "After playing a card, stack 1 (2 if it is a #yChrysosHeir card). When reaching #b24 stacks, gain \" #yHello, #yWorld♪ \"."
+  },
+  {
+    "NAMES": ["Future", "future"],
+    "DESCRIPTION": "After playing a card, stack 1 (2 if it is a #yChrysosHeir), up to #b24. At end of turn, if > #b12 stacks, trigger: remove #b12 stacks and play \" #yMinuet #yof #yBlooms #yand #yPlumes\" ."
+  },
+  {
+    "NAMES": ["Newbud", "newbud"],
+    "DESCRIPTION": "Increase the damage of #yWings #ySweep #ythe #yRuins by X."
+  },
+  {
+    "NAMES": ["Scourge", "scourge"],
+    "DESCRIPTION": "Replaces [E], up to #b7."
+  },
+  {
+    "NAMES": ["Ruinous Irontomb", "ruinous-irontomb"],
+    "DESCRIPTION": "Upon entering, remove all negative effects and all units' #yIntangible, and gain #b7 stacks of #yScourge. NL While active, immune to negative effects. After playing a card, gain #b10 Block and make an enemy act once. NL After playing 8 cards, play \" #yFate: #yDivine #yVessel \". NL While active, when Block is broken through, prevent it and play \" #yFate: #yDivine #yVessel \"."
+  },
+  {
+    "NAMES": ["Coreflame", "coreflame"],
+    "DESCRIPTION": "Persists across battles and across runs."
   }
 ]

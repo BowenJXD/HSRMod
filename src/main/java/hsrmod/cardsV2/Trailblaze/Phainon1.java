@@ -1,12 +1,14 @@
 package hsrmod.cardsV2.Trailblaze;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementalDamageInfo;
+import hsrmod.relics.special.CoreflameOfWorldbearing;
 
 public class Phainon1 extends BaseCard {
     public static final String ID = Phainon1.class.getSimpleName();
@@ -21,5 +23,6 @@ public class Phainon1 extends BaseCard {
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         shout(0, 1);
         addToBot(new ElementalDamageAction(m, new ElementalDamageInfo(this), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+        CoreflameOfWorldbearing.addFlame(magicNumber);
     }
 }

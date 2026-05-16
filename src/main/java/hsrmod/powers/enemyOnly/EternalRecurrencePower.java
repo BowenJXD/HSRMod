@@ -3,12 +3,15 @@ package hsrmod.powers.enemyOnly;
 import basemod.BaseMod;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.utility.ExhaustToHandAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.StatePower;
 import hsrmod.utils.GeneralUtil;
 import hsrmod.utils.ModHelper;
+
+import java.util.stream.Collectors;
 
 public class EternalRecurrencePower extends StatePower {
     public static final String POWER_ID = HSRMod.makePath(EternalRecurrencePower.class.getSimpleName());
@@ -23,8 +26,11 @@ public class EternalRecurrencePower extends StatePower {
     public void onDeath() {
         super.onDeath();
         ModHelper.addToBotAbstract(() -> {
-                    addToTop(new DrawCardAction(BaseMod.MAX_HAND_SIZE));
-                    addToTop(new ExhaustToHandAction(GeneralUtil.getRandomElement(AbstractDungeon.player.exhaustPile.group, AbstractDungeon.cardRandomRng)));
+                    addToTop(new DrawCardAction(BaseMod.MAX_HAND_SIZE));                    
+                    addToTop(new ExhaustToHandAction(GeneralUtil.getRandomElement(
+                    AbstractDungeon.player.exhaustPile.group.stream()
+                            .filter(c -> c.type != AbstractCard.CardType.CURSE && c.type != AbstractCard.CardType.STATUS).collect(Collectors.toList()),
+                    AbstractDungeon.cardRandomRng)));
                 }
         );
     }

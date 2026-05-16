@@ -31,7 +31,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Khaslana2 extends BaseCard {
     public static final String ID = Khaslana2.class.getSimpleName();
 
-    int defenseCount = 50;
+    int defenseCount = 75;
     float aoeDmgP = 0.25f;
     float bounceDmgP = 0.25f;
 
@@ -46,7 +46,7 @@ public class Khaslana2 extends BaseCard {
     @Override
     public void onMove(CardGroup group, boolean in) {
         super.onMove(group, in);
-        if (in && group == AbstractDungeon.player.exhaustPile) {
+        if (in && AbstractDungeon.player != null && group == AbstractDungeon.player.exhaustPile) {
             addToTop(new MoveCardsAction(AbstractDungeon.player.hand, group, c -> c == this));
         }
     }

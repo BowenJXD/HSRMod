@@ -473,7 +473,13 @@ public abstract class BaseMonster extends CustomMonster {
             shout(index);
         }
     }
-    
+
+    @Override
+    protected void onBossVictoryLogic() {
+        super.onBossVictoryLogic();
+        MusicStack.getInstance().clear();
+    }
+
     public static class MoveInfo {
         public int index;
         public AbstractMonster.Intent intent;

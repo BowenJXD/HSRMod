@@ -43,7 +43,7 @@ public class MusicStack {
     public void remove(String musicKey) {
         // stack.remove(musicKey);
         
-        if (Objects.equals(musicKey, stack.get(stack.size()-1))) {
+        if (!stack.isEmpty() && Objects.equals(musicKey, stack.get(stack.size()-1))) {
             stack.remove(musicKey);
             if (!stack.isEmpty()) {
                 CardCrawlGame.music.justFadeOutTempBGM();

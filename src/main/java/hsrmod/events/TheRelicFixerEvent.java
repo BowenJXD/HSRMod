@@ -71,6 +71,7 @@ public class TheRelicFixerEvent extends PhasedEvent {
         if (ModHelper.hasRelic(WaxOfAbundance.ID)) {
             phase0.addOption(OPTIONS[2], (i) -> {
                 RelicEventHelper.gainRelics(1, r -> RelicTagField.destructible.get(r));
+                transitionKey(1);
             });
         }
         
@@ -79,6 +80,7 @@ public class TheRelicFixerEvent extends PhasedEvent {
                 AbstractRelic[] relicsArray = AbstractDungeon.player.relics.stream().filter(r -> r.tier == AbstractRelic.RelicTier.UNCOMMON).toArray(AbstractRelic[]::new);
                 ModHelper.addEffectAbstract(() -> RelicEventHelper.loseRelics(true, relicsArray));
                 ModHelper.addEffectAbstract(() -> RelicEventHelper.gainRelics(relicsArray.length, r -> RelicTagField.destructible.get(r)));
+                transitionKey(1);
             });
         }
         

@@ -3,6 +3,7 @@ package hsrmod.powers.enemyOnly;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.utility.ExhaustToHandAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
@@ -11,6 +12,8 @@ import hsrmod.powers.StatePower;
 import hsrmod.powers.misc.EnergyPower;
 import hsrmod.utils.GeneralUtil;
 import hsrmod.utils.ModHelper;
+
+import java.util.stream.Collectors;
 
 public class ImmortalPower extends StatePower {
     public static final String POWER_ID = HSRMod.makePath(ImmortalPower.class.getSimpleName());
@@ -30,7 +33,10 @@ public class ImmortalPower extends StatePower {
                         addToTop(new GainEnergyAction(num));
                     }
                     addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new EnergyPower(AbstractDungeon.player, EnergyPower.AMOUNT_LIMIT)));
-                    addToTop(new ExhaustToHandAction(GeneralUtil.getRandomElement(AbstractDungeon.player.exhaustPile.group, AbstractDungeon.cardRandomRng)));
+                    addToTop(new ExhaustToHandAction(GeneralUtil.getRandomElement(
+                            AbstractDungeon.player.exhaustPile.group.stream()
+                                    .filter(c -> c.type != AbstractCard.CardType.CURSE && c.type != AbstractCard.CardType.STATUS).collect(Collectors.toList()), 
+                            AbstractDungeon.cardRandomRng)));
                 }
         );
     }

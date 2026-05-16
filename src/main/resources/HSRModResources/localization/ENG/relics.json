@@ -130,17 +130,20 @@
     "NAME": "Wax Of Remembrance",
     "FLAVOR": "It is said that stamping with this Sealing Wax will attract a glimpse from the corresponding Aeon from across space and time - IX is watching you! ",
     "DESCRIPTIONS": [
-      "Increase the chance of appearing of \"Remembrance\" cards. Right click in Neow's room to ban paths.",
-      "Increase the chance of appearing of \"Remembrance\" cards. Banned paths: %s.",
-      "Choose %d paths to ban"
+      "Increase the chance of appearing of \" #yRemembrance \" cards. Orb slots +2. Lightning/Dark Orbs deal Thunder/Quantum elemental damage (toughness reduction: 1). NL Right click in combat to view #ytutorial .",
+      "Increase the chance of appearing of \" #yRemembrance \" cards. Orb slots +2. Lightning/Dark Orbs deal Thunder/Quantum elemental damage (toughness reduction: 1). Right click in #yNeow's #yRoom to #rban #rpaths . NL Right click in combat to view #ytutorial .",
+      "Increase the chance of appearing of \" #yRemembrance \" cards. Orb slots +2. Lightning/Dark Orbs deal Thunder/Quantum elemental damage (toughness reduction: 1). Banned paths: #y%s . NL Right click in combat to view #ytutorial .",
+      "Choose %d paths, their cards will not appear as card rewards.",
+      "The Remembrance Path gains power by generating Orbs and triggering their passives. The Remembrance Wax provides Orb slots and causes Orbs to deal elemental damage.",
+      "Some Remembrance cards can also stack Temp HP, which certain cards can consume to convert into damage output."
     ]
   },
   "HSRMod:TrailblazeTimer": {
     "NAME": "Trailblaze Timer",
     "FLAVOR": "It broke countless times and underwent endless repairs. Its former shape was no longer discernible, and only the stilled sharp hands were pointing ever forward.",
     "DESCRIPTIONS": [
-      "Future card rewards have #b1 more cards to choose from. NL Right click in Neow's room to ban paths.",
-      "Future card rewards have #b1 more cards to choose from. Banned paths: %s.",
+      "Future card rewards have #b2 more cards to choose from. NL Right click in Neow's room to ban paths.",
+      "Future card rewards have #b2 more cards to choose from. Banned paths: %s.",
       "Choose %d paths to ban"
     ]
   },
@@ -197,14 +200,21 @@
     "NAME": "Longevous Disciple",
     "FLAVOR": "",
     "DESCRIPTIONS": [
-      "Starter defends would now gain temp HP instead, and its block + #b1."
+      "At the start of combat, starter defends gain Temp HP instead of Block."
+    ]
+  },
+  "HSRMod:WorldRemakingDeliverer": {
+    "NAME": "World-Remaking Deliverer",
+    "FLAVOR": "\"Indeed, we set everything ablaze——\" NL \"Only to inscribe the opening stroke in the epic of creation.\"",
+    "DESCRIPTIONS": [
+      "After the first time each distinct starter strike is played in a battle, generate #b1 Orb."
     ]
   },
   "HSRMod:MasterOfDreamMachinations": {
     "NAME": "Master of Dream Machinations",
     "FLAVOR": "The more people want to discover the truth, the more they will be blinded by lies... Amidst the thousands of legends and rumors, this superstar of the festivities will only leave his footprints, but never his face",
     "DESCRIPTIONS": [
-      "Gain #yAstral #yExpress upon gain. You can right click this relic in shop to use some gold to transform a card.",
+      "Gain #yAstral #yExpress upon gain. NL At the start of each turn, add 1 random card to your hand that can be played for free once. NL You can right click this relic in shop to use some gold to transform a card.",
       "Transform a card"
     ]
   },
@@ -290,7 +300,7 @@
     "NAME": "Record From Beyond The Sky",
     "FLAVOR": "The last Phonograph of Order was destroyed in the Emperor's War, and now the thick layer of dust on the records protests against that soundless era.",
     "DESCRIPTIONS": [
-      "Prevent the first debuff and damage you receive in each combat."
+      "At the start of combat, gain 1 stack of Artifact."
     ]
   },
   "HSRMod:EntropicDie": {
@@ -718,6 +728,13 @@
       "For every 3 #rattack cards played in a turn, deal #b10 damage to all enemies that were not targeted by these cards."
     ]
   },
+  "HSRMod:FootstepOfGods": {
+    "NAME": "Footstep of Gods",
+    "FLAVOR": "They claim this is proof that Kephrali walked upon the earth, and those who step in the footprints can also receive a Titan's blessing.",
+    "DESCRIPTIONS": [
+      "The first time a #yChrysosHeir card is played each turn, generate #b1 random Orb."
+    ]
+  },
   "HSRMod:InsectWeb": {
     "NAME": "Insect Web",
     "FLAVOR": "",
@@ -734,9 +751,30 @@
   },
   "HSRMod:CarnivalsTail": {
     "NAME": "Carvinal's Tail",
-    "FLAVOR": "",
+    "FLAVOR": "These insatiable machines ceaselessly demand their reward, gulping down honeybrew and propelling wooden boats across the ocean.",
     "DESCRIPTIONS": [
       "Regain relics that aren't gained via this way."
+    ]
+  },
+  "HSRMod:ObliterationWickTrimmer": {
+    "NAME": "Obliteration Wick Trimmer",
+    "FLAVOR": "If you use these wick trimmers to cut the wick, the furious antimatter flame will instead ignite the candle, and amid the particle collision, the entire candle instantly annihilates after burning for a few seconds.",
+    "DESCRIPTIONS": [
+      "Each time you add #b1 card to your deck, max HP +#b1 and gain 1 stack of #yVigor at the start of battle."
+    ]
+  },
+  "HSRMod:MemoryCycle": {
+    "NAME": "Memory Cycle",
+    "FLAVOR": "A cremation worker viewed her profession as a form of ascetic practice, firmly believing all \"Memories\" must be managed and constrained.",
+    "DESCRIPTIONS": [
+      "At the start of combat, replace all Power cards with random Power cards, and play up to #b4 of them."
+    ]
+  },
+  "HSRMod:CoreflameOfWorldbearing": {
+    "NAME": "Coreflame of \"Worldbearing\"",
+    "FLAVOR": "——\"But if dawn were never to exist, let the fury burn this body to ashes, becoming tomorrow's blazing sun!\"",
+    "DESCRIPTIONS": [
+      "Counter equals the number of #rhsrmod:Coreflame you possess. NL After exhausting a #yChrysosHeir card, gain 1 #rCoreflame. NL Right click this relic to consume #b12 #rCoreflame and obtain \"He Who Bears the World Must Burn\"."
     ]
   }
 }

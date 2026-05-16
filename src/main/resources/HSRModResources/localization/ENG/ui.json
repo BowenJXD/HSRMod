@@ -23,6 +23,14 @@
       "Enter the land of dreams: #pPenacony."
     ]
   },
+  "HSRMod:Amphoreus": {
+    "TEXT": [
+      "Amphoreus",
+      "Act IV",
+      "#rAmphoreus , The Eternal Land is a segmentum hidden deep in the cosmos. It is severed from the outside and is difficult for anyone to detect or encounter. Standard interstellar navigation can barely perceive its existence, let alone pass through or arrive at the world itself.",
+      "Enter the land of eternity: #rAmphoreus."
+    ]
+  },
   "HSRMod:RelicEventHelper": {
     "TEXT": [
       "Choose %d cards",

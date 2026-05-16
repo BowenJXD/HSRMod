@@ -59,6 +59,12 @@ public class Amphoreus extends CustomDungeon {
 
     @Override
     public void Ending() {
+        CardCrawlGame.music.fadeOutBGM();
+        MapRoomNode node = new MapRoomNode(3, 4);
+        node.room = new TrueVictoryRoom();
+        AbstractDungeon.nextRoom = node;
+        AbstractDungeon.closeCurrentScreen();
+        AbstractDungeon.nextRoomTransitionStart();
     }
 
     private void generateSpecialMap() {

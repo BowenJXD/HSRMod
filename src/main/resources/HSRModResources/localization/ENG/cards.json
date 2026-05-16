@@ -307,6 +307,10 @@
     "SIGNATURE_UNLOCK_CONDITION": "Use this card #b4 times a turn.",
     "SIGNATURE_ILLUSTRATOR": "无期"
   },
+  "HSRMod:Mydei1": {
+    "SIGNATURE_UNLOCK_CONDITION": "While in Wrath, take at least #b40 damage at once.",
+    "SIGNATURE_ILLUSTRATOR": "tomanattsu"
+  },
   "HSRMod:Mydei2": {
     "EXTENDED_DESCRIPTION": [
       "Conquer all lands!"
@@ -315,6 +319,217 @@
   "HSRMod:Mydei3": {
     "EXTENDED_DESCRIPTION": [
       "Hear my roar. I am Strife!"
+    ]
+  },
+  "HSRMod:TheDahlia1": {
+    "EXTENDED_DESCRIPTION": [
+      "(Base toughness reduction +1. After dealing damage, deal 50% Super Break damage.)",
+      "Enchant \"Co-Dance\""
+    ]
+  },
+  "HSRMod:PermansorTerrae1": {
+    "EXTENDED_DESCRIPTION": [
+      "Mountains roar. Dragons rise!",
+      "Earth shatters. Heaven trembles!"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "Win #b5 consecutive battles without save-loading, and without taking any damage.",
+    "SIGNATURE_ILLUSTRATOR": "-萬事皆虛-"
+  },
+  "HSRMod:Cerydra1": {
+    "EXTENDED_DESCRIPTION": [
+      "Your downfall is absolute!"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "End the battle within 4 moves.",
+    "SIGNATURE_ILLUSTRATOR": "纽扣扣子"
+  },
+  "HSRMod:Anaxa1": {
+    "EXTENDED_DESCRIPTION": [
+      "Straight to the soul!",
+      "Sink into insanity!"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "Deal #b7 hits with this card.",
+    "SIGNATURE_ILLUSTRATOR": "aamoooon e"
+  },
+  "HSRMod:Tribbie2": {
+    "EXTENDED_DESCRIPTION": [
+      "Blast off!",
+      "Go, go, go!"
+    ]
+  },
+  "HSRMod:Hysilens1": {
+    "EXTENDED_DESCRIPTION": [
+      "Be intoxicated.",
+      "Sink with me."
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "Lacerate deals #b50 damage.",
+    "SIGNATURE_ILLUSTRATOR": "OrzMizu"
+  },
+  "HSRMod:Cipher1": {
+    "EXTENDED_DESCRIPTION": [
+      "You can't run~",
+      "Found me?"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "When playing this card, have at least #b999 gold.",
+    "SIGNATURE_ILLUSTRATOR": "南渣渣子"
+  },
+  "HSRMod:Aglaea2": {
+    "EXTENDED_DESCRIPTION": [
+      "All lies shall be revealed.",
+      "So fragile, like a wisp of silk."
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "When played, all cards in the current battle deck have their alternate art unlocked (if any).",
+    "SIGNATURE_ILLUSTRATOR": "Saclia"
+  },
+  "HSRMod:Castorice3": {
+    "EXTENDED_DESCRIPTION": [
+      "Embrace a new life.",
+      "I have no Orb"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "Bury all enemies using \"Wings Sweep the Ruins\".",
+    "SIGNATURE_ILLUSTRATOR": "Oro9999"
+  },
+  "HSRMod:Pollux1": {
+    "EXTENDED_DESCRIPTION": [
+      "I have no Orb"
+    ]
+  },
+  "HSRMod:Pollux3": {
+    "EXTENDED_DESCRIPTION": [
+      "May Death protect us!"
+    ]
+  },
+  "HSRMod:Hyacine1": {
+    "SIGNATURE_UNLOCK_CONDITION": "Use this card during dawn hours (4:00-7:00).",
+    "SIGNATURE_ILLUSTRATOR": "-Likeer-"
+  },
+  "HSRMod:Hyacine2": {
+    "EXTENDED_DESCRIPTION": [
+      "Dispel the gloom, restore the skies!"
+    ]
+  },
+  "HSRMod:Evernight1": {
+    "SIGNATURE_UNLOCK_CONDITION": "Use this card #b3 times in one turn.",
+    "SIGNATURE_ILLUSTRATOR": "乐格不是食物"
+  },
+  "HSRMod:Evernight2": {
+    "EXTENDED_DESCRIPTION": [
+      "Night falls... Shh. Good night."
+    ]
+  },
+  "HSRMod:Trailblazer9": {
+    "EXTENDED_DESCRIPTION": [
+      "We can do anything!"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "Via \"Together, We Script Tomorrow!\", play \"Minuet of Blooms and Plumes\" to slay all enemies.",
+    "SIGNATURE_ILLUSTRATOR": "ひとはﾁｬﾝ"
+  },
+  "HSRMod:Trailblazer11": {
+    "EXTENDED_DESCRIPTION": [
+      "As we've written!",
+      "Write a new ending!"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "Via \"Together, We Script Tomorrow!\", play \"Minuet of Blooms and Plumes\" to slay all enemies.",
+    "SIGNATURE_ILLUSTRATOR": "Jelmul"
+  },
+  "HSRMod:Cyrene1": {
+    "SIGNATURE_UNLOCK_CONDITION": "When played, have #b4 different types of Orbs.",
+    "SIGNATURE_ILLUSTRATOR": "qosic"
+  },
+  "HSRMod:Cyrene2": {
+    "SIGNATURE_UNLOCK_CONDITION": "Use this card #b7 times in one turn.",
+    "SIGNATURE_ILLUSTRATOR": "knmoca"
+  },
+  "HSRMod:Cyrene3": {
+    "EXTENDED_DESCRIPTION": [
+      "Memories, waiting to be woken up by a shooting star."
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "Obtain all Odes at once.",
+    "SIGNATURE_ILLUSTRATOR": "人间失联"
+  },
+  "HSRMod:Cyrene4": {
+    "EXTENDED_DESCRIPTION": [
+      "Remember me with \"Love\".",
+      "[Ode to Romance] For each Lightning Orb generated in battle, trigger the passive 1 extra time.",
+      "[Ode to Passage] Draw 2 extra cards.",
+      "[Ode to Strife] Gain 2 temporary Strength.",
+      "[Ode to Life and Death] Accumulated value converts into hsrmod:NewBud.",
+      "[Ode to Sky] After triggering a Frost Orb, retrieve this card from the discard pile.",
+      "[Ode to Reason] X+2.",
+      "[Ode to Trickery] On next play, steal 10 gold.",
+      "[Ode to Worldbearing] Upon entering Realm, and after each play of \"Fate: Divine Vessel\", gain 2 Strength and Beat Of Death. Realm no longer ends naturally.",
+      "[Ode to Ocean] hsrmod:Bleed damage no longer has a cap.",
+      "[Ode to Law] When Military Merit triggers, retain 1 stack.",
+      "[Ode to Time] Instead triggers the passive of all Orbs.",
+      "[Ode to Earth] Trigger the passive of all Frost Orbs.",
+      "[Ode to Ego] If it is Plasma, still return it and gain hsrmod:Obsession.",
+      "[Ode to Genesis] Add \"Together, We Script Tomorrow!\" to the draw pile."
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "Obtain all Odes at once.",
+    "SIGNATURE_ILLUSTRATOR": "kirabunni"
+  },
+  "HSRMod:Demiurge1": {
+    "EXTENDED_DESCRIPTION": [
+      "Take the answer!",
+      "This is eternity!"
+    ]
+  },
+  "HSRMod:Demiurge2": {
+    "EXTENDED_DESCRIPTION": [
+      "A world that knows love won't be destroyed!",
+      "Cast this light upon the darkness!"
+    ]
+  },
+  "HSRMod:Demiurge3": {
+    "EXTENDED_DESCRIPTION": [
+      "The ending is as we've written!",
+      "The story of the Flame-Chase is the tide!",
+      "Trillions of memories, will turn into stars and light up the cosmos!",
+      "I converge #pLOVE into river, that will drown the tomb of #rHATRED !",
+      "A romantic ending will be penned by every beating heart!"
+    ]
+  },
+  "HSRMod:Phainon1": {
+    "EXTENDED_DESCRIPTION": [
+      "A future will come!",
+      "For tomorrow!"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "Bury [Irontomb] within [Ruinous Irontomb].",
+    "SIGNATURE_ILLUSTRATOR": "Fylus"
+  },
+  "HSRMod:Phainon2": {
+    "EXTENDED_DESCRIPTION": [
+      "The fury of innumerable Coreflames, consume me!"
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "Bury [Irontomb] within [Ruinous Irontomb].",
+    "SIGNATURE_ILLUSTRATOR": "三門"
+  },
+  "HSRMod:Khaslana1": {
+    "EXTENDED_DESCRIPTION": [
+      "Empty shell.",
+      "Soul without substance."
+    ]
+  },
+  "HSRMod:Khaslana2": {
+    "EXTENDED_DESCRIPTION": [
+      "Quench the flames, with blood!",
+      "Remember agony!",
+      "Branded with Strife!"
+    ]
+  },
+  "HSRMod:Khaslana3": {
+    "EXTENDED_DESCRIPTION": [
+      "Melt the evernight!",
+      "Shatter the cage!",
+      "With this newborn sun, tear open the sky!",
+      "With the old sun's embers, hail the new world's dawn!",
+      "Choose a card to strengthen: if it were a curse/status, remove it, otherwise, upgrade it and remove its exhaust word."
+    ]
+  },
+  "HSRMod:Khaslana4": {
+    "EXTENDED_DESCRIPTION": [
+      "I grant you a dawn where all stars burn to ash.",
+      "\"Remembrance\" makes the proud sun bloom in dazzling gold, illuminating the dark night...",
+      "The sun of \"Destruction\" shall never set, until it burns to nothing..."
     ]
   }
 }

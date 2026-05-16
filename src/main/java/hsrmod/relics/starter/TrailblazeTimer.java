@@ -43,6 +43,8 @@ public class TrailblazeTimer extends BaseRelic implements ClickableRelic  {
         pathGroup.addToBottom(new Propagation());
         pathGroup.addToBottom(new TheHunt());
         pathGroup.addToBottom(new Erudition());
+        pathGroup.addToBottom(new Abundance());
+        pathGroup.addToBottom(new Remembrance());
     }
 
     @Override
@@ -76,7 +78,7 @@ public class TrailblazeTimer extends BaseRelic implements ClickableRelic  {
                     stringBuilder.append(tags.get(i));
                 }
                 if (i < tags.size() - 1) {
-                    stringBuilder.append(" & ");
+                    stringBuilder.append("&");
                 }
             }
             description = String.format(DESCRIPTIONS[1], stringBuilder);

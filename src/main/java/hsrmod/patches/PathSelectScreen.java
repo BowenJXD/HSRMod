@@ -115,13 +115,12 @@ public class PathSelectScreen implements ISubscriber, CustomSavable<Integer> {
         return Math.max(1, PATHS.size() - pathUnlocked);
     }
     
-    public List<AbstractCard.CardTags> addBannedTags() {
-        if (unlockedAll()) return null;
-        List<AbstractCard.CardTags> bannedTags = new ArrayList<>();
+    public void addBannedTags(List<AbstractCard.CardTags> bannedTags) {
+        if (unlockedAll()) return;
         for (int i = PathSelectScreen.PATHS.size() - 1; i >= pathUnlocked; i--) {
-            bannedTags.add(Path.toTag(PATHS.get(i).path));
+            if (!bannedTags.contains(Path.toTag(PATHS.get(i).path)))
+                bannedTags.add(Path.toTag(PATHS.get(i).path));
         }
-        return bannedTags;
     }
 
     public void refresh() {

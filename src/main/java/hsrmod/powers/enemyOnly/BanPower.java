@@ -114,7 +114,7 @@ public class BanPower extends AbstractPower implements PreBreakSubscriber {
             flash();
             addToBot(new DiscardAction(AbstractDungeon.player, AbstractDungeon.player, 1, true));
         }
-        if (banType == BanType.SKILL && card.type == AbstractCard.CardType.SKILL) {
+        if (banType == BanType.SKILL && card.type == AbstractCard.CardType.SKILL && !AbstractDungeon.player.hand.isEmpty()) {
             AbstractCard c = AbstractDungeon.player.hand.getRandomCard(true);
             if (c != null) {
                 flash();

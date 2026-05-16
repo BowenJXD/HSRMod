@@ -28,7 +28,7 @@ public class Khaslana1 extends BaseCard {
     @Override
     public void onMove(CardGroup group, boolean in) {
         super.onMove(group, in);
-        if (in && group == AbstractDungeon.player.exhaustPile) {
+        if (in && AbstractDungeon.player != null && group == AbstractDungeon.player.exhaustPile) {
             addToTop(new MoveCardsAction(AbstractDungeon.player.hand, group, c -> c == this));
         }
     }

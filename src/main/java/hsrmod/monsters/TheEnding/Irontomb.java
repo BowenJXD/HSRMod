@@ -1,6 +1,5 @@
 package hsrmod.monsters.TheEnding;
 
-import basemod.abstracts.CustomSavable;
 import com.evacipated.cardcrawl.modthespire.lib.SpireOverride;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.SuicideAction;
@@ -19,11 +18,12 @@ import hsrmod.powers.uniqueBuffs.RuinousIrontombPower;
 import hsrmod.relics.special.CoreflameOfWorldbearing;
 import hsrmod.signature.utils.SignatureHelper;
 import hsrmod.utils.ModHelper;
+import hsrmod.utils.ModPrefs;
 
-public class Irontomb extends BaseMonster implements CustomSavable<Integer>{
+public class Irontomb extends BaseMonster {
     public static final String ID = Irontomb.class.getSimpleName();
     
-    public static int reincarnationCount = 0;
+    public int reincarnationCount = 0;
     
     public Irontomb() {
         super(ID, 444, 50, 200, -160);
@@ -35,10 +35,22 @@ public class Irontomb extends BaseMonster implements CustomSavable<Integer>{
     public void usePreBattleAction() {
         super.usePreBattleAction();
         addToBot(new CannotLoseAction());
-        if (reincarnationCount > 0) {
-            addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, reincarnationCount)));
+        try {
+            ModPrefs.load();
+            reincarnationCount = ModPrefs.getInteger("IrontombStrength", 0);
+            if (reincarnationCount > 0) {
+                addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, reincarnationCount)));
+            }
+            ModPrefs.putInteger("IrontombStrength", reincarnationCount + 1);
+            ModPrefs.save();
+        } catch (Exception e) {
+            HSRMod.logger.error("Error while loading IrontombStrength", e);
         }
-        reincarnationCount++;
+        ModHelper.addToBotAbstract(() -> ModHelper.addToBotAbstract(() -> {
+            if (maxHealth > 33550336) {
+                decreaseMaxHealth(maxHealth -  33550336);
+            }
+        }));
     }
 
     @Override
@@ -46,6 +58,14 @@ public class Irontomb extends BaseMonster implements CustomSavable<Integer>{
         isEscaping = false;
         super.updateHealthBar();
         isEscaping = true;
+    }
+
+    @Override
+    public void update() {
+        super.update();
+        if (maxHealth > 33550336) {
+            decreaseMaxHealth(maxHealth -  33550336);
+        }
     }
 
     @Override
@@ -81,19 +101,13 @@ public class Irontomb extends BaseMonster implements CustomSavable<Integer>{
             SignatureHelper.unlock(HSRMod.makePath(Phainon1.ID), true);
             SignatureHelper.unlock(HSRMod.makePath(Phainon2.ID), true);
         }
+        try {
+            ModPrefs.putInteger("IrontombStrength", 0);
+            ModPrefs.save();
+        } catch (Exception e) {
+            HSRMod.logger.error("Error while saving IrontombStrength", e);
+        }
         CoreflameOfWorldbearing.addFlame(1);
         VideoManager.play("Ending", 33, true);
-    }
-
-    @Override
-    public Integer onSave() {
-        return reincarnationCount;
-    }
-
-    @Override
-    public void onLoad(Integer integer) {
-        if (reincarnationCount == 0) {
-            reincarnationCount = integer;
-        }
     }
 }

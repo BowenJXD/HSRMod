@@ -389,7 +389,7 @@ public class RewardEditor implements StartGameSubscriber, CustomSavable<String[]
     @Override
     public void receiveStartGame() {
         relicId = "";
-        bannedTags = PathSelectScreen.Inst.addBannedTags();
+        PathSelectScreen.Inst.addBannedTags(bannedTags);
         for (AbstractRelic relic : AbstractDungeon.player.relics) {
             if (relic instanceof WaxRelic) {
                 ((WaxRelic) relic).updateDescription(relic.getUpdatedDescription());
@@ -399,6 +399,7 @@ public class RewardEditor implements StartGameSubscriber, CustomSavable<String[]
             }
         }
         if (AbstractDungeon.floorNum == 0 && AbstractDungeon.ascensionLevel >= 20 && AbstractDungeon.player.gold < HSRModConfig.getGoldInc()) {
+            bannedTags = null;
             AbstractDungeon.player.gainGold(HSRModConfig.getGoldInc());
             if (Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT) {
                 AbstractDungeon.topLevelEffectsQueue.add(new TopWarningEffect("⚠阈值协议生效⚠"));

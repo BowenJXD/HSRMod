@@ -104,7 +104,8 @@ public class AntiCreator extends BaseMonster implements OnCardUseSubscriber {
             addToBot(new ForceWaitAction(1f));
 
             addToBot(new ApplyPowerAction(this, this, new StrengthPower(this, strengthAmt)));
-            addToBot(new ApplyPowerAction(p, this, new DescentIntoChaosPower(p, 1)));
+            if (ModHelper.getPowerCount(p, DescentIntoChaosPower.POWER_ID) < 2)
+                addToBot(new ApplyPowerAction(p, this, new DescentIntoChaosPower(p, 1)));
             ModHelper.addToBotAbstract(() -> {
                 List<AbstractCard> cards = CardLibrary.getAllCards().stream().filter((c) -> c.type == AbstractCard.CardType.STATUS).collect(Collectors.toList());
                 if (!cards.isEmpty()) {
@@ -131,7 +132,8 @@ public class AntiCreator extends BaseMonster implements OnCardUseSubscriber {
             shoutOnly(7, 8, 5.0f);
             attack(mi, AbstractGameAction.AttackEffect.BLUNT_LIGHT, AttackAnim.FAST);
             addToBot(new ApplyPowerAction(p, this, new ActionLockPower(p, actionLockAmt)));
-            addToBot(new ApplyPowerAction(p, this, new DescentIntoChaosPower(p, 1)));
+            if (ModHelper.getPowerCount(p, DescentIntoChaosPower.POWER_ID) < 2)
+                addToBot(new ApplyPowerAction(p, this, new DescentIntoChaosPower(p, 1)));
         });
 
         // Move 3: 万有成灰，陪葬新生⚠
@@ -186,22 +188,28 @@ public class AntiCreator extends BaseMonster implements OnCardUseSubscriber {
         super.usePreBattleAction();
         BaseMod.subscribe(this);
         shoutOnly(0, 5.0f);
-        addToBot(new ApplyPowerAction(this, this, new AmphoreanHatredPower(this, hatredAmt)));
+        addToBot(new ApplyPowerAction(this, this, new AmphoreanHatredPower(this, hatredAmt), 0));
         ModHelper.addToBotAbstract(() -> {
             irontomb = AbstractDungeon.getMonsters().getMonster(HSRMod.makePath(Irontomb.ID));
-            addToTop(new ApplyPowerAction(this, this, new ThirtyMillionCyclesOfSinPower(this, thirtyAmt, irontomb)));
+            addToTop(new ApplyPowerAction(this, this, new ThirtyMillionCyclesOfSinPower(this, thirtyAmt, irontomb), 0));
         });
 
         addToBot(new ApplyPowerAction(p, this, new AmphoreanLovePower(p, 1)));
         addToBot(new ApplyPowerAction(p, this, new DescentIntoChaosPower(p, 1)));
         addToBot(new ApplyPowerAction(p, this, new DestructionFirstPower(p, 1)));
 
-        logos = new ManipulatedLogos(200, 0);
-        addToBot(new SpawnMonsterAction(logos, false, 2));
-        logos.usePreBattleAction();
-        mythos = new ImprisonedMythos(-400, 0);
-        addToBot(new SpawnMonsterAction(mythos, false, 2));
-        mythos.usePreBattleAction();
+        if (AbstractDungeon.getMonsters() != null) {
+            if (AbstractDungeon.getMonsters().monsters.stream().noneMatch(m -> m instanceof ManipulatedLogos)) {
+                logos = new ManipulatedLogos(200, 0);
+                addToBot(new SpawnMonsterAction(logos, false, 2));
+                logos.usePreBattleAction();
+            }
+            if (AbstractDungeon.getMonsters().monsters.stream().noneMatch(m -> m instanceof ImprisonedMythos)) {
+                mythos = new ImprisonedMythos(-400, 0);
+                addToBot(new SpawnMonsterAction(mythos, false, 2));
+                mythos.usePreBattleAction();
+            }
+        }
     }
 
     @Override
@@ -331,6 +339,9 @@ public class AntiCreator extends BaseMonster implements OnCardUseSubscriber {
             CardCrawlGame.screenShake.rumble(4.0F);
 
             this.onBossVictoryLogic();
+            this.onFinalBossVictoryLogic();
+            CardCrawlGame.stopClock = true;
+            // MusicStack.getInstance().clear();
         }
     }
 

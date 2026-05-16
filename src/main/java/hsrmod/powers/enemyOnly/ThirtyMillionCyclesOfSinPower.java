@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.actions.utility.ExhaustToHandAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.StatePower;
 import hsrmod.utils.GeneralUtil;
@@ -39,6 +40,12 @@ public class ThirtyMillionCyclesOfSinPower extends StatePower {
         super.onDeath();
         if (target != null) {
             addToBot(new DamageAction(target, new DamageInfo(target, amount, DamageInfo.DamageType.HP_LOSS)));
+            if (index == perfectNums.length - 1 && target instanceof AbstractMonster) {
+                ModHelper.addToBotAbstract(() -> {
+                    if (!target.isDying || !target.isDead)
+                        ((AbstractMonster) target).die();
+                });
+            }
         }
         // ModHelper.addToBotAbstract(() -> addToTop(new ExhaustToHandAction(GeneralUtil.getRandomElement(AbstractDungeon.player.exhaustPile.group, AbstractDungeon.cardRandomRng))));
         stackPower(-perfectNums[Math.min(index++, perfectNums.length-1)] + perfectNums[Math.min(index, perfectNums.length-1)]);

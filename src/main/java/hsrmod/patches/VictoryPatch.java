@@ -1,7 +1,11 @@
 package hsrmod.patches;
 
+import com.evacipated.cardcrawl.modthespire.lib.SpireInstrumentPatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
+import javassist.CannotCompileException;
+import javassist.expr.ExprEditor;
+import javassist.expr.MethodCall;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -9,6 +13,7 @@ import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.screens.DeathScreen;
 import com.megacrit.cardcrawl.screens.GameOverScreen;
 import com.megacrit.cardcrawl.screens.VictoryScreen;
+import com.megacrit.cardcrawl.ui.buttons.ProceedButton;
 import hsrmod.effects.UnlockEffect;
 import hsrmod.misc.IHSRCharacter;
 import hsrmod.modcore.HSRMod;
@@ -50,6 +55,21 @@ public class VictoryPatch {
             }
         }
     }
+/*    
+    @SpirePatch(clz = ProceedButton.class, method = "update")
+    public static class ProceedButtonPatch {
+        @SpireInstrumentPatch
+        public static ExprEditor Instrument() {
+            return new ExprEditor() {
+                @Override
+                public void edit(MethodCall m) throws CannotCompileException {
+                    if (m.getMethodName().equals("equals") && m.getClassName().equals("java.lang.String")) {
+                        m.replace("{ $_ = $proceed($$); if (!$_ && $1.equals(\"TheEnding\") && com.megacrit.cardcrawl.dungeons.AbstractDungeon.id.equals(\"HSRMod:Amphoreus\")) $_ = true; }");
+                    }
+                }
+            };
+        }
+    }*/
     
     static {
         uiStrings = CardCrawlGame.languagePack.getUIString(HSRMod.makePath(VictoryPatch.class.getSimpleName()));

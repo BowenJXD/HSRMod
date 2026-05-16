@@ -26,7 +26,7 @@ public class Evernight2 extends BaseCard {
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         shout(0);
-        addToBot(new LoseHPAction(p, p, 1));
+        addToBot(new LoseHPAction(p, p, magicNumber));
         addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
         addToBot(new ApplyPowerAction(p, p, new ObsessionPower(p, magicNumber)));
     }

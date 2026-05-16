@@ -29,7 +29,7 @@ public class ScourgePower extends BuffPower implements PreEnergyChangeSubscriber
     @Override
     public void onInitialApplication() {
         super.onInitialApplication();
-        SubscriptionManager.subscribe(this);
+        SubscriptionManager.subscribe(this, true);
         energyCache = EnergyPanel.totalCount;
         energyLimitCache = AbstractDungeon.player.energy.energy;
         EnergyPanel.setEnergy(amount);
@@ -68,10 +68,10 @@ public class ScourgePower extends BuffPower implements PreEnergyChangeSubscriber
     public int preEnergyChange(int changeAmount) {
         if (SubscriptionManager.checkSubscriber(this)) {
             if (EnergyPanel.totalCount + changeAmount > STACK_LIMIT) {
-                changeAmount = STACK_LIMIT - EnergyPanel.totalCount;
+                changeAmount = 0;
             }
             if (EnergyPanel.totalCount + changeAmount < 0) {
-                changeAmount = -EnergyPanel.totalCount;
+                changeAmount = 0;
             }
             if (changeAmount > 0) {
                 stackPower(changeAmount);

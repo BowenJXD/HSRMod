@@ -64,14 +64,6 @@ public class CoreflameOfWorldbearing extends BaseRelic implements ClickableRelic
             HSRMod.logger.error("Error while loading path", e);
         }
     }
-    
-    @Override
-    public void onPlayCard(AbstractCard c, AbstractMonster m) {
-        super.onPlayCard(c, m);
-        if (Objects.equals(c.cardID, HSRMod.makePath(Phainon1.ID))) {
-            setCounter(counter + 2);
-        }
-    }
 
     @Override
     public void onExhaust(AbstractCard card) {

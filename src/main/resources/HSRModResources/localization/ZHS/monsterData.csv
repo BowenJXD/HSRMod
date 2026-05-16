@@ -24,6 +24,11 @@ Skaracabaz,碎星王虫 · 斯喀拉卡巴兹,BOSS,900,1000,30,33
 GnawSting,蚀蛰虫,NORMAL,39,39,9,10
 LesserSting,次蛰虫,NORMAL,49,49,9,10
 ,,,,,,
+Irontomb,铁墓·反诺斯·灵知的葬仪,BOSS,33550336,33550336,0,0
+AntiCreator,反造物主·流溢之恨,BOSS,100,111,40,44
+ImprisonedMythos,被囚禁的秘所思,BOSS,100,111,20,24
+ManipulatedLogos,被操弄的逻各斯,BOSS,100,111,20,24
+,,,,,,
 Gepard,杰帕德,ELITE,80,82,6,7
 Bronya,布洛妮娅,ELITE,102,106,6,7
 Svarog,史瓦罗,ELITE,90,93,6,7
@@ -50,6 +55,11 @@ CharmonyBananAdvisor,谐乐蕉师,ELITE,180,200,18,21
 Assistanana,助蕉,NORMAL,50,52,12,15
 DreamweaverBananAdvisor,筑梦蕉师,NORMAL,68,73,12,15
 FortuneBananAdvisor,财富蕉师,NORMAL,41,44,10,12
+,,,,,,
+Zandar,第一位天才，隐德来希，赞达尔,ELITE,1000,1100,40,45
+FuriaeWarrior,天谴斗士,NORMAL,40,44,10,11
+TideErodedBlade,黑潮蚀刃,NORMAL,22,24,7,8
+CorrodedAxe,黑潮蚀斧,NORMAL,33,35,10,11
 ,,,,,,
 Beetle,甲虫,NORMAL,13,14,3,4
 Spider,蜘蛛,NORMAL,23,24,3,4

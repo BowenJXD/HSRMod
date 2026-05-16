@@ -387,4 +387,16 @@ public class ModHelper {
         result.uuid = card.uuid;
         return result;
     }
+    
+    public static boolean noMonster(String monsterID) {
+        return noMonster(monsterID, true);
+    }
+    
+    public static boolean noMonster(String monsterID, boolean check) {
+        if (AbstractDungeon.currMapNode == null) return false;
+        if (AbstractDungeon.getCurrRoom() == null) return false;
+        if (AbstractDungeon.getMonsters() == null) return false;
+        if (AbstractDungeon.getMonsters().monsters == null) return false;
+        return AbstractDungeon.getMonsters().monsters.stream().noneMatch(m -> (!check || check(m)) && Objects.equals(m.id, HSRMod.makePath(monsterID)));
+    } 
 }

@@ -2,14 +2,14 @@
   "HSRMod:Energy": {
     "NAME": "Charge",
     "DESCRIPTIONS": [
-      "Maximum is #b%d. Some cards require #yCharge to use."
+      "Maximum is #b%d . Some cards require #yCharge to use."
     ]
   },
   "HSRMod:Toughness": {
     "NAME": "Toughness",
     "DESCRIPTIONS": [
-      "Damage received is reduced by #b%d %%, stacking up to #b%d.",
-      "Damage received is increased by #b%d %%, stacking up to #b%d."
+      "Damage received is reduced by #b%d %%, stacking up to #b%d .",
+      "Damage received is increased by #b%d %%, stacking up to #b%d ."
     ]
   },
   "HSRMod:Broken": {
@@ -34,7 +34,8 @@
   "HSRMod:Bleeding": {
     "NAME": "Bleeding",
     "DESCRIPTIONS": [
-      "DoT. At the start of the turn: take #b%d ( #b%d %% max HP, up to #b%d ) physical damage (1), remove 1 stack."
+      "DoT. At the start of the turn: take #b%d ( #b%d %% max HP, up to #b%d ) physical damage (1), remove 1 stack.",
+      "DoT. At the start of the turn: take #b%d ( #b%d %% max HP) physical damage (1), remove 1 stack."
     ]
   },
   "HSRMod:Burn": {
@@ -64,13 +65,13 @@
   "HSRMod:Entangle": {
     "NAME": "Entangle",
     "DESCRIPTIONS": [
-      "Adds 1 stack when taking damage, up to #b%d stacks. At the start of the turn, remove all stacks and take damage equal to the number of stacks * #b%d."
+      "Adds 1 stack when taking damage, up to #b%d stacks. At the start of the turn, remove all stacks and take damage equal to the number of stacks * #b%d ."
     ]
   },
   "HSRMod:BreakEffect": {
     "NAME": "Break Effect",
     "DESCRIPTIONS": [
-      "Break damage is increased by #b%d. DoT damage to Broken enemies is increased by #b%d."
+      "Break damage is increased by #b%d . DoT damage to Broken enemies is increased by #b%d ."
     ]
   },
   "HSRMod:BreakEfficiency": {
@@ -89,7 +90,7 @@
   "HSRMod:Suspicion": {
     "NAME": "Suspicion",
     "DESCRIPTIONS": [
-      "Increases damage over time taken by #b%d %%. Stacks up to #b%d."
+      "Increases damage over time taken by #b%d %%. Stacks up to #b%d ."
     ]
   },
   "HSRMod:Quake": {
@@ -107,7 +108,7 @@
   "HSRMod:Boost": {
     "NAME": "Boost",
     "DESCRIPTIONS": [
-      "Up to #b%d stacks. Damage dealt + #b%d. NL After taking normal damage, all stacks are removed."
+      "Up to #b%d stacks. Damage dealt + #b%d . NL After taking normal damage, all stacks are removed."
     ]
   },
   "HSRMod:BrainInAVat": {
@@ -133,7 +134,7 @@
   "HSRMod:Aventurine": {
     "NAME": "Blind Bet",
     "DESCRIPTIONS": [
-      "When taking damage, if you have Block, stack #b%d. After Follow Up, stack #b%d, up to 10 stacks. When amount >=7, lose 7 amount and gain #yBingo!."
+      "When taking damage, if you have Block, stack #b%d . After Follow Up, stack #b%d, up to 10 stacks. When amount >=7, lose 7 amount and gain #yBingo!."
     ]
   },
   "HSRMod:Robin": {
@@ -146,7 +147,7 @@
   "HSRMod:ProofOfDebt": {
     "NAME": "Proof of Debt",
     "DESCRIPTIONS": [
-      "Damage from Follow Up cards is increased by #b%d. The target of the Follow Up attack is prioritized."
+      "Damage from Follow Up cards is increased by #b%d . The target of the Follow Up attack is prioritized."
     ]
   },
   "HSRMod:WisemansFolly": {
@@ -237,7 +238,8 @@
   "HSRMod:Kolchis": {
     "NAME": "Kolchis",
     "DESCRIPTIONS": [
-      "Recover [E] for every #b%d Charge used."
+      "Recover [E] whenever [hsrmod:ChargeIcon] reaches its maximum.",
+      "Recover [E] whenever [hsrmod:ChargeIcon] reaches its maximum or minimum."
     ]
   },
   "HSRMod:Divinity": {
@@ -276,8 +278,7 @@
   "HSRMod:AllThingsArePossible": {
     "NAME": "All Things are Possible",
     "DESCRIPTIONS": [
-      "After playing an attack card, apply 1 DoT effect that the target doesn't already have.",
-      "After playing an attack card, if the target has all DoT effects, randomly trigger one. Otherwise, apply 1 that it doesn't already have."
+      "Damage received + #b%d , damage dealt - #b%d ."
     ]
   },
   "HSRMod:AnExtraPersonsDiary": {
@@ -350,8 +351,8 @@
   "HSRMod:RadiantSupreme": {
     "NAME": "Radiant Supreme",
     "DESCRIPTIONS": [
-      "Upon using card, stack 1 for each condition met: 1. Single-target, 2. Attack card. For every #b%d layer stacked, draw 1 and gain 2 #yBoost.",
-      "Upon using card, stack 1 for each condition met: 1. Single-target card, 2. Attack card, 3. Upgraded card. For every #b%d layer stacked, draw 1 and gain 2 #yBoost."
+      "For every #b%d cards played, gain \" #yArrow \" and gain #b2 #yBoost.",
+      "For every #b%d cards played, gain \" #yArrow+ \" and gain #b2 #yBoost."
     ]
   },
   "HSRMod:SovereignSkybreaker": {
@@ -402,7 +403,7 @@
   "HSRMod:SMR2Amygdala": {
     "NAME": "SMR-2 Amygdala",
     "DESCRIPTIONS": [
-      "Gain 1 layer of #yBrain-In-A-Vat at the start of each turn. Charge would always be at least #b%d."
+      "Gain 1 layer of #yBrain-In-A-Vat at the start of each turn. Charge would always be at least #b%d ."
     ]
   },
   "HSRMod:LoadStriatedCortex": {
@@ -415,7 +416,7 @@
   "HSRMod:CloudflameLuster": {
     "NAME": "Cloudflame Luster",
     "DESCRIPTIONS": [
-      "Upon break, adjust toughness to #b%d.",
+      "Upon break, adjust toughness to #b%d .",
       "Upon break, adjust toughness to #b%d, and gain [E]."
     ]
   },
@@ -430,7 +431,8 @@
     "NAME": "Charging",
     "DESCRIPTIONS": [
       "Casting ult, releasing next turn. #yBreak to interrupt. NL %s",
-      "Casting ult, releasing in #b%d turns. #yBreak to interrupt. NL %s"
+      "Casting ult, releasing in #b%d turns. #yBreak to interrupt. NL %s",
+      "Releasing next turn: %s"
     ]
   },
   "HSRMod:WalkInTheLight": {
@@ -799,6 +801,183 @@
     "NAME": "DewDrop",
     "DESCRIPTIONS": [
       "At end of turn, remove all stack to trigger: deal #b%d damage to random enemy."
+    ]
+  },
+  "HSRMod:MilitaryMerit": {
+    "NAME": "Military Merit",
+    "DESCRIPTIONS": [
+      "When playing an Attack card, if stacks < #b%d or [E] spent = 0, stack 1. Otherwise consume #b%d stacks, gain #b%d #yVigor, and play an extra time."
+    ]
+  },
+  "HSRMod:Newbud": {
+    "NAME": "Newbud",
+    "DESCRIPTIONS": [
+      "Increase the damage of #yWings #ySweep #ythe #yRuins by #b%d ."
+    ]
+  },
+  "HSRMod:Recollection": {
+    "NAME": "Recollection",
+    "DESCRIPTIONS": [
+      "After playing a card, stack 1 (2 if it is a #yChrysosHeir). When reaching #b%d stacks, gain \" #yHello, #yWorld♪ \"."
+    ]
+  },
+  "HSRMod:Future": {
+    "NAME": "Future",
+    "DESCRIPTIONS": [
+      "After playing a card, stack 1 (2 if it is a #yChrysosHeir), up to #b%d . At end of turn, if >= #b%d stacks, trigger: remove #b%d stacks and play \" #yMinuet #yof #yBlooms #yand #yPlumes\" ."
+    ]
+  },
+  "HSRMod:Trailblazer10": {
+    "NAME": "Almighty Companion",
+    "DESCRIPTIONS": [
+      "At the start of each turn, gain #b%d stacks of #yObsession. After triggering an Orb, draw #b%d card(s)."
+    ]
+  },
+  "HSRMod:Hyacine2": {
+    "NAME": "We Who Fly Into Twilight",
+    "DESCRIPTIONS": [
+      "When obtaining #yBlock through #yFrost orb, gain #b%d times the temporary HP."
+    ]
+  },
+  "HSRMod:Soulstruck": {
+    "NAME": "Soulstruck",
+    "DESCRIPTIONS": [
+      "After being targeted by a card, inflict #b%d stacks of random #yDoT. Remove at the start of the turn."
+    ]
+  },
+  "HSRMod:LoseFocus": {
+    "NAME": "Lose Focus",
+    "DESCRIPTIONS": [
+      "At the end of your turn, lose #b%d #yFocus."
+    ]
+  },
+  "HSRMod:Obsession": {
+    "NAME": "Obsession",
+    "DESCRIPTIONS": [
+      "Maximum is #b%d . Non-Plasma Orb effects + #b%d . At the end of the turn, gain #b%d #yTemp #yHP, then remove all stacks."
+    ]
+  },
+  "HSRMod:LostNetherland": {
+    "NAME": "Territory: Lost Netherland",
+    "DESCRIPTIONS": [
+      "While active, upon receiving #rfatal damage, prevent it, gain and play \" #yWings #ySweep #ythe #yRuins \" to end the #yTerritory."
+    ]
+  },
+  "HSRMod:RuinousIrontomb": {
+    "NAME": "Territory: Ruinous Irontomb",
+    "DESCRIPTIONS": [
+      "Upon entering, remove all negative effects and all units' #yIntangible, and gain #b%d stacks of #yScourge  and #b%d Block. NL While active, immune to negative effects. After playing a card, recover #b%d HP and make an enemy act once. NL After playing #b%d cards, play \" #yFate: #yDivine #yVessel \". NL While active, when Block is broken through, prevent it and play \" #yFate: #yDivine #yVessel \"."
+    ]
+  },
+  "HSRMod:Scourge": {
+    "NAME": "Scourge",
+    "DESCRIPTIONS": [
+      "Replaces [E], up to #b%d ."
+    ]
+  },
+  "HSRMod:EvolutionMode": {
+    "NAME": "Evolution Mode",
+    "DESCRIPTIONS": [
+      "Maintain #b%d summons. When any unit dies, lose 1 stack. If stacks reach #b0, end the current turn and transform into #b%d stacks of #yDisputation #yMode."
+    ]
+  },
+  "HSRMod:DisputationMode": {
+    "NAME": "Disputation Mode",
+    "DESCRIPTIONS": [
+      "Maintain #b%d summons. At the start of each turn, gain #b%d stacks of #yStrengthen. When any unit dies, lose 1 stack. If stacks reach #b0, end the current turn, transform into #b%d stacks of #yEvolution #yMode, and change intent to #y【Solve: Prime Cause Effect】 (deal 10 damage, remove all #yStrengthen, deal 1 extra hit for each stack removed)."
+    ]
+  },
+  "HSRMod:CorporealFormula": {
+    "NAME": "Corporeal Formula",
+    "DESCRIPTIONS": [
+      "After switching forms, gain 1 stack, remove all negative effects, and gain #b%d #yStrength. Damage received is multiplied by #b%d ."
+    ]
+  },
+  "HSRMod:DestructionFirst": {
+    "NAME": "Destruction: First Cause",
+    "DESCRIPTIONS": [
+      "After shuffling, take #b%d damage and exhaust #b%d random cards."
+    ]
+  },
+  "HSRMod:RetributionOfLaw": {
+    "NAME": "\"Law\"'s Retribution",
+    "DESCRIPTIONS": [
+      "After acting, lose #b%d%% of current HP."
+    ]
+  },
+  "HSRMod:Strengthen": {
+    "NAME": "Strengthen",
+    "DESCRIPTIONS": [
+      "Makes [Query: Prime Mover's Outcome] deal #b%d extra hit(s) of damage."
+    ]
+  },
+  "HSRMod:WarArmor": {
+    "NAME": "War Armor",
+    "DESCRIPTIONS": [
+      "Damage received is reduced to #b%d . After taking damage, lose 1 stack; after #yBreak, lose all stacks. When completely removed, take #b%d damage, and recover [E] and #b%d [hsrmod:ChargeIcon] ."
+    ]
+  },
+  "HSRMod:Corrosion": {
+    "NAME": "Corrosion",
+    "DESCRIPTIONS": [
+      "Acts as HP upon removal. After dealing damage, remove 1 stack and recover #b%d of the corroded HP. When completely removed, gain #b%d #yVigor."
+    ]
+  },
+  "HSRMod:BitterFracture": {
+    "NAME": "Bitter Fracture",
+    "DESCRIPTIONS": [
+      "After another monster dies, immediately attack you."
+    ]
+  },
+  "HSRMod:AmphoreanHatred": {
+    "NAME": "Amphorean's Hatred",
+    "DESCRIPTIONS": [
+      "After any unit deals damage, gain 1%. Based on current %, apply these effects: NL #b%d%%+: Hand limit -1; NL #b%d%% +: Draw per turn -1; NL #b%d%% +: [E] limit -1; NL #b%d%% : Each time reaching this value, gain a random #rCurse . NL #b%d%% : Each time reaching this value, lose #b%d%% max HP. #r%d%% : Upon reaching this value, #rbattle fails .",
+      "Amphorean's Hatred has grown to 50%! Hand limit reduced!",
+      "Amphorean's Hatred has grown to 60%!! Draw per turn reduced!!",
+      "Amphorean's Hatred has grown to 70%!!! Energy limit reduced!!!",
+      "Amphorean's Hatred has grown to 80%!!!! You gain a Curse!!!!",
+      "Amphorean's Hatred has grown to 90%!!!!! Max HP reduced!!!!!",
+      "Amphorean's Hatred has grown to %d%!!!!! Battle is about to end!!!!!",
+      "Amphorean's Hatred has grown to 100%!!!!! Battle failed!!!!!"
+    ]
+  },
+  "HSRMod:AmphoreanLove": {
+    "NAME": "Amphorean's Love",
+    "DESCRIPTIONS": [
+      "Each time a card is exhausted, gain 1 stack. If stacks to #b%d, or if there are >= #b%d stacks at end of your turn, reset to 0 and gain and play \" #yHeroes, #yEver #yAblaze \" (Gain 24 Block; AoE: deal 24 damage ( 12 ); gain 1 exhausted card(s); reduce [Amphorean's Hatred] by 24% of current %).",
+      "Each time a card is exhausted, gain 1 stack and remove 1 stack of #yAmphorean's #yHatred. If stacks to #b%d, or if there are >= #b%d stacks at end of your turn, reset to 0 and gain and play \" #yHeroes, #yEver #yAblaze+ \" and \" #yEpics, #yAs #yWe've #yWritten \"."
+    ]
+  },
+  "HSRMod:DescentIntoChaos": {
+    "NAME": "Descent into Chaos",
+    "DESCRIPTIONS": [
+      "Exhaust the first #b%d cards played on your turn, and the first #b%d cards discarded at the end of your turn."
+    ]
+  },
+  "HSRMod:ThirtyMillionCyclesOfSin": {
+    "NAME": "Thirty Million Cycles of Sin",
+    "DESCRIPTIONS": [
+      "Cannot be destroyed. Upon death, kills ImprisonedMythos and ManipulatedLogos, deals #b%d damage to #rIrontomb, adjusts stacks to the next #yPerfect Number, acts normally next turn, increases max HP, recovers all HP, and gains 1 Strength. When stacks reach #b33550336, add all exhausted cards to the draw pile and upgrade #pAmphorean's Love."
+    ]
+  },
+  "HSRMod:ActionLock": {
+    "NAME": "Action Lock",
+    "DESCRIPTIONS": [
+      "After #b%d seconds, #rend turn.",
+      "Action Lock applied! Turn will end in %d seconds!!!"
+    ]
+  },
+  "HSRMod:EternalRecurrence": {
+    "NAME": "Eternal Recurrence",
+    "DESCRIPTIONS": [
+      "Cannot be destroyed. Upon death, gain #b1 random card, draw up to the hand limit, and recover all HP next turn."
+    ]
+  },
+  "HSRMod:Immortal": {
+    "NAME": "Immortal",
+    "DESCRIPTIONS": [
+      "Cannot be destroyed. Upon death, gain #b1 random card, recover [E] and [hsrmod:ChargeIcon] to maximum, and recover all HP next turn."
     ]
   }
 }

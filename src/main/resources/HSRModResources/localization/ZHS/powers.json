@@ -34,7 +34,8 @@
   "HSRMod:Bleeding": {
     "NAME": "裂伤",
     "DESCRIPTIONS": [
-      "持续伤害。回合开始时触发：受到 #b%d （ #b%d%% 生命值上限，至多为 #b%d ）的伤害（物理1），移除1层。"
+      "持续伤害。回合开始时触发：受到 #b%d （ #b%d%% 生命值上限，至多为 #b%d ）的伤害（物理1），移除1层。",
+      "持续伤害。回合开始时触发：受到 #b%d （ #b%d%% 生命值上限）的伤害（物理1），移除1层。"
     ]
   },
   "HSRMod:Burn": {
@@ -237,7 +238,8 @@
   "HSRMod:Kolchis": {
     "NAME": "科尔奇人",
     "DESCRIPTIONS": [
-      "每消耗 [hsrmod:ChargeIcon] 达到 #b%d 点，获得 [E] 。"
+      "每当 [hsrmod:ChargeIcon] 达到上限时，获得 [E] 。",
+      "每当 [hsrmod:ChargeIcon] 达到上限或下限时，获得 [E] 。"
     ]
   },
   "HSRMod:Divinity": {
@@ -276,8 +278,7 @@
   "HSRMod:AllThingsArePossible": {
     "NAME": "无根据颂歌",
     "DESCRIPTIONS": [
-      "打出攻击牌后，对其施加1个其没有的持续伤害。",
-      "打出攻击牌后，若目标：有所有的持续伤害，则随机触发1个，否则对其施加1个其没有的持续伤害。"
+      "受到的伤害+ #b%d ，造成的伤害- #b%d 。"
     ]
   },
   "HSRMod:AnExtraPersonsDiary": {
@@ -350,8 +351,8 @@
   "HSRMod:RadiantSupreme": {
     "NAME": "帝车超光所向捷",
     "DESCRIPTIONS": [
-      "打出牌时，每满足一项，叠加1层：1.单体牌；2.攻击牌。每叠加 #b%d 层，摸1张牌，获得 #b2 层 #y会心 。",
-      "打出牌时，每满足一项，叠加1层：1.单体牌；2.攻击牌；3.升级过的牌。每叠加 #b%d 层，摸1张牌，获得 #b2 层 #y会心 。"
+      "每打出 #b%d 张牌，获得 #y「锋镝」 ，获得 #b2 层 #y会心 。",
+      "每打出 #b%d 张牌，获得 #y「锋镝+」 ，获得 #b2 层 #y会心 。"
     ]
   },
   "HSRMod:SovereignSkybreaker": {
@@ -430,7 +431,8 @@
     "NAME": "蓄力",
     "DESCRIPTIONS": [
       "正在蓄力，下回合释放。 #y击破 以打断。 NL %s",
-      "正在蓄力，剩余回合数： #b%s 。 #y击破 以打断。 NL %s"
+      "正在蓄力，剩余回合数： #b%s 。 #y击破 以打断。 NL %s",
+      "下回合释放： %s"
     ]
   },
   "HSRMod:WalkInTheLight": {
@@ -816,25 +818,166 @@
   "HSRMod:Recollection": {
     "NAME": "追忆",
     "DESCRIPTIONS": [
-      "打出牌后，叠加 #b1 层，若为 #y黄金裔 牌，则额外叠加 #b1 层。达到 #b24 层时，转化为 #b0 层 #y未来 ，获得 #y「你好，世界♪」 。"
+      "打出牌后，叠加 #b1 层，若为 #y黄金裔 牌，则额外叠加 #b1 层。达到 #b%d 层时，获得 #y「你好，世界♪」 。"
     ]
   },
   "HSRMod:Future": {
     "NAME": "未来",
     "DESCRIPTIONS": [
-      "打出牌后，叠加 #b1 层，若为 #y黄金裔 牌，则额外叠加 #b1 层，至多 #b24 层。回合结束时，若不小于 #b12 层，则移除 #b12 层，打出 #y「花与箭的舞曲」 。"
+      "打出牌后，叠加 #b1 层，若为 #y黄金裔 牌，则额外叠加 #b1 层，至多 #b%d 层。回合结束时，若大于 #b%d 层，则触发：移除 #b%d 层，打出 #y「花与箭的舞曲」 。"
     ]
   },
   "HSRMod:Trailblazer10": {
     "NAME": "无所不能的伙伴",
     "DESCRIPTIONS": [
-      "每次激发 #y充能球 后，摸 #b%d 张牌。"
+      "每回合开始时，获得 #b%d 层 #y执念 。每次激发 #y充能球 后，摸 #b%d 张牌。"
     ]
   },
   "HSRMod:Hyacine2": {
     "NAME": "飞入晨昏的我们",
     "DESCRIPTIONS": [
       "通过 #y冰霜充能球 获得格挡时，获得 #b%d 倍的 #y临时生命 。"
+    ]
+  },
+  "HSRMod:Soulstruck": {
+    "NAME": "醉心",
+    "DESCRIPTIONS": [
+      "成为牌的目标后，陷入 #b%d 层随机 #y持续伤害 。回合开始时移除。"
+    ]
+  },
+  "HSRMod:LoseFocus": {
+    "NAME": "涣散",
+    "DESCRIPTIONS": [
+      "在你的回合结束时，失去 #b%d 点 #y集中 。"
+    ]
+  },
+  "HSRMod:Obsession": {
+    "NAME": "执念",
+    "DESCRIPTIONS": [
+      "上限为 #b%d 。非等离子充能球的效果+ #b%d 点。回合结束时，获得 #b%d 层 #y临时生命 ，然后移除所有层。"
+    ]
+  },
+  "HSRMod:LostNetherland": {
+    "NAME": "境界：遗世冥域",
+    "DESCRIPTIONS": [
+      "展开期间受到 #r致命伤害 时，防止之，获得并打出 #y「灼掠幽墟的晦翼」 以结束 #y境界 。"
+    ]
+  },
+  "HSRMod:RuinousIrontomb": {
+    "NAME": "境界：时墟铁墓",
+    "DESCRIPTIONS": [
+      "进入时，移除所有负面效果及所有单位的 #y无实体 ，获得 #b%d 层 #y毁伤 和 #b%d 点格挡。 NL 展开期间内，不受负面效果影响。打出牌后，获得 #b%d 点格挡，并令一名敌人行动1次。 NL 打出 #b%d 张牌后，打出 #y「命运·此躯即神」 。 NL 展开期间格挡被突破时，防止之，并打出 #y「命运·此躯即神」 。"
+    ]
+  },
+  "HSRMod:Scourge": {
+    "NAME": "毁伤",
+    "DESCRIPTIONS": [
+      "代替 [E] ，至多为 #b%d 点。"
+    ]
+  },
+  "HSRMod:EvolutionMode": {
+    "NAME": "演化形态",
+    "DESCRIPTIONS": [
+      "保持召唤物有 #b%d 只。任意单位死亡时，减少 #b1 层，若层数为 #b0 ，结束当前回合，转化为 #b%d 层 #y论证形态 。"
+    ]
+  },
+  "HSRMod:DisputationMode": {
+    "NAME": "论证形态",
+    "DESCRIPTIONS": [
+      "保持召唤物有 #b%d 只。每回合开始时，获得 #b%d 层 #y强化 。任意单位死亡时，减少 #b1 层，若层数为 #b0 ，结束当前回合，转化为 #b%d 层 #y演化形态 ，并将意图改为 #y【求解：第一因之果】 （造成10点伤害，移除所有 #y强化 ，每移除1层，额外造成1次伤害）。"
+    ]
+  },
+  "HSRMod:CorporealFormula": {
+    "NAME": "化形公式",
+    "DESCRIPTIONS": [
+      "切换形态后，叠加1层，移除所有负面效果，获得 #b%d层 #y力量 。受到的伤害改为 #b%d 倍。"
+    ]
+  },
+  "HSRMod:DestructionFirst": {
+    "NAME": "毁灭第一因",
+    "DESCRIPTIONS": [
+      "洗牌后，受到 #b%d 点伤害，消耗随机 #b%d 张牌。"
+    ]
+  },
+  "HSRMod:RetributionOfLaw": {
+    "NAME": "「律法」的惩戒",
+    "DESCRIPTIONS": [
+      "行动后，失去 #b%d%% 当前生命。"
+    ]
+  },
+  "HSRMod:Strengthen": {
+    "NAME": "强化",
+    "DESCRIPTIONS": [
+      "令【求解：第一因之果】额外造成 #b%d 次伤害。"
+    ]
+  },
+  "HSRMod:WarArmor": {
+    "NAME": "战甲",
+    "DESCRIPTIONS": [
+      "受到的伤害改为 #b%d 。受到伤害后，移除 #b1 层，击破后，移除所有层。完全移除后，受到 #b%d 点伤害，你回复 [E] 和 #b%d 点 [hsrmod:ChargeIcon] 。"
+    ]
+  },
+  "HSRMod:Corrosion": {
+    "NAME": "侵蚀",
+    "DESCRIPTIONS": [
+      "视为生命移除。造成伤害后，移除 #b1 层，回复 #b%d 点被侵蚀的生命。完全移除后，获得 #b%d 层 #y活力 。"
+    ]
+  },
+  "HSRMod:BitterFracture": {
+    "NAME": "仇隙",
+    "DESCRIPTIONS": [
+      "其他怪物死亡后，立即对你发起攻击。"
+    ]
+  },
+  "HSRMod:AmphoreanHatred": {
+    "NAME": "翁法罗斯的「恨」",
+    "DESCRIPTIONS": [
+      "任意单位每次造成伤害后，增长1%%。根据当前百分比，执行以下效果： NL #b%d%% +：手牌上限-1； NL #b%d%% +：每回合摸牌数-1； NL #b%d%% +： [E] 上限-1； NL #b%d%% ：每次增长至此数值时，获得随机 #r诅咒 。 NL #b%d%% ：每次增长至此数值时，你失去 #b%d%% 生命值上限。 NL #r%d%% ：增长至此数值时， #r战斗失败 。",
+      "翁法罗斯的「恨」已增长至 50% ，手牌上限减少！",
+      "翁法罗斯的「恨」已增长至 60% ，摸牌数减少！！",
+      "翁法罗斯的「恨」已增长至 70% ，能量上限减少！！！",
+      "翁法罗斯的「恨」已增长至 80% ，获得诅咒！！！！",
+      "翁法罗斯的「恨」已增长至 90% ，生命上限减少！！！！！",
+      "翁法罗斯的「恨」已增长至 %d% ，战斗即将失败！！！！！",
+      "翁法罗斯的「恨」已增长至 100% ，战斗失败！！！！！"
+    ]
+  },
+  "HSRMod:AmphoreanLove": {
+    "NAME": "翁法罗斯的「爱」",
+    "DESCRIPTIONS": [
+      "每当有牌被消耗时，叠加 #b1 层。叠至 #b%d 层时，或于回合结束时有 #b%d 层，则重置为0层，获得并打出 #y「英雄，如群星永燃」 （获得24点格挡，群体：造成24点伤害（无12），获得1张被消耗的牌，令 #y翁法罗斯的「恨」 减少当前百分比的24%%）。",
+      "每当有牌被消耗时，叠加 #b1 层，移除1层 #y翁法罗斯的「恨」 。叠至 #b%d 层时，或于回合结束时有 #b%d 层，则重置为0层，获得并打出 #y「英雄，如群星永燃+」 和 #y「史诗，如你我所书」 。"
+    ]
+  },
+  "HSRMod:DescentIntoChaos": {
+    "NAME": "渐入混沌",
+    "DESCRIPTIONS": [
+      "消耗你回合内打出的前 #b%d 张牌，和回合结束时丢弃的前 #b%d 张牌。"
+    ]
+  },
+  "HSRMod:ThirtyMillionCyclesOfSin": {
+    "NAME": "三千万转，罪业回环",
+    "DESCRIPTIONS": [
+      "无法被消灭。死亡时，击杀秘所思和逻各斯，对 #r铁墓 造成 #b%d 点伤害，并将层数调整至下一个 #y完美数 ，下回合正常行动，并增加生命上限，回复所有生命，并获得1层力量。层数达到 #b33550336 时，将所有消耗的牌置入摸牌堆，升级 #p翁法罗斯的「爱」 。"
+    ]
+  },
+  "HSRMod:ActionLock": {
+    "NAME": "行动锁定",
+    "DESCRIPTIONS": [
+      " #b%d 秒过后， #r结束回合 。",
+      "被施加行动锁定，将在%d秒后结束回合！！！"
+    ]
+  },
+  "HSRMod:EternalRecurrence": {
+    "NAME": "永劫回归",
+    "DESCRIPTIONS": [
+      "无法被消灭。死亡时，获得 #b1 张随机牌，将手牌摸至上限，下回合回复所有生命。"
+    ]
+  },
+  "HSRMod:Immortal": {
+    "NAME": "无生不灭",
+    "DESCRIPTIONS": [
+      "无法被消灭。死亡时，获得 #b1 张随机牌，你回复 [E] 和 [hsrmod:ChargeIcon] 至上限，下回合回复所有生命。"
     ]
   }
 }

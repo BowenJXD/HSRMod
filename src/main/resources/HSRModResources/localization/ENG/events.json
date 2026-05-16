@@ -10,6 +10,7 @@
       "[The Hunt]",
       "[Erudition]",
       "[Abundance]",
+      "[Remembrance]",
       "[Trailblaze]",
       "[Begin Journey]"
     ],
@@ -100,6 +101,7 @@
       "[continue]",
       "[Fight for the 0.63% chance] #rEnter #rbattle",
       "[Pick the 100% security] Lose #y100 gold",
+      "[ #bRemember the *Pattern* ] Remove all Curses.",
       "[Sense the vulnerabilities] #rEnter #ra #rharder #rbattle, gain one more card reward and upgrade them.",
       "[leave]"
     ],
@@ -133,6 +135,7 @@
       "[Use cleaning foam] #rlose #b1 random card",
       "[Feed milk tea] Lose #y100 gold",
       "[Take care] This is how you treat your friends.",
+      "[ #bWith your own blood ] This is how you treat your friends.",
       "[leave]"
     ],
     "DESCRIPTIONS": [
@@ -363,7 +366,7 @@
     "OPTIONS": [
       "[Purchase #y%s] Cost #y%d gold.",
       "[Remove 1 card] Cost #y%d gold.",
-      "[You recall \"bargaining technique.\"] Fix 2 destroyed relics.",
+      "[ #bYou recall \"bargaining technique.\"] Fix #b%d destroyed relics.",
       "[Leave] You don't want to buy anything.",
       "[leave]",
       "Remove 1 card"
@@ -668,6 +671,48 @@
       "Suddenly, you hear an ethereal voice from nowhere: #b@\"Galactic@ #b@Station@, we've arrived at #b@Galactic@ #b@Station!\"@ NL NL At the same time, your vision floods with brilliance—as if the glow of ~hundreds of millions of bioluminescent squids~ had been crystallized into eternal fossils and cast into the #bsky; or as if someone had recklessly unearthed the #bdiamonds secretly stockpiled by mining companies to manipulate prices, scattering them across the ground with a ~clatter~.",
       "When you regain your senses, you realize the small train you're on has been speeding forward all this while. NL NL Indeed, you're now riding along a #pnighttime narrow-gauge railway, seated in a carriage lit by tiny #yyellow bulbs, admiring the scenery outside. The seats are upholstered in #bblue velvet but remain empty, while two large #ybrass buttons gleam brightly on the opposite gray-painted wall.",
       "Before your eyes, the world suddenly #p~shimmers~ #p~with~ #p~radiance~, forcing you to rub your eyes repeatedly in disbelief."
+    ]
+  },
+  "HSRMod:Cyrene": {
+    "NAME": "Cyrene",
+    "OPTIONS": [
+      "[continue]",
+      "Who are you?",
+      "Thank you, I'll take good care of it.",
+      "I must be dreaming...",
+      "[An exciting adventure story.] Activate a random Threshold Protocol, max [E] +1.",
+      "[A mythological fable.] Gain Cyrene, gain 2 Orb slots.",
+      "[ #pA perfect tale with a happy ending. ] Lose Cyrene, obtain 14 #yChrysosHeir cards, upgrade all cards.",
+      "[leave]"
+    ],
+    "DESCRIPTIONS": [
+      "You open your eyes to find yourself amidst waves of #ygolden wheat. NL A gentle breeze caresses your face as wisps of smoke rise from the chimneys of a distant village. Though the sun is nowhere to be seen in the sky, it radiates a #ybright, soft glow.",
+      "\"Hey, fancy seeing you here.\" A familiar voice comes from behind. You turn around to find that #pgirl , wheat grains stuck to the hem and cuffs of her clothes, as if she's been napping in the fields.",
+      "\"Ah, just to be clear, I wasn't slacking off. I was just getting some creative inspiration here. Look, I made you this wreath from #ywheat stalks. It's yours!\"",
+      "\"Don't you remember?\" #pShe laughed, \"That's okay, I'll tell you ~everything~ , every last detail of the #pstory we wrote together.\"",
+      "\"Hehe, no need to thank me! I'm just glad you like it. After all the #pstories we've been through together, consider it a little ~memento~ .\"",
+      "\"Is it a #p~dream~ , or a #p~memory~ ?\" #pShe laughed, \"Maybe they're one and the same? Either way, just sit back and enjoy the #pstory .\"",
+      "\"Speaking of #pstories ...\" The girl conjures up a seemingly familiar, thick book, and its pages ~rustle~ ~in~ ~the~ wind~ , making a soft shuffling sound. NL NL \" ~What~ ~kind~ ~of~ ~story~ ~would~ ~you~ ~like~ ~to~ ~hear~ ~today?~ \"",
+      "\"...And so the #pstory ends. The threat at the kingdom's borders was quelled, and the hero's deeds would be sung for ages to come. NL NL Yet none would know that the legendary \" #revil #rdragon \" had quietly become the #pmaiden who stood by the hero's side...\"",
+      "\"...And so the #pstory ends. The king who sought immortality would never die, but his youth slowly ~withered~ ~away~ with time... NL NL The moral of the story is: Be very, very careful what you wish for.\"",
+      "\"...And so the #pstory ends. The fallen heroes returned from the nether realm, and the ravaged villages were restored. NL NL Everyone joined hands, singing and dancing around the bonfire, #y~until~ #y~twilight's~ #y~end~ ...\"",
+      "\"How about that? Isn't it wonderful? I love the ending most. It comes with a little touch of #y~fantasy~ .\" The #pgirl closes the book, and the #yheroes , the #yepics , all become a #p~page~ #p~of~ #peternity~ .",
+      "\"Well then, I look forward to seeing you again. I'm sure our #pstory will have a #p~romantic~ #p~ending~ ~too~ ~♪~ \""
+    ]
+  },
+  "HSRMod:Reincarnator": {
+    "NAME": "Reincarnator",
+    "OPTIONS": [
+      "[continue]",
+      "[Carry the Coreflame] Obtain the Coreflame of Worldbearing and \"Pyric Corpus\".",
+      "[Fuel the Flame] Remove all #yChrysosHeir cards, gain #rCoreflame equal to the number removed.",
+      "[leave]"
+    ],
+    "DESCRIPTIONS": [
+      "Once again, at the journey's end, the man's silhouette was swallowed by the sweltering #y~golden~ #y~sun~ . NL NL \"So... that #ygolden blood, the last hope of deliverance, was really...\" NL NL His tears never had the chance to fall — they vanished into steam.",
+      "\" ~Snowy~ , ~see~ ~you~ ~tomorrow!~ \" NL \"Deliverer, remember to stay alive till the final act!\" NL \"Go be the #y~dawn~ of Amphoreus...\" NL NL ...... NL The people's wishes echoed in the void. The Nameless Hero crumbled, his fierce and tragic #rdeath laid bare.",
+      "\"If #rrage can't burn this twisted fate to ashes...\" NL He climbed toward the peak, over and over, only to fall and be shattered, again and again—",
+      "\" #r@Then #r@let@ #r@me@ #r@burn@ #r@with@ #r@it!@ \""
     ]
   }
 }

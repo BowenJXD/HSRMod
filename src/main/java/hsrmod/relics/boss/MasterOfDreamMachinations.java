@@ -109,7 +109,8 @@ public class MasterOfDreamMachinations extends BaseRelic implements ClickableRel
 
         while (var2.hasNext()) {
             AbstractCard card = (AbstractCard) var2.next();
-            tmp.addToTop(card);
+            if (card.type != AbstractCard.CardType.CURSE)
+                tmp.addToTop(card);
         }
 
         if (tmp.group.isEmpty()) {

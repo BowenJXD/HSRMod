@@ -50,7 +50,7 @@ public class AllOrNothing extends BaseMonster {
                 int e = EnergyPower.AMOUNT_LIMIT - ModHelper.getPowerCount(p, EnergyPower.POWER_ID);
                 addToBot(new ApplyPowerAction(p, p, new EnergyPower(p, e), e));
             }
-        })));
+        }), 0));
     }
 
     @Override

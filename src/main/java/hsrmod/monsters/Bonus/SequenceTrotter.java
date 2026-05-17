@@ -54,9 +54,9 @@ public class SequenceTrotter extends BaseMonster implements PreBreakSubscriber {
         super.usePreBattleAction();
         SubscriptionManager.subscribe(this);
         if (turnCount > 2) {
-            addToBot(new ApplyPowerAction(this, this, new LockToughnessPower(this)));
+            addToBot(new ApplyPowerAction(this, this, new LockToughnessPower(this), 0));
         }
-        addToBot(new ApplyPowerAction(this, this, new TrotterBlessingPower(this)));
+        addToBot(new ApplyPowerAction(this, this, new TrotterBlessingPower(this), 0));
     }
 
     @Override

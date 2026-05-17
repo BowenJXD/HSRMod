@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
 import com.megacrit.cardcrawl.vfx.combat.TimeWarpTurnEndEffect;
+import com.megacrit.cardcrawl.vfx.combat.ViceCrushEffect;
 import hsrmod.modcore.HSRMod;
 import hsrmod.modifiers.AntinomyModifier;
 import hsrmod.monsters.BaseMonster;
@@ -144,7 +145,11 @@ public class Zandar extends BaseMonster implements PostMonsterDeathSubscriber {
         
         addMoveA(Intent.ATTACK, 10, ()-> ModHelper.getPowerCount(this, StrengthenPower.POWER_ID), mi -> {
             shout(19, 7.0f);
-            attack(mi, AbstractGameAction.AttackEffect.SMASH);
+            if (mi.damageTimeSupplier != null)
+                for (int i = 0; i < mi.damageTimeSupplier.get(); i++) {
+                    addToBot(new VFXAction(new ViceCrushEffect(AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY), 0.5F));
+                    addToBot(new DamageAction(p, this.damage.get(mi.index), AbstractGameAction.AttackEffect.SMASH));
+                }
             addToBot(new RemoveSpecificPowerAction(this, this, StrengthenPower.POWER_ID));
             shouldUseUlt = false;
         });

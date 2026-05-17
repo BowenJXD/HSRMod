@@ -30,7 +30,7 @@ public class GuardianShadow extends BaseMonster implements PreBreakSubscriber {
     public void usePreBattleAction() {
         super.usePreBattleAction();
         if (ModHelper.specialAscension(type)) {
-            addToBot(new ApplyPowerAction(this, this, new BanPower(this)));
+            addToBot(new ApplyPowerAction(this, this, new BanPower(this), 0));
         }
         BaseMod.subscribe(this);
     }

@@ -68,11 +68,11 @@ public class Phantylia extends BaseMonster implements PostPowerApplySubscriber {
         addToBot(new CannotLoseAction());
         // addToBot(new TalkAction(this, DIALOG[0], 4.0F, 5.0F));
         ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(ID + "_1", 3.0F));
-        addToBot(new ApplyPowerAction(this, this, new UnawakenedPower(this)));
+        addToBot(new ApplyPowerAction(this, this, new UnawakenedPower(this), 0));
         spawnAbundanceLotus(false);
         spawnDestructionLotus(false);
         if (specialAs)
-            addToBot(new ApplyPowerAction(this, this, new RegenerateMonsterPower(this, 4)));
+            addToBot(new ApplyPowerAction(this, this, new RegenerateMonsterPower(this, 4), 0));
     }
 
     @Override

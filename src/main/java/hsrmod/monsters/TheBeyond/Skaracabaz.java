@@ -99,9 +99,9 @@ public class Skaracabaz extends BaseMonster implements OnCardUseSubscriber {
     @Override
     public void usePreBattleAction() {
         super.usePreBattleAction();
-        addToBot(new ApplyPowerAction(this, this, new ExtraToughnessPower(this, 3)));
+        addToBot(new ApplyPowerAction(this, this, new ExtraToughnessPower(this, 3), 0));
         if (moreHPAs) {
-            addToBot(new ApplyPowerAction(this, this, new DefensePower(this, defenseCount)));
+            addToBot(new ApplyPowerAction(this, this, new DefensePower(this, defenseCount), 0));
         }
     }
 

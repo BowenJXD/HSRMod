@@ -57,7 +57,7 @@ public class HowlingCasket extends BaseMonster implements OnPowersModifiedSubscr
         super.usePreBattleAction();
         for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters) {
             if (monster instanceof SableclawWolftrooper || monster instanceof EclipseWolftrooper) {
-                addToBot(new ApplyPowerAction(monster, this, new AngryPower(monster, 1)));
+                addToBot(new ApplyPowerAction(monster, this, new AngryPower(monster, 1), 0));
             }
         }
     }

@@ -33,7 +33,7 @@ public class GnawSting extends BaseMonster {
     @Override
     public void usePreBattleAction() {
         super.usePreBattleAction();
-        addToBot(new ApplyPowerAction(this, this, new DecayEulogyPower(this, decayCount)));
+        addToBot(new ApplyPowerAction(this, this, new DecayEulogyPower(this, decayCount), 0));
     }
 
     @Override

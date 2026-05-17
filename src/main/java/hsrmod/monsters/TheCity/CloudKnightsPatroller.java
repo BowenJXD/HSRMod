@@ -34,7 +34,7 @@ public class CloudKnightsPatroller extends BaseMonster {
     @Override
     public void usePreBattleAction() {
         super.usePreBattleAction();
-        addToBot(new ApplyPowerAction(this, this, new ThieveryPower(this, goldAmt)));
+        addToBot(new ApplyPowerAction(this, this, new ThieveryPower(this, goldAmt), 0));
     }
 
     @Override

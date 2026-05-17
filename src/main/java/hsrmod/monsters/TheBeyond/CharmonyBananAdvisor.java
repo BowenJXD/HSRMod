@@ -70,7 +70,7 @@ public class CharmonyBananAdvisor extends BaseMonster implements IBanana {
         super.usePreBattleAction();
         addToBot(new CannotLoseAction());
         AbstractDungeon.getMonsters().monsters.stream().filter(ModHelper::check).forEach(m -> {
-            addToBot(new ApplyPowerAction(m, this, new RegrowPower(m)));
+            addToBot(new ApplyPowerAction(m, this, new RegrowPower(m), 0));
         });
         addToBot(new ApplyPowerAction(this, this, new ChannelPower(this, channelCount * (inClass ? -1 : 1), ChannelPower.ChannelType.OFFCLASS_CLASSROOM), 0));
     }

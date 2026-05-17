@@ -38,10 +38,10 @@ public class AbundanceLotus extends BaseMonster {
     @Override
     public void usePreBattleAction() {
         super.usePreBattleAction();
-        addToBot(new ApplyPowerAction(this, this, new SummonedPower(this)));
-        addToBot(new ApplyPowerAction(this, this, new AbundanceLotusPower(this)));
+        addToBot(new ApplyPowerAction(this, this, new SummonedPower(this), 0));
+        addToBot(new ApplyPowerAction(this, this, new AbundanceLotusPower(this), 0));
         if (specialAs)
-            addToBot(new ApplyPowerAction(this, this, new LastSpringPower(this, 2)));
+            addToBot(new ApplyPowerAction(this, this, new LastSpringPower(this, 2), 0));
     }
 
     @Override

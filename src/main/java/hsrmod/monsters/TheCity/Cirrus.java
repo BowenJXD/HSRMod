@@ -54,7 +54,7 @@ public class Cirrus extends BaseMonster implements PostMonsterDeathSubscriber {
     @Override
     public void usePreBattleAction() {
         super.usePreBattleAction();
-        addToBot(new ApplyPowerAction(this, this, new SoulsplitPower(this, soulSplitCount)));
+        addToBot(new ApplyPowerAction(this, this, new SoulsplitPower(this, soulSplitCount), 0));
         if (specialAs)
             spawnMonsters();
     }

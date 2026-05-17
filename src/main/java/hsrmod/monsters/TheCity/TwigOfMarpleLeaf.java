@@ -35,7 +35,7 @@ public class TwigOfMarpleLeaf extends BaseMonster {
     @Override
     public void usePreBattleAction() {
         super.usePreBattleAction();
-        addToBot(new ApplyPowerAction(this, this, new ThornsPower(this, thornCount)));
+        addToBot(new ApplyPowerAction(this, this, new ThornsPower(this, thornCount), 0));
     }
 
     @Override

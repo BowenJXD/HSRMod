@@ -25,7 +25,7 @@ public class FuriaeWarrior extends BaseMonster {
     @Override
     public void usePreBattleAction() {
         super.usePreBattleAction();
-        addToBot(new ApplyPowerAction(this, this, new WarArmorPower(this, warArmorAmt)));
+        addToBot(new ApplyPowerAction(this, this, new WarArmorPower(this, warArmorAmt), 0));
     }
 
     @Override

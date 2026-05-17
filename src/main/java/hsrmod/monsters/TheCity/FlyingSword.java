@@ -44,7 +44,7 @@ public class FlyingSword extends BaseMonster {
     public void usePreBattleAction() {
         super.usePreBattleAction();
         boolean hidden = ModHelper.specialAscension(EnemyType.ELITE); // 
-        addToBot(new ApplyPowerAction(this, this, new FormationCorePower(this, tag, false)));
+        addToBot(new ApplyPowerAction(this, this, new FormationCorePower(this, tag, false), 0));
     }
 
     @Override

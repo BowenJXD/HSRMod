@@ -39,7 +39,7 @@ public class Irontomb extends BaseMonster {
             ModPrefs.load();
             reincarnationCount = ModPrefs.getInteger("IrontombStrength", 0);
             if (reincarnationCount > 0) {
-                addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, reincarnationCount)));
+                addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, reincarnationCount), 0));
             }
             ModPrefs.putInteger("IrontombStrength", reincarnationCount + 1);
             ModPrefs.save();
@@ -91,6 +91,7 @@ public class Irontomb extends BaseMonster {
     @Override
     public void die() {
         super.die();
+        currentBlock = 0;
         addToBot(new CanLoseAction());
         ModHelper.addToBotAbstract(() -> {
             for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters) {

@@ -49,7 +49,7 @@ public class Spider extends BaseMonster {
                     addToBot(new ElementalDamageAction(m, new ElementalDamageInfo(m, selfExpDamage, DamageInfo.DamageType.THORNS, ElementType.Fire, 2), AbstractGameAction.AttackEffect.FIRE));
                 }
             }
-        })));
+        }), 0));
     }
 
     @Override

@@ -40,7 +40,7 @@ public class ManipulatedLogos extends BaseMonster {
     @Override
     public void usePreBattleAction() {
         super.usePreBattleAction();
-        addToBot(new ApplyPowerAction(this, this, new ImmortalPower(this, 1)));
+        addToBot(new ApplyPowerAction(this, this, new ImmortalPower(this, 1), 0));
         /*if (specialAs) {
             addToBot(new ApplyPowerAction(this, this, new AngerPower(this, 1), 1));
         }*/

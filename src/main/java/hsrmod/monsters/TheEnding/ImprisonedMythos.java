@@ -40,7 +40,7 @@ public class ImprisonedMythos extends BaseMonster {
     @Override
     public void usePreBattleAction() {
         super.usePreBattleAction();
-        addToBot(new ApplyPowerAction(this, this, new EternalRecurrencePower(this, 1)));
+        addToBot(new ApplyPowerAction(this, this, new EternalRecurrencePower(this, 1), 0));
         /*if (specialAs) {
             addToBot(new ApplyPowerAction(this, this, new AngryPower(this, 1), 1));
         }*/

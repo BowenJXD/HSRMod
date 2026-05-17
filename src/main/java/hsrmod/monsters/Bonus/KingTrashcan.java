@@ -23,7 +23,7 @@ public class KingTrashcan extends BaseMonster {
     @Override
     public void usePreBattleAction() {
         super.usePreBattleAction();
-            addToBot(new ApplyPowerAction(this, this, new TheCansCreedPower(this)));
+            addToBot(new ApplyPowerAction(this, this, new TheCansCreedPower(this), 0));
     }
 
     @Override

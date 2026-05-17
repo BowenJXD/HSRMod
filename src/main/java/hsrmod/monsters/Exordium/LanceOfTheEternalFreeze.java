@@ -33,10 +33,10 @@ public class LanceOfTheEternalFreeze extends BaseMonster {
     @Override
     public void usePreBattleAction() {
         super.usePreBattleAction();
-        addToBot(new ApplyPowerAction(this, this, new SummonedPower(this)));
+        addToBot(new ApplyPowerAction(this, this, new SummonedPower(this), 0));
         addToBot(new ApplyPowerAction(this, this, new DeathExplosionPower(this, MOVES[1], MOVES[2], false, () ->
                 addToTop(new ExhaustAction(1, true, false, false))
-        )));
+        ), 0));
     }
 
     @Override

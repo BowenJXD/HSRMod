@@ -111,7 +111,7 @@ public class ShadowOfFeixiao extends BaseMonster implements PreBreakSubscriber {
         ModHelper.addToBotAbstract(() -> CardCrawlGame.sound.playV(this.getClass().getSimpleName() + "_" + 0, 2f));
         AbstractDungeon.getMonsters().monsters.forEach(m -> {
             if (!Objects.equals(m.id, id)) {
-                addToBot(new ApplyPowerAction(m, this, new SummonedPower(m)));
+                addToBot(new ApplyPowerAction(m, this, new SummonedPower(m), 0));
             }
         });
     }

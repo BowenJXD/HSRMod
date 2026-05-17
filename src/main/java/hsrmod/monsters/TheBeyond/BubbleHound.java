@@ -45,7 +45,7 @@ public class BubbleHound extends BaseMonster {
                     addToBot(new ApplyPowerAction(m, this, new BleedingPower(m, m, 1), 1));
                 }
             }
-        })));
+        }), 0));
         addToBot(new ApplyPowerAction(this, this, new SoulGladRevelPower(this, soulGladAmount, 4), soulGladAmount));
     }
 

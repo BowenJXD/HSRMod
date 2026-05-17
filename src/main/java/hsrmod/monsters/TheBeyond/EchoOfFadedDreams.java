@@ -47,8 +47,8 @@ public class EchoOfFadedDreams extends BaseMonster {
     void onSpawn() {
         AbstractPower power = new RegrowPower(this);
         power.description = MOVES[3];
-        addToBot(new ApplyPowerAction(this, this, power));
-        addToBot(new ApplyPowerAction(this, this, new SummonedPower(this)));
+        addToBot(new ApplyPowerAction(this, this, power, 0));
+        addToBot(new ApplyPowerAction(this, this, new SummonedPower(this), 0));
     }
 
     @Override

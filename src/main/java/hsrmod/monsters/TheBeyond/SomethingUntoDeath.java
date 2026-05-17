@@ -49,7 +49,7 @@ public class SomethingUntoDeath extends BaseMonster {
     @Override
     public void usePreBattleAction() {
         super.usePreBattleAction();
-        addToBot(new ApplyPowerAction(p, this, new NightfallPower(p, 1)));
+        addToBot(new ApplyPowerAction(p, this, new NightfallPower(p, 1), 0));
     }
 
     @Override

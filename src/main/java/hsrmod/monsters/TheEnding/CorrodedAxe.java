@@ -28,7 +28,7 @@ public class CorrodedAxe extends BaseMonster {
         super.usePreBattleAction();
         addToBot(new ApplyPowerAction(this, this, new BitterFracturePower(this, ()  -> {
             AbstractDungeon.topLevelEffects.add(new TopWarningEffect(DIALOG[0]));
-        })));
+        }), 0));
     }
 
     @Override

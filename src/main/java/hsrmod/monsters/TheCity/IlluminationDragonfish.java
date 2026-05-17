@@ -41,7 +41,7 @@ public class IlluminationDragonfish extends BaseMonster {
                     addToBot(new ApplyPowerAction(m, this, new VulnerablePower(m, 1, true), 1));
                 }
             }
-        })));
+        }), 0));
     }
 
     @Override

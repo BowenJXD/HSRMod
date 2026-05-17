@@ -21,7 +21,7 @@ public class MaraStruckSoldier extends BaseMonster {
     @Override
     public void usePreBattleAction() {
         super.usePreBattleAction();
-        addToBot(new ApplyPowerAction(this, this, new RebirthPower(this, 1)));
+        addToBot(new ApplyPowerAction(this, this, new RebirthPower(this, 1), 0));
     }
 
     @Override

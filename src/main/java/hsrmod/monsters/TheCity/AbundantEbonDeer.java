@@ -95,9 +95,9 @@ public class AbundantEbonDeer extends BaseMonster implements PostMonsterDeathSub
     @Override
     public void usePreBattleAction() {
         super.usePreBattleAction();
-        addToBot(new ApplyPowerAction(this, this, new VigorOverflowPower(this, 1)));
+        addToBot(new ApplyPowerAction(this, this, new VigorOverflowPower(this, 1), 0));
         if (specialAs)
-            addToBot(new ApplyPowerAction(this, this, new RegenerateMonsterPower(this, 4)));
+            addToBot(new ApplyPowerAction(this, this, new RegenerateMonsterPower(this, 4), 0));
     }
 
     @Override

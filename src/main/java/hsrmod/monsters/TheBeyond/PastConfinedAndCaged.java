@@ -66,7 +66,7 @@ public class PastConfinedAndCaged extends BaseMonster implements PreElementalDam
     public void usePreBattleAction() {
         super.usePreBattleAction();
         if (AbstractDungeon.getCurrRoom().eliteTrigger) {
-            addToBot(new ApplyPowerAction(this, this, new ResonatePower(this, 2, ResonatePower.ResonateType.PAST_PRESENT_AND_ETERNAL)));
+            addToBot(new ApplyPowerAction(this, this, new ResonatePower(this, 2, ResonatePower.ResonateType.PAST_PRESENT_AND_ETERNAL), 0));
             healthBarUpdatedEvent();
         }
     }

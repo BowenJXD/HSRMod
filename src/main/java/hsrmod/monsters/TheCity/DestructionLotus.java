@@ -36,10 +36,10 @@ public class DestructionLotus extends BaseMonster {
     @Override
     public void usePreBattleAction() {
         super.usePreBattleAction();
-        addToBot(new ApplyPowerAction(this, this, new SummonedPower(this)));
-        addToBot(new ApplyPowerAction(this, this, new DestructionLotusPower(this)));
+        addToBot(new ApplyPowerAction(this, this, new SummonedPower(this), 0));
+        addToBot(new ApplyPowerAction(this, this, new DestructionLotusPower(this), 0));
         if (specialAs)
-            addToBot(new ApplyPowerAction(this, this, new AngryPower(this, 2)));
+            addToBot(new ApplyPowerAction(this, this, new AngryPower(this, 2), 0));
     }
 
     @Override

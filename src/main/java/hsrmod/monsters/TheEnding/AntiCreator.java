@@ -194,9 +194,9 @@ public class AntiCreator extends BaseMonster implements OnCardUseSubscriber {
             addToTop(new ApplyPowerAction(this, this, new ThirtyMillionCyclesOfSinPower(this, thirtyAmt, irontomb), 0));
         });
 
-        addToBot(new ApplyPowerAction(p, this, new AmphoreanLovePower(p, 1)));
-        addToBot(new ApplyPowerAction(p, this, new DescentIntoChaosPower(p, 1)));
-        addToBot(new ApplyPowerAction(p, this, new DestructionFirstPower(p, 1)));
+        addToBot(new ApplyPowerAction(p, this, new AmphoreanLovePower(p, 1), 0));
+        addToBot(new ApplyPowerAction(p, this, new DescentIntoChaosPower(p, 1), 0));
+        addToBot(new ApplyPowerAction(p, this, new DestructionFirstPower(p, 1), 0));
 
         if (AbstractDungeon.getMonsters() != null) {
             if (AbstractDungeon.getMonsters().monsters.stream().noneMatch(m -> m instanceof ManipulatedLogos)) {

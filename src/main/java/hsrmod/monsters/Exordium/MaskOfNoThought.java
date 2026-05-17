@@ -32,7 +32,7 @@ public class MaskOfNoThought extends BaseMonster {
         super.usePreBattleAction();
         addToBot(new ApplyPowerAction(this, this, new DeathExplosionPower(this, MOVES[2], MOVES[3], false, () -> {
             addToBot(new GainEnergyAction(1));
-        })));
+        }), 0));
     }
 
     @Override

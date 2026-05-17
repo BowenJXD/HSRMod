@@ -33,7 +33,7 @@ public class GoldenHound extends BaseMonster {
                     addToTop(new ApplyPowerAction(m, this, new MultiMovePower(m, 1)));
                 }
             }
-        })));
+        }), 0));
     }
 
     @Override

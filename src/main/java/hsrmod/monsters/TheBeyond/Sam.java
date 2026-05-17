@@ -101,7 +101,7 @@ public class Sam extends BaseMonster {
     @Override
     public void usePreBattleAction() {
         super.usePreBattleAction();
-        addToBot(new ApplyPowerAction(this, this, new LockToughnessPower(this)));
+        addToBot(new ApplyPowerAction(this, this, new LockToughnessPower(this), 0));
     }
 
     @Override

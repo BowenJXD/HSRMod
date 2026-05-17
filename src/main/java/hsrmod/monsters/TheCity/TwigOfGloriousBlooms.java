@@ -42,7 +42,7 @@ public class TwigOfGloriousBlooms extends BaseMonster {
     @Override
     public void usePreBattleAction() {
         super.usePreBattleAction();
-        addToBot(new ApplyPowerAction(this, this, new LastSpringPower(this, lastSpringCount)));
+        addToBot(new ApplyPowerAction(this, this, new LastSpringPower(this, lastSpringCount), 0));
     }
 
     @Override

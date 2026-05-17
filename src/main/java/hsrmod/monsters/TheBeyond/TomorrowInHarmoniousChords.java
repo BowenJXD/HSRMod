@@ -90,11 +90,11 @@ public class TomorrowInHarmoniousChords extends BaseMonster implements OnCardUse
     public void usePreBattleAction() {
         super.usePreBattleAction();
         ModHelper.addToBotAbstract(this::startSkill);
-        addToBot(new ApplyPowerAction(this, this, new StrengthPower(this, iniStrengthCount)));
+        addToBot(new ApplyPowerAction(this, this, new StrengthPower(this, iniStrengthCount), 0));
         addToBot(new RollMoveAction(this));
         ModHelper.addToBotAbstract(this::createIntent);
         if (AbstractDungeon.getCurrRoom().eliteTrigger) {
-            addToBot(new ApplyPowerAction(this, this, new ResonatePower(this, 2, ResonatePower.ResonateType.PAST_PRESENT_AND_ETERNAL)));
+            addToBot(new ApplyPowerAction(this, this, new ResonatePower(this, 2, ResonatePower.ResonateType.PAST_PRESENT_AND_ETERNAL), 0));
             healthBarUpdatedEvent();
         }
     }

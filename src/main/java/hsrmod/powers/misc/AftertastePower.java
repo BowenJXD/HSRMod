@@ -71,7 +71,7 @@ public class AftertastePower extends BuffPower implements PreElementalDamageSubs
                 flash();
                 card = action.info.card;
                 // addToTop(new ApplyPowerAction(info.owner, info.owner, new EnergyPower(info.owner, -ENERGY_REQUIRED), -ENERGY_REQUIRED));
-                addToBot(new ElementalDamageAction(action.target, new ElementalDamageInfo(owner, amount, DamageInfo.DamageType.NORMAL,
+                addToBot(new ElementalDamageAction(action.target, new ElementalDamageInfo(owner, amount, DamageInfo.DamageType.THORNS,
                         GeneralUtil.getRandomEnumValue(ElementType.class), 1), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
                 addToBot(new ApplyPowerAction(owner, owner, this, 1));
             }

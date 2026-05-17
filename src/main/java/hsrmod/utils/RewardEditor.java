@@ -398,8 +398,10 @@ public class RewardEditor implements StartGameSubscriber, CustomSavable<String[]
                 ((TrailblazeTimer) relic).updateDescription(relic.getUpdatedDescription());
             }
         }
-        if (AbstractDungeon.floorNum == 0 && AbstractDungeon.ascensionLevel >= 20 && AbstractDungeon.player.gold < HSRModConfig.getGoldInc()) {
+        if (AbstractDungeon.floorNum == 0) {
             bannedTags = null;
+        }
+        if (AbstractDungeon.floorNum == 0 && AbstractDungeon.ascensionLevel >= 20 && AbstractDungeon.player.gold < HSRModConfig.getGoldInc()) {
             AbstractDungeon.player.gainGold(HSRModConfig.getGoldInc());
             if (Settings.language == Settings.GameLanguage.ZHS || Settings.language == Settings.GameLanguage.ZHT) {
                 AbstractDungeon.topLevelEffectsQueue.add(new TopWarningEffect("⚠阈值协议生效⚠"));

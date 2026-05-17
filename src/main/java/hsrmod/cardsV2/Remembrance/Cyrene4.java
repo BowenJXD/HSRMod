@@ -19,6 +19,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.vfx.SpotlightEffect;
+import com.megacrit.cardcrawl.vfx.cardManip.ExhaustCardEffect;
 import com.megacrit.cardcrawl.vfx.stance.DivinityParticleEffect;
 import hsrmod.actions.ShoutVoiceAction;
 import hsrmod.cards.BaseCard;
@@ -81,13 +82,19 @@ public class Cyrene4 extends BaseCard {
         if (num > 0) {
             addToBot(new GainEnergyAction(num));
         }
-        addToBot(new ApotheosisAction());
         ModHelper.addToBotAbstract(() -> {
             int orbCount = p.maxOrbs - p.filledOrbCount();
             for (int i = orbCount; i > 0; i--) {
                 addToBot(new ChannelAction(AbstractOrb.getRandomOrb(true)));
             }
         });
+        ModHelper.addToBotAbstract(() -> {
+            for (ModHelper.FindResult result : ModHelper.findCards(c -> c.type == CardType.STATUS)) {
+                result.group.removeCard(result.card);
+                AbstractDungeon.effectsQueue.add(new ExhaustCardEffect(result.card));
+            }
+        });
+        addToBot(new ApotheosisAction());
         ModHelper.addToBotAbstract(Cyrene4::ChrysosHeirBuff);
     }
     

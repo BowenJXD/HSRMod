@@ -3,6 +3,7 @@ package hsrmod.powers.uniqueBuffs;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import hsrmod.actions.ElementalDamageAction;
@@ -72,7 +73,7 @@ public class TribbiePower extends PowerPower implements PreElementalDamageSubscr
         int dmg = amount * targets.size();
         if (!upgraded) dmg -= amount;
         if (dmg > 0) {
-            ElementalDamageInfo info = new ElementalDamageInfo(owner, dmg, ElementType.Quantum, 0);
+            ElementalDamageInfo info = new ElementalDamageInfo(owner, dmg, DamageInfo.DamageType.THORNS, ElementType.Quantum, 0);
             info.applyPowers(owner, targetWithMaxHp);
             addToTop(new ElementalDamageAction(targetWithMaxHp, info, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
             totalDmgForTurn += dmg;

@@ -1,6 +1,8 @@
 package hsrmod.powers.enemyOnly;
 
 import com.evacipated.cardcrawl.mod.stslib.actions.common.MoveCardsAction;
+import com.evacipated.cardcrawl.mod.stslib.powers.StunMonsterPower;
+import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.utility.ExhaustToHandAction;
@@ -8,13 +10,14 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.StatePower;
 import hsrmod.utils.GeneralUtil;
 import hsrmod.utils.ModHelper;
 import hsrmod.utils.MusicStack;
 
-public class ThirtyMillionCyclesOfSinPower extends StatePower {
+public class ThirtyMillionCyclesOfSinPower extends StatePower implements OnReceivePowerPower {
     public static final String POWER_ID = HSRMod.makePath(ThirtyMillionCyclesOfSinPower.class.getSimpleName());
 
     int[] perfectNums = {6, 28, 496, 8128, 33550336};
@@ -50,5 +53,11 @@ public class ThirtyMillionCyclesOfSinPower extends StatePower {
         // ModHelper.addToBotAbstract(() -> addToTop(new ExhaustToHandAction(GeneralUtil.getRandomElement(AbstractDungeon.player.exhaustPile.group, AbstractDungeon.cardRandomRng))));
         stackPower(-perfectNums[Math.min(index++, perfectNums.length-1)] + perfectNums[Math.min(index, perfectNums.length-1)]);
         updateDescription();
+    }
+
+    @Override
+    public boolean onReceivePower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
+        if (power instanceof StunMonsterPower) return false;
+        return true;
     }
 }

@@ -1,5 +1,6 @@
 package hsrmod.cardsV2.Abundance;
 
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
@@ -15,7 +16,10 @@ import hsrmod.actions.AOEAction;
 import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.actions.FollowUpAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.cardsV2.Remembrance.Cyrene4;
 import hsrmod.modcore.CustomEnums;
+import hsrmod.modifiers.OdeToStrifeModifier;
+import hsrmod.powers.uniqueBuffs.FuturePower;
 import hsrmod.utils.ModHelper;
 
 public class Mydei3 extends BaseCard {
@@ -55,6 +59,10 @@ public class Mydei3 extends BaseCard {
         addToBot(new ChangeStanceAction(new NeutralStance()));
         AbstractCard card = new Mydei1();
         if (upgraded) card.upgrade();
+        try {
+            if (p.hasPower(FuturePower.POWER_ID))
+                CardModifierManager.addModifier(card, Cyrene4.cardModMap.get(Mydei1.ID).get());
+        } catch (Exception ignored) {}
         addToBot(new MakeTempCardInDiscardAction(card, 1));
     }
 }

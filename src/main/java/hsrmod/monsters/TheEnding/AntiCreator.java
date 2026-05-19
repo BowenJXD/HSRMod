@@ -171,11 +171,11 @@ public class AntiCreator extends BaseMonster implements OnCardUseSubscriber {
 
             ModHelper.addToBotAbstract(() -> {
                 if (ModHelper.check(mythos) && mythos.intent != Intent.STUN) {
-                    new ArrayList<>(p.drawPile.group).forEach(c ->
+                    new ArrayList<>(p.drawPile.group).stream().filter(c -> !c.hasTag(CustomEnums.TERRITORY)).forEach(c ->
                             addToTop(new ExhaustSpecificCardAction(c, p.drawPile)));
                 }
                 if (ModHelper.check(logos) && logos.intent != Intent.STUN) {
-                    new ArrayList<>(p.discardPile.group).forEach(c ->
+                    new ArrayList<>(p.discardPile.group).stream().filter(c -> !c.hasTag(CustomEnums.TERRITORY)).forEach(c ->
                             addToTop(new ExhaustSpecificCardAction(c, p.discardPile)));
                 }
             });

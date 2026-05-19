@@ -200,7 +200,7 @@
     "NAME": "Longevous Disciple",
     "FLAVOR": "",
     "DESCRIPTIONS": [
-      "At the start of combat, starter defends gain Temp HP instead of Block."
+      "At the start of combat, starter defends gain Temp HP instead of Block, and its block + 1."
     ]
   },
   "HSRMod:WorldRemakingDeliverer": {

@@ -21,10 +21,13 @@ import java.util.stream.Collectors;
 public class Demiurge2 extends BaseCard {
     public static final String ID = Demiurge2.class.getSimpleName();
 
+    int costCache;
+    
     public Demiurge2() {
         super(ID);
         isMultiDamage = true;
         purgeOnUse = true;
+        costCache = cost;
     }
 
     @Override
@@ -35,8 +38,10 @@ public class Demiurge2 extends BaseCard {
         ModHelper.addToBotAbstract(() -> {
             for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters) {
                 if (monster.hasPower(AmphoreanHatredPower.POWER_ID)) {
-                    int reduction = monster.getPower(AmphoreanHatredPower.POWER_ID).amount * 24 / 100;
-                    addToTop(new ApplyPowerAction(monster, p, new AmphoreanHatredPower(monster, -reduction)));
+                    AbstractPower power = monster.getPower(AmphoreanHatredPower.POWER_ID);
+                    int reduction = power.amount * 24 / 100;
+                    power.reducePower(reduction);
+                    //addToTop(new ApplyPowerAction(monster, p, new AmphoreanHatredPower(monster, -reduction)));
                 }
             }
             addToTop(new ExhaustToHandAction(GeneralUtil.getRandomElement(
@@ -44,5 +49,6 @@ public class Demiurge2 extends BaseCard {
                             .filter(c -> c.type != AbstractCard.CardType.CURSE && c.type != AbstractCard.CardType.STATUS).collect(Collectors.toList()),
                     AbstractDungeon.cardRandomRng)));
         });
+        setCostForTurn(costCache);
     }
 }

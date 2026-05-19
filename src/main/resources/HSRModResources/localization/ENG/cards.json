@@ -121,7 +121,9 @@
   "HSRMod:ImbibitorLunae2": {
     "EXTENDED_DESCRIPTION": [
       "Exhaust"
-    ]
+    ],
+    "SIGNATURE_UNLOCK_CONDITION": "Play this card 3 times in 1 turn.",
+    "SIGNATURE_ILLUSTRATOR": "Void"
   },
   "HSRMod:Lingsha2": {
     "EXTENDED_DESCRIPTION": [

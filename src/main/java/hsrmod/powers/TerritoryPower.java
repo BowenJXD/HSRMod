@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -16,11 +17,13 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.scenes.AbstractScene;
+import hsrmod.cardsV2.Curse.Imprison;
 import hsrmod.dungeons.BelobogScene;
 import hsrmod.dungeons.LuofuScene;
 import hsrmod.dungeons.PenaconyScene;
 import hsrmod.effects.ChangeSceneEffect;
 import hsrmod.modcore.CustomEnums;
+import hsrmod.powers.misc.EnergyPower;
 import hsrmod.subscribers.PostCardMoveSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.ModHelper;
@@ -105,6 +108,13 @@ public abstract class TerritoryPower extends StatePower implements PostCardMoveS
             p.exhaustPile.clear();
             exhaustCache.group.forEach(c -> p.exhaustPile.addToBottom(c));
             SubscriptionManager.getInstance().extraChecks.removeAll(exhaustCache.group);
+        });
+        ModHelper.addToBotAbstract(() -> {
+            if (AbstractDungeon.player.hand.group.stream().noneMatch(c -> c instanceof Imprison)) {
+                EnergyPower power = (EnergyPower) AbstractDungeon.player.getPower(EnergyPower.POWER_ID);
+                if (power != null)
+                    ModHelper.addToTopAbstract(() -> power.unlock(this));
+            }
         });
     }
 

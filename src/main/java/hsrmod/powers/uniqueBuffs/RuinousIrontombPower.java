@@ -118,7 +118,8 @@ public class RuinousIrontombPower extends TerritoryPower implements OnReceivePow
         if (Objects.equals(card.cardID, HSRMod.makePath(Khaslana4.ID))) return;
         AbstractMonster monster = ModHelper.betterGetRandomMonster();
         ModHelper.addToBotAbstract(() -> {
-            if (!monster.hasPower("Barricade")) {
+            if (monster == null) return;
+            if ( !monster.hasPower("Barricade")) {
                 monster.loseBlock();
             }
             monster.applyStartOfTurnPowers();

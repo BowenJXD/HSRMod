@@ -278,7 +278,7 @@
       "FORMAT Malfunction_Zone",
       "⚠Query: Prime Mover's Outcome⚠",
       "Query: Prime Mover's Outcome: Deal damage, remove all #yStrengthen stacks, deal 1 additional hit per stack removed.",
-      "Played for free. After playing, take %d damage and remove this effect."
+      "Free to play. After playing, take %d damage and remove this effect."
     ],
     "DIALOG": []
   },

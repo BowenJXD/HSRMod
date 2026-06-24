@@ -1,6 +1,7 @@
 package hsrmod.cardsV2.Trailblaze;
 
 import basemod.helpers.CardModifierManager;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
@@ -23,6 +24,7 @@ import hsrmod.actions.ElementalDamageAllAction;
 import hsrmod.actions.ShoutVoiceAction;
 import hsrmod.cards.BaseCard;
 import hsrmod.effects.TopWarningEffect;
+import hsrmod.misc.VideoManager;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modifiers.OdeToWorldbearing2Modifier;
 import hsrmod.powers.uniqueBuffs.FuturePower;
@@ -33,11 +35,14 @@ import hsrmod.utils.ModHelper;
 public class Khaslana4 extends BaseCard {
     public static final String ID = Khaslana4.class.getSimpleName();
     
+    int baseDamageCache = 0;
+    
     public Khaslana4() {
         super(ID);
         exhaust = true;
         tags.add(CustomEnums.CHRYSOS_HEIR);
         tags.add(CustomEnums.TERRITORY);
+        baseDamageCache = baseDamage;
     }
 
     @Override
@@ -46,18 +51,29 @@ public class Khaslana4 extends BaseCard {
     }
 
     @Override
+    public void triggerOnOtherCardPlayed(AbstractCard c) {
+        super.triggerOnOtherCardPlayed(c);
+        upgradeDamage(2);
+    }
+
+    @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        shout(0);
-        addToBot(new ShoutVoiceAction(this.getClass().getSimpleName(), 3.0f));
+        if (!VideoManager.play(ID, 5, true)) {
+            shout(0);
+            addToBot(new ShoutVoiceAction(this.getClass().getSimpleName(), 3.0f));
+        }
         addToBot(new VFXAction(new ScreenOnFireEffect()));
 
         int monsterCount = (int) AbstractDungeon.getMonsters().monsters.stream().filter(ModHelper::check).count();
-        int[] damageMatrix = DamageInfo.createDamageMatrix(damage / monsterCount, true);
-        addToBot(new ElementalDamageAllAction(p, damageMatrix, damageTypeForTurn, elementType, tr, 
-                AbstractGameAction.AttackEffect.SMASH).setBaseCard(this));
+        if (monsterCount > 0) {
+            int[] damageMatrix = DamageInfo.createDamageMatrix(damage / monsterCount, true);
+            addToBot(new ElementalDamageAllAction(p, damageMatrix, damageTypeForTurn, elementType, tr,
+                    AbstractGameAction.AttackEffect.SMASH).setBaseCard(this));
+        }
         
         if (!p.hasPower(FuturePower.POWER_ID)) {
             addToBot(new RemoveSpecificPowerAction(p, p, RuinousIrontombPower.POWER_ID));
+            addToBot(new ChangeStanceAction(new NeutralStance()));
             // addToBot(new PressEndTurnButtonAction());
         } else {
             if (p.hasPower(RuinousIrontombPower.POWER_ID)) {
@@ -69,6 +85,11 @@ public class Khaslana4 extends BaseCard {
             }
             AbstractDungeon.topLevelEffects.add(new TopWarningEffect(cardStrings.EXTENDED_DESCRIPTION[MathUtils.randomBoolean() ? 1:2]));
         }
-        addToBot(new ChangeStanceAction(new NeutralStance()));
+        baseDamage = baseDamageCache;
+    }
+
+    @Override
+    public void triggerOnGlowCheck() {
+        glowColor = Color.RED.cpy();
     }
 }

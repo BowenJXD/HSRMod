@@ -17,6 +17,7 @@ import com.megacrit.cardcrawl.vfx.combat.ThirdEyeEffect;
 import hsrmod.actions.BouncingAction;
 import hsrmod.actions.ElementalDamageAction;
 import hsrmod.cards.BaseCard;
+import hsrmod.misc.VideoManager;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
@@ -45,7 +46,8 @@ public class Pollux3 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        shout(0);
+        if (!VideoManager.play(ID, 5, true))
+            shout(0);
         addToBot(new VFXAction(new BorderLongFlashEffect(Color.PURPLE)));
         int dmg = damage / magicNumber;
         ElementalDamageAction action = new ElementalDamageAction(m, new ElementalDamageInfo(p, dmg, DamageInfo.DamageType.NORMAL, elementType, tr / magicNumber), AbstractGameAction.AttackEffect.FIRE, result -> {
@@ -60,5 +62,10 @@ public class Pollux3 extends BaseCard {
         addToBot(new BouncingAction(m, magicNumber, action));
         addToBot(new RemoveSpecificPowerAction(p, p, NewbudPower.POWER_ID));
         addToBot(new RemoveSpecificPowerAction(p, p, LostNetherlandPower.POWER_ID));
+    }
+    
+    @Override
+    public void triggerOnGlowCheck() {
+        glowColor = Color.PURPLE.cpy();
     }
 }

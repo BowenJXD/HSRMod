@@ -56,7 +56,7 @@ public class AntiCreator extends BaseMonster implements OnCardUseSubscriber {
     int statusCardAmt = 2;
     int maxHpIncAmt;
     int maxHpDecPercent = 24;
-    int actionLockAmt = 60;
+    int actionLockAmt = specialAs ? 24 : 60;
 
     boolean useUlt = false;
     boolean exhaustConditionTriggered = false;

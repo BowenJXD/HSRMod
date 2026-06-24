@@ -29,10 +29,7 @@ public class ReinforcePower extends BuffPower implements OnPlayerDamagedSubscrib
     
     @Override
     public void updateDescription() {
-        if (!upgraded)
-            this.description = String.format(DESCRIPTIONS[0]);
-        else
-            this.description = String.format(DESCRIPTIONS[1]);
+        this.description = DESCRIPTIONS[0];
     }
 
     @Override

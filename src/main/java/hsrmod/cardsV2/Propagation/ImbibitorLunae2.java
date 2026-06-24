@@ -12,6 +12,8 @@ import hsrmod.signature.utils.SignatureHelper;
 
 public class ImbibitorLunae2 extends BaseCard {
     public static final String ID = ImbibitorLunae2.class.getSimpleName();
+
+    int count = 0;
     
     public ImbibitorLunae2() {
         super(ID);
@@ -22,6 +24,12 @@ public class ImbibitorLunae2 extends BaseCard {
             SignatureHelper.unlock(HSRMod.makePath(ID), true);
         }
     }
+    
+    @Override
+    public void atTurnStart() {
+        super.atTurnStart();
+        count = 0;
+    }
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
@@ -29,5 +37,10 @@ public class ImbibitorLunae2 extends BaseCard {
             addToBot(new ElementalDamageAllAction(this, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
         }
         addToTop(new GainEnergyAction(2));
+        
+        if (++count >= 3) {
+            count = 0;
+            SignatureHelper.unlock(HSRMod.makePath(ID), true);
+        }
     }
 }

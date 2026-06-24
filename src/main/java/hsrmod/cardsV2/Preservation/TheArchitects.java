@@ -28,7 +28,7 @@ public class TheArchitects extends BaseCard {
         int count = AbstractDungeon.getMonsters().monsters.stream()
                 .mapToInt(monster -> ModHelper.check(monster) ? 1 : 0)
                 .sum();
-        baseDamage /= count;
+        if (count > 0) baseDamage /= count;
         super.calculateCardDamage(mo);
     }
 

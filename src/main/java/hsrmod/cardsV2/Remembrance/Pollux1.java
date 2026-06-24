@@ -85,7 +85,7 @@ public class Pollux1 extends BaseCard {
         }
         ModHelper.addToBotAbstract(() -> {
             ModHelper.addToBotAbstract(() -> {
-                if (p.filledOrbCount() == 0 && p.hand.contains(this)) {
+                if (p.filledOrbCount() == 0 && p.hand.contains(this) && p.hand.group.stream().noneMatch(c -> c instanceof Pollux3)) {
                     addToTop(new TransformCardInHandAction(p.hand.group.indexOf(this), new Pollux3()));
                 }
             });

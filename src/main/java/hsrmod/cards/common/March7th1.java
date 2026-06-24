@@ -25,11 +25,7 @@ public class March7th1 extends BaseCard {
     public void onUse(AbstractPlayer p, AbstractMonster m) {
         addToBot(new VFXAction(new FastingEffect(p.hb.cX, p.hb.cY, Color.PINK)));
         addToBot(new GainBlockAction(p, p, block));
-        AbstractPower power = p.getPower(ReinforcePower.POWER_ID);
-        if (power != null)
-            ((ReinforcePower) power).upgraded = upgraded;
-        else
-            addToBot(new ApplyPowerAction(p, p, new ReinforcePower(p, magicNumber, upgraded), magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new ReinforcePower(p, magicNumber, upgraded), magicNumber));
         addToBot(new CleanAction(p, 1, false));
     }
 }

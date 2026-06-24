@@ -50,6 +50,6 @@ public class AntinomyModifier extends AbstractCardModifier {
 
     @Override
     public AbstractCardModifier makeCopy() {
-        return null;
+        return new AntinomyModifier(dmg, description);
     }
 }

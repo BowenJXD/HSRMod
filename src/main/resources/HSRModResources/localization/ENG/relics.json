@@ -130,9 +130,9 @@
     "NAME": "Wax Of Remembrance",
     "FLAVOR": "It is said that stamping with this Sealing Wax will attract a glimpse from the corresponding Aeon from across space and time - IX is watching you! ",
     "DESCRIPTIONS": [
-      "Increase the chance of appearing of \" #yRemembrance \" cards. Orb slots +2. Lightning/Dark Orbs deal Thunder/Quantum elemental damage (toughness reduction: 1). NL Right click in combat to view #ytutorial .",
-      "Increase the chance of appearing of \" #yRemembrance \" cards. Orb slots +2. Lightning/Dark Orbs deal Thunder/Quantum elemental damage (toughness reduction: 1). Right click in #yNeow's #yRoom to #rban #rpaths . NL Right click in combat to view #ytutorial .",
-      "Increase the chance of appearing of \" #yRemembrance \" cards. Orb slots +2. Lightning/Dark Orbs deal Thunder/Quantum elemental damage (toughness reduction: 1). Banned paths: #y%s . NL Right click in combat to view #ytutorial .",
+      "Increase the chance of appearing of \" #yRemembrance \" cards. Orb slots +3. Lightning/Dark Orbs deal Thunder/Quantum elemental damage (toughness reduction: 1). NL Right click in combat to view #ytutorial .",
+      "Increase the chance of appearing of \" #yRemembrance \" cards. Orb slots +3. Lightning/Dark Orbs deal Thunder/Quantum elemental damage (toughness reduction: 1). Right click in #yNeow's #yRoom to #rban #rpaths . NL Right click in combat to view #ytutorial .",
+      "Increase the chance of appearing of \" #yRemembrance \" cards. Orb slots +3. Lightning/Dark Orbs deal Thunder/Quantum elemental damage (toughness reduction: 1). Banned paths: #y%s . NL Right click in combat to view #ytutorial .",
       "Choose %d paths, their cards will not appear as card rewards.",
       "The Remembrance Path gains power by generating Orbs and triggering their passives. The Remembrance Wax provides Orb slots and causes Orbs to deal elemental damage.",
       "Some Remembrance cards can also stack Temp HP, which certain cards can consume to convert into damage output."

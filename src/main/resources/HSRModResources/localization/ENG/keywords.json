@@ -145,7 +145,7 @@
   },
   {
     "NAMES": ["Lost Netherland", "lost-netherland"],
-    "DESCRIPTION": "While active, when you would receive #rfatal damage, prevent it and play \" #yWings #ySweep #ythe #yRuins \"."
+    "DESCRIPTION": "Upon entering, convert all Orbs into #yDark #yOrb s of equal value, gain \" #yFlames #yScorching #ythe #yDark #yMarsh \" and \" #yWings #ySweep #ythe #yRuins \". While active, when you would receive #rfatal damage, prevent it and play \" #yWings #ySweep #ythe #yRuins \"."
   },
   {
     "NAMES": ["Obsession", "obsession"],

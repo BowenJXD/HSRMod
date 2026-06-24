@@ -204,7 +204,7 @@ NightOnTheMilkyWay,银河铁道之夜,BASIC,SKILL,SELF,0, 消耗 。若下一房间可选包含： 
 Phainon1,此身为炬,SPECIAL,ATTACK,ENEMY,1, 消耗 。打出此牌后，获得 !M! 层 hsrmod:火种 ，造成 !D! 点伤害（物理 !TR! ）。,10,2,,2,,,15,3,,3,,,,
 Phainon2,永劫燔世，其将背负,SPECIAL,SKILL,SELF,0, 消耗 。移除此牌。展开 hsrmod:境界 hsrmod:时墟铁墓 ，获得 *「创生·血棘渡亡」 ， *「灾厄·弑魂焚诏」 和 *「支柱·死星天裁」 ，进入 神格 。,,,,,0,,,,,,,,,
 Khaslana1,创生 · 血棘渡亡,SPECIAL,ATTACK,ENEMY,0, hsrmod:境界牌 。造成 !D! 点伤害（物理 !TR! ），获得 !M! 点 hsrmod:毁伤 。,10,2,,2,,,15,,,,,,,
-Khaslana2,灾厄 · 弑魂焚诏,SPECIAL,ATTACK,ALL_ENEMY,0, hsrmod:境界牌 。获得敌人数量的 hsrmod:毁伤 ，令所有敌人行动1次，期间受到的伤害-75%，然后在所有敌人行动结束后，造成 !D! 的伤害（物理 !TR! ）：其中25%为群体，75%为 !M! 段的 hsrmod:弹射 。,15,4,,3,,,20,,,,,,,
+Khaslana2,灾厄 · 弑魂焚诏,SPECIAL,ATTACK,ALL_ENEMY,0, hsrmod:境界牌 。获得敌人数量的 hsrmod:毁伤 ，令所有敌人行动1次，期间受到的伤害-50%，然后在所有敌人行动结束后，造成 !D! 的伤害（物理 !TR! ）：其中25%为群体，75%为 !M! 段的 hsrmod:弹射 。,12,4,,3,,,16,,,,,,,
 Khaslana3,支柱 · 死星天裁,SPECIAL,ATTACK,ALL_ENEMY,-1, hsrmod:境界牌 。消耗至多4点 hsrmod:毁伤 ，造成至多 !D! 的伤害（物理 !TR! ）：其中每消耗1点 hsrmod:毁伤 ， hsrmod:弹射 10%伤害，若消耗了4点 hsrmod:毁伤 ，造成60%伤害，由敌人全体均摊。,30,6,,,,,40,,,,,,,
 Khaslana4,命运 · 此躯即神,SPECIAL,ATTACK,ALL_ENEMY,0, hsrmod:境界牌 。在境界中每打出过1张牌，伤害+2。造成共计 !D! 点的伤害（物理 !TR! ），由敌人全体均摊。退出 hsrmod:时墟铁墓 和当前姿态。,4,2,,,,,10,3,,,,,,
 ,,,,,,,,,,,,,,,,,,,,

@@ -31,7 +31,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Khaslana2 extends BaseCard {
     public static final String ID = Khaslana2.class.getSimpleName();
 
-    int defenseCount = 75;
+    int defenseCount = 50;
     float aoeDmgP = 0.25f;
     float bounceDmgP = 0.25f;
 

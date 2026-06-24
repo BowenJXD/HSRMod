@@ -21,7 +21,7 @@ import static hsrmod.modcore.CustomEnums.FOLLOW_UP;
 public class March7th2 extends BaseCard {
     public static final String ID = March7th2.class.getSimpleName();
     
-    boolean canBeUsed = false;
+    boolean canBeUsed = true;
     public AbstractCreature priorityTarget;
 
     public March7th2() {

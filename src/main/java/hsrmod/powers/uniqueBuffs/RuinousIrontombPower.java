@@ -29,12 +29,13 @@ import org.apache.logging.log4j.Level;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 public class RuinousIrontombPower extends TerritoryPower implements OnReceivePowerPower {
     public static final String POWER_ID = HSRMod.makePath(RuinousIrontombPower.class.getSimpleName());
     
     static final int SCOURGE_COUNT = 7;
-    static final int BLOCK_AMT = 15;
+    static final int BLOCK_AMT = 12;
     int cardsPlayed = 0;
     
     boolean triggered = false;
@@ -140,11 +141,7 @@ public class RuinousIrontombPower extends TerritoryPower implements OnReceivePow
         super.reducePower(reduceAmount);
         if (amount <= 0) {
             amount = 0;
-            AbstractCard c = new Khaslana4();
-            c.baseDamage += cardsPlayed;
-            addToBot(new MakeTempCardInHandAction(c, false, true));
-            addToBot(new FollowUpAction(c));
-            cardsPlayed = 0;
+            play4();
         }
     }
 
@@ -152,11 +149,7 @@ public class RuinousIrontombPower extends TerritoryPower implements OnReceivePow
     public int onAttacked(DamageInfo info, int damageAmount) {
         if (damageAmount >= owner.currentBlock && !triggered) {
             triggered = true;
-            AbstractCard card = new Khaslana4();
-            card.baseDamage += cardsPlayed * 2;
-            addToBot(new MakeTempCardInHandAction(card, false, true));
-            addToBot(new FollowUpAction(card));
-            cardsPlayed = 0;
+            play4();
             return 0;
         }
         return damageAmount;
@@ -168,5 +161,18 @@ public class RuinousIrontombPower extends TerritoryPower implements OnReceivePow
             return false;
         }
         return true;
+    }
+    
+    void play4() {
+        Optional<AbstractCard> oc = AbstractDungeon.player.hand.group.stream().filter(c -> c instanceof Khaslana4).findFirst();
+        if (oc.isPresent()) {
+            addToBot(new FollowUpAction(oc.get()));
+        } else {
+            AbstractCard card = new Khaslana4();
+            card.baseDamage += cardsPlayed * 2;
+            addToBot(new MakeTempCardInHandAction(card, false, true));
+            addToBot(new FollowUpAction(card));
+        }
+        cardsPlayed = 0;
     }
 }

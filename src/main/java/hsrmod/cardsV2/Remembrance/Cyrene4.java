@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.actions.unique.ApotheosisAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -34,6 +35,7 @@ import hsrmod.cardsV2.Trailblaze.Khaslana4;
 import hsrmod.cardsV2.Trailblaze.Phainon2;
 import hsrmod.effects.PetalFallingEffect;
 import hsrmod.effects.PortraitDisplayEffect;
+import hsrmod.misc.VideoManager;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.modcore.HSRMod;
 import hsrmod.modifiers.*;
@@ -69,8 +71,16 @@ public class Cyrene4 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        shout(0);
-        addToBot(new ShoutVoiceAction(this.getClass().getSimpleName(), 3.0f));
+        boolean played = false;
+        if (Settings.FAST_MODE) {
+            played = VideoManager.play(ID + "_2", 5, true);
+        } else {
+            played = VideoManager.play(ID + "_1", 13, true);
+        }
+        if (!played) {
+            shout(0);
+            addToBot(new ShoutVoiceAction(this.getClass().getSimpleName(), 3.0f));
+        }
         addToBot(new VFXAction(new SpotlightEffect()));
         addToBot(new VFXAction(new PetalFallingEffect()));
         addToBot(new ApplyPowerAction(p, p, new FuturePower(p, 1)));

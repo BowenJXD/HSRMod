@@ -120,8 +120,7 @@
   "HSRMod:Reinforce": {
     "NAME": "Reinforce",
     "DESCRIPTIONS": [
-      "When taking damage, if you have Block, gain a #yGirl #yPower card.",
-      "When taking damage, if you have Block, gain #b%d Block and a #yGirl #yPower card."
+      "When taking damage, if you have Block, gain a #yGirl #yPower card."
     ]
   },
   "HSRMod:TopazNumby": {
@@ -860,7 +859,7 @@
   "HSRMod:LostNetherland": {
     "NAME": "Territory: Lost Netherland",
     "DESCRIPTIONS": [
-      "While active, upon receiving #rfatal damage, prevent it, gain and play \" #yWings #ySweep #ythe #yRuins \" to end the #yTerritory."
+      "Upon entering, convert all Orbs into #yDark #yOrb s of equal value, gain \" #yFlames #yScorching #ythe #yDark #yMarsh \" and \" #yWings #ySweep #ythe #yRuins \". While active, upon receiving #rfatal damage, prevent it, and play \" #yWings #ySweep #ythe #yRuins \" to end the #yTerritory."
     ]
   },
   "HSRMod:RuinousIrontomb": {

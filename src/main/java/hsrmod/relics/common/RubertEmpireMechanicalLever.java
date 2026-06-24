@@ -24,6 +24,7 @@ public class RubertEmpireMechanicalLever extends BaseRelic implements IRubertEmp
     @Override
     public void onEnterRoom(AbstractRoom room) {
         super.onEnterRoom(room);
+        checkMerge();
         if (usedUp) return;
         if (room instanceof EventRoom) {
             AbstractCard card = GeneralUtil.getRandomElement(AbstractDungeon.player.masterDeck.group, AbstractDungeon.miscRng);

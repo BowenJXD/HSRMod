@@ -29,6 +29,12 @@ public class RubertEmpireMechanicalCogwheel extends BaseRelic implements IRubert
     }
 
     @Override
+    public void onEnterRoom(AbstractRoom room) {
+        super.onEnterRoom(room);
+        checkMerge();
+    }
+
+    @Override
     public void atBattleStart() {
         super.atBattleStart();
         if (usedUp) return;

@@ -118,7 +118,9 @@ public class PathSelectScreen implements ISubscriber, CustomSavable<Integer> {
     public void addBannedTags(List<AbstractCard.CardTags> bannedTags) {
         if (unlockedAll()) return;
         for (int i = PathSelectScreen.PATHS.size() - 1; i >= pathUnlocked; i--) {
-            if (!bannedTags.contains(Path.toTag(PATHS.get(i).path)))
+            if (bannedTags != null 
+                    && PATHS.get(i) != null 
+                    && !bannedTags.contains(Path.toTag(PATHS.get(i).path)))
                 bannedTags.add(Path.toTag(PATHS.get(i).path));
         }
     }

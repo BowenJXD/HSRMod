@@ -27,6 +27,7 @@ import com.megacrit.cardcrawl.orbs.Dark;
 import com.megacrit.cardcrawl.orbs.EmptyOrbSlot;
 import hsrmod.cards.BaseCard;
 import hsrmod.effects.PortraitDisplayEffect;
+import hsrmod.misc.VideoManager;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.powers.uniqueBuffs.LostNetherlandPower;
 import hsrmod.signature.patches.card.SignaturePatch;
@@ -82,28 +83,13 @@ public class Castorice3 extends BaseCard implements PostHPUpdateSubscriber {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        shout(0);
-        addToBot(new SFXAction(ID));
+        if (!VideoManager.play(ID, 4, true)) {
+            shout(0);
+            addToBot(new SFXAction(ID));
+        }
         ModHelper.addToBotAbstract(() -> {
             addToBot(new ApplyPowerAction(p, p, new LostNetherlandPower(p)));
-            addToBot(new MakeTempCardInHandAction(new Pollux1()));
             if (upgraded) addToBot(new MakeTempCardInHandAction(new Pollux2()));
-            for (int i = 0; i < p.orbs.size(); i++) {
-                if (p.orbs.get(i) instanceof EmptyOrbSlot || p.orbs.get(i) instanceof Dark|| p.orbs.get(i) == null) {
-                    continue;
-                }
-
-                Dark dark = new Dark();
-                dark.evokeAmount = p.orbs.get(i).evokeAmount;
-
-                dark.cX = (p.orbs.get(i)).cX;
-                dark.cY = (p.orbs.get(i)).cY;
-                dark.setSlot(i, p.maxOrbs);
-                dark.playChannelSFX();
-                dark.updateDescription();
-                
-                p.orbs.set(i, dark);
-            }
             SubscriptionManager.getInstance().extraChecks.add(this);
         });
     }

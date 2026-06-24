@@ -19,6 +19,7 @@ public class NightWatch extends BaseCard {
     protected void applyPowersToBlock() {
         super.applyPowersToBlock();
         block += getBlockAlt();
+        isBlockModified = true;
     }
 
     @Override

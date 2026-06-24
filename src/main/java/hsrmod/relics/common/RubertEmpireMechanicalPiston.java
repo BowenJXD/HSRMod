@@ -30,6 +30,7 @@ public class RubertEmpireMechanicalPiston extends BaseRelic implements IRubertEm
     @Override
     public void onEnterRestRoom() {
         super.onEnterRestRoom();
+        checkMerge();
         if (usedUp) return;
         ModHelper.addEffectAbstract(() -> {
             isDone = true;

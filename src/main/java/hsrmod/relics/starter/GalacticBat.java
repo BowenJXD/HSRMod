@@ -25,10 +25,15 @@ import hsrmod.monsters.TheEnding.Irontomb;
 import hsrmod.powers.enemyOnly.HeartIsMeantToBeBrokenPower;
 import hsrmod.powers.misc.ToughnessPower;
 import hsrmod.relics.ITutorial;
+import hsrmod.relics.special.DanhengRelic;
+import hsrmod.relics.special.HimekoRelic;
+import hsrmod.relics.special.March7thRelic;
+import hsrmod.relics.special.WeltRelic;
 import hsrmod.utils.ModHelper;
 import hsrmod.utils.PathDefine;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 
 public class GalacticBat extends CustomRelic implements ClickableRelic, ITutorial {
@@ -128,21 +133,26 @@ public class GalacticBat extends CustomRelic implements ClickableRelic, ITutoria
                 && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT 
                 && AbstractDungeon.getMonsters() != null
                 && AbstractDungeon.getMonsters().monsters.stream().anyMatch(m -> m instanceof Irontomb)) {
-            Iterator<AbstractGameAction> i = AbstractDungeon.actionManager.actions.iterator();
+            if (ModHelper.hasRelic(HimekoRelic.ID) 
+                    && ModHelper.hasRelic(WeltRelic.ID) 
+                    && ModHelper.hasRelic(DanhengRelic.ID) 
+                    && ModHelper.hasRelic(March7thRelic.ID)) {
+                Iterator<AbstractGameAction> i = AbstractDungeon.actionManager.actions.iterator();
 
-            while (i.hasNext()) {
-                AbstractGameAction e = (AbstractGameAction) i.next();
-                if (!(e instanceof HealAction)
-                        && !(e instanceof GainBlockAction)
-                        && !(e instanceof UseCardAction)
-                        && !(e instanceof ElementalDamageAction.TriggerCallbackAction)
-                        && e.actionType != AbstractGameAction.ActionType.DAMAGE) {
-                    i.remove();
+                while (i.hasNext()) {
+                    AbstractGameAction e = (AbstractGameAction) i.next();
+                    if (!(e instanceof HealAction)
+                            && !(e instanceof GainBlockAction)
+                            && !(e instanceof UseCardAction)
+                            && !(e instanceof ElementalDamageAction.TriggerCallbackAction)
+                            && e.actionType != AbstractGameAction.ActionType.DAMAGE) {
+                        i.remove();
+                    }
                 }
+                ModHelper.addToTopAbstract(() -> RestartRunHelper.queuedRoomRestart = true);
+                VideoManager.play("ChasingFlame", 24f, false);
+                return 0;
             }
-            ModHelper.addToTopAbstract(() -> RestartRunHelper.queuedRoomRestart = true);
-            VideoManager.play("ChasingFlame", 24f, false);
-            return 0;
         }
         return damageAmount;
     }

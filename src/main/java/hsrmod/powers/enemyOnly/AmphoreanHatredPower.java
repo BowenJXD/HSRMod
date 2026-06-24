@@ -24,6 +24,7 @@ import hsrmod.misc.VideoManager;
 import hsrmod.modcore.ElementalDamageInfo;
 import hsrmod.modcore.HSRMod;
 import hsrmod.powers.DebuffPower;
+import hsrmod.powers.StatePower;
 import hsrmod.subscribers.PreElementalDamageSubscriber;
 import hsrmod.subscribers.SubscriptionManager;
 import hsrmod.utils.GAMManager;
@@ -34,7 +35,7 @@ import spireTogether.network.P2P.P2PManager;
 
 import java.util.Iterator;
 
-public class AmphoreanHatredPower extends DebuffPower implements PreElementalDamageSubscriber {
+public class AmphoreanHatredPower extends StatePower implements PreElementalDamageSubscriber {
     public static final String POWER_ID = HSRMod.makePath(AmphoreanHatredPower.class.getSimpleName());
 
     public int HAND_THRESHOLD = 50;

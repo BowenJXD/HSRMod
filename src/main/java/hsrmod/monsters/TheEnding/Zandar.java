@@ -260,7 +260,9 @@ public class Zandar extends BaseMonster implements PostMonsterDeathSubscriber {
     private void applyAntinomy(int count) {
         ModHelper.addToBotAbstract(() -> {
             for (int i = 0; i < Math.min(count, p.drawPile.size()); i++) {
-                CardModifierManager.addModifier(AbstractDungeon.player.drawPile.getNCardFromTop(i), new AntinomyModifier(antinomyDmg, GeneralUtil.tryFormat(MOVES[10], antinomyDmg)));
+                AbstractCard card = AbstractDungeon.player.drawPile.getNCardFromTop(i);
+                if (card != null)
+                    CardModifierManager.addModifier(card, new AntinomyModifier(antinomyDmg, GeneralUtil.tryFormat(MOVES[10], antinomyDmg)));
             }
         });
     }

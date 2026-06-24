@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.stances.DivinityStance;
 import hsrmod.cards.BaseCard;
 import hsrmod.cardsV2.Remembrance.Pollux1;
 import hsrmod.cardsV2.Remembrance.Pollux2;
+import hsrmod.misc.VideoManager;
 import hsrmod.modcore.CustomEnums;
 import hsrmod.powers.uniqueBuffs.RuinousIrontombPower;
 import hsrmod.utils.ModHelper;
@@ -28,12 +29,14 @@ public class Phainon2 extends BaseCard {
 
     @Override
     public void onUse(AbstractPlayer p, AbstractMonster m) {
-        shout(0);
-        
+        if (!VideoManager.play(ID, 6, true))
+            shout(0);
+
+        addToBot(new ChangeStanceAction(DivinityStance.STANCE_ID));
         addToBot(new ApplyPowerAction(p, p, new RuinousIrontombPower(p, 8)));
         addToBot(new MakeTempCardInHandAction(new Khaslana1()));
         addToBot(new MakeTempCardInHandAction(new Khaslana2()));
         addToBot(new MakeTempCardInHandAction(new Khaslana3()));
-        addToBot(new ChangeStanceAction(DivinityStance.STANCE_ID));
+        addToBot(new MakeTempCardInHandAction(new Khaslana4()));
     }
 }
